@@ -5,13 +5,10 @@ import Tags from "../Tags/Tags";
 import ArticleInfo from "./ArticleInfo/ArticleInfo";
 
 const Article = (props) => {
-  // console.log(props.tags);
-  console.log(props);
-
   return (
     <article className="l-col l-col__1-1 o-article">
       <h3 className="a-article__header u-mt-0 u-mb-8">{props.title}</h3>
-      <Tags tags={props.tagsInPost} />
+      <Tags tagsInPost={props.tagsInPost} tagCount={props.tagCount} />
       <ArticleInfo date={props.date} timeToRead={props.timeToRead} />
       <p className="copy">{props.snippet}</p>
       <Link to={"/categories/" + props.category} className="link">

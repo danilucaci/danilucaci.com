@@ -6,7 +6,7 @@ const Tag = (props) => {
   return (
     <Link to={props.link} className="a-tag">
       {props.label}
-      <span className="a-tag__count">({props.count})</span>
+      <span className="a-tag__count">({props.tagCount})</span>
     </Link>
   );
 };

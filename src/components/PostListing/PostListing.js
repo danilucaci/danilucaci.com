@@ -4,20 +4,17 @@ import Article from "../Article/Article";
 
 class PostListing extends Component {
   getPostList() {
-    var postList = [];
-    var tagCount = [];
+    let postList = [];
+    let tagCount = [];
 
     this.props.tagsTotalCount.forEach((tag) => {
-      tagCount.push({
-        name: tag.fieldValue,
-        amount: tag.totalCount,
-      });
+      tagCount[tag.fieldValue] = tag.totalCount;
     });
 
     this.props.postEdges.forEach((postEdge) => {
       postList.push({
-        tagCount: tagCount,
         slug: postEdge.node.fields.slug,
+        tagCount: tagCount,
         tagsInPost: postEdge.node.frontmatter.tags,
         category: postEdge.node.frontmatter.category,
         title: postEdge.node.frontmatter.title,
@@ -37,9 +34,9 @@ class PostListing extends Component {
       <section className="">
         {postList.map((post) => (
           <Article
-            tagCount={post.tagCount}
             key={post.title}
             slug={post.slug}
+            tagCount={post.tagCount}
             tagsInPost={post.tagsInPost}
             category={post.category}
             title={post.title}
