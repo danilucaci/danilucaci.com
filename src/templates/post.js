@@ -3,8 +3,8 @@ import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 // import UserInfo from "../components/UserInfo/UserInfo";
-import Disqus from "../components/Disqus/Disqus";
-import PostTags from "../components/PostTags/PostTags";
+// import Disqus from "../components/Disqus/Disqus";
+import Tags from "../components/Tags/Tags";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 import "./b16-tomorrow-dark.css";
@@ -31,7 +31,7 @@ class Post extends Component {
             <h1>{post.title}</h1>
             <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
             <div className="post-meta">
-              <PostTags tags={post.tags} />
+              <Tags tags={post.tags} />
             </div>
             {/* <UserInfo config={config} /> */}
             {/* <Disqus postNode={postNode} /> */}
