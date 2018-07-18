@@ -102,12 +102,6 @@ module.exports = {
     },
     "gatsby-plugin-offline",
     {
-      resolve: "gatsby-plugin-react-svg",
-      options: {
-        include: /icons/,
-      },
-    },
-    {
       resolve: "gatsby-plugin-feed",
       options: {
         setup(ref) {

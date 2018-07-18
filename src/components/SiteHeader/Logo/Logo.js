@@ -1,13 +1,11 @@
 import React from "react";
 
-import Link from "gatsby-link";
-// import Logo from "../../../../static/logo/logo.svg";
+import { Link } from "gatsby";
 
 const Logo = () => {
   return (
     <Link to="/" alt="danilucaci.com" className="a-site-nav__logo">
-      {/* <Logo /> */}
-      <img src="../../../../static/logo.svg" alt="" />
+      <img src="./logo.svg" alt="" />
     </Link>
   );
 };

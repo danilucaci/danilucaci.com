@@ -10,7 +10,7 @@
     "url": "https://github.com/danilucaci/danilucaci"
   },
   "dependencies": {
-    "gatsby": "next",
+    "gatsby": "^2.0.0-beta.46",
     "gatsby-image": "next",
     "gatsby-plugin-catch-links": "next",
     "gatsby-plugin-feed": "next",
@@ -20,7 +20,6 @@
     "gatsby-plugin-nprogress": "next",
     "gatsby-plugin-offline": "next",
     "gatsby-plugin-react-helmet": "next",
-    "gatsby-plugin-react-svg": "^1.1.1",
     "gatsby-plugin-sass": "next",
     "gatsby-plugin-sharp": "next",
     "gatsby-plugin-sitemap": "next",
