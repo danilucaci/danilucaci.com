@@ -7,7 +7,7 @@ const ArticleInfo = (props) => {
   return (
     <div className="m-article__info">
       <ArticleDate date={props.date} />
-      <ReadTime readTime={props.readTime} />
+      <ReadTime timeToRead={props.timeToRead} />
     </div>
   );
 };

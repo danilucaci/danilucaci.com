@@ -6,7 +6,8 @@ const ReadTime = (props) => {
   return (
     <div className="a-article__read-time">
       {/* <IconClock className="icon icon--up" /> */}
-      <span className="copy--s copy--b">{props.readTime}</span>
+      <img src="../../../../../static/icons/clock.svg" alt="" />
+      <span className="copy--s copy--b">{props.timeToRead}</span>
     </div>
   );
 };
