@@ -8,20 +8,19 @@ class SEO extends Component {
     const { postNode, postPath, postSEO } = this.props;
     let title;
     let description;
-    let image;
     let postURL;
+    let image = config.siteLogo;
+
     if (postSEO) {
       const postMeta = postNode.frontmatter;
       ({ title } = postMeta);
       description = postMeta.description
         ? postMeta.description
         : postNode.excerpt;
-      image = postMeta.cover;
       postURL = urljoin(config.siteUrl, config.pathPrefix, postPath);
     } else {
       title = config.siteTitle;
       description = config.siteDescription;
-      image = config.siteLogo;
     }
 
     image = urljoin(config.siteUrl, config.pathPrefix, image);
@@ -32,8 +31,8 @@ class SEO extends Component {
         "@type": "WebSite",
         url: blogURL,
         name: title,
-        alternateName: config.siteTitleAlt ? config.siteTitleAlt : ""
-      }
+        alternateName: config.siteTitleAlt ? config.siteTitleAlt : "",
+      },
     ];
     if (postSEO) {
       schemaOrgJSONLD.push(
@@ -47,10 +46,10 @@ class SEO extends Component {
               item: {
                 "@id": postURL,
                 name: title,
-                image
-              }
-            }
-          ]
+                image,
+              },
+            },
+          ],
         },
         {
           "@context": "http://schema.org",
@@ -61,9 +60,9 @@ class SEO extends Component {
           headline: title,
           image: {
             "@type": "ImageObject",
-            url: image
+            url: image,
           },
-          description
+          description,
         }
       );
     }

@@ -1,0 +1,44 @@
+html {
+  background-color: $color-background;
+  color: $color-dark-700;
+  font-family: $font-system;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 100%;
+  line-height: $size-28;
+  /* prettier-ignore */
+  // **********************************************************
+  // Disables the browser's inflation algorithm.
+  // Prevent font scaling in landscape while allowing user zoom
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -o-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+
+  /* prettier-ignore */
+  // **********************************************************
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+  overflow-x: hidden;
+}
+
+::selection {
+  color: $color-light-100;
+  text-shadow: none;
+  background: $color-main-600;
+}
+
+@media screen and (min-device-width: 720px) {
+  html {
+    // Turn it back to auto to prevent desktop scalling issues
+    -ms-text-size-adjust: auto;
+    -moz-text-size-adjust: auto;
+    -o-text-size-adjust: auto;
+    -webkit-text-size-adjust: auto;
+    text-size-adjust: auto;
+  }
+}

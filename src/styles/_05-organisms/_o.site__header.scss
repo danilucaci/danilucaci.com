@@ -1,0 +1,17 @@
+.o-site__header {
+  background-color: $color-siteheader-background;
+  height: $size-64;
+  padding: 0;
+  position: relative;
+  z-index: 10;
+
+  @media screen and (min-width: $size-bp-l) {
+    height: $size-48;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  @include box-shadow-default;
+}

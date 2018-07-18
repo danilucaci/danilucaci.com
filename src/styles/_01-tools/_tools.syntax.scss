@@ -1,0 +1,333 @@
+.highlight {
+  background-color: $color-code-bg;
+  color: $color-light-200;
+  margin: $size-16 -#{$size-16};
+  padding: 0 $size-16;
+
+  @media screen and (min-width: $size-bp-l) {
+    margin: $size-24 -#{$size-24};
+    padding: 0 $size-24;
+  }
+}
+
+.chroma {
+  width: 100%;
+
+  padding: $size-28 0;
+  margin: 0 auto;
+  overflow-x: scroll;
+  overflow-y: visible;
+
+  @media screen and (min-width: $size-bp-xl) {
+    width: 60%;
+  }
+}
+
+// Error
+.chroma .err {
+  color: $color-danger-100;
+  background-color: $color-danger-600;
+}
+
+// LineTableTD
+.chroma .lntd {
+  vertical-align: top;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+// LineTable
+.chroma .lntable {
+  border-spacing: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  width: auto;
+  overflow: auto;
+  display: block;
+}
+
+// LineHighlight
+.chroma .hl {
+  display: block;
+  width: 100%;
+  background-color: $color-code-white;
+}
+
+// LineNumbersTable
+.chroma .lnt {
+  margin-right: 0.4em;
+  padding: 0 0.4em 0 0.4em;
+}
+
+// LineNumbers
+.chroma .ln {
+  margin-right: 0.4em;
+  padding: 0 0.4em 0 0.4em;
+}
+
+// Keyword
+.chroma .k {
+  color: $color-code-magenta;
+}
+
+// KeywordConstant
+.chroma .kc {
+  color: $color-code-magenta;
+}
+
+// KeywordDeclaration
+.chroma .kd {
+  color: $color-code-magenta;
+}
+
+// KeywordNamespace
+.chroma .kn {
+  color: $color-code-red;
+}
+
+// KeywordPseudo
+.chroma .kp {
+  color: $color-code-magenta;
+}
+
+// KeywordReserved
+.chroma .kr {
+  color: $color-code-magenta;
+}
+
+// KeywordType
+.chroma .kt {
+  color: $color-code-magenta;
+}
+
+// NameAttribute
+.chroma .na {
+  color: $color-code-yellow;
+}
+
+// NameClass
+.chroma .nc {
+  color: $color-code-red;
+}
+
+// NameConstant
+.chroma .no {
+  color: $color-code-magenta;
+}
+
+// NameDecorator
+.chroma .nd {
+  color: $color-code-red;
+}
+
+// NameException
+.chroma .ne {
+  color: $color-code-red;
+}
+
+// NameFunction
+.chroma .nf {
+  color: $color-code-red;
+}
+
+// NameOther
+.chroma .nx {
+  color: $color-code-blue;
+}
+
+// NameTag
+.chroma .nt {
+  color: $color-code-red;
+}
+
+// Literal
+.chroma .l {
+  color: $color-code-yellow;
+}
+
+// LiteralDate
+.chroma .ld {
+  color: $color-code-white;
+}
+
+// LiteralString
+.chroma .s {
+  color: $color-code-green;
+}
+
+// LiteralStringAffix
+.chroma .sa {
+  color: $color-code-white;
+}
+
+// LiteralStringBacktick
+.chroma .sb {
+  color: $color-code-green;
+}
+
+// Comment
+.chroma .c {
+  color: $color-code-comment;
+}
+
+// Parenthes etc
+.chroma .c {
+  color: $color-code-white;
+}
+
+// LiteralStringChar
+.chroma .sc {
+  color: $color-code-white;
+}
+
+// LiteralStringDelimiter
+.chroma .dl {
+  color: $color-code-white;
+}
+
+// LiteralStringDoc
+.chroma .sd {
+  color: $color-code-white;
+}
+
+// LiteralStringDouble
+.chroma .s2 {
+  color: $color-code-green;
+}
+
+// LiteralStringEscape
+.chroma .se {
+  color: $color-code-yellow;
+}
+
+// LiteralStringHeredoc
+.chroma .sh {
+  color: $color-code-white;
+}
+
+// LiteralStringInterpol
+.chroma .si {
+  color: $color-code-white;
+}
+
+// LiteralStringOther
+.chroma .sx {
+  color: $color-code-white;
+}
+
+// LiteralStringRegex
+.chroma .sr {
+  color: $color-code-white;
+}
+
+// LiteralStringSingle
+.chroma .s1 {
+  color: $color-code-white;
+}
+
+// LiteralStringSymbol
+.chroma .ss {
+  color: $color-code-white;
+}
+
+// LiteralNumber
+.chroma .m {
+  color: $color-code-yellow;
+}
+
+// LiteralNumberBin
+.chroma .mb {
+  color: $color-code-yellow;
+}
+
+// LiteralNumberFloat
+.chroma .mf {
+  color: $color-code-yellow;
+}
+
+// LiteralNumberHex
+.chroma .mh {
+  color: $color-code-yellow;
+}
+
+// LiteralNumberInteger
+.chroma .mi {
+  color: $color-code-yellow;
+}
+
+// LiteralNumberIntegerLong
+.chroma .il {
+  color: $color-code-yellow;
+}
+
+// LiteralNumberOct
+.chroma .mo {
+  color: $color-code-yellow;
+}
+
+// Operator
+.chroma .o {
+  color: $color-code-red;
+}
+
+// OperatorWord
+.chroma .ow {
+  color: $color-code-red;
+}
+
+// CommentHashbang
+.chroma .ch {
+  color: $color-code-comment;
+}
+
+// CommentMultiline
+.chroma .cm {
+  color: $color-code-comment;
+}
+
+// CommentSingle
+.chroma .c1 {
+  color: $color-code-comment;
+}
+
+// CommentSpecial
+.chroma .cs {
+  color: $color-code-comment;
+}
+
+// CommentPreproc
+.chroma .cp {
+  color: $color-code-comment;
+}
+
+// CommentPreprocFile
+.chroma .cpf {
+  color: $color-code-comment;
+}
+
+// GenericDeleted
+.chroma .gd {
+  color: $color-code-red;
+}
+
+// GenericEmph
+.chroma .ge {
+  font-style: italic;
+}
+
+// GenericInserted
+.chroma .gi {
+  color: $color-code-red;
+}
+
+// GenericStrong
+.chroma .gs {
+  font-weight: bold;
+}
+
+// GenericSubheading
+.chroma .gu {
+  color: $color-code-comment;
+}

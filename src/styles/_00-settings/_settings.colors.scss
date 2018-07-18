@@ -1,0 +1,110 @@
+// ====================================================================
+// danilucaci.com color pallete
+// 
+// 600 / 100 has AAA (7:1) contrast
+// 500: 
+// 400:
+// 300: 
+// 200:
+// 100: Backgrounds
+// ====================================================================
+// Dark Colors
+// Use for text and backgrounds
+$color-dark-900: #141C29; // primary text
+$color-dark-800: #1E2C42; // 
+$color-dark-700: #3C4A66; // secondary copy and footnotes
+$color-dark-600: #6F7385; // secondary copy and footnotes
+// Light Colors
+// Use for backgrounds and gradients
+$color-light-500: #8693A6;
+$color-light-400: #BEC5D1;
+$color-light-300: #EBEFF5;
+$color-light-200: #F7FAFC;
+$color-light-100: #FFFFFF;
+
+// Use for global page background
+$color-background: #F5F5F5;
+$color-siteheader-background: hsla(0, 0%, 100%, .96);
+
+// Box Shadow Colors
+$color-shadow-default: hsla(0, 0, 60%, 0.4);
+$color-shadow-inverse: hsla(0, 0, 60%, 0.6);
+$color-shadow-hover: hsla(0, 2%, 40%, 0.4);
+$color-shadow-full: $color-light-400;
+
+// Main Colors
+// The Brand color
+$color-main-600: #0946B0;
+$color-main-500: #0E54C4;
+$color-main-400: #0567F0;
+$color-main-300: #0C85F0;
+$color-main-200: #3DAEFF;
+$color-main-100: #D9EFFF;
+
+// Cyan
+$color-cyan-600: #005C66;
+$color-cyan-500: #18717A;
+$color-cyan-400: #2897A1;
+$color-cyan-300: #4FCBD1;
+$color-cyan-200: #7CF7F5;
+$color-cyan-100: #D9FFFC;
+// Purple
+$color-purple-600: #5A097A;
+$color-purple-500: #74119C;
+$color-purple-400: #9F32C9;
+$color-purple-300: #CB55FA;
+$color-purple-200: #DC85FF;
+$color-purple-100: #F9EBFF;
+
+// Dark Blue
+$color-darkblue-600: #16097A;
+$color-darkblue-500: #21119C;
+$color-darkblue-400: #4432C9;
+$color-darkblue-300: #6855FA;
+$color-darkblue-200: #9385FF;
+$color-darkblue-100: #EDEBFF;
+
+// Danger Colors
+$color-danger-600: #7A0916;
+$color-danger-500: #9C1126;
+$color-danger-400: #C93249;
+$color-danger-300: #FA556B;
+$color-danger-200: #FF8591;
+$color-danger-100: #FFEBEB;
+
+// Warning Colors
+$color-warning-600: #7A4009;
+$color-warning-500: #9C5411;
+$color-warning-400: #C97B32;
+$color-warning-300: #FAA555;
+$color-warning-200: #FFC085;
+$color-warning-100: #FFF4EB;
+
+// Success Colors
+$color-success-600: #006600;
+$color-success-500: #077D15;
+$color-success-400: #3EB03A;
+$color-success-300: #79E36B;
+$color-success-200: #ABFA9D;
+$color-success-100: #F3FFF0;
+
+// Code Highlighting Colors
+$color-code-red: #FF758C;
+$color-code-cyan: #66F0FF;
+$color-code-green: #A4E673;
+$color-code-yellow: #FFE74C;
+$color-code-magenta: #ff80ff;
+$color-code-blue: #80D4FF;
+$color-code-bg: #10181F;
+$color-code-comment: $color-light-500;
+$color-code-white: #bdc4d0;
+
+// Social Icon Colors
+$color-social-codepen: #212121;
+$color-social-dribble: #EA4C89;
+$color-social-facebook: #4A67AD;
+$color-social-github: #24292E;
+$color-social-gplus: #DB4437;
+$color-social-instagram: #BC2A8D;
+$color-social-linkedin: #0077B5;
+$color-social-twitter: #1DA1F2;

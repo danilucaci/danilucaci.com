@@ -1,0 +1,57 @@
+.m-reading__toc {
+  background-color: $color-light-100;
+  border-radius: 8px;
+
+  display: none;
+  text-align: left;
+
+  position: absolute;
+  left: 0%;
+  bottom: 120%;
+
+  width: calc(100vw - 32px);
+
+  overflow-x: scroll;
+  max-height: 20em !important;
+  margin-top: $size-8 !important;
+
+  padding: 16px;
+
+  z-index: 100;
+
+  /* Hide the scrollbar and still scroll */
+  /* On webkit */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* For Edge */
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  -ms-overflow-style: none;
+
+  @media screen and (min-width: $size-bp-s) {
+    left: 5%;
+    width: 320px;
+  }
+
+  @media screen and (min-width: $size-bp-l) {
+    left: 25%;
+  }
+
+  @media screen and (min-width: $size-bp-xl) {
+    left: 30%;
+  }
+
+  @media screen and (max-height: $size-400) {
+    margin-top: $size-16;
+    max-height: 70vh !important;
+    width: 80vw;
+  }
+
+  &>.icon {
+    display: block;
+    float: left;
+  }
+
+  @include box-shadow-default-inverse;
+}

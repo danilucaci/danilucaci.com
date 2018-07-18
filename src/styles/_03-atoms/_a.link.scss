@@ -1,0 +1,63 @@
+.link {
+  color: $color-main-600;
+  cursor: pointer;
+  text-decoration: underline;
+  font-style: normal;
+  font-weight: 400;
+  line-height: inherit;
+
+  position: static;
+
+  .fonts-loaded & {
+    font-family: $font-body-regular;
+  }
+
+  &--clear {
+    color: $color-dark-800;
+    text-decoration: none;
+  }
+
+  &--b {
+    font-weight: 700;
+
+    .fonts-loaded & {
+      font-family: $font-body-bold;
+    }
+  }
+
+  &--toc,
+  &--toc:visited {
+    color: $color-dark-800;
+    display: block;
+    text-transform: capitalize;
+    width: auto;
+
+    &:nth-of-type(odd) {
+      background-color: $color-background;
+    }
+
+    &:hover {
+      background-color: $color-main-100;
+    }
+  }
+
+  &:hover {
+    color: $color-main-600;
+    background-color: $color-main-100;
+  }
+
+  /* This should be after hover state to override the styling on menu links */
+  &--menu {
+    color: $color-dark-800;
+    text-decoration: none;
+
+    &:hover {
+
+      @media screen and (min-width: $size-bp-l) {
+        background-color: $color-light-100;
+      }
+    }
+  }
+
+  @include mixin-size-font(m);
+}

@@ -1,0 +1,33 @@
+.a-tag {
+  background-color: $color-light-100;
+  border: 1px solid $color-main-600;
+  border-radius: $size-4;
+
+  color: $color-main-600;
+  display: inline-block;
+
+  text-decoration: none;
+
+  padding: 0 $size-8;
+  margin-top: $size-8;
+  margin-bottom: $size-8;
+  margin-right: $size-8;
+  margin-left: 0;
+
+  white-space: nowrap;
+
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: underline;
+  }
+
+  @include mixin-size-font(s);
+  @include mixin-size-line-height(s);
+}
+
+.a-tag::before {
+  content: "#";
+  color: $color-main-600;
+  font-size: $size-14;
+}

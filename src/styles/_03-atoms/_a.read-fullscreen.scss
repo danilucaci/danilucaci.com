@@ -1,0 +1,14 @@
+.a-read-fullscreen {
+  display: none;
+
+  @media screen and (min-width: $size-bp-s) {
+    display: block;
+    background-color: $color-light-300;
+    padding: $size-4 $size-16;
+
+    &:before {
+      content: "↓";
+      margin-right: $size-4;
+    }
+  }
+}

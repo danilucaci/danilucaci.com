@@ -1,0 +1,42 @@
+.a-site-nav__item {
+  display: block;
+  font-size: $size-32;
+  line-height: $size-32;
+
+  padding: $size-24 0;
+  text-align: center;
+
+  .fonts-loaded & {
+    font-family: $font-header-bold;
+    font-weight: 700;
+  }
+
+  @media screen and (min-width: $size-bp-l) {
+    display: inline-block;
+    padding-top: $size-12;
+    padding-left: $size-16;
+    padding-right: $size-16;
+    padding-bottom: $size-4;
+    margin: 0;
+
+    .fonts-loaded & {
+      font-family: $font-body-regular;
+      font-weight: 400;
+    }
+
+    &:hover {
+      color: $color-main-600;
+    }
+
+    @include mixin-size-font(s);
+    @include mixin-size-line-height(s);
+  }
+}
+
+.a-site-nav__item--active {
+  color: $color-main-500;
+
+  @media screen and (min-width: $size-bp-l) {
+    border-bottom: 8px solid $color-main-600;
+  }
+}

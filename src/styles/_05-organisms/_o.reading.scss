@@ -1,0 +1,16 @@
+.o-reading {
+  background-color: $color-light-100;
+  display: table; // this fails on safari ios 9
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  padding-left: $size-16;
+
+  @media screen and (min-width: $size-bp-m) {
+    padding-left: $size-24;
+  }
+
+  @include box-shadow-default;
+}

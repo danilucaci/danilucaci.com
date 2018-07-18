@@ -1,0 +1,98 @@
+@mixin mixin-size-font($element) {
+  @if map-has-key($size-font-map, $element) {
+    font-size: map-get($size-font-map, $element);
+  }
+  @else {
+    @warn 'This scale is not defined in the size-font map was: #{$element}';
+  }
+}
+
+@mixin mixin-size-line-height($element) {
+  @if map-has-key($size-line-height-map, $element) {
+    line-height: map-get($size-line-height-map, $element);
+  }
+  @else {
+    @warn 'This scale is not defined in the size-line-height map was: #{$element}';
+  }
+}
+
+@mixin mixin-clearfix {
+  &:after,
+  &:before {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin mixin-arria-hiden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+// @mixin mixin-col-size ($colsize, $breakpoint) {
+//     @if ($breakpoint=="xl") {
+//         @if ($colsize==1) {
+//             max-width: $size-column-max-xl;
+//         }
+//         @elseif ($colsize<=12) {
+//             width: (((($size-column-max-xl * $colsize) + ($size-16 * ($colsize - 1.5))) / $size-body-max-xl) * 100%);
+//             // min-width: ((($size-column-max-xl * $colsize) + ($size-16 * ($colsize - 1.5))));
+//             margin: (($size-8 / $size-body-max-xl) * 100%);
+//         }
+//         @elseif ($colsize < 1) or ($colsize>12) {
+//             @error 'XL Grids can only be 1 to 12 cols large, was #{$colsize}.';
+//         }
+//     }
+//     @elseif ($breakpoint=="s") {
+//         @if ($colsize==1) {
+//             max-width: $size-column-max-s;
+//         }
+//         @elseif ($colsize<=4) {
+//             max-width: ($size-column-max-s * $colsize) + ($size-16 * ($colsize + 2));
+//         }
+//         @elseif ($colsize < 1) or ($colsize>4) {
+//             @error 'S Grids on can only be 1 to 4 cols large, was #{$colsize}.';
+//         }
+//     } @else {
+//         @error 'Grid breakpoint not defined, was #{$breakpoint}.';
+//     }
+// }
+@mixin mixin-type-fluid($properties, $min-vw, $max-vw, $min-value, $max-value) {
+  & {
+    @each $property in $properties {
+      #{$property}: $min-value;
+    }
+    @media screen and (min-width: $min-vw) {
+      @each $property in $properties {
+        #{$property}: calc( #{$min-value} + #{function-strip-unit($max-value - $min-value) } * ( (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+      }
+    }
+
+    @media screen and (min-width: $max-vw) {
+      @each $property in $properties {
+        #{$property}: $max-value;
+      }
+    }
+  }
+}
+
+@mixin box-shadow-default {
+  box-shadow: 0 2px 8px 0 $color-shadow-default;
+}
+
+@mixin box-shadow-hover {
+  box-shadow: 0 6px 28px -4px $color-shadow-hover;
+}
+
+@mixin box-shadow-full {
+  box-shadow: 0 2px 8px 0 $color-shadow-full;
+}
+
+@mixin box-shadow-default-inverse {
+  box-shadow: 0 0px 28px -2px $color-shadow-inverse;
+}

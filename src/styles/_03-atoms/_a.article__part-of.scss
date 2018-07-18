@@ -1,0 +1,14 @@
+// main: ../main.scss
+
+.a-article__part-of {
+	border-top: $size-8 solid $color-main-600;
+	border-radius: $size-8 $size-8 0 0;
+	padding: 0 $size-16;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	text-align: right;
+}
+
+

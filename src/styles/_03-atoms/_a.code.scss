@@ -1,0 +1,10 @@
+code,
+pre {
+  background-color: $color-code-bg;
+  color: $color-light-200;
+  font-family: $font-code;
+  font-weight: 400;
+
+  @include mixin-size-font(m);
+  @include mixin-size-line-height(m);
+}

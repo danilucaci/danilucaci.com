@@ -1,0 +1,70 @@
+.dash {
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+    
+    &.dash-01 {
+        animation: dash 2s 0.2s ease-out forwards;
+    }
+    &.dash-02 {
+        animation: dash 2s 0.4s ease-out forwards;
+    }
+    &.dash-03 {
+        animation: dash 2s 0.8s ease-out forwards;
+    }
+    &.dash-04 {
+        animation: dash 2s 1.2s ease-out forwards;
+    }
+    &.dash-05 {
+        animation: dash 2s 1.4s ease-out forwards;
+    }
+    &.dash-06 {
+        animation: dash 2s 1.6s ease-out forwards;
+    }
+    &.dash-07 {
+        animation: dash 2s 1.8s ease-out forwards;
+    }
+    &.dash-08 {
+        animation: dash 2s 2.0s ease-out forwards;
+    }
+    &.dash-09 {
+        animation: dash 2s 2.2s ease-out forwards;
+    }
+    &.dash-10 {
+        animation: dash 2s 2.4s ease-out forwards;
+    }
+    &.dash-11 {
+        animation: dash 2s 2.6s ease-out forwards;
+    }
+    &.dash-12 {
+        animation: dash 2s 2.8s ease-out forwards;
+    }
+}
+
+@keyframes dash {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+.svg__show-card {
+    opacity: 0;
+    
+    &.showNow{
+        animation: show-item 0.6s 2s ease-out forwards;
+    }
+}
+
+.svg__show-btn {
+    opacity: 0;
+    
+    &.showNow{
+        animation: show-item 0.6s 3s ease-out forwards;
+    }
+}
+
+@keyframes show-item {
+    to {
+        display: block;
+        opacity: 1;
+    }
+  }

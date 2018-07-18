@@ -1,0 +1,13 @@
+// main: ../main.scss
+// main nav
+
+.m-index__info {
+    margin-top: $size-28;
+    margin-bottom: $size-28;
+    
+    @media screen and (min-width: $size-bp-s){   
+        margin-top: $size-56;
+    }
+}
+
+

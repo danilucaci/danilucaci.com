@@ -1,0 +1,16 @@
+.m-toc__content {
+  border-top: 1px solid $color-light-400;
+  overflow-x: scroll;
+  max-height: 18em !important;
+  margin-top: $size-8 !important;
+
+  /* Hide the scrollbar and still scroll */
+  /* On webkit */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* For Edge */
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  -ms-overflow-style: none;
+}

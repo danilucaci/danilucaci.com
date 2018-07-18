@@ -1,0 +1,51 @@
+.a-collapsed-icon {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: $size-4;
+  min-width: 24px;
+  min-height: 24px;
+
+  &:hover {
+    & .a-collapsed-icon__top-line {
+      background-color: $color-main-600;
+      transform: rotate(-45deg);
+      transition: transform 0.3s ease-out;
+    }
+    & .a-collapsed-icon__bottom-line {
+      background-color: $color-main-600;
+      transform: rotate(45deg);
+      transition: transform 0.3s ease-out;
+    }
+  }
+}
+
+.a-collapsed-icon__top-line {
+  background-color: $color-success-500;
+  display: block;
+  width: 16px;
+  height: 4px;
+  transform-origin: 0 0;
+  transform: rotate(45deg);
+  transition: all 0.3s ease-in-out;
+  &--open {
+    background-color: $color-main-600;
+    transform: translateY(4px) rotate(180deg) rotate(45deg);
+    transition: transform 0.3s ease-in-out;
+  }
+}
+
+.a-collapsed-icon__bottom-line {
+  background-color: $color-danger-500;
+  display: block;
+  width: 16px;
+  height: 4px;
+  transform-origin: 0 100%;
+  transform: translateX(8px) translateY(8px) rotate(-45deg);
+  transition: all 0.3s ease-in-out;
+  &--open {
+    background-color: $color-main-600;
+    transform: translateY(4px) rotate(180deg) rotate(45deg);
+    transition: transform 0.3s ease-in-out;
+  }
+}

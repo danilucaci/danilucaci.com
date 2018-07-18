@@ -1,0 +1,14 @@
+a,
+button,
+input,
+.tag {
+  &:active,
+  &:focus {
+    outline: dashed 1px $color-main-600;
+  }
+}
+
+// fix this for everything
+// read inclusive design patters
+// study if visited link styling is better to differentiate
+// yes, make the color different fo visited links, subtly

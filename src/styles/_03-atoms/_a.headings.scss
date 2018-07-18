@@ -1,0 +1,133 @@
+h1,
+h2,
+h3,
+h4,
+.h1,
+.h2,
+.h3,
+.h4 {
+  color: $color-dark-800;
+  font-feature-settings: "lnum" 1;
+
+  font-family: $font-system;
+  font-weight: 700;
+
+  .fonts-loaded & {
+    font-family: $font-header-bold;
+  }
+
+  margin: $size-16 0;
+
+  @media screen and (min-width: $size-bp-s) {
+    margin: $size-28 0;
+  }
+}
+
+.h1 {
+  &--blog-post {
+    padding: $size-16 $size-24 $size-16;
+  }
+
+  @include mixin-size-font(h1-s);
+  @include mixin-size-line-height(h1-s);
+
+  @media screen and (min-width: $size-bp-s) {
+    @include mixin-size-font(h1);
+    @include mixin-size-line-height(h1);
+  }
+
+  @media screen and (max-width: $size-bp-xxl) and (max-height: $size-bp-xs) {
+    @include mixin-size-font(h1-s);
+    @include mixin-size-line-height(h1-s);
+  }
+}
+
+.h2 {
+  position: relative;
+
+  @include mixin-size-font(h2-s);
+  @include mixin-size-line-height(h2-s);
+
+  @media screen and (min-width: $size-bp-xs) {
+    @include mixin-size-font(h2);
+    @include mixin-size-line-height(h2);
+  }
+
+  @media screen and (max-width: $size-bp-xxl) and (max-height: $size-bp-xs) {
+    @include mixin-size-font(h2-s);
+    @include mixin-size-line-height(h2-s);
+  }
+
+  &__anchor {
+    display: none;
+
+    &:hover {
+      color: $color-main-600;
+    }
+
+    @media screen and (min-width: $size-bp-xl) {
+      display: inline-block;
+      position: absolute;
+      left: -$size-28;
+      padding-bottom: 0;
+    }
+  }
+
+  &:target {
+    border: 4px dotted $color-light-500;
+  }
+
+  &--light {
+    color: $color-light-100;
+  }
+
+  &--blog {
+    margin-top: $size-32;
+
+    @media screen and (min-width: $size-bp-m) {
+      margin-top: $size-56;
+    }
+  }
+}
+
+.h3 {
+  @include mixin-size-font(h3-s);
+  @include mixin-size-line-height(h3-s);
+
+  &--services {
+    position: absolute;
+    top: $size-32;
+    left: $size-32;
+
+    @media screen and (min-width: $size-bp-s) {
+      position: static;
+    }
+
+    @media screen and (max-width: 22em) {
+      max-width: $size-256;
+    }
+  }
+
+  &--light {
+    color: $color-light-100;
+  }
+
+  @media screen and (min-width: $size-bp-xs) {
+    @include mixin-size-font(h3);
+    @include mixin-size-line-height(h3);
+  }
+
+  @media screen and (max-width: $size-bp-xxl) and (max-height: $size-bp-xs) {
+    @include mixin-size-font(h3-s);
+    @include mixin-size-line-height(h3-s);
+  }
+}
+
+.h4 {
+  &--light {
+    color: $color-light-100;
+  }
+
+  @include mixin-size-font(h4);
+  @include mixin-size-line-height(h4);
+}

@@ -1,0 +1,19 @@
+.a-site-nav__logo {
+  display: inline-block;
+  margin-top: $size-8;
+  margin-right: auto;
+  margin-left: $size-16;
+  height: $size-40;
+
+  @media screen and (min-width: $size-bp-m) {
+    margin-left: $size-24;
+  }
+
+  @media screen and (min-width: $size-bp-l) {
+    margin-top: 0;
+  }
+}
+
+.a-site-nav__logo-icon {
+  height: $size-48;
+}

@@ -1,0 +1,12 @@
+.o-contact {
+  background-color: $color-light-100;
+  border-radius: $size-8;
+  padding: $size-24;
+
+  &:hover {
+    @include box-shadow-hover;
+    transition: color 0.2s ease-out;
+  }
+
+  @include box-shadow-default;
+}

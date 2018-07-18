@@ -1,0 +1,12 @@
+.a-reading__go-up {
+  display: flex;
+  display: table-cell;
+
+  text-align: center;
+
+  min-width: $size-56;
+
+  &>a {
+    display: block;
+  }
+}

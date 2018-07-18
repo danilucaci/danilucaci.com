@@ -1,0 +1,139 @@
+.icon {
+  width: $size-24;
+  height: $size-24;
+  fill: $color-dark-800;
+  vertical-align: middle;
+}
+
+.icon--48 {
+  width: $size-32;
+  height: $size-32;
+
+  padding: $size-8;
+}
+
+.icon--anchor {
+  fill: $color-light-500;
+  width: $size-28;
+  height: $size-28;
+  &:hover {
+    fill: $color-main-600;
+  }
+}
+
+.icon--main {
+  fill: $color-main-600;
+}
+
+.icon--go-up {
+  fill: $color-light-500;
+  width: $size-40;
+  height: $size-40;
+}
+
+.icon--48 {
+  width: $size-48;
+  height: $size-48;
+}
+
+.icon--up {
+  margin-bottom: $size-4;
+}
+
+.icon--menu {
+  fill: $color-main-600;
+}
+
+.icon--copyright {
+  float: left;
+}
+
+.icon--light {
+  fill: $color-light-200;
+}
+
+.icon--facebook {
+  fill: $color-social-facebook;
+}
+
+.icon--twitter {
+  fill: $color-social-twitter;
+}
+
+.icon--codepen {
+  fill: $color-social-codepen;
+}
+
+.icon--github {
+  fill: $color-social-github;
+}
+
+.icon--dribble {
+  fill: $color-social-dribble;
+}
+
+.icon--linkedin {
+  fill: $color-social-linkedin;
+}
+
+.icon--gplus {
+  fill: $color-social-gplus;
+}
+
+.icon--lang {
+  padding-bottom: $size-4;
+}
+
+.icon--landing1 {
+  fill: $color-dark-700;
+  transform: translateY(4px);
+  animation: move-up 3s ease-in-out infinite;
+}
+
+.icon--landing2 {
+  fill: $color-dark-700;
+  transform: translateY(4px);
+  animation: move-dow 3s ease-in-out infinite;
+}
+
+.icon--landing3 {
+  fill: $color-dark-700;
+  transform: translateY(4px);
+  animation: move-up 3s ease-in-out infinite;
+}
+
+.icon--collapse {
+  position: absolute;
+  right: $size-16;
+  top: $size-4;
+
+  @media screen and (min-width: $size-bp-xs) {
+    display: none;
+  }
+}
+
+.icon--collapse-24 {
+  position: absolute;
+  right: $size-16;
+  top: $size-14;
+
+  @media screen and (min-width: $size-bp-xs) {
+    display: none;
+  }
+}
+
+.icon--form {
+  display: none;
+  position: absolute;
+  right: $size-4;
+  top: $size-12;
+  bottom: $size-12;
+}
+
+.icon--mail {
+  display: inline-block;
+}
+
+.icon--toc-read {
+  display: inline-block;
+}

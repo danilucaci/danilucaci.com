@@ -1,0 +1,31 @@
+.a-menu__btn {
+  border: 2px solid $color-main-600;
+  border-radius: $size-4;
+  background-color: $color-light-100;
+  color: $color-main-600;
+
+  display: block;
+  float: right;
+
+  height: $size-40;
+  width: inherit;
+  width: initial;
+  padding-right: $size-14;
+  padding-left: $size-16;
+  margin-left: auto;
+  margin-right: $size-16;
+  margin-top: $size-12;
+
+  @media screen and (min-width: $size-bp-m) {
+    margin-right: $size-24;
+  }
+
+  @media screen and (min-width: $size-bp-l) {
+    display: none;
+  }
+}
+
+.a-menu__icon {
+  display: inline-block;
+  vertical-align: top;
+}

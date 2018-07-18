@@ -1,0 +1,252 @@
+.l-body {
+  width: 100%;
+  position: relative;
+}
+
+.l-main {
+  margin-top: $size-16;
+  margin-bottom: $size-32;
+
+  @media screen and (min-width: $size-bp-l) {
+    margin-top: $size-64;
+  }
+
+  @media screen and (max-width: $size-bp-xxl) and (max-height: $size-bp-xs) {
+    margin-top: $size-16;
+    margin-bottom: $size-32;
+  }
+}
+
+.l-row {
+  width: 100%;
+
+  &--contain {
+    max-width: $size-body-max-xl;
+  }
+
+  &--clear-all {
+    padding: 0 !important;
+  }
+
+  &--center {
+    @media screen and (min-width: $size-bp-m) {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  &--clear-sides {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  &--pad {
+    padding-left: $size-16;
+    padding-right: $size-16;
+
+    @media screen and (min-width: $size-bp-m) {
+      padding-left: $size-24;
+      padding-right: $size-24;
+    }
+  }
+
+  &--services {
+    display: block;
+    margin-top: $size-16;
+    margin-bottom: $size-16;
+    padding-top: $size-24;
+    padding-bottom: $size-24;
+
+    position: relative;
+
+    @media screen and (min-width: $size-bp-m) {
+      margin-top: $size-56;
+      margin-bottom: $size-56;
+
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    @media screen and (min-width: $size-bp-s) {
+      position: static;
+    }
+
+    @media screen and (min-width: $size-bp-xl) {
+      margin-top: $size-96;
+      margin-bottom: $size-96;
+    }
+  }
+
+  &--alt {
+    background-color: $color-light-100;
+  }
+
+  &--sp-pad-28 {
+    padding-top: $size-28;
+    padding-bottom: $size-28;
+  }
+
+  &--sp-mg-28 {
+    margin-top: $size-28;
+    margin-bottom: $size-28;
+  }
+
+  &--sp-pad-56 {
+    padding-top: $size-56;
+    padding-bottom: $size-56;
+  }
+
+  &--sp-mg-56 {
+    margin-top: $size-56;
+    margin-bottom: $size-56;
+  }
+
+  &--sp-pad-96 {
+    padding-top: $size-96;
+    padding-bottom: $size-96;
+  }
+
+  &--sp-mg-96 {
+    margin-top: $size-96;
+    margin-bottom: $size-96;
+  }
+}
+
+.l-col {
+  display: inline-block;
+  vertical-align: top;
+
+  margin-bottom: $size-16;
+
+  @media screen and (min-width: $size-bp-m) {
+    margin-right: $size-24;
+    margin-bottom: $size-24;
+  }
+
+  &--clear-pad {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  &--clear-mg {
+    margin: 0 !important;
+  }
+
+  &:last-of-type {
+    margin-right: 0 !important;
+  }
+}
+
+.l-col__1-1 {
+  width: 100%;
+
+  @media screen and (min-width: $size-bp-s) {
+    width: calc(100% - #{$size-24});
+  }
+}
+
+.l-col__1-2\@s {
+  @media screen and (min-width: $size-bp-s) {
+    width: calc(50% - #{$size-24});
+  }
+}
+
+.l-col__1-4\@s {
+  @media screen and (min-width: $size-bp-s) {
+    width: calc(((100% / 4) * 1) - #{$size-24});
+  }
+}
+
+.l-col__3-8\@l {
+  @media screen and (min-width: $size-bp-l) {
+    width: calc(((100% / 8) * 3) - #{$size-24});
+  }
+}
+
+.l-col__5-8\@l {
+  @media screen and (min-width: $size-bp-l) {
+    width: calc(((100% / 8) * 5) - #{$size-24});
+  }
+}
+
+.l-col__6-8\@s {
+  @media screen and (min-width: $size-bp-s) {
+    width: calc(((100% / 8) * 6) - #{$size-24});
+  }
+}
+
+.l-col__1-2\@m {
+  @media screen and (min-width: $size-bp-m) {
+    // fix for edge bug where the is not enough room for the columns
+    width: calc(49.999% - #{$size-24});
+  }
+}
+
+.l-col__4-10\@xxl {
+  @media screen and (min-width: $size-bp-xxl) {
+    width: calc(((100% / 10) * 4) - #{$size-24});
+  }
+}
+
+.l-col__6-10\@xxl {
+  @media screen and (min-width: $size-bp-xxl) {
+    width: calc(((100% / 10) * 6) - #{$size-24});
+  }
+}
+
+.l-col__8-12\@xxl {
+  @media screen and (min-width: $size-bp-xxl) {
+    width: calc(((100% / 12) * 8) - #{$size-24});
+  }
+}
+
+.l-col__10-12\@xxl {
+  @media screen and (min-width: $size-bp-xxl) {
+    width: calc(((100% / 12) * 10) - #{$size-24});
+  }
+}
+
+.l-box {
+  background-color: $color-light-100;
+  border-radius: $size-8;
+
+  padding: $size-14 $size-16;
+
+  @media screen and (max-width: $size-bp-m) {
+    position: relative;
+  }
+
+  @media screen and (min-width: $size-bp-s) {
+    padding: $size-20 $size-24 $size-28;
+  }
+
+  &:hover {
+    @include box-shadow-hover;
+    transition: color 0.2s ease-out;
+  }
+
+  @include box-shadow-default;
+}
+
+.box__content {
+  margin-top: $size-16;
+
+  @media screen and (max-width: $size-bp-xs) {
+    margin-top: $size-4;
+    padding-bottom: $size-6;
+    transform-origin: 50% 0;
+    transform: scaleY(0);
+    opacity: 0;
+    max-height: 0;
+    will-change: transform;
+    display: none;
+  }
+}
+
+.l-landing--header {
+  margin-bottom: $size-32;
+
+  @media screen and (min-width: $size-bp-l) {
+    margin-bottom: $size-landing-header-margin;
+  }
+}

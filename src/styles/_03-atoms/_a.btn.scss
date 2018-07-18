@@ -1,0 +1,74 @@
+.btn {
+  border: none;
+  border-radius: $size-8;
+  background-color: $color-main-600;
+  background-image: linear-gradient($color-main-300, $color-main-600);
+  box-shadow: 0 2px 8px -2px $color-light-500;
+  color: $color-light-200;
+  font-family: $font-body-bold;
+  font-weight: 700;
+  text-align: center;
+  width: 100%;
+  height: $size-48;
+  padding: $size-8 $size-16;
+
+  &:hover,
+  &:focus {
+    background-color: $color-main-600;
+    background-image: initial;
+  }
+
+  @include mixin-size-line-height(m);
+  @include mixin-size-font(m);
+}
+
+.btn--round {
+  border-radius: $size-32;
+}
+
+.btn--secondary {
+  border: 1px solid $color-dark-700;
+  border-radius: $size-8;
+  background-color: $color-light-200;
+  background-image: initial;
+  box-shadow: initial;
+  color: $color-dark-700;
+
+  &:hover {
+    background-color: $color-light-200;
+    box-shadow: 0 2px 8px -2px $color-light-500;
+    background-image: initial;
+  }
+}
+
+.btn--menu {
+  border: $size-2 solid $color-main-600;
+  background-color: $color-light-100;
+  background-image: none;
+  box-shadow: none;
+  color: $color-main-600;
+  height: $size-48;
+  width: initial;
+  padding: $size-8 $size-16;
+  margin: $size-8 0;
+  float: right;
+  z-index: 100;
+
+  &:hover {
+    background-color: $color-light-100;
+    box-shadow: none;
+    background-image: none;
+  }
+
+  @media screen and (min-width: $size-bp-l) {
+    display: none;
+  }
+}
+
+.btn--submit {
+  background-color: $color-light-100;
+
+  @media screen and (min-width: $size-bp-l) {
+    display: block;
+  }
+}

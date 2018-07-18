@@ -1,6 +1,14 @@
 {
-  "version": "1.1.0",
-  "author": "",
+  "description": "danilucaci.com Personal Blog",
+  "author": "Dani Lucaci <danilucaci@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "gatsby"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danilucaci/danilucaci"
+  },
   "dependencies": {
     "gatsby": "next",
     "gatsby-image": "next",
@@ -12,6 +20,8 @@
     "gatsby-plugin-nprogress": "next",
     "gatsby-plugin-offline": "next",
     "gatsby-plugin-react-helmet": "next",
+    "gatsby-plugin-react-svg": "^1.1.1",
+    "gatsby-plugin-sass": "next",
     "gatsby-plugin-sharp": "next",
     "gatsby-plugin-sitemap": "next",
     "gatsby-plugin-twitter": "next",
@@ -25,10 +35,11 @@
     "gatsby-transformer-sharp": "next",
     "lodash": "^4.17.4",
     "moment": "^2.22.2",
+    "node-sass": "^4.9.2",
     "prismjs": "^1.15.0",
     "react": "^16.4.1",
-    "react-dom": "^16.4.1",
     "react-disqus-comments": "^1.1.1",
+    "react-dom": "^16.4.1",
     "react-helmet": "^5.2.0",
     "react-share": "^2.0.0",
     "react-twitter-widgets": "^1.7.1",

@@ -1,0 +1,15 @@
+// main: ../main.scss
+// main nav
+
+.m-index__contact {
+    margin-top: $size-28;
+    width: 288px;
+
+    @media screen and (min-width: $size-bp-s) {
+        float: right;
+        padding-top: 0;
+        margin-top: 0;
+    }
+}
+
+

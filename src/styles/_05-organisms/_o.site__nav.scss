@@ -1,0 +1,54 @@
+.o-site__nav {
+  background-color: $color-light-100;
+  text-align: center;
+
+  padding-top: 0;
+  padding-left: $size-16;
+  padding-right: $size-16;
+  padding-bottom: $size-16;
+
+  height: 100vh;
+
+  transform: translateX(0%) scale(0);
+  transform-origin: 90% 0;
+  transition: all ease-out 0.15s;
+
+  display: none;
+
+  opacity: 0;
+
+  @media screen and (min-width: $size-bp-xxs) {
+    padding-top: $size-32;
+  }
+
+  @media screen and (min-width: $size-bp-l) {
+    background-color: inherit;
+    box-shadow: none;
+
+    display: block;
+    float: right;
+
+    opacity: 1;
+
+    padding: 0;
+    margin-bottom: 0;
+    margin-right: $size-24;
+    max-width: inherit;
+    max-width: initial;
+
+    height: auto;
+
+    transform: none;
+    transition: none;
+  }
+
+  &.is-visible {
+    @media screen and (max-width: $size-bp-l) {
+      display: block;
+      opacity: 1;
+      transform: scale(1);
+      transition: ease-in-out 0.2s;
+      z-index: 10; // sit over the go to top fixed button
+    }
+  }
+}

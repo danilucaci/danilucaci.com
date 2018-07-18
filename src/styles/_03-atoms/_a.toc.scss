@@ -1,0 +1,71 @@
+.a-toc__header {
+  font-style: normal;
+  font-weight: 700;
+
+  margin-top: 0;
+  margin-bottom: 0;
+
+  .fonts-loaded & {
+    font-family: $font-body-bold;
+  }
+
+  &--reading {
+    @include mixin-size-font(s);
+    @include mixin-size-line-height(s);
+  }
+
+  @include mixin-size-font(m);
+  @include mixin-size-line-height(m);
+}
+
+.a-toc__number {
+  display: table-cell;
+  font-family: $font-system;
+  font-weight: 300;
+  font-variant-numeric: tabular-nums;
+
+  padding-right: $size-4;
+
+  .fonts-loaded & {
+    font-family: $font-body-regular;
+  }
+
+  @include mixin-size-font(s);
+  @include mixin-size-line-height(s);
+
+  @media screen and (min-width: $size-bp-s) {
+
+    @include mixin-size-font(m);
+    @include mixin-size-line-height(m);
+  }
+}
+
+.a-toc__title {
+  display: table-cell;
+  text-decoration: underline;
+}
+
+.a-toc__item {
+  display: inline-block;
+  font-family: $font-system;
+  font-weight: 400;
+  font-feature-settings: "onum" 0, "frac" 0, "subs" 0, "liga" 0;
+  width: 100%;
+  padding-top: $size-8;
+  padding-left: $size-8;
+  padding-right: $size-8;
+  padding-bottom: $size-8;
+
+  .fonts-loaded & {
+    font-family: $font-body-regular;
+  }
+
+  @include mixin-size-font(s);
+  @include mixin-size-line-height(s);
+
+  @media screen and (min-width: $size-bp-s) {
+
+    @include mixin-size-font(m);
+    @include mixin-size-line-height(m);
+  }
+}

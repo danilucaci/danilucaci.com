@@ -1,0 +1,68 @@
+.a-form__label {
+  width: 100%;
+  margin-bottom: $size-4;
+}
+
+.a-form__textarea {
+  background-color: $color-light-100;
+  border: 2px solid $color-dark-600;
+  border-radius: $size-4;
+  margin-bottom: $size-8;
+  padding: $size-16;
+  width: 100%;
+
+  &:active,
+  &:focus {
+    border-color: $color-dark-800;
+    outline: none;
+  }
+}
+
+.a-form__input {
+  background-color: $color-light-100;
+  border: 2px solid $color-dark-600;
+  border-radius: $size-4;
+  height: $size-48;
+  margin-bottom: $size-8;
+  padding: 0 $size-8;
+  width: 100%;
+
+  &:active,
+  &:focus {
+    border-left: solid $size-8 $color-main-600;
+    border-right: solid 2px $color-main-600;
+    border-top: solid 2px $color-main-600;
+    border-bottom: solid 2px $color-main-600;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    outline: none;
+  }
+
+  &:valid {
+    display: inline-block;
+    border-color: $color-success-500;
+  }
+
+  &:valid~.icon--check {
+    display: inline-block;
+    fill: $color-success-500;
+  }
+
+  &:valid~.icon--mail,
+  &:focus:invalid~.icon--mail {
+    display: none;
+  }
+
+  &:focus:invalid,
+  &:focus:invalid~.icon--error {
+    display: inline-block;
+    border-color: $color-danger-500;
+    fill: $color-danger-500;
+  }
+
+  &:empty {}
+}
+
+.a-form__item {
+  position: relative;
+}

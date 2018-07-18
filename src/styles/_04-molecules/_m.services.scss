@@ -1,0 +1,26 @@
+.m-services__info {}
+
+.m-services__figure {}
+
+.m-services__tools {
+  max-height: $size-48;
+  width: 100%;
+  margin-bottom: $size-24;
+  overflow-x: scroll;
+  white-space: nowrap;
+
+  &>.icon {
+    display: inline-block;
+    margin-right: $size-8;
+  }
+
+  /* Hide the scrollbar and still scroll */
+  /* On webkit */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* For Edge */
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  -ms-overflow-style: none;
+}

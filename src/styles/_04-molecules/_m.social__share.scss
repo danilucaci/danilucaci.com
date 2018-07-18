@@ -1,0 +1,8 @@
+.m-social__share {
+  @media screen and (max-width: $size-bp-s) {
+    display: none;
+  }
+
+  margin: 0 $size-16;
+  float: right;
+}

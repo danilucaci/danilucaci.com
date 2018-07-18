@@ -1,0 +1,84 @@
+abbr {
+  font-variant-caps: all-small-caps;
+  font-family: inherit;
+}
+
+p {
+  margin: $size-16 0;
+
+  @media screen and (min-width: $size-bp-s) {
+    margin: $size-28 0;
+  }
+}
+
+.o-site__footer p {
+  margin: $size-8 0;
+}
+
+main p:last-of-type {
+  margin-bottom: 0;
+}
+
+.copy {
+  font-style: normal;
+  font-weight: 400;
+
+  .fonts-loaded & {
+    font-family: $font-body-regular;
+  }
+
+  @include mixin-size-font(m);
+  @include mixin-size-line-height(m);
+}
+
+.copy--s {
+  @include mixin-size-font(s);
+  @include mixin-size-line-height(s);
+}
+
+.copy--xs {
+  @include mixin-size-font(xs);
+  @include mixin-size-line-height(xs);
+}
+
+.copy--dark-alt {
+  color: $color-dark-600;
+}
+
+.copy--b {
+  font-weight: 700;
+
+  .fonts-loaded & {
+    font-family: $font-body-bold;
+  }
+}
+
+.copy--i {
+  font-style: italic;
+
+  .fonts-loaded & {
+    font-family: $font-body-italic;
+  }
+}
+
+.copy--light {
+  color: $color-light-300;
+}
+
+.copy--light-alt {
+  color: $color-light-500;
+}
+
+.copy--menu {
+  display: inline-block;
+}
+
+.copy--subhead {
+  font-size: $size-22;
+  line-height: $size-28;
+
+  @media screen and (min-width: $size-bp-m) {
+    font-size: $size-32;
+    line-height: $size-40;
+  }
+}

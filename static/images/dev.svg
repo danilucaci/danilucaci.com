@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="img" viewBox="0 0 880 600">
+    <title>
+        Front-End Developer Illustration
+    </title>
+    <path fill="#ebeff5" d="M735.56 224.91C729 281.64 808 212 776 452c-17.61 132.1-176 24-288 64-64.37 23-296 72-376-24-40.13-48.15-24-56-19-133 4.85-74.64 75-128.12 75-179 0-88 107.07-197.3 205.29-142.78C472 92 531.33-1.08 592 52c64 56 160 32 143.56 172.91z"/>
+    <path fill="none" stroke="#3c4a66" stroke-linecap="round" stroke-miterlimit="10" stroke-width="16" d="M28 452h824"/>
+    <path fill="#3c4a66" d="M238.5 113h403a16 16 0 0 1 16 16v292h-435V129a16 16 0 0 1 16-16z"/>
+    <path fill="#fff" d="M246.5 138h387v266h-387z"/>
+    <path fill="#8693a6" d="M131 420h618v8a16 16 0 0 1-16 16H147a16 16 0 0 1-16-16v-8z"/>
+    <path fill="#bec5d1" d="M380 420h120a8 8 0 0 1-8 8H388a8 8 0 0 1-8-8z"/>
+    <path fill="#1e2c42" d="M240 138h230v266H240z"/>
+    <path fill="none" stroke="#f244f2" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8" d="M273 172h82" class="fl fl-01"/>
+    <path fill="none" stroke="#898989" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8" d="M283 188h58" class="fl fl-02"/>
+    <path fill="none" stroke="#898989" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8" d="M283 204h66" class="fl fl-03"/>
+    <path fill="none" stroke="#898989" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8" d="M285 220h80" class="fl fl-04"/>
+    <path fill="none" stroke="#898989" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8" d="M285 236h72" class="fl fl-05"/>
+    <path fill="none" stroke="#898989" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8" d="M283 252h100" class="fl fl-06"/>
+    <path fill="none" stroke="#898989" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8" d="M283 268h58" class="fl fl-07"/>
+    <path fill="none" stroke="#f244f2" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8" d="M273 284h82" class="fl fl-08"/>
+    <path fill="none" stroke="#f244f2" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8" d="M273 316h82" class="fl fl-09"/>
+    <path fill="none" stroke="#898989" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8" d="M283 332h58" class="fl fl-10"/>
+    <path fill="none" stroke="#898989" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8" d="M283 348h58" class="fl fl-11"/>
+    <path fill="none" stroke="#f244f2" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8" d="M273 364h82" class="fl fl-12"/>
+    <g>
+        <rect width="104" height="208" x="499.88" y="165.88" fill="#ebeff5" rx="16" ry="16"/>
+        <rect width="94" height="192" x="504.87" y="173.88" fill="#fff" rx="12" ry="12"/>
+        <rect width="20" height="2" x="513.28" y="181.37" fill="#8693a6" rx="1" ry="1"/>
+        <path fill="#8693a6" d="M577.28 181.38a2 2 0 1 1-2-2 2 2 0 0 1 2 2zm4.79-2a2 2 0 1 0 2 2 2 2 0 0 0-2-2zm6.4 0a2 2 0 1 0 2 2 2 2 0 0 0-2-2z"/>
+        <rect width="56" height="2" x="521.78" y="360.38" fill="#bec5d1" rx="1" ry="1"/>
+        <rect width="72" height="8" x="513.88" y="199.38" fill="#8693a6" rx="4" ry="4"/>
+        <g class="show-card showNow">
+            <rect width="72" height="80" x="514.87" y="223.38" fill="#fff" rx="4" ry="4"/>
+            <rect width="56" height="4" x="520.88" y="274.38" fill="#bec5d1" rx="2" ry="2"/>
+            <path fill="#8693a6" d="M572.88 243.38a4 4 0 1 0 4 4 4 4 0 0 0-4-4zm-10 0a4 4 0 1 0 4 4 4 4 0 0 0-4-4zm-10 0a4 4 0 1 0 4 4 4 4 0 0 0-4-4z"/>
+            <rect width="32" height="8" x="548.88" y="231.38" fill="#8693a6" rx="3.58" ry="3.58"/>
+            <path fill="#bec5d1" d="M520.88 231.38h24v24h-24z"/>
+            <circle cx="532.88" cy="243.38" r="8" fill="#3c4a66"/>
+            <rect width="56" height="4" x="520.88" y="282.38" fill="#bec5d1" rx="2" ry="2"/>
+            <rect width="56" height="4" x="520.88" y="290.38" fill="#bec5d1" rx="2" ry="2"/>
+        </g>
+        <g class="show-btn showNow">
+            <rect width="72" height="16" x="515.88" y="327.38" fill="#0e54c4" rx="4" ry="4"/>
+            <rect width="56" height="2" x="523.87" y="334.38" fill="#d9efff" rx="1" ry="1"/>
+        </g>
+    </g>
+</svg>

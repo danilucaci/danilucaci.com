@@ -1,0 +1,72 @@
+.fig {
+  background-color: $color-light-300;
+
+  background: linear-gradient( 180deg,
+  $color-light-300,
+  $color-light-400,
+  $color-light-300);
+
+  background-size: 200% 200%;
+
+  animation: lazy-loader 2s ease-in-out infinite;
+
+  &:before {
+    content: "";
+    width: 1px;
+    margin-left: -1px;
+    float: left;
+    height: 0;
+    padding-top: 56.25%;
+  }
+
+  /* Need this to clear the float
+   * Does not work without it */
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@keyframes lazy-loader {
+  0% {
+    background-position: 50% 0%;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 50% 0%;
+  }
+}
+
+// Aspect Ratios
+.fig--1x1 {
+  &:before {
+    padding-top: 100% !important;
+  }
+}
+
+.fig--4x3 {
+  &:before {
+    padding-top: 75% !important;
+  }
+}
+
+.fig--3x4 {
+  &:before {
+    padding-top: 133% !important;
+  }
+}
+
+.fig--about {
+  &:before {
+    padding-top: 133% !important;
+  }
+
+  @media screen and (min-width: $size-bp-l) {
+    &:before {
+      padding-top: 75% !important;
+    }
+  }
+}

@@ -1,0 +1,121 @@
+// ====================================================================
+// danilucaci.com variables
+//
+// ====================================================================
+/* prettier-ignore */
+
+// Base sizes
+$size-base: 16px;
+$size-font-base: 1.125rem; // 18px
+$size-line-height-base: 1.75rem; // 28px
+/* prettier-ignore */
+
+// Font Family
+// System font stack
+$font-system: system-ui,
+BlinkMacSystemFont,
+-apple-system,
+'Segoe UI',
+Roboto,
+Oxygen-Sans,
+Ubuntu,
+Cantarell,
+'Helvetica Neue',
+sans-serif;
+
+// Code font stack
+$font-code: Consolas,
+Menlo,
+"Liberation Mono",
+Courier,
+monospace;
+
+// Fonts loaded font stack
+$font-body-regular: "OpenSans Regular";
+$font-body-bold: "OpenSans Bold";
+$font-body-italic: "OpenSans Italic";
+$font-header-light: "Montserrat Light";
+$font-header-bold: "Montserrat Bold";
+
+// Fonts sizes
+// XL Sizes
+$size-font-map: ( "h1": 3.5rem, // 56
+"h1-s": 2rem, // 32
+"h2": 2.5rem, // 40
+"h2-s": 1.5rem, // 24
+"h3": 1.5rem, // 24
+"h3-s": 1.25rem, // 20
+"h4": 1.125rem, // 18
+"xl": 1.5rem, // 24
+"l": 1.25rem, // 20
+"m": 1.125rem, // 18
+"s": 1rem, // 16
+"xs": 0.875rem, // 14
+);
+
+// Line heights
+// XL Sizes
+$size-line-height-map: ( "h1": 4rem, // 56
+"h1-s": 2.5rem, // 40
+"h2": 3rem, // 48
+"h2-s": 2rem, // 28
+"h3": 2rem, // 32
+"h3-s": 1.5rem, // 24
+"h4": 1.75rem, // 28
+"m": 1.75rem, // 28
+"s": 1.5rem, // 24
+"xs": 1.25rem, // 20
+);
+
+// Letter spacing
+$font-spacing-normal: 0;
+$font-spacing-wide: 0.25 * $size-font-base;
+$font-spacing-tight: -0.25 * $size-font-base;
+
+// Pixel to rem Sizes
+$size-0: 0rem;
+$size-2: 0.125rem;
+$size-4: 0.25rem;
+$size-6: 0.375rem;
+$size-8: 0.5rem;
+$size-10: 0.625rem;
+$size-12: 0.75rem;
+$size-14: 0.875rem;
+$size-16: 1rem;
+$size-20: 1.25rem;
+$size-22: 1.375rem;
+$size-24: 1.5rem;
+$size-28: 1.75rem;
+$size-32: 2rem;
+$size-40: 2.5rem;
+$size-48: 3rem;
+$size-56: 3.5rem;
+$size-60: 3.75rem;
+$size-64: 4rem;
+$size-80: 5rem;
+$size-96: 6rem;
+$size-128: 8rem;
+$size-256: 16rem;
+$size-400: 25rem;
+$size-landing-header-margin: 8rem;
+
+// Breakpoints
+$size-bp-xxs: 22.5em; // 360px
+$size-bp-xs: 32em; // 512px
+$size-bp-s: 38em; // 608px
+$size-bp-m: 40em; // 640px
+$size-bp-l: 45em; // 720px
+$size-bp-xl: 50em; // 800px
+$size-bp-xxl: 63em; // 1008px
+/* prettier-ignore */
+
+// Body sizes and grid
+// XL
+$size-body-max-xl: 73.5rem; // 1176px with 24px padding on sides
+$size-body-max-l: $size-bp-l;
+$size-body-max-s: 20em;
+
+// S
+$size-body-max-s: 20rem; // 320px
+$size-column-max-s: 3.75rem; // 60px
+$size-main-max-s: 18rem; // 288px (320px - 16 and 16 sides spacing)
