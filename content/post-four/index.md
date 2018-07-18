@@ -2,15 +2,14 @@
 title: "Post Number Four made with Gatsby."
 description: "Post Four"
 date: "18/07/2018"
-category: "blog"
+category: "Optimizing danilucaci.com"
 snippet: "Sequi ducimus ratione, reprehenderit maxime modi natus in repudiandae voluptas, at dolore totam cumque voluptates eum corporis est quo, distinctio tenetur. Ipsa?"
 tags:
     - css3
-    - javascript
     - react
 ---
 
-<section class="l-row">
+<section class="l -row">
   <div class="l-row">
     <div class="l-row l-col l-col__5-8@l l-col__6-10@xxl">
       <p class="copy">Everything in one place. Selling your products in many places should be every bit as simple as selling in one. With Shopify’s ecommerce software, you get one unified platform to run your business with ease.</p>

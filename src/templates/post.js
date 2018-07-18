@@ -11,7 +11,7 @@ import "./b16-tomorrow-dark.css";
 
 class Post extends Component {
   render() {
-    const { slug } = this.props.pageContext;
+    const slug = this.props.pageContext;
     const postNode = this.props.data.markdownRemark;
     const post = postNode.frontmatter;
     if (!post.id) {
@@ -30,7 +30,7 @@ class Post extends Component {
           <div>
             <h1>{post.title}</h1>
             <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
-            <div className="post-meta">
+            <div className="">
               <Tags tags={post.tags} />
             </div>
             {/* <UserInfo config={config} /> */}
@@ -49,11 +49,10 @@ export const pageQuery = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       timeToRead
-      excerpt
       frontmatter {
         title
-        description
         date
+        snippet
         category
         tags
       }

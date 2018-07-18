@@ -7,7 +7,7 @@ import config from "../../data/SiteConfig";
 
 class TagTemplate extends Component {
   render() {
-    const { tag } = this.props.pageContext;
+    const tag = this.props.pageContext;
     const postEdges = this.props.data.allMarkdownRemark.edges;
     const tagsTotalCount = this.props.data.allMarkdownRemark.group;
 

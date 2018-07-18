@@ -5,7 +5,7 @@ date: "17-07-2018"
 category: "blog"
 snippet: "Pariatur corporis nesciunt, odit obcaecati quisquam recusandae mollitia inventore omnis voluptates nulla autem suscipit amet sint incidunt exercitationem, dolorem sed repellendus rerum accusamus sit molestiae esse vitae. Quas, exercitationem? Repudiandae?"
 tags:
-    - gatsby
+    - css3
     - javascript
     - perfmatters
 ---

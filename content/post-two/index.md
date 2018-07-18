@@ -7,7 +7,6 @@ snippet: "Doloremque voluptatibus, culpa necessitatibus omnis ullam magni nesciu
 tags:
     - css3
     - javascript
-    - react
 ---
 
 <section class="l-row">
