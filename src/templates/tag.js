@@ -9,15 +9,14 @@ class TagTemplate extends Component {
   render() {
     const tag = this.props.pageContext;
     const postEdges = this.props.data.allMarkdownRemark.edges;
-    const tagsTotalCount = this.props.data.allMarkdownRemark.group;
-
-    console.log(tagsTotalCount);
+    // const tagsTotalCount = this.props.data.allMarkdownRemark.group;
 
     return (
       <Layout location={this.props.location}>
         <div className="">
           <Helmet title={`Posts tagged as "${tag}" | ${config.siteTitle}`} />
-          <PostListing postEdges={postEdges} tagsTotalCount={tagsTotalCount} />
+          <PostListing postEdges={postEdges} />
+          {/* <PostListing postEdges={postEdges} tagsTotalCount={tagsTotalCount} /> */}
         </div>
       </Layout>
     );

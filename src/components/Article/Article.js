@@ -8,7 +8,8 @@ const Article = (props) => {
   return (
     <article className="l-col l-col__1-1 o-article">
       <h3 className="a-article__header u-mt-0 u-mb-8">{props.title}</h3>
-      <Tags tagsInPost={props.tagsInPost} tagCount={props.tagCount} />
+      <Tags tagsInPost={props.tagsInPost} />
+      {/* <Tags tagsInPost={props.tagsInPost} tagCount={props.tagCount} /> */}
       <ArticleInfo date={props.date} timeToRead={props.timeToRead} />
       <p className="copy">{props.snippet}</p>
       <Link to={"/categories/" + props.category} className="link">

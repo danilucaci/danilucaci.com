@@ -10,7 +10,7 @@ import config from "../../data/SiteConfig";
 class BlogPage extends Component {
   render() {
     const postEdges = this.props.data.allMarkdownRemark.edges;
-    const tagsTotalCount = this.props.data.allMarkdownRemark.group;
+    // const tagsTotalCount = this.props.data.allMarkdownRemark.group;
 
     return (
       <Layout location={this.props.location}>
@@ -18,7 +18,8 @@ class BlogPage extends Component {
           <h1>Blog Page</h1>
           <Helmet title={config.siteTitle} />
           <SEO />
-          <PostListing postEdges={postEdges} tagsTotalCount={tagsTotalCount} />
+          <PostListing postEdges={postEdges} />
+          {/* <PostListing postEdges={postEdges} tagsTotalCount={tagsTotalCount} /> */}
           Hola
         </div>
       </Layout>

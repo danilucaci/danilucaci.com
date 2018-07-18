@@ -5,16 +5,16 @@ import Article from "../Article/Article";
 class PostListing extends Component {
   getPostList() {
     let postList = [];
-    let tagCount = [];
+    // let tagCount = [];
 
-    this.props.tagsTotalCount.forEach((tag) => {
-      tagCount[tag.fieldValue] = tag.totalCount;
-    });
+    // this.props.tagsTotalCount.forEach((tag) => {
+    //   tagCount[tag.fieldValue] = tag.totalCount;
+    // });
 
     this.props.postEdges.forEach((postEdge) => {
       postList.push({
         slug: postEdge.node.fields.slug,
-        tagCount: tagCount,
+        // tagCount: tagCount,
         tagsInPost: postEdge.node.frontmatter.tags,
         category: postEdge.node.frontmatter.category,
         title: postEdge.node.frontmatter.title,
@@ -36,7 +36,7 @@ class PostListing extends Component {
           <Article
             key={post.title}
             slug={post.slug}
-            tagCount={post.tagCount}
+            // tagCount={post.tagCount}
             tagsInPost={post.tagsInPost}
             category={post.category}
             title={post.title}

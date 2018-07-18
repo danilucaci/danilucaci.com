@@ -5,7 +5,7 @@ import Tag from "./Tag/Tag";
 
 const Tags = (props) => {
   let tagsInPost = props.tagsInPost;
-  let tagCount = props.tagCount;
+  // let tagCount = props.tagCount;
 
   return (
     <div className="m-article__tags">
@@ -15,7 +15,7 @@ const Tags = (props) => {
             key={tag}
             link={`/tags/${_.kebabCase(tag)}`}
             label={tag}
-            tagCount={tagCount[tag]}
+            // tagCount={tagCount[tag]}
           />
         ))}
     </div>

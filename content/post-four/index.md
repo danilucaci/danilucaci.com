@@ -3,6 +3,7 @@ title: "Post Number Four made with Gatsby."
 description: "Post Four"
 date: "18/07/2018"
 category: "Optimizing danilucaci.com"
+intro: "DA BLOG INTRO"
 snippet: "Sequi ducimus ratione, reprehenderit maxime modi natus in repudiandae voluptas, at dolore totam cumque voluptates eum corporis est quo, distinctio tenetur. Ipsa?"
 tags:
     - css3
