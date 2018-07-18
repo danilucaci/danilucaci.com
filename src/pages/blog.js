@@ -36,13 +36,11 @@ export const pageQuery = graphql`
         node {
           fields {
             slug
-            date
           }
-          excerpt
           timeToRead
           frontmatter {
             title
-            description
+            snippet
             tags
             date
           }

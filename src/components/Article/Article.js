@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "gatsby";
+import { Link } from "gatsby";
 
 import Tags from "../Tags/Tags";
 import ArticleInfo from "./ArticleInfo/ArticleInfo";
@@ -11,7 +11,7 @@ const Article = (props) => {
       <Tags tags={props.tags} />
       <ArticleInfo date={props.date} readTime={props.readTime} />
       <p className="copy">{props.snippet}</p>
-      <Link to={props.path} className="link link--b a-article__continue">
+      <Link to={props.slug} className="link link--b a-article__continue">
         Continue Reading→
       </Link>
     </article>

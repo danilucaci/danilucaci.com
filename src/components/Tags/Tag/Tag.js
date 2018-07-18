@@ -1,10 +1,8 @@
 import React from "react";
 
-import Link from "gatsby";
+import { Link } from "gatsby";
 
 const Tag = (props) => {
-  console.log(props.label);
-
   return (
     <Link to={props.link} className="a-tag">
       {props.label}
