@@ -1,3 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
     <path id="a" d="M17.82,12.82 L17.82,11.18 L19.5,11.18 L19.5,12.82 L17.82,12.82 Z M17.82,7.82 L19.5,7.82 L19.5,9.5 L17.82,9.5 L17.82,7.82 Z M17.82,16.18 L17.82,14.5 L19.5,14.5 L19.5,16.18 L17.82,16.18 Z M4.5,16.18 L4.5,14.5 L16.18,14.5 L16.18,16.18 L4.5,16.18 Z M4.5,12.82 L4.5,11.18 L16.18,11.18 L16.18,12.82 L4.5,12.82 Z M4.5,9.5 L4.5,7.82 L16.18,7.82 L16.18,9.5 L4.5,9.5 Z"/>
+  </defs>
+  <g fill-rule="evenodd">
+    <use xlink:href="#a"/>
+  </g>
 </svg>
