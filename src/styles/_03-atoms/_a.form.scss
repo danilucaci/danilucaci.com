@@ -1,14 +1,14 @@
 .a-form__label {
   width: 100%;
-  margin-bottom: $size-4;
+  margin-bottom: rem(4);
 }
 
 .a-form__textarea {
   background-color: $color-light-100;
   border: 2px solid $color-dark-600;
-  border-radius: $size-4;
-  margin-bottom: $size-8;
-  padding: $size-16;
+  border-radius: rem(4);
+  margin-bottom: rem(8);
+  padding: rem(16);
   width: 100%;
 
   &:active,
@@ -21,15 +21,15 @@
 .a-form__input {
   background-color: $color-light-100;
   border: 2px solid $color-dark-600;
-  border-radius: $size-4;
-  height: $size-48;
-  margin-bottom: $size-8;
-  padding: 0 $size-8;
+  border-radius: rem(4);
+  height: rem(48);
+  margin-bottom: rem(8);
+  padding: 0 rem(8);
   width: 100%;
 
   &:active,
   &:focus {
-    border-left: solid $size-8 $color-main-600;
+    border-left: solid rem(8) $color-main-600;
     border-right: solid 2px $color-main-600;
     border-top: solid 2px $color-main-600;
     border-bottom: solid 2px $color-main-600;

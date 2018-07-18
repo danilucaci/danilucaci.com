@@ -1,6 +1,6 @@
 .a-tag__count {
   text-decoration: none !important;
   vertical-align: super;
-  @include mixin-size-font(s);
-  @include mixin-size-line-height(s);
+  @include size-font(s);
+  @include size-line-height(s);
 }

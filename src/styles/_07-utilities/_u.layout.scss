@@ -1,5 +1,5 @@
 .u-clearfix {
-  @include mixin-clearfix;
+  @include clearfix;
 }
 
 .is-open {
@@ -60,51 +60,51 @@
 }
 
 .u-pb-8 {
-  padding-bottom: $size-8;
+  padding-bottom: rem(8);
 }
 
 .u-pt-8 {
-  padding-top: $size-8;
+  padding-top: rem(8);
 }
 
 .u-pr-8 {
-  padding-right: $size-8;
+  padding-right: rem(8);
 }
 
 .u-pl-8 {
-  padding-left: $size-8;
+  padding-left: rem(8);
 }
 
 .u-pb-16 {
-  padding-bottom: $size-16;
+  padding-bottom: rem(16);
 }
 
 .u-pt-16 {
-  padding-top: $size-16;
+  padding-top: rem(16);
 }
 
 .u-pr-16 {
-  padding-right: $size-16;
+  padding-right: rem(16);
 }
 
 .u-pl-16 {
-  padding-left: $size-16;
+  padding-left: rem(16);
 }
 
 .u-pb-28 {
-  padding-bottom: $size-28;
+  padding-bottom: rem(28);
 }
 
 .u-pt-28 {
-  padding-top: $size-28;
+  padding-top: rem(28);
 }
 
 .u-pb-56 {
-  padding-bottom: $size-56;
+  padding-bottom: rem(56);
 }
 
 .u-pt-56 {
-  padding-top: $size-56;
+  padding-top: rem(56);
 }
 
 .u-mb-0 {
@@ -121,49 +121,49 @@
 }
 
 .u-mb-8 {
-  margin-bottom: $size-8;
+  margin-bottom: rem(8);
 }
 
 .u-mt-8 {
-  margin-top: $size-8;
+  margin-top: rem(8);
 }
 
 .u-mr-8 {
-  margin-right: $size-8;
+  margin-right: rem(8);
 }
 
 .u-ml-8 {
-  margin-left: $size-8;
+  margin-left: rem(8);
 }
 
 .u-mb-16 {
-  margin-bottom: $size-16;
+  margin-bottom: rem(16);
 }
 
 .u-mt-16 {
-  margin-top: $size-16;
+  margin-top: rem(16);
 }
 
 .u-mr-16 {
-  margin-right: $size-16;
+  margin-right: rem(16);
 }
 
 .u-ml-16 {
-  margin-left: $size-16;
+  margin-left: rem(16);
 }
 
 .u-mb-28 {
-  margin-bottom: $size-28;
+  margin-bottom: rem(28);
 }
 
 .u-mt-28 {
-  margin-top: $size-28;
+  margin-top: rem(28);
 }
 
 .u-mb-56 {
-  margin-bottom: $size-56;
+  margin-bottom: rem(56);
 }
 
 .u-mt-56 {
-  margin-top: $size-56;
+  margin-top: rem(56);
 }

@@ -4,16 +4,16 @@
 }
 
 .l-main {
-  margin-top: $size-16;
-  margin-bottom: $size-32;
+  margin-top: rem(16);
+  margin-bottom: rem(32);
 
   @media screen and (min-width: $size-bp-l) {
-    margin-top: $size-64;
+    margin-top: rem(64);
   }
 
   @media screen and (max-width: $size-bp-xxl) and (max-height: $size-bp-xs) {
-    margin-top: $size-16;
-    margin-bottom: $size-32;
+    margin-top: rem(16);
+    margin-bottom: rem(32);
   }
 }
 
@@ -41,27 +41,27 @@
   }
 
   &--pad {
-    padding-left: $size-16;
-    padding-right: $size-16;
+    padding-left: rem(16);
+    padding-right: rem(16);
 
     @media screen and (min-width: $size-bp-m) {
-      padding-left: $size-24;
-      padding-right: $size-24;
+      padding-left: rem(24);
+      padding-right: rem(24);
     }
   }
 
   &--services {
     display: block;
-    margin-top: $size-16;
-    margin-bottom: $size-16;
-    padding-top: $size-24;
-    padding-bottom: $size-24;
+    margin-top: rem(16);
+    margin-bottom: rem(16);
+    padding-top: rem(24);
+    padding-bottom: rem(24);
 
     position: relative;
 
     @media screen and (min-width: $size-bp-m) {
-      margin-top: $size-56;
-      margin-bottom: $size-56;
+      margin-top: rem(56);
+      margin-bottom: rem(56);
 
       padding-top: 0;
       padding-bottom: 0;
@@ -72,8 +72,8 @@
     }
 
     @media screen and (min-width: $size-bp-xl) {
-      margin-top: $size-96;
-      margin-bottom: $size-96;
+      margin-top: rem(96);
+      margin-bottom: rem(96);
     }
   }
 
@@ -82,33 +82,33 @@
   }
 
   &--sp-pad-28 {
-    padding-top: $size-28;
-    padding-bottom: $size-28;
+    padding-top: rem(28);
+    padding-bottom: rem(28);
   }
 
   &--sp-mg-28 {
-    margin-top: $size-28;
-    margin-bottom: $size-28;
+    margin-top: rem(28);
+    margin-bottom: rem(28);
   }
 
   &--sp-pad-56 {
-    padding-top: $size-56;
-    padding-bottom: $size-56;
+    padding-top: rem(56);
+    padding-bottom: rem(56);
   }
 
   &--sp-mg-56 {
-    margin-top: $size-56;
-    margin-bottom: $size-56;
+    margin-top: rem(56);
+    margin-bottom: rem(56);
   }
 
   &--sp-pad-96 {
-    padding-top: $size-96;
-    padding-bottom: $size-96;
+    padding-top: rem(96);
+    padding-bottom: rem(96);
   }
 
   &--sp-mg-96 {
-    margin-top: $size-96;
-    margin-bottom: $size-96;
+    margin-top: rem(96);
+    margin-bottom: rem(96);
   }
 }
 
@@ -116,11 +116,11 @@
   display: inline-block;
   vertical-align: top;
 
-  margin-bottom: $size-16;
+  margin-bottom: rem(16);
 
   @media screen and (min-width: $size-bp-m) {
-    margin-right: $size-24;
-    margin-bottom: $size-24;
+    margin-right: rem(24);
+    margin-bottom: rem(24);
   }
 
   &--clear-pad {
@@ -141,83 +141,83 @@
   width: 100%;
 
   @media screen and (min-width: $size-bp-s) {
-    width: calc(100% - #{$size-24});
+    width: calc(100% - #{rem(24)});
   }
 }
 
 .l-col__1-2\@s {
   @media screen and (min-width: $size-bp-s) {
-    width: calc(50% - #{$size-24});
+    width: calc(50% - #{rem(24)});
   }
 }
 
 .l-col__1-4\@s {
   @media screen and (min-width: $size-bp-s) {
-    width: calc(((100% / 4) * 1) - #{$size-24});
+    width: calc(((100% / 4) * 1) - #{rem(24)});
   }
 }
 
 .l-col__3-8\@l {
   @media screen and (min-width: $size-bp-l) {
-    width: calc(((100% / 8) * 3) - #{$size-24});
+    width: calc(((100% / 8) * 3) - #{rem(24)});
   }
 }
 
 .l-col__5-8\@l {
   @media screen and (min-width: $size-bp-l) {
-    width: calc(((100% / 8) * 5) - #{$size-24});
+    width: calc(((100% / 8) * 5) - #{rem(24)});
   }
 }
 
 .l-col__6-8\@s {
   @media screen and (min-width: $size-bp-s) {
-    width: calc(((100% / 8) * 6) - #{$size-24});
+    width: calc(((100% / 8) * 6) - #{rem(24)});
   }
 }
 
 .l-col__1-2\@m {
   @media screen and (min-width: $size-bp-m) {
     // fix for edge bug where the is not enough room for the columns
-    width: calc(49.999% - #{$size-24});
+    width: calc(49.999% - #{rem(24)});
   }
 }
 
 .l-col__4-10\@xxl {
   @media screen and (min-width: $size-bp-xxl) {
-    width: calc(((100% / 10) * 4) - #{$size-24});
+    width: calc(((100% / 10) * 4) - #{rem(24)});
   }
 }
 
 .l-col__6-10\@xxl {
   @media screen and (min-width: $size-bp-xxl) {
-    width: calc(((100% / 10) * 6) - #{$size-24});
+    width: calc(((100% / 10) * 6) - #{rem(24)});
   }
 }
 
 .l-col__8-12\@xxl {
   @media screen and (min-width: $size-bp-xxl) {
-    width: calc(((100% / 12) * 8) - #{$size-24});
+    width: calc(((100% / 12) * 8) - #{rem(24)});
   }
 }
 
 .l-col__10-12\@xxl {
   @media screen and (min-width: $size-bp-xxl) {
-    width: calc(((100% / 12) * 10) - #{$size-24});
+    width: calc(((100% / 12) * 10) - #{rem(24)});
   }
 }
 
 .l-box {
   background-color: $color-light-100;
-  border-radius: $size-8;
+  border-radius: rem(8);
 
-  padding: $size-14 $size-16;
+  padding: rem(14) rem(16);
 
   @media screen and (max-width: $size-bp-m) {
     position: relative;
   }
 
   @media screen and (min-width: $size-bp-s) {
-    padding: $size-20 $size-24 $size-28;
+    padding: rem(20) rem(24) rem(28);
   }
 
   &:hover {
@@ -229,11 +229,11 @@
 }
 
 .box__content {
-  margin-top: $size-16;
+  margin-top: rem(16);
 
   @media screen and (max-width: $size-bp-xs) {
-    margin-top: $size-4;
-    padding-bottom: $size-6;
+    margin-top: rem(4);
+    padding-bottom: rem(6);
     transform-origin: 50% 0;
     transform: scaleY(0);
     opacity: 0;
@@ -244,7 +244,7 @@
 }
 
 .l-landing--header {
-  margin-bottom: $size-32;
+  margin-bottom: rem(32);
 
   @media screen and (min-width: $size-bp-l) {
     margin-bottom: $size-landing-header-margin;

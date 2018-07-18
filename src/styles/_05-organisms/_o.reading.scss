@@ -6,10 +6,10 @@
   left: 0;
   right: 0;
 
-  padding-left: $size-16;
+  padding-left: rem(16);
 
   @media screen and (min-width: $size-bp-m) {
-    padding-left: $size-24;
+    padding-left: rem(24);
   }
 
   @include box-shadow-default;

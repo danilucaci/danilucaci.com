@@ -3,15 +3,15 @@
 .m-services__figure {}
 
 .m-services__tools {
-  max-height: $size-48;
+  max-height: rem(48);
   width: 100%;
-  margin-bottom: $size-24;
+  margin-bottom: rem(24);
   overflow-x: scroll;
   white-space: nowrap;
 
   &>.icon {
     display: inline-block;
-    margin-right: $size-8;
+    margin-right: rem(8);
   }
 
   /* Hide the scrollbar and still scroll */

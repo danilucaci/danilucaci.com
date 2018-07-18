@@ -1,34 +1,34 @@
 .a-pagination__item {
-    display: block;
-    padding: $size-8;
-    margin: 0 $size-8;
+  display: block;
+  padding: rem(8);
+  margin: 0 rem(8);
 
-    @media screen and (max-width: $size-bp-xs){
-        display: none;
-    }
+  @media screen and (max-width: $size-bp-xs) {
+    display: none;
+  }
 }
 
 .a-pagination__current {
-    background-color: $color-dark-800;
-    border-radius: 8px;
-    padding: $size-8 $size-16;
+  background-color: $color-dark-800;
+  border-radius: 8px;
+  padding: rem(8) rem(16);
 }
 
 .a-pagination__arrow {
-    display: block;
-    padding: $size-8;
-    margin: 0 $size-8;
-    height: $size-48;
+  display: block;
+  padding: rem(8);
+  margin: 0 rem(8);
+  height: rem(48);
 
-    &:first-of-type {
-        @media screen and (max-width: $size-bp-xs){
-            float: left;
-        }
+  &:first-of-type {
+    @media screen and (max-width: $size-bp-xs) {
+      float: left;
     }
+  }
 
-    &:last-of-type {
-        @media screen and (max-width: $size-bp-xs){
-            float: right;
-        }
+  &:last-of-type {
+    @media screen and (max-width: $size-bp-xs) {
+      float: right;
     }
+  }
 }

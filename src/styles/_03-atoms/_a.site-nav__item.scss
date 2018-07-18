@@ -1,9 +1,9 @@
 .a-site-nav__item {
   display: block;
-  font-size: $size-32;
-  line-height: $size-32;
+  font-size: rem(32);
+  line-height: rem(32);
 
-  padding: $size-24 0;
+  padding: rem(24) 0;
   text-align: center;
 
   .fonts-loaded & {
@@ -13,10 +13,10 @@
 
   @media screen and (min-width: $size-bp-l) {
     display: inline-block;
-    padding-top: $size-12;
-    padding-left: $size-16;
-    padding-right: $size-16;
-    padding-bottom: $size-4;
+    padding-top: rem(12);
+    padding-left: rem(16);
+    padding-right: rem(16);
+    padding-bottom: rem(4);
     margin: 0;
 
     .fonts-loaded & {
@@ -28,8 +28,8 @@
       color: $color-main-600;
     }
 
-    @include mixin-size-font(s);
-    @include mixin-size-line-height(s);
+    @include size-font(s);
+    @include size-line-height(s);
   }
 }
 

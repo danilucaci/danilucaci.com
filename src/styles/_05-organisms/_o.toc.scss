@@ -5,14 +5,14 @@
 
   @media screen and (min-width: $size-bp-s) {
     border-radius: 0;
-    border-top: $size-8 solid $color-main-600;
+    border-top: rem(8) solid $color-main-600;
   }
 
   @media screen and (min-width: $size-bp-l) {
     margin-top: 0;
     margin-bottom: 0;
-    margin-left: $size-16;
+    margin-left: rem(16);
     border-radius: 0;
-    border-top: $size-8 solid $color-main-600;
+    border-top: rem(8) solid $color-main-600;
   }
 }

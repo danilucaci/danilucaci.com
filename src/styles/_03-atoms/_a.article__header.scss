@@ -1,18 +1,16 @@
-// main: ../main.scss
-
 .a-article__header {
-	font-family: $font-system;
-	font-weight: 700;
-	
-	.fonts-loaded & {
-		font-family: $font-header-bold;    
-	}
+  font-family: $font-system;
+  font-weight: 700;
 
-	@include mixin-size-font(h3-s);
-    @include mixin-size-line-height(h3-s);
+  .fonts-loaded & {
+    font-family: $font-header-bold;
+  }
 
-    @media screen and (min-width: $size-bp-xs) {
-        @include mixin-size-font(h3);
-        @include mixin-size-line-height(h3);
-    }
+  @include size-font(h3-s);
+  @include size-line-height(h3-s);
+
+  @media screen and (min-width: $size-bp-xs) {
+    @include size-font(h3);
+    @include size-line-height(h3);
+  }
 }

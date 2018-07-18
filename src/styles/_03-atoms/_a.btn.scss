@@ -1,6 +1,6 @@
 .btn {
   border: none;
-  border-radius: $size-8;
+  border-radius: rem(8);
   background-color: $color-main-600;
   background-image: linear-gradient($color-main-300, $color-main-600);
   box-shadow: 0 2px 8px -2px $color-light-500;
@@ -9,8 +9,8 @@
   font-weight: 700;
   text-align: center;
   width: 100%;
-  height: $size-48;
-  padding: $size-8 $size-16;
+  height: rem(48);
+  padding: rem(8) rem(16);
 
   &:hover,
   &:focus {
@@ -18,17 +18,17 @@
     background-image: initial;
   }
 
-  @include mixin-size-line-height(m);
-  @include mixin-size-font(m);
+  @include size-line-height(m);
+  @include size-font(m);
 }
 
 .btn--round {
-  border-radius: $size-32;
+  border-radius: rem(32);
 }
 
 .btn--secondary {
   border: 1px solid $color-dark-700;
-  border-radius: $size-8;
+  border-radius: rem(8);
   background-color: $color-light-200;
   background-image: initial;
   box-shadow: initial;
@@ -42,15 +42,15 @@
 }
 
 .btn--menu {
-  border: $size-2 solid $color-main-600;
+  border: 2px solid $color-main-600;
   background-color: $color-light-100;
   background-image: none;
   box-shadow: none;
   color: $color-main-600;
-  height: $size-48;
+  height: rem(48);
   width: initial;
-  padding: $size-8 $size-16;
-  margin: $size-8 0;
+  padding: rem(8) rem(16);
+  margin: rem(8) 0;
   float: right;
   z-index: 100;
 

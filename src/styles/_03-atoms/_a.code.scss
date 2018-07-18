@@ -5,6 +5,6 @@ pre {
   font-family: $font-code;
   font-weight: 400;
 
-  @include mixin-size-font(m);
-  @include mixin-size-line-height(m);
+  @include size-font(m);
+  @include size-line-height(m);
 }

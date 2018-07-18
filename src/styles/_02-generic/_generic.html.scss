@@ -5,7 +5,7 @@ html {
   font-weight: 400;
   font-style: normal;
   font-size: 100%;
-  line-height: $size-28;
+  line-height: rem(28);
   /* prettier-ignore */
   // **********************************************************
   // Disables the browser's inflation algorithm.

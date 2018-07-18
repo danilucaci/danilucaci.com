@@ -4,11 +4,11 @@
   @media screen and (min-width: $size-bp-s) {
     display: block;
     background-color: $color-light-300;
-    padding: $size-4 $size-16;
+    padding: rem(4) rem(16);
 
     &:before {
       content: "↓";
-      margin-right: $size-4;
+      margin-right: rem(4);
     }
   }
 }

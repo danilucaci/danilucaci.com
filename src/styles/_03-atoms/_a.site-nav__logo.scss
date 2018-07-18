@@ -1,12 +1,12 @@
 .a-site-nav__logo {
   display: inline-block;
-  margin-top: $size-8;
+  margin-top: rem(8);
   margin-right: auto;
-  margin-left: $size-16;
-  height: $size-40;
+  margin-left: rem(16);
+  height: rem(40);
 
   @media screen and (min-width: $size-bp-m) {
-    margin-left: $size-24;
+    margin-left: rem(24);
   }
 
   @media screen and (min-width: $size-bp-l) {
@@ -15,5 +15,5 @@
 }
 
 .a-site-nav__logo-icon {
-  height: $size-48;
+  height: rem(48);
 }

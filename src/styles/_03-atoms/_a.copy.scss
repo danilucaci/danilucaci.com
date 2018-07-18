@@ -4,15 +4,15 @@ abbr {
 }
 
 p {
-  margin: $size-16 0;
+  margin: rem(16) 0;
 
   @media screen and (min-width: $size-bp-s) {
-    margin: $size-28 0;
+    margin: rem(28) 0;
   }
 }
 
 .o-site__footer p {
-  margin: $size-8 0;
+  margin: rem(8) 0;
 }
 
 main p:last-of-type {
@@ -27,18 +27,18 @@ main p:last-of-type {
     font-family: $font-body-regular;
   }
 
-  @include mixin-size-font(m);
-  @include mixin-size-line-height(m);
+  @include size-font(m);
+  @include size-line-height(m);
 }
 
 .copy--s {
-  @include mixin-size-font(s);
-  @include mixin-size-line-height(s);
+  @include size-font(s);
+  @include size-line-height(s);
 }
 
 .copy--xs {
-  @include mixin-size-font(xs);
-  @include mixin-size-line-height(xs);
+  @include size-font(xs);
+  @include size-line-height(xs);
 }
 
 .copy--dark-alt {
@@ -74,11 +74,11 @@ main p:last-of-type {
 }
 
 .copy--subhead {
-  font-size: $size-22;
-  line-height: $size-28;
+  font-size: rem(22);
+  line-height: rem(28);
 
   @media screen and (min-width: $size-bp-m) {
-    font-size: $size-32;
-    line-height: $size-40;
+    font-size: rem(32);
+    line-height: rem(40);
   }
 }

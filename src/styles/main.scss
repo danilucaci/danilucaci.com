@@ -38,7 +38,6 @@
 @import "_00-settings/_settings.variables";
 
 // Tools
-@import "_01-tools/_tools.syntax";
 @import "_01-tools/_tools.functions";
 @import "_01-tools/_tools.keyframes";
 @import "_01-tools/_tools.mixins";
@@ -108,7 +107,6 @@
 // Organisms
 @import "_05-organisms/_o.article";
 @import "_05-organisms/_o.blog__info";
-@import "_05-organisms/_o.blog__section";
 @import "_05-organisms/_o.site__nav";
 @import "_05-organisms/_o.contact";
 @import "_05-organisms/_o.site__header";

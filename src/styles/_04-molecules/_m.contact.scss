@@ -1,5 +1,5 @@
 .m-contact__box {
-  margin: $size-56 0;
+  margin: rem(56) 0;
 
   & .h2 {
     margin: 0;
@@ -7,5 +7,5 @@
 }
 
 .m-contact__form {
-  margin-top: $size-96;
+  margin-top: rem(96);
 }

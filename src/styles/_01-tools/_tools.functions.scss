@@ -1,3 +1,7 @@
-@function function-strip-unit($number) {
-	@return $number / ($number * 0 + 1);
+@function strip-unit($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+@function rem($value) {
+  @return $value / strip-unit($size-base) * 1rem;
 }

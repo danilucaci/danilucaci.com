@@ -1,7 +1,7 @@
 .a-article__continue {
   display: block;
-  padding-top: $size-24;
-  padding-bottom: $size-24;
+  padding-top: rem(24);
+  padding-bottom: rem(24);
 
   &:hover {
     background-color: $color-light-100 !important;

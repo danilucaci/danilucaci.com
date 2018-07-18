@@ -1,21 +1,21 @@
 .icon {
-  width: $size-24;
-  height: $size-24;
+  width: rem(24);
+  height: rem(24);
   fill: $color-dark-800;
   vertical-align: middle;
 }
 
 .icon--48 {
-  width: $size-32;
-  height: $size-32;
+  width: rem(32);
+  height: rem(32);
 
-  padding: $size-8;
+  padding: rem(8);
 }
 
 .icon--anchor {
   fill: $color-light-500;
-  width: $size-28;
-  height: $size-28;
+  width: rem(28);
+  height: rem(28);
   &:hover {
     fill: $color-main-600;
   }
@@ -27,17 +27,17 @@
 
 .icon--go-up {
   fill: $color-light-500;
-  width: $size-40;
-  height: $size-40;
+  width: rem(40);
+  height: rem(40);
 }
 
 .icon--48 {
-  width: $size-48;
-  height: $size-48;
+  width: rem(48);
+  height: rem(48);
 }
 
 .icon--up {
-  margin-bottom: $size-4;
+  margin-bottom: rem(4);
 }
 
 .icon--menu {
@@ -81,7 +81,7 @@
 }
 
 .icon--lang {
-  padding-bottom: $size-4;
+  padding-bottom: rem(4);
 }
 
 .icon--landing1 {
@@ -104,8 +104,8 @@
 
 .icon--collapse {
   position: absolute;
-  right: $size-16;
-  top: $size-4;
+  right: rem(16);
+  top: rem(4);
 
   @media screen and (min-width: $size-bp-xs) {
     display: none;
@@ -114,8 +114,8 @@
 
 .icon--collapse-24 {
   position: absolute;
-  right: $size-16;
-  top: $size-14;
+  right: rem(16);
+  top: rem(14);
 
   @media screen and (min-width: $size-bp-xs) {
     display: none;
@@ -125,9 +125,9 @@
 .icon--form {
   display: none;
   position: absolute;
-  right: $size-4;
-  top: $size-12;
-  bottom: $size-12;
+  right: rem(4);
+  top: rem(12);
+  bottom: rem(12);
 }
 
 .icon--mail {
