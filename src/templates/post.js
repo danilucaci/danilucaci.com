@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import Layout from "../components/Layout";
@@ -9,7 +9,7 @@ import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 import "./b16-tomorrow-dark.css";
 
-export default class PostTemplate extends React.Component {
+class Post extends Component {
   render() {
     const { slug } = this.props.pageContext;
     const postNode = this.props.data.markdownRemark;
@@ -42,7 +42,8 @@ export default class PostTemplate extends React.Component {
   }
 }
 
-/* eslint no-undef: "off" */
+export default Post;
+
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
