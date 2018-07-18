@@ -11,6 +11,8 @@ class TagTemplate extends Component {
     const postEdges = this.props.data.allMarkdownRemark.edges;
     const tagsTotalCount = this.props.data.allMarkdownRemark.group;
 
+    console.log(tagsTotalCount);
+
     return (
       <Layout location={this.props.location}>
         <div className="">
@@ -27,7 +29,7 @@ export default TagTemplate;
 export const pageQuery = graphql`
   query TagPage($tag: String) {
     allMarkdownRemark(
-      limit: 1000
+      limit: 2000
       sort: { fields: [fields___date], order: DESC }
       filter: { frontmatter: { tags: { in: [$tag] } } }
     ) {

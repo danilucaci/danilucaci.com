@@ -11,7 +11,12 @@ import "./b16-tomorrow-dark.css";
 
 class Post extends Component {
   render() {
-    const slug = this.props.pageContext;
+    // I added String to convert the url to a string
+    // Otherwise it causes the blog post build to break
+    // ****************************************
+    // TODO
+    // Investigate why
+    const slug = String(this.props.pageContext);
     const postNode = this.props.data.markdownRemark;
     const post = postNode.frontmatter;
     if (!post.id) {
