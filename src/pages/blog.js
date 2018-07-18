@@ -10,13 +10,15 @@ import config from "../../data/SiteConfig";
 class BlogPage extends Component {
   render() {
     const postEdges = this.props.data.allMarkdownRemark.edges;
+    const tagsTotalCount = this.props.data.allMarkdownRemark.group;
+
     return (
       <Layout location={this.props.location}>
         <div className="index-container">
           <h1>Blog Page</h1>
           <Helmet title={config.siteTitle} />
           <SEO />
-          <PostListing postEdges={postEdges} />
+          <PostListing postEdges={postEdges} tagsTotalCount={tagsTotalCount} />
           Hola
         </div>
       </Layout>
@@ -32,6 +34,10 @@ export const pageQuery = graphql`
       limit: 2000
       sort: { fields: [fields___date], order: DESC }
     ) {
+      group(field: frontmatter___tags) {
+        fieldValue
+        totalCount
+      }
       edges {
         node {
           fields {
@@ -42,6 +48,7 @@ export const pageQuery = graphql`
             title
             snippet
             tags
+            category
             date
           }
         }

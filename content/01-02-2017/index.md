@@ -2,12 +2,10 @@
 title: "The Fallen Time"
 cover: "https://unsplash.it/400/300/?random?TheFallenTime"
 date: "01/02/2017"
-category: "another one"
+category: "Optimizing danilucaci.com"
 snippet: "Hola que ase"
 tags:
-    - test
-    - something
-    - tagging
+    - css3
 ---
 # Autolyci eminus retenta
 

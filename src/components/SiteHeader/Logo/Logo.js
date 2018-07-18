@@ -7,7 +7,7 @@ const Logo = () => {
   return (
     <Link to="/" alt="danilucaci.com" className="a-site-nav__logo">
       {/* <Logo /> */}
-      <img src="../../../../static/logo/logo.svg" alt="" />
+      <img src="../../../../static/logo.svg" alt="" />
     </Link>
   );
 };
