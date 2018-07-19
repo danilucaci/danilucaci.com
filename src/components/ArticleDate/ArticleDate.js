@@ -1,11 +1,9 @@
 import React from "react";
 
-// import IconUp from "../../../../../static/icons/up.svg";
-
 const ArticleDate = (props) => {
   return (
     <div className="a-article__updated">
-      {/* <IconUp className="icon icon--up" /> */}
+      <img src="../../../static/icons/clock.svg" alt="" />
       <span className="copy--s">Last Updated:</span>
       <time dateTime={props.date} className="copy--s copy--b">
         {props.date}

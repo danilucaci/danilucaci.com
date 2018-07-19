@@ -9,11 +9,9 @@ class Index extends Component {
   render() {
     return (
       <Layout location={this.props.location}>
-        <div className="index-container">
-          <Helmet title={config.siteTitle} />
-          <SEO />
-          <h1>Index Page</h1>
-        </div>
+        <Helmet title={config.siteTitle} />
+        <SEO />
+        <h1>Index Page</h1>
       </Layout>
     );
   }

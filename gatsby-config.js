@@ -20,12 +20,13 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-react-helmet",
-    {
-      resolve: `gatsby-plugin-sass`,
-      options: {
-        includePaths: ["static/styles/"],
-      },
-    },
+    `gatsby-plugin-styled-components`,
+    // {
+    //   resolve: `gatsby-plugin-sass`,
+    //   options: {
+    //     includePaths: ["static/styles/"],
+    //   },
+    // },
     "gatsby-plugin-lodash",
     {
       resolve: "gatsby-source-filesystem",
@@ -150,7 +151,6 @@ module.exports = {
               ) {
                 edges {
                   node {
-                    excerpt
                     html
                     timeToRead
                     fields {
@@ -159,7 +159,7 @@ module.exports = {
                     }
                     frontmatter {
                       title
-                      cover
+                      snippet
                       date
                       category
                       tags
