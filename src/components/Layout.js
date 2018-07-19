@@ -3,8 +3,8 @@ import React, { Component } from "react";
 import Helmet from "react-helmet";
 import config from "../../data/SiteConfig";
 
-import SiteHeader from "../components/SiteHeader/SiteHeader";
-import SiteFooter from "../components/SiteFooter/SiteFooter";
+import SiteHeader from "./SiteHeader/SiteHeader";
+import SiteFooter from "./SiteFooter/SiteFooter";
 
 import styles from "../styles/main.scss";
 

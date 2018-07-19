@@ -6,7 +6,7 @@ import Layout from "../components/Layout";
 // import UserInfo from "../components/UserInfo/UserInfo";
 // import Disqus from "../components/Disqus/Disqus";
 import Tags from "../components/Tags/Tags";
-import ArticleInfo from "../components/Article/ArticleInfo/ArticleInfo";
+import ArticleInfo from "../components/ArticleInfo/ArticleInfo";
 import SEO from "../components/SEO/SEO";
 
 import config from "../../data/SiteConfig";

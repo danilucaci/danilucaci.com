@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 
 import Tags from "../Tags/Tags";
-import ArticleInfo from "./ArticleInfo/ArticleInfo";
+import ArticleInfo from "../ArticleInfo/ArticleInfo";
 
 const Article = (props) => {
   return (

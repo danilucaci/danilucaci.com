@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-import Logo from "./Logo/Logo";
-import MenuButton from "./MenuButton/MenuButton";
-import SiteNav from "./SiteNav/SiteNav";
+import Logo from "../Logo/Logo";
+import MenuButton from "../MenuButton/MenuButton";
+import SiteNav from "../SiteNav/SiteNav";
 
 class SiteHeader extends Component {
   state = {};

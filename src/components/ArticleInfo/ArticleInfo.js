@@ -1,7 +1,7 @@
 import React from "react";
 
-import ReadTime from "./ReadTime/ReadTime";
-import ArticleDate from "./ArticleDate/ArticleDate";
+import ReadTime from "../ReadTime/ReadTime";
+import ArticleDate from "../ArticleDate/ArticleDate";
 
 const ArticleInfo = (props) => {
   return (
