@@ -1,7 +1,4 @@
-import React from "react";
-
 import styled from "styled-components";
-
 import { mediaMin } from "../../theme/globalStyles";
 
 export const Button = styled.button`

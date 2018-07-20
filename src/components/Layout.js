@@ -3,17 +3,14 @@ import React, { Component } from "react";
 import Helmet from "react-helmet";
 import config from "../../data/SiteConfig";
 
-import styled, { ThemeProvider } from "styled-components";
-import injectCSS from "../theme/injectCSS";
+import { ThemeProvider } from "styled-components";
 import { theme } from "../theme/globalStyles";
+import injectCSS from "../theme/injectCSS";
 
+import { Page } from "./Page/Page";
 import SiteHeader from "./SiteHeader/SiteHeader";
+import { Main } from "./Main/Main";
 import SiteFooter from "./SiteFooter/SiteFooter";
-
-const PageWrapper = styled.div`
-  max-width: 1000px;
-  margin: 0 auto;
-`;
 
 class Layout extends Component {
   render() {
@@ -21,15 +18,15 @@ class Layout extends Component {
 
     return (
       <ThemeProvider theme={theme}>
-        <PageWrapper>
+        <Page>
           <Helmet>
             <title>{config.siteTitle}</title>
             <meta name="description" content={config.siteDescription} />
           </Helmet>
           <SiteHeader />
-          {children}
+          <Main>{children}</Main>
           <SiteFooter />
-        </PageWrapper>
+        </Page>
       </ThemeProvider>
     );
   }

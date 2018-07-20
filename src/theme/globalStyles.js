@@ -2,36 +2,36 @@ import { css } from "styled-components";
 
 export const theme = {
   colors: {
-    colorDark900: "#141C29",
-    colorDark800: "#46495C",
-    colorDark700: "#67676B",
-    colorLight500: " #96A1B3",
-    colorLight400: " #BCC7D6",
-    colorLight300: " #DAE3ED",
-    colorLight200: " #F0F4F7",
-    colorLight100: " #FCFEFF",
-    colorGray500: "#A6A9AD",
-    colorGray400: "#CDCED1",
-    colorGray300: "#E8E9EB",
-    colorGray200: "#F5F5F5",
-    colorGray100: "#FFFFFF",
-    colorShadowDefault: "hsla(0, 0, 60%, 0.2)",
-    colorShadowHover: "hsla(0, 2%, 40%, 0.4)",
-    colorMain600: "#0946B0",
-    colorMain500: "#0E54C4",
-    colorMain400: "#0567F0",
-    colorMain300: "#0C85F0",
-    colorMain200: "#3DAEFF",
-    colorMain100: "#E6F2FF",
+    dark900: "#141C29",
+    dark800: "#46495C",
+    dark700: "#67676B",
+    light500: " #96A1B3",
+    light400: " #BCC7D6",
+    light300: " #DAE3ED",
+    light200: " #F0F4F7",
+    light100: " #FCFEFF",
+    gray500: "#A6A9AD",
+    gray400: "#CDCED1",
+    gray300: "#E8E9EB",
+    gray200: "#F5F5F5",
+    gray100: "#FFFFFF",
+    shadowDefault: "hsla(0, 0, 60%, 0.2)",
+    shadowHover: "hsla(0, 2%, 40%, 0.4)",
+    main600: "#0946B0",
+    main500: "#0E54C4",
+    main400: "#0567F0",
+    main300: "#0C85F0",
+    main200: "#3DAEFF",
+    main100: "#E6F2FF",
   },
   fonts: {
-    fontSystem:
+    system:
       "system-ui, BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif",
-    fontCode: "Consolas, Menlo, 'Liberation Mono', Courier, monospace",
-    fontBodyRegular: "OpenSans Regular",
-    fontBodyBold: "OpenSans Bold",
-    fontBodyItalic: "OpenSans Italic",
-    fontHeaderBold: "Montserrat Bold",
+    code: "Consolas, Menlo, 'Liberation Mono', Courier, monospace",
+    bodyRegular: "OpenSans Regular",
+    bodyBold: "OpenSans Bold",
+    bodyItalic: "OpenSans Italic",
+    headerBold: "Montserrat Bold",
   },
   fontSizes: {
     h1: "3.5rem",
@@ -59,7 +59,25 @@ export const theme = {
     s: "1.5rem",
     xs: "1.25rem",
   },
-  maxPageWidth: 100,
+  spacing: {
+    s: "16",
+    m: "24",
+  },
+  mainMarginTop: {
+    s: {
+      normal: "16",
+      loose: "16",
+    },
+    m: {
+      normal: "24",
+      loose: "24",
+    },
+    xl: {
+      normal: "24",
+      loose: "56",
+    },
+  },
+  maxPageWidth: 1128,
 };
 
 const breakpoints = {
@@ -103,3 +121,10 @@ export const mediaMax = Object.keys(breakpoints).reduce(
   },
   {}
 );
+
+// Convert to rem a unitless value passed in
+// ${rem`24`}; => 24/16 = 1.5rem
+export const rem = (value) => {
+  const conv = Number(value) / 16;
+  return `${conv}rem`;
+};
