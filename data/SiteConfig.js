@@ -18,8 +18,6 @@ module.exports = {
   userLocation: "North Pole, Earth", // User location to display in the author segment.
   userAvatar: "https://api.adorable.io/avatars/150/test.png", // User avatar to display in the author segment.
   userDescription: "I am a UX/UI Designer based in Barcelona.", // User description to display in the author segment.
-  copyright: "&copy;2018 Copyright Dani Lucaci. <br /> All rights reserved.",
-  builtWith: "This site is built with GatsbyJS and hosted on Netlify.",
   themeColor: "#c62828",
   backgroundColor: "#e0e0e0",
 };

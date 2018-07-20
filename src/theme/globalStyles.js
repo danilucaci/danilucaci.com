@@ -15,7 +15,7 @@ export const theme = {
     gray300: "#E8E9EB",
     gray200: "#F5F5F5",
     gray100: "#FFFFFF",
-    shadowDefault: "hsla(0, 0, 60%, 0.2)",
+    shadowDefault: "hsla(0, 0%, 60%, 0.2)",
     shadowHover: "hsla(0, 2%, 40%, 0.4)",
     main600: "#0946B0",
     main500: "#0E54C4",
@@ -31,7 +31,7 @@ export const theme = {
     bodyRegular: "OpenSans Regular",
     bodyBold: "OpenSans Bold",
     bodyItalic: "OpenSans Italic",
-    headerBold: "Montserrat Bold",
+    header: "Montserrat Bold",
   },
   fontSizes: {
     h1: "3.5rem",
@@ -59,22 +59,44 @@ export const theme = {
     s: "1.5rem",
     xs: "1.25rem",
   },
-  spacing: {
-    s: "16",
-    m: "24",
+  gutters: {
+    s: "1rem",
+    m: "1.5rem",
+  },
+  headingSpacing: {
+    before: {
+      s: "1.75rem",
+      m: "3.5rem",
+    },
+    after: {
+      s: "1.75rem",
+      m: "1.75rem",
+    },
+  },
+  stack: {
+    landing: {
+      s: "1.5rem",
+      m: "5.5rem",
+      xl: "5.5rem",
+    },
+    section: {
+      s: "2rem",
+      m: "3.5rem",
+      xl: "3.5rem",
+    },
   },
   mainMarginTop: {
     s: {
-      normal: "16",
-      loose: "16",
+      normal: "1rem",
+      loose: "1rem",
     },
     m: {
-      normal: "24",
-      loose: "24",
+      normal: "1.5rem",
+      loose: "1.5rem",
     },
     xl: {
-      normal: "24",
-      loose: "56",
+      normal: "1.5rem",
+      loose: "3.5rem",
     },
   },
   maxPageWidth: 1128,
@@ -97,7 +119,7 @@ export const mediaMin = Object.keys(breakpoints).reduce(
     // changing their browsers font-size: https://zellwk.com/blog/media-query-units/
     const emSize = breakpoints[label] / 16;
     accumulator[label] = (...args) => css`
-      @media (min-width: ${emSize}em) {
+      @media screen and (min-width: ${emSize}em) {
         ${css(...args)};
       }
     `;
@@ -113,7 +135,7 @@ export const mediaMax = Object.keys(breakpoints).reduce(
     // changing their browsers font-size: https://zellwk.com/blog/media-query-units/
     const emSize = breakpoints[label] / 16;
     accumulator[label] = (...args) => css`
-      @media (max-width: ${emSize}em) {
+      @media screen and (max-width: ${emSize}em) {
         ${css(...args)};
       }
     `;

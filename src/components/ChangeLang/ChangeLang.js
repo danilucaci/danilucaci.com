@@ -1,14 +1,25 @@
 import React from "react";
 import Link from "gatsby-link";
 
-// import LangIcon from "../../../static/icons/language.svg";
+import styled from "styled-components";
+import { theme, rem } from "../../theme/globalStyles";
+
+import { CopyBold } from "../Copy/Copy";
+import { DefaultLink } from "../Link/Link";
+
+const StyledSpan = styled(CopyBold.withComponent("span"))`
+  color: inherit;
+`;
+const StyledLink = DefaultLink.extend`
+  text-decoration: none;
+`;
 
 const ChangeLang = () => {
   return (
-    <Link to="" className="link link--clear">
-      {/* <LangIcon /> */}
-      <span>Cambiar a Español</span>
-    </Link>
+    <StyledLink to="">
+      <img src="" alt="" />
+      <StyledSpan>Cambiar a Español</StyledSpan>
+    </StyledLink>
   );
 };
 

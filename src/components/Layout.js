@@ -3,14 +3,24 @@ import React, { Component } from "react";
 import Helmet from "react-helmet";
 import config from "../../data/SiteConfig";
 
-import { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import { theme } from "../theme/globalStyles";
 import injectCSS from "../theme/injectCSS";
 
-import { Page } from "./Page/Page";
 import SiteHeader from "./SiteHeader/SiteHeader";
 import { Main } from "./Main/Main";
 import SiteFooter from "./SiteFooter/SiteFooter";
+
+const Page = styled.div`
+  /* Sticky Footer  */
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+
+  & main {
+    flex: 1;
+  }
+`;
 
 class Layout extends Component {
   render() {

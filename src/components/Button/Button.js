@@ -8,8 +8,8 @@ export const Button = styled.button`
       : props.theme.colors.colorDark900};
 `;
 
-export const ButtonMain = Button.extend`
-  color: ${(props) => props.theme.colors.colorMain600};
+// export const ButtonMain = Button.extend`
+//   color: ${(props) => props.theme.colors.colorMain600};
 
-  ${mediaMin.s`background: dodgerblue;`};
-`;
+//   ${mediaMin.s`background: dodgerblue;`};
+// `;

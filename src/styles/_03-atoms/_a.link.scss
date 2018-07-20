@@ -25,22 +25,6 @@
     }
   }
 
-  &--toc,
-  &--toc:visited {
-    color: $color-dark-800;
-    display: block;
-    text-transform: capitalize;
-    width: auto;
-
-    &:nth-of-type(odd) {
-      background-color: $color-background;
-    }
-
-    &:hover {
-      background-color: $color-main-100;
-    }
-  }
-
   &:hover {
     color: $color-main-600;
     background-color: $color-main-100;

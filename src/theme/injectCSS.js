@@ -103,7 +103,7 @@ input,
 .tag {
   &:active,
   &:focus {
-    outline: dashed 1px $color-main-600;
+    outline: dashed 1px #0946B0;
   }
 }
 
