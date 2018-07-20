@@ -4,6 +4,7 @@ import Helmet from "react-helmet";
 import config from "../../data/SiteConfig";
 
 import styled, { ThemeProvider } from "styled-components";
+import injectCSS from "../theme/injectCSS";
 import { theme } from "../theme/globalStyles";
 
 import SiteHeader from "./SiteHeader/SiteHeader";
