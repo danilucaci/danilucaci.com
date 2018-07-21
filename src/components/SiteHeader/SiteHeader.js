@@ -31,11 +31,11 @@ class SiteHeader extends Component {
   render() {
     return (
       <StyledSiteHeader>
-        <Stack centered>
+        <Stack center contain>
           <Logo />
           <MenuButton onClick={this.openNav} />
+          <SiteNav showNav={this.state.showNav} />
         </Stack>
-        <SiteNav showNav={this.state.showNav} />
       </StyledSiteHeader>
     );
   }

@@ -1,5 +1,7 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from "react";
+import PropTypes from "prop-types";
+
+import SVGSprite from "./components/SVGSprite/SVGSprite";
 
 export default class HTML extends React.Component {
   render() {
@@ -15,6 +17,7 @@ export default class HTML extends React.Component {
           {this.props.headComponents}
         </head>
         <body {...this.props.bodyAttributes}>
+          <SVGSprite />
           {this.props.preBodyComponents}
           <div
             key={`body`}
@@ -24,7 +27,7 @@ export default class HTML extends React.Component {
           {this.props.postBodyComponents}
         </body>
       </html>
-    )
+    );
   }
 }
 
@@ -35,4 +38,4 @@ HTML.propTypes = {
   preBodyComponents: PropTypes.array,
   body: PropTypes.string,
   postBodyComponents: PropTypes.array,
-}
+};

@@ -99,7 +99,21 @@ export const theme = {
       loose: "3.5rem",
     },
   },
+  mainMarginBottom: {
+    s: "2rem",
+    m: "3.5rem",
+    xl: "3.5rem",
+  },
   maxPageWidth: 1128,
+  breakpoints: {
+    xxs: "22.5em", //360
+    xs: "32em", //512
+    s: "38em", //608
+    m: "40em", //640
+    l: "45em", //720
+    xl: "50em", //800
+    xxl: "63em", //1008
+  },
 };
 
 const breakpoints = {
@@ -111,6 +125,22 @@ const breakpoints = {
   xl: 800,
   xxl: 1008,
 };
+
+// iterate through the sizes and create a media template
+export const breakpoint = Object.keys(breakpoints).reduce(
+  (accumulator, label) => {
+    // use em in breakpoints to work properly cross-browser and support users
+    // changing their browsers font-size: https://zellwk.com/blog/media-query-units/
+    const emSize = breakpoints[label] / 16;
+    accumulator[label] = (...args) => css`
+      @media screen and (min-width: ${emSize}em) {
+        ${css(...args)};
+      }
+    `;
+    return accumulator;
+  },
+  {}
+);
 
 // iterate through the sizes and create a media template
 export const mediaMin = Object.keys(breakpoints).reduce(

@@ -10,7 +10,7 @@
     "url": "https://github.com/danilucaci/danilucaci"
   },
   "dependencies": {
-    "gatsby": "^2.0.0-beta.46",
+    "gatsby": "^2.0.0-beta.54",
     "gatsby-image": "next",
     "gatsby-plugin-catch-links": "next",
     "gatsby-plugin-feed": "next",

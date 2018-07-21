@@ -1,21 +1,28 @@
 import styled, { css } from "styled-components";
-import { theme, mediaMin } from "../../theme/globalStyles";
+import { theme, rem } from "../../theme/globalStyles";
 
 export const Stack = styled.div`
+  display: block;
   padding-left: ${theme.gutters.s};
   padding-right: ${theme.gutters.s};
 
-  ${mediaMin.s`
-    padding-left: ${theme.gutters.m}};
-    padding-right: ${theme.gutters.m}};
-  `};
-
-  min-height: ${(props) => props.height || "4rem"};
+  @media screen and (min-width: ${theme.breakpoints.s}) {
+    padding-left: ${theme.gutters.m};
+    padding-right: ${theme.gutters.m};
+  }
 
   ${(props) =>
-    props.centered &&
+    props.center &&
     css`
       margin-left: auto;
       margin-right: auto;
     `};
+
+  ${(props) =>
+    props.contain &&
+    css`
+      max-width: ${rem(`${theme.maxPageWidth}`)};
+    `};
+
+  ${"" /* min-height: ${(props) => props.example || "4rem"}; */};
 `;

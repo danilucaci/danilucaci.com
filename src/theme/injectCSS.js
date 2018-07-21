@@ -80,6 +80,10 @@ text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
 overflow-x: hidden;
 }
 
+svg{
+  position: absolute;
+}
+
 ::selection {
 color: #ffffff;
 text-shadow: none;

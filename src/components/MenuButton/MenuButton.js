@@ -3,6 +3,8 @@ import React from "react";
 import styled from "styled-components";
 import { theme, rem, mediaMin } from "../../theme/globalStyles";
 
+import { Icon } from "../Icon/Icon";
+
 import { CopyBold } from "../Copy/Copy";
 
 const StyledMenuButton = styled.button`
@@ -28,18 +30,13 @@ const StyledLabel = CopyBold.extend`
   display: inline-block;
 `;
 
-const Icon = styled.img`
-  width: ${rem(24)};
-  height: ${rem(24)};
-  display: inline-block;
-  vertical-align: middle;
-`;
-
 const MenuButton = (props) => {
   return (
     <StyledMenuButton onClick={props.onClick}>
       <StyledLabel>Menu</StyledLabel>
-      <Icon src="../../../static/icons/down.svg" alt="" />
+      <Icon>
+        <use xlinkHref="#down" />
+      </Icon>
     </StyledMenuButton>
   );
 };
