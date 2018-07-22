@@ -5,6 +5,9 @@ import config from "../../data/SiteConfig";
 
 import styled, { ThemeProvider } from "styled-components";
 import { theme } from "../theme/globalStyles";
+import injectFonts from "../theme/injectFonts";
+import injectReset from "../theme/injectReset";
+import injectAria from "../theme/injectAria";
 import injectCSS from "../theme/injectCSS";
 
 import SiteHeader from "./SiteHeader/SiteHeader";

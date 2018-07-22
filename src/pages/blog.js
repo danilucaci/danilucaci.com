@@ -3,9 +3,25 @@ import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 
+import styled from "styled-components";
+import { theme, mediaMin, rem } from "../theme/globalStyles";
+
 import PostListing from "../components/PostListing/PostListing";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
+
+const Wrapper = styled.div`
+  max-width: ${theme.contain.content};
+  margin: 0 auto;
+
+  padding-left: ${theme.gutters.s};
+  padding-right: ${theme.gutters.s};
+
+  ${mediaMin.s`
+    padding-left: ${theme.gutters.m};
+    padding-right: ${theme.gutters.m};
+  `};
+`;
 
 class BlogPage extends Component {
   render() {
@@ -14,14 +30,14 @@ class BlogPage extends Component {
 
     return (
       <Layout location={this.props.location}>
-        <div className="index-container">
+        <Wrapper>
           <h1>Blog Page</h1>
           <Helmet title={config.siteTitle} />
           <SEO />
           <PostListing postEdges={postEdges} />
           {/* <PostListing postEdges={postEdges} tagsTotalCount={tagsTotalCount} /> */}
           Hola
-        </div>
+        </Wrapper>
       </Layout>
     );
   }

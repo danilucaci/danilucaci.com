@@ -41,6 +41,8 @@ export const theme = {
     h3: "1.5rem",
     h3s: "1.25rem",
     h4: "1.125rem",
+    subhead: "1.5rem",
+    subheads: "1.25rem",
     xl: "1.5rem",
     l: "1.25rem",
     m: "1.125rem",
@@ -55,13 +57,15 @@ export const theme = {
     h3: "2rem",
     h3s: "1.5rem",
     h4: "1.75rem",
+    subhead: "2.5rem",
+    subheads: "2rem",
     m: "1.75rem",
     s: "1.5rem",
     xs: "1.25rem",
   },
   gutters: {
-    s: "1rem",
-    m: "1.5rem",
+    s: "1em",
+    m: "1.5em",
   },
   headingSpacing: {
     before: {
@@ -71,18 +75,6 @@ export const theme = {
     after: {
       s: "1.75rem",
       m: "1.75rem",
-    },
-  },
-  stack: {
-    landing: {
-      s: "1.5rem",
-      m: "5.5rem",
-      xl: "5.5rem",
-    },
-    section: {
-      s: "2rem",
-      m: "3.5rem",
-      xl: "3.5rem",
     },
   },
   mainMarginTop: {

@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 import Layout from "../components/Layout";
-import { Stack } from "../components/Stack/Stack";
 import SEO from "../components/SEO/SEO";
 
 import { theme, mediaMin, rem, breakpoints } from "../theme/globalStyles";
@@ -12,16 +11,39 @@ import { Copy } from "../components/Copy/Copy";
 
 import config from "../../data/SiteConfig";
 
+const Wrapper = styled.div`
+  max-width: ${theme.contain.content};
+  margin: 0 auto;
+
+  padding-left: ${theme.gutters.s};
+  padding-right: ${theme.gutters.s};
+
+  ${mediaMin.s`
+    padding-left: ${theme.gutters.m};
+    padding-right: ${theme.gutters.m};
+  `};
+`;
+
 const StyledHeader = styled.header`
-  padding-top: ${theme.stack.landing.s};
+  padding-bottom: ${rem(64)};
+
+  ${mediaMin.s`
+    padding-top: ${rem(32)};
+    padding-bottom: ${rem(112)};
+  `};
 
   ${mediaMin.m`
-    padding-top: ${theme.stack.landing.m};
+    padding-top: ${rem(64)};
+    padding-bottom: ${rem(208)};
   `};
 `;
 
 const StyledH1 = styled(H2.withComponent("h1"))`
-  margin: ${rem(16)} 0;
+  margin-bottom: ${rem(16)};
+
+  ${mediaMin.s`
+    margin-bottom: ${rem(24)};
+  `};
 `;
 
 const ServicesH1 = H1.extend`
@@ -29,6 +51,16 @@ const ServicesH1 = H1.extend`
 
   ${mediaMin.m`
     margin-bottom: ${rem(56)};
+  `};
+`;
+
+const Subhead = styled(Copy)`
+  font-size: ${theme.fontSizes.subheads};
+  line-height: ${theme.lineHeights.subheads};
+
+  ${mediaMin.m`
+    font-size: ${theme.fontSizes.subhead};
+    line-height: ${theme.lineHeights.subhead};
   `};
 `;
 
@@ -47,31 +79,46 @@ const ServicesH3 = H3.extend`
 const StyledH4 = H4.extend`
   text-transform: uppercase;
   color: ${theme.colors.main600};
+  margin-bottom: ${rem(16)};
 `;
 
-const ServicesStack = Stack.extend`
-  padding-top: ${theme.stack.landing.s};
+const ServicesStack = styled.div`
+  margin-top: ${rem(56)};
+  margin-top: ${rem(56)};
+
+  ${mediaMin.s`
+    margin-top: ${rem(88)};
+    margin-top: ${rem(88)};
+  `};
+
+  ${mediaMin.m`
+    margin-top: ${rem(56)};
+    margin-top: ${rem(56)};
+  `};
+`;
+
+const Stack = styled.div`
   outline: 1px solid red;
   width: 100%;
   height: 100%;
   font-size: 0;
 
   ${mediaMin.m`
-    padding-top: ${theme.stack.landing.m};
+
   `};
 
   ${mediaMin.xl`
-    padding-top: ${theme.stack.landing.xl};
+
   `};
 `;
 
-const Col = styled.div`
+const ServicesItem = styled.div`
   display: inline-block;
   vertical-align: top;
 
   width: 100%;
   height: 100%;
-  margin-bottom: ${rem(16)};
+  margin-bottom: ${rem(56)};
 
   background-color: ${theme.colors.main100};
 
@@ -81,7 +128,7 @@ const Col = styled.div`
 
   ${mediaMin.s`
     margin-right: ${rem(24)};
-    margin-bottom: ${rem(24)};
+    margin-bottom: ${rem(88)};
   `};
 
   @media screen and (min-width: ${theme.breakpoints.m}) and (max-width: ${theme
@@ -106,79 +153,81 @@ class Index extends Component {
   render() {
     return (
       <Layout location={this.props.location}>
-        <Helmet title={config.siteTitle} />
-        <SEO />
-        <Stack>
-          <StyledHeader>
-            <StyledH4>Hi! I’m Dani.</StyledH4>
-            <StyledH1>
-              UX/UI Designer.<br />Front–End Developer.
-            </StyledH1>
-            <Copy>
-              I prototype, design and develop interfaces that have a strong
-              focus on accesibility, performance and user interaction. I use the
-              latest front-end techniques and design methods to create scalable
-              and easy to use experiences.
-            </Copy>
-          </StyledHeader>
-        </Stack>
-        <ServicesStack>
-          <ServicesH1>My Services</ServicesH1>
-          <ServicesH2>UX and UI Design</ServicesH2>
-          <Col>
-            <ServicesH3>Wireframing</ServicesH3>
-            <Copy>
-              I focus on creating scalable, easy to maintain and responsive
-              front-end architectures using SASS, HTML5 and presentational
-              Javascript.
-            </Copy>
-          </Col>
-          <Col>
-            <ServicesH3>Prototyping</ServicesH3>
-            <Copy>
-              I focus on creating scalable, easy to maintain and responsive
-              front-end architectures using SASS, HTML5 and presentational
-              Javascript.
-            </Copy>
-          </Col>
-          <Col>
-            <ServicesH3>Accesibility</ServicesH3>
-            <Copy>
-              I focus on creating scalable, easy to maintain and responsive
-              front-end architectures using SASS, HTML5 and presentational
-              Javascript.
-            </Copy>
-          </Col>
-          <Col>
-            <ServicesH3>Design Systems</ServicesH3>
-            <Copy>
-              I focus on creating scalable, easy to maintain and responsive
-              front-end architectures using SASS, HTML5 and presentational
-              Javascript.
-            </Copy>
-          </Col>
-          <ServicesH3>Tools I Use</ServicesH3>
-        </ServicesStack>
-        <ServicesStack>
-          <ServicesH2>Front–End Development</ServicesH2>
-          <Col>
-            <ServicesH3>Responsive Design</ServicesH3>
-            <Copy>
-              I focus on creating scalable, easy to maintain and responsive
-              front-end architectures using SASS, HTML5 and presentational
-              Javascript.
-            </Copy>
-          </Col>
-          <Col>
-            <ServicesH3>Gatsby.js and React</ServicesH3>
-            <Copy>
-              I focus on creating scalable, easy to maintain and responsive
-              front-end architectures using SASS, HTML5 and presentational
-              Javascript.
-            </Copy>
-          </Col>
-          <ServicesH3>Tools I Use</ServicesH3>
-        </ServicesStack>
+        <Wrapper>
+          <Helmet title={config.siteTitle} />
+          <SEO />
+          <Stack>
+            <StyledHeader>
+              <StyledH4>Hi! I’m Dani.</StyledH4>
+              <StyledH1>
+                UX/UI Designer.<br />Front–End Developer.
+              </StyledH1>
+              <Subhead>
+                I prototype, design and develop interfaces that have a strong
+                focus on accesibility, performance and user interaction. I use
+                the latest front-end techniques and design methods to create
+                scalable and easy to use experiences.
+              </Subhead>
+            </StyledHeader>
+          </Stack>
+          <ServicesStack>
+            <ServicesH1>My Services</ServicesH1>
+            <ServicesH2>UX and UI Design</ServicesH2>
+            <ServicesItem>
+              <ServicesH3>Wireframing</ServicesH3>
+              <Copy>
+                I focus on creating scalable, easy to maintain and responsive
+                front-end architectures using SASS, HTML5 and presentational
+                Javascript.
+              </Copy>
+            </ServicesItem>
+            <ServicesItem>
+              <ServicesH3>Prototyping</ServicesH3>
+              <Copy>
+                I focus on creating scalable, easy to maintain and responsive
+                front-end architectures using SASS, HTML5 and presentational
+                Javascript.
+              </Copy>
+            </ServicesItem>
+            <ServicesItem>
+              <ServicesH3>Accesibility</ServicesH3>
+              <Copy>
+                I focus on creating scalable, easy to maintain and responsive
+                front-end architectures using SASS, HTML5 and presentational
+                Javascript.
+              </Copy>
+            </ServicesItem>
+            <ServicesItem>
+              <ServicesH3>Design Systems</ServicesH3>
+              <Copy>
+                I focus on creating scalable, easy to maintain and responsive
+                front-end architectures using SASS, HTML5 and presentational
+                Javascript.
+              </Copy>
+            </ServicesItem>
+            <ServicesH3>Tools I Use</ServicesH3>
+          </ServicesStack>
+          <ServicesStack>
+            <ServicesH2>Front–End Development</ServicesH2>
+            <ServicesItem>
+              <ServicesH3>Responsive Design</ServicesH3>
+              <Copy>
+                I focus on creating scalable, easy to maintain and responsive
+                front-end architectures using SASS, HTML5 and presentational
+                Javascript.
+              </Copy>
+            </ServicesItem>
+            <ServicesItem>
+              <ServicesH3>Gatsby.js and React</ServicesH3>
+              <Copy>
+                I focus on creating scalable, easy to maintain and responsive
+                front-end architectures using SASS, HTML5 and presentational
+                Javascript.
+              </Copy>
+            </ServicesItem>
+            <ServicesH3>Tools I Use</ServicesH3>
+          </ServicesStack>
+        </Wrapper>
       </Layout>
     );
   }

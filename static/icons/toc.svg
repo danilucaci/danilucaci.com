@@ -1,8 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
-  <defs>
-    <path id="a" d="M17.82,12.82 L17.82,11.18 L19.5,11.18 L19.5,12.82 L17.82,12.82 Z M17.82,7.82 L19.5,7.82 L19.5,9.5 L17.82,9.5 L17.82,7.82 Z M17.82,16.18 L17.82,14.5 L19.5,14.5 L19.5,16.18 L17.82,16.18 Z M4.5,16.18 L4.5,14.5 L16.18,14.5 L16.18,16.18 L4.5,16.18 Z M4.5,12.82 L4.5,11.18 L16.18,11.18 L16.18,12.82 L4.5,12.82 Z M4.5,9.5 L4.5,7.82 L16.18,7.82 L16.18,9.5 L4.5,9.5 Z"/>
-  </defs>
-  <g fill-rule="evenodd">
-    <use xlink:href="#a"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24">
+    <defs>
+        <path id="a" d="M17.82 12.82v-1.64h1.68v1.64h-1.68zm0-5h1.68V9.5h-1.68V7.82zm0 8.36V14.5h1.68v1.68h-1.68zm-13.32 0V14.5h11.68v1.68H4.5zm0-3.36v-1.64h11.68v1.64H4.5zm0-3.32V7.82h11.68V9.5H4.5z"/>
+    </defs>
+    <use fill-rule="evenodd" xlink:href="#a"/>
 </svg>

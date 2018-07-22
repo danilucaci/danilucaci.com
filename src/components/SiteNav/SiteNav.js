@@ -12,16 +12,16 @@ const StyledSiteNav = styled.ul`
   padding-top: ${rem(40)};
 
   transform: translateX(0%)
-    ${(props) => (props.showNav ? css`scale(1)` : css`scale(1)`)};
+    ${(props) => (props.showNav ? css`scale(1)` : css`scale(0)`)};
   transform-origin: 90% 0;
   transition: all ease-out 0.15s;
 
-  opacity: ${(props) => (props.showNav ? css`1` : css`1`)};
-  visibility: ${(props) => (props.showNav ? css`visible` : css`visible`)};
+  opacity: ${(props) => (props.showNav ? css`1` : css`0`)};
+  visibility: ${(props) => (props.showNav ? css`visible` : css`hidden`)};
 
   height: 100%;
   height: 100vh;
-  ${"" /* width: 100%; */} position: absolute;
+  position: absolute;
   left: 0;
   right: 0;
 

@@ -45,7 +45,7 @@ const MenuButton = (props) => {
     <StyledMenuButton onClick={props.onClick}>
       <StyledLabel s>Menu</StyledLabel>
       <StyledIcon main>
-        <use xlinkHref="#down" />
+        <use xlinkHref="#hamburger" />
       </StyledIcon>
     </StyledMenuButton>
   );
