@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import _ from "lodash";
 
 import styled from "styled-components";
 import { theme, mediaMin, rem } from "../../theme/globalStyles";
@@ -20,7 +19,7 @@ const Tags = (props) => {
         tagsInPost.map((tag) => (
           <Tag
             key={tag}
-            link={`/tags/${_.kebabCase(tag)}`}
+            link={`/tags/${tag}`}
             label={tag}
             // tagCount={tagCount[tag]}
           />

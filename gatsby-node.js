@@ -151,7 +151,7 @@ exports.createPages = ({ graphql, actions }) => {
         const tagList = Array.from(tagSet);
         tagList.forEach((tag) => {
           createPage({
-            path: `/tags/${_.kebabCase(tag)}/`,
+            path: `/tags/${tag}/`,
             component: tagPage,
             context: {
               tag,
