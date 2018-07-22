@@ -14,8 +14,14 @@ export const DefaultLink = styled(Link)`
   font-weight: 400;
   line-height: inherit;
 
-  &:hover {
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
     color: ${theme.colors.main600};
-    background-color: ${theme.colors.main100};
+  }
+
+  &:hover {
+    cursor: pointer;
   }
 `;

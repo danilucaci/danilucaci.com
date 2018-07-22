@@ -102,6 +102,7 @@ export const theme = {
   contain: {
     page: "73.5em",
     content: "61.5em",
+    blog: "46.5em",
   },
   logoWidth: "105px",
   logoHeight: "48px",

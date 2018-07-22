@@ -1,6 +1,17 @@
 import React, { Component } from "react";
 
+import styled from "styled-components";
+import { theme, mediaMin, rem } from "../../theme/globalStyles";
+
 import Article from "../Article/Article";
+import { H1, H2, H3, H4 } from "../Headings/Headings";
+import { Copy } from "../Copy/Copy";
+
+const Wrapper = styled.section`
+  max-width: ${theme.contain.blog};
+  margin-left: auto;
+  margin-right: auto;
+`;
 
 class PostListing extends Component {
   getPostList() {
@@ -31,7 +42,7 @@ class PostListing extends Component {
     const postList = this.getPostList();
 
     return (
-      <section className="">
+      <Wrapper>
         {postList.map((post) => (
           <Article
             key={post.title}
@@ -45,7 +56,7 @@ class PostListing extends Component {
             timeToRead={post.timeToRead}
           />
         ))}
-      </section>
+      </Wrapper>
     );
   }
 }

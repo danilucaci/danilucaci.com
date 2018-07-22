@@ -10,6 +10,11 @@ const StyledSiteNavItem = styled.li`
   list-style-type: none;
   text-align: center;
   width: 100%;
+  margin: 0 ${rem(2)};
+
+  &:last-of-type {
+    margin: 0;
+  }
 
   ${mediaMin.s`
     display: inline-block;

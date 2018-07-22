@@ -2,12 +2,34 @@ import React from "react";
 
 import { Link } from "gatsby";
 
+import styled from "styled-components";
+import { theme, mediaMin, rem } from "../../../theme/globalStyles";
+
+const StyledTag = styled(Link)`
+  color: ${theme.colors.main600};
+  font-family: ${theme.fonts.bodyBold};
+  font-size: ${theme.fontSizes.s};
+  line-height: ${theme.lineHeights.s};
+  display: inline-block;
+  margin-right: ${rem(8)};
+  margin-bottom: ${rem(16)};
+  padding: ${rem(4)};
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:before {
+    content: "#";
+  }
+`;
+
 const Tag = (props) => {
   return (
-    <Link to={props.link} className="a-tag">
+    <StyledTag to={props.link}>
       {props.label}
       {/* <span className="a-tag__count">({props.tagCount})</span> */}
-    </Link>
+    </StyledTag>
   );
 };
 

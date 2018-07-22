@@ -2,7 +2,7 @@
 title: "Post Number One made with Gatsby."
 description: "How to Optimize a Hugo Blog in 2018"
 date: "17-07-18"
-category: "development"
+category: ""
 intro: "DA BLOG INTRO"
 snippet: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa exercitationem delectus quae dicta saepe temporibus corporis reiciendis dolores sed alias labore, numquam molestias deserunt aspernatur eum iusto amet optio perspiciatis!."
 tags:

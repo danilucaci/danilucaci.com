@@ -1,15 +1,15 @@
 import { injectGlobal, css } from "styled-components";
 
 injectGlobal`
-  a,
-  button,
-  input,
-  .tag {
-    &:active,
-    &:focus {
-      outline: dashed 2px #0946B0;
-    }
+a,
+button,
+input,
+.tag {
+  &:active,
+  &:focus {
+    outline: dashed 2px #0946B0;
   }
+}
 
  /* Browser fallback for non-supporting hidden attribute
   * Usefull in ul lists to hide the ul element

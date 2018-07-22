@@ -1,24 +1,102 @@
 import React from "react";
 import { Link } from "gatsby";
 
+import styled from "styled-components";
+import { theme, mediaMin, rem } from "../../theme/globalStyles";
+
+import { H1, H2, H3, H4 } from "../Headings/Headings";
+import { Copy } from "../Copy/Copy";
+
 import Tags from "../Tags/Tags";
 import ArticleInfo from "../ArticleInfo/ArticleInfo";
 
+const StyledArticle = styled.article`
+  background-color: ${theme.colors.gray100};
+  ${theme.shadow.default};
+  padding: ${rem(16)} ${rem(16)} 0;
+  margin-bottom: ${theme.gutters.s};
+
+  ${mediaMin.s`
+    padding: ${rem(20)} ${rem(24)} 0;
+    margin-bottom: ${theme.gutters.m};
+  `};
+
+  position: relative;
+
+  &:hover {
+    ${theme.shadow.hover};
+  }
+
+  &:hover {
+    & h3 {
+      color: ${theme.colors.main600};
+    }
+  }
+`;
+
+const StyledLink = styled(Link)`
+  display: block;
+  font-family: ${theme.fonts.bodyBold};
+  text-decoration: underline;
+`;
+
+const ContinueLink = styled(Link)`
+  display: block;
+  font-family: ${theme.fonts.bodyBold};
+  text-decoration: underline;
+  padding-top: ${rem(16)};
+  padding-bottom: ${rem(24)};
+
+  ${mediaMin.s`
+    padding-bottom: ${rem(32)};
+  `};
+`;
+
+const CategoryLink = StyledLink.extend`
+  background-color: ${theme.colors.main600};
+  color: ${theme.colors.gray100};
+  display: block;
+  margin-bottom: ${rem(16)};
+  text-transform: capitalize;
+  z-index: 5;
+  margin-top: -${rem(20)};
+  margin-right: -${rem(24)};
+  margin-left: -${rem(24)};
+`;
+
+const CategoryLinkLabel = styled.span`
+  display: inline-block;
+
+  color: ${theme.colors.gray100};
+  font-family: ${theme.fonts.bodyRegular};
+  font-weight: 400;
+  text-decoration: none !important;
+  margin-right: ${rem(8)};
+  margin-left: ${rem(24)};
+`;
+
 const Article = (props) => {
+  let category;
+
+  if (props.category) {
+    category = (
+      <CategoryLink to={"/categories/" + props.category}>
+        <CategoryLinkLabel>Part of:</CategoryLinkLabel>
+        {props.category}
+      </CategoryLink>
+    );
+  }
+
   return (
-    <article className="l-col l-col__1-1 o-article">
-      <h3 className="a-article__header u-mt-0 u-mb-8">{props.title}</h3>
+    <StyledArticle>
+      {category}
       <Tags tagsInPost={props.tagsInPost} />
+      <H3>{props.title}</H3>
       {/* <Tags tagsInPost={props.tagsInPost} tagCount={props.tagCount} /> */}
       <ArticleInfo date={props.date} timeToRead={props.timeToRead} />
-      <p className="copy">{props.snippet}</p>
-      <Link to={"/categories/" + props.category} className="link">
-        {props.category}
-      </Link>
-      <Link to={props.slug} className="link link--b a-article__continue">
-        Continue Reading→
-      </Link>
-    </article>
+      <Copy className="copy">{props.snippet}</Copy>
+      <ContinueLink to={props.slug}>Continue Reading →</ContinueLink>
+    </StyledArticle>
   );
 };
 
