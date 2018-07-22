@@ -8,19 +8,25 @@ import { Icon } from "../Icon/Icon";
 import { CopyBold } from "../Copy/Copy";
 
 const StyledMenuButton = styled.button`
+  display: block;
+  float: right;
   border: 2px solid ${theme.colors.main600};
   background-color: ${theme.colors.gray100};
   color: ${theme.colors.main600};
 
-  display: block;
   margin-left: auto;
   margin-right: 0;
-  float: right;
+  margin-top: ${rem(4)};
+  margin-bottom: ${rem(4)};
 
   height: ${rem(40)};
   padding: ${rem(8)} ${rem(12)} ${rem(8)} ${rem(16)};
 
-  ${mediaMin.l`
+  ${mediaMin.m`
+    margin-right: ${rem(16)};
+  `};
+
+  ${mediaMin.s`
     display: none;
   `};
 `;
@@ -30,13 +36,17 @@ const StyledLabel = CopyBold.extend`
   display: inline-block;
 `;
 
+const StyledIcon = Icon.extend`
+  float: right;
+`;
+
 const MenuButton = (props) => {
   return (
     <StyledMenuButton onClick={props.onClick}>
-      <StyledLabel>Menu</StyledLabel>
-      <Icon>
+      <StyledLabel s>Menu</StyledLabel>
+      <StyledIcon main>
         <use xlinkHref="#down" />
-      </Icon>
+      </StyledIcon>
     </StyledMenuButton>
   );
 };

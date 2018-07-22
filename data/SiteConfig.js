@@ -1,5 +1,9 @@
 module.exports = {
   siteTitle: "danilucaci.com UX/UI Designer", // Site title.
+  servicesTitle: "My Services danilucaci.com UX/UI Designer", // Site title.
+  blogTitle: "Blog danilucaci.com UX/UI Designer", // Site title.
+  aboutTitle: "About Me danilucaci.com UX/UI Designer", // Site title.
+  contactTitle: "Contact Me danilucaci.com UX/UI Designer", // Site title.
   siteTitleShort: "danilucaci.com", // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
   siteTitleAlt: "danilucaci.com Personal Blog", // Alternative site title for SEO.
   siteLogo: "/svg/logo.svg", // Logo used for SEO and manifest.

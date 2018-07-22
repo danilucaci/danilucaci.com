@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import SVGSprite from "./components/SVGSprite/SVGSprite";
+import { SVGSprite } from "./components/SVGSprite/SVGSprite";
 
 export default class HTML extends React.Component {
   render() {

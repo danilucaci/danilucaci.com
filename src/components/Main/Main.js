@@ -6,10 +6,6 @@ export const Main = styled.main`
     props.loose ? theme.mainMarginTop.s.loose : theme.mainMarginTop.s.normal};
 
   ${mediaMin.m`
-    max-width: ${rem(`${theme.maxPageWidth}`)};
-    margin-left: auto;
-    margin-right: auto;
-
     margin-top: ${(props) =>
       props.loose ? theme.mainMarginTop.m.loose : theme.mainMarginTop.m.normal};
   `};

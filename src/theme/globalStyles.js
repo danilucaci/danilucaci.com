@@ -104,7 +104,12 @@ export const theme = {
     m: "3.5rem",
     xl: "3.5rem",
   },
-  maxPageWidth: 1128,
+  contain: {
+    page: "73.5em",
+    content: "61.5em",
+  },
+  logoWidth: "105px",
+  logoHeight: "48px",
   breakpoints: {
     xxs: "22.5em", //360
     xs: "32em", //512

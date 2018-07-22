@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "gatsby";
 
-import styled, { css } from "styled-components";
-import { theme, rem, mediaMin } from "../../theme/globalStyles";
+import styled from "styled-components";
+import { theme, rem } from "../../theme/globalStyles";
 
 export const DefaultLink = styled(Link)`
   color: ${theme.colors.main600};
@@ -17,18 +17,5 @@ export const DefaultLink = styled(Link)`
   &:hover {
     color: ${theme.colors.main600};
     background-color: ${theme.colors.main100};
-  }
-`;
-
-export const NavLink = DefaultLink.extend`
-  text-decoration: none;
-
-  &:visited,
-  &:active {
-    color: inherit;
-  }
-
-  &:hover {
-    color: ${theme.colors.main600};
   }
 `;

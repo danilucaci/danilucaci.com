@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "../../Link/Link";
+import { NavLink } from "react-router-dom";
 
 import styled from "styled-components";
 import { theme, rem, mediaMin } from "../../../theme/globalStyles";
@@ -7,27 +7,71 @@ import { theme, rem, mediaMin } from "../../../theme/globalStyles";
 const StyledSiteNavItem = styled.li`
   background-color: ${theme.colors.gray100};
   color: ${theme.colors.main600};
-  font-family: ${theme.fonts.header};
-  font-size: ${rem(32)};
-  line-height: ${rem(32)};
+
   text-decoration: none;
   list-style-type: none;
   text-align: center;
-  padding: ${rem(16)};
+  width: 100%;
 
   ${mediaMin.s`
     display: inline-block;
-    color: ${theme.colors.dark800};
-    font-family: ${theme.fonts.bodyRegular};
+    
+    width: auto;
+
     font-size: ${theme.fontSizes.m};
     line-height: ${theme.fontSizes.m};
+  `};
+`;
+
+const StyledNavLink = styled(NavLink)`
+  color: ${theme.colors.dark800};
+  display: block;
+  font-family: ${theme.fonts.header};
+  font-weight: 700;
+  font-size: ${rem(32)};
+  line-height: ${rem(32)};
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  padding: ${rem(16)};
+
+  &:hover {
+    color: ${theme.colors.main600};
+  }
+
+  &.current-nav-item {
+    background-color: ${theme.colors.main600};
+    color: ${theme.colors.main100};
+
+    ${mediaMin.s`
+      background-color: ${theme.colors.gray100};
+      color: ${theme.colors.dark800};
+      border-bottom: 8px solid ${theme.colors.main600};
+      padding-bottom: ${rem(4)};
+    `};
+  }
+
+  ${mediaMin.s`
+    font-family: ${theme.fonts.bodyRegular};
+    font-weight: 400;
+    font-size: ${theme.fontSizes.s};
+    line-height: ${theme.lineHeights.s};
+    padding: ${rem(12)} ${rem(16)} ${rem(12)} ${rem(16)};
+    width: auto;
+    height: auto;
   `};
 `;
 
 const SiteNavItem = (props) => {
   return (
     <StyledSiteNavItem>
-      <NavLink to={props.to}>{props.label}</NavLink>
+      <StyledNavLink
+        exact={true}
+        to={props.to}
+        activeClassName="current-nav-item"
+      >
+        {props.label}
+      </StyledNavLink>
     </StyledSiteNavItem>
   );
 };
