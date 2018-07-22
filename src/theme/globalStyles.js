@@ -15,14 +15,17 @@ export const theme = {
     gray300: "#E8E9EB",
     gray200: "#F5F5F5",
     gray100: "#FFFFFF",
-    shadowDefault: "hsla(0, 0%, 60%, 0.2)",
-    shadowHover: "hsla(0, 2%, 40%, 0.4)",
     main600: "#0946B0",
     main500: "#0E54C4",
     main400: "#0567F0",
     main300: "#0C85F0",
     main200: "#3DAEFF",
     main100: "#E6F2FF",
+  },
+  shadow: {
+    default: "box-shadow: 0px 2px 8px 0px hsla(0, 0%, 60%, 0.2)",
+    hover:
+      "box-shadow: 0px 2px 6px -4px hsla(0, 2%, 40%, 0.4), 0px 6px 28px -4px hsla(0, 2%, 40%, 0.4)",
   },
   fonts: {
     system:

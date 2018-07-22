@@ -9,13 +9,13 @@ export const H1 = styled.h1`
 
   font-size: ${theme.fontSizes.h1s};
 
-  ${mediaMin.m`
+  ${mediaMin.xs`
     font-size: ${theme.fontSizes.h1};
   `}
 
   line-height: ${theme.lineHeights.h1s};
 
-  ${mediaMin.m`
+  ${mediaMin.xs`
     line-height: ${theme.lineHeights.h1};
   `}
 `;
@@ -28,13 +28,13 @@ export const H2 = styled.h2`
 
   font-size: ${theme.fontSizes.h2s};
 
-  ${mediaMin.m`
+  ${mediaMin.xs`
     font-size: ${theme.fontSizes.h2};
   `}
 
   line-height: ${theme.lineHeights.h2s};
 
-  ${mediaMin.m`
+  ${mediaMin.xs`
     line-height: ${theme.lineHeights.h2};
   `}
 `;
@@ -47,13 +47,13 @@ export const H3 = styled.h3`
 
   font-size: ${theme.fontSizes.h3s};
 
-  ${mediaMin.m`
+  ${mediaMin.xs`
     font-size: ${theme.fontSizes.h3};
   `}
 
   line-height: ${theme.lineHeights.h3s};
 
-  ${mediaMin.m`
+  ${mediaMin.xs`
     line-height: ${theme.lineHeights.h3};
   `}
 `;
@@ -66,7 +66,7 @@ export const H4 = styled.h4`
 
   font-size: ${theme.fontSizes.h4s};
 
-  ${mediaMin.m`
+  ${mediaMin.xs`
     font-size: ${theme.fontSizes.h4};
   `};
 `;

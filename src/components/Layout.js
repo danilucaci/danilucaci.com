@@ -23,6 +23,8 @@ const Page = styled.div`
   & main {
     flex: 1;
   }
+
+  position: relative;
 `;
 
 class Layout extends Component {

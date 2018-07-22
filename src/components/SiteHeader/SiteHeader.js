@@ -15,7 +15,7 @@ const StyledLogoLink = styled(Link)`
 
 const FullWidthBackground = styled.div`
   background-color: ${theme.colors.gray100};
-  box-shadow: 0px 2px 8px 0px ${theme.colors.shadowDefault};
+  ${theme.shadow.default};
   width: 100%;
 `;
 

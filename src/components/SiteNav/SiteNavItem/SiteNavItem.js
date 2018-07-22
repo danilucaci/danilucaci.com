@@ -5,9 +5,7 @@ import styled from "styled-components";
 import { theme, rem, mediaMin } from "../../../theme/globalStyles";
 
 const StyledSiteNavItem = styled.li`
-  background-color: ${theme.colors.gray100};
   color: ${theme.colors.main600};
-
   text-decoration: none;
   list-style-type: none;
   text-align: center;
@@ -15,9 +13,7 @@ const StyledSiteNavItem = styled.li`
 
   ${mediaMin.s`
     display: inline-block;
-    
     width: auto;
-
     font-size: ${theme.fontSizes.m};
     line-height: ${theme.fontSizes.m};
   `};
@@ -47,13 +43,17 @@ const StyledNavLink = styled(NavLink)`
       background-color: ${theme.colors.gray100};
       color: ${theme.colors.dark800};
       border-bottom: 8px solid ${theme.colors.main600};
+      padding-bottom: ${rem(8)};
+    `};
+
+    ${mediaMin.m`
       padding-bottom: ${rem(4)};
     `};
   }
 
   ${mediaMin.s`
-    font-family: ${theme.fonts.bodyRegular};
-    font-weight: 400;
+    font-family: ${theme.fonts.bodyBold};
+    font-weight: 700;
     font-size: ${theme.fontSizes.s};
     line-height: ${theme.lineHeights.s};
     padding: ${rem(12)} ${rem(16)} ${rem(12)} ${rem(16)};

@@ -4,12 +4,13 @@ import styled from "styled-components";
 
 import Layout from "../components/Layout";
 import SEO from "../components/SEO/SEO";
+import config from "../../data/SiteConfig";
 
 import { theme, mediaMin, rem, breakpoints } from "../theme/globalStyles";
 import { H1, H2, H3, H4 } from "../components/Headings/Headings";
 import { Copy } from "../components/Copy/Copy";
-
-import config from "../../data/SiteConfig";
+import { Icon } from "../components/Icon/Icon";
+import { PageBackground } from "../components/Illustrations/Illustrations";
 
 const Wrapper = styled.div`
   max-width: ${theme.contain.content};
@@ -24,33 +25,62 @@ const Wrapper = styled.div`
   `};
 `;
 
+const StyledBackground = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+`;
+
 const StyledHeader = styled.header`
   padding-bottom: ${rem(64)};
 
   ${mediaMin.s`
     padding-top: ${rem(32)};
-    padding-bottom: ${rem(112)};
+    padding-bottom: ${rem(200)};
   `};
 
   ${mediaMin.m`
     padding-top: ${rem(64)};
-    padding-bottom: ${rem(208)};
+    padding-bottom: ${rem(288)};
   `};
 `;
 
-const StyledH1 = styled(H2.withComponent("h1"))`
-  margin-bottom: ${rem(16)};
+const StyledH4 = H4.extend`
+  color: ${theme.colors.main600};
+  text-transform: uppercase;
+  margin-bottom: ${rem(8)};
 
   ${mediaMin.s`
-    margin-bottom: ${rem(24)};
+    margin-bottom: 0;
   `};
 `;
 
-const ServicesH1 = H1.extend`
-  margin-bottom: ${rem(24)};
+const StyledH1 = H1.extend`
+  margin-bottom: ${rem(16)};
 
   ${mediaMin.m`
-    margin-bottom: ${rem(56)};
+    max-width: ${rem(648)};
+    margin-bottom: ${rem(8)};
+  `};
+`;
+
+const ServicesH2 = H2.extend`
+  margin-bottom: ${rem(32)};
+  font-size: ${theme.fontSizes.h1s};
+  line-height: ${theme.lineHeights.h1s};
+
+  ${mediaMin.m`
+    margin-bottom: ${rem(88)};
+    font-size: ${theme.fontSizes.h2};
+    line-height: ${theme.lineHeights.h2};
+  `};
+
+  ${mediaMin.l`
+    margin-bottom: ${rem(96)};
+    font-size: ${theme.fontSizes.h1};
+    line-height: ${theme.lineHeights.h1};
   `};
 `;
 
@@ -61,92 +91,116 @@ const Subhead = styled(Copy)`
   ${mediaMin.m`
     font-size: ${theme.fontSizes.subhead};
     line-height: ${theme.lineHeights.subhead};
-  `};
-`;
 
-const ServicesH2 = H2.extend`
-  margin-bottom: ${rem(24)};
+    max-width: ${rem(648)};
+  `};
 `;
 
 const ServicesH3 = H3.extend`
-  margin-bottom: ${rem(8)};
+  font-size: ${theme.fontSizes.h2s};
+  line-height: ${theme.lineHeights.h2s};
+  margin-bottom: ${rem(16)};
 
   ${mediaMin.m`
-    margin-bottom: ${rem(24)};
+    font-size: ${theme.fontSizes.h3s};
+    line-height: ${theme.lineHeights.h3s};
+
+    margin-bottom: ${rem(40)};
+  `};
+
+  ${mediaMin.l`
+    font-size: ${theme.fontSizes.h2};
+    line-height: ${theme.lineHeights.h2};
+
+    margin-bottom: ${rem(40)};
   `};
 `;
 
-const StyledH4 = H4.extend`
-  text-transform: uppercase;
-  color: ${theme.colors.main600};
-  margin-bottom: ${rem(16)};
+const ServicesH4 = H4.extend`
+  margin-bottom: ${rem(8)};
 `;
 
-const ServicesStack = styled.div`
-  margin-top: ${rem(56)};
-  margin-top: ${rem(56)};
+const RowOne = styled.div`
+  margin-bottom: ${rem(64)};
 
   ${mediaMin.s`
-    margin-top: ${rem(88)};
-    margin-top: ${rem(88)};
+    margin-bottom: ${rem(200)};
   `};
 
   ${mediaMin.m`
-    margin-top: ${rem(56)};
-    margin-top: ${rem(56)};
+    margin-bottom: ${rem(280)};
   `};
 `;
 
-const Stack = styled.div`
-  outline: 1px solid red;
-  width: 100%;
-  height: 100%;
-  font-size: 0;
+const RowTwo = styled.section`
+  margin-bottom: ${rem(64)};
+
+  ${mediaMin.s`
+    margin-bottom: ${rem(200)};
+  `};
 
   ${mediaMin.m`
-
-  `};
-
-  ${mediaMin.xl`
-
+    margin-bottom: ${rem(280)};
   `};
 `;
 
-const ServicesItem = styled.div`
+const RowThree = styled.section`
+  margin-bottom: ${rem(64)};
+
+  ${mediaMin.s`
+    margin-bottom: ${rem(200)};
+  `};
+
+  ${mediaMin.m`
+    margin-bottom: ${rem(256)};
+  `};
+`;
+
+const ServicesItem = styled.section`
   display: inline-block;
   vertical-align: top;
 
   width: 100%;
   height: 100%;
-  margin-bottom: ${rem(56)};
+  margin-bottom: ${rem(24)};
 
-  background-color: ${theme.colors.main100};
-
-  &:last-of-type {
-    margin-right: 0;
-  }
-
-  ${mediaMin.s`
-    margin-right: ${rem(24)};
-    margin-bottom: ${rem(88)};
-  `};
-
-  @media screen and (min-width: ${theme.breakpoints.m}) and (max-width: ${theme
-      .breakpoints.xl}) {
-    width: calc(50% - ${rem(12)});
-
-    &:nth-of-type(2n) {
-      margin-right: 0;
-    }
-  }
-
-  @media screen and (min-width: ${theme.breakpoints.xl}) {
-    width: calc(25% - ${rem(20)});
+  @media screen and (min-width: ${theme.breakpoints.m}) {
+    width: calc(50% - ${theme.gutters.m});
+    margin-right: ${theme.gutters.m};
 
     &:last-of-type() {
       margin-right: 0;
     }
   }
+`;
+
+const ToolsWrapper = styled.div`
+  display: block;
+  margin-top: ${rem(16)};
+
+  ${mediaMin.s`
+    margin-top: ${rem(24)};
+  `};
+`;
+
+const Tools = styled.div`
+  overflow-x: scroll;
+  white-space: nowrap;
+
+  /* Hide the scrollbar and still scroll */
+  /* On webkit */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* For Edge */
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  -ms-overflow-style: none;
+`;
+
+const ToolsIcon = styled(Icon)`
+  display: inline-block;
+  margin-right: ${rem(4)};
 `;
 
 class Index extends Component {
@@ -156,25 +210,21 @@ class Index extends Component {
         <Wrapper>
           <Helmet title={config.siteTitle} />
           <SEO />
-          <Stack>
-            <StyledHeader>
-              <StyledH4>Hi! I’m Dani.</StyledH4>
-              <StyledH1>
-                UX/UI Designer.<br />Front–End Developer.
-              </StyledH1>
-              <Subhead>
-                I prototype, design and develop interfaces that have a strong
-                focus on accesibility, performance and user interaction. I use
-                the latest front-end techniques and design methods to create
-                scalable and easy to use experiences.
-              </Subhead>
-            </StyledHeader>
-          </Stack>
-          <ServicesStack>
-            <ServicesH1>My Services</ServicesH1>
-            <ServicesH2>UX and UI Design</ServicesH2>
+          <StyledHeader>
+            <StyledH4>Hi! I’m Dani.</StyledH4>
+            <StyledH1>UX/UI Designer and Front–End Developer.</StyledH1>
+            <Subhead>
+              I prototype, design and develop interfaces that have a strong
+              focus on accesibility, performance and user interaction. I use the
+              latest front-end techniques and design methods to create scalable
+              and easy to use experiences.
+            </Subhead>
+          </StyledHeader>
+          <RowOne>
+            <ServicesH2>What I Do</ServicesH2>
+            <ServicesH3>UX and UI Design</ServicesH3>
             <ServicesItem>
-              <ServicesH3>Wireframing</ServicesH3>
+              <ServicesH4>Wireframing</ServicesH4>
               <Copy>
                 I focus on creating scalable, easy to maintain and responsive
                 front-end architectures using SASS, HTML5 and presentational
@@ -182,7 +232,7 @@ class Index extends Component {
               </Copy>
             </ServicesItem>
             <ServicesItem>
-              <ServicesH3>Prototyping</ServicesH3>
+              <ServicesH4>Prototyping</ServicesH4>
               <Copy>
                 I focus on creating scalable, easy to maintain and responsive
                 front-end architectures using SASS, HTML5 and presentational
@@ -190,7 +240,7 @@ class Index extends Component {
               </Copy>
             </ServicesItem>
             <ServicesItem>
-              <ServicesH3>Accesibility</ServicesH3>
+              <ServicesH4>Accesibility</ServicesH4>
               <Copy>
                 I focus on creating scalable, easy to maintain and responsive
                 front-end architectures using SASS, HTML5 and presentational
@@ -198,19 +248,99 @@ class Index extends Component {
               </Copy>
             </ServicesItem>
             <ServicesItem>
-              <ServicesH3>Design Systems</ServicesH3>
+              <ServicesH4>Design Systems</ServicesH4>
               <Copy>
                 I focus on creating scalable, easy to maintain and responsive
                 front-end architectures using SASS, HTML5 and presentational
                 Javascript.
               </Copy>
             </ServicesItem>
-            <ServicesH3>Tools I Use</ServicesH3>
-          </ServicesStack>
-          <ServicesStack>
+            <ToolsWrapper>
+              <ServicesH4>Tools I Use</ServicesH4>
+              <Tools>
+                <ToolsIcon size="48">
+                  <use xlinkHref="#github" />
+                </ToolsIcon>
+                <ToolsIcon size="48">
+                  <use xlinkHref="#github" />
+                </ToolsIcon>
+                <ToolsIcon size="48">
+                  <use xlinkHref="#github" />
+                </ToolsIcon>
+                <ToolsIcon size="48">
+                  <use xlinkHref="#github" />
+                </ToolsIcon>
+                <ToolsIcon size="48">
+                  <use xlinkHref="#github" />
+                </ToolsIcon>
+                <ToolsIcon size="48">
+                  <use xlinkHref="#github" />
+                </ToolsIcon>
+              </Tools>
+            </ToolsWrapper>
+          </RowOne>
+          <RowTwo>
+            <ServicesH3>Front–End Development</ServicesH3>
+            <ServicesItem>
+              <ServicesH4>Responsive Design</ServicesH4>
+              <Copy>
+                I focus on creating scalable, easy to maintain and responsive
+                front-end architectures using SASS, HTML5 and presentational
+                Javascript.
+              </Copy>
+            </ServicesItem>
+            <ServicesItem>
+              <ServicesH4>Gatsby.js and React</ServicesH4>
+              <Copy>
+                I focus on creating scalable, easy to maintain and responsive
+                front-end architectures using SASS, HTML5 and presentational
+                Javascript.
+              </Copy>
+            </ServicesItem>
+            <ServicesItem>
+              <ServicesH4>Gatsby.js and React</ServicesH4>
+              <Copy>
+                I focus on creating scalable, easy to maintain and responsive
+                front-end architectures using SASS, HTML5 and presentational
+                Javascript.
+              </Copy>
+            </ServicesItem>
+            <ServicesItem>
+              <ServicesH4>Gatsby.js and React</ServicesH4>
+              <Copy>
+                I focus on creating scalable, easy to maintain and responsive
+                front-end architectures using SASS, HTML5 and presentational
+                Javascript.
+              </Copy>
+            </ServicesItem>
+            <ToolsWrapper>
+              <ServicesH4>Tools I Use</ServicesH4>
+              <Tools>
+                <ToolsIcon size="48">
+                  <use xlinkHref="#github" />
+                </ToolsIcon>
+                <ToolsIcon size="48">
+                  <use xlinkHref="#github" />
+                </ToolsIcon>
+                <ToolsIcon size="48">
+                  <use xlinkHref="#github" />
+                </ToolsIcon>
+                <ToolsIcon size="48">
+                  <use xlinkHref="#github" />
+                </ToolsIcon>
+                <ToolsIcon size="48">
+                  <use xlinkHref="#github" />
+                </ToolsIcon>
+                <ToolsIcon size="48">
+                  <use xlinkHref="#github" />
+                </ToolsIcon>
+              </Tools>
+            </ToolsWrapper>
+          </RowTwo>
+          <RowThree>
             <ServicesH2>Front–End Development</ServicesH2>
             <ServicesItem>
-              <ServicesH3>Responsive Design</ServicesH3>
+              <ServicesH4>Responsive Design</ServicesH4>
               <Copy>
                 I focus on creating scalable, easy to maintain and responsive
                 front-end architectures using SASS, HTML5 and presentational
@@ -218,15 +348,53 @@ class Index extends Component {
               </Copy>
             </ServicesItem>
             <ServicesItem>
-              <ServicesH3>Gatsby.js and React</ServicesH3>
+              <ServicesH4>Gatsby.js and React</ServicesH4>
               <Copy>
                 I focus on creating scalable, easy to maintain and responsive
                 front-end architectures using SASS, HTML5 and presentational
                 Javascript.
               </Copy>
             </ServicesItem>
-            <ServicesH3>Tools I Use</ServicesH3>
-          </ServicesStack>
+            <ServicesItem>
+              <ServicesH4>Gatsby.js and React</ServicesH4>
+              <Copy>
+                I focus on creating scalable, easy to maintain and responsive
+                front-end architectures using SASS, HTML5 and presentational
+                Javascript.
+              </Copy>
+            </ServicesItem>
+            <ServicesItem>
+              <ServicesH4>Gatsby.js and React</ServicesH4>
+              <Copy>
+                I focus on creating scalable, easy to maintain and responsive
+                front-end architectures using SASS, HTML5 and presentational
+                Javascript.
+              </Copy>
+            </ServicesItem>
+            <ToolsWrapper>
+              <ServicesH4>Tools I Use</ServicesH4>
+              <Tools>
+                <ToolsIcon size="48">
+                  <use xlinkHref="#github" />
+                </ToolsIcon>
+                <ToolsIcon size="48">
+                  <use xlinkHref="#github" />
+                </ToolsIcon>
+                <ToolsIcon size="48">
+                  <use xlinkHref="#github" />
+                </ToolsIcon>
+                <ToolsIcon size="48">
+                  <use xlinkHref="#github" />
+                </ToolsIcon>
+                <ToolsIcon size="48">
+                  <use xlinkHref="#github" />
+                </ToolsIcon>
+                <ToolsIcon size="48">
+                  <use xlinkHref="#github" />
+                </ToolsIcon>
+              </Tools>
+            </ToolsWrapper>
+          </RowThree>
         </Wrapper>
       </Layout>
     );

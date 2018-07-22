@@ -23,13 +23,12 @@ const StyledCopy = Copy.extend`
 const SiteFooter = () => {
   return (
     <StyledFooter>
-      <ChangeLang />
       <SocialNav />
       <StyledCopyright s>
         &copy;2018 Copyright Dani Lucaci. <br /> All rights reserved.
       </StyledCopyright>
       <StyledCopy s>
-        This site is built with GatsbyJS and hosted on Netlify.
+        This site is built with Gatsby.js and hosted on Netlify.
       </StyledCopy>
     </StyledFooter>
   );
