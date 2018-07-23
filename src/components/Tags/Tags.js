@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 
 import styled from "styled-components";
-import { theme, mediaMin, rem } from "../../theme/globalStyles";
-
-import { Copy } from "../Copy/Copy";
 
 import Tag from "./Tag/Tag";
 

@@ -2,7 +2,7 @@
 title: "Post Number Two made with Gatsby."
 date: "18-07-2018"
 description: "Post Two"
-category: "development"
+category: ""
 intro: "DA BLOG INTRO"
 snippet: "Doloremque voluptatibus, culpa necessitatibus omnis ullam magni nesciunt nemo reiciendis repellat exercitationem iste alias dolor cum nihil a, architecto consequatur. Cumque sequi porro accusantium quasi dolor quo mollitia quisquam omnis."
 tags:

@@ -9,6 +9,7 @@ import { Copy, CopyBold } from "../Copy/Copy";
 const Wrapper = styled.div`
   display: inline-block;
   margin-right: ${rem(16)};
+  white-space: nowrap;
 `;
 
 const Label = styled(Copy.withComponent("span"))`

@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "gatsby";
 
 import styled from "styled-components";
 import { theme, mediaMin, rem } from "../../theme/globalStyles";
@@ -10,15 +9,16 @@ import { Copy } from "../Copy/Copy";
 import Tags from "../Tags/Tags";
 import ArticleInfo from "../ArticleInfo/ArticleInfo";
 
+import { DefaultLink } from "../Link/Link";
+
 const StyledArticle = styled.article`
   background-color: ${theme.colors.gray100};
   ${theme.shadow.default};
-  padding: ${rem(16)} ${rem(16)} 0;
-  margin-bottom: ${theme.gutters.s};
+  padding: ${rem(16)} ${rem(16)} ${rem(8)};
+  margin-bottom: ${theme.gutters.m};
 
   ${mediaMin.s`
-    padding: ${rem(20)} ${rem(24)} 0;
-    margin-bottom: ${theme.gutters.m};
+    padding: ${rem(20)} ${rem(24)} ${rem(8)};
   `};
 
   position: relative;
@@ -34,21 +34,22 @@ const StyledArticle = styled.article`
   }
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(DefaultLink)`
   display: block;
   font-family: ${theme.fonts.bodyBold};
   text-decoration: underline;
 `;
 
-const ContinueLink = styled(Link)`
+const ContinueLink = styled(DefaultLink)`
+  background-color: ${theme.colors.gray100} !important;
   display: block;
   font-family: ${theme.fonts.bodyBold};
   text-decoration: underline;
   padding-top: ${rem(16)};
-  padding-bottom: ${rem(24)};
+  padding-bottom: ${rem(16)};
 
   ${mediaMin.s`
-    padding-bottom: ${rem(32)};
+    padding-bottom: ${rem(24)};
   `};
 `;
 

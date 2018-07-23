@@ -4,13 +4,20 @@ import styled from "styled-components";
 import { theme, mediaMin, rem } from "../../theme/globalStyles";
 
 import Article from "../Article/Article";
-import { H1, H2, H3, H4 } from "../Headings/Headings";
-import { Copy } from "../Copy/Copy";
+import { H2 } from "../Headings/Headings";
 
 const Wrapper = styled.section`
   max-width: ${theme.contain.blog};
   margin-left: auto;
   margin-right: auto;
+`;
+
+const StyledH2 = styled(H2)`
+  margin-bottom: ${rem(16)};
+
+  ${mediaMin.s`
+    margin-bottom: ${rem(24)};
+  `};
 `;
 
 class PostListing extends Component {
@@ -43,6 +50,7 @@ class PostListing extends Component {
 
     return (
       <Wrapper>
+        <StyledH2>Latest Articles</StyledH2>
         {postList.map((post) => (
           <Article
             key={post.title}

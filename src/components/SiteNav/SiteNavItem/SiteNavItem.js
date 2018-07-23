@@ -54,6 +54,10 @@ const StyledNavLink = styled(NavLink)`
     ${mediaMin.m`
       padding-bottom: ${rem(4)};
     `};
+
+    &:hover {
+      color: ${theme.colors.main600};
+    }
   }
 
   ${mediaMin.s`

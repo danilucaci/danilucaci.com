@@ -1,10 +1,8 @@
 import { injectGlobal, css } from "styled-components";
 
 injectGlobal`
-a,
 button,
-input,
-.tag {
+input {
   &:active,
   &:focus {
     outline: dashed 2px #0946B0;

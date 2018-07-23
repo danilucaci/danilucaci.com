@@ -2,7 +2,7 @@
 title: "Post Number Three made with Gatsby."
 description: "Post Three"
 date: "17-07-2018"
-category: "blog"
+category: ""
 intro: "DA BLOG INTRO"
 snippet: "Pariatur corporis nesciunt, odit obcaecati quisquam recusandae mollitia inventore omnis voluptates nulla autem suscipit amet sint incidunt exercitationem, dolorem sed repellendus rerum accusamus sit molestiae esse vitae. Quas, exercitationem? Repudiandae?"
 tags:

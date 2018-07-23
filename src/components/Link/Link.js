@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 
 import styled from "styled-components";
-import { theme, rem } from "../../theme/globalStyles";
+import { theme } from "../../theme/globalStyles";
 
 export const DefaultLink = styled(Link)`
   color: ${theme.colors.main600};
@@ -14,14 +14,19 @@ export const DefaultLink = styled(Link)`
   font-weight: 400;
   line-height: inherit;
 
-  &:link,
+  &:active,
+  &:focus {
+    outline: 2px dashed ${theme.colors.main600};
+  }
+
   &:visited,
-  &:hover,
-  &:active {
+  &:link {
     color: ${theme.colors.main600};
   }
 
   &:hover {
+    color: ${theme.colors.main600};
+    background-color: ${theme.colors.main100};
     cursor: pointer;
   }
 `;

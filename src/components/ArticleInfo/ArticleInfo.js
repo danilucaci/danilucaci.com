@@ -10,8 +10,6 @@ const Wrapper = styled.div`
   margin-top: ${rem(8)};
   margin-bottom: ${rem(16)};
 
-  white-space: nowrap;
-
   ${mediaMin.s`
     margin-top: ${rem(16)};
   `};

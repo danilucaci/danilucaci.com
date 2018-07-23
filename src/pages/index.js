@@ -10,7 +10,6 @@ import { theme, mediaMin, rem, breakpoints } from "../theme/globalStyles";
 import { H1, H2, H3, H4 } from "../components/Headings/Headings";
 import { Copy } from "../components/Copy/Copy";
 import { Icon } from "../components/Icon/Icon";
-import { PageBackground } from "../components/Illustrations/Illustrations";
 
 const Wrapper = styled.div`
   max-width: ${theme.contain.content};

@@ -12,6 +12,8 @@ import config from "../../data/SiteConfig";
 
 import { H1, H2, H3, H4 } from "../components/Headings/Headings";
 import { Copy } from "../components/Copy/Copy";
+import Tags from "../components/Tags/Tags";
+import { BlogBackground } from "../components/Illustrations/Illustrations";
 
 const Wrapper = styled.div`
   max-width: ${theme.contain.content};
@@ -26,10 +28,47 @@ const Wrapper = styled.div`
   `};
 `;
 
+const StyledBlogBackground = styled.div`
+  ${mediaMin.s`
+    &:before {
+      content: "";
+      background-color: ${theme.colors.gray300};
+      display: block;
+      position: absolute;
+      top: -5%;
+      left: 0;
+      width: 50%;
+      height: 33%;
+      transform: skewY(-11deg);
+      z-index: -1;
+    }
+
+    &:after {
+      content: "";
+      background-color: ${theme.colors.gray300};
+      display: block;
+      position: absolute;
+      top: -5%;
+      right: 0;
+      width: 50%;
+      height: 35%;
+      transform: skewY(-11deg);
+      z-index: -1;
+    }
+  `};
+`;
+
 const BlogHeader = styled.header`
   max-width: ${theme.contain.blog};
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: ${rem(56)};
+
+  ${mediaMin.s`
+    margin-bottom: ${rem(88)};
+  `};
+
+  z-index: 5;
 `;
 
 const ColTwo = styled.div`
@@ -44,7 +83,7 @@ const ColTwo = styled.div`
     width: calc(50% - ${theme.gutters.m});
     margin-right: ${theme.gutters.m};
 
-    &:last-of-type() {
+    &:nth-of-type(2) {
       margin-right: 0;
     }
   }
@@ -63,9 +102,18 @@ class BlogPage extends Component {
   render() {
     const postEdges = this.props.data.allMarkdownRemark.edges;
     // const tagsTotalCount = this.props.data.allMarkdownRemark.group;
+    let tagsList = [];
+    let allTags = [];
+
+    postEdges.forEach((postEdge) => {
+      tagsList.push(...postEdge.node.frontmatter.tags);
+    });
+
+    allTags = Array.from(new Set(tagsList));
 
     return (
       <Layout location={this.props.location}>
+        <StyledBlogBackground />
         <Wrapper>
           <Helmet title={config.siteTitle} />
           <SEO />
@@ -86,6 +134,7 @@ class BlogPage extends Component {
             </ColTwo>
             <ColOne>
               <H3>Explore by tags</H3>
+              <Tags tagsInPost={allTags} />
             </ColOne>
           </BlogHeader>
           <PostListing postEdges={postEdges} />

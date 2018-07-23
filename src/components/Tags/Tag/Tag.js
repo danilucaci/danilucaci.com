@@ -1,11 +1,11 @@
 import React from "react";
 
-import { Link } from "gatsby";
-
 import styled from "styled-components";
 import { theme, mediaMin, rem } from "../../../theme/globalStyles";
 
-const StyledTag = styled(Link)`
+import { DefaultLink } from "../../Link/Link";
+
+const StyledTag = styled(DefaultLink)`
   color: ${theme.colors.main600};
   font-family: ${theme.fonts.bodyBold};
   font-size: ${theme.fontSizes.s};

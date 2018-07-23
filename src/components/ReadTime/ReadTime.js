@@ -7,7 +7,8 @@ import { Icon } from "../Icon/Icon";
 import { Copy, CopyBold } from "../Copy/Copy";
 
 const Wrapper = styled.div`
-  display: block;
+  display: inline-block;
+  white-space: nowrap;
 `;
 
 const Label = styled(Copy.withComponent("span"))`

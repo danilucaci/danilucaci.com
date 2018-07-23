@@ -80,24 +80,17 @@ export const theme = {
       m: "1.75rem",
     },
   },
-  mainMarginTop: {
-    s: {
-      normal: "1rem",
-      loose: "1rem",
+  mainMargins: {
+    top: {
+      s: "1rem",
+      m: "1.5rem",
+      xl: "1.5rem",
     },
-    m: {
-      normal: "1.5rem",
-      loose: "1.5rem",
+    bottom: {
+      s: "2rem",
+      m: "3.5rem",
+      xl: "3.5rem",
     },
-    xl: {
-      normal: "1.5rem",
-      loose: "3.5rem",
-    },
-  },
-  mainMarginBottom: {
-    s: "2rem",
-    m: "3.5rem",
-    xl: "3.5rem",
   },
   contain: {
     page: "73.5em",
