@@ -24,10 +24,10 @@ const SiteFooter = () => {
   return (
     <StyledFooter>
       <SocialNav />
-      <StyledCopyright s>
+      <StyledCopyright small>
         &copy;2018 Copyright Dani Lucaci. <br /> All rights reserved.
       </StyledCopyright>
-      <StyledCopy s>
+      <StyledCopy small>
         This site is built with Gatsby.js and hosted on Netlify.
       </StyledCopy>
     </StyledFooter>

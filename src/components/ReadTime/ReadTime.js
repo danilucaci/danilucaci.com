@@ -29,9 +29,9 @@ const ReadTime = (props) => {
       <StyledIcon>
         <use xlinkHref="#clock" />
       </StyledIcon>
-      <Label s>
+      <Label small>
         Read In:
-        <LabelBold s>&nbsp;{props.timeToRead} minutes</LabelBold>
+        <LabelBold small>&nbsp;{props.timeToRead} minutes</LabelBold>
       </Label>
     </Wrapper>
   );

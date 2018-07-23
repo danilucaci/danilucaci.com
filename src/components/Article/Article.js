@@ -47,6 +47,8 @@ const ContinueLink = styled(DefaultLink)`
   text-decoration: underline;
   padding-top: ${rem(16)};
   padding-bottom: ${rem(16)};
+  font-size: ${theme.fontSizes.m};
+  line-height: ${theme.lineHeights.m};
 
   ${mediaMin.s`
     padding-bottom: ${rem(24)};

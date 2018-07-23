@@ -43,7 +43,7 @@ const StyledIcon = Icon.extend`
 const MenuButton = (props) => {
   return (
     <StyledMenuButton onClick={props.onClick}>
-      <StyledLabel s>Menu</StyledLabel>
+      <StyledLabel small>Menu</StyledLabel>
       <StyledIcon main>
         <use xlinkHref="#hamburger" />
       </StyledIcon>

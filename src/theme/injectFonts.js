@@ -4,8 +4,8 @@ injectGlobal`
 @font-face {
 font-family: 'OpenSans Regular';
 font-style: normal;
-font-display: swap;
 /* displays text with fallback font and replaces when the font is ready */
+font-display: swap;
 font-weight: 400;
 src: local('OpenSans Regular'),
 local('OpenSans-Regular'),
@@ -19,8 +19,8 @@ url('/static/fonts/OpenSans-Regular-subset.woff') format('woff');
 @font-face {
 font-family: 'OpenSans Bold';
 font-style: normal;
-font-display: swap;
 /* displays text with fallback font and replaces when the font is ready */
+font-display: swap;
 font-weight: 700;
 src: local('OpenSans Bold'),
 local('OpenSans-Bold'),
@@ -33,8 +33,8 @@ url('/static/fonts/OpenSans-Bold-subset.woff') format('woff');
 @font-face {
 font-family: 'OpenSans Italic';
 font-style: italic;
-font-display: swap;
 /* displays text with fallback font and replaces when the font is ready */
+font-display: swap;
 font-weight: 400;
 src: local('OpenSans Italic'),
 local('OpenSans-Italic'),
@@ -47,8 +47,8 @@ url('/static/fonts/OpenSans-Italic-subset.woff') format('woff');
 @font-face {
 font-family: 'Montserrat Bold';
 font-style: normal;
-font-display: swap;
 /* displays text with fallback font and replaces when the font is ready */
+font-display: swap;
 font-weight: 700;
 src: local('Montserrat Bold'),
 local('Montserrat-Bold'),

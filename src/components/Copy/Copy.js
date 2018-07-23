@@ -8,10 +8,10 @@ export const Copy = styled.p`
   font-style: normal;
 
   font-size: ${(props) =>
-    props.s ? props.theme.fontSizes.s : props.theme.fontSizes.m};
+    props.small ? props.theme.fontSizes.s : props.theme.fontSizes.m};
 
   line-height: ${(props) =>
-    props.s ? props.theme.lineHeights.s : props.theme.lineHeights.m};
+    props.small ? props.theme.lineHeights.s : props.theme.lineHeights.m};
 
   & + & {
     margin: ${rem(28)};

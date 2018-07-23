@@ -12,7 +12,7 @@ const StyledTag = styled(DefaultLink)`
   line-height: ${theme.lineHeights.s};
   display: inline-block;
   margin-right: ${rem(8)};
-  margin-bottom: ${rem(16)};
+  margin-bottom: ${rem(8)};
   padding: ${rem(4)};
 
   &:hover {

@@ -10,10 +10,9 @@ import PostListing from "../components/PostListing/PostListing";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 
-import { H1, H2, H3, H4 } from "../components/Headings/Headings";
+import { H4 } from "../components/Headings/Headings";
 import { Copy } from "../components/Copy/Copy";
 import Tags from "../components/Tags/Tags";
-import { BlogBackground } from "../components/Illustrations/Illustrations";
 
 const Wrapper = styled.div`
   max-width: ${theme.contain.content};
@@ -38,7 +37,7 @@ const StyledBlogBackground = styled.div`
       top: -5%;
       left: 0;
       width: 50%;
-      height: 33%;
+      height: 36%;
       transform: skewY(-11deg);
       z-index: -1;
     }
@@ -51,11 +50,39 @@ const StyledBlogBackground = styled.div`
       top: -5%;
       right: 0;
       width: 50%;
-      height: 35%;
+      height: 36%;
       transform: skewY(-11deg);
       z-index: -1;
     }
   `};
+
+  @media screen and (min-width: 130em) {
+    &:before {
+      top: -7%;
+      height: 38%;
+      transform: skewY(-10deg);
+    }
+
+    &:after {
+      top: -8%;
+      height: 38%;
+      transform: skewY(-10deg);
+    }
+  }
+
+  @media screen and (min-width: 170em) {
+    &:before {
+      top: -10%;
+      height: 48%;
+      transform: skewY(-12deg);
+    }
+
+    &:after {
+      top: -10%;
+      height: 40%;
+      transform: skewY(-12deg);
+    }
+  }
 `;
 
 const BlogHeader = styled.header`
@@ -63,6 +90,7 @@ const BlogHeader = styled.header`
   margin-left: auto;
   margin-right: auto;
   margin-bottom: ${rem(56)};
+  color: ${theme.colors.dark900};
 
   ${mediaMin.s`
     margin-bottom: ${rem(88)};
@@ -71,13 +99,23 @@ const BlogHeader = styled.header`
   z-index: 5;
 `;
 
-const ColTwo = styled.div`
+const Box = styled.div`
+  background-color: ${theme.colors.gray100};
+  ${theme.shadow.default};
   display: inline-block;
   vertical-align: top;
+
+  padding: ${rem(14)} ${rem(16)};
+  position: relative;
 
   width: 100%;
   height: 100%;
   margin-bottom: ${rem(24)};
+
+  ${mediaMin.s`
+    background-color: ${theme.colors.gray300};
+    box-shadow: none;
+  `};
 
   @media screen and (min-width: ${theme.breakpoints.m}) {
     width: calc(50% - ${theme.gutters.m});
@@ -89,13 +127,118 @@ const ColTwo = styled.div`
   }
 `;
 
-const ColOne = styled.div`
+const BoxLarge = styled.div`
+  background-color: ${theme.colors.gray100};
+  ${theme.shadow.default};
   display: inline-block;
   vertical-align: top;
+
+  padding: ${rem(14)} ${rem(16)};
+  position: relative;
 
   width: 100%;
   height: 100%;
   margin-bottom: ${rem(24)};
+
+  ${mediaMin.s`
+    background-color: ${theme.colors.gray300};
+    box-shadow: none;
+  `};
+`;
+
+const Label = styled(H4.withComponent("label"))`
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  font-size: ${theme.fontSizes.m};
+  line-height: ${theme.lineHeights.m};
+
+  ${"" /* Used to extend the click area of the label without having to add padding */} &:after {
+    content: "";
+    position: absolute;
+    top: -16px;
+    bottom: -16px;
+    left: -16px;
+    right: -16px;
+  }
+`;
+
+const FirstInput = styled.input`
+  display: none;
+
+  &:checked + #box1 {
+    visibility: visible;
+    opacity: 1;
+    transform: scaleY(1);
+    position: static;
+    pointer-events: auto;
+  }
+`;
+
+const SecondInput = styled.input`
+  display: none;
+
+  &:checked + #box2 {
+    visibility: visible;
+    opacity: 1;
+    transform: scaleY(1);
+    position: static;
+    pointer-events: auto;
+  }
+`;
+
+const ThirdInput = styled.input`
+  display: none;
+
+  &:checked + #box3 {
+    visibility: visible;
+    opacity: 1;
+    transform: scaleY(1);
+    position: static;
+    pointer-events: auto;
+  }
+`;
+
+const BoxContent = styled.div`
+  visibility: hidden;
+  opacity: 0;
+  transform: scaleY(0);
+  transition: all 0.1s ease-out;
+  will-change: transform, opacity, position;
+  transform-origin: 0% 0%;
+  overflow: hidden;
+  position: absolute;
+  pointer-events: none;
+
+  ${mediaMin.s`
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    position: static;
+  `};
+`;
+
+const Arrow = styled.span`
+  position: absolute;
+  right: 24px;
+  top: 20px;
+  width: 16px;
+  height: 16px;
+  border-bottom: 4px solid black;
+  border-right: 4px solid black;
+  transform: rotate(45deg);
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: rotate(-135deg);
+  }
+
+  ${mediaMin.s`
+    display: none;
+  `};
 `;
 
 class BlogPage extends Component {
@@ -118,24 +261,36 @@ class BlogPage extends Component {
           <Helmet title={config.siteTitle} />
           <SEO />
           <BlogHeader>
-            <ColTwo>
-              <H3>What I write about</H3>
-              <Copy>
-                How i built this in Hugo and optimized for 100% Speed Index with
-                Google.
-              </Copy>
-            </ColTwo>
-            <ColTwo>
-              <H3>What else</H3>
-              <Copy>
-                How i built this in Hugo and optimized for 100% Speed Index with
-                Google.
-              </Copy>
-            </ColTwo>
-            <ColOne>
-              <H3>Explore by tags</H3>
-              <Tags tagsInPost={allTags} />
-            </ColOne>
+            <Box>
+              <Arrow />
+              <Label htmlFor="inputOne">What I write about</Label>
+              <FirstInput type="checkbox" id="inputOne" />
+              <BoxContent id="box1">
+                <Copy>
+                  How i built this in Hugo and optimized for 100% Speed Index
+                  with Google.
+                </Copy>
+              </BoxContent>
+            </Box>
+            <Box>
+              <Arrow />
+              <Label htmlFor="inputTwo">What I write about</Label>
+              <SecondInput type="checkbox" id="inputTwo" />
+              <BoxContent id="box2">
+                <Copy>
+                  How i built this in Hugo and optimized for 100% Speed Index
+                  with Google.
+                </Copy>
+              </BoxContent>
+            </Box>
+            <BoxLarge>
+              <Arrow />
+              <Label htmlFor="inputThree">Explore by tags</Label>
+              <ThirdInput type="checkbox" id="inputThree" />
+              <BoxContent id="box3">
+                <Tags tagsInPost={allTags} />
+              </BoxContent>
+            </BoxLarge>
           </BlogHeader>
           <PostListing postEdges={postEdges} />
           {/* <PostListing postEdges={postEdges} tagsTotalCount={tagsTotalCount} /> */}
