@@ -39,7 +39,7 @@ class Layout extends Component {
             <meta name="description" content={config.siteDescription} />
           </Helmet>
           <SiteHeader />
-          <Main>{children}</Main>
+          <Main role="main">{children}</Main>
           <SiteFooter />
         </Page>
       </ThemeProvider>

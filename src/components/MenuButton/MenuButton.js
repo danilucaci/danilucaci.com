@@ -42,9 +42,13 @@ const StyledIcon = Icon.extend`
 
 const MenuButton = (props) => {
   return (
-    <StyledMenuButton onClick={props.onClick}>
+    <StyledMenuButton
+      aria-haspopup="true"
+      aria-expanded="false"
+      onClick={props.onClick}
+    >
       <StyledLabel small>Menu</StyledLabel>
-      <StyledIcon main>
+      <StyledIcon main aria-hidden="true">
         <use xlinkHref="#hamburger" />
       </StyledIcon>
     </StyledMenuButton>

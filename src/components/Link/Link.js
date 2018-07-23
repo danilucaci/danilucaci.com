@@ -14,16 +14,19 @@ export const DefaultLink = styled(Link)`
   font-weight: 400;
   line-height: inherit;
 
+  a,
   &:active,
   &:focus {
     outline: 2px dashed ${theme.colors.main600};
   }
 
+  a,
   &:visited,
   &:link {
     color: ${theme.colors.main600};
   }
 
+  a,
   &:hover {
     color: ${theme.colors.main600};
     background-color: ${theme.colors.main100};

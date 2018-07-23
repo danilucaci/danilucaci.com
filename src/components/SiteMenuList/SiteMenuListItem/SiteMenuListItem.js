@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { theme, rem, mediaMin } from "../../../theme/globalStyles";
 
-const StyledSiteNavItem = styled.li`
+const StyledSiteMenuListItem = styled.li`
   color: ${theme.colors.main600};
   text-decoration: none;
   list-style-type: none;
@@ -71,18 +71,19 @@ const StyledNavLink = styled(NavLink)`
   `};
 `;
 
-const SiteNavItem = (props) => {
+const SiteMenuListItem = (props) => {
   return (
-    <StyledSiteNavItem>
+    <StyledSiteMenuListItem role="menuitem" tabindex="-1">
       <StyledNavLink
         exact={true}
         to={props.to}
         activeClassName="current-nav-item"
+        aria-current="page"
       >
         {props.label}
       </StyledNavLink>
-    </StyledSiteNavItem>
+    </StyledSiteMenuListItem>
   );
 };
 
-export default SiteNavItem;
+export default SiteMenuListItem;

@@ -22,7 +22,7 @@ const StyledCopy = Copy.extend`
 
 const SiteFooter = () => {
   return (
-    <StyledFooter>
+    <StyledFooter role="contentinfo">
       <SocialNav />
       <StyledCopyright small>
         &copy;2018 Copyright Dani Lucaci. <br /> All rights reserved.

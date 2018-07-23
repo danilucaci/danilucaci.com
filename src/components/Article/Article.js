@@ -92,9 +92,11 @@ const Article = (props) => {
 
   return (
     <StyledArticle>
-      {category}
-      <Tags tagsInPost={props.tagsInPost} />
-      <H3>{props.title}</H3>
+      <header>
+        {category}
+        <Tags tagsInPost={props.tagsInPost} />
+        <H3>{props.title}</H3>
+      </header>
       {/* <Tags tagsInPost={props.tagsInPost} tagCount={props.tagCount} /> */}
       <ArticleInfo date={props.date} timeToRead={props.timeToRead} />
       <Copy className="copy">{props.snippet}</Copy>

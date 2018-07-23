@@ -2,61 +2,35 @@ import React from "react";
 
 import styled, { css } from "styled-components";
 import { theme, rem, mediaMin } from "../../theme/globalStyles";
-import SiteNavItem from "./SiteNavItem/SiteNavItem";
 
-const StyledSiteNav = styled.ul`
-  background-color: ${theme.colors.gray100};
-  display: block;
-  text-align: center;
+import { DefaultLink } from "../Link/Link";
+import SiteMenuList from "../SiteMenuList/SiteMenuList";
+import MenuButton from "../MenuButton/MenuButton";
+import { Logo } from "../Logo/Logo";
 
-  padding-top: ${rem(40)};
+const StyledLogoLink = styled(DefaultLink)`
+  display: inline-block;
+  width: ${theme.logoWidth};
+  height: ${theme.logoHeight};
+`;
 
-  transform: translateX(0%)
-    ${(props) => (props.showNav ? css`scale(1)` : css`scale(0)`)};
-  transform-origin: 90% 0;
-  transition: all ease-out 0.15s;
-
-  opacity: ${(props) => (props.showNav ? css`1` : css`0`)};
-  visibility: ${(props) => (props.showNav ? css`visible` : css`hidden`)};
-
-  height: 100%;
-  height: 100vh;
-  position: absolute;
-  left: 0;
-  right: 0;
-
-  z-index: 10;
-
-  ${mediaMin.s`
-    float: right;
-    opacity: 1;
-    visibility: visible;
-    
-    padding: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: auto;
-    margin-right: 0;
-    width: auto;
-    height: auto;
-
-    position: static;
-
-    transform: none;
-    transition: none;
-  `};
+const StyledNav = styled.nav`
+  max-width: ${theme.contain.content};
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 const SiteNav = (props) => {
-  console.log(props.showNav);
+  console.log("SiteNav: " + props.showNav);
 
   return (
-    <StyledSiteNav>
-      <SiteNavItem to="/services" label="Services" />
-      <SiteNavItem to="/blog" label="Blog" />
-      <SiteNavItem to="/about-me" label="About Me" />
-      <SiteNavItem to="/contact" label="Contact" />
-    </StyledSiteNav>
+    <StyledNav aria-label="Main Page Menu" role="navigation">
+      <StyledLogoLink to="/">
+        <Logo />
+      </StyledLogoLink>
+      <MenuButton onClick={props.onClick} />
+      <SiteMenuList showNav={props.showNav} />
+    </StyledNav>
   );
 };
 

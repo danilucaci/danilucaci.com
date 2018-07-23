@@ -211,6 +211,7 @@ const BoxContent = styled.div`
   overflow: hidden;
   position: absolute;
   pointer-events: none;
+  padding-top: ${rem(16)};
 
   ${mediaMin.s`
     display: block;
@@ -218,15 +219,16 @@ const BoxContent = styled.div`
     opacity: 1;
     transform: none;
     position: static;
+    pointer-events: auto;
   `};
 `;
 
 const Arrow = styled.span`
   position: absolute;
   right: 24px;
-  top: 20px;
-  width: 16px;
-  height: 16px;
+  top: 24px;
+  width: 12px;
+  height: 12px;
   border-bottom: 4px solid black;
   border-right: 4px solid black;
   transform: rotate(45deg);
