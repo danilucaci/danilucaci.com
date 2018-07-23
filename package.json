@@ -24,7 +24,7 @@
     "gatsby-plugin-sass": "next",
     "gatsby-plugin-sharp": "^2.0.0-beta.7",
     "gatsby-plugin-sitemap": "next",
-    "gatsby-plugin-styled-components": "^2.0.11",
+    "gatsby-plugin-styled-components": "next",
     "gatsby-plugin-twitter": "next",
     "gatsby-remark-autolink-headers": "next",
     "gatsby-remark-copy-linked-files": "next",

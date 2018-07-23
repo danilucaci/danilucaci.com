@@ -20,19 +20,19 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-react-helmet",
-    `gatsby-plugin-styled-components`,
-    // {
-    //   resolve: `gatsby-plugin-sass`,
-    //   options: {
-    //     includePaths: ["static/styles/"],
-    //   },
-    // },
     "gatsby-plugin-lodash",
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "assets",
         path: `${__dirname}/static/`,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-styled-components",
+      options: {
+        fileName: false,
+        displayName: true,
       },
     },
     {

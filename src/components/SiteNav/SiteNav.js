@@ -22,7 +22,7 @@ const StyledNav = styled.nav`
 
 const SiteNav = (props) => {
   return (
-    <StyledNav aria-label="Main Page Menu" role="navigation">
+    <StyledNav aria-label="Page Menu" role="navigation">
       <StyledLogoLink to="/">
         <Logo />
       </StyledLogoLink>

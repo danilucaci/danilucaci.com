@@ -11,22 +11,16 @@ const StyledSiteMenuList = styled.ul`
 
   padding-top: ${rem(40)};
 
-  transition: all ease-out 0.15s;
+  transition: all ease-out 0.25s;
 
-  ${(props) =>
-    props.showNav
-      ? css`
-          transform: translateY(0%);
-          pointer-events: auto;
-          opacity: 1;
-          visibility: visible;
-        `
-      : css`
-          transform: translateY(200%);
-          pointer-events: none;
-          opacity: 0;
-          visibility: hidden;
-        `};
+  transform: ${(props) =>
+    props.showNav ? "translateY(0%)" : "translateY(-200%)"};
+
+  opacity: ${(props) => (props.showNav ? "1" : "0")};
+
+  pointer-events: ${(props) => (props.showNav ? "auto" : "none")};
+
+  visibility: ${(props) => (props.showNav ? "visible" : "hidden")};
 
   height: 100%;
   height: 100vh;
@@ -64,6 +58,7 @@ const SiteMenuList = (props) => {
       <SiteMenuListItem to="/services" label="Services" />
       <SiteMenuListItem to="/blog" label="Blog" />
       <SiteMenuListItem to="/about-me" label="About Me" />
+      <SiteMenuListItem to="/contact" label="Contact" />
       <SiteMenuListItem to="/contact" label="Contact" />
     </StyledSiteMenuList>
   );
