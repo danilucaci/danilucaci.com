@@ -12,11 +12,21 @@ const StyledSiteMenuList = styled.ul`
   padding-top: ${rem(40)};
 
   transition: all ease-out 0.15s;
-  transform: ${(props) =>
-    props.showNav ? css`translateX(0%)` : css`translateX(-200%)`};
-  pointer-events: ${(props) => (props.showNav ? css`auto` : css`none`)};
-  opacity: ${(props) => (props.showNav ? css`1` : css`0`)};
-  visibility: ${(props) => (props.showNav ? css`visible` : css`hidden`)};
+
+  ${(props) =>
+    props.showNav
+      ? css`
+          transform: translateY(0%);
+          pointer-events: auto;
+          opacity: 1;
+          visibility: visible;
+        `
+      : css`
+          transform: translateY(200%);
+          pointer-events: none;
+          opacity: 0;
+          visibility: hidden;
+        `};
 
   height: 100%;
   height: 100vh;

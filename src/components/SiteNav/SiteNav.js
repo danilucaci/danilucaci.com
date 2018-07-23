@@ -21,8 +21,6 @@ const StyledNav = styled.nav`
 `;
 
 const SiteNav = (props) => {
-  console.log("SiteNav: " + props.showNav);
-
   return (
     <StyledNav aria-label="Main Page Menu" role="navigation">
       <StyledLogoLink to="/">
