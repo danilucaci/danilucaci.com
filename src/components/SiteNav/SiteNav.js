@@ -26,7 +26,7 @@ const SiteNav = (props) => {
       <StyledLogoLink to="/">
         <Logo />
       </StyledLogoLink>
-      <MenuButton onClick={props.onClick} />
+      <MenuButton onClick={props.onClick} showNav={props.showNav} />
       <SiteMenuList showNav={props.showNav} />
     </StyledNav>
   );

@@ -270,6 +270,13 @@ export const SVGSprite = () => (
       />
     </symbol>
 
+    <symbol id="close" viewBox="0 0 24 24">
+      <path
+        fill-rule="evenodd"
+        d="M18 7.216L13.216 12 18 16.784 16.784 18 12 13.216 7.216 18 6 16.784 10.784 12 6 7.216 7.216 6 12 10.784 16.784 6z"
+      />
+    </symbol>
+
     <symbol id="twitter" viewBox="0 0 24 24">
       <path
         fill-rule="evenodd"

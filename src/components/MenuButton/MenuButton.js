@@ -1,6 +1,6 @@
 import React from "react";
 
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme, rem, mediaMin } from "../../theme/globalStyles";
 
 import { Icon } from "../Icon/Icon";
@@ -38,9 +38,19 @@ const StyledLabel = CopyBold.extend`
 
 const StyledIcon = Icon.extend`
   float: right;
+  transition: transform 0.2s ease;
+
+  ${(props) =>
+    props.animate &&
+    css`
+      transform-origin: 50% 50%;
+      transform: rotate(180deg);
+    `};
 `;
 
 const MenuButton = (props) => {
+  const showNav = props.showNav;
+
   return (
     <StyledMenuButton
       aria-haspopup="true"
@@ -48,9 +58,16 @@ const MenuButton = (props) => {
       onClick={props.onClick}
     >
       <StyledLabel small>Menu</StyledLabel>
-      <StyledIcon main aria-hidden="true">
-        <use xlinkHref="#hamburger" />
-      </StyledIcon>
+
+      {showNav ? (
+        <StyledIcon main animate={!showNav} aria-hidden="true">
+          <use xlinkHref="#close" />
+        </StyledIcon>
+      ) : (
+        <StyledIcon main animate={!showNav} aria-hidden="true">
+          <use xlinkHref="#hamburger" />
+        </StyledIcon>
+      )}
     </StyledMenuButton>
   );
 };

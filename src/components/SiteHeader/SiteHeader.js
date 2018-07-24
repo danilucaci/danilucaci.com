@@ -34,9 +34,7 @@ class SiteHeader extends Component {
     showNav: false,
   };
 
-  openNav = (e) => {
-    e.preventDefault();
-
+  openNav = () => {
     this.setState((prevState) => ({
       showNav: !prevState.showNav,
     }));
