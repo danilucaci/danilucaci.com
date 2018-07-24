@@ -17,7 +17,7 @@ class CategoryTemplate extends Component {
           <Helmet
             title={`Posts in category "${category}" | ${config.siteTitle}`}
           />
-          <PostListing postEdges={postEdges} tagsTotalCount={tagsTotalCount} />
+          <PostListing postEdges={postEdges} />
         </div>
       </Layout>
     );

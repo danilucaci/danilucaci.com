@@ -8,19 +8,24 @@ const StyledSiteMenuList = styled.ul`
   background-color: ${theme.colors.gray100};
   display: block;
   text-align: center;
-
+  overflow: hidden;
   padding-top: ${rem(40)};
 
-  transition: transform ease-in 0.2s;
+  transition: transform ease-in-out 0.3s;
   will-change: transform;
 
   ${(props) =>
     props.showNav
       ? css`
-          transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0) scaleX(1);
+          visibility: visible;
+          opacity: 1;
         `
       : css`
-          transform: translate3d(110%, 0, 0);
+          transform: translate3d(110%, 0, 0) scaleX(0);
+          visibility: hidden;
+          opacity: 0;
+          position: static;
         `};
 
   height: 100%;

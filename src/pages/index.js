@@ -24,14 +24,6 @@ const Wrapper = styled.div`
   `};
 `;
 
-const StyledBackground = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: -1;
-`;
-
 const StyledHeader = styled.header`
   padding-bottom: ${rem(64)};
 

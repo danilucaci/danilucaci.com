@@ -65,6 +65,7 @@ export const H4 = styled.h4`
   font-style: normal;
 
   font-size: ${theme.fontSizes.h4s};
+  line-height: ${theme.fontSizes.h4};
 
   ${mediaMin.xs`
     font-size: ${theme.fontSizes.h4};
