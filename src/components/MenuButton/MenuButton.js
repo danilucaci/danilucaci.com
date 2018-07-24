@@ -22,10 +22,6 @@ const StyledMenuButton = styled.button`
   height: ${rem(40)};
   padding: ${rem(8)} ${rem(12)} ${rem(8)} ${rem(16)};
 
-  ${mediaMin.m`
-    margin-right: ${rem(16)};
-  `};
-
   ${mediaMin.s`
     display: none;
   `};
