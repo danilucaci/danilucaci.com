@@ -90,12 +90,14 @@ const Subhead = styled(Copy)`
 const ServicesH3 = H3.extend`
   font-size: ${theme.fontSizes.h2s};
   line-height: ${theme.lineHeights.h2s};
+  margin-top: ${rem(32)};
   margin-bottom: ${rem(16)};
 
   ${mediaMin.m`
     font-size: ${theme.fontSizes.h3s};
     line-height: ${theme.lineHeights.h3s};
 
+    margin-top: 0;
     margin-bottom: ${rem(40)};
   `};
 
@@ -153,7 +155,7 @@ const ServicesItem = styled.section`
 
   width: 100%;
   height: 100%;
-  margin-bottom: ${rem(24)};
+  margin-bottom: ${rem(56)};
 
   @media screen and (min-width: ${theme.breakpoints.m}) {
     width: calc(50% - ${theme.gutters.m});
@@ -167,11 +169,6 @@ const ServicesItem = styled.section`
 
 const ToolsWrapper = styled.div`
   display: block;
-  margin-top: ${rem(16)};
-
-  ${mediaMin.s`
-    margin-top: ${rem(24)};
-  `};
 `;
 
 const Tools = styled.div`
@@ -247,7 +244,7 @@ class Index extends Component {
               </Copy>
             </ServicesItem>
             <ToolsWrapper>
-              <ServicesH4>Tools I Use</ServicesH4>
+              <ServicesH4>My Toolkit</ServicesH4>
               <Tools>
                 <ToolsIcon size="48">
                   <use xlinkHref="#github" />
@@ -305,7 +302,7 @@ class Index extends Component {
               </Copy>
             </ServicesItem>
             <ToolsWrapper>
-              <ServicesH4>Tools I Use</ServicesH4>
+              <ServicesH4>My Toolkit</ServicesH4>
               <Tools>
                 <ToolsIcon size="48">
                   <use xlinkHref="#github" />
@@ -363,7 +360,7 @@ class Index extends Component {
               </Copy>
             </ServicesItem>
             <ToolsWrapper>
-              <ServicesH4>Tools I Use</ServicesH4>
+              <ServicesH4>My Toolkit</ServicesH4>
               <Tools>
                 <ToolsIcon size="48">
                   <use xlinkHref="#github" />
