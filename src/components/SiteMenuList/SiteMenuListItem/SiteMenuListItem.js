@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 import styled from "styled-components";
-import { theme, rem, mediaMin } from "../../../theme/globalStyles";
+import { theme, rem, mediaMin, mediaMax } from "../../../theme/globalStyles";
 
 const StyledSiteMenuListItem = styled.li`
   color: ${theme.colors.main600};
@@ -10,13 +10,18 @@ const StyledSiteMenuListItem = styled.li`
   list-style-type: none;
   text-align: center;
   width: 100%;
-  margin: 0 ${rem(2)};
+  margin: ${rem(24)} 0;
+
+  @media screen and (max-height: 32em) {
+    margin: ${rem(8)} 0;
+  }
 
   &:last-of-type {
     margin: 0;
   }
 
   ${mediaMin.s`
+    margin: 0 ${rem(2)};
     display: inline-block;
     width: auto;
     font-size: ${theme.fontSizes.m};
@@ -33,31 +38,25 @@ const StyledNavLink = styled(NavLink)`
   line-height: ${rem(32)};
   text-decoration: none;
   width: 100%;
-  height: 100%;
-  padding: ${rem(16)};
+  padding: ${rem(20)} ${rem(16)};
+
+  ${mediaMax.xxs`
+    padding: ${rem(16)} ${rem(16)};
+  `};
+
+  &:active,
+  &:focus {
+    outline: 2px dashed ${theme.colors.main600};
+  }
+
+  &:visited,
+  &:link {
+    color: ${theme.colors.dark800};
+  }
 
   &:hover {
     color: ${theme.colors.main600};
-  }
-
-  &.current-nav-item {
-    background-color: ${theme.colors.main600};
-    color: ${theme.colors.main100};
-
-    ${mediaMin.s`
-      background-color: ${theme.colors.gray100};
-      color: ${theme.colors.dark800};
-      border-bottom: 8px solid ${theme.colors.main600};
-      padding-bottom: ${rem(8)};
-    `};
-
-    ${mediaMin.m`
-      padding-bottom: ${rem(4)};
-    `};
-
-    &:hover {
-      color: ${theme.colors.main600};
-    }
+    cursor: pointer;
   }
 
   ${mediaMin.s`
@@ -66,9 +65,29 @@ const StyledNavLink = styled(NavLink)`
     font-size: ${theme.fontSizes.s};
     line-height: ${theme.lineHeights.s};
     padding: ${rem(12)} ${rem(16)} ${rem(12)} ${rem(16)};
-    width: auto;
-    height: auto;
+    margin-right: ${rem(2)};
   `};
+
+  &.current-nav-item {
+    background-color: ${theme.colors.main600};
+
+    &:hover {
+      color: ${theme.colors.main100};
+    }
+
+    color: ${theme.colors.main100};
+
+    ${mediaMin.s`
+      background-color: ${theme.colors.transparent};
+      color: ${theme.colors.dark800};
+      border-bottom: 8px solid ${theme.colors.main600};
+      padding-bottom: ${rem(4)};
+
+      &:hover {
+        color: ${theme.colors.main600};
+      }
+    `};
+  }
 `;
 
 const SiteMenuListItem = (props) => {

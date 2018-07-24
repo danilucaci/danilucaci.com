@@ -21,6 +21,7 @@ export const theme = {
     main300: "#0C85F0",
     main200: "#3DAEFF",
     main100: "#E6F2FF",
+    transparent: "rgba(255,255,255, 0.88)",
   },
   shadow: {
     default: "box-shadow: 0px 2px 8px 0px hsla(0, 0%, 60%, 0.2)",
@@ -82,9 +83,9 @@ export const theme = {
   },
   mainMargins: {
     top: {
-      s: "1rem",
-      m: "1.5rem",
-      xl: "1.5rem",
+      s: "1em",
+      m: "4.5em",
+      xl: "4.5em",
     },
     bottom: {
       s: "2rem",
@@ -97,8 +98,8 @@ export const theme = {
     content: "61.5em",
     blog: "46.5em",
   },
-  logoWidth: "105px",
-  logoHeight: "48px",
+  logoWidth: "6.5625em",
+  logoHeight: "3em",
   breakpoints: {
     xxs: "22.5em", //360
     xs: "32em", //512

@@ -23,9 +23,12 @@ const StyledSiteHeader = styled.header`
   `};
 
   ${mediaMin.m`
+    background-color: ${theme.colors.transparent};
     height: ${rem(48)};
     padding-top: 0;
     padding-bottom: 0;
+    position: fixed;
+    z-index: 10;
   `};
 `;
 

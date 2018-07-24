@@ -37,7 +37,7 @@ const StyledBlogBackground = styled.div`
       top: -5%;
       left: 0;
       width: 50%;
-      height: 36%;
+      height: 50%;
       transform: skewY(-11deg);
       z-index: -1;
     }
@@ -50,7 +50,7 @@ const StyledBlogBackground = styled.div`
       top: -5%;
       right: 0;
       width: 50%;
-      height: 36%;
+      height: 52%;
       transform: skewY(-11deg);
       z-index: -1;
     }
@@ -59,13 +59,13 @@ const StyledBlogBackground = styled.div`
   @media screen and (min-width: 130em) {
     &:before {
       top: -7%;
-      height: 38%;
+      height: 54%;
       transform: skewY(-10deg);
     }
 
     &:after {
       top: -8%;
-      height: 38%;
+      height: 54%;
       transform: skewY(-10deg);
     }
   }
@@ -73,7 +73,7 @@ const StyledBlogBackground = styled.div`
   @media screen and (min-width: 170em) {
     &:before {
       top: -10%;
-      height: 48%;
+      height: 52%;
       transform: skewY(-12deg);
     }
 

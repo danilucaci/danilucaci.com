@@ -106,15 +106,9 @@ class Collapsible extends Component {
 
     return (
       <StyledCollapsible split={this.props.split} onClick={this.showContent}>
-        {contentVisible ? (
-          <StyledIcon animate={contentVisible}>
-            <use xlinkHref="#up" />
-          </StyledIcon>
-        ) : (
-          <StyledIcon animate={contentVisible}>
-            <use xlinkHref="#down" />
-          </StyledIcon>
-        )}
+        <StyledIcon animate={contentVisible}>
+          <use xlinkHref="#down" />
+        </StyledIcon>
         <StyledCopy>{this.props.title}</StyledCopy>
         <CollapsibleContent showContent={contentVisible}>
           {this.props.children}

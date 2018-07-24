@@ -1,11 +1,12 @@
 import React from "react";
 
 import styled from "styled-components";
-import { rem, theme } from "../../theme/globalStyles";
+import { theme } from "../../theme/globalStyles";
 
 const StyledLogo = styled.svg`
   &:hover {
     fill: ${theme.colors.main600};
+    background-color: ${theme.colors.transparent};
   }
 `;
 

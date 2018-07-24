@@ -20,7 +20,7 @@ const StyledMenuButton = styled.button`
   margin-bottom: ${rem(4)};
 
   height: ${rem(40)};
-  padding: ${rem(8)} ${rem(12)} ${rem(8)} ${rem(16)};
+  padding: ${rem(6)} ${rem(12)} ${rem(10)} ${rem(16)};
 
   ${mediaMin.s`
     display: none;

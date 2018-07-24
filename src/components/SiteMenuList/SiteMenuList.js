@@ -9,10 +9,9 @@ const StyledSiteMenuList = styled.ul`
   display: block;
   text-align: center;
   overflow: hidden;
-  padding-top: ${rem(40)};
 
   transition: transform ease-in-out 0.3s;
-  will-change: transform;
+  will-change: transform, visibility, opacity, width;
 
   ${(props) =>
     props.showNav
@@ -20,12 +19,13 @@ const StyledSiteMenuList = styled.ul`
           transform: translate3d(0, 0, 0) scaleX(1);
           visibility: visible;
           opacity: 1;
+          max-width: 1000em;
         `
       : css`
           transform: translate3d(110%, 0, 0) scaleX(0);
           visibility: hidden;
           opacity: 0;
-          position: static;
+          max-width: 0;
         `};
 
   height: 100%;
@@ -38,8 +38,8 @@ const StyledSiteMenuList = styled.ul`
 
   ${mediaMin.s`
     float: right;
-    
-    padding: 0;
+    background-color: ${theme.colors.transparent};
+    padding-right: ${rem(2)};
     margin-top: 0;
     margin-bottom: 0;
     margin-left: auto;
@@ -48,7 +48,9 @@ const StyledSiteMenuList = styled.ul`
     height: auto;
 
     position: static;
-
+    visibility: visible;
+    max-width: 2000em;
+    opacity: 1;
     transform: none;
     transition: none;
   `};

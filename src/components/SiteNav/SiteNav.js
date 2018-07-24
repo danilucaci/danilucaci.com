@@ -18,6 +18,10 @@ const StyledNav = styled.nav`
   max-width: ${theme.contain.content};
   margin-left: auto;
   margin-right: auto;
+
+  ${mediaMin.m`
+    height: ${rem(48)};
+  `};
 `;
 
 const SiteNav = (props) => {
