@@ -9,10 +9,6 @@ import { theme, mediaMin, rem } from "../../theme/globalStyles";
 const Wrapper = styled.div`
   margin-top: ${rem(8)};
   margin-bottom: ${rem(16)};
-
-  ${mediaMin.s`
-    margin-top: ${rem(16)};
-  `};
 `;
 
 const ArticleInfo = (props) => {

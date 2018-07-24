@@ -8,11 +8,17 @@ import { Icon } from "../Icon/Icon";
 import { CopyBold } from "../Copy/Copy";
 
 const StyledMenuButton = styled.button`
-  display: block;
-  float: right;
   border: 2px solid ${theme.colors.main600};
   background-color: ${theme.colors.gray100};
   color: ${theme.colors.main600};
+
+  font-family: ${theme.fonts.bodyBold};
+  font-weight: 700;
+  font-size: ${theme.fontSizes.s};
+  line-height: ${theme.lineHeights.s};
+
+  display: block;
+  float: right;
 
   margin-left: auto;
   margin-right: 0;
@@ -53,8 +59,7 @@ const MenuButton = (props) => {
       aria-expanded="false"
       onClick={props.onClick}
     >
-      <StyledLabel small>Menu</StyledLabel>
-
+      Menu
       {showNav ? (
         <StyledIcon main animate={!showNav} aria-hidden="true">
           <use xlinkHref="#close" />

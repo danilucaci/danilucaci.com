@@ -14,11 +14,11 @@ import { DefaultLink } from "../Link/Link";
 const StyledArticle = styled.article`
   background-color: ${theme.colors.gray100};
   ${theme.shadow.default};
-  padding: ${rem(16)} ${rem(16)} ${rem(8)};
+  padding: ${rem(16)} ${rem(24)} ${rem(16)};
   margin-bottom: ${theme.gutters.m};
 
   ${mediaMin.s`
-    padding: ${rem(20)} ${rem(24)} ${rem(8)};
+    padding: ${rem(24)} ${rem(40)} ${rem(16)};
   `};
 
   position: relative;
@@ -57,14 +57,25 @@ const ContinueLink = styled(DefaultLink)`
 
 const CategoryLink = StyledLink.extend`
   background-color: ${theme.colors.main600};
-  color: ${theme.colors.gray100};
+  color: ${theme.colors.gray100} !important;
   display: block;
   margin-bottom: ${rem(16)};
   text-transform: capitalize;
   z-index: 5;
-  margin-top: -${rem(20)};
+  margin-top: -${rem(16)};
   margin-right: -${rem(24)};
   margin-left: -${rem(24)};
+
+  ${mediaMin.s`
+    margin-top: -${rem(24)};
+    margin-right: -${rem(40)};
+    margin-left: -${rem(40)};
+  `};
+
+  &:hover {
+    background-color: ${theme.colors.main600};
+    color: ${theme.colors.gray100};
+  }
 `;
 
 const CategoryLinkLabel = styled.span`
@@ -74,8 +85,13 @@ const CategoryLinkLabel = styled.span`
   font-family: ${theme.fonts.bodyRegular};
   font-weight: 400;
   text-decoration: none !important;
-  margin-right: ${rem(8)};
-  margin-left: ${rem(24)};
+  margin-right: ${rem(16)};
+  margin-left: ${rem(40)};
+
+  &:hover {
+    background-color: ${theme.colors.main600};
+    color: ${theme.colors.gray100};
+  }
 `;
 
 const Article = (props) => {
@@ -85,7 +101,7 @@ const Article = (props) => {
     category = (
       <CategoryLink to={"/categories/" + props.category}>
         <CategoryLinkLabel>Part of:</CategoryLinkLabel>
-        {props.category}
+        {props.category.split("-").join(" ")}
       </CategoryLink>
     );
   }
