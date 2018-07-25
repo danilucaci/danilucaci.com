@@ -1,27 +1,44 @@
 module.exports = {
-  siteTitle: "danilucaci.com UX/UI Designer", // Site title.
-  servicesTitle: "My Services danilucaci.com UX/UI Designer", // Site title.
-  blogTitle: "Blog danilucaci.com UX/UI Designer", // Site title.
-  aboutTitle: "About Me danilucaci.com UX/UI Designer", // Site title.
-  contactTitle: "Contact Me danilucaci.com UX/UI Designer", // Site title.
+  siteTitle: "Dani Lucaci UX/UI Designer and Front–End Developer", // Site title.
   siteTitleShort: "danilucaci.com", // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
-  siteTitleAlt: "danilucaci.com Personal Blog", // Alternative site title for SEO.
-  siteLogo: "/svg/logo.svg", // Logo used for SEO and manifest.
+  siteTitleAlt: "Dani Lucaci Blog", // Alternative site title for SEO.
+  siteLogo: "svg/logo.svg", // Logo used for SEO and manifest.
   siteUrl: "https://www.danilucaci.com", // Domain of your website without pathPrefix.
-  pathPrefix: "/blog", // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
-  siteDescription: "danilucaci.com Personal Blog.", // Website description used for RSS feeds/meta description tag.
+  pathPrefix: "/", // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
+  siteDescription:
+    "My personal blog where I write about UX/UI Deisgn and Front–End Development in general.", // Website description used for RSS feeds/meta description tag.
   siteRss: "/rss.xml", // Path to the RSS file.
   siteFBAppID: "1825356251115265", // FB Application ID for using app insights
   googleAnalyticsID: "UA-47311644-5", // GA tracking ID.
-  disqusShortname: "https-vagr9k-github-io-gatsby-advanced-starter", // Disqus shortname.
+  disqusShortname: "https-danilucaci.com", // Disqus shortname.
   postDefaultCategoryID: "Tech", // Default category for posts.
   dateFromFormat: "YYYY-MM-DD", // Date format used in the frontmatter.
   dateFormat: "DD/MM/YYYY", // Date format for display.
-  userName: "Dani Lucaci", // Username to display in the author segment.
+  userName: "danilucaci", // Username to display in the author segment.
   userTwitter: "@danilucaci", // Optionally renders "Follow Me" in the UserInfo segment.
   userLocation: "North Pole, Earth", // User location to display in the author segment.
   userAvatar: "https://api.adorable.io/avatars/150/test.png", // User avatar to display in the author segment.
-  userDescription: "I am a UX/UI Designer based in Barcelona.", // User description to display in the author segment.
-  themeColor: "#141C29",
-  backgroundColor: "#e0e0e0",
+  userDescription:
+    "Hi! I’m Dani. UX/UI Designer and Front–End Developer. I prototype, design and develop interfaces that have a strong focus on accesibility, performance and user interaction. I use the latest front-end techniques and design methods to create scalable and easy to use experiences.", // User description to display in the author segment.
+  // Links to social profiles/projects you want to display in the author segment/navigation bar.
+  userLinks: [
+    {
+      label: "GitHub",
+      url: "https://github.com/danilucaci/danilucaci",
+      iconClassName: "fa fa-github",
+    },
+    {
+      label: "Twitter",
+      url: "https://twitter.com/danilucaci",
+      iconClassName: "fa fa-twitter",
+    },
+    {
+      label: "Email",
+      url: "mailto:danilucaci@gmail.com",
+      iconClassName: "fa fa-envelope",
+    },
+  ],
+  copyright: "&copy;2018 Copyright Dani Lucaci. All rights reserved.", // Copyright string for the footer of the website and RSS feed.
+  themeColor: "#141C29", // Used for setting manifest and progress theme colors.
+  backgroundColor: "#E8E9EB", // Used for setting manifest background color.
 };

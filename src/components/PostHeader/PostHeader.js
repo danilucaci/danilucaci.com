@@ -2,10 +2,12 @@ import React from "react";
 
 import styled, { css } from "styled-components";
 import { theme, rem, mediaMin } from "../../theme/globalStyles";
+import config from "../../../data/SiteConfig";
 import Tags from "../Tags/Tags";
 import ArticleInfo from "../ArticleInfo/ArticleInfo";
 import { H1, H2, H3, H4 } from "../Headings/Headings";
 import { Copy } from "../Copy/Copy";
+import UserInfo from "../UserInfo/UserInfo";
 
 const StyledPostHeader = styled.header``;
 
@@ -52,6 +54,7 @@ const PostHeader = (props) => {
           <StyledCopy key={paragraph}>{paragraph}</StyledCopy>
         ))}
       </StyledIntro>
+      <UserInfo config={config} />
     </StyledPostHeader>
   );
 };

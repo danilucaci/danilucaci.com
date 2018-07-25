@@ -1,5 +1,7 @@
 {
+  "name": "danilucaci.com",
   "description": "danilucaci.com Personal Blog",
+  "private": true,
   "author": "Dani Lucaci <danilucaci@gmail.com>",
   "license": "MIT",
   "keywords": [
