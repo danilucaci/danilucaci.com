@@ -21,7 +21,7 @@ export const theme = {
     main300: "#0C85F0",
     main200: "#3DAEFF",
     main100: "#E6F2FF",
-    transparent: "rgba(255,255,255, 0.88)",
+    transparent: "rgba(255,255,255, 0.96)",
   },
   shadow: {
     default: "box-shadow: 0px 2px 8px 0px hsla(0, 0%, 60%, 0.2)",

@@ -12,10 +12,6 @@ export const Copy = styled.p`
 
   line-height: ${(props) =>
     props.small ? props.theme.lineHeights.s : props.theme.lineHeights.m};
-
-  & + & {
-    margin: ${rem(28)};
-  }
 `;
 
 export const CopyBold = Copy.extend`

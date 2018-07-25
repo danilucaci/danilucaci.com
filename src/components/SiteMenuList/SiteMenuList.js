@@ -10,22 +10,21 @@ const StyledSiteMenuList = styled.ul`
   text-align: center;
   overflow: hidden;
 
-  transition: transform ease-in-out 0.3s;
-  will-change: transform, visibility, opacity, width;
+  transition: opacity linear 0.2s;
+  will-change: max-height, opacity;
 
   ${(props) =>
     props.showNav
       ? css`
-          transform: translate3d(0, 0, 0) scaleX(1);
-          visibility: visible;
+          max-height: 100em;
+          pointer-events: auto;
+          z-index: 10;
           opacity: 1;
-          max-width: 1000em;
         `
       : css`
-          transform: translate3d(110%, 0, 0) scaleX(0);
-          visibility: hidden;
+          max-height: 0em;
+          pointer-events: none;
           opacity: 0;
-          max-width: 0;
         `};
 
   height: 100%;
@@ -33,8 +32,6 @@ const StyledSiteMenuList = styled.ul`
   position: absolute;
   left: 0;
   right: 0;
-
-  z-index: 10;
 
   ${mediaMin.s`
     float: right;
@@ -49,20 +46,28 @@ const StyledSiteMenuList = styled.ul`
 
     position: static;
     visibility: visible;
-    max-width: 2000em;
     opacity: 1;
     transform: none;
     transition: none;
+    z-index: 10;
   `};
 `;
 
 const SiteMenuList = (props) => {
   return (
     <StyledSiteMenuList showNav={props.showNav} role="menu">
-      <SiteMenuListItem to="/services" label="Services" />
-      <SiteMenuListItem to="/blog" label="Blog" />
-      <SiteMenuListItem to="/about-me" label="About Me" />
-      <SiteMenuListItem to="/contact" label="Contact" />
+      <SiteMenuListItem
+        showNav={props.showNav}
+        to="/services"
+        label="Services"
+      />
+      <SiteMenuListItem showNav={props.showNav} to="/blog" label="Blog" />
+      <SiteMenuListItem
+        showNav={props.showNav}
+        to="/about-me"
+        label="About Me"
+      />
+      <SiteMenuListItem showNav={props.showNav} to="/contact" label="Contact" />
     </StyledSiteMenuList>
   );
 };

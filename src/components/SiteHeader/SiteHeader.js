@@ -30,6 +30,8 @@ const StyledSiteHeader = styled.header`
     position: fixed;
     z-index: 10;
   `};
+
+  clear: both;
 `;
 
 class SiteHeader extends Component {

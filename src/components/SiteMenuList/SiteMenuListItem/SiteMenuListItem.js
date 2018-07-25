@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme, rem, mediaMin, mediaMax } from "../../../theme/globalStyles";
 
 const StyledSiteMenuListItem = styled.li`
@@ -16,6 +16,23 @@ const StyledSiteMenuListItem = styled.li`
     margin: ${rem(8)} 0;
   }
 
+  transition-delay: 0.4s;
+  transition: max-height, transform ease-out 0.2s;
+  will-change: max-height;
+
+  ${(props) =>
+    props.showNav
+      ? css`
+          max-height: 100em;
+          opacity: 1;
+          transform: translateY(0);
+        `
+      : css`
+          max-height: 0em;
+          opacity: 0;
+          transform: translateY(-40%);
+        `};
+
   &:last-of-type {
     margin: 0;
   }
@@ -24,6 +41,9 @@ const StyledSiteMenuListItem = styled.li`
     margin: 0 ${rem(2)};
     display: inline-block;
     width: auto;
+    max-height: 100em;
+    opacity: 1;
+    transform: none;
     font-size: ${theme.fontSizes.m};
     line-height: ${theme.fontSizes.m};
   `};
@@ -92,9 +112,12 @@ const StyledNavLink = styled(NavLink)`
 
 const SiteMenuListItem = (props) => {
   return (
-    <StyledSiteMenuListItem role="menuitem" tabindex="-1">
+    <StyledSiteMenuListItem
+      role="menuitem"
+      tabindex="-1"
+      showNav={props.showNav}
+    >
       <StyledNavLink
-        exact={true}
         to={props.to}
         activeClassName="current-nav-item"
         aria-current="page"
