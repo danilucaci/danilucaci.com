@@ -102,7 +102,6 @@ class Collapsible extends Component {
 
   render() {
     const contentVisible = this.state.contentVisible;
-    console.log(contentVisible);
 
     return (
       <StyledCollapsible split={this.props.split} onClick={this.showContent}>

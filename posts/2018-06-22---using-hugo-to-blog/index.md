@@ -1,8 +1,8 @@
 ---
-title: "Upgrading from Hugo to Gatsby.js"
-description: "This blog post is about upgrading from Hugo to Gatsby.js"
-date: "24/07/2018"
-category: "build-a-blog-with-gatsby"
+title: "Using Hugo to blog"
+description: "proba"
+date: "2018/06/22"
+category: 
 intro: "Markdown parsing in Gatsby is done with gatsby-transformer-remark, which uses the excellent remark under the hood.
 Alongside remark we also use gatsby-remark-smartypants, which provides smart punctuation through retext-smartypants."
 snippet: "Note how all headlines below show an anchor link when you hover them?

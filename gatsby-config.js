@@ -29,6 +29,35 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-paginate`,
+      options: {
+        sources: [
+          {
+            path: `/blog`,
+            pageSize: 5,
+            template: `${__dirname}/src/pages/blog.js`,
+            serialize: (results) => results.allMarkdownRemark.edges,
+            query: `{
+              allMarkdownRemark {
+                edges {
+                  node {
+                    html
+                    id
+                    timeToRead
+                    frontmatter {
+                      date
+                      tags
+                      title
+                    }
+                  }
+                }
+              }
+            }`,
+          },
+        ],
+      },
+    },
+    {
       resolve: "gatsby-plugin-styled-components",
       options: {
         fileName: false,

@@ -13,6 +13,7 @@ import config from "../../data/SiteConfig";
 import { Copy } from "../components/Copy/Copy";
 import Tags from "../components/Tags/Tags";
 import Collapsible from "../components/Collapsible/Collapsible";
+import Pagination from "../components/Pagination/Pagination";
 
 const Wrapper = styled.div`
   max-width: ${theme.contain.content};
@@ -101,6 +102,13 @@ const BlogHeader = styled.header`
 
 class BlogPage extends Component {
   render() {
+    const { page, pagesSum, prevPath, nextPath } = this.props.pageContext;
+
+    console.log("page: " + page);
+    console.log("pagesSum: " + pagesSum);
+    console.log("prevPath: " + prevPath);
+    console.log("nextPath: " + nextPath);
+
     const postEdges = this.props.data.allMarkdownRemark.edges;
     // const tagsTotalCount = this.props.data.allMarkdownRemark.group;
     let tagsList = [];
@@ -136,6 +144,12 @@ class BlogPage extends Component {
             </Collapsible>
           </BlogHeader>
           <PostListing postEdges={postEdges} />
+          <Pagination
+            page={page}
+            pagesSum={pagesSum}
+            prevPath={prevPath}
+            nextPath={nextPath}
+          />
           {/* <PostListing postEdges={postEdges} tagsTotalCount={tagsTotalCount} /> */}
         </Wrapper>
       </Layout>
@@ -148,7 +162,7 @@ export default BlogPage;
 export const pageQuery = graphql`
   query IndexQuery {
     allMarkdownRemark(
-      limit: 2000
+      limit: 5
       sort: { fields: [fields___date], order: DESC }
     ) {
       group(field: frontmatter___tags) {
