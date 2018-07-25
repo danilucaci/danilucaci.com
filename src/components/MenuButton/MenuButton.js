@@ -5,8 +5,6 @@ import { theme, rem, mediaMin } from "../../theme/globalStyles";
 
 import { Icon } from "../Icon/Icon";
 
-import { CopyBold } from "../Copy/Copy";
-
 const StyledMenuButton = styled.button`
   border: 2px solid ${theme.colors.main600};
   background-color: ${theme.colors.gray100};
@@ -33,11 +31,6 @@ const StyledMenuButton = styled.button`
   `};
 `;
 
-const StyledLabel = CopyBold.extend`
-  color: ${theme.colors.main600};
-  display: inline-block;
-`;
-
 const StyledIcon = Icon.extend`
   float: right;
   transition: transform 0.2s ease;
@@ -60,15 +53,9 @@ const MenuButton = (props) => {
       onClick={props.onClick}
     >
       Menu
-      {showNav ? (
-        <StyledIcon main animate={!showNav} aria-hidden="true">
-          <use xlinkHref="#close" />
-        </StyledIcon>
-      ) : (
-        <StyledIcon main animate={!showNav} aria-hidden="true">
-          <use xlinkHref="#hamburger" />
-        </StyledIcon>
-      )}
+      <StyledIcon main animate={!showNav} aria-hidden="true">
+        {showNav ? <use xlinkHref="#close" /> : <use xlinkHref="#hamburger" />}
+      </StyledIcon>
     </StyledMenuButton>
   );
 };

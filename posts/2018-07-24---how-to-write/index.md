@@ -13,7 +13,7 @@ tags:
 posted: false
 ---
 
-##Learn how to write a blog post
+##Learn how to write a blog posts
 
 If you tried A/B testing earlier, understand the importance of optimization, and want to increase your website conversion, continue reading till the end.
 

@@ -37,15 +37,12 @@ const StyledSiteMenuList = styled.ul`
     float: right;
     background-color: ${theme.colors.transparent};
     padding-right: ${rem(2)};
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: auto;
-    margin-right: 0;
+    margin: 0 0 0 auto;
     width: auto;
     height: auto;
-
     position: static;
-    visibility: visible;
+    max-height: 100em;
+    pointer-events: auto;
     opacity: 1;
     transform: none;
     transition: none;

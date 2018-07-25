@@ -39,7 +39,7 @@ module.exports = {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "posts",
-        path: `${__dirname}/content/`,
+        path: `${__dirname}/posts/`,
       },
     },
     {
@@ -108,7 +108,7 @@ module.exports = {
         setup(ref) {
           const ret = ref.query.site.siteMetadata.rssMetadata;
           ret.allMarkdownRemark = ref.query.allMarkdownRemark;
-          ret.generator = "GatsbyJS Material Starter";
+          ret.generator = "danilucaci.com";
           return ret;
         },
         query: `

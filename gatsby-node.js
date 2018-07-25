@@ -18,12 +18,14 @@ function addSiblingNodes(createNodeField) {
       return 0;
     }
   );
+
   for (let i = 0; i < postNodes.length; i += 1) {
     const nextID = i + 1 < postNodes.length ? i + 1 : 0;
     const prevID = i - 1 > 0 ? i - 1 : postNodes.length - 1;
     const currNode = postNodes[i];
     const nextNode = postNodes[nextID];
     const prevNode = postNodes[prevID];
+
     createNodeField({
       node: currNode,
       name: "nextTitle",
@@ -57,7 +59,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       Object.prototype.hasOwnProperty.call(node, "frontmatter") &&
       Object.prototype.hasOwnProperty.call(node.frontmatter, "title")
     ) {
-      slug = `/${_.kebabCase(node.frontmatter.title)}`;
+      slug = `/blog/${_.kebabCase(node.frontmatter.title)}`;
     } else if (parsedFilePath.name !== "index" && parsedFilePath.dir !== "") {
       slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
     } else if (parsedFilePath.dir === "") {
@@ -128,6 +130,7 @@ exports.createPages = ({ graphql, actions }) => {
 
         const tagSet = new Set();
         const categorySet = new Set();
+
         result.data.allMarkdownRemark.edges.forEach((edge) => {
           if (edge.node.frontmatter.tags) {
             edge.node.frontmatter.tags.forEach((tag) => {
