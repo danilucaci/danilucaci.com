@@ -38,16 +38,20 @@ module.exports = {
             template: `${__dirname}/src/pages/blog.js`,
             serialize: (results) => results.allMarkdownRemark.edges,
             query: `{
-              allMarkdownRemark {
+              allMarkdownRemark(
+                limit: 2000
+                sort: { fields: [fields___date], order: DESC }
+                filter: { frontmatter: { posted: { eq: true } } }
+              ) {
                 edges {
                   node {
-                    html
-                    id
-                    timeToRead
+                    fields {
+                      slug
+                    }
                     frontmatter {
-                      date
-                      tags
                       title
+                      date
+                      posted
                     }
                   }
                 }

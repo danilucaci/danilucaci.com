@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
-import Layout from "../components/Layout";
+import PropTypes from "prop-types";
 
 import styled, { css } from "styled-components";
 import { theme, mediaMin, rem } from "../theme/globalStyles";
 
+import Layout from "../components/Layout";
 import PostListing from "../components/PostListing/PostListing";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
@@ -38,7 +39,7 @@ const StyledBlogBackground = styled.div`
       top: -5em;
       left: 0;
       width: 50%;
-      height: 48em;
+      height: 47em;
       
       transform: skewY(-12deg);
       z-index: -1;
@@ -60,13 +61,11 @@ const StyledBlogBackground = styled.div`
 
   @media screen and (min-width: 130em) {
     &:before {
-      background-color: blue;
       height: 52em;
       transform: skewY(-12deg);
     }
 
     &:after {
-      background-color: blue;
       height: 48em;
       transform: skewY(-13deg);
     }
@@ -75,14 +74,12 @@ const StyledBlogBackground = styled.div`
   @media screen and (min-width: 170em) {
     &:before {
       top: -10em;
-      background-color: red;
       height: 55em;
       transform: skewY(-12deg);
     }
 
     &:after {
       top: -10em;
-      background-color: red;
       height: 51em;
       transform: skewY(-13deg);
     }
@@ -106,22 +103,26 @@ const BlogHeader = styled.header`
 class BlogPage extends Component {
   render() {
     const { page, pagesSum, prevPath, nextPath } = this.props.pageContext;
-
-    console.log("page: " + page);
-    console.log("pagesSum: " + pagesSum);
-    console.log("prevPath: " + prevPath);
-    console.log("nextPath: " + nextPath);
-
+    console.log(this.props.pageContext);
     const postEdges = this.props.data.allMarkdownRemark.edges;
     // const tagsTotalCount = this.props.data.allMarkdownRemark.group;
+
     let tagsList = [];
     let allTags = [];
+
+    const totalAmountOfPosts = this.props.data.allMarkdownRemark.totalCount;
+    console.log(`Total Pagini: ${totalAmountOfPosts}`);
 
     postEdges.forEach((postEdge) => {
       tagsList.push(...postEdge.node.frontmatter.tags);
     });
 
     allTags = Array.from(new Set(tagsList));
+
+    console.log("page: " + page);
+    console.log("pagesSum: " + pagesSum);
+    console.log("prevPath: " + prevPath);
+    console.log("nextPath: " + nextPath);
 
     return (
       <Layout location={this.props.location}>
@@ -162,12 +163,19 @@ class BlogPage extends Component {
 
 export default BlogPage;
 
+BlogPage.propTypes = {
+  pageContext: PropTypes.object,
+  data: PropTypes.object,
+};
+
 export const pageQuery = graphql`
   query IndexQuery {
     allMarkdownRemark(
       limit: 5
       sort: { fields: [fields___date], order: DESC }
+      filter: { frontmatter: { posted: { eq: true } } }
     ) {
+      totalCount
       group(field: frontmatter___tags) {
         fieldValue
         totalCount
@@ -184,6 +192,7 @@ export const pageQuery = graphql`
             tags
             category
             date
+            posted
           }
         }
       }

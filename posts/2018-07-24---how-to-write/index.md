@@ -10,7 +10,7 @@ snippet: "If you tried A/B testing earlier, understand the importance of optimiz
 tags:
     - css3
     - react
-posted: false
+posted: true
 ---
 
 ##Learn how to write a blog posts
