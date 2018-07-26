@@ -87,13 +87,17 @@ const Pagination = (props) => {
   for (var current = 1; current <= pagesSum; current++) {
     if (current === page) {
       pagination.push(
-        <PaginationItem key={current} to={`/blog/${current}`} current={page}>
+        <PaginationItem
+          key={current}
+          to={`/blog/page/${current}`}
+          current={page}
+        >
           {current}
         </PaginationItem>
       );
     } else {
       pagination.push(
-        <PaginationItem key={current} to={`/blog/${current}`}>
+        <PaginationItem key={current} to={`/blog/page/${current}`}>
           {current}
         </PaginationItem>
       );
