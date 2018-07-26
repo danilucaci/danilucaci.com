@@ -102,8 +102,13 @@ const BlogHeader = styled.header`
 
 class BlogPage extends Component {
   render() {
-    const { page, pagesSum, prevPath, nextPath } = this.props.pageContext;
-    console.log(this.props.pageContext);
+    const {
+      currentPage,
+      totalPages,
+      prevPath,
+      nextPath,
+    } = this.props.pageContext;
+
     const postEdges = this.props.data.allMarkdownRemark.edges;
     // const tagsTotalCount = this.props.data.allMarkdownRemark.group;
 
@@ -119,8 +124,8 @@ class BlogPage extends Component {
 
     allTags = Array.from(new Set(tagsList));
 
-    console.log("page: " + page);
-    console.log("pagesSum: " + pagesSum);
+    console.log("currentPage: " + currentPage);
+    console.log("totalPages: " + totalPages);
     console.log("prevPath: " + prevPath);
     console.log("nextPath: " + nextPath);
 
@@ -149,8 +154,8 @@ class BlogPage extends Component {
           </BlogHeader>
           <PostListing postEdges={postEdges} />
           <Pagination
-            page={page}
-            pagesSum={pagesSum}
+            currentPage={currentPage}
+            totalPages={totalPages}
             prevPath={prevPath}
             nextPath={nextPath}
           />

@@ -1,5 +1,5 @@
 ---
-title: "Upgrading Part"
+title: "Post 10"
 description: "This blog post is about writing a blog post with Gatsby.js"
 date: "2018/07/24"
 category: ""

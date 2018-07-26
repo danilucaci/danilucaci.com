@@ -1,7 +1,7 @@
 ---
-title: "Upgrading Part Eight"
+title: "Post 6"
 description: "This blog post is about upgrading from Hugo to Gatsby.js"
-date: "2018/07/12"
+date: "2018/07/05"
 category: 
 intro: "Markdown parsing in Gatsby is done with gatsby-transformer-remark, which uses the excellent remark under the hood.
 Alongside remark we also use gatsby-remark-smartypants, which provides smart punctuation through retext-smartypants."

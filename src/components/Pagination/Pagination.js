@@ -80,27 +80,35 @@ const DisabledLabel = styled(Copy)`
 `;
 
 const Pagination = (props) => {
-  const { page, pagesSum, prevPath, nextPath } = props;
+  const { currentPage, totalPages, prevPath, nextPath } = props;
 
   let pagination = [];
 
-  for (var current = 1; current <= pagesSum; current++) {
-    if (current === page) {
+  for (var current = 1; current <= totalPages; current++) {
+    if (current === currentPage) {
       pagination.push(
         <PaginationItem
           key={current}
           to={`/blog/page/${current}`}
-          current={page}
+          current={currentPage}
         >
           {current}
         </PaginationItem>
       );
     } else {
-      pagination.push(
-        <PaginationItem key={current} to={`/blog/page/${current}`}>
-          {current}
-        </PaginationItem>
-      );
+      if (current === 1) {
+        pagination.push(
+          <PaginationItem key={current} to={`/blog`}>
+            {current}
+          </PaginationItem>
+        );
+      } else {
+        pagination.push(
+          <PaginationItem key={current} to={`/blog/page/${current}`}>
+            {current}
+          </PaginationItem>
+        );
+      }
     }
   }
 
