@@ -29,40 +29,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-paginate`,
-      options: {
-        sources: [
-          {
-            path: `/blog/page`,
-            pageSize: 5,
-            template: `${__dirname}/src/pages/blog.js`,
-            serialize: (results) => results.allMarkdownRemark.edges,
-            query: `{
-              allMarkdownRemark(
-                limit: 2000
-                skip: 5
-                sort: { fields: [fields___date], order: DESC }
-                filter: { frontmatter: { posted: { eq: true } } }
-              ) {
-                edges {
-                  node {
-                    fields {
-                      slug
-                    }
-                    frontmatter {
-                      title
-                      date
-                      posted
-                    }
-                  }
-                }
-              }
-            }`,
-          },
-        ],
-      },
-    },
-    {
       resolve: "gatsby-plugin-styled-components",
       options: {
         fileName: false,

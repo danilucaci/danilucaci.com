@@ -176,3 +176,81 @@ exports.createPages = ({ graphql, actions }) => {
     );
   });
 };
+
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions;
+
+  return new Promise((resolve, reject) => {
+    resolve(
+      graphql(
+        `
+          {
+            allMarkdownRemark(
+              limit: 2000
+              sort: { fields: [fields___date], order: DESC }
+              filter: { frontmatter: { posted: { eq: true } } }
+            ) {
+              totalCount
+              edges {
+                node {
+                  fields {
+                    slug
+                  }
+                  frontmatter {
+                    title
+                    date
+                    posted
+                  }
+                }
+              }
+            }
+          }
+        `
+      ).then((result) => {
+        if (result.errors) {
+          console.log(result.errors);
+          reject(result.errors);
+        }
+
+        const totalPosts = result.data.allMarkdownRemark.totalCount;
+
+        const blogTemplate = path.resolve("src/pages/blog.js");
+
+        const postsPerPage = 5;
+        const totalPages = Math.ceil(totalPosts / postsPerPage);
+
+        for (let currentPage = 1; currentPage <= totalPages; currentPage++) {
+          if (currentPage === 1) {
+            createPage({
+              path: `/blog`,
+              component: blogTemplate,
+              context: {
+                currentPage,
+                totalPages,
+                prevPath: null,
+                nextPath: `/blog/page/2`,
+              },
+            });
+          } else {
+            createPage({
+              path: `/blog/page/${currentPage}`,
+              component: blogTemplate,
+              context: {
+                currentPage,
+                totalPages,
+                prevPath:
+                  currentPage - 1 > 1
+                    ? `/blog/page/${currentPage - 1}`
+                    : "/blog/",
+                nextPath:
+                  currentPage + 1 <= totalPages
+                    ? `/blog/page/${currentPage + 1}`
+                    : null,
+              },
+            });
+          }
+        }
+      })
+    );
+  });
+};
