@@ -35,11 +35,12 @@ const StyledBlogBackground = styled.div`
       background-color: ${theme.colors.gray300};
       display: block;
       position: absolute;
-      top: -5%;
+      top: -5em;
       left: 0;
       width: 50%;
-      height: 50%;
-      transform: skewY(-11deg);
+      height: 48em;
+      
+      transform: skewY(-12deg);
       z-index: -1;
     }
 
@@ -48,40 +49,42 @@ const StyledBlogBackground = styled.div`
       background-color: ${theme.colors.gray300};
       display: block;
       position: absolute;
-      top: -5%;
+      top: -5em;
       right: 0;
       width: 50%;
-      height: 52%;
-      transform: skewY(-11deg);
+      height: 50em;
+      transform: skewY(-13deg);
       z-index: -1;
     }
   `};
 
   @media screen and (min-width: 130em) {
     &:before {
-      top: -7%;
-      height: 54%;
-      transform: skewY(-10deg);
+      background-color: blue;
+      height: 52em;
+      transform: skewY(-12deg);
     }
 
     &:after {
-      top: -8%;
-      height: 54%;
-      transform: skewY(-10deg);
+      background-color: blue;
+      height: 48em;
+      transform: skewY(-13deg);
     }
   }
 
   @media screen and (min-width: 170em) {
     &:before {
-      top: -10%;
-      height: 52%;
+      top: -10em;
+      background-color: red;
+      height: 55em;
       transform: skewY(-12deg);
     }
 
     &:after {
-      top: -10%;
-      height: 40%;
-      transform: skewY(-12deg);
+      top: -10em;
+      background-color: red;
+      height: 51em;
+      transform: skewY(-13deg);
     }
   }
 `;
