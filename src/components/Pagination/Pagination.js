@@ -86,19 +86,27 @@ const Pagination = (props) => {
 
   for (var current = 1; current <= totalPages; current++) {
     if (current === currentPage) {
-      pagination.push(
-        <PaginationItem
-          key={current}
-          to={`/blog/page/${current}`}
-          current={currentPage}
-        >
-          {current}
-        </PaginationItem>
-      );
+      if (current === 1) {
+        pagination.push(
+          <PaginationItem key={current} to={`/blog/`} current={currentPage}>
+            {current}
+          </PaginationItem>
+        );
+      } else {
+        pagination.push(
+          <PaginationItem
+            key={current}
+            to={`/blog/page/${current}`}
+            current={currentPage}
+          >
+            {current}
+          </PaginationItem>
+        );
+      }
     } else {
       if (current === 1) {
         pagination.push(
-          <PaginationItem key={current} to={`/blog`}>
+          <PaginationItem key={current} to={`/blog/`}>
             {current}
           </PaginationItem>
         );

@@ -107,27 +107,33 @@ class BlogPage extends Component {
       totalPages,
       prevPath,
       nextPath,
+      postEdges,
+      totalPosts,
     } = this.props.pageContext;
 
-    const postEdges = this.props.data.allMarkdownRemark.edges;
+    // const postEdges = this.props.data.allMarkdownRemark.edges;
     // const tagsTotalCount = this.props.data.allMarkdownRemark.group;
 
     let tagsList = [];
     let allTags = [];
 
-    const totalAmountOfPosts = this.props.data.allMarkdownRemark.totalCount;
-    console.log(`Total Pagini: ${totalAmountOfPosts}`);
+    // const totalAmountOfPosts = this.props.data.allMarkdownRemark.totalCount;
+    console.log(`totalPosts: ${totalPosts}`);
 
-    postEdges.forEach((postEdge) => {
-      tagsList.push(...postEdge.node.frontmatter.tags);
+    postEdges.forEach((post) => {
+      console.log(post);
     });
-
-    allTags = Array.from(new Set(tagsList));
 
     console.log("currentPage: " + currentPage);
     console.log("totalPages: " + totalPages);
     console.log("prevPath: " + prevPath);
     console.log("nextPath: " + nextPath);
+
+    postEdges.forEach((postEdge) => {
+      tagsList.push(...postEdge.frontmatter.tags);
+    });
+
+    allTags = Array.from(new Set(tagsList));
 
     return (
       <Layout location={this.props.location}>

@@ -8,8 +8,8 @@ Alongside remark we also use gatsby-remark-smartypants, which provides smart pun
 snippet: "Note how all headlines below show an anchor link when you hover them?
 That’s gatsby-remark-autolink-headers hooking up all MarkdownRemark headers with anchor links for us."
 tags:
-    - css3
-    - react
+    - merge
+    - cica
 posted: true
 ---
 

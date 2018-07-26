@@ -196,8 +196,12 @@ exports.createPages = ({ graphql, actions }) => {
                   fields {
                     slug
                   }
+                  timeToRead
                   frontmatter {
                     title
+                    snippet
+                    tags
+                    category
                     date
                     posted
                   }
@@ -212,12 +216,21 @@ exports.createPages = ({ graphql, actions }) => {
           reject(result.errors);
         }
 
-        const totalPosts = result.data.allMarkdownRemark.totalCount;
-
         const blogTemplate = path.resolve("src/pages/blog.js");
 
+        const totalPosts = result.data.allMarkdownRemark.totalCount;
+        const postEdges = result.data.allMarkdownRemark.edges;
         const postsPerPage = 5;
         const totalPages = Math.ceil(totalPosts / postsPerPage);
+
+        function slicePosts(array, postsPerPage, currentPage) {
+          return array
+            .slice(0)
+            .slice(
+              (currentPage - 1) * postsPerPage,
+              currentPage * postsPerPage
+            );
+        }
 
         for (let currentPage = 1; currentPage <= totalPages; currentPage++) {
           if (currentPage === 1) {
@@ -225,8 +238,12 @@ exports.createPages = ({ graphql, actions }) => {
               path: `/blog`,
               component: blogTemplate,
               context: {
+                postEdges: slicePosts(postEdges, postsPerPage, currentPage).map(
+                  ({ node }) => node
+                ),
                 currentPage,
                 totalPages,
+                totalPosts,
                 prevPath: null,
                 nextPath: `/blog/page/2`,
               },
@@ -236,8 +253,12 @@ exports.createPages = ({ graphql, actions }) => {
               path: `/blog/page/${currentPage}`,
               component: blogTemplate,
               context: {
+                postEdges: slicePosts(postEdges, postsPerPage, currentPage).map(
+                  ({ node }) => node
+                ),
                 currentPage,
                 totalPages,
+                totalPosts,
                 prevPath:
                   currentPage - 1 > 1
                     ? `/blog/page/${currentPage - 1}`

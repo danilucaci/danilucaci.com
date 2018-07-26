@@ -31,14 +31,14 @@ class PostListing extends Component {
 
     this.props.postEdges.forEach((postEdge) => {
       postList.push({
-        slug: postEdge.node.fields.slug,
+        slug: postEdge.fields.slug,
         // tagCount: tagCount,
-        tagsInPost: postEdge.node.frontmatter.tags,
-        category: postEdge.node.frontmatter.category,
-        title: postEdge.node.frontmatter.title,
-        date: postEdge.node.frontmatter.date,
-        snippet: postEdge.node.frontmatter.snippet,
-        timeToRead: postEdge.node.timeToRead,
+        tagsInPost: postEdge.frontmatter.tags,
+        category: postEdge.frontmatter.category,
+        title: postEdge.frontmatter.title,
+        date: postEdge.frontmatter.date,
+        snippet: postEdge.frontmatter.snippet,
+        timeToRead: postEdge.timeToRead,
       });
     });
 
