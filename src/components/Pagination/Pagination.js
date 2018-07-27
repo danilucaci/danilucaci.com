@@ -80,7 +80,13 @@ const DisabledLabel = styled(Copy)`
 `;
 
 const Pagination = (props) => {
-  const { currentPage, totalPagesInBlog, prevPath, nextPath } = props;
+  const {
+    currentPage,
+    totalPagesInBlog,
+    paginationPathPrefix,
+    prevPath,
+    nextPath,
+  } = props;
 
   let pagination = [];
 
@@ -88,7 +94,11 @@ const Pagination = (props) => {
     if (current === currentPage) {
       if (current === 1) {
         pagination.push(
-          <PaginationItem key={current} to={`/blog/`} current={currentPage}>
+          <PaginationItem
+            key={current}
+            to={paginationPathPrefix}
+            current={currentPage}
+          >
             {current}
           </PaginationItem>
         );
@@ -106,13 +116,16 @@ const Pagination = (props) => {
     } else {
       if (current === 1) {
         pagination.push(
-          <PaginationItem key={current} to={`/blog/`}>
+          <PaginationItem key={current} to={paginationPathPrefix}>
             {current}
           </PaginationItem>
         );
       } else {
         pagination.push(
-          <PaginationItem key={current} to={`/blog/page/${current}`}>
+          <PaginationItem
+            key={current}
+            to={`${paginationPathPrefix}page/${current}`}
+          >
             {current}
           </PaginationItem>
         );

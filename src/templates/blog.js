@@ -104,12 +104,13 @@ class BlogPage extends Component {
     const {
       currentPage,
       totalPagesInBlog,
+      paginationPathPrefix,
       prevPath,
       nextPath,
       edges,
+      tags,
     } = this.props.pageContext;
 
-    // const edges = this.props.data.allMarkdownRemark.edges;
     // const tagsTotalCount = this.props.data.allMarkdownRemark.group;
 
     // edges.forEach((postEdge) => {
@@ -117,6 +118,34 @@ class BlogPage extends Component {
     // });
 
     // allTags = Array.from(new Set(tagsList));
+
+    // categories.forEach((cat) => {
+    //   cat.fieldValue.forEach((val) => {
+    //     console.log(val);
+    //   });
+    // });
+
+    // tags.forEach((tag) => {
+    //   Object.entries(tag).forEach(([key, value]) => {
+    //     cats: {
+    //       `${key}: ${[value]}`;
+    //     }
+    //   });
+    // });
+
+    let categ = {};
+
+    tags.forEach((tag) => {
+      tag.edges.forEach((edge) => {
+        console.log(edge);
+      });
+    });
+
+    // tags.forEach((tag) => {
+    //   Object.entries(tag).forEach(([key, value]) => {
+    //     console.log(key, value);
+    //   });
+    // });
 
     return (
       <Layout location={this.props.location}>
@@ -147,8 +176,8 @@ class BlogPage extends Component {
             totalPagesInBlog={totalPagesInBlog}
             prevPath={prevPath}
             nextPath={nextPath}
+            paginationPathPrefix={paginationPathPrefix}
           />
-          {/* <PostListing edges={edges} tagsTotalCount={tagsTotalCount} /> */}
         </Wrapper>
       </Layout>
     );
