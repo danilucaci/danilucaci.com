@@ -80,11 +80,11 @@ const DisabledLabel = styled(Copy)`
 `;
 
 const Pagination = (props) => {
-  const { currentPage, totalPages, prevPath, nextPath } = props;
+  const { currentPage, totalPagesInBlog, prevPath, nextPath } = props;
 
   let pagination = [];
 
-  for (var current = 1; current <= totalPages; current++) {
+  for (var current = 1; current <= totalPagesInBlog; current++) {
     if (current === currentPage) {
       if (current === 1) {
         pagination.push(

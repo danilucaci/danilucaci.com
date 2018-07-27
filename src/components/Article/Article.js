@@ -97,7 +97,7 @@ const CategoryLinkLabel = styled.span`
 const Article = (props) => {
   let category;
 
-  if (props.category) {
+  if (props.category && props.category !== "blog") {
     category = (
       <CategoryLink to={"/categories/" + props.category}>
         <CategoryLinkLabel>Part of:</CategoryLinkLabel>

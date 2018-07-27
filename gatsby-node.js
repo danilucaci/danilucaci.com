@@ -109,46 +109,6 @@ exports.createPages = ({ graphql, actions }) => {
               sort: { fields: [fields___date], order: DESC }
               filter: { frontmatter: { posted: { eq: true } } }
             ) {
-              numberOfPostsPerTags: group(field: frontmatter___tags) {
-                fieldValue
-                totalCount
-                edges {
-                  node {
-                    fields {
-                      slug
-                    }
-                    timeToRead
-                    frontmatter {
-                      title
-                      snippet
-                      tags
-                      category
-                      date
-                      posted
-                    }
-                  }
-                }
-              }
-              numberOfPostsPerCategories: group(field: frontmatter___category) {
-                fieldValue
-                totalCount
-                edges {
-                  node {
-                    fields {
-                      slug
-                    }
-                    timeToRead
-                    frontmatter {
-                      title
-                      snippet
-                      tags
-                      category
-                      date
-                      posted
-                    }
-                  }
-                }
-              }
               totalCount
               edges {
                 node {
@@ -166,6 +126,46 @@ exports.createPages = ({ graphql, actions }) => {
                   }
                 }
               }
+              categories: group(field: frontmatter___category) {
+                fieldValue
+                totalCount
+                edges {
+                  node {
+                    fields {
+                      slug
+                    }
+                    timeToRead
+                    frontmatter {
+                      title
+                      snippet
+                      tags
+                      category
+                      date
+                      posted
+                    }
+                  }
+                }
+              }
+              tags: group(field: frontmatter___tags) {
+                fieldValue
+                totalCount
+                edges {
+                  node {
+                    fields {
+                      slug
+                    }
+                    timeToRead
+                    frontmatter {
+                      title
+                      snippet
+                      tags
+                      category
+                      date
+                      posted
+                    }
+                  }
+                }
+              }
             }
           }
         `
@@ -175,35 +175,50 @@ exports.createPages = ({ graphql, actions }) => {
           reject(result.errors);
         }
 
+        //  Template Pages
+        const blogTemplate = path.resolve("src/pages/blog.js");
+        const postPage = path.resolve("src/templates/post.js");
+        const categoryPage = path.resolve("src/templates/category.js");
+        const tagPage = path.resolve("src/templates/tag.js");
+
+        // Data Sources
+        const {
+          totalCount,
+          edges,
+          categories,
+          tags,
+        } = result.data.allMarkdownRemark;
+
+        // Controls
+        const postsPerPage = 5;
+        const totalPagesInBlog = Math.ceil(totalCount / postsPerPage);
+
         /********************************************************
          * Blog pagination
-         */
-        const blogTemplate = path.resolve("src/pages/blog.js");
-
-        const totalPosts = result.data.allMarkdownRemark.totalCount;
-        const postEdges = result.data.allMarkdownRemark.edges;
-        const postsPerPage = 5;
-        const totalPages = Math.ceil(totalPosts / postsPerPage);
-
-        /**
+         *
          * First page in pagination is: /blog/
          * Next pages will be: /blog/page/1...n
          *
          * For the first page return a path of /blog
          * For the next ones return path under /blog/page/n
          */
-        for (let currentPage = 1; currentPage <= totalPages; currentPage++) {
+
+        for (
+          let currentPage = 1;
+          currentPage <= totalPagesInBlog;
+          currentPage++
+        ) {
           if (currentPage === 1) {
             createPage({
               path: `/blog`,
               component: blogTemplate,
               context: {
-                postEdges: slicePosts(postEdges, postsPerPage, currentPage).map(
+                edges: slicePosts(edges, postsPerPage, currentPage).map(
                   ({ node }) => node
                 ),
                 currentPage,
-                totalPages,
-                totalPosts,
+                totalPagesInBlog,
+                totalCount,
                 prevPath: null,
                 nextPath: `/blog/page/2`,
               },
@@ -213,18 +228,18 @@ exports.createPages = ({ graphql, actions }) => {
               path: `/blog/page/${currentPage}`,
               component: blogTemplate,
               context: {
-                postEdges: slicePosts(postEdges, postsPerPage, currentPage).map(
+                edges: slicePosts(edges, postsPerPage, currentPage).map(
                   ({ node }) => node
                 ),
                 currentPage,
-                totalPages,
-                totalPosts,
+                totalPagesInBlog,
+                totalCount,
                 prevPath:
                   currentPage - 1 > 1
                     ? `/blog/page/${currentPage - 1}`
                     : "/blog/",
                 nextPath:
-                  currentPage + 1 <= totalPages
+                  currentPage + 1 <= totalPagesInBlog
                     ? `/blog/page/${currentPage + 1}`
                     : null,
               },
@@ -233,25 +248,10 @@ exports.createPages = ({ graphql, actions }) => {
         }
 
         /*******************************************************
-         * Categories and Tags Page Generation
+         * Posts Page Creation
          */
-        const postPage = path.resolve("src/templates/post.js");
-        const tagPage = path.resolve("src/templates/tag.js");
-        const categoryPage = path.resolve("src/templates/category.js");
-        const tagSet = new Set();
-        const categorySet = new Set();
 
-        postEdges.forEach((edge) => {
-          if (edge.node.frontmatter.tags) {
-            edge.node.frontmatter.tags.forEach((tag) => {
-              tagSet.add(tag);
-            });
-          }
-
-          if (edge.node.frontmatter.category) {
-            categorySet.add(edge.node.frontmatter.category);
-          }
-
+        edges.forEach((edge) => {
           createPage({
             path: edge.node.fields.slug,
             component: postPage,
@@ -261,27 +261,31 @@ exports.createPages = ({ graphql, actions }) => {
           });
         });
 
-        const tagList = Array.from(tagSet);
-        tagList.forEach((tag) => {
-          createPage({
-            path: `/tags/${tag}/`,
-            component: tagPage,
-            context: {
-              tag,
-            },
-          });
-        });
+        /*******************************************************
+         * Category Page Creation
+         */
 
-        const categoryList = Array.from(categorySet);
-        categoryList.forEach((category) => {
-          createPage({
-            path: `/categories/${category}/`,
-            component: categoryPage,
-            context: {
-              category,
-            },
-          });
-        });
+        // const tagList = Array.from(tagSet);
+        // tagList.forEach((tag) => {
+        //   createPage({
+        //     path: `/tags/${tag}/`,
+        //     component: tagPage,
+        //     context: {
+        //       tag,
+        //     },
+        //   });
+        // });
+
+        // const categoryList = Array.from(categorySet);
+        // categoryList.forEach((category) => {
+        //   createPage({
+        //     path: `/categories/${category}/`,
+        //     component: categoryPage,
+        //     context: {
+        //       category,
+        //     },
+        //   });
+        // });
 
         /**
          * Split into chunks of 5 posts per paginated page and pass them

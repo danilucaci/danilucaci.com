@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
-import { graphql } from "gatsby";
 import PropTypes from "prop-types";
 
 import styled, { css } from "styled-components";
@@ -104,40 +103,20 @@ class BlogPage extends Component {
   render() {
     const {
       currentPage,
-      totalPages,
+      totalPagesInBlog,
       prevPath,
       nextPath,
-      postEdges,
-      totalPosts,
+      edges,
     } = this.props.pageContext;
 
-    postEdges.forEach((post) => {
-      console.log(post);
-    });
-
-    // const postEdges = this.props.data.allMarkdownRemark.edges;
+    // const edges = this.props.data.allMarkdownRemark.edges;
     // const tagsTotalCount = this.props.data.allMarkdownRemark.group;
 
-    let tagsList = [];
-    let allTags = [];
+    // edges.forEach((postEdge) => {
+    //   tagsList.push(...postEdge.frontmatter.tags);
+    // });
 
-    // const totalAmountOfPosts = this.props.data.allMarkdownRemark.totalCount;
-    console.log(`totalPosts: ${totalPosts}`);
-
-    postEdges.forEach((post) => {
-      console.log(post);
-    });
-
-    console.log("currentPage: " + currentPage);
-    console.log("totalPages: " + totalPages);
-    console.log("prevPath: " + prevPath);
-    console.log("nextPath: " + nextPath);
-
-    postEdges.forEach((postEdge) => {
-      tagsList.push(...postEdge.frontmatter.tags);
-    });
-
-    allTags = Array.from(new Set(tagsList));
+    // allTags = Array.from(new Set(tagsList));
 
     return (
       <Layout location={this.props.location}>
@@ -159,17 +138,17 @@ class BlogPage extends Component {
               </Copy>
             </Collapsible>
             <Collapsible title="Explore by tags">
-              <Tags tagsInPost={allTags} />
+              {/* <Tags tagsInPost={allTags} /> */}
             </Collapsible>
           </BlogHeader>
-          <PostListing postEdges={postEdges} />
+          <PostListing edges={edges} />
           <Pagination
             currentPage={currentPage}
-            totalPages={totalPages}
+            totalPagesInBlog={totalPagesInBlog}
             prevPath={prevPath}
             nextPath={nextPath}
           />
-          {/* <PostListing postEdges={postEdges} tagsTotalCount={tagsTotalCount} /> */}
+          {/* <PostListing edges={edges} tagsTotalCount={tagsTotalCount} /> */}
         </Wrapper>
       </Layout>
     );
@@ -182,35 +161,3 @@ BlogPage.propTypes = {
   pageContext: PropTypes.object,
   data: PropTypes.object,
 };
-
-export const pageQuery = graphql`
-  query IndexQuery {
-    allMarkdownRemark(
-      limit: 5
-      sort: { fields: [fields___date], order: DESC }
-      filter: { frontmatter: { posted: { eq: true } } }
-    ) {
-      totalCount
-      group(field: frontmatter___tags) {
-        fieldValue
-        totalCount
-      }
-      edges {
-        node {
-          fields {
-            slug
-          }
-          timeToRead
-          frontmatter {
-            title
-            snippet
-            tags
-            category
-            date
-            posted
-          }
-        }
-      }
-    }
-  }
-`;

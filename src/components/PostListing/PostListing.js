@@ -29,16 +29,16 @@ class PostListing extends Component {
     //   tagCount[tag.fieldValue] = tag.totalCount;
     // });
 
-    this.props.postEdges.forEach((postEdge) => {
+    this.props.edges.forEach((edge) => {
       postList.push({
-        slug: postEdge.fields.slug,
+        slug: edge.fields.slug,
         // tagCount: tagCount,
-        tagsInPost: postEdge.frontmatter.tags,
-        category: postEdge.frontmatter.category,
-        title: postEdge.frontmatter.title,
-        date: postEdge.frontmatter.date,
-        snippet: postEdge.frontmatter.snippet,
-        timeToRead: postEdge.timeToRead,
+        tagsInPost: edge.frontmatter.tags,
+        category: edge.frontmatter.category,
+        title: edge.frontmatter.title,
+        date: edge.frontmatter.date,
+        snippet: edge.frontmatter.snippet,
+        timeToRead: edge.timeToRead,
       });
     });
 
