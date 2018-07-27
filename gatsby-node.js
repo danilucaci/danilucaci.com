@@ -100,22 +100,69 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
   return new Promise((resolve, reject) => {
-    const postPage = path.resolve("src/templates/post.js");
-    const tagPage = path.resolve("src/templates/tag.js");
-    const categoryPage = path.resolve("src/templates/category.js");
     resolve(
       graphql(
         `
           {
-            allMarkdownRemark {
+            allMarkdownRemark(
+              limit: 2000
+              sort: { fields: [fields___date], order: DESC }
+              filter: { frontmatter: { posted: { eq: true } } }
+            ) {
+              numberOfPostsPerTags: group(field: frontmatter___tags) {
+                fieldValue
+                totalCount
+                edges {
+                  node {
+                    fields {
+                      slug
+                    }
+                    timeToRead
+                    frontmatter {
+                      title
+                      snippet
+                      tags
+                      category
+                      date
+                      posted
+                    }
+                  }
+                }
+              }
+              numberOfPostsPerCategories: group(field: frontmatter___category) {
+                fieldValue
+                totalCount
+                edges {
+                  node {
+                    fields {
+                      slug
+                    }
+                    timeToRead
+                    frontmatter {
+                      title
+                      snippet
+                      tags
+                      category
+                      date
+                      posted
+                    }
+                  }
+                }
+              }
+              totalCount
               edges {
                 node {
-                  frontmatter {
-                    tags
-                    category
-                  }
                   fields {
                     slug
+                  }
+                  timeToRead
+                  frontmatter {
+                    title
+                    snippet
+                    tags
+                    category
+                    date
+                    posted
                   }
                 }
               }
@@ -128,10 +175,73 @@ exports.createPages = ({ graphql, actions }) => {
           reject(result.errors);
         }
 
+        /********************************************************
+         * Blog pagination
+         */
+        const blogTemplate = path.resolve("src/pages/blog.js");
+
+        const totalPosts = result.data.allMarkdownRemark.totalCount;
+        const postEdges = result.data.allMarkdownRemark.edges;
+        const postsPerPage = 5;
+        const totalPages = Math.ceil(totalPosts / postsPerPage);
+
+        /**
+         * First page in pagination is: /blog/
+         * Next pages will be: /blog/page/1...n
+         *
+         * For the first page return a path of /blog
+         * For the next ones return path under /blog/page/n
+         */
+        for (let currentPage = 1; currentPage <= totalPages; currentPage++) {
+          if (currentPage === 1) {
+            createPage({
+              path: `/blog`,
+              component: blogTemplate,
+              context: {
+                postEdges: slicePosts(postEdges, postsPerPage, currentPage).map(
+                  ({ node }) => node
+                ),
+                currentPage,
+                totalPages,
+                totalPosts,
+                prevPath: null,
+                nextPath: `/blog/page/2`,
+              },
+            });
+          } else {
+            createPage({
+              path: `/blog/page/${currentPage}`,
+              component: blogTemplate,
+              context: {
+                postEdges: slicePosts(postEdges, postsPerPage, currentPage).map(
+                  ({ node }) => node
+                ),
+                currentPage,
+                totalPages,
+                totalPosts,
+                prevPath:
+                  currentPage - 1 > 1
+                    ? `/blog/page/${currentPage - 1}`
+                    : "/blog/",
+                nextPath:
+                  currentPage + 1 <= totalPages
+                    ? `/blog/page/${currentPage + 1}`
+                    : null,
+              },
+            });
+          }
+        }
+
+        /*******************************************************
+         * Categories and Tags Page Generation
+         */
+        const postPage = path.resolve("src/templates/post.js");
+        const tagPage = path.resolve("src/templates/tag.js");
+        const categoryPage = path.resolve("src/templates/category.js");
         const tagSet = new Set();
         const categorySet = new Set();
 
-        result.data.allMarkdownRemark.edges.forEach((edge) => {
+        postEdges.forEach((edge) => {
           if (edge.node.frontmatter.tags) {
             edge.node.frontmatter.tags.forEach((tag) => {
               tagSet.add(tag);
@@ -172,57 +282,11 @@ exports.createPages = ({ graphql, actions }) => {
             },
           });
         });
-      })
-    );
-  });
-};
 
-exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions;
-
-  return new Promise((resolve, reject) => {
-    resolve(
-      graphql(
-        `
-          {
-            allMarkdownRemark(
-              limit: 2000
-              sort: { fields: [fields___date], order: DESC }
-              filter: { frontmatter: { posted: { eq: true } } }
-            ) {
-              totalCount
-              edges {
-                node {
-                  fields {
-                    slug
-                  }
-                  timeToRead
-                  frontmatter {
-                    title
-                    snippet
-                    tags
-                    category
-                    date
-                    posted
-                  }
-                }
-              }
-            }
-          }
-        `
-      ).then((result) => {
-        if (result.errors) {
-          console.log(result.errors);
-          reject(result.errors);
-        }
-
-        const blogTemplate = path.resolve("src/pages/blog.js");
-
-        const totalPosts = result.data.allMarkdownRemark.totalCount;
-        const postEdges = result.data.allMarkdownRemark.edges;
-        const postsPerPage = 5;
-        const totalPages = Math.ceil(totalPosts / postsPerPage);
-
+        /**
+         * Split into chunks of 5 posts per paginated page and pass them
+         * into the blog template page
+         */
         function slicePosts(array, postsPerPage, currentPage) {
           return array
             .slice(0)
@@ -230,46 +294,6 @@ exports.createPages = ({ graphql, actions }) => {
               (currentPage - 1) * postsPerPage,
               currentPage * postsPerPage
             );
-        }
-
-        for (let currentPage = 1; currentPage <= totalPages; currentPage++) {
-          if (currentPage === 1) {
-            createPage({
-              path: `/blog`,
-              component: blogTemplate,
-              context: {
-                postEdges: slicePosts(postEdges, postsPerPage, currentPage).map(
-                  ({ node }) => node
-                ),
-                currentPage,
-                totalPages,
-                totalPosts,
-                prevPath: null,
-                nextPath: `/blog/page/2`,
-              },
-            });
-          } else {
-            createPage({
-              path: `/blog/page/${currentPage}`,
-              component: blogTemplate,
-              context: {
-                postEdges: slicePosts(postEdges, postsPerPage, currentPage).map(
-                  ({ node }) => node
-                ),
-                currentPage,
-                totalPages,
-                totalPosts,
-                prevPath:
-                  currentPage - 1 > 1
-                    ? `/blog/page/${currentPage - 1}`
-                    : "/blog/",
-                nextPath:
-                  currentPage + 1 <= totalPages
-                    ? `/blog/page/${currentPage + 1}`
-                    : null,
-              },
-            });
-          }
         }
       })
     );

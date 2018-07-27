@@ -1,15 +1,15 @@
 ---
-title: "Post 11"
+title: "Post 14"
 description: "This blog post is about writing a blog post with Gatsby.js"
 date: "24/07/2018"
-category: "proba"
+category: "nou"
 intro: "If you tried A/B testing earlier, understand the importance of optimization, and want to increase your website conversion, continue reading till the end.
 |
 Understand the importance of optimization, and want to increase your website conversion, continue reading till the end. If you tried A/B testing earlier, understand the importance of optimization, and want to increase your website conversion, continue reading till the end."
 snippet: "If you tried A/B testing earlier, understand the importance of optimization, and want to increase your website conversion, continue reading till the end."
 tags:
-    - css3
-    - react
+    - javascript
+    - html
 posted: true
 ---
 

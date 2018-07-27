@@ -111,6 +111,10 @@ class BlogPage extends Component {
       totalPosts,
     } = this.props.pageContext;
 
+    postEdges.forEach((post) => {
+      console.log(post);
+    });
+
     // const postEdges = this.props.data.allMarkdownRemark.edges;
     // const tagsTotalCount = this.props.data.allMarkdownRemark.group;
 
