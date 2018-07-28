@@ -232,7 +232,7 @@ exports.createPages = ({ graphql, actions }) => {
                 totalCount,
                 categories,
                 tags,
-                paginationPathPrefix: `/blog/`,
+                paginationPathPrefix: `/blog`,
                 prevPath: null,
                 nextPath: `/blog/page/2`,
               },
@@ -250,11 +250,11 @@ exports.createPages = ({ graphql, actions }) => {
                 totalCount,
                 categories,
                 tags,
-                paginationPathPrefix: `/blog/`,
+                paginationPathPrefix: `/blog`,
                 prevPath:
                   currentPage - 1 > 1
                     ? `/blog/page/${currentPage - 1}`
-                    : "/blog/",
+                    : "/blog",
                 nextPath:
                   currentPage + 1 <= totalPagesInBlog
                     ? `/blog/page/${currentPage + 1}`
@@ -319,7 +319,7 @@ exports.createPages = ({ graphql, actions }) => {
                       category.totalCount / postsPerPage
                     ),
                     totalCount: category.totalCount,
-                    paginationPathPrefix: `/categories/${category.fieldValue}/`,
+                    paginationPathPrefix: `/categories/${category.fieldValue}`,
                     prevPath: null,
                     nextPath: `/categories/${category.fieldValue}/page/2`,
                   },
@@ -341,14 +341,16 @@ exports.createPages = ({ graphql, actions }) => {
                       category.totalCount / postsPerPage
                     ),
                     totalCount: category.totalCount,
-                    paginationPathPrefix: `/categories/${category.fieldValue}/`,
+                    paginationPathPrefix: `/categories/${category.fieldValue}`,
                     prevPath:
                       currentPage - 1 > 1
-                        ? `/category/${category.fieldValue}/page/${currentPage -
-                            1}`
-                        : `/category/${category.fieldValue}`,
+                        ? `/categories/${
+                            category.fieldValue
+                          }/page/${currentPage - 1}`
+                        : `/categories/${category.fieldValue}`,
                     nextPath:
-                      currentPage + 1 <= totalPagesInBlog
+                      currentPage + 1 <=
+                      Math.ceil(category.totalCount / postsPerPage)
                         ? `/categories/${
                             category.fieldValue
                           }/page/${currentPage + 1}`
@@ -392,7 +394,7 @@ exports.createPages = ({ graphql, actions }) => {
                   currentPage,
                   totalPagesInBlog: Math.ceil(tag.totalCount / postsPerPage),
                   totalCount: tag.totalCount,
-                  paginationPathPrefix: `/tags/${tag.fieldValue}/`,
+                  paginationPathPrefix: `/tags/${tag.fieldValue}`,
                   prevPath: null,
                   nextPath: `/tags/${tag.fieldValue}/page/2`,
                 },
@@ -408,13 +410,13 @@ exports.createPages = ({ graphql, actions }) => {
                   currentPage,
                   totalPagesInBlog: Math.ceil(tag.totalCount / postsPerPage),
                   totalCount: tag.totalCount,
-                  paginationPathPrefix: `/tags/${tag.fieldValue}/`,
+                  paginationPathPrefix: `/tags/${tag.fieldValue}`,
                   prevPath:
                     currentPage - 1 > 1
-                      ? `/tag/${tag.fieldValue}/page/${currentPage - 1}`
-                      : `/tag/${tag.fieldValue}`,
+                      ? `/tags/${tag.fieldValue}/page/${currentPage - 1}`
+                      : `/tags/${tag.fieldValue}`,
                   nextPath:
-                    currentPage + 1 <= totalPagesInBlog
+                    currentPage + 1 <= Math.ceil(tag.totalCount / postsPerPage)
                       ? `/tags/${tag.fieldValue}/page/${currentPage + 1}`
                       : null,
                 },

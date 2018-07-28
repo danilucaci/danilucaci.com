@@ -48,7 +48,7 @@ const PaginationItem = styled(DefaultLink)`
   text-decoration: none;
 
   ${(props) =>
-    props.current &&
+    props.currentItem &&
     css`
       background-color: ${theme.colors.dark900};
       color: ${theme.colors.gray100} !important;
@@ -90,43 +90,39 @@ const Pagination = (props) => {
 
   let pagination = [];
 
-  for (var current = 1; current <= totalPagesInBlog; current++) {
-    if (current === currentPage) {
-      if (current === 1) {
+  for (var page = 1; page <= totalPagesInBlog; page += 1) {
+    if (page === currentPage) {
+      if (page === 1) {
         pagination.push(
-          <PaginationItem
-            key={current}
-            to={paginationPathPrefix}
-            current={currentPage}
-          >
-            {current}
+          <PaginationItem key={page} to={paginationPathPrefix} currentItem>
+            {page}
           </PaginationItem>
         );
       } else {
         pagination.push(
           <PaginationItem
-            key={current}
-            to={`/blog/page/${current}`}
-            current={currentPage}
+            key={page}
+            to={`${paginationPathPrefix}/page/${page}`}
+            currentItem
           >
-            {current}
+            {page}
           </PaginationItem>
         );
       }
     } else {
-      if (current === 1) {
+      if (page === 1) {
         pagination.push(
-          <PaginationItem key={current} to={paginationPathPrefix}>
-            {current}
+          <PaginationItem key={page} to={paginationPathPrefix}>
+            {page}
           </PaginationItem>
         );
       } else {
         pagination.push(
           <PaginationItem
-            key={current}
-            to={`${paginationPathPrefix}page/${current}`}
+            key={page}
+            to={`${paginationPathPrefix}/page/${page}`}
           >
-            {current}
+            {page}
           </PaginationItem>
         );
       }

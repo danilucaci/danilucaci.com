@@ -110,14 +110,6 @@ class TagPage extends Component {
       edges,
     } = this.props.pageContext;
 
-    // const tagsTotalCount = this.props.data.allMarkdownRemark.group;
-
-    // edges.forEach((postEdge) => {
-    //   tagsList.push(...postEdge.frontmatter.tags);
-    // });
-
-    // allTags = Array.from(new Set(tagsList));
-
     return (
       <Layout location={this.props.location}>
         <StyledTagBackground />
@@ -142,13 +134,15 @@ class TagPage extends Component {
             </Collapsible>
           </TagHeader>
           <PostListing edges={edges} />
-          <Pagination
-            currentPage={currentPage}
-            totalPagesInBlog={totalPagesInBlog}
-            paginationPathPrefix={paginationPathPrefix}
-            prevPath={prevPath}
-            nextPath={nextPath}
-          />
+          {totalPagesInBlog > 1 &&
+              <Pagination
+                currentPage={currentPage}
+                totalPagesInBlog={totalPagesInBlog}
+                paginationPathPrefix={paginationPathPrefix}
+                prevPath={prevPath}
+                nextPath={nextPath}
+              />
+          }
         </Wrapper>
       </Layout>
     );

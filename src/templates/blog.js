@@ -111,42 +111,6 @@ class BlogPage extends Component {
       tags,
     } = this.props.pageContext;
 
-    // const tagsTotalCount = this.props.data.allMarkdownRemark.group;
-
-    // edges.forEach((postEdge) => {
-    //   tagsList.push(...postEdge.frontmatter.tags);
-    // });
-
-    // allTags = Array.from(new Set(tagsList));
-
-    // categories.forEach((cat) => {
-    //   cat.fieldValue.forEach((val) => {
-    //     console.log(val);
-    //   });
-    // });
-
-    // tags.forEach((tag) => {
-    //   Object.entries(tag).forEach(([key, value]) => {
-    //     cats: {
-    //       `${key}: ${[value]}`;
-    //     }
-    //   });
-    // });
-
-    let categ = {};
-
-    tags.forEach((tag) => {
-      tag.edges.forEach((edge) => {
-        console.log(edge);
-      });
-    });
-
-    // tags.forEach((tag) => {
-    //   Object.entries(tag).forEach(([key, value]) => {
-    //     console.log(key, value);
-    //   });
-    // });
-
     return (
       <Layout location={this.props.location}>
         <StyledBlogBackground />
@@ -171,13 +135,15 @@ class BlogPage extends Component {
             </Collapsible>
           </BlogHeader>
           <PostListing edges={edges} />
-          <Pagination
-            currentPage={currentPage}
-            totalPagesInBlog={totalPagesInBlog}
-            prevPath={prevPath}
-            nextPath={nextPath}
-            paginationPathPrefix={paginationPathPrefix}
-          />
+          {totalPagesInBlog > 1 && (
+            <Pagination
+              currentPage={currentPage}
+              totalPagesInBlog={totalPagesInBlog}
+              paginationPathPrefix={paginationPathPrefix}
+              prevPath={prevPath}
+              nextPath={nextPath}
+            />
+          )}
         </Wrapper>
       </Layout>
     );
