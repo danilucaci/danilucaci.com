@@ -10,7 +10,7 @@ import PostListing from "../components/PostListing/PostListing";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 
-import { Copy } from "../components/Copy/Copy";
+import { H1, H4 } from "../components/Headings/Headings";
 import Tags from "../components/Tags/Tags";
 import Collapsible from "../components/Collapsible/Collapsible";
 import Pagination from "../components/Pagination/Pagination";
@@ -117,32 +117,18 @@ class TagPage extends Component {
           <Helmet title={config.siteTitle} />
           <SEO />
           <TagHeader>
-            <Collapsible split title="What I write about">
-              <Copy>
-                How i built this in Hugo and optimized for 100% Speed Index with
-                Google.
-              </Copy>
-            </Collapsible>
-            <Collapsible split title="What else">
-              <Copy>
-                How i built this in Hugo and optimized for 100% Speed Index with
-                Google.
-              </Copy>
-            </Collapsible>
-            <Collapsible title="Explore by tags">
-              {/* <Tags tagsInPost={allTags} /> */}
-            </Collapsible>
+            <H1>Blog posts in</H1>
           </TagHeader>
           <PostListing edges={edges} />
-          {totalPagesInBlog > 1 &&
-              <Pagination
-                currentPage={currentPage}
-                totalPagesInBlog={totalPagesInBlog}
-                paginationPathPrefix={paginationPathPrefix}
-                prevPath={prevPath}
-                nextPath={nextPath}
-              />
-          }
+          {totalPagesInBlog > 1 && (
+            <Pagination
+              currentPage={currentPage}
+              totalPagesInBlog={totalPagesInBlog}
+              paginationPathPrefix={paginationPathPrefix}
+              prevPath={prevPath}
+              nextPath={nextPath}
+            />
+          )}
         </Wrapper>
       </Layout>
     );

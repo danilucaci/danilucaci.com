@@ -1,17 +1,16 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { theme, rem } from "../../theme/globalStyles";
+import { theme, rem, mediaMin } from "../../theme/globalStyles";
 import { DefaultLink } from "../Link/Link";
 import { Icon } from "../Icon/Icon";
 import { Copy } from "../Copy/Copy";
 
 const Wrapper = styled.nav`
   display: block;
-  max-width: 60%;
   margin-left: auto;
   margin-right: auto;
-  padding: ${rem(8)} ${rem(16)};
   text-align: center;
+  width: 100%;
 `;
 
 const StyledIcon = styled(Icon)`
@@ -23,11 +22,17 @@ const StyledIcon = styled(Icon)`
 `;
 
 const Prev = styled(DefaultLink)`
-  color: ${theme.colors.dark800};
+  color: ${theme.colors.dark800} !important;
   display: inline-block;
+
+  font-family: ${theme.fonts.bodyBold};
+  font-size: ${theme.fontSizes.m};
+  font-weight: 700;
+  line-height: ${theme.lineHeights.m};
+
   height: ${rem(48)};
   padding: ${rem(8)} ${rem(16)};
-  margin: 0 ${rem(8)};
+  margin-right: ${rem(8)};
   text-decoration: none;
 
   ${(props) =>
@@ -37,12 +42,29 @@ const Prev = styled(DefaultLink)`
     `};
 `;
 
+const Next = Prev.extend`
+  margin-right: 0;
+  margin-left: ${rem(8)};
+
+  ${(props) =>
+    props.nextPath &&
+    css`
+      color: ${theme.colors.gray500};
+    `};
+`;
+
 const PaginationItem = styled(DefaultLink)`
-  color: ${theme.colors.dark800};
+  color: ${theme.colors.dark800} !important;
   display: inline-block;
-  border-radius: 4px;
+
+  font-family: ${theme.fonts.bodyBold};
+  font-size: ${theme.fontSizes.m};
+  font-weight: 700;
+  line-height: ${theme.lineHeights.m};
+
   height: ${rem(48)};
-  margin: 0 ${rem(8)};
+  width: ${rem(48)};
+  margin: ${rem(4)};
   padding: ${rem(8)} ${rem(16)};
   text-align: center;
   text-decoration: none;
@@ -51,19 +73,12 @@ const PaginationItem = styled(DefaultLink)`
     props.currentItem &&
     css`
       background-color: ${theme.colors.dark900};
+      border-radius: 50%;
       color: ${theme.colors.gray100} !important;
 
       &:hover {
         background-color: ${theme.colors.dark900};
       }
-    `};
-`;
-
-const Next = Prev.extend`
-  ${(props) =>
-    props.nextPath &&
-    css`
-      color: ${theme.colors.gray500};
     `};
 `;
 
