@@ -2,7 +2,7 @@
 title: "Post 10"
 description: "This blog post is about writing a blog post with Gatsby.js"
 date: "2018/07/24"
-category: "proba"
+category: "blog"
 intro: "If you tried A/B testing earlier, understand the importance of optimization, and want to increase your website conversion, continue reading till the end.
 |
 Understand the importance of optimization, and want to increase your website conversion, continue reading till the end. If you tried A/B testing earlier, understand the importance of optimization, and want to increase your website conversion, continue reading till the end."

@@ -6,11 +6,14 @@ import { theme, mediaMin, rem } from "../../../theme/globalStyles";
 import { DefaultLink } from "../../Link/Link";
 
 const StyledTag = styled(DefaultLink)`
-  color: ${theme.colors.main600};
-  font-family: ${theme.fonts.bodyBold};
+  color: ${theme.colors.dark900} !important;
+  display: inline-block;
+
+  text-decoration: none;
+
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};
-  display: inline-block;
+  font-family: ${theme.fonts.bodyBold};
   margin-right: ${rem(8)};
   margin-bottom: ${rem(8)};
   padding: ${rem(4)};

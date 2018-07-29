@@ -1,16 +1,21 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { theme, rem, mediaMin } from "../../theme/globalStyles";
-import { DefaultLink } from "../Link/Link";
+import { Link } from "gatsby";
 import { Icon } from "../Icon/Icon";
-import { Copy } from "../Copy/Copy";
+import { CopyBold } from "../Copy/Copy";
 
 const Wrapper = styled.nav`
-  display: block;
+  display: table;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
   width: 100%;
+  padding-top: ${rem(24)};
+
+  ${mediaMin.m`
+    max-width: 50%;
+  `};
 `;
 
 const StyledIcon = styled(Icon)`
@@ -21,46 +26,133 @@ const StyledIcon = styled(Icon)`
     `};
 `;
 
-const Prev = styled(DefaultLink)`
-  color: ${theme.colors.dark800} !important;
-  display: inline-block;
+const StyledLink = styled(Link)`
+  text-decoration: underline;
 
-  font-family: ${theme.fonts.bodyBold};
   font-size: ${theme.fontSizes.m};
-  font-weight: 700;
   line-height: ${theme.lineHeights.m};
+  font-family: ${theme.fonts.bodyBold};
+  line-height: ${theme.lineHeights.m};
+  font-style: normal;
+  font-weight: 700;
+
+  &:active,
+  &:focus {
+    outline: 2px dashed ${theme.colors.main600};
+  }
+
+  &:visited,
+  &:link {
+    color: ${theme.colors.dark800};
+  }
+
+  &:hover {
+    color: ${theme.colors.dark800};
+    background-color: ${theme.colors.gray300};
+    cursor: pointer;
+  }
+`;
+
+const DisabledPrev = styled(CopyBold)`
+  color: ${theme.colors.gray500};
+  display: table-cell;
+
+  text-align: left;
+  width: 33.333%;
 
   height: ${rem(48)};
-  padding: ${rem(8)} ${rem(16)};
+  padding: ${rem(8)} ${rem(16)} ${rem(8)} 0;
+  margin-left: 0;
   margin-right: ${rem(8)};
   text-decoration: none;
-
-  ${(props) =>
-    props.prevPath &&
-    css`
-      color: ${theme.colors.gray500};
-    `};
+  white-space: nowrap;
 `;
 
-const Next = Prev.extend`
-  margin-right: 0;
-  margin-left: ${rem(8)};
+const Prev = styled(StyledLink)`
+  color: ${theme.colors.dark800};
+  display: table-cell;
 
-  ${(props) =>
-    props.nextPath &&
-    css`
-      color: ${theme.colors.gray500};
-    `};
+  text-align: left;
+  width: 33.333%;
+
+  height: ${rem(48)};
+  padding: ${rem(8)} ${rem(16)} ${rem(8)} 0;
+  margin-left: 0;
+  margin-right: ${rem(8)};
+  text-decoration: none;
+  white-space: nowrap;
 `;
 
-const PaginationItem = styled(DefaultLink)`
-  color: ${theme.colors.dark800} !important;
-  display: inline-block;
+const Next = styled(StyledLink)`
+  color: ${theme.colors.dark800};
+  display: table-cell;
 
-  font-family: ${theme.fonts.bodyBold};
-  font-size: ${theme.fontSizes.m};
-  font-weight: 700;
-  line-height: ${theme.lineHeights.m};
+  text-align: right;
+  width: 33.333%;
+
+  height: ${rem(48)};
+  padding: ${rem(8)} 0 ${rem(8)} ${rem(16)};
+  margin-left: 0;
+  margin-right: ${rem(8)};
+  text-decoration: none;
+  white-space: nowrap;
+`;
+
+const DisabledNext = styled(CopyBold)`
+  color: ${theme.colors.gray500};
+  display: table-cell;
+
+  text-align: right;
+  width: 33.333%;
+
+  height: ${rem(48)};
+  padding: ${rem(8)} 0 ${rem(8)} ${rem(16)};
+  margin-left: 0;
+  margin-right: ${rem(8)};
+  text-decoration: none;
+  white-space: nowrap;
+`;
+
+const PaginationContent = styled.div`
+  display: table-cell;
+  white-space: nowrap;
+`;
+
+const MobileCopy = styled(CopyBold)`
+  display: table-cell;
+  white-space: nowrap;
+  text-align: center;
+  width: 33.333%;
+
+  ${mediaMin.s`
+    display: none;
+  `};
+`;
+
+const CurrentPaginationNumber = styled(StyledLink)`
+  background-color: ${theme.colors.dark900};
+  border-radius: 50%;
+  color: ${theme.colors.gray100} !important;
+  display: none;
+
+  height: ${rem(48)};
+  width: ${rem(48)};
+  margin: ${rem(4)};
+  padding: ${rem(8)} ${rem(16)};
+  text-decoration: none;
+  text-align: center;
+
+  &:hover {
+    background-color: ${theme.colors.dark900};
+  }
+
+  ${mediaMin.s`
+    display: inline-block;
+  `};
+`;
+
+const PaginationNumber = styled(StyledLink)`
+  display: none;
 
   height: ${rem(48)};
   width: ${rem(48)};
@@ -69,29 +161,13 @@ const PaginationItem = styled(DefaultLink)`
   text-align: center;
   text-decoration: none;
 
-  ${(props) =>
-    props.currentItem &&
-    css`
-      background-color: ${theme.colors.dark900};
-      border-radius: 50%;
-      color: ${theme.colors.gray100} !important;
+  &:hover {
+    border-radius: 50%;
+  }
 
-      &:hover {
-        background-color: ${theme.colors.dark900};
-      }
-    `};
-`;
-
-const DisabledLabel = styled(Copy)`
-  color: ${theme.colors.gray500};
-  display: inline-block;
-  margin-right: ${rem(16)};
-
-  ${(props) =>
-    props.leftSide &&
-    css`
-      margin-left: ${rem(16)};
-    `};
+  ${mediaMin.s`
+    display: inline-block;
+  `};
 `;
 
 const Pagination = (props) => {
@@ -109,36 +185,35 @@ const Pagination = (props) => {
     if (page === currentPage) {
       if (page === 1) {
         pagination.push(
-          <PaginationItem key={page} to={paginationPathPrefix} currentItem>
+          <CurrentPaginationNumber key={page} to={paginationPathPrefix}>
             {page}
-          </PaginationItem>
+          </CurrentPaginationNumber>
         );
       } else {
         pagination.push(
-          <PaginationItem
+          <CurrentPaginationNumber
             key={page}
             to={`${paginationPathPrefix}/page/${page}`}
-            currentItem
           >
             {page}
-          </PaginationItem>
+          </CurrentPaginationNumber>
         );
       }
     } else {
       if (page === 1) {
         pagination.push(
-          <PaginationItem key={page} to={paginationPathPrefix}>
+          <PaginationNumber key={page} to={paginationPathPrefix}>
             {page}
-          </PaginationItem>
+          </PaginationNumber>
         );
       } else {
         pagination.push(
-          <PaginationItem
+          <PaginationNumber
             key={page}
             to={`${paginationPathPrefix}/page/${page}`}
           >
             {page}
-          </PaginationItem>
+          </PaginationNumber>
         );
       }
     }
@@ -148,34 +223,39 @@ const Pagination = (props) => {
     <Wrapper role="navigation">
       {prevPath ? (
         <Prev to={prevPath}>
-          <StyledIcon disabled={!prevPath}>
+          <StyledIcon>
             <use xlinkHref="#left" />
           </StyledIcon>
           Previous
         </Prev>
       ) : (
-        <DisabledLabel>
+        <DisabledPrev>
           <StyledIcon disabled={!prevPath}>
             <use xlinkHref="#left" />
           </StyledIcon>
           Previous
-        </DisabledLabel>
+        </DisabledPrev>
       )}
-      {pagination}
+      <PaginationContent>
+        {pagination}
+        <MobileCopy>
+          {currentPage} of {totalPagesInBlog}
+        </MobileCopy>
+      </PaginationContent>
       {nextPath ? (
         <Next to={nextPath}>
           Next
-          <StyledIcon disabled={!nextPath}>
+          <StyledIcon>
             <use xlinkHref="#right" />
           </StyledIcon>
         </Next>
       ) : (
-        <DisabledLabel leftSide>
+        <DisabledNext>
           Next
           <StyledIcon disabled={!nextPath}>
             <use xlinkHref="#right" />
           </StyledIcon>
-        </DisabledLabel>
+        </DisabledNext>
       )}
     </Wrapper>
   );

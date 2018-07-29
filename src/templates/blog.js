@@ -17,7 +17,8 @@ import Pagination from "../components/Pagination/Pagination";
 
 const Wrapper = styled.div`
   max-width: ${theme.contain.content};
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 
   padding-left: ${theme.gutters.s};
   padding-right: ${theme.gutters.s};

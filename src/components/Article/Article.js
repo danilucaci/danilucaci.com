@@ -14,11 +14,11 @@ import { DefaultLink } from "../Link/Link";
 const StyledArticle = styled.article`
   background-color: ${theme.colors.gray100};
   ${theme.shadow.default};
-  padding: ${rem(16)} ${rem(24)} ${rem(16)};
+  padding: ${rem(24)} ${rem(24)} ${rem(16)};
   margin-bottom: ${theme.gutters.m};
 
   ${mediaMin.s`
-    padding: ${rem(24)} ${rem(40)} ${rem(16)};
+    padding: ${rem(16)} ${rem(40)} ${rem(16)};
   `};
 
   position: relative;
