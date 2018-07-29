@@ -229,12 +229,12 @@ exports.createPages = ({ graphql, actions }) => {
                 ),
                 currentPage,
                 totalPagesInBlog,
-                totalCount,
-                categories,
-                tags,
                 paginationPathPrefix: `/blog`,
                 prevPath: null,
                 nextPath: `/blog/page/2`,
+                totalCount,
+                categories,
+                tags,
               },
             });
           } else {
@@ -247,9 +247,6 @@ exports.createPages = ({ graphql, actions }) => {
                 ),
                 currentPage,
                 totalPagesInBlog,
-                totalCount,
-                categories,
-                tags,
                 paginationPathPrefix: `/blog`,
                 prevPath:
                   currentPage - 1 > 1
@@ -259,6 +256,9 @@ exports.createPages = ({ graphql, actions }) => {
                   currentPage + 1 <= totalPagesInBlog
                     ? `/blog/page/${currentPage + 1}`
                     : null,
+                totalCount,
+                categories,
+                tags,
               },
             });
           }
@@ -318,10 +318,10 @@ exports.createPages = ({ graphql, actions }) => {
                     totalPagesInBlog: Math.ceil(
                       category.totalCount / postsPerPage
                     ),
-                    totalCount: category.totalCount,
                     paginationPathPrefix: `/categories/${category.fieldValue}`,
                     prevPath: null,
                     nextPath: `/categories/${category.fieldValue}/page/2`,
+                    totalCount: category.totalCount,
                   },
                 });
               } else {
@@ -340,7 +340,6 @@ exports.createPages = ({ graphql, actions }) => {
                     totalPagesInBlog: Math.ceil(
                       category.totalCount / postsPerPage
                     ),
-                    totalCount: category.totalCount,
                     paginationPathPrefix: `/categories/${category.fieldValue}`,
                     prevPath:
                       currentPage - 1 > 1
@@ -355,6 +354,7 @@ exports.createPages = ({ graphql, actions }) => {
                             category.fieldValue
                           }/page/${currentPage + 1}`
                         : null,
+                    totalCount: category.totalCount,
                   },
                 });
               }
@@ -393,10 +393,10 @@ exports.createPages = ({ graphql, actions }) => {
                   ),
                   currentPage,
                   totalPagesInBlog: Math.ceil(tag.totalCount / postsPerPage),
-                  totalCount: tag.totalCount,
                   paginationPathPrefix: `/tags/${tag.fieldValue}`,
                   prevPath: null,
                   nextPath: `/tags/${tag.fieldValue}/page/2`,
+                  totalCount: tag.totalCount,
                 },
               });
             } else {
@@ -409,7 +409,6 @@ exports.createPages = ({ graphql, actions }) => {
                   ),
                   currentPage,
                   totalPagesInBlog: Math.ceil(tag.totalCount / postsPerPage),
-                  totalCount: tag.totalCount,
                   paginationPathPrefix: `/tags/${tag.fieldValue}`,
                   prevPath:
                     currentPage - 1 > 1
@@ -419,6 +418,7 @@ exports.createPages = ({ graphql, actions }) => {
                     currentPage + 1 <= Math.ceil(tag.totalCount / postsPerPage)
                       ? `/tags/${tag.fieldValue}/page/${currentPage + 1}`
                       : null,
+                  totalCount: tag.totalCount,
                 },
               });
             }
