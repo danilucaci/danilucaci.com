@@ -10,6 +10,8 @@ import injectReset from "../theme/injectReset";
 import injectAria from "../theme/injectAria";
 import injectCSS from "../theme/injectCSS";
 
+require("./prism.css");
+
 import SiteHeader from "./SiteHeader/SiteHeader";
 import { Main } from "./Main/Main";
 import SiteFooter from "./SiteFooter/SiteFooter";

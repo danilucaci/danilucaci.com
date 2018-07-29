@@ -33,6 +33,54 @@ const StyledTOC = styled.nav`
     margin-bottom: 0 !important;
   }
 
+  // & * {
+  //   outline: 1px solid red;
+  // }
+
+  & ul li,
+  ul li p {
+    list-style-type: none;
+    font-family: ${theme.fonts.bodyBold};
+    font-weight: 700;
+    font-size: ${theme.fontSizes.s};
+    line-height: ${theme.lineHeights.s};
+    margin-bottom: 0;
+  }
+
+  & ul ul li {
+    list-style-type: none;
+    font-size: ${theme.fontSizes.s};
+    line-height: ${theme.lineHeights.s};
+  }
+
+  & ul ul {
+    padding-left: ${rem(32)};
+    margin-left: -${rem(16)};
+  }
+
+  & ul ul li a {
+    margin-left: -${rem(16)};
+    margin-right: 0;
+
+    ${mediaMin.s`
+      margin-left: -${rem(24)};
+      margin-right: 0;
+    `};
+  }
+
+  & li a {
+    display: block;
+    padding: ${rem(16)};
+    margin-left: -${rem(16)};
+    margin-right: -${rem(16)};
+
+    ${mediaMin.s`
+      padding: ${rem(16)} ${rem(24)};
+      margin-left: -${rem(24)};
+      margin-right: -${rem(24)};
+    `};
+  }
+
   ${mediaMin.s`
     box-shadow: none;
     padding: ${rem(24)};

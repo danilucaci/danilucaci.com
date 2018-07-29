@@ -21,6 +21,34 @@ Understand the importance of optimization, and want to increase your website con
 
 ##Learn how to build a TOC
 
+```javascript
+let logVisit = function() {
+  // Test that we have support
+  if (!navigator.sendBeacon) return true;
+      
+  // URL to send the data to, e.g.
+  let url = '/api/log-visit';
+      
+  // Data to send
+  let data = new FormData();
+  data.append('start', startTime);
+  data.append('end', performance.now());
+  data.append('url', document.URL);
+      
+  // Let's go!
+  navigator.sendBeacon(url, data);
+};
+
+```
+
+```css
+:not(pre)>code[class*="language-"],
+pre[class*="language-"] {
+  background: #2d2d2d;
+}
+```
+###Or maybe not
+
 Mollit anim culpa dolor ad velit commodo excepteur. Ipsum cupidatat nulla tempor eu fugiat. Velit consectetur aliquip pariatur velit ullamco sunt amet tempor. Ut dolore sint fugiat nisi eu nulla elit. Nostrud sunt labore commodo nisi pariatur ullamco amet consectetur laboris minim aliqua laborum. Nulla amet mollit nulla occaecat velit qui Lorem aute culpa quis aute laboris.
 
 Non labore commodo irure velit deserunt. Est minim nisi proident ad veniam tempor enim labore eu labore. Aliquip laborum nostrud tempor magna laborum culpa labore voluptate. Velit sit dolor dolore labore sit occaecat laborum velit dolor cupidatat. Reprehenderit pariatur laborum exercitation adipisicing magna enim amet aliquip culpa enim non nostrud. Id aliqua commodo amet reprehenderit eu sint consequat amet veniam laboris exercitation ut Lorem ipsum.

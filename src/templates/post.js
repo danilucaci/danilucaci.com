@@ -25,41 +25,6 @@ const Wrapper = styled.div`
   padding-right: ${theme.gutters.s};
 `};
 
-  ul li,
-  ul li p {
-    list-style-type: none;
-    font-family: ${theme.fonts.bodyBold};
-    font-weight: 700;
-    font-size: ${theme.fontSizes.m};
-    line-height: ${theme.lineHeights.m};
-    margin-bottom: 0;
-  }
-
-  ul ul li {
-    list-style-type: none;
-    font-family: ${theme.fonts.bodyRegular};
-    font-weight: 400;
-    font-size: ${theme.fontSizes.m};
-    line-height: ${theme.lineHeights.m};
-  }
-
-  ul ul {
-    margin-left: ${rem(16)};
-  }
-
-  li a {
-    display: block;
-    padding: ${rem(16)};
-    margin-left: -${rem(16)};
-    margin-right: -${rem(16)};
-
-    ${mediaMin.s`
-      padding: ${rem(16)} ${rem(24)};
-      margin-left: -${rem(24)};
-      margin-right: -${rem(24)};
-    `};
-  }
-
   a:active,
   a:focus {
     outline: 2px dashed ${theme.colors.main600};
@@ -83,6 +48,7 @@ const Wrapper = styled.div`
 
   h1 {
     color: ${theme.colors.dark900};
+    display: block;
     font-family: ${theme.fonts.header};
     font-weight: 700;
     font-style: normal;
@@ -103,6 +69,7 @@ const Wrapper = styled.div`
 
   h2 {
     color: ${theme.colors.dark900};
+    display: block;
     font-family: ${theme.fonts.header};
     font-weight: 700;
     font-style: normal;
@@ -112,6 +79,10 @@ const Wrapper = styled.div`
 
     margin-bottom: ${rem(16)};
     margin-top: ${rem(32)};
+
+    &:target {
+      border-bottom: 1px solid ${theme.colors.dark700};
+    }
 
     ${mediaMin.xs`
     font-size: ${theme.fontSizes.h2};
@@ -123,6 +94,7 @@ const Wrapper = styled.div`
 
   h3 {
     color: ${theme.colors.dark900};
+    display: block;
     font-family: ${theme.fonts.header};
     font-weight: 700;
     font-style: normal;
@@ -132,6 +104,10 @@ const Wrapper = styled.div`
 
     margin-bottom: ${rem(16)};
     margin-top: ${rem(32)};
+
+    &:target {
+      border-bottom: 1px solid ${theme.colors.dark700};
+    }
 
     ${mediaMin.xs`
     font-size: ${theme.fontSizes.h3};
@@ -143,6 +119,7 @@ const Wrapper = styled.div`
 
   h4 {
     color: ${theme.colors.dark900};
+    display: block;
     font-family: ${theme.fonts.header};
     font-weight: 700;
     font-style: normal;
