@@ -14,7 +14,7 @@ import { DefaultLink } from "../Link/Link";
 const StyledArticle = styled.article`
   background-color: ${theme.colors.gray100};
   ${theme.shadow.default};
-  padding: ${rem(24)} ${rem(24)} ${rem(16)};
+  padding: ${rem(16)} ${rem(24)} ${rem(16)};
   margin-bottom: ${theme.gutters.m};
 
   ${mediaMin.s`
@@ -34,6 +34,10 @@ const StyledArticle = styled.article`
   }
 `;
 
+const ArticleTitle = styled(H3)`
+  ${"" /* margin-top: ${rem(8)}; */};
+`;
+
 const StyledLink = styled(DefaultLink)`
   display: block;
   font-family: ${theme.fonts.bodyBold};
@@ -41,8 +45,7 @@ const StyledLink = styled(DefaultLink)`
 `;
 
 const ContinueLink = styled(DefaultLink)`
-  background-color: ${theme.colors.gray100} !important;
-  display: block;
+  display: inline-block;
   font-family: ${theme.fonts.bodyBold};
   text-decoration: underline;
   padding-top: ${rem(16)};
@@ -95,25 +98,24 @@ const CategoryLinkLabel = styled.span`
 `;
 
 const Article = (props) => {
-  let category;
+  // let category;
 
-  if (props.category && props.category !== "blog") {
-    category = (
-      <CategoryLink to={"/categories/" + props.category}>
-        <CategoryLinkLabel>Part of:</CategoryLinkLabel>
-        {props.category.split("-").join(" ")}
-      </CategoryLink>
-    );
-  }
+  // if (props.category && props.category !== "blog") {
+  //   category = (
+  //     <CategoryLink to={"/categories/" + props.category}>
+  //       <CategoryLinkLabel>Part of:</CategoryLinkLabel>
+  //       {props.category.split("-").join(" ")}
+  //     </CategoryLink>
+  //   );
+  // }
 
   return (
     <StyledArticle>
       <header>
-        {category}
+        {/* {category} */}
         <Tags tagsInPost={props.tagsInPost} />
-        <H3>{props.title}</H3>
+        <ArticleTitle>{props.title}</ArticleTitle>
       </header>
-      {/* <Tags tagsInPost={props.tagsInPost} tagCount={props.tagCount} /> */}
       <ArticleInfo date={props.date} timeToRead={props.timeToRead} />
       <Copy className="copy">{props.snippet}</Copy>
       <ContinueLink to={props.slug}>Continue Reading →</ContinueLink>

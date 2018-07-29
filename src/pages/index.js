@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
 import styled from "styled-components";
+import { graphql } from "gatsby";
 
 import Layout from "../components/Layout";
 import SEO from "../components/SEO/SEO";
@@ -390,3 +391,14 @@ class Index extends Component {
 }
 
 export default Index;
+
+export const markdownFrontmatterFragment = graphql`
+  fragment MarkdownFrontmatter on MarkdownRemark {
+    frontmatter {
+      title
+      description
+      date
+      tags
+    }
+  }
+`;

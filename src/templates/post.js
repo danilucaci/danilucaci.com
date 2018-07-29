@@ -72,7 +72,7 @@ const Wrapper = styled.div`
 
   a:hover {
     color: ${theme.colors.main600};
-    background-color: ${theme.colors.main100};
+    background-color: ${theme.colors.gray300};
     cursor: pointer;
   }
 
@@ -197,13 +197,6 @@ class Post extends Component {
     const slug = String(this.props.pageContext);
     const postNode = this.props.data.markdownRemark;
     const postInfo = postNode.frontmatter;
-
-    if (!postInfo.id) {
-      postInfo.id = slug;
-    }
-    if (!postInfo.category_id) {
-      postInfo.category_id = config.postDefaultCategoryID;
-    }
 
     return (
       <Layout location={this.props.location}>

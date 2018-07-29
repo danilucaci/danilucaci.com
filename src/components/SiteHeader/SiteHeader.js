@@ -25,13 +25,10 @@ const StyledSiteHeader = styled.header`
   ${mediaMin.m`
     background-color: ${theme.colors.transparent};
     height: ${rem(48)};
-    padding-top: 0;
-    padding-bottom: 0;
+    padding: 0;
     position: fixed;
     z-index: 10;
   `};
-
-  clear: both;
 `;
 
 class SiteHeader extends Component {

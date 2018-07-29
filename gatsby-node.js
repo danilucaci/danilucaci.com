@@ -322,6 +322,7 @@ exports.createPages = ({ graphql, actions }) => {
                     prevPath: null,
                     nextPath: `/categories/${category.fieldValue}/page/2`,
                     totalCount: category.totalCount,
+                    category: category.fieldValue,
                   },
                 });
               } else {
@@ -355,6 +356,7 @@ exports.createPages = ({ graphql, actions }) => {
                           }/page/${currentPage + 1}`
                         : null,
                     totalCount: category.totalCount,
+                    category: category.fieldValue,
                   },
                 });
               }
@@ -397,6 +399,7 @@ exports.createPages = ({ graphql, actions }) => {
                   prevPath: null,
                   nextPath: `/tags/${tag.fieldValue}/page/2`,
                   totalCount: tag.totalCount,
+                  tag: tag.fieldValue,
                 },
               });
             } else {
@@ -419,6 +422,7 @@ exports.createPages = ({ graphql, actions }) => {
                       ? `/tags/${tag.fieldValue}/page/${currentPage + 1}`
                       : null,
                   totalCount: tag.totalCount,
+                  tag: tag.fieldValue,
                 },
               });
             }

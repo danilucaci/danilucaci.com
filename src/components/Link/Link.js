@@ -37,7 +37,7 @@ export const DefaultLink = styled(Link)`
   a,
   &:hover {
     color: ${theme.colors.main600};
-    background-color: ${theme.colors.main100};
+    background-color: ${theme.colors.gray300};
     cursor: pointer;
   }
 `;
@@ -75,7 +75,7 @@ export const GrayLink = styled(Link)`
   a,
   &:hover {
     color: ${theme.colors.dark800};
-    background-color: ${theme.colors.gray200};
+    background-color: ${theme.colors.gray300};
     cursor: pointer;
   }
 `;

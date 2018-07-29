@@ -107,6 +107,7 @@ class CategoryPage extends Component {
       prevPath,
       nextPath,
       edges,
+      category,
     } = this.props.pageContext;
 
     return (
@@ -116,7 +117,7 @@ class CategoryPage extends Component {
           <Helmet title={config.siteTitle} />
           <SEO />
           <CategoryHeader>
-            <H1>Blog posts in</H1>
+            <H1>Blog posts in: {category}</H1>
           </CategoryHeader>
           <PostListing edges={edges} />
           {totalPagesInBlog > 1 && (

@@ -28,12 +28,7 @@ const StyledTag = styled(DefaultLink)`
 `;
 
 const Tag = (props) => {
-  return (
-    <StyledTag to={props.link}>
-      {props.label}
-      {/* <span className="a-tag__count">({props.tagCount})</span> */}
-    </StyledTag>
-  );
+  return <StyledTag to={props.link}>{props.label}</StyledTag>;
 };
 
 export default Tag;

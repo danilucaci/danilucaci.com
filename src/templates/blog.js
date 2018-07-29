@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
 import PropTypes from "prop-types";
+import { graphql } from "gatsby";
 
 import styled, { css } from "styled-components";
 import { theme, mediaMin, rem } from "../theme/globalStyles";
@@ -109,8 +110,14 @@ class BlogPage extends Component {
       prevPath,
       nextPath,
       edges,
-      tags,
     } = this.props.pageContext;
+
+    const frontMatterTags = this.props.data.allMarkdownRemark;
+    let allTags = [];
+
+    frontMatterTags.tags.forEach((tag) => {
+      allTags.push(tag.fieldValue);
+    });
 
     return (
       <Layout location={this.props.location}>
@@ -132,7 +139,7 @@ class BlogPage extends Component {
               </Copy>
             </Collapsible>
             <Collapsible title="Explore by tags">
-              {/* <Tags tagsInPost={allTags} /> */}
+              <Tags tagsInPost={allTags} />
             </Collapsible>
           </BlogHeader>
           <PostListing edges={edges} />
@@ -157,3 +164,18 @@ BlogPage.propTypes = {
   pageContext: PropTypes.object,
   data: PropTypes.object,
 };
+
+export const pageQuery = graphql`
+  query allTagsInBlog {
+    allMarkdownRemark(
+      limit: 200
+      sort: { fields: [fields___date], order: DESC }
+      filter: { frontmatter: { posted: { eq: true } } }
+    ) {
+      tags: group(field: frontmatter___tags) {
+        fieldValue
+        totalCount
+      }
+    }
+  }
+`;

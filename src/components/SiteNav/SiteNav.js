@@ -21,6 +21,8 @@ const StyledNav = styled.nav`
 
   ${mediaMin.m`
     height: ${rem(48)};
+    padding-right: ${theme.gutters.m};
+    padding-left: ${theme.gutters.m};
   `};
 `;
 

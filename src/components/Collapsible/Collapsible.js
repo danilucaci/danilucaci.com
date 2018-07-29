@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 
 import { theme, mediaMin, rem } from "../../theme/globalStyles";
 
-import { CopyBold } from "../Copy/Copy";
+import { H3 } from "../Headings/Headings";
 import { Icon } from "../Icon/Icon";
 
 const StyledCollapsible = styled.div`
@@ -38,11 +38,16 @@ const StyledCollapsible = styled.div`
     `};
 `;
 
-const StyledCopy = styled(CopyBold)`
+const StyledTitle = styled(H3)`
   font-family: ${theme.fonts.header};
   font-weight: 700;
   font-size: ${theme.fontSizes.m};
   line-height: ${theme.lineHeights.m};
+
+  ${mediaMin.s`
+    font-size: ${theme.fontSizes.h3};
+    line-height: ${theme.lineHeights.h3};
+  `};
 `;
 
 const CollapsibleContent = styled.div`
@@ -108,7 +113,7 @@ class Collapsible extends Component {
         <StyledIcon animate={contentVisible}>
           <use xlinkHref="#down" />
         </StyledIcon>
-        <StyledCopy>{this.props.title}</StyledCopy>
+        <StyledTitle>{this.props.title}</StyledTitle>
         <CollapsibleContent showContent={contentVisible}>
           {this.props.children}
         </CollapsibleContent>

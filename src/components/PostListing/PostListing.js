@@ -23,16 +23,10 @@ const StyledH2 = styled(H2)`
 class PostListing extends Component {
   getPostList() {
     let postList = [];
-    // let tagCount = [];
-
-    // this.props.tagsTotalCount.forEach((tag) => {
-    //   tagCount[tag.fieldValue] = tag.totalCount;
-    // });
 
     this.props.edges.forEach((edge) => {
       postList.push({
         slug: edge.fields.slug,
-        // tagCount: tagCount,
         tagsInPost: edge.frontmatter.tags,
         category: edge.frontmatter.category,
         title: edge.frontmatter.title,
@@ -55,7 +49,6 @@ class PostListing extends Component {
           <Article
             key={post.title}
             slug={post.slug}
-            // tagCount={post.tagCount}
             tagsInPost={post.tagsInPost}
             category={post.category}
             title={post.title}

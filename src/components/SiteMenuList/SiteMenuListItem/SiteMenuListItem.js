@@ -101,11 +101,15 @@ const StyledNavLink = styled(NavLink)`
       background-color: ${theme.colors.transparent};
       color: ${theme.colors.dark800};
       border-bottom: 8px solid ${theme.colors.main600};
-      padding-bottom: ${rem(4)};
+      padding-bottom: ${rem(8)};
 
       &:hover {
         color: ${theme.colors.main600};
       }
+    `};
+
+    ${mediaMin.m`
+      padding-bottom: ${rem(4)};
     `};
   }
 `;
