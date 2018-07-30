@@ -1,7 +1,7 @@
 ---
-title: "Post 21"
+title: "How To Improve Test Coverage For Your Android App Using Mockito And Espresso"
 description: "This blog post is about writing a blog post with Gatsby.js"
-date: "27/07/2018"
+date: "29/07/2018"
 category: "blog"
 intro: "If you tried A/B testing earlier, understand the importance of optimization, and want to increase your website conversion, continue reading till the end.
 |
@@ -41,17 +41,22 @@ let logVisit = function() {
 
 ```
 
+###Or maybe not
+
+Mollit anim culpa dolor ad velit commodo excepteur. Ipsum cupidatat nulla tempor eu fugiat. Velit consectetur aliquip pariatur velit ullamco sunt amet tempor. Ut dolore sint fugiat nisi eu nulla elit. Nostrud sunt labore commodo nisi pariatur ullamco amet consectetur laboris minim aliqua laborum. Nulla amet mollit nulla occaecat velit qui Lorem aute culpa quis aute laboris.
+
 ```css
 :not(pre)>code[class*="language-"],
 pre[class*="language-"] {
   background: #2d2d2d;
 }
 ```
-###Or maybe not
-
-Mollit anim culpa dolor ad velit commodo excepteur. Ipsum cupidatat nulla tempor eu fugiat. Velit consectetur aliquip pariatur velit ullamco sunt amet tempor. Ut dolore sint fugiat nisi eu nulla elit. Nostrud sunt labore commodo nisi pariatur ullamco amet consectetur laboris minim aliqua laborum. Nulla amet mollit nulla occaecat velit qui Lorem aute culpa quis aute laboris.
 
 Non labore commodo irure velit deserunt. Est minim nisi proident ad veniam tempor enim labore eu labore. Aliquip laborum nostrud tempor magna laborum culpa labore voluptate. Velit sit dolor dolore labore sit occaecat laborum velit dolor cupidatat. Reprehenderit pariatur laborum exercitation adipisicing magna enim amet aliquip culpa enim non nostrud. Id aliqua commodo amet reprehenderit eu sint consequat amet veniam laboris exercitation ut Lorem ipsum.
+
+```javascript
+import React, { Component } from "react";
+```
 
 Pariatur aute nulla aute sit duis et. Qui laborum ut tempor deserunt ullamco aliqua. Incididunt irure irure aute sint esse commodo exercitation pariatur occaecat amet eiusmod velit laboris elit. Proident nostrud aliquip magna non. Quis eu dolore ipsum aliquip. Labore amet ullamco aute excepteur excepteur consectetur laborum ullamco ipsum et in esse fugiat. Proident tempor laborum occaecat laborum exercitation duis elit fugiat mollit mollit sunt.
 

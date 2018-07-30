@@ -4,6 +4,10 @@
  * @author Lea Verou
  */
 
+.gatsby-highlight {
+  margin-bottom: 1.75rem;
+}
+
 code[class*="language-"],
 pre[class*="language-"] {
   color: rgb(240, 240, 240);

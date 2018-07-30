@@ -80,6 +80,7 @@ const StyledNavLink = styled(NavLink)`
   }
 
   ${mediaMin.s`
+    background-color: transparent;
     font-family: ${theme.fonts.bodyBold};
     font-weight: 700;
     font-size: ${theme.fontSizes.s};
@@ -98,7 +99,7 @@ const StyledNavLink = styled(NavLink)`
     color: ${theme.colors.main100};
 
     ${mediaMin.s`
-      background-color: ${theme.colors.transparent};
+      background-color: transparent;
       color: ${theme.colors.dark800};
       border-bottom: 8px solid ${theme.colors.main600};
       padding-bottom: ${rem(8)};

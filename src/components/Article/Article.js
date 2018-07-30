@@ -18,7 +18,7 @@ const StyledArticle = styled.article`
   margin-bottom: ${theme.gutters.m};
 
   ${mediaMin.s`
-    padding: ${rem(16)} ${rem(40)} ${rem(16)};
+    padding: ${rem(24)} ${rem(40)} ${rem(16)};
   `};
 
   position: relative;
@@ -32,10 +32,6 @@ const StyledArticle = styled.article`
       color: ${theme.colors.main600};
     }
   }
-`;
-
-const ArticleTitle = styled(H3)`
-  ${"" /* margin-top: ${rem(8)}; */};
 `;
 
 const StyledLink = styled(DefaultLink)`
@@ -114,7 +110,7 @@ const Article = (props) => {
       <header>
         {/* {category} */}
         <Tags tagsInPost={props.tagsInPost} />
-        <ArticleTitle>{props.title}</ArticleTitle>
+        <H3>{props.title}</H3>
       </header>
       <ArticleInfo date={props.date} timeToRead={props.timeToRead} />
       <Copy className="copy">{props.snippet}</Copy>

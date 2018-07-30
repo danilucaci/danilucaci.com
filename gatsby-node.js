@@ -106,7 +106,7 @@ exports.createPages = ({ graphql, actions }) => {
           {
             allMarkdownRemark(
               limit: 2000
-              sort: { fields: [fields___date], order: DESC }
+              sort: { fields: [frontmatter___date], order: DESC }
               filter: { frontmatter: { posted: { eq: true } } }
             ) {
               totalCount

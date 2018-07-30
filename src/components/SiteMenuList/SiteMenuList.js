@@ -35,7 +35,7 @@ const StyledSiteMenuList = styled.ul`
 
   ${mediaMin.s`
     float: right;
-    background-color: ${theme.colors.transparent};
+    background-color: transparent;
     padding-right: ${rem(2)};
     margin: 0 0 0 auto;
     width: auto;

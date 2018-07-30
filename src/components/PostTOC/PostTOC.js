@@ -29,13 +29,9 @@ const StyledTOC = styled.nav`
   ${theme.shadow.default};
 
   & h3 {
-    display: inline-block;
+    display: inline-block !important;
     margin-bottom: 0 !important;
   }
-
-  // & * {
-  //   outline: 1px solid red;
-  // }
 
   & ul li,
   ul li p {
@@ -47,15 +43,20 @@ const StyledTOC = styled.nav`
     margin-bottom: 0;
   }
 
+  & ul ul {
+    padding-left: ${rem(32)};
+    margin-left: -${rem(16)};
+
+    ${mediaMin.s`
+      padding-left: ${rem(48)};
+      margin-left: -${rem(24)};
+    `};
+  }
+
   & ul ul li {
     list-style-type: none;
     font-size: ${theme.fontSizes.s};
     line-height: ${theme.lineHeights.s};
-  }
-
-  & ul ul {
-    padding-left: ${rem(32)};
-    margin-left: -${rem(16)};
   }
 
   & ul ul li a {

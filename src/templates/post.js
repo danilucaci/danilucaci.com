@@ -80,10 +80,6 @@ const Wrapper = styled.div`
     margin-bottom: ${rem(16)};
     margin-top: ${rem(32)};
 
-    &:target {
-      border-bottom: 1px solid ${theme.colors.dark700};
-    }
-
     ${mediaMin.xs`
     font-size: ${theme.fontSizes.h2};
     line-height: ${theme.lineHeights.h2};
@@ -104,10 +100,6 @@ const Wrapper = styled.div`
 
     margin-bottom: ${rem(16)};
     margin-top: ${rem(32)};
-
-    &:target {
-      border-bottom: 1px solid ${theme.colors.dark700};
-    }
 
     ${mediaMin.xs`
     font-size: ${theme.fontSizes.h3};
@@ -131,10 +123,23 @@ const Wrapper = styled.div`
     margin-top: ${rem(32)};
 
     ${mediaMin.xs`
-    font-size: ${theme.fontSizes.h4};
-    margin-bottom: ${rem(28)};
-    margin-top: ${rem(56)};
-  `};
+      font-size: ${theme.fontSizes.h4};
+      margin-bottom: ${rem(28)};
+      margin-top: ${rem(56)};
+    `};
+  }
+
+  & h2,
+  & h3 {
+    &:target {
+      &:before {
+        content: "";
+        display: block;
+        height: 56px; /* fixed header height*/
+        margin-top: -56px; /* negative fixed header height */
+      }
+      border-bottom: 2px solid ${theme.colors.main500};
+    }
   }
 
   p {
@@ -166,6 +171,12 @@ const PostContent = styled.section`
   margin-left: auto;
   margin-right: auto;
 
+  margin-top: ${rem(16)};
+
+  ${mediaMin.s`
+    margin-top: ${rem(32)};
+  `};
+
   max-width: ${theme.contain.blog};
 `;
 
@@ -189,8 +200,8 @@ class Post extends Component {
             timeToRead={postNode.timeToRead}
             tagsInPost={postInfo.tags}
           />
-          <PostTOC tableOfContents={postNode.tableOfContents} />
           <PostContent>
+            <PostTOC tableOfContents={postNode.tableOfContents} />
             <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
           </PostContent>
           <PostFooter />
