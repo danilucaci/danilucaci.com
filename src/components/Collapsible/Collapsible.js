@@ -20,7 +20,7 @@ const StyledCollapsible = styled.div`
   margin-bottom: ${rem(24)};
 
   ${mediaMin.s`
-    background-color: ${theme.colors.gray300};
+    background-color: transparent;
     box-shadow: none;
   `};
 

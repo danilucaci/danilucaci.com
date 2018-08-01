@@ -27,63 +27,6 @@ const Wrapper = styled.div`
   `};
 `;
 
-const StyledCategoryBackground = styled.div`
-  ${mediaMin.s`
-    &:before {
-      content: "";
-      background-color: ${theme.colors.gray300};
-      display: block;
-      position: absolute;
-      top: -5em;
-      left: 0;
-      width: 50%;
-      height: 47em;
-      
-      transform: skewY(-12deg);
-      z-index: -1;
-    }
-
-    &:after {
-      content: "";
-      background-color: ${theme.colors.gray300};
-      display: block;
-      position: absolute;
-      top: -5em;
-      right: 0;
-      width: 50%;
-      height: 50em;
-      transform: skewY(-13deg);
-      z-index: -1;
-    }
-  `};
-
-  @media screen and (min-width: 130em) {
-    &:before {
-      height: 52em;
-      transform: skewY(-12deg);
-    }
-
-    &:after {
-      height: 48em;
-      transform: skewY(-13deg);
-    }
-  }
-
-  @media screen and (min-width: 170em) {
-    &:before {
-      top: -10em;
-      height: 55em;
-      transform: skewY(-12deg);
-    }
-
-    &:after {
-      top: -10em;
-      height: 51em;
-      transform: skewY(-13deg);
-    }
-  }
-`;
-
 const CategoryHeader = styled.header`
   max-width: ${theme.contain.Category};
   margin-left: auto;
@@ -112,7 +55,6 @@ class CategoryPage extends Component {
 
     return (
       <Layout location={this.props.location}>
-        <StyledCategoryBackground />
         <Wrapper>
           <Helmet title={config.siteTitle} />
           <SEO />

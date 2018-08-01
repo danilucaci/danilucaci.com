@@ -29,63 +29,6 @@ const Wrapper = styled.div`
   `};
 `;
 
-const StyledTagBackground = styled.div`
-  ${mediaMin.s`
-    &:before {
-      content: "";
-      background-color: ${theme.colors.gray300};
-      display: block;
-      position: absolute;
-      top: -5em;
-      left: 0;
-      width: 50%;
-      height: 40em;
-      
-      transform: skewY(-12deg);
-      z-index: -1;
-    }
-
-    &:after {
-      content: "";
-      background-color: ${theme.colors.gray300};
-      display: block;
-      position: absolute;
-      top: -5em;
-      right: 0;
-      width: 50%;
-      height: 40em;
-      transform: skewY(-13deg);
-      z-index: -1;
-    }
-  `};
-
-  @media screen and (min-width: 130em) {
-    &:before {
-      height: 42em;
-      transform: skewY(-12deg);
-    }
-
-    &:after {
-      height: 40em;
-      transform: skewY(-13deg);
-    }
-  }
-
-  @media screen and (min-width: 166em) {
-    &:before {
-      top: -10em;
-      height: 50em;
-      transform: skewY(-12deg);
-    }
-
-    &:after {
-      top: -10em;
-      height: 44em;
-      transform: skewY(-13deg);
-    }
-  }
-`;
-
 const StyledH1 = styled(H1)`
   margin-bottom: ${rem(16)};
 
@@ -157,7 +100,6 @@ class TagPage extends Component {
 
     return (
       <Layout location={this.props.location}>
-        <StyledTagBackground />
         <Wrapper>
           <Helmet title={config.siteTitle} />
           <SEO />

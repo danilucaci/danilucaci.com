@@ -1,46 +1,45 @@
 import React from "react";
 
 import styled, { css } from "styled-components";
-import { theme, rem, mediaMin } from "../../theme/globalStyles";
+import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
 import SiteMenuListItem from "./SiteMenuListItem/SiteMenuListItem";
 
 const StyledSiteMenuList = styled.ul`
   background-color: ${theme.colors.gray100};
   display: block;
   text-align: center;
-  overflow: hidden;
 
-  transition: opacity linear 0.2s;
-  will-change: max-height, opacity;
+  transition: transform, opacity linear 0.2s;
+  will-change: transform, opacity;
 
   ${(props) =>
     props.showNav
       ? css`
-          max-height: 100em;
+          transform: scaleY(1);
           pointer-events: auto;
           z-index: 10;
           opacity: 1;
         `
       : css`
-          max-height: 0em;
+          transform: scaleY(0);
           pointer-events: none;
           opacity: 0;
         `};
 
-  height: 100%;
-  height: 100vh;
-  position: absolute;
-  left: 0;
-  right: 0;
+  ${mediaMax.s`
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100%;
+    height: 100vh;
+  `};
+
+  outline: 1px solid red;
 
   ${mediaMin.s`
-    float: right;
     background-color: transparent;
+    float: right;
     padding-right: ${rem(2)};
-    margin: 0 0 0 auto;
-    width: auto;
-    position: static;
-    max-height: 100em;
     pointer-events: auto;
     opacity: 1;
     transform: none;

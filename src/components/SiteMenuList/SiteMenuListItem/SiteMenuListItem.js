@@ -132,7 +132,7 @@ const SiteMenuListItem = (props) => {
       <StyledNavLink
         to={props.to}
         activeClassName="current-nav-item"
-        ariaCurrent="page"
+        aria-current="page"
       >
         {props.label}
       </StyledNavLink>

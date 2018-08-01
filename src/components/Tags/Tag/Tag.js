@@ -32,6 +32,7 @@ const StyledTag = styled(Link)`
   &:active,
   &:focus {
     outline: 2px dashed ${theme.colors.main600};
+    text-decoration: underline;
   }
 
   &:before {

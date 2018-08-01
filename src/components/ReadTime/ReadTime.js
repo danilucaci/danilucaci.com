@@ -17,6 +17,8 @@ const Label = styled(Copy.withComponent("span"))`
 
 const StyledIcon = styled(Icon)`
   display: inline-block;
+  margin-right: ${rem(2)};
+  margin-bottom: ${rem(4)};
 `;
 
 const LabelBold = styled(CopyBold.withComponent("span"))`

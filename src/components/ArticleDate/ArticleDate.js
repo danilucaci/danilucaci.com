@@ -12,12 +12,10 @@ const Wrapper = styled.div`
   white-space: nowrap;
 `;
 
-const Label = styled(Copy.withComponent("span"))`
-  display: inline-block;
-`;
-
 const StyledIcon = styled(Icon)`
   display: inline-block;
+  margin-right: ${rem(2)};
+  margin-bottom: ${rem(4)};
 `;
 
 const Time = styled(CopyBold.withComponent("time"))`
@@ -30,7 +28,6 @@ const ArticleDate = (props) => {
       <StyledIcon>
         <use xlinkHref="#calendar" />
       </StyledIcon>
-      <Label small>Last Updated:&nbsp;</Label>
       <Time small dateTime={props.date}>
         {props.date}
       </Time>
