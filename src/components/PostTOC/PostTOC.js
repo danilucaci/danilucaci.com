@@ -24,23 +24,30 @@ const StyledIcon = Icon.extend`
 const StyledTOC = styled.nav`
   background-color: ${theme.colors.gray100};
   display: block;
+  margin-top: ${rem(24)};
+  margin-bottom: ${rem(56)};
   padding: ${rem(16)};
   position: relative;
   ${theme.shadow.default};
 
   & h3 {
     display: inline-block !important;
-    margin-bottom: 0 !important;
+    margin-bottom: ${rem(8)};
   }
 
   & ul li,
   ul li p {
     list-style-type: none;
-    font-family: ${theme.fonts.bodyBold};
-    font-weight: 700;
+    font-family: ${theme.fonts.bodyRegular};
+    font-weight: 400;
     font-size: ${theme.fontSizes.s};
     line-height: ${theme.lineHeights.s};
     margin-bottom: 0;
+
+    ${mediaMin.m`
+      font-size: ${theme.fontSizes.s};
+      line-height: ${theme.lineHeights.s};
+    `};
   }
 
   & ul ul {
@@ -76,7 +83,7 @@ const StyledTOC = styled.nav`
     margin-right: -${rem(16)};
 
     ${mediaMin.s`
-      padding: ${rem(16)} ${rem(24)};
+      padding: ${rem(8)} ${rem(24)};
       margin-left: -${rem(24)};
       margin-right: -${rem(24)};
     `};

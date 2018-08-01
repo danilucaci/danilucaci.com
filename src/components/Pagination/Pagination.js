@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { theme, rem, mediaMin } from "../../theme/globalStyles";
+import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
 import { Link } from "gatsby";
 import { Icon } from "../Icon/Icon";
 import { CopyBold } from "../Copy/Copy";
@@ -170,6 +170,12 @@ const PaginationNumber = styled(StyledLink)`
   `};
 `;
 
+const PaginationLabel = styled.span`
+  ${mediaMax.xs`
+    display: none;
+  `};
+`;
+
 const Pagination = (props) => {
   const {
     currentPage,
@@ -226,14 +232,14 @@ const Pagination = (props) => {
           <StyledIcon>
             <use xlinkHref="#left" />
           </StyledIcon>
-          Previous
+          <PaginationLabel>Previous</PaginationLabel>
         </Prev>
       ) : (
         <DisabledPrev>
           <StyledIcon disabled={!prevPath}>
             <use xlinkHref="#left" />
           </StyledIcon>
-          Previous
+          <PaginationLabel>Previous</PaginationLabel>
         </DisabledPrev>
       )}
       <PaginationContent>
@@ -244,14 +250,14 @@ const Pagination = (props) => {
       </PaginationContent>
       {nextPath ? (
         <Next to={nextPath}>
-          Next
+          <PaginationLabel>Next</PaginationLabel>
           <StyledIcon>
             <use xlinkHref="#right" />
           </StyledIcon>
         </Next>
       ) : (
         <DisabledNext>
-          Next
+          <PaginationLabel>Next</PaginationLabel>
           <StyledIcon disabled={!nextPath}>
             <use xlinkHref="#right" />
           </StyledIcon>

@@ -25,22 +25,6 @@ const Wrapper = styled.div`
   padding-right: ${theme.gutters.s};
 `};
 
-  a:active,
-  a:focus {
-    outline: 2px dashed ${theme.colors.main600};
-  }
-
-  a:visited,
-  a:link {
-    color: ${theme.colors.main600};
-  }
-
-  a:hover {
-    color: ${theme.colors.main600};
-    background-color: ${theme.colors.gray300};
-    cursor: pointer;
-  }
-
   header h1,
   nav h3 {
     margin-top: 0 !important;
@@ -130,7 +114,9 @@ const Wrapper = styled.div`
   }
 
   & h2,
-  & h3 {
+  & h3,
+  & h2 a,
+  & h3 a {
     &:target {
       &:before {
         content: "";
@@ -168,6 +154,23 @@ const Wrapper = styled.div`
 `;
 
 const PostContent = styled.section`
+  a:active,
+  a:focus {
+    outline: 2px dashed ${theme.colors.main600};
+    background-color: ${theme.colors.gray300};
+  }
+
+  a:visited,
+  a:link {
+    color: ${theme.colors.main600};
+  }
+
+  a:hover {
+    color: ${theme.colors.main600};
+    background-color: ${theme.colors.gray300};
+    cursor: pointer;
+  }
+
   margin-left: auto;
   margin-right: auto;
 
@@ -196,7 +199,7 @@ class Post extends Component {
           <PostHeader
             title={postInfo.title}
             intro={postInfo.intro}
-            date={postNode.date}
+            date={postInfo.date}
             timeToRead={postNode.timeToRead}
             tagsInPost={postInfo.tags}
           />

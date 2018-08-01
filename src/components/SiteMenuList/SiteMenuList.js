@@ -34,8 +34,6 @@ const StyledSiteMenuList = styled.ul`
     height: 100vh;
   `};
 
-  outline: 1px solid red;
-
   ${mediaMin.s`
     background-color: transparent;
     float: right;
