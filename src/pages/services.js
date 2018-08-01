@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
+
 import Layout from "../components/Layout";
-import Services from "../components/Services/Services";
 import config from "../../data/SiteConfig";
 
 import styled from "styled-components";
@@ -26,7 +26,6 @@ class ServicesPage extends Component {
       <Layout location={this.props.location}>
         <Wrapper>
           <Helmet title={`About | ${config.siteTitle}`} />
-          <Services />
         </Wrapper>
       </Layout>
     );
