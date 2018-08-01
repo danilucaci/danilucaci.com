@@ -3,6 +3,10 @@ const _ = require("lodash");
 const moment = require("moment");
 const siteConfig = require("./data/SiteConfig");
 
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 const postNodes = [];
 
 function addSiblingNodes(createNodeField) {

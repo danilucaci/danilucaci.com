@@ -12,6 +12,8 @@ import injectCSS from "../theme/injectCSS";
 
 require("./prism.css");
 
+console.log("env: " + process.env.GATSBY_ASSETS_URL);
+
 import SiteHeader from "./SiteHeader/SiteHeader";
 import { Main } from "./Main/Main";
 import SiteFooter from "./SiteFooter/SiteFooter";
