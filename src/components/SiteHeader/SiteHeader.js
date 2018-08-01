@@ -7,7 +7,7 @@ import SiteNav from "../SiteNav/SiteNav";
 
 const StyledSiteHeader = styled.header`
   background-color: ${theme.colors.gray100};
-  ${theme.shadow.default};
+  ${theme.shadow.header};
   width: 100%;
   display: block;
   height: ${rem(64)};
@@ -16,10 +16,10 @@ const StyledSiteHeader = styled.header`
   ${mediaMin.s`
     width: 100%;
     height: ${rem(56)};
-    padding-top: ${rem(4)};
+    padding-top: 0;
     padding-right: ${rem(8)};
     padding-left: ${rem(24)};
-    padding-bottom: ${rem(4)};
+    padding-bottom: 0;
   `};
 
   ${mediaMin.m`

@@ -177,7 +177,7 @@ const PostContent = styled.section`
     margin-top: ${rem(32)};
   `};
 
-  max-width: ${theme.contain.blog};
+  max-width: ${theme.contain.post};
 `;
 
 class Post extends Component {

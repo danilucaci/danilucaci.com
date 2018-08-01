@@ -6,11 +6,11 @@ import { theme, rem, mediaMin } from "../../theme/globalStyles";
 import { Icon } from "../Icon/Icon";
 
 const StyledMenuButton = styled.button`
-  border: 2px solid ${theme.colors.main600};
+  border: 2px solid ${theme.colors.dark900};
   background-color: ${theme.colors.gray100};
-  color: ${theme.colors.main600};
+  color: ${theme.colors.dark900};
 
-  font-family: ${theme.fonts.bodyBold};
+  font-family: ${theme.fonts.bodyRegular};
   font-weight: 700;
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};
@@ -24,7 +24,7 @@ const StyledMenuButton = styled.button`
   margin-bottom: ${rem(4)};
 
   height: ${rem(40)};
-  padding: ${rem(6)} ${rem(12)} ${rem(10)} ${rem(16)};
+  padding: ${rem(6)} ${rem(12)} ${rem(10)} ${rem(12)};
 
   ${mediaMin.s`
     display: none;
@@ -32,7 +32,7 @@ const StyledMenuButton = styled.button`
 `;
 
 const StyledIcon = Icon.extend`
-  float: right;
+  fill: ${theme.colors.dark900};
   transition: transform 0.2s ease;
 
   ${(props) =>

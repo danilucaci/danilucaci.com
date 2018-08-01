@@ -39,7 +39,6 @@ const StyledSiteMenuList = styled.ul`
     padding-right: ${rem(2)};
     margin: 0 0 0 auto;
     width: auto;
-    height: auto;
     position: static;
     max-height: 100em;
     pointer-events: auto;

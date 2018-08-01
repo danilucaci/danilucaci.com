@@ -10,11 +10,6 @@ const StyledSiteMenuListItem = styled.li`
   list-style-type: none;
   text-align: center;
   width: 100%;
-  margin: ${rem(24)} 0;
-
-  @media screen and (max-height: 32em) {
-    margin: ${rem(8)} 0;
-  }
 
   transition-delay: 0.4s;
   transition: max-height, transform ease-out 0.2s;
@@ -52,16 +47,16 @@ const StyledSiteMenuListItem = styled.li`
 const StyledNavLink = styled(NavLink)`
   color: ${theme.colors.dark800};
   display: block;
-  font-family: ${theme.fonts.header};
+  font-family: ${theme.fonts.bodyBold};
   font-weight: 700;
   font-size: ${rem(32)};
-  line-height: ${rem(32)};
+  line-height: ${rem(40)};
   text-decoration: none;
   width: 100%;
-  padding: ${rem(20)} ${rem(16)};
+  padding: ${rem(16)} ${rem(16)};
 
-  ${mediaMax.xxs`
-    padding: ${rem(16)} ${rem(16)};
+  ${mediaMin.xxs`
+    padding: ${rem(24)} ${rem(16)};
   `};
 
   &:active,
@@ -81,12 +76,12 @@ const StyledNavLink = styled(NavLink)`
 
   ${mediaMin.s`
     background-color: transparent;
-    font-family: ${theme.fonts.bodyBold};
+    font-family: ${theme.fonts.bodyRegular};
     font-weight: 700;
     font-size: ${theme.fontSizes.s};
     line-height: ${theme.lineHeights.s};
-    padding: ${rem(12)} ${rem(16)} ${rem(12)} ${rem(16)};
-    margin-right: ${rem(2)};
+    padding: ${rem(8)} ${rem(16)} ${rem(12)};
+    margin: ${rem(2)};
   `};
 
   &.current-nav-item {
@@ -101,16 +96,28 @@ const StyledNavLink = styled(NavLink)`
     ${mediaMin.s`
       background-color: transparent;
       color: ${theme.colors.dark800};
-      border-bottom: 8px solid ${theme.colors.main600};
-      padding-bottom: ${rem(8)};
+      position: relative;
 
       &:hover {
         color: ${theme.colors.main600};
       }
-    `};
 
-    ${mediaMin.m`
-      padding-bottom: ${rem(4)};
+      &:after {
+        content: '';
+        display: block;
+        background-color: ${theme.colors.main600};
+        width: 100%;
+        position: absolute;
+        bottom: -6px;
+        left: 0;
+        right: 0;
+        height: ${rem(4)};
+        z-index: 10;
+
+        ${mediaMin.m`
+          bottom: -2px;
+        `};
+      };
     `};
   }
 `;
@@ -125,7 +132,7 @@ const SiteMenuListItem = (props) => {
       <StyledNavLink
         to={props.to}
         activeClassName="current-nav-item"
-        aria-current="page"
+        ariaCurrent="page"
       >
         {props.label}
       </StyledNavLink>

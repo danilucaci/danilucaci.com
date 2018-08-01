@@ -27,6 +27,8 @@ export const theme = {
     default: "box-shadow: 0px 2px 8px 0px hsla(0, 0%, 60%, 0.2)",
     hover:
       "box-shadow: 0px 2px 6px -4px hsla(0, 2%, 40%, 0.4), 0px 6px 28px -4px hsla(0, 2%, 40%, 0.4)",
+    header: "box-shadow: 0px 2px 2px 0px hsla(0, 0%, 60%, 0.32)",
+    reading: "box-shadow: 0px 2px -2px 0px hsla(0, 0%, 60%, 0.32)",
   },
   fonts: {
     system:
@@ -97,8 +99,9 @@ export const theme = {
     page: "73.5em",
     content: "61.5em",
     blog: "46.5em",
+    post: "34.5em",
   },
-  logoWidth: "6.5625em",
+  logoWidth: "6em",
   logoHeight: "3em",
   breakpoints: {
     xxs: "22.5em", //360

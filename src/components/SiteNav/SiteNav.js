@@ -15,11 +15,20 @@ const StyledLogoLink = styled(DefaultLink)`
 `;
 
 const StyledNav = styled.nav`
+  display: block;
   max-width: ${theme.contain.content};
   margin-left: auto;
   margin-right: auto;
 
+  ${mediaMin.s`
+    height: ${rem(56)};
+    padding-top: ${rem(4)};
+    padding-right: ${theme.gutters.m};
+    padding-left: ${theme.gutters.m};
+  `};
+
   ${mediaMin.m`
+    padding-top: 0;
     height: ${rem(48)};
     padding-right: ${theme.gutters.m};
     padding-left: ${theme.gutters.m};
