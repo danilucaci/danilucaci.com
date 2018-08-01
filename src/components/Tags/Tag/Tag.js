@@ -3,23 +3,35 @@ import React from "react";
 import styled from "styled-components";
 import { theme, mediaMin, rem } from "../../../theme/globalStyles";
 
-import { DefaultLink } from "../../Link/Link";
+import { Link } from "gatsby";
 
-const StyledTag = styled(DefaultLink)`
-  color: ${theme.colors.dark900} !important;
+const StyledTag = styled(Link)`
+  background: ${theme.colors.gray300};
+  border-radius: ${rem(4)};
+  color: ${theme.colors.dark800};
   display: inline-block;
 
   text-decoration: none;
 
   font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s};
-  font-family: ${theme.fonts.bodyBold};
-  margin-right: ${rem(8)};
-  margin-bottom: ${rem(8)};
-  padding: ${rem(4)};
+  line-height: ${rem(20)};
+  font-family: ${theme.fonts.bodyRegular};
+  margin-right: ${rem(16)};
+  margin-bottom: ${rem(16)};
+  padding: ${rem(4)} ${rem(8)};
 
   &:hover {
     text-decoration: underline;
+  }
+
+  &:visited,
+  &:link {
+    color: ${theme.colors.dark800};
+  }
+
+  &:active,
+  &:focus {
+    outline: 2px dashed ${theme.colors.main600};
   }
 
   &:before {
