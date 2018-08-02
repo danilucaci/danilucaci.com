@@ -1,77 +1,48 @@
 import React, { Component } from "react";
+import styled from "styled-components";
 import Helmet from "react-helmet";
 
-import Layout from "../components/Layout";
 import config from "../../data/SiteConfig";
+import Layout from "../components/Layout";
+import { Icon } from "../components/Icon/Icon";
 
-import styled from "styled-components";
+import {
+  theme,
+  mediaMin,
+  mediaMax,
+  rem,
+  breakpoints,
+} from "../theme/globalStyles";
 
-import { theme, mediaMin, rem, breakpoints } from "../theme/globalStyles";
 import { H1, H2, H3, H4 } from "../components/Headings/Headings";
 import { Copy } from "../components/Copy/Copy";
-import { ContactButton, PrimaryButton } from "../components/Button/Button";
+import { ContactButton } from "../components/Button/Button";
 
 const Wrapper = styled.div`
   max-width: ${theme.contain.content};
   margin-left: auto;
   margin-right: auto;
-  margin-top: ${rem(56)};
 
   padding-left: ${theme.gutters.s};
   padding-right: ${theme.gutters.s};
 
-  ${mediaMin.s`
+  ${mediaMin.m`
     padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
+  `};
+
+  ${mediaMin.xl`
+    margin-top: ${rem(56)};
   `};
 `;
 
 const ContactWrapper = styled.section`
-  outline: 1px solid red;
-
-  ${mediaMin.s`
+  ${mediaMin.l`
     display: inline-block;
     vertical-align: top;
     margin-right: ${rem(24)};
     width: calc(70% - ${rem(24)});
   `};
-`;
-
-const ContactInfo = styled.aside`
-  outline: 1px solid red;
-
-  ${mediaMin.m`
-    display: inline-block;
-    vertical-align: top;
-    width: 30%;
-  `};
-`;
-
-const PathWrapper = styled.div`
-  width: 100%;
-  margin-top: ${rem(32)};
-
-  & h3 {
-    margin-bottom: ${rem(24)};
-  }
-
-  ${mediaMin.m`
-    margin-right: ${rem(24)};
-    display: inline-block;
-    vertical-align: top;
-    width: calc(70% - ${rem(24)});
-  `};
-`;
-
-const StyledContactButton = styled(ContactButton)`
-  margin-right: ${rem(16)};
-  margin-bottom: ${rem(16)};
-  width: ${rem(288)};
-`;
-
-const StyledPrimaryButton = styled(PrimaryButton)`
-  margin-right: ${rem(16)};
-  width: ${rem(288)};
 `;
 
 const Subhead = styled(Copy)`
@@ -88,12 +59,53 @@ const Subhead = styled(Copy)`
 const StyledH1 = styled(H1)`
   display: block;
   width: 100%;
+  margin-bottom: ${rem(16)};
 
-  outline: 1px solid red;
+  ${mediaMin.s`
+    margin-bottom: ${rem(24)};
+  `};
 `;
 
-const StyledH4 = styled(H4)`
-  margin-top: ${rem(24)};
+const ContactInfo = styled.aside`
+  ${mediaMin.l`
+    display: inline-block;
+    vertical-align: top;
+    width: 30%;
+  `};
+`;
+
+const ContactInfoItem = styled.div`
+  ${mediaMax.l`
+    display: inline-block;
+    vertical-align: top;
+    margin-right: ${rem(16)};
+  `};
+
+  ${mediaMin.s`
+    &:first-of-type{
+      margin-bottom: ${rem(24)};
+    } 
+  `};
+`;
+
+const PathWrapper = styled.div`
+  width: 100%;
+  margin-top: ${rem(32)};
+
+  & h3 {
+    margin-bottom: ${rem(24)};
+  }
+`;
+
+const StyledContactButton = styled(ContactButton)`
+  margin-bottom: ${rem(16)};
+  width: 100%;
+
+  ${mediaMin.l`
+    display: inline-block;
+    width: ${rem(256)};
+    margin-right: ${rem(24)};
+  `};
 `;
 
 const StyledList = styled.ul`
@@ -104,6 +116,18 @@ const StyledList = styled.ul`
 
 const StyledListItem = styled.li`
   padding-left: ${rem(4)};
+`;
+
+const MailIcon = styled(Icon)`
+  margin-left: ${rem(8)};
+  margin-bottom: ${rem(4)};
+  fill: ${theme.colors.dark800};
+`;
+
+const TwitterIcon = styled(Icon)`
+  margin-left: ${rem(8)};
+  margin-bottom: ${rem(4)};
+  fill: ${theme.colors.social.twitter};
 `;
 
 class ContactPage extends Component {
@@ -121,22 +145,37 @@ class ContactPage extends Component {
             </Subhead>
           </ContactWrapper>
           <ContactInfo>
-            <StyledH4>I prefer email for:</StyledH4>
-            <StyledList>
-              <StyledListItem>Everything work related</StyledListItem>
-              <StyledListItem>Project or colaboration proposals</StyledListItem>
-              <StyledListItem>Longer messages</StyledListItem>
-            </StyledList>
-            <StyledH4>I prefer twitter for:</StyledH4>
-            <StyledList>
-              <StyledListItem>Everything else</StyledListItem>
-            </StyledList>
+            <ContactInfoItem>
+              <H4>I prefer email for:</H4>
+              <StyledList>
+                <StyledListItem>Everything work related</StyledListItem>
+                <StyledListItem>
+                  Project or colaboration proposals
+                </StyledListItem>
+                <StyledListItem>Longer messages</StyledListItem>
+              </StyledList>
+            </ContactInfoItem>
+            <ContactInfoItem>
+              <H4>I prefer twitter for:</H4>
+              <StyledList>
+                <StyledListItem>Everything else</StyledListItem>
+              </StyledList>
+            </ContactInfoItem>
           </ContactInfo>
           <PathWrapper>
             <H3>Choose your path</H3>
-            <StyledContactButton>Email</StyledContactButton>
-            <StyledContactButton>Tweet</StyledContactButton>
-            <StyledPrimaryButton>Tweet</StyledPrimaryButton>
+            <StyledContactButton>
+              Email
+              <MailIcon>
+                <use xlinkHref="#mail" />
+              </MailIcon>
+            </StyledContactButton>
+            <StyledContactButton>
+              Tweet
+              <TwitterIcon>
+                <use xlinkHref="#twitter" />
+              </TwitterIcon>
+            </StyledContactButton>
           </PathWrapper>
         </Wrapper>
       </Layout>

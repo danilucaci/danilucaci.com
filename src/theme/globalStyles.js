@@ -22,22 +22,27 @@ export const theme = {
     main200: "#3DAEFF",
     main100: "#E6F2FF",
     transparent: "rgba(255,255,255, 0.96)",
+    social: {
+      twitter: "#1DA1F2",
+      facebook: "#4A67AD",
+      codepen: "#212121",
+      github: "#24292E",
+      linkedin: "#0077B5",
+      gplus: "#DB4437",
+      dribbble: "#EA4C89",
+      instagram: "#DF54C1",
+    },
   },
   shadow: {
     default:
       "box-shadow: 0px 2px 8px -2px rgba(153,153,153,0.32), 0px 4px 8px -2px rgba(153,153,153,0.2)",
-
     hover:
       "box-shadow: 0px 2px 8px -4px rgba(102,102,102,0.4), 0px 8px 20px -4px rgba(102,102,102,0.4)",
-
     button:
       "box-shadow: 0px 4px 8px -2px rgba(10, 41, 92, 0.48), 0px 8px 20px -4px rgba(92, 139, 214, 0.4)",
-
     buttonHover:
       "box-shadow: 0px 4px 8px -4px rgb(20, 83, 184), 0px 8px 20px -4px rgba(16, 66, 147, 0.6)",
-
     header: "box-shadow: 0px 2px 2px 0px rgba(153, 153, 153, 0.32)",
-
     reading: "box-shadow: 0px 2px -2px 0px rgba(153, 153, 153, 0.32)",
   },
   fonts: {
