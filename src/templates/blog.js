@@ -44,6 +44,24 @@ const BlogHeader = styled.header`
   z-index: 5;
 `;
 
+const BlogInfo = styled.div`
+  ${mediaMin.l`
+    display: inline-block;
+    vertical-align: top;
+    margin-right: ${rem(12)};
+    width: calc(50% - ${rem(12)});
+  `};
+`;
+
+const TagsWrapper = styled(Collapsible)`
+  ${mediaMin.l`
+    display: inline-block;
+    vertical-align: top;
+    margin-left: ${rem(12)};
+    width: calc(50% - ${rem(12)});
+  `};
+`;
+
 class BlogPage extends Component {
   render() {
     const {
@@ -68,21 +86,23 @@ class BlogPage extends Component {
           <Helmet title={config.siteTitle} />
           <SEO />
           <BlogHeader>
-            <Collapsible split title="What I write about">
-              <Copy>
-                How i built this in Hugo and optimized for 100% Speed Index with
-                Google.
-              </Copy>
-            </Collapsible>
-            <Collapsible split title="What else">
-              <Copy>
-                How i built this in Hugo and optimized for 100% Speed Index with
-                Google.
-              </Copy>
-            </Collapsible>
-            <Collapsible title="Explore by tags">
+            <BlogInfo>
+              <Collapsible title="What I write about">
+                <Copy>
+                  How i built this in Hugo and optimized for 100% Speed Index
+                  with Google.
+                </Copy>
+              </Collapsible>
+              <Collapsible title="What else">
+                <Copy>
+                  How i built this in Hugo and optimized for 100% Speed Index
+                  with Google.
+                </Copy>
+              </Collapsible>
+            </BlogInfo>
+            <TagsWrapper title="Explore by tags">
               <Tags tagsInPost={allTags} />
-            </Collapsible>
+            </TagsWrapper>
           </BlogHeader>
           <PostListing edges={edges} />
           {totalPagesInBlog > 1 && (

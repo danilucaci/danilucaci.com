@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled, { css } from "styled-components";
 
-import { theme, mediaMin, rem } from "../../theme/globalStyles";
+import { theme, mediaMin, mediaMax, rem } from "../../theme/globalStyles";
 
 import { H3 } from "../Headings/Headings";
 import { Icon } from "../Icon/Icon";
@@ -9,44 +9,24 @@ import { Icon } from "../Icon/Icon";
 const StyledCollapsible = styled.div`
   background-color: ${theme.colors.gray100};
   ${theme.shadow.default};
-  display: inline-block;
-  vertical-align: top;
 
   padding: ${rem(14)} ${rem(16)};
   position: relative;
 
   width: 100%;
   height: 100%;
-  margin-bottom: ${rem(24)};
 
   ${mediaMin.s`
+    padding: 0;
     background-color: transparent;
     box-shadow: none;
   `};
-
-  ${(props) =>
-    props.split &&
-    css`
-      @media screen and (min-width: ${theme.breakpoints.m}) {
-        width: calc(50% - ${theme.gutters.m});
-        margin-right: ${theme.gutters.m};
-
-        &:nth-of-type(2) {
-          margin-right: 0;
-        }
-      }
-    `};
 `;
 
 const StyledTitle = styled(H3)`
-  font-family: ${theme.fonts.header};
-  font-weight: 700;
-  font-size: ${theme.fontSizes.m};
-  line-height: ${theme.lineHeights.m};
-
-  ${mediaMin.s`
-    font-size: ${theme.fontSizes.h3};
-    line-height: ${theme.lineHeights.h3};
+  ${mediaMax.s`
+    font-size: ${theme.fontSizes.m};
+    line-height: ${theme.lineHeights.m};
   `};
 `;
 
@@ -77,7 +57,7 @@ const CollapsibleContent = styled.div`
   `};
 `;
 
-const StyledIcon = Icon.extend`
+const StyledIcon = styled(Icon)`
   float: right;
   transition: transform 0.2s ease;
   transform: rotate(0deg);
@@ -109,7 +89,7 @@ class Collapsible extends Component {
     const contentVisible = this.state.contentVisible;
 
     return (
-      <StyledCollapsible split={this.props.split} onClick={this.showContent}>
+      <StyledCollapsible onClick={this.showContent}>
         <StyledIcon animate={contentVisible}>
           <use xlinkHref="#down" />
         </StyledIcon>

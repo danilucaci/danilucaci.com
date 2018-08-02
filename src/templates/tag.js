@@ -32,50 +32,52 @@ const Wrapper = styled.div`
 const StyledH1 = styled(H1)`
   margin-bottom: ${rem(16)};
 
-  ${mediaMin.s`
-    margin-bottom: ${rem(24)};
+  ${mediaMin.xs`
+    font-size: ${theme.fontSizes.h2};
+    line-height: ${theme.lineHeights.h2};
   `};
 `;
 
 const Subhead = styled(H4)`
   color: ${theme.colors.dark700};
+  font-size: ${theme.fontSizes.sectionHeader};
+  line-height: ${theme.lineHeights.sectionHeader};
   text-transform: uppercase;
 `;
 
 const TagHeader = styled.header`
-  max-width: ${theme.contain.content};
+  max-width: ${theme.contain.blog};
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: ${rem(56)};
+  margin-bottom: ${rem(32)};
   color: ${theme.colors.dark900};
 
   ${mediaMin.s`
-    margin-bottom: ${rem(128)};
+    margin-bottom: ${rem(88)};
   `};
 
-  z-index: 5;
+  ${mediaMin.l`
+    margin-bottom: ${rem(128)};
+  `};
 `;
 
 const TagHeading = styled.div`
   display: inline-block;
   vertical-align: top;
-  padding: ${rem(16)} 0;
   width: 100%;
 
-  ${mediaMin.m`
-    margin-right: ${rem(24)};
-    width: calc(50% - ${rem(24)});
+  ${mediaMin.l`
+    margin-right: ${rem(12)};
+    width: calc(50% - ${rem(12)});
   `};
 `;
 
-const OtherTags = styled.div`
-  display: inline-block;
-  vertical-align: top;
-  padding: ${rem(16)} 0;
-  width: 100%;
-
-  ${mediaMin.m`
-    width: calc(50% - ${rem(24)});
+const TagsWrapper = styled.div`
+  ${mediaMin.l`
+    display: inline-block;
+    vertical-align: top;
+    margin-left: ${rem(12)};
+    width: calc(50% - ${rem(12)});
   `};
 `;
 
@@ -108,10 +110,11 @@ class TagPage extends Component {
               <Subhead>Blog posts found for:</Subhead>
               <StyledH1>#{tag}</StyledH1>
             </TagHeading>
-            <OtherTags>
-              <H3>Other tags from the blog</H3>
-              <Tags tagsInPost={allTags} />
-            </OtherTags>
+            <TagsWrapper>
+              <Collapsible title="Other tags from the blog">
+                <Tags tagsInPost={allTags} />
+              </Collapsible>
+            </TagsWrapper>
           </TagHeader>
           <PostListing edges={edges} />
           {totalPagesInBlog > 1 && (
