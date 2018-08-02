@@ -14,15 +14,17 @@ import PostTOC from "../components/PostTOC/PostTOC";
 import PostFooter from "../components/PostFooter/PostFooter";
 
 const Wrapper = styled.div`
-  padding-left: ${theme.gutters.s};
-  padding-right: ${theme.gutters.s};
   max-width: ${theme.contain.content};
+
   margin-left: auto;
   margin-right: auto;
 
-  ${mediaMin.s`
   padding-left: ${theme.gutters.s};
   padding-right: ${theme.gutters.s};
+
+  ${mediaMin.s`
+    padding-left: ${theme.gutters.s};
+    padding-right: ${theme.gutters.s};
 `};
 
   header h1,
@@ -192,7 +194,7 @@ class Post extends Component {
     return (
       <Layout location={this.props.location}>
         <Helmet>
-          <title>{`${postInfo.title} | ${config.siteTitle}`}</title>
+          <title>{`${postInfo.title} || ${config.siteTitle}`}</title>
         </Helmet>
         <SEO postPath={slug} postNode={postNode} postSEO />
         <Wrapper>

@@ -50,6 +50,7 @@ const CollapsibleContent = styled.div`
     `};
 
   ${mediaMin.s`
+    padding-top: ${rem(8)};
     opacity: 1;
     overflow: visible;
     transform: none;
@@ -86,6 +87,7 @@ class Collapsible extends Component {
   };
 
   render() {
+    console.log(this.props.spaced);
     const contentVisible = this.state.contentVisible;
 
     return (

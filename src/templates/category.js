@@ -56,7 +56,7 @@ class CategoryPage extends Component {
     return (
       <Layout location={this.props.location}>
         <Wrapper>
-          <Helmet title={config.siteTitle} />
+          <Helmet title={`Categories || ${config.siteTitle}`} />
           <SEO />
           <CategoryHeader>
             <H1>Blog posts in: {category}</H1>

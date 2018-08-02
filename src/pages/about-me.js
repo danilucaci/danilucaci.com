@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Helmet from "react-helmet";
 import styled, { css } from "styled-components";
 
+import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
 import config from "../../data/SiteConfig";
 
@@ -75,7 +76,8 @@ class AboutPage extends Component {
     return (
       <Layout location={this.props.location}>
         <Wrapper>
-          <Helmet title={`About Me | ${config.siteTitle}`} />
+          <Helmet title={`About Me || ${config.siteTitle}`} />
+          <SEO />
           <StyledH4>Dani Lucaci</StyledH4>
           <StyledH1>About Me</StyledH1>
           <StyledImage />

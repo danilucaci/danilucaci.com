@@ -3,6 +3,7 @@ import Helmet from "react-helmet";
 
 import Layout from "../components/Layout";
 import config from "../../data/SiteConfig";
+import SEO from "../components/SEO/SEO";
 
 import styled from "styled-components";
 import { theme, mediaMin, rem } from "../theme/globalStyles";
@@ -25,7 +26,8 @@ class ServicesPage extends Component {
     return (
       <Layout location={this.props.location}>
         <Wrapper>
-          <Helmet title={`About | ${config.siteTitle}`} />
+          <Helmet title={`Services || ${config.siteTitle}`} />
+          <SEO />
         </Wrapper>
       </Layout>
     );

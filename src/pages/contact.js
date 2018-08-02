@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Helmet from "react-helmet";
 
 import config from "../../data/SiteConfig";
+import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
 import { Icon } from "../components/Icon/Icon";
 
@@ -101,7 +102,7 @@ const StyledContactButton = styled(ContactButton)`
   margin-bottom: ${rem(16)};
   width: 100%;
 
-  ${mediaMin.l`
+  ${mediaMin.m`
     display: inline-block;
     width: ${rem(256)};
     margin-right: ${rem(24)};
@@ -135,7 +136,8 @@ class ContactPage extends Component {
     return (
       <Layout location={this.props.location}>
         <Wrapper>
-          <Helmet title={`About | ${config.siteTitle}`} />
+          <Helmet title={`Contact Me || ${config.siteTitle}`} />
+          <SEO />
           <StyledH1>Let's talk</StyledH1>
           <ContactWrapper>
             <Subhead>

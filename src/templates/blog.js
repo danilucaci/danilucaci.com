@@ -7,8 +7,8 @@ import styled, { css } from "styled-components";
 import { theme, mediaMin, rem } from "../theme/globalStyles";
 
 import Layout from "../components/Layout";
-import PostListing from "../components/PostListing/PostListing";
 import SEO from "../components/SEO/SEO";
+import PostListing from "../components/PostListing/PostListing";
 import config from "../../data/SiteConfig";
 
 import { Copy } from "../components/Copy/Copy";
@@ -49,16 +49,28 @@ const BlogInfo = styled.div`
     display: inline-block;
     vertical-align: top;
     margin-right: ${rem(12)};
-    width: calc(50% - ${rem(12)});
+    width: calc(((100% / 8) * 5) - ${rem(12)});
   `};
 `;
 
-const TagsWrapper = styled(Collapsible)`
+const BlogInfoItem = styled.div`
+  margin-bottom: ${rem(16)};
+
+  ${mediaMin.s`
+    margin-bottom: ${rem(40)};
+  `};
+
+  ${mediaMin.m`
+    margin-bottom: ${rem(24)};
+  `};
+`;
+
+const TagsWrapper = styled.div`
   ${mediaMin.l`
     display: inline-block;
     vertical-align: top;
     margin-left: ${rem(12)};
-    width: calc(50% - ${rem(12)});
+    width: calc(((100% / 8) * 3) - ${rem(12)});
   `};
 `;
 
@@ -83,25 +95,31 @@ class BlogPage extends Component {
     return (
       <Layout location={this.props.location}>
         <Wrapper>
-          <Helmet title={config.siteTitle} />
+          <Helmet title={`Blog || ${config.siteTitle}`} />
           <SEO />
           <BlogHeader>
             <BlogInfo>
-              <Collapsible title="What I write about">
-                <Copy>
-                  How i built this in Hugo and optimized for 100% Speed Index
-                  with Google.
-                </Copy>
-              </Collapsible>
-              <Collapsible title="What else">
-                <Copy>
-                  How i built this in Hugo and optimized for 100% Speed Index
-                  with Google.
-                </Copy>
-              </Collapsible>
+              <BlogInfoItem>
+                <Collapsible title="What I write about">
+                  <Copy>
+                    How i built this in Hugo and optimized for 100% Speed Index
+                    with Google.
+                  </Copy>
+                </Collapsible>
+              </BlogInfoItem>
+              <BlogInfoItem>
+                <Collapsible title="What else">
+                  <Copy>
+                    How i built this in Hugo and optimized for 100% Speed Index
+                    with Google.
+                  </Copy>
+                </Collapsible>
+              </BlogInfoItem>
             </BlogInfo>
-            <TagsWrapper title="Explore by tags">
-              <Tags tagsInPost={allTags} />
+            <TagsWrapper>
+              <Collapsible title="Explore by tags" spaced>
+                <Tags tagsInPost={allTags} />
+              </Collapsible>
             </TagsWrapper>
           </BlogHeader>
           <PostListing edges={edges} />
