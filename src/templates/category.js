@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
 import PropTypes from "prop-types";
-
 import styled, { css } from "styled-components";
+
+import config from "../../data/SiteConfig";
 import { theme, mediaMin, rem } from "../theme/globalStyles";
+import SEO from "../components/SEO/SEO";
 
 import Layout from "../components/Layout";
 import PostListing from "../components/PostListing/PostListing";
-import SEO from "../components/SEO/SEO";
-import config from "../../data/SiteConfig";
-
 import { H1 } from "../components/Headings/Headings";
 import Tags from "../components/Tags/Tags";
 import Pagination from "../components/Pagination/Pagination";

@@ -187,9 +187,11 @@ const PostContent = styled.section`
 
 class Post extends Component {
   render() {
-    const slug = String(this.props.pageContext);
+    const slug = this.props.data.markdownRemark.fields.slug;
     const postNode = this.props.data.markdownRemark;
     const postInfo = postNode.frontmatter;
+
+    console.log(slug);
 
     return (
       <Layout location={this.props.location}>

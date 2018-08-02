@@ -2,15 +2,14 @@ import React, { Component } from "react";
 import Helmet from "react-helmet";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-
 import styled, { css } from "styled-components";
+
+import SEO from "../components/SEO/SEO";
+import config from "../../data/SiteConfig";
+import Layout from "../components/Layout";
 import { theme, mediaMin, rem } from "../theme/globalStyles";
 
-import Layout from "../components/Layout";
-import SEO from "../components/SEO/SEO";
 import PostListing from "../components/PostListing/PostListing";
-import config from "../../data/SiteConfig";
-
 import { Copy } from "../components/Copy/Copy";
 import Tags from "../components/Tags/Tags";
 import Collapsible from "../components/Collapsible/Collapsible";
