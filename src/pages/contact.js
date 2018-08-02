@@ -9,6 +9,7 @@ import styled from "styled-components";
 import { theme, mediaMin, rem, breakpoints } from "../theme/globalStyles";
 import { H1, H2, H3, H4 } from "../components/Headings/Headings";
 import { Copy } from "../components/Copy/Copy";
+import { ContactButton, PrimaryButton } from "../components/Button/Button";
 
 const Wrapper = styled.div`
   max-width: ${theme.contain.content};
@@ -50,7 +51,9 @@ const PathWrapper = styled.div`
   width: 100%;
   margin-top: ${rem(32)};
 
-  outline: 1px solid red;
+  & h3 {
+    margin-bottom: ${rem(24)};
+  }
 
   ${mediaMin.m`
     margin-right: ${rem(24)};
@@ -58,6 +61,17 @@ const PathWrapper = styled.div`
     vertical-align: top;
     width: calc(70% - ${rem(24)});
   `};
+`;
+
+const StyledContactButton = styled(ContactButton)`
+  margin-right: ${rem(16)};
+  margin-bottom: ${rem(16)};
+  width: ${rem(288)};
+`;
+
+const StyledPrimaryButton = styled(PrimaryButton)`
+  margin-right: ${rem(16)};
+  width: ${rem(288)};
 `;
 
 const Subhead = styled(Copy)`
@@ -120,6 +134,9 @@ class ContactPage extends Component {
           </ContactInfo>
           <PathWrapper>
             <H3>Choose your path</H3>
+            <StyledContactButton>Email</StyledContactButton>
+            <StyledContactButton>Tweet</StyledContactButton>
+            <StyledPrimaryButton>Tweet</StyledPrimaryButton>
           </PathWrapper>
         </Wrapper>
       </Layout>

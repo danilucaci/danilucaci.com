@@ -24,11 +24,21 @@ export const theme = {
     transparent: "rgba(255,255,255, 0.96)",
   },
   shadow: {
-    default: "box-shadow: 0px 2px 8px 0px hsla(0, 0%, 60%, 0.2)",
+    default:
+      "box-shadow: 0px 2px 8px -2px rgba(153,153,153,0.32), 0px 4px 8px -2px rgba(153,153,153,0.2)",
+
     hover:
-      "box-shadow: 0px 2px 6px -4px hsla(0, 2%, 40%, 0.4), 0px 6px 28px -4px hsla(0, 2%, 40%, 0.4)",
-    header: "box-shadow: 0px 2px 2px 0px hsla(0, 0%, 60%, 0.32)",
-    reading: "box-shadow: 0px 2px -2px 0px hsla(0, 0%, 60%, 0.32)",
+      "box-shadow: 0px 2px 8px -4px rgba(102,102,102,0.4), 0px 8px 20px -4px rgba(102,102,102,0.4)",
+
+    button:
+      "box-shadow: 0px 4px 8px -2px rgba(10, 41, 92, 0.48), 0px 8px 20px -4px rgba(92, 139, 214, 0.4)",
+
+    buttonHover:
+      "box-shadow: 0px 4px 8px -4px rgb(20, 83, 184), 0px 8px 20px -4px rgba(16, 66, 147, 0.6)",
+
+    header: "box-shadow: 0px 2px 2px 0px rgba(153, 153, 153, 0.32)",
+
+    reading: "box-shadow: 0px 2px -2px 0px rgba(153, 153, 153, 0.32)",
   },
   fonts: {
     system:
@@ -49,6 +59,7 @@ export const theme = {
     h4: "1.125rem",
     subhead: "1.5rem",
     subheads: "1.25rem",
+    button: "1rem",
     xl: "1.5rem",
     l: "1.25rem",
     m: "1.125rem",
@@ -65,6 +76,7 @@ export const theme = {
     h4: "1.75rem",
     subhead: "2.5rem",
     subheads: "2rem",
+    button: "1.25rem",
     m: "1.75rem",
     s: "1.5rem",
     xs: "1.25rem",
