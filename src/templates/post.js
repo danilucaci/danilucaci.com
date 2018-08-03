@@ -35,7 +35,12 @@ const Wrapper = styled.div`
   h1 {
     color: ${theme.colors.dark900};
     display: block;
-    font-family: ${theme.fonts.header};
+    font-family: ${theme.fonts.system};
+
+    .fonts-loaded & {
+      font-family: ${theme.fonts.header};
+    }
+
     font-weight: 700;
     font-style: normal;
 
@@ -56,7 +61,12 @@ const Wrapper = styled.div`
   h2 {
     color: ${theme.colors.dark900};
     display: block;
-    font-family: ${theme.fonts.header};
+    font-family: ${theme.fonts.system};
+
+    .fonts-loaded & {
+      font-family: ${theme.fonts.header};
+    }
+
     font-weight: 700;
     font-style: normal;
 
@@ -77,7 +87,12 @@ const Wrapper = styled.div`
   h3 {
     color: ${theme.colors.dark900};
     display: block;
-    font-family: ${theme.fonts.header};
+    font-family: ${theme.fonts.system};
+
+    .fonts-loaded & {
+      font-family: ${theme.fonts.header};
+    }
+
     font-weight: 700;
     font-style: normal;
 
@@ -98,7 +113,12 @@ const Wrapper = styled.div`
   h4 {
     color: ${theme.colors.dark900};
     display: block;
-    font-family: ${theme.fonts.header};
+    font-family: ${theme.fonts.system};
+
+    .fonts-loaded & {
+      font-family: ${theme.fonts.header};
+    }
+
     font-weight: 700;
     font-style: normal;
 
@@ -132,7 +152,12 @@ const Wrapper = styled.div`
 
   p {
     color: ${theme.colors.dark800};
-    font-family: ${theme.fonts.bodyRegular};
+    font-family: ${theme.fonts.system};
+
+    .fonts-loaded & {
+      font-family: ${theme.fonts.bodyRegular};
+    }
+
     font-weight: 400;
     font-style: normal;
 

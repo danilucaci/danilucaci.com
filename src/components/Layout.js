@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import Helmet from "react-helmet";
 import config from "../../data/SiteConfig";
+var FontFaceObserver = require("fontfaceobserver");
 
 import styled, { ThemeProvider } from "styled-components";
 import { theme } from "../theme/globalStyles";
@@ -12,7 +13,7 @@ import injectCSS from "../theme/injectCSS";
 
 require("./prism.css");
 
-console.log("env: " + process.env.GATSBY_ASSETS_URL);
+// console.log("env: " + process.env.GATSBY_ASSETS_URL);
 
 import SiteHeader from "./SiteHeader/SiteHeader";
 import { Main } from "./Main/Main";
@@ -30,6 +31,51 @@ const Page = styled.div`
 `;
 
 class Layout extends Component {
+  loadFonts = () => {
+    var fontA = new FontFaceObserver("OpenSans Regular");
+    var fontB = new FontFaceObserver("OpenSans Bold", {
+      weight: 700,
+    });
+    var fontC = new FontFaceObserver("OpenSans Italic", {
+      style: "italic",
+    });
+    var fontD = new FontFaceObserver("Roboto Mono", {
+      weight: 400,
+    });
+    var fontE = new FontFaceObserver("Montserrat Bold", {
+      weight: 700,
+    });
+
+    Promise.all([
+      fontA.load(),
+      fontB.load(),
+      fontC.load(),
+      fontD.load(),
+      fontE.load(),
+    ]).then(function() {
+      document.documentElement.className += " fonts-loaded";
+
+      // Optimization for Repeat Views
+      sessionStorage.fontsLoadedPolyfill = true;
+
+      // Used for two stage font loading with datauri
+      // sessionStorage.fontsLoadedCriticalFoftDataUriPolyfill = true;
+      console.log("%c Fonts loaded.", "color: #79E36B");
+    });
+  };
+
+  componentDidMount() {
+    // Optimization for Repeat Views
+    // if (sessionStorage.fontsLoadedCriticalFoftDataUriPolyfill) {
+    if (sessionStorage.fontsLoadedPolyfill) {
+      document.documentElement.className += " fonts-loaded";
+      console.log("%c Fonts already loaded.", "color: #79E36B");
+      return;
+    } else {
+      this.loadFonts();
+    }
+  }
+
   render() {
     const { children } = this.props;
 

@@ -10,7 +10,12 @@ const StyledMenuButton = styled.button`
   background-color: ${theme.colors.gray100};
   color: ${theme.colors.dark900};
 
-  font-family: ${theme.fonts.bodyRegular};
+  font-family: ${theme.fonts.system};
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.bodyRegular};
+  }
+
   font-weight: 700;
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};

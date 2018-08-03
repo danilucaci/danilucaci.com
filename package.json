@@ -14,6 +14,7 @@
   "dependencies": {
     "babel-plugin-styled-components": "^1.5.1",
     "dotenv": "^6.0.0",
+    "fontfaceobserver": "^2.0.13",
     "fs": "0.0.1-security",
     "gatsby": "next",
     "gatsby-image": "next",
@@ -73,8 +74,7 @@
     "build": "gatsby build",
     "build:pp": "gatsby build --prefix-paths",
     "build:gh": "npm run clean && npm run build:pp && gh-pages -d public",
-    "write-good": "write-good $(glob 'content/posts/**/*.md')",
-    "format:js": "prettier '**/*.{js,jsx}' --write"
+    "write-good": "write-good $(glob 'content/posts/**/*.md')"
   },
   "remarkConfig": {
     "plugins": [
