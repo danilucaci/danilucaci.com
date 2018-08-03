@@ -4,20 +4,26 @@ module.exports = {
   siteTitleAlt: "Dani Lucaci Blog", // Alternative site title for SEO.
   siteLogo: "svg/logo.svg", // Logo used for SEO and manifest.
   siteUrl: "https://www.danilucaci.com", // Domain of your website without pathPrefix.
-  pathPrefix: "", // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
+  pathPrefix: "/", // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
   siteDescription:
     "My personal blog where I write about UX/UI Deisgn and Front–End Development in general.", // Website description used for RSS feeds/meta description tag.
   siteRss: "/rss.xml", // Path to the RSS file.
   siteFBAppID: "1825356251115265", // FB Application ID for using app insights
   googleAnalyticsID: "UA-47311644-5", // GA tracking ID.
   disqusShortname: "https-danilucaci.com", // Disqus shortname.
-  postDefaultCategoryID: "Tech", // Default category for posts.
+  postDefaultCategoryID: "blog", // Default category for posts.
   dateFromFormat: "YYYY-MM-DD", // Date format used in the frontmatter.
   dateFormat: "DD/MM/YYYY", // Date format for display.
   userName: "danilucaci", // Username to display in the author segment.
   userTwitter: "@danilucaci", // Optionally renders "Follow Me" in the UserInfo segment.
   userLocation: "North Pole, Earth", // User location to display in the author segment.
   userAvatar: "https://api.adorable.io/avatars/150/test.png", // User avatar to display in the author segment.
+  socialLinks: {
+    github: "https://github.com/danilucaci",
+    twitter: "https://twitter.com/danilucaci",
+    linkedin: "https://www.linkedin.com/in/danielmlucaci",
+    dribbble: "https://dribbble.com/danilucaci",
+  },
   userDescription:
     "Hi! I’m Dani. UX/UI Designer and Front–End Developer. I prototype, design and develop interfaces that have a strong focus on accesibility, performance and user interaction. I use the latest front-end techniques and design methods to create scalable and easy to use experiences.", // User description to display in the author segment.
   // Links to social profiles/projects you want to display in the author segment/navigation bar.
