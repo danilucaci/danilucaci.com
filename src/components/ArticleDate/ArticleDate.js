@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { theme, mediaMin, rem } from "../../theme/globalStyles";
 
 import { Icon } from "../Icon/Icon";
-import { Copy, CopyBold } from "../Copy/Copy";
+import { Copy } from "../Copy/Copy";
 
 const Wrapper = styled.div`
   display: inline-block;
@@ -18,7 +18,7 @@ const StyledIcon = styled(Icon)`
   margin-bottom: ${rem(4)};
 `;
 
-const Time = styled(CopyBold.withComponent("time"))`
+const Time = styled(Copy.withComponent("time"))`
   display: inline-block;
 `;
 

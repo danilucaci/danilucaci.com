@@ -32,7 +32,8 @@ const StyledTOC = styled.nav`
 
   & h3 {
     display: inline-block !important;
-    margin-bottom: ${rem(8)};
+    margin-top: 0;
+    margin-bottom: 0 !important;
   }
 
   & ul li,
