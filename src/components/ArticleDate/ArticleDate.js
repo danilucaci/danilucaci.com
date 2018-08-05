@@ -9,6 +9,7 @@ import { Copy } from "../Copy/Copy";
 const Wrapper = styled.div`
   display: inline-block;
   margin-right: ${rem(16)};
+  margin-left: -${rem(2)};
   white-space: nowrap;
 `;
 
@@ -28,9 +29,7 @@ const ArticleDate = (props) => {
       <StyledIcon>
         <use xlinkHref="#calendar" />
       </StyledIcon>
-      <Time small dateTime={props.date}>
-        {props.date}
-      </Time>
+      <Time dateTime={props.date}>{props.date}</Time>
     </Wrapper>
   );
 };

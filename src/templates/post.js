@@ -211,32 +211,47 @@ const PostContent = styled.section`
 `;
 
 class Post extends Component {
-  copyURL = () => {
+  state = {
+    tooltipMessage: "Click to copy link",
+  };
+
+  componentDidMount() {
     const copyURLButton = document.querySelector(".js-copyURL");
-    copyURLButton.addEventListener("click", function(e) {
-      const dummyNode = document.createElement("input");
-      const postURL = window.location.href;
+    copyURLButton.addEventListener("click", this.copyURL);
+  }
 
-      document.body.appendChild(dummyNode);
-      dummyNode.value = postURL;
+  componentDidUpdate() {
+    let currentMessage = this.state.tooltipMessage;
 
-      dummyNode.select(dummyNode);
+    if (currentMessage === "Page link copied!") {
+      setTimeout(() => {
+        this.setState({ tooltipMessage: "Click to copy link" });
+      }, 2000);
+    }
+  }
 
-      try {
-        // Now that we've selected the anchor text, execute the copy command
-        var successful = document.execCommand("copy");
-        var msg = successful ? "successful" : "unsuccessful";
-        document.body.removeChild(dummyNode);
-        console.log("Copy command was " + msg);
-      } catch (err) {
-        document.body.removeChild(dummyNode);
-        console.log("Oops, unable to copy");
-      }
+  copyURL = () => {
+    const dummyNode = document.createElement("input");
+    const postURL = window.location.href;
 
-      // Remove the selections - NOTE: Should use
-      // removeRange(range) when it is supported
-      window.getSelection().removeAllRanges();
-    });
+    document.body.appendChild(dummyNode);
+    dummyNode.value = postURL;
+
+    dummyNode.select(dummyNode);
+
+    try {
+      // Now that we've selected the anchor text, execute the copy command
+      let copy = document.execCommand("copy");
+      document.body.removeChild(dummyNode);
+      this.setState({ tooltipMessage: "Page link copied!" });
+    } catch (err) {
+      document.body.removeChild(dummyNode);
+      this.setState({ tooltipMessage: "Couldn't copy the URL" });
+    }
+
+    // Remove the selections - NOTE: Should use
+    // removeRange(range) when it is supported
+    window.getSelection().removeAllRanges();
   };
 
   render() {
@@ -259,6 +274,7 @@ class Post extends Component {
             timeToRead={postNode.timeToRead}
             tagsInPost={postInfo.tags}
             onClick={this.copyURL}
+            tooltipMessage={this.state.tooltipMessage}
           />
           <PostContent>
             <PostTOC tableOfContents={postNode.tableOfContents} />

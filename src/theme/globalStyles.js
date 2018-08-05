@@ -43,7 +43,7 @@ export const theme = {
     buttonHover:
       "box-shadow: 0px 4px 8px -4px rgb(20, 83, 184), 0px 8px 20px -4px rgba(16, 66, 147, 0.6)",
     header: "box-shadow: 0px 2px 2px 0px rgba(153, 153, 153, 0.32)",
-    reading: "box-shadow: 0px 2px -2px 0px rgba(153, 153, 153, 0.32)",
+    reading: "box-shadow: 0px -2px 2px 0px rgba(153, 153, 153, 0.32)",
   },
   fonts: {
     system:
