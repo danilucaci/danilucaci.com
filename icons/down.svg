@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <polygon id="a" points="5.888 18 4 16.091 12 8 20 16.091 18.112 18 12 11.786"/>
+  </defs>
+  <g fill-rule="evenodd">
+    <use transform="matrix(1 0 0 -1 0 26)" xlink:href="#a"/>
+  </g>
+</svg>

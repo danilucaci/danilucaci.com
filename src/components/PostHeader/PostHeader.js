@@ -54,6 +54,7 @@ const PostHeader = (props) => {
           snippet={props.snippet}
           onClick={props.onClick}
           tooltipMessage={props.tooltipMessage}
+          tooltipOpen={props.tooltipOpen}
         />
       </PostInfo>
       <StyledIntro>

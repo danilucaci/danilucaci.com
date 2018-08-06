@@ -11,7 +11,6 @@ import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 import PostHeader from "../components/PostHeader/PostHeader";
 import PostTOC from "../components/PostTOC/PostTOC";
-import PostFooter from "../components/PostFooter/PostFooter";
 
 const Wrapper = styled.div`
   max-width: ${theme.contain.content};
@@ -143,8 +142,13 @@ const Wrapper = styled.div`
       &:before {
         content: "";
         display: block;
-        height: 56px; /* fixed header height*/
-        margin-top: -56px; /* negative fixed header height */
+        height: ${rem(48)}; /* fixed header height*/
+        margin-top: -${rem(48)}; /* negative fixed header height */
+
+        ${mediaMin.s`
+          height: ${rem(56)}; /* fixed header height*/
+          margin-top: -${rem(56)}; /* negative fixed header height */
+        `};
       }
       border-bottom: 2px solid ${theme.colors.main500};
     }
@@ -170,13 +174,39 @@ const Wrapper = styled.div`
     margin-bottom: ${rem(28)};
   }
 
-  code,
-  pre {
+  pre,
+  code {
     font-family: ${theme.fonts.code};
     font-size: ${(props) =>
       props.small ? props.theme.fontSizes.s : props.theme.fontSizes.m};
     line-height: ${(props) =>
       props.small ? props.theme.lineHeights.s : props.theme.lineHeights.m};
+  }
+
+  pre:after {
+    background-color: ${theme.colors.gray100};
+    ${theme.shadow.hover};
+    display: ${(props) => (props.show ? "block" : "none")};
+    white-space: nowrap;
+
+    position: absolute;
+    top: -${rem(44)};
+    left: -${rem(40)};
+    padding: ${rem(8)};
+
+    &:after {
+      content: "";
+      display: block;
+      width: ${rem(16)};
+      height: ${rem(16)};
+      border-bottom: ${rem(8)} solid #ffffff;
+      border-right: ${rem(8)} solid #ffffff;
+      transform: rotate(45deg);
+      position: absolute;
+      top: ${rem(24)};
+      right: 50%;
+      left: 50%;
+    }
   }
 `;
 
@@ -212,7 +242,8 @@ const PostContent = styled.section`
 
 class Post extends Component {
   state = {
-    tooltipMessage: "Click to copy link",
+    tooltipMessage: "Copy page link",
+    tooltipOpen: false,
   };
 
   componentDidMount() {
@@ -225,28 +256,44 @@ class Post extends Component {
 
     if (currentMessage === "Page link copied!") {
       setTimeout(() => {
-        this.setState({ tooltipMessage: "Click to copy link" });
-      }, 2000);
+        this.setState({ tooltipMessage: "Copy page link" });
+        this.setState({ tooltipOpen: false });
+      }, 2500);
     }
   }
 
   copyURL = () => {
     const dummyNode = document.createElement("input");
+    dummyNode.style.display = "none";
     const postURL = window.location.href;
 
     document.body.appendChild(dummyNode);
     dummyNode.value = postURL;
 
-    dummyNode.select(dummyNode);
+    if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
+      let range = document.createRange();
+      range.selectNodeContents(dummyNode);
+      let select = window.getSelection();
+
+      select.removeAllRanges();
+      select.addRange(range);
+      dummyNode.setSelectionRange(0, 999999);
+
+      dummyNode.contentEditable = true;
+      dummyNode.readOnly = false;
+    } else {
+      dummyNode.select(dummyNode);
+    }
 
     try {
       // Now that we've selected the anchor text, execute the copy command
-      let copy = document.execCommand("copy");
+      document.execCommand("copy");
       document.body.removeChild(dummyNode);
       this.setState({ tooltipMessage: "Page link copied!" });
+      this.setState({ tooltipOpen: true });
     } catch (err) {
       document.body.removeChild(dummyNode);
-      this.setState({ tooltipMessage: "Couldn't copy the URL" });
+      this.setState({ tooltipMessage: "Couldn't copy the link" });
     }
 
     // Remove the selections - NOTE: Should use
@@ -275,12 +322,12 @@ class Post extends Component {
             tagsInPost={postInfo.tags}
             onClick={this.copyURL}
             tooltipMessage={this.state.tooltipMessage}
+            tooltipOpen={this.state.tooltipOpen}
           />
           <PostContent>
             <PostTOC tableOfContents={postNode.tableOfContents} />
             <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
           </PostContent>
-          <PostFooter />
         </Wrapper>
       </Layout>
     );

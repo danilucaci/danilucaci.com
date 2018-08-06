@@ -63,16 +63,22 @@ const CopyIcon = styled(Icon)`
   fill: ${theme.colors.dark800};
 `;
 
-const CopyTooltip = styled(Copy.withComponent("span"))`
+const CopyTooltip = styled.span`
   background-color: ${theme.colors.gray100};
   ${theme.shadow.hover};
-  display: none;
+  display: ${(props) => (props.show ? "block" : "none")};
   white-space: nowrap;
   font-size: ${theme.fontSizes.xs};
   line-height: ${theme.lineHeights.xs};
+  font-family: ${theme.fonts.system};
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.bodyRegular};
+  }
+
   position: absolute;
   top: -${rem(44)};
-  left: -${rem(52)};
+  left: -${rem(32)};
   padding: ${rem(8)};
 
   &:after {
@@ -85,8 +91,7 @@ const CopyTooltip = styled(Copy.withComponent("span"))`
     transform: rotate(45deg);
     position: absolute;
     top: ${rem(24)};
-    right: 50%;
-    left: 50%;
+    left: ${rem(40)};
   }
 `;
 
@@ -128,7 +133,7 @@ const FacebookIcon = styled(Icon)`
 
 const SocialShare = (props) => {
   const url = urljoin(config.siteUrl, config.pathPrefix, props.slug);
-
+  console.log(props.tooltipOpen);
   return (
     <StyledSocialShare>
       <FacebookShareButton url={url} quote={props.intro}>
@@ -157,9 +162,11 @@ const SocialShare = (props) => {
         tabIndex="0"
       >
         <CopyIcon>
-          <use xlinkHref="#share" />
+          <use xlinkHref="#copy" />
         </CopyIcon>
-        <CopyTooltip>{props.tooltipMessage}</CopyTooltip>
+        <CopyTooltip show={props.tooltipOpen}>
+          {props.tooltipMessage}
+        </CopyTooltip>
       </StyledCopyButton>
     </StyledSocialShare>
   );
