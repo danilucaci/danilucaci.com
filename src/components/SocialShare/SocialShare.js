@@ -133,7 +133,7 @@ const FacebookIcon = styled(Icon)`
 
 const SocialShare = (props) => {
   const url = urljoin(config.siteUrl, config.pathPrefix, props.slug);
-  console.log(props.tooltipOpen);
+
   return (
     <StyledSocialShare>
       <FacebookShareButton url={url} quote={props.intro}>

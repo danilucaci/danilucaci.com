@@ -181,32 +181,33 @@ const Wrapper = styled.div`
       props.small ? props.theme.fontSizes.s : props.theme.fontSizes.m};
     line-height: ${(props) =>
       props.small ? props.theme.lineHeights.s : props.theme.lineHeights.m};
+
+    & + .js-codeCopy {
+      background-color: ${theme.colors.gray100};
+      display: block;
+      white-space: nowrap;
+      font-size: ${theme.fontSizes.xs};
+      line-height: ${theme.lineHeights.xs};
+      font-family: ${theme.fonts.system};
+
+      .fonts-loaded & {
+        font-family: ${theme.fonts.bodyRegular};
+      }
+
+      position: absolute;
+      top: ${rem(16)};
+      right: ${rem(16)};
+      padding: ${rem(8)} ${rem(16)};
+    }
   }
 
-  pre:after {
-    background-color: ${theme.colors.gray100};
-    ${theme.shadow.hover};
-    display: ${(props) => (props.show ? "block" : "none")};
-    white-space: nowrap;
+  &:hover + .js-codeCopy {
+    display: block;
+    outline: 4px solid blue;
+  }
 
-    position: absolute;
-    top: -${rem(44)};
-    left: -${rem(40)};
-    padding: ${rem(8)};
-
-    &:after {
-      content: "";
-      display: block;
-      width: ${rem(16)};
-      height: ${rem(16)};
-      border-bottom: ${rem(8)} solid #ffffff;
-      border-right: ${rem(8)} solid #ffffff;
-      transform: rotate(45deg);
-      position: absolute;
-      top: ${rem(24)};
-      right: 50%;
-      left: 50%;
-    }
+  .gatsby-highlight {
+    position: relative;
   }
 `;
 
@@ -240,6 +241,14 @@ const PostContent = styled.section`
   max-width: ${theme.contain.post};
 `;
 
+const DummyInput = styled.input`
+  position: absolute;
+  top: -1000em;
+  left: -1000em;
+  background-color: transparent;
+  color: transparent;
+`;
+
 class Post extends Component {
   state = {
     tooltipMessage: "Copy page link",
@@ -249,12 +258,15 @@ class Post extends Component {
   componentDidMount() {
     const copyURLButton = document.querySelector(".js-copyURL");
     copyURLButton.addEventListener("click", this.copyURL);
+
+    this.addCopyButtonsToCodeNodes();
   }
 
   componentDidUpdate() {
-    let currentMessage = this.state.tooltipMessage;
+    let tooltipMessage = this.state.tooltipMessage;
+    let copyLabel = this.state.copyLabel;
 
-    if (currentMessage === "Page link copied!") {
+    if (tooltipMessage === "Page link copied!") {
       setTimeout(() => {
         this.setState({ tooltipMessage: "Copy page link" });
         this.setState({ tooltipOpen: false });
@@ -263,18 +275,16 @@ class Post extends Component {
   }
 
   copyURL = () => {
-    const dummyNode = document.createElement("input");
-    dummyNode.style.display = "none";
-    const postURL = window.location.href;
+    let dummyNode = document.querySelector(".js-dummyInput");
+    let postURL = window.location.href;
 
-    document.body.appendChild(dummyNode);
     dummyNode.value = postURL;
 
     if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
       let range = document.createRange();
       range.selectNodeContents(dummyNode);
-      let select = window.getSelection();
 
+      let select = window.getSelection();
       select.removeAllRanges();
       select.addRange(range);
       dummyNode.setSelectionRange(0, 999999);
@@ -282,22 +292,85 @@ class Post extends Component {
       dummyNode.contentEditable = true;
       dummyNode.readOnly = false;
     } else {
-      dummyNode.select(dummyNode);
+      dummyNode.select();
     }
 
     try {
-      // Now that we've selected the anchor text, execute the copy command
       document.execCommand("copy");
-      document.body.removeChild(dummyNode);
       this.setState({ tooltipMessage: "Page link copied!" });
       this.setState({ tooltipOpen: true });
     } catch (err) {
-      document.body.removeChild(dummyNode);
       this.setState({ tooltipMessage: "Couldn't copy the link" });
     }
 
-    // Remove the selections - NOTE: Should use
-    // removeRange(range) when it is supported
+    window.getSelection().removeAllRanges();
+  };
+
+  addCopyButtonsToCodeNodes = () => {
+    const getCodeNodes = Array.from(
+      document.querySelectorAll(".gatsby-highlight")
+    );
+
+    getCodeNodes.forEach((codeNode) => {
+      const copyLink = document.createElement("span");
+      copyLink.textContent = "Copy";
+      copyLink.className = "js-codeCopy";
+      codeNode.appendChild(copyLink);
+    });
+
+    this.addEventListenersToCopyButtons();
+  };
+
+  addEventListenersToCopyButtons = () => {
+    const getCopyButtons = Array.from(
+      document.querySelectorAll(".js-codeCopy")
+    );
+
+    getCopyButtons.forEach((copyButton) => {
+      copyButton.addEventListener("click", this.copyCode);
+    });
+  };
+
+  copyCode = (e) => {
+    let dummyNode = document.querySelector(".js-dummyInput");
+    let currentCopyButton = e.target;
+
+    const codeToCopy = e.target.previousElementSibling.textContent;
+    dummyNode.value = codeToCopy;
+
+    if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
+      let range = document.createRange();
+      range.selectNodeContents(dummyNode);
+
+      let select = window.getSelection();
+      select.removeAllRanges();
+      select.addRange(range);
+      dummyNode.setSelectionRange(0, 999999);
+
+      dummyNode.contentEditable = true;
+      dummyNode.readOnly = false;
+    } else {
+      dummyNode.select();
+    }
+
+    try {
+      document.execCommand("copy");
+      currentCopyButton.textContent = "Copied!";
+
+      if (currentCopyButton.textContent === "Copied!") {
+        setTimeout(() => {
+          currentCopyButton.textContent = "Copy";
+        }, 2500);
+      }
+    } catch (err) {
+      currentCopyButton.textContent = "Couldn't copy";
+      if (currentCopyButton.textContent === "Couldn't copy") {
+        setTimeout(() => {
+          currentCopyButton.textContent = "Copy";
+        }, 2500);
+      }
+    }
+
     window.getSelection().removeAllRanges();
   };
 
@@ -325,6 +398,11 @@ class Post extends Component {
             tooltipOpen={this.state.tooltipOpen}
           />
           <PostContent>
+            <DummyInput
+              className="js-dummyInput"
+              contentEditable="true"
+              readOnly="false"
+            />
             <PostTOC tableOfContents={postNode.tableOfContents} />
             <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
           </PostContent>
