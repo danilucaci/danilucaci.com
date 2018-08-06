@@ -181,33 +181,33 @@ const Wrapper = styled.div`
       props.small ? props.theme.fontSizes.s : props.theme.fontSizes.m};
     line-height: ${(props) =>
       props.small ? props.theme.lineHeights.s : props.theme.lineHeights.m};
-
-    & + .js-codeCopy {
-      background-color: ${theme.colors.gray100};
-      display: block;
-      white-space: nowrap;
-      font-size: ${theme.fontSizes.xs};
-      line-height: ${theme.lineHeights.xs};
-      font-family: ${theme.fonts.system};
-
-      .fonts-loaded & {
-        font-family: ${theme.fonts.bodyRegular};
-      }
-
-      position: absolute;
-      top: ${rem(16)};
-      right: ${rem(16)};
-      padding: ${rem(8)} ${rem(16)};
-    }
   }
 
-  &:hover + .js-codeCopy {
-    display: block;
-    outline: 4px solid blue;
+  .js-codeCopy {
+    background-color: ${theme.colors.gray100};
+    display: none;
+    white-space: nowrap;
+    font-size: ${theme.fontSizes.xs};
+    line-height: ${theme.lineHeights.xs};
+    font-family: ${theme.fonts.system};
+
+    .fonts-loaded & {
+      font-family: ${theme.fonts.bodyRegular};
+    }
+
+    position: absolute;
+    top: ${rem(16)};
+    right: ${rem(16)};
+    padding: ${rem(8)} ${rem(16)};
   }
 
   .gatsby-highlight {
     position: relative;
+
+    &:hover .js-codeCopy {
+      display: block;
+      outline: 4px solid lightcyan;
+    }
   }
 `;
 
@@ -264,7 +264,6 @@ class Post extends Component {
 
   componentDidUpdate() {
     let tooltipMessage = this.state.tooltipMessage;
-    let copyLabel = this.state.copyLabel;
 
     if (tooltipMessage === "Page link copied!") {
       setTimeout(() => {
@@ -288,11 +287,10 @@ class Post extends Component {
       select.removeAllRanges();
       select.addRange(range);
       dummyNode.setSelectionRange(0, 999999);
-
-      dummyNode.contentEditable = true;
-      dummyNode.readOnly = false;
+      dummyNode.blur();
     } else {
       dummyNode.select();
+      dummyNode.blur();
     }
 
     try {
@@ -346,11 +344,10 @@ class Post extends Component {
       select.removeAllRanges();
       select.addRange(range);
       dummyNode.setSelectionRange(0, 999999);
-
-      dummyNode.contentEditable = true;
-      dummyNode.readOnly = false;
+      dummyNode.blur();
     } else {
       dummyNode.select();
+      dummyNode.blur();
     }
 
     try {
@@ -401,7 +398,7 @@ class Post extends Component {
             <DummyInput
               className="js-dummyInput"
               contentEditable="true"
-              readOnly="false"
+              readOnly="true"
             />
             <PostTOC tableOfContents={postNode.tableOfContents} />
             <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
