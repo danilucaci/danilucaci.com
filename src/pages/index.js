@@ -7,7 +7,7 @@ import Layout from "../components/Layout";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 
-import { theme, mediaMin, rem, breakpoints } from "../theme/globalStyles";
+import { theme, mediaMin, rem } from "../theme/globalStyles";
 import { H1, H2, H3, H4 } from "../components/Headings/Headings";
 import { Copy } from "../components/Copy/Copy";
 import { Icon } from "../components/Icon/Icon";
@@ -39,7 +39,7 @@ const StyledHeader = styled.header`
   `};
 `;
 
-const StyledH4 = H4.extend`
+const StyledH4 = styled(H4)`
   color: ${theme.colors.main600};
   text-transform: uppercase;
   margin-bottom: ${rem(8)};
@@ -49,7 +49,7 @@ const StyledH4 = H4.extend`
   `};
 `;
 
-const StyledH1 = H1.extend`
+const StyledH1 = styled(H1)`
   margin-bottom: ${rem(16)};
 
   ${mediaMin.m`
@@ -58,7 +58,7 @@ const StyledH1 = H1.extend`
   `};
 `;
 
-const ServicesH2 = H2.extend`
+const ServicesH2 = styled(H2)`
   margin-bottom: ${rem(32)};
   font-size: ${theme.fontSizes.h1s};
   line-height: ${theme.lineHeights.h1s};
@@ -88,7 +88,7 @@ const Subhead = styled(Copy)`
   `};
 `;
 
-const ServicesH3 = H3.extend`
+const ServicesH3 = styled(H3)`
   font-size: ${theme.fontSizes.h2s};
   line-height: ${theme.lineHeights.h2s};
   margin-top: ${rem(32)};
@@ -110,7 +110,7 @@ const ServicesH3 = H3.extend`
   `};
 `;
 
-const ServicesH4 = H4.extend`
+const ServicesH4 = styled(H4)`
   margin-bottom: ${rem(8)};
 `;
 

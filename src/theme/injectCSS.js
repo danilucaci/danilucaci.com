@@ -4,9 +4,7 @@ injectGlobal`
   html {
     background-color: #F5F5F5;
     color: #46495C;
-    font-family: system-ui, BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-    font-weight: 400;
-    font-style: normal;
+    font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     font-size: 100%;
     line-height: 1.75; /* 28px */
 

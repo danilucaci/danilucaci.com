@@ -4,10 +4,12 @@ import ReadTime from "../ReadTime/ReadTime";
 import ArticleDate from "../ArticleDate/ArticleDate";
 
 import styled from "styled-components";
-import { theme, mediaMin, rem } from "../../theme/globalStyles";
+import { theme, rem, mediaMax } from "../../theme/globalStyles";
 
 const Wrapper = styled.div`
-  margin-top: ${rem(8)};
+  ${mediaMax.l`
+    margin-top: ${rem(8)};
+  `};
   margin-bottom: ${rem(16)};
 `;
 

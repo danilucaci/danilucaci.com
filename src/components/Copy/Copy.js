@@ -3,7 +3,6 @@ import { theme, rem } from "../../theme/globalStyles";
 
 export const Copy = styled.p`
   color: ${theme.colors.dark800};
-  font-family: ${theme.fonts.system};
 
   .fonts-loaded & {
     font-family: ${theme.fonts.bodyRegular};
@@ -20,8 +19,6 @@ export const Copy = styled.p`
 `;
 
 export const CopyBold = Copy.extend`
-  font-family: ${theme.fonts.system};
-
   .fonts-loaded & {
     font-family: ${theme.fonts.bodyBold};
   }
@@ -31,8 +28,6 @@ export const CopyBold = Copy.extend`
 `;
 
 export const CopyItalic = Copy.extend`
-  font-family: ${theme.fonts.system};
-
   .fonts-loaded & {
     font-family: ${theme.fonts.bodyItalic};
   }

@@ -34,7 +34,6 @@ const Wrapper = styled.div`
   h1 {
     color: ${theme.colors.dark900};
     display: block;
-    font-family: ${theme.fonts.system};
 
     .fonts-loaded & {
       font-family: ${theme.fonts.header};
@@ -60,7 +59,6 @@ const Wrapper = styled.div`
   h2 {
     color: ${theme.colors.dark900};
     display: block;
-    font-family: ${theme.fonts.system};
 
     .fonts-loaded & {
       font-family: ${theme.fonts.header};
@@ -86,7 +84,6 @@ const Wrapper = styled.div`
   h3 {
     color: ${theme.colors.dark900};
     display: block;
-    font-family: ${theme.fonts.system};
 
     .fonts-loaded & {
       font-family: ${theme.fonts.header};
@@ -112,7 +109,6 @@ const Wrapper = styled.div`
   h4 {
     color: ${theme.colors.dark900};
     display: block;
-    font-family: ${theme.fonts.system};
 
     .fonts-loaded & {
       font-family: ${theme.fonts.header};
@@ -156,7 +152,6 @@ const Wrapper = styled.div`
 
   p {
     color: ${theme.colors.dark800};
-    font-family: ${theme.fonts.system};
 
     .fonts-loaded & {
       font-family: ${theme.fonts.bodyRegular};
@@ -189,15 +184,14 @@ const Wrapper = styled.div`
     white-space: nowrap;
     font-size: ${theme.fontSizes.xs};
     line-height: ${theme.lineHeights.xs};
-    font-family: ${theme.fonts.system};
 
     .fonts-loaded & {
       font-family: ${theme.fonts.bodyRegular};
     }
 
     position: absolute;
-    top: ${rem(16)};
-    right: ${rem(16)};
+    top: ${rem(12)};
+    right: ${rem(12)};
     padding: ${rem(8)} ${rem(16)};
   }
 
@@ -206,7 +200,6 @@ const Wrapper = styled.div`
 
     &:hover .js-codeCopy {
       display: block;
-      outline: 4px solid lightcyan;
     }
   }
 `;

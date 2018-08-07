@@ -36,13 +36,21 @@ const StyledArticle = styled.article`
 
 const StyledLink = styled(DefaultLink)`
   display: block;
-  font-family: ${theme.fonts.bodyBold};
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.bodyBold};
+  }
+
   text-decoration: underline;
 `;
 
 const ContinueLink = styled(DefaultLink)`
   display: inline-block;
-  font-family: ${theme.fonts.bodyBold};
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.bodyBold};
+  }
+
   text-decoration: underline;
   padding-top: ${rem(16)};
   padding-bottom: ${rem(16)};
@@ -77,7 +85,11 @@ const CategoryLinkLabel = styled.span`
   display: inline-block;
 
   color: ${theme.colors.gray100};
-  font-family: ${theme.fonts.bodyRegular};
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.bodyRegular};
+  }
+
   font-weight: 400;
   text-decoration: none !important;
   margin-right: ${rem(16)};

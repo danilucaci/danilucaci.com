@@ -7,8 +7,6 @@ import {
   OpenSansItalicWoff,
   OpenSansBoldWoff2,
   OpenSansBoldWoff,
-  RobotoMonoWoff2,
-  RobotoMonoWoff,
   MontserratBoldWoff2,
   MontserratBoldWoff,
 } from "../fonts";
@@ -58,18 +56,6 @@ injectGlobal`
   local('Open Sans'), */
   url('${OpenSansItalicWoff2}') format('woff2'),
   url('${OpenSansItalicWoff}') format('woff');
-}
-
-@font-face {
-  font-family: 'Roboto Mono';
-  font-style: normal;
-  /* displays text with fallback font and replaces when the font is ready */
-  font-display: swap;
-  font-weight: 400;
-  src: 
-  /* local('Roboto Mono'), */
-  url('${RobotoMonoWoff2}') format('woff2'),
-  url('${RobotoMonoWoff}') format('woff');
 }
 
 @font-face {

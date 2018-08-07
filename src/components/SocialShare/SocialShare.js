@@ -15,7 +15,7 @@ import {
 import { Icon } from "../Icon/Icon";
 
 const StyledSocialShare = styled.div`
-  ${mediaMax.s`
+  ${mediaMax.l`
     padding-bottom: ${rem(16)};
   `};
 
@@ -70,7 +70,6 @@ const CopyTooltip = styled.span`
   white-space: nowrap;
   font-size: ${theme.fontSizes.xs};
   line-height: ${theme.lineHeights.xs};
-  font-family: ${theme.fonts.system};
 
   .fonts-loaded & {
     font-family: ${theme.fonts.bodyRegular};

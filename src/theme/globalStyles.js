@@ -46,9 +46,8 @@ export const theme = {
     reading: "box-shadow: 0px -2px 2px 0px rgba(153, 153, 153, 0.32)",
   },
   fonts: {
-    system:
-      "system-ui, BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif",
-    code: "Consolas, Menlo, 'Liberation Mono', Courier, monospace",
+    code:
+      "'Ubuntu Mono', Consolas, Menlo, 'Liberation Mono', Courier, monospace",
     bodyRegular: "OpenSans Regular",
     bodyBold: "OpenSans Bold",
     bodyItalic: "OpenSans Italic",

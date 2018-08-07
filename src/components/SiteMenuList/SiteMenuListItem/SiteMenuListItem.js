@@ -47,7 +47,11 @@ const StyledSiteMenuListItem = styled.li`
 const StyledNavLink = styled(NavLink)`
   color: ${theme.colors.dark800};
   display: block;
-  font-family: ${theme.fonts.bodyBold};
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.header};
+  }
+
   font-weight: 700;
   font-size: ${rem(32)};
   line-height: ${rem(40)};
@@ -76,7 +80,11 @@ const StyledNavLink = styled(NavLink)`
 
   ${mediaMin.s`
     background-color: transparent;
-    font-family: ${theme.fonts.bodyRegular};
+
+    .fonts-loaded & {
+      font-family: ${theme.fonts.bodyRegular};
+    }
+
     font-weight: 700;
     font-size: ${theme.fontSizes.s};
     line-height: ${theme.lineHeights.s};
