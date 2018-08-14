@@ -1,7 +1,7 @@
 ---
 title: "Post 1"
 description: "proba"
-date: "2018/06/22"
+date: "2018-06-14"
 category: "blog"
 intro: "Markdown parsing in Gatsby is done with gatsby-transformer-remark, which uses the excellent remark under the hood.
 Alongside remark we also use gatsby-remark-smartypants, which provides smart punctuation through retext-smartypants."

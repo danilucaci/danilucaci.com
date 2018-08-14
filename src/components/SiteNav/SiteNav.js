@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 
 import styled, { css } from "styled-components";
 import { theme, rem, mediaMin } from "../../theme/globalStyles";
@@ -35,16 +35,23 @@ const StyledNav = styled.nav`
   `};
 `;
 
-const SiteNav = (props) => {
-  return (
-    <StyledNav aria-label="Page Menu" role="navigation">
-      <StyledLogoLink to="/">
-        <Logo />
-      </StyledLogoLink>
-      <MenuButton onClick={props.onClick} showNav={props.showNav} />
-      <SiteMenuList showNav={props.showNav} />
-    </StyledNav>
-  );
-};
+class SiteNav extends Component {
+  state = {};
+  render() {
+    let url = this.props.location;
+
+    let comps = url.slice("/blog");
+
+    return (
+      <StyledNav aria-label="Page Menu" role="navigation">
+        <StyledLogoLink to="/">
+          <Logo />
+        </StyledLogoLink>
+        <MenuButton onClick={this.props.onClick} showNav={this.props.showNav} />
+        <SiteMenuList showNav={this.props.showNav} />
+      </StyledNav>
+    );
+  }
+}
 
 export default SiteNav;

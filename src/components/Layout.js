@@ -39,34 +39,21 @@ class Layout extends Component {
     var fontC = new FontFaceObserver("OpenSans Italic", {
       style: "italic",
     });
-    var fontD = new FontFaceObserver("Roboto Mono", {
-      weight: 400,
-    });
-    var fontE = new FontFaceObserver("Montserrat Bold", {
+    var fontD = new FontFaceObserver("Montserrat Bold", {
       weight: 700,
     });
 
-    Promise.all([
-      fontA.load(),
-      fontB.load(),
-      fontC.load(),
-      fontD.load(),
-      fontE.load(),
-    ]).then(function() {
-      document.documentElement.className += " fonts-loaded";
-
-      // Optimization for Repeat Views
-      sessionStorage.fontsLoadedPolyfill = true;
-
-      // Used for two stage font loading with datauri
-      // sessionStorage.fontsLoadedCriticalFoftDataUriPolyfill = true;
-      console.log("%c Fonts loaded.", "color: #79E36B");
-    });
+    Promise.all([fontA.load(), fontB.load(), fontC.load(), fontD.load()]).then(
+      function() {
+        document.documentElement.className += " fonts-loaded";
+        // Optimization for Repeat Views
+        sessionStorage.fontsLoadedPolyfill = true;
+        console.log("%c Fonts loaded.", "color: #79E36B");
+      }
+    );
   };
 
   componentDidMount() {
-    // Optimization for Repeat Views
-    // if (sessionStorage.fontsLoadedCriticalFoftDataUriPolyfill) {
     if (sessionStorage.fontsLoadedPolyfill) {
       document.documentElement.className += " fonts-loaded";
       console.log("%c Fonts already loaded.", "color: #79E36B");
@@ -86,7 +73,7 @@ class Layout extends Component {
             <title>{config.siteTitle}</title>
             <meta name="description" content={config.siteDescription} />
           </Helmet>
-          <SiteHeader />
+          <SiteHeader location={this.props.location} />
           <Main role="main">{children}</Main>
           <SiteFooter />
         </Page>

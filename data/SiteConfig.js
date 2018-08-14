@@ -13,7 +13,7 @@ module.exports = {
   disqusShortname: "https-danilucaci.com", // Disqus shortname.
   postDefaultCategoryID: "blog", // Default category for posts.
   dateFromFormat: "YYYY-MM-DD", // Date format used in the frontmatter.
-  dateFormat: "DD/MM/YYYY", // Date format for display.
+  dateFormat: "YYYY MMMM DD", // Date format for display.
   userName: "danilucaci", // Username to display in the author segment.
   userTwitter: "@danilucaci", // Optionally renders "Follow Me" in the UserInfo segment.
   userLocation: "North Pole, Earth", // User location to display in the author segment.

@@ -45,7 +45,11 @@ class SiteHeader extends Component {
   render() {
     return (
       <StyledSiteHeader role="banner">
-        <SiteNav onClick={this.openNav} showNav={this.state.showNav} />
+        <SiteNav
+          onClick={this.openNav}
+          showNav={this.state.showNav}
+          location={this.props.location.pathname}
+        />
       </StyledSiteHeader>
     );
   }

@@ -1,7 +1,7 @@
 ---
-title: "How To Improve Test Coverage For Your Android App Using Mockito And Espresso"
+title: "How To Improve Test Coverage For Your Android App"
 description: "This blog post is about writing a blog post with Gatsby.js"
-date: "29/07/2018"
+date: "2018-08-14"
 category: "blog"
 intro: "If you tried A/B testing earlier, understand the importance of optimization, and want to increase your website conversion, continue reading till the end.
 |
@@ -60,8 +60,7 @@ import React, { Component } from "react";
 
 Pariatur aute nulla aute sit duis et. Qui laborum ut tempor deserunt ullamco aliqua. Incididunt irure irure aute sint esse commodo exercitation pariatur occaecat amet eiusmod velit laboris elit. Proident nostrud aliquip magna non. Quis eu dolore ipsum aliquip. Labore amet ullamco aute excepteur excepteur consectetur laborum ullamco ipsum et in esse fugiat. Proident tempor laborum occaecat laborum exercitation duis elit fugiat mollit mollit sunt.
 
-##Or how to write Markdown with Gatsby
-
+####Or how to write Markdown with Gatsby
 Lorem do nisi do deserunt adipisicing magna. Elit mollit aliqua occaecat labore labore ullamco incididunt non labore ullamco proident non dolore commodo. Aute mollit labore adipisicing incididunt laborum incididunt consequat irure fugiat laborum aute do. Ad dolor ex fugiat ad reprehenderit incididunt ex nostrud minim anim. Minim consectetur aute voluptate nisi. Esse proident ut dolor esse ex anim.
 
 Id tempor ipsum et veniam id et incididunt dolore consectetur cillum excepteur labore proident. Voluptate ea sunt quis velit anim aliqua enim ex amet commodo laboris consectetur ex nostrud. Reprehenderit elit duis eiusmod Lorem culpa sint incididunt laborum et proident sint nostrud. Sint laboris aute ad occaecat deserunt enim. Cupidatat tempor nostrud esse sit duis aliquip laboris eu.

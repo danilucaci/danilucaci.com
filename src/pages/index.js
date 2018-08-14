@@ -391,14 +391,3 @@ class Index extends Component {
 }
 
 export default Index;
-
-export const markdownFrontmatterFragment = graphql`
-  fragment MarkdownFrontmatter on MarkdownRemark {
-    frontmatter {
-      title
-      description
-      date
-      tags
-    }
-  }
-`;

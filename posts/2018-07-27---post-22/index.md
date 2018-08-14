@@ -1,7 +1,7 @@
 ---
 title: "Post 22"
 description: "This blog post is about writing a blog post with Gatsby.js"
-date: "27/07/2018"
+date: "2018-08-11"
 category: "blog"
 intro: "If you tried A/B testing earlier, understand the importance of optimization, and want to increase your website conversion, continue reading till the end.
 |

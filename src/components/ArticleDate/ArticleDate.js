@@ -29,7 +29,9 @@ const ArticleDate = (props) => {
       <StyledIcon>
         <use xlinkHref="#calendar" />
       </StyledIcon>
-      <Time dateTime={props.date}>{props.date}</Time>
+      <Time dateTime={props.date} small>
+        {props.date}
+      </Time>
     </Wrapper>
   );
 };

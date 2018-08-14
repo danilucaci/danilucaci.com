@@ -87,7 +87,6 @@ class Collapsible extends Component {
   };
 
   render() {
-    console.log(this.props.spaced);
     const contentVisible = this.state.contentVisible;
 
     return (

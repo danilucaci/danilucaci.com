@@ -125,7 +125,7 @@ exports.createPages = ({ graphql, actions }) => {
                     snippet
                     tags
                     category
-                    date
+                    date(formatString: "DD MMMM YYYY")
                     posted
                   }
                 }
@@ -144,7 +144,7 @@ exports.createPages = ({ graphql, actions }) => {
                       snippet
                       tags
                       category
-                      date
+                      date(formatString: "DD MMMM YYYY")
                       posted
                     }
                   }
@@ -164,7 +164,7 @@ exports.createPages = ({ graphql, actions }) => {
                       snippet
                       tags
                       category
-                      date
+                      date(formatString: "DD MMMM YYYY")
                       posted
                     }
                   }

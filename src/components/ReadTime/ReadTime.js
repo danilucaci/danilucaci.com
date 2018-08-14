@@ -27,7 +27,7 @@ const ReadTime = (props) => {
       <StyledIcon>
         <use xlinkHref="#clock" />
       </StyledIcon>
-      <Label>{props.timeToRead} min read</Label>
+      <Label small>{props.timeToRead} min read</Label>
     </Wrapper>
   );
 };

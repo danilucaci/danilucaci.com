@@ -13,6 +13,16 @@ const StyledPostHeader = styled.header``;
 
 const PostH1 = styled(H1)`
   margin-bottom: ${rem(28)};
+
+  ${(props) =>
+    props.readingMode &&
+    css`
+      position: fixed;
+      top: 16px;
+      font-size: 1rem !important;
+      line-height: 1.2rem !important;
+      z-index: 10;
+    `};
 `;
 
 const StyledIntro = styled.div`
@@ -44,7 +54,7 @@ const PostHeader = (props) => {
 
   return (
     <StyledPostHeader>
-      <PostH1>{props.title}</PostH1>
+      <PostH1 readingMode={props.showReadingNav}>{props.title}</PostH1>
       <PostInfo>
         <ArticleInfo date={props.date} timeToRead={props.timeToRead} />
         <Tags tagsInPost={props.tagsInPost} />
