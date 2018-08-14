@@ -88,7 +88,7 @@ const StyledNavLink = styled(NavLink)`
     font-weight: 700;
     font-size: ${theme.fontSizes.s};
     line-height: ${theme.lineHeights.s};
-    padding: ${rem(8)} ${rem(16)} ${rem(12)};
+    padding: ${rem(12)} ${rem(16)} ${rem(8)};
     margin: ${rem(2)};
   `};
 
@@ -105,7 +105,7 @@ const StyledNavLink = styled(NavLink)`
       background-color: transparent;
       color: ${theme.colors.dark800};
       position: relative;
-
+      
       &:hover {
         color: ${theme.colors.main600};
       }
