@@ -87,6 +87,9 @@ export const theme = {
     s: "1.5rem",
     xs: "1.25rem",
   },
+  letterSpacing: {
+    sectionHeader: "0.05rem",
+  },
   gutters: {
     s: "1em",
     m: "1.5em",

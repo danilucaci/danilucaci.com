@@ -41,6 +41,7 @@ const Subhead = styled(H4)`
   color: ${theme.colors.dark700};
   font-size: ${theme.fontSizes.sectionHeader};
   line-height: ${theme.lineHeights.sectionHeader};
+  letter-spacing: ${theme.letterSpacing.sectionHeader};
   text-transform: uppercase;
 `;
 

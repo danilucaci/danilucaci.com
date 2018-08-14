@@ -39,9 +39,10 @@ const StyledHeader = styled.header`
   `};
 `;
 
-const StyledH4 = styled(H4)`
+const LandingHeader = styled(H3)`
   color: ${theme.colors.main600};
   text-transform: uppercase;
+  letter-spacing: ${theme.letterSpacing.sectionHeader};
   margin-bottom: ${rem(8)};
 
   ${mediaMin.s`
@@ -200,7 +201,7 @@ class Index extends Component {
           <Helmet title={config.siteTitle} />
           <SEO />
           <StyledHeader>
-            <StyledH4>Hi! I’m Dani.</StyledH4>
+            <LandingHeader>Hi! I’m Dani.</LandingHeader>
             <StyledH1>UX/UI Designer and Front–End Developer.</StyledH1>
             <Subhead>
               I prototype, design and develop interfaces that have a strong

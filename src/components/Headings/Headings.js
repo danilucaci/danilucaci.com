@@ -8,7 +8,6 @@ export const H1 = styled.h1`
 
   .fonts-loaded & {
     font-family: ${theme.fonts.header};
-    letter-spacing: normal;
   }
 
   font-size: ${theme.fontSizes.h1s};
@@ -31,7 +30,6 @@ export const H2 = styled.h2`
 
   .fonts-loaded & {
     font-family: ${theme.fonts.header};
-    letter-spacing: normal;
   }
 
   font-size: ${theme.fontSizes.h2s};
@@ -54,7 +52,6 @@ export const H3 = styled.h3`
 
   .fonts-loaded & {
     font-family: ${theme.fonts.header};
-    letter-spacing: normal;
   }
 
   font-size: ${theme.fontSizes.h3s};
@@ -77,7 +74,6 @@ export const H4 = styled.h4`
 
   .fonts-loaded & {
     font-family: ${theme.fonts.header};
-    letter-spacing: normal;
   }
 
   font-size: ${theme.fontSizes.h4s};
