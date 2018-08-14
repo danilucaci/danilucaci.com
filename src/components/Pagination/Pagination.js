@@ -138,7 +138,7 @@ const CurrentPaginationNumber = styled(StyledLink)`
   height: ${rem(48)};
   width: ${rem(48)};
   margin: ${rem(4)};
-  padding: ${rem(8)} ${rem(16)};
+  padding: ${rem(10)} ${rem(16)};
   text-decoration: none;
   text-align: center;
 
@@ -157,7 +157,7 @@ const PaginationNumber = styled(StyledLink)`
   height: ${rem(48)};
   width: ${rem(48)};
   margin: ${rem(4)};
-  padding: ${rem(8)} ${rem(16)};
+  padding: ${rem(10)} ${rem(16)};
   text-align: center;
   text-decoration: none;
 
