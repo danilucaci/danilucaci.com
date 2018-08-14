@@ -58,7 +58,11 @@ const ContinueLink = styled(DefaultLink)`
   line-height: ${theme.lineHeights.m};
 `;
 
-const CategoryLink = StyledLink.extend`
+const StyledH3 = styled(H3)`
+  margin-bottom: ${rem(8)};
+`;
+
+const CategoryLink = styled(StyledLink)`
   background-color: ${theme.colors.main600};
   color: ${theme.colors.gray100} !important;
   display: block;
@@ -117,9 +121,9 @@ const Article = (props) => {
     <StyledArticle>
       <header>
         {/* {category} */}
-        <H3>{props.title}</H3>
+        <StyledH3>{props.title}</StyledH3>
+        <ArticleInfo date={props.date} timeToRead={props.timeToRead} />
       </header>
-      <ArticleInfo date={props.date} timeToRead={props.timeToRead} />
       <Tags tagsInPost={props.tagsInPost} />
       <Copy className="copy">{props.snippet}</Copy>
       <ContinueLink to={props.slug}>Continue Reading →</ContinueLink>

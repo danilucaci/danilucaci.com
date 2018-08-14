@@ -7,7 +7,6 @@ import styled from "styled-components";
 import { rem, mediaMax } from "../../theme/globalStyles";
 
 const Wrapper = styled.div`
-  margin-top: ${rem(8)};
   margin-bottom: ${rem(16)};
 `;
 
