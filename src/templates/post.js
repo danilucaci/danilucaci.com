@@ -44,6 +44,7 @@ const Wrapper = styled.div`
 
     font-size: ${theme.fontSizes.h1s};
     line-height: ${theme.lineHeights.h1s};
+    letter-spacing: ${theme.letterSpacing.h1};
 
     margin-bottom: ${rem(16)};
     margin-top: ${rem(32)};
@@ -69,6 +70,7 @@ const Wrapper = styled.div`
 
     font-size: ${theme.fontSizes.h2s};
     line-height: ${theme.lineHeights.h2s};
+    letter-spacing: ${theme.letterSpacing.h2};
 
     margin-bottom: ${rem(16)};
     margin-top: ${rem(32)};
@@ -94,6 +96,7 @@ const Wrapper = styled.div`
 
     font-size: ${theme.fontSizes.h3s};
     line-height: ${theme.lineHeights.h3s};
+    letter-spacing: ${theme.letterSpacing.h3};
 
     margin-bottom: ${rem(16)};
     margin-top: ${rem(32)};
@@ -119,6 +122,7 @@ const Wrapper = styled.div`
 
     font-size: ${theme.fontSizes.h4s};
     line-height: ${theme.lineHeights.h4};
+    letter-spacing: ${theme.letterSpacing.h4};
 
     margin-bottom: ${rem(16)};
     margin-top: ${rem(32)};

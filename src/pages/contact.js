@@ -7,13 +7,7 @@ import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
 import { Icon } from "../components/Icon/Icon";
 
-import {
-  theme,
-  mediaMin,
-  mediaMax,
-  rem,
-  breakpoints,
-} from "../theme/globalStyles";
+import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
 
 import { H1, H2, H3, H4 } from "../components/Headings/Headings";
 import { Copy } from "../components/Copy/Copy";

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
 import styled, { css } from "styled-components";
-import { theme, rem, mediaMin } from "../../theme/globalStyles";
+import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
 import { Icon } from "../Icon/Icon";
 
-const StyledIcon = Icon.extend`
+const StyledIcon = styled(Icon)`
   float: right;
   transition: transform 0.2s ease;
   transform: rotate(0deg);
@@ -24,16 +24,27 @@ const StyledIcon = Icon.extend`
 const StyledTOC = styled.nav`
   background-color: ${theme.colors.gray100};
   display: block;
-  margin-top: ${rem(24)};
-  margin-bottom: ${rem(56)};
+
+  margin-top: ${rem(16)};
+  margin-bottom: ${rem(16)};
   padding: ${rem(16)};
   position: relative;
   ${theme.shadow.default};
+
+  ${mediaMin.s`
+    margin-top: ${rem(24)};
+    margin-bottom: ${rem(56)};
+  `};
 
   & h3 {
     display: inline-block !important;
     margin-top: 0;
     margin-bottom: 0 !important;
+
+    ${mediaMax.s`
+      font-size: ${theme.fontSizes.m} !important;
+      line-height: ${theme.lineHeights.m} !important;
+    `};
   }
 
   & ul li,
@@ -79,7 +90,7 @@ const StyledTOC = styled.nav`
 
   & li a {
     display: block;
-    padding: ${rem(16)};
+    padding: ${rem(8)};
     margin-left: -${rem(16)};
     margin-right: -${rem(16)};
 
