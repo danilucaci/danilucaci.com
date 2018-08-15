@@ -76,7 +76,7 @@ const Prev = styled(StyledLink)`
   display: table-cell;
 
   text-align: left;
-  width: 33.333%;
+  ${"" /* width: 33.333%; */}
 
   height: ${rem(48)};
   padding: ${rem(8)} ${rem(16)} ${rem(8)} 0;
@@ -91,7 +91,7 @@ const Next = styled(StyledLink)`
   display: table-cell;
 
   text-align: right;
-  width: 33.333%;
+  ${"" /* width: 33.333%; */}
 
   height: ${rem(48)};
   padding: ${rem(8)} 0 ${rem(8)} ${rem(16)};

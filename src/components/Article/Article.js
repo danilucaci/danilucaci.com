@@ -124,7 +124,7 @@ const Article = (props) => {
         <StyledH3>{props.title}</StyledH3>
         <ArticleInfo date={props.date} timeToRead={props.timeToRead} />
       </header>
-      <Tags tagsInPost={props.tagsInPost} />
+      <Tags tagsInPost={props.tagsInPost} spaced />
       <Copy className="copy">{props.snippet}</Copy>
       <ContinueLink to={props.slug}>Continue Reading →</ContinueLink>
     </StyledArticle>

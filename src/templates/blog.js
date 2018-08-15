@@ -116,7 +116,7 @@ class BlogPage extends Component {
               </BlogInfoItem>
             </BlogInfo>
             <TagsWrapper>
-              <Collapsible title="Explore by tags" spaced>
+              <Collapsible title="Explore by tags" removePadding>
                 <Tags tagsInPost={allTags} />
               </Collapsible>
             </TagsWrapper>

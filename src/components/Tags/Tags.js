@@ -1,16 +1,23 @@
-import React, { Component } from "react";
+import React from "react";
 
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import Tag from "./Tag/Tag";
+import { rem } from "../../theme/globalStyles";
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  ${(props) =>
+    props.spaced &&
+    css`
+      margin-bottom: ${rem(16)};
+    `};
+`;
 
 const Tags = (props) => {
   let tagsInPost = props.tagsInPost;
 
   return (
-    <Wrapper>
+    <Wrapper spaced={props.spaced}>
       {tagsInPost &&
         tagsInPost.map((tag) => (
           <Tag key={tag} link={`/tags/${tag}`} label={tag} />

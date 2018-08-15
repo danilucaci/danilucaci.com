@@ -111,7 +111,7 @@ class TagPage extends Component {
               <StyledH1>#{tag}</StyledH1>
             </TagHeading>
             <TagsWrapper>
-              <Collapsible title="Other tags from the blog">
+              <Collapsible title="Other tags from the blog" removePadding>
                 <Tags tagsInPost={allTags} />
               </Collapsible>
             </TagsWrapper>

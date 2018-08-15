@@ -21,7 +21,7 @@ const StyledTag = styled(Link)`
   }
 
   margin-right: ${rem(16)};
-  margin-bottom: ${rem(16)};
+  margin-top: ${rem(16)};
   padding: ${rem(4)} ${rem(8)};
 
   &:hover {

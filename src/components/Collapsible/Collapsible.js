@@ -38,7 +38,7 @@ const CollapsibleContent = styled.div`
   transform-origin: 0% 0%;
   overflow: hidden;
   position: absolute;
-  padding-top: ${rem(16)};
+  padding-top: ${(props) => (props.removePadding ? 0 : rem(16))};
 
   ${(props) =>
     props.showContent &&
@@ -50,7 +50,7 @@ const CollapsibleContent = styled.div`
     `};
 
   ${mediaMin.s`
-    padding-top: ${rem(8)};
+    padding-top: ${(props) => (props.removePadding ? 0 : rem(8))};
     opacity: 1;
     overflow: visible;
     transform: none;
@@ -95,7 +95,10 @@ class Collapsible extends Component {
           <use xlinkHref="#down" />
         </StyledIcon>
         <StyledTitle>{this.props.title}</StyledTitle>
-        <CollapsibleContent showContent={contentVisible}>
+        <CollapsibleContent
+          removePadding={this.props.removePadding}
+          showContent={contentVisible}
+        >
           {this.props.children}
         </CollapsibleContent>
       </StyledCollapsible>

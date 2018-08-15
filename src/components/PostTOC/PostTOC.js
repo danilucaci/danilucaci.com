@@ -47,10 +47,18 @@ const StyledTOC = styled.nav`
     `};
   }
 
+  & ul {
+    margin-top: 8px;
+  }
+
   & ul li,
   ul li p {
     list-style-type: none;
-    font-family: ${theme.fonts.bodyRegular};
+
+    .fonts-loaded & {
+      font-family: ${theme.fonts.bodyRegular};
+    }
+
     font-weight: 400;
     font-size: ${theme.fontSizes.s};
     line-height: ${theme.lineHeights.s};
@@ -90,7 +98,7 @@ const StyledTOC = styled.nav`
 
   & li a {
     display: block;
-    padding: ${rem(8)};
+    padding: ${rem(8)} ${rem(16)};
     margin-left: -${rem(16)};
     margin-right: -${rem(16)};
 
