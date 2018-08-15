@@ -16,9 +16,12 @@ export const Copy = styled.p`
 
   line-height: ${(props) =>
     props.small ? props.theme.lineHeights.s : props.theme.lineHeights.m};
+
+  letter-spacing: ${(props) =>
+    props.small ? props.theme.letterSpacing.s : props.theme.letterSpacing.m};
 `;
 
-export const CopyBold = Copy.extend`
+export const CopyBold = styled(Copy)`
   .fonts-loaded & {
     font-family: ${theme.fonts.bodyBold};
   }
@@ -27,7 +30,7 @@ export const CopyBold = Copy.extend`
   font-style: normal;
 `;
 
-export const CopyItalic = Copy.extend`
+export const CopyItalic = styled(Copy)`
   .fonts-loaded & {
     font-family: ${theme.fonts.bodyItalic};
   }

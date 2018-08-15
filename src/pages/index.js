@@ -8,7 +8,7 @@ import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 
 import { theme, mediaMin, rem } from "../theme/globalStyles";
-import { H1, H2, H3, H4 } from "../components/Headings/Headings";
+import { H1, H2, H3, H4, NameHeader } from "../components/Headings/Headings";
 import { Copy } from "../components/Copy/Copy";
 import { Icon } from "../components/Icon/Icon";
 
@@ -39,15 +39,10 @@ const StyledHeader = styled.header`
   `};
 `;
 
-const LandingHeader = styled(H3)`
+const StyledNameHeader = styled(NameHeader)`
   color: ${theme.colors.main600};
   text-transform: uppercase;
-  letter-spacing: ${theme.letterSpacing.sectionHeader};
-  margin-bottom: ${rem(8)};
-
-  ${mediaMin.s`
-    margin-bottom: 0;
-  `};
+  letter-spacing: ${theme.letterSpacing.nameHeader};
 `;
 
 const StyledH1 = styled(H1)`
@@ -78,8 +73,8 @@ const ServicesH2 = styled(H2)`
 `;
 
 const Subhead = styled(Copy)`
-  font-size: ${theme.fontSizes.subheads};
-  line-height: ${theme.lineHeights.subheads};
+  font-size: ${theme.fontSizes.subheadS};
+  line-height: ${theme.lineHeights.subheadS};
 
   ${mediaMin.m`
     font-size: ${theme.fontSizes.subhead};
@@ -201,7 +196,7 @@ class Index extends Component {
           <Helmet title={config.siteTitle} />
           <SEO />
           <StyledHeader>
-            <LandingHeader>Hi! I’m Dani.</LandingHeader>
+            <StyledNameHeader>Hi! I’m Dani.</StyledNameHeader>
             <StyledH1>UX/UI Designer and Front–End Developer.</StyledH1>
             <Subhead>
               I prototype, design and develop interfaces that have a strong

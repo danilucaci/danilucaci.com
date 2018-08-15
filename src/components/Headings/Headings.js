@@ -5,6 +5,7 @@ export const H1 = styled.h1`
   color: ${theme.colors.dark900};
   font-weight: 700;
   font-style: normal;
+  letter-spacing: ${theme.letterSpacing.h1};
 
   .fonts-loaded & {
     font-family: ${theme.fonts.header};
@@ -27,6 +28,7 @@ export const H2 = styled.h2`
   color: ${theme.colors.dark900};
   font-weight: 700;
   font-style: normal;
+  letter-spacing: ${theme.letterSpacing.h2};
 
   .fonts-loaded & {
     font-family: ${theme.fonts.header};
@@ -49,6 +51,7 @@ export const H3 = styled.h3`
   color: ${theme.colors.dark900};
   font-weight: 700;
   font-style: normal;
+  letter-spacing: ${theme.letterSpacing.h3};
 
   .fonts-loaded & {
     font-family: ${theme.fonts.header};
@@ -71,15 +74,34 @@ export const H4 = styled.h4`
   color: ${theme.colors.dark900};
   font-weight: 700;
   font-style: normal;
+  font-size: ${theme.fontSizes.h4};
+  line-height: ${theme.lineHeights.h4};
+  letter-spacing: ${theme.letterSpacing.h4};
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.header};
+  }
+`;
+
+export const NameHeader = styled.h3`
+  color: ${theme.colors.main600};
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: ${theme.letterSpacing.nameHeader};
 
   .fonts-loaded & {
     font-family: ${theme.fonts.header};
   }
 
-  font-size: ${theme.fontSizes.h4s};
-  line-height: ${theme.fontSizes.h4};
+  font-size: ${theme.fontSizes.nameHeaderS};
 
   ${mediaMin.xs`
-    font-size: ${theme.fontSizes.h4};
-  `};
+    font-size: ${theme.fontSizes.nameHeader};
+  `}
+
+  line-height: ${theme.lineHeights.nameHeaderS};
+
+  ${mediaMin.xs`
+    line-height: ${theme.lineHeights.nameHeader};
+  `}
 `;

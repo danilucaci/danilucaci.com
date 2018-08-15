@@ -6,22 +6,31 @@ import { theme, rem, mediaMin } from "../../theme/globalStyles";
 
 import { Icon } from "../Icon/Icon";
 
-const StyledSocialNav = styled.div``;
+const Wrapper = styled.div``;
 
 const StyledLink = styled.a`
   display: inline-block;
   vertical-align: top;
-  margin-top: ${rem(8)};
+
   margin-right: ${rem(16)};
 
   &:last-of-type {
     margin-right: 0;
   }
+
+  &:active,
+  &:focus {
+    outline: 2px dashed ${theme.colors.main600};
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const SocialNav = () => {
   return (
-    <StyledSocialNav>
+    <Wrapper>
       <StyledLink
         target="_blank"
         rel="noopener"
@@ -58,7 +67,7 @@ const SocialNav = () => {
           <use xlinkHref="#linkedin" />
         </Icon>
       </StyledLink>
-    </StyledSocialNav>
+    </Wrapper>
   );
 };
 

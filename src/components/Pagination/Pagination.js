@@ -31,10 +31,13 @@ const StyledLink = styled(Link)`
 
   font-size: ${theme.fontSizes.m};
   line-height: ${theme.lineHeights.m};
-  font-family: ${theme.fonts.bodyBold};
   line-height: ${theme.lineHeights.m};
   font-style: normal;
   font-weight: 700;
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.bodyBold};
+  }
 
   &:active,
   &:focus {

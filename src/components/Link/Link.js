@@ -9,7 +9,10 @@ export const DefaultLink = styled(Link)`
 
   text-decoration: underline;
 
-  font-family: ${theme.fonts.bodyRegular};
+  .fonts-loaded & {
+    font-family: ${theme.fonts.bodyRegular};
+  }
+
   line-height: ${theme.lineHeights.m};
   font-style: normal;
   font-weight: 400;
@@ -17,7 +20,9 @@ export const DefaultLink = styled(Link)`
   ${(props) =>
     props.bold &&
     css`
-      font-family: ${theme.fonts.bodyBold};
+      .fonts-loaded & {
+        font-family: ${theme.fonts.bodyBold};
+      }
       font-style: normal;
       font-weight: 700;
     `};

@@ -15,7 +15,11 @@ const StyledTag = styled(Link)`
 
   font-size: ${theme.fontSizes.s};
   line-height: ${rem(20)};
-  font-family: ${theme.fonts.bodyRegular};
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.bodyRegular};
+  }
+
   margin-right: ${rem(16)};
   margin-bottom: ${rem(16)};
   padding: ${rem(4)} ${rem(8)};
