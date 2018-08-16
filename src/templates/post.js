@@ -250,9 +250,6 @@ class Post extends Component {
   state = {
     tooltipMessage: "Copy page link",
     tooltipOpen: false,
-    hasScrolled: false,
-    lastScrollPos: 0,
-    showReadingNav: false,
   };
 
   componentDidMount() {
@@ -260,19 +257,6 @@ class Post extends Component {
     copyURLButton.addEventListener("click", this.copyURL);
 
     this.addCopyButtonsToCodeNodes();
-
-    addEventListener("scroll", this.scrollListener);
-
-    setInterval(() => {
-      var didScroll = this.state.hasScrolled;
-      let showReadingNav = this.state.showReadingNav;
-      // console.log(`showReadingNav: ${showReadingNav}`);
-
-      if (didScroll) {
-        this.hasScrolled();
-        this.setState({ hasScrolled: false });
-      }
-    }, 800);
   }
 
   componentDidUpdate() {
@@ -285,26 +269,6 @@ class Post extends Component {
       }, 2500);
     }
   }
-
-  scrollListener = () => {
-    this.setState({ hasScrolled: true });
-  };
-
-  hasScrolled = () => {
-    let currentScrollPos = window.pageYOffset;
-    let oldScrollPos = this.state.lastScrollPos;
-    let sufficientScrollDiff = oldScrollPos - 60;
-
-    if (currentScrollPos > 500) {
-      if (currentScrollPos < sufficientScrollDiff) {
-        this.setState({ lastScrollPos: window.pageYOffset });
-        this.setState({ showReadingNav: false });
-      } else {
-        this.setState({ lastScrollPos: window.pageYOffset });
-        this.setState({ showReadingNav: true });
-      }
-    }
-  };
 
   copyURL = () => {
     let dummyNode = document.querySelector(".js-dummyInput");
@@ -426,7 +390,7 @@ class Post extends Component {
             onClick={this.copyURL}
             tooltipMessage={this.state.tooltipMessage}
             tooltipOpen={this.state.tooltipOpen}
-            showReadingNav={this.state.showReadingNav}
+            showReadingNav={this.props.showReadingNav}
           />
           <PostContent>
             <DummyInput

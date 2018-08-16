@@ -31,6 +31,82 @@ const Page = styled.div`
 `;
 
 class Layout extends Component {
+  state = {
+    hasScrolled: false,
+    lastScrollPos: 0,
+    showReadingNav: false,
+    isBlogPost: false,
+  };
+
+  componentDidMount() {
+    const isBlog = this.props.location.pathname.includes("/blog/");
+
+    if (isBlog) {
+      this.handleBlogPost();
+    }
+
+    if (sessionStorage.fontsLoadedPolyfill) {
+      document.documentElement.className += " fonts-loaded";
+      console.log("%c Fonts already loaded.", "color: #79E36B");
+      return;
+    } else {
+      this.loadFonts();
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.state.isBlogPost) {
+      window.removeEventListener("scroll", this.scrollListener);
+      window.removeEventListener("resize", this.handleResize);
+
+      clearInterval(this.scrollInterval);
+      console.log("%c Scroll Interval Removed", "color: cyan");
+    }
+  }
+
+  handleBlogPost = () => {
+    this.setState({
+      isBlogPost: true,
+    });
+
+    addEventListener("scroll", this.scrollListener);
+
+    console.log("%c Scroll Interval Set", `color: cyan`);
+
+    this.scrollInterval = setInterval(() => {
+      var didScroll = this.state.hasScrolled;
+
+      if (didScroll) {
+        this.hasScrolled();
+        this.setState({ hasScrolled: false });
+      }
+    }, 800);
+  };
+
+  scrollListener = () => {
+    this.setState({ hasScrolled: true });
+  };
+
+  hasScrolled = () => {
+    let currentScrollPos = window.pageYOffset;
+    let oldScrollPos = this.state.lastScrollPos;
+    let sufficientScrollDiff = oldScrollPos - 60;
+
+    if (currentScrollPos > 600) {
+      if (currentScrollPos < sufficientScrollDiff) {
+        this.setState({ lastScrollPos: window.pageYOffset });
+        this.setState({ showReadingNav: false });
+      } else {
+        this.setState({ lastScrollPos: window.pageYOffset });
+        this.setState({ showReadingNav: true });
+      }
+    } else {
+      this.setState({
+        showReadingNav: false,
+      });
+    }
+  };
+
   loadFonts = () => {
     var fontA = new FontFaceObserver("OpenSans Regular");
     var fontB = new FontFaceObserver("OpenSans Bold", {
@@ -53,16 +129,6 @@ class Layout extends Component {
     );
   };
 
-  componentDidMount() {
-    if (sessionStorage.fontsLoadedPolyfill) {
-      document.documentElement.className += " fonts-loaded";
-      console.log("%c Fonts already loaded.", "color: #79E36B");
-      return;
-    } else {
-      this.loadFonts();
-    }
-  }
-
   render() {
     const { children } = this.props;
 
@@ -73,7 +139,7 @@ class Layout extends Component {
             <title>{config.siteTitle}</title>
             <meta name="description" content={config.siteDescription} />
           </Helmet>
-          <SiteHeader location={this.props.location} />
+          <SiteHeader showReadingNav={this.state.showReadingNav} />
           <Main role="main">{children}</Main>
           <SiteFooter />
         </Page>

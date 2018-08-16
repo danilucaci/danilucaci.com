@@ -38,17 +38,16 @@ const StyledNav = styled.nav`
 class SiteNav extends Component {
   state = {};
   render() {
-    let url = this.props.location;
-
-    let comps = url.slice("/blog");
-
     return (
       <StyledNav aria-label="Page Menu" role="navigation">
         <StyledLogoLink to="/">
           <Logo />
         </StyledLogoLink>
         <MenuButton onClick={this.props.onClick} showNav={this.props.showNav} />
-        <SiteMenuList showNav={this.props.showNav} />
+        <SiteMenuList
+          showNav={this.props.showNav}
+          showReadingNav={this.props.showReadingNav}
+        />
       </StyledNav>
     );
   }

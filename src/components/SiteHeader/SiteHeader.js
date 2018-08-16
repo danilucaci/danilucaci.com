@@ -48,7 +48,7 @@ class SiteHeader extends Component {
         <SiteNav
           onClick={this.openNav}
           showNav={this.state.showNav}
-          location={this.props.location.pathname}
+          showReadingNav={this.props.showReadingNav}
         />
       </StyledSiteHeader>
     );

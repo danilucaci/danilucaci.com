@@ -50,7 +50,7 @@ const PostInfo = styled.aside`
 
 const PostHeader = (props) => {
   let introCopy = props.intro.split("|");
-
+  console.log(props.showReadingNav);
   return (
     <StyledPostHeader>
       <PostH1 readingMode={props.showReadingNav}>{props.title}</PostH1>
