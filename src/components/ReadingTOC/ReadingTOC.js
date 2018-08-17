@@ -137,36 +137,21 @@ const TocContents = styled.div`
     `};
 `;
 
-class ReadingTOC extends Component {
-  state = {
-    contentVisible: false,
-  };
-
-  showContent = () => {
-    this.setState((prevState) => ({
-      contentVisible: !prevState.contentVisible,
-    }));
-  };
-
-  render() {
-    let tableOfContents = this.props.tableOfContents;
-    const contentVisible = this.state.contentVisible;
-
-    return (
-      <StyledTOC onClick={this.showContent}>
-        <h3>Table of Contents</h3>
-        <StyledIcon open={contentVisible}>
-          <use xlinkHref="#toc" />
-        </StyledIcon>
-        <TocContents
-          showContent={contentVisible}
-          dangerouslySetInnerHTML={{
-            __html: tableOfContents,
-          }}
-        />
-      </StyledTOC>
-    );
-  }
-}
+const ReadingTOC = (props) => {
+  return (
+    <StyledTOC onClick={props.openReadingToc}>
+      <h3>Table of Contents</h3>
+      <StyledIcon open={props.contentVisible}>
+        <use xlinkHref="#toc" />
+      </StyledIcon>
+      <TocContents
+        showContent={props.contentVisible}
+        dangerouslySetInnerHTML={{
+          __html: props.tableOfContents,
+        }}
+      />
+    </StyledTOC>
+  );
+};
 
 export default ReadingTOC;

@@ -13,6 +13,10 @@ const StyledCollapsible = styled.div`
   padding: ${rem(14)} ${rem(16)};
   position: relative;
 
+  &:focus {
+    outline: 1px solid red;
+  }
+
   width: 100%;
   height: 100%;
 

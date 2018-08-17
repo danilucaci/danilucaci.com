@@ -141,36 +141,21 @@ const TocContents = styled.div`
   `};
 `;
 
-class PostTOC extends Component {
-  state = {
-    contentVisible: false,
-  };
-
-  showContent = () => {
-    this.setState((prevState) => ({
-      contentVisible: !prevState.contentVisible,
-    }));
-  };
-
-  render() {
-    let tableOfContents = this.props.tableOfContents;
-    const contentVisible = this.state.contentVisible;
-
-    return (
-      <StyledTOC onClick={this.showContent}>
-        <h3>Table of Contents</h3>
-        <StyledIcon animate={contentVisible}>
-          <use xlinkHref="#down" />
-        </StyledIcon>
-        <TocContents
-          showContent={contentVisible}
-          dangerouslySetInnerHTML={{
-            __html: tableOfContents,
-          }}
-        />
-      </StyledTOC>
-    );
-  }
-}
+const PostTOC = (props) => {
+  return (
+    <StyledTOC onClick={props.openPostToc}>
+      <h3>Table of Contents</h3>
+      <StyledIcon animate={props.contentVisible}>
+        <use xlinkHref="#down" />
+      </StyledIcon>
+      <TocContents
+        showContent={props.contentVisible}
+        dangerouslySetInnerHTML={{
+          __html: props.tableOfContents,
+        }}
+      />
+    </StyledTOC>
+  );
+};
 
 export default PostTOC;

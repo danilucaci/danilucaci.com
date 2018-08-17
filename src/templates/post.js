@@ -403,6 +403,9 @@ class Post extends Component {
   state = {
     tooltipMessage: "Copy page link",
     tooltipOpen: false,
+    readingTocOpen: false,
+    postTocOpen: false,
+    readingShareNavOpen: false,
   };
 
   componentDidMount() {
@@ -410,6 +413,7 @@ class Post extends Component {
     copyURLButton.addEventListener("click", this.copyURL);
 
     this.addCopyButtonsToCodeNodes();
+    // this.addGlobalClickListener();
   }
 
   componentDidUpdate() {
@@ -422,6 +426,71 @@ class Post extends Component {
       }, 2500);
     }
   }
+
+  componentWillUnmount() {
+    // document.removeEventListener("click", this.addGlobalClickListener);
+  }
+
+  addGlobalClickListener = () => {
+    document.addEventListener("click", this.closeAllDropdowns);
+  };
+
+  closeAllDropdowns = (e) => {
+    const oldState = this.state;
+    e.stopPropagation();
+
+    if (oldState.readingShareNavOpen) {
+      this.setState((prevState) => ({
+        readingShareNavOpen: !prevState.readingShareNavOpen,
+      }));
+    }
+
+    if (oldState.readingTocOpen) {
+      this.setState((prevState) => ({
+        readingTocOpen: !prevState.readingTocOpen,
+      }));
+    }
+
+    if (oldState.postTocOpen) {
+      this.setState((prevState) => ({
+        postTocOpen: !prevState.postTocOpen,
+      }));
+    }
+  };
+
+  openReadingToc = () => {
+    const isReadingShareNavOpen = this.state.readingShareNavOpen;
+
+    if (isReadingShareNavOpen) {
+      this.setState((prevState) => ({
+        readingShareNavOpen: !prevState.readingShareNavOpen,
+      }));
+    }
+
+    this.setState((prevState) => ({
+      readingTocOpen: !prevState.readingTocOpen,
+    }));
+  };
+
+  openPostToc = () => {
+    this.setState((prevState) => ({
+      postTocOpen: !prevState.postTocOpen,
+    }));
+  };
+
+  openShareNav = () => {
+    const isReadingTocOpen = this.state.readingTocOpen;
+
+    if (isReadingTocOpen) {
+      this.setState((prevState) => ({
+        readingTocOpen: !prevState.readingTocOpen,
+      }));
+    }
+
+    this.setState((prevState) => ({
+      readingShareNavOpen: !prevState.readingShareNavOpen,
+    }));
+  };
 
   copyURL = () => {
     let dummyNode = document.querySelector(".js-dummyInput");
@@ -581,7 +650,11 @@ class Post extends Component {
               contentEditable="true"
               readOnly="true"
             />
-            <PostTOC tableOfContents={postNode.tableOfContents} />
+            <PostTOC
+              openPostToc={this.openPostToc}
+              contentVisible={this.state.postTocOpen}
+              tableOfContents={postNode.tableOfContents}
+            />
             <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
           </PostContent>
         </Wrapper>
@@ -592,7 +665,11 @@ class Post extends Component {
             return showReadingNav ? (
               <ReadingModePageNav>
                 <ReadingNavCol1>
-                  <ReadingTOC tableOfContents={postNode.tableOfContents} />
+                  <ReadingTOC
+                    tableOfContents={postNode.tableOfContents}
+                    contentVisible={this.state.readingTocOpen}
+                    openReadingToc={this.openReadingToc}
+                  />
                 </ReadingNavCol1>
                 <ReadingNavCol2>
                   <ReadingSocialShare
@@ -602,10 +679,12 @@ class Post extends Component {
                     onClick={this.copyURL}
                     tooltipMessage={this.state.tooltipMessage}
                     tooltipOpen={this.state.tooltipOpen}
+                    openShareNav={this.openShareNav}
+                    contentVisible={this.state.readingShareNavOpen}
                   />
                 </ReadingNavCol2>
                 <ReadingNavCol3>
-                  <ScrollToTopLink href="#scrollTop">
+                  <ScrollToTopLink to="#scrollTop">
                     <ScrollToTopIcon>
                       <use xlinkHref="#up" />
                     </ScrollToTopIcon>

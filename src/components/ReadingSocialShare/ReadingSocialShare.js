@@ -157,62 +157,50 @@ const FacebookIcon = styled(Icon)`
   fill: ${theme.colors.social.facebook};
 `;
 
-class StyledReadingShareNav extends Component {
-  state = {
-    contentVisible: false,
-  };
+const StyledReadingShareNav = (props) => {
+  const url = urljoin(config.siteUrl, config.pathPrefix, props.slug);
 
-  showContent = () => {
-    this.setState((prevState) => ({
-      contentVisible: !prevState.contentVisible,
-    }));
-  };
-
-  render() {
-    const url = urljoin(config.siteUrl, config.pathPrefix, this.props.slug);
-
-    return (
-      <StyledSocialShare onClick={this.showContent}>
-        <ReadingShareIcon>
-          <use xlinkHref="#share" />
-        </ReadingShareIcon>
-        <ShareIcons showIcons={this.state.contentVisible}>
-          <FacebookShareButton url={url} quote={this.props.intro}>
-            <FacebookIcon>
-              <use xlinkHref="#facebook" />
-            </FacebookIcon>
-          </FacebookShareButton>
-          <LinkedinShareButton
-            url={url}
-            title={this.props.title}
-            description={this.props.snippet}
-          >
-            <LinkedinIcon>
-              <use xlinkHref="#linkedin" />
-            </LinkedinIcon>
-          </LinkedinShareButton>
-          <TwitterShareButton url={url} title={this.props.title}>
-            <TwitterIcon>
-              <use xlinkHref="#twitter" />
-            </TwitterIcon>
-          </TwitterShareButton>
-          <StyledCopyButton
-            className="js-copyURL"
-            onClick={this.props.onClick}
-            role="button"
-            tabIndex="0"
-          >
-            <CopyIcon>
-              <use xlinkHref="#copy" />
-            </CopyIcon>
-            <CopyTooltip show={this.props.tooltipOpen}>
-              {this.props.tooltipMessage}
-            </CopyTooltip>
-          </StyledCopyButton>
-        </ShareIcons>
-      </StyledSocialShare>
-    );
-  }
-}
+  return (
+    <StyledSocialShare onClick={props.openShareNav}>
+      <ReadingShareIcon>
+        <use xlinkHref="#share" />
+      </ReadingShareIcon>
+      <ShareIcons showIcons={props.contentVisible}>
+        <FacebookShareButton url={url} quote={props.intro}>
+          <FacebookIcon>
+            <use xlinkHref="#facebook" />
+          </FacebookIcon>
+        </FacebookShareButton>
+        <LinkedinShareButton
+          url={url}
+          title={props.title}
+          description={props.snippet}
+        >
+          <LinkedinIcon>
+            <use xlinkHref="#linkedin" />
+          </LinkedinIcon>
+        </LinkedinShareButton>
+        <TwitterShareButton url={url} title={props.title}>
+          <TwitterIcon>
+            <use xlinkHref="#twitter" />
+          </TwitterIcon>
+        </TwitterShareButton>
+        <StyledCopyButton
+          className="js-copyURL"
+          onClick={props.onClick}
+          role="button"
+          tabIndex="0"
+        >
+          <CopyIcon>
+            <use xlinkHref="#copy" />
+          </CopyIcon>
+          <CopyTooltip show={props.tooltipOpen}>
+            {props.tooltipMessage}
+          </CopyTooltip>
+        </StyledCopyButton>
+      </ShareIcons>
+    </StyledSocialShare>
+  );
+};
 
 export default StyledReadingShareNav;
