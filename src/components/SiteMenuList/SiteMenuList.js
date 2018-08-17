@@ -61,24 +61,11 @@ const StyledSiteMenuList = styled.ul`
     z-index: 10;
     transform: none;
   `};
-
-  ${(props) =>
-    props.showReadingNav
-      ? css`
-          display: none;
-        `
-      : null};
 `;
 
 const SiteMenuList = (props) => {
-  console.log(props.showReadingNav);
-
   return (
-    <StyledSiteMenuList
-      showReadingNav={props.showReadingNav}
-      showNav={props.showNav}
-      role="menu"
-    >
+    <StyledSiteMenuList showNav={props.showNav} role="menu">
       <SiteMenuListItem
         showNav={props.showNav}
         to="/services"

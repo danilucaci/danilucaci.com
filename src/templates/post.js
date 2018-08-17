@@ -1,16 +1,25 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
-
 import styled, { css } from "styled-components";
 import { theme, rem, mediaMin } from "../theme/globalStyles";
-
 import Layout from "../components/Layout";
-
-import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
-import PostHeader from "../components/PostHeader/PostHeader";
+import SEO from "../components/SEO/SEO";
+
 import PostTOC from "../components/PostTOC/PostTOC";
+import ReadingTOC from "../components/ReadingTOC/ReadingTOC";
+import SocialShare from "../components/SocialShare/SocialShare";
+import ReadingSocialShare from "../components/ReadingSocialShare/ReadingSocialShare";
+import Tags from "../components/Tags/Tags";
+import ArticleInfo from "../components/ArticleInfo/ArticleInfo";
+import { Copy } from "../components/Copy/Copy";
+import { H1 } from "../components/Headings/Headings";
+import { DefaultLink } from "../components/Link/Link";
+import { Logo } from "../components/Logo/Logo";
+import { Icon } from "../components/Icon/Icon";
+
+import { ScrollConsumer } from "../components/ScrollProvider/ScrollProvider";
 
 const Wrapper = styled.div`
   max-width: ${theme.contain.content};
@@ -208,6 +217,150 @@ const Wrapper = styled.div`
   }
 `;
 
+const ReadingModePageHeader = styled.header`
+  background-color: ${theme.colors.gray100};
+  display: none;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  height: ${rem(56)};
+  padding: 0 ${rem(8)} 0 ${rem(24)};
+
+  ${theme.shadow.header};
+
+  ${mediaMin.m`
+    background-color: ${theme.colors.transparent};
+    display: block;
+    height: ${rem(48)};
+    padding: 0;
+    position: fixed;
+    z-index: 10;
+  `};
+`;
+
+const ReadingModePageNav = styled.nav`
+  background-color: ${theme.colors.gray100};
+  display: inline-table;
+  line-height: 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: ${rem(48)};
+
+  ${theme.shadow.reading};
+`;
+
+const ReadingNavCol1 = styled.div`
+  border-right: 1px solid #dadada;
+  display: table-cell;
+  width: 70%;
+  text-align: center;
+
+  ${mediaMin.m`
+    width: 58%;
+  `};
+`;
+
+const ReadingNavCol2 = styled.div`
+  border-right: 1px solid #dadada;
+  display: table-cell;
+  width: ${rem(56)};
+  text-align: center;
+
+  ${mediaMin.m`
+    width: 32%;
+  `};
+`;
+
+const ReadingNavCol3 = styled.div`
+  display: table-cell;
+  width: ${rem(56)};
+  text-align: center;
+`;
+
+const ScrollToTopLink = styled(DefaultLink)`
+  &:hover {
+    background-color: transparent;
+  }
+
+  width: ${rem(48)};
+  height: ${rem(48)};
+  padding: ${rem(8)} 0;
+`;
+
+const ScrollToTopIcon = styled(Icon)`
+  width: ${rem(48)};
+  height: ${rem(48)};
+  padding: ${rem(8)};
+`;
+
+const StyledLogoLink = styled(DefaultLink)`
+  display: inline-block;
+  width: ${theme.logoWidth};
+  height: ${theme.logoHeight};
+`;
+
+const StyledPostHeader = styled.header``;
+
+const StyledNav = styled.nav`
+  display: block;
+  max-width: ${theme.contain.content};
+  margin-left: auto;
+  margin-right: auto;
+
+  ${mediaMin.s`
+    height: ${rem(56)};
+    padding-top: ${rem(4)};
+    padding-right: ${theme.gutters.m};
+    padding-left: ${theme.gutters.m};
+  `};
+
+  ${mediaMin.m`
+    padding-top: 0;
+    height: ${rem(48)};
+    padding-right: ${theme.gutters.m};
+    padding-left: ${theme.gutters.m};
+  `};
+`;
+
+const PostH1 = styled(H1)`
+  margin-bottom: ${rem(28)};
+`;
+
+const ReadingModeH1 = styled(H1)`
+  display: inline-block;
+  vertical-align: top;
+  font-size: ${rem(16)} !important;
+  line-height: ${rem(24)} !important;
+  padding: ${rem(12)} ${rem(16)};
+`;
+
+const StyledIntro = styled.div`
+  ${mediaMin.m`
+    display: inline-block;
+    vertical-align: top;
+    width: calc(60% - ${rem(24)});
+    margin-right: ${rem(24)};
+`};
+`;
+
+const StyledCopy = styled(Copy)`
+  margin-bottom: ${rem(28)};
+`;
+
+const PostInfo = styled.aside`
+  ${mediaMin.m`
+    float: right;
+    display: inline-block;
+    vertical-align: top;
+    width: 40%;
+    background-color: ${theme.colors.gray100};
+    padding: ${rem(16)} ${rem(24)};
+  `};
+`;
+
 const PostContent = styled.section`
   a:active,
   a:focus {
@@ -372,6 +525,7 @@ class Post extends Component {
     const slug = this.props.data.markdownRemark.fields.slug;
     const postNode = this.props.data.markdownRemark;
     const postInfo = postNode.frontmatter;
+    let introCopy = postInfo.intro.split("|");
 
     return (
       <Layout location={this.props.location}>
@@ -379,19 +533,48 @@ class Post extends Component {
           <title>{`${postInfo.title} || ${config.siteTitle}`}</title>
         </Helmet>
         <SEO postPath={slug} postNode={postNode} postSEO />
+
+        <ScrollConsumer>
+          {(context) => {
+            const showReadingNav = context.showReadingNav;
+
+            return showReadingNav ? (
+              <ReadingModePageHeader role="banner">
+                <StyledNav aria-label="Page Menu" role="navigation">
+                  <StyledLogoLink to="/">
+                    <Logo />
+                  </StyledLogoLink>
+                  <ReadingModeH1>{postInfo.title}</ReadingModeH1>
+                </StyledNav>
+              </ReadingModePageHeader>
+            ) : null;
+          }}
+        </ScrollConsumer>
+
         <Wrapper>
-          <PostHeader
-            title={postInfo.title}
-            intro={postInfo.intro}
-            slug={slug}
-            date={postInfo.date}
-            timeToRead={postNode.timeToRead}
-            tagsInPost={postInfo.tags}
-            onClick={this.copyURL}
-            tooltipMessage={this.state.tooltipMessage}
-            tooltipOpen={this.state.tooltipOpen}
-            showReadingNav={this.props.showReadingNav}
-          />
+          <StyledPostHeader>
+            <PostH1>{postInfo.title}</PostH1>
+            <PostInfo>
+              <ArticleInfo
+                date={postInfo.date}
+                timeToRead={postNode.timeToRead}
+              />
+              <Tags tagsInPost={postInfo.tagsInPost} spaced />
+              <SocialShare
+                slug={slug}
+                title={postInfo.title}
+                snippet={postInfo.snippet}
+                onClick={this.copyURL}
+                tooltipMessage={this.state.tooltipMessage}
+                tooltipOpen={this.state.tooltipOpen}
+              />
+            </PostInfo>
+            <StyledIntro>
+              {introCopy.map((paragraph) => (
+                <StyledCopy key={paragraph}>{paragraph}</StyledCopy>
+              ))}
+            </StyledIntro>
+          </StyledPostHeader>
           <PostContent>
             <DummyInput
               className="js-dummyInput"
@@ -402,6 +585,36 @@ class Post extends Component {
             <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
           </PostContent>
         </Wrapper>
+        <ScrollConsumer>
+          {(context) => {
+            const showReadingNav = context.showReadingNav;
+
+            return showReadingNav ? (
+              <ReadingModePageNav>
+                <ReadingNavCol1>
+                  <ReadingTOC tableOfContents={postNode.tableOfContents} />
+                </ReadingNavCol1>
+                <ReadingNavCol2>
+                  <ReadingSocialShare
+                    slug={slug}
+                    title={postInfo.title}
+                    snippet={postInfo.snippet}
+                    onClick={this.copyURL}
+                    tooltipMessage={this.state.tooltipMessage}
+                    tooltipOpen={this.state.tooltipOpen}
+                  />
+                </ReadingNavCol2>
+                <ReadingNavCol3>
+                  <ScrollToTopLink href="#scrollTop">
+                    <ScrollToTopIcon>
+                      <use xlinkHref="#up" />
+                    </ScrollToTopIcon>
+                  </ScrollToTopLink>
+                </ReadingNavCol3>
+              </ReadingModePageNav>
+            ) : null;
+          }}
+        </ScrollConsumer>
       </Layout>
     );
   }

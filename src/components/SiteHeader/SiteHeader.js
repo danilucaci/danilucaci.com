@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme, rem, mediaMin } from "../../theme/globalStyles";
+
+import { ScrollConsumer } from "../ScrollProvider/ScrollProvider";
 
 import SiteNav from "../SiteNav/SiteNav";
 
@@ -13,6 +15,15 @@ const StyledSiteHeader = styled.header`
   height: ${rem(64)};
   padding: ${rem(8)} ${rem(16)};
 
+  ${(props) =>
+    props.hide &&
+    css`
+      ${mediaMin.s`
+        position: absolute;
+        top: -110%;
+      `};
+    `};
+
   ${mediaMin.s`
     width: 100%;
     height: ${rem(56)};
@@ -23,10 +34,11 @@ const StyledSiteHeader = styled.header`
   `};
 
   ${mediaMin.m`
+    position: fixed;
+    top: 0;
     background-color: ${theme.colors.transparent};
     height: ${rem(48)};
     padding: 0;
-    position: fixed;
     z-index: 10;
   `};
 `;
@@ -44,13 +56,21 @@ class SiteHeader extends Component {
 
   render() {
     return (
-      <StyledSiteHeader role="banner">
-        <SiteNav
-          onClick={this.openNav}
-          showNav={this.state.showNav}
-          showReadingNav={this.props.showReadingNav}
-        />
-      </StyledSiteHeader>
+      <ScrollConsumer>
+        {(context) => {
+          const showReadingNav = context.showReadingNav;
+
+          return showReadingNav ? (
+            <StyledSiteHeader hide={showReadingNav} role="banner">
+              <SiteNav onClick={this.openNav} showNav={this.state.showNav} />
+            </StyledSiteHeader>
+          ) : (
+            <StyledSiteHeader role="banner">
+              <SiteNav onClick={this.openNav} showNav={this.state.showNav} />
+            </StyledSiteHeader>
+          );
+        }}
+      </ScrollConsumer>
     );
   }
 }

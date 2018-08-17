@@ -4,7 +4,6 @@ import urljoin from "url-join";
 
 import config from "../../../data/SiteConfig";
 import { theme, rem, mediaMax, mediaMin } from "../../theme/globalStyles";
-import { Copy } from "../../components/Copy/Copy";
 
 import {
   FacebookShareButton,

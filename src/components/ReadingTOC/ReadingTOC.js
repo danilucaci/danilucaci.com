@@ -4,47 +4,24 @@ import styled, { css } from "styled-components";
 import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
 import { Icon } from "../Icon/Icon";
 
-const StyledIcon = styled(Icon)`
-  float: right;
-  transition: transform 0.2s ease;
-  transform: rotate(0deg);
-
-  ${(props) =>
-    props.animate &&
-    css`
-      transform-origin: 50% 50%;
-      transform: rotate(180deg);
-    `};
-
-  ${mediaMin.s`
-    display: none;
-  `};
-`;
-
 const StyledTOC = styled.nav`
   background-color: ${theme.colors.gray100};
   display: block;
+  max-width: ${rem(220)};
 
-  margin-top: ${rem(16)};
-  margin-bottom: ${rem(16)};
-  padding: ${rem(16)};
+  margin-left: auto;
+  margin-right: auto;
+
   position: relative;
-  ${theme.shadow.default};
-
-  ${mediaMin.s`
-    margin-top: ${rem(24)};
-    margin-bottom: ${rem(56)};
-  `};
 
   & h3 {
+    padding: ${rem(12)};
     display: inline-block !important;
     margin-top: 0;
     margin-bottom: 0 !important;
 
-    ${mediaMax.s`
-      font-size: ${theme.fontSizes.m} !important;
-      line-height: ${theme.lineHeights.m} !important;
-    `};
+    font-size: ${theme.fontSizes.s} !important;
+    line-height: ${theme.lineHeights.s} !important;
   }
 
   & ul {
@@ -108,40 +85,59 @@ const StyledTOC = styled.nav`
       margin-right: -${rem(24)};
     `};
   }
+`;
 
-  ${mediaMin.s`
-    box-shadow: none;
-    padding: ${rem(24)};
-  `};
+const StyledIcon = styled(Icon)`
+  display: inline-block;
+  vertical-align: middle;
+  transition: transform 0.2s ease;
+  transform: rotate(0deg);
+  margin-left: ${rem(4)};
+  margin-bottom: ${rem(2)};
+
+  ${(props) =>
+    props.open &&
+    css`
+      fill: ${theme.colors.main600};
+    `};
 `;
 
 const TocContents = styled.div`
-  opacity: 0;
-  transform: scaleY(0);
-  transition: all 0.1s ease-out;
-  will-change: transform, opacity, position;
-  transform-origin: 0% 0%;
-  overflow: hidden;
+  background-color: ${theme.colors.gray100};
+  display: none;
   position: absolute;
+  top: -400px;
+  padding: ${rem(16)};
+  width: ${rem(288)};
+
+  ${mediaMin.m`
+    width: ${rem(360)};
+  `};
+
+  ${theme.shadow.hover};
+
+  &:after {
+    content: "";
+    display: block;
+    width: ${rem(16)};
+    height: ${rem(16)};
+
+    border-bottom: ${rem(8)} solid #ffffff;
+    border-right: ${rem(8)} solid #ffffff;
+    transform: rotate(45deg);
+    position: absolute;
+    bottom: -${rem(8)};
+    left: ${rem(40)};
+  }
 
   ${(props) =>
     props.showContent &&
     css`
-      opacity: 1;
-      transform: none;
-      position: static;
-      overflow: visible;
+      display: block;
     `};
-
-  ${mediaMin.s`
-    opacity: 1;
-    overflow: visible;
-    transform: none;
-    position: static;
-  `};
 `;
 
-class PostTOC extends Component {
+class ReadingTOC extends Component {
   state = {
     contentVisible: false,
   };
@@ -159,8 +155,8 @@ class PostTOC extends Component {
     return (
       <StyledTOC onClick={this.showContent}>
         <h3>Table of Contents</h3>
-        <StyledIcon animate={contentVisible}>
-          <use xlinkHref="#down" />
+        <StyledIcon open={contentVisible}>
+          <use xlinkHref="#toc" />
         </StyledIcon>
         <TocContents
           showContent={contentVisible}
@@ -173,4 +169,4 @@ class PostTOC extends Component {
   }
 }
 
-export default PostTOC;
+export default ReadingTOC;

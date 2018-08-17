@@ -2,6 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 
 import { theme, rem, mediaMin } from "../../theme/globalStyles";
+
 import Tags from "../Tags/Tags";
 import ArticleInfo from "../ArticleInfo/ArticleInfo";
 import { H1, H2, H3, H4 } from "../Headings/Headings";
@@ -50,7 +51,7 @@ const PostInfo = styled.aside`
 
 const PostHeader = (props) => {
   let introCopy = props.intro.split("|");
-  console.log(props.showReadingNav);
+
   return (
     <StyledPostHeader>
       <PostH1 readingMode={props.showReadingNav}>{props.title}</PostH1>
