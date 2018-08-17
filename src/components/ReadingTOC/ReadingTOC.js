@@ -8,6 +8,7 @@ const StyledTOC = styled.nav`
   background-color: ${theme.colors.gray100};
   display: block;
   max-width: ${rem(220)};
+  text-align-last: left;
 
   margin-left: auto;
   margin-right: auto;
@@ -84,6 +85,23 @@ const StyledTOC = styled.nav`
       margin-left: -${rem(24)};
       margin-right: -${rem(24)};
     `};
+  }
+
+  a:active,
+  a:focus {
+    outline: 2px dashed ${theme.colors.main600};
+    background-color: ${theme.colors.gray300};
+  }
+
+  a:visited,
+  a:link {
+    color: ${theme.colors.main600};
+  }
+
+  a:hover {
+    color: ${theme.colors.main600};
+    background-color: ${theme.colors.gray300};
+    cursor: pointer;
   }
 `;
 
