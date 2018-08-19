@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "gatsby";
 
 import styled, { css } from "styled-components";
 import { theme, rem, mediaMin, mediaMax } from "../../../theme/globalStyles";
@@ -44,7 +44,7 @@ const StyledSiteMenuListItem = styled.li`
   `};
 `;
 
-const StyledNavLink = styled(NavLink)`
+const StyledNavLink = styled(Link)`
   color: ${theme.colors.dark800};
   display: block;
 

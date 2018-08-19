@@ -408,12 +408,14 @@ class Post extends Component {
     readingShareNavOpen: false,
   };
 
+  nodeRef = React.createRef();
+
   componentDidMount() {
     const copyURLButton = document.querySelector(".js-copyURL");
     copyURLButton.addEventListener("click", this.copyURL);
 
     this.addCopyButtonsToCodeNodes();
-    // this.addGlobalClickListener();
+    this.addGlobalClickListener();
   }
 
   componentDidUpdate() {
@@ -428,22 +430,28 @@ class Post extends Component {
   }
 
   componentWillUnmount() {
-    // document.removeEventListener("click", this.addGlobalClickListener);
+    document.removeEventListener("click", this.addGlobalClickListener);
   }
 
   addGlobalClickListener = () => {
-    document.addEventListener("click", this.closeAllDropdowns);
+    document.addEventListener("click", this.closeAllDropdowns, true);
   };
 
   closeAllDropdowns = (e) => {
-    e.stopPropagation();
+    // if (this.nodeRef.current.contains(e.target)) {
+    //   console.log(this.nodeRef.current);
+    // }
+
+    console.log(this.nodeRef.current.textContent);
 
     const currState = this.state;
     let stateKeys = Object.keys(currState);
 
     stateKeys.forEach((key) => {
       if (currState[`${key}`]) {
-        this.setState({ [`${key}`]: false });
+        this.setState((prevState) => ({
+          [`${key}`]: !prevState[`${key}`],
+        }));
       }
     });
   };
@@ -644,7 +652,12 @@ class Post extends Component {
               openPostToc={this.openPostToc}
               contentVisible={this.state.postTocOpen}
               tableOfContents={postNode.tableOfContents}
+              ref={this.nodeRef}
+              // innerRef={(comp) => { this.input = comp }}
             />
+            <div ref={this.nodeRef}>
+              <span>SUP</span>
+            </div>
             <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
           </PostContent>
         </Wrapper>
@@ -659,6 +672,7 @@ class Post extends Component {
                     tableOfContents={postNode.tableOfContents}
                     contentVisible={this.state.readingTocOpen}
                     openReadingToc={this.openReadingToc}
+                    ref={this.nodeRef}
                   />
                 </ReadingNavCol1>
                 <ReadingNavCol2>
@@ -671,6 +685,7 @@ class Post extends Component {
                     tooltipOpen={this.state.tooltipOpen}
                     openShareNav={this.openShareNav}
                     contentVisible={this.state.readingShareNavOpen}
+                    ref={this.nodeRef}
                   />
                 </ReadingNavCol2>
                 <ReadingNavCol3>

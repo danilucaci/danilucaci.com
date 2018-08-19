@@ -165,18 +165,14 @@ class BlogPage extends Component {
 
   closeOthers = (from) => {
     const currState = this.state;
-    // console.log(currState);
-
     let stateKeys = Object.keys(currState);
-
     let others = stateKeys.filter((key) => key !== `${from}`);
 
     others.forEach((other) => {
       if (currState[`${other}`]) {
-        console.log("Found True", [`${other}`]);
-        const oldState = [`${other}`];
-
-        this.setState({ [`${other}`]: false });
+        this.setState((prevState) => ({
+          [`${other}`]: !prevState[`${other}`],
+        }));
       }
     });
   };
