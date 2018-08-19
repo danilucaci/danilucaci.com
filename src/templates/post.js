@@ -280,9 +280,16 @@ const ReadingNavCol3 = styled.div`
   text-align: center;
 `;
 
-const ScrollToTopLink = styled(DefaultLink)`
+const ScrollToTopLink = styled.a`
+  text-decoration: none;
+
   &:hover {
     background-color: transparent;
+  }
+
+  &:active,
+  &:focus {
+    outline: 2px dashed ${theme.colors.main600};
   }
 
   width: ${rem(48)};
@@ -455,7 +462,7 @@ class Post extends Component {
     // See this for fixed solution
     // https://github.com/styled-components/styled-components/pull/1923
 
-    console.log(this.nodeRef.current.textContent);
+    // console.log(this.nodeRef.current.textContent);
 
     const currState = this.state;
     let stateKeys = Object.keys(currState);
@@ -701,7 +708,7 @@ class Post extends Component {
                   />
                 </ReadingNavCol2>
                 <ReadingNavCol3>
-                  <ScrollToTopLink to="#scrollTop">
+                  <ScrollToTopLink href="#scrollTop">
                     <ScrollToTopIcon>
                       <use xlinkHref="#up" />
                     </ScrollToTopIcon>

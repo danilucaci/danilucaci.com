@@ -25,10 +25,6 @@ const StyledTOC = styled.nav`
     line-height: ${theme.lineHeights.s} !important;
   }
 
-  & ul {
-    margin-top: 8px;
-  }
-
   & ul li,
   ul li p {
     list-style-type: none;
@@ -53,8 +49,8 @@ const StyledTOC = styled.nav`
     margin-left: -${rem(16)};
 
     ${mediaMin.s`
-      padding-left: ${rem(48)};
-      margin-left: -${rem(24)};
+      padding-left: ${rem(40)};
+      margin-left: -${rem(20)};
     `};
   }
 
@@ -69,7 +65,7 @@ const StyledTOC = styled.nav`
     margin-right: 0;
 
     ${mediaMin.s`
-      margin-left: -${rem(24)};
+      margin-left: -${rem(20)};
       margin-right: 0;
     `};
   }
@@ -81,9 +77,9 @@ const StyledTOC = styled.nav`
     margin-right: -${rem(16)};
 
     ${mediaMin.s`
-      padding: ${rem(8)} ${rem(24)};
-      margin-left: -${rem(24)};
-      margin-right: -${rem(24)};
+      padding: ${rem(8)} ${rem(20)};
+      margin-left: -${rem(20)};
+      margin-right: -${rem(20)};
     `};
   }
 
@@ -124,17 +120,46 @@ const TocContents = styled.div`
   background-color: ${theme.colors.gray100};
   display: none;
   position: absolute;
-  top: -400px;
-  padding: ${rem(16)};
-  width: ${rem(288)};
+  bottom: ${rem(64)};
+  padding: ${rem(8)} ${rem(16)} ${rem(8)} ${rem(16)};
+  width: ${rem(272)};
+  max-height: ${rem(320)};
+  max-height: 64vh;
+  overflow-x: scroll;
+  z-index: 2;
 
-  ${mediaMin.m`
-    width: ${rem(360)};
+  & * {
+    text-align: left;
+  }
+
+  /* Hide the scrollbar and still scroll */
+  /* On webkit */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* For Edge */
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  -ms-overflow-style: none;
+
+  ${mediaMax.xxs`
+    left: ${rem(16)};
   `};
 
-  ${theme.shadow.hover};
+  ${mediaMin.xs`
+    width: ${rem(320)};
+  `};
 
-  &:after {
+  ${mediaMin.s`
+    width: ${rem(400)};
+  `};
+
+  box-shadow: 0px 8px 16px 4px rgba(153,153,153,0.32), 0px 4px 8px 0px rgba(153,153,153,0.2),
+    inset 0px -24px 24px -16px rgba(90, 90, 90, 0.28);
+
+  
+  ${
+    "" /* &:after {
     content: "";
     display: block;
     width: ${rem(16)};
@@ -146,8 +171,12 @@ const TocContents = styled.div`
     position: absolute;
     bottom: -${rem(8)};
     left: ${rem(40)};
+    z-index: 1;
+  }  */
   }
 
+
+  ${'' /* prettier-ignore */}
   ${(props) =>
     props.showContent &&
     css`

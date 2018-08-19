@@ -141,12 +141,11 @@ const BlogExploreTagsContent = styled(CollapsibleContent)`
 
 const StyledIcon = styled(Icon)`
   float: right;
-  transition: transform 0.2s ease;
-  transform: rotate(0deg);
 
   ${(props) =>
     props.animate &&
     css`
+      transition: transform 0.2s ease;
       transform-origin: 50% 50%;
       transform: rotate(180deg);
     `};
@@ -217,7 +216,7 @@ class BlogPage extends Component {
     frontMatterTags.tags.forEach((tag) => {
       allTags.push(tag.fieldValue);
     });
-
+    console.log(this.state);
     return (
       <Layout location={this.props.location}>
         <Wrapper>
