@@ -7,13 +7,15 @@ import styled, { css } from "styled-components";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 import Layout from "../components/Layout";
-import { theme, mediaMin, rem } from "../theme/globalStyles";
+import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
 
 import PostListing from "../components/PostListing/PostListing";
 import { Copy } from "../components/Copy/Copy";
 import Tags from "../components/Tags/Tags";
-import Collapsible from "../components/Collapsible/Collapsible";
 import Pagination from "../components/Pagination/Pagination";
+
+import { H3 } from "../components/Headings/Headings";
+import { Icon } from "../components/Icon/Icon";
 
 const Wrapper = styled.div`
   max-width: ${theme.contain.content};
@@ -73,7 +75,136 @@ const TagsWrapper = styled.div`
   `};
 `;
 
+const StyledTitle = styled(H3)`
+  ${mediaMax.s`
+    font-size: ${theme.fontSizes.m};
+    line-height: ${theme.lineHeights.m};
+  `};
+`;
+
+const CollapsibleContainer = styled.div`
+  background-color: ${theme.colors.gray100};
+  ${theme.shadow.default};
+
+  padding: ${rem(14)} ${rem(16)};
+  position: relative;
+
+  &:focus {
+    outline: 1px solid red;
+  }
+
+  width: 100%;
+  height: 100%;
+
+  ${mediaMin.s`
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+  `};
+`;
+
+const CollapsibleContent = styled.div`
+  opacity: 0;
+  transform: scaleY(0);
+  transition: all 0.1s ease-out;
+  will-change: transform, opacity, position;
+  transform-origin: 0% 0%;
+  overflow: hidden;
+  position: absolute;
+  padding-top: ${rem(16)};
+
+  ${(props) =>
+    props.showContent &&
+    css`
+      opacity: 1;
+      transform: none;
+      position: static;
+      overflow: visible;
+    `};
+
+  ${mediaMin.s`
+    padding-top: ${rem(8)};
+    opacity: 1;
+    overflow: visible;
+    transform: none;
+    position: static;
+  `};
+`;
+
+const BlogExploreTagsContent = styled(CollapsibleContent)`
+  padding-top: 0;
+
+  ${mediaMin.s`
+    padding-top: 0;
+  `};
+`;
+
+const StyledIcon = styled(Icon)`
+  float: right;
+  transition: transform 0.2s ease;
+  transform: rotate(0deg);
+
+  ${(props) =>
+    props.animate &&
+    css`
+      transform-origin: 50% 50%;
+      transform: rotate(180deg);
+    `};
+
+  ${mediaMin.s`
+    display: none;
+  `};
+`;
+
 class BlogPage extends Component {
+  state = {
+    blogWriteAboutOpen: false,
+    blogWhatElseOpen: false,
+    blogExploreTagsOpen: false,
+  };
+
+  closeOthers = (from) => {
+    const currState = this.state;
+    // console.log(currState);
+
+    let stateKeys = Object.keys(currState);
+
+    let others = stateKeys.filter((key) => key !== `${from}`);
+
+    others.forEach((other) => {
+      if (currState[`${other}`]) {
+        console.log("Found True", [`${other}`]);
+        const oldState = [`${other}`];
+
+        this.setState({ [`${other}`]: false });
+      }
+    });
+  };
+
+  openBlogWriteAbout = () => {
+    this.setState((prevState) => ({
+      blogWriteAboutOpen: !prevState.blogWriteAboutOpen,
+    }));
+
+    this.closeOthers("blogWriteAboutOpen");
+  };
+
+  openBlogWhatElse = () => {
+    this.setState((prevState) => ({
+      blogWhatElseOpen: !prevState.blogWhatElseOpen,
+    }));
+
+    this.closeOthers("blogWhatElseOpen");
+  };
+
+  openBlogExploreTags = () => {
+    this.setState((prevState) => ({
+      blogExploreTagsOpen: !prevState.blogExploreTagsOpen,
+    }));
+
+    this.closeOthers("blogExploreTagsOpen");
+  };
+
   render() {
     const {
       currentPage,
@@ -99,26 +230,57 @@ class BlogPage extends Component {
           <BlogHeader>
             <BlogInfo>
               <BlogInfoItem>
-                <Collapsible title="What I write about">
-                  <Copy>
-                    How i built this in Hugo and optimized for 100% Speed Index
-                    with Google.
-                  </Copy>
-                </Collapsible>
+                <CollapsibleContainer
+                  onClick={this.openBlogWriteAbout}
+                  contentVisible={this.state.blogWriteAboutOpen}
+                >
+                  <StyledIcon animate={this.state.blogWriteAboutOpen}>
+                    <use xlinkHref="#down" />
+                  </StyledIcon>
+                  <StyledTitle>What I write about</StyledTitle>
+                  <CollapsibleContent
+                    showContent={this.state.blogWriteAboutOpen}
+                  >
+                    <Copy>
+                      How i built this in Hugo and optimized for 100% Speed
+                      Index with Google.
+                    </Copy>
+                  </CollapsibleContent>
+                </CollapsibleContainer>
               </BlogInfoItem>
               <BlogInfoItem>
-                <Collapsible title="What else">
-                  <Copy>
-                    How i built this in Hugo and optimized for 100% Speed Index
-                    with Google.
-                  </Copy>
-                </Collapsible>
+                <CollapsibleContainer
+                  onClick={this.openBlogWhatElse}
+                  contentVisible={this.state.blogWhatElseOpen}
+                >
+                  <StyledIcon animate={this.state.blogWhatElseOpen}>
+                    <use xlinkHref="#down" />
+                  </StyledIcon>
+                  <StyledTitle>What else</StyledTitle>
+                  <CollapsibleContent showContent={this.state.blogWhatElseOpen}>
+                    <Copy>
+                      How i built this in Hugo and optimized for 100% Speed
+                      Index with Google.
+                    </Copy>
+                  </CollapsibleContent>
+                </CollapsibleContainer>
               </BlogInfoItem>
             </BlogInfo>
             <TagsWrapper>
-              <Collapsible title="Explore by tags" removePadding>
-                <Tags tagsInPost={allTags} />
-              </Collapsible>
+              <CollapsibleContainer
+                onClick={this.openBlogExploreTags}
+                contentVisible={this.state.blogExploreTagsOpen}
+              >
+                <StyledIcon animate={this.state.blogExploreTagsOpen}>
+                  <use xlinkHref="#down" />
+                </StyledIcon>
+                <StyledTitle>Explore by tags</StyledTitle>
+                <BlogExploreTagsContent
+                  showContent={this.state.blogExploreTagsOpen}
+                >
+                  <Tags tagsInPost={allTags} />
+                </BlogExploreTagsContent>
+              </CollapsibleContainer>
             </TagsWrapper>
           </BlogHeader>
           <PostListing edges={edges} />

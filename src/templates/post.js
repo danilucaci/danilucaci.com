@@ -436,40 +436,24 @@ class Post extends Component {
   };
 
   closeAllDropdowns = (e) => {
-    const oldState = this.state;
     e.stopPropagation();
 
-    if (oldState.readingShareNavOpen) {
-      this.setState((prevState) => ({
-        readingShareNavOpen: !prevState.readingShareNavOpen,
-      }));
-    }
+    const currState = this.state;
+    let stateKeys = Object.keys(currState);
 
-    if (oldState.readingTocOpen) {
-      this.setState((prevState) => ({
-        readingTocOpen: !prevState.readingTocOpen,
-      }));
-    }
-
-    if (oldState.postTocOpen) {
-      this.setState((prevState) => ({
-        postTocOpen: !prevState.postTocOpen,
-      }));
-    }
+    stateKeys.forEach((key) => {
+      if (currState[`${key}`]) {
+        this.setState({ [`${key}`]: false });
+      }
+    });
   };
 
   openReadingToc = () => {
-    const isReadingShareNavOpen = this.state.readingShareNavOpen;
-
-    if (isReadingShareNavOpen) {
-      this.setState((prevState) => ({
-        readingShareNavOpen: !prevState.readingShareNavOpen,
-      }));
-    }
-
     this.setState((prevState) => ({
       readingTocOpen: !prevState.readingTocOpen,
     }));
+
+    this.closeOthers("readingTocOpen");
   };
 
   openPostToc = () => {
@@ -479,17 +463,23 @@ class Post extends Component {
   };
 
   openShareNav = () => {
-    const isReadingTocOpen = this.state.readingTocOpen;
-
-    if (isReadingTocOpen) {
-      this.setState((prevState) => ({
-        readingTocOpen: !prevState.readingTocOpen,
-      }));
-    }
-
     this.setState((prevState) => ({
       readingShareNavOpen: !prevState.readingShareNavOpen,
     }));
+
+    this.closeOthers("readingShareNavOpen");
+  };
+
+  closeOthers = (from) => {
+    const currState = this.state;
+    let stateKeys = Object.keys(currState);
+    let others = stateKeys.filter((key) => key !== `${from}`);
+
+    others.forEach((other) => {
+      if (currState[`${other}`]) {
+        this.setState({ [`${other}`]: false });
+      }
+    });
   };
 
   copyURL = () => {

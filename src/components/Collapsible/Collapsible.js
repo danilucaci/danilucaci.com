@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled, { css } from "styled-components";
 
 import { theme, mediaMin, mediaMax, rem } from "../../theme/globalStyles";
@@ -79,35 +79,23 @@ const StyledIcon = styled(Icon)`
   `};
 `;
 
-class Collapsible extends Component {
-  state = {
-    contentVisible: false,
-  };
+const Collapsible = (props) => {
+  const contentVisible = props.contentVisible;
 
-  showContent = () => {
-    this.setState((prevState) => ({
-      contentVisible: !prevState.contentVisible,
-    }));
-  };
-
-  render() {
-    const contentVisible = this.state.contentVisible;
-
-    return (
-      <StyledCollapsible onClick={this.showContent}>
-        <StyledIcon animate={contentVisible}>
-          <use xlinkHref="#down" />
-        </StyledIcon>
-        <StyledTitle>{this.props.title}</StyledTitle>
-        <CollapsibleContent
-          removePadding={this.props.removePadding}
-          showContent={contentVisible}
-        >
-          {this.props.children}
-        </CollapsibleContent>
-      </StyledCollapsible>
-    );
-  }
-}
+  return (
+    <StyledCollapsible showContent={props.showContent}>
+      <StyledIcon animate={contentVisible}>
+        <use xlinkHref="#down" />
+      </StyledIcon>
+      <StyledTitle>{props.title}</StyledTitle>
+      <CollapsibleContent
+        removePadding={props.removePadding}
+        showContent={contentVisible}
+      >
+        {props.children}
+      </CollapsibleContent>
+    </StyledCollapsible>
+  );
+};
 
 export default Collapsible;
