@@ -399,6 +399,16 @@ const DummyInput = styled.input`
   color: transparent;
 `;
 
+// const MyDiv = styled.div``;
+
+// const StyledDiv = styled(
+//   React.forwardRef((props, ref) => {
+//     return <MyDiv forwardedRef={ref} {...props} />;
+//   })
+// )`
+//   background-color: red;
+// `;
+
 class Post extends Component {
   state = {
     tooltipMessage: "Copy page link",
@@ -430,17 +440,20 @@ class Post extends Component {
   }
 
   componentWillUnmount() {
-    document.removeEventListener("click", this.addGlobalClickListener);
+    // document.removeEventListener("click", this.addGlobalClickListener);
   }
 
   addGlobalClickListener = () => {
-    document.addEventListener("click", this.closeAllDropdowns, true);
+    // document.addEventListener("click", this.closeAllDropdowns, true);
   };
 
   closeAllDropdowns = (e) => {
     // if (this.nodeRef.current.contains(e.target)) {
     //   console.log(this.nodeRef.current);
     // }
+
+    // See this for fixed solution
+    // https://github.com/styled-components/styled-components/pull/1923
 
     console.log(this.nodeRef.current.textContent);
 
@@ -652,12 +665,11 @@ class Post extends Component {
               openPostToc={this.openPostToc}
               contentVisible={this.state.postTocOpen}
               tableOfContents={postNode.tableOfContents}
-              ref={this.nodeRef}
-              // innerRef={(comp) => { this.input = comp }}
+              // ref={this.nodeRef}
             />
-            <div ref={this.nodeRef}>
+            {/* <StyledDiv ref={this.nodeRef}>
               <span>SUP</span>
-            </div>
+            </StyledDiv> */}
             <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
           </PostContent>
         </Wrapper>
@@ -672,7 +684,7 @@ class Post extends Component {
                     tableOfContents={postNode.tableOfContents}
                     contentVisible={this.state.readingTocOpen}
                     openReadingToc={this.openReadingToc}
-                    ref={this.nodeRef}
+                    // ref={this.nodeRef}
                   />
                 </ReadingNavCol1>
                 <ReadingNavCol2>
@@ -685,7 +697,7 @@ class Post extends Component {
                     tooltipOpen={this.state.tooltipOpen}
                     openShareNav={this.openShareNav}
                     contentVisible={this.state.readingShareNavOpen}
-                    ref={this.nodeRef}
+                    // ref={this.nodeRef}
                   />
                 </ReadingNavCol2>
                 <ReadingNavCol3>
