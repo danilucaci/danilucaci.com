@@ -1,18 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 
 import styled, { css } from "styled-components";
 import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
 import { Icon } from "../Icon/Icon";
 
-const StyledTOC = styled.nav`
+const StyledTopTOC = styled.nav`
   background-color: ${theme.colors.gray100};
-  display: block;
+  float: right;
   max-width: ${rem(220)};
   text-align-last: left;
-
   margin-left: auto;
   margin-right: auto;
-
   position: relative;
 
   & h3 {
@@ -45,12 +43,10 @@ const StyledTOC = styled.nav`
   }
 
   & ul ul {
-    padding-left: ${rem(32)};
-    margin-left: -${rem(16)};
+    padding-left: ${rem(8)};
 
     ${mediaMin.s`
-      padding-left: ${rem(40)};
-      margin-left: -${rem(20)};
+      padding-left: ${rem(16)};
     `};
   }
 
@@ -61,32 +57,21 @@ const StyledTOC = styled.nav`
   }
 
   & ul ul li a {
-    margin-left: -${rem(16)};
     margin-right: 0;
 
     ${mediaMin.s`
-      margin-left: -${rem(20)};
       margin-right: 0;
     `};
   }
 
   & li a {
     display: block;
-    padding: ${rem(8)} ${rem(16)};
-    margin-left: -${rem(16)};
-    margin-right: -${rem(16)};
-
-    ${mediaMin.s`
-      padding: ${rem(8)} ${rem(20)};
-      margin-left: -${rem(20)};
-      margin-right: -${rem(20)};
-    `};
+    padding: ${rem(8)} 0;
   }
 
   a:active,
   a:focus {
     outline: 2px dashed ${theme.colors.main600};
-    background-color: ${theme.colors.gray300};
   }
 
   a:visited,
@@ -96,7 +81,6 @@ const StyledTOC = styled.nav`
 
   a:hover {
     color: ${theme.colors.main600};
-    background-color: ${theme.colors.gray300};
     cursor: pointer;
   }
 `;
@@ -116,15 +100,15 @@ const StyledIcon = styled(Icon)`
     `};
 `;
 
-const TocContents = styled.div`
+const TopTocContents = styled.div`
   background-color: ${theme.colors.gray100};
   display: none;
   position: absolute;
-  bottom: ${rem(64)};
+  top: ${rem(56)};
+  right: 0;
   padding: ${rem(8)} ${rem(16)} ${rem(8)} ${rem(16)};
   width: ${rem(272)};
   max-height: ${rem(320)};
-  max-height: 64vh;
   overflow-x: scroll;
   z-index: 2;
 
@@ -132,7 +116,24 @@ const TocContents = styled.div`
     text-align: left;
   }
 
-  /* Hide the scrollbar and still scroll */
+  box-shadow: 0px 8px 16px 4px rgba(153, 153, 153, 0.32),
+    0px 4px 8px 0px rgba(153, 153, 153, 0.2),
+    inset 0px -24px 24px -16px rgba(90, 90, 90, 0.28);
+
+  ${"" /* &:after {
+    content: "";
+    display: block;
+    width: ${rem(16)};
+    height: ${rem(16)};
+
+    border-top: ${rem(8)} solid #ffffff;
+    border-left: ${rem(8)} solid #ffffff;
+    transform: rotate(45deg);
+    position: absolute;
+    top: -${rem(8)};
+    left: ${rem(40)};
+    z-index: 1;
+  } */} /* Hide the scrollbar and still scroll */
   /* On webkit */
   &::-webkit-scrollbar {
     display: none;
@@ -146,6 +147,10 @@ const TocContents = styled.div`
     left: ${rem(16)};
   `};
 
+  ${mediaMax.xs`
+    max-height: 64vh;
+  `};
+
   ${mediaMin.xs`
     width: ${rem(320)};
   `};
@@ -154,29 +159,6 @@ const TocContents = styled.div`
     width: ${rem(400)};
   `};
 
-  box-shadow: 0px 8px 16px 4px rgba(153,153,153,0.32), 0px 4px 8px 0px rgba(153,153,153,0.2),
-    inset 0px -24px 24px -16px rgba(90, 90, 90, 0.28);
-
-  
-  ${
-    "" /* &:after {
-    content: "";
-    display: block;
-    width: ${rem(16)};
-    height: ${rem(16)};
-
-    border-bottom: ${rem(8)} solid #ffffff;
-    border-right: ${rem(8)} solid #ffffff;
-    transform: rotate(45deg);
-    position: absolute;
-    bottom: -${rem(8)};
-    left: ${rem(40)};
-    z-index: 1;
-  }  */
-  }
-
-
-  ${'' /* prettier-ignore */}
   ${(props) =>
     props.showContent &&
     css`
@@ -184,21 +166,21 @@ const TocContents = styled.div`
     `};
 `;
 
-const ReadingTOC = (props) => {
+const TopReadingTOC = (props) => {
   return (
-    <StyledTOC onClick={props.openReadingToc}>
+    <StyledTopTOC onClick={props.openTopReadingToc}>
       <h3>Table of Contents</h3>
       <StyledIcon open={props.contentVisible}>
         <use xlinkHref="#toc" />
       </StyledIcon>
-      <TocContents
+      <TopTocContents
         showContent={props.contentVisible}
         dangerouslySetInnerHTML={{
           __html: props.tableOfContents,
         }}
       />
-    </StyledTOC>
+    </StyledTopTOC>
   );
 };
 
-export default ReadingTOC;
+export default TopReadingTOC;

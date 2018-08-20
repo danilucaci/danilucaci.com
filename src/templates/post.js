@@ -8,7 +8,8 @@ import config from "../../data/SiteConfig";
 import SEO from "../components/SEO/SEO";
 
 import PostTOC from "../components/PostTOC/PostTOC";
-import ReadingTOC from "../components/ReadingTOC/ReadingTOC";
+import BottomReadingTOC from "../components/BottomReadingTOC/BottomReadingTOC";
+import TopReadingTOC from "../components/TopReadingTOC/TopReadingTOC";
 import SocialShare from "../components/SocialShare/SocialShare";
 import ReadingSocialShare from "../components/ReadingSocialShare/ReadingSocialShare";
 import Tags from "../components/Tags/Tags";
@@ -250,6 +251,10 @@ const ReadingModePageNav = styled.nav`
   height: ${rem(48)};
 
   ${theme.shadow.reading};
+
+  ${mediaMin.xxl`
+    display: none;
+  `};
 `;
 
 const ReadingNavCol1 = styled.div`
@@ -406,7 +411,7 @@ const DummyInput = styled.input`
   color: transparent;
 `;
 
-// const MyDiv = styled.div``;
+const MyDiv = styled.div``;
 
 // const StyledDiv = styled(
 //   React.forwardRef((props, ref) => {
@@ -420,7 +425,8 @@ class Post extends Component {
   state = {
     tooltipMessage: "Copy page link",
     tooltipOpen: false,
-    readingTocOpen: false,
+    bottomReadingTocOpen: false,
+    topReadingTocOpen: false,
     postTocOpen: false,
     readingShareNavOpen: false,
   };
@@ -462,7 +468,7 @@ class Post extends Component {
     // See this for fixed solution
     // https://github.com/styled-components/styled-components/pull/1923
 
-    // console.log(this.nodeRef.current.textContent);
+    console.log(this.nodeRef.current);
 
     const currState = this.state;
     let stateKeys = Object.keys(currState);
@@ -476,12 +482,18 @@ class Post extends Component {
     });
   };
 
-  openReadingToc = () => {
+  openTopReadingToc = () => {
     this.setState((prevState) => ({
-      readingTocOpen: !prevState.readingTocOpen,
+      topReadingTocOpen: !prevState.topReadingTocOpen,
+    }));
+  };
+
+  openBottomReadingToc = () => {
+    this.setState((prevState) => ({
+      bottomReadingTocOpen: !prevState.bottomReadingTocOpen,
     }));
 
-    this.closeOthers("readingTocOpen");
+    this.closeOthers("bottomReadingTocOpen");
   };
 
   openPostToc = () => {
@@ -624,14 +636,29 @@ class Post extends Component {
         <ScrollConsumer>
           {(context) => {
             const showReadingNav = context.showReadingNav;
+            const pageWidth = context.pageWidth;
 
-            return showReadingNav ? (
+            let topReadingToc = null;
+
+            if (pageWidth >= 840) {
+              topReadingToc = (
+                <TopReadingTOC
+                  tableOfContents={postNode.tableOfContents}
+                  contentVisible={this.state.topReadingTocOpen}
+                  openTopReadingToc={this.openTopReadingToc}
+                  // ref={this.nodeRef}
+                />
+              );
+            }
+
+            return showReadingNav && pageWidth >= 400 ? (
               <ReadingModePageHeader role="banner">
                 <StyledNav aria-label="Page Menu" role="navigation">
                   <StyledLogoLink to="/">
                     <Logo />
                   </StyledLogoLink>
                   <ReadingModeH1>{postInfo.title}</ReadingModeH1>
+                  {topReadingToc}
                 </StyledNav>
               </ReadingModePageHeader>
             ) : null;
@@ -674,23 +701,24 @@ class Post extends Component {
               tableOfContents={postNode.tableOfContents}
               // ref={this.nodeRef}
             />
-            {/* <StyledDiv ref={this.nodeRef}>
+            {/* <MyDiv ref={this.nodeRef}>
               <span>SUP</span>
-            </StyledDiv> */}
+            </MyDiv> */}
             <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
           </PostContent>
         </Wrapper>
         <ScrollConsumer>
           {(context) => {
             const showReadingNav = context.showReadingNav;
+            const pageWidth = context.pageWidth;
 
-            return showReadingNav ? (
+            return showReadingNav && pageWidth < 840 ? (
               <ReadingModePageNav>
                 <ReadingNavCol1>
-                  <ReadingTOC
+                  <BottomReadingTOC
                     tableOfContents={postNode.tableOfContents}
-                    contentVisible={this.state.readingTocOpen}
-                    openReadingToc={this.openReadingToc}
+                    contentVisible={this.state.bottomReadingTocOpen}
+                    openBottomReadingToc={this.openBottomReadingToc}
                     // ref={this.nodeRef}
                   />
                 </ReadingNavCol1>

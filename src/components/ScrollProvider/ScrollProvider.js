@@ -8,6 +8,7 @@ export class ScrollProvider extends Component {
     lastScrollPos: 0,
     showReadingNav: false,
     isBlogPost: false,
+    pageWidth: 0,
   };
 
   componentDidMount() {
@@ -51,19 +52,46 @@ export class ScrollProvider extends Component {
     this.setState({ hasScrolled: true });
   };
 
+  // http://www.howtocreate.co.uk/tutorials/javascript/browserwindow
+  getPageWidth = () => {
+    let pageWidth = 0;
+
+    if (typeof window.innerWidth == "number") {
+      //Non-IE
+      pageWidth = window.innerWidth;
+    } else if (
+      document.documentElement &&
+      document.documentElement.clientWidth
+    ) {
+      //IE 6+ in 'standards compliant mode'
+      pageWidth = document.documentElement.clientWidth;
+    } else if (document.body && document.body.clientWidth) {
+      //IE 4 compatible
+      pageWidth = document.body.clientWidth;
+    }
+
+    return pageWidth;
+  };
+
   hasScrolled = () => {
-    console.log("Scrolled");
     let currentScrollPos = window.pageYOffset;
     let oldScrollPos = this.state.lastScrollPos;
     let sufficientScrollDiff = oldScrollPos - 20;
+    let pageWidth = this.getPageWidth();
 
-    if (currentScrollPos > 600) {
+    if (currentScrollPos > 664) {
       if (currentScrollPos < sufficientScrollDiff) {
-        this.setState({ lastScrollPos: window.pageYOffset });
-        this.setState({ showReadingNav: false });
+        this.setState({
+          lastScrollPos: window.pageYOffset,
+          showReadingNav: false,
+          pageWidth: pageWidth,
+        });
       } else {
-        this.setState({ lastScrollPos: window.pageYOffset });
-        this.setState({ showReadingNav: true });
+        this.setState({
+          lastScrollPos: window.pageYOffset,
+          showReadingNav: true,
+          pageWidth: pageWidth,
+        });
       }
     } else {
       this.setState({
@@ -79,6 +107,7 @@ export class ScrollProvider extends Component {
           hasScrolled: this.state.hasScrolled,
           lastScrollPos: this.state.lastScrollPos,
           showReadingNav: this.state.showReadingNav,
+          pageWidth: this.state.pageWidth,
         }}
       >
         {this.props.children}

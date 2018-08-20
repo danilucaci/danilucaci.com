@@ -71,12 +71,10 @@ const StyledTOC = styled.nav`
   }
 
   & ul ul {
-    padding-left: ${rem(32)};
-    margin-left: -${rem(16)};
+    padding-left: ${rem(24)};
 
     ${mediaMin.s`
-      padding-left: ${rem(48)};
-      margin-left: -${rem(24)};
+      padding-left: ${rem(32)};
     `};
   }
 
@@ -86,26 +84,13 @@ const StyledTOC = styled.nav`
     line-height: ${theme.lineHeights.s};
   }
 
-  & ul ul li a {
-    margin-left: -${rem(16)};
-    margin-right: 0;
-
-    ${mediaMin.s`
-      margin-left: -${rem(24)};
-      margin-right: 0;
-    `};
-  }
-
   & li a {
     display: block;
     padding: ${rem(8)} ${rem(16)};
-    margin-left: -${rem(16)};
-    margin-right: -${rem(16)};
+    margin-right: ${rem(16)};
 
     ${mediaMin.s`
       padding: ${rem(8)} ${rem(24)};
-      margin-left: -${rem(24)};
-      margin-right: -${rem(24)};
     `};
   }
 
@@ -121,8 +106,9 @@ const TocContents = styled.div`
   transition: all 0.1s ease-out;
   will-change: transform, opacity, position;
   transform-origin: 0% 0%;
-  overflow: hidden;
   position: absolute;
+  max-height: ${rem(320)};
+  overflow: hidden;
 
   ${(props) =>
     props.showContent &&
@@ -130,14 +116,18 @@ const TocContents = styled.div`
       opacity: 1;
       transform: none;
       position: static;
-      overflow: visible;
+      overflow: auto;
     `};
+
+  ${mediaMax.xs`
+    max-height: 64vh;
+  `};
 
   ${mediaMin.s`
     opacity: 1;
-    overflow: visible;
     transform: none;
     position: static;
+    overflow: auto;
   `};
 `;
 
