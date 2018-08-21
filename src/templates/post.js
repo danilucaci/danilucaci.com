@@ -447,7 +447,9 @@ class Post extends Component {
     if (tooltipMessage === "Page link copied!") {
       setTimeout(() => {
         this.setState({ tooltipMessage: "Copy page link" });
-        this.setState({ tooltipOpen: false });
+        this.setState((prevState) => ({
+          tooltipOpen: !prevState.tooltipOpen,
+        }));
       }, 2500);
     }
   }
@@ -517,7 +519,10 @@ class Post extends Component {
 
     others.forEach((other) => {
       if (currState[`${other}`]) {
-        this.setState({ [`${other}`]: false });
+        // this.setState({ [`${other}`]: false });
+        this.setState((prevState) => ({
+          [`${other}`]: !prevState[`${other}`],
+        }));
       }
     });
   };
@@ -545,7 +550,9 @@ class Post extends Component {
     try {
       document.execCommand("copy");
       this.setState({ tooltipMessage: "Page link copied!" });
-      this.setState({ tooltipOpen: true });
+      this.setState((prevState) => ({
+        tooltipOpen: !prevState.tooltipOpen,
+      }));
     } catch (err) {
       this.setState({ tooltipMessage: "Couldn't copy the link" });
     }

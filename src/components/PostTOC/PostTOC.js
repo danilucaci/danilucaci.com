@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 import styled, { css } from "styled-components";
 import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
@@ -8,6 +8,7 @@ const StyledIcon = styled(Icon)`
   float: right;
   transition: transform 0.2s ease;
   transform: rotate(0deg);
+  margin-right: ${rem(16)};
 
   ${(props) =>
     props.animate &&
@@ -24,19 +25,30 @@ const StyledIcon = styled(Icon)`
 const StyledTOC = styled.nav`
   background-color: ${theme.colors.gray100};
   display: block;
-
   margin-top: ${rem(16)};
   margin-bottom: ${rem(16)};
-  padding: ${rem(16)};
   position: relative;
+
+  max-height: ${rem(297)};
+  max-height: 56vh;
+  padding: ${rem(14)} 0;
+  overflow: hidden;
+
   ${theme.shadow.default};
+
+  ${mediaMax.xxs`
+    left: ${rem(16)};
+  `};
 
   ${mediaMin.s`
     margin-top: ${rem(24)};
     margin-bottom: ${rem(56)};
+    box-shadow: none;
+    padding: ${rem(24)};
   `};
 
   & h3 {
+    padding-left: ${rem(16)};
     display: inline-block !important;
     margin-top: 0;
     margin-bottom: 0 !important;
@@ -47,57 +59,9 @@ const StyledTOC = styled.nav`
     `};
   }
 
-  & ul {
-    margin-top: 8px;
+  & > div {
+    margin-top: ${rem(8)};
   }
-
-  & ul li,
-  ul li p {
-    list-style-type: none;
-
-    .fonts-loaded & {
-      font-family: ${theme.fonts.bodyRegular};
-    }
-
-    font-weight: 400;
-    font-size: ${theme.fontSizes.s};
-    line-height: ${theme.lineHeights.s};
-    margin-bottom: 0;
-
-    ${mediaMin.m`
-      font-size: ${theme.fontSizes.s};
-      line-height: ${theme.lineHeights.s};
-    `};
-  }
-
-  & ul ul {
-    padding-left: ${rem(24)};
-
-    ${mediaMin.s`
-      padding-left: ${rem(32)};
-    `};
-  }
-
-  & ul ul li {
-    list-style-type: none;
-    font-size: ${theme.fontSizes.s};
-    line-height: ${theme.lineHeights.s};
-  }
-
-  & li a {
-    display: block;
-    padding: ${rem(8)} ${rem(16)};
-    margin-right: ${rem(16)};
-
-    ${mediaMin.s`
-      padding: ${rem(8)} ${rem(24)};
-    `};
-  }
-
-  ${mediaMin.s`
-    box-shadow: none;
-    padding: ${rem(24)};
-  `};
 `;
 
 const TocContents = styled.div`
@@ -107,7 +71,8 @@ const TocContents = styled.div`
   will-change: transform, opacity, position;
   transform-origin: 0% 0%;
   position: absolute;
-  max-height: ${rem(320)};
+  max-height: ${rem(243)};
+  max-height: 48vh;
   overflow: hidden;
 
   ${(props) =>
@@ -117,11 +82,8 @@ const TocContents = styled.div`
       transform: none;
       position: static;
       overflow: auto;
+      border-top: 1px solid ${theme.colors.gray300};
     `};
-
-  ${mediaMax.xs`
-    max-height: 64vh;
-  `};
 
   ${mediaMin.s`
     opacity: 1;
@@ -129,6 +91,66 @@ const TocContents = styled.div`
     position: static;
     overflow: auto;
   `};
+
+  & * {
+    text-align: left;
+    list-style-type: none;
+    font-weight: 400;
+    font-size: ${theme.fontSizes.s};
+    line-height: ${theme.lineHeights.s};
+
+    ${mediaMin.m`
+      font-size: ${theme.fontSizes.s};
+      line-height: ${theme.lineHeights.s};
+    `};
+
+    .fonts-loaded & {
+      font-family: ${theme.fonts.bodyRegular};
+    }
+  }
+  
+  & p {
+    margin-bottom: 0 !important;
+  }
+
+  ${"" /* Heading 2 */}
+  & ul li a {
+    margin-left: -${rem(16)};
+    padding-left: ${rem(32)};
+  }
+
+  ${"" /* Heading 3 */}
+  & ul li ul li a {
+    padding-left: ${rem(48)};
+  }
+
+  ${"" /* Heading 4 */}
+  & ul li ul li ul li a {
+    padding-left: ${rem(56)};
+  }
+
+  & a {
+    display: block;
+    
+    ${"" /* 16 side padding important for separating the heading level */}
+    padding: ${rem(8)} 0 ${rem(8)} ${rem(16)};
+  }
+
+  a:active,
+  a:focus {
+    outline: 2px dashed ${theme.colors.main600};
+  }
+
+  a:visited,
+  a:link {
+    color: ${theme.colors.main600};
+  }
+
+  a:hover {
+    background-color: ${theme.colors.gray300};
+    color: ${theme.colors.main600};
+    cursor: pointer;
+  }
 `;
 
 const PostTOC = (props) => {

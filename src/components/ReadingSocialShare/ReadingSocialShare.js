@@ -49,10 +49,10 @@ const ShareIcons = styled.div`
     &:after {
       content: "";
       display: block;
-      width: ${rem(16)};
-      height: ${rem(16)};
-      border-bottom: ${rem(8)} solid #ffffff;
-      border-right: ${rem(8)} solid #ffffff;
+      width: 0;
+      border-color: transparent #ffffff #ffffff transparent;
+      border-style: solid;
+      border-width: 0 0 16px 16px;
       transform: rotate(45deg);
       position: absolute;
       bottom: -${rem(8)};
@@ -111,7 +111,14 @@ const CopyIcon = styled(Icon)`
 const CopyTooltip = styled.span`
   background-color: ${theme.colors.gray100};
   ${theme.shadow.hover};
-  display: ${(props) => (props.show ? "block" : "none")};
+  display: none;
+
+  ${(props) =>
+    props.show &&
+    css`
+      display: block;
+    `};
+
   white-space: nowrap;
   font-size: ${theme.fontSizes.xs};
   line-height: ${theme.lineHeights.xs};
@@ -128,10 +135,10 @@ const CopyTooltip = styled.span`
   &:after {
     content: "";
     display: block;
-    width: ${rem(16)};
-    height: ${rem(16)};
-    border-bottom: ${rem(8)} solid #ffffff;
-    border-right: ${rem(8)} solid #ffffff;
+    width: 0;
+    border-color: transparent #ffffff #ffffff transparent;
+    border-style: solid;
+    border-width: 0 0 16px 16px;
     transform: rotate(45deg);
     position: absolute;
     top: ${rem(24)};

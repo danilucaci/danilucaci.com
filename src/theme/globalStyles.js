@@ -140,6 +140,15 @@ export const theme = {
   },
   logoWidth: "6em",
   logoHeight: "3em",
+  hideScrollBars: `/* Hide the scrollbar and still scroll */
+                  /* On webkit */
+                  &::-webkit-scrollbar {
+                    display: none;
+                  }
+
+                  /* For Edge */
+                  -ms-overflow-style: -ms-autohiding-scrollbar;
+                  -ms-overflow-style: none;`,
   breakpoints: {
     xxs: "22.5em", //360
     xs: "32em", //512
