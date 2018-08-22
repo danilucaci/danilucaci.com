@@ -36,10 +36,6 @@ const StyledTOC = styled.nav`
 
   ${theme.shadow.default};
 
-  ${mediaMax.xxs`
-    left: ${rem(16)};
-  `};
-
   ${mediaMin.s`
     margin-top: ${rem(24)};
     margin-bottom: ${rem(56)};

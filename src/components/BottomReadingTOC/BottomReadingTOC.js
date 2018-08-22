@@ -49,7 +49,7 @@ const StyledTocContentsShadow = styled.div`
   height: ${rem(40)};
   z-index: 2;
   pointer-events: none;
-  width: 95.5%;
+  width: 100%;
 `;
 
 const TocContainer = styled.div`

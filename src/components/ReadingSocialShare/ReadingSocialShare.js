@@ -113,12 +113,6 @@ const CopyTooltip = styled.span`
   ${theme.shadow.hover};
   display: none;
 
-  ${(props) =>
-    props.show &&
-    css`
-      display: block;
-    `};
-
   white-space: nowrap;
   font-size: ${theme.fontSizes.xs};
   line-height: ${theme.lineHeights.xs};
@@ -166,7 +160,6 @@ const FacebookIcon = styled(Icon)`
 
 const StyledReadingShareNav = (props) => {
   const url = urljoin(config.siteUrl, config.pathPrefix, props.slug);
-
   return (
     <StyledSocialShare onClick={props.openShareNav}>
       <ReadingShareIcon>
@@ -201,9 +194,7 @@ const StyledReadingShareNav = (props) => {
           <CopyIcon>
             <use xlinkHref="#copy" />
           </CopyIcon>
-          <CopyTooltip show={props.tooltipOpen}>
-            {props.tooltipMessage}
-          </CopyTooltip>
+          <CopyTooltip>{props.tooltipMessage}</CopyTooltip>
         </StyledCopyButton>
       </ShareIcons>
     </StyledSocialShare>

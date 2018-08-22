@@ -438,7 +438,7 @@ class Post extends Component {
     copyURLButton.addEventListener("click", this.copyURL);
 
     this.addCopyButtonsToCodeNodes();
-    this.addGlobalClickListener();
+    // this.addGlobalClickListener();
   }
 
   componentDidUpdate() {
@@ -447,10 +447,7 @@ class Post extends Component {
     if (tooltipMessage === "Page link copied!") {
       setTimeout(() => {
         this.setState({ tooltipMessage: "Copy page link" });
-        this.setState((prevState) => ({
-          tooltipOpen: !prevState.tooltipOpen,
-        }));
-      }, 2500);
+      }, 1500);
     }
   }
 
@@ -515,14 +512,20 @@ class Post extends Component {
   closeOthers = (from) => {
     const currState = this.state;
     let stateKeys = Object.keys(currState);
+
     let others = stateKeys.filter((key) => key !== `${from}`);
 
     others.forEach((other) => {
-      if (currState[`${other}`]) {
-        // this.setState({ [`${other}`]: false });
-        this.setState((prevState) => ({
-          [`${other}`]: !prevState[`${other}`],
-        }));
+      // Ignore tooltipMessage to not change the message set
+      if (other === "tooltipMessage") {
+        return;
+      } else {
+        if (currState[`${other}`]) {
+          // this.setState({ [`${other}`]: false });
+          this.setState((prevState) => ({
+            [`${other}`]: !prevState[`${other}`],
+          }));
+        }
       }
     });
   };
@@ -549,11 +552,10 @@ class Post extends Component {
 
     try {
       document.execCommand("copy");
+      console.log("try");
       this.setState({ tooltipMessage: "Page link copied!" });
-      this.setState((prevState) => ({
-        tooltipOpen: !prevState.tooltipOpen,
-      }));
     } catch (err) {
+      console.log("error");
       this.setState({ tooltipMessage: "Couldn't copy the link" });
     }
 
@@ -687,7 +689,6 @@ class Post extends Component {
                 snippet={postInfo.snippet}
                 onClick={this.copyURL}
                 tooltipMessage={this.state.tooltipMessage}
-                tooltipOpen={this.state.tooltipOpen}
               />
             </PostInfo>
             <StyledIntro>
@@ -736,7 +737,6 @@ class Post extends Component {
                     snippet={postInfo.snippet}
                     onClick={this.copyURL}
                     tooltipMessage={this.state.tooltipMessage}
-                    tooltipOpen={this.state.tooltipOpen}
                     openShareNav={this.openShareNav}
                     contentVisible={this.state.readingShareNavOpen}
                     // ref={this.nodeRef}
