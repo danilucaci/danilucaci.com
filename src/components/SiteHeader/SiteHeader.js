@@ -36,7 +36,7 @@ const StyledSiteHeader = styled.header`
   ${mediaMin.m`
     position: fixed;
     top: 0;
-    background-color: ${theme.colors.transparent};
+    background-color: ${theme.colors.gray100};
     height: ${rem(48)};
     padding: 0;
     z-index: 10;

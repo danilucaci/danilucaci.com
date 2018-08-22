@@ -22,6 +22,20 @@ const StyledIcon = styled(Icon)`
   `};
 `;
 
+const StyledTocContentsShadow = styled.div`
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 1) 95%
+  );
+  position: absolute;
+  bottom: 0;
+  height: ${rem(40)};
+  z-index: 2;
+  pointer-events: none;
+  width: 100%;
+`;
+
 const StyledTOC = styled.nav`
   background-color: ${theme.colors.gray100};
   display: block;
@@ -29,63 +43,81 @@ const StyledTOC = styled.nav`
   margin-bottom: ${rem(16)};
   position: relative;
 
-  max-height: ${rem(297)};
-  max-height: 56vh;
+  max-height: ${rem(407)};
   padding: ${rem(14)} 0;
   overflow: hidden;
 
   ${theme.shadow.default};
 
   ${mediaMin.s`
+    max-height: ${rem(467)};
     margin-top: ${rem(24)};
     margin-bottom: ${rem(56)};
+    padding-bottom: 0;
     box-shadow: none;
-    padding: ${rem(24)};
   `};
 
   & h3 {
-    padding-left: ${rem(16)};
     display: inline-block !important;
     margin-top: 0;
     margin-bottom: 0 !important;
+    padding-left: ${rem(16)};
 
     ${mediaMax.s`
       font-size: ${theme.fontSizes.m} !important;
       line-height: ${theme.lineHeights.m} !important;
     `};
-  }
 
-  & > div {
-    margin-top: ${rem(8)};
+    ${mediaMin.s`
+      padding-left: ${rem(24)};
+    `};
   }
 `;
 
-const TocContents = styled.div`
-  opacity: 0;
+const TocContainer = styled.div`
+  transition: scale, 0.2s ease;
+  transform-origin: 100% 0;
+  transform: scaleY(${(props) => (props.showContent ? 1 : 0)});
+  max-height: ${(props) => (props.showContent ? rem(347) : 0)};
+  pointer-events: ${(props) => (props.showContent ? "auto" : "none")};
+
+  ${mediaMin.s`
+    transform: scaleY(1);
+    max-height: ${rem(411)};
+    pointer-events: auto;
+  `};
+`;
+
+const StyledTocContentsInnerHTML = styled.div`
+  will-change: max-height, transform, opacity, position, overflow;
+  transition: all 0.2s ease;
   transform: scaleY(0);
-  transition: all 0.1s ease-out;
-  will-change: transform, opacity, position;
   transform-origin: 0% 0%;
-  position: absolute;
-  max-height: ${rem(243)};
-  max-height: 48vh;
+  opacity: 0;
+  max-height: 0;
   overflow: hidden;
+  position: absolute;
 
   ${(props) =>
     props.showContent &&
     css`
+      border-top: 1px solid ${theme.colors.gray400};
       opacity: 1;
-      transform: none;
+      transform: scaleY(1);
       position: static;
       overflow: auto;
-      border-top: 1px solid ${theme.colors.gray300};
+      max-height: ${rem(347)};
+      margin-top: ${rem(8)};
     `};
 
   ${mediaMin.s`
+    border-top: 1px solid ${theme.colors.gray400};
     opacity: 1;
-    transform: none;
+    transform: scaleY(1);
     position: static;
     overflow: auto;
+    max-height: ${rem(411)};
+    margin-top: ${rem(8)};
   `};
 
   & * {
@@ -113,16 +145,28 @@ const TocContents = styled.div`
   & ul li a {
     margin-left: -${rem(16)};
     padding-left: ${rem(32)};
+
+    ${mediaMin.s`
+      padding-left: ${rem(40)};
+    `};
   }
 
   ${"" /* Heading 3 */}
   & ul li ul li a {
     padding-left: ${rem(48)};
+
+    ${mediaMin.s`
+      padding-left: ${rem(56)};
+    `};
   }
 
   ${"" /* Heading 4 */}
   & ul li ul li ul li a {
     padding-left: ${rem(56)};
+
+    ${mediaMin.s`
+      padding-left: ${rem(64)};
+    `};
   }
 
   & a {
@@ -156,12 +200,15 @@ const PostTOC = (props) => {
       <StyledIcon animate={props.contentVisible}>
         <use xlinkHref="#down" />
       </StyledIcon>
-      <TocContents
-        showContent={props.contentVisible}
-        dangerouslySetInnerHTML={{
-          __html: props.tableOfContents,
-        }}
-      />
+      <TocContainer showContent={props.contentVisible}>
+        <StyledTocContentsShadow />
+        <StyledTocContentsInnerHTML
+          showContent={props.contentVisible}
+          dangerouslySetInnerHTML={{
+            __html: props.tableOfContents,
+          }}
+        />
+      </TocContainer>
     </StyledTOC>
   );
 };

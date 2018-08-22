@@ -49,20 +49,25 @@ const StyledTocContentsShadow = styled.div`
   height: ${rem(40)};
   z-index: 2;
   pointer-events: none;
-  width: 100%;
+  width: 97%;
 `;
 
 const TocContainer = styled.div`
   position: absolute;
   bottom: 140%;
-  left: 4%;
-  width: 120%;
+  left: 5%;
+  width: 115%;
 
-  transition: scale, max-height 0.2s ease-in;
+  transition: scale, max-height 0.2s ease;
   transform-origin: 100% 0;
   transform: scaleY(${(props) => (props.showContent ? 1 : 0)});
-  max-height: ${(props) => (props.showContent ? rem(297) : 0)};
+  max-height: ${(props) => (props.showContent ? "50vh" : 0)};
   pointer-events: ${(props) => (props.showContent ? "auto" : "none")};
+
+  ${mediaMin.s`
+    max-height: ${(props) => (props.showContent ? rem(341) : 0)};
+    width: 95%;
+  `};
 
   &:after {
     content: "";
@@ -88,22 +93,12 @@ const StyledTocContentsInnerHTML = styled.div`
   width: 100%;
 
   will-change: transform, max-height;
-  transition: scale, max-height 0.2s ease-in;
+  transition: scale, max-height 0.2s ease;
   transform-origin: 100% 0%;
   transform: scaleY(${(props) => (props.showContent ? 1 : 0)});
-  max-height: ${(props) => (props.showContent ? rem(297) : 0)};
+  max-height: ${(props) => (props.showContent ? "50vh" : 0)};
   pointer-events: ${(props) => (props.showContent ? "auto" : "none")};
-
-  ${"" /* max-height: ${rem(297)}; */}
-  padding: ${rem(16)} 0;
-
-  ${mediaMax.xxs`
-    left: ${rem(16)};
-  `};
-
-  ${mediaMax.xs`
-    max-height: 64vh;
-  `};
+  max-height: 50vh;
 
   & * {
     text-align: left;
@@ -141,7 +136,7 @@ const StyledTocContentsInnerHTML = styled.div`
   & a {
     display: block;
     transition: scale 0.2s ease-in;
-    transition-delay: 0.2s;
+    transition-delay: 0.4s;
     transform-origin: 100% 0;
     transform: scaleY(${(props) => (props.showContent ? 1 : 0)});
     
