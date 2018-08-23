@@ -435,11 +435,13 @@ const MyDiv = styled.div``;
 class Post extends Component {
   state = {
     tooltipMessage: "Copy page link",
-    tooltipOpen: false,
-    bottomReadingTocOpen: false,
-    topReadingTocOpen: false,
-    postTocOpen: false,
-    readingShareNavOpen: false,
+    dropdownsState: {
+      tooltipOpen: false,
+      bottomReadingTocOpen: false,
+      topReadingTocOpen: false,
+      postTocOpen: false,
+      readingShareNavOpen: false,
+    },
   };
 
   nodeRef = React.createRef();
@@ -480,7 +482,7 @@ class Post extends Component {
 
     console.log(this.nodeRef.current);
 
-    const currState = this.state;
+    const currState = this.state.dropdownsState;
     let stateKeys = Object.keys(currState);
 
     stateKeys.forEach((key) => {
@@ -494,13 +496,19 @@ class Post extends Component {
 
   openTopReadingToc = () => {
     this.setState((prevState) => ({
-      topReadingTocOpen: !prevState.topReadingTocOpen,
+      dropdownsState: {
+        ...prevState.dropdownsState,
+        topReadingTocOpen: !prevState.dropdownsState.topReadingTocOpen,
+      },
     }));
   };
 
   openBottomReadingToc = () => {
     this.setState((prevState) => ({
-      bottomReadingTocOpen: !prevState.bottomReadingTocOpen,
+      dropdownsState: {
+        ...prevState.dropdownsState,
+        bottomReadingTocOpen: !prevState.dropdownsState.bottomReadingTocOpen,
+      },
     }));
 
     this.closeOthers("bottomReadingTocOpen");
@@ -508,35 +516,38 @@ class Post extends Component {
 
   openPostToc = () => {
     this.setState((prevState) => ({
-      postTocOpen: !prevState.postTocOpen,
+      dropdownsState: {
+        ...prevState.dropdownsState,
+        postTocOpen: !prevState.dropdownsState.postTocOpen,
+      },
     }));
   };
 
   openShareNav = () => {
     this.setState((prevState) => ({
-      readingShareNavOpen: !prevState.readingShareNavOpen,
+      dropdownsState: {
+        ...prevState.dropdownsState,
+        readingShareNavOpen: !prevState.dropdownsState.readingShareNavOpen,
+      },
     }));
 
     this.closeOthers("readingShareNavOpen");
   };
 
   closeOthers = (from) => {
-    const currState = this.state;
+    const currState = this.state.dropdownsState;
     let stateKeys = Object.keys(currState);
-
     let others = stateKeys.filter((key) => key !== `${from}`);
 
     others.forEach((other) => {
-      // Ignore tooltipMessage to not change the message set
-      if (other === "tooltipMessage") {
-        return;
-      } else {
-        if (currState[`${other}`]) {
-          // this.setState({ [`${other}`]: false });
-          this.setState((prevState) => ({
-            [`${other}`]: !prevState[`${other}`],
-          }));
-        }
+      // if it's set to true
+      if (currState[`${other}`]) {
+        this.setState((prevState) => ({
+          dropdownsState: {
+            ...prevState.dropdownsState,
+            [`${other}`]: !prevState.dropdownsState[`${other}`],
+          },
+        }));
       }
     });
   };
@@ -563,10 +574,8 @@ class Post extends Component {
 
     try {
       document.execCommand("copy");
-      console.log("try");
       this.setState({ tooltipMessage: "Page link copied!" });
     } catch (err) {
-      console.log("error");
       this.setState({ tooltipMessage: "Couldn't copy the link" });
     }
 
@@ -665,7 +674,7 @@ class Post extends Component {
               topReadingToc = (
                 <TopReadingTOC
                   tableOfContents={postNode.tableOfContents}
-                  contentVisible={this.state.topReadingTocOpen}
+                  contentVisible={this.state.dropdownsState.topReadingTocOpen}
                   openTopReadingToc={this.openTopReadingToc}
                   // ref={this.nodeRef}
                 />
@@ -733,7 +742,7 @@ class Post extends Component {
             />
             <PostTOC
               openPostToc={this.openPostToc}
-              contentVisible={this.state.postTocOpen}
+              contentVisible={this.state.dropdownsState.postTocOpen}
               tableOfContents={postNode.tableOfContents}
               // ref={this.nodeRef}
             />
@@ -753,7 +762,9 @@ class Post extends Component {
                 <ReadingNavCol1>
                   <BottomReadingTOC
                     tableOfContents={postNode.tableOfContents}
-                    contentVisible={this.state.bottomReadingTocOpen}
+                    contentVisible={
+                      this.state.dropdownsState.bottomReadingTocOpen
+                    }
                     openBottomReadingToc={this.openBottomReadingToc}
                     // ref={this.nodeRef}
                   />
@@ -766,7 +777,9 @@ class Post extends Component {
                     onClick={this.copyURL}
                     tooltipMessage={this.state.tooltipMessage}
                     openShareNav={this.openShareNav}
-                    contentVisible={this.state.readingShareNavOpen}
+                    contentVisible={
+                      this.state.dropdownsState.readingShareNavOpen
+                    }
                     // ref={this.nodeRef}
                   />
                 </ReadingNavCol2>
