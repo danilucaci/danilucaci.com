@@ -76,17 +76,22 @@ export class ScrollProvider extends Component {
   hasScrolled = () => {
     let currentScrollPos = window.pageYOffset;
     let oldScrollPos = this.state.lastScrollPos;
-    let sufficientScrollDiff = oldScrollPos - 20;
+    let sufficientScrollDiff = oldScrollPos - 8;
     let pageWidth = this.getPageWidth();
+
+    console.log("oldScrollPos:         ", oldScrollPos);
+    console.log("sufficientScrollDiff: ", sufficientScrollDiff);
 
     if (currentScrollPos > 664) {
       if (currentScrollPos < sufficientScrollDiff) {
+        console.log("Was enough");
         this.setState({
           lastScrollPos: window.pageYOffset,
           showReadingNav: false,
           pageWidth: pageWidth,
         });
       } else {
+        console.log("Not enough");
         this.setState({
           lastScrollPos: window.pageYOffset,
           showReadingNav: true,

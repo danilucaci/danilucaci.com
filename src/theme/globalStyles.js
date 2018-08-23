@@ -38,6 +38,8 @@ export const theme = {
       "box-shadow: 0px 2px 8px -2px rgba(153,153,153,0.32), 0px 4px 8px -2px rgba(153,153,153,0.2)",
     hover:
       "box-shadow: 0px 2px 8px -4px rgba(102,102,102,0.4), 0px 8px 20px -4px rgba(102,102,102,0.4)",
+    dropdown:
+      "box-shadow: 0px 2px 8px 0px rgba(61, 61, 61, 0.3), 0px 0px 40px -4px hsla(0, 0%, 30%, 0.32)",
     button:
       "box-shadow: 0px 4px 8px -2px rgba(10, 41, 92, 0.48), 0px 8px 20px -4px rgba(92, 139, 214, 0.4)",
     buttonHover:

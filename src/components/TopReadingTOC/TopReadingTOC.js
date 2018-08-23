@@ -4,87 +4,6 @@ import styled, { css } from "styled-components";
 import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
 import { Icon } from "../Icon/Icon";
 
-const StyledTopTOC = styled.nav`
-  background-color: ${theme.colors.gray100};
-  float: right;
-  max-width: ${rem(220)};
-  text-align-last: left;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-
-  & h3 {
-    padding: ${rem(12)};
-    display: inline-block !important;
-    margin-top: 0;
-    margin-bottom: 0 !important;
-
-    font-size: ${theme.fontSizes.s} !important;
-    line-height: ${theme.lineHeights.s} !important;
-  }
-
-  & ul li,
-  ul li p {
-    list-style-type: none;
-
-    .fonts-loaded & {
-      font-family: ${theme.fonts.bodyRegular};
-    }
-
-    font-weight: 400;
-    font-size: ${theme.fontSizes.s};
-    line-height: ${theme.lineHeights.s};
-    margin-bottom: 0;
-
-    ${mediaMin.m`
-      font-size: ${theme.fontSizes.s};
-      line-height: ${theme.lineHeights.s};
-    `};
-  }
-
-  & ul ul {
-    padding-left: ${rem(8)};
-
-    ${mediaMin.s`
-      padding-left: ${rem(16)};
-    `};
-  }
-
-  & ul ul li {
-    list-style-type: none;
-    font-size: ${theme.fontSizes.s};
-    line-height: ${theme.lineHeights.s};
-  }
-
-  & ul ul li a {
-    margin-right: 0;
-
-    ${mediaMin.s`
-      margin-right: 0;
-    `};
-  }
-
-  & li a {
-    display: block;
-    padding: ${rem(8)} 0;
-  }
-
-  a:active,
-  a:focus {
-    outline: 2px dashed ${theme.colors.main600};
-  }
-
-  a:visited,
-  a:link {
-    color: ${theme.colors.main600};
-  }
-
-  a:hover {
-    color: ${theme.colors.main600};
-    cursor: pointer;
-  }
-`;
-
 const StyledIcon = styled(Icon)`
   display: inline-block;
   vertical-align: middle;
@@ -100,70 +19,147 @@ const StyledIcon = styled(Icon)`
     `};
 `;
 
-const TopTocContents = styled.div`
+const StyledTopTOC = styled.div`
   background-color: ${theme.colors.gray100};
-  display: none;
-  position: absolute;
-  top: ${rem(56)};
-  right: 0;
-  padding: ${rem(8)} ${rem(16)} ${rem(8)} ${rem(16)};
-  width: ${rem(272)};
-  max-height: ${rem(320)};
-  overflow-x: scroll;
-  z-index: 2;
+  display: inline-block;
+  position: relative;
+  z-index: 10;
 
-  & * {
-    text-align: left;
+  & h3 {
+    padding: ${rem(12)};
+    display: inline-block !important;
+    margin-top: 0;
+    margin-bottom: 0 !important;
+
+    font-size: ${theme.fontSizes.s} !important;
+    line-height: ${theme.lineHeights.s} !important;
   }
+`;
 
-  box-shadow: 0px 8px 16px 4px rgba(153, 153, 153, 0.32),
-    0px 4px 8px 0px rgba(153, 153, 153, 0.2),
-    inset 0px -24px 24px -16px rgba(90, 90, 90, 0.28);
+const StyledTocContentsShadow = styled.div`
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 1) 75%
+  );
+  position: absolute;
+  bottom: 110%;
+  height: ${rem(40)};
+  z-index: 2;
+  pointer-events: none;
+  width: 97%;
 
-  ${"" /* &:after {
+  outline: 1px solid cyan;
+`;
+
+const TocContainer = styled.div`
+  position: absolute;
+  top: 130%;
+  right: 0;
+  width: 180%;
+
+  transition: scale, max-height 0.2s ease;
+  transform-origin: 100% 0;
+  transform: scaleY(${(props) => (props.showContent ? 1 : 0)});
+  max-height: ${(props) => (props.showContent ? "42vh" : 0)};
+  pointer-events: ${(props) => (props.showContent ? "auto" : "none")};
+
+  ${mediaMin.s`
+    max-height: ${(props) => (props.showContent ? rem(341) : 0)};
+  `};
+
+  &:before {
     content: "";
     display: block;
-    width: ${rem(16)};
-    height: ${rem(16)};
-
-    border-top: ${rem(8)} solid #ffffff;
-    border-left: ${rem(8)} solid #ffffff;
+    width: 0;
+    height: 0;
+    border-color: #ffffff transparent transparent #ffffff;
+    border-style: solid;
+    border-width: ${rem(8)};
     transform: rotate(45deg);
     position: absolute;
     top: -${rem(8)};
-    left: ${rem(40)};
+    right: 20%;
     z-index: 1;
-  } */} /* Hide the scrollbar and still scroll */
-  /* On webkit */
-  &::-webkit-scrollbar {
-    display: none;
+  }
+`;
+
+const StyledTocContentsInnerHTML = styled.div`
+  background-color: ${theme.colors.gray100};
+  ${theme.shadow.dropdown};
+  display: block;
+  position: absolute;
+  top: 120%;
+  overflow: auto;
+  width: 100%;
+
+  will-change: transform, max-height;
+  transition: scale, max-height 0.2s ease;
+  transform-origin: 100% 0%;
+  transform: scaleY(${(props) => (props.showContent ? 1 : 0)});
+  max-height: ${(props) => (props.showContent ? "50vh" : 0)};
+  pointer-events: ${(props) => (props.showContent ? "auto" : "none")};
+  max-height: 50vh;
+
+  & * {
+    text-align: left;
+    list-style-type: none;
+    font-weight: 400;
+    font-size: ${theme.fontSizes.s};
+    line-height: ${theme.lineHeights.s};
+
+    ${mediaMin.m`
+      font-size: ${theme.fontSizes.s};
+      line-height: ${theme.lineHeights.s};
+    `};
+
+    .fonts-loaded & {
+      font-family: ${theme.fonts.bodyRegular};
+    }
+  }
+  
+  ${"" /* Heading 2 */}
+  & ul li a {
+    margin-left: -${rem(16)};
+    padding-left: ${rem(32)};
   }
 
-  /* For Edge */
-  -ms-overflow-style: -ms-autohiding-scrollbar;
-  -ms-overflow-style: none;
+  ${"" /* Heading 3 */}
+  & ul li ul li a {
+    padding-left: ${rem(48)};
+  }
 
-  ${mediaMax.xxs`
-    left: ${rem(16)};
-  `};
+  ${"" /* Heading 4 */}
+  & ul li ul li ul li a {
+    padding-left: ${rem(64)};
+  }
 
-  ${mediaMax.xs`
-    max-height: 64vh;
-  `};
+  & a {
+    display: block;
+    transition: scale 0.2s ease-in;
+    transition-delay: 0.4s;
+    transform-origin: 100% 0;
+    transform: scaleY(${(props) => (props.showContent ? 1 : 0)});
+    
+    ${"" /* 16 side padding important for separating the heading level */}
+    padding: ${rem(8)} 0 ${rem(8)} ${rem(16)};
+  }
 
-  ${mediaMin.xs`
-    width: ${rem(320)};
-  `};
+  a:active,
+  a:focus {
+    outline: 2px dashed ${theme.colors.main600};
+  }
 
-  ${mediaMin.s`
-    width: ${rem(400)};
-  `};
+  a:visited,
+  a:link {
+    color: ${theme.colors.main600};
+  }
 
-  ${(props) =>
-    props.showContent &&
-    css`
-      display: block;
-    `};
+  a:hover {
+    background-color: ${theme.colors.gray300};
+    color: ${theme.colors.main600};
+    cursor: pointer;
+  }
 `;
 
 const TopReadingTOC = (props) => {
@@ -173,12 +169,15 @@ const TopReadingTOC = (props) => {
       <StyledIcon open={props.contentVisible}>
         <use xlinkHref="#toc" />
       </StyledIcon>
-      <TopTocContents
-        showContent={props.contentVisible}
-        dangerouslySetInnerHTML={{
-          __html: props.tableOfContents,
-        }}
-      />
+      <TocContainer showContent={props.contentVisible}>
+        {/* <StyledTocContentsShadow /> */}
+        <StyledTocContentsInnerHTML
+          showContent={props.contentVisible}
+          dangerouslySetInnerHTML={{
+            __html: props.tableOfContents,
+          }}
+        />
+      </TocContainer>
     </StyledTopTOC>
   );
 };

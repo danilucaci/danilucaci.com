@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import urljoin from "url-join";
 
 import config from "../../../data/SiteConfig";
@@ -64,7 +64,7 @@ const CopyIcon = styled(Icon)`
 
 const CopyTooltip = styled.span`
   background-color: ${theme.colors.gray100};
-  ${theme.shadow.hover};
+  ${theme.shadow.dropdown};
   display: ${(props) => (props.show ? "block" : "none")};
   white-space: nowrap;
   font-size: ${theme.fontSizes.xs};
@@ -75,22 +75,45 @@ const CopyTooltip = styled.span`
   }
 
   position: absolute;
-  top: -${rem(44)};
-  left: -${rem(32)};
-  padding: ${rem(8)};
 
-  &:after {
-    content: "";
-    display: block;
-    width: ${rem(16)};
-    height: ${rem(16)};
-    border-bottom: ${rem(8)} solid #ffffff;
-    border-right: ${rem(8)} solid #ffffff;
-    transform: rotate(45deg);
-    position: absolute;
-    top: ${rem(24)};
-    left: ${rem(40)};
-  }
+  ${(props) =>
+    props.topReading && css
+      ? `
+    bottom: -${rem(56)};
+    right: -${rem(4)};
+
+    &:after {
+      content: "";
+      display: block;
+      width: ${rem(16)};
+      height: ${rem(16)};
+      border-top: ${rem(8)} solid #ffffff;
+      border-left: ${rem(8)} solid #ffffff;
+      transform: rotate(45deg);
+      position: absolute;
+      top: -${rem(8)};
+      right: ${rem(12)};
+    }
+  `
+      : `
+    top: -${rem(44)};
+    left: -${rem(32)};
+
+    &:after {
+      content: "";
+      display: block;
+      width: ${rem(16)};
+      height: ${rem(16)};
+      border-bottom: ${rem(8)} solid #ffffff;
+      border-right: ${rem(8)} solid #ffffff;
+      transform: rotate(45deg);
+      position: absolute;
+      top: ${rem(24)};
+      left: ${rem(40)};
+    }
+  `};
+
+  padding: ${rem(8)};
 `;
 
 const TwitterIcon = styled(Icon)`
@@ -162,7 +185,7 @@ const SocialShare = (props) => {
         <CopyIcon>
           <use xlinkHref="#copy" />
         </CopyIcon>
-        <CopyTooltip show={props.tooltipOpen}>
+        <CopyTooltip topReading={props.topReading} show={props.tooltipOpen}>
           {props.tooltipMessage}
         </CopyTooltip>
       </StyledCopyButton>

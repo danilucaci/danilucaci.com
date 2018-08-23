@@ -33,7 +33,7 @@ const ShareIcons = styled.div`
   background-color: ${theme.colors.gray100};
   display: none;
 
-  ${theme.shadow.hover};
+  ${theme.shadow.dropdown};
 
   ${(props) =>
     props.showIcons &&
@@ -52,7 +52,7 @@ const ShareIcons = styled.div`
       width: 0;
       border-color: transparent #ffffff #ffffff transparent;
       border-style: solid;
-      border-width: 0 0 16px 16px;
+      border-width: ${rem(8)};
       transform: rotate(45deg);
       position: absolute;
       bottom: -${rem(8)};

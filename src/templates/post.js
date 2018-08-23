@@ -230,7 +230,6 @@ const ReadingModePageHeader = styled.header`
   ${theme.shadow.header};
 
   ${mediaMin.m`
-    background-color: ${theme.colors.transparent};
     display: block;
     height: ${rem(48)};
     padding: 0;
@@ -318,8 +317,7 @@ const StyledPostHeader = styled.header``;
 
 const StyledNav = styled.nav`
   display: block;
-  max-width: ${theme.contain.content};
-  margin-left: auto;
+  ${"" /* max-width: ${theme.contain.page}; */} margin-left: auto;
   margin-right: auto;
 
   ${mediaMin.s`
@@ -347,6 +345,19 @@ const ReadingModeH1 = styled(H1)`
   font-size: ${rem(16)} !important;
   line-height: ${rem(24)} !important;
   padding: ${rem(12)} ${rem(16)};
+`;
+
+const TopReadingPostInfo = styled.div`
+  float: right;
+  margin-right: ${rem(16)};
+
+  & > div {
+    display: inline-block;
+  }
+
+  & > div:nth-of-type(2) {
+    margin-left: ${rem(24)};
+  }
 `;
 
 const StyledIntro = styled.div`
@@ -648,6 +659,7 @@ class Post extends Component {
             const pageWidth = context.pageWidth;
 
             let topReadingToc = null;
+            let topReadingSocialShare = null;
 
             if (pageWidth >= 840) {
               topReadingToc = (
@@ -660,6 +672,19 @@ class Post extends Component {
               );
             }
 
+            if (pageWidth >= 1060) {
+              topReadingSocialShare = (
+                <SocialShare
+                  slug={slug}
+                  title={postInfo.title}
+                  snippet={postInfo.snippet}
+                  onClick={this.copyURL}
+                  tooltipMessage={this.state.tooltipMessage}
+                  topReading={true}
+                />
+              );
+            }
+
             return showReadingNav && pageWidth >= 400 ? (
               <ReadingModePageHeader role="banner">
                 <StyledNav aria-label="Page Menu" role="navigation">
@@ -667,7 +692,10 @@ class Post extends Component {
                     <Logo />
                   </StyledLogoLink>
                   <ReadingModeH1>{postInfo.title}</ReadingModeH1>
-                  {topReadingToc}
+                  <TopReadingPostInfo>
+                    {topReadingToc}
+                    {topReadingSocialShare}
+                  </TopReadingPostInfo>
                 </StyledNav>
               </ReadingModePageHeader>
             ) : null;

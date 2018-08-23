@@ -15,15 +15,6 @@ const StyledSiteHeader = styled.header`
   height: ${rem(64)};
   padding: ${rem(8)} ${rem(16)};
 
-  ${(props) =>
-    props.hide &&
-    css`
-      ${mediaMin.s`
-        position: absolute;
-        top: -110%;
-      `};
-    `};
-
   ${mediaMin.s`
     width: 100%;
     height: ${rem(56)};
@@ -40,6 +31,14 @@ const StyledSiteHeader = styled.header`
     height: ${rem(48)};
     padding: 0;
     z-index: 10;
+    will-change: opacity;
+
+    ${(props) =>
+      props.hide &&
+      css`
+        opacity: 0;
+        pointer-events: none;
+      `};
   `};
 `;
 
@@ -62,11 +61,19 @@ class SiteHeader extends Component {
 
           return showReadingNav ? (
             <StyledSiteHeader hide={showReadingNav} role="banner">
-              <SiteNav onClick={this.openNav} showNav={this.state.showNav} />
+              <SiteNav
+                onClick={this.openNav}
+                readingModeOn={showReadingNav}
+                showNav={this.state.showNav}
+              />
             </StyledSiteHeader>
           ) : (
             <StyledSiteHeader role="banner">
-              <SiteNav onClick={this.openNav} showNav={this.state.showNav} />
+              <SiteNav
+                onClick={this.openNav}
+                readingModeOn={showReadingNav}
+                showNav={this.state.showNav}
+              />
             </StyledSiteHeader>
           );
         }}

@@ -85,7 +85,7 @@ const TocContainer = styled.div`
 
 const StyledTocContentsInnerHTML = styled.div`
   background-color: ${theme.colors.gray100};
-  ${theme.shadow.hover};
+  ${theme.shadow.dropdown};
   display: block;
   position: absolute;
   bottom: 110%;

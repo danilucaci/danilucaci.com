@@ -56,6 +56,10 @@ const ContinueLink = styled(DefaultLink)`
   padding-bottom: ${rem(16)};
   font-size: ${theme.fontSizes.m};
   line-height: ${theme.lineHeights.m};
+
+  &:hover {
+    background-color: transparent;
+  }
 `;
 
 const StyledH3 = styled(H3)`
