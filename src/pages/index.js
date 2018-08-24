@@ -195,6 +195,11 @@ class Index extends Component {
   render() {
     return (
       <Layout location={this.props.location}>
+        <Helmet>
+          <title>{`${config.siteTitle}`}</title>
+        </Helmet>
+        <SEO />
+
         <SiteHeader />
         <Main role="main">
           <IndexWrapper>

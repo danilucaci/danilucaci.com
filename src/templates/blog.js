@@ -225,7 +225,9 @@ class BlogPage extends Component {
         <SiteHeader />
         <Main role="main">
           <BlogWrapper>
-            <Helmet title={`Blog || ${config.siteTitle}`} />
+            <Helmet
+              title={`danilucaci.com Personal Blog - ${config.siteTitle}`}
+            />
             <SEO />
             <BlogHeader>
               <BlogInfo>

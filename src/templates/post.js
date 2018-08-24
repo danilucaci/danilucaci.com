@@ -678,9 +678,10 @@ class Post extends Component {
     return (
       <Layout location={this.props.location}>
         <Helmet>
-          <title>{`${postInfo.title} || ${config.siteTitle}`}</title>
+          <title>{`${postInfo.title} - ${config.siteTitle}`}</title>
         </Helmet>
         <SEO postPath={slug} postNode={postNode} postSEO />
+
         <ReadingModePageHeader role="banner">
           <StyledNav aria-label="Page Menu" role="navigation">
             <StyledLogoLink to="/">

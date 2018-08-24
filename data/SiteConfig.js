@@ -1,12 +1,12 @@
 module.exports = {
-  siteTitle: "Dani Lucaci UX/UI Designer and Front–End Developer", // Site title.
+  siteTitle: "Dani Lucaci UX/UI Designer and Front–End Developer.", // Site title.
   siteTitleShort: "danilucaci.com", // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
-  siteTitleAlt: "Dani Lucaci Blog", // Alternative site title for SEO.
+  siteTitleAlt: "Dani Lucaci Personal Website and Blog", // Alternative site title for SEO.
   siteLogo: "svg/logo.svg", // Logo used for SEO and manifest.
   siteUrl: "https://www.danilucaci.com", // Domain of your website without pathPrefix.
   pathPrefix: "/", // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
   siteDescription:
-    "My personal blog where I write about UX/UI Deisgn and Front–End Development in general.", // Website description used for RSS feeds/meta description tag.
+    "My personal blog where I write about UX/UI Design and Front–End Development - Dani Lucaci UX/UI Designer and Front–End Developer.", // Website description used for RSS feeds/meta description tag.
   siteRss: "/rss.xml", // Path to the RSS file.
   siteFBAppID: "1825356251115265", // FB Application ID for using app insights
   googleAnalyticsID: "UA-47311644-5", // GA tracking ID.

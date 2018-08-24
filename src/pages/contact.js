@@ -130,11 +130,11 @@ class ContactPage extends Component {
   render() {
     return (
       <Layout location={this.props.location}>
+        <Helmet title={`Contact Me - ${config.siteTitle}`} />
+        <SEO />
         <SiteHeader />
         <Main role="main">
           <ContactMeWrapper>
-            <Helmet title={`Contact Me || ${config.siteTitle}`} />
-            <SEO />
             <StyledH1>Let's talk</StyledH1>
             <Subhead>
               If you have a project in mind and you think my services would

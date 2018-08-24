@@ -28,11 +28,12 @@ class ServicesPage extends Component {
   render() {
     return (
       <Layout location={this.props.location}>
+        <Helmet title={`My Services - ${config.siteTitle}`} />
+        <SEO />
         <SiteHeader />
         <Main role="main">
           <ServicesWrapper>
-            <Helmet title={`Services || ${config.siteTitle}`} />
-            <SEO />
+            <h1>Hola Servicios</h1>
           </ServicesWrapper>
         </Main>
         <SiteFooter />

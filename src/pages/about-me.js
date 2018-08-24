@@ -157,7 +157,7 @@ class AboutPage extends Component {
         <SiteHeader />
         <Main role="main">
           <AboutMeWrapper>
-            <Helmet title={`About Me || ${config.siteTitle}`} />
+            <Helmet title={`About Me - ${config.siteTitle}`} />
             <SEO />
             <HeaderInfo>
               {/* <StyledNameHeader>Hi! I’m Dani Lucaci.</StyledNameHeader> */}
