@@ -317,7 +317,8 @@ const StyledPostHeader = styled.header``;
 
 const StyledNav = styled.nav`
   display: block;
-  ${"" /* max-width: ${theme.contain.page}; */} margin-left: auto;
+  max-width: ${theme.contain.page};
+  margin-left: auto;
   margin-right: auto;
 
   ${mediaMin.s`
@@ -349,7 +350,6 @@ const ReadingModeH1 = styled(H1)`
 
 const TopReadingPostInfo = styled.div`
   float: right;
-  margin-right: ${rem(16)};
 
   & > div {
     display: inline-block;
@@ -719,7 +719,7 @@ class Post extends Component {
                 date={postInfo.date}
                 timeToRead={postNode.timeToRead}
               />
-              <Tags tagsInPost={postInfo.tagsInPost} spaced />
+              <Tags tagsInPost={postInfo.tags} spaced />
               <SocialShare
                 slug={slug}
                 title={postInfo.title}

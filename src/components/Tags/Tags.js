@@ -5,7 +5,7 @@ import styled, { css } from "styled-components";
 import Tag from "./Tag/Tag";
 import { rem } from "../../theme/globalStyles";
 
-const Wrapper = styled.div`
+const TagsWrapper = styled.div`
   ${(props) =>
     props.spaced &&
     css`
@@ -15,14 +15,14 @@ const Wrapper = styled.div`
 
 const Tags = (props) => {
   let tagsInPost = props.tagsInPost;
-
+  console.log(tagsInPost);
   return (
-    <Wrapper spaced={props.spaced}>
+    <TagsWrapper spaced={props.spaced}>
       {tagsInPost &&
         tagsInPost.map((tag) => (
           <Tag key={tag} link={`/tags/${tag}`} label={tag} />
         ))}
-    </Wrapper>
+    </TagsWrapper>
   );
 };
 

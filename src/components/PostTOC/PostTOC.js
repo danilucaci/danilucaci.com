@@ -101,7 +101,7 @@ const StyledTocContentsInnerHTML = styled.div`
   ${(props) =>
     props.showContent &&
     css`
-      border-top: 1px solid ${theme.colors.gray400};
+      border-top: 1px solid ${theme.colors.gray300};
       opacity: 1;
       transform: scaleY(1);
       position: static;
@@ -111,7 +111,7 @@ const StyledTocContentsInnerHTML = styled.div`
     `};
 
   ${mediaMin.s`
-    border-top: 1px solid ${theme.colors.gray400};
+    border-top: 1px solid ${theme.colors.gray300};
     opacity: 1;
     transform: scaleY(1);
     position: static;
