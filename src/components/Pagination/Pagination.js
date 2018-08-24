@@ -5,20 +5,22 @@ import { Link } from "gatsby";
 import { Icon } from "../Icon/Icon";
 import { CopyBold } from "../Copy/Copy";
 
-const Wrapper = styled.nav`
-  display: table;
+const PaginationWrapper = styled.nav`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
-  text-align: center;
-  width: 100%;
+  max-width: ${theme.contain.blog};
   padding-top: ${rem(24)};
-
-  ${mediaMin.m`
-    max-width: 50%;
-  `};
 `;
 
 const StyledIcon = styled(Icon)`
+  align-self: center;
+  margin-bottom: ${rem(2)};
+
   ${(props) =>
     props.disabled &&
     css`
@@ -28,7 +30,6 @@ const StyledIcon = styled(Icon)`
 
 const StyledLink = styled(Link)`
   text-decoration: underline;
-
   font-size: ${theme.fontSizes.m};
   line-height: ${theme.lineHeights.m};
   line-height: ${theme.lineHeights.m};
@@ -56,80 +57,98 @@ const StyledLink = styled(Link)`
   }
 `;
 
+const PaginationContent = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: ${rem(16)};
+  padding-right: ${rem(16)};
+  white-space: nowrap;
+`;
+
+const MobileCopy = styled(CopyBold)`
+  display: flex;
+  flex: 1 1 100%;
+  white-space: nowrap;
+  text-align: center;
+
+  ${mediaMin.s`
+    display: none;
+  `};
+`;
+
 const DisabledPrev = styled(CopyBold)`
   color: ${theme.colors.gray500};
-  display: table-cell;
-
+  display: flex;
   text-align: left;
-  width: 33.333%;
-
   height: ${rem(48)};
-  padding: ${rem(8)} ${rem(16)} ${rem(8)} 0;
+  padding: ${rem(8)} ${rem(24)} ${rem(8)} 0;
   margin-left: 0;
-  margin-right: ${rem(8)};
+  margin-right: auto;
   text-decoration: none;
   white-space: nowrap;
 `;
 
 const Prev = styled(StyledLink)`
   color: ${theme.colors.dark800};
-  display: table-cell;
-
   text-align: left;
-  ${"" /* width: 33.333%; */}
-
   height: ${rem(48)};
-  padding: ${rem(8)} ${rem(16)} ${rem(8)} 0;
+  padding: ${rem(8)} ${rem(24)} ${rem(8)} 0;
   margin-left: 0;
-  margin-right: ${rem(8)};
+  margin-right: auto;
   text-decoration: none;
   white-space: nowrap;
+
+  ${mediaMax.xs`
+    padding: ${rem(8)} ${rem(48)} ${rem(8)} 0;
+  `};
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background-color: transparent;
+  }
 `;
 
 const Next = styled(StyledLink)`
   color: ${theme.colors.dark800};
-  display: table-cell;
-
+  display: flex;
   text-align: right;
-  ${"" /* width: 33.333%; */}
-
   height: ${rem(48)};
-  padding: ${rem(8)} 0 ${rem(8)} ${rem(16)};
-  margin-left: 0;
-  margin-right: ${rem(8)};
+  padding: ${rem(8)} 0 ${rem(8)} ${rem(24)};
+  margin-right: 0;
+  margin-left: auto;
   text-decoration: none;
   white-space: nowrap;
+
+  ${mediaMax.xs`
+    padding: ${rem(8)} 0 ${rem(8)} ${rem(48)};
+  `};
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background-color: transparent;
+  }
 `;
 
 const DisabledNext = styled(CopyBold)`
   color: ${theme.colors.gray500};
-  display: table-cell;
-
+  display: flex;
   text-align: right;
-  width: 33.333%;
-
   height: ${rem(48)};
   padding: ${rem(8)} 0 ${rem(8)} ${rem(16)};
-  margin-left: 0;
-  margin-right: ${rem(8)};
+  margin-left: auto;
+  margin-right: 0;
   text-decoration: none;
   white-space: nowrap;
-`;
-
-const PaginationContent = styled.div`
-  display: table-cell;
-  white-space: nowrap;
-`;
-
-const MobileCopy = styled(CopyBold)`
-  display: table-cell;
-  white-space: nowrap;
-  text-align: center;
-  width: 33.333%;
-
-  ${mediaMin.s`
-    display: none;
-  `};
 `;
 
 const CurrentPaginationNumber = styled(StyledLink)`
@@ -229,7 +248,7 @@ const Pagination = (props) => {
   }
 
   return (
-    <Wrapper role="navigation">
+    <PaginationWrapper role="navigation">
       {prevPath ? (
         <Prev to={prevPath}>
           <StyledIcon>
@@ -266,7 +285,7 @@ const Pagination = (props) => {
           </StyledIcon>
         </DisabledNext>
       )}
-    </Wrapper>
+    </PaginationWrapper>
   );
 };
 
