@@ -387,11 +387,12 @@ const StyledCopy = styled(Copy)`
 
 const PostInfo = styled.aside`
   ${mediaMin.m`
+    background-color: ${theme.colors.gray100};
+    ${theme.shadow.subtle};
     float: right;
     display: inline-block;
     vertical-align: top;
     width: 40%;
-    background-color: ${theme.colors.gray100};
     padding: ${rem(16)} ${rem(24)};
   `};
 `;

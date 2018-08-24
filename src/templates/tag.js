@@ -6,6 +6,9 @@ import styled, { css } from "styled-components";
 
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
+import SiteHeader from "../components/SiteHeader/SiteHeader";
+import { Main } from "../components/Main/Main";
+import SiteFooter from "../components/SiteFooter/SiteFooter";
 import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
 import config from "../../data/SiteConfig";
 
@@ -193,40 +196,44 @@ class TagPage extends Component {
 
     return (
       <Layout location={this.props.location}>
-        <TagWrapper>
-          <Helmet title={config.siteTitle} />
-          <SEO />
-          <TagHeader>
-            <TagHeading>
-              <Subhead>Blog posts found for:</Subhead>
-              <StyledH1>#{tag}</StyledH1>
-            </TagHeading>
-            <TagsWrapper>
-              <CollapsibleContainer
-                onClick={this.openExploreTags}
-                contentVisible={this.state.exploreTagsOpen}
-              >
-                <StyledIcon animate={this.state.exploreTagsOpen}>
-                  <use xlinkHref="#down" />
-                </StyledIcon>
-                <StyledTitle>Other blog tags</StyledTitle>
-                <ExploreTagsContent showContent={this.state.exploreTagsOpen}>
-                  <Tags tagsInPost={allTags} />
-                </ExploreTagsContent>
-              </CollapsibleContainer>
-            </TagsWrapper>
-          </TagHeader>
-          <PostListing edges={edges} />
-          {totalPagesInBlog > 1 && (
-            <Pagination
-              currentPage={currentPage}
-              totalPagesInBlog={totalPagesInBlog}
-              paginationPathPrefix={paginationPathPrefix}
-              prevPath={prevPath}
-              nextPath={nextPath}
-            />
-          )}
-        </TagWrapper>
+        <Helmet title={config.siteTitle} />
+        <SEO />
+        <SiteHeader />
+        <Main role="main">
+          <TagWrapper>
+            <TagHeader>
+              <TagHeading>
+                <Subhead>Blog posts found for:</Subhead>
+                <StyledH1>#{tag}</StyledH1>
+              </TagHeading>
+              <TagsWrapper>
+                <CollapsibleContainer
+                  onClick={this.openExploreTags}
+                  contentVisible={this.state.exploreTagsOpen}
+                >
+                  <StyledIcon animate={this.state.exploreTagsOpen}>
+                    <use xlinkHref="#down" />
+                  </StyledIcon>
+                  <StyledTitle>Other blog tags</StyledTitle>
+                  <ExploreTagsContent showContent={this.state.exploreTagsOpen}>
+                    <Tags tagsInPost={allTags} />
+                  </ExploreTagsContent>
+                </CollapsibleContainer>
+              </TagsWrapper>
+            </TagHeader>
+            <PostListing edges={edges} />
+            {totalPagesInBlog > 1 && (
+              <Pagination
+                currentPage={currentPage}
+                totalPagesInBlog={totalPagesInBlog}
+                paginationPathPrefix={paginationPathPrefix}
+                prevPath={prevPath}
+                nextPath={nextPath}
+              />
+            )}
+          </TagWrapper>
+        </Main>
+        <SiteFooter />
       </Layout>
     );
   }

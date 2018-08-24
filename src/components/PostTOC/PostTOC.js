@@ -54,7 +54,7 @@ const StyledTOC = styled.nav`
     margin-top: ${rem(24)};
     margin-bottom: ${rem(56)};
     padding-bottom: 0;
-    box-shadow: none;
+    ${theme.shadow.subtle};
   `};
 
   & h3 {

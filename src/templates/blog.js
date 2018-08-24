@@ -35,7 +35,7 @@ const BlogWrapper = styled.div`
 `;
 
 const BlogHeader = styled.header`
-  max-width: ${theme.contain.blog};
+  max-width: ${theme.contain.content};
   margin-left: auto;
   margin-right: auto;
   margin-bottom: ${rem(56)};
@@ -53,7 +53,7 @@ const BlogInfo = styled.div`
     display: inline-block;
     vertical-align: top;
     margin-right: ${rem(12)};
-    width: calc(((100% / 8) * 5) - ${rem(12)});
+    width: calc(((100% / 10) * 6) - ${rem(12)});
   `};
 `;
 
@@ -74,7 +74,7 @@ const TagsWrapper = styled.div`
     display: inline-block;
     vertical-align: top;
     margin-left: ${rem(12)};
-    width: calc(((100% / 8) * 3) - ${rem(12)});
+    width: calc(((100% / 10) * 4) - ${rem(12)});
   `};
 `;
 

@@ -9,7 +9,7 @@ import SiteHeader from "../components/SiteHeader/SiteHeader";
 import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
 import { Icon } from "../components/Icon/Icon";
-
+import Link from "gatsby";
 import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
 
 import { H1, H2, H3, H4 } from "../components/Headings/Headings";
@@ -115,9 +115,9 @@ const StyledListItem = styled.li`
 `;
 
 const MailIcon = styled(Icon)`
+  fill: ${theme.colors.dark800};
   margin-left: ${rem(8)};
   margin-bottom: ${rem(4)};
-  fill: ${theme.colors.dark800};
 `;
 
 const TwitterIcon = styled(Icon)`
@@ -162,16 +162,24 @@ class ContactPage extends Component {
             <PathWrapper>
               <H3>Choose your path</H3>
               <StyledContactButton>
-                Email
-                <MailIcon>
-                  <use xlinkHref="#mail" />
-                </MailIcon>
+                <a href={theme.mailToLink}>
+                  Email
+                  <MailIcon>
+                    <use xlinkHref="#mail" />
+                  </MailIcon>
+                </a>
               </StyledContactButton>
               <StyledContactButton>
-                Tweet
-                <TwitterIcon>
-                  <use xlinkHref="#twitter" />
-                </TwitterIcon>
+                <a
+                  href="https://twitter.com/messages/compose?recipient_id=734468984658071554&ref_src=twsrc%5Etfw"
+                  data-screen-name="@danilucaci"
+                  data-show-count="false"
+                >
+                  Tweet
+                  <TwitterIcon>
+                    <use xlinkHref="#twitter" />
+                  </TwitterIcon>
+                </a>
               </StyledContactButton>
             </PathWrapper>
           </ContactMeWrapper>

@@ -11,6 +11,7 @@ import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
 import config from "../../data/SiteConfig";
 import SocialNav from "../components/SocialNav/SocialNav";
+import ContactCard from "../components/ContactCard/ContactCard";
 
 import { theme, mediaMin, rem, breakpoints } from "../theme/globalStyles";
 import { H1, H2, H3, H4, NameHeader } from "../components/Headings/Headings";
@@ -20,7 +21,6 @@ const AboutMeWrapper = styled.div`
   max-width: ${theme.contain.content};
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: ${rem(56)};
 
   padding-left: ${theme.gutters.s};
   padding-right: ${theme.gutters.s};
@@ -68,11 +68,6 @@ const AboutImageWrapper = styled.div`
     
     & * {
       border-radius: 50%;
-      
-      
-      outline: 1px solid red;
-      
-      
       overflow: hidden;
     }
   `};
@@ -214,6 +209,7 @@ class AboutPage extends Component {
             </Col2of2>
           </AboutMeWrapper>
         </Main>
+        <ContactCard />
         <SiteFooter gray />
       </Layout>
     );

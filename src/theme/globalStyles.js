@@ -40,6 +40,7 @@ export const theme = {
       "box-shadow: 0px 2px 8px -4px rgba(102,102,102,0.4), 0px 8px 20px -4px rgba(102,102,102,0.4)",
     dropdown:
       "box-shadow: 0px 2px 8px 0px rgba(61, 61, 61, 0.3), 0px 0px 40px -4px hsla(0, 0%, 30%, 0.32)",
+    subtle: "box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.05)",
     button:
       "box-shadow: 0px 4px 8px -2px rgba(10, 41, 92, 0.48), 0px 8px 20px -4px rgba(92, 139, 214, 0.4)",
     buttonHover:
@@ -159,6 +160,7 @@ export const theme = {
                   /* For Edge */
                   -ms-overflow-style: -ms-autohiding-scrollbar;
                   -ms-overflow-style: none;`,
+  mailToLink: "mailto:hello@danilucaci.com?body=Hi%20Dani%2C%0A",
   breakpoints: {
     xxs: "22.5em", //360
     xs: "32em", //512

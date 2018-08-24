@@ -33,7 +33,13 @@ class Layout extends Component {
 
   componentDidMount() {
     if (sessionStorage.fontsLoadedPolyfill) {
-      document.documentElement.className += " fonts-loaded";
+      var isLoaded = document.documentElement.className.indexOf("fonts-loaded");
+
+      // Only add the class when it is not already added
+      if (isLoaded === -1) {
+        document.documentElement.className += " fonts-loaded";
+      }
+
       console.log("%c Fonts already loaded.", "color: #79E36B");
       return;
     } else {
