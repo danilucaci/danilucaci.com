@@ -15,7 +15,7 @@ const TagsWrapper = styled.div`
 
 const Tags = (props) => {
   let tagsInPost = props.tagsInPost;
-  console.log(tagsInPost);
+
   return (
     <TagsWrapper spaced={props.spaced}>
       {tagsInPost &&

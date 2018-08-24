@@ -66,7 +66,7 @@ export const theme = {
     subhead: "1.5rem",
     subheadS: "1.25rem",
     sectionHeader: "1rem",
-    nameHeader: "1.5rem",
+    nameHeader: "1.25rem",
     nameHeaderS: "1.125rem",
     button: "1rem",
     xl: "1.5rem",
@@ -86,7 +86,7 @@ export const theme = {
     subhead: "2.5rem",
     subheadS: "2rem",
     sectionHeader: "1.5rem",
-    nameHeader: "2rem",
+    nameHeader: "1.75rem",
     nameHeaderS: "1.5rem",
     button: "1.25rem",
     m: "1.75rem",
@@ -102,9 +102,9 @@ export const theme = {
     m: "-0.02rem",
     s: "-0.02rem",
     xs: "0rem",
-    sectionHeader: "0.05rem",
-    nameHeader: "0.05rem",
-    nameHeaderS: "0.05rem",
+    sectionHeader: "0.03rem",
+    nameHeader: "0.03rem",
+    nameHeaderS: "0.03rem",
     socialHeader: "-0.02rem",
     subhead: "0.015rem",
   },
@@ -142,6 +142,14 @@ export const theme = {
   },
   logoWidth: "6em",
   logoHeight: "3em",
+  showScrollBars: `/* Show the scrollbar and scroll */
+                  /* On webkit */
+                  &::-webkit-scrollbar {
+                    display: block;
+                  }
+
+                  /* For Edge */
+                  -ms-overflow-style: scrollbar;`,
   hideScrollBars: `/* Hide the scrollbar and still scroll */
                   /* On webkit */
                   &::-webkit-scrollbar {

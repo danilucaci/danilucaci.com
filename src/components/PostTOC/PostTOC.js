@@ -105,7 +105,7 @@ const StyledTocContentsInnerHTML = styled.div`
       opacity: 1;
       transform: scaleY(1);
       position: static;
-      overflow: auto;
+      overflow-y: scroll;
       max-height: ${rem(347)};
       margin-top: ${rem(8)};
     `};
@@ -115,7 +115,8 @@ const StyledTocContentsInnerHTML = styled.div`
     opacity: 1;
     transform: scaleY(1);
     position: static;
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: scroll;
     max-height: ${rem(411)};
     margin-top: ${rem(8)};
   `};
@@ -173,7 +174,7 @@ const StyledTocContentsInnerHTML = styled.div`
     display: block;
     
     ${"" /* 16 side padding important for separating the heading level */}
-    padding: ${rem(8)} 0 ${rem(8)} ${rem(16)};
+    padding: ${rem(8)} ${rem(16)};
   }
 
   a:active,

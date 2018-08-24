@@ -13,9 +13,11 @@ import { theme, mediaMin, rem, breakpoints } from "../theme/globalStyles";
 import { H1, H2, H3, H4, NameHeader } from "../components/Headings/Headings";
 import { Copy } from "../components/Copy/Copy";
 
-const Wrapper = styled.div`
+const AboutMeWrapper = styled.div`
   max-width: ${theme.contain.content};
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: ${rem(56)};
 
   padding-left: ${theme.gutters.s};
   padding-right: ${theme.gutters.s};
@@ -29,11 +31,16 @@ const Wrapper = styled.div`
 const HeaderInfo = styled.div`
   display: block;
   width: 100%;
-  ${"" /* Create a containment block for floated elements to prevent overflowing the container */} ${"" /* prettier-disable */}
+  ${"" /* Create a containment block for floated elements to prevent overflowing the container */} ${"" /* prettier-ignore */}
   overflow: visible;
+  margin-bottom: ${rem(48)};
 
   ${mediaMin.m`
-    margin-bottom: ${rem(56)};
+    margin-bottom: ${rem(96)};
+  `};
+
+  ${mediaMin.xl`
+    margin-top: ${rem(56)};
   `};
 `;
 
@@ -93,14 +100,12 @@ const StyledH3 = styled(H3)`
 
 const StyledSocialNav = styled.div`
   display: inline-block;
-  margin-top: ${rem(4)};
-  margin-bottom: ${rem(32)};
 `;
 
 const Subhead = styled(Copy)`
   font-size: ${theme.fontSizes.subheadS};
   line-height: ${theme.lineHeights.subheadS};
-  margin-bottom: ${rem(28)};
+  margin-bottom: ${rem(32)};
 
   ${mediaMin.s`
     font-size: ${theme.fontSizes.subhead};
@@ -127,7 +132,7 @@ const StyledCopy = styled(Copy)`
 `;
 
 const Col1of2 = styled.div`
-  margin-bottom: ${rem(28)};
+  margin-bottom: ${rem(48)};
 
   ${mediaMin.m`
     display: inline-block;
@@ -151,11 +156,11 @@ class AboutPage extends Component {
   render() {
     return (
       <Layout location={this.props.location}>
-        <Wrapper>
+        <AboutMeWrapper>
           <Helmet title={`About Me || ${config.siteTitle}`} />
           <SEO />
           <HeaderInfo>
-            <StyledNameHeader>Hi! I’m Dani Lucaci.</StyledNameHeader>
+            {/* <StyledNameHeader>Hi! I’m Dani Lucaci.</StyledNameHeader> */}
             <StyledH1>About Me</StyledH1>
             <AboutImageWrapper>
               <Img
@@ -201,7 +206,7 @@ class AboutPage extends Component {
               of the functionality, feel free to send me a tweet.
             </StyledCopy>
           </Col2of2>
-        </Wrapper>
+        </AboutMeWrapper>
       </Layout>
     );
   }

@@ -15,7 +15,7 @@ import Tags from "../components/Tags/Tags";
 import Pagination from "../components/Pagination/Pagination";
 import { Icon } from "../components/Icon/Icon";
 
-const Wrapper = styled.div`
+const TagWrapper = styled.div`
   max-width: ${theme.contain.content};
   margin: 0 auto;
 
@@ -49,7 +49,7 @@ const TagHeader = styled.header`
   max-width: ${theme.contain.blog};
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: ${rem(32)};
+  margin-bottom: ${rem(56)};
   color: ${theme.colors.dark900};
 
   ${mediaMin.s`
@@ -193,7 +193,7 @@ class TagPage extends Component {
 
     return (
       <Layout location={this.props.location}>
-        <Wrapper>
+        <TagWrapper>
           <Helmet title={config.siteTitle} />
           <SEO />
           <TagHeader>
@@ -209,7 +209,7 @@ class TagPage extends Component {
                 <StyledIcon animate={this.state.exploreTagsOpen}>
                   <use xlinkHref="#down" />
                 </StyledIcon>
-                <StyledTitle>Other tags from the blog</StyledTitle>
+                <StyledTitle>Other blog tags</StyledTitle>
                 <ExploreTagsContent showContent={this.state.exploreTagsOpen}>
                   <Tags tagsInPost={allTags} />
                 </ExploreTagsContent>
@@ -226,7 +226,7 @@ class TagPage extends Component {
               nextPath={nextPath}
             />
           )}
-        </Wrapper>
+        </TagWrapper>
       </Layout>
     );
   }

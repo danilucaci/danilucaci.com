@@ -10,9 +10,10 @@ import SocialNav from "../SocialNav/SocialNav";
 const StyledFooter = styled.footer`
   display: block;
   text-align: center;
-  background-color: ${theme.colors.gray100};
+  background-color: ${(props) =>
+    props.gray ? theme.colors.gray200 : theme.colors.gray100};
   width: 100%;
-  padding: ${rem(40)} ${rem(16)} ${rem(32)};
+  padding: ${rem(56)} ${rem(16)};
 `;
 
 const StyledCopyright = CopyBold.extend``;
@@ -20,9 +21,9 @@ const StyledCopy = Copy.extend`
   margin: ${rem(8)} 0;
 `;
 
-const SiteFooter = () => {
+const SiteFooter = (props) => {
   return (
-    <StyledFooter role="contentinfo">
+    <StyledFooter gray={props.gray} role="contentinfo">
       <StyledCopyright small>
         &copy;2018 Copyright Dani Lucaci. <br /> All rights reserved.
       </StyledCopyright>

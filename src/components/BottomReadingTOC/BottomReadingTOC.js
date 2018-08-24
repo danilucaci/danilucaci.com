@@ -99,7 +99,8 @@ const StyledTocContentsInnerHTML = styled.div`
   max-height: ${(props) => (props.showContent ? "50vh" : 0)};
   pointer-events: ${(props) => (props.showContent ? "auto" : "none")};
   max-height: 50vh;
-
+  ${theme.showScrollBars};
+  
   & * {
     text-align: left;
     list-style-type: none;
@@ -141,7 +142,7 @@ const StyledTocContentsInnerHTML = styled.div`
     transform: scaleY(${(props) => (props.showContent ? 1 : 0)});
     
     ${"" /* 16 side padding important for separating the heading level */}
-    padding: ${rem(8)} 0 ${rem(8)} ${rem(16)};
+    padding: ${rem(8)} ${rem(16)};
   }
 
   a:active,
