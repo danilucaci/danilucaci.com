@@ -730,7 +730,7 @@ class Post extends Component {
                 ) : (
                   <>
                     <MenuButton
-                      onClick={this.onClick}
+                      onClick={this.openNav}
                       showNav={this.state.showNav}
                     />
                     <SiteMenuList showNav={this.state.showNav} />
