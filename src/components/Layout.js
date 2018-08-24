@@ -17,10 +17,6 @@ require("./prism.css");
 
 // console.log("env: " + process.env.GATSBY_ASSETS_URL);
 
-import SiteHeader from "./SiteHeader/SiteHeader";
-import { Main } from "./Main/Main";
-import SiteFooter from "./SiteFooter/SiteFooter";
-
 const Page = styled.div`
   /* Sticky Footer  */
   display: flex;
@@ -79,9 +75,7 @@ class Layout extends Component {
             <meta name="description" content={config.siteDescription} />
           </Helmet>
           <ScrollProvider location={this.props.location}>
-            <SiteHeader />
-            <Main role="main">{this.props.children}</Main>
-            <SiteFooter />
+            {this.props.children}
           </ScrollProvider>
         </Page>
       </ThemeProvider>

@@ -61,21 +61,11 @@ const StyledSiteMenuList = styled.ul`
     z-index: 10;
     transform: none;
   `};
-
-  ${(props) =>
-    props.readingModeOn &&
-    css`
-      pointer-events: none !important;
-    `};
 `;
 
 const SiteMenuList = (props) => {
   return (
-    <StyledSiteMenuList
-      readingModeOn={props.readingModeOn}
-      showNav={props.showNav}
-      role="menu"
-    >
+    <StyledSiteMenuList showNav={props.showNav} role="menu">
       <SiteMenuListItem
         showNav={props.showNav}
         to="/services"

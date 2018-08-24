@@ -4,6 +4,9 @@ import styled from "styled-components";
 import { graphql } from "gatsby";
 
 import Layout from "../components/Layout";
+import SiteHeader from "../components/SiteHeader/SiteHeader";
+import { Main } from "../components/Main/Main";
+import SiteFooter from "../components/SiteFooter/SiteFooter";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 
@@ -12,7 +15,7 @@ import { H1, H2, H3, H4, NameHeader } from "../components/Headings/Headings";
 import { Copy } from "../components/Copy/Copy";
 import { Icon } from "../components/Icon/Icon";
 
-const Wrapper = styled.div`
+const IndexWrapper = styled.div`
   max-width: ${theme.contain.content};
   margin: 0 auto;
 
@@ -192,195 +195,199 @@ class Index extends Component {
   render() {
     return (
       <Layout location={this.props.location}>
-        <Wrapper>
-          <Helmet title={config.siteTitle} />
-          <SEO />
-          <StyledHeader>
-            <StyledNameHeader>Hi! I’m Dani.</StyledNameHeader>
-            <StyledH1>UX/UI Designer and Front–End Developer.</StyledH1>
-            <Subhead>
-              I prototype, design and develop interfaces that have a strong
-              focus on accesibility, performance and user interaction. I use the
-              latest front-end techniques and design methods to create scalable
-              and easy to use experiences.
-            </Subhead>
-          </StyledHeader>
-          <RowOne>
-            <ServicesH2>What I Do</ServicesH2>
-            <ServicesH3>UX and UI Design</ServicesH3>
-            <ServicesItem>
-              <ServicesH4>Wireframing</ServicesH4>
-              <Copy>
-                I focus on creating scalable, easy to maintain and responsive
-                front-end architectures using SASS, HTML5 and presentational
-                Javascript.
-              </Copy>
-            </ServicesItem>
-            <ServicesItem>
-              <ServicesH4>Prototyping</ServicesH4>
-              <Copy>
-                I focus on creating scalable, easy to maintain and responsive
-                front-end architectures using SASS, HTML5 and presentational
-                Javascript.
-              </Copy>
-            </ServicesItem>
-            <ServicesItem>
-              <ServicesH4>Accesibility</ServicesH4>
-              <Copy>
-                I focus on creating scalable, easy to maintain and responsive
-                front-end architectures using SASS, HTML5 and presentational
-                Javascript.
-              </Copy>
-            </ServicesItem>
-            <ServicesItem>
-              <ServicesH4>Design Systems</ServicesH4>
-              <Copy>
-                I focus on creating scalable, easy to maintain and responsive
-                front-end architectures using SASS, HTML5 and presentational
-                Javascript.
-              </Copy>
-            </ServicesItem>
-            <ToolsWrapper>
-              <ServicesH4>My Toolkit</ServicesH4>
-              <Tools>
-                <ToolsIcon size="48">
-                  <use xlinkHref="#github" />
-                </ToolsIcon>
-                <ToolsIcon size="48">
-                  <use xlinkHref="#github" />
-                </ToolsIcon>
-                <ToolsIcon size="48">
-                  <use xlinkHref="#github" />
-                </ToolsIcon>
-                <ToolsIcon size="48">
-                  <use xlinkHref="#github" />
-                </ToolsIcon>
-                <ToolsIcon size="48">
-                  <use xlinkHref="#github" />
-                </ToolsIcon>
-                <ToolsIcon size="48">
-                  <use xlinkHref="#github" />
-                </ToolsIcon>
-              </Tools>
-            </ToolsWrapper>
-          </RowOne>
-          <RowTwo>
-            <ServicesH3>Front–End Development</ServicesH3>
-            <ServicesItem>
-              <ServicesH4>Responsive Design</ServicesH4>
-              <Copy>
-                I focus on creating scalable, easy to maintain and responsive
-                front-end architectures using SASS, HTML5 and presentational
-                Javascript.
-              </Copy>
-            </ServicesItem>
-            <ServicesItem>
-              <ServicesH4>Gatsby.js and React</ServicesH4>
-              <Copy>
-                I focus on creating scalable, easy to maintain and responsive
-                front-end architectures using SASS, HTML5 and presentational
-                Javascript.
-              </Copy>
-            </ServicesItem>
-            <ServicesItem>
-              <ServicesH4>Gatsby.js and React</ServicesH4>
-              <Copy>
-                I focus on creating scalable, easy to maintain and responsive
-                front-end architectures using SASS, HTML5 and presentational
-                Javascript.
-              </Copy>
-            </ServicesItem>
-            <ServicesItem>
-              <ServicesH4>Gatsby.js and React</ServicesH4>
-              <Copy>
-                I focus on creating scalable, easy to maintain and responsive
-                front-end architectures using SASS, HTML5 and presentational
-                Javascript.
-              </Copy>
-            </ServicesItem>
-            <ToolsWrapper>
-              <ServicesH4>My Toolkit</ServicesH4>
-              <Tools>
-                <ToolsIcon size="48">
-                  <use xlinkHref="#github" />
-                </ToolsIcon>
-                <ToolsIcon size="48">
-                  <use xlinkHref="#github" />
-                </ToolsIcon>
-                <ToolsIcon size="48">
-                  <use xlinkHref="#github" />
-                </ToolsIcon>
-                <ToolsIcon size="48">
-                  <use xlinkHref="#github" />
-                </ToolsIcon>
-                <ToolsIcon size="48">
-                  <use xlinkHref="#github" />
-                </ToolsIcon>
-                <ToolsIcon size="48">
-                  <use xlinkHref="#github" />
-                </ToolsIcon>
-              </Tools>
-            </ToolsWrapper>
-          </RowTwo>
-          <RowThree>
-            <ServicesH2>Front–End Development</ServicesH2>
-            <ServicesItem>
-              <ServicesH4>Responsive Design</ServicesH4>
-              <Copy>
-                I focus on creating scalable, easy to maintain and responsive
-                front-end architectures using SASS, HTML5 and presentational
-                Javascript.
-              </Copy>
-            </ServicesItem>
-            <ServicesItem>
-              <ServicesH4>Gatsby.js and React</ServicesH4>
-              <Copy>
-                I focus on creating scalable, easy to maintain and responsive
-                front-end architectures using SASS, HTML5 and presentational
-                Javascript.
-              </Copy>
-            </ServicesItem>
-            <ServicesItem>
-              <ServicesH4>Gatsby.js and React</ServicesH4>
-              <Copy>
-                I focus on creating scalable, easy to maintain and responsive
-                front-end architectures using SASS, HTML5 and presentational
-                Javascript.
-              </Copy>
-            </ServicesItem>
-            <ServicesItem>
-              <ServicesH4>Gatsby.js and React</ServicesH4>
-              <Copy>
-                I focus on creating scalable, easy to maintain and responsive
-                front-end architectures using SASS, HTML5 and presentational
-                Javascript.
-              </Copy>
-            </ServicesItem>
-            <ToolsWrapper>
-              <ServicesH4>My Toolkit</ServicesH4>
-              <Tools>
-                <ToolsIcon size="48">
-                  <use xlinkHref="#github" />
-                </ToolsIcon>
-                <ToolsIcon size="48">
-                  <use xlinkHref="#github" />
-                </ToolsIcon>
-                <ToolsIcon size="48">
-                  <use xlinkHref="#github" />
-                </ToolsIcon>
-                <ToolsIcon size="48">
-                  <use xlinkHref="#github" />
-                </ToolsIcon>
-                <ToolsIcon size="48">
-                  <use xlinkHref="#github" />
-                </ToolsIcon>
-                <ToolsIcon size="48">
-                  <use xlinkHref="#github" />
-                </ToolsIcon>
-              </Tools>
-            </ToolsWrapper>
-          </RowThree>
-        </Wrapper>
+        <SiteHeader />
+        <Main role="main">
+          <IndexWrapper>
+            <Helmet title={config.siteTitle} />
+            <SEO />
+            <StyledHeader>
+              <StyledNameHeader>Hi! I’m Dani.</StyledNameHeader>
+              <StyledH1>UX/UI Designer and Front–End Developer.</StyledH1>
+              <Subhead>
+                I prototype, design and develop interfaces that have a strong
+                focus on accesibility, performance and user interaction. I use
+                the latest front-end techniques and design methods to create
+                scalable and easy to use experiences.
+              </Subhead>
+            </StyledHeader>
+            <RowOne>
+              <ServicesH2>What I Do</ServicesH2>
+              <ServicesH3>UX and UI Design</ServicesH3>
+              <ServicesItem>
+                <ServicesH4>Wireframing</ServicesH4>
+                <Copy>
+                  I focus on creating scalable, easy to maintain and responsive
+                  front-end architectures using SASS, HTML5 and presentational
+                  Javascript.
+                </Copy>
+              </ServicesItem>
+              <ServicesItem>
+                <ServicesH4>Prototyping</ServicesH4>
+                <Copy>
+                  I focus on creating scalable, easy to maintain and responsive
+                  front-end architectures using SASS, HTML5 and presentational
+                  Javascript.
+                </Copy>
+              </ServicesItem>
+              <ServicesItem>
+                <ServicesH4>Accesibility</ServicesH4>
+                <Copy>
+                  I focus on creating scalable, easy to maintain and responsive
+                  front-end architectures using SASS, HTML5 and presentational
+                  Javascript.
+                </Copy>
+              </ServicesItem>
+              <ServicesItem>
+                <ServicesH4>Design Systems</ServicesH4>
+                <Copy>
+                  I focus on creating scalable, easy to maintain and responsive
+                  front-end architectures using SASS, HTML5 and presentational
+                  Javascript.
+                </Copy>
+              </ServicesItem>
+              <ToolsWrapper>
+                <ServicesH4>My Toolkit</ServicesH4>
+                <Tools>
+                  <ToolsIcon size="48">
+                    <use xlinkHref="#github" />
+                  </ToolsIcon>
+                  <ToolsIcon size="48">
+                    <use xlinkHref="#github" />
+                  </ToolsIcon>
+                  <ToolsIcon size="48">
+                    <use xlinkHref="#github" />
+                  </ToolsIcon>
+                  <ToolsIcon size="48">
+                    <use xlinkHref="#github" />
+                  </ToolsIcon>
+                  <ToolsIcon size="48">
+                    <use xlinkHref="#github" />
+                  </ToolsIcon>
+                  <ToolsIcon size="48">
+                    <use xlinkHref="#github" />
+                  </ToolsIcon>
+                </Tools>
+              </ToolsWrapper>
+            </RowOne>
+            <RowTwo>
+              <ServicesH3>Front–End Development</ServicesH3>
+              <ServicesItem>
+                <ServicesH4>Responsive Design</ServicesH4>
+                <Copy>
+                  I focus on creating scalable, easy to maintain and responsive
+                  front-end architectures using SASS, HTML5 and presentational
+                  Javascript.
+                </Copy>
+              </ServicesItem>
+              <ServicesItem>
+                <ServicesH4>Gatsby.js and React</ServicesH4>
+                <Copy>
+                  I focus on creating scalable, easy to maintain and responsive
+                  front-end architectures using SASS, HTML5 and presentational
+                  Javascript.
+                </Copy>
+              </ServicesItem>
+              <ServicesItem>
+                <ServicesH4>Gatsby.js and React</ServicesH4>
+                <Copy>
+                  I focus on creating scalable, easy to maintain and responsive
+                  front-end architectures using SASS, HTML5 and presentational
+                  Javascript.
+                </Copy>
+              </ServicesItem>
+              <ServicesItem>
+                <ServicesH4>Gatsby.js and React</ServicesH4>
+                <Copy>
+                  I focus on creating scalable, easy to maintain and responsive
+                  front-end architectures using SASS, HTML5 and presentational
+                  Javascript.
+                </Copy>
+              </ServicesItem>
+              <ToolsWrapper>
+                <ServicesH4>My Toolkit</ServicesH4>
+                <Tools>
+                  <ToolsIcon size="48">
+                    <use xlinkHref="#github" />
+                  </ToolsIcon>
+                  <ToolsIcon size="48">
+                    <use xlinkHref="#github" />
+                  </ToolsIcon>
+                  <ToolsIcon size="48">
+                    <use xlinkHref="#github" />
+                  </ToolsIcon>
+                  <ToolsIcon size="48">
+                    <use xlinkHref="#github" />
+                  </ToolsIcon>
+                  <ToolsIcon size="48">
+                    <use xlinkHref="#github" />
+                  </ToolsIcon>
+                  <ToolsIcon size="48">
+                    <use xlinkHref="#github" />
+                  </ToolsIcon>
+                </Tools>
+              </ToolsWrapper>
+            </RowTwo>
+            <RowThree>
+              <ServicesH2>Front–End Development</ServicesH2>
+              <ServicesItem>
+                <ServicesH4>Responsive Design</ServicesH4>
+                <Copy>
+                  I focus on creating scalable, easy to maintain and responsive
+                  front-end architectures using SASS, HTML5 and presentational
+                  Javascript.
+                </Copy>
+              </ServicesItem>
+              <ServicesItem>
+                <ServicesH4>Gatsby.js and React</ServicesH4>
+                <Copy>
+                  I focus on creating scalable, easy to maintain and responsive
+                  front-end architectures using SASS, HTML5 and presentational
+                  Javascript.
+                </Copy>
+              </ServicesItem>
+              <ServicesItem>
+                <ServicesH4>Gatsby.js and React</ServicesH4>
+                <Copy>
+                  I focus on creating scalable, easy to maintain and responsive
+                  front-end architectures using SASS, HTML5 and presentational
+                  Javascript.
+                </Copy>
+              </ServicesItem>
+              <ServicesItem>
+                <ServicesH4>Gatsby.js and React</ServicesH4>
+                <Copy>
+                  I focus on creating scalable, easy to maintain and responsive
+                  front-end architectures using SASS, HTML5 and presentational
+                  Javascript.
+                </Copy>
+              </ServicesItem>
+              <ToolsWrapper>
+                <ServicesH4>My Toolkit</ServicesH4>
+                <Tools>
+                  <ToolsIcon size="48">
+                    <use xlinkHref="#github" />
+                  </ToolsIcon>
+                  <ToolsIcon size="48">
+                    <use xlinkHref="#github" />
+                  </ToolsIcon>
+                  <ToolsIcon size="48">
+                    <use xlinkHref="#github" />
+                  </ToolsIcon>
+                  <ToolsIcon size="48">
+                    <use xlinkHref="#github" />
+                  </ToolsIcon>
+                  <ToolsIcon size="48">
+                    <use xlinkHref="#github" />
+                  </ToolsIcon>
+                  <ToolsIcon size="48">
+                    <use xlinkHref="#github" />
+                  </ToolsIcon>
+                </Tools>
+              </ToolsWrapper>
+            </RowThree>
+          </IndexWrapper>
+        </Main>
+        <SiteFooter />
       </Layout>
     );
   }

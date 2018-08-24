@@ -7,6 +7,9 @@ import styled, { css } from "styled-components";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 import Layout from "../components/Layout";
+import SiteHeader from "../components/SiteHeader/SiteHeader";
+import { Main } from "../components/Main/Main";
+import SiteFooter from "../components/SiteFooter/SiteFooter";
 import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
 
 import PostListing from "../components/PostListing/PostListing";
@@ -17,7 +20,7 @@ import Pagination from "../components/Pagination/Pagination";
 import { H3 } from "../components/Headings/Headings";
 import { Icon } from "../components/Icon/Icon";
 
-const Wrapper = styled.div`
+const BlogWrapper = styled.div`
   max-width: ${theme.contain.content};
   margin-left: auto;
   margin-right: auto;
@@ -216,79 +219,85 @@ class BlogPage extends Component {
     frontMatterTags.tags.forEach((tag) => {
       allTags.push(tag.fieldValue);
     });
-    console.log(this.state);
+
     return (
       <Layout location={this.props.location}>
-        <Wrapper>
-          <Helmet title={`Blog || ${config.siteTitle}`} />
-          <SEO />
-          <BlogHeader>
-            <BlogInfo>
-              <BlogInfoItem>
-                <CollapsibleContainer
-                  onClick={this.openBlogWriteAbout}
-                  contentVisible={this.state.blogWriteAboutOpen}
-                >
-                  <StyledIcon animate={this.state.blogWriteAboutOpen}>
-                    <use xlinkHref="#down" />
-                  </StyledIcon>
-                  <StyledTitle>What I write about</StyledTitle>
-                  <CollapsibleContent
-                    showContent={this.state.blogWriteAboutOpen}
+        <SiteHeader />
+        <Main role="main">
+          <BlogWrapper>
+            <Helmet title={`Blog || ${config.siteTitle}`} />
+            <SEO />
+            <BlogHeader>
+              <BlogInfo>
+                <BlogInfoItem>
+                  <CollapsibleContainer
+                    onClick={this.openBlogWriteAbout}
+                    contentVisible={this.state.blogWriteAboutOpen}
                   >
-                    <Copy>
-                      How i built this in Hugo and optimized for 100% Speed
-                      Index with Google.
-                    </Copy>
-                  </CollapsibleContent>
-                </CollapsibleContainer>
-              </BlogInfoItem>
-              <BlogInfoItem>
+                    <StyledIcon animate={this.state.blogWriteAboutOpen}>
+                      <use xlinkHref="#down" />
+                    </StyledIcon>
+                    <StyledTitle>What I write about</StyledTitle>
+                    <CollapsibleContent
+                      showContent={this.state.blogWriteAboutOpen}
+                    >
+                      <Copy>
+                        How i built this in Hugo and optimized for 100% Speed
+                        Index with Google.
+                      </Copy>
+                    </CollapsibleContent>
+                  </CollapsibleContainer>
+                </BlogInfoItem>
+                <BlogInfoItem>
+                  <CollapsibleContainer
+                    onClick={this.openBlogWhatElse}
+                    contentVisible={this.state.blogWhatElseOpen}
+                  >
+                    <StyledIcon animate={this.state.blogWhatElseOpen}>
+                      <use xlinkHref="#down" />
+                    </StyledIcon>
+                    <StyledTitle>What else</StyledTitle>
+                    <CollapsibleContent
+                      showContent={this.state.blogWhatElseOpen}
+                    >
+                      <Copy>
+                        How i built this in Hugo and optimized for 100% Speed
+                        Index with Google.
+                      </Copy>
+                    </CollapsibleContent>
+                  </CollapsibleContainer>
+                </BlogInfoItem>
+              </BlogInfo>
+              <TagsWrapper>
                 <CollapsibleContainer
-                  onClick={this.openBlogWhatElse}
-                  contentVisible={this.state.blogWhatElseOpen}
+                  onClick={this.openBlogExploreTags}
+                  contentVisible={this.state.blogExploreTagsOpen}
                 >
-                  <StyledIcon animate={this.state.blogWhatElseOpen}>
+                  <StyledIcon animate={this.state.blogExploreTagsOpen}>
                     <use xlinkHref="#down" />
                   </StyledIcon>
-                  <StyledTitle>What else</StyledTitle>
-                  <CollapsibleContent showContent={this.state.blogWhatElseOpen}>
-                    <Copy>
-                      How i built this in Hugo and optimized for 100% Speed
-                      Index with Google.
-                    </Copy>
-                  </CollapsibleContent>
+                  <StyledTitle>Explore by tags</StyledTitle>
+                  <BlogExploreTagsContent
+                    showContent={this.state.blogExploreTagsOpen}
+                  >
+                    <Tags tagsInPost={allTags} />
+                  </BlogExploreTagsContent>
                 </CollapsibleContainer>
-              </BlogInfoItem>
-            </BlogInfo>
-            <TagsWrapper>
-              <CollapsibleContainer
-                onClick={this.openBlogExploreTags}
-                contentVisible={this.state.blogExploreTagsOpen}
-              >
-                <StyledIcon animate={this.state.blogExploreTagsOpen}>
-                  <use xlinkHref="#down" />
-                </StyledIcon>
-                <StyledTitle>Explore by tags</StyledTitle>
-                <BlogExploreTagsContent
-                  showContent={this.state.blogExploreTagsOpen}
-                >
-                  <Tags tagsInPost={allTags} />
-                </BlogExploreTagsContent>
-              </CollapsibleContainer>
-            </TagsWrapper>
-          </BlogHeader>
-          <PostListing edges={edges} />
-          {totalPagesInBlog > 1 && (
-            <Pagination
-              currentPage={currentPage}
-              totalPagesInBlog={totalPagesInBlog}
-              paginationPathPrefix={paginationPathPrefix}
-              prevPath={prevPath}
-              nextPath={nextPath}
-            />
-          )}
-        </Wrapper>
+              </TagsWrapper>
+            </BlogHeader>
+            <PostListing edges={edges} />
+            {totalPagesInBlog > 1 && (
+              <Pagination
+                currentPage={currentPage}
+                totalPagesInBlog={totalPagesInBlog}
+                paginationPathPrefix={paginationPathPrefix}
+                prevPath={prevPath}
+                nextPath={nextPath}
+              />
+            )}
+          </BlogWrapper>
+        </Main>
+        <SiteFooter />
       </Layout>
     );
   }

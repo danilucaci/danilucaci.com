@@ -3,8 +3,6 @@ import React, { Component } from "react";
 import styled, { css } from "styled-components";
 import { theme, rem, mediaMin } from "../../theme/globalStyles";
 
-import { ScrollConsumer } from "../ScrollProvider/ScrollProvider";
-
 import SiteNav from "../SiteNav/SiteNav";
 
 const StyledSiteHeader = styled.header`
@@ -32,13 +30,6 @@ const StyledSiteHeader = styled.header`
     padding: 0;
     z-index: 10;
     will-change: opacity;
-
-    ${(props) =>
-      props.hide &&
-      css`
-        opacity: 0;
-        pointer-events: none;
-      `};
   `};
 `;
 
@@ -55,29 +46,9 @@ class SiteHeader extends Component {
 
   render() {
     return (
-      <ScrollConsumer>
-        {(context) => {
-          const showReadingNav = context.showReadingNav;
-
-          return showReadingNav ? (
-            <StyledSiteHeader hide={showReadingNav} role="banner">
-              <SiteNav
-                onClick={this.openNav}
-                readingModeOn={showReadingNav}
-                showNav={this.state.showNav}
-              />
-            </StyledSiteHeader>
-          ) : (
-            <StyledSiteHeader role="banner">
-              <SiteNav
-                onClick={this.openNav}
-                readingModeOn={showReadingNav}
-                showNav={this.state.showNav}
-              />
-            </StyledSiteHeader>
-          );
-        }}
-      </ScrollConsumer>
+      <StyledSiteHeader role="banner">
+        <SiteNav onClick={this.openNav} showNav={this.state.showNav} />
+      </StyledSiteHeader>
     );
   }
 }

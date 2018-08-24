@@ -3,9 +3,13 @@ import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import styled, { css } from "styled-components";
 import { theme, rem, mediaMin } from "../theme/globalStyles";
-import Layout from "../components/Layout";
 import config from "../../data/SiteConfig";
 import SEO from "../components/SEO/SEO";
+import Layout from "../components/Layout";
+import { Main } from "../components/Main/Main";
+import SiteFooter from "../components/SiteFooter/SiteFooter";
+import SiteMenuList from "../components/SiteMenuList/SiteMenuList";
+import MenuButton from "../components/MenuButton/MenuButton";
 
 import PostTOC from "../components/PostTOC/PostTOC";
 import BottomReadingTOC from "../components/BottomReadingTOC/BottomReadingTOC";
@@ -220,21 +224,29 @@ const Wrapper = styled.div`
 
 const ReadingModePageHeader = styled.header`
   background-color: ${theme.colors.gray100};
-  display: none;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  height: ${rem(56)};
-  padding: 0 ${rem(8)} 0 ${rem(24)};
-
   ${theme.shadow.header};
+  width: 100%;
+  display: block;
+  height: ${rem(64)};
+  padding: ${rem(8)} ${rem(16)};
+
+  ${mediaMin.s`
+    width: 100%;
+    height: ${rem(56)};
+    padding-top: 0;
+    padding-right: ${rem(8)};
+    padding-left: ${rem(24)};
+    padding-bottom: 0;
+  `};
 
   ${mediaMin.m`
-    display: block;
+    position: fixed;
+    top: 0;
+    background-color: ${theme.colors.gray100};
     height: ${rem(48)};
     padding: 0;
-    position: fixed;
     z-index: 10;
+    will-change: opacity;
   `};
 `;
 
@@ -435,6 +447,7 @@ const MyDiv = styled.div``;
 class Post extends Component {
   state = {
     tooltipMessage: "Copy page link",
+    showNav: false,
     dropdownsState: {
       tooltipOpen: false,
       bottomReadingTocOpen: false,
@@ -492,6 +505,12 @@ class Post extends Component {
         }));
       }
     });
+  };
+
+  openNav = () => {
+    this.setState((prevState) => ({
+      showNav: !prevState.showNav,
+    }));
   };
 
   openTopReadingToc = () => {
@@ -661,97 +680,111 @@ class Post extends Component {
           <title>{`${postInfo.title} || ${config.siteTitle}`}</title>
         </Helmet>
         <SEO postPath={slug} postNode={postNode} postSEO />
+        <ReadingModePageHeader role="banner">
+          <StyledNav aria-label="Page Menu" role="navigation">
+            <StyledLogoLink to="/">
+              <Logo />
+            </StyledLogoLink>
+            <ScrollConsumer>
+              {(context) => {
+                const showReadingNav = context.showReadingNav;
+                const pageWidth = context.pageWidth;
 
-        <ScrollConsumer>
-          {(context) => {
-            const showReadingNav = context.showReadingNav;
-            const pageWidth = context.pageWidth;
+                let topReadingToc = null;
+                let topReadingSocialShare = null;
 
-            let topReadingToc = null;
-            let topReadingSocialShare = null;
+                if (pageWidth >= 840) {
+                  topReadingToc = (
+                    <TopReadingTOC
+                      tableOfContents={postNode.tableOfContents}
+                      contentVisible={
+                        this.state.dropdownsState.topReadingTocOpen
+                      }
+                      openTopReadingToc={this.openTopReadingToc}
+                      // ref={this.nodeRef}
+                    />
+                  );
+                }
 
-            if (pageWidth >= 840) {
-              topReadingToc = (
-                <TopReadingTOC
-                  tableOfContents={postNode.tableOfContents}
-                  contentVisible={this.state.dropdownsState.topReadingTocOpen}
-                  openTopReadingToc={this.openTopReadingToc}
-                  // ref={this.nodeRef}
+                if (pageWidth >= 1060) {
+                  topReadingSocialShare = (
+                    <SocialShare
+                      slug={slug}
+                      title={postInfo.title}
+                      snippet={postInfo.snippet}
+                      onClick={this.copyURL}
+                      tooltipMessage={this.state.tooltipMessage}
+                      topReading={true}
+                    />
+                  );
+                }
+
+                return showReadingNav ? (
+                  <>
+                    <ReadingModeH1>{postInfo.title}</ReadingModeH1>
+                    <TopReadingPostInfo>
+                      {topReadingToc}
+                      {topReadingSocialShare}
+                    </TopReadingPostInfo>
+                  </>
+                ) : (
+                  <>
+                    <MenuButton
+                      onClick={this.onClick}
+                      showNav={this.state.showNav}
+                    />
+                    <SiteMenuList showNav={this.state.showNav} />
+                  </>
+                );
+              }}
+            </ScrollConsumer>
+          </StyledNav>
+        </ReadingModePageHeader>
+
+        <Main role="main">
+          <Wrapper>
+            <StyledPostHeader>
+              <PostH1>{postInfo.title}</PostH1>
+              <PostInfo>
+                <ArticleInfo
+                  date={postInfo.date}
+                  timeToRead={postNode.timeToRead}
                 />
-              );
-            }
-
-            if (pageWidth >= 1060) {
-              topReadingSocialShare = (
+                <Tags tagsInPost={postInfo.tags} spaced />
                 <SocialShare
                   slug={slug}
                   title={postInfo.title}
                   snippet={postInfo.snippet}
                   onClick={this.copyURL}
                   tooltipMessage={this.state.tooltipMessage}
-                  topReading={true}
                 />
-              );
-            }
-
-            return showReadingNav && pageWidth >= 400 ? (
-              <ReadingModePageHeader role="banner">
-                <StyledNav aria-label="Page Menu" role="navigation">
-                  <StyledLogoLink to="/">
-                    <Logo />
-                  </StyledLogoLink>
-                  <ReadingModeH1>{postInfo.title}</ReadingModeH1>
-                  <TopReadingPostInfo>
-                    {topReadingToc}
-                    {topReadingSocialShare}
-                  </TopReadingPostInfo>
-                </StyledNav>
-              </ReadingModePageHeader>
-            ) : null;
-          }}
-        </ScrollConsumer>
-
-        <Wrapper>
-          <StyledPostHeader>
-            <PostH1>{postInfo.title}</PostH1>
-            <PostInfo>
-              <ArticleInfo
-                date={postInfo.date}
-                timeToRead={postNode.timeToRead}
+              </PostInfo>
+              <StyledIntro>
+                {introCopy.map((paragraph) => (
+                  <StyledCopy key={paragraph}>{paragraph}</StyledCopy>
+                ))}
+              </StyledIntro>
+            </StyledPostHeader>
+            <PostContent>
+              <DummyInput
+                className="js-dummyInput"
+                contentEditable="true"
+                readOnly="true"
               />
-              <Tags tagsInPost={postInfo.tags} spaced />
-              <SocialShare
-                slug={slug}
-                title={postInfo.title}
-                snippet={postInfo.snippet}
-                onClick={this.copyURL}
-                tooltipMessage={this.state.tooltipMessage}
+              <PostTOC
+                openPostToc={this.openPostToc}
+                contentVisible={this.state.dropdownsState.postTocOpen}
+                tableOfContents={postNode.tableOfContents}
+                // ref={this.nodeRef}
               />
-            </PostInfo>
-            <StyledIntro>
-              {introCopy.map((paragraph) => (
-                <StyledCopy key={paragraph}>{paragraph}</StyledCopy>
-              ))}
-            </StyledIntro>
-          </StyledPostHeader>
-          <PostContent>
-            <DummyInput
-              className="js-dummyInput"
-              contentEditable="true"
-              readOnly="true"
-            />
-            <PostTOC
-              openPostToc={this.openPostToc}
-              contentVisible={this.state.dropdownsState.postTocOpen}
-              tableOfContents={postNode.tableOfContents}
-              // ref={this.nodeRef}
-            />
-            {/* <MyDiv ref={this.nodeRef}>
+              {/* <MyDiv ref={this.nodeRef}>
               <span>SUP</span>
             </MyDiv> */}
-            <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
-          </PostContent>
-        </Wrapper>
+              <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
+            </PostContent>
+          </Wrapper>
+        </Main>
+
         <ScrollConsumer>
           {(context) => {
             const showReadingNav = context.showReadingNav;
@@ -794,6 +827,8 @@ class Post extends Component {
             ) : null;
           }}
         </ScrollConsumer>
+
+        <SiteFooter />
       </Layout>
     );
   }

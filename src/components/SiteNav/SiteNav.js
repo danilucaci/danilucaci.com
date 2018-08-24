@@ -44,10 +44,7 @@ class SiteNav extends Component {
           <Logo />
         </StyledLogoLink>
         <MenuButton onClick={this.props.onClick} showNav={this.props.showNav} />
-        <SiteMenuList
-          readingModeOn={this.props.readingModeOn}
-          showNav={this.props.showNav}
-        />
+        <SiteMenuList showNav={this.props.showNav} />
       </StyledNav>
     );
   }

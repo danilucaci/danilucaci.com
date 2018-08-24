@@ -5,6 +5,9 @@ import Helmet from "react-helmet";
 import config from "../../data/SiteConfig";
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
+import SiteHeader from "../components/SiteHeader/SiteHeader";
+import { Main } from "../components/Main/Main";
+import SiteFooter from "../components/SiteFooter/SiteFooter";
 import { Icon } from "../components/Icon/Icon";
 
 import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
@@ -13,7 +16,7 @@ import { H1, H2, H3, H4 } from "../components/Headings/Headings";
 import { Copy } from "../components/Copy/Copy";
 import { ContactButton } from "../components/Button/Button";
 
-const Wrapper = styled.div`
+const ContactMeWrapper = styled.div`
   max-width: ${theme.contain.content};
   margin-left: auto;
   margin-right: auto;
@@ -31,15 +34,6 @@ const Wrapper = styled.div`
   `};
 `;
 
-const ContactWrapper = styled.section`
-  ${mediaMin.l`
-    display: inline-block;
-    vertical-align: top;
-    margin-right: ${rem(24)};
-    width: calc(70% - ${rem(24)});
-  `};
-`;
-
 const Subhead = styled(Copy)`
   font-size: ${theme.fontSizes.subheads};
   line-height: ${theme.lineHeights.subheads};
@@ -48,6 +42,13 @@ const Subhead = styled(Copy)`
   ${mediaMin.s`
     font-size: ${theme.fontSizes.subhead};
     line-height: ${theme.lineHeights.subhead};
+  `};
+
+  ${mediaMin.l`
+    display: inline-block;
+    vertical-align: top;
+    margin-right: ${rem(24)};
+    width: calc(70% - ${rem(24)});
   `};
 `;
 
@@ -129,51 +130,53 @@ class ContactPage extends Component {
   render() {
     return (
       <Layout location={this.props.location}>
-        <Wrapper>
-          <Helmet title={`Contact Me || ${config.siteTitle}`} />
-          <SEO />
-          <StyledH1>Let's talk</StyledH1>
-          <ContactWrapper>
+        <SiteHeader />
+        <Main role="main">
+          <ContactMeWrapper>
+            <Helmet title={`Contact Me || ${config.siteTitle}`} />
+            <SEO />
+            <StyledH1>Let's talk</StyledH1>
             <Subhead>
               If you have a project in mind and you think my services would
               help, or you simply want to know more about me or what I do, feel
               free to send me a message.
             </Subhead>
-          </ContactWrapper>
-          <ContactInfo>
-            <ContactInfoItem>
-              <H4>I prefer email for:</H4>
-              <StyledList>
-                <StyledListItem>Everything work related</StyledListItem>
-                <StyledListItem>
-                  Project or colaboration proposals
-                </StyledListItem>
-                <StyledListItem>Longer messages</StyledListItem>
-              </StyledList>
-            </ContactInfoItem>
-            <ContactInfoItem>
-              <H4>I prefer twitter for:</H4>
-              <StyledList>
-                <StyledListItem>Everything else</StyledListItem>
-              </StyledList>
-            </ContactInfoItem>
-          </ContactInfo>
-          <PathWrapper>
-            <H3>Choose your path</H3>
-            <StyledContactButton>
-              Email
-              <MailIcon>
-                <use xlinkHref="#mail" />
-              </MailIcon>
-            </StyledContactButton>
-            <StyledContactButton>
-              Tweet
-              <TwitterIcon>
-                <use xlinkHref="#twitter" />
-              </TwitterIcon>
-            </StyledContactButton>
-          </PathWrapper>
-        </Wrapper>
+            <ContactInfo>
+              <ContactInfoItem>
+                <H4>I prefer email for:</H4>
+                <StyledList>
+                  <StyledListItem>Everything work related</StyledListItem>
+                  <StyledListItem>
+                    Project or colaboration proposals
+                  </StyledListItem>
+                  <StyledListItem>Longer messages</StyledListItem>
+                </StyledList>
+              </ContactInfoItem>
+              <ContactInfoItem>
+                <H4>I prefer twitter for:</H4>
+                <StyledList>
+                  <StyledListItem>Everything else</StyledListItem>
+                </StyledList>
+              </ContactInfoItem>
+            </ContactInfo>
+            <PathWrapper>
+              <H3>Choose your path</H3>
+              <StyledContactButton>
+                Email
+                <MailIcon>
+                  <use xlinkHref="#mail" />
+                </MailIcon>
+              </StyledContactButton>
+              <StyledContactButton>
+                Tweet
+                <TwitterIcon>
+                  <use xlinkHref="#twitter" />
+                </TwitterIcon>
+              </StyledContactButton>
+            </PathWrapper>
+          </ContactMeWrapper>
+        </Main>
+        <SiteFooter />
       </Layout>
     );
   }
