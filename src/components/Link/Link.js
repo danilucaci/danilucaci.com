@@ -48,18 +48,22 @@ export const DefaultLink = styled(Link)`
 
 export const GrayLink = styled(Link)`
   color: ${theme.colors.dark800};
-
   text-decoration: underline;
 
-  font-family: ${theme.fonts.bodyRegular};
+  .fonts-loaded & {
+    font-family: ${theme.fonts.bodyRegular};
+  }
+
+  line-height: ${theme.lineHeights.m};
   font-style: normal;
   font-weight: 400;
 
   ${(props) =>
     props.bold &&
     css`
-      font-family: ${theme.fonts.bodyBold};
-      line-height: ${theme.lineHeights.m};
+      .fonts-loaded & {
+        font-family: ${theme.fonts.bodyBold};
+      }
       font-style: normal;
       font-weight: 700;
     `};
@@ -79,6 +83,35 @@ export const GrayLink = styled(Link)`
   a,
   &:hover {
     color: ${theme.colors.dark800};
+    background-color: ${theme.colors.gray300};
+    cursor: pointer;
+  }
+`;
+
+export const ExternalLink = styled.a`
+  color: ${theme.colors.main600};
+  text-decoration: underline;
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.bodyRegular};
+  }
+
+  line-height: ${theme.lineHeights.m};
+  font-style: normal;
+  font-weight: 400;
+
+  &:active,
+  &:focus {
+    outline: 2px dashed ${theme.colors.main600};
+  }
+
+  &:visited,
+  &:link {
+    color: ${theme.colors.main600};
+  }
+
+  &:hover {
+    color: ${theme.colors.main600};
     background-color: ${theme.colors.gray300};
     cursor: pointer;
   }

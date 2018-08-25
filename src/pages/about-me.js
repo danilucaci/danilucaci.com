@@ -5,6 +5,7 @@ import Img from "gatsby-image";
 import styled, { css } from "styled-components";
 
 import SEO from "../components/SEO/SEO";
+import { theme, mediaMin, rem, breakpoints } from "../theme/globalStyles";
 import Layout from "../components/Layout";
 import SiteHeader from "../components/SiteHeader/SiteHeader";
 import { Main } from "../components/Main/Main";
@@ -12,10 +13,9 @@ import SiteFooter from "../components/SiteFooter/SiteFooter";
 import config from "../../data/SiteConfig";
 import SocialNav from "../components/SocialNav/SocialNav";
 import ContactCard from "../components/ContactCard/ContactCard";
-
-import { theme, mediaMin, rem, breakpoints } from "../theme/globalStyles";
 import { H1, H2, H3, H4, NameHeader } from "../components/Headings/Headings";
 import { Copy } from "../components/Copy/Copy";
+import { ExternalLink } from "../components/Link/Link";
 
 const AboutMeWrapper = styled.div`
   max-width: ${theme.contain.content};
@@ -201,10 +201,20 @@ class AboutPage extends Component {
                 React.js, Styled Components and hosted it on Netlify.
               </StyledCopy>
               <StyledCopy>
-                If you’d like to see the source code for yourself, the
-                repository is publicly available and if you have any questions
-                regarding any of the functionality, feel free to send me a
-                tweet.
+                If you’d like to see the source code for yourself,{" "}
+                <ExternalLink href="https://github.com/danilucaci/danilucaci.com">
+                  the repository is publicly available
+                </ExternalLink>{" "}
+                and if you have any questions regarding any of the
+                functionality, feel free to{" "}
+                <ExternalLink
+                  href="https://twitter.com/messages/compose?recipient_id=734468984658071554&ref_src=twsrc%5Etfw"
+                  data-screen-name="@danilucaci"
+                  data-show-count="false"
+                >
+                  send me a tweet
+                </ExternalLink>
+                .
               </StyledCopy>
             </Col2of2>
           </AboutMeWrapper>

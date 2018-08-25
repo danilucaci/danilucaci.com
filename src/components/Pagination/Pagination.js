@@ -73,7 +73,12 @@ const MobileCopy = styled(CopyBold)`
   white-space: nowrap;
   text-align: center;
 
+  ${mediaMin.xs`
+    margin-left: -${rem(32)};
+  `};
+
   ${mediaMin.s`
+    margin-left: 0;
     display: none;
   `};
 `;

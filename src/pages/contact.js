@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Helmet from "react-helmet";
 
 import config from "../../data/SiteConfig";
@@ -77,11 +77,11 @@ const ContactInfoItem = styled.div`
     margin-right: ${rem(16)};
   `};
 
-  ${mediaMin.s`
-    &:first-of-type{
+  ${(props) =>
+    props.separate &&
+    css`
       margin-bottom: ${rem(24)};
-    } 
-  `};
+    `};
 `;
 
 const PathWrapper = styled.div`
@@ -142,7 +142,7 @@ class ContactPage extends Component {
               free to send me a message.
             </Subhead>
             <ContactInfo>
-              <ContactInfoItem>
+              <ContactInfoItem separate>
                 <H4>I prefer email for:</H4>
                 <StyledList>
                   <StyledListItem>Everything work related</StyledListItem>
@@ -160,7 +160,7 @@ class ContactPage extends Component {
               </ContactInfoItem>
             </ContactInfo>
             <PathWrapper>
-              <H3>Choose your path</H3>
+              <H3>Choose your path:</H3>
               <StyledContactButton>
                 <a href={theme.mailToLink}>
                   Email
