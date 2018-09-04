@@ -2,11 +2,6 @@ import React, { Component } from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import styled, { css } from "styled-components";
-import {
-  disableBodyScroll,
-  enableBodyScroll,
-  clearAllBodyScrollLocks,
-} from "body-scroll-lock";
 
 import { theme, rem, mediaMin } from "../theme/globalStyles";
 import config from "../../data/SiteConfig";
@@ -466,11 +461,20 @@ class Post extends Component {
 
   nodeRef = React.createRef();
 
-  // Used for body-scroll-lock to lock down body scrolling
-  // When top and bottom reading navs are open
+  // Used for loking body scrolling
+  // When the specified dropdowns are active
   topReadingTOCScrollLock = null;
   bottomReadingTOCScrollLock = null;
+  topReadingModeNav = null;
+  bottomReadingModeNav = null;
   scrollBarGap = 0;
+  imOnIOS = null;
+  previousBodyOverflowValue;
+  hasPaddingAdded;
+
+  /****************************************************************
+   * React lifecycle methods
+   */
 
   componentDidMount() {
     const copyURLButton = document.querySelector(".js-copyURL");
@@ -489,18 +493,40 @@ class Post extends Component {
       }, 1500);
     }
 
+    // Get the className added manually to the top reading container
+    // in order to add padding to it as well
+    // it's position fixed so it's ignoring the body padding
+    // added with body scroll lock
+    if (!this.topReadingModeNav) {
+      let domElement = document.querySelector(".js-topReadingNav");
+      // // it's only rendered when scrolled
+      if (domElement !== null) {
+        this.topReadingModeNav = domElement;
+      }
+    }
+
+    // Get the className added manually to the bottom reading container
+    // in order to add padding to it as well
+    // it's position fixed so it's ignoring the body padding
+    // added with body scroll lock
+    if (!this.bottomReadingModeNav) {
+      let domElement = document.querySelector(".js-bottomReadingNav");
+      // it's only rendered when scrolled
+      if (domElement !== null) {
+        this.bottomReadingModeNav = domElement;
+      }
+    }
+
+    // Get the className added manually to the top reading TOC
+    // Reading TOCs are rendered using context so
+    // they will only show up after scrolling the page
     if (!this.topReadingTOCScrollLock) {
-      console.log("QS Top Reading");
-      // Get the className added manually to the top reading TOC
-      // Reading TOCs are rendered using context so
-      // they will only show up after scrolling the page
       this.topReadingTOCScrollLock = document.querySelector(
         ".js-topReadingTOC"
       );
     }
 
     if (!this.topReadingTOCScrollLock) {
-      console.log("QS Bottom Reading");
       // Get the className added manually to the bottom reading TOC
       this.bottomReadingTOCScrollLock = document.querySelector(
         ".js-bottomReadingTOC"
@@ -508,15 +534,13 @@ class Post extends Component {
     }
 
     if (this.state.dropdownsState.topReadingTocOpen === true) {
-      // Disable body scroll when reading nav is open, using body-scroll-lock library
-      disableBodyScroll(this.topReadingTOCScrollLock);
-      this.addScrollBarPadding();
+      // Disable body scroll when reading nav is open
+      this.disableBodyScroll(this.topReadingTOCScrollLock, true);
     }
 
     if (this.state.dropdownsState.bottomReadingTocOpen === true) {
-      // Disable body scroll when reading nav is open, using body-scroll-lock library
-      disableBodyScroll(this.bottomReadingTOCScrollLock);
-      this.addScrollBarPadding();
+      // Disable body scroll when reading nav is open
+      this.disableBodyScroll(this.bottomReadingTOCScrollLock, true);
     }
 
     if (
@@ -524,49 +548,99 @@ class Post extends Component {
       this.state.dropdownsState.bottomReadingTocOpen === false
     ) {
       // 4. Re-enable body scroll
-      enableBodyScroll(this.topReadingTOCScrollLock);
-      enableBodyScroll(this.bottomReadingTOCScrollLock);
-      this.removeScrollBarPadding();
+      this.enableBodyScroll(this.topReadingTOCScrollLock);
+      this.enableBodyScroll(this.bottomReadingTOCScrollLock);
     }
   }
 
-  addScrollBarPadding = () => {
+  componentWillUnmount() {
+    // Clear all body-scroll-locks set with body-scroll-lock library
+    // clearAllBodyScrollLocks();
+    // document.removeEventListener("click", this.addGlobalClickListener);
+  }
+
+  /****************************************************************
+   * Code to handle the body scrolling
+   */
+
+  checkIOSDevice = () => {
+    this.imOnIOS =
+      typeof window !== "undefined" &&
+      window.navigator &&
+      window.navigator.platform &&
+      /iPad|iPhone|iPod|(iPad Simulator)|(iPhone Simulator)|(iPod Simulator)/.test(
+        window.navigator.platform
+      );
+  };
+
+  disableBodyScroll = (targetElement, withPadding) => {
     // From: https://github.com/willmcpo/body-scroll-lock/blob/master/src/bodyScrollLock.js
     // Setting overflow on body/documentElement synchronously in Desktop Safari slows down
     // the responsiveness for some reason. Setting within a setTimeout fixes this.
+    // This comment is valid for the other setTimeout(() => {} ↓
+    setTimeout(() => {
+      if (this.previousBodyOverflowValue === undefined) {
+        this.previousBodyOverflowValue = document.body.style.overflow;
+      }
+      document.body.style.overflow = "hidden";
+    });
+
+    console.log(`targetElement ${targetElement}`);
+    console.log(`withPadding ${withPadding}`);
+
+    if (withPadding) {
+      this.hasPaddingAdded = true;
+      this.addScrollBarPadding();
+    }
+  };
+
+  enableBodyScroll = () => {
+    // From: https://github.com/willmcpo/body-scroll-lock/blob/master/src/bodyScrollLock.js
+    // Setting overflow on body/documentElement synchronously in Desktop Safari slows down
+    // the responsiveness for some reason. Setting within a setTimeout fixes this.
+    // This comment is valid for the other setTimeout(() => {} ↓
+    setTimeout(() => {
+      if (this.previousBodyOverflowValue !== undefined) {
+        document.body.style.overflow = this.previousBodyOverflowValue;
+      }
+    });
+
+    if (this.hasPaddingAdded) {
+      this.removeScrollBarPadding();
+    }
+  };
+
+  addScrollBarPadding = () => {
     setTimeout(() => {
       if (this.scrollBarGap > 0) {
         document.body.style.paddingRight = `${this.scrollBarGap}px`;
+        this.topReadingModeNav.style.paddingRight = `${this.scrollBarGap}px`;
+        this.bottomReadingModeNav.style.paddingRight = `${this.scrollBarGap}px`;
       }
     });
   };
 
   removeScrollBarPadding = () => {
-    // From: https://github.com/willmcpo/body-scroll-lock/blob/master/src/bodyScrollLock.js
-    // Setting overflow on body/documentElement synchronously in Desktop Safari slows down
-    // the responsiveness for some reason. Setting within a setTimeout fixes this.
     setTimeout(() => {
       this.scrollBarGap = 0;
       document.body.style.paddingRight = `0px`;
-      console.log("remv");
+      this.topReadingModeNav.style.paddingRight = `0px`;
+      this.bottomReadingModeNav.style.paddingRight = `0px`;
     });
   };
 
   measureScrollBar = () => {
     this.scrollBarGap =
       window.innerWidth - document.documentElement.clientWidth;
-    console.log(this.scrollBarGap);
   };
-
-  componentWillUnmount() {
-    // Clear all body-scroll-locks set with body-scroll-lock library
-    clearAllBodyScrollLocks();
-    // document.removeEventListener("click", this.addGlobalClickListener);
-  }
 
   addGlobalClickListener = () => {
     // document.addEventListener("click", this.closeAllDropdowns, true);
   };
+
+  /****************************************************************
+   * Code to handle the nav, toc and reading dropdowns
+   */
 
   closeAllDropdowns = (e) => {
     // if (this.nodeRef.current.contains(e.target)) {
@@ -574,7 +648,7 @@ class Post extends Component {
     // }
 
     // See this for fixed solution
-    // https://github.com/styled-components/styled-components/pull/1923
+    // https://github.com/styled-components/styled-components/issues/1694
 
     console.log(this.nodeRef.current);
 
@@ -656,6 +730,13 @@ class Post extends Component {
       }
     });
   };
+
+  /****************************************************************
+   * Code to handle the url copying and code snippets
+   * It's all using a dummy input element which holds the content
+   * Which is supposed to be copied to the clipboard
+   * The content is taken from the state
+   */
 
   copyURL = () => {
     let dummyNode = document.querySelector(".js-dummyInput");
@@ -767,7 +848,7 @@ class Post extends Component {
         </Helmet>
         <SEO postPath={slug} postNode={postNode} postSEO />
 
-        <ReadingModePageHeader role="banner">
+        <ReadingModePageHeader role="banner" className="js-topReadingNav">
           <StyledNav aria-label="Page Menu" role="navigation">
             <StyledLogoLink to="/">
               <Logo />
@@ -878,7 +959,7 @@ class Post extends Component {
             const pageWidth = context.pageWidth;
 
             return showReadingNav && pageWidth < 840 ? (
-              <ReadingModePageNav>
+              <ReadingModePageNav className="js-bottomReadingNav">
                 <ReadingNavCol1>
                   <BottomReadingTOC
                     tableOfContents={postNode.tableOfContents}

@@ -11,7 +11,6 @@ const StyledBottomToc = styled.div`
   position: relative;
   margin-right: auto;
   z-index: 10;
-  margin-right: ${(props) => (props.showContent ? rem(15) : 0)};
 
   & h3 {
     padding: ${rem(12)};
@@ -64,7 +63,6 @@ const TocContainer = styled.div`
   transform: scaleY(${(props) => (props.showContent ? 1 : 0)});
   max-height: ${(props) => (props.showContent ? "50vh" : 0)};
   pointer-events: ${(props) => (props.showContent ? "auto" : "none")};
-  padding-right: ${(props) => (props.showContent ? rem(30) : 0)};
 
   ${mediaMin.s`
     max-height: ${(props) => (props.showContent ? rem(341) : 0)};
@@ -166,10 +164,7 @@ const StyledTocContentsInnerHTML = styled.div`
 
 const BottomReadingTOC = (props) => {
   return (
-    <StyledBottomToc
-      showContent={props.contentVisible}
-      onClick={props.openBottomReadingToc}
-    >
+    <StyledBottomToc onClick={props.openBottomReadingToc}>
       <h3>Table of Contents</h3>
       <StyledIcon open={props.contentVisible}>
         <use xlinkHref="#toc" />

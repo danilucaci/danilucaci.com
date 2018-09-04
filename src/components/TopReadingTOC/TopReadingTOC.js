@@ -9,7 +9,6 @@ const StyledTopTOC = styled.div`
   display: inline-block;
   position: relative;
   z-index: 10;
-  margin-right: ${(props) => (props.showContent ? rem(15) : 0)};
 
   & h3 {
     padding: ${rem(12)};
@@ -49,8 +48,6 @@ const StyledTocContentsShadow = styled.div`
   z-index: 2;
   pointer-events: none;
   width: 97%;
-
-  outline: 1px solid cyan;
 `;
 
 const TocContainer = styled.div`
@@ -165,10 +162,7 @@ const StyledTocContentsInnerHTML = styled.div`
 
 const TopReadingTOC = (props) => {
   return (
-    <StyledTopTOC
-      showContent={props.contentVisible}
-      onClick={props.openTopReadingToc}
-    >
+    <StyledTopTOC onClick={props.openTopReadingToc}>
       <h3>Table of Contents</h3>
       <StyledIcon open={props.contentVisible}>
         <use xlinkHref="#toc" />
