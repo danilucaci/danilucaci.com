@@ -471,6 +471,8 @@ class Post extends Component {
   imOnIOS = null;
   previousBodyOverflowValue;
   hasPaddingAdded;
+  previousTopReadingPaddingRight;
+  previousBottomReadingPaddingRight;
 
   /****************************************************************
    * React lifecycle methods
@@ -526,7 +528,7 @@ class Post extends Component {
       );
     }
 
-    if (!this.topReadingTOCScrollLock) {
+    if (!this.bottomReadingTOCScrollLock) {
       // Get the className added manually to the bottom reading TOC
       this.bottomReadingTOCScrollLock = document.querySelector(
         ".js-bottomReadingTOC"
@@ -536,11 +538,18 @@ class Post extends Component {
     if (this.state.dropdownsState.topReadingTocOpen === true) {
       // Disable body scroll when reading nav is open
       this.disableBodyScroll(this.topReadingTOCScrollLock, true);
+      console.log("top padd", this.topReadingTOCScrollLock.style.paddingRight);
+      this.previousTopReadingPaddingRight = this.topReadingTOCScrollLock.style.paddingRight;
     }
 
     if (this.state.dropdownsState.bottomReadingTocOpen === true) {
       // Disable body scroll when reading nav is open
       this.disableBodyScroll(this.bottomReadingTOCScrollLock, true);
+      console.log(
+        "bottom padd",
+        this.bottomReadingTOCScrollLock.style.paddingRight
+      );
+      this.previousBottomReadingPaddingRight = this.bottomReadingTOCScrollLock.style.paddingRight;
     }
 
     if (
@@ -585,9 +594,6 @@ class Post extends Component {
       document.body.style.overflow = "hidden";
     });
 
-    console.log(`targetElement ${targetElement}`);
-    console.log(`withPadding ${withPadding}`);
-
     if (withPadding) {
       this.hasPaddingAdded = true;
       this.addScrollBarPadding();
@@ -614,8 +620,16 @@ class Post extends Component {
     setTimeout(() => {
       if (this.scrollBarGap > 0) {
         document.body.style.paddingRight = `${this.scrollBarGap}px`;
-        this.topReadingModeNav.style.paddingRight = `${this.scrollBarGap}px`;
-        this.bottomReadingModeNav.style.paddingRight = `${this.scrollBarGap}px`;
+
+        if (this.previousTopReadingPaddingRight !== undefined) {
+          this.topReadingModeNav.style.paddingRight = `${this.scrollBarGap}px`;
+        }
+
+        if (this.previousBottomReadingPaddingRight !== undefined) {
+          this.bottomReadingModeNav.style.paddingRight = `${
+            this.scrollBarGap
+          }px`;
+        }
       }
     });
   };
@@ -624,8 +638,12 @@ class Post extends Component {
     setTimeout(() => {
       this.scrollBarGap = 0;
       document.body.style.paddingRight = `0px`;
-      this.topReadingModeNav.style.paddingRight = `0px`;
-      this.bottomReadingModeNav.style.paddingRight = `0px`;
+      if (this.previousTopReadingPaddingRight !== undefined) {
+        this.topReadingModeNav.style.paddingRight = this.previousTopReadingPaddingRight;
+      }
+      if (this.previousBottomReadingPaddingRight !== undefined) {
+        this.bottomReadingModeNav.style.paddingRight = this.previousBottomReadingPaddingRight;
+      }
     });
   };
 
@@ -634,13 +652,13 @@ class Post extends Component {
       window.innerWidth - document.documentElement.clientWidth;
   };
 
-  addGlobalClickListener = () => {
-    // document.addEventListener("click", this.closeAllDropdowns, true);
-  };
-
   /****************************************************************
    * Code to handle the nav, toc and reading dropdowns
    */
+
+  addGlobalClickListener = () => {
+    // document.addEventListener("click", this.closeAllDropdowns, true);
+  };
 
   closeAllDropdowns = (e) => {
     // if (this.nodeRef.current.contains(e.target)) {

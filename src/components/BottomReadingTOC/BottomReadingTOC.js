@@ -89,7 +89,7 @@ const StyledTocContentsInnerHTML = styled.div`
   display: block;
   position: absolute;
   bottom: 110%;
-  overflow: auto;
+  overflow-y: scroll;
   width: 100%;
 
   will-change: transform, max-height;
@@ -99,7 +99,6 @@ const StyledTocContentsInnerHTML = styled.div`
   max-height: ${(props) => (props.showContent ? "50vh" : 0)};
   pointer-events: ${(props) => (props.showContent ? "auto" : "none")};
   
-  ${theme.showScrollBars};
   
   & * {
     text-align: left;
