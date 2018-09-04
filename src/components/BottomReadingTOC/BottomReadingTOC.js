@@ -58,6 +58,7 @@ const TocContainer = styled.div`
   left: 5%;
   width: 115%;
 
+  will-change: max-height, transform;
   transition: scale, max-height 0.2s ease;
   transform-origin: 100% 0;
   transform: scaleY(${(props) => (props.showContent ? 1 : 0)});

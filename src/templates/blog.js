@@ -144,14 +144,10 @@ const BlogExploreTagsContent = styled(CollapsibleContent)`
 
 const StyledIcon = styled(Icon)`
   float: right;
-
-  ${(props) =>
-    props.animate &&
-    css`
-      transition: transform 0.2s ease;
-      transform-origin: 50% 50%;
-      transform: rotate(180deg);
-    `};
+  margin-top: ${rem(4)};
+  transition: transform 0.2s ease;
+  transform-origin: 50% 50%;
+  transform: rotate(${(props) => (props.animate ? "0deg" : "180deg")});
 
   ${mediaMin.s`
     display: none;
