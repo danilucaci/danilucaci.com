@@ -34,7 +34,7 @@ const StyledMenuButton = styled.button`
   `};
 `;
 
-const StyledIcon = Icon.extend`
+const StyledIcon = styled(Icon)`
   fill: ${theme.colors.dark900};
   transition: transform 0.2s ease;
 

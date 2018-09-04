@@ -4,6 +4,24 @@ import styled, { css } from "styled-components";
 import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
 import { Icon } from "../Icon/Icon";
 
+const StyledTopTOC = styled.div`
+  background-color: ${theme.colors.gray100};
+  display: inline-block;
+  position: relative;
+  z-index: 10;
+  margin-right: ${(props) => (props.showContent ? rem(15) : 0)};
+
+  & h3 {
+    padding: ${rem(12)};
+    display: inline-block !important;
+    margin-top: 0;
+    margin-bottom: 0 !important;
+
+    font-size: ${theme.fontSizes.s} !important;
+    line-height: ${theme.lineHeights.s} !important;
+  }
+`;
+
 const StyledIcon = styled(Icon)`
   display: inline-block;
   vertical-align: middle;
@@ -17,23 +35,6 @@ const StyledIcon = styled(Icon)`
     css`
       fill: ${theme.colors.main600};
     `};
-`;
-
-const StyledTopTOC = styled.div`
-  background-color: ${theme.colors.gray100};
-  display: inline-block;
-  position: relative;
-  z-index: 10;
-
-  & h3 {
-    padding: ${rem(12)};
-    display: inline-block !important;
-    margin-top: 0;
-    margin-bottom: 0 !important;
-
-    font-size: ${theme.fontSizes.s} !important;
-    line-height: ${theme.lineHeights.s} !important;
-  }
 `;
 
 const StyledTocContentsShadow = styled.div`
@@ -58,7 +59,7 @@ const TocContainer = styled.div`
   right: 0;
   width: 180%;
 
-  transition: scale, max-height 0.2s ease;
+  transition: scale, max-height 0.3s ease;
   transform-origin: 100% 0;
   transform: scaleY(${(props) => (props.showContent ? 1 : 0)});
   max-height: ${(props) => (props.showContent ? "42vh" : 0)};
@@ -94,12 +95,12 @@ const StyledTocContentsInnerHTML = styled.div`
   width: 100%;
 
   will-change: transform, max-height;
-  transition: scale, max-height 0.2s ease;
+  transition: scale, max-height 0.15s ease;
   transform-origin: 100% 0%;
   transform: scaleY(${(props) => (props.showContent ? 1 : 0)});
   max-height: ${(props) => (props.showContent ? "50vh" : 0)};
   pointer-events: ${(props) => (props.showContent ? "auto" : "none")};
-  max-height: 50vh;
+  ${theme.showScrollBars};
 
   & * {
     text-align: left;
@@ -164,12 +165,19 @@ const StyledTocContentsInnerHTML = styled.div`
 
 const TopReadingTOC = (props) => {
   return (
-    <StyledTopTOC onClick={props.openTopReadingToc}>
+    <StyledTopTOC
+      showContent={props.contentVisible}
+      onClick={props.openTopReadingToc}
+    >
       <h3>Table of Contents</h3>
       <StyledIcon open={props.contentVisible}>
         <use xlinkHref="#toc" />
       </StyledIcon>
-      <TocContainer showContent={props.contentVisible}>
+
+      <TocContainer
+        className="js-topReadingTOC"
+        showContent={props.contentVisible}
+      >
         {/* <StyledTocContentsShadow /> */}
         <StyledTocContentsInnerHTML
           showContent={props.contentVisible}

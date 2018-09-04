@@ -16,8 +16,8 @@ const StyledFooter = styled.footer`
   padding: ${rem(56)} ${rem(16)};
 `;
 
-const StyledCopyright = CopyBold.extend``;
-const StyledCopy = Copy.extend`
+const StyledCopyright = styled(CopyBold)``;
+const StyledCopy = styled(Copy)`
   margin: ${rem(8)} 0;
 `;
 

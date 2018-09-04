@@ -19,10 +19,9 @@ injectGlobal`
     text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
     text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
-    overflow-x: hidden;
   }
 
-  svg{
+  svg {
     position: absolute;
   }
 

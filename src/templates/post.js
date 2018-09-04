@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import styled, { css } from "styled-components";
+import {
+  disableBodyScroll,
+  enableBodyScroll,
+  clearAllBodyScrollLocks,
+} from "body-scroll-lock";
+
 import { theme, rem, mediaMin } from "../theme/globalStyles";
 import config from "../../data/SiteConfig";
 import SEO from "../components/SEO/SEO";
@@ -460,25 +466,101 @@ class Post extends Component {
 
   nodeRef = React.createRef();
 
+  // Used for body-scroll-lock to lock down body scrolling
+  // When top and bottom reading navs are open
+  topReadingTOCScrollLock = null;
+  bottomReadingTOCScrollLock = null;
+  scrollBarGap = 0;
+
   componentDidMount() {
     const copyURLButton = document.querySelector(".js-copyURL");
     copyURLButton.addEventListener("click", this.copyURL);
 
     this.addCopyButtonsToCodeNodes();
+    this.measureScrollBar();
     // this.addGlobalClickListener();
   }
 
   componentDidUpdate() {
     let tooltipMessage = this.state.tooltipMessage;
-
     if (tooltipMessage === "Page link copied!") {
       setTimeout(() => {
         this.setState({ tooltipMessage: "Copy page link" });
       }, 1500);
     }
+
+    if (!this.topReadingTOCScrollLock) {
+      console.log("QS Top Reading");
+      // Get the className added manually to the top reading TOC
+      // Reading TOCs are rendered using context so
+      // they will only show up after scrolling the page
+      this.topReadingTOCScrollLock = document.querySelector(
+        ".js-topReadingTOC"
+      );
+    }
+
+    if (!this.topReadingTOCScrollLock) {
+      console.log("QS Bottom Reading");
+      // Get the className added manually to the bottom reading TOC
+      this.bottomReadingTOCScrollLock = document.querySelector(
+        ".js-bottomReadingTOC"
+      );
+    }
+
+    if (this.state.dropdownsState.topReadingTocOpen === true) {
+      // Disable body scroll when reading nav is open, using body-scroll-lock library
+      disableBodyScroll(this.topReadingTOCScrollLock);
+      this.addScrollBarPadding();
+    }
+
+    if (this.state.dropdownsState.bottomReadingTocOpen === true) {
+      // Disable body scroll when reading nav is open, using body-scroll-lock library
+      disableBodyScroll(this.bottomReadingTOCScrollLock);
+      this.addScrollBarPadding();
+    }
+
+    if (
+      this.state.dropdownsState.topReadingTocOpen === false &&
+      this.state.dropdownsState.bottomReadingTocOpen === false
+    ) {
+      // 4. Re-enable body scroll
+      enableBodyScroll(this.topReadingTOCScrollLock);
+      enableBodyScroll(this.bottomReadingTOCScrollLock);
+      this.removeScrollBarPadding();
+    }
   }
 
+  addScrollBarPadding = () => {
+    // From: https://github.com/willmcpo/body-scroll-lock/blob/master/src/bodyScrollLock.js
+    // Setting overflow on body/documentElement synchronously in Desktop Safari slows down
+    // the responsiveness for some reason. Setting within a setTimeout fixes this.
+    setTimeout(() => {
+      if (this.scrollBarGap > 0) {
+        document.body.style.paddingRight = `${this.scrollBarGap}px`;
+      }
+    });
+  };
+
+  removeScrollBarPadding = () => {
+    // From: https://github.com/willmcpo/body-scroll-lock/blob/master/src/bodyScrollLock.js
+    // Setting overflow on body/documentElement synchronously in Desktop Safari slows down
+    // the responsiveness for some reason. Setting within a setTimeout fixes this.
+    setTimeout(() => {
+      this.scrollBarGap = 0;
+      document.body.style.paddingRight = `0px`;
+      console.log("remv");
+    });
+  };
+
+  measureScrollBar = () => {
+    this.scrollBarGap =
+      window.innerWidth - document.documentElement.clientWidth;
+    console.log(this.scrollBarGap);
+  };
+
   componentWillUnmount() {
+    // Clear all body-scroll-locks set with body-scroll-lock library
+    clearAllBodyScrollLocks();
     // document.removeEventListener("click", this.addGlobalClickListener);
   }
 
@@ -521,6 +603,8 @@ class Post extends Component {
         topReadingTocOpen: !prevState.dropdownsState.topReadingTocOpen,
       },
     }));
+
+    this.measureScrollBar();
   };
 
   openBottomReadingToc = () => {
@@ -531,6 +615,7 @@ class Post extends Component {
       },
     }));
 
+    this.measureScrollBar();
     this.closeOthers("bottomReadingTocOpen");
   };
 

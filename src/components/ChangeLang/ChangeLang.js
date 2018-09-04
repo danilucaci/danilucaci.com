@@ -10,7 +10,7 @@ import { DefaultLink } from "../Link/Link";
 const StyledSpan = styled(CopyBold.withComponent("span"))`
   color: inherit;
 `;
-const StyledLink = DefaultLink.extend`
+const StyledLink = styled(DefaultLink)`
   text-decoration: none;
 `;
 
