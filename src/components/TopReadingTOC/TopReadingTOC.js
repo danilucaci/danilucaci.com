@@ -60,7 +60,7 @@ const TocContainer = styled.div`
   ${theme.shadow.dropdown};
 
   will-change: max-height, transform;
-  transition: scale, max-height 0.3s ease-out;
+  transition: scale, max-height 0.15s ease-out;
   transform-origin: top 40%;
   transform: scaleY(${(props) => (props.showContent ? 1 : 0)});
   max-height: ${(props) => (props.showContent ? rem(353) : 0)};
@@ -119,18 +119,18 @@ const StyledTocContentsInnerHTML = styled.div`
   
   ${"" /* Heading 2 */}
   & ul li a {
-    margin-left: -${rem(16)};
-    padding-left: ${rem(32)};
+    padding-left: ${rem(16)};
+    padding-right: ${rem(16)};
   }
 
   ${"" /* Heading 3 */}
   & ul li ul li a {
-    padding-left: ${rem(48)};
+    padding-left: ${rem(32)};
   }
 
   ${"" /* Heading 4 */}
   & ul li ul li ul li a {
-    padding-left: ${rem(64)};
+    padding-left: ${rem(56)};
   }
 
   & a {

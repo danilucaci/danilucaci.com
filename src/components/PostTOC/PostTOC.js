@@ -139,30 +139,18 @@ const StyledTocContentsInnerHTML = styled.div`
 
   ${"" /* Heading 2 */}
   & ul li a {
-    margin-left: -${rem(16)};
-    padding-left: ${rem(32)};
-
-    ${mediaMin.s`
-      padding-left: ${rem(40)};
-    `};
+    padding-right: ${rem(16)};
+    padding-left: ${rem(16)};
   }
 
   ${"" /* Heading 3 */}
   & ul li ul li a {
-    padding-left: ${rem(48)};
-
-    ${mediaMin.s`
-      padding-left: ${rem(56)};
-    `};
+    padding-left: ${rem(32)};
   }
 
   ${"" /* Heading 4 */}
   & ul li ul li ul li a {
     padding-left: ${rem(56)};
-
-    ${mediaMin.s`
-      padding-left: ${rem(64)};
-    `};
   }
 
   & a {

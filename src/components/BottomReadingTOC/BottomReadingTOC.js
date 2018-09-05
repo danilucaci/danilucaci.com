@@ -133,6 +133,7 @@ const StyledTocContentsInnerHTML = styled.div`
   }
   ${"" /* Heading 2 */}
   & ul li a {
+    padding-right: ${rem(16)};
     padding-left: ${rem(16)};
   }
 
