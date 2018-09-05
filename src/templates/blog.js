@@ -109,9 +109,9 @@ const CollapsibleContainer = styled.div`
 const CollapsibleContent = styled.div`
   opacity: 0;
   transform: scaleY(0);
-  transition: all 0.1s ease-out;
+  transition: all 0.15s ease-out;
   will-change: transform, opacity, position;
-  transform-origin: 0% 0%;
+  transform-origin: top center;
   overflow: hidden;
   position: absolute;
   padding-top: ${rem(16)};

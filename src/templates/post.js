@@ -538,17 +538,12 @@ class Post extends Component {
     if (this.state.dropdownsState.topReadingTocOpen === true) {
       // Disable body scroll when reading nav is open
       this.disableBodyScroll(this.topReadingTOCScrollLock, true);
-      console.log("top padd", this.topReadingTOCScrollLock.style.paddingRight);
       this.previousTopReadingPaddingRight = this.topReadingTOCScrollLock.style.paddingRight;
     }
 
     if (this.state.dropdownsState.bottomReadingTocOpen === true) {
       // Disable body scroll when reading nav is open
       this.disableBodyScroll(this.bottomReadingTOCScrollLock, true);
-      console.log(
-        "bottom padd",
-        this.bottomReadingTOCScrollLock.style.paddingRight
-      );
       this.previousBottomReadingPaddingRight = this.bottomReadingTOCScrollLock.style.paddingRight;
     }
 
@@ -564,8 +559,8 @@ class Post extends Component {
 
   componentWillUnmount() {
     // Clear all body-scroll-locks set with body-scroll-lock library
-    // clearAllBodyScrollLocks();
     // document.removeEventListener("click", this.addGlobalClickListener);
+    this.enableBodyScroll();
   }
 
   /****************************************************************

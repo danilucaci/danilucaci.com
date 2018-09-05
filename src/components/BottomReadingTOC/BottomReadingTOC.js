@@ -26,8 +26,6 @@ const StyledBottomToc = styled.div`
 const StyledIcon = styled(Icon)`
   display: inline-block;
   vertical-align: middle;
-  transition: transform 0.2s ease;
-  transform: rotate(0deg);
   margin-left: ${rem(4)};
   margin-bottom: ${rem(2)};
 
@@ -45,7 +43,7 @@ const StyledTocContentsShadow = styled.div`
     rgba(255, 255, 255, 1) 75%
   );
   position: absolute;
-  bottom: 110%;
+  bottom: 0;
   height: ${rem(40)};
   z-index: 2;
   pointer-events: none;
@@ -54,29 +52,32 @@ const StyledTocContentsShadow = styled.div`
 
 const TocContainer = styled.div`
   position: absolute;
+  display: block;
   bottom: 140%;
   left: 5%;
   width: 115%;
+  ${theme.shadow.dropdown};
 
   will-change: max-height, transform;
-  transition: scale, max-height 0.2s ease;
-  transform-origin: 100% 0;
+  transition: scale, max-height 0.15s ease-out;
+  transform-origin: top;
   transform: scaleY(${(props) => (props.showContent ? 1 : 0)});
   max-height: ${(props) => (props.showContent ? "50vh" : 0)};
   pointer-events: ${(props) => (props.showContent ? "auto" : "none")};
 
   ${mediaMin.s`
-    max-height: ${(props) => (props.showContent ? rem(341) : 0)};
+    max-height: ${(props) => (props.showContent ? rem(353) : 0)};
     width: 95%;
   `};
 
   &:after {
     content: "";
     display: block;
-    width: ${rem(16)};
-    height: ${rem(16)};
-    border-bottom: ${rem(8)} solid #ffffff;
-    border-right: ${rem(8)} solid #ffffff;
+    width: 0;
+    height: 0;
+    border-color: transparent #ffffff #ffffff transparent;
+    border-style: solid;
+    border-width: ${rem(8)};
     transform: rotate(45deg);
     position: absolute;
     bottom: -${rem(8)};
@@ -86,21 +87,26 @@ const TocContainer = styled.div`
 
 const StyledTocContentsInnerHTML = styled.div`
   background-color: ${theme.colors.gray100};
-  ${theme.shadow.dropdown};
   display: block;
-  position: absolute;
-  bottom: 110%;
-  overflow-y: scroll;
   width: 100%;
 
+  ${"" /* Very important to fix Safari overflow bug */}
+  ${"" /* Doesnt use the children height properly */}
+  ${"" /* To calculate the overflow scroll */}
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+
   will-change: transform, max-height;
-  transition: scale, max-height 0.15s ease;
-  transform-origin: 100% 0%;
+  transition: scale, max-height 0.15s ease-out;
+  transform-origin: top;
   transform: scaleY(${(props) => (props.showContent ? 1 : 0)});
   max-height: ${(props) => (props.showContent ? "50vh" : 0)};
   pointer-events: ${(props) => (props.showContent ? "auto" : "none")};
-  
-  
+
+  ${mediaMin.s`
+    max-height: ${(props) => (props.showContent ? rem(353) : 0)};
+  `};
+
   & * {
     text-align: left;
     list-style-type: none;
@@ -117,30 +123,31 @@ const StyledTocContentsInnerHTML = styled.div`
       font-family: ${theme.fonts.bodyRegular};
     }
   }
-  
+  & ul{
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 0px;
+    height: 100%;
+  }
   ${"" /* Heading 2 */}
   & ul li a {
-    margin-left: -${rem(16)};
-    padding-left: ${rem(32)};
+    padding-left: ${rem(16)};
   }
 
   ${"" /* Heading 3 */}
   & ul li ul li a {
-    padding-left: ${rem(48)};
+    padding-left: ${rem(32)};
   }
 
   ${"" /* Heading 4 */}
   & ul li ul li ul li a {
-    padding-left: ${rem(64)};
+    padding-left: ${rem(56)};
   }
 
   & a {
-    display: block;
-    transition: scale 0.2s ease-in;
-    transition-delay: 0.4s;
-    transform-origin: 100% 0;
-    transform: scaleY(${(props) => (props.showContent ? 1 : 0)});
-    
+    display: block;    
     ${"" /* 16 side padding important for separating the heading level */}
     padding: ${rem(8)} ${rem(16)};
   }

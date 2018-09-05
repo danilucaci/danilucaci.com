@@ -1,6 +1,6 @@
 import React from "react";
 
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
 import { Icon } from "../Icon/Icon";
 
@@ -36,35 +36,35 @@ const StyledIcon = styled(Icon)`
     `};
 `;
 
-const StyledTocContentsShadow = styled.div`
-  background-image: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 1) 75%
-  );
-  position: absolute;
-  bottom: 110%;
-  height: ${rem(40)};
-  z-index: 2;
-  pointer-events: none;
-  width: 97%;
-`;
+// const StyledTocContentsShadow = styled.div`
+//   background-image: linear-gradient(
+//     to bottom,
+//     rgba(255, 255, 255, 0) 0%,
+//     rgba(255, 255, 255, 1) 90%
+//   );
+//   position: absolute;
+//   bottom: 0;
+//   height: 2.5rem;
+//   z-index: 2;
+//   pointer-events: none;
+//   width: 97%;
+//   opacity: 0;
+// `;
 
 const TocContainer = styled.div`
   position: absolute;
-  top: 130%;
+  display: block;
+  top: 140%;
   right: 0;
-  width: 180%;
+  width: 240%;
+  ${theme.shadow.dropdown};
 
-  transition: scale, max-height 0.3s ease;
-  transform-origin: 100% 0;
+  will-change: max-height, transform;
+  transition: scale, max-height 0.3s ease-out;
+  transform-origin: top 40%;
   transform: scaleY(${(props) => (props.showContent ? 1 : 0)});
-  max-height: ${(props) => (props.showContent ? "42vh" : 0)};
+  max-height: ${(props) => (props.showContent ? rem(353) : 0)};
   pointer-events: ${(props) => (props.showContent ? "auto" : "none")};
-
-  ${mediaMin.s`
-    max-height: ${(props) => (props.showContent ? rem(341) : 0)};
-  `};
 
   &:before {
     content: "";
@@ -84,20 +84,21 @@ const TocContainer = styled.div`
 
 const StyledTocContentsInnerHTML = styled.div`
   background-color: ${theme.colors.gray100};
-  ${theme.shadow.dropdown};
   display: block;
-  position: absolute;
-  top: 120%;
-  overflow: auto;
   width: 100%;
+  
+  ${"" /* Very important to fix Safari overflow bug */}
+  ${"" /* Doesnt use the children height properly */}
+  ${"" /* To calculate the overflow scroll */}
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 
   will-change: transform, max-height;
-  transition: scale, max-height 0.15s ease;
-  transform-origin: 100% 0%;
+  transition: scale, max-height 0.15s ease-out;
+  transform-origin: top center;
   transform: scaleY(${(props) => (props.showContent ? 1 : 0)});
-  max-height: ${(props) => (props.showContent ? "50vh" : 0)};
+  max-height: ${(props) => (props.showContent ? rem(353) : 0)};
   pointer-events: ${(props) => (props.showContent ? "auto" : "none")};
-  ${theme.showScrollBars};
 
   & * {
     text-align: left;
@@ -134,11 +135,6 @@ const StyledTocContentsInnerHTML = styled.div`
 
   & a {
     display: block;
-    transition: scale 0.2s ease-in;
-    transition-delay: 0.4s;
-    transform-origin: 100% 0;
-    transform: scaleY(${(props) => (props.showContent ? 1 : 0)});
-    
     ${"" /* 16 side padding important for separating the heading level */}
     padding: ${rem(8)} 0 ${rem(8)} ${rem(16)};
   }
