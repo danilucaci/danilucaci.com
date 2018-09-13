@@ -1,4 +1,5 @@
 import React from "react";
+import Helmet from "react-helmet";
 import Layout from "../components/Layout";
 import SEO from "../components/SEO/SEO";
 import SiteHeader from "../components/SiteHeader/SiteHeader";
@@ -6,6 +7,7 @@ import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
 
 import { H1 } from "../components/Headings/Headings";
+import config from "../../data/SiteConfig";
 
 const NotFoundPage = () => (
   <Layout>
