@@ -178,3 +178,5 @@ const GlobalReset = createGlobalStyle`
     display: none;
   }
 `;
+
+export default GlobalReset;

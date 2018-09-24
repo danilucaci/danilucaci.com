@@ -950,7 +950,7 @@ class Post extends Component {
               <DummyInput
                 className="js-dummyInput"
                 contentEditable="true"
-                readOnly="true"
+                readOnly={true}
               />
               <PostTOC
                 openPostToc={this.openPostToc}

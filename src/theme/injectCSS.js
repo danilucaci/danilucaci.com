@@ -42,3 +42,5 @@ const GlobalHTML = createGlobalStyle`
     }
   }
 `;
+
+export default GlobalHTML;

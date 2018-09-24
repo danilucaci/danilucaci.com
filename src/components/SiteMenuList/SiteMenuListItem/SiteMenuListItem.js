@@ -134,7 +134,7 @@ const SiteMenuListItem = (props) => {
   return (
     <StyledSiteMenuListItem
       role="menuitem"
-      tabindex="-1"
+      tabIndex="-1"
       showNav={props.showNav}
     >
       <StyledNavLink

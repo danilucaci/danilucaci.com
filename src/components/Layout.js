@@ -6,10 +6,10 @@ var FontFaceObserver = require("fontfaceobserver");
 
 import styled, { ThemeProvider } from "styled-components";
 import { theme } from "../theme/globalStyles";
-import injectFonts from "../theme/injectFonts";
-import injectReset from "../theme/injectReset";
-import injectAria from "../theme/injectAria";
-import injectCSS from "../theme/injectCSS";
+import GlobalFonts from "../theme/injectFonts";
+import GlobalReset from "../theme/injectReset";
+import GlobalAria from "../theme/injectAria";
+import GlobalHTML from "../theme/injectCSS";
 
 import { ScrollProvider } from "./ScrollProvider/ScrollProvider";
 
@@ -76,6 +76,10 @@ class Layout extends Component {
     return (
       <ThemeProvider theme={theme}>
         <Page>
+          <GlobalFonts />
+          <GlobalReset />
+          <GlobalAria />
+          <GlobalHTML />
           <Helmet>
             <title>{config.siteTitle}</title>
             <meta name="description" content={config.siteDescription} />

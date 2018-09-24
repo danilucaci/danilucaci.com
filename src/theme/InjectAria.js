@@ -14,3 +14,5 @@ const GlobalAria = createGlobalStyle`
   */
   [hidden] { display: none; }
 `;
+
+export default GlobalAria;

@@ -11,7 +11,7 @@ import {
   MontserratBoldWoff,
 } from "../fonts";
 
-const GlobalFontFace = createGlobalStyle`
+const GlobalFonts = createGlobalStyle`
 @font-face {
   font-family: 'OpenSans Regular';
   font-style: normal;
@@ -71,3 +71,5 @@ const GlobalFontFace = createGlobalStyle`
   url('${MontserratBoldWoff2}') format('woff2'),
   url('${MontserratBoldWoff}') format('woff');
 }`;
+
+export default GlobalFonts;
