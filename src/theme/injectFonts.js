@@ -1,4 +1,4 @@
-import { injectGlobal } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 import {
   OpenSansRegularWoff2,
@@ -11,7 +11,7 @@ import {
   MontserratBoldWoff,
 } from "../fonts";
 
-injectGlobal`
+const GlobalFontFace = createGlobalStyle`
 @font-face {
   font-family: 'OpenSans Regular';
   font-style: normal;

@@ -1,6 +1,6 @@
-import { injectGlobal } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
-injectGlobal`
+const GlobalHTML = createGlobalStyle`
   html {
     background-color: #F5F5F5;
     color: #46495C;

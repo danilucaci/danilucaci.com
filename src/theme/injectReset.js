@@ -1,6 +1,6 @@
-import { injectGlobal, css } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
-injectGlobal`
+const GlobalReset = createGlobalStyle`
   *,
   *:after,
   *:before {
