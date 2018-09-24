@@ -7,7 +7,7 @@ import { theme, rem } from "../../theme/globalStyles";
 import { CopyBold } from "../Copy/Copy";
 import { DefaultLink } from "../Link/Link";
 
-const StyledSpan = styled(CopyBold.withComponent("span"))`
+const StyledSpan = styled(CopyBold)`
   color: inherit;
 `;
 const StyledLink = styled(DefaultLink)`
@@ -18,7 +18,7 @@ const ChangeLang = () => {
   return (
     <StyledLink to="">
       <img src="" alt="" />
-      <StyledSpan>Cambiar a Español</StyledSpan>
+      <StyledSpan as="span">Cambiar a Español</StyledSpan>
     </StyledLink>
   );
 };

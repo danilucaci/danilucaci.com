@@ -19,7 +19,7 @@ const StyledIcon = styled(Icon)`
   margin-bottom: ${rem(4)};
 `;
 
-const Time = styled(Copy.withComponent("time"))`
+const Time = styled(Copy)`
   display: inline-block;
 `;
 
@@ -29,7 +29,7 @@ const ArticleDate = (props) => {
       <StyledIcon>
         <use xlinkHref="#calendar" />
       </StyledIcon>
-      <Time dateTime={props.date} small>
+      <Time as="time" dateTime={props.date} small>
         {props.date}
       </Time>
     </Wrapper>

@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   white-space: nowrap;
 `;
 
-const Label = styled(Copy.withComponent("span"))`
+const Label = styled(Copy)`
   display: inline-block;
 `;
 
@@ -27,7 +27,9 @@ const ReadTime = (props) => {
       <StyledIcon>
         <use xlinkHref="#clock" />
       </StyledIcon>
-      <Label small>{props.timeToRead} min read</Label>
+      <Label as="span" small>
+        {props.timeToRead} min read
+      </Label>
     </Wrapper>
   );
 };
