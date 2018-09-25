@@ -608,8 +608,6 @@ class Post extends Component {
   };
 
   closeAllDropdowns = (e) => {
-    console.log(this.dropdownRef);
-    console.log(this.dropdownRef.current);
     if (!this.dropdownRef.current.contains(e.target)) {
       const currState = this.state.dropdownsState;
 
@@ -850,7 +848,6 @@ class Post extends Component {
                         this.state.dropdownsState.topReadingTocOpen
                       }
                       openTopReadingToc={this.openTopReadingToc}
-                      ref={this.dropdownRef}
                     />
                   );
                 }
