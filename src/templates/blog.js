@@ -17,7 +17,6 @@ import { Copy } from "../components/Copy/Copy";
 import Tags from "../components/Tags/Tags";
 import Pagination from "../components/Pagination/Pagination";
 
-import { H3 } from "../components/Headings/Headings";
 import { Icon } from "../components/Icon/Icon";
 
 const BlogWrapper = styled.div`
@@ -78,7 +77,7 @@ const TagsWrapper = styled.div`
   `};
 `;
 
-const StyledTitle = styled(H3)`
+const StyledTitle = styled.h3`
   ${mediaMax.s`
     font-size: ${theme.fontSizes.m};
     line-height: ${theme.lineHeights.m};

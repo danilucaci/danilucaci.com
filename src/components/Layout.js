@@ -6,10 +6,10 @@ var FontFaceObserver = require("fontfaceobserver");
 
 import styled, { ThemeProvider } from "styled-components";
 import { theme } from "../theme/globalStyles";
-import GlobalFonts from "../theme/injectFonts";
-import GlobalReset from "../theme/injectReset";
-import GlobalAria from "../theme/injectAria";
-import GlobalHTML from "../theme/injectCSS";
+import GlobalFonts from "../theme/globalFonts";
+import GlobalReset from "../theme/globalReset";
+import GlobalAria from "../theme/globalAria";
+import GlobalHTML from "../theme/globalCSS";
 
 import { ScrollProvider } from "./ScrollProvider/ScrollProvider";
 

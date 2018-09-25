@@ -3,7 +3,6 @@ import styled, { css } from "styled-components";
 
 import { theme, mediaMin, mediaMax, rem } from "../../theme/globalStyles";
 
-import { H3 } from "../Headings/Headings";
 import { Icon } from "../Icon/Icon";
 
 const StyledCollapsible = styled.div`
@@ -27,7 +26,7 @@ const StyledCollapsible = styled.div`
   `};
 `;
 
-const StyledTitle = styled(H3)`
+const StyledTitle = styled.h3`
   ${mediaMax.s`
     font-size: ${theme.fontSizes.m};
     line-height: ${theme.lineHeights.m};

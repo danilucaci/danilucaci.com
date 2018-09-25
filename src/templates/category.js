@@ -9,7 +9,6 @@ import SEO from "../components/SEO/SEO";
 
 import Layout from "../components/Layout";
 import PostListing from "../components/PostListing/PostListing";
-import { H1 } from "../components/Headings/Headings";
 import Tags from "../components/Tags/Tags";
 import Pagination from "../components/Pagination/Pagination";
 
@@ -58,7 +57,7 @@ class CategoryPage extends Component {
           <Helmet title={`Categories || ${config.siteTitle}`} />
           <SEO />
           <CategoryHeader>
-            <H1>Blog posts in: {category}</H1>
+            <h1>Blog posts in: {category}</h1>
           </CategoryHeader>
           <PostListing edges={edges} />
           {totalPagesInBlog > 1 && (

@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 import { theme, mediaMin, rem } from "../../theme/globalStyles";
-import { H1, H2, H3, H4 } from "../Headings/Headings";
 import { Copy } from "../Copy/Copy";
 import { DefaultLink } from "../Link/Link";
 import { Icon } from "../Icon/Icon";
@@ -39,7 +38,7 @@ const StyledIcon = styled(Icon)`
   z-index: 0;
 `;
 
-const StyledH2 = styled(H2)`
+const StyledH2 = styled.h2`
   display: block;
   margin-bottom: ${rem(16)};
   position: relative;

@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { theme, mediaMin, rem } from "../../theme/globalStyles";
 
 import Article from "../Article/Article";
-import { H2 } from "../Headings/Headings";
 
 const Wrapper = styled.section`
   max-width: ${theme.contain.blog};
@@ -12,7 +11,7 @@ const Wrapper = styled.section`
   margin-right: auto;
 `;
 
-const StyledH2 = styled(H2)`
+const StyledH2 = styled.h2`
   margin-bottom: ${rem(16)};
 
   ${mediaMin.s`

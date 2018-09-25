@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
 import styled from "styled-components";
-import { graphql } from "gatsby";
 
 import Layout from "../components/Layout";
 import SiteHeader from "../components/SiteHeader/SiteHeader";
@@ -11,7 +10,7 @@ import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 
 import { theme, mediaMin, rem } from "../theme/globalStyles";
-import { H1, H2, H3, H4, NameHeader } from "../components/Headings/Headings";
+import { NameHeader } from "../components/Headings/Headings";
 import { Copy } from "../components/Copy/Copy";
 import { Icon } from "../components/Icon/Icon";
 
@@ -48,7 +47,7 @@ const StyledNameHeader = styled(NameHeader)`
   letter-spacing: ${theme.letterSpacing.nameHeader};
 `;
 
-const StyledH1 = styled(H1)`
+const StyledH1 = styled.h1`
   margin-bottom: ${rem(16)};
 
   ${mediaMin.m`
@@ -57,7 +56,7 @@ const StyledH1 = styled(H1)`
   `};
 `;
 
-const ServicesH2 = styled(H2)`
+const ServicesH2 = styled.h2`
   margin-bottom: ${rem(32)};
   font-size: ${theme.fontSizes.h1s};
   line-height: ${theme.lineHeights.h1s};
@@ -87,7 +86,7 @@ const Subhead = styled(Copy)`
   `};
 `;
 
-const ServicesH3 = styled(H3)`
+const ServicesH3 = styled.h3`
   font-size: ${theme.fontSizes.h2s};
   line-height: ${theme.lineHeights.h2s};
   margin-top: ${rem(32)};
@@ -109,7 +108,7 @@ const ServicesH3 = styled(H3)`
   `};
 `;
 
-const ServicesH4 = styled(H4)`
+const ServicesH4 = styled.h4`
   margin-bottom: ${rem(8)};
 `;
 

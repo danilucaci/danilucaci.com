@@ -3,7 +3,6 @@ import React from "react";
 import styled from "styled-components";
 import { theme, mediaMin, rem } from "../../theme/globalStyles";
 
-import { H1, H2, H3, H4 } from "../Headings/Headings";
 import { Copy } from "../Copy/Copy";
 
 import Tags from "../Tags/Tags";
@@ -62,7 +61,7 @@ const ContinueLink = styled(DefaultLink)`
   }
 `;
 
-const StyledH3 = styled(H3)`
+const StyledH3 = styled.h3`
   margin-bottom: ${rem(8)};
 `;
 
@@ -110,6 +109,10 @@ const CategoryLinkLabel = styled.span`
 `;
 
 const Article = (props) => {
+  // **********************************************************
+  // OUTDATED, This probably doesnt work anymore, use tags code
+  // **********************************************************
+  //
   // let category;
 
   // if (props.category && props.category !== "blog") {

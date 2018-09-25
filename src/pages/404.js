@@ -6,7 +6,6 @@ import SiteHeader from "../components/SiteHeader/SiteHeader";
 import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
 
-import { H1 } from "../components/Headings/Headings";
 import config from "../../data/SiteConfig";
 
 const NotFoundPage = () => (
@@ -15,7 +14,7 @@ const NotFoundPage = () => (
     <SEO />
     <SiteHeader />
     <Main role="main">
-      <H1>404 de mine</H1>
+      <h1>404 de mine</h1>
     </Main>
     <SiteFooter />
   </Layout>

@@ -9,10 +9,8 @@ import SiteHeader from "../components/SiteHeader/SiteHeader";
 import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
 import { Icon } from "../components/Icon/Icon";
-import Link from "gatsby";
 import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
 
-import { H1, H2, H3, H4 } from "../components/Headings/Headings";
 import { Copy } from "../components/Copy/Copy";
 import { ContactButton } from "../components/Button/Button";
 
@@ -52,7 +50,7 @@ const Subhead = styled(Copy)`
   `};
 `;
 
-const StyledH1 = styled(H1)`
+const StyledH1 = styled.h1`
   display: block;
   width: 100%;
   margin-bottom: ${rem(16)};
@@ -143,7 +141,7 @@ class ContactPage extends Component {
             </Subhead>
             <ContactInfo>
               <ContactInfoItem separate>
-                <H4>I prefer email for:</H4>
+                <h4>I prefer email for:</h4>
                 <StyledList>
                   <StyledListItem>Everything work related</StyledListItem>
                   <StyledListItem>
@@ -153,14 +151,14 @@ class ContactPage extends Component {
                 </StyledList>
               </ContactInfoItem>
               <ContactInfoItem>
-                <H4>I prefer twitter for:</H4>
+                <h4>I prefer twitter for:</h4>
                 <StyledList>
                   <StyledListItem>Everything else</StyledListItem>
                 </StyledList>
               </ContactInfoItem>
             </ContactInfo>
             <PathWrapper>
-              <H3>Choose your path:</H3>
+              <h3>Choose your path:</h3>
               <StyledContactButton>
                 <a href={theme.mailToLink}>
                   Email

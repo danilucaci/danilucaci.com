@@ -5,7 +5,7 @@ import Img from "gatsby-image";
 import styled, { css } from "styled-components";
 
 import SEO from "../components/SEO/SEO";
-import { theme, mediaMin, rem, breakpoints } from "../theme/globalStyles";
+import { theme, mediaMin, rem } from "../theme/globalStyles";
 import Layout from "../components/Layout";
 import SiteHeader from "../components/SiteHeader/SiteHeader";
 import { Main } from "../components/Main/Main";
@@ -13,7 +13,7 @@ import SiteFooter from "../components/SiteFooter/SiteFooter";
 import config from "../../data/SiteConfig";
 import SocialNav from "../components/SocialNav/SocialNav";
 import ContactCard from "../components/ContactCard/ContactCard";
-import { H1, H2, H3, H4, NameHeader } from "../components/Headings/Headings";
+import { NameHeader } from "../components/Headings/Headings";
 import { Copy } from "../components/Copy/Copy";
 import { ExternalLink } from "../components/Link/Link";
 
@@ -77,7 +77,7 @@ const AboutImageWrapper = styled.div`
   `};
 `;
 
-const SocialHeader = styled(H4)`
+const SocialHeader = styled.h4`
   letter-spacing: ${theme.letterSpacing.socialHeader};
   margin-bottom: ${rem(8)};
 `;
@@ -88,11 +88,11 @@ const StyledNameHeader = styled(NameHeader)`
   letter-spacing: ${theme.letterSpacing.nameHeader};
 `;
 
-const StyledH1 = styled(H1)`
+const StyledH1 = styled.h1`
   margin-bottom: ${rem(16)};
 `;
 
-const StyledH3 = styled(H3)`
+const StyledH3 = styled.h3`
   margin-bottom: ${rem(16)};
 `;
 

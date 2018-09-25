@@ -13,7 +13,6 @@ import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
 import config from "../../data/SiteConfig";
 
 import PostListing from "../components/PostListing/PostListing";
-import { H1, H3, H4 } from "../components/Headings/Headings";
 import Tags from "../components/Tags/Tags";
 import Pagination from "../components/Pagination/Pagination";
 import { Icon } from "../components/Icon/Icon";
@@ -31,7 +30,7 @@ const TagWrapper = styled.div`
   `};
 `;
 
-const StyledH1 = styled(H1)`
+const StyledH1 = styled.h1`
   margin-bottom: ${rem(16)};
 
   ${mediaMin.xs`
@@ -40,7 +39,7 @@ const StyledH1 = styled(H1)`
   `};
 `;
 
-const Subhead = styled(H4)`
+const Subhead = styled.h4`
   color: ${theme.colors.dark700};
   font-size: ${theme.fontSizes.sectionHeader};
   line-height: ${theme.lineHeights.sectionHeader};
@@ -141,7 +140,7 @@ const ExploreTagsContent = styled(CollapsibleContent)`
   `};
 `;
 
-const StyledTitle = styled(H3)`
+const StyledTitle = styled.h3`
   ${mediaMax.s`
     font-size: ${theme.fontSizes.m};
     line-height: ${theme.lineHeights.m};

@@ -20,7 +20,6 @@ import ReadingSocialShare from "../components/ReadingSocialShare/ReadingSocialSh
 import Tags from "../components/Tags/Tags";
 import ArticleInfo from "../components/ArticleInfo/ArticleInfo";
 import { Copy } from "../components/Copy/Copy";
-import { H1 } from "../components/Headings/Headings";
 import { DefaultLink } from "../components/Link/Link";
 import { Logo } from "../components/Logo/Logo";
 import { Icon } from "../components/Icon/Icon";
@@ -47,103 +46,48 @@ const Wrapper = styled.div`
   }
 
   h1 {
-    color: ${theme.colors.dark900};
     display: block;
-
-    .fonts-loaded & {
-      font-family: ${theme.fonts.header};
-    }
-
-    font-weight: 700;
-    font-style: normal;
-
-    font-size: ${theme.fontSizes.h1s};
-    line-height: ${theme.lineHeights.h1s};
-    letter-spacing: ${theme.letterSpacing.h1};
 
     margin-bottom: ${rem(16)};
     margin-top: ${rem(32)};
 
     ${mediaMin.xs`
-    font-size: ${theme.fontSizes.h1};
-    line-height: ${theme.lineHeights.h1};
-    margin-bottom: ${rem(16)};
-    margin-top: ${rem(32)};
-  `};
+      margin-bottom: ${rem(16)};
+      margin-top: ${rem(32)};
+    `};
   }
 
   h2 {
-    color: ${theme.colors.dark900};
     display: block;
-
-    .fonts-loaded & {
-      font-family: ${theme.fonts.header};
-    }
-
-    font-weight: 700;
-    font-style: normal;
-
-    font-size: ${theme.fontSizes.h2s};
-    line-height: ${theme.lineHeights.h2s};
-    letter-spacing: ${theme.letterSpacing.h2};
 
     margin-bottom: ${rem(16)};
     margin-top: ${rem(32)};
 
     ${mediaMin.xs`
-    font-size: ${theme.fontSizes.h2};
-    line-height: ${theme.lineHeights.h2};
-    margin-bottom: ${rem(16)};
-    margin-top: ${rem(32)};
-  `};
+      margin-bottom: ${rem(16)};
+      margin-top: ${rem(32)};
+    `};
   }
 
   h3 {
-    color: ${theme.colors.dark900};
     display: block;
-
-    .fonts-loaded & {
-      font-family: ${theme.fonts.header};
-    }
-
-    font-weight: 700;
-    font-style: normal;
-
-    font-size: ${theme.fontSizes.h3s};
-    line-height: ${theme.lineHeights.h3s};
-    letter-spacing: ${theme.letterSpacing.h3};
 
     margin-bottom: ${rem(16)};
     margin-top: ${rem(32)};
 
     ${mediaMin.xs`
-    font-size: ${theme.fontSizes.h3};
-    line-height: ${theme.lineHeights.h3};
-    margin-bottom: ${rem(16)};
-    margin-top: ${rem(32)};
-  `};
+      margin-bottom: ${rem(16)};
+      margin-top: ${rem(32)};
+    `};
   }
 
   h4 {
-    color: ${theme.colors.dark900};
     display: block;
-
-    .fonts-loaded & {
-      font-family: ${theme.fonts.header};
-    }
-
-    font-weight: 700;
-    font-style: normal;
-
-    font-size: ${theme.fontSizes.h4s};
-    line-height: ${theme.lineHeights.h4};
-    letter-spacing: ${theme.letterSpacing.h4};
 
     margin-bottom: ${rem(16)};
     margin-top: ${rem(32)};
 
     ${mediaMin.xs`
-      font-size: ${theme.fontSizes.h4};
       margin-bottom: ${rem(28)};
       margin-top: ${rem(56)};
     `};
@@ -170,31 +114,7 @@ const Wrapper = styled.div`
   }
 
   p {
-    color: ${theme.colors.dark800};
-
-    .fonts-loaded & {
-      font-family: ${theme.fonts.bodyRegular};
-    }
-
-    font-weight: 400;
-    font-style: normal;
-
-    font-size: ${(props) =>
-      props.small ? props.theme.fontSizes.s : props.theme.fontSizes.m};
-
-    line-height: ${(props) =>
-      props.small ? props.theme.lineHeights.s : props.theme.lineHeights.m};
-
     margin-bottom: ${rem(28)};
-  }
-
-  pre,
-  code {
-    font-family: ${theme.fonts.code};
-    font-size: ${(props) =>
-      props.small ? props.theme.fontSizes.s : props.theme.fontSizes.m};
-    line-height: ${(props) =>
-      props.small ? props.theme.lineHeights.s : props.theme.lineHeights.m};
   }
 
   .js-codeCopy {
@@ -349,11 +269,11 @@ const StyledNav = styled.nav`
   `};
 `;
 
-const PostH1 = styled(H1)`
+const PostH1 = styled.h1`
   margin-bottom: ${rem(28)};
 `;
 
-const ReadingModeH1 = styled(H1)`
+const ReadingModeH1 = styled.h1`
   display: inline-block;
   vertical-align: top;
   font-size: ${rem(16)} !important;
@@ -428,6 +348,8 @@ const PostContent = styled.section`
   max-width: ${theme.contain.post};
 `;
 
+const PostInnerHTML = styled.div``;
+
 const DummyInput = styled.input`
   position: absolute;
   top: -1000em;
@@ -436,7 +358,11 @@ const DummyInput = styled.input`
   color: transparent;
 `;
 
-const MyDiv = styled.div``;
+const MyDiv = styled.div`
+  background-color: lightcyan;
+  width: 5vw;
+  padding: 4rem;
+`;
 
 // const StyledDiv = styled(
 //   React.forwardRef((props, ref) => {
@@ -459,7 +385,7 @@ class Post extends Component {
     },
   };
 
-  nodeRef = React.createRef();
+  dropdownRef = React.createRef();
 
   // Used for loking body scrolling
   // When the specified dropdowns are active
@@ -484,7 +410,7 @@ class Post extends Component {
 
     this.addCopyButtonsToCodeNodes();
     this.measureScrollBar();
-    // this.addGlobalClickListener();
+    this.addGlobalClickListener();
   }
 
   componentDidUpdate() {
@@ -558,8 +484,9 @@ class Post extends Component {
   }
 
   componentWillUnmount() {
-    // Clear all body-scroll-locks set with body-scroll-lock library
+    // Remove globalClick eventlistener for handling click on body
     // document.removeEventListener("click", this.addGlobalClickListener);
+    // Clear all body-scroll-locks set with body-scroll-lock library
     this.enableBodyScroll();
   }
 
@@ -652,29 +579,28 @@ class Post extends Component {
    */
 
   addGlobalClickListener = () => {
-    // document.addEventListener("click", this.closeAllDropdowns, true);
+    document.addEventListener("click", this.closeAllDropdowns, true);
   };
 
   closeAllDropdowns = (e) => {
-    // if (this.nodeRef.current.contains(e.target)) {
-    //   console.log(this.nodeRef.current);
-    // }
+    console.log(this.dropdownRef);
+    console.log(this.dropdownRef.current);
+    if (!this.dropdownRef.current.contains(e.target)) {
+      const currState = this.state.dropdownsState;
 
-    // See this for fixed solution
-    // https://github.com/styled-components/styled-components/issues/1694
-
-    console.log(this.nodeRef.current);
-
-    const currState = this.state.dropdownsState;
-    let stateKeys = Object.keys(currState);
-
-    stateKeys.forEach((key) => {
-      if (currState[`${key}`]) {
-        this.setState((prevState) => ({
-          [`${key}`]: !prevState[`${key}`],
-        }));
-      }
-    });
+      // Close all open dropdowns found true
+      let stateKeys = Object.keys(currState);
+      stateKeys.forEach((key) => {
+        if (currState[`${key}`]) {
+          this.setState((prevState) => ({
+            dropdownsState: {
+              ...prevState.dropdownsState,
+              [`${key}`]: !prevState.dropdownsState[`${key}`],
+            },
+          }));
+        }
+      });
+    }
   };
 
   openNav = () => {
@@ -882,7 +808,7 @@ class Post extends Component {
                         this.state.dropdownsState.topReadingTocOpen
                       }
                       openTopReadingToc={this.openTopReadingToc}
-                      // ref={this.nodeRef}
+                      ref={this.dropdownRef}
                     />
                   );
                 }
@@ -956,12 +882,11 @@ class Post extends Component {
                 openPostToc={this.openPostToc}
                 contentVisible={this.state.dropdownsState.postTocOpen}
                 tableOfContents={postNode.tableOfContents}
-                // ref={this.nodeRef}
               />
-              {/* <MyDiv ref={this.nodeRef}>
-              <span>SUP</span>
-            </MyDiv> */}
-              <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
+              <PostInnerHTML
+                ref={this.dropdownRef}
+                dangerouslySetInnerHTML={{ __html: postNode.html }}
+              />
             </PostContent>
           </Wrapper>
         </Main>
@@ -980,7 +905,6 @@ class Post extends Component {
                       this.state.dropdownsState.bottomReadingTocOpen
                     }
                     openBottomReadingToc={this.openBottomReadingToc}
-                    // ref={this.nodeRef}
                   />
                 </ReadingNavCol1>
                 <ReadingNavCol2>
@@ -994,7 +918,6 @@ class Post extends Component {
                     contentVisible={
                       this.state.dropdownsState.readingShareNavOpen
                     }
-                    // ref={this.nodeRef}
                   />
                 </ReadingNavCol2>
                 <ReadingNavCol3>

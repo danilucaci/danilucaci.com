@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { theme, rem } from "../../theme/globalStyles";
 
 import { Copy, CopyBold } from "../Copy/Copy";
-import ChangeLang from "../ChangeLang/ChangeLang";
 import SocialNav from "../SocialNav/SocialNav";
 
 const StyledFooter = styled.footer`

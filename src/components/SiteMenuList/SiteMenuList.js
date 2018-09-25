@@ -4,24 +4,6 @@ import styled, { css } from "styled-components";
 import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
 import SiteMenuListItem from "./SiteMenuListItem/SiteMenuListItem";
 
-// const StyledInput = styled.input`
-//   color: paleviolet;
-// `;
-
-// class Form extends Component {
-//   componentDidMount() {
-//     if (this.input) {
-//       this.input.focus()
-//     }
-//   }
-
-//   render() {
-//     return (
-//       <StyledInput innerRef={(comp) => { this.input = comp }} />
-//     )
-//   }
-// }
-
 const StyledSiteMenuList = styled.ul`
   background-color: ${theme.colors.gray100};
   display: block;
