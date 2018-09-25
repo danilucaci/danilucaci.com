@@ -358,12 +358,6 @@ const DummyInput = styled.input`
   color: transparent;
 `;
 
-const MyDiv = styled.div`
-  background-color: lightcyan;
-  width: 5vw;
-  padding: 4rem;
-`;
-
 // const StyledDiv = styled(
 //   React.forwardRef((props, ref) => {
 //     return <MyDiv forwardedRef={ref} {...props} />;
@@ -422,24 +416,22 @@ class Post extends Component {
     }
 
     // Get the className added manually to the top reading container
-    // in order to add padding to it as well
-    // it's position fixed so it's ignoring the body padding
-    // added with body scroll lock
+    // in order to add padding to it as well, it's position fixed
+    // so it's ignoring the body padding added after measuring the scrollbar
     if (!this.topReadingModeNav) {
       let domElement = document.querySelector(".js-topReadingNav");
-      // // it's only rendered when scrolled
+      // Check for null, it's only rendered when scrolled
       if (domElement !== null) {
         this.topReadingModeNav = domElement;
       }
     }
 
-    // Get the className added manually to the bottom reading container
-    // in order to add padding to it as well
-    // it's position fixed so it's ignoring the body padding
-    // added with body scroll lock
+    // Get the className added manually to the top reading container
+    // in order to add padding to it as well, it's position fixed
+    // so it's ignoring the body padding added after measuring the scrollbar
     if (!this.bottomReadingModeNav) {
       let domElement = document.querySelector(".js-bottomReadingNav");
-      // it's only rendered when scrolled
+      // Check for null, it's only rendered when scrolled
       if (domElement !== null) {
         this.bottomReadingModeNav = domElement;
       }
@@ -454,22 +446,24 @@ class Post extends Component {
       );
     }
 
+    // Get the className added manually to the bottom reading TOC
     if (!this.bottomReadingTOCScrollLock) {
-      // Get the className added manually to the bottom reading TOC
       this.bottomReadingTOCScrollLock = document.querySelector(
         ".js-bottomReadingTOC"
       );
     }
 
+    // Disable body scroll when reading nav is open
     if (this.state.dropdownsState.topReadingTocOpen === true) {
-      // Disable body scroll when reading nav is open
-      this.disableBodyScroll(this.topReadingTOCScrollLock, true);
+      // True is used to make it save the padding the element already had
+      this.disableBodyScroll(true);
       this.previousTopReadingPaddingRight = this.topReadingTOCScrollLock.style.paddingRight;
     }
 
+    // Disable body scroll when reading nav is open
     if (this.state.dropdownsState.bottomReadingTocOpen === true) {
-      // Disable body scroll when reading nav is open
-      this.disableBodyScroll(this.bottomReadingTOCScrollLock, true);
+      // True is used to make it save the padding the element already had
+      this.disableBodyScroll(true);
       this.previousBottomReadingPaddingRight = this.bottomReadingTOCScrollLock.style.paddingRight;
     }
 
@@ -477,7 +471,7 @@ class Post extends Component {
       this.state.dropdownsState.topReadingTocOpen === false &&
       this.state.dropdownsState.bottomReadingTocOpen === false
     ) {
-      // 4. Re-enable body scroll
+      // Remove overflow:hidden set to <body>
       this.enableBodyScroll(this.topReadingTOCScrollLock);
       this.enableBodyScroll(this.bottomReadingTOCScrollLock);
     }
@@ -485,30 +479,36 @@ class Post extends Component {
 
   componentWillUnmount() {
     // Remove globalClick eventlistener for handling click on body
-    // document.removeEventListener("click", this.addGlobalClickListener);
-    // Clear all body-scroll-locks set with body-scroll-lock library
+    document.removeEventListener("click", this.addGlobalClickListener);
+    // Remove overflow:hidden set to <body>
     this.enableBodyScroll();
   }
 
-  /****************************************************************
+  /*****************************************************************
    * Code to handle the body scrolling
+   * ---------------------------------------------------------------
    */
 
-  checkIOSDevice = () => {
-    this.imOnIOS =
-      typeof window !== "undefined" &&
-      window.navigator &&
-      window.navigator.platform &&
-      /iPad|iPhone|iPod|(iPad Simulator)|(iPhone Simulator)|(iPod Simulator)/.test(
-        window.navigator.platform
-      );
-  };
+  //  // Not being used
+  // checkIOSDevice = () => {
+  //   this.imOnIOS =
+  //     typeof window !== "undefined" &&
+  //     window.navigator &&
+  //     window.navigator.platform &&
+  //     /iPad|iPhone|iPod|(iPad Simulator)|(iPhone Simulator)|(iPod Simulator)/.test(
+  //       window.navigator.platform
+  //     );
+  // };
 
-  disableBodyScroll = (targetElement, withPadding) => {
+  /*****************************************************************
+   * Set overflow:hidden to the body to prevent scrolling when dropdown
+   * is open. If true is set it is used to save the padding the element
+   * already had previously.
+   */
+  disableBodyScroll = (withPadding) => {
     // From: https://github.com/willmcpo/body-scroll-lock/blob/master/src/bodyScrollLock.js
     // Setting overflow on body/documentElement synchronously in Desktop Safari slows down
     // the responsiveness for some reason. Setting within a setTimeout fixes this.
-    // This comment is valid for the other setTimeout(() => {} ↓
     setTimeout(() => {
       if (this.previousBodyOverflowValue === undefined) {
         this.previousBodyOverflowValue = document.body.style.overflow;
@@ -522,22 +522,34 @@ class Post extends Component {
     }
   };
 
+  /*****************************************************************
+   * Remove overflow:hidden and restore previous padding, if any,
+   * when the dropdowns are closed.
+   */
   enableBodyScroll = () => {
     // From: https://github.com/willmcpo/body-scroll-lock/blob/master/src/bodyScrollLock.js
     // Setting overflow on body/documentElement synchronously in Desktop Safari slows down
     // the responsiveness for some reason. Setting within a setTimeout fixes this.
-    // This comment is valid for the other setTimeout(() => {} ↓
     setTimeout(() => {
       if (this.previousBodyOverflowValue !== undefined) {
         document.body.style.overflow = this.previousBodyOverflowValue;
       }
     });
 
+    // If the scrollbar padding was added, remove it
     if (this.hasPaddingAdded) {
       this.removeScrollBarPadding();
     }
   };
 
+  /*****************************************************************
+   * If the scrollBarGap was set, add it to the body as padding.
+   * Used when setting overflow: hidden, as it removes the scrollbars
+   * and will cause layout shifting.
+   * When restoring the scrollbar the previous padding will be set.
+   * It only sets the padding to the elements if the variables holding
+   * the default padding are not undefined.
+   */
   addScrollBarPadding = () => {
     setTimeout(() => {
       if (this.scrollBarGap > 0) {
@@ -556,6 +568,11 @@ class Post extends Component {
     });
   };
 
+  /*****************************************************************
+   * Set the scrollBarGap to 0px and restore the padding
+   * the elements had before the scrollbar padding was added,
+   * to avoid loosing the previous padding
+   */
   removeScrollBarPadding = () => {
     setTimeout(() => {
       this.scrollBarGap = 0;
@@ -569,15 +586,23 @@ class Post extends Component {
     });
   };
 
+  /*****************************************************************
+   * Measure the width of the scroll bar to add it as padding
+   * when body is set to overflow: hidden to prevent scrolling.
+   */
   measureScrollBar = () => {
     this.scrollBarGap =
       window.innerWidth - document.documentElement.clientWidth;
   };
 
-  /****************************************************************
-   * Code to handle the nav, toc and reading dropdowns
+  /*****************************************************************
+   * Code to handle the nav, toc and reading dropdowns.
+   * ---------------------------------------------------------------
    */
 
+  /*****************************************************************
+   * Add the click event listener to close the dropdowns if they are open.
+   */
   addGlobalClickListener = () => {
     document.addEventListener("click", this.closeAllDropdowns, true);
   };
@@ -652,6 +677,9 @@ class Post extends Component {
     this.closeOthers("readingShareNavOpen");
   };
 
+  /****************************************************************
+   * Closes the other open dropdowns except the one passed in as prop
+   */
   closeOthers = (from) => {
     const currState = this.state.dropdownsState;
     let stateKeys = Object.keys(currState);
@@ -676,7 +704,6 @@ class Post extends Component {
    * Which is supposed to be copied to the clipboard
    * The content is taken from the state
    */
-
   copyURL = () => {
     let dummyNode = document.querySelector(".js-dummyInput");
     let postURL = window.location.href;
@@ -707,6 +734,10 @@ class Post extends Component {
     window.getSelection().removeAllRanges();
   };
 
+  /*****************************************************************
+   * Get each code hightlight made by gatsby and insert a span tag
+   * to attach a click listener to trigger the code copying logic
+   */
   addCopyButtonsToCodeNodes = () => {
     const getCodeNodes = Array.from(
       document.querySelectorAll(".gatsby-highlight")
@@ -722,6 +753,9 @@ class Post extends Component {
     this.addEventListenersToCopyButtons();
   };
 
+  /*****************************************************************
+   * Get all the inserted span tags to trigger the code copying
+   */
   addEventListenersToCopyButtons = () => {
     const getCopyButtons = Array.from(
       document.querySelectorAll(".js-codeCopy")
@@ -732,6 +766,11 @@ class Post extends Component {
     });
   };
 
+  /*****************************************************************
+   * Get the textContent of the clicked inserted copy tag and
+   * insert into the dummy input element to be able to use
+   * execCommand("copy") as it only works on input elements
+   */
   copyCode = (e) => {
     let dummyNode = document.querySelector(".js-dummyInput");
     let currentCopyButton = e.target;
@@ -739,6 +778,7 @@ class Post extends Component {
     const codeToCopy = e.target.previousElementSibling.textContent;
     dummyNode.value = codeToCopy;
 
+    // For iOS
     if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
       let range = document.createRange();
       range.selectNodeContents(dummyNode);
@@ -757,6 +797,8 @@ class Post extends Component {
       document.execCommand("copy");
       currentCopyButton.textContent = "Copied!";
 
+      // If the textContent was changed, trigger a setTimeout after 2500ms
+      // and change it back to "Copy"
       if (currentCopyButton.textContent === "Copied!") {
         setTimeout(() => {
           currentCopyButton.textContent = "Copy";
