@@ -100,7 +100,9 @@ const StyledTocContentsInnerHTML = styled.div`
       opacity: 1;
       transform: scaleY(1);
       position: static;
-      overflow-y: scroll;
+      /* iOS innertia scroll */
+      overflow-y: scroll; /* has to be scroll, not auto */
+      -webkit-overflow-scrolling: touch;
       max-height: ${rem(347)};
       margin-top: ${rem(8)};
     `};
@@ -111,7 +113,9 @@ const StyledTocContentsInnerHTML = styled.div`
     transform: scaleY(1);
     position: static;
     overflow-x: hidden;
-    overflow-y: scroll;
+    ${"" /* iOS innertia scroll */}
+    overflow-y: scroll; /* has to be scroll, not auto */
+    -webkit-overflow-scrolling: touch;
     max-height: ${rem(411)};
     margin-top: ${rem(8)};
   `};
