@@ -17,20 +17,6 @@ const StyledIcon = styled(Icon)`
   `};
 `;
 
-const StyledTocContentsShadow = styled.div`
-  background-image: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 1) 95%
-  );
-  position: absolute;
-  bottom: 0;
-  height: ${rem(40)};
-  z-index: 2;
-  pointer-events: none;
-  width: 100%;
-`;
-
 const StyledTOC = styled.nav`
   background-color: ${theme.colors.gray100};
   display: block;
@@ -119,49 +105,6 @@ const StyledTocContentsInnerHTML = styled.div`
     max-height: ${rem(411)};
     margin-top: ${rem(8)};
   `};
-
-  & * {
-    text-align: left;
-    list-style-type: none;
-    font-weight: 400;
-    font-size: ${theme.fontSizes.s};
-    line-height: ${theme.lineHeights.s};
-
-    ${mediaMin.m`
-      font-size: ${theme.fontSizes.s};
-      line-height: ${theme.lineHeights.s};
-    `};
-
-    .fonts-loaded & {
-      font-family: ${theme.fonts.bodyRegular};
-    }
-  }
-  
-  & p {
-    margin-bottom: 0 !important;
-  }
-
-  ${"" /* Heading 2 */}
-  & ul li a {
-    padding-right: ${rem(16)};
-    padding-left: ${rem(16)};
-  }
-
-  ${"" /* Heading 3 */}
-  & ul li ul li a {
-    padding-left: ${rem(32)};
-  }
-
-  ${"" /* Heading 4 */}
-  & ul li ul li ul li a {
-    padding-left: ${rem(56)};
-  }
-
-  & a {
-    display: block;
-    
-    ${"" /* 16 side padding important for separating the heading level */}
-    padding: ${rem(8)} ${rem(16)};
   }
 
   a:active,
@@ -182,21 +125,17 @@ const StyledTocContentsInnerHTML = styled.div`
 `;
 
 const PostTOC = (props) => {
+  let headings = [...props.tableOfContents];
+
   return (
     <StyledTOC onClick={props.openPostToc}>
       <h3>Table of Contents</h3>
       <StyledIcon animate={props.contentVisible}>
         <use xlinkHref="#down" />
       </StyledIcon>
-      <TocContainer showContent={props.contentVisible}>
-        <StyledTocContentsShadow />
-        <StyledTocContentsInnerHTML
-          showContent={props.contentVisible}
-          dangerouslySetInnerHTML={{
-            __html: props.tableOfContents,
-          }}
-        />
-      </TocContainer>
+      {headings.map((heading, index) => (
+        <div key={index}>{heading.value + heading.value}</div>
+      ))}
     </StyledTOC>
   );
 };

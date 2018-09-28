@@ -12,11 +12,7 @@ import SiteFooter from "../components/SiteFooter/SiteFooter";
 import SiteMenuList from "../components/SiteMenuList/SiteMenuList";
 import MenuButton from "../components/MenuButton/MenuButton";
 
-import PostTOC from "../components/PostTOC/PostTOC";
-import BottomReadingTOC from "../components/BottomReadingTOC/BottomReadingTOC";
-import TopReadingTOC from "../components/TopReadingTOC/TopReadingTOC";
 import SocialShare from "../components/SocialShare/SocialShare";
-import ReadingSocialShare from "../components/ReadingSocialShare/ReadingSocialShare";
 import Tags from "../components/Tags/Tags";
 import ArticleInfo from "../components/ArticleInfo/ArticleInfo";
 import { Copy } from "../components/Copy/Copy";
@@ -171,52 +167,6 @@ const ReadingModePageHeader = styled.header`
   `};
 `;
 
-const ReadingModePageNav = styled.nav`
-  background-color: ${theme.colors.gray100};
-  display: inline-table;
-  line-height: 0;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: ${rem(48)};
-
-  ${theme.shadow.reading};
-
-  ${mediaMin.xxl`
-    display: none;
-  `};
-`;
-
-const ReadingNavCol1 = styled.div`
-  border-right: 1px solid #dadada;
-  display: table-cell;
-  width: 70%;
-  text-align: center;
-
-  ${mediaMin.m`
-    width: 58%;
-  `};
-`;
-
-const ReadingNavCol2 = styled.div`
-  border-right: 1px solid #dadada;
-  display: table-cell;
-  width: ${rem(56)};
-  text-align: center;
-
-  ${mediaMin.m`
-    width: 32%;
-  `};
-`;
-
-const ReadingNavCol3 = styled.div`
-  display: table-cell;
-  width: ${rem(56)};
-  text-align: center;
-`;
-
 const ScrollToTopLink = styled.a`
   text-decoration: none;
 
@@ -348,8 +298,6 @@ const PostContent = styled.section`
   max-width: ${theme.contain.post};
 `;
 
-const PostInnerHTML = styled.div``;
-
 const DummyInput = styled.input`
   position: absolute;
   top: -1000em;
@@ -372,27 +320,8 @@ class Post extends Component {
     showNav: false,
     dropdownsState: {
       tooltipOpen: false,
-      bottomReadingTocOpen: false,
-      topReadingTocOpen: false,
-      postTocOpen: false,
-      readingShareNavOpen: false,
     },
   };
-
-  dropdownRef = React.createRef();
-
-  // Used for loking body scrolling
-  // When the specified dropdowns are active
-  topReadingTOCScrollLock = null;
-  bottomReadingTOCScrollLock = null;
-  topReadingModeNav = null;
-  bottomReadingModeNav = null;
-  scrollBarGap = 0;
-  imOnIOS = null;
-  previousBodyOverflowValue;
-  hasPaddingAdded;
-  previousTopReadingPaddingRight;
-  previousBottomReadingPaddingRight;
 
   /****************************************************************
    * React lifecycle methods
@@ -403,8 +332,6 @@ class Post extends Component {
     copyURLButton.addEventListener("click", this.copyURL);
 
     this.addCopyButtonsToCodeNodes();
-    this.measureScrollBar();
-    this.addGlobalClickListener();
   }
 
   componentDidUpdate() {
@@ -414,286 +341,12 @@ class Post extends Component {
         this.setState({ tooltipMessage: "Copy page link" });
       }, 1500);
     }
-
-    // Get the className added manually to the top reading container
-    // in order to add padding to it as well, it's position fixed
-    // so it's ignoring the body padding added after measuring the scrollbar
-    if (!this.topReadingModeNav) {
-      let domElement = document.querySelector(".js-topReadingNav");
-      // Check for null, it's only rendered when scrolled
-      if (domElement !== null) {
-        this.topReadingModeNav = domElement;
-      }
-    }
-
-    // Get the className added manually to the top reading container
-    // in order to add padding to it as well, it's position fixed
-    // so it's ignoring the body padding added after measuring the scrollbar
-    if (!this.bottomReadingModeNav) {
-      let domElement = document.querySelector(".js-bottomReadingNav");
-      // Check for null, it's only rendered when scrolled
-      if (domElement !== null) {
-        this.bottomReadingModeNav = domElement;
-      }
-    }
-
-    // Get the className added manually to the top reading TOC
-    // Reading TOCs are rendered using context so
-    // they will only show up after scrolling the page
-    if (!this.topReadingTOCScrollLock) {
-      this.topReadingTOCScrollLock = document.querySelector(
-        ".js-topReadingTOC"
-      );
-    }
-
-    // Get the className added manually to the bottom reading TOC
-    if (!this.bottomReadingTOCScrollLock) {
-      this.bottomReadingTOCScrollLock = document.querySelector(
-        ".js-bottomReadingTOC"
-      );
-    }
-
-    // Disable body scroll when reading nav is open
-    if (this.state.dropdownsState.topReadingTocOpen === true) {
-      // True is used to make it save the padding the element already had
-      this.disableBodyScroll(true);
-      this.previousTopReadingPaddingRight = this.topReadingTOCScrollLock.style.paddingRight;
-    }
-
-    // Disable body scroll when reading nav is open
-    if (this.state.dropdownsState.bottomReadingTocOpen === true) {
-      // True is used to make it save the padding the element already had
-      this.disableBodyScroll(true);
-      this.previousBottomReadingPaddingRight = this.bottomReadingTOCScrollLock.style.paddingRight;
-    }
-
-    if (
-      this.state.dropdownsState.topReadingTocOpen === false &&
-      this.state.dropdownsState.bottomReadingTocOpen === false
-    ) {
-      // Remove overflow:hidden set to <body>
-      this.enableBodyScroll(this.topReadingTOCScrollLock);
-      this.enableBodyScroll(this.bottomReadingTOCScrollLock);
-    }
   }
-
-  componentWillUnmount() {
-    // Remove globalClick eventlistener for handling click on body
-    document.removeEventListener("click", this.addGlobalClickListener);
-    // Remove overflow:hidden set to <body>
-    this.enableBodyScroll();
-  }
-
-  /*****************************************************************
-   * Code to handle the body scrolling
-   * ---------------------------------------------------------------
-   */
-
-  //  // Not being used
-  // checkIOSDevice = () => {
-  //   this.imOnIOS =
-  //     typeof window !== "undefined" &&
-  //     window.navigator &&
-  //     window.navigator.platform &&
-  //     /iPad|iPhone|iPod|(iPad Simulator)|(iPhone Simulator)|(iPod Simulator)/.test(
-  //       window.navigator.platform
-  //     );
-  // };
-
-  /*****************************************************************
-   * Set overflow:hidden to the body to prevent scrolling when dropdown
-   * is open. If true is set it is used to save the padding the element
-   * already had previously.
-   */
-  disableBodyScroll = (withPadding) => {
-    // From: https://github.com/willmcpo/body-scroll-lock/blob/master/src/bodyScrollLock.js
-    // Setting overflow on body/documentElement synchronously in Desktop Safari slows down
-    // the responsiveness for some reason. Setting within a setTimeout fixes this.
-    setTimeout(() => {
-      if (this.previousBodyOverflowValue === undefined) {
-        this.previousBodyOverflowValue = document.body.style.overflow;
-      }
-      document.body.style.overflow = "hidden";
-    });
-
-    if (withPadding) {
-      this.hasPaddingAdded = true;
-      this.addScrollBarPadding();
-    }
-  };
-
-  /*****************************************************************
-   * Remove overflow:hidden and restore previous padding, if any,
-   * when the dropdowns are closed.
-   */
-  enableBodyScroll = () => {
-    // From: https://github.com/willmcpo/body-scroll-lock/blob/master/src/bodyScrollLock.js
-    // Setting overflow on body/documentElement synchronously in Desktop Safari slows down
-    // the responsiveness for some reason. Setting within a setTimeout fixes this.
-    setTimeout(() => {
-      if (this.previousBodyOverflowValue !== undefined) {
-        document.body.style.overflow = this.previousBodyOverflowValue;
-      }
-    });
-
-    // If the scrollbar padding was added, remove it
-    if (this.hasPaddingAdded) {
-      this.removeScrollBarPadding();
-    }
-  };
-
-  /*****************************************************************
-   * If the scrollBarGap was set, add it to the body as padding.
-   * Used when setting overflow: hidden, as it removes the scrollbars
-   * and will cause layout shifting.
-   * When restoring the scrollbar the previous padding will be set.
-   * It only sets the padding to the elements if the variables holding
-   * the default padding are not undefined.
-   */
-  addScrollBarPadding = () => {
-    setTimeout(() => {
-      if (this.scrollBarGap > 0) {
-        document.body.style.paddingRight = `${this.scrollBarGap}px`;
-
-        if (this.previousTopReadingPaddingRight !== undefined) {
-          this.topReadingModeNav.style.paddingRight = `${this.scrollBarGap}px`;
-        }
-
-        if (this.previousBottomReadingPaddingRight !== undefined) {
-          this.bottomReadingModeNav.style.paddingRight = `${
-            this.scrollBarGap
-          }px`;
-        }
-      }
-    });
-  };
-
-  /*****************************************************************
-   * Set the scrollBarGap to 0px and restore the padding
-   * the elements had before the scrollbar padding was added,
-   * to avoid loosing the previous padding
-   */
-  removeScrollBarPadding = () => {
-    setTimeout(() => {
-      this.scrollBarGap = 0;
-      document.body.style.paddingRight = `0px`;
-      if (this.previousTopReadingPaddingRight !== undefined) {
-        this.topReadingModeNav.style.paddingRight = this.previousTopReadingPaddingRight;
-      }
-      if (this.previousBottomReadingPaddingRight !== undefined) {
-        this.bottomReadingModeNav.style.paddingRight = this.previousBottomReadingPaddingRight;
-      }
-    });
-  };
-
-  /*****************************************************************
-   * Measure the width of the scroll bar to add it as padding
-   * when body is set to overflow: hidden to prevent scrolling.
-   */
-  measureScrollBar = () => {
-    this.scrollBarGap =
-      window.innerWidth - document.documentElement.clientWidth;
-  };
-
-  /*****************************************************************
-   * Code to handle the nav, toc and reading dropdowns.
-   * ---------------------------------------------------------------
-   */
-
-  /*****************************************************************
-   * Add the click event listener to close the dropdowns if they are open.
-   */
-  addGlobalClickListener = () => {
-    document.addEventListener("click", this.closeAllDropdowns, true);
-  };
-
-  closeAllDropdowns = (e) => {
-    if (!this.dropdownRef.current.contains(e.target)) {
-      const currState = this.state.dropdownsState;
-
-      // Close all open dropdowns found true
-      let stateKeys = Object.keys(currState);
-      stateKeys.forEach((key) => {
-        if (currState[`${key}`]) {
-          this.setState((prevState) => ({
-            dropdownsState: {
-              ...prevState.dropdownsState,
-              [`${key}`]: !prevState.dropdownsState[`${key}`],
-            },
-          }));
-        }
-      });
-    }
-  };
 
   openNav = () => {
     this.setState((prevState) => ({
       showNav: !prevState.showNav,
     }));
-  };
-
-  openTopReadingToc = () => {
-    this.setState((prevState) => ({
-      dropdownsState: {
-        ...prevState.dropdownsState,
-        topReadingTocOpen: !prevState.dropdownsState.topReadingTocOpen,
-      },
-    }));
-
-    this.measureScrollBar();
-  };
-
-  openBottomReadingToc = () => {
-    this.setState((prevState) => ({
-      dropdownsState: {
-        ...prevState.dropdownsState,
-        bottomReadingTocOpen: !prevState.dropdownsState.bottomReadingTocOpen,
-      },
-    }));
-
-    this.measureScrollBar();
-    this.closeOthers("bottomReadingTocOpen");
-  };
-
-  openPostToc = () => {
-    this.setState((prevState) => ({
-      dropdownsState: {
-        ...prevState.dropdownsState,
-        postTocOpen: !prevState.dropdownsState.postTocOpen,
-      },
-    }));
-  };
-
-  openShareNav = () => {
-    this.setState((prevState) => ({
-      dropdownsState: {
-        ...prevState.dropdownsState,
-        readingShareNavOpen: !prevState.dropdownsState.readingShareNavOpen,
-      },
-    }));
-
-    this.closeOthers("readingShareNavOpen");
-  };
-
-  /****************************************************************
-   * Closes the other open dropdowns except the one passed in as prop
-   */
-  closeOthers = (from) => {
-    const currState = this.state.dropdownsState;
-    let stateKeys = Object.keys(currState);
-    let others = stateKeys.filter((key) => key !== `${from}`);
-
-    others.forEach((other) => {
-      // if it's set to true
-      if (currState[`${other}`]) {
-        this.setState((prevState) => ({
-          dropdownsState: {
-            ...prevState.dropdownsState,
-            [`${other}`]: !prevState.dropdownsState[`${other}`],
-          },
-        }));
-      }
-    });
   };
 
   /****************************************************************
@@ -837,22 +490,9 @@ class Post extends Component {
                 const showReadingNav = context.showReadingNav;
                 const pageWidth = context.pageWidth;
 
-                let topReadingToc = null;
                 let topReadingSocialShare = null;
 
-                if (pageWidth >= 840) {
-                  topReadingToc = (
-                    <TopReadingTOC
-                      tableOfContents={postNode.tableOfContents}
-                      contentVisible={
-                        this.state.dropdownsState.topReadingTocOpen
-                      }
-                      openTopReadingToc={this.openTopReadingToc}
-                    />
-                  );
-                }
-
-                if (pageWidth >= 1060) {
+                if (pageWidth >= 860) {
                   topReadingSocialShare = (
                     <SocialShare
                       slug={slug}
@@ -869,9 +509,13 @@ class Post extends Component {
                   <>
                     <ReadingModeH1>{postInfo.title}</ReadingModeH1>
                     <TopReadingPostInfo>
-                      {topReadingToc}
                       {topReadingSocialShare}
                     </TopReadingPostInfo>
+                    <MenuButton
+                      onClick={this.openNav}
+                      showNav={this.state.showNav}
+                    />
+                    <SiteMenuList showNav={this.state.showNav} />
                   </>
                 ) : (
                   <>
@@ -911,66 +555,19 @@ class Post extends Component {
                 ))}
               </StyledIntro>
             </StyledPostHeader>
-            <PostContent>
-              <DummyInput
-                className="js-dummyInput"
-                contentEditable="true"
-                readOnly={true}
-              />
-              <PostTOC
-                openPostToc={this.openPostToc}
-                contentVisible={this.state.dropdownsState.postTocOpen}
-                tableOfContents={postNode.tableOfContents}
-              />
-              <PostInnerHTML
-                ref={this.dropdownRef}
-                dangerouslySetInnerHTML={{ __html: postNode.html }}
-              />
-            </PostContent>
+            <PostContent dangerouslySetInnerHTML={{ __html: postNode.html }} />
           </Wrapper>
+          <DummyInput
+            className="js-dummyInput"
+            contentEditable="true"
+            readOnly={true}
+          />
         </Main>
-
-        <ScrollConsumer>
-          {(context) => {
-            const showReadingNav = context.showReadingNav;
-            const pageWidth = context.pageWidth;
-
-            return showReadingNav && pageWidth < 840 ? (
-              <ReadingModePageNav className="js-bottomReadingNav">
-                <ReadingNavCol1>
-                  <BottomReadingTOC
-                    tableOfContents={postNode.tableOfContents}
-                    contentVisible={
-                      this.state.dropdownsState.bottomReadingTocOpen
-                    }
-                    openBottomReadingToc={this.openBottomReadingToc}
-                  />
-                </ReadingNavCol1>
-                <ReadingNavCol2>
-                  <ReadingSocialShare
-                    slug={slug}
-                    title={postInfo.title}
-                    snippet={postInfo.snippet}
-                    onClick={this.copyURL}
-                    tooltipMessage={this.state.tooltipMessage}
-                    openShareNav={this.openShareNav}
-                    contentVisible={
-                      this.state.dropdownsState.readingShareNavOpen
-                    }
-                  />
-                </ReadingNavCol2>
-                <ReadingNavCol3>
-                  <ScrollToTopLink href="#scrollTop">
-                    <ScrollToTopIcon>
-                      <use xlinkHref="#up" />
-                    </ScrollToTopIcon>
-                  </ScrollToTopLink>
-                </ReadingNavCol3>
-              </ReadingModePageNav>
-            ) : null;
-          }}
-        </ScrollConsumer>
-
+        <ScrollToTopLink href="#scrollTop">
+          <ScrollToTopIcon>
+            <use xlinkHref="#up" />
+          </ScrollToTopIcon>
+        </ScrollToTopLink>
         <SiteFooter />
       </Layout>
     );
@@ -984,6 +581,11 @@ export const pageQuery = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       timeToRead
+      tableOfContents
+      headings {
+        value
+        depth
+      }
       frontmatter {
         title
         date(formatString: "DD MMMM YYYY")
@@ -992,7 +594,6 @@ export const pageQuery = graphql`
         category
         tags
       }
-      tableOfContents
       fields {
         nextTitle
         nextSlug
