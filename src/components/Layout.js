@@ -76,7 +76,7 @@ class Layout extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
-        <Page>
+        <Page id="scrollTop">
           <GlobalFonts />
           <GlobalReset />
           <GlobalAria />
