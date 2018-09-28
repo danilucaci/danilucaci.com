@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 import { theme, rem, mediaMin } from "../theme/globalStyles";
 import config from "../../data/SiteConfig";
@@ -13,12 +13,12 @@ import SiteMenuList from "../components/SiteMenuList/SiteMenuList";
 import MenuButton from "../components/MenuButton/MenuButton";
 
 import SocialShare from "../components/SocialShare/SocialShare";
+import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import Tags from "../components/Tags/Tags";
 import ArticleInfo from "../components/ArticleInfo/ArticleInfo";
 import { Copy } from "../components/Copy/Copy";
 import { DefaultLink } from "../components/Link/Link";
 import { Logo } from "../components/Logo/Logo";
-import { Icon } from "../components/Icon/Icon";
 
 import { ScrollConsumer } from "../components/ScrollProvider/ScrollProvider";
 
@@ -167,29 +167,6 @@ const ReadingModePageHeader = styled.header`
   `};
 `;
 
-const ScrollToTopLink = styled.a`
-  text-decoration: none;
-
-  &:hover {
-    background-color: transparent;
-  }
-
-  &:active,
-  &:focus {
-    outline: 2px dashed ${theme.colors.main600};
-  }
-
-  width: ${rem(48)};
-  height: ${rem(48)};
-  padding: ${rem(8)} 0;
-`;
-
-const ScrollToTopIcon = styled(Icon)`
-  width: ${rem(48)};
-  height: ${rem(48)};
-  padding: ${rem(8)};
-`;
-
 const StyledLogoLink = styled(DefaultLink)`
   display: inline-block;
   width: ${theme.logoWidth};
@@ -298,21 +275,13 @@ const PostContent = styled.section`
   max-width: ${theme.contain.post};
 `;
 
-const DummyInput = styled.input`
+const DummyInput = styled.textarea`
   position: absolute;
   top: -1000em;
   left: -1000em;
   background-color: transparent;
   color: transparent;
 `;
-
-// const StyledDiv = styled(
-//   React.forwardRef((props, ref) => {
-//     return <MyDiv forwardedRef={ref} {...props} />;
-//   })
-// )`
-//   background-color: red;
-// `;
 
 class Post extends Component {
   state = {
@@ -357,23 +326,9 @@ class Post extends Component {
    */
   copyURL = () => {
     let dummyNode = document.querySelector(".js-dummyInput");
-    let postURL = window.location.href;
+    dummyNode.value = window.location.href;
 
-    dummyNode.value = postURL;
-
-    if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
-      let range = document.createRange();
-      range.selectNodeContents(dummyNode);
-
-      let select = window.getSelection();
-      select.removeAllRanges();
-      select.addRange(range);
-      dummyNode.setSelectionRange(0, 999999);
-      dummyNode.blur();
-    } else {
-      dummyNode.select();
-      dummyNode.blur();
-    }
+    this.selectDummyNodeForCopy(dummyNode);
 
     try {
       document.execCommand("copy");
@@ -426,23 +381,9 @@ class Post extends Component {
     let dummyNode = document.querySelector(".js-dummyInput");
     let currentCopyButton = e.target;
 
-    const codeToCopy = e.target.previousElementSibling.textContent;
-    dummyNode.value = codeToCopy;
+    dummyNode.value = e.target.previousElementSibling.textContent;
 
-    // For iOS
-    if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
-      let range = document.createRange();
-      range.selectNodeContents(dummyNode);
-
-      let select = window.getSelection();
-      select.removeAllRanges();
-      select.addRange(range);
-      dummyNode.setSelectionRange(0, 999999);
-      dummyNode.blur();
-    } else {
-      dummyNode.select();
-      dummyNode.blur();
-    }
+    this.selectDummyNodeForCopy(dummyNode);
 
     try {
       document.execCommand("copy");
@@ -465,6 +406,23 @@ class Post extends Component {
     }
 
     window.getSelection().removeAllRanges();
+  };
+
+  selectDummyNodeForCopy = (dummyNode) => {
+    // For iOS
+    if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
+      let range = document.createRange();
+      range.selectNodeContents(dummyNode);
+
+      let select = window.getSelection();
+      select.removeAllRanges();
+      select.addRange(range);
+      dummyNode.setSelectionRange(0, 999999);
+      dummyNode.blur();
+    } else {
+      dummyNode.select();
+      dummyNode.blur();
+    }
   };
 
   render() {
@@ -559,15 +517,12 @@ class Post extends Component {
           </Wrapper>
           <DummyInput
             className="js-dummyInput"
-            contentEditable="true"
+            contentEditable={true}
             readOnly={true}
+            suppressContentEditableWarning={true}
           />
         </Main>
-        <ScrollToTopLink href="#scrollTop">
-          <ScrollToTopIcon>
-            <use xlinkHref="#up" />
-          </ScrollToTopIcon>
-        </ScrollToTopLink>
+        <ScrollToTop />
         <SiteFooter />
       </Layout>
     );
@@ -581,11 +536,6 @@ export const pageQuery = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       timeToRead
-      tableOfContents
-      headings {
-        value
-        depth
-      }
       frontmatter {
         title
         date(formatString: "DD MMMM YYYY")
