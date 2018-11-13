@@ -50,8 +50,8 @@ const SiteMenuList = (props) => {
     <StyledSiteMenuList showNav={props.showNav} role="menu">
       <SiteMenuListItem
         showNav={props.showNav}
-        to="/services"
-        label="Services"
+        to="/projects"
+        label="Projects"
       />
       <SiteMenuListItem showNav={props.showNav} to="/blog" label="Blog" />
       <SiteMenuListItem

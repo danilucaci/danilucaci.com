@@ -11,7 +11,7 @@ import SEO from "../components/SEO/SEO";
 import styled from "styled-components";
 import { theme, mediaMin, rem } from "../theme/globalStyles";
 
-const ServicesWrapper = styled.div`
+const ProjectsWrapper = styled.div`
   max-width: ${theme.contain.content};
   margin: 0 auto;
 
@@ -28,13 +28,13 @@ class ServicesPage extends Component {
   render() {
     return (
       <Layout location={this.props.location}>
-        <Helmet title={`My Services - ${config.siteTitle}`} />
+        <Helmet title={`Projects - ${config.siteTitle}`} />
         <SEO />
         <SiteHeader />
         <Main role="main">
-          <ServicesWrapper>
-            <h1>Hola Servicios</h1>
-          </ServicesWrapper>
+          <ProjectsWrapper>
+            <h1>Hola Projects</h1>
+          </ProjectsWrapper>
         </Main>
         <SiteFooter />
       </Layout>
