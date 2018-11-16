@@ -11,7 +11,7 @@ import SEO from "../components/SEO/SEO";
 import styled from "styled-components";
 import { theme, mediaMin, rem } from "../theme/globalStyles";
 
-const ProjectsWrapper = styled.div`
+const WorkWrapper = styled.div`
   max-width: ${theme.contain.content};
   margin: 0 auto;
 
@@ -24,17 +24,17 @@ const ProjectsWrapper = styled.div`
   `};
 `;
 
-class ServicesPage extends Component {
+class WorkPage extends Component {
   render() {
     return (
       <Layout location={this.props.location}>
-        <Helmet title={`Projects - ${config.siteTitle}`} />
+        <Helmet title={`My Work - ${config.siteTitle}`} />
         <SEO />
         <SiteHeader />
         <Main role="main">
-          <ProjectsWrapper>
-            <h1>Hola Projects</h1>
-          </ProjectsWrapper>
+          <WorkWrapper>
+            <h1>Hola Work</h1>
+          </WorkWrapper>
         </Main>
         <SiteFooter />
       </Layout>
@@ -42,4 +42,4 @@ class ServicesPage extends Component {
   }
 }
 
-export default ServicesPage;
+export default WorkPage;

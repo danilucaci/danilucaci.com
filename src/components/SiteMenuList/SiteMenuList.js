@@ -48,11 +48,7 @@ const StyledSiteMenuList = styled.ul`
 const SiteMenuList = (props) => {
   return (
     <StyledSiteMenuList showNav={props.showNav} role="menu">
-      <SiteMenuListItem
-        showNav={props.showNav}
-        to="/projects"
-        label="Projects"
-      />
+      <SiteMenuListItem showNav={props.showNav} to="/work" label="Work" />
       <SiteMenuListItem showNav={props.showNav} to="/blog" label="Blog" />
       <SiteMenuListItem
         showNav={props.showNav}

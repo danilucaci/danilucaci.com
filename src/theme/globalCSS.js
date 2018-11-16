@@ -3,11 +3,11 @@ import { theme, mediaMin } from "../theme/globalStyles";
 
 const GlobalHTML = createGlobalStyle`
   html {
-    background-color: #F5F5F5;
-    color: #46495C;
+    background-color: #F5F6F7;
+    color: #292C33;
     font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     font-size: 100%;
-    line-height: 1.75; /* 28px */
+    line-height: 2; /* 32px */
 
     -ms-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;

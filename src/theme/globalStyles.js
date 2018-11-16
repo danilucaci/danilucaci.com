@@ -2,9 +2,11 @@ import { css } from "styled-components";
 
 export const theme = {
   colors: {
-    dark900: "#141C29",
-    dark800: "#46495C",
+    dark900: "#292C33",
+    dark800: "#4B4C52",
     dark700: "#67676B",
+    pageBackground: "#F5F6F7",
+    sectionBackground: "#E6E8EB",
     light500: "#96A1B3",
     light400: "#BCC7D6",
     light300: "#DAE3ED",
@@ -35,18 +37,9 @@ export const theme = {
   },
   shadow: {
     default:
-      "box-shadow: 0px 2px 8px -2px rgba(153,153,153,0.32), 0px 4px 8px -2px rgba(153,153,153,0.2)",
+      "box-shadow: 0px 2px 4px -2px hsla(0,0%,40%,0.2), 0px 6px 12px -2px hsla(0,0%,70%,0.24)",
     hover:
-      "box-shadow: 0px 2px 8px -4px rgba(102,102,102,0.4), 0px 8px 20px -4px rgba(102,102,102,0.4)",
-    dropdown:
-      "box-shadow: 0px 2px 8px 0px rgba(61, 61, 61, 0.3), 0px 0px 40px -4px hsla(0, 0%, 30%, 0.32)",
-    subtle: "box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.05)",
-    button:
-      "box-shadow: 0px 4px 8px -2px rgba(10, 41, 92, 0.48), 0px 8px 20px -4px rgba(92, 139, 214, 0.4)",
-    buttonHover:
-      "box-shadow: 0px 4px 8px -4px rgb(20, 83, 184), 0px 8px 20px -4px rgba(16, 66, 147, 0.6)",
-    header: "box-shadow: 0px 2px 2px 0px rgba(153, 153, 153, 0.32)",
-    reading: "box-shadow: 0px -2px 2px 0px rgba(153, 153, 153, 0.32)",
+      "box-shadow: 0px 2px 8px -4px hsla(0,0%,40%,0.4), 0px 8px 20px -4px hsla(0,0%,70%,0.4)",
   },
   fonts: {
     code:
@@ -57,7 +50,7 @@ export const theme = {
     header: "Montserrat Bold",
   },
   fontSizes: {
-    h1: "3.5rem",
+    h1: "3rem",
     h1s: "2rem",
     h2: "2.5rem",
     h2s: "1.5rem",
@@ -67,8 +60,6 @@ export const theme = {
     subhead: "1.5rem",
     subheadS: "1.25rem",
     sectionHeader: "1rem",
-    nameHeader: "1.25rem",
-    nameHeaderS: "1.125rem",
     button: "1rem",
     xl: "1.5rem",
     l: "1.25rem",
@@ -77,7 +68,7 @@ export const theme = {
     xs: "0.875rem",
   },
   lineHeights: {
-    h1: "4rem",
+    h1: "3.5rem",
     h1s: "2.5rem",
     h2: "3rem",
     h2s: "2rem",
@@ -87,10 +78,8 @@ export const theme = {
     subhead: "2.5rem",
     subheadS: "2rem",
     sectionHeader: "1.5rem",
-    nameHeader: "1.75rem",
-    nameHeaderS: "1.5rem",
-    button: "1.25rem",
-    m: "1.75rem",
+    button: "1.5rem",
+    m: "2rem",
     s: "1.5rem",
     xs: "1.25rem",
   },
@@ -104,8 +93,6 @@ export const theme = {
     s: "-0.02rem",
     xs: "0rem",
     sectionHeader: "0.03rem",
-    nameHeader: "0.03rem",
-    nameHeaderS: "0.03rem",
     socialHeader: "-0.02rem",
     subhead: "0.015rem",
   },
