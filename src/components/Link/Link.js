@@ -1,20 +1,17 @@
 import { Link } from "gatsby";
-
 import styled, { css } from "styled-components";
 import { theme } from "../../theme/globalStyles";
 
 export const DefaultLink = styled(Link)`
   color: ${theme.colors.main600};
-
   text-decoration: underline;
+  line-height: ${theme.lineHeights.m};
+  font-style: normal;
+  font-weight: 400;
 
   .fonts-loaded & {
     font-family: ${theme.fonts.bodyRegular};
   }
-
-  line-height: ${theme.lineHeights.m};
-  font-style: normal;
-  font-weight: 400;
 
   ${(props) =>
     props.bold &&
@@ -26,11 +23,11 @@ export const DefaultLink = styled(Link)`
       font-weight: 700;
     `};
 
-  a,
+  /* a,
   &:active,
   &:focus {
     outline: 2px dashed ${theme.colors.main600};
-  }
+  } */
 
   a,
   &:visited,
@@ -68,11 +65,11 @@ export const GrayLink = styled(Link)`
       font-weight: 700;
     `};
 
-  a,
+  /* a,
   &:active,
   &:focus {
     outline: 2px dashed ${theme.colors.main600};
-  }
+  } */
 
   a,
   &:visited,
@@ -100,10 +97,10 @@ export const ExternalLink = styled.a`
   font-style: normal;
   font-weight: 400;
 
-  &:active,
+  /* &:active,
   &:focus {
     outline: 2px dashed ${theme.colors.main600};
-  }
+  } */
 
   &:visited,
   &:link {

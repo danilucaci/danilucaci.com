@@ -4,13 +4,12 @@ import { Link } from "gatsby";
 import styled, { css } from "styled-components";
 import { theme, rem, mediaMin, mediaMax } from "../../../theme/globalStyles";
 
-const StyledSiteMenuListItem = styled.li`
-  color: ${theme.colors.main600};
+const StyledSiteNavListItem = styled.li`
   text-decoration: none;
   list-style-type: none;
   text-align: center;
   width: 100%;
-
+  margin: ${rem(24)} 0;
   transition-delay: 0.4s;
   transition: max-height, transform ease-out 0.2s;
   will-change: max-height;
@@ -44,8 +43,8 @@ const StyledSiteMenuListItem = styled.li`
   `};
 `;
 
-const StyledNavLink = styled(Link)`
-  color: ${theme.colors.dark800};
+const StyledSiteNavLink = styled(Link)`
+  color: ${theme.colors.dark900};
   display: block;
 
   .fonts-loaded & {
@@ -53,24 +52,19 @@ const StyledNavLink = styled(Link)`
   }
 
   font-weight: 700;
-  font-size: ${rem(32)};
-  line-height: ${rem(40)};
+  font-size: ${rem(24)};
+  line-height: ${rem(32)};
   text-decoration: none;
   width: 100%;
-  padding: ${rem(16)} ${rem(16)};
+  padding: ${rem(12)} ${rem(16)};
 
-  ${mediaMin.xxs`
+  ${mediaMin.m`
     padding: ${rem(24)} ${rem(16)};
   `};
 
-  &:active,
-  &:focus {
-    outline: 2px dashed ${theme.colors.main600};
-  }
-
   &:visited,
   &:link {
-    color: ${theme.colors.dark800};
+    color: ${theme.colors.dark900};
   }
 
   &:hover {
@@ -80,11 +74,6 @@ const StyledNavLink = styled(Link)`
 
   ${mediaMin.s`
     background-color: transparent;
-
-    .fonts-loaded & {
-      font-family: ${theme.fonts.bodyRegular};
-    }
-
     font-weight: 700;
     font-size: ${theme.fontSizes.s};
     line-height: ${theme.lineHeights.s};
@@ -96,14 +85,14 @@ const StyledNavLink = styled(Link)`
     background-color: ${theme.colors.main600};
 
     &:hover {
-      color: ${theme.colors.main100};
+      color: ${theme.colors.gray100};
     }
 
-    color: ${theme.colors.main100};
+    color: ${theme.colors.gray100};
 
     ${mediaMin.s`
       background-color: transparent;
-      color: ${theme.colors.dark800};
+      color: ${theme.colors.dark900};
       position: relative;
       
       &:hover {
@@ -130,22 +119,22 @@ const StyledNavLink = styled(Link)`
   }
 `;
 
-const SiteMenuListItem = (props) => {
+const SiteNavListItem = (props) => {
   return (
-    <StyledSiteMenuListItem
+    <StyledSiteNavListItem
       role="menuitem"
       tabIndex="-1"
       showNav={props.showNav}
     >
-      <StyledNavLink
+      <StyledSiteNavLink
         to={props.to}
         activeClassName="current-nav-item"
         aria-current="page"
       >
         {props.label}
-      </StyledNavLink>
-    </StyledSiteMenuListItem>
+      </StyledSiteNavLink>
+    </StyledSiteNavListItem>
   );
 };
 
-export default SiteMenuListItem;
+export default SiteNavListItem;

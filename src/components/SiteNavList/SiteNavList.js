@@ -2,9 +2,9 @@ import React from "react";
 
 import styled, { css } from "styled-components";
 import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
-import SiteMenuListItem from "./SiteMenuListItem/SiteMenuListItem";
+import SiteNavListItem from "./SiteNavListItem/SiteNavListItem";
 
-const StyledSiteMenuList = styled.ul`
+const StyledSiteNavList = styled.ul`
   background-color: ${theme.colors.gray100};
   display: block;
   text-align: center;
@@ -32,6 +32,7 @@ const StyledSiteMenuList = styled.ul`
     right: 0;
     height: 100%;
     height: 100vh;
+    padding: 0 ${rem(16)};
   `};
 
   ${mediaMin.s`
@@ -45,19 +46,19 @@ const StyledSiteMenuList = styled.ul`
   `};
 `;
 
-const SiteMenuList = (props) => {
+const SiteNavList = (props) => {
   return (
-    <StyledSiteMenuList showNav={props.showNav} role="menu">
-      <SiteMenuListItem showNav={props.showNav} to="/work" label="Work" />
-      <SiteMenuListItem showNav={props.showNav} to="/blog" label="Blog" />
-      <SiteMenuListItem
+    <StyledSiteNavList showNav={props.showNav} role="menu">
+      <SiteNavListItem showNav={props.showNav} to="/work" label="Work" />
+      <SiteNavListItem showNav={props.showNav} to="/blog" label="Blog" />
+      <SiteNavListItem
         showNav={props.showNav}
         to="/about-me"
         label="About Me"
       />
-      <SiteMenuListItem showNav={props.showNav} to="/contact" label="Contact" />
-    </StyledSiteMenuList>
+      <SiteNavListItem showNav={props.showNav} to="/contact" label="Contact" />
+    </StyledSiteNavList>
   );
 };
 
-export default SiteMenuList;
+export default SiteNavList;

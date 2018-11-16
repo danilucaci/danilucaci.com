@@ -9,7 +9,7 @@ import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
 import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
-import SiteMenuList from "../components/SiteMenuList/SiteMenuList";
+import SiteNavList from "../components/SiteNavList/SiteNavList";
 import MenuButton from "../components/MenuButton/MenuButton";
 
 import SocialShare from "../components/SocialShare/SocialShare";
@@ -473,7 +473,7 @@ class Post extends Component {
                       onClick={this.openNav}
                       showNav={this.state.showNav}
                     />
-                    <SiteMenuList showNav={this.state.showNav} />
+                    <SiteNavList showNav={this.state.showNav} />
                   </>
                 ) : (
                   <>
@@ -481,7 +481,7 @@ class Post extends Component {
                       onClick={this.openNav}
                       showNav={this.state.showNav}
                     />
-                    <SiteMenuList showNav={this.state.showNav} />
+                    <SiteNavList showNav={this.state.showNav} />
                   </>
                 );
               }}

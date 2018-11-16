@@ -40,6 +40,8 @@ export const theme = {
       "box-shadow: 0px 2px 4px -2px hsla(0,0%,40%,0.2), 0px 6px 12px -2px hsla(0,0%,70%,0.24)",
     hover:
       "box-shadow: 0px 2px 8px -4px hsla(0,0%,40%,0.4), 0px 8px 20px -4px hsla(0,0%,70%,0.4)",
+    navbar:
+      "box-shadow: 0px 2px 4px -2px hsla(0,0%,40%,0.2), 0px 2px 8px 0px hsla(0,0%,70%,0.12)",
   },
   fonts: {
     code:

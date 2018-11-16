@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 import { theme, rem, mediaMin } from "../../theme/globalStyles";
 
 import { DefaultLink } from "../Link/Link";
-import SiteMenuList from "../SiteMenuList/SiteMenuList";
+import SiteNavList from "../SiteNavList/SiteNavList";
 import MenuButton from "../MenuButton/MenuButton";
 import { Logo } from "../Logo/Logo";
 
@@ -14,7 +14,7 @@ const StyledLogoLink = styled(DefaultLink)`
   height: ${theme.logoHeight};
 `;
 
-const StyledNav = styled.nav`
+const StyledSiteNav = styled.nav`
   display: block;
   max-width: ${theme.contain.content};
   margin-left: auto;
@@ -39,13 +39,13 @@ class SiteNav extends Component {
   state = {};
   render() {
     return (
-      <StyledNav aria-label="Page Menu" role="navigation">
+      <StyledSiteNav aria-label="Page Menu" role="navigation">
         <StyledLogoLink to="/">
           <Logo />
         </StyledLogoLink>
         <MenuButton onClick={this.props.onClick} showNav={this.props.showNav} />
-        <SiteMenuList showNav={this.props.showNav} />
-      </StyledNav>
+        <SiteNavList showNav={this.props.showNav} />
+      </StyledSiteNav>
     );
   }
 }
