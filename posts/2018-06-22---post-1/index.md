@@ -11,6 +11,7 @@ tags:
     - html
     - react
 posted: true
+work: true
 ---
 
 #How to upgrading from Hugo to Gatsby.js

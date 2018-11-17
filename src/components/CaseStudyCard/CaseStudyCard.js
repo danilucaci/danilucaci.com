@@ -2,15 +2,12 @@ import React from "react";
 
 import styled from "styled-components";
 import { theme, mediaMin, rem } from "../../theme/globalStyles";
-
 import { Copy } from "../Copy/Copy";
-
 import Tags from "../Tags/Tags";
-import ArticleInfo from "../ArticleInfo/ArticleInfo";
 
 import { DefaultLink } from "../Link/Link";
 
-const StyledArticle = styled.article`
+const StyledCaseStudyCard = styled.article`
   background-color: ${theme.colors.gray100};
   ${theme.shadow.default};
   padding: ${rem(20)} ${rem(16)} ${rem(16)} ${rem(16)};
@@ -31,16 +28,6 @@ const StyledArticle = styled.article`
       color: ${theme.colors.main600};
     }
   }
-`;
-
-const StyledLink = styled(DefaultLink)`
-  display: block;
-
-  .fonts-loaded & {
-    font-family: ${theme.fonts.bodyBold};
-  }
-
-  text-decoration: underline;
 `;
 
 const ContinueLink = styled(DefaultLink)`
@@ -65,18 +52,19 @@ const StyledH3 = styled.h3`
   margin-bottom: ${rem(8)};
 `;
 
-const Article = (props) => {
+const CaseStudyCard = (props) => {
+  console.log(props);
   return (
-    <StyledArticle>
+    <StyledCaseStudyCard>
       <header>
         <StyledH3>{props.title}</StyledH3>
-        <ArticleInfo date={props.date} timeToRead={props.timeToRead} />
+        <div>{props.date}</div>
       </header>
       <Tags tagsInPost={props.tagsInPost} spaced />
-      <Copy className="copy">{props.snippet}</Copy>
+      <Copy className="copy">{props.description}</Copy>
       <ContinueLink to={props.slug}>Continue Reading →</ContinueLink>
-    </StyledArticle>
+    </StyledCaseStudyCard>
   );
 };
 
-export default Article;
+export default CaseStudyCard;

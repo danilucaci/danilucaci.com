@@ -163,7 +163,6 @@ class Index extends Component {
           <title>{`${config.siteTitle}`}</title>
         </Helmet>
         <SEO />
-
         <SiteHeader />
         <Main role="main">
           <Helmet title={config.siteTitle} />

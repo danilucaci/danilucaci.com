@@ -1,0 +1,13 @@
+---
+title: "Movie booking app"
+description: "A case study on improving the experience of searching, finding and booking movies in a cinema."
+date: "2018-11-01"
+category: "work"
+tags:
+    - UX Design
+    - UI Design
+    - iOS
+posted: true
+---
+
+#Movie App Case Study

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
-import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 
 import config from "../../data/SiteConfig";
@@ -8,7 +7,7 @@ import { theme, mediaMin, rem } from "../theme/globalStyles";
 import SEO from "../components/SEO/SEO";
 
 import Layout from "../components/Layout";
-import PostListing from "../components/PostListing/PostListing";
+import CaseStudyListing from "../components/CaseStudyListing/CaseStudyListing";
 import Tags from "../components/Tags/Tags";
 import Pagination from "../components/Pagination/Pagination";
 
@@ -25,7 +24,7 @@ const Wrapper = styled.div`
   `};
 `;
 
-const CategoryHeader = styled.header`
+const WorkHeader = styled.header`
   max-width: ${theme.contain.Category};
   margin-left: auto;
   margin-right: auto;
@@ -39,31 +38,30 @@ const CategoryHeader = styled.header`
   z-index: 5;
 `;
 
-class CategoryPage extends Component {
+class WorkPage extends Component {
   render() {
     const {
       currentPage,
-      totalPagesInBlog,
+      totalPagesInWork,
       paginationPathPrefix,
       prevPath,
       nextPath,
-      edges,
-      category,
+      edgesWork,
     } = this.props.pageContext;
 
     return (
       <Layout location={this.props.location}>
         <Wrapper>
-          <Helmet title={`Categories || ${config.siteTitle}`} />
+          <Helmet title={`Work || ${config.siteTitle}`} />
           <SEO />
-          <CategoryHeader>
-            <h1>Blog posts in: {category}</h1>
-          </CategoryHeader>
-          <PostListing edges={edges} />
-          {totalPagesInBlog > 1 && (
+          <WorkHeader>
+            <h1>Case Studies</h1>
+          </WorkHeader>
+          <CaseStudyListing edges={edgesWork} />
+          {totalPagesInWork > 1 && (
             <Pagination
               currentPage={currentPage}
-              totalPagesInBlog={totalPagesInBlog}
+              totalPagesInWork={totalPagesInWork}
               paginationPathPrefix={paginationPathPrefix}
               prevPath={prevPath}
               nextPath={nextPath}
@@ -75,9 +73,4 @@ class CategoryPage extends Component {
   }
 }
 
-export default CategoryPage;
-
-CategoryPage.propTypes = {
-  pageContext: PropTypes.object,
-  data: PropTypes.object,
-};
+export default WorkPage;
