@@ -10,32 +10,45 @@ import { MailButton } from "../Button/Button";
 const StyledContactCard = styled.aside`
   background-color: ${theme.colors.gray100};
   width: 100%;
-  padding: ${rem(40)} ${rem(16)} ${rem(56)} ${rem(16)};
   ${theme.shadow.subtle};
+  padding-top: ${rem(128)};
+  padding-bottom: ${rem(56)};
 
-  ${mediaMin.m`
-    padding-top: ${rem(72)};
-    padding-bottom: ${rem(88)};
+  ${mediaMin.xxl`
+    padding-top: ${rem(64)};
+    padding-bottom: ${rem(64)};
   `};
 `;
 
 const StyledContactCardContents = styled.div`
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 46.5em;
+  max-width: ${theme.contain.content};
+  margin: 0 auto;
   position: relative;
+
+  padding-left: ${theme.gutters.s};
+  padding-right: ${theme.gutters.s};
+
+  ${mediaMin.s`
+    padding-left: ${theme.gutters.m};
+    padding-right: ${theme.gutters.m};
+  `};
 `;
 
 const StyledIcon = styled(Icon)`
   display: block;
-  fill: ${theme.colors.gray200};
+  fill: ${theme.colors.sectionBackground};
   width: ${rem(132)};
   height: ${rem(132)};
   transform: rotate(-12deg);
   position: absolute;
-  top: -${rem(56)};
-  left: -${rem(64)};
+  left: -${rem(4)};
+  top: -${rem(128)};
   z-index: 0;
+
+  ${mediaMin.xxl`
+    top: -${rem(48)};
+    left: -${rem(48)};
+  `};
 `;
 
 const StyledH2 = styled.h2`
@@ -63,18 +76,8 @@ const ContactCard = () => {
         </StyledIcon>
         <StyledH2>Have a project in mind? Let’s talk!</StyledH2>
         <Copy>
-          Feel free to send me an email for any work related inquiery where my
-          services would help. You can also{" "}
-          <DefaultLink to={"/about-me"}>learn more about me</DefaultLink>, see
-          the{" "}
-          <DefaultLink to={"/services"}>
-            services I am currently offering
-          </DefaultLink>{" "}
-          or{" "}
-          <DefaultLink to={""}>
-            read some of the case studies I made
-          </DefaultLink>
-          .
+          If you have a project in mind where my services would help, contact me
+          at <a href={theme.mailToLink}>hello@danilucaci.com</a>.
         </Copy>
         <StyledMailToButton>
           <a href={theme.mailToLink}>Contact Me</a>

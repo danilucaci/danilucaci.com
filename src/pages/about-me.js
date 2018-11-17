@@ -13,9 +13,7 @@ import SiteFooter from "../components/SiteFooter/SiteFooter";
 import config from "../../data/SiteConfig";
 import SocialNav from "../components/SocialNav/SocialNav";
 import ContactCard from "../components/ContactCard/ContactCard";
-import { NameHeader } from "../components/Headings/Headings";
 import { Copy } from "../components/Copy/Copy";
-import { ExternalLink } from "../components/Link/Link";
 
 const AboutMeWrapper = styled.div`
   max-width: ${theme.contain.content};
@@ -80,12 +78,6 @@ const AboutImageWrapper = styled.div`
 const SocialHeader = styled.h4`
   letter-spacing: ${theme.letterSpacing.socialHeader};
   margin-bottom: ${rem(8)};
-`;
-
-const StyledNameHeader = styled(NameHeader)`
-  color: ${theme.colors.main600};
-  text-transform: uppercase;
-  letter-spacing: ${theme.letterSpacing.nameHeader};
 `;
 
 const StyledH1 = styled.h1`
@@ -202,18 +194,18 @@ class AboutPage extends Component {
               </StyledCopy>
               <StyledCopy>
                 If you’d like to see the source code for yourself,{" "}
-                <ExternalLink href="https://github.com/danilucaci/danilucaci.com">
+                <a href="https://github.com/danilucaci/danilucaci.com">
                   the repository is publicly available
-                </ExternalLink>{" "}
+                </a>{" "}
                 and if you have any questions regarding any of the
                 functionality, feel free to{" "}
-                <ExternalLink
+                <a
                   href="https://twitter.com/messages/compose?recipient_id=734468984658071554&ref_src=twsrc%5Etfw"
                   data-screen-name="@danilucaci"
                   data-show-count="false"
                 >
                   send me a tweet
-                </ExternalLink>
+                </a>
                 .
               </StyledCopy>
             </Col2of2>

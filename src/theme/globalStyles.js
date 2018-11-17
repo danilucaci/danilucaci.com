@@ -115,8 +115,8 @@ export const theme = {
   mainMargins: {
     top: {
       s: "1em",
-      m: "4.5em",
-      xl: "4.5em",
+      m: "1.5em",
+      xl: "2em",
     },
     bottom: {
       s: "2rem",
@@ -132,6 +132,7 @@ export const theme = {
   },
   logoWidth: "6em",
   logoHeight: "3em",
+  navBarHeight: "3.5em",
   showScrollBars: `/* Show the scrollbar and scroll */
                   /* On webkit */
                   &::-webkit-scrollbar {

@@ -10,7 +10,7 @@ const StyledFooter = styled.footer`
   display: block;
   text-align: center;
   background-color: ${(props) =>
-    props.gray ? theme.colors.gray200 : theme.colors.gray100};
+    props.gray ? theme.colors.pageBackground : theme.colors.gray100};
   width: 100%;
   padding: ${rem(56)} ${rem(16)};
 `;
@@ -23,9 +23,7 @@ const StyledCopy = styled(Copy)`
 const SiteFooter = (props) => {
   return (
     <StyledFooter gray={props.gray} role="contentinfo">
-      <StyledCopyright small>
-        &copy;2018 Copyright Dani Lucaci. <br /> All rights reserved.
-      </StyledCopyright>
+      <StyledCopyright small>&copy; Dani Lucaci.</StyledCopyright>
       <StyledCopy small>
         This site is built with Gatsby.js and hosted on Netlify.
       </StyledCopy>

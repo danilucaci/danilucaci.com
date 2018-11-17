@@ -139,6 +139,22 @@ const GlobalHTML = createGlobalStyle`
     line-height: ${theme.lineHeights.m};
   }
 
+  a {
+    color: ${theme.colors.main600};
+    text-decoration: underline;
+    
+    a,
+    &:visited,
+    &:link {
+      color: ${theme.colors.main600};
+    }
+
+    a:hover {
+      cursor: pointer;
+      background-color: ${theme.colors.main100};
+    }
+  }
+
   pre,
   code {
     font-family: ${theme.fonts.code};

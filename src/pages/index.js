@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import Layout from "../components/Layout";
 import SiteHeader from "../components/SiteHeader/SiteHeader";
@@ -10,11 +10,10 @@ import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 
 import { theme, mediaMin, rem } from "../theme/globalStyles";
-import { NameHeader } from "../components/Headings/Headings";
-import { Copy } from "../components/Copy/Copy";
-import { Icon } from "../components/Icon/Icon";
+import { BulletList, BulletListItem, Copy } from "../components/Copy/Copy";
+import ContactCard from "../components/ContactCard/ContactCard";
 
-const IndexWrapper = styled.div`
+const IndexHeader = styled.header`
   max-width: ${theme.contain.content};
   margin: 0 auto;
 
@@ -25,26 +24,22 @@ const IndexWrapper = styled.div`
     padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
   `};
-`;
 
-const StyledHeader = styled.header`
-  padding-bottom: ${rem(64)};
+  padding-bottom: ${rem(48)};
 
-  ${mediaMin.s`
-    padding-top: ${rem(32)};
-    padding-bottom: ${rem(200)};
+  ${mediaMin.xs`
+    padding-top: ${rem(24)};
+    padding-bottom: ${rem(64)};
   `};
 
   ${mediaMin.m`
-    padding-top: ${rem(64)};
-    padding-bottom: ${rem(288)};
+    padding-top: ${rem(56)};
+    padding-bottom: ${rem(144)};
   `};
-`;
 
-const StyledNameHeader = styled(NameHeader)`
-  color: ${theme.colors.main600};
-  text-transform: uppercase;
-  letter-spacing: ${theme.letterSpacing.nameHeader};
+  ${mediaMin.xl`
+    padding-top: ${rem(48)};
+  `};
 `;
 
 const StyledH1 = styled.h1`
@@ -52,99 +47,53 @@ const StyledH1 = styled.h1`
 
   ${mediaMin.m`
     max-width: ${rem(648)};
-    margin-bottom: ${rem(8)};
-  `};
-`;
-
-const ServicesH2 = styled.h2`
-  margin-bottom: ${rem(32)};
-  font-size: ${theme.fontSizes.h1s};
-  line-height: ${theme.lineHeights.h1s};
-
-  ${mediaMin.m`
-    margin-bottom: ${rem(88)};
-    font-size: ${theme.fontSizes.h2};
-    line-height: ${theme.lineHeights.h2};
-  `};
-
-  ${mediaMin.l`
-    margin-bottom: ${rem(96)};
-    font-size: ${theme.fontSizes.h1};
-    line-height: ${theme.lineHeights.h1};
+    margin-bottom: ${rem(32)};
   `};
 `;
 
 const Subhead = styled(Copy)`
   font-size: ${theme.fontSizes.subheadS};
   line-height: ${theme.lineHeights.subheadS};
+  letter-spacing: normal;
 
-  ${mediaMin.m`
+  ${mediaMin.l`
     font-size: ${theme.fontSizes.subhead};
     line-height: ${theme.lineHeights.subhead};
 
-    max-width: ${rem(648)};
+    max-width: ${rem(744)};
   `};
 `;
 
-const ServicesH3 = styled.h3`
-  font-size: ${theme.fontSizes.h2s};
-  line-height: ${theme.lineHeights.h2s};
-  margin-top: ${rem(32)};
+const ServicesH2 = styled.h2`
   margin-bottom: ${rem(16)};
+  font-size: ${theme.fontSizes.h1s};
+  line-height: ${theme.lineHeights.h1s};
 
   ${mediaMin.m`
-    font-size: ${theme.fontSizes.h3s};
-    line-height: ${theme.lineHeights.h3s};
-
-    margin-top: 0;
-    margin-bottom: ${rem(40)};
+    margin-bottom: ${rem(24)};
+    font-size: ${theme.fontSizes.h2};
+    line-height: ${theme.lineHeights.h2};
   `};
 
   ${mediaMin.l`
+    margin-bottom: ${rem(32)};
+  `};
+`;
+
+const CaseStudiesH2 = styled.h2`
+  margin-bottom: 0;
+  font-size: ${theme.fontSizes.h1s};
+  line-height: ${theme.lineHeights.h1s};
+
+  ${mediaMin.m`
     font-size: ${theme.fontSizes.h2};
     line-height: ${theme.lineHeights.h2};
-
-    margin-bottom: ${rem(40)};
   `};
 `;
 
 const ServicesH4 = styled.h4`
-  margin-bottom: ${rem(8)};
-`;
-
-const RowOne = styled.div`
-  margin-bottom: ${rem(64)};
-
   ${mediaMin.s`
-    margin-bottom: ${rem(200)};
-  `};
-
-  ${mediaMin.m`
-    margin-bottom: ${rem(280)};
-  `};
-`;
-
-const RowTwo = styled.section`
-  margin-bottom: ${rem(64)};
-
-  ${mediaMin.s`
-    margin-bottom: ${rem(200)};
-  `};
-
-  ${mediaMin.m`
-    margin-bottom: ${rem(280)};
-  `};
-`;
-
-const RowThree = styled.section`
-  margin-bottom: ${rem(64)};
-
-  ${mediaMin.s`
-    margin-bottom: ${rem(200)};
-  `};
-
-  ${mediaMin.m`
-    margin-bottom: ${rem(256)};
+    margin-bottom: ${rem(8)};
   `};
 `;
 
@@ -156,8 +105,17 @@ const ServicesItem = styled.section`
   height: 100%;
   margin-bottom: ${rem(56)};
 
-  @media screen and (min-width: ${theme.breakpoints.m}) {
+  @media screen and (min-width: ${theme.breakpoints.xs}) {
     width: calc(50% - ${theme.gutters.m});
+    margin-right: ${theme.gutters.m};
+
+    &:last-of-type() {
+      margin-right: 0;
+    }
+  }
+
+  @media screen and (min-width: ${theme.breakpoints.l}) {
+    width: calc(33% - ${theme.gutters.m});
     margin-right: ${theme.gutters.m};
 
     &:last-of-type() {
@@ -166,28 +124,35 @@ const ServicesItem = styled.section`
   }
 `;
 
-const ToolsWrapper = styled.div`
-  display: block;
+const Stack = styled.section`
+  margin-bottom: ${rem(48)};
+
+  ${mediaMin.s`
+    margin-bottom: ${rem(80)};
+  `};
+
+  ${mediaMin.m`
+    margin-bottom: ${rem(144)};
+  `};
 `;
 
-const Tools = styled.div`
-  overflow-x: scroll;
-  white-space: nowrap;
-
-  /* Hide the scrollbar and still scroll */
-  /* On webkit */
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* For Edge */
-  -ms-overflow-style: -ms-autohiding-scrollbar;
-  -ms-overflow-style: none;
+const AltStack = styled(Stack)`
+  background-color: ${theme.colors.gray100};
+  padding-top: ${rem(48)};
+  padding-bottom: ${rem(48)};
 `;
 
-const ToolsIcon = styled(Icon)`
-  display: inline-block;
-  margin-right: ${rem(4)};
+const StackContents = styled.div`
+  max-width: ${theme.contain.content};
+  margin: 0 auto;
+
+  padding-left: ${theme.gutters.s};
+  padding-right: ${theme.gutters.s};
+
+  ${mediaMin.s`
+    padding-left: ${theme.gutters.m};
+    padding-right: ${theme.gutters.m};
+  `};
 `;
 
 class Index extends Component {
@@ -201,197 +166,63 @@ class Index extends Component {
 
         <SiteHeader />
         <Main role="main">
-          <IndexWrapper>
-            <Helmet title={config.siteTitle} />
-            <SEO />
-            <StyledHeader>
-              <StyledNameHeader>Hi! I’m Dani.</StyledNameHeader>
-              <StyledH1>UX/UI Designer and Front–End Developer.</StyledH1>
-              <Subhead>
-                I prototype, design and develop interfaces that have a strong
-                focus on accesibility, performance and user interaction. I use
-                the latest front-end techniques and design methods to create
-                scalable and easy to use experiences.
-              </Subhead>
-            </StyledHeader>
-            <RowOne>
-              <ServicesH2>What I Do</ServicesH2>
-              <ServicesH3>UX and UI Design</ServicesH3>
+          <Helmet title={config.siteTitle} />
+          <SEO />
+          <IndexHeader>
+            <StyledH1>Hi! I’m Dani.</StyledH1>
+            <Subhead>
+              I’m a UX/UI Designer and Front-End Developer based in Barcelona. I
+              help teams prototype, design and develop digital products using
+              the latest front-end techniques and design patterns to create
+              scalable, user focused experiences.
+            </Subhead>
+          </IndexHeader>
+          <AltStack>
+            <StackContents>
+              <ServicesH2>My services</ServicesH2>
               <ServicesItem>
-                <ServicesH4>Wireframing</ServicesH4>
-                <Copy>
-                  I focus on creating scalable, easy to maintain and responsive
-                  front-end architectures using SASS, HTML5 and presentational
-                  Javascript.
-                </Copy>
+                <ServicesH4>UX Design</ServicesH4>
+                <BulletList>
+                  <BulletListItem>Competitor Research</BulletListItem>
+                  <BulletListItem>Wireframing</BulletListItem>
+                  <BulletListItem>Lo–Fi Prototypes</BulletListItem>
+                  <BulletListItem>Hi–Fi Prototypes</BulletListItem>
+                </BulletList>
               </ServicesItem>
               <ServicesItem>
-                <ServicesH4>Prototyping</ServicesH4>
-                <Copy>
-                  I focus on creating scalable, easy to maintain and responsive
-                  front-end architectures using SASS, HTML5 and presentational
-                  Javascript.
-                </Copy>
+                <ServicesH4>UI Design</ServicesH4>
+                <BulletList>
+                  <BulletListItem>Competitor Research</BulletListItem>
+                  <BulletListItem>Wireframing</BulletListItem>
+                  <BulletListItem>Lo–Fi Prototypes</BulletListItem>
+                  <BulletListItem>Hi–Fi Prototypes</BulletListItem>
+                </BulletList>
               </ServicesItem>
               <ServicesItem>
-                <ServicesH4>Accesibility</ServicesH4>
-                <Copy>
-                  I focus on creating scalable, easy to maintain and responsive
-                  front-end architectures using SASS, HTML5 and presentational
-                  Javascript.
-                </Copy>
+                <ServicesH4>Front&ndash;End Development</ServicesH4>
+                <BulletList>
+                  <BulletListItem>Competitor Research</BulletListItem>
+                  <BulletListItem>Wireframing</BulletListItem>
+                  <BulletListItem>Lo–Fi Prototypes</BulletListItem>
+                  <BulletListItem>Hi–Fi Prototypes</BulletListItem>
+                </BulletList>
               </ServicesItem>
-              <ServicesItem>
-                <ServicesH4>Design Systems</ServicesH4>
-                <Copy>
-                  I focus on creating scalable, easy to maintain and responsive
-                  front-end architectures using SASS, HTML5 and presentational
-                  Javascript.
-                </Copy>
-              </ServicesItem>
-              <ToolsWrapper>
-                <ServicesH4>My Toolkit</ServicesH4>
-                <Tools>
-                  <ToolsIcon size="48">
-                    <use xlinkHref="#github" />
-                  </ToolsIcon>
-                  <ToolsIcon size="48">
-                    <use xlinkHref="#github" />
-                  </ToolsIcon>
-                  <ToolsIcon size="48">
-                    <use xlinkHref="#github" />
-                  </ToolsIcon>
-                  <ToolsIcon size="48">
-                    <use xlinkHref="#github" />
-                  </ToolsIcon>
-                  <ToolsIcon size="48">
-                    <use xlinkHref="#github" />
-                  </ToolsIcon>
-                  <ToolsIcon size="48">
-                    <use xlinkHref="#github" />
-                  </ToolsIcon>
-                </Tools>
-              </ToolsWrapper>
-            </RowOne>
-            <RowTwo>
-              <ServicesH3>Front–End Development</ServicesH3>
-              <ServicesItem>
-                <ServicesH4>Responsive Design</ServicesH4>
-                <Copy>
-                  I focus on creating scalable, easy to maintain and responsive
-                  front-end architectures using SASS, HTML5 and presentational
-                  Javascript.
-                </Copy>
-              </ServicesItem>
-              <ServicesItem>
-                <ServicesH4>Gatsby.js and React</ServicesH4>
-                <Copy>
-                  I focus on creating scalable, easy to maintain and responsive
-                  front-end architectures using SASS, HTML5 and presentational
-                  Javascript.
-                </Copy>
-              </ServicesItem>
-              <ServicesItem>
-                <ServicesH4>Gatsby.js and React</ServicesH4>
-                <Copy>
-                  I focus on creating scalable, easy to maintain and responsive
-                  front-end architectures using SASS, HTML5 and presentational
-                  Javascript.
-                </Copy>
-              </ServicesItem>
-              <ServicesItem>
-                <ServicesH4>Gatsby.js and React</ServicesH4>
-                <Copy>
-                  I focus on creating scalable, easy to maintain and responsive
-                  front-end architectures using SASS, HTML5 and presentational
-                  Javascript.
-                </Copy>
-              </ServicesItem>
-              <ToolsWrapper>
-                <ServicesH4>My Toolkit</ServicesH4>
-                <Tools>
-                  <ToolsIcon size="48">
-                    <use xlinkHref="#github" />
-                  </ToolsIcon>
-                  <ToolsIcon size="48">
-                    <use xlinkHref="#github" />
-                  </ToolsIcon>
-                  <ToolsIcon size="48">
-                    <use xlinkHref="#github" />
-                  </ToolsIcon>
-                  <ToolsIcon size="48">
-                    <use xlinkHref="#github" />
-                  </ToolsIcon>
-                  <ToolsIcon size="48">
-                    <use xlinkHref="#github" />
-                  </ToolsIcon>
-                  <ToolsIcon size="48">
-                    <use xlinkHref="#github" />
-                  </ToolsIcon>
-                </Tools>
-              </ToolsWrapper>
-            </RowTwo>
-            <RowThree>
-              <ServicesH2>Front–End Development</ServicesH2>
-              <ServicesItem>
-                <ServicesH4>Responsive Design</ServicesH4>
-                <Copy>
-                  I focus on creating scalable, easy to maintain and responsive
-                  front-end architectures using SASS, HTML5 and presentational
-                  Javascript.
-                </Copy>
-              </ServicesItem>
-              <ServicesItem>
-                <ServicesH4>Gatsby.js and React</ServicesH4>
-                <Copy>
-                  I focus on creating scalable, easy to maintain and responsive
-                  front-end architectures using SASS, HTML5 and presentational
-                  Javascript.
-                </Copy>
-              </ServicesItem>
-              <ServicesItem>
-                <ServicesH4>Gatsby.js and React</ServicesH4>
-                <Copy>
-                  I focus on creating scalable, easy to maintain and responsive
-                  front-end architectures using SASS, HTML5 and presentational
-                  Javascript.
-                </Copy>
-              </ServicesItem>
-              <ServicesItem>
-                <ServicesH4>Gatsby.js and React</ServicesH4>
-                <Copy>
-                  I focus on creating scalable, easy to maintain and responsive
-                  front-end architectures using SASS, HTML5 and presentational
-                  Javascript.
-                </Copy>
-              </ServicesItem>
-              <ToolsWrapper>
-                <ServicesH4>My Toolkit</ServicesH4>
-                <Tools>
-                  <ToolsIcon size="48">
-                    <use xlinkHref="#github" />
-                  </ToolsIcon>
-                  <ToolsIcon size="48">
-                    <use xlinkHref="#github" />
-                  </ToolsIcon>
-                  <ToolsIcon size="48">
-                    <use xlinkHref="#github" />
-                  </ToolsIcon>
-                  <ToolsIcon size="48">
-                    <use xlinkHref="#github" />
-                  </ToolsIcon>
-                  <ToolsIcon size="48">
-                    <use xlinkHref="#github" />
-                  </ToolsIcon>
-                  <ToolsIcon size="48">
-                    <use xlinkHref="#github" />
-                  </ToolsIcon>
-                </Tools>
-              </ToolsWrapper>
-            </RowThree>
-          </IndexWrapper>
+            </StackContents>
+          </AltStack>
+          <Stack>
+            <StackContents>
+              <CaseStudiesH2>Case Studies</CaseStudiesH2>
+              <Copy>
+                Case studies showcasing my discovery, research, prototyping and
+                designing iterative process.
+              </Copy>
+            </StackContents>
+          </Stack>
         </Main>
-        <SiteFooter />
+        <Stack>
+          <ContactCard />
+        </Stack>
+        <SiteFooter gray />
       </Layout>
     );
   }
