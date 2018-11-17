@@ -7,29 +7,15 @@ import SiteNav from "../SiteNav/SiteNav";
 
 const StyledSiteHeader = styled.header`
   background-color: ${theme.colors.gray100};
-  ${theme.shadow.header};
+  ${theme.shadow.navbar};
   width: 100%;
   display: block;
-  height: ${rem(64)};
-  padding: ${rem(8)} ${rem(16)};
-
-  ${mediaMin.s`
-    width: 100%;
-    height: ${rem(56)};
-    padding-top: 0;
-    padding-right: ${rem(8)};
-    padding-left: ${rem(24)};
-    padding-bottom: 0;
-  `};
 
   ${mediaMin.m`
+    background-color: ${theme.colors.gray100};
     position: fixed;
     top: 0;
-    background-color: ${theme.colors.gray100};
-    height: ${rem(48)};
-    padding: 0;
     z-index: 10;
-    will-change: opacity;
   `};
 `;
 

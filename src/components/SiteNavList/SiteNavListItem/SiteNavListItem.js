@@ -9,10 +9,10 @@ const StyledSiteNavListItem = styled.li`
   list-style-type: none;
   text-align: center;
   width: 100%;
-  margin: ${rem(24)} 0;
   transition-delay: 0.4s;
   transition: max-height, transform ease-out 0.2s;
   will-change: max-height;
+  position: relative;
 
   ${(props) =>
     props.showNav
@@ -27,12 +27,11 @@ const StyledSiteNavListItem = styled.li`
           transform: translateY(-40%);
         `};
 
-  &:last-of-type {
-    margin: 0;
-  }
+  ${mediaMax.xs`
+    margin: ${rem(24)} 0;
+  `};
 
   ${mediaMin.s`
-    margin: 0 ${rem(2)};
     display: inline-block;
     width: auto;
     max-height: 100em;
@@ -41,59 +40,51 @@ const StyledSiteNavListItem = styled.li`
     font-size: ${theme.fontSizes.m};
     line-height: ${theme.fontSizes.m};
   `};
-`;
 
-const StyledSiteNavLink = styled(Link)`
-  color: ${theme.colors.dark900};
-  display: block;
-
-  .fonts-loaded & {
-    font-family: ${theme.fonts.header};
-  }
-
-  font-weight: 700;
-  font-size: ${rem(24)};
-  line-height: ${rem(32)};
-  text-decoration: none;
-  width: 100%;
-  padding: ${rem(12)} ${rem(16)};
-
-  ${mediaMin.m`
-    padding: ${rem(24)} ${rem(16)};
-  `};
-
-  &:visited,
-  &:link {
+  & > a {
     color: ${theme.colors.dark900};
-  }
+    display: block;
 
-  &:hover {
-    color: ${theme.colors.main600};
-    cursor: pointer;
-  }
+    .fonts-loaded & {
+      font-family: ${theme.fonts.header};
+    }
 
-  ${mediaMin.s`
+    font-weight: 700;
+    font-size: ${rem(24)};
+    line-height: ${rem(32)};
+    text-decoration: none;
+    width: 100%;
+    padding: ${rem(16)} ${rem(16)};
+
+    &:visited,
+    &:link {
+      color: ${theme.colors.dark900};
+    }
+
+    &:hover {
+      color: ${theme.colors.main600};
+      cursor: pointer;
+    }
+
+    ${mediaMin.s`
     background-color: transparent;
     font-weight: 700;
     font-size: ${theme.fontSizes.s};
     line-height: ${theme.lineHeights.s};
-    padding: ${rem(12)} ${rem(16)} ${rem(8)};
-    margin: ${rem(2)};
   `};
 
-  &.current-nav-item {
-    background-color: ${theme.colors.main600};
+    &.current-nav-item {
+      background-color: ${theme.colors.main600};
 
-    &:hover {
+      &:hover {
+        color: ${theme.colors.gray100};
+      }
+
       color: ${theme.colors.gray100};
-    }
 
-    color: ${theme.colors.gray100};
-
-    ${mediaMin.s`
+      ${mediaMin.s`
       background-color: transparent;
       color: ${theme.colors.dark900};
-      position: relative;
       
       &:hover {
         color: ${theme.colors.main600};
@@ -105,19 +96,25 @@ const StyledSiteNavLink = styled(Link)`
         background-color: ${theme.colors.main600};
         width: 100%;
         position: absolute;
-        bottom: -6px;
+        bottom: -1px;
         left: 0;
         right: 0;
         height: ${rem(4)};
         z-index: 10;
-
-        ${mediaMin.m`
-          bottom: -2px;
-        `};
       };
     `};
+    }
   }
 `;
+
+/**
+ * https://reach.tech/router/api/Link
+ * this link will be active when itself or deeper routes
+ * are current
+ */
+const isPartiallyActive = ({ isPartiallyCurrent }) => {
+  return isPartiallyCurrent ? { className: "current-nav-item" } : null;
+};
 
 const SiteNavListItem = (props) => {
   return (
@@ -126,13 +123,9 @@ const SiteNavListItem = (props) => {
       tabIndex="-1"
       showNav={props.showNav}
     >
-      <StyledSiteNavLink
-        to={props.to}
-        activeClassName="current-nav-item"
-        aria-current="page"
-      >
+      <Link to={props.to} getProps={isPartiallyActive} aria-current="page">
         {props.label}
-      </StyledSiteNavLink>
+      </Link>
     </StyledSiteNavListItem>
   );
 };

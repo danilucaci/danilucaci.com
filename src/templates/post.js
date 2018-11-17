@@ -101,7 +101,7 @@ const Wrapper = styled.div`
         margin-top: -${rem(48)}; /* negative fixed header height */
 
         ${mediaMin.s`
-          height: ${rem(56)}; /* fixed header height*/
+          height: ${rem(56)}; /* fixed header height */
           margin-top: -${rem(56)}; /* negative fixed header height */
         `};
       }
@@ -141,56 +141,29 @@ const Wrapper = styled.div`
 
 const ReadingModePageHeader = styled.header`
   background-color: ${theme.colors.gray100};
-  ${theme.shadow.header};
+  ${theme.shadow.navbar};
   width: 100%;
   display: block;
-  height: ${rem(64)};
-  padding: ${rem(8)} ${rem(16)};
-
-  ${mediaMin.s`
-    width: 100%;
-    height: ${rem(56)};
-    padding-top: 0;
-    padding-right: ${rem(8)};
-    padding-left: ${rem(24)};
-    padding-bottom: 0;
-  `};
 
   ${mediaMin.m`
+    background-color: ${theme.colors.gray100};
     position: fixed;
     top: 0;
-    background-color: ${theme.colors.gray100};
-    height: ${rem(48)};
-    padding: 0;
     z-index: 10;
-    will-change: opacity;
   `};
-`;
-
-const StyledLogoLink = styled(DefaultLink)`
-  display: inline-block;
-  width: ${theme.logoWidth};
-  height: ${theme.logoHeight};
 `;
 
 const StyledPostHeader = styled.header``;
 
 const StyledNav = styled.nav`
   display: block;
-  max-width: ${theme.contain.page};
+  max-width: ${theme.contain.content};
   margin-left: auto;
   margin-right: auto;
+  padding-right: ${theme.gutters.s};
+  padding-left: ${theme.gutters.s};
 
   ${mediaMin.s`
-    height: ${rem(56)};
-    padding-top: ${rem(4)};
-    padding-right: ${theme.gutters.m};
-    padding-left: ${theme.gutters.m};
-  `};
-
-  ${mediaMin.m`
-    padding-top: 0;
-    height: ${rem(48)};
     padding-right: ${theme.gutters.m};
     padding-left: ${theme.gutters.m};
   `};
@@ -440,9 +413,7 @@ class Post extends Component {
 
         <ReadingModePageHeader role="banner" className="js-topReadingNav">
           <StyledNav aria-label="Page Menu" role="navigation">
-            <StyledLogoLink to="/">
-              <Logo />
-            </StyledLogoLink>
+            <Logo />
             <ScrollConsumer>
               {(context) => {
                 const showReadingNav = context.showReadingNav;

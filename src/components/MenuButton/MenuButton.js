@@ -23,8 +23,7 @@ const StyledMenuButton = styled.button`
 
   margin-left: auto;
   margin-right: 0;
-  margin-top: ${rem(4)};
-  margin-bottom: ${rem(4)};
+  margin-top: ${rem(8)};
 
   height: ${rem(40)};
   padding: ${rem(6)} ${rem(12)} ${rem(10)} ${rem(12)};

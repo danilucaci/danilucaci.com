@@ -32,13 +32,13 @@ const StyledSiteNavList = styled.ul`
     right: 0;
     height: 100%;
     height: 100vh;
-    padding: 0 ${rem(16)};
+    padding-left: ${rem(16)};
+    padding-right: ${rem(16)};
   `};
 
   ${mediaMin.s`
     background-color: transparent;
     float: right;
-    padding-right: ${rem(2)};
     pointer-events: auto;
     opacity: 1;
     z-index: 10;
