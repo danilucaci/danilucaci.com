@@ -129,6 +129,9 @@ exports.createPages = ({ graphql, actions }) => {
                     slug
                   }
                   timeToRead
+                  headings(depth: h2) {
+                    value
+                  }
                   frontmatter {
                     title
                     snippet
@@ -148,6 +151,9 @@ exports.createPages = ({ graphql, actions }) => {
                       slug
                     }
                     timeToRead
+                    headings(depth: h2) {
+                      value
+                    }
                     frontmatter {
                       title
                       snippet
@@ -173,6 +179,9 @@ exports.createPages = ({ graphql, actions }) => {
                   fields {
                     slug
                   }
+                  headings(depth: h2) {
+                    value
+                  }
                   frontmatter {
                     title
                     description
@@ -192,6 +201,9 @@ exports.createPages = ({ graphql, actions }) => {
                       slug
                     }
                     timeToRead
+                    headings(depth: h2) {
+                      value
+                    }
                     frontmatter {
                       title
                       description

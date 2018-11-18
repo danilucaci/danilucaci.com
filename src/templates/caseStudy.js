@@ -506,6 +506,9 @@ export const pageQuery = graphql`
   query WorkEntryBySlug($slug: String) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       timeToRead
+      headings(depth: h2) {
+        value
+      }
       frontmatter {
         title
         date(formatString: "DD MMMM YYYY")

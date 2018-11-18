@@ -404,6 +404,8 @@ class Post extends Component {
     const postInfo = postNode.frontmatter;
     let introCopy = postInfo.intro.split("|");
 
+    console.log("headings", postNode.headings);
+
     return (
       <Layout location={this.props.location}>
         <Helmet>
@@ -507,6 +509,9 @@ export const pageQuery = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       timeToRead
+      headings(depth: h2) {
+        value
+      }
       frontmatter {
         title
         date(formatString: "DD MMMM YYYY")
