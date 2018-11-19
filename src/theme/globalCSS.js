@@ -20,7 +20,9 @@ const GlobalHTML = createGlobalStyle`
     text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
     text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
-    scroll-behavior: smooth;
+    
+    ${"" /* annoying */}
+    ${"" /* scroll-behavior: smooth; */}
   }
 
   svg {
@@ -48,7 +50,7 @@ const GlobalHTML = createGlobalStyle`
     color: ${theme.colors.dark900};
     font-weight: 700;
     font-style: normal;
-    letter-spacing: ${theme.letterSpacing.h1};
+    ${"" /* letter-spacing: ${theme.letterSpacing.h1}; */}
 
     .fonts-loaded & {
       font-family: ${theme.fonts.header};
@@ -71,7 +73,7 @@ const GlobalHTML = createGlobalStyle`
     color: ${theme.colors.dark900};
     font-weight: 700;
     font-style: normal;
-    letter-spacing: ${theme.letterSpacing.h2};
+    ${"" /* letter-spacing: ${theme.letterSpacing.h2}; */}
 
     .fonts-loaded & {
       font-family: ${theme.fonts.header};
@@ -94,7 +96,7 @@ const GlobalHTML = createGlobalStyle`
     color: ${theme.colors.dark900};
     font-weight: 700;
     font-style: normal;
-    letter-spacing: ${theme.letterSpacing.h3};
+    ${"" /* letter-spacing: ${theme.letterSpacing.h3}; */}
 
     .fonts-loaded & {
       font-family: ${theme.fonts.header};
@@ -119,7 +121,7 @@ const GlobalHTML = createGlobalStyle`
     font-style: normal;
     font-size: ${theme.fontSizes.h4};
     line-height: ${theme.lineHeights.h4};
-    letter-spacing: ${theme.letterSpacing.h4};
+    ${"" /* letter-spacing: ${theme.letterSpacing.h4}; */}
 
     .fonts-loaded & {
       font-family: ${theme.fonts.header};
@@ -143,6 +145,8 @@ const GlobalHTML = createGlobalStyle`
   a {
     color: ${theme.colors.main600};
     text-decoration: underline;
+    font-size: ${theme.fontSizes.m};
+    line-height: ${theme.lineHeights.m};
     
     a,
     &:visited,
@@ -152,7 +156,7 @@ const GlobalHTML = createGlobalStyle`
 
     a:hover {
       cursor: pointer;
-      background-color: ${theme.colors.main100};
+      background-color: ${theme.colors.gray300};
     }
   }
 

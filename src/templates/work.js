@@ -28,9 +28,6 @@ const Wrapper = styled.div`
 `;
 
 const WorkHeader = styled.header`
-  max-width: ${theme.contain.Category};
-  margin-left: auto;
-  margin-right: auto;
   margin-bottom: ${rem(56)};
   color: ${theme.colors.dark900};
 
@@ -51,7 +48,7 @@ class WorkPage extends Component {
       nextPath,
       edgesWork,
     } = this.props.pageContext;
-    console.log(this.props.pageContext);
+
     return (
       <Layout location={this.props.location}>
         <SiteHeader />

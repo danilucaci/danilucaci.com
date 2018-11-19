@@ -5,11 +5,7 @@ import { theme, mediaMin, rem } from "../../theme/globalStyles";
 
 import CaseStudyCard from "../CaseStudyCard/CaseStudyCard";
 
-const Wrapper = styled.section`
-  max-width: ${theme.contain.blog};
-  margin-left: auto;
-  margin-right: auto;
-`;
+const Wrapper = styled.section``;
 
 class CaseStudyListing extends Component {
   getCaseStudyList() {

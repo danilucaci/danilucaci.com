@@ -15,10 +15,11 @@ import config from "../../data/SiteConfig";
 import PostListing from "../components/PostListing/PostListing";
 import Tags from "../components/Tags/Tags";
 import Pagination from "../components/Pagination/Pagination";
-import { Icon } from "../components/Icon/Icon";
+// import { Icon } from "../components/Icon/Icon";
+import { SectionHeader } from "../components/Headings/Headings";
 
 const TagWrapper = styled.div`
-  max-width: ${theme.contain.content};
+  max-width: ${theme.contain.blog};
   margin: 0 auto;
 
   padding-left: ${theme.gutters.s};
@@ -30,27 +31,19 @@ const TagWrapper = styled.div`
   `};
 `;
 
-const StyledH1 = styled.h1`
-  margin-bottom: ${rem(16)};
+const StyledSectionHeader = styled(SectionHeader)``;
 
-  ${mediaMin.xs`
-    font-size: ${theme.fontSizes.h2};
-    line-height: ${theme.lineHeights.h2};
-  `};
-`;
-
-const Subhead = styled.h4`
+const PostsFor = styled.span`
   color: ${theme.colors.dark700};
   font-size: ${theme.fontSizes.sectionHeader};
   line-height: ${theme.lineHeights.sectionHeader};
   letter-spacing: ${theme.letterSpacing.sectionHeader};
   text-transform: uppercase;
+
+  display: block;
 `;
 
 const TagHeader = styled.header`
-  max-width: ${theme.contain.blog};
-  margin-left: auto;
-  margin-right: auto;
   margin-bottom: ${rem(56)};
   color: ${theme.colors.dark900};
 
@@ -63,7 +56,7 @@ const TagHeader = styled.header`
   `};
 `;
 
-const TagHeading = styled.div`
+const TagTitleWrapper = styled.div`
   display: inline-block;
   vertical-align: top;
   width: 100%;
@@ -74,7 +67,32 @@ const TagHeading = styled.div`
   `};
 `;
 
-const TagsWrapper = styled.div`
+const TagTitle = styled.span`
+  color: ${theme.colors.dark900};
+  display: block;
+
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: ${theme.letterSpacing.h2};
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.header};
+  }
+
+  font-size: ${theme.fontSizes.h2s};
+
+  ${mediaMin.xs`
+    font-size: ${theme.fontSizes.h2};
+  `}
+
+  line-height: ${theme.lineHeights.h2s};
+
+  ${mediaMin.xs`
+    line-height: ${theme.lineHeights.h2};
+  `}
+`;
+
+const OtherTagsWrapper = styled.div`
   ${mediaMin.l`
     display: inline-block;
     vertical-align: top;
@@ -83,97 +101,90 @@ const TagsWrapper = styled.div`
   `};
 `;
 
-const CollapsibleContainer = styled.div`
-  background-color: ${theme.colors.gray100};
-  ${theme.shadow.default};
+// const CollapsibleContainer = styled.div`
+//   background-color: ${theme.colors.gray100};
+//   ${theme.shadow.default};
 
-  padding: ${rem(14)} ${rem(16)};
-  position: relative;
+//   padding: ${rem(14)} ${rem(16)};
+//   position: relative;
 
-  &:focus {
-    outline: 1px solid red;
-  }
+//   &:focus {
+//     outline: 1px solid red;
+//   }
 
-  width: 100%;
-  height: 100%;
+//   width: 100%;
+//   height: 100%;
 
-  ${mediaMin.s`
-    padding: 0;
-    background-color: transparent;
-    box-shadow: none;
-  `};
-`;
+//   ${mediaMin.s`
+//     padding: 0;
+//     background-color: transparent;
+//     box-shadow: none;
+//   `};
+// `;
 
-const CollapsibleContent = styled.div`
-  opacity: 0;
-  transform: scaleY(0);
-  transition: all 0.1s ease-out;
-  will-change: transform, opacity, position;
-  transform-origin: 0% 0%;
-  overflow: hidden;
-  position: absolute;
-  padding-top: ${rem(16)};
+// const CollapsibleContent = styled.div`
+//   opacity: 0;
+//   transform: scaleY(0);
+//   transition: all 0.1s ease-out;
+//   will-change: transform, opacity, position;
+//   transform-origin: 0% 0%;
+//   overflow: hidden;
+//   position: absolute;
+//   padding-top: ${rem(16)};
 
-  ${(props) =>
-    props.showContent &&
-    css`
-      opacity: 1;
-      transform: none;
-      position: static;
-      overflow: visible;
-    `};
+//   ${(props) =>
+//     props.showContent &&
+//     css`
+//       opacity: 1;
+//       transform: none;
+//       position: static;
+//       overflow: visible;
+//     `};
 
-  ${mediaMin.s`
-    padding-top: ${rem(8)};
-    opacity: 1;
-    overflow: visible;
-    transform: none;
-    position: static;
-  `};
-`;
+//   ${mediaMin.s`
+//     padding-top: ${rem(8)};
+//     opacity: 1;
+//     overflow: visible;
+//     transform: none;
+//     position: static;
+//   `};
+// `;
 
-const ExploreTagsContent = styled(CollapsibleContent)`
-  padding-top: 0;
+// const ExploreTagsContent = styled(CollapsibleContent)`
+//   padding-top: 0;
 
-  ${mediaMin.s`
-    padding-top: 0;
-  `};
-`;
+//   ${mediaMin.s`
+//     padding-top: 0;
+//   `};
+// `;
 
-const StyledTitle = styled.h3`
-  ${mediaMax.s`
-    font-size: ${theme.fontSizes.m};
-    line-height: ${theme.lineHeights.m};
-  `};
-`;
+// const StyledIcon = styled(Icon)`
+//   float: right;
+//   transition: transform 0.2s ease;
+//   transform: rotate(0deg);
 
-const StyledIcon = styled(Icon)`
-  float: right;
-  transition: transform 0.2s ease;
-  transform: rotate(0deg);
+//   ${(props) =>
+//     props.animate &&
+//     css`
+//       transform-origin: 50% 50%;
+//       transform: rotate(180deg);
+//     `};
 
-  ${(props) =>
-    props.animate &&
-    css`
-      transform-origin: 50% 50%;
-      transform: rotate(180deg);
-    `};
-
-  ${mediaMin.s`
-    display: none;
-  `};
-`;
+//   ${mediaMin.s`
+//     display: none;
+//   `};
+// `;
 
 class TagPage extends Component {
   state = {
-    exploreTagsOpen: false,
+    // exploreTagsOpen: false,
   };
 
-  openExploreTags = () => {
-    this.setState((prevState) => ({
-      exploreTagsOpen: !prevState.exploreTagsOpen,
-    }));
-  };
+  // openExploreTags = () => {
+  //   this.setState((prevState) => ({
+  //     exploreTagsOpen: !prevState.exploreTagsOpen,
+  //   }));
+  // };
 
   render() {
     const {
@@ -201,24 +212,26 @@ class TagPage extends Component {
         <Main role="main">
           <TagWrapper>
             <TagHeader>
-              <TagHeading>
-                <Subhead>Blog posts found for:</Subhead>
-                <StyledH1>#{tag}</StyledH1>
-              </TagHeading>
-              <TagsWrapper>
-                <CollapsibleContainer
+              <TagTitleWrapper>
+                <h1>
+                  <PostsFor>Blog posts found for:</PostsFor>
+                  <TagTitle>#{tag}</TagTitle>
+                </h1>
+              </TagTitleWrapper>
+              <OtherTagsWrapper>
+                {/* <CollapsibleContainer
                   onClick={this.openExploreTags}
                   contentVisible={this.state.exploreTagsOpen}
                 >
                   <StyledIcon animate={this.state.exploreTagsOpen}>
                     <use xlinkHref="#down" />
-                  </StyledIcon>
-                  <StyledTitle>Other blog tags</StyledTitle>
-                  <ExploreTagsContent showContent={this.state.exploreTagsOpen}>
-                    <Tags tagsInPost={allTags} />
-                  </ExploreTagsContent>
-                </CollapsibleContainer>
-              </TagsWrapper>
+                  </StyledIcon> */}
+                <StyledSectionHeader>Other blog tags</StyledSectionHeader>
+                {/* <ExploreTagsContent showContent={this.state.exploreTagsOpen}> */}
+                <Tags tagsInPost={allTags} />
+                {/* </ExploreTagsContent> */}
+                {/* </CollapsibleContainer> */}
+              </OtherTagsWrapper>
             </TagHeader>
             <PostListing edges={edges} />
             {totalPagesInBlog > 1 && (
@@ -239,11 +252,6 @@ class TagPage extends Component {
 }
 
 export default TagPage;
-
-TagPage.propTypes = {
-  pageContext: PropTypes.object,
-  data: PropTypes.object,
-};
 
 export const pageQuery = graphql`
   query allTags {

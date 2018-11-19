@@ -323,10 +323,17 @@ exports.createPages = ({ graphql, actions }) => {
                 totalPagesInBlog,
                 paginationPathPrefix: `/blog`,
                 prevPath:
+                  // current index in loop minus 1
+                  // for index = 2, /page/1
+                  // only if its > 1 (not resulting in /page/0)
                   currentPage - 1 > 1
                     ? `/blog/page/${currentPage - 1}`
                     : "/blog",
                 nextPath:
+                  // dont make more pages than needed
+                  // if I have 13 posts with 5 posts per slice
+                  // I only need 3 paginated pages
+                  // /page/3 max, /page ... /page/3
                   currentPage + 1 <= totalPagesInBlog
                     ? `/blog/page/${currentPage + 1}`
                     : null,
@@ -337,22 +344,6 @@ exports.createPages = ({ graphql, actions }) => {
             });
           }
         }
-
-        /*******************************************************
-         * Posts Page Creation
-         */
-
-        edges.forEach((edge) => {
-          createPage({
-            path: edge.node.fields.slug,
-            component: postTemplate,
-            // Data passed to context is available
-            // in page queries as GraphQL variables.
-            context: {
-              slug: edge.node.fields.slug,
-            },
-          });
-        });
 
         /********************************************************
          * Tags with pagination
@@ -406,10 +397,17 @@ exports.createPages = ({ graphql, actions }) => {
                   totalPagesInBlog: Math.ceil(tag.totalCount / postsPerPage),
                   paginationPathPrefix: `/tags/${tag.fieldValue}`,
                   prevPath:
+                    // current index in loop minus 1
+                    // for index = 2, /page/1
+                    // only if its > 1 (not resulting in /page/0)
                     currentPage - 1 > 1
                       ? `/tags/${tag.fieldValue}/page/${currentPage - 1}`
                       : `/tags/${tag.fieldValue}`,
                   nextPath:
+                    // dont make more pages than needed
+                    // if I have 13 posts with 5 posts per slice
+                    // I only need 3 paginated pages
+                    // /page/3 max, /page ... /page/3
                     currentPage + 1 <= Math.ceil(tag.totalCount / postsPerPage)
                       ? `/tags/${tag.fieldValue}/page/${currentPage + 1}`
                       : null,
@@ -419,6 +417,22 @@ exports.createPages = ({ graphql, actions }) => {
               });
             }
           }
+        });
+
+        /*******************************************************
+         * Posts Page Creation
+         */
+
+        edges.forEach((edge) => {
+          createPage({
+            path: edge.node.fields.slug,
+            component: postTemplate,
+            // Data passed to context is available
+            // in page queries as GraphQL variables.
+            context: {
+              slug: edge.node.fields.slug,
+            },
+          });
         });
 
         /********************************************************
@@ -469,17 +483,24 @@ exports.createPages = ({ graphql, actions }) => {
               // Data passed to context is available
               // in page queries as GraphQL variables.
               context: {
-                edges: slicePosts(edges, postsPerPage, currentPage).map(
+                edgesWork: slicePosts(edgesWork, postsPerPage, currentPage).map(
                   ({ node }) => node
                 ),
                 currentPage,
                 totalPagesInWork,
                 paginationPathPrefix: `/work`,
                 prevPath:
+                  // current index in loop minus 1
+                  // for index = 2, /page/1
+                  // only if its > 1 (not resulting in /page/0)
                   currentPage - 1 > 1
                     ? `/work/page/${currentPage - 1}`
                     : "/work",
                 nextPath:
+                  // dont make more pages than needed
+                  // if I have 13 posts with 5 posts per slice
+                  // I only need 3 paginated pages
+                  // /page/3 max, /page ... /page/3
                   currentPage + 1 <= totalPagesInWork
                     ? `/work/page/${currentPage + 1}`
                     : null,
@@ -512,8 +533,8 @@ exports.createPages = ({ graphql, actions }) => {
 };
 
 /*******************************************************
- * Split into chunks of 5 posts per paginated page and pass them
- * into the blog template page
+ * Split into chunks of 5 posts per paginated page
+ * and pass them to the blog, tag or work template pages
  */
 
 function slicePosts(array, postsPerPage, currentPage) {

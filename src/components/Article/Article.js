@@ -8,7 +8,7 @@ import { Copy } from "../Copy/Copy";
 import Tags from "../Tags/Tags";
 import ArticleInfo from "../ArticleInfo/ArticleInfo";
 
-import { DefaultLink } from "../Link/Link";
+import { BoldLink } from "../Link/Link";
 
 const StyledArticle = styled.article`
   background-color: ${theme.colors.gray100};
@@ -33,28 +33,11 @@ const StyledArticle = styled.article`
   }
 `;
 
-const StyledLink = styled(DefaultLink)`
+const ContinueLink = styled(BoldLink)`
   display: block;
 
-  .fonts-loaded & {
-    font-family: ${theme.fonts.bodyBold};
-  }
-
-  text-decoration: underline;
-`;
-
-const ContinueLink = styled(DefaultLink)`
-  display: inline-block;
-
-  .fonts-loaded & {
-    font-family: ${theme.fonts.bodyBold};
-  }
-
-  text-decoration: underline;
   padding-top: ${rem(16)};
   padding-bottom: ${rem(16)};
-  font-size: ${theme.fontSizes.m};
-  line-height: ${theme.lineHeights.m};
 
   &:hover {
     background-color: transparent;

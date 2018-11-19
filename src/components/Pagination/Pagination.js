@@ -11,9 +11,6 @@ const PaginationWrapper = styled.nav`
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: ${theme.contain.blog};
   padding-top: ${rem(24)};
 `;
 

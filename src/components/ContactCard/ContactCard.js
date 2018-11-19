@@ -15,8 +15,8 @@ const StyledContactCard = styled.aside`
   padding-bottom: ${rem(56)};
 
   ${mediaMin.xxl`
-    padding-top: ${rem(64)};
-    padding-bottom: ${rem(64)};
+    padding-top: ${rem(112)};
+    padding-bottom: ${rem(72)};
   `};
 `;
 

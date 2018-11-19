@@ -66,6 +66,37 @@ const Subhead = styled(Copy)`
   `};
 `;
 
+const Stack = styled.section`
+  margin-bottom: ${rem(48)};
+
+  ${mediaMin.s`
+    margin-bottom: ${rem(80)};
+  `};
+
+  ${mediaMin.m`
+    margin-bottom: ${rem(144)};
+  `};
+`;
+
+const AltStack = styled(Stack)`
+  background-color: ${theme.colors.gray100};
+  padding-top: ${rem(112)};
+  padding-bottom: ${rem(72)};
+`;
+
+const StackContents = styled.div`
+  max-width: ${theme.contain.content};
+  margin: 0 auto;
+
+  padding-left: ${theme.gutters.s};
+  padding-right: ${theme.gutters.s};
+
+  ${mediaMin.s`
+    padding-left: ${theme.gutters.m};
+    padding-right: ${theme.gutters.m};
+  `};
+`;
+
 const ServicesH2 = styled.h2`
   margin-bottom: ${rem(16)};
   font-size: ${theme.fontSizes.h1s};
@@ -79,17 +110,6 @@ const ServicesH2 = styled.h2`
 
   ${mediaMin.l`
     margin-bottom: ${rem(32)};
-  `};
-`;
-
-const CaseStudiesH2 = styled.h2`
-  margin-bottom: 0;
-  font-size: ${theme.fontSizes.h1s};
-  line-height: ${theme.lineHeights.h1s};
-
-  ${mediaMin.m`
-    font-size: ${theme.fontSizes.h2};
-    line-height: ${theme.lineHeights.h2};
   `};
 `;
 
@@ -126,34 +146,23 @@ const ServicesItem = styled.section`
   }
 `;
 
-const Stack = styled.section`
-  margin-bottom: ${rem(48)};
-
-  ${mediaMin.s`
-    margin-bottom: ${rem(80)};
-  `};
+const CaseStudiesH2 = styled.h2`
+  margin-bottom: ${rem(16)};
+  font-size: ${theme.fontSizes.h2s};
+  line-height: ${theme.lineHeights.h2s};
 
   ${mediaMin.m`
-    margin-bottom: ${rem(144)};
+    margin-bottom: 0;
+    font-size: ${theme.fontSizes.h2};
+    line-height: ${theme.lineHeights.h2};
   `};
 `;
 
-const AltStack = styled(Stack)`
-  background-color: ${theme.colors.gray100};
-  padding-top: ${rem(48)};
-  padding-bottom: ${rem(48)};
-`;
+const CaseStudiesCopy = styled(Copy)`
+  margin-bottom: ${rem(24)};
 
-const StackContents = styled.div`
-  max-width: ${theme.contain.content};
-  margin: 0 auto;
-
-  padding-left: ${theme.gutters.s};
-  padding-right: ${theme.gutters.s};
-
-  ${mediaMin.s`
-    padding-left: ${theme.gutters.m};
-    padding-right: ${theme.gutters.m};
+  ${mediaMin.m`
+    margin-bottom: ${rem(32)};
   `};
 `;
 
@@ -232,10 +241,10 @@ class Index extends Component {
           <Stack>
             <StackContents>
               <CaseStudiesH2>Case Studies</CaseStudiesH2>
-              <Copy>
+              <CaseStudiesCopy>
                 Case studies showcasing my discovery, research, prototyping and
                 designing iterative process.
-              </Copy>
+              </CaseStudiesCopy>
               {caseStudyList.map((caseStudyCard) => (
                 <CaseStudyCard
                   key={caseStudyCard.title}

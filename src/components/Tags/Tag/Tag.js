@@ -1,27 +1,27 @@
 import React from "react";
 
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme, mediaMin, rem } from "../../../theme/globalStyles";
 
 import { Link } from "gatsby";
 
 const StyledTag = styled(Link)`
-  background: ${theme.colors.gray300};
-  border-radius: ${rem(4)};
-  color: ${theme.colors.dark800};
+  background-color: transparent;
+  border-radius: ${rem(2)};
+  border: 1px solid ${theme.colors.dark900};
   display: inline-block;
 
   text-decoration: none;
 
-  font-size: ${theme.fontSizes.s};
-  line-height: ${rem(20)};
+  font-size: ${theme.fontSizes.m};
+  line-height: ${theme.fontSizes.m};
 
   .fonts-loaded & {
     font-family: ${theme.fonts.bodyRegular};
   }
 
-  margin-right: ${rem(16)};
-  margin-top: ${rem(16)};
+  margin-right: ${rem(12)};
+  margin-top: ${rem(12)};
   padding: ${rem(4)} ${rem(8)};
 
   &:hover {
@@ -31,12 +31,6 @@ const StyledTag = styled(Link)`
   &:visited,
   &:link {
     color: ${theme.colors.dark800};
-  }
-
-  &:active,
-  &:focus {
-    outline: 2px dashed ${theme.colors.main600};
-    text-decoration: underline;
   }
 
   &:before {
