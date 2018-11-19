@@ -22,6 +22,7 @@ class CaseStudyListing extends Component {
         title: edge.frontmatter.title,
         date: edge.frontmatter.date,
         description: edge.frontmatter.description,
+        image: edge.frontmatter.image.childImageSharp.fluid,
       });
     });
 
@@ -41,6 +42,7 @@ class CaseStudyListing extends Component {
             title={caseStudyCard.title}
             date={caseStudyCard.date}
             description={caseStudyCard.description}
+            image={caseStudyCard.image}
           />
         ))}
       </Wrapper>

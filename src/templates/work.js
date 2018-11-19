@@ -1,12 +1,15 @@
 import React, { Component } from "react";
+import { graphql } from "gatsby";
 import Helmet from "react-helmet";
 import styled, { css } from "styled-components";
 
 import config from "../../data/SiteConfig";
 import { theme, mediaMin, rem } from "../theme/globalStyles";
 import SEO from "../components/SEO/SEO";
-
 import Layout from "../components/Layout";
+import SiteHeader from "../components/SiteHeader/SiteHeader";
+import { Main } from "../components/Main/Main";
+import SiteFooter from "../components/SiteFooter/SiteFooter";
 import CaseStudyListing from "../components/CaseStudyListing/CaseStudyListing";
 import Tags from "../components/Tags/Tags";
 import Pagination from "../components/Pagination/Pagination";
@@ -48,26 +51,30 @@ class WorkPage extends Component {
       nextPath,
       edgesWork,
     } = this.props.pageContext;
-
+    console.log(this.props.pageContext);
     return (
       <Layout location={this.props.location}>
-        <Wrapper>
-          <Helmet title={`Work || ${config.siteTitle}`} />
-          <SEO />
-          <WorkHeader>
-            <h1>Case Studies</h1>
-          </WorkHeader>
-          <CaseStudyListing edges={edgesWork} />
-          {totalPagesInWork > 1 && (
-            <Pagination
-              currentPage={currentPage}
-              totalPagesInWork={totalPagesInWork}
-              paginationPathPrefix={paginationPathPrefix}
-              prevPath={prevPath}
-              nextPath={nextPath}
-            />
-          )}
-        </Wrapper>
+        <SiteHeader />
+        <Main role="main">
+          <Wrapper>
+            <Helmet title={`Work || ${config.siteTitle}`} />
+            <SEO />
+            <WorkHeader>
+              <h1>Case Studies</h1>
+            </WorkHeader>
+            <CaseStudyListing edges={edgesWork} />
+            {totalPagesInWork > 1 && (
+              <Pagination
+                currentPage={currentPage}
+                totalPagesInWork={totalPagesInWork}
+                paginationPathPrefix={paginationPathPrefix}
+                prevPath={prevPath}
+                nextPath={nextPath}
+              />
+            )}
+          </Wrapper>
+        </Main>
+        <SiteFooter />
       </Layout>
     );
   }

@@ -1,5 +1,5 @@
 import React from "react";
-
+import Img from "gatsby-image";
 import styled from "styled-components";
 import { theme, mediaMin, rem } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
@@ -53,14 +53,14 @@ const StyledH3 = styled.h3`
 `;
 
 const CaseStudyCard = (props) => {
-  console.log(props);
   return (
     <StyledCaseStudyCard>
       <header>
         <StyledH3>{props.title}</StyledH3>
         <div>{props.date}</div>
       </header>
-      <Tags tagsInPost={props.tagsInPost} spaced />
+      <Img title={props.title} alt={props.description} fluid={props.image} />
+      <Tags tagsInPost={props.tagsInCaseStudy} spaced />
       <Copy className="copy">{props.description}</Copy>
       <ContinueLink to={props.slug}>Continue Reading →</ContinueLink>
     </StyledCaseStudyCard>

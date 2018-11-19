@@ -189,6 +189,16 @@ exports.createPages = ({ graphql, actions }) => {
                     category
                     tags
                     posted
+                    image {
+                      childImageSharp {
+                        fluid(maxWidth: 744) {
+                          src
+                          srcSet
+                          aspectRatio
+                          sizes
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -211,6 +221,16 @@ exports.createPages = ({ graphql, actions }) => {
                       category
                       tags
                       posted
+                      image {
+                        childImageSharp {
+                          fluid(maxWidth: 744) {
+                            src
+                            srcSet
+                            aspectRatio
+                            sizes
+                          }
+                        }
+                      }
                     }
                   }
                 }

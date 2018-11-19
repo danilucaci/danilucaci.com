@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
 import styled, { css } from "styled-components";
+import { graphql } from "gatsby";
 
 import Layout from "../components/Layout";
 import SiteHeader from "../components/SiteHeader/SiteHeader";
@@ -12,6 +13,7 @@ import config from "../../data/SiteConfig";
 import { theme, mediaMin, rem } from "../theme/globalStyles";
 import { BulletList, BulletListItem, Copy } from "../components/Copy/Copy";
 import ContactCard from "../components/ContactCard/ContactCard";
+import CaseStudyCard from "../components/CaseStudyCard/CaseStudyCard";
 
 const IndexHeader = styled.header`
   max-width: ${theme.contain.content};
@@ -156,7 +158,26 @@ const StackContents = styled.div`
 `;
 
 class Index extends Component {
+  getCaseStudyList() {
+    let caseStudyList = [];
+
+    this.props.data.work.edges.forEach((edge) => {
+      caseStudyList.push({
+        slug: edge.node.fields.slug,
+        tagsInCaseStudy: edge.node.frontmatter.tags,
+        title: edge.node.frontmatter.title,
+        date: edge.node.frontmatter.date,
+        description: edge.node.frontmatter.description,
+        image: edge.node.frontmatter.image.childImageSharp.fluid,
+      });
+    });
+
+    return caseStudyList;
+  }
+
   render() {
+    const caseStudyList = this.getCaseStudyList();
+
     return (
       <Layout location={this.props.location}>
         <Helmet>
@@ -215,6 +236,17 @@ class Index extends Component {
                 Case studies showcasing my discovery, research, prototyping and
                 designing iterative process.
               </Copy>
+              {caseStudyList.map((caseStudyCard) => (
+                <CaseStudyCard
+                  key={caseStudyCard.title}
+                  slug={caseStudyCard.slug}
+                  tagsInCaseStudy={caseStudyCard.tagsInCaseStudy}
+                  title={caseStudyCard.title}
+                  date={caseStudyCard.date}
+                  description={caseStudyCard.description}
+                  image={caseStudyCard.image}
+                />
+              ))}
             </StackContents>
           </Stack>
         </Main>
@@ -228,3 +260,41 @@ class Index extends Component {
 }
 
 export default Index;
+export const pageQuery = graphql`
+  {
+    work: allMarkdownRemark(
+      limit: 5
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: {
+        frontmatter: { posted: { eq: true }, category: { eq: "work" } }
+      }
+    ) {
+      totalCount
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            description
+            date(formatString: "DD MMMM YYYY")
+            category
+            tags
+            posted
+            image {
+              childImageSharp {
+                fluid(maxWidth: 744) {
+                  src
+                  srcSet
+                  aspectRatio
+                  sizes
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;

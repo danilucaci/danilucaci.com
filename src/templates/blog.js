@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
-import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import styled, { css } from "styled-components";
 
@@ -301,11 +300,6 @@ class BlogPage extends Component {
 }
 
 export default BlogPage;
-
-BlogPage.propTypes = {
-  pageContext: PropTypes.object,
-  data: PropTypes.object,
-};
 
 export const pageQuery = graphql`
   query allTagsInBlog {

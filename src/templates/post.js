@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import styled from "styled-components";
+import rehypeReact from "rehype-react";
 
 import { theme, rem, mediaMin } from "../theme/globalStyles";
 import config from "../../data/SiteConfig";
@@ -110,7 +111,7 @@ const Wrapper = styled.div`
   }
 
   p {
-    margin-bottom: ${rem(28)};
+    margin-bottom: ${rem(32)};
   }
 
   .js-codeCopy {
@@ -255,6 +256,26 @@ const DummyInput = styled.textarea`
   background-color: transparent;
   color: transparent;
 `;
+
+const H2 = styled.h2`
+  color: ${theme.colors.main600};
+  background-color: #fff;
+`;
+
+const Item = styled.div`
+  background-color: red;
+  display: block;
+  margin: 40px;
+`;
+
+const renderAst = new rehypeReact({
+  createElement: React.createElement,
+  components: {
+    "item-1": Item,
+    p: Copy,
+    h2: H2,
+  },
+}).Compiler;
 
 class Post extends Component {
   state = {
@@ -486,7 +507,7 @@ class Post extends Component {
                 ))}
               </StyledIntro>
             </StyledPostHeader>
-            <PostContent dangerouslySetInnerHTML={{ __html: postNode.html }} />
+            <PostContent>{renderAst(postNode.htmlAst)}</PostContent>
           </Wrapper>
           <DummyInput
             className="js-dummyInput"
@@ -507,7 +528,7 @@ export default Post;
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
+      htmlAst
       timeToRead
       headings(depth: h2) {
         value

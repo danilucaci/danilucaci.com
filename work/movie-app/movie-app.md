@@ -8,8 +8,13 @@ tags:
     - UI Design
     - iOS
 posted: true
+image: "./movie_app_presentation.png"
 ---
 
+![alt text](movie_app_presentation.png "With a title")
+
 ##Movie App Case Study
-##Movie App Case Study 2
+
+#Movie App Case Study 2
+
 ##Movie App Case Study 3

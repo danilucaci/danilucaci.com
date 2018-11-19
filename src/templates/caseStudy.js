@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
+import Img from "gatsby-image";
 import styled from "styled-components";
+import rehypeReact from "rehype-react";
 
 import { theme, rem, mediaMin } from "../theme/globalStyles";
 import config from "../../data/SiteConfig";
@@ -11,13 +13,10 @@ import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
 import SiteNavList from "../components/SiteNavList/SiteNavList";
 import MenuButton from "../components/MenuButton/MenuButton";
-
 import SocialShare from "../components/SocialShare/SocialShare";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import Tags from "../components/Tags/Tags";
-import ArticleInfo from "../components/ArticleInfo/ArticleInfo";
 import { Copy } from "../components/Copy/Copy";
-import { DefaultLink } from "../components/Link/Link";
 import { Logo } from "../components/Logo/Logo";
 
 import { ScrollConsumer } from "../components/ScrollProvider/ScrollProvider";
@@ -236,6 +235,19 @@ const PostContent = styled.section`
     cursor: pointer;
   }
 
+  /* bug fix for images wrapped in p tags by markdown
+   * markdown wraps any non-block element in a p tag
+   * but if I use showCaption in gatsby-config gatsby-remark-images
+   * the images are transformed into a figure which are block level
+   * so the image will be moved outside of the p tag
+   ******************************************************
+   * KEEP TRYING THIS IF IT STILL HOLDS UP
+   ******************************************************
+   */
+  p:empty {
+    display: none !important;
+  }
+
   margin-left: auto;
   margin-right: auto;
 
@@ -246,6 +258,12 @@ const PostContent = styled.section`
   `};
 
   max-width: ${theme.contain.post};
+
+  .gatsby-resp-image-figcaption {
+    color: ${theme.colors.dark800};
+    font-size: ${theme.fontSizes.s};
+    line-height: ${theme.lineHeights.s};
+  }
 `;
 
 const DummyInput = styled.textarea`
@@ -255,6 +273,19 @@ const DummyInput = styled.textarea`
   background-color: transparent;
   color: transparent;
 `;
+
+const renderAst = new rehypeReact({
+  // createElement: (component, props = {}, children = []) => {
+  // if (component === "div") {
+  // return <React.Fragment {...props}>{children}</React.Fragment>;
+  // }
+  // return React.createElement(component, props, children);
+  // },
+  createElement: React.createElement,
+  components: {
+    p: Copy,
+  },
+}).Compiler;
 
 class Post extends Component {
   state = {
@@ -402,7 +433,7 @@ class Post extends Component {
     const slug = this.props.data.markdownRemark.fields.slug;
     const postNode = this.props.data.markdownRemark;
     const postInfo = postNode.frontmatter;
-    let introCopy = postInfo.intro.split("|");
+    const image = postInfo.image.childImageSharp.fluid;
 
     return (
       <Layout location={this.props.location}>
@@ -464,27 +495,27 @@ class Post extends Component {
           <Wrapper>
             <StyledPostHeader>
               <PostH1>{postInfo.title}</PostH1>
-              <PostInfo>
-                <ArticleInfo
-                  date={postInfo.date}
-                  timeToRead={postNode.timeToRead}
-                />
-                <Tags tagsInPost={postInfo.tags} spaced />
-                <SocialShare
-                  slug={slug}
-                  title={postInfo.title}
-                  snippet={postInfo.snippet}
-                  onClick={this.copyURL}
-                  tooltipMessage={this.state.tooltipMessage}
-                />
-              </PostInfo>
-              <StyledIntro>
-                {introCopy.map((paragraph) => (
-                  <StyledCopy key={paragraph}>{paragraph}</StyledCopy>
-                ))}
-              </StyledIntro>
+              <div>{postInfo.date}</div>
+              <Tags tagsInPost={postInfo.tags} spaced />
+              <SocialShare
+                slug={slug}
+                title={postInfo.title}
+                snippet={postInfo.snippet}
+                onClick={this.copyURL}
+                tooltipMessage={this.state.tooltipMessage}
+              />
+              <StyledCopy>{postInfo.description}</StyledCopy>
             </StyledPostHeader>
-            <PostContent dangerouslySetInnerHTML={{ __html: postNode.html }} />
+            <Img
+              title={postInfo.title}
+              alt={postInfo.description}
+              fluid={image}
+              // fadeIn={true}
+              // add gatsby-image props here
+              // https://www.gatsbyjs.org/packages/gatsby-image/
+            />
+            {/* <PostContent dangerouslySetInnerHTML={{ __html: postNode.html }} /> */}
+            <PostContent>{renderAst(postNode.htmlAst)}</PostContent>
           </Wrapper>
           <DummyInput
             className="js-dummyInput"
@@ -505,7 +536,7 @@ export default Post;
 export const pageQuery = graphql`
   query WorkEntryBySlug($slug: String) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
-      timeToRead
+      htmlAst
       headings(depth: h2) {
         value
       }
@@ -514,6 +545,13 @@ export const pageQuery = graphql`
         date(formatString: "DD MMMM YYYY")
         description
         tags
+        image {
+          childImageSharp {
+            fluid(maxWidth: 744) {
+              ...GatsbyImageSharpFluid_noBase64
+            }
+          }
+        }
       }
       fields {
         nextTitle
