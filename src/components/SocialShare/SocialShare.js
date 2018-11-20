@@ -14,12 +14,8 @@ import {
 import { Icon } from "../Icon/Icon";
 
 const StyledSocialShare = styled.div`
-  ${mediaMax.l`
-    padding-bottom: ${rem(16)};
-  `};
-
-  margin-left: -4px;
-
+  margin-left: -${rem(4)};
+  white-space: nowrap;
   & .SocialMediaShareButton {
     display: inline-block;
     margin-right: 16px;
@@ -64,7 +60,7 @@ const CopyIcon = styled(Icon)`
 
 const CopyTooltip = styled.span`
   background-color: ${theme.colors.gray100};
-  ${theme.shadow.dropdown};
+  ${theme.shadow.hover};
   display: ${(props) => (props.show ? "block" : "none")};
   white-space: nowrap;
   font-size: ${theme.fontSizes.xs};

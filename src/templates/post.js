@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import rehypeReact from "rehype-react";
 
-import { theme, rem, mediaMin } from "../theme/globalStyles";
+import { theme, rem, mediaMin, mediaMax } from "../theme/globalStyles";
 import config from "../../data/SiteConfig";
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
@@ -16,16 +16,17 @@ import MenuButton from "../components/MenuButton/MenuButton";
 import SocialShare from "../components/SocialShare/SocialShare";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import Tags from "../components/Tags/Tags";
-import ArticleInfo from "../components/ArticleInfo/ArticleInfo";
+import ReadTime from "../components/ReadTime/ReadTime";
+import ArticleDate from "../components/ArticleDate/ArticleDate";
 import { Copy } from "../components/Copy/Copy";
 import { DefaultLink } from "../components/Link/Link";
 import { Logo } from "../components/Logo/Logo";
+import { HR } from "../components/HR/HR";
 
 import { ScrollConsumer } from "../components/ScrollProvider/ScrollProvider";
 
-const Wrapper = styled.div`
+const PostWrapper = styled.div`
   max-width: ${theme.contain.content};
-
   margin-left: auto;
   margin-right: auto;
 
@@ -33,25 +34,181 @@ const Wrapper = styled.div`
   padding-right: ${theme.gutters.s};
 
   ${mediaMin.s`
-    padding-left: ${theme.gutters.s};
-    padding-right: ${theme.gutters.s};
+    padding-left: ${theme.gutters.m};
+    padding-right: ${theme.gutters.m};
 `};
+`;
+
+const SiteHeader = styled.header`
+  background-color: ${theme.colors.gray100};
+  ${theme.shadow.navbar};
+  width: 100%;
+
+  ${mediaMin.m`
+    background-color: ${theme.colors.gray100};
+    position: fixed;
+    top: 0;
+    z-index: 10;
+  `};
+`;
+
+const StyledSiteNav = styled.nav`
+  display: flex;
+  justify-content: space-between;
+
+  max-width: ${theme.contain.content};
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: ${theme.gutters.s};
+  padding-left: ${theme.gutters.s};
+
+  ${mediaMin.s`
+    padding-right: ${theme.gutters.m};
+    padding-left: ${theme.gutters.m};
+  `};
+`;
+
+const ReadingModeH1 = styled.h4`
+  font-size: ${rem(16)} !important;
+  line-height: ${rem(24)} !important;
+  padding: ${rem(8)} ${rem(16)} ${rem(8)} ${rem(8)};
+`;
+
+const ReadingModeWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: ${rem(8)};
+  flex: 1;
+  will-change: transform, opacity;
+  position: absolute;
+
+  ${mediaMin.l`
+    transform: translateY(-10em);
+    opacity: 0;
+    transition: transform, opacity ease 0.15s;
+
+    ${(props) =>
+      props.slideDown &&
+      css`
+        transform: translateY(0);
+        opacity: 1;
+      `};
+    `};
+`;
+
+const ReadingModeSocialWrapper = styled.div`
+  display: inline-block;
+  align-self: flex-end;
+  margin-bottom: ${rem(4)};
+  position: absolute;
+`;
+
+const StyledPostHeader = styled.header`
+  margin-bottom: ${rem(16)};
+
+  ${mediaMin.xxl`
+    background-color: ${theme.colors.gray100};
+    border-left: 8px solid ${theme.colors.main600};
+    padding: ${rem(40)} ${rem(96)} ${rem(16)} ${rem(96)};
+  `};
+`;
+
+const PostH1 = styled.h1`
+  margin-bottom: ${rem(8)};
+
+  ${mediaMin.m`
+    margin-bottom: 0;
+  `};
+
+  ${mediaMin.xl`
+    margin-bottom: ${rem(16)};
+  `};
+`;
+
+const HRTop = styled(HR)`
+  display: none;
+
+  ${mediaMin.xxl`
+    display: block;
+  `};
+`;
+
+const HRBottom = styled(HR)`
+  display: none;
+
+  ${mediaMin.xs`
+    display: block;
+  `};
+
+  ${mediaMin.xxl`
+    display: none;
+  `};
+`;
+
+const PostInfo = styled.div`
+  margin-top: ${rem(8)};
+  margin-bottom: ${rem(16)};
+
+  ${mediaMin.m`
+    margin-top: ${rem(4)};
+  `};
+
+  ${mediaMin.xxl`
+    margin-bottom: 0;
+  `};
+`;
+
+const PostDateReadTimeWrapper = styled.div`
+  display: inline-block;
+  margin-right: ${rem(24)};
+`;
+
+const PostAside = styled.aside`
+  margin-top: ${rem(16)};
+  outline: 1px solid;
+
+  ${mediaMin.s`
+    margin-top: ${rem(32)};
+  `};
+
+  ${mediaMax.xl`
+    margin-top: ${rem(16)};
+    margin-bottom: ${rem(32)};
+  `};
+
+  ${mediaMin.xl`
+    float: right;
+    margin-left: calc(((100% / 10) * 1) + ${rem(24)});
+    width: calc(((100% / 10) * 3) - ${rem(24)});
+  `};
+`;
+
+const StyledCopy = styled(Copy)`
+  margin-bottom: ${rem(32)};
+`;
+
+const PostContent = styled.section`
+  outline: 1px solid;
+  max-width: ${theme.contain.post};
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: ${rem(16)};
+
+  ${mediaMin.s`
+    margin-top: ${rem(32)};
+    margin-bottom: ${rem(56)};
+  `};
+
+  ${mediaMin.xxl`
+    display: inline-block;
+    vertical-align: top;
+    margin-left: calc(((100% / 10) * 1) + ${rem(24)});
+    width: calc((100% / 10) * 6);
+  `};
 
   header h1,
   nav h3 {
     margin-top: 0 !important;
-  }
-
-  h1 {
-    display: block;
-
-    margin-bottom: ${rem(16)};
-    margin-top: ${rem(32)};
-
-    ${mediaMin.xs`
-      margin-bottom: ${rem(16)};
-      margin-top: ${rem(32)};
-    `};
   }
 
   h2 {
@@ -61,8 +218,8 @@ const Wrapper = styled.div`
     margin-top: ${rem(32)};
 
     ${mediaMin.xs`
-      margin-bottom: ${rem(16)};
-      margin-top: ${rem(32)};
+      margin-bottom: ${rem(32)};
+      margin-top: ${rem(64)};
     `};
   }
 
@@ -73,8 +230,8 @@ const Wrapper = styled.div`
     margin-top: ${rem(32)};
 
     ${mediaMin.xs`
-      margin-bottom: ${rem(16)};
-      margin-top: ${rem(32)};
+      margin-bottom: ${rem(32)};
+      margin-top: ${rem(64)};
     `};
   }
 
@@ -85,8 +242,8 @@ const Wrapper = styled.div`
     margin-top: ${rem(32)};
 
     ${mediaMin.xs`
-      margin-bottom: ${rem(28)};
-      margin-top: ${rem(56)};
+      margin-bottom: ${rem(32)};
+      margin-top: ${rem(64)};
     `};
   }
 
@@ -98,13 +255,8 @@ const Wrapper = styled.div`
       &:before {
         content: "";
         display: block;
-        height: ${rem(48)}; /* fixed header height*/
-        margin-top: -${rem(48)}; /* negative fixed header height */
-
-        ${mediaMin.s`
-          height: ${rem(56)}; /* fixed header height */
-          margin-top: -${rem(56)}; /* negative fixed header height */
-        `};
+        height: ${rem(56)}; /* fixed header height*/
+        margin-top: -${rem(56)}; /* negative fixed header height */
       }
       border-bottom: 2px solid ${theme.colors.main500};
     }
@@ -140,126 +292,12 @@ const Wrapper = styled.div`
   }
 `;
 
-const ReadingModePageHeader = styled.header`
-  background-color: ${theme.colors.gray100};
-  ${theme.shadow.navbar};
-  width: 100%;
-  display: block;
-
-  ${mediaMin.m`
-    background-color: ${theme.colors.gray100};
-    position: fixed;
-    top: 0;
-    z-index: 10;
-  `};
-`;
-
-const StyledPostHeader = styled.header``;
-
-const StyledNav = styled.nav`
-  display: block;
-  max-width: ${theme.contain.content};
-  margin-left: auto;
-  margin-right: auto;
-  padding-right: ${theme.gutters.s};
-  padding-left: ${theme.gutters.s};
-
-  ${mediaMin.s`
-    padding-right: ${theme.gutters.m};
-    padding-left: ${theme.gutters.m};
-  `};
-`;
-
-const PostH1 = styled.h1`
-  margin-bottom: ${rem(28)};
-`;
-
-const ReadingModeH1 = styled.h1`
-  display: inline-block;
-  vertical-align: top;
-  font-size: ${rem(16)} !important;
-  line-height: ${rem(24)} !important;
-  padding: ${rem(12)} ${rem(16)};
-`;
-
-const TopReadingPostInfo = styled.div`
-  float: right;
-
-  & > div {
-    display: inline-block;
-  }
-
-  & > div:nth-of-type(2) {
-    margin-left: ${rem(24)};
-  }
-`;
-
-const StyledIntro = styled.div`
-  ${mediaMin.m`
-    display: inline-block;
-    vertical-align: top;
-    width: calc(60% - ${rem(24)});
-    margin-right: ${rem(24)};
-`};
-`;
-
-const StyledCopy = styled(Copy)`
-  margin-bottom: ${rem(28)};
-`;
-
-const PostInfo = styled.aside`
-  ${mediaMin.m`
-    background-color: ${theme.colors.gray100};
-    ${theme.shadow.subtle};
-    float: right;
-    display: inline-block;
-    vertical-align: top;
-    width: 40%;
-    padding: ${rem(16)} ${rem(24)};
-  `};
-`;
-
-const PostContent = styled.section`
-  a:active,
-  a:focus {
-    outline: 2px dashed ${theme.colors.main600};
-    background-color: ${theme.colors.gray300};
-  }
-
-  a:visited,
-  a:link {
-    color: ${theme.colors.main600};
-  }
-
-  a:hover {
-    color: ${theme.colors.main600};
-    background-color: ${theme.colors.gray300};
-    cursor: pointer;
-  }
-
-  margin-left: auto;
-  margin-right: auto;
-
-  margin-top: ${rem(16)};
-
-  ${mediaMin.s`
-    margin-top: ${rem(32)};
-  `};
-
-  max-width: ${theme.contain.post};
-`;
-
 const DummyInput = styled.textarea`
   position: absolute;
   top: -1000em;
   left: -1000em;
   background-color: transparent;
   color: transparent;
-`;
-
-const H2 = styled.h2`
-  color: ${theme.colors.main600};
-  background-color: #fff;
 `;
 
 const Item = styled.div`
@@ -271,9 +309,8 @@ const Item = styled.div`
 const renderAst = new rehypeReact({
   createElement: React.createElement,
   components: {
-    "item-1": Item,
-    p: Copy,
-    h2: H2,
+    // "item-1": Item,
+    // p: Copy,
   },
 }).Compiler;
 
@@ -434,8 +471,8 @@ class Post extends Component {
         </Helmet>
         <SEO postPath={slug} postNode={postNode} postSEO />
 
-        <ReadingModePageHeader role="banner" className="js-topReadingNav">
-          <StyledNav aria-label="Page Menu" role="navigation">
+        <SiteHeader role="banner">
+          <StyledSiteNav aria-label="Page Menu" role="navigation">
             <Logo />
             <ScrollConsumer>
               {(context) => {
@@ -452,25 +489,36 @@ class Post extends Component {
                       snippet={postInfo.snippet}
                       onClick={this.copyURL}
                       tooltipMessage={this.state.tooltipMessage}
-                      topReading={true}
+                      topReading
                     />
                   );
                 }
 
                 return showReadingNav ? (
                   <>
-                    <ReadingModeH1>{postInfo.title}</ReadingModeH1>
-                    <TopReadingPostInfo>
-                      {topReadingSocialShare}
-                    </TopReadingPostInfo>
+                    <ReadingModeWrapper slideDown>
+                      <ReadingModeH1>{postInfo.title}</ReadingModeH1>
+                      <ReadingModeSocialWrapper>
+                        {topReadingSocialShare}
+                      </ReadingModeSocialWrapper>
+                    </ReadingModeWrapper>
                     <MenuButton
                       onClick={this.openNav}
                       showNav={this.state.showNav}
                     />
-                    <SiteNavList showNav={this.state.showNav} />
+                    <SiteNavList
+                      showNav={this.state.showNav}
+                      slideUp={showReadingNav}
+                    />
                   </>
                 ) : (
                   <>
+                    <ReadingModeWrapper>
+                      <ReadingModeH1>{postInfo.title}</ReadingModeH1>
+                      <ReadingModeSocialWrapper>
+                        {topReadingSocialShare}
+                      </ReadingModeSocialWrapper>
+                    </ReadingModeWrapper>
                     <MenuButton
                       onClick={this.openNav}
                       showNav={this.state.showNav}
@@ -480,35 +528,41 @@ class Post extends Component {
                 );
               }}
             </ScrollConsumer>
-          </StyledNav>
-        </ReadingModePageHeader>
+          </StyledSiteNav>
+        </SiteHeader>
 
         <Main role="main">
-          <Wrapper>
+          <PostWrapper>
             <StyledPostHeader>
               <PostH1>{postInfo.title}</PostH1>
+              <HRTop />
               <PostInfo>
-                <ArticleInfo
-                  date={postInfo.date}
-                  timeToRead={postNode.timeToRead}
-                />
-                <Tags tagsInPost={postInfo.tags} spaced />
-                <SocialShare
-                  slug={slug}
-                  title={postInfo.title}
-                  snippet={postInfo.snippet}
-                  onClick={this.copyURL}
-                  tooltipMessage={this.state.tooltipMessage}
-                />
+                <PostDateReadTimeWrapper>
+                  <ArticleDate date={postInfo.date} />
+                  <ReadTime timeToRead={postNode.timeToRead} />
+                </PostDateReadTimeWrapper>
+                <Tags tagsInPost={postInfo.tags} inline />
               </PostInfo>
-              <StyledIntro>
+            </StyledPostHeader>
+            <HRBottom />
+            <PostAside>
+              <SocialShare
+                slug={slug}
+                title={postInfo.title}
+                snippet={postInfo.snippet}
+                onClick={this.copyURL}
+                tooltipMessage={this.state.tooltipMessage}
+              />
+            </PostAside>
+            <PostContent>
+              <React.Fragment>
                 {introCopy.map((paragraph) => (
                   <StyledCopy key={paragraph}>{paragraph}</StyledCopy>
                 ))}
-              </StyledIntro>
-            </StyledPostHeader>
-            <PostContent>{renderAst(postNode.htmlAst)}</PostContent>
-          </Wrapper>
+              </React.Fragment>
+              {renderAst(postNode.htmlAst)}
+            </PostContent>
+          </PostWrapper>
           <DummyInput
             className="js-dummyInput"
             contentEditable={true}

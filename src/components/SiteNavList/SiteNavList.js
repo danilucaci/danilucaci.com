@@ -42,13 +42,27 @@ const StyledSiteNavList = styled.ul`
     pointer-events: auto;
     opacity: 1;
     z-index: 10;
-    transform: none;
+    /* transform: none; */
   `};
+
+  transform: translateY(0);
+  transition: transform ease 0.15s;
+
+  ${(props) =>
+    props.slideUp &&
+    css`
+      transform: translateY(-10em);
+      opacity: 0;
+    `};
 `;
 
 const SiteNavList = (props) => {
   return (
-    <StyledSiteNavList showNav={props.showNav} role="menu">
+    <StyledSiteNavList
+      showNav={props.showNav}
+      slideUp={props.slideUp}
+      role="menu"
+    >
       <SiteNavListItem showNav={props.showNav} to="/work" label="Work" />
       <SiteNavListItem showNav={props.showNav} to="/blog" label="Blog" />
       <SiteNavListItem

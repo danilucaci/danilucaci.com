@@ -11,13 +11,15 @@ const TagsWrapper = styled.div`
     css`
       margin-bottom: ${rem(16)};
     `};
+
+  display: ${(props) => (props.inline ? "inline-block" : "block")};
 `;
 
 const Tags = (props) => {
   let tagsInPost = props.tagsInPost;
 
   return (
-    <TagsWrapper spaced={props.spaced}>
+    <TagsWrapper spaced={props.spaced} inline={props.inline}>
       {tagsInPost &&
         tagsInPost.map((tag) => (
           <Tag key={tag} link={`/tags/${tag}`} label={tag} />
