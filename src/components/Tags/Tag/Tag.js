@@ -7,14 +7,14 @@ import { Link } from "gatsby";
 
 const StyledTag = styled(Link)`
   background-color: transparent;
-  border-radius: ${rem(2)};
+  border-radius: ${rem(4)};
   border: 1px solid ${theme.colors.dark900};
   display: inline-block;
 
   text-decoration: none;
 
-  font-size: ${theme.fontSizes.m};
-  line-height: ${theme.fontSizes.m};
+  font-size: ${theme.fontSizes.s};
+  line-height: ${theme.fontSizes.s};
 
   .fonts-loaded & {
     font-family: ${theme.fonts.bodyRegular};
@@ -22,7 +22,7 @@ const StyledTag = styled(Link)`
 
   margin-right: ${rem(12)};
   margin-top: ${rem(12)};
-  padding: ${rem(4)} ${rem(8)};
+  padding: ${rem(6)} ${rem(10)};
 
   &:hover {
     text-decoration: underline;
