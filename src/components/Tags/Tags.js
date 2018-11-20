@@ -3,7 +3,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 
 import Tag from "./Tag/Tag";
-import { rem } from "../../theme/globalStyles";
+import { rem, mediaMin } from "../../theme/globalStyles";
 
 const TagsWrapper = styled.div`
   ${(props) =>

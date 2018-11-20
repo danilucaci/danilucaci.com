@@ -13,11 +13,12 @@ import { BoldLink } from "../Link/Link";
 const StyledArticle = styled.article`
   background-color: ${theme.colors.gray100};
   ${theme.shadow.default};
-  padding: ${rem(20)} ${rem(16)} ${rem(16)} ${rem(16)};
+
+  padding: ${rem(12)} ${rem(16)} ${rem(16)} ${rem(16)};
   margin-bottom: ${theme.gutters.m};
 
   ${mediaMin.s`
-    padding: ${rem(24)} ${rem(24)} ${rem(16)};
+    padding: ${rem(16)} ${rem(24)} ${rem(16)};
   `};
 
   position: relative;
@@ -52,10 +53,10 @@ const Article = (props) => {
   return (
     <StyledArticle>
       <header>
+        <Tags tagsInPost={props.tagsInPost} spaced />
         <StyledH3>{props.title}</StyledH3>
         <ArticleInfo date={props.date} timeToRead={props.timeToRead} />
       </header>
-      <Tags tagsInPost={props.tagsInPost} spaced />
       <Copy className="copy">{props.snippet}</Copy>
       <ContinueLink to={props.slug}>Continue Reading →</ContinueLink>
     </StyledArticle>

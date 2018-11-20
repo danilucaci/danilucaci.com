@@ -93,7 +93,10 @@ const TagTitle = styled.span`
 `;
 
 const OtherTagsWrapper = styled.div`
+  margin-top: ${rem(24)};
+
   ${mediaMin.l`
+    margin-top: 0;
     display: inline-block;
     vertical-align: top;
     margin-left: ${rem(12)};

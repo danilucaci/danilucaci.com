@@ -20,7 +20,7 @@ const StyledTag = styled(Link)`
     font-family: ${theme.fonts.bodyRegular};
   }
 
-  margin-right: ${rem(12)};
+  margin-right: ${rem(16)};
   margin-top: ${rem(12)};
   padding: ${rem(6)} ${rem(10)};
 

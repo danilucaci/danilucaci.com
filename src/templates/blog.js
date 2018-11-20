@@ -31,7 +31,7 @@ const BlogWrapper = styled.div`
 `;
 
 const BlogHeader = styled.header`
-  margin-bottom: ${rem(48)};
+  margin-bottom: ${rem(56)};
   color: ${theme.colors.dark900};
 
   ${mediaMin.s`
