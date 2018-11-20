@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
-import { Link } from "gatsby";
+import { BoldLink } from "../Link/Link";
 import { Icon } from "../Icon/Icon";
 import { CopyBold } from "../Copy/Copy";
 
@@ -25,30 +25,14 @@ const StyledIcon = styled(Icon)`
     `};
 `;
 
-const StyledLink = styled(Link)`
-  text-decoration: underline;
-  font-size: ${theme.fontSizes.m};
-  line-height: ${theme.lineHeights.m};
-  line-height: ${theme.lineHeights.m};
-  font-style: normal;
-  font-weight: 700;
-
-  .fonts-loaded & {
-    font-family: ${theme.fonts.bodyBold};
-  }
-
-  &:active,
-  &:focus {
-    outline: 2px dashed ${theme.colors.main600};
-  }
-
+const StyledLink = styled(BoldLink)`
   &:visited,
   &:link {
-    color: ${theme.colors.dark800};
+    color: ${theme.colors.dark900};
   }
 
   &:hover {
-    color: ${theme.colors.dark800};
+    color: ${theme.colors.dark900};
     background-color: ${theme.colors.gray300};
     cursor: pointer;
   }
@@ -70,12 +54,18 @@ const MobileCopy = styled(CopyBold)`
   white-space: nowrap;
   text-align: center;
 
-  ${mediaMin.xs`
+  ${mediaMin.xxs`
     margin-left: -${rem(32)};
   `};
 
   ${mediaMin.s`
     margin-left: 0;
+    display: none;
+  `};
+`;
+
+const PaginationLabel = styled.span`
+  ${mediaMax.xxs`
     display: none;
   `};
 `;
@@ -105,15 +95,6 @@ const Prev = styled(StyledLink)`
   ${mediaMax.xs`
     padding: ${rem(8)} ${rem(48)} ${rem(8)} 0;
   `};
-
-  &:active,
-  &:focus {
-    outline: none;
-  }
-
-  &:hover {
-    background-color: transparent;
-  }
 `;
 
 const Next = styled(StyledLink)`
@@ -130,15 +111,6 @@ const Next = styled(StyledLink)`
   ${mediaMax.xs`
     padding: ${rem(8)} 0 ${rem(8)} ${rem(48)};
   `};
-
-  &:active,
-  &:focus {
-    outline: none;
-  }
-
-  &:hover {
-    background-color: transparent;
-  }
 `;
 
 const DisabledNext = styled(CopyBold)`
@@ -153,35 +125,13 @@ const DisabledNext = styled(CopyBold)`
   white-space: nowrap;
 `;
 
-const CurrentPaginationNumber = styled(StyledLink)`
-  background-color: ${theme.colors.dark900};
-  border-radius: 50%;
-  color: ${theme.colors.gray100} !important;
-  display: none;
-
-  height: ${rem(48)};
-  width: ${rem(48)};
-  margin: ${rem(4)};
-  padding: ${rem(10)} ${rem(16)};
-  text-decoration: none;
-  text-align: center;
-
-  &:hover {
-    background-color: ${theme.colors.dark900};
-  }
-
-  ${mediaMin.s`
-    display: inline-block;
-  `};
-`;
-
 const PaginationNumber = styled(StyledLink)`
   display: none;
 
   height: ${rem(48)};
   width: ${rem(48)};
   margin: ${rem(4)};
-  padding: ${rem(10)} ${rem(16)};
+  padding: ${rem(8)} ${rem(12)} ${rem(16)};
   text-align: center;
   text-decoration: none;
 
@@ -194,10 +144,14 @@ const PaginationNumber = styled(StyledLink)`
   `};
 `;
 
-const PaginationLabel = styled.span`
-  ${mediaMax.xs`
-    display: none;
-  `};
+const CurrentPaginationNumber = styled(PaginationNumber)`
+  background-color: ${theme.colors.dark900};
+  border-radius: 50%;
+  color: ${theme.colors.gray100} !important;
+
+  &:hover {
+    background-color: ${theme.colors.dark900};
+  }
 `;
 
 const Pagination = (props) => {
