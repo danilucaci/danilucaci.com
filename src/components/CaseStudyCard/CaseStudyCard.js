@@ -5,6 +5,7 @@ import { theme, mediaMin, rem, mediaMax } from "../../theme/globalStyles";
 
 import { Copy } from "../Copy/Copy";
 import { BoldLink } from "../Link/Link";
+import { HR } from "../HR/HR";
 
 const StyledCaseStudyCard = styled.article`
   background-color: ${theme.colors.gray100};
@@ -62,7 +63,7 @@ const Tag = styled(Copy)`
   margin-right: ${rem(8)};
 `;
 
-const HRTop = styled.hr`
+const HRTop = styled(HR)`
   border: 1px solid ${theme.colors.sectionBackground};
 
   ${mediaMin.xxl`
@@ -70,7 +71,7 @@ const HRTop = styled.hr`
   `};
 `;
 
-const HRBottom = styled.hr`
+const HRBottom = styled(HR)`
   border: 1px solid ${theme.colors.sectionBackground};
 `;
 
