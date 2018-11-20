@@ -8,10 +8,9 @@ import { theme, rem, mediaMin, mediaMax } from "../theme/globalStyles";
 import config from "../../data/SiteConfig";
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
+import SiteHeader from "../components/SiteHeader/SiteHeader";
 import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
-import SiteNavList from "../components/SiteNavList/SiteNavList";
-import MenuButton from "../components/MenuButton/MenuButton";
 
 import SocialShare from "../components/SocialShare/SocialShare";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
@@ -20,10 +19,7 @@ import ReadTime from "../components/ReadTime/ReadTime";
 import ArticleDate from "../components/ArticleDate/ArticleDate";
 import { Copy } from "../components/Copy/Copy";
 import { DefaultLink } from "../components/Link/Link";
-import { Logo } from "../components/Logo/Logo";
 import { HR } from "../components/HR/HR";
-
-import { ScrollConsumer } from "../components/ScrollProvider/ScrollProvider";
 
 const PostWrapper = styled.div`
   max-width: ${theme.contain.content};
@@ -37,70 +33,6 @@ const PostWrapper = styled.div`
     padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
 `};
-`;
-
-const SiteHeader = styled.header`
-  background-color: ${theme.colors.gray100};
-  ${theme.shadow.navbar};
-  width: 100%;
-
-  ${mediaMin.m`
-    background-color: ${theme.colors.gray100};
-    position: fixed;
-    top: 0;
-    z-index: 10;
-  `};
-`;
-
-const StyledSiteNav = styled.nav`
-  display: flex;
-  justify-content: space-between;
-
-  max-width: ${theme.contain.content};
-  margin-left: auto;
-  margin-right: auto;
-  padding-right: ${theme.gutters.s};
-  padding-left: ${theme.gutters.s};
-
-  ${mediaMin.s`
-    padding-right: ${theme.gutters.m};
-    padding-left: ${theme.gutters.m};
-  `};
-`;
-
-const ReadingModeH1 = styled.h4`
-  font-size: ${rem(16)} !important;
-  line-height: ${rem(24)} !important;
-  padding: ${rem(8)} ${rem(16)} ${rem(8)} ${rem(8)};
-`;
-
-const ReadingModeWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: ${rem(8)};
-  flex: 1;
-  will-change: transform, opacity;
-  position: absolute;
-
-  ${mediaMin.l`
-    transform: translateY(-10em);
-    opacity: 0;
-    transition: transform, opacity ease 0.15s;
-
-    ${(props) =>
-      props.slideDown &&
-      css`
-        transform: translateY(0);
-        opacity: 1;
-      `};
-    `};
-`;
-
-const ReadingModeSocialWrapper = styled.div`
-  display: inline-block;
-  align-self: flex-end;
-  margin-bottom: ${rem(4)};
-  position: absolute;
 `;
 
 const StyledPostHeader = styled.header`
@@ -300,12 +232,6 @@ const DummyInput = styled.textarea`
   color: transparent;
 `;
 
-const Item = styled.div`
-  background-color: red;
-  display: block;
-  margin: 40px;
-`;
-
 const renderAst = new rehypeReact({
   createElement: React.createElement,
   components: {
@@ -470,67 +396,7 @@ class Post extends Component {
           <title>{`${postInfo.title} - ${config.siteTitle}`}</title>
         </Helmet>
         <SEO postPath={slug} postNode={postNode} postSEO />
-
-        <SiteHeader role="banner">
-          <StyledSiteNav aria-label="Page Menu" role="navigation">
-            <Logo />
-            <ScrollConsumer>
-              {(context) => {
-                const showReadingNav = context.showReadingNav;
-                const pageWidth = context.pageWidth;
-
-                let topReadingSocialShare = null;
-
-                if (pageWidth >= 860) {
-                  topReadingSocialShare = (
-                    <SocialShare
-                      slug={slug}
-                      title={postInfo.title}
-                      snippet={postInfo.snippet}
-                      onClick={this.copyURL}
-                      tooltipMessage={this.state.tooltipMessage}
-                      topReading
-                    />
-                  );
-                }
-
-                return showReadingNav ? (
-                  <>
-                    <ReadingModeWrapper slideDown>
-                      <ReadingModeH1>{postInfo.title}</ReadingModeH1>
-                      <ReadingModeSocialWrapper>
-                        {topReadingSocialShare}
-                      </ReadingModeSocialWrapper>
-                    </ReadingModeWrapper>
-                    <MenuButton
-                      onClick={this.openNav}
-                      showNav={this.state.showNav}
-                    />
-                    <SiteNavList
-                      showNav={this.state.showNav}
-                      slideUp={showReadingNav}
-                    />
-                  </>
-                ) : (
-                  <>
-                    <ReadingModeWrapper>
-                      <ReadingModeH1>{postInfo.title}</ReadingModeH1>
-                      <ReadingModeSocialWrapper>
-                        {topReadingSocialShare}
-                      </ReadingModeSocialWrapper>
-                    </ReadingModeWrapper>
-                    <MenuButton
-                      onClick={this.openNav}
-                      showNav={this.state.showNav}
-                    />
-                    <SiteNavList showNav={this.state.showNav} />
-                  </>
-                );
-              }}
-            </ScrollConsumer>
-          </StyledSiteNav>
-        </SiteHeader>
-
+        <SiteHeader />
         <Main role="main">
           <PostWrapper>
             <StyledPostHeader>

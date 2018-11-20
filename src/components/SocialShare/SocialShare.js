@@ -72,42 +72,21 @@ const CopyTooltip = styled.span`
 
   position: absolute;
 
-  ${(props) =>
-    props.topReading && css
-      ? `
-    bottom: -${rem(56)};
-    right: -${rem(4)};
+  top: -${rem(44)};
+  left: -${rem(32)};
 
-    &:after {
-      content: "";
-      display: block;
-      width: ${rem(16)};
-      height: ${rem(16)};
-      border-top: ${rem(8)} solid #ffffff;
-      border-left: ${rem(8)} solid #ffffff;
-      transform: rotate(45deg);
-      position: absolute;
-      top: -${rem(8)};
-      right: ${rem(12)};
-    }
-  `
-      : `
-    top: -${rem(44)};
-    left: -${rem(32)};
-
-    &:after {
-      content: "";
-      display: block;
-      width: ${rem(16)};
-      height: ${rem(16)};
-      border-bottom: ${rem(8)} solid #ffffff;
-      border-right: ${rem(8)} solid #ffffff;
-      transform: rotate(45deg);
-      position: absolute;
-      top: ${rem(24)};
-      left: ${rem(40)};
-    }
-  `};
+  &:after {
+    content: "";
+    display: block;
+    width: ${rem(16)};
+    height: ${rem(16)};
+    border-bottom: ${rem(8)} solid #ffffff;
+    border-right: ${rem(8)} solid #ffffff;
+    transform: rotate(45deg);
+    position: absolute;
+    top: ${rem(24)};
+    left: ${rem(40)};
+  }
 
   padding: ${rem(8)};
 `;
@@ -181,7 +160,7 @@ const SocialShare = (props) => {
         <CopyIcon>
           <use xlinkHref="#copy" />
         </CopyIcon>
-        <CopyTooltip topReading={props.topReading} show={props.tooltipOpen}>
+        <CopyTooltip show={props.tooltipOpen}>
           {props.tooltipMessage}
         </CopyTooltip>
       </StyledCopyButton>
