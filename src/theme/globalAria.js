@@ -1,12 +1,14 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalAria = createGlobalStyle`
-  button,
+  ${
+    "" /* button,
   input {
     &:active,
     &:focus {
       outline: dashed 2px #0946B0;
     }
+  } */
   }
 
   /* Browser fallback for non-supporting hidden attribute

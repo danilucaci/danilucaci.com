@@ -12,7 +12,7 @@ import { Icon } from "../components/Icon/Icon";
 import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
 
 import { Copy } from "../components/Copy/Copy";
-import { ContactButton } from "../components/Button/Button";
+import { PrimaryButton } from "../components/Button/Button";
 
 const ContactMeWrapper = styled.div`
   max-width: ${theme.contain.content};
@@ -91,7 +91,7 @@ const PathWrapper = styled.div`
   }
 `;
 
-const StyledContactButton = styled(ContactButton)`
+const StyledPrimaryButton = styled(PrimaryButton)`
   margin-bottom: ${rem(16)};
   width: 100%;
 
@@ -159,15 +159,15 @@ class ContactPage extends Component {
             </ContactInfo>
             <PathWrapper>
               <h3>Choose your path:</h3>
-              <StyledContactButton>
+              <StyledPrimaryButton>
                 <a href={theme.mailToLink}>
                   Email
                   <MailIcon>
                     <use xlinkHref="#mail" />
                   </MailIcon>
                 </a>
-              </StyledContactButton>
-              <StyledContactButton>
+              </StyledPrimaryButton>
+              <StyledPrimaryButton>
                 <a
                   href="https://twitter.com/messages/compose?recipient_id=734468984658071554&ref_src=twsrc%5Etfw"
                   data-screen-name="@danilucaci"
@@ -178,7 +178,7 @@ class ContactPage extends Component {
                     <use xlinkHref="#twitter" />
                   </TwitterIcon>
                 </a>
-              </StyledContactButton>
+              </StyledPrimaryButton>
             </PathWrapper>
           </ContactMeWrapper>
         </Main>

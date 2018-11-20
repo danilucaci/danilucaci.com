@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 import { theme, mediaMin, rem } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
-import { DefaultLink } from "../Link/Link";
 import { Icon } from "../Icon/Icon";
 import { MailButton } from "../Button/Button";
 
@@ -25,12 +24,12 @@ const StyledContactCardContents = styled.div`
   margin: 0 auto;
   position: relative;
 
-  padding-left: ${theme.gutters.s};
-  padding-right: ${theme.gutters.s};
+  padding-left: ${rem(24)};
+  padding-right: ${rem(24)};
 
   ${mediaMin.s`
-    padding-left: ${theme.gutters.m};
-    padding-right: ${theme.gutters.m};
+    padding-left: ${rem(32)};
+    padding-right: ${rem(32)};
   `};
 `;
 
@@ -41,13 +40,17 @@ const StyledIcon = styled(Icon)`
   height: ${rem(132)};
   transform: rotate(-12deg);
   position: absolute;
-  left: -${rem(4)};
+  left: 0;
   top: -${rem(128)};
   z-index: 0;
 
+  ${mediaMin.s`
+    left: ${rem(8)};
+  `};
+
   ${mediaMin.xxl`
-    top: -${rem(48)};
-    left: -${rem(48)};
+    top: -${rem(56)};
+    left: -${rem(56)};
   `};
 `;
 
