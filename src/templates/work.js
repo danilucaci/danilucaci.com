@@ -63,7 +63,7 @@ class WorkPage extends Component {
             {totalPagesInWork > 1 && (
               <Pagination
                 currentPage={currentPage}
-                totalPagesInWork={totalPagesInWork}
+                totalPages={totalPagesInWork}
                 paginationPathPrefix={paginationPathPrefix}
                 prevPath={prevPath}
                 nextPath={nextPath}

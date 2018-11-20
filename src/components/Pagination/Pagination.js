@@ -203,7 +203,7 @@ const PaginationLabel = styled.span`
 const Pagination = (props) => {
   const {
     currentPage,
-    totalPagesInBlog,
+    totalPages,
     paginationPathPrefix,
     prevPath,
     nextPath,
@@ -211,7 +211,7 @@ const Pagination = (props) => {
 
   let pagination = [];
 
-  for (var page = 1; page <= totalPagesInBlog; page += 1) {
+  for (var page = 1; page <= totalPages; page += 1) {
     if (page === currentPage) {
       if (page === 1) {
         pagination.push(
@@ -269,7 +269,7 @@ const Pagination = (props) => {
       <PaginationContent>
         {pagination}
         <MobileCopy>
-          {currentPage} of {totalPagesInBlog}
+          {currentPage} of {totalPages}
         </MobileCopy>
       </PaginationContent>
       {nextPath ? (

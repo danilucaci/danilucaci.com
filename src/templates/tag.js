@@ -237,7 +237,7 @@ class TagPage extends Component {
             {totalPagesInBlog > 1 && (
               <Pagination
                 currentPage={currentPage}
-                totalPagesInBlog={totalPagesInBlog}
+                totalPages={totalPagesInBlog}
                 paginationPathPrefix={paginationPathPrefix}
                 prevPath={prevPath}
                 nextPath={nextPath}
