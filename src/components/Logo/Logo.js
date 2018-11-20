@@ -19,10 +19,10 @@ const StyledLogo = styled(Link)`
   }
 
   font-weight: 700;
-  font-size: ${rem(16)};
-  line-height: ${rem(24)};
+  font-size: ${theme.fontSizes.m};
+  line-height: ${theme.lineHeights.m};
   text-decoration: none;
-  padding: ${rem(16)} 0;
+  padding: ${rem(12)} 0;
 
   &:visited,
   &:link {
