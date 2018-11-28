@@ -12,16 +12,12 @@ const StyledScrollToTop = styled.a`
   background-color: ${theme.colors.gray300};
   ${theme.shadow.default};
   border-radius: ${rem(4)};
+  will-change: transform;
 
   &:hover {
     background-color: ${theme.colors.gray400};
-    transform: scale(1.15);
+    transform: scale(1.2);
     transition: transform ease 150ms;
-  }
-
-  &:active,
-  &:focus {
-    outline: 2px dashed ${theme.colors.main600};
   }
 `;
 

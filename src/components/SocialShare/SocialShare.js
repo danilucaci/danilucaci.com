@@ -19,25 +19,12 @@ const StyledSocialShare = styled.div`
   & .SocialMediaShareButton {
     display: inline-block;
     margin-right: 16px;
-
-    &:focus,
-    &:active {
-      outline: 2px dashed ${theme.colors.main600};
-    }
   }
 `;
 
 const StyledCopyButton = styled.div`
   display: inline-block;
   position: relative;
-
-  &:focus,
-  &:active {
-    outline: 2px dashed ${theme.colors.main600};
-    & span {
-      display: block;
-    }
-  }
 
   &:hover {
     & span {
@@ -61,7 +48,7 @@ const CopyIcon = styled(Icon)`
 const CopyTooltip = styled.span`
   background-color: ${theme.colors.gray100};
   ${theme.shadow.hover};
-  display: ${(props) => (props.show ? "block" : "none")};
+  display: none;
   white-space: nowrap;
   font-size: ${theme.fontSizes.xs};
   line-height: ${theme.lineHeights.xs};
@@ -160,9 +147,7 @@ const SocialShare = (props) => {
         <CopyIcon>
           <use xlinkHref="#copy" />
         </CopyIcon>
-        <CopyTooltip show={props.tooltipOpen}>
-          {props.tooltipMessage}
-        </CopyTooltip>
+        <CopyTooltip>Copy page link</CopyTooltip>
       </StyledCopyButton>
     </StyledSocialShare>
   );

@@ -18,7 +18,6 @@ import Tags from "../components/Tags/Tags";
 import ReadTime from "../components/ReadTime/ReadTime";
 import ArticleDate from "../components/ArticleDate/ArticleDate";
 import { Copy } from "../components/Copy/Copy";
-import { DefaultLink } from "../components/Link/Link";
 import { HR } from "../components/HR/HR";
 
 const PostWrapper = styled.div`
@@ -41,7 +40,7 @@ const StyledPostHeader = styled.header`
   ${mediaMin.xxl`
     background-color: ${theme.colors.gray100};
     border-left: 8px solid ${theme.colors.main600};
-    padding: ${rem(40)} ${rem(96)} ${rem(16)} ${rem(96)};
+    padding: ${rem(40)} ${rem(96)};
   `};
 `;
 
@@ -95,23 +94,13 @@ const PostDateReadTimeWrapper = styled.div`
   margin-right: ${rem(24)};
 `;
 
-const PostAside = styled.aside`
+const SocialShareWrapper = styled.aside`
+  display: block;
   margin-top: ${rem(16)};
-  outline: 1px solid;
+  margin-bottom: ${rem(32)};
 
   ${mediaMin.s`
     margin-top: ${rem(32)};
-  `};
-
-  ${mediaMax.xl`
-    margin-top: ${rem(16)};
-    margin-bottom: ${rem(32)};
-  `};
-
-  ${mediaMin.xl`
-    float: right;
-    margin-left: calc(((100% / 10) * 1) + ${rem(24)});
-    width: calc(((100% / 10) * 3) - ${rem(24)});
   `};
 `;
 
@@ -120,7 +109,6 @@ const StyledCopy = styled(Copy)`
 `;
 
 const PostContent = styled.section`
-  outline: 1px solid;
   max-width: ${theme.contain.post};
   margin-left: auto;
   margin-right: auto;
@@ -132,7 +120,7 @@ const PostContent = styled.section`
   `};
 
   ${mediaMin.xxl`
-    display: inline-block;
+    display: block;
     vertical-align: top;
     margin-left: calc(((100% / 10) * 1) + ${rem(24)});
     width: calc((100% / 10) * 6);
@@ -242,11 +230,11 @@ const renderAst = new rehypeReact({
 
 class Post extends Component {
   state = {
-    tooltipMessage: "Copy page link",
+    // tooltipMessage: "Copy page link",
     showNav: false,
-    dropdownsState: {
-      tooltipOpen: false,
-    },
+    // dropdownsState: {
+    //   tooltipOpen: false,
+    // },
   };
 
   /****************************************************************
@@ -260,14 +248,14 @@ class Post extends Component {
     this.addCopyButtonsToCodeNodes();
   }
 
-  componentDidUpdate() {
-    let tooltipMessage = this.state.tooltipMessage;
-    if (tooltipMessage === "Page link copied!") {
-      setTimeout(() => {
-        this.setState({ tooltipMessage: "Copy page link" });
-      }, 1500);
-    }
-  }
+  // componentDidUpdate() {
+  //   let tooltipMessage = this.state.tooltipMessage;
+  // if (tooltipMessage === "Page link copied!") {
+  // setTimeout(() => {
+  //   this.setState({ tooltipMessage: "Copy page link" });
+  // }, 1500);
+  // }
+  // }
 
   openNav = () => {
     this.setState((prevState) => ({
@@ -284,14 +272,21 @@ class Post extends Component {
   copyURL = () => {
     let dummyNode = document.querySelector(".js-dummyInput");
     dummyNode.value = window.location.href;
+    const copyURLButton = document.querySelector(".js-copyURL > span");
 
     this.selectDummyNodeForCopy(dummyNode);
 
     try {
       document.execCommand("copy");
-      this.setState({ tooltipMessage: "Page link copied!" });
+      copyURLButton.textContent = "Page link copied!";
+      setTimeout(() => {
+        copyURLButton.textContent = "Copy page link";
+      }, 2000);
     } catch (err) {
-      this.setState({ tooltipMessage: "Couldn't copy the link" });
+      copyURLButton.textContent = "Couldn't copy the link";
+      setTimeout(() => {
+        copyURLButton.textContent = "Copy page link";
+      }, 2000);
     }
 
     window.getSelection().removeAllRanges();
@@ -411,16 +406,15 @@ class Post extends Component {
               </PostInfo>
             </StyledPostHeader>
             <HRBottom />
-            <PostAside>
-              <SocialShare
-                slug={slug}
-                title={postInfo.title}
-                snippet={postInfo.snippet}
-                onClick={this.copyURL}
-                tooltipMessage={this.state.tooltipMessage}
-              />
-            </PostAside>
             <PostContent>
+              <SocialShareWrapper>
+                <SocialShare
+                  slug={slug}
+                  title={postInfo.title}
+                  snippet={postInfo.snippet}
+                  onClick={this.copyURL}
+                />
+              </SocialShareWrapper>
               <React.Fragment>
                 {introCopy.map((paragraph) => (
                   <StyledCopy key={paragraph}>{paragraph}</StyledCopy>

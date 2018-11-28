@@ -88,6 +88,10 @@ const ContinueLink = styled(BoldLink)`
     margin-top: auto;
     margin-bottom: 0;
   `};
+
+  &:hover {
+    background-color: transparent;
+  }
 `;
 
 const CaseStudyCard = (props) => {

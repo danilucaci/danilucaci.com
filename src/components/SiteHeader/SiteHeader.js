@@ -10,6 +10,7 @@ const StyledSiteHeader = styled.header`
   ${theme.shadow.navbar};
   width: 100%;
   display: block;
+  will-change: transform;
 
   ${mediaMin.m`
     background-color: ${theme.colors.gray100};
