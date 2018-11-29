@@ -11,6 +11,10 @@
     "type": "git",
     "url": "https://github.com/danilucaci/danilucaci"
   },
+  "browserslist": [
+      ">0.25%",
+      "not dead"
+    ],
   "dependencies": {
     "babel-plugin-styled-components": "^1.8.0",
     "dotenv": "^6.1.0",

@@ -78,7 +78,7 @@ const CopyTooltip = styled.span`
   padding: ${rem(8)};
 `;
 
-const TwitterIcon = styled(Icon)`
+const StyledIcon = styled(Icon)`
   width: ${rem(40)};
   height: ${rem(40)};
 
@@ -86,31 +86,17 @@ const TwitterIcon = styled(Icon)`
     width: ${rem(32)};
     height: ${rem(32)};
   `};
+`;
 
+const TwitterIcon = styled(StyledIcon)`
   fill: ${theme.colors.social.twitter};
 `;
 
-const LinkedinIcon = styled(Icon)`
-  width: ${rem(40)};
-  height: ${rem(40)};
-
-  ${mediaMin.s`
-    width: ${rem(32)};
-    height: ${rem(32)};
-  `};
-
+const LinkedinIcon = styled(StyledIcon)`
   fill: ${theme.colors.social.linkedin};
 `;
 
-const FacebookIcon = styled(Icon)`
-  width: ${rem(40)};
-  height: ${rem(40)};
-
-  ${mediaMin.s`
-    width: ${rem(32)};
-    height: ${rem(32)};
-  `};
-
+const FacebookIcon = styled(StyledIcon)`
   fill: ${theme.colors.social.facebook};
 `;
 

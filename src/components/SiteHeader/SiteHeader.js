@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import styled, { css } from "styled-components";
-import { theme, rem, mediaMin } from "../../theme/globalStyles";
+import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
 
 import SiteNav from "../SiteNav/SiteNav";
 
@@ -20,6 +20,23 @@ const StyledSiteHeader = styled.header`
   `};
 `;
 
+const ScrollContainer = styled.div`
+  height: ${rem(4)};
+  background-color: ${theme.colors.gray300};
+  width: 100%;
+
+  ${mediaMax.s`
+    display: none;
+  `};
+`;
+
+const ScrollLine = styled.div`
+  height: ${rem(4)};
+  background-color: ${theme.colors.main600};
+  will-change: width;
+  width: 0%;
+`;
+
 class SiteHeader extends Component {
   state = {
     showNav: false,
@@ -32,9 +49,16 @@ class SiteHeader extends Component {
   };
 
   render() {
+    let shouldRenderScroll = this.props.showScrollIndicator;
+
     return (
       <StyledSiteHeader role="banner">
         <SiteNav onClick={this.openNav} showNav={this.state.showNav} />
+        {shouldRenderScroll && (
+          <ScrollContainer showScrollIndicator={this.props.showScrollIndicator}>
+            <ScrollLine className="js-scrollLine" />
+          </ScrollContainer>
+        )}
       </StyledSiteHeader>
     );
   }

@@ -229,52 +229,51 @@ const renderAst = new rehypeReact({
 }).Compiler;
 
 class Post extends Component {
-  state = {
-    // tooltipMessage: "Copy page link",
-    showNav: false,
-    // dropdownsState: {
-    //   tooltipOpen: false,
-    // },
-  };
-
-  /****************************************************************
-   * React lifecycle methods
-   */
+  state = {};
 
   componentDidMount() {
     const copyURLButton = document.querySelector(".js-copyURL");
     copyURLButton.addEventListener("click", this.copyURL);
 
+    // Test via a getter in the options object to see if the passive property is accessed
+    // https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#feature-detection
+    var supportsPassive = false;
+    try {
+      var opts = Object.defineProperty({}, "passive", {
+        get: function() {
+          supportsPassive = true;
+        },
+      });
+      window.addEventListener("testPassive", null, opts);
+      window.removeEventListener("testPassive", null, opts);
+    } catch (e) {}
+
+    // Use our detect's results. passive applied if supported, capture will be false either way.
+    window.addEventListener(
+      "scroll",
+      this.handleBlogPostScroll,
+      supportsPassive ? { passive: true } : false
+    );
+
     this.addCopyButtonsToCodeNodes();
+    this.handleBlogPostScroll();
   }
 
-  // componentDidUpdate() {
-  //   let tooltipMessage = this.state.tooltipMessage;
-  // if (tooltipMessage === "Page link copied!") {
-  // setTimeout(() => {
-  //   this.setState({ tooltipMessage: "Copy page link" });
-  // }, 1500);
-  // }
-  // }
-
-  openNav = () => {
-    this.setState((prevState) => ({
-      showNav: !prevState.showNav,
-    }));
-  };
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleBlogPostScroll);
+  }
 
   /****************************************************************
    * Code to handle the url copying and code snippets
    * It's all using a dummy input element which holds the content
    * Which is supposed to be copied to the clipboard
-   * The content is taken from the state
    */
   copyURL = () => {
     let dummyNode = document.querySelector(".js-dummyInput");
-    dummyNode.value = window.location.href;
     const copyURLButton = document.querySelector(".js-copyURL > span");
 
-    this.selectDummyNodeForCopy(dummyNode);
+    dummyNode.value = window.location.href;
+    this.selectDummyNodeToCopy(dummyNode);
 
     try {
       document.execCommand("copy");
@@ -335,32 +334,32 @@ class Post extends Component {
 
     dummyNode.value = e.target.previousElementSibling.textContent;
 
-    this.selectDummyNodeForCopy(dummyNode);
+    this.selectDummyNodeToCopy(dummyNode);
 
     try {
       document.execCommand("copy");
       currentCopyButton.textContent = "Copied!";
 
-      // If the textContent was changed, trigger a setTimeout after 2500ms
+      // If the textContent was changed, trigger a setTimeout after 2000ms
       // and change it back to "Copy"
       if (currentCopyButton.textContent === "Copied!") {
         setTimeout(() => {
           currentCopyButton.textContent = "Copy";
-        }, 2500);
+        }, 2000);
       }
     } catch (err) {
       currentCopyButton.textContent = "Couldn't copy";
       if (currentCopyButton.textContent === "Couldn't copy") {
         setTimeout(() => {
           currentCopyButton.textContent = "Copy";
-        }, 2500);
+        }, 2000);
       }
     }
 
     window.getSelection().removeAllRanges();
   };
 
-  selectDummyNodeForCopy = (dummyNode) => {
+  selectDummyNodeToCopy = (dummyNode) => {
     // For iOS
     if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
       let range = document.createRange();
@@ -377,6 +376,59 @@ class Post extends Component {
     }
   };
 
+  handleBlogPostScroll = () => {
+    this.handleScrollLine();
+    this.handleTOCScroll();
+  };
+
+  handleScrollLine = () => {
+    let scrollLine = document.querySelector(".js-scrollLine");
+
+    let winScroll =
+      document.body.scrollTop || document.documentElement.scrollTop;
+    let clientHeight =
+      window.innerHeight || document.documentElement.clientHeight;
+    let docScrollHeight =
+      document.body.scrollHeight || document.documentElement.scrollHeight;
+
+    let docHeight = docScrollHeight - clientHeight;
+
+    let scrolled = (winScroll / docHeight) * 100;
+    scrollLine.style.width = scrolled + "%";
+  };
+
+  /*!
+   * Determine if an element is in the viewport
+   * (c) 2017 Chris Ferdinandi, MIT License, https://gomakethings.com
+   * https://vanillajstoolkit.com/helpers/isinviewport/
+   * @param  {Node}    element The element
+   * @return {Boolean}      Returns true if element is in the viewport
+   */
+  isInViewport = (element) => {
+    let distance = element.getBoundingClientRect();
+
+    return (
+      distance.top >= 0 &&
+      distance.left >= 0 &&
+      distance.bottom <=
+        (window.innerHeight || document.documentElement.clientHeight) &&
+      distance.right <=
+        (window.innerWidth || document.documentElement.clientWidth)
+    );
+  };
+
+  handleTOCScroll = () => {
+    let h2s = document.querySelectorAll("h2");
+
+    h2s.forEach((heading) => {
+      let isVis = this.isInViewport(heading);
+
+      if (isVis) {
+        // console.log("heading: ", heading);
+      }
+    });
+  };
+
   render() {
     const slug = this.props.data.markdownRemark.fields.slug;
     const postNode = this.props.data.markdownRemark;
@@ -391,7 +443,7 @@ class Post extends Component {
           <title>{`${postInfo.title} - ${config.siteTitle}`}</title>
         </Helmet>
         <SEO postPath={slug} postNode={postNode} postSEO />
-        <SiteHeader />
+        <SiteHeader showScrollIndicator />
         <Main role="main">
           <PostWrapper>
             <StyledPostHeader>
