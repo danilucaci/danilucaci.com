@@ -5,20 +5,16 @@ import urljoin from "url-join";
 import config from "../../../data/SiteConfig";
 import { theme, rem, mediaMax, mediaMin } from "../../theme/globalStyles";
 
-import {
-  FacebookShareButton,
-  TwitterShareButton,
-  LinkedinShareButton,
-} from "react-share";
+import { TwitterShareButton, LinkedinShareButton } from "react-share";
 
 import { Icon } from "../Icon/Icon";
 
 const StyledSocialShare = styled.div`
   margin-left: -${rem(4)};
   white-space: nowrap;
+
   & .SocialMediaShareButton {
     display: inline-block;
-    margin-right: 16px;
   }
 `;
 
@@ -36,13 +32,18 @@ const StyledCopyButton = styled.div`
 const CopyIcon = styled(Icon)`
   width: ${rem(40)};
   height: ${rem(40)};
+  fill: ${theme.colors.dark800};
+  will-change: transform;
+  transition: transform ease 0.15s;
 
-  ${mediaMin.s`
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  ${mediaMin.xl`
     width: ${rem(32)};
     height: ${rem(32)};
   `};
-
-  fill: ${theme.colors.dark800};
 `;
 
 const CopyTooltip = styled.span`
@@ -81,8 +82,14 @@ const CopyTooltip = styled.span`
 const StyledIcon = styled(Icon)`
   width: ${rem(40)};
   height: ${rem(40)};
+  will-change: transform;
+  transition: transform ease 0.15s;
 
-  ${mediaMin.s`
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  ${mediaMin.xl`
     width: ${rem(32)};
     height: ${rem(32)};
   `};
@@ -96,20 +103,11 @@ const LinkedinIcon = styled(StyledIcon)`
   fill: ${theme.colors.social.linkedin};
 `;
 
-const FacebookIcon = styled(StyledIcon)`
-  fill: ${theme.colors.social.facebook};
-`;
-
 const SocialShare = (props) => {
   const url = urljoin(config.siteUrl, config.pathPrefix, props.slug);
 
   return (
     <StyledSocialShare>
-      <FacebookShareButton url={url} quote={props.intro}>
-        <FacebookIcon>
-          <use xlinkHref="#facebook" />
-        </FacebookIcon>
-      </FacebookShareButton>
       <LinkedinShareButton
         url={url}
         title={props.title}

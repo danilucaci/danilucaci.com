@@ -22,7 +22,7 @@ const StyledSiteHeader = styled.header`
 
 const ScrollContainer = styled.div`
   height: ${rem(4)};
-  background-color: ${theme.colors.gray300};
+  background-color: transparent;
   width: 100%;
 
   ${mediaMax.s`
@@ -53,12 +53,12 @@ class SiteHeader extends Component {
 
     return (
       <StyledSiteHeader role="banner">
-        <SiteNav onClick={this.openNav} showNav={this.state.showNav} />
         {shouldRenderScroll && (
           <ScrollContainer showScrollIndicator={this.props.showScrollIndicator}>
             <ScrollLine className="js-scrollLine" />
           </ScrollContainer>
         )}
+        <SiteNav onClick={this.openNav} showNav={this.state.showNav} />
       </StyledSiteHeader>
     );
   }

@@ -12,8 +12,6 @@ import GlobalAria from "../theme/globalAria";
 import GlobalHTML from "../theme/globalCSS";
 import { SVGSprite } from "./SVGSprite/SVGSprite";
 
-import { ScrollProvider } from "./ScrollProvider/ScrollProvider";
-
 require("./prism.css");
 
 // console.log("env: " + process.env.GATSBY_ASSETS_URL);
@@ -104,9 +102,7 @@ class Layout extends Component {
             </script>
           </Helmet>
           <SVGSprite />
-          <ScrollProvider location={this.props.location}>
-            {this.props.children}
-          </ScrollProvider>
+          {this.props.children}
         </Page>
       </ThemeProvider>
     );

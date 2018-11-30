@@ -30,3 +30,7 @@ export const BoldLink = styled(DefaultLink)`
     font-family: ${theme.fonts.bodyBold};
   }
 `;
+
+export const GreyLink = styled(DefaultLink)`
+  color: ${theme.colors.dark900};
+`;

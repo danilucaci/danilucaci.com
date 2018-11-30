@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import rehypeReact from "rehype-react";
 
 import { theme, rem, mediaMin, mediaMax } from "../theme/globalStyles";
@@ -11,14 +11,18 @@ import Layout from "../components/Layout";
 import SiteHeader from "../components/SiteHeader/SiteHeader";
 import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
-
 import SocialShare from "../components/SocialShare/SocialShare";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import Tags from "../components/Tags/Tags";
 import ReadTime from "../components/ReadTime/ReadTime";
 import ArticleDate from "../components/ArticleDate/ArticleDate";
 import { Copy } from "../components/Copy/Copy";
-import { HR } from "../components/HR/HR";
+import {
+  calculateScroll,
+  slugify,
+  selectDummyNodeToCopy,
+  textPassiveEventSupport,
+} from "../helpers/helpers";
 
 const PostWrapper = styled.div`
   max-width: ${theme.contain.content};
@@ -31,16 +35,19 @@ const PostWrapper = styled.div`
   ${mediaMin.s`
     padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
-`};
+  `};
 `;
 
 const StyledPostHeader = styled.header`
-  margin-bottom: ${rem(16)};
+  padding-top: ${rem(16)};
+  padding-bottom: ${rem(32)};
 
-  ${mediaMin.xxl`
-    background-color: ${theme.colors.gray100};
-    border-left: 8px solid ${theme.colors.main600};
-    padding: ${rem(40)} ${rem(96)};
+  ${mediaMin.s`
+    padding-bottom: ${rem(40)};
+  `};
+
+  ${mediaMin.l`
+    padding-top: ${rem(16)};
   `};
 `;
 
@@ -48,82 +55,65 @@ const PostH1 = styled.h1`
   margin-bottom: ${rem(8)};
 
   ${mediaMin.m`
-    margin-bottom: 0;
-  `};
-
-  ${mediaMin.xl`
-    margin-bottom: ${rem(16)};
+    margin-bottom: ${rem(32)};
   `};
 `;
 
-const HRTop = styled(HR)`
-  display: none;
-
-  ${mediaMin.xxl`
-    display: block;
+const StyledPostIntro = styled.div`
+  ${mediaMin.m`
+    width: calc(((100% / 10) * 6) - ${rem(12)});
+    margin-right: ${rem(12)};
+    display: inline-block;
+    vertical-align: top;
   `};
 `;
 
-const HRBottom = styled(HR)`
-  display: none;
-
-  ${mediaMin.xs`
-    display: block;
-  `};
-
-  ${mediaMin.xxl`
-    display: none;
-  `};
-`;
-
-const PostInfo = styled.div`
-  margin-top: ${rem(8)};
+const PostInfo = styled.aside`
+  margin-top: ${rem(16)};
   margin-bottom: ${rem(16)};
 
   ${mediaMin.m`
-    margin-top: ${rem(4)};
-  `};
-
-  ${mediaMin.xxl`
+    padding: ${rem(16)} ${rem(16)};
+    background-color: ${theme.colors.gray100};
+    ${theme.shadow.default};
+    float: right;
+    width: calc(((100% / 10) * 4) - ${rem(12)});
+    margin-left: ${rem(12)};
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 0;
     margin-bottom: 0;
   `};
 `;
 
 const PostDateReadTimeWrapper = styled.div`
   display: inline-block;
-  margin-right: ${rem(24)};
-`;
 
-const SocialShareWrapper = styled.aside`
-  display: block;
-  margin-top: ${rem(16)};
-  margin-bottom: ${rem(32)};
+  ${mediaMin.xxs`
+    margin-right: ${rem(16)};
+  `};
 
-  ${mediaMin.s`
-    margin-top: ${rem(32)};
+  ${mediaMin.m`
+    margin-right: 0;
   `};
 `;
 
-const StyledCopy = styled(Copy)`
-  margin-bottom: ${rem(32)};
+const SocialShareWrapper = styled.div`
+  margin-top: ${rem(8)};
+  display: block;
+  ${mediaMin.m`
+    margin-top: ${rem(16)};
+  `};
 `;
 
 const PostContent = styled.section`
+  display: block;
   max-width: ${theme.contain.post};
   margin-left: auto;
   margin-right: auto;
-  margin-top: ${rem(16)};
 
   ${mediaMin.s`
-    margin-top: ${rem(32)};
     margin-bottom: ${rem(56)};
-  `};
-
-  ${mediaMin.xxl`
-    display: block;
-    vertical-align: top;
-    margin-left: calc(((100% / 10) * 1) + ${rem(24)});
-    width: calc((100% / 10) * 6);
   `};
 
   header h1,
@@ -133,7 +123,6 @@ const PostContent = styled.section`
 
   h2 {
     display: block;
-
     margin-bottom: ${rem(16)};
     margin-top: ${rem(32)};
 
@@ -145,7 +134,6 @@ const PostContent = styled.section`
 
   h3 {
     display: block;
-
     margin-bottom: ${rem(16)};
     margin-top: ${rem(32)};
 
@@ -157,7 +145,6 @@ const PostContent = styled.section`
 
   h4 {
     display: block;
-
     margin-bottom: ${rem(16)};
     margin-top: ${rem(32)};
 
@@ -169,16 +156,39 @@ const PostContent = styled.section`
 
   & h2,
   & h3,
-  & h2 a,
-  & h3 a {
+  & h4 {
     &:target {
-      &:before {
+      animation: animateAnchor 1.5s ease;
+      &::before {
         content: "";
         display: block;
-        height: ${rem(56)}; /* fixed header height*/
-        margin-top: -${rem(56)}; /* negative fixed header height */
+        height: ${rem(80)};
+        margin-top: -${rem(80)};
       }
-      border-bottom: 2px solid ${theme.colors.main500};
+    }
+  }
+
+  .headings-anchor {
+    position: relative;
+    float: left;
+    margin-left: -${rem(24)};
+    padding-right: ${rem(4)};
+    margin-top: 0;
+    & > svg {
+      fill: ${theme.colors.main600};
+    }
+  }
+
+  @keyframes animateAnchor {
+    0% {
+      color: ${theme.colors.dark900};
+    }
+    1%,
+    80% {
+      color: ${theme.colors.main600};
+    }
+    0% {
+      color: ${theme.colors.dark900};
     }
   }
 
@@ -212,6 +222,40 @@ const PostContent = styled.section`
   }
 `;
 
+const PostTOC = styled.nav`
+  background-color: ${theme.colors.gray100};
+  ${theme.shadow.default};
+  padding: ${rem(16)} ${rem(20)};
+
+  & h4 {
+    margin-top: 0;
+    margin-bottom: ${rem(8)};
+  }
+`;
+
+const TOCEntry = styled.a`
+  display: block;
+  color: ${theme.colors.dark900};
+  text-decoration: none;
+  font-style: normal;
+  font-weight: 400;
+  padding: ${rem(8)} 0;
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.bodyRegular};
+  }
+
+  &:visited,
+  &:link {
+    color: ${theme.colors.dark900};
+  }
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+`;
+
 const DummyInput = styled.textarea`
   position: absolute;
   top: -1000em;
@@ -237,17 +281,7 @@ class Post extends Component {
 
     // Test via a getter in the options object to see if the passive property is accessed
     // https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#feature-detection
-    var supportsPassive = false;
-    try {
-      var opts = Object.defineProperty({}, "passive", {
-        get: function() {
-          supportsPassive = true;
-        },
-      });
-      window.addEventListener("testPassive", null, opts);
-      window.removeEventListener("testPassive", null, opts);
-    } catch (e) {}
-
+    var supportsPassive = textPassiveEventSupport();
     // Use our detect's results. passive applied if supported, capture will be false either way.
     window.addEventListener(
       "scroll",
@@ -273,7 +307,7 @@ class Post extends Component {
     const copyURLButton = document.querySelector(".js-copyURL > span");
 
     dummyNode.value = window.location.href;
-    this.selectDummyNodeToCopy(dummyNode);
+    selectDummyNodeToCopy(dummyNode);
 
     try {
       document.execCommand("copy");
@@ -334,7 +368,7 @@ class Post extends Component {
 
     dummyNode.value = e.target.previousElementSibling.textContent;
 
-    this.selectDummyNodeToCopy(dummyNode);
+    selectDummyNodeToCopy(dummyNode);
 
     try {
       document.execCommand("copy");
@@ -359,83 +393,48 @@ class Post extends Component {
     window.getSelection().removeAllRanges();
   };
 
-  selectDummyNodeToCopy = (dummyNode) => {
-    // For iOS
-    if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
-      let range = document.createRange();
-      range.selectNodeContents(dummyNode);
-
-      let select = window.getSelection();
-      select.removeAllRanges();
-      select.addRange(range);
-      dummyNode.setSelectionRange(0, 999999);
-      dummyNode.blur();
-    } else {
-      dummyNode.select();
-      dummyNode.blur();
-    }
-  };
-
   handleBlogPostScroll = () => {
     this.handleScrollLine();
-    this.handleTOCScroll();
+    // this.handleTOCScroll();
   };
 
   handleScrollLine = () => {
     let scrollLine = document.querySelector(".js-scrollLine");
-
-    let winScroll =
-      document.body.scrollTop || document.documentElement.scrollTop;
-    let clientHeight =
-      window.innerHeight || document.documentElement.clientHeight;
-    let docScrollHeight =
-      document.body.scrollHeight || document.documentElement.scrollHeight;
-
-    let docHeight = docScrollHeight - clientHeight;
-
-    let scrolled = (winScroll / docHeight) * 100;
+    let scrolled = calculateScroll();
     scrollLine.style.width = scrolled + "%";
   };
 
-  /*!
-   * Determine if an element is in the viewport
-   * (c) 2017 Chris Ferdinandi, MIT License, https://gomakethings.com
-   * https://vanillajstoolkit.com/helpers/isinviewport/
-   * @param  {Node}    element The element
-   * @return {Boolean}      Returns true if element is in the viewport
-   */
-  isInViewport = (element) => {
-    let distance = element.getBoundingClientRect();
+  // handleTOCScroll = () => {
+  //   let h2s = document.querySelectorAll("h2");
 
-    return (
-      distance.top >= 0 &&
-      distance.left >= 0 &&
-      distance.bottom <=
-        (window.innerHeight || document.documentElement.clientHeight) &&
-      distance.right <=
-        (window.innerWidth || document.documentElement.clientWidth)
-    );
-  };
+  //   h2s.forEach((heading) => {
+  //     let isVis = isInViewport(heading);
 
-  handleTOCScroll = () => {
-    let h2s = document.querySelectorAll("h2");
-
-    h2s.forEach((heading) => {
-      let isVis = this.isInViewport(heading);
-
-      if (isVis) {
-        // console.log("heading: ", heading);
-      }
-    });
-  };
+  //     if (isVis) {
+  //       // console.log("heading: ", heading);
+  //     }
+  //   });
+  // };
 
   render() {
     const slug = this.props.data.markdownRemark.fields.slug;
     const postNode = this.props.data.markdownRemark;
     const postInfo = postNode.frontmatter;
-    let introCopy = postInfo.intro.split("|");
+    const introCopy = postInfo.intro.split("|");
+    const showTOC = postNode.frontmatter.showTOC;
+    const tocHeadings = Array.from(postNode.headings);
+    let tocEntries = [];
 
-    console.log("headings", postNode.headings);
+    if (showTOC) {
+      tocHeadings.forEach((heading) => {
+        let url = slugify(heading.value);
+        let hash = "#".concat(url);
+        tocEntries.push({
+          url: hash,
+          value: heading.value,
+        });
+      });
+    }
 
     return (
       <Layout location={this.props.location}>
@@ -448,30 +447,38 @@ class Post extends Component {
           <PostWrapper>
             <StyledPostHeader>
               <PostH1>{postInfo.title}</PostH1>
-              <HRTop />
               <PostInfo>
                 <PostDateReadTimeWrapper>
                   <ArticleDate date={postInfo.date} />
                   <ReadTime timeToRead={postNode.timeToRead} />
                 </PostDateReadTimeWrapper>
                 <Tags tagsInPost={postInfo.tags} inline />
+                <SocialShareWrapper>
+                  <SocialShare
+                    slug={slug}
+                    title={postInfo.title}
+                    snippet={postInfo.snippet}
+                    onClick={this.copyURL}
+                  />
+                </SocialShareWrapper>
               </PostInfo>
-            </StyledPostHeader>
-            <HRBottom />
-            <PostContent>
-              <SocialShareWrapper>
-                <SocialShare
-                  slug={slug}
-                  title={postInfo.title}
-                  snippet={postInfo.snippet}
-                  onClick={this.copyURL}
-                />
-              </SocialShareWrapper>
-              <React.Fragment>
+              <StyledPostIntro>
                 {introCopy.map((paragraph) => (
-                  <StyledCopy key={paragraph}>{paragraph}</StyledCopy>
+                  <Copy key={paragraph}>{paragraph}</Copy>
                 ))}
-              </React.Fragment>
+              </StyledPostIntro>
+            </StyledPostHeader>
+            <PostContent>
+              {showTOC && (
+                <PostTOC>
+                  <h4>Table of Contents</h4>
+                  {tocEntries.map((entry, index) => (
+                    <TOCEntry key={index} href={entry.url}>
+                      {entry.value}
+                    </TOCEntry>
+                  ))}
+                </PostTOC>
+              )}
               {renderAst(postNode.htmlAst)}
             </PostContent>
           </PostWrapper>
@@ -506,6 +513,7 @@ export const pageQuery = graphql`
         intro
         category
         tags
+        showTOC
       }
       fields {
         nextTitle
