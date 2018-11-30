@@ -223,14 +223,22 @@ const PostContent = styled.section`
 `;
 
 const PostTOC = styled.nav`
-  background-color: ${theme.colors.gray100};
-  ${theme.shadow.default};
+  background-color: ${theme.colors.sectionBackground};
   padding: ${rem(16)} ${rem(20)};
 
-  & h4 {
+  & h3 {
     margin-top: 0;
     margin-bottom: ${rem(8)};
   }
+
+  ${mediaMin.l`
+    margin-left: -${rem(96)};
+    margin-right: -${rem(96)};
+    padding-left: ${rem(96)};
+    padding-right: ${rem(96)};
+    padding-top: ${rem(32)};
+    padding-bottom: ${rem(32)};
+  `};
 `;
 
 const TOCEntry = styled.a`
@@ -471,7 +479,7 @@ class Post extends Component {
             <PostContent>
               {showTOC && (
                 <PostTOC>
-                  <h4>Table of Contents</h4>
+                  <h3>Table of Contents</h3>
                   {tocEntries.map((entry, index) => (
                     <TOCEntry key={index} href={entry.url}>
                       {entry.value}
