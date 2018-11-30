@@ -11,19 +11,16 @@ const Wrapper = styled.div``;
 const StyledLink = styled.a`
   display: inline-block;
   vertical-align: top;
-
   margin-right: ${rem(16)};
+  will-change: transform;
+  transition: transform ease 0.15s;
 
   &:last-of-type {
     margin-right: 0;
   }
 
-  &:active,
-  &:focus {
-    outline: 2px dashed ${theme.colors.main600};
-  }
-
   &:hover {
+    transform: scale(1.2);
     cursor: pointer;
   }
 `;
