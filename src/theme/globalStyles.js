@@ -23,6 +23,7 @@ export const theme = {
     main300: "#0C85F0",
     main200: "#3DAEFF",
     main100: "#E6F2FF",
+    scrollToTop: "#cdced1cc",
     transparent: "rgba(255,255,255, 0.96)",
     social: {
       twitter: "#1DA1F2",

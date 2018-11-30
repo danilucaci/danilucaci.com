@@ -15,6 +15,7 @@ const StyledSocialShare = styled.div`
 
   & .SocialMediaShareButton {
     display: inline-block;
+    margin-right: ${rem(8)};
   }
 `;
 

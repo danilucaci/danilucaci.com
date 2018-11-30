@@ -8,7 +8,7 @@ import { Link } from "gatsby";
 const StyledTag = styled(Link)`
   background-color: transparent;
   border-radius: ${rem(4)};
-  border: 1px solid ${theme.colors.dark900};
+  border: 1px solid ${theme.colors.grey500};
   display: inline-block;
 
   text-decoration: none;
@@ -24,13 +24,13 @@ const StyledTag = styled(Link)`
   margin-top: ${rem(12)};
   padding: ${rem(6)} ${rem(10)};
 
-  &:hover {
-    text-decoration: underline;
-  }
-
   &:visited,
   &:link {
     color: ${theme.colors.dark800};
+  }
+
+  &:hover {
+    text-decoration: underline;
   }
 
   &:before {
