@@ -9,13 +9,13 @@ const StyledScrollToTop = styled.a`
   bottom: ${rem(16)};
   right: ${rem(16)};
   display: block;
-  background-color: ${theme.colors.gray300};
+  background-color: ${theme.colors.scrollToTop};
+
   ${theme.shadow.default};
   border-radius: ${rem(4)};
   will-change: transform;
 
   &:hover {
-    background-color: ${theme.colors.gray400};
     transform: scale(1.2);
     transition: transform ease 150ms;
   }
