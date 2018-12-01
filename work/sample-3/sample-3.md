@@ -7,7 +7,7 @@ tags:
     - Health
     - App
     - Android
-posted: true
+posted: false
 image: "./health_app_presentation.png"
 ---
 

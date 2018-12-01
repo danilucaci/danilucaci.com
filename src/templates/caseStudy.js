@@ -295,13 +295,13 @@ const PostContent = styled.section`
   }
 `;
 
-const renderAst = new rehypeReact({
-  createElement: React.createElement,
-  components: {
-    // "item-1": Item,
-    // p: Copy,
-  },
-}).Compiler;
+// const renderAst = new rehypeReact({
+//   createElement: React.createElement,
+//   components: {
+//     "item-1": Item,
+//     p: Copy,
+//   },
+// }).Compiler;
 
 class Post extends Component {
   state = {};
@@ -370,8 +370,8 @@ class Post extends Component {
                 // https://www.gatsbyjs.org/packages/gatsby-image/
               />
             </CaseStudyImgWrapper>
-            {/* <PostContent dangerouslySetInnerHTML={{ __html: postNode.html }} /> */}
-            <PostContent>{renderAst(postNode.htmlAst)}</PostContent>
+            <PostContent dangerouslySetInnerHTML={{ __html: postNode.html }} />
+            {/* <PostContent>{renderAst(postNode.htmlAst)}</PostContent> */}
           </Wrapper>
         </Main>
         <ScrollToTop />
@@ -386,7 +386,7 @@ export default Post;
 export const pageQuery = graphql`
   query WorkEntryBySlug($slug: String) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
-      htmlAst
+      html
       frontmatter {
         title
         date(formatString: "DD MMMM YYYY")
