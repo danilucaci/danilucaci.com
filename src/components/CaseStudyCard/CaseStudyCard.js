@@ -13,7 +13,7 @@ const StyledCaseStudyCard = styled.article`
 
   margin-bottom: ${rem(32)};
 
-  ${mediaMin.xxl`
+  ${mediaMin.xl`
     margin-bottom: ${rem(64)};
     display: flex;
   `};
@@ -24,7 +24,7 @@ const StyledCaseStudyCard = styled.article`
 `;
 
 const CaseStudyImgWrapper = styled.div`
-  ${mediaMin.xxl`
+  ${mediaMin.xl`
     margin-left: ${rem(12)};
     max-width: ${rem(552)};
     flex: 1 1 60%;
@@ -40,7 +40,7 @@ const CaseStudyCardContents = styled.div`
     padding: ${rem(8)} ${rem(32)} ${rem(24)};
   `};
 
-  ${mediaMin.xxl`
+  ${mediaMin.xl`
     margin-right: ${rem(12)};
     max-width: ${rem(360)};
     flex: 1 1 40%;
@@ -60,13 +60,13 @@ const TagsWrapper = styled.div`
 
 const Tag = styled(Copy)`
   display: inline-block;
-  margin-right: ${rem(8)};
+  margin-right: ${rem(16)};
 `;
 
 const HRTop = styled(HR)`
   border: 1px solid ${theme.colors.sectionBackground};
 
-  ${mediaMin.xxl`
+  ${mediaMin.xl`
     display: none;
   `};
 `;
