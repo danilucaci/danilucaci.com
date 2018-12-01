@@ -27,6 +27,7 @@ const StyledSiteHeader = styled.header`
 const ScrollContainer = styled.div`
   height: ${rem(4)};
   background-color: transparent;
+  will-change: width;
   width: 100%;
 
   ${mediaMax.s`

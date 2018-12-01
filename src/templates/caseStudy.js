@@ -13,9 +13,9 @@ import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
 import Img from "gatsby-image";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
-import Tags from "../components/Tags/Tags";
 import { Copy } from "../components/Copy/Copy";
 import { HR } from "../components/HR/HR";
+import { calculateScroll, textPassiveEventSupport } from "../helpers/helpers";
 
 const Wrapper = styled.div`
   max-width: ${theme.contain.content};
@@ -31,66 +31,63 @@ const Wrapper = styled.div`
 `};
 `;
 
-const StyledPostHeader = styled.header`
+const StyledHeader = styled.header`
   margin-bottom: ${rem(16)};
+  background-color: ${theme.colors.gray100};
+  margin-right: -${theme.gutters.s};
+  margin-left: -${theme.gutters.s};
+  padding: ${rem(8)} ${theme.gutters.s} ${rem(24)};
+
+  ${mediaMin.m`
+    margin-right: -${theme.gutters.m};
+    margin-left: -${theme.gutters.m};
+    padding: ${rem(16)} ${theme.gutters.m} ${rem(24)};
+    margin-bottom: ${rem(32)};
+  `};
 
   ${mediaMin.xxl`
-    background-color: ${theme.colors.gray100};
+    ${theme.shadow.default};
+    margin-right: 0;
+    margin-left: 0;
     border-left: 8px solid ${theme.colors.main600};
-    padding: ${rem(40)} ${rem(96)};
+    padding: ${rem(24)} ${rem(96)} ${rem(40)};
   `};
 `;
 
 const PostH1 = styled.h1`
+  margin-top: ${rem(8)};
   margin-bottom: ${rem(8)};
 
   ${mediaMin.m`
-    margin-bottom: 0;
-  `};
-
-  ${mediaMin.xl`
+    margin-top: ${rem(16)};
     margin-bottom: ${rem(16)};
   `};
 `;
 
-const HRTop = styled(HR)`
-  display: none;
-
-  ${mediaMin.xxl`
-    display: block;
-  `};
+const CaseStudyDescription = styled(Copy)`
+  font-size: ${rem(24)};
+  line-height: ${rem(40)};
 `;
 
-const HRBottom = styled(HR)`
-  display: none;
-
-  ${mediaMin.xs`
-    display: block;
-  `};
-
-  ${mediaMin.xxl`
-    display: none;
-  `};
+const TagsWrapper = styled.div`
+  margin-bottom: ${rem(8)};
 `;
 
-const PostInfo = styled.div`
-  margin-top: ${rem(8)};
-  margin-bottom: ${rem(16)};
-
-  ${mediaMin.m`
-    margin-top: ${rem(4)};
-  `};
-
-  ${mediaMin.xxl`
-    margin-bottom: 0;
-  `};
+const Tag = styled(Copy)`
+  display: inline-block;
+  margin-right: ${rem(16)};
 `;
 
-const StyledCopy = styled(Copy)`
-  margin-bottom: ${rem(32)};
+const CaseStudyImgWrapper = styled.div`
+  display: block;
+  max-width: ${theme.contain.blog};
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 const PostContent = styled.section`
+  display: block;
+
   max-width: ${theme.contain.post};
   margin-left: auto;
   margin-right: auto;
@@ -101,13 +98,6 @@ const PostContent = styled.section`
     margin-bottom: ${rem(56)};
   `};
 
-  ${mediaMin.xxl`
-    display: block;
-    vertical-align: top;
-    margin-left: calc(((100% / 10) * 1) + ${rem(24)});
-    width: calc((100% / 10) * 6);
-  `};
-
   header h1,
   nav h3 {
     margin-top: 0 !important;
@@ -115,82 +105,193 @@ const PostContent = styled.section`
 
   h2 {
     display: block;
-
-    margin-bottom: ${rem(16)};
     margin-top: ${rem(32)};
+    margin-bottom: ${rem(16)};
+
+    &:first-of-type {
+      margin-top: 0;
+    }
 
     ${mediaMin.xs`
-      margin-bottom: ${rem(32)};
       margin-top: ${rem(64)};
+      margin-bottom: ${rem(32)};
     `};
   }
 
   h3 {
     display: block;
-
-    margin-bottom: ${rem(16)};
     margin-top: ${rem(32)};
-
-    ${mediaMin.xs`
-      margin-bottom: ${rem(32)};
-      margin-top: ${rem(64)};
-    `};
+    margin-bottom: ${rem(16)};
   }
 
   h4 {
     display: block;
-
-    margin-bottom: ${rem(16)};
     margin-top: ${rem(32)};
-
-    ${mediaMin.xs`
-      margin-bottom: ${rem(32)};
-      margin-top: ${rem(64)};
-    `};
+    margin-bottom: ${rem(16)};
   }
 
-  & h2,
-  & h3,
-  & h2 a,
-  & h3 a {
-    &:target {
-      &:before {
-        content: "";
-        display: block;
-        height: ${rem(56)}; /* fixed header height*/
-        margin-top: -${rem(56)}; /* negative fixed header height */
-      }
-      border-bottom: 2px solid ${theme.colors.main500};
-    }
+  h5 {
+    display: block;
+
+    margin-top: ${rem(32)};
+    margin-bottom: ${rem(16)};
   }
 
   p {
     margin-bottom: ${rem(32)};
   }
 
-  .js-codeCopy {
-    background-color: ${theme.colors.gray100};
-    display: none;
-    white-space: nowrap;
-    font-size: ${theme.fontSizes.xs};
-    line-height: ${theme.lineHeights.xs};
-
-    .fonts-loaded & {
-      font-family: ${theme.fonts.bodyRegular};
-    }
-
-    position: absolute;
-    top: ${rem(12)};
-    right: ${rem(12)};
-    padding: ${rem(8)} ${rem(16)};
+  p + ul {
+    margin-top: -${rem(16)};
   }
 
-  .gatsby-highlight {
-    position: relative;
+  ul + p {
+    margin-top: ${rem(32)};
+  }
 
-    &:hover .js-codeCopy {
-      display: block;
+  ul {
+    list-style-type: disc;
+    list-style-position: outside;
+  }
+
+  li {
+    margin-left: ${rem(24)};
+  }
+
+  strong {
+    color: ${theme.colors.dark800};
+
+    .fonts-loaded & {
+      font-family: ${theme.fonts.bodyBold};
     }
+
+    font-weight: 700;
+    font-style: normal;
+
+    font-size: ${theme.fontSizes.m};
+    line-height: ${theme.lineHeights.m};
+  }
+
+  figure img {
+    ${theme.shadow.image} !important;
+  }
+
+  .container-8col {
+    ${mediaMin.xl`
+      width: ${rem(744)};
+      margin-right: -${rem(96)};
+      margin-left: -${rem(96)};
+    `};
+  }
+
+  .container-12col {
+    background-color: ${theme.colors.gray100};
+    ${theme.shadow.default};
+
+    margin: ${rem(32)} 0;
+
+    ${mediaMin.xl`
+      width: 80vw;
+      max-width: ${rem(1128)};
+      margin-right: -22vw;
+      margin-left: -22vw;
+      padding: 8% 16%;
+    `};
+  }
+
+  .pros-cons {
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+
+    ${mediaMin.xxl`
+      width: calc(100% - ${rem(415)});
+    `};
+    margin-left: ${rem(40)};
+  }
+
+  .container-375 {
+    width: ${rem(375)};
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  blockquote {
+    background-color: ${theme.colors.gray100};
+
+    & > p {
+      color: ${theme.colors.main600};
+      margin-bottom: 0;
+    }
+
+    strong {
+      color: ${theme.colors.main600};
+    }
+
+    margin-top: ${rem(32)};
+    margin-bottom: ${rem(32)};
+
+    margin-right: -${theme.gutters.s};
+    margin-left: -${theme.gutters.s};
+    padding: ${rem(16)} ${theme.gutters.s};
+
+    ${mediaMin.m`
+      margin-right: -${theme.gutters.m};
+      margin-left: -${theme.gutters.m};
+      padding: ${rem(32)} ${theme.gutters.m};
+    `};
+
+    ${mediaMin.xl`
+      ${theme.shadow.default};
+      margin-right: -${rem(96)};
+      margin-left: -${rem(96)};
+      padding: ${rem(32)} ${rem(96)};
+    `};
+  }
+
+  .sub-hypothesis {
+    color: ${theme.colors.main600};
+
+    & * {
+      color: ${theme.colors.main600};
+    }
+  }
+
+  .toc {
+    background-color: ${theme.colors.sectionBackground};
+    margin: ${rem(32)};
+
+    ${mediaMin.xl`
+      margin-right: -${rem(96)};
+      margin-left: -${rem(96)};
+      padding: ${rem(24)} ${rem(96)};
+    `};
+
+    p + ul {
+      margin-top: -${rem(32)};
+    }
+
+    ul {
+      list-style-type: none;
+
+      & li {
+        margin: 0;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: ${theme.colors.dark900};
+      margin: ${rem(16)} 0;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .toc__title {
+    margin: 0;
+    margin-bottom: ${rem(8)};
   }
 `;
 
@@ -208,82 +309,29 @@ class Post extends Component {
   componentDidMount() {
     // Test via a getter in the options object to see if the passive property is accessed
     // https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#feature-detection
-    var supportsPassive = false;
-    try {
-      var opts = Object.defineProperty({}, "passive", {
-        get: function() {
-          supportsPassive = true;
-        },
-      });
-      window.addEventListener("testPassive", null, opts);
-      window.removeEventListener("testPassive", null, opts);
-    } catch (e) {}
-
+    var supportsPassive = textPassiveEventSupport();
     // Use our detect's results. passive applied if supported, capture will be false either way.
     window.addEventListener(
       "scroll",
-      this.handleBlogPostScroll,
+      this.handlePageScroll,
       supportsPassive ? { passive: true } : false
     );
 
-    this.handleBlogPostScroll();
+    this.handlePageScroll();
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleBlogPostScroll);
+    window.removeEventListener("scroll", this.handlePageScroll);
   }
 
-  handleBlogPostScroll = () => {
+  handlePageScroll = () => {
     this.handleScrollLine();
-    this.handleTOCScroll();
   };
 
   handleScrollLine = () => {
     let scrollLine = document.querySelector(".js-scrollLine");
-
-    let winScroll =
-      document.body.scrollTop || document.documentElement.scrollTop;
-    let clientHeight =
-      window.innerHeight || document.documentElement.clientHeight;
-    let docScrollHeight =
-      document.body.scrollHeight || document.documentElement.scrollHeight;
-
-    let docHeight = docScrollHeight - clientHeight;
-
-    let scrolled = (winScroll / docHeight) * 100;
+    let scrolled = calculateScroll();
     scrollLine.style.width = scrolled + "%";
-  };
-
-  /*!
-   * Determine if an element is in the viewport
-   * (c) 2017 Chris Ferdinandi, MIT License, https://gomakethings.com
-   * https://vanillajstoolkit.com/helpers/isinviewport/
-   * @param  {Node}    element The element
-   * @return {Boolean}      Returns true if element is in the viewport
-   */
-  isInViewport = (element) => {
-    let distance = element.getBoundingClientRect();
-
-    return (
-      distance.top >= 0 &&
-      distance.left >= 0 &&
-      distance.bottom <=
-        (window.innerHeight || document.documentElement.clientHeight) &&
-      distance.right <=
-        (window.innerWidth || document.documentElement.clientWidth)
-    );
-  };
-
-  handleTOCScroll = () => {
-    let h2s = Array.from(document.querySelectorAll("h2"));
-
-    h2s.forEach((heading) => {
-      let isVis = this.isInViewport(heading);
-
-      if (isVis) {
-        // console.log("heading: ", heading);
-      }
-    });
   };
 
   render() {
@@ -291,7 +339,6 @@ class Post extends Component {
     const postNode = this.props.data.markdownRemark;
     const postInfo = postNode.frontmatter;
     const image = postInfo.image.childImageSharp.fluid;
-    console.log("headings", postNode.headings);
 
     return (
       <Layout location={this.props.location}>
@@ -302,20 +349,27 @@ class Post extends Component {
         <SiteHeader showScrollIndicator />
         <Main role="main">
           <Wrapper>
-            <StyledPostHeader>
+            <StyledHeader>
+              <TagsWrapper>
+                {postInfo.tags &&
+                  postInfo.tags.map((tag) => <Tag key={tag}>{tag}</Tag>)}
+              </TagsWrapper>
+              <HR />
               <PostH1>{postInfo.title}</PostH1>
-              <div>{postInfo.date}</div>
-              <Tags tagsInPost={postInfo.tags} spaced />
-              <StyledCopy>{postInfo.description}</StyledCopy>
-            </StyledPostHeader>
-            <Img
-              title={postInfo.title}
-              alt={postInfo.description}
-              fluid={image}
-              // fadeIn={true}
-              // add gatsby-image props here
-              // https://www.gatsbyjs.org/packages/gatsby-image/
-            />
+              <CaseStudyDescription>
+                {postInfo.description}
+              </CaseStudyDescription>
+            </StyledHeader>
+            <CaseStudyImgWrapper>
+              <Img
+                title={postInfo.title}
+                alt={postInfo.description}
+                fluid={image}
+                // fadeIn={true}
+                // add gatsby-image props here
+                // https://www.gatsbyjs.org/packages/gatsby-image/
+              />
+            </CaseStudyImgWrapper>
             {/* <PostContent dangerouslySetInnerHTML={{ __html: postNode.html }} /> */}
             <PostContent>{renderAst(postNode.htmlAst)}</PostContent>
           </Wrapper>
@@ -333,12 +387,6 @@ export const pageQuery = graphql`
   query WorkEntryBySlug($slug: String) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       htmlAst
-      h2s: headings(depth: h2) {
-        value
-      }
-      h3s: headings(depth: h3) {
-        value
-      }
       frontmatter {
         title
         date(formatString: "DD MMMM YYYY")
@@ -346,7 +394,7 @@ export const pageQuery = graphql`
         tags
         image {
           childImageSharp {
-            fluid(maxWidth: 744) {
+            fluid(maxWidth: 936) {
               ...GatsbyImageSharpFluid_noBase64
             }
           }

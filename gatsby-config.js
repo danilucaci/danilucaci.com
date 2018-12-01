@@ -69,7 +69,7 @@ module.exports = {
             resolve: "gatsby-remark-images",
             options: {
               // https://www.gatsbyjs.org/packages/gatsby-remark-images/?=images
-              maxWidth: 744,
+              maxWidth: 936,
               linkImagesToOriginal: false,
               withWebp: true,
               // wrapperStyle: 	Add custom styles to the div wrapping the responsive images.

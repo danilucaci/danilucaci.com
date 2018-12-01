@@ -260,16 +260,16 @@ class Post extends Component {
     // Use our detect's results. passive applied if supported, capture will be false either way.
     window.addEventListener(
       "scroll",
-      this.handleBlogPostScroll,
+      this.handlePageScroll,
       supportsPassive ? { passive: true } : false
     );
 
     this.addCopyButtonsToCodeNodes();
-    this.handleBlogPostScroll();
+    this.handlePageScroll();
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleBlogPostScroll);
+    window.removeEventListener("scroll", this.handlePageScroll);
   }
 
   /****************************************************************
@@ -368,7 +368,7 @@ class Post extends Component {
     window.getSelection().removeAllRanges();
   };
 
-  handleBlogPostScroll = () => {
+  handlePageScroll = () => {
     this.handleScrollLine();
     // this.handleTOCScroll();
   };
@@ -396,6 +396,7 @@ class Post extends Component {
     const postNode = this.props.data.markdownRemark;
     const postInfo = postNode.frontmatter;
     const introCopy = postInfo.intro.split("|");
+
     const showTOC = postNode.frontmatter.showTOC;
     const tocHeadings = Array.from(postNode.headings);
     let tocEntries = [];

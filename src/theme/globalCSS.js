@@ -128,6 +128,20 @@ const GlobalHTML = createGlobalStyle`
     }
   }
 
+  h5 {
+    color: ${theme.colors.dark700};
+    font-weight: 700;
+    font-style: normal;
+    font-size: ${theme.fontSizes.sectionHeader};
+    line-height: ${theme.lineHeights.sectionHeader};
+    letter-spacing: ${theme.letterSpacing.sectionHeader};
+    text-transform: uppercase;
+
+    .fonts-loaded & {
+      font-family: ${theme.fonts.header};
+    }
+  }
+
   h2,
   h3,
   h4 {
@@ -166,7 +180,7 @@ const GlobalHTML = createGlobalStyle`
     }
   }
 
-  p {
+  p,ul {
     color: ${theme.colors.dark800};
 
     .fonts-loaded & {
@@ -179,6 +193,7 @@ const GlobalHTML = createGlobalStyle`
     font-size: ${theme.fontSizes.m};
     line-height: ${theme.lineHeights.m};
   }
+
 
   p:empty {
     display: none;

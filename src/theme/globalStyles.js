@@ -43,6 +43,8 @@ export const theme = {
       "box-shadow: 0px 2px 8px -4px hsla(0,0%,40%,0.4), 0px 8px 20px -4px hsla(0,0%,40%,0.4)",
     navbar:
       "box-shadow: 0px 2px 4px -2px hsla(0,0%,40%,0.3), 0px 4px 8px -2px hsla(0,0%,60%,0.24)",
+    image:
+      "box-shadow: 0px 2px 4px -2px hsla(0,0%,40%,0.3), 0px 6px 12px -2px hsla(0,0%,60%,0.24)",
   },
   fonts: {
     code:
@@ -77,7 +79,7 @@ export const theme = {
     h2s: "2rem",
     h3: "2rem",
     h3s: "1.5rem",
-    h4: "1.75rem",
+    h4: "2rem",
     subhead: "2.5rem",
     subheadS: "2rem",
     sectionHeader: "1.5rem",
