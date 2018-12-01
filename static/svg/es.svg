@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-describedby="title" class="icon icon--lang" viewBox="0 0 24 24">
-    <title id="title">
-        Cambiar el idioma de la página a español
-    </title>
-    <g transform="translate(4, 4)">
-        <circle id="Oval" cx="8" cy="8" r="8" fill="#D7000A"/>
-        <path id="Fill" fill="#FFC000" d="M16,8 C16,9.46 15.609,10.83 14.92,12 L1.08,12 C0.391,10.83 0,9.46 0,8 C0,6.54 0.391,5.17 1.08,4 L14.92,4 C15.609,5.17 16,6.54 16,8"/>
-    </g>
-</svg>

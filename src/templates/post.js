@@ -68,6 +68,12 @@ const StyledPostIntro = styled.div`
   `};
 `;
 
+const IntroCopy = styled(Copy)`
+  &:first-of-type {
+    margin-bottom: ${rem(16)};
+  }
+`;
+
 const PostInfo = styled.aside`
   margin-top: ${rem(16)};
   margin-bottom: ${rem(16)};
@@ -154,44 +160,6 @@ const PostContent = styled.section`
     `};
   }
 
-  & h2,
-  & h3,
-  & h4 {
-    &:target {
-      animation: animateAnchor 1.5s ease;
-      &::before {
-        content: "";
-        display: block;
-        height: ${rem(80)};
-        margin-top: -${rem(80)};
-      }
-    }
-  }
-
-  .headings-anchor {
-    position: relative;
-    float: left;
-    margin-left: -${rem(24)};
-    padding-right: ${rem(4)};
-    margin-top: 0;
-    & > svg {
-      fill: ${theme.colors.main600};
-    }
-  }
-
-  @keyframes animateAnchor {
-    0% {
-      color: ${theme.colors.dark900};
-    }
-    1%,
-    80% {
-      color: ${theme.colors.main600};
-    }
-    0% {
-      color: ${theme.colors.dark900};
-    }
-  }
-
   p {
     margin-bottom: ${rem(32)};
   }
@@ -231,7 +199,7 @@ const PostTOC = styled.nav`
     margin-bottom: ${rem(8)};
   }
 
-  ${mediaMin.l`
+  ${mediaMin.xl`
     margin-left: -${rem(96)};
     margin-right: -${rem(96)};
     padding-left: ${rem(96)};
@@ -275,8 +243,7 @@ const DummyInput = styled.textarea`
 const renderAst = new rehypeReact({
   createElement: React.createElement,
   components: {
-    // "item-1": Item,
-    // p: Copy,
+    "item-1": Copy,
   },
 }).Compiler;
 
@@ -472,7 +439,7 @@ class Post extends Component {
               </PostInfo>
               <StyledPostIntro>
                 {introCopy.map((paragraph) => (
-                  <Copy key={paragraph}>{paragraph}</Copy>
+                  <IntroCopy key={paragraph}>{paragraph}</IntroCopy>
                 ))}
               </StyledPostIntro>
             </StyledPostHeader>
@@ -522,6 +489,13 @@ export const pageQuery = graphql`
         category
         tags
         showTOC
+        image {
+          childImageSharp {
+            fluid(maxWidth: 744) {
+              ...GatsbyImageSharpFluid_noBase64
+            }
+          }
+        }
       }
       fields {
         nextTitle

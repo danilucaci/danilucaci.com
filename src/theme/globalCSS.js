@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-import { theme, mediaMin } from "../theme/globalStyles";
+import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
 
 const GlobalHTML = createGlobalStyle`
   html {
@@ -128,6 +128,44 @@ const GlobalHTML = createGlobalStyle`
     }
   }
 
+  h2,
+  h3,
+  h4 {
+    &:target {
+      animation: animateAnchor 1.5s ease;
+      &::before {
+        content: "";
+        display: block;
+        height: ${rem(80)};
+        margin-top: -${rem(80)};
+      }
+    }
+  }
+
+  .headings-anchor {
+    position: relative;
+    float: left;
+    margin-left: -${rem(24)};
+    padding-right: ${rem(4)};
+    margin-top: 0;
+    & > svg {
+      fill: ${theme.colors.main600};
+    }
+  }
+
+  @keyframes animateAnchor {
+    0% {
+      color: ${theme.colors.dark900};
+    }
+    1%,
+    80% {
+      color: ${theme.colors.main600};
+    }
+    0% {
+      color: ${theme.colors.dark900};
+    }
+  }
+
   p {
     color: ${theme.colors.dark800};
 
@@ -140,6 +178,10 @@ const GlobalHTML = createGlobalStyle`
 
     font-size: ${theme.fontSizes.m};
     line-height: ${theme.lineHeights.m};
+  }
+
+  p:empty {
+    display: none;
   }
 
   a {
@@ -165,6 +207,62 @@ const GlobalHTML = createGlobalStyle`
     font-family: ${theme.fonts.code};
     font-size: ${theme.fontSizes.m};
     line-height: ${theme.lineHeights.m};
+  }
+
+  figure {
+    width: 100%;
+    margin-top: ${rem(32)};
+    margin-bottom: ${rem(32)};
+  }
+
+  figcaption {
+    font-size: ${theme.fontSizes.s};
+    line-height: ${theme.lineHeights.s};
+    color: ${theme.colors.dark700};
+    margin-top: ${rem(8)};
+
+    .fonts-loaded & {
+      font-family: ${theme.fonts.bodyRegular};
+    }
+
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  video {
+    width: 100%;
+    height: auto;
+    margin: 0px;
+    vertical-align: middle;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+  }
+
+  .video-wrapper {
+    position: relative;
+    display: block;
+    max-width: ${rem(744)};
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .video-wrapper__16-9 {
+    padding-bottom: 66.7916666667%;
+    position: relative;
+    bottom: 0px;
+    left: 0px;
+    background-color: ${theme.colors.sectionBackground};
+    background-size: cover;
+    display: block;
+  }
+
+  .fig__16-9 {
+    background-color: ${theme.colors.sectionBackground};
+    position: relative;
+    display: block;
+    max-width: 744px;
   }
 `;
 

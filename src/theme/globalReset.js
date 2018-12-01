@@ -53,7 +53,6 @@ const GlobalReset = createGlobalStyle`
     font-size: 80%;
   }
 
-
   sub,
   sup {
     font-size: 75%;
@@ -177,6 +176,7 @@ const GlobalReset = createGlobalStyle`
   [hidden] {
     display: none;
   }
+
 `;
 
 export default GlobalReset;

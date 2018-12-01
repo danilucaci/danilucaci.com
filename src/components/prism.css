@@ -28,8 +28,6 @@ pre[class*="language-"] {
   hyphens: none;
 }
 
-
-
 pre[class*="language-"]::-moz-selection,
 pre[class*="language-"] ::-moz-selection,
 code[class*="language-"]::-moz-selection,
@@ -61,7 +59,14 @@ pre[class*="language-"] {
   overflow: auto;
 }
 
-@media screen and (min-width: 48em) {
+@media screen and (max-width: 38em) {
+  .gatsby-highlight {
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+}
+
+@media screen and (min-width: 50em) {
   .gatsby-highlight {
     margin-left: -6rem;
     margin-right: -6rem;
@@ -70,8 +75,8 @@ pre[class*="language-"] {
   pre[class*="language-"] {
     padding-left: 6rem;
     padding-right: 6rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
   }
 }
 

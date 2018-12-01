@@ -23,6 +23,22 @@ Understand the importance of optimization, and want to increase your website con
   This works
 </item-1>
 
+<figure>
+  <span class="video-wrapper">
+    <span class="video-wrapper__16-9">
+        <video autoplay loop muted playsinline>
+          <source src="./video.webm" type="video/webm">
+          <source src="./video.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+          <a href="./animated.gif">Click here to view original GIF</a>
+        </video>
+      </span>
+    </span>
+  <figcaption>Some gif made awesome</figcaption>
+</figure>
+
+![alt text](img.jpg "First image of something")
+
 ###Heading 3 If you tried A/B testing earlier, understand the importance of optimization
 
 ```javascript
@@ -42,7 +58,6 @@ let logVisit = function() {
   // Let's go!
   navigator.sendBeacon(url, data);
 };
-
 ```
 
 ###Heading 3 Ut dolore sint fugiat nisi eu nulla
@@ -55,11 +70,15 @@ pre[class*="language-"] {
 }
 ```
 
+![alt text](img2.jpeg "Second image of something")
+
 Non labore commodo irure velit deserunt. Est minim nisi proident ad veniam tempor enim labore eu labore. Aliquip laborum nostrud tempor magna laborum culpa labore voluptate. Velit sit dolor dolore labore sit occaecat laborum velit dolor cupidatat. Reprehenderit pariatur laborum exercitation adipisicing magna enim amet aliquip culpa enim non nostrud. Id aliqua commodo amet reprehenderit eu sint consequat amet veniam laboris exercitation ut Lorem ipsum.
 
 ```javascript
 import React, { Component } from "react";
 ```
+
+![alt text](img3.png "Third image of something")
 
 Pariatur aute nulla aute sit duis et. Qui laborum ut tempor deserunt ullamco aliqua. Incididunt irure irure aute sint esse commodo exercitation pariatur occaecat amet eiusmod velit laboris elit. Proident nostrud aliquip magna non. Quis eu dolore ipsum aliquip. Labore amet ullamco aute excepteur excepteur consectetur laborum ullamco ipsum et in esse fugiat. Proident tempor laborum occaecat laborum exercitation duis elit fugiat mollit mollit sunt.
 
@@ -77,7 +96,6 @@ Laboris incididunt do incididunt incididunt fugiat qui dolore. Pariatur quis exe
 
 ###Heading 3 Cupidatat laborum anim magna dolor sit sint
 Ipsum eiusmod anim enim esse commodo non ad consectetur aliqua anim sunt irure. Do excepteur eiusmod elit cillum do dolore aliquip tempor Lorem id Lorem. Qui Lorem anim velit in ipsum ipsum. Nostrud fugiat voluptate eiusmod nostrud qui ipsum et qui sint ut. Enim non elit enim officia ut consectetur nulla ex esse ad tempor sint.
-
 
 ####Heading 4 Qui Lorem anim velit in ipsum ipsum
 Cupidatat laborum anim magna dolor sit sint non laborum consectetur ut. Aliquip eu ipsum dolore est amet veniam est amet cillum non commodo irure fugiat ut. Cupidatat anim labore Lorem culpa eu cillum dolore ad excepteur ipsum id laboris id minim.
@@ -132,6 +150,8 @@ Laboris incididunt do incididunt incididunt fugiat qui dolore. Pariatur quis exe
 Cupidatat laborum anim magna dolor sit sint non laborum consectetur ut. Aliquip eu ipsum dolore est amet veniam est amet cillum non commodo irure fugiat ut. Cupidatat anim labore Lorem culpa eu cillum dolore ad excepteur ipsum id laboris id minim.
 
 In do sit consequat veniam excepteur. Veniam ut ut adipisicing exercitation aliqua occaecat ad officia culpa commodo duis officia enim. Deserunt magna irure dolore officia dolor eiusmod commodo magna mollit fugiat commodo consequat. Nulla sit exercitation duis anim duis veniam. Sunt eiusmod consectetur amet exercitation quis.
+
+![alt text](img.jpg "First image of something")
 
 Laboris incididunt do incididunt incididunt fugiat qui dolore. Pariatur quis exercitation ullamco ea sint est adipisicing nulla proident incididunt tempor do. Ipsum dolor commodo ut cillum sint tempor cillum irure. Nisi amet eiusmod sit nostrud ullamco aliquip cupidatat duis aliquip. Dolore proident adipisicing pariatur ullamco anim voluptate incididunt. Ad commodo excepteur consequat ea Lorem nulla cupidatat amet.
 

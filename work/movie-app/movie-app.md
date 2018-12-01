@@ -8,6 +8,7 @@ tags:
     - UI Design
     - iOS
 posted: true
+showTOC: false
 image: "./movie_app_presentation.png"
 ---
 
