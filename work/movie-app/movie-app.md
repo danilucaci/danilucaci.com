@@ -23,7 +23,7 @@ This is a concept app I designed to see how I could improve the experience of se
 * Segmented, highly optimized checkout flow.
 
 <div class="toc">
-  <h4 class="toc__title">Table of Contents</h4>
+<h3 class="toc__title">Table of Contents</h3>
 <!-- TOC -->
 
 - [Why I designed this app](#why-i-designed-this-app)
@@ -165,12 +165,13 @@ Before I decided on the final version I tried several other ones, however they a
 My first design of the nav bar included the search bar and the tabbed navigation which showed movies being screened during the day, week, upcomming or by how popular they were.
 
 <div class="container-12col">
-  <div class="container-375">
+<div class="container-375">
 
-  ![First version of the nav bar](./nav_bars_3@2x.png "First version of the nav bar")
+![First version of the nav bar](./nav_bars_3@2x.png "First version of the nav bar")
 
-  </div><div class="pros-cons">
-    <div class="pros-cons__component">
+</div>
+<div class="pros-cons">
+<div class="pros-cons__component">
 
 ####Pros
 
@@ -186,23 +187,23 @@ My first design of the nav bar included the search bar and the tabbed navigation
 * Once search is active, the tabbed navigation is a duplicate of the filtering options available.
 * Do I show the tabbed navigation when filtering is open, or not? Will it confuse the user?
 
-    </div>
-  </div>
+</div>
+</div>
 </div>
 
 One of the biggest issues of this version for me was what happened if the user was on the Upcoming tab when he activated Search? Is the filtering, searching and sorting aplied only on the results of the Upcoming tab, or are they aplied on the entire list of movies the app has currently available?
 
 <div class="container-12col">
-  <div class="container-375">
+<div class="container-375">
 
-  ![Tabbed navigation hidden when search is activated.](./nav_bars_7@2x.png "Tabbed navigation hidden when search is activated.")
+![Tabbed navigation hidden when search is activated.](./nav_bars_7@2x.png "Tabbed navigation hidden when search is activated.")
 
-  </div>
-  <div class="container-375">
+</div>
+<div class="container-375">
 
-  ![Tabbed navigation still shown. Is filtering applied only on this tab?](./nav_bars_5@2x.png "Tabbed navigation still shown. Is filtering applied only on this tab?")
+![Tabbed navigation still shown. Is filtering applied only on this tab?](./nav_bars_5@2x.png "Tabbed navigation still shown. Is filtering applied only on this tab?")
 
-  </div>
+</div>
 </div>
 
 In order to try to solve this issue I removed the tabbed navigation and showed the filter and sort button all time, however when the search bar was activated and the user was typing, the sort and filter buttons had to move bellow it to make room for the larger search bar, which caused layout shifts or I had to leave extra room in the nav bar for when the search bar was active.
@@ -210,16 +211,16 @@ In order to try to solve this issue I removed the tabbed navigation and showed t
 So I had to keep searching for a better solution.
 
 <div class="container-12col">
-  <div class="container-375">
+<div class="container-375">
 
-  ![Showing the search bar, the filter and sort button at the same time.](./nav_bars_6@2x.png "Showing the search bar, the filter and sort button at the same time.")
+![Showing the search bar, the filter and sort button at the same time.](./nav_bars_6@2x.png "Showing the search bar, the filter and sort button at the same time.")
 
-  </div>
-  <div class="container-375">
+</div>
+<div class="container-375">
 
-  ![The Filter and Sort buttons have to move to make room for the search bar when it is active.](./nav_bars_4@2x.png "The Filter and Sort buttons have to move to make room for the search bar when it is active.")
+![The Filter and Sort buttons have to move to make room for the search bar when it is active.](./nav_bars_4@2x.png "The Filter and Sort buttons have to move to make room for the search bar when it is active.")
 
-  </div>
+</div>
 </div>
 
 In order to find a better solution to this design problem, I decided to  do some competitive analysis—even though most of the apps analized were not direct competitors—to see how other apps were solving this issue and what design patterns they were using.
@@ -265,16 +266,16 @@ A “clear all filters” button is also used to allow their users to easily cle
 ###The final version
 
 <div class="container-12col">
-  <div class="container-375">
+<div class="container-375">
 
-  ![Final version of the nav bar in with sorting applied, showing both buttons and search bar.](./nav_bars_1@2x.png "Final version of the nav bar in with sorting applied, showing both buttons and search bar.")
+![Final version of the nav bar in with sorting applied, showing both buttons and search bar.](./nav_bars_1@2x.png "Final version of the nav bar in with sorting applied, showing both buttons and search bar.")
 
-  </div>
-  <div class="container-375">
+</div>
+<div class="container-375">
 
-  ![Final version of the nav bar with active filter and sort buttons.](./nav_bars_2@2x.png "Final version of the nav bar with active filter and sort buttons.")
+![Final version of the nav bar with active filter and sort buttons.](./nav_bars_2@2x.png "Final version of the nav bar with active filter and sort buttons.")
 
-  </div>
+</div>
 </div>
 
 The final version included with the app had all the features I needed and none of the disadvantages.
@@ -368,21 +369,22 @@ By allowing users to read reviews made by others, the principle of social valida
 Users can save their favorite movies for later, in the app, so that they can have a list of the movies they would like to see. They can save the movie in any of the movie listing screens or within the movie details page. Once users have saved a movie, they can check their personal list of movies in their account page.
 
 <div class="container-12col">
-  <div class="container-375">
+<div class="container-375">
 
-  ![The user can save his favorite movies either from the movie listing screens or from the movie details screen.](./1_0_showtimes@2x.png "The user can save his favorite movies either from the movie listing screens or from the movie details screen.")
+![The user can save his favorite movies either from the movie listing screens or from the movie details screen.](./1_0_showtimes@2x.png "The user can save his favorite movies either from the movie listing screens or from the movie details screen.")
 
-  </div>
-  <div class="container-375">
+</div>
+<div class="container-375">
 
-  ![Saving a movie as a favorite from the movie details screen.](./5_2_choose_session_nav_bar@2x.png "Saving a movie as a favorite from the movie details screen.")
+![Saving a movie as a favorite from the movie details screen.](./5_2_choose_session_nav_bar@2x.png "Saving a movie as a favorite from the movie details screen.")
 
-  </div>
-  <div class="container-375">
+</div>
+<div class="container-375">
 
-  ![List of the saved movies a user has saved in their personal account page.](./4_10_saved_movies@2x.png "List of the saved movies a user has saved in their personal account page.")
+![List of the saved movies a user has saved in their personal account page.](./4_10_saved_movies@2x.png "List of the saved movies a user has saved in their personal account page.")
 
-  </div>
+</div>
+</div>
 </div>
 
 ###Choose movie session and seats.
@@ -415,14 +417,14 @@ Another issue I had was that the tap sizes we’re not large enough to meet the 
 
 When the user tried to choose a seat, he might accidentally choose one next to the seat he is trying to pick, so I had to increase the size of the seats in order to have large enough tap sizes.
 
-
 <div class="container-12col">
-  <div class="container-375">
+<div class="container-375">
 
-  ![The initial version of the seat choosing process where the tap size wasn’t large enough. ](./movie_seats_1@2x.png "The initial version of the seat choosing process where the tap size wasn’t large enough. ")
+![The initial version of the seat choosing process where the tap size wasn’t large enough. ](./movie_seats_1@2x.png "The initial version of the seat choosing process where the tap size wasn’t large enough. ")
 
-  </div><div class="pros-cons">
-    <div class="pros-cons__component">
+</div>
+<div class="pros-cons">
+<div class="pros-cons__component">
 
 ####Pros
 
@@ -439,8 +441,8 @@ When the user tried to choose a seat, he might accidentally choose one next to t
 * Tap size isn’t large enough.
 * Users might select the worng seat due to the small tap size.
 
-    </div>
-  </div>
+</div>
+</div>
 </div>
 
 ###The improved version

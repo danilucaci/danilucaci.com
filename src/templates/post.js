@@ -95,7 +95,7 @@ const PostInfo = styled.aside`
 const PostDateReadTimeWrapper = styled.div`
   display: inline-block;
 
-  ${mediaMin.xxs`
+  ${mediaMin.xxxs`
     margin-right: ${rem(16)};
   `};
 

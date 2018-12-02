@@ -23,7 +23,7 @@ export const theme = {
     main300: "#0C85F0",
     main200: "#3DAEFF",
     main100: "#E6F2FF",
-    scrollToTop: "#cdced1cc",
+    scrollToTop: "#cdced1e0",
     transparent: "rgba(255,255,255, 0.96)",
     social: {
       twitter: "#1DA1F2",
@@ -155,7 +155,8 @@ export const theme = {
                   -ms-overflow-style: none;`,
   mailToLink: "mailto:hello@danilucaci.com?body=Hi%20Dani%2C%0A",
   breakpoints: {
-    xxs: "22.5em", //360
+    xxxs: "22.5em", //360
+    xxs: "26.5em", //424
     xs: "32em", //512
     s: "38em", //608
     m: "40em", //640
@@ -166,7 +167,8 @@ export const theme = {
 };
 
 const breakpoints = {
-  xxs: 360,
+  xxxs: 360,
+  xxs: 424,
   xs: 512,
   s: 608,
   m: 640,

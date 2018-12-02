@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import styled, { css } from "styled-components";
-import rehypeReact from "rehype-react";
+// import rehypeReact from "rehype-react";
 
 import { theme, rem, mediaMin, mediaMax } from "../theme/globalStyles";
 import config from "../../data/SiteConfig";
@@ -32,24 +32,19 @@ const Wrapper = styled.div`
 `;
 
 const StyledHeader = styled.header`
+  margin-top: ${rem(16)};
   margin-bottom: ${rem(16)};
-  background-color: ${theme.colors.gray100};
-  margin-right: -${theme.gutters.s};
-  margin-left: -${theme.gutters.s};
-  padding: ${rem(8)} ${theme.gutters.s} ${rem(24)};
 
-  ${mediaMin.m`
-    margin-right: -${theme.gutters.m};
-    margin-left: -${theme.gutters.m};
-    padding: ${rem(16)} ${theme.gutters.m} ${rem(24)};
+  ${mediaMin.l`
+    background-color: ${theme.colors.gray100};
+    border-left: 8px solid ${theme.colors.main600};
+    padding: ${rem(32)} ${rem(48)};
+    margin-top: 0;
     margin-bottom: ${rem(32)};
+    ${theme.shadow.default};
   `};
 
   ${mediaMin.xxl`
-    ${theme.shadow.default};
-    margin-right: 0;
-    margin-left: 0;
-    border-left: 8px solid ${theme.colors.main600};
     padding: ${rem(24)} ${rem(96)} ${rem(40)};
   `};
 `;
@@ -137,6 +132,53 @@ const PostContent = styled.section`
     margin-bottom: ${rem(16)};
   }
 
+  .toc {
+    background-color: ${theme.colors.sectionBackground};
+    margin: ${rem(32)} -${theme.gutters.s};
+    padding: ${rem(24)} ${theme.gutters.s};
+
+    ${mediaMin.s`
+      margin: ${rem(32)} -${theme.gutters.m};
+      padding: ${rem(32)} ${theme.gutters.m};
+    `};
+
+    ${mediaMin.l`
+      margin-right: -${rem(96)};
+      margin-left: -${rem(96)};
+      padding: ${rem(32)} ${rem(96)};
+    `};
+
+    p + ul {
+      margin-top: -${rem(32)};
+    }
+
+    ul {
+      list-style-type: none;
+
+      & li {
+        margin: ${rem(8)} 0;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: ${theme.colors.dark900};
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .toc__title {
+    margin: 0;
+    margin-bottom: ${rem(8)};
+  }
+
   p {
     margin-bottom: ${rem(32)};
   }
@@ -185,35 +227,78 @@ const PostContent = styled.section`
   }
 
   .container-12col {
-    background-color: ${theme.colors.gray100};
-    ${theme.shadow.default};
-
     margin: ${rem(32)} 0;
 
-    ${mediaMin.xl`
-      width: 80vw;
+    & .container-375 {
+      margin-bottom: 0;
+    }
+
+    ${mediaMin.xxl`
+      display: flex;
+      justify-content: center;
+      background-color: ${theme.colors.gray100};
+      ${theme.shadow.default};
       max-width: ${rem(1128)};
-      margin-right: -22vw;
-      margin-left: -22vw;
-      padding: 8% 16%;
+      margin-right: -${rem(288)};
+      margin-left: -${rem(288)};
+      padding: ${rem(32)} ${rem(48)};
     `};
   }
 
   .pros-cons {
-    display: inline-block;
-    vertical-align: top;
-    width: 50%;
+    margin-top: ${rem(32)};
 
     ${mediaMin.xxl`
-      width: calc(100% - ${rem(415)});
+      margin-top: 0;
+      display: inline-block;
+      vertical-align: top;
+      width: calc(50% - ${rem(32)});
+      margin-left: ${rem(32)};
     `};
-    margin-left: ${rem(40)};
+  }
+
+  .pros-cons__component > h4 {
+    margin-top: 0;
+  }
+
+  .pros-cons__component:first-of-type {
+    ${mediaMin.xxl`
+      margin-bottom: ${rem(32)};
+    `};
+  }
+
+  .container-375:first-of-type {
+    ${mediaMin.xxl`
+      margin-right: ${rem(32)};
+    `};
+  }
+
+  .container-375:nth-of-type(3) {
+    ${mediaMin.xxl`
+      margin-left: ${rem(32)};
+    `};
   }
 
   .container-375 {
-    width: ${rem(375)};
-    display: inline-block;
-    vertical-align: top;
+    width: 100%;
+
+    ${mediaMin.xxs`
+      width: ${rem(375)};
+    `};
+    margin-bottom: ${rem(32)};
+
+    & > figure {
+      margin: 0;
+    }
+
+    & > p {
+      display: none;
+    }
+
+    ${mediaMin.xxl`
+      display: inline-block;
+      vertical-align: top;
+    `};
   }
 
   blockquote {
@@ -255,43 +340,6 @@ const PostContent = styled.section`
     & * {
       color: ${theme.colors.main600};
     }
-  }
-
-  .toc {
-    background-color: ${theme.colors.sectionBackground};
-    margin: ${rem(32)};
-
-    ${mediaMin.xl`
-      margin-right: -${rem(96)};
-      margin-left: -${rem(96)};
-      padding: ${rem(24)} ${rem(96)};
-    `};
-
-    p + ul {
-      margin-top: -${rem(32)};
-    }
-
-    ul {
-      list-style-type: none;
-
-      & li {
-        margin: 0;
-      }
-    }
-
-    a {
-      text-decoration: none;
-      color: ${theme.colors.dark900};
-      margin: ${rem(16)} 0;
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-
-  .toc__title {
-    margin: 0;
-    margin-bottom: ${rem(8)};
   }
 `;
 

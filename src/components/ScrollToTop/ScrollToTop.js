@@ -1,17 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import { Icon } from "../Icon/Icon";
-import { theme, rem } from "../../theme/globalStyles";
+import { theme, rem, mediaMin } from "../../theme/globalStyles";
 
 const StyledScrollToTop = styled.a`
   text-decoration: none;
   position: fixed;
-  bottom: ${rem(16)};
-  right: ${rem(16)};
+  bottom: ${rem(20)};
+  right: ${rem(20)};
   display: block;
   background-color: ${theme.colors.scrollToTop};
 
   ${theme.shadow.default};
+
   border-radius: ${rem(4)};
   will-change: transform;
 
@@ -22,8 +23,8 @@ const StyledScrollToTop = styled.a`
 `;
 
 const ScrollToTopIcon = styled(Icon)`
-  width: ${rem(40)};
-  height: ${rem(40)};
+  width: ${rem(48)};
+  height: ${rem(48)};
   padding: ${rem(8)};
 `;
 

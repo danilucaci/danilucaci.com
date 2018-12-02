@@ -54,7 +54,7 @@ const MobileCopy = styled(CopyBold)`
   white-space: nowrap;
   text-align: center;
 
-  ${mediaMin.xxs`
+  ${mediaMin.xxxs`
     margin-left: -${rem(32)};
   `};
 
@@ -65,7 +65,7 @@ const MobileCopy = styled(CopyBold)`
 `;
 
 const PaginationLabel = styled.span`
-  ${mediaMax.xxs`
+  ${mediaMax.xxxs`
     display: none;
   `};
 `;

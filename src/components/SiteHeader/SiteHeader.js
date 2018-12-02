@@ -9,11 +9,11 @@ const StyledSiteHeaderWrapper = styled.div`
   width: 100%;
   display: block;
   will-change: transform;
+  z-index: 100;
 
   ${mediaMin.m`
     position: fixed;
     top: 0;
-    z-index: 10;
   `};
 `;
 

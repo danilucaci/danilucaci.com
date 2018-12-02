@@ -194,9 +194,11 @@ const GlobalHTML = createGlobalStyle`
     line-height: ${theme.lineHeights.m};
   }
 
-
   p:empty {
-    display: none;
+      display:none;
+      margin:0;
+      padding:0;
+      border:0;
   }
 
   a {

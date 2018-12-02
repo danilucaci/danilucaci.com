@@ -19,6 +19,7 @@
   "dependencies": {
     "babel-plugin-styled-components": "^1.9.2",
     "dotenv": "^6.1.0",
+    "event-source-polyfill": "^1.0.4",
     "fontfaceobserver": "^2.0.13",
     "fs": "0.0.1-security",
     "gatsby": "^2.0.59",
