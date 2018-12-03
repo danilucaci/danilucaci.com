@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import Helmet from "react-helmet";
 import config from "../../data/SiteConfig";
 var FontFaceObserver = require("fontfaceobserver");
@@ -11,6 +10,7 @@ import GlobalReset from "../theme/globalReset";
 import GlobalAria from "../theme/globalAria";
 import GlobalHTML from "../theme/globalCSS";
 import { SVGSprite } from "./SVGSprite/SVGSprite";
+import SkipToMainContent from "./SkipToMainContent/SkipToMainContent";
 
 require("./prism.css");
 
@@ -74,7 +74,8 @@ class Layout extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
-        <Page id="scrollTop">
+        <Page id="back_to_top">
+          <SkipToMainContent />
           <GlobalFonts />
           <GlobalReset />
           <GlobalAria />
