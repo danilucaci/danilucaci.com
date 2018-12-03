@@ -289,22 +289,24 @@ By using checkbox style buttons for the filters, users can easily enable and dis
 ###Filtering options final prototype
 
 <figure>
-  <span class="video-wrapper">
-    <span class="video-wrapper__16-9">
-        <video autoplay loop muted playsinline>
-          <source src="./video.webm" type="video/webm">
-          <source src="./video.mp4" type="video/mp4">
-          Your browser does not support HTML5 video.
-          <a href="./animated.gif">Click here to view original GIF</a>
-        </video>
-      </span>
-    </span>
-  <figcaption>The final prototype and design of the movie filtering interaction.</figcaption>
+<span class="video-iphoneX--container">
+<span class="video-iphoneX--video">
+<video autoplay loop muted playsinline>
+<source src="./exp1x.webm" type="video/webm">
+<source src="./exp1x.mp4" type="video/mp4">
+Your browser does not support HTML5 video.
+<a href="./animated.gif">Click here to view original GIF</a>
+</video>
+</span>
+</span>
+<figcaption>The final version of the seat choosing process with a mini–map and scolling seat interface.</figcaption>
 </figure>
 
 ###Sorting options
 
 Another important part of the movie finding experience I studied was the sorting functionality. Besides the normal sorting options of “Price Low to High” or “Rating” I decided to improve the sorting experience by using category specific sorting options.
+
+![GIF](./phexp.gif "DAGIF")
 
 The Baymard Institute [recomends](https://baymard.com/) designers should create this type of sorting experience to allow their users improve the results they see by using category specific options such as—in my case—Popularity (the most booked movies), or by user rating (the highest rated movies first).
 
@@ -321,17 +323,17 @@ By using a combination of the mutually exclusive filters and the enhanced sortin
 The searching experience was designed to show in real time the amount of results the query typed by the user has, as well as showing only the relevant results.
 
 <figure>
-  <span class="video-wrapper">
-    <span class="video-wrapper__16-9">
-        <video autoplay loop muted playsinline>
-          <source src="./video.webm" type="video/webm">
-          <source src="./video.mp4" type="video/mp4">
-          Your browser does not support HTML5 video.
-          <a href="./animated.gif">Click here to view original GIF</a>
-        </video>
-      </span>
-    </span>
-  <figcaption>The final prototype and design of the movie searching experience.</figcaption>
+<span class="video-iphoneX--container">
+<span class="video-iphoneX--video">
+<video autoplay loop muted playsinline>
+<source src="./exp1x.webm" type="video/webm">
+<source src="./exp1x.mp4" type="video/mp4">
+Your browser does not support HTML5 video.
+<a href="./animated.gif">Click here to view original GIF</a>
+</video>
+</span>
+</span>
+<figcaption>The final version of the seat choosing process with a mini–map and scolling seat interface.</figcaption>
 </figure>
 
 ##Read reviews and follow reviewers
@@ -347,17 +349,17 @@ By allowing users to read reviews made by others, the principle of social valida
 ###Reading reviews prototype
 
 <figure>
-  <span class="video-wrapper">
-    <span class="video-wrapper__16-9">
-        <video autoplay loop muted playsinline>
-          <source src="./video.webm" type="video/webm">
-          <source src="./video.mp4" type="video/mp4">
-          Your browser does not support HTML5 video.
-          <a href="./animated.gif">Click here to view original GIF</a>
-        </video>
-      </span>
-    </span>
-  <figcaption>The final prototype and design of reading a movie review and following a reviewer.</figcaption>
+<span class="video-iphoneX--container">
+<span class="video-iphoneX--video">
+<video autoplay loop muted playsinline>
+<source src="./exp2x.webm" type="video/webm">
+<source src="./exp2x.mp4" type="video/mp4">
+Your browser does not support HTML5 video.
+<a href="./animated.gif">Click here to view original GIF</a>
+</video>
+</span>
+</span>
+<figcaption>The final version of the seat choosing process with a mini–map and scolling seat interface.</figcaption>
 </figure>
 
 ##Save favorite movies
@@ -462,17 +464,31 @@ This approach solved most of the issues I had with the initial one, and also all
 ###The final prototype
 
 <figure>
-  <span class="video-wrapper">
-    <span class="video-wrapper__16-9">
-        <video autoplay loop muted playsinline>
-          <source src="./video.webm" type="video/webm">
-          <source src="./video.mp4" type="video/mp4">
-          Your browser does not support HTML5 video.
-          <a href="./animated.gif">Click here to view original GIF</a>
-        </video>
-      </span>
-    </span>
-  <figcaption>The final version of the seat choosing process with a mini–map and scolling seat interface.</figcaption>
+<span class="video-iphoneX--container">
+<span class="video-iphoneX--video">
+<video autoplay loop muted playsinline>
+<source src="./exp1x.webm" type="video/webm">
+<source src="./exp2x.mp4" type="video/mp4">
+Your browser does not support HTML5 video.
+<a href="./animated.gif">Click here to view original GIF</a>
+</video>
+</span>
+</span>
+<figcaption>The final version of the seat choosing process with a mini–map and scolling seat interface.</figcaption>
+</figure>
+
+<figure>
+<span class="video-iphoneX--container">
+<span class="video-iphoneX--video">
+<video autoplay loop muted playsinline>
+<source src="./exp1x.webm" type="video/webm">
+<source src="./exp2x4.mp4" type="video/mp4">
+Your browser does not support HTML5 video.
+<a href="./animated.gif">Click here to view original GIF</a>
+</video>
+</span>
+</span>
+<figcaption>The final version of the seat choosing process with a mini–map and scolling seat interface.</figcaption>
 </figure>
 
 ##Movie ticket guest checkout

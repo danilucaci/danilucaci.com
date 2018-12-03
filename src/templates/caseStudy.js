@@ -214,7 +214,8 @@ const PostContent = styled.section`
     line-height: ${theme.lineHeights.m};
   }
 
-  figure img {
+  figure img,
+  figure video {
     ${theme.shadow.image} !important;
   }
 
@@ -366,6 +367,7 @@ class Post extends Component {
     );
 
     this.handlePageScroll();
+    this.addSafariVideoControls();
   }
 
   componentWillUnmount() {
@@ -374,6 +376,18 @@ class Post extends Component {
 
   handlePageScroll = () => {
     this.handleScrollLine();
+  };
+
+  addSafariVideoControls = () => {
+    if (
+      navigator.userAgent.indexOf("Safari") != -1 &&
+      navigator.userAgent.indexOf("Chrome") == -1
+    ) {
+      let videos = document.querySelectorAll("video");
+      videos.forEach((video) => {
+        video.controls = true;
+      });
+    }
   };
 
   handleScrollLine = () => {

@@ -248,7 +248,7 @@ const GlobalHTML = createGlobalStyle`
 
   video {
     width: 100%;
-    height: auto;
+    height: 100%;
     margin: 0px;
     vertical-align: middle;
     position: absolute;
@@ -257,21 +257,22 @@ const GlobalHTML = createGlobalStyle`
     left: 0px;
   }
 
-  .video-wrapper {
+  .video-iphoneX--container {
     position: relative;
     display: block;
-    max-width: ${rem(744)};
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
+
+    ${mediaMin.xxs`
+      width: ${rem(375)};
+    `};
   }
 
-  .video-wrapper__16-9 {
-    padding-bottom: 66.7916666667%;
+  .video-iphoneX--video {
+    padding-bottom: 216.53333333333333%;
     position: relative;
-    bottom: 0px;
-    left: 0px;
+    bottom: 0;
+    left: 0;
     background-color: ${theme.colors.sectionBackground};
-    background-size: cover;
     display: block;
   }
 
