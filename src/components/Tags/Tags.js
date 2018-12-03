@@ -22,7 +22,7 @@ const Tags = (props) => {
     <TagsWrapper spaced={props.spaced} inline={props.inline}>
       {tagsInPost &&
         tagsInPost.map((tag) => (
-          <Tag key={tag} link={`/tags/${tag}`} label={tag} />
+          <Tag key={tag} link={`/blog/tags/${tag}`} label={tag} />
         ))}
     </TagsWrapper>
   );

@@ -348,16 +348,16 @@ exports.createPages = ({ graphql, actions }) => {
         /********************************************************
          * Tags with pagination
          *
-         * First page in pagination is: /tags/tagName
-         * Next pages will be: /tags/tagName/2...n
+         * First page in pagination is: /blog/tags/tagName
+         * Next pages will be: /blog/tags/tagName/2...n
          *
          * For the first page return a prev path of null
-         * next path of /tags/tagName/page/2
+         * next path of /blog/tags/tagName/page/2
          *
-         * For the second page return a prev path of /tags/tagName
-         * next path of /tags/tagName/page/3
+         * For the second page return a prev path of /blog/tags/tagName
+         * next path of /blog/tags/tagName/page/3
          *
-         * For the next ones return path under /tags/tagName/page/n
+         * For the next ones return path under /blog/tags/tagName/page/n
          */
 
         tags.forEach((tag) => {
@@ -368,7 +368,7 @@ exports.createPages = ({ graphql, actions }) => {
           ) {
             if (currentPage === 1) {
               createPage({
-                path: `/tags/${tag.fieldValue}`,
+                path: `/blog/tags/${tag.fieldValue}`,
                 component: tagTemplate,
                 // Data passed to context is available
                 // in page queries as GraphQL variables.
@@ -378,16 +378,16 @@ exports.createPages = ({ graphql, actions }) => {
                   ),
                   currentPage,
                   totalPagesInBlog: Math.ceil(tag.totalCount / postsPerPage),
-                  paginationPathPrefix: `/tags/${tag.fieldValue}`,
+                  paginationPathPrefix: `/blog/tags/${tag.fieldValue}`,
                   prevPath: null,
-                  nextPath: `/tags/${tag.fieldValue}/page/2`,
+                  nextPath: `/blog/tags/${tag.fieldValue}/page/2`,
                   totalCount: tag.totalCount,
                   tag: tag.fieldValue,
                 },
               });
             } else {
               createPage({
-                path: `/tags/${tag.fieldValue}/page/${currentPage}`,
+                path: `/blog/tags/${tag.fieldValue}/page/${currentPage}`,
                 component: tagTemplate,
                 context: {
                   edges: slicePosts(tag.edges, postsPerPage, currentPage).map(
@@ -395,21 +395,21 @@ exports.createPages = ({ graphql, actions }) => {
                   ),
                   currentPage,
                   totalPagesInBlog: Math.ceil(tag.totalCount / postsPerPage),
-                  paginationPathPrefix: `/tags/${tag.fieldValue}`,
+                  paginationPathPrefix: `/blog/tags/${tag.fieldValue}`,
                   prevPath:
                     // current index in loop minus 1
                     // for index = 2, /page/1
                     // only if its > 1 (not resulting in /page/0)
                     currentPage - 1 > 1
-                      ? `/tags/${tag.fieldValue}/page/${currentPage - 1}`
-                      : `/tags/${tag.fieldValue}`,
+                      ? `/blog/tags/${tag.fieldValue}/page/${currentPage - 1}`
+                      : `/blog/tags/${tag.fieldValue}`,
                   nextPath:
                     // dont make more pages than needed
                     // if I have 13 posts with 5 posts per slice
                     // I only need 3 paginated pages
                     // /page/3 max, /page ... /page/3
                     currentPage + 1 <= Math.ceil(tag.totalCount / postsPerPage)
-                      ? `/tags/${tag.fieldValue}/page/${currentPage + 1}`
+                      ? `/blog/tags/${tag.fieldValue}/page/${currentPage + 1}`
                       : null,
                   totalCount: tag.totalCount,
                   tag: tag.fieldValue,
