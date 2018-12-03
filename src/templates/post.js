@@ -397,21 +397,6 @@ class Post extends Component {
     const postInfo = postNode.frontmatter;
     const introCopy = postInfo.intro.split("|");
 
-    const showTOC = postNode.frontmatter.showTOC;
-    const tocHeadings = Array.from(postNode.headings);
-    let tocEntries = [];
-
-    if (showTOC) {
-      tocHeadings.forEach((heading) => {
-        let url = slugify(heading.value);
-        let hash = "#".concat(url);
-        tocEntries.push({
-          url: hash,
-          value: heading.value,
-        });
-      });
-    }
-
     return (
       <Layout location={this.props.location}>
         <Helmet>
@@ -444,19 +429,7 @@ class Post extends Component {
                 ))}
               </StyledPostIntro>
             </StyledPostHeader>
-            <PostContent>
-              {showTOC && (
-                <PostTOC>
-                  <h3>Table of Contents</h3>
-                  {tocEntries.map((entry, index) => (
-                    <TOCEntry key={index} href={entry.url}>
-                      {entry.value}
-                    </TOCEntry>
-                  ))}
-                </PostTOC>
-              )}
-              {renderAst(postNode.htmlAst)}
-            </PostContent>
+            <PostContent>{renderAst(postNode.htmlAst)}</PostContent>
           </PostWrapper>
           <DummyInput
             className="js-dummyInput"
@@ -489,7 +462,6 @@ export const pageQuery = graphql`
         intro
         category
         tags
-        showTOC
         image {
           childImageSharp {
             fluid(maxWidth: 744) {
