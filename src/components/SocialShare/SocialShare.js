@@ -114,14 +114,20 @@ const SocialShare = (props) => {
         title={props.title}
         description={props.snippet}
       >
-        <LinkedinIcon>
+        <LinkedinIcon aria-hidden="true">
           <use xlinkHref="#linkedin" />
         </LinkedinIcon>
+        <span class="sr-only">
+          Share article on linkedin, opens in new window.
+        </span>
       </LinkedinShareButton>
       <TwitterShareButton url={url} title={props.title}>
-        <TwitterIcon>
+        <TwitterIcon aria-hidden="true">
           <use xlinkHref="#twitter" />
         </TwitterIcon>
+        <span class="sr-only">
+          Share article on twitter, opens in new window.
+        </span>
       </TwitterShareButton>
       <StyledCopyButton
         className="js-copyURL"
@@ -129,10 +135,11 @@ const SocialShare = (props) => {
         role="button"
         tabIndex="0"
       >
-        <CopyIcon>
+        <span class="sr-only">Copy the page url</span>
+        <CopyIcon aria-hidden="true">
           <use xlinkHref="#copy" />
         </CopyIcon>
-        <CopyTooltip>Copy page link</CopyTooltip>
+        <CopyTooltip aria-hidden="true">Copy page link</CopyTooltip>
       </StyledCopyButton>
     </StyledSocialShare>
   );

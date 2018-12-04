@@ -17,7 +17,7 @@ import { Copy } from "../components/Copy/Copy";
 import { HR } from "../components/HR/HR";
 import { calculateScroll, textPassiveEventSupport } from "../helpers/helpers";
 
-const Wrapper = styled.div`
+const ArticleWrapper = styled.article`
   max-width: ${theme.contain.content};
   margin-left: auto;
   margin-right: auto;
@@ -127,7 +127,6 @@ const PostContent = styled.section`
 
   h5 {
     display: block;
-
     margin-top: ${rem(32)};
     margin-bottom: ${rem(16)};
   }
@@ -230,9 +229,11 @@ const PostContent = styled.section`
   .container-12col {
     margin: ${rem(32)} 0;
 
-    & .container-375 {
-      margin-bottom: 0;
-    }
+    ${mediaMin.xxl`
+      & .container-375 {
+        margin-bottom: 0;
+      }
+    `};
 
     ${mediaMin.xxl`
       display: flex;
@@ -243,6 +244,19 @@ const PostContent = styled.section`
       margin-right: -${rem(288)};
       margin-left: -${rem(288)};
       padding: ${rem(32)} ${rem(48)};
+    `};
+  }
+
+  .container-wireflow {
+    margin: ${rem(32)} 0;
+
+    ${mediaMin.xxl`
+      background-color: ${theme.colors.gray100};
+      ${theme.shadow.default};
+      max-width: ${rem(1128)};
+      margin-right: -${rem(288)};
+      margin-left: -${rem(288)};
+      padding: ${rem(24)};
     `};
   }
 
@@ -282,11 +296,11 @@ const PostContent = styled.section`
 
   .container-375 {
     width: 100%;
+    margin-bottom: ${rem(32)};
 
     ${mediaMin.xxs`
       width: ${rem(375)};
     `};
-    margin-bottom: ${rem(32)};
 
     & > figure {
       margin: 0;
@@ -368,6 +382,7 @@ class Post extends Component {
 
     this.handlePageScroll();
     this.addSafariVideoControls();
+    this.removeAnchorsFromTabIndex();
   }
 
   componentWillUnmount() {
@@ -390,6 +405,29 @@ class Post extends Component {
     }
   };
 
+  removeAnchorsFromTabIndex = () => {
+    const h2s = document.querySelectorAll("h2 a");
+    const h3s = document.querySelectorAll("h3 a");
+    const h4s = document.querySelectorAll("h4 a");
+    const h5s = document.querySelectorAll("h5 a");
+
+    h2s.forEach((h2) => {
+      h2.tabIndex = -1;
+    });
+
+    h3s.forEach((h3) => {
+      h3.tabIndex = -1;
+    });
+
+    h4s.forEach((h4) => {
+      h4.tabIndex = -1;
+    });
+
+    h5s.forEach((h5) => {
+      h5.tabIndex = -1;
+    });
+  };
+
   handleScrollLine = () => {
     let scrollLine = document.querySelector(".js-scrollLine");
     let scrolled = calculateScroll();
@@ -409,8 +447,8 @@ class Post extends Component {
         </Helmet>
         <SEO postPath={slug} postNode={postNode} postSEO />
         <SiteHeader showScrollIndicator />
-        <Main role="main">
-          <Wrapper>
+        <Main role="main" id="main">
+          <ArticleWrapper>
             <StyledHeader>
               <TagsWrapper>
                 {postInfo.tags &&
@@ -434,7 +472,7 @@ class Post extends Component {
             </CaseStudyImgWrapper>
             <PostContent dangerouslySetInnerHTML={{ __html: postNode.html }} />
             {/* <PostContent>{renderAst(postNode.htmlAst)}</PostContent> */}
-          </Wrapper>
+          </ArticleWrapper>
         </Main>
         <ScrollToTop />
         <SiteFooter />
