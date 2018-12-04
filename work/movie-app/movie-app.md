@@ -11,7 +11,13 @@ posted: true
 image: "./movie_app_presentation.png"
 ---
 
-This is a concept app I designed to see how I could improve the experience of searching, finding and booking a movie based on my personal experiences and pain points I had while trying to book a movie. I decided to follow a modified Lean UX process, based on my initial assumptions, using proto–personas and with the help of the Lean UX sub–hypothesis statements to discover and design features that would serve each of the personas pain points and needs.
+I decided to design this app as each time I tried to find and book a movie, all the websites and apps that I used had outdated designs, no real benefit to their membership plans and very limited searching and filtering features.
+
+Therefore, I decided to see how I could improve the movie searching and booking experience.
+
+The app was design based on my personal assumptions, pain points and needs, so it would need to be validated with real user testing, to see if other users are having the same issues and if the design solutions created, help them achieve their end goals.
+
+To solve the different pain points the users were having and design the features to solve them, I decided to follow a modified version of Jeff Gothelf’s Lean UX process. Based on the initial assumptions, I made two proto–personas, Ana and Alex. Then, using the sub–hypothesis statements, I started working on a list of features that would serve each of their pain points and needs.
 
 **The final design includes:**
 
@@ -26,7 +32,6 @@ This is a concept app I designed to see how I could improve the experience of se
 <h3 class="toc__title">Table of Contents</h3>
 <!-- TOC -->
 
-- [Why I designed this app](#why-i-designed-this-app)
 - [Previous Assumptions](#previous-assumptions)
 - [Proto–Personas](#protopersonas)
 - [User Stories](#user-stories)
@@ -39,25 +44,15 @@ This is a concept app I designed to see how I could improve the experience of se
 <!-- /TOC -->
 </div>
 
-##Why I designed this app
-
-I decided to design this app as each time I tried to find and book a movie, all the websites and apps that I used from my local cinemas had outdated designs, no real benefit to their membership plans and very limited searching and filtering features.
-
-Therefore, I decided to see how I could improve the movie searching and booking experience.
-
-The app was design based on my personal assumptions, pain points and needs and would need to be validated with real user testing, to see if other users are having the same issues and if the design solutions created help them achieve their end goals.
-
-To find the different problems and features, I decided to follow a modified version of Jeff Gothelf’s Lean UX process and created a list of the different assumptions I had about the current issues users were having when booking a movie:
-
 ##Previous Assumptions
 
-* Users find it hard to search for movies in the current app.
-* Users have to exit the app to read reviews for the movie they would like to see.
-* The app isn't always stable and movie trailers won't always load.
+* Users find it hard to search for movies using the website or app.
+* Users have to exit the app, or website, to read reviews for the movie they would like to watch.
+* They have difficulties viewing the movie trailers as they don’t always load correctly.
 * Users can’t purchase movie tickets without having to sign up, no guest checkout experience is available.
-* Users that like to watch many movies each month feel  that the tickets are too expensive.
+* Users that like to watch many movies each month, feel  that the tickets are too expensive.
 * The UI is overloaded with adds.
-* Main CTA's don't stand out or are unclear to what will happen if they are pressed.
+* Main CTA’s don't stand out or are unclear to what will happen if they are pressed.
 
 Based on these assumptions I created two proto–personas to create the features that would solve their pain points and needs.
 
@@ -69,7 +64,7 @@ She is a cinema enthusiast that would like to watch several movies each month wi
 
 <div class="container-8col">
 
-![Persona image of Ana](persona_ana.png "Persona Ana")
+![Proto-Persona Ana](persona_ana.png "Proto-Persona Ana")
 
 </div>
 
@@ -79,7 +74,7 @@ He is in a crowded and noisy restaurant with his date and they decided they woul
 
 <div class="container-8col">
 
-![Persona image of Alex](persona_alex.png "Persona Alex")
+![Proto-Persona Alex](persona_alex.png "Proto-Persona Ana Alex")
 
 </div>
 
@@ -89,51 +84,79 @@ The next step was to create the user stories for each of the main pain points.
 
 ###Alex
 
-#####User Need
-
-**Search and find movies, read reviews and save his favorite movies for later.**
-
 #####User Story
 
 >“As a person on a date I want to be able to find a movie to watch tonight with my date, which we will both enjoy.”
 
-####Features:
+#####User Need
+
+**Search and find movies.**
+
+####Feature:
 
 * Advanced Filtering and Searching
+
+#####User Need
+
+**Read reviews and follow favorite reviewers.**
+
+####Features:
+
 * Find, read and write reviews
 * Follow favorite reviewers
+
+#####User Need
+
+**Save his favorite movies for later.**
+
+####Feature:
+
 * Save favorite movies
 
 #####User Need
 
-**Choose seats and book tickets.**
-
-#####User Story
-
->“As a user I need a fast and easy way to book a movie so that I can cary on with my night out.”
+**Choose the best showtime and seats.**
 
 ####Features:
 
-* Guest checkout with option to create account at the end
-* Multiple payment options
-* Biometric payment options using Apple Pay
-* Segmented checkout
+* See available seats for each movie session.
+* Interactive seat choosing interface.
+* See each theaters layout and where the seats are.
+
+#####User Story
+
+>“As a user I need a fast and easy way to book a movie so that I can cary on with my date.”
+
+####Featuress:
+
+* Guest checkout with option to create account at the end.
+* Multiple payment options.
+* Biometric payment options using Apple Pay.
+* Segmented checkout.
 
 ###Ana
-
-#####User Need
-
-**Membership plan with offers and discounts.**
 
 #####User Story
 
 >“As a cinema enthusiast I need a membership plan with offers and discounts so that I can watch as many movies as I would like, without having to spend too much money.”
 
+#####User Need
+
+**Membership plan with offers and discounts.**
+
 ####Features:
 
-* Members club with offers and discounts
-* Members only special screenings and events
-* Members club unlimited movie viewing each month
+* Members only offers and discounts.
+* Members only special screenings and events.
+
+#####User Need
+
+**Membership plan with discounts for viewing many movies.**
+
+####Features:
+
+* Membership plan unlimited movie viewing each month.
+* Priority access to the bar and movie at the cinema.
 
 **To sum up, the main paint points these features are solving for the personas are:**
 
@@ -167,7 +190,7 @@ My first design of the nav bar included the search bar and the tabbed navigation
 <div class="container-12col">
 <div class="container-375">
 
-![First version of the nav bar](./nav_bars_3@2x.png "First version of the nav bar")
+![The first version of the nav bar.](./nav_bars_3@2x.png "The first version of the nav bar.")
 
 </div>
 <div class="pros-cons">
@@ -227,11 +250,11 @@ In order to find a better solution to this design problem, I decided to  do some
 
 <div class="container-375">
 
-![Airbnb shows the options to choose dates and guests even when the search is not active.](./airbnb.png "Airbnb shows the options to choose dates and guests even when the search is not active.")
+![Airbnb shows the options to choose dates and guests even when the search is not active.](./airbnb_nav_bar@2x.png "Airbnb shows the options to choose dates and guests even when the search is not active.")
 
 </div>
 
-One of the design patterns I liked most was how Airbnb was showing their buttons to choose the dates and guests when searching for a home. This way there is no need to hide the buttons behind the search bar.
+The first design studied was how Airbnb was showing their buttons to choose the dates and guests when searching for a home. This way there is no need to hide the buttons behind the search bar.
 
 <div class="container-375">
 
@@ -282,7 +305,7 @@ The final version included with the app had all the features I needed and none o
 
 I decided to use a combination of the different design patterns mentioned above, which allowed me to include a full width search bar, always visible filter and sort buttons and applied filters.
 
-Another benefit of using this approach is that users can apply different filters to improve their search, without having mutually exclusive options, as the Baymard Institute recomends in their article on E–Commerce UX, where they found that 45% of the users tested, tried to apply multiple filters at some point.
+Another benefit of using this approach is that users can apply different filters to improve their search, without having mutually exclusive options, as the <a href="https://baymard.com/blog/allow-applying-of-multiple-filter-values" target="_blank" rel="noopener">Baymard Institute recomends<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> in their article on E–Commerce UX, where they found that 45% of the users tested, tried to apply multiple filters at some point.
 
 By using checkbox style buttons for the filters, users can easily enable and disable filtering options, which don’t have to depend on each other.
 
@@ -292,23 +315,19 @@ By using checkbox style buttons for the filters, users can easily enable and dis
 <span class="video-iphoneX--container">
 <span class="video-iphoneX--video">
 <video autoplay loop muted playsinline>
-<source src="./exp1x.webm" type="video/webm">
-<source src="./exp1x.mp4" type="video/mp4">
+<source src="./movie_filtering_prototype.webm" type="video/webm">
+<source src="./movie_filtering_prototype.mp4" type="video/mp4">
 Your browser does not support HTML5 video.
-<a href="./animated.gif">Click here to view original GIF</a>
+<a href="./movie_filtering_prototype.gif">View the gif version of the movie filtering interaction prototype.</a>
 </video>
 </span>
 </span>
-<figcaption>The final version of the seat choosing process with a mini–map and scolling seat interface.</figcaption>
+<figcaption>The final prototype and design of the movie filtering interaction.</figcaption>
 </figure>
 
 ###Sorting options
 
-Another important part of the movie finding experience I studied was the sorting functionality. Besides the normal sorting options of “Price Low to High” or “Rating” I decided to improve the sorting experience by using category specific sorting options.
-
-![GIF](./phexp.gif "DAGIF")
-
-The Baymard Institute [recomends](https://baymard.com/) designers should create this type of sorting experience to allow their users improve the results they see by using category specific options such as—in my case—Popularity (the most booked movies), or by user rating (the highest rated movies first).
+Another important part of the movie finding experience I studied was the sorting functionality. Besides the normal sorting options of “Price Low to High” or “Rating” I decided to improve the sorting experience by using category specific sorting options. <a href="https://baymard.com/blog/category-specific-sorting/" target="_blank" rel="noopener">The Baymard Institute recomends<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> designers should create this type of sorting experience to allow their users improve the results they see by using category specific options such as—in my case—Popularity (the most booked movies), or by user rating (the highest rated movies first).
 
 <div class="container-375">
 
@@ -326,14 +345,14 @@ The searching experience was designed to show in real time the amount of results
 <span class="video-iphoneX--container">
 <span class="video-iphoneX--video">
 <video autoplay loop muted playsinline>
-<source src="./exp1x.webm" type="video/webm">
-<source src="./exp1x.mp4" type="video/mp4">
+<source src="./movie_searching_prototype.webm" type="video/webm">
+<source src="./movie_searching_prototype.mp4" type="video/mp4">
 Your browser does not support HTML5 video.
-<a href="./animated.gif">Click here to view original GIF</a>
+<a href="./movie_searching_prototype.gif">View the GIF version of the movie searching experience prototype.</a>
 </video>
 </span>
 </span>
-<figcaption>The final version of the seat choosing process with a mini–map and scolling seat interface.</figcaption>
+<figcaption>The final prototype and design of the movie searching experience.</figcaption>
 </figure>
 
 ##Read reviews and follow reviewers
@@ -352,14 +371,14 @@ By allowing users to read reviews made by others, the principle of social valida
 <span class="video-iphoneX--container">
 <span class="video-iphoneX--video">
 <video autoplay loop muted playsinline>
-<source src="./exp2x.webm" type="video/webm">
-<source src="./exp2x.mp4" type="video/mp4">
+<source src="./movie_reviews_prototype.webm" type="video/webm">
+<source src="./movie_reviews_prototype.mp4" type="video/mp4">
 Your browser does not support HTML5 video.
-<a href="./animated.gif">Click here to view original GIF</a>
+<a href="./movie_reviews_prototype.gif">View the GIF version of the movie review and following a reviewer prototype.</a>
 </video>
 </span>
 </span>
-<figcaption>The final version of the seat choosing process with a mini–map and scolling seat interface.</figcaption>
+<figcaption>The final prototype and design of reading a movie review and following a reviewer.</figcaption>
 </figure>
 
 ##Save favorite movies
@@ -467,24 +486,10 @@ This approach solved most of the issues I had with the initial one, and also all
 <span class="video-iphoneX--container">
 <span class="video-iphoneX--video">
 <video autoplay loop muted playsinline>
-<source src="./exp1x.webm" type="video/webm">
-<source src="./exp2x.mp4" type="video/mp4">
+<source src="./choosing_seats_prototype.webm" type="video/webm">
+<source src="./choosing_seats_prototype.mp4" type="video/mp4">
 Your browser does not support HTML5 video.
-<a href="./animated.gif">Click here to view original GIF</a>
-</video>
-</span>
-</span>
-<figcaption>The final version of the seat choosing process with a mini–map and scolling seat interface.</figcaption>
-</figure>
-
-<figure>
-<span class="video-iphoneX--container">
-<span class="video-iphoneX--video">
-<video autoplay loop muted playsinline>
-<source src="./exp1x.webm" type="video/webm">
-<source src="./exp2x4.mp4" type="video/mp4">
-Your browser does not support HTML5 video.
-<a href="./animated.gif">Click here to view original GIF</a>
+<a href="./choosing_seats_prototype.gif">View the GIF version of the seat choosing process prototype.</a>
 </video>
 </span>
 </span>
@@ -492,3 +497,9 @@ Your browser does not support HTML5 video.
 </figure>
 
 ##Movie ticket guest checkout
+
+<div class="container-wireflow">
+
+![Wireflow diagram of the guest checkout experience.](./wire_flow_alex_checkout.png "Wireflow diagram of the guest checkout experience.")
+
+</div>
