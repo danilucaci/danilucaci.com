@@ -117,7 +117,7 @@ const SocialShare = (props) => {
         <LinkedinIcon aria-hidden="true">
           <use xlinkHref="#linkedin" />
         </LinkedinIcon>
-        <span class="sr-only">
+        <span className="sr-only">
           Share article on linkedin, opens in new window.
         </span>
       </LinkedinShareButton>
@@ -125,7 +125,7 @@ const SocialShare = (props) => {
         <TwitterIcon aria-hidden="true">
           <use xlinkHref="#twitter" />
         </TwitterIcon>
-        <span class="sr-only">
+        <span className="sr-only">
           Share article on twitter, opens in new window.
         </span>
       </TwitterShareButton>
@@ -135,7 +135,7 @@ const SocialShare = (props) => {
         role="button"
         tabIndex="0"
       >
-        <span class="sr-only">Copy the page url</span>
+        <span className="sr-only">Copy the page url</span>
         <CopyIcon aria-hidden="true">
           <use xlinkHref="#copy" />
         </CopyIcon>
