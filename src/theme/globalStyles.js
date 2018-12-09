@@ -163,6 +163,7 @@ export const theme = {
     l: "45em", //720
     xl: "50em", //800
     xxl: "63em", //1008
+    xxxl: "75em", //1200
   },
 };
 
@@ -175,6 +176,7 @@ const breakpoints = {
   l: 720,
   xl: 800,
   xxl: 1008,
+  xxxl: 1200,
 };
 
 // iterate through the sizes and create a media template
