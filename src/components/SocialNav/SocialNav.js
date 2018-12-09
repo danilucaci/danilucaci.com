@@ -33,7 +33,7 @@ const SocialNav = () => {
         rel="noopener"
         href="https://github.com/danilucaci"
       >
-        <span class="sr-only">
+        <span className="sr-only">
           View danilucaci Github account, opens in new window
         </span>
         <Icon size="40" aria-hidden="true">
@@ -45,7 +45,7 @@ const SocialNav = () => {
         rel="noopener"
         href="https://twitter.com/danilucaci"
       >
-        <span class="sr-only">
+        <span className="sr-only">
           View danilucaci Twitter account, opens in new window
         </span>
         <Icon size="40" aria-hidden="true">
@@ -57,7 +57,7 @@ const SocialNav = () => {
         rel="noopener"
         href="https://dribbble.com/danilucaci"
       >
-        <span class="sr-only">
+        <span className="sr-only">
           View danilucaci Drible account, opens in new window
         </span>
         <Icon size="40" aria-hidden="true">
@@ -69,7 +69,7 @@ const SocialNav = () => {
         rel="noopener"
         href="https://www.linkedin.com/in/danielmlucaci"
       >
-        <span class="sr-only">
+        <span className="sr-only">
           View danilucaci Linkedin account, opens in new window
         </span>
         <Icon size="40" aria-hidden="true">
