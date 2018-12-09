@@ -15,7 +15,11 @@ import Img from "gatsby-image";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import { Copy } from "../components/Copy/Copy";
 import { HR } from "../components/HR/HR";
-import { calculateScroll, textPassiveEventSupport } from "../helpers/helpers";
+import {
+  calculateScroll,
+  textPassiveEventSupport,
+  validate_luhn,
+} from "../helpers/helpers";
 
 const ArticleWrapper = styled.article`
   max-width: ${theme.contain.content};
@@ -117,6 +121,11 @@ const PostContent = styled.section`
     display: block;
     margin-top: ${rem(32)};
     margin-bottom: ${rem(16)};
+
+    ${mediaMin.xs`
+      margin-top: ${rem(64)};
+      margin-bottom: ${rem(32)};
+    `};
   }
 
   h4 {
@@ -240,6 +249,17 @@ const PostContent = styled.section`
       justify-content: center;
       background-color: ${theme.colors.gray100};
       ${theme.shadow.default};
+      max-width: ${rem(1008)};
+      margin-right: -${rem(216)};
+      margin-left: -${rem(216)};
+      padding: ${rem(32)} ${rem(48)};
+    `};
+
+    ${mediaMin.xxxl`
+      display: flex;
+      justify-content: center;
+      background-color: ${theme.colors.gray100};
+      ${theme.shadow.default};
       max-width: ${rem(1128)};
       margin-right: -${rem(288)};
       margin-left: -${rem(288)};
@@ -251,12 +271,15 @@ const PostContent = styled.section`
     margin: ${rem(32)} 0;
 
     ${mediaMin.xxl`
-      background-color: ${theme.colors.gray100};
-      ${theme.shadow.default};
+      max-width: ${rem(1008)};
+      margin-right: -${rem(216)};
+      margin-left: -${rem(216)};
+    `};
+
+    ${mediaMin.xxxl`
       max-width: ${rem(1128)};
       margin-right: -${rem(288)};
       margin-left: -${rem(288)};
-      padding: ${rem(24)};
     `};
   }
 
@@ -308,6 +331,10 @@ const PostContent = styled.section`
 
     & > p {
       display: none;
+    }
+
+    & + h3 {
+      margin-top: ${rem(32)};
     }
 
     ${mediaMin.xxl`
@@ -381,8 +408,11 @@ class Post extends Component {
     );
 
     this.handlePageScroll();
-    this.addSafariVideoControls();
+    // this.addSafariVideoControls();
     this.removeAnchorsFromTabIndex();
+
+    let validate = validate_luhn("4111 1111 1111 1111");
+    console.log("Credit Card is: ", validate);
   }
 
   componentWillUnmount() {
@@ -393,17 +423,17 @@ class Post extends Component {
     this.handleScrollLine();
   };
 
-  addSafariVideoControls = () => {
-    if (
-      navigator.userAgent.indexOf("Safari") != -1 &&
-      navigator.userAgent.indexOf("Chrome") == -1
-    ) {
-      let videos = document.querySelectorAll("video");
-      videos.forEach((video) => {
-        video.controls = true;
-      });
-    }
-  };
+  // addSafariVideoControls = () => {
+  //   if (
+  //     navigator.userAgent.indexOf("Safari") != -1 &&
+  //     navigator.userAgent.indexOf("Chrome") == -1
+  //   ) {
+  //     let videos = document.querySelectorAll("video");
+  //     videos.forEach((video) => {
+  //       video.controls = true;
+  //     });
+  //   }
+  // };
 
   removeAnchorsFromTabIndex = () => {
     const h2s = document.querySelectorAll("h2 a");
