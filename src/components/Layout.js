@@ -11,6 +11,7 @@ import GlobalAria from "../theme/globalAria";
 import GlobalHTML from "../theme/globalCSS";
 import { SVGSprite } from "./SVGSprite/SVGSprite";
 import SkipToMainContent from "./SkipToMainContent/SkipToMainContent";
+import { checkForDoNotTrack } from "../helpers/helpers";
 
 require("./prism.css");
 
@@ -28,9 +29,17 @@ const Page = styled.div`
 `;
 
 class Layout extends Component {
-  state = {};
+  state = {
+    doNotTrack: 1,
+    hasGDPRConsent: 0,
+  };
 
   componentDidMount() {
+    this.checkDNT();
+    this.checkFontsLoaded();
+  }
+
+  checkFontsLoaded = () => {
     if (sessionStorage.fontsLoadedPolyfill) {
       var isLoaded = document.documentElement.className.indexOf("fonts-loaded");
 
@@ -44,7 +53,14 @@ class Layout extends Component {
     } else {
       this.loadFonts();
     }
-  }
+  };
+
+  checkDNT = () => {
+    let doNotTrack = checkForDoNotTrack();
+    if (doNotTrack) {
+      console.log(`%c Do Not Track is on. ${doNotTrack}.`, "color: #79E36B");
+    }
+  };
 
   loadFonts = () => {
     var OpenSansRegular = new FontFaceObserver("OpenSans Regular");
@@ -72,36 +88,38 @@ class Layout extends Component {
   };
 
   render() {
+    const analyticsTwitterJS = `
+      // Twitter JS
+      <script>
+        window.twttr = (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0],
+            t = window.twttr || {};
+          if (d.getElementById(id)) return t;
+          js = d.createElement(s);
+          js.id = id;
+          js.src = "https://platform.twitter.com/widgets.js";
+          fjs.parentNode.insertBefore(js, fjs);
+
+          t._e = [];
+          t.ready = function(f) {
+            t._e.push(f);
+          };
+          return t;
+        }(document, "script", "twitter-wjs"));
+      </script>`;
     return (
       <ThemeProvider theme={theme}>
         <Page id="back_to_top">
+          <Helmet>
+            <title>{config.siteTitle}</title>
+            <meta name="description" content={config.siteDescription} />
+            {analyticsTwitterJS}
+          </Helmet>
           <SkipToMainContent />
           <GlobalFonts />
           <GlobalReset />
           <GlobalAria />
           <GlobalHTML />
-          <Helmet>
-            <title>{config.siteTitle}</title>
-            <meta name="description" content={config.siteDescription} />
-            {/* Twitter */}
-            <script>
-              {`window.twttr = (function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0],
-                  t = window.twttr || {};
-                if (d.getElementById(id)) return t;
-                js = d.createElement(s);
-                js.id = id;
-                js.src = "https://platform.twitter.com/widgets.js";
-                fjs.parentNode.insertBefore(js, fjs);
-
-                t._e = [];
-                t.ready = function(f) {
-                  t._e.push(f);
-                };
-                return t;
-              }(document, "script", "twitter-wjs"));`}
-            </script>
-          </Helmet>
           <SVGSprite />
           {this.props.children}
         </Page>

@@ -81,3 +81,42 @@ export function textPassiveEventSupport() {
 
   return supportsPassive;
 }
+
+// https://gist.github.com/DiegoSalazar/4075533
+// takes the form field value and returns true on valid number
+export function validate_luhn(value) {
+  // accept only digits, dashes or spaces
+  if (/[^0-9-\s]+/.test(value)) return false;
+
+  // The Luhn Algorithm. It's so pretty.
+  var nCheck = 0,
+    nDigit = 0,
+    bEven = false;
+  value = value.replace(/\D/g, "");
+
+  for (var n = value.length - 1; n >= 0; n--) {
+    var cDigit = value.charAt(n),
+      nDigit = parseInt(cDigit, 10);
+
+    if (bEven) {
+      if ((nDigit *= 2) > 9) nDigit -= 9;
+    }
+
+    nCheck += nDigit;
+    bEven = !bEven;
+  }
+
+  return nCheck % 10 == 0;
+}
+
+export function checkForDoNotTrack() {
+  // IE 10 or less has: window.external.msTrackingProtectionEnabled
+  // IE 9 and 10 have: navigator.msDoNotTrack.
+  // IE 11 and Edge have: window.doNotTrack.
+  // Gecko 32 Firefox has: navigator.doNotTrack returning yes or no, not 1 or 0.
+  // Safari 7.1.3+ has: window.doNotTrack.
+  var dnt = window.doNotTrack || navigator.msDoNotTrack || navigator.doNotTrack;
+  if (dnt !== "1" && dnt !== "yes") {
+    return false;
+  } else return true;
+}
