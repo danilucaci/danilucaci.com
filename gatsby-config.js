@@ -69,7 +69,7 @@ module.exports = {
             resolve: "gatsby-remark-images",
             options: {
               // https://www.gatsbyjs.org/packages/gatsby-remark-images/?=images
-              maxWidth: 936,
+              maxWidth: 1128,
               linkImagesToOriginal: false,
               withWebp: true,
               // wrapperStyle: 	Add custom styles to the div wrapping the responsive images.
@@ -97,12 +97,6 @@ module.exports = {
           "gatsby-remark-prismjs",
           "gatsby-remark-copy-linked-files",
         ],
-      },
-    },
-    {
-      resolve: "gatsby-plugin-google-analytics",
-      options: {
-        trackingId: config.googleAnalyticsID,
       },
     },
     {
