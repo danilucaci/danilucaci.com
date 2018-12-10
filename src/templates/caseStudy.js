@@ -436,10 +436,10 @@ class Post extends Component {
   // };
 
   removeAnchorsFromTabIndex = () => {
-    const h2s = document.querySelectorAll("h2 a");
-    const h3s = document.querySelectorAll("h3 a");
-    const h4s = document.querySelectorAll("h4 a");
-    const h5s = document.querySelectorAll("h5 a");
+    const h2s = Array.from(document.querySelectorAll("h2 a"));
+    const h3s = Array.from(document.querySelectorAll("h3 a"));
+    const h4s = Array.from(document.querySelectorAll("h4 a"));
+    const h5s = Array.from(document.querySelectorAll("h5 a"));
 
     h2s.forEach((h2) => {
       h2.tabIndex = -1;

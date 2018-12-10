@@ -16,6 +16,10 @@ export const BaseButton = styled.button`
   .fonts-loaded {
     font-family: ${theme.fonts.bodyBold};
   }
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const PrimaryButton = styled(BaseButton)`
@@ -25,7 +29,19 @@ export const PrimaryButton = styled(BaseButton)`
 
   &:hover {
     background-color: ${theme.colors.main500};
-    ${theme.shadow.buttonHover};
+    ${theme.shadow.hover};
+  }
+`;
+
+export const GhostButton = styled(BaseButton)`
+  background-color: ${theme.colors.gray100};
+  border: 2px solid ${theme.colors.dark900};
+  padding: ${rem(8)} ${rem(16)};
+
+  &:hover {
+    ${theme.shadow.hover};
+    color: ${theme.colors.main600};
+    border-color: ${theme.colors.main600};
   }
 `;
 

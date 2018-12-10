@@ -4,7 +4,7 @@ import config from "../../data/SiteConfig";
 var FontFaceObserver = require("fontfaceobserver");
 
 import styled, { ThemeProvider } from "styled-components";
-import { theme } from "../theme/globalStyles";
+import { theme, rem, mediaMin } from "../theme/globalStyles";
 import GlobalFonts from "../theme/globalFonts";
 import GlobalReset from "../theme/globalReset";
 import GlobalAria from "../theme/globalAria";
@@ -12,6 +12,8 @@ import GlobalHTML from "../theme/globalCSS";
 import { SVGSprite } from "./SVGSprite/SVGSprite";
 import SkipToMainContent from "./SkipToMainContent/SkipToMainContent";
 import { checkForDoNotTrack } from "../helpers/helpers";
+import CookieConsent from "./CookieConsent/CookieConsent";
+import Cookies from "js-cookie";
 
 require("./prism.css");
 
@@ -24,19 +26,30 @@ const Page = styled.div`
   min-height: 100vh;
 
   & main {
-    flex: 1;
+    flex: 1 0 auto;
   }
 `;
 
 class Layout extends Component {
   state = {
-    doNotTrack: 1,
-    hasGDPRConsent: 0,
+    doNotTrackActive: false,
+    hasGDPRConsent: false,
+    askGDPRConsent: true,
+    cookieName: "DaniLucaciCookieConsent",
+    cookieValues: { marketing: "true", analytics: "true" },
+    cookieExpires: 1500,
+    // cookieSecure: false,
+    // cookieDomain: "/",
   };
 
   componentDidMount() {
     this.checkDNT();
+    this.checkGDPRStatus();
     this.checkFontsLoaded();
+  }
+
+  componentDidUpdate() {
+    this.showGDPRStatus();
   }
 
   checkFontsLoaded = () => {
@@ -58,8 +71,66 @@ class Layout extends Component {
   checkDNT = () => {
     let doNotTrack = checkForDoNotTrack();
     if (doNotTrack) {
-      console.log(`%c Do Not Track is on. ${doNotTrack}.`, "color: #79E36B");
+      this.setState((prevState) => ({
+        doNotTrackActive: !prevState.doNotTrackActive,
+      }));
+      console.log(`%cDoNotTrack Active`, "color: #79E36B");
     }
+  };
+
+  checkGDPRStatus = () => {
+    let danilucaciCookieConsent = Cookies.getJSON(this.state.cookieName);
+    if (danilucaciCookieConsent) {
+      this.setState((prevState) => ({
+        askGDPRConsent: !prevState.askGDPRConsent,
+        hasGDPRConsent: !prevState.hasGDPRConsent,
+      }));
+    }
+  };
+
+  showGDPRStatus = () => {
+    let danilucaciCookieConsent = Cookies.getJSON(this.state.cookieName);
+    if (danilucaciCookieConsent) {
+      console.group(`%cdanilucaci.com GDPR Consent Found`, "color: #79E36B");
+      console.log("HasGDPRConsent: ", this.state.hasGDPRConsent);
+      console.log("AskGDPRConsent: ", this.state.askGDPRConsent);
+      console.log("CookieSet: ", danilucaciCookieConsent);
+      console.groupEnd();
+    } else {
+      console.group(
+        `%cdanilucaci.com GDPR Consent Not Found`,
+        "color: #79E36B"
+      );
+      console.log("HasGDPRConsent: ", this.state.hasGDPRConsent);
+      console.log("AskGDPRConsent: ", this.state.askGDPRConsent);
+      console.log("CookieSet: ", danilucaciCookieConsent);
+      console.groupEnd();
+    }
+  };
+
+  acceptsCookies = () => {
+    Cookies.set(this.state.cookieName, this.state.cookieValues, {
+      expires: this.state.cookieExpires,
+    });
+
+    this.setState((prevState) => ({
+      askGDPRConsent: !prevState.askGDPRConsent,
+      hasGDPRConsent: !prevState.hasGDPRConsent,
+    }));
+
+    console.log(`%cdanilucaci.com Cookies Accepted`, "color: #79E36B");
+    this.showGDPRStatus();
+  };
+
+  deniesCookies = () => {
+    Cookies.remove(this.state.cookieName);
+
+    this.setState((prevState) => ({
+      askGDPRConsent: !prevState.askGDPRConsent,
+    }));
+
+    console.log(`%cdanilucaci.com Cookies Removed`, "color: #79E36B");
+    this.showGDPRStatus();
   };
 
   loadFonts = () => {
@@ -88,32 +159,33 @@ class Layout extends Component {
   };
 
   render() {
-    const analyticsTwitterJS = `
-      // Twitter JS
-      <script>
-        window.twttr = (function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0],
-            t = window.twttr || {};
-          if (d.getElementById(id)) return t;
-          js = d.createElement(s);
-          js.id = id;
-          js.src = "https://platform.twitter.com/widgets.js";
-          fjs.parentNode.insertBefore(js, fjs);
+    const twitterJS = `
+    // Twitter JS
+    <script>
+      window.twttr = (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+          t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
 
-          t._e = [];
-          t.ready = function(f) {
-            t._e.push(f);
-          };
-          return t;
-        }(document, "script", "twitter-wjs"));
-      </script>`;
+        t._e = [];
+        t.ready = function(f) {
+          t._e.push(f);
+        };
+        return t;
+      }(document, "script", "twitter-wjs"));
+    </script>
+`;
     return (
       <ThemeProvider theme={theme}>
         <Page id="back_to_top">
           <Helmet>
             <title>{config.siteTitle}</title>
             <meta name="description" content={config.siteDescription} />
-            {analyticsTwitterJS}
+            {twitterJS}
           </Helmet>
           <SkipToMainContent />
           <GlobalFonts />
@@ -121,6 +193,12 @@ class Layout extends Component {
           <GlobalAria />
           <GlobalHTML />
           <SVGSprite />
+          <CookieConsent
+            askGDPRConsent={this.state.askGDPRConsent}
+            acceptsCookies={this.acceptsCookies}
+            deniesCookies={this.deniesCookies}
+            doNotTrackActive={this.state.doNotTrackActive}
+          />
           {this.props.children}
         </Page>
       </ThemeProvider>

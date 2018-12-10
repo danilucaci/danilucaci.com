@@ -12,6 +12,11 @@ export default class HTML extends React.Component {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
+          <script
+            src="https://cdn.polyfill.io/v2/polyfill.min.js?features=eventsource,es7"
+            defer
+            async
+          />
           {this.props.headComponents}
         </head>
         <body {...this.props.bodyAttributes}>

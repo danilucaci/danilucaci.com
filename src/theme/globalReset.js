@@ -10,7 +10,7 @@ const GlobalReset = createGlobalStyle`
   }}
 
   article, aside, details, figcaption, figure, 
-  footer, header, hgroup, menu, nav, section, main {
+  footer, header, hgroup, picture, video, menu, nav, section, main {
     display: block;
   }
 
