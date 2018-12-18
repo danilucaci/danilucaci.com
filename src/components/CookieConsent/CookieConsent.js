@@ -25,6 +25,14 @@ const StyledCookieConsent = styled.div`
   `};
 `;
 
+/**
+|--------------------------------------------------
+| MAKE THIS SOMEWHAT TRANSPARENT AND FULL WIDTH, INLINE BUTTONS, LESS INTRUSIVE
+| We use cookies to ensure that we give you the best experience on our website. 
+| Click here for more information. ACCEPT COOKIES | DENY COOKIES
+|--------------------------------------------------
+*/
+
 const StyledPrimaryButton = styled(PrimaryButton)`
   width: 100%;
   margin-top: ${rem(8)};

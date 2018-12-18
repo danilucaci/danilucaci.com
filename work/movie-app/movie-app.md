@@ -4,8 +4,7 @@ description: "A case study on improving the experience of searching, finding and
 date: "2018-11-02"
 category: "work"
 tags:
-    - UX Design
-    - UI Design
+    - UX/UI Design
     - iOS
     - E-Commerce Checkout
 posted: true
@@ -668,7 +667,7 @@ The process was divided into 4 parts to avoid showing on the same screen too man
 <div class="container-12col">
 <div class="container-375">
 
-![The first step in the membership sign up process.](./7_2_guest_checkout_details_added@2x.png.png "The first step in the membership sign up process.")
+![The first step in the membership sign up process.](./7_2_guest_checkout_details_added@2x.png "The first step in the membership sign up process.")
 
 </div>
 <div class="pros-cons">

@@ -34,6 +34,7 @@ class Layout extends Component {
   state = {
     doNotTrackActive: false,
     hasGDPRConsent: false,
+    hasAnalyticsConsent: true,
     askGDPRConsent: true,
     cookieName: "DaniLucaciCookieConsent",
     cookieValues: { marketing: "true", analytics: "true" },
@@ -159,9 +160,20 @@ class Layout extends Component {
   };
 
   render() {
-    const twitterJS = `
-    // Twitter JS
-    <script>
+    const HotjarScript = `
+      <!-- Hotjar Tracking Code for www.danilucaci.com -->
+      <script>
+          (function(h,o,t,j,a,r){
+              h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+              h._hjSettings={hjid:1122540,hjsv:6};
+              a=o.getElementsByTagName('head')[0];
+              r=o.createElement('script');r.async=1;
+              r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+              a.appendChild(r);
+          })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+      </script>
+    `;
+    const TwitterScript = `
       window.twttr = (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0],
           t = window.twttr || {};
@@ -177,15 +189,17 @@ class Layout extends Component {
         };
         return t;
       }(document, "script", "twitter-wjs"));
-    </script>
-`;
+    `;
+
     return (
       <ThemeProvider theme={theme}>
         <Page id="back_to_top">
           <Helmet>
             <title>{config.siteTitle}</title>
             <meta name="description" content={config.siteDescription} />
-            {twitterJS}
+            {this.state.hasAnalyticsConsent &&
+              this.state.hasAnalyticsConsent &&
+              HotjarScript}
           </Helmet>
           <SkipToMainContent />
           <GlobalFonts />
