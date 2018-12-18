@@ -2,6 +2,7 @@ const path = require("path");
 const _ = require("lodash");
 const moment = require("moment");
 const siteConfig = require("./data/SiteConfig");
+const locales = require("./src/i18n/locales");
 
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
@@ -56,6 +57,7 @@ function addSiblingNodes(createNodeField) {
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
   let slug;
+
   if (node.internal.type === "MarkdownRemark") {
     const fileNode = getNode(node.parent);
     const parsedFilePath = path.parse(fileNode.relativePath);
@@ -129,9 +131,6 @@ exports.createPages = ({ graphql, actions }) => {
                     slug
                   }
                   timeToRead
-                  headings(depth: h2) {
-                    value
-                  }
                   frontmatter {
                     title
                     snippet
@@ -151,9 +150,6 @@ exports.createPages = ({ graphql, actions }) => {
                       slug
                     }
                     timeToRead
-                    headings(depth: h2) {
-                      value
-                    }
                     frontmatter {
                       title
                       snippet
@@ -178,9 +174,6 @@ exports.createPages = ({ graphql, actions }) => {
                 node {
                   fields {
                     slug
-                  }
-                  headings(depth: h2) {
-                    value
                   }
                   frontmatter {
                     title
@@ -211,9 +204,6 @@ exports.createPages = ({ graphql, actions }) => {
                       slug
                     }
                     timeToRead
-                    headings(depth: h2) {
-                      value
-                    }
                     frontmatter {
                       title
                       description
