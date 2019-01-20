@@ -2,7 +2,6 @@ const path = require("path");
 const _ = require("lodash");
 const moment = require("moment");
 const siteConfig = require("./data/SiteConfig");
-const locales = require("./src/i18n/locales");
 
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
