@@ -14,7 +14,6 @@ import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
 import PostListing from "../components/PostListing/PostListing";
 import Tags from "../components/Tags/Tags";
 import Pagination from "../components/Pagination/Pagination";
-// import { Icon } from "../components/Icon/Icon";
 
 const BlogWrapper = styled.div`
   max-width: ${theme.contain.blog};
@@ -62,104 +61,7 @@ ${mediaMin.xs`
 
 const TagsTitle = styled.h4``;
 
-// const CollapsibleContainer = styled.div`
-//   background-color: ${theme.colors.gray100};
-//   ${theme.shadow.default};
-
-//   padding: ${rem(14)} ${rem(16)};
-//   position: relative;
-
-//   &:focus {
-//     outline: 1px solid red;
-//   }
-
-//   width: 100%;
-//   height: 100%;
-
-//   ${mediaMin.s`
-//     padding: 0;
-//     background-color: transparent;
-//     box-shadow: none;
-//   `};
-// `;
-
-// const CollapsibleContent = styled.div`
-//   opacity: 0;
-//   transform: scaleY(0);
-//   transition: all 0.15s ease-out;
-//   will-change: transform, opacity, position;
-//   transform-origin: top center;
-//   overflow: hidden;
-//   position: absolute;
-//   padding-top: ${rem(16)};
-
-//   ${(props) =>
-//     props.showContent &&
-//     css`
-//       opacity: 1;
-//       transform: none;
-//       position: static;
-//       overflow: visible;
-//     `};
-
-//   ${mediaMin.s`
-//     padding-top: ${rem(8)};
-//     opacity: 1;
-//     overflow: visible;
-//     transform: none;
-//     position: static;
-//   `};
-// `;
-
-// const BlogExploreTagsContent = styled(CollapsibleContent)`
-//   padding-top: 0;
-
-//   ${mediaMin.s`
-//     padding-top: 0;
-//   `};
-// `;
-
-// const StyledIcon = styled(Icon)`
-//   float: right;
-//   margin-top: ${rem(4)};
-//   transition: transform 0.2s ease;
-//   transform-origin: 50% 50%;
-//   transform: rotate(${(props) => (props.animate ? "0deg" : "180deg")});
-
-//   ${mediaMin.s`
-//     display: none;
-//   `};
-// `;
-
 class BlogPage extends Component {
-  state = {
-    // blogWriteAboutOpen: false,
-    // blogWhatElseOpen: false,
-    // blogExploreTagsOpen: false,
-  };
-
-  // closeOthers = (from) => {
-  //   const currState = this.state;
-  //   let stateKeys = Object.keys(currState);
-  //   let others = stateKeys.filter((key) => key !== `${from}`);
-
-  //   others.forEach((other) => {
-  //     if (currState[`${other}`]) {
-  //       this.setState((prevState) => ({
-  //         [`${other}`]: !prevState[`${other}`],
-  //       }));
-  //     }
-  //   });
-  // };
-
-  // openBlogExploreTags = () => {
-  //   this.setState((prevState) => ({
-  //     blogExploreTagsOpen: !prevState.blogExploreTagsOpen,
-  //   }));
-
-  // this.closeOthers("blogExploreTagsOpen");
-  // };
-
   render() {
     const {
       currentPage,
