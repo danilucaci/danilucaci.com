@@ -1,5 +1,5 @@
 ---
-title: "Use Aframe on the web"
+title: "Use Aframe on the web 2"
 description: "Have fun with aframe and use ar on the web"
 date: "2018-12-02"
 category: "blog"
@@ -11,6 +11,7 @@ tags:
     - webvr
     - aframe
 posted: true
+lang: "en"
 ---
 
 ##How to use the video tag to make better, lightweight gifs.

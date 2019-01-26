@@ -1,7 +1,7 @@
 ---
-title: "How to make better gifs"
+title: "How to make better gifs 4"
 description: "How to use the video tag to make better, lightweight gifs."
-date: "2018-12-01"
+date: "2018-12-11"
 category: "blog"
 intro: "Gifs are great but they are too big.
 |
@@ -11,6 +11,7 @@ tags:
     - css3
     - perfmatters
 posted: true
+lang: "en"
 ---
 
 ##How to use the video tag to make better, lightweight gifs.

@@ -4,14 +4,13 @@ import styled, { css } from "styled-components";
 import { graphql } from "gatsby";
 import { FormattedMessage } from "react-intl";
 
+import { theme, mediaMin, rem } from "../theme/globalStyles";
 import Layout from "../components/Layout";
 import SiteHeader from "../components/SiteHeader/SiteHeader";
 import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
-
-import { theme, mediaMin, rem } from "../theme/globalStyles";
 import { BulletList, BulletListItem, Copy } from "../components/Copy/Copy";
 import ContactCard from "../components/ContactCard/ContactCard";
 import CaseStudyCard from "../components/CaseStudyCard/CaseStudyCard";

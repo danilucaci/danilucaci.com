@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import styled, { css } from "styled-components";
+import { FormattedMessage } from "react-intl";
 
 import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
@@ -80,7 +81,10 @@ class BlogPage extends Component {
     });
 
     return (
-      <Layout location={this.props.location}>
+      <Layout
+        locale={this.props.pageContext.lang}
+        location={this.props.location}
+      >
         <SiteHeader />
         <Main role="main">
           <BlogWrapper>

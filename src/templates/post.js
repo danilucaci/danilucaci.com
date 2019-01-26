@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
-import styled, { css, keyframes } from "styled-components";
+import styled from "styled-components";
 import rehypeReact from "rehype-react";
+import { FormattedMessage } from "react-intl";
 
 import { theme, rem, mediaMin, mediaMax } from "../theme/globalStyles";
 import config from "../../data/SiteConfig";
@@ -19,7 +20,6 @@ import ArticleDate from "../components/ArticleDate/ArticleDate";
 import { Copy } from "../components/Copy/Copy";
 import {
   calculateScroll,
-  slugify,
   selectDummyNodeToCopy,
   textPassiveEventSupport,
 } from "../helpers/helpers";
@@ -398,7 +398,10 @@ class Post extends Component {
     const introCopy = postInfo.intro.split("|");
 
     return (
-      <Layout location={this.props.location}>
+      <Layout
+        location={this.props.location}
+        locale={this.props.pageContext.lang}
+      >
         <Helmet>
           <title>{`${postInfo.title} - ${config.siteTitle}`}</title>
         </Helmet>
