@@ -284,12 +284,16 @@ class Index extends Component {
 
 export default Index;
 export const pageQuery = graphql`
-  {
+  query WorkEntryByLocale($locale: String!) {
     work: allMarkdownRemark(
       limit: 5
       sort: { fields: [frontmatter___date], order: DESC }
       filter: {
-        frontmatter: { posted: { eq: true }, category: { eq: "work" } }
+        frontmatter: {
+          posted: { eq: true }
+          category: { eq: "work" }
+          lang: { eq: $locale }
+        }
       }
     ) {
       totalCount
