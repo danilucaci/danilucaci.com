@@ -53,6 +53,7 @@
     "react-disqus-comments": "^1.4.0",
     "react-dom": "^16.7.0",
     "react-helmet": "^5.2.0",
+    "react-intl": "^2.8.0",
     "react-router-dom": "^4.3.1",
     "react-share": "^2.4.0",
     "react-twitter-widgets": "^1.7.1",

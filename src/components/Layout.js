@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
-import config from "../../data/SiteConfig";
-var FontFaceObserver = require("fontfaceobserver");
-
 import styled, { ThemeProvider } from "styled-components";
-import { theme, rem, mediaMin } from "../theme/globalStyles";
+var FontFaceObserver = require("fontfaceobserver");
+import Cookies from "js-cookie";
+import { IntlProvider, addLocaleData } from "react-intl";
+// Locale data
+import enData from "react-intl/locale-data/en";
+import esData from "react-intl/locale-data/es";
+
+import { theme } from "../theme/globalStyles";
+import config from "../../data/SiteConfig";
 import GlobalFonts from "../theme/globalFonts";
 import GlobalReset from "../theme/globalReset";
 import GlobalAria from "../theme/globalAria";
@@ -13,11 +18,18 @@ import { SVGSprite } from "./SVGSprite/SVGSprite";
 import SkipToMainContent from "./SkipToMainContent/SkipToMainContent";
 import { checkForDoNotTrack } from "../helpers/helpers";
 import CookieConsent from "./CookieConsent/CookieConsent";
-import Cookies from "js-cookie";
 
 require("./prism.css");
 
 // console.log("env: " + process.env.GATSBY_ASSETS_URL);
+
+// Messages
+import en from "../i18n/en.json";
+import es from "../i18n/es.json";
+
+const intlMessages = { en, es };
+
+addLocaleData([...enData, ...esData]);
 
 const Page = styled.div`
   /* Sticky Footer  */
@@ -190,31 +202,35 @@ class Layout extends Component {
         return t;
       }(document, "script", "twitter-wjs"));
     `;
-
     return (
       <ThemeProvider theme={theme}>
-        <Page id="back_to_top">
-          <Helmet>
-            <title>{config.siteTitle}</title>
-            <meta name="description" content={config.siteDescription} />
-            {this.state.hasAnalyticsConsent &&
-              this.state.hasAnalyticsConsent &&
-              HotjarScript}
-          </Helmet>
-          <SkipToMainContent />
-          <GlobalFonts />
-          <GlobalReset />
-          <GlobalAria />
-          <GlobalHTML />
-          <SVGSprite />
-          <CookieConsent
-            askGDPRConsent={this.state.askGDPRConsent}
-            acceptsCookies={this.acceptsCookies}
-            deniesCookies={this.deniesCookies}
-            doNotTrackActive={this.state.doNotTrackActive}
-          />
-          {this.props.children}
-        </Page>
+        <IntlProvider
+          locale={this.props.locale}
+          messages={intlMessages[this.props.locale]}
+        >
+          <Page id="back_to_top">
+            <Helmet>
+              <title>{config.siteTitle}</title>
+              <meta name="description" content={config.siteDescription} />
+              {this.state.hasAnalyticsConsent &&
+                this.state.hasAnalyticsConsent &&
+                HotjarScript}
+            </Helmet>
+            <SkipToMainContent />
+            <GlobalFonts />
+            <GlobalReset />
+            <GlobalAria />
+            <GlobalHTML />
+            <SVGSprite />
+            <CookieConsent
+              askGDPRConsent={this.state.askGDPRConsent}
+              acceptsCookies={this.acceptsCookies}
+              deniesCookies={this.deniesCookies}
+              doNotTrackActive={this.state.doNotTrackActive}
+            />
+            {this.props.children}
+          </Page>
+        </IntlProvider>
       </ThemeProvider>
     );
   }

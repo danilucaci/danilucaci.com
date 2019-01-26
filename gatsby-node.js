@@ -7,8 +7,50 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-const postNodes = [];
+/* Create pages with translated url for locales
+ */
+const locales = require("./src/locales/locales");
 
+exports.onCreatePage = ({ page, actions }) => {
+  const { createPage, deletePage } = actions;
+
+  return new Promise((resolve) => {
+    // First delete the one made by gatsby
+    deletePage(page);
+
+    Object.keys(locales).map((lang) => {
+      // const localizedPath = locales[lang].default
+      //   ? page.path
+      //   : locales[lang].path + page.path;
+      let localizedPath = "";
+      // Translate page urls
+      if (locales[lang].default) {
+        localizedPath = page.path;
+      } else {
+        if (page.path.includes("/about-me/")) {
+          localizedPath = locales[lang].path + "/sobre-mi/";
+        } else if (page.path.includes("/contact/")) {
+          localizedPath = locales[lang].path + "/contacto/";
+        } else {
+          localizedPath = locales[lang].path + page.path;
+        }
+      }
+
+      return createPage({
+        ...page,
+        path: localizedPath,
+        context: {
+          locale: lang,
+        },
+      });
+    });
+
+    resolve();
+  });
+};
+
+// Add next and previous posts links based on posted date
+const postNodes = [];
 function addSiblingNodes(createNodeField) {
   postNodes.sort(
     ({ frontmatter: { date: date1 } }, { frontmatter: { date: date2 } }) => {
@@ -16,9 +58,7 @@ function addSiblingNodes(createNodeField) {
       const dateB = moment(date2, siteConfig.dateFromFormat);
 
       if (dateA.isBefore(dateB)) return 1;
-
       if (dateB.isBefore(dateA)) return -1;
-
       return 0;
     }
   );

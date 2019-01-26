@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Helmet from "react-helmet";
 import styled, { css } from "styled-components";
 import { graphql } from "gatsby";
+import { FormattedMessage } from "react-intl";
 
 import Layout from "../components/Layout";
 import SiteHeader from "../components/SiteHeader/SiteHeader";
@@ -186,9 +187,11 @@ class Index extends Component {
 
   render() {
     const caseStudyList = this.getCaseStudyList();
-
     return (
-      <Layout location={this.props.location}>
+      <Layout
+        locale={this.props.pageContext.locale}
+        location={this.props.location}
+      >
         <Helmet>
           <title>{`${config.siteTitle}`}</title>
         </Helmet>
@@ -198,24 +201,36 @@ class Index extends Component {
           <Helmet title={config.siteTitle} />
           <SEO />
           <IndexHeader>
-            <StyledH1>Hi! I’m Dani.</StyledH1>
-            <Subhead>
-              I’m a UX/UI Designer and Front-End Developer based in Barcelona. I
-              help teams prototype, design and develop digital products using
-              the latest front-end techniques and design patterns to create
-              scalable, user focused experiences.
-            </Subhead>
+            <FormattedMessage id="index_h1">
+              {(txt) => <StyledH1>{txt}</StyledH1>}
+            </FormattedMessage>
+            <FormattedMessage id="index_subhead">
+              {(txt) => <Subhead>{txt}</Subhead>}
+            </FormattedMessage>
+            <Subhead />
           </IndexHeader>
           <AltStack>
             <StackContents>
-              <ServicesH2>My services</ServicesH2>
+              <FormattedMessage id="index_services_heading">
+                {(txt) => <ServicesH2>{txt}</ServicesH2>}
+              </FormattedMessage>
               <ServicesItem>
-                <ServicesH4>UX Design</ServicesH4>
+                <FormattedMessage id="index_services_1">
+                  {(txt) => <ServicesH4>{txt}</ServicesH4>}
+                </FormattedMessage>
                 <BulletList>
-                  <BulletListItem>Competitor Research</BulletListItem>
-                  <BulletListItem>Wireframing</BulletListItem>
-                  <BulletListItem>Lo–Fi Prototypes</BulletListItem>
-                  <BulletListItem>Hi–Fi Prototypes</BulletListItem>
+                  <FormattedMessage id="index_services_list_1">
+                    {(txt) => <BulletListItem>{txt}</BulletListItem>}
+                  </FormattedMessage>
+                  <FormattedMessage id="index_services_list_2">
+                    {(txt) => <BulletListItem>{txt}</BulletListItem>}
+                  </FormattedMessage>
+                  <FormattedMessage id="index_services_list_3">
+                    {(txt) => <BulletListItem>{txt}</BulletListItem>}
+                  </FormattedMessage>
+                  <FormattedMessage id="index_services_list_4">
+                    {(txt) => <BulletListItem>{txt}</BulletListItem>}
+                  </FormattedMessage>
                 </BulletList>
               </ServicesItem>
               <ServicesItem>
