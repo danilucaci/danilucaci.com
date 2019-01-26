@@ -163,6 +163,11 @@ const Pagination = (props) => {
     nextPath,
   } = props;
 
+  const paginationPageLabels = {
+    en: "/page/",
+    es: "/pagina/",
+  };
+
   let pagination = [];
 
   for (var page = 1; page <= totalPages; page += 1) {
@@ -177,7 +182,7 @@ const Pagination = (props) => {
         pagination.push(
           <CurrentPaginationNumber
             key={page}
-            to={`${paginationPathPrefix}/page/${page}`}
+            to={paginationPathPrefix + paginationPageLabels[props.lang] + page}
           >
             {page}
           </CurrentPaginationNumber>
@@ -194,7 +199,7 @@ const Pagination = (props) => {
         pagination.push(
           <PaginationNumber
             key={page}
-            to={`${paginationPathPrefix}/page/${page}`}
+            to={paginationPathPrefix + paginationPageLabels[props.lang] + page}
           >
             {page}
           </PaginationNumber>

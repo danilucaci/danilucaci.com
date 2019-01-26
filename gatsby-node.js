@@ -10,6 +10,10 @@ require("dotenv").config({
 // Create pages with translated url for locales
 const locales = require("./src/locales/locales");
 
+exports.onCreatePage = ({ page }) => {
+  console.log(page);
+};
+
 exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions;
 
@@ -150,8 +154,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     if (Object.prototype.hasOwnProperty.call(node, "frontmatter")) {
       if (Object.prototype.hasOwnProperty.call(node.frontmatter, "date")) {
         const date = moment(node.frontmatter.date, siteConfig.dateFromFormat);
-        if (!date.isValid)
-          console.warn(`WARNING: Invalid date.`, node.frontmatter);
+        if (!date.isValid) console.warn(`Invalid date.`, node.frontmatter);
 
         createNodeField({
           node,
@@ -185,18 +188,18 @@ exports.createPages = ({ graphql, actions }) => {
   Object.keys(locales).map((lang) => {
     let langUrlPrefix = "";
     let langUrlWorkPrefix = "";
-    let paginationPagePrefix = "";
+    let paginationName = "";
 
     if (lang === "en") {
       langUrlPrefix = "/";
       langUrlWorkPrefix = "work";
-      paginationPagePrefix = "page";
+      paginationName = "page/";
     }
 
     if (lang === "es") {
       langUrlPrefix = "/es/";
       langUrlWorkPrefix = "trabajos";
-      paginationPagePrefix = "pagina";
+      paginationName = "pagina/";
     }
 
     return new Promise((resolve, reject) => {
@@ -272,7 +275,7 @@ exports.createPages = ({ graphql, actions }) => {
                     tags
                     image {
                       childImageSharp {
-                        fluid(maxWidth: 744) {
+                        fluid(maxWidth: 936) {
                           src
                           srcSet
                           aspectRatio
@@ -299,7 +302,7 @@ exports.createPages = ({ graphql, actions }) => {
                       tags
                       image {
                         childImageSharp {
-                          fluid(maxWidth: 744) {
+                          fluid(maxWidth: 936) {
                             src
                             srcSet
                             aspectRatio
@@ -380,15 +383,16 @@ exports.createPages = ({ graphql, actions }) => {
                   totalPagesInBlog,
                   paginationPathPrefix: `${langUrlPrefix}blog`,
                   prevPath: null,
-                  nextPath: `${langUrlPrefix}blog/${paginationPagePrefix}/2`,
+                  nextPath: `${langUrlPrefix}blog/${paginationName}2`,
                   totalCountBlog,
                   tagsBlog,
+                  // need it for react-intl
                   lang,
                 },
               });
             } else {
               createPage({
-                path: `${langUrlPrefix}blog/${paginationPagePrefix}/${currentPage}`,
+                path: `${langUrlPrefix}blog/${paginationName + currentPage}`,
                 component: blogTemplate,
                 // Data passed to context is available in page queries as GraphQL variables.
                 context: {
@@ -403,20 +407,21 @@ exports.createPages = ({ graphql, actions }) => {
                   // only if its > 1 (not resulting in /page/0)
                   prevPath:
                     currentPage - 1 > 1
-                      ? `${langUrlPrefix}blog/${paginationPagePrefix}/${currentPage -
-                          1}`
+                      ? `${langUrlPrefix}blog/${paginationName +
+                          (currentPage - 1)}`
                       : `${langUrlPrefix}blog`,
-                  // don't make more pages than needed
-                  // if I have 13 posts with 5 posts per slice
-                  // I only need 3 paginated pages
-                  // /page/3 max, /page ... /page/3
+                  // current index in loop plus 1
+                  // index = 3 > /page/3
+                  // nextPath = null
+                  // only if its <= totalPages (not resulting in more pages than there are)
                   nextPath:
                     currentPage + 1 <= totalPagesInBlog
-                      ? `${langUrlPrefix}blog/${paginationPagePrefix}/${currentPage +
-                          1}`
+                      ? `${langUrlPrefix}blog/${paginationName +
+                          (currentPage + 1)}`
                       : null,
                   totalCountBlog,
                   tagsBlog,
+                  // need it for react-intl
                   lang,
                 },
               });
@@ -461,9 +466,10 @@ exports.createPages = ({ graphql, actions }) => {
                     prevPath: null,
                     nextPath: `${langUrlPrefix}blog/tags/${
                       tag.fieldValue
-                    }/${paginationPagePrefix}/2`,
+                    }/${paginationName}2`,
                     totalCount: tag.totalCount,
                     tag: tag.fieldValue,
+                    // need it for react-intl
                     lang,
                   },
                 });
@@ -471,7 +477,7 @@ exports.createPages = ({ graphql, actions }) => {
                 createPage({
                   path: `${langUrlPrefix}blog/tags/${
                     tag.fieldValue
-                  }/${paginationPagePrefix}/${currentPage}`,
+                  }/${paginationName + currentPage}`,
                   component: tagTemplate,
                   context: {
                     edges: slicePosts(tag.edges, postsPerPage, currentPage).map(
@@ -489,21 +495,22 @@ exports.createPages = ({ graphql, actions }) => {
                       currentPage - 1 > 1
                         ? `${langUrlPrefix}blog/tags/${
                             tag.fieldValue
-                          }/${paginationPagePrefix}/${currentPage - 1}`
+                          }/${paginationName + (currentPage - 1)}`
                         : `${langUrlPrefix}blog/tags/${tag.fieldValue}`,
-                    // don't make more pages than needed
-                    // if I have 13 posts with 5 posts per slice
-                    // I only need 3 paginated pages
-                    // /page/3 max, /page ... /page/3
+                    // current index in loop plus 1
+                    // index = 3 > /page/3
+                    // nextPath = null
+                    // only if its <= totalPages (not resulting in more pages than there are)
                     nextPath:
                       currentPage + 1 <=
                       Math.ceil(tag.totalCount / postsPerPage)
                         ? `${langUrlPrefix}blog/tags/${
                             tag.fieldValue
-                          }/${paginationPagePrefix}/${currentPage + 1}`
+                          }/${paginationName + (currentPage + 1)}`
                         : null,
                     totalCount: tag.totalCount,
                     tag: tag.fieldValue,
+                    // need it for react-intl
                     lang,
                   },
                 });
@@ -522,6 +529,7 @@ exports.createPages = ({ graphql, actions }) => {
               // Data passed to context is available in page queries as GraphQL variables.
               context: {
                 slug: edge.node.fields.slug,
+                // need it for react-intl
                 lang,
               },
             });
@@ -563,24 +571,18 @@ exports.createPages = ({ graphql, actions }) => {
                   totalPagesInWork,
                   paginationPathPrefix: langUrlPrefix + langUrlWorkPrefix,
                   prevPath: null,
-                  nextPath:
-                    langUrlPrefix +
-                    langUrlWorkPrefix +
-                    paginationPagePrefix +
-                    "/2",
+                  nextPath: `${langUrlPrefix +
+                    langUrlWorkPrefix}/${paginationName}2`,
                   totalCountWork,
                   tagsWork,
+                  // need it for react-intl
                   lang,
                 },
               });
             } else {
               createPage({
-                path:
-                  langUrlPrefix +
-                  langUrlWorkPrefix +
-                  "/" +
-                  paginationPagePrefix +
-                  currentPage,
+                path: `${langUrlPrefix + langUrlWorkPrefix}/${paginationName +
+                  currentPage}`,
                 component: workTemplate,
                 // Data passed to context is available in page queries as GraphQL variables.
                 context: {
@@ -597,28 +599,21 @@ exports.createPages = ({ graphql, actions }) => {
                   // only if its > 1 (not resulting in /page/0)
                   prevPath:
                     currentPage - 1 > 1
-                      ? langUrlPrefix +
-                        langUrlWorkPrefix +
-                        "/" +
-                        paginationPagePrefix +
-                        currentPage -
-                        1
+                      ? `${langUrlPrefix + langUrlWorkPrefix}/${paginationName +
+                          (currentPage - 1)}`
                       : langUrlPrefix + langUrlWorkPrefix,
-                  // don't make more pages than needed
-                  // if I have 13 posts with 5 posts per slice
-                  // I only need 3 paginated pages
-                  // /page/3 max, /page ... /page/3
+                  // current index in loop plus 1
+                  // index = 3 > /page/3
+                  // nextPath = null
+                  // only if its <= totalPages (not resulting in more pages than there are)
                   nextPath:
                     currentPage + 1 <= totalPagesInWork
-                      ? langUrlPrefix +
-                        langUrlWorkPrefix +
-                        "/" +
-                        paginationPagePrefix +
-                        currentPage +
-                        1
+                      ? `${langUrlPrefix + langUrlWorkPrefix}/${paginationName +
+                          (currentPage + 1)}`
                       : null,
                   totalCountWork,
                   tagsWork,
+                  // need it for react-intl
                   lang,
                 },
               });
@@ -636,6 +631,7 @@ exports.createPages = ({ graphql, actions }) => {
               // Data passed to context is available in page queries as GraphQL variables.
               context: {
                 slug: edgeWork.node.fields.slug,
+                // need it for react-intl
                 lang,
               },
             });

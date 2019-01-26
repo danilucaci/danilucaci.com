@@ -38,43 +38,43 @@ const WorkHeader = styled.header`
   z-index: 5;
 `;
 
-class WorkPage extends Component {
-  render() {
-    const {
-      currentPage,
-      totalPagesInWork,
-      paginationPathPrefix,
-      prevPath,
-      nextPath,
-      edgesWork,
-    } = this.props.pageContext;
+const WorkPage = (props) => {
+  const {
+    currentPage,
+    totalPagesInWork,
+    paginationPathPrefix,
+    prevPath,
+    nextPath,
+    edgesWork,
+    lang,
+  } = props.pageContext;
 
-    return (
-      <Layout location={this.props.location}>
-        <SiteHeader />
-        <Main role="main">
-          <Wrapper>
-            <Helmet title={`Work || ${config.siteTitle}`} />
-            <SEO />
-            <WorkHeader>
-              <h1>Case Studies</h1>
-            </WorkHeader>
-            <CaseStudyListing edges={edgesWork} />
-            {totalPagesInWork > 1 && (
-              <Pagination
-                currentPage={currentPage}
-                totalPages={totalPagesInWork}
-                paginationPathPrefix={paginationPathPrefix}
-                prevPath={prevPath}
-                nextPath={nextPath}
-              />
-            )}
-          </Wrapper>
-        </Main>
-        <SiteFooter />
-      </Layout>
-    );
-  }
-}
+  return (
+    <Layout location={props.location} locale={lang}>
+      <SiteHeader />
+      <Main role="main">
+        <Wrapper>
+          <Helmet title={`Work || ${config.siteTitle}`} />
+          <SEO />
+          <WorkHeader>
+            <h1>Case Studies</h1>
+          </WorkHeader>
+          <CaseStudyListing edges={edgesWork} />
+          {totalPagesInWork > 1 && (
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPagesInWork}
+              paginationPathPrefix={paginationPathPrefix}
+              prevPath={prevPath}
+              nextPath={nextPath}
+              lang={lang}
+            />
+          )}
+        </Wrapper>
+      </Main>
+      <SiteFooter />
+    </Layout>
+  );
+};
 
 export default WorkPage;

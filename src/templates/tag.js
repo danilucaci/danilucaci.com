@@ -104,155 +104,61 @@ const OtherTagsWrapper = styled.div`
   `};
 `;
 
-// const CollapsibleContainer = styled.div`
-//   background-color: ${theme.colors.gray100};
-//   ${theme.shadow.default};
+const TagPage = (props) => {
+  const {
+    currentPage,
+    totalPagesInBlog,
+    paginationPathPrefix,
+    prevPath,
+    nextPath,
+    edges,
+    tag,
+    lang,
+  } = props.pageContext;
 
-//   padding: ${rem(14)} ${rem(16)};
-//   position: relative;
+  const frontMatterTags = props.data.allMarkdownRemark;
+  let allTags = [];
 
-//   &:focus {
-//     outline: 1px solid red;
-//   }
+  frontMatterTags.tags.forEach((tag) => {
+    allTags.push(tag.fieldValue);
+  });
 
-//   width: 100%;
-//   height: 100%;
-
-//   ${mediaMin.s`
-//     padding: 0;
-//     background-color: transparent;
-//     box-shadow: none;
-//   `};
-// `;
-
-// const CollapsibleContent = styled.div`
-//   opacity: 0;
-//   transform: scaleY(0);
-//   transition: all 0.1s ease-out;
-//   will-change: transform, opacity, position;
-//   transform-origin: 0% 0%;
-//   overflow: hidden;
-//   position: absolute;
-//   padding-top: ${rem(16)};
-
-//   ${(props) =>
-//     props.showContent &&
-//     css`
-//       opacity: 1;
-//       transform: none;
-//       position: static;
-//       overflow: visible;
-//     `};
-
-//   ${mediaMin.s`
-//     padding-top: ${rem(8)};
-//     opacity: 1;
-//     overflow: visible;
-//     transform: none;
-//     position: static;
-//   `};
-// `;
-
-// const ExploreTagsContent = styled(CollapsibleContent)`
-//   padding-top: 0;
-
-//   ${mediaMin.s`
-//     padding-top: 0;
-//   `};
-// `;
-
-// const StyledIcon = styled(Icon)`
-//   float: right;
-//   transition: transform 0.2s ease;
-//   transform: rotate(0deg);
-
-//   ${(props) =>
-//     props.animate &&
-//     css`
-//       transform-origin: 50% 50%;
-//       transform: rotate(180deg);
-//     `};
-
-//   ${mediaMin.s`
-//     display: none;
-//   `};
-// `;
-
-class TagPage extends Component {
-  state = {
-    // exploreTagsOpen: false,
-  };
-
-  // openExploreTags = () => {
-  //   this.setState((prevState) => ({
-  //     exploreTagsOpen: !prevState.exploreTagsOpen,
-  //   }));
-  // };
-
-  render() {
-    const {
-      currentPage,
-      totalPagesInBlog,
-      paginationPathPrefix,
-      prevPath,
-      nextPath,
-      edges,
-      tag,
-    } = this.props.pageContext;
-
-    const frontMatterTags = this.props.data.allMarkdownRemark;
-    let allTags = [];
-
-    frontMatterTags.tags.forEach((tag) => {
-      allTags.push(tag.fieldValue);
-    });
-
-    return (
-      <Layout location={this.props.location}>
-        <Helmet title={config.siteTitle} />
-        <SEO />
-        <SiteHeader />
-        <Main role="main">
-          <TagWrapper>
-            <TagHeader>
-              <TagTitleWrapper>
-                <h1>
-                  <PostsFor>Blog posts found for:</PostsFor>
-                  <TagTitle>#{tag}</TagTitle>
-                </h1>
-              </TagTitleWrapper>
-              <OtherTagsWrapper>
-                {/* <CollapsibleContainer
-                  onClick={this.openExploreTags}
-                  contentVisible={this.state.exploreTagsOpen}
-                >
-                  <StyledIcon animate={this.state.exploreTagsOpen}>
-                    <use xlinkHref="#down" />
-                  </StyledIcon> */}
-                <StyledSectionHeader>Other blog tags</StyledSectionHeader>
-                {/* <ExploreTagsContent showContent={this.state.exploreTagsOpen}> */}
-                <Tags tagsInPost={allTags} />
-                {/* </ExploreTagsContent> */}
-                {/* </CollapsibleContainer> */}
-              </OtherTagsWrapper>
-            </TagHeader>
-            <PostListing edges={edges} />
-            {totalPagesInBlog > 1 && (
-              <Pagination
-                currentPage={currentPage}
-                totalPages={totalPagesInBlog}
-                paginationPathPrefix={paginationPathPrefix}
-                prevPath={prevPath}
-                nextPath={nextPath}
-              />
-            )}
-          </TagWrapper>
-        </Main>
-        <SiteFooter />
-      </Layout>
-    );
-  }
-}
+  return (
+    <Layout location={props.location} locale={lang}>
+      <Helmet title={config.siteTitle} />
+      <SEO />
+      <SiteHeader />
+      <Main role="main">
+        <TagWrapper>
+          <TagHeader>
+            <TagTitleWrapper>
+              <h1>
+                <PostsFor>Blog posts found for:</PostsFor>
+                <TagTitle>#{tag}</TagTitle>
+              </h1>
+            </TagTitleWrapper>
+            <OtherTagsWrapper>
+              <StyledSectionHeader>Other blog tags</StyledSectionHeader>
+              <Tags tagsInPost={allTags} />
+            </OtherTagsWrapper>
+          </TagHeader>
+          <PostListing edges={edges} />
+          {totalPagesInBlog > 1 && (
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPagesInBlog}
+              paginationPathPrefix={paginationPathPrefix}
+              prevPath={prevPath}
+              nextPath={nextPath}
+              lang={lang}
+            />
+          )}
+        </TagWrapper>
+      </Main>
+      <SiteFooter />
+    </Layout>
+  );
+};
 
 export default TagPage;
 

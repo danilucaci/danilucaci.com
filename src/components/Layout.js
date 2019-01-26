@@ -104,13 +104,16 @@ class Layout extends Component {
   showGDPRStatus = () => {
     let danilucaciCookieConsent = Cookies.getJSON(this.state.cookieName);
     if (danilucaciCookieConsent) {
-      console.group(`%cdanilucaci.com GDPR Consent Found`, "color: #79E36B");
+      console.groupCollapsed(
+        `%cdanilucaci.com GDPR Consent Found`,
+        "color: #79E36B"
+      );
       console.log("HasGDPRConsent: ", this.state.hasGDPRConsent);
       console.log("AskGDPRConsent: ", this.state.askGDPRConsent);
       console.log("CookieSet: ", danilucaciCookieConsent);
       console.groupEnd();
     } else {
-      console.group(
+      console.groupCollapsed(
         `%cdanilucaci.com GDPR Consent Not Found`,
         "color: #79E36B"
       );
