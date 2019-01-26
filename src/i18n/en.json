@@ -6,5 +6,12 @@
   "index_services_list_1": "Competitor Research",
   "index_services_list_2": "Wireframing",
   "index_services_list_3": "Lo–Fi Prototypes",
-  "index_services_list_4": "Hi–Fi Prototypes"
+  "index_services_list_4": "Hi–Fi Prototypes",
+  "blog_title": "My thoughts on UX, UI and Code.",
+  "blog_explore": "Explore by tags",
+  "blog_article_list": "Latest Articles",
+  "pagination_next": "Next",
+  "pagination_prev": "Previous",
+  "pagination_of": "of",
+  "article_link_continue": "Continue Reading →"
 }

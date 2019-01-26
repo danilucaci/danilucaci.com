@@ -91,10 +91,14 @@ const BlogPage = (props) => {
           <SEO />
           <BlogHeader>
             <BlogInfo>
-              <BlogTitle as="h1">My thoughts on UX, UI and Code.</BlogTitle>
+              <FormattedMessage id="blog_title">
+                {(txt) => <BlogTitle as="h1">{txt}</BlogTitle>}
+              </FormattedMessage>
             </BlogInfo>
             <TagsWrapper>
-              <TagsTitle>Explore by tags</TagsTitle>
+              <FormattedMessage id="blog_explore">
+                {(txt) => <TagsTitle>{txt}</TagsTitle>}
+              </FormattedMessage>
               <Tags tagsInPost={allTags} />
             </TagsWrapper>
           </BlogHeader>

@@ -6,5 +6,12 @@
   "index_services_list_1": "Recerca competidores",
   "index_services_list_2": "Wireframing",
   "index_services_list_3": "Prototipos de baja fidelidad",
-  "index_services_list_4": "Prototipos de alta fidelidad"
+  "index_services_list_4": "Prototipos de alta fidelidad",
+  "blog_title": "Articulos sobre diseño UX, UI y Código.",
+  "blog_explore": "Explorar por etiquetas",
+  "blog_article_list": "Últimos artículos",
+  "pagination_next": "Siguientes",
+  "pagination_prev": "Anteriores",
+  "pagination_of": "de",
+  "article_link_continue": "Leer más →"
 }

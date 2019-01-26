@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-
 import styled from "styled-components";
-import { theme, mediaMin, rem } from "../../theme/globalStyles";
+import { FormattedMessage } from "react-intl";
 
+import { theme, mediaMin, rem } from "../../theme/globalStyles";
 import Article from "../Article/Article";
 
 const Wrapper = styled.section`
@@ -43,7 +43,9 @@ class PostListing extends Component {
 
     return (
       <Wrapper>
-        <StyledH2>Latest Articles</StyledH2>
+        <FormattedMessage id="blog_article_list">
+          {(txt) => <StyledH2>{txt}</StyledH2>}
+        </FormattedMessage>
         {postList.map((post) => (
           <Article
             key={post.title}

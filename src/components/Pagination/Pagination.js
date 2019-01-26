@@ -1,5 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import { FormattedMessage } from "react-intl";
+
 import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
 import { BoldLink } from "../Link/Link";
 import { Icon } from "../Icon/Icon";
@@ -215,32 +217,44 @@ const Pagination = (props) => {
           <StyledIcon>
             <use xlinkHref="#left" />
           </StyledIcon>
-          <PaginationLabel>Previous</PaginationLabel>
+          <FormattedMessage id="pagination_prev">
+            {(txt) => <PaginationLabel>{txt}</PaginationLabel>}
+          </FormattedMessage>
         </Prev>
       ) : (
         <DisabledPrev>
           <StyledIcon disabled={!prevPath}>
             <use xlinkHref="#left" />
           </StyledIcon>
-          <PaginationLabel>Previous</PaginationLabel>
+          <FormattedMessage id="pagination_prev">
+            {(txt) => <PaginationLabel>{txt}</PaginationLabel>}
+          </FormattedMessage>
         </DisabledPrev>
       )}
       <PaginationContent>
         {pagination}
         <MobileCopy>
-          {currentPage} of {totalPages}
+          {currentPage}
+          &nbsp;
+          <FormattedMessage id="pagination_of" />
+          &nbsp;
+          {totalPages}
         </MobileCopy>
       </PaginationContent>
       {nextPath ? (
         <Next to={nextPath}>
-          <PaginationLabel>Next</PaginationLabel>
+          <FormattedMessage id="pagination_next">
+            {(txt) => <PaginationLabel>{txt}</PaginationLabel>}
+          </FormattedMessage>
           <StyledIcon>
             <use xlinkHref="#right" />
           </StyledIcon>
         </Next>
       ) : (
         <DisabledNext>
-          <PaginationLabel>Next</PaginationLabel>
+          <FormattedMessage id="pagination_next">
+            {(txt) => <PaginationLabel>{txt}</PaginationLabel>}
+          </FormattedMessage>
           <StyledIcon disabled={!nextPath}>
             <use xlinkHref="#right" />
           </StyledIcon>

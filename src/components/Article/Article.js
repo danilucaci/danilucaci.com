@@ -1,13 +1,11 @@
 import React from "react";
-
 import styled from "styled-components";
+import { FormattedMessage } from "react-intl";
+
 import { theme, mediaMin, rem } from "../../theme/globalStyles";
-
 import { Copy } from "../Copy/Copy";
-
 import Tags from "../Tags/Tags";
 import ArticleInfo from "../ArticleInfo/ArticleInfo";
-
 import { BoldLink } from "../Link/Link";
 
 const StyledArticle = styled.article`
@@ -58,7 +56,9 @@ const Article = (props) => {
         <ArticleInfo date={props.date} timeToRead={props.timeToRead} />
       </header>
       <Copy className="copy">{props.snippet}</Copy>
-      <ContinueLink to={props.slug}>Continue Reading →</ContinueLink>
+      <FormattedMessage id="article_link_continue">
+        {(txt) => <ContinueLink to={props.slug}>{txt}</ContinueLink>}
+      </FormattedMessage>
     </StyledArticle>
   );
 };
