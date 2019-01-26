@@ -471,10 +471,6 @@ export const pageQuery = graphql`
         }
       }
       fields {
-        nextTitle
-        nextSlug
-        prevTitle
-        prevSlug
         slug
       }
     }

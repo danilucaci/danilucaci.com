@@ -53,48 +53,52 @@ exports.onCreatePage = ({ page, actions }) => {
 };
 
 // Add next and previous posts links based on posted date
-const postNodes = [];
-function addSiblingNodes(createNodeField) {
-  postNodes.sort(
-    ({ frontmatter: { date: date1 } }, { frontmatter: { date: date2 } }) => {
-      const dateA = moment(date1, siteConfig.dateFromFormat);
-      const dateB = moment(date2, siteConfig.dateFromFormat);
+//
+// this has be adjusted for translated links
+// I don't really need it
+//
+// const postNodes = [];
+// function addSiblingNodes(createNodeField) {
+//   postNodes.sort(
+//     ({ frontmatter: { date: date1 } }, { frontmatter: { date: date2 } }) => {
+//       const dateA = moment(date1, siteConfig.dateFromFormat);
+//       const dateB = moment(date2, siteConfig.dateFromFormat);
 
-      if (dateA.isBefore(dateB)) return 1;
-      if (dateB.isBefore(dateA)) return -1;
-      return 0;
-    }
-  );
+//       if (dateA.isBefore(dateB)) return 1;
+//       if (dateB.isBefore(dateA)) return -1;
+//       return 0;
+//     }
+//   );
 
-  for (let i = 0; i < postNodes.length; i += 1) {
-    const nextID = i + 1 < postNodes.length ? i + 1 : 0;
-    const prevID = i - 1 > 0 ? i - 1 : postNodes.length - 1;
-    const currNode = postNodes[i];
-    const nextNode = postNodes[nextID];
-    const prevNode = postNodes[prevID];
+//   for (let i = 0; i < postNodes.length; i += 1) {
+//     const nextID = i + 1 < postNodes.length ? i + 1 : 0;
+//     const prevID = i - 1 > 0 ? i - 1 : postNodes.length - 1;
+//     const currNode = postNodes[i];
+//     const nextNode = postNodes[nextID];
+//     const prevNode = postNodes[prevID];
 
-    createNodeField({
-      node: currNode,
-      name: "nextTitle",
-      value: nextNode.frontmatter.title,
-    });
-    createNodeField({
-      node: currNode,
-      name: "nextSlug",
-      value: nextNode.fields.slug,
-    });
-    createNodeField({
-      node: currNode,
-      name: "prevTitle",
-      value: prevNode.frontmatter.title,
-    });
-    createNodeField({
-      node: currNode,
-      name: "prevSlug",
-      value: prevNode.fields.slug,
-    });
-  }
-}
+//     createNodeField({
+//       node: currNode,
+//       name: "nextTitle",
+//       value: nextNode.frontmatter.title,
+//     });
+//     createNodeField({
+//       node: currNode,
+//       name: "nextSlug",
+//       value: nextNode.fields.slug,
+//     });
+//     createNodeField({
+//       node: currNode,
+//       name: "prevTitle",
+//       value: prevNode.frontmatter.title,
+//     });
+//     createNodeField({
+//       node: currNode,
+//       name: "prevSlug",
+//       value: prevNode.fields.slug,
+//     });
+//   }
+// }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
@@ -170,17 +174,17 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       value: slug,
     });
 
-    postNodes.push(node);
+    // postNodes.push(node);
   }
 };
 
-exports.setFieldsOnGraphQLNodeType = ({ type, actions }) => {
-  const { name } = type;
-  const { createNodeField } = actions;
-  if (name === "MarkdownRemark") {
-    addSiblingNodes(createNodeField);
-  }
-};
+// exports.setFieldsOnGraphQLNodeType = ({ type, actions }) => {
+//   const { name } = type;
+//   const { createNodeField } = actions;
+//   if (name === "MarkdownRemark") {
+//     addSiblingNodes(createNodeField);
+//   }
+// };
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
