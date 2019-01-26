@@ -188,8 +188,8 @@ class Index extends Component {
     const caseStudyList = this.getCaseStudyList();
     return (
       <Layout
-        locale={this.props.pageContext.locale}
         location={this.props.location}
+        locale={this.props.pageContext.locale}
       >
         <Helmet>
           <title>{`${config.siteTitle}`}</title>

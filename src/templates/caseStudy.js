@@ -471,7 +471,10 @@ class Post extends Component {
     const image = postInfo.image.childImageSharp.fluid;
 
     return (
-      <Layout location={this.props.location}>
+      <Layout
+        location={this.props.location}
+        locale={this.props.pageContext.lang}
+      >
         <Helmet>
           <title>{`${postInfo.title} - ${config.siteTitle}`}</title>
         </Helmet>

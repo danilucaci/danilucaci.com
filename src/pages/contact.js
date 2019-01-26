@@ -124,68 +124,66 @@ const TwitterIcon = styled(Icon)`
   fill: ${theme.colors.social.twitter};
 `;
 
-class ContactPage extends Component {
-  render() {
-    return (
-      <Layout location={this.props.location}>
-        <Helmet title={`Contact Me - ${config.siteTitle}`} />
-        <SEO />
-        <SiteHeader />
-        <Main role="main">
-          <ContactMeWrapper>
-            <StyledH1>Let's talk</StyledH1>
-            <Subhead>
-              If you have a project in mind and you think my services would
-              help, or you simply want to know more about me or what I do, feel
-              free to send me a message.
-            </Subhead>
-            <ContactInfo>
-              <ContactInfoItem separate>
-                <h4>I prefer email for:</h4>
-                <StyledList>
-                  <StyledListItem>Everything work related</StyledListItem>
-                  <StyledListItem>
-                    Project or colaboration proposals
-                  </StyledListItem>
-                  <StyledListItem>Longer messages</StyledListItem>
-                </StyledList>
-              </ContactInfoItem>
-              <ContactInfoItem>
-                <h4>I prefer twitter for:</h4>
-                <StyledList>
-                  <StyledListItem>Everything else</StyledListItem>
-                </StyledList>
-              </ContactInfoItem>
-            </ContactInfo>
-            <PathWrapper>
-              <h3>Choose your path:</h3>
-              <StyledPrimaryButton>
-                <a href={theme.mailToLink}>
-                  Email
-                  <MailIcon>
-                    <use xlinkHref="#mail" />
-                  </MailIcon>
-                </a>
-              </StyledPrimaryButton>
-              <StyledPrimaryButton>
-                <a
-                  href="https://twitter.com/messages/compose?recipient_id=734468984658071554&ref_src=twsrc%5Etfw"
-                  data-screen-name="@danilucaci"
-                  data-show-count="false"
-                >
-                  Tweet
-                  <TwitterIcon>
-                    <use xlinkHref="#twitter" />
-                  </TwitterIcon>
-                </a>
-              </StyledPrimaryButton>
-            </PathWrapper>
-          </ContactMeWrapper>
-        </Main>
-        <SiteFooter />
-      </Layout>
-    );
-  }
-}
+const ContactPage = (props) => {
+  return (
+    <Layout location={props.location} locale={props.pageContext.locale}>
+      <Helmet title={`Contact Me - ${config.siteTitle}`} />
+      <SEO />
+      <SiteHeader />
+      <Main role="main">
+        <ContactMeWrapper>
+          <StyledH1>Let's talk</StyledH1>
+          <Subhead>
+            If you have a project in mind and you think my services would help,
+            or you simply want to know more about me or what I do, feel free to
+            send me a message.
+          </Subhead>
+          <ContactInfo>
+            <ContactInfoItem separate>
+              <h4>I prefer email for:</h4>
+              <StyledList>
+                <StyledListItem>Everything work related</StyledListItem>
+                <StyledListItem>
+                  Project or colaboration proposals
+                </StyledListItem>
+                <StyledListItem>Longer messages</StyledListItem>
+              </StyledList>
+            </ContactInfoItem>
+            <ContactInfoItem>
+              <h4>I prefer twitter for:</h4>
+              <StyledList>
+                <StyledListItem>Everything else</StyledListItem>
+              </StyledList>
+            </ContactInfoItem>
+          </ContactInfo>
+          <PathWrapper>
+            <h3>Choose your path:</h3>
+            <StyledPrimaryButton>
+              <a href={theme.mailToLink}>
+                Email
+                <MailIcon>
+                  <use xlinkHref="#mail" />
+                </MailIcon>
+              </a>
+            </StyledPrimaryButton>
+            <StyledPrimaryButton>
+              <a
+                href="https://twitter.com/messages/compose?recipient_id=734468984658071554&ref_src=twsrc%5Etfw"
+                data-screen-name="@danilucaci"
+                data-show-count="false"
+              >
+                Tweet
+                <TwitterIcon>
+                  <use xlinkHref="#twitter" />
+                </TwitterIcon>
+              </a>
+            </StyledPrimaryButton>
+          </PathWrapper>
+        </ContactMeWrapper>
+      </Main>
+      <SiteFooter />
+    </Layout>
+  );
+};
 
 export default ContactPage;

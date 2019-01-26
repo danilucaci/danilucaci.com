@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 import SEO from "../components/SEO/SEO";
 import { theme, mediaMin, rem } from "../theme/globalStyles";
@@ -142,81 +142,79 @@ const Col2of2 = styled.div`
   `};
 `;
 
-class AboutPage extends Component {
-  render() {
-    return (
-      <Layout location={this.props.location}>
-        <SiteHeader />
-        <Main role="main">
-          <AboutMeWrapper>
-            <Helmet title={`About Me - ${config.siteTitle}`} />
-            <SEO />
-            <HeaderInfo>
-              {/* <StyledNameHeader>Hi! I’m Dani Lucaci.</StyledNameHeader> */}
-              <StyledH1>About Me</StyledH1>
-              <AboutImageWrapper>
-                <Img
-                  title="Dani Lucaci portrait image"
-                  alt="Dani Lucaci portrait image"
-                  fluid={this.props.data.aboutImage.childImageSharp.fluid}
-                />
-              </AboutImageWrapper>
-              <Subhead>
-                I am a UX/UI Designer and Front–End Developer that likes to
-                create products that help their users achieve their personal
-                goals and are built with performance, accesibility and user
-                interaction in mind.
-              </Subhead>
-              <StyledSocialNav>
-                <SocialHeader>You can find me on social media</SocialHeader>
-                <SocialNav />
-              </StyledSocialNav>
-            </HeaderInfo>
-            <Col1of2>
-              <StyledH3>More about me</StyledH3>
-              <StyledCopy>
-                I was born in Bucharest, Romania, but moved to Spain at a young
-                age. I am currently living in Barcelona, Spain, where I am
-                finishing my Multimedia degree from the UOC (Universitat Oberta
-                de Catalunya).
-              </StyledCopy>
-              <StyledCopy>
-                Previously I was an Automotive Photographer —for about 4 years—
-                covering motorsport events in Spain and Europe.
-              </StyledCopy>
-            </Col1of2>
-            <Col2of2>
-              <StyledH3>About this blog</StyledH3>
-              <StyledCopy>
-                This blog was built as an personal challenge to improve my
-                coding skills and as such I decided to build it using Gatsby.js,
-                React.js, Styled Components and hosted it on Netlify.
-              </StyledCopy>
-              <StyledCopy>
-                If you’d like to see the source code for yourself,{" "}
-                <a href="https://github.com/danilucaci/danilucaci.com">
-                  the repository is publicly available
-                </a>{" "}
-                and if you have any questions regarding any of the
-                functionality, feel free to{" "}
-                <a
-                  href="https://twitter.com/messages/compose?recipient_id=734468984658071554&ref_src=twsrc%5Etfw"
-                  data-screen-name="@danilucaci"
-                  data-show-count="false"
-                >
-                  send me a tweet
-                </a>
-                .
-              </StyledCopy>
-            </Col2of2>
-          </AboutMeWrapper>
-        </Main>
-        <ContactCard />
-        <SiteFooter gray />
-      </Layout>
-    );
-  }
-}
+const AboutPage = (props) => {
+  return (
+    <Layout location={props.location} locale={props.pageContext.locale}>
+      <SiteHeader />
+      <Main role="main">
+        <AboutMeWrapper>
+          <Helmet title={`About Me - ${config.siteTitle}`} />
+          <SEO />
+          <HeaderInfo>
+            {/* <StyledNameHeader>Hi! I’m Dani Lucaci.</StyledNameHeader> */}
+            <StyledH1>About Me</StyledH1>
+            <AboutImageWrapper>
+              <Img
+                title="Dani Lucaci portrait image"
+                alt="Dani Lucaci portrait image"
+                fluid={props.data.aboutImage.childImageSharp.fluid}
+              />
+            </AboutImageWrapper>
+            <Subhead>
+              I am a UX/UI Designer and Front–End Developer that likes to create
+              products that help their users achieve their personal goals and
+              are built with performance, accesibility and user interaction in
+              mind.
+            </Subhead>
+            <StyledSocialNav>
+              <SocialHeader>You can find me on social media</SocialHeader>
+              <SocialNav />
+            </StyledSocialNav>
+          </HeaderInfo>
+          <Col1of2>
+            <StyledH3>More about me</StyledH3>
+            <StyledCopy>
+              I was born in Bucharest, Romania, but moved to Spain at a young
+              age. I am currently living in Barcelona, Spain, where I am
+              finishing my Multimedia degree from the UOC (Universitat Oberta de
+              Catalunya).
+            </StyledCopy>
+            <StyledCopy>
+              Previously I was an Automotive Photographer —for about 4 years—
+              covering motorsport events in Spain and Europe.
+            </StyledCopy>
+          </Col1of2>
+          <Col2of2>
+            <StyledH3>About this blog</StyledH3>
+            <StyledCopy>
+              This blog was built as an personal challenge to improve my coding
+              skills and as such I decided to build it using Gatsby.js,
+              React.js, Styled Components and hosted it on Netlify.
+            </StyledCopy>
+            <StyledCopy>
+              If you’d like to see the source code for yourself,{" "}
+              <a href="https://github.com/danilucaci/danilucaci.com">
+                the repository is publicly available
+              </a>{" "}
+              and if you have any questions regarding any of the functionality,
+              feel free to{" "}
+              <a
+                href="https://twitter.com/messages/compose?recipient_id=734468984658071554&ref_src=twsrc%5Etfw"
+                data-screen-name="@danilucaci"
+                data-show-count="false"
+              >
+                send me a tweet
+              </a>
+              .
+            </StyledCopy>
+          </Col2of2>
+        </AboutMeWrapper>
+      </Main>
+      <ContactCard />
+      <SiteFooter gray />
+    </Layout>
+  );
+};
 
 export default AboutPage;
 
