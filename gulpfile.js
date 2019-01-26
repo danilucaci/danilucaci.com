@@ -1,17 +1,17 @@
-// ==============================================================================
-// Gulpfile for danilucaci.com
-// V1.0.0
-// Using gulp4 to build svg sprite from several svg icons
-// run with npm script
-// ==============================================================================
+/* ==============================================================================
+ * Gulpfile for danilucaci.com
+ * V1.0.0
+ * Using gulp4 to build svg sprite from several svg icons
+ * run with npm script
+ */
 
 const gulp = require("gulp");
 const del = require("del");
 const svgSprite = require("gulp-svg-sprites");
 
-// -------------------------------------------------------------------------------
-// SVG Stuff
-// -------------------------------------------------------------------------------
+/* -------------------------------------------------------------------------------
+ * SVG Stuff
+ */
 
 // SVG Sprinting
 gulp.task("build:svg", function(done) {
@@ -38,10 +38,8 @@ gulp.task("clean:svg", function(done) {
   done();
 });
 
-// -------------------------------------------------------------------------------
-// npm script controlled tasks
-//
-// sprite builds svg sprite
-// -------------------------------------------------------------------------------
+/* -------------------------------------------------------------------------------
+ * Sprite builds svg sprite
+ */
 
 gulp.task("build:svg", gulp.series("clean:svg", "build:svg"));
