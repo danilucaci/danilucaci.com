@@ -13,5 +13,7 @@
   "pagination_next": "Next",
   "pagination_prev": "Previous",
   "pagination_of": "of",
-  "article_link_continue": "Continue Reading →"
+  "article_link_continue": "Continue Reading →",
+  "tag_listing_header": "Blog posts found for:",
+  "tag_listing_other": "Other blog tags:"
 }

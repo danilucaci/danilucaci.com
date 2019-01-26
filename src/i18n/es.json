@@ -13,5 +13,7 @@
   "pagination_next": "Siguientes",
   "pagination_prev": "Anteriores",
   "pagination_of": "de",
-  "article_link_continue": "Leer más →"
+  "article_link_continue": "Leer más →",
+  "tag_listing_header": "Artículos etiquetados:",
+  "tag_listing_other": "Otros tags del blog:"
 }

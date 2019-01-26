@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import Helmet from "react-helmet";
-import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import styled, { css } from "styled-components";
+import { FormattedMessage } from "react-intl";
 
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
@@ -11,11 +11,9 @@ import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
 import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
 import config from "../../data/SiteConfig";
-
 import PostListing from "../components/PostListing/PostListing";
 import Tags from "../components/Tags/Tags";
 import Pagination from "../components/Pagination/Pagination";
-// import { Icon } from "../components/Icon/Icon";
 import { SectionHeader } from "../components/Headings/Headings";
 
 const TagWrapper = styled.div`
@@ -133,12 +131,16 @@ const TagPage = (props) => {
           <TagHeader>
             <TagTitleWrapper>
               <h1>
-                <PostsFor>Blog posts found for:</PostsFor>
+                <FormattedMessage id="tag_listing_header">
+                  {(txt) => <PostsFor>{txt}</PostsFor>}
+                </FormattedMessage>
                 <TagTitle>#{tag}</TagTitle>
               </h1>
             </TagTitleWrapper>
             <OtherTagsWrapper>
-              <StyledSectionHeader>Other blog tags</StyledSectionHeader>
+              <FormattedMessage id="tag_listing_other">
+                {(txt) => <StyledSectionHeader>{txt}</StyledSectionHeader>}
+              </FormattedMessage>
               <Tags tagsInPost={allTags} />
             </OtherTagsWrapper>
           </TagHeader>
