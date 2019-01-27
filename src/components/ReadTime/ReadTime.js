@@ -1,8 +1,8 @@
 import React from "react";
-
 import styled from "styled-components";
-import { theme, mediaMin, rem } from "../../theme/globalStyles";
+import { FormattedMessage } from "react-intl";
 
+import { rem } from "../../theme/globalStyles";
 import { Icon } from "../Icon/Icon";
 import { Copy } from "../Copy/Copy";
 
@@ -27,7 +27,13 @@ const ReadTime = (props) => {
       <StyledIcon>
         <use xlinkHref="#clock" />
       </StyledIcon>
-      <Label as="span">{props.timeToRead} min read</Label>
+      <FormattedMessage id="articleReadTime">
+        {(txt) => (
+          <Label as="span">
+            {props.timeToRead} {txt}
+          </Label>
+        )}
+      </FormattedMessage>
     </Wrapper>
   );
 };
