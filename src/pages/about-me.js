@@ -144,9 +144,18 @@ const Col2of2 = styled.div`
 `;
 
 const AboutPage = (props) => {
+  let lang = props.pageContext.locale;
+  let changeLanguage = "";
+
+  if (lang === "en") {
+    changeLanguage = "/es/sobre-mi";
+  } else if (lang === "es") {
+    changeLanguage = "/about-me";
+  }
+
   return (
     <Layout location={props.location} locale={props.pageContext.locale}>
-      <SiteHeader />
+      <SiteHeader locale={props.pageContext.locale} />
       <Main role="main">
         <AboutMeWrapper>
           <Helmet
@@ -216,7 +225,7 @@ const AboutPage = (props) => {
         </AboutMeWrapper>
       </Main>
       <ContactCard />
-      <SiteFooter gray />
+      <SiteFooter gray changeLanguage={changeLanguage} />
     </Layout>
   );
 };

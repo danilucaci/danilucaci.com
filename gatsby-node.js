@@ -30,10 +30,10 @@ exports.onCreatePage = ({ page, actions }) => {
       if (locales[lang].default) {
         localizedPath = page.path;
       } else {
-        if (page.path.includes("/about-me/")) {
-          localizedPath = locales[lang].path + "/sobre-mi/";
+        if (page.path.includes("/about-me")) {
+          localizedPath = locales[lang].path + "/sobre-mi";
         } else if (page.path.includes("/contact/")) {
-          localizedPath = locales[lang].path + "/contacto/";
+          localizedPath = locales[lang].path + "/contacto";
         } else {
           localizedPath = locales[lang].path + page.path;
         }
@@ -122,37 +122,14 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         }
       }
       if (node.frontmatter.category === "blog") {
-        if (node.frontmatter.lang === "en") {
-          slug = `/blog/${_.kebabCase(node.frontmatter.title)}`;
-        }
-        if (node.frontmatter.lang === "es") {
-          slug = `/es/blog/${_.kebabCase(node.frontmatter.title)}`;
-        }
+        slug = `/blog/${_.kebabCase(node.frontmatter.title)}`;
       }
     } else if (parsedFilePath.name !== "index" && parsedFilePath.dir !== "") {
-      if (node.frontmatter.lang === "en") {
-        slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
-      }
-
-      if (node.frontmatter.lang === "es") {
-        slug = `/es/${parsedFilePath.dir}/${parsedFilePath.name}/`;
-      }
+      slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
     } else if (parsedFilePath.dir === "") {
-      if (node.frontmatter.lang === "en") {
-        slug = `${parsedFilePath.name}/`;
-      }
-
-      if (node.frontmatter.lang === "es") {
-        slug = `/es/${parsedFilePath.dir}/`;
-      }
+      slug = `${parsedFilePath.name}/`;
     } else {
-      if (node.frontmatter.lang === "en") {
-        slug = `${parsedFilePath.name}/`;
-      }
-
-      if (node.frontmatter.lang === "es") {
-        slug = `/es/${parsedFilePath.dir}/`;
-      }
+      slug = `${parsedFilePath.name}/`;
     }
 
     if (Object.prototype.hasOwnProperty.call(node, "frontmatter")) {
@@ -232,6 +209,7 @@ exports.createPages = ({ graphql, actions }) => {
                     title
                     snippet
                     tags
+                    twinPost
                     date(formatString: "DD MMMM YYYY")
                   }
                 }
@@ -277,6 +255,7 @@ exports.createPages = ({ graphql, actions }) => {
                     description
                     date(formatString: "DD MMMM YYYY")
                     tags
+                    twinPost
                     image {
                       childImageSharp {
                         fluid(maxWidth: 936) {
@@ -385,9 +364,9 @@ exports.createPages = ({ graphql, actions }) => {
                   ),
                   currentPage,
                   totalPagesInBlog,
-                  paginationPathPrefix: `${langUrlPrefix}blog`,
+                  paginationPathPrefix: `/blog`,
                   prevPath: null,
-                  nextPath: `${langUrlPrefix}blog/${paginationName}2`,
+                  nextPath: `/blog/${paginationName}2`,
                   totalCountBlog,
                   tagsBlog,
                   // need it for react-intl
@@ -405,23 +384,21 @@ exports.createPages = ({ graphql, actions }) => {
                   ),
                   currentPage,
                   totalPagesInBlog,
-                  paginationPathPrefix: `${langUrlPrefix}blog`,
+                  paginationPathPrefix: `/blog`,
                   // current index in loop minus 1
                   // for index = 2, /page/1
                   // only if its > 1 (not resulting in /page/0)
                   prevPath:
                     currentPage - 1 > 1
-                      ? `${langUrlPrefix}blog/${paginationName +
-                          (currentPage - 1)}`
-                      : `${langUrlPrefix}blog`,
+                      ? `/blog/${paginationName + (currentPage - 1)}`
+                      : `/blog`,
                   // current index in loop plus 1
                   // index = 3 > /page/3
                   // nextPath = null
                   // only if its <= totalPages (not resulting in more pages than there are)
                   nextPath:
                     currentPage + 1 <= totalPagesInBlog
-                      ? `${langUrlPrefix}blog/${paginationName +
-                          (currentPage + 1)}`
+                      ? `/blog/${paginationName + (currentPage + 1)}`
                       : null,
                   totalCountBlog,
                   tagsBlog,
@@ -464,13 +441,9 @@ exports.createPages = ({ graphql, actions }) => {
                     ),
                     currentPage,
                     totalPagesInBlog: Math.ceil(tag.totalCount / postsPerPage),
-                    paginationPathPrefix: `${langUrlPrefix}blog/tags/${
-                      tag.fieldValue
-                    }`,
+                    paginationPathPrefix: `/blog/tags/${tag.fieldValue}`,
                     prevPath: null,
-                    nextPath: `${langUrlPrefix}blog/tags/${
-                      tag.fieldValue
-                    }/${paginationName}2`,
+                    nextPath: `/blog/tags/${tag.fieldValue}/${paginationName}2`,
                     totalCount: tag.totalCount,
                     tag: tag.fieldValue,
                     // need it for react-intl
@@ -489,18 +462,15 @@ exports.createPages = ({ graphql, actions }) => {
                     ),
                     currentPage,
                     totalPagesInBlog: Math.ceil(tag.totalCount / postsPerPage),
-                    paginationPathPrefix: `${langUrlPrefix}blog/tags/${
-                      tag.fieldValue
-                    }`,
+                    paginationPathPrefix: `/blog/tags/${tag.fieldValue}`,
                     // current index in loop minus 1
                     // for index = 2, /page/1
                     // only if its > 1 (not resulting in /page/0)
                     prevPath:
                       currentPage - 1 > 1
-                        ? `${langUrlPrefix}blog/tags/${
-                            tag.fieldValue
-                          }/${paginationName + (currentPage - 1)}`
-                        : `${langUrlPrefix}blog/tags/${tag.fieldValue}`,
+                        ? `/blog/tags/${tag.fieldValue}/${paginationName +
+                            (currentPage - 1)}`
+                        : `/blog/tags/${tag.fieldValue}`,
                     // current index in loop plus 1
                     // index = 3 > /page/3
                     // nextPath = null
@@ -508,9 +478,8 @@ exports.createPages = ({ graphql, actions }) => {
                     nextPath:
                       currentPage + 1 <=
                       Math.ceil(tag.totalCount / postsPerPage)
-                        ? `${langUrlPrefix}blog/tags/${
-                            tag.fieldValue
-                          }/${paginationName + (currentPage + 1)}`
+                        ? `/blog/tags/${tag.fieldValue}/${paginationName +
+                            (currentPage + 1)}`
                         : null,
                     totalCount: tag.totalCount,
                     tag: tag.fieldValue,
@@ -528,13 +497,17 @@ exports.createPages = ({ graphql, actions }) => {
 
           edgesBlog.forEach((edge) => {
             createPage({
-              path: edge.node.fields.slug,
+              path:
+                lang === "en"
+                  ? edge.node.fields.slug
+                  : `/es${edge.node.fields.slug}`,
               component: postTemplate,
               // Data passed to context is available in page queries as GraphQL variables.
               context: {
                 slug: edge.node.fields.slug,
                 // need it for react-intl
                 lang,
+                twinPost: _.kebabCase(edge.node.frontmatter.twinPost),
               },
             });
           });
@@ -573,10 +546,9 @@ exports.createPages = ({ graphql, actions }) => {
                   ).map(({ node }) => node),
                   currentPage,
                   totalPagesInWork,
-                  paginationPathPrefix: langUrlPrefix + langUrlWorkPrefix,
+                  paginationPathPrefix: `/${langUrlWorkPrefix}`,
                   prevPath: null,
-                  nextPath: `${langUrlPrefix +
-                    langUrlWorkPrefix}/${paginationName}2`,
+                  nextPath: `/${langUrlWorkPrefix}/${paginationName}2`,
                   totalCountWork,
                   tagsWork,
                   // need it for react-intl
@@ -597,22 +569,22 @@ exports.createPages = ({ graphql, actions }) => {
                   ).map(({ node }) => node),
                   currentPage,
                   totalPagesInWork,
-                  paginationPathPrefix: langUrlPrefix + langUrlWorkPrefix,
+                  paginationPathPrefix: `/${langUrlWorkPrefix}`,
                   // current index in loop minus 1
                   // for index = 2, /page/1
                   // only if its > 1 (not resulting in /page/0)
                   prevPath:
                     currentPage - 1 > 1
-                      ? `${langUrlPrefix + langUrlWorkPrefix}/${paginationName +
+                      ? `/${langUrlWorkPrefix}/${paginationName +
                           (currentPage - 1)}`
-                      : langUrlPrefix + langUrlWorkPrefix,
+                      : `/${langUrlWorkPrefix}`,
                   // current index in loop plus 1
                   // index = 3 > /page/3
                   // nextPath = null
                   // only if its <= totalPages (not resulting in more pages than there are)
                   nextPath:
                     currentPage + 1 <= totalPagesInWork
-                      ? `${langUrlPrefix + langUrlWorkPrefix}/${paginationName +
+                      ? `/${langUrlWorkPrefix}/${paginationName +
                           (currentPage + 1)}`
                       : null,
                   totalCountWork,
@@ -628,15 +600,19 @@ exports.createPages = ({ graphql, actions }) => {
            * Work Case Studies Creation
            */
 
-          edgesWork.forEach((edgeWork) => {
+          edgesWork.forEach((edge) => {
             createPage({
-              path: edgeWork.node.fields.slug,
+              path:
+                lang === "en"
+                  ? edge.node.fields.slug
+                  : `/es${edge.node.fields.slug}`,
               component: caseStudyTemplate,
               // Data passed to context is available in page queries as GraphQL variables.
               context: {
-                slug: edgeWork.node.fields.slug,
+                slug: edge.node.fields.slug,
                 // need it for react-intl
                 lang,
+                twinPost: _.kebabCase(edge.node.frontmatter.twinPost),
               },
             });
           });

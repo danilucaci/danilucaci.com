@@ -1,6 +1,8 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
+import { FormattedMessage } from "react-intl";
+
 import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
 import SiteNavListItem from "./SiteNavListItem/SiteNavListItem";
 
@@ -50,18 +52,67 @@ const StyledSiteNavList = styled.ul`
 `;
 
 const SiteNavList = (props) => {
+  const aboutMeLocaleLabels = {
+    en: "/about-me",
+    es: "/sobre-mi",
+  };
+
+  const workLocaleLabels = {
+    en: "/work",
+    es: "/trabajos",
+  };
+
+  const contactLocaleLabels = {
+    en: "/contact",
+    es: "/contacto",
+  };
+
   return (
     <StyledSiteNavList showNav={props.showNav} role="menu">
-      <SiteNavListItem showNav={props.showNav} to="/work" label="Work" />
-      <SiteNavListItem showNav={props.showNav} to="/blog" label="Blog" />
-      <SiteNavListItem
-        showNav={props.showNav}
-        to="/about-me"
-        label="About Me"
-      />
-      <SiteNavListItem showNav={props.showNav} to="/contact" label="Contact" />
+      <FormattedMessage id="siteNavWork">
+        {(txt) => (
+          <SiteNavListItem
+            showNav={props.showNav}
+            to={workLocaleLabels[`${props.locale}`]}
+          >
+            {txt}
+          </SiteNavListItem>
+        )}
+      </FormattedMessage>
+      <FormattedMessage id="siteNavBlog">
+        {(txt) => (
+          <SiteNavListItem showNav={props.showNav} to="/blog">
+            {txt}
+          </SiteNavListItem>
+        )}
+      </FormattedMessage>
+      <FormattedMessage id="siteNavAbout">
+        {(txt) => (
+          <SiteNavListItem
+            showNav={props.showNav}
+            to={aboutMeLocaleLabels[`${props.locale}`]}
+          >
+            {txt}
+          </SiteNavListItem>
+        )}
+      </FormattedMessage>
+      <FormattedMessage id="siteNavContact">
+        {(txt) => (
+          <SiteNavListItem
+            showNav={props.showNav}
+            to={contactLocaleLabels[`${props.locale}`]}
+          >
+            {txt}
+          </SiteNavListItem>
+        )}
+      </FormattedMessage>
     </StyledSiteNavList>
   );
+};
+
+StyledSiteNavList.propTypes = {
+  locale: PropTypes.string.isRequired,
+  showNav: PropTypes.bool.isRequired,
 };
 
 export default SiteNavList;

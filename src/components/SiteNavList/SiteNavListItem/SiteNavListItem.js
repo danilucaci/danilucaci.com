@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from "gatsby";
-
+import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
+
+import LocaleLink from "../../LocaleLink/LocaleLink";
 import { theme, rem, mediaMin, mediaMax } from "../../../theme/globalStyles";
 
 const StyledSiteNavListItem = styled.li`
@@ -123,11 +124,19 @@ const SiteNavListItem = (props) => {
       tabIndex="-1"
       showNav={props.showNav}
     >
-      <Link to={props.to} getProps={isPartiallyActive} aria-current="page">
-        {props.label}
-      </Link>
+      <LocaleLink
+        to={props.to}
+        getProps={isPartiallyActive}
+        aria-current="page"
+      >
+        {props.children}
+      </LocaleLink>
     </StyledSiteNavListItem>
   );
+};
+
+SiteNavListItem.propTypes = {
+  children: PropTypes.string.isRequired,
 };
 
 export default SiteNavListItem;

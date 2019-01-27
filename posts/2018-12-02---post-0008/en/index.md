@@ -12,6 +12,7 @@ tags:
     - aframe
 posted: true
 lang: "en"
+twinPost: "Usando Aframe en la web 8"
 ---
 
 ##How to use the video tag to make better, lightweight gifs.

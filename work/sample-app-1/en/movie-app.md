@@ -10,6 +10,7 @@ tags:
 posted: true
 lang: "en"
 image: "./movie_app_presentation.png"
+twinPost: "Applicacion de pelis 2"
 ---
 
 I decided to design this app as each time I tried to find and book a movie, all the websites and apps that I used had outdated designs, no real benefit to their membership plans and very limited searching and filtering features.

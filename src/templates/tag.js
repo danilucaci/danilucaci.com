@@ -121,11 +121,32 @@ const TagPage = (props) => {
     allTags.push(tag.fieldValue);
   });
 
+  const paginationPageLabels = {
+    es: "/page/",
+    en: "/pagina/",
+  };
+
+  let changeLanguage = "";
+
+  if (lang === "en" && currentPage > 1) {
+    changeLanguage =
+      "/es" + paginationPathPrefix + paginationPageLabels[lang] + currentPage;
+  } else if (lang === "en" && currentPage === 1) {
+    changeLanguage = "/es" + paginationPathPrefix;
+  }
+
+  if (lang === "es" && currentPage > 1) {
+    changeLanguage =
+      paginationPathPrefix + paginationPageLabels[lang] + currentPage;
+  } else if (lang === "es" && currentPage === 1) {
+    changeLanguage = paginationPathPrefix;
+  }
+
   return (
     <Layout location={props.location} locale={lang}>
       <Helmet title={`${intlMessages[lang].meta.tagListingMetaTitle}`} />
       <SEO />
-      <SiteHeader />
+      <SiteHeader locale={lang} />
       <Main role="main">
         <TagWrapper>
           <TagHeader>
@@ -157,7 +178,7 @@ const TagPage = (props) => {
           )}
         </TagWrapper>
       </Main>
-      <SiteFooter />
+      <SiteFooter changeLanguage={changeLanguage} />
     </Layout>
   );
 };

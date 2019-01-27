@@ -124,6 +124,15 @@ const TwitterIcon = styled(Icon)`
 `;
 
 const ContactPage = (props) => {
+  let lang = props.pageContext.locale;
+  let changeLanguage = "";
+
+  if (lang === "en") {
+    changeLanguage = "/es/contacto";
+  } else if (lang === "es") {
+    changeLanguage = "/contact";
+  }
+
   return (
     <Layout location={props.location} locale={props.pageContext.locale}>
       <Helmet
@@ -133,7 +142,7 @@ const ContactPage = (props) => {
       />
 
       <SEO />
-      <SiteHeader />
+      <SiteHeader locale={props.pageContext.locale} />
       <Main role="main">
         <ContactMeWrapper>
           <StyledH1>Let's talk</StyledH1>
@@ -185,7 +194,7 @@ const ContactPage = (props) => {
           </PathWrapper>
         </ContactMeWrapper>
       </Main>
-      <SiteFooter />
+      <SiteFooter changeLanguage={changeLanguage} />
     </Layout>
   );
 };

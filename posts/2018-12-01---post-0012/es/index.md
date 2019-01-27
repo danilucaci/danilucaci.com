@@ -12,6 +12,7 @@ tags:
     - perfmatters
 posted: true
 lang: "es"
+twinPost: "How to make better gifs 12"
 ---
 
 ##Como hacer videos mas ligeros

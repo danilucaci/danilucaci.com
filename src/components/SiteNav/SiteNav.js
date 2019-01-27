@@ -22,9 +22,9 @@ const StyledSiteNav = styled.nav`
 const SiteNav = (props) => {
   return (
     <StyledSiteNav aria-label="Page Menu" role="navigation">
-      <Logo />
+      <Logo locale={props.locale} />
       <MenuButton onClick={props.onClick} showNav={props.showNav} />
-      <SiteNavList showNav={props.showNav} />
+      <SiteNavList showNav={props.showNav} locale={props.locale} />
     </StyledSiteNav>
   );
 };

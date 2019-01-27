@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Helmet from "react-helmet";
 import styled, { css } from "styled-components";
 import { graphql } from "gatsby";
 import { FormattedMessage } from "react-intl";
@@ -185,13 +184,23 @@ class Index extends Component {
 
   render() {
     const caseStudyList = this.getCaseStudyList();
+
+    let lang = this.props.pageContext.locale;
+    let changeLanguage = "";
+
+    if (lang === "en") {
+      changeLanguage = "/es";
+    } else if (lang === "es") {
+      changeLanguage = "/";
+    }
+
     return (
       <Layout
         location={this.props.location}
         locale={this.props.pageContext.locale}
       >
         <SEO />
-        <SiteHeader />
+        <SiteHeader locale={this.props.pageContext.locale} />
         <Main role="main">
           <SEO />
           <IndexHeader>
@@ -271,7 +280,7 @@ class Index extends Component {
         <Stack>
           <ContactCard />
         </Stack>
-        <SiteFooter gray />
+        <SiteFooter gray changeLanguage={changeLanguage} />
       </Layout>
     );
   }

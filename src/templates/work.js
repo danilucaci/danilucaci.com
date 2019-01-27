@@ -49,9 +49,35 @@ const WorkPage = (props) => {
     lang,
   } = props.pageContext;
 
+  const workLocaleLabels = {
+    es: "/work",
+    en: "/trabajos",
+  };
+
+  const paginationPageLabels = {
+    es: "/page/",
+    en: "/pagina/",
+  };
+
+  let changeLanguage = "";
+
+  if (lang === "en" && currentPage > 1) {
+    changeLanguage =
+      "/es" + workLocaleLabels[lang] + paginationPageLabels[lang] + currentPage;
+  } else if (lang === "en" && currentPage === 1) {
+    changeLanguage = "/es" + workLocaleLabels[lang];
+  }
+
+  if (lang === "es" && currentPage > 1) {
+    changeLanguage =
+      workLocaleLabels[lang] + paginationPageLabels[lang] + currentPage;
+  } else if (lang === "es" && currentPage === 1) {
+    changeLanguage = workLocaleLabels[lang];
+  }
+
   return (
     <Layout location={props.location} locale={lang}>
-      <SiteHeader />
+      <SiteHeader locale={lang} />
       <Main role="main">
         <Wrapper>
           <Helmet title={`${intlMessages[lang].meta.workMetaTitle}`} />
@@ -74,7 +100,7 @@ const WorkPage = (props) => {
           )}
         </Wrapper>
       </Main>
-      <SiteFooter />
+      <SiteFooter changeLanguage={changeLanguage} />
     </Layout>
   );
 };

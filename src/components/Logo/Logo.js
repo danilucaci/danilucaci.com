@@ -1,6 +1,7 @@
 import React from "react";
-import { Link } from "gatsby";
 import styled from "styled-components";
+
+import LocaleLink from "../LocaleLink/LocaleLink";
 import { theme, rem } from "../../theme/globalStyles";
 
 // const StyledLogo = styled.svg`
@@ -10,7 +11,7 @@ import { theme, rem } from "../../theme/globalStyles";
 //   }
 // `;
 
-const StyledLogo = styled(Link)`
+const StyledLogo = styled(LocaleLink)`
   color: ${theme.colors.dark900};
   display: inline-block;
 
@@ -35,7 +36,7 @@ const StyledLogo = styled(Link)`
   }
 `;
 
-export const Logo = () => {
+export const Logo = (props) => {
   return <StyledLogo to="/">danilucaci</StyledLogo>;
 };
 

@@ -395,8 +395,17 @@ class Post extends Component {
     const slug = this.props.data.markdownRemark.fields.slug;
     const postNode = this.props.data.markdownRemark;
     const postInfo = postNode.frontmatter;
+    const twinPost = this.props.pageContext.twinPost;
     const introCopy = postInfo.intro.split("|");
     const lang = this.props.pageContext.lang;
+
+    let changeLanguage = "";
+
+    if (lang === "en") {
+      changeLanguage = "/es/blog/" + twinPost;
+    } else if (lang === "es") {
+      changeLanguage = "/blog/" + twinPost;
+    }
 
     return (
       <Layout location={this.props.location} locale={lang}>
@@ -404,7 +413,7 @@ class Post extends Component {
           title={`${postInfo.title} || ${intlMessages[lang].meta.siteTitle}`}
         />
         <SEO postPath={slug} postNode={postNode} postSEO />
-        <SiteHeader showScrollIndicator />
+        <SiteHeader showScrollIndicator locale={lang} />
         <Main role="main">
           <PostWrapper>
             <StyledPostHeader>
@@ -440,7 +449,7 @@ class Post extends Component {
           />
         </Main>
         <ScrollToTop />
-        <SiteFooter />
+        <SiteFooter changeLanguage={changeLanguage} />
       </Layout>
     );
   }

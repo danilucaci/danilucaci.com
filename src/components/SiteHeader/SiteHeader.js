@@ -55,11 +55,14 @@ class SiteHeader extends Component {
 
   render() {
     let shouldRenderScroll = this.props.showScrollIndicator;
-
     return (
       <StyledSiteHeaderWrapper>
         <StyledSiteHeader role="banner">
-          <SiteNav onClick={this.openNav} showNav={this.state.showNav} />
+          <SiteNav
+            onClick={this.openNav}
+            showNav={this.state.showNav}
+            locale={this.props.locale}
+          />
         </StyledSiteHeader>
         {shouldRenderScroll && (
           <ScrollContainer showScrollIndicator={this.props.showScrollIndicator}>

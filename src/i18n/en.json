@@ -11,6 +11,10 @@
     "aboutMeMetaTitle": "About Me — danilucaci.com || UX/UI Designer and Front–End Developer.",
     "pageNotFoundMetaTitle": "Sorry, this page doesn't exist — danilucaci.com || UX/UI Designer and Front–End Developer."
   },
+  "siteNavAbout": "About Me",
+  "siteNavBlog": "Blog",
+  "siteNavWork": "Work",
+  "siteNavContact": "Contact",
   "indexH1": "Hi, i'm Dani!",
   "indexSubhead": "I’m a UX/UI Designer and Front-End Developer based in Barcelona. I help teams prototype, design and develop digital products using the latest front-end techniques and design patterns to create scalable, user focused experiences.",
   "indexServicesHeading": "My services",
@@ -19,6 +23,7 @@
   "indexServicesList02": "Wireframing",
   "indexServicesList03": "Lo–Fi Prototypes",
   "indexServicesList04": "Hi–Fi Prototypes",
+  "footerChangeLanguage": "Change Language",
   "blogTitle": "My thoughts on UX, UI and Code.",
   "blogExplore": "Explore by tags",
   "blogArticleList": "Latest Articles",

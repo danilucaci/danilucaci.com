@@ -76,14 +76,34 @@ const BlogPage = (props) => {
 
   const frontMatterTags = props.data.allMarkdownRemark;
   let allTags = [];
-
   frontMatterTags.tags.forEach((tag) => {
     allTags.push(tag.fieldValue);
   });
 
+  const paginationPageLabels = {
+    es: "/page/",
+    en: "/pagina/",
+  };
+
+  let changeLanguage = "";
+
+  if (lang === "en" && currentPage > 1) {
+    changeLanguage =
+      "/es" + paginationPathPrefix + paginationPageLabels[lang] + currentPage;
+  } else if (lang === "en" && currentPage === 1) {
+    changeLanguage = "/es" + paginationPathPrefix;
+  }
+
+  if (lang === "es" && currentPage > 1) {
+    changeLanguage =
+      paginationPathPrefix + paginationPageLabels[lang] + currentPage;
+  } else if (lang === "es" && currentPage === 1) {
+    changeLanguage = paginationPathPrefix;
+  }
+
   return (
     <Layout location={props.location} locale={lang}>
-      <SiteHeader />
+      <SiteHeader locale={lang} />
       <Main role="main">
         <BlogWrapper>
           <Helmet title={`${intlMessages[lang].meta.blogMetaTitle}`} />
@@ -114,7 +134,7 @@ const BlogPage = (props) => {
           )}
         </BlogWrapper>
       </Main>
-      <SiteFooter />
+      <SiteFooter changeLanguage={changeLanguage} />
     </Layout>
   );
 };

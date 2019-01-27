@@ -1,11 +1,10 @@
 import React from "react";
-
 import styled, { css } from "styled-components";
+
 import { theme, mediaMin, rem } from "../../../theme/globalStyles";
+import LocaleLink from "../../LocaleLink/LocaleLink";
 
-import { Link } from "gatsby";
-
-const StyledTag = styled(Link)`
+const StyledTag = styled(LocaleLink)`
   background-color: transparent;
   border-radius: ${rem(4)};
   border: 1px solid ${theme.colors.grey500};

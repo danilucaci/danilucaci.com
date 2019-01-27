@@ -12,6 +12,7 @@ tags:
     - aframe
 posted: true
 lang: "es"
+twinPost: "Use Aframe on the web 8"
 ---
 
 ##Como usar aframe en la web

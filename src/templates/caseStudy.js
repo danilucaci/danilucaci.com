@@ -412,7 +412,7 @@ class Post extends Component {
     this.removeAnchorsFromTabIndex();
 
     let validate = validate_luhn("4111 1111 1111 1111");
-    console.log("Credit Card is: ", validate);
+    // console.log("Credit Card is: ", validate);
   }
 
   componentWillUnmount() {
@@ -441,6 +441,7 @@ class Post extends Component {
     const h4s = Array.from(document.querySelectorAll("h4 a"));
     const h5s = Array.from(document.querySelectorAll("h5 a"));
 
+    // refactor this into a function
     h2s.forEach((h2) => {
       h2.tabIndex = -1;
     });
@@ -470,6 +471,15 @@ class Post extends Component {
     const postInfo = postNode.frontmatter;
     const image = postInfo.image.childImageSharp.fluid;
     const lang = this.props.pageContext.lang;
+    const twinPost = this.props.pageContext.twinPost;
+
+    let changeLanguage = "";
+
+    if (lang === "en") {
+      changeLanguage = "/es/trabajos/" + twinPost;
+    } else if (lang === "es") {
+      changeLanguage = "/work/" + twinPost;
+    }
 
     return (
       <Layout location={this.props.location} locale={lang}>
@@ -477,7 +487,7 @@ class Post extends Component {
           title={`${postInfo.title} || ${intlMessages[lang].meta.siteTitle}`}
         />
         <SEO postPath={slug} postNode={postNode} postSEO />
-        <SiteHeader showScrollIndicator />
+        <SiteHeader showScrollIndicator locale={lang} />
         <Main role="main" id="main">
           <ArticleWrapper>
             <StyledHeader>
@@ -506,7 +516,7 @@ class Post extends Component {
           </ArticleWrapper>
         </Main>
         <ScrollToTop />
-        <SiteFooter />
+        <SiteFooter changeLanguage={changeLanguage} />
       </Layout>
     );
   }

@@ -12,6 +12,7 @@ tags:
     - perfmatters
 posted: true
 lang: "en"
+twinPost: "Como hacer mejores gifs 13"
 ---
 
 ##How to use the video tag to make better, lightweight gifs.
