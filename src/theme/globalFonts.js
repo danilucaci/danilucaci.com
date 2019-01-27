@@ -19,13 +19,15 @@ const GlobalFonts = createGlobalStyle`
   font-display: swap;
   font-weight: 400;
   src: 
-  /* local('OpenSans Regular'),
+  local('OpenSans Regular'),
   local('OpenSans-Regular'),
   local('Open Sans-Regular'),
   local('Open Sans Regular'),
-  local('Open Sans'), */
-  url('${OpenSansRegularWoff2}') format('woff2'),
-  url('${OpenSansRegularWoff}') format('woff');
+  local('Open Sans')
+  ${
+    "" /* url('${OpenSansRegularWoff2}') format('woff2'),
+  url('${OpenSansRegularWoff}') format('woff'); */
+  }
 }
 
 @font-face {
@@ -35,12 +37,14 @@ const GlobalFonts = createGlobalStyle`
   font-display: swap;
   font-weight: 700;
   src: 
-  /* local('OpenSans Bold'),
+  local('OpenSans Bold'),
   local('OpenSans-Bold'),
   local('Open Sans Bold'),
-  local('Open Sans'), */
-  url('${OpenSansBoldWoff2}') format('woff2'),
-  url('${OpenSansBoldWoff}') format('woff');
+  local('Open Sans')
+  ${
+    "" /* url('${OpenSansBoldWoff2}') format('woff2'),
+  url('${OpenSansBoldWoff}') format('woff'); */
+  }
 }
 
 @font-face {
@@ -50,12 +54,14 @@ const GlobalFonts = createGlobalStyle`
   font-display: swap;
   font-weight: 400;
   src: 
-  /* local('OpenSans Italic'),
+  local('OpenSans Italic'),
   local('OpenSans-Italic'),
   local('Open Sans Italic'),
-  local('Open Sans'), */
-  url('${OpenSansItalicWoff2}') format('woff2'),
-  url('${OpenSansItalicWoff}') format('woff');
+  local('Open Sans')
+  ${
+    "" /* url('${OpenSansItalicWoff2}') format('woff2'),
+  url('${OpenSansItalicWoff}') format('woff'); */
+  }
 }
 
 @font-face {
@@ -65,11 +71,13 @@ const GlobalFonts = createGlobalStyle`
   font-display: swap;
   font-weight: 700;
   src: 
-  /* local('Montserrat Bold'),
+  local('Montserrat Bold'),
   local('Montserrat-Bold'),
-  local('Montserrat'), */
-  url('${MontserratBoldWoff2}') format('woff2'),
-  url('${MontserratBoldWoff}') format('woff');
+  local('Montserrat')
+  ${
+    "" /* url('${MontserratBoldWoff2}') format('woff2'),
+  url('${MontserratBoldWoff}') format('woff'); */
+  }
 }`;
 
 export default GlobalFonts;
