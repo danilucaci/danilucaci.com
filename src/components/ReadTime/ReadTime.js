@@ -13,6 +13,7 @@ const Wrapper = styled.div`
 
 const Label = styled(Copy)`
   display: inline-block;
+  font-feature-settings: "smcp", "c2sc", "onum";
 `;
 
 const StyledIcon = styled(Icon)`
@@ -29,7 +30,7 @@ const ReadTime = (props) => {
       </StyledIcon>
       <FormattedMessage id="articleReadTime">
         {(txt) => (
-          <Label as="span">
+          <Label as="span" small>
             {props.timeToRead} {txt}
           </Label>
         )}

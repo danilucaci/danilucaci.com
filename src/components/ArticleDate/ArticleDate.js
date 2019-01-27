@@ -1,8 +1,8 @@
 import React from "react";
-
 import styled from "styled-components";
-import { theme, mediaMin, rem } from "../../theme/globalStyles";
+import { FormattedDate } from "react-intl";
 
+import { rem } from "../../theme/globalStyles";
 import { Icon } from "../Icon/Icon";
 import { Copy } from "../Copy/Copy";
 
@@ -21,6 +21,10 @@ const StyledIcon = styled(Icon)`
 
 const Time = styled(Copy)`
   display: inline-block;
+  font-variant: small-caps;
+  text-transform: lowercase;
+  letter-spacing: ${rem(0.5)};
+  font-feature-settings: "smcp", "c2sc", "onum";
 `;
 
 const ArticleDate = (props) => {
@@ -29,9 +33,18 @@ const ArticleDate = (props) => {
       <StyledIcon>
         <use xlinkHref="#calendar" />
       </StyledIcon>
-      <Time as="time" dateTime={props.date}>
-        {props.date}
-      </Time>
+      <FormattedDate
+        value={props.date}
+        year="numeric"
+        month="long"
+        day="numeric"
+      >
+        {(txt) => (
+          <Time as="time" dateTime={txt}>
+            {txt}
+          </Time>
+        )}
+      </FormattedDate>
     </Wrapper>
   );
 };
