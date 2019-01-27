@@ -120,3 +120,11 @@ export function checkForDoNotTrack() {
     return false;
   } else return true;
 }
+
+export function detectBrowserLanguage() {
+  return (
+    (navigator.languages && navigator.languages[0]) ||
+    navigator.language ||
+    navigator.userLanguage
+  );
+}
