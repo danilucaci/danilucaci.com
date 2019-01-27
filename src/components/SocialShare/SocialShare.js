@@ -135,7 +135,6 @@ const SocialShare = (props) => {
         role="button"
         tabIndex="0"
       >
-        <span className="sr-only">Copy the page url</span>
         <CopyIcon aria-hidden="true">
           <use xlinkHref="#copy" />
         </CopyIcon>
