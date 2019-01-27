@@ -167,15 +167,9 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
   Object.keys(locales).map((lang) => {
-    let langUrlPrefix = "";
-    let langUrlWorkPrefix = "";
-    let paginationName = "";
-
-    if (lang === "en") {
-      langUrlPrefix = "/";
-      langUrlWorkPrefix = "work";
-      paginationName = "page/";
-    }
+    let langUrlPrefix = "/";
+    let langUrlWorkPrefix = "work";
+    let paginationName = "page/";
 
     if (lang === "es") {
       langUrlPrefix = "/es/";
@@ -390,7 +384,7 @@ exports.createPages = ({ graphql, actions }) => {
                   // only if its > 1 (not resulting in /page/0)
                   prevPath:
                     currentPage - 1 > 1
-                      ? `/blog/${paginationName + (currentPage - 1)}`
+                      ? `/blog/${paginationName}${currentPage - 1}`
                       : `/blog`,
                   // current index in loop plus 1
                   // index = 3 > /page/3
@@ -398,7 +392,7 @@ exports.createPages = ({ graphql, actions }) => {
                   // only if its <= totalPages (not resulting in more pages than there are)
                   nextPath:
                     currentPage + 1 <= totalPagesInBlog
-                      ? `/blog/${paginationName + (currentPage + 1)}`
+                      ? `/blog/${paginationName}${currentPage + 1}`
                       : null,
                   totalCountBlog,
                   tagsBlog,
@@ -468,8 +462,9 @@ exports.createPages = ({ graphql, actions }) => {
                     // only if its > 1 (not resulting in /page/0)
                     prevPath:
                       currentPage - 1 > 1
-                        ? `/blog/tags/${tag.fieldValue}/${paginationName +
-                            (currentPage - 1)}`
+                        ? `/blog/tags/${
+                            tag.fieldValue
+                          }/${paginationName}${currentPage - 1}`
                         : `/blog/tags/${tag.fieldValue}`,
                     // current index in loop plus 1
                     // index = 3 > /page/3
@@ -478,8 +473,9 @@ exports.createPages = ({ graphql, actions }) => {
                     nextPath:
                       currentPage + 1 <=
                       Math.ceil(tag.totalCount / postsPerPage)
-                        ? `/blog/tags/${tag.fieldValue}/${paginationName +
-                            (currentPage + 1)}`
+                        ? `/blog/tags/${
+                            tag.fieldValue
+                          }/${paginationName}${currentPage + 1}`
                         : null,
                     totalCount: tag.totalCount,
                     tag: tag.fieldValue,
@@ -557,8 +553,8 @@ exports.createPages = ({ graphql, actions }) => {
               });
             } else {
               createPage({
-                path: `${langUrlPrefix + langUrlWorkPrefix}/${paginationName +
-                  currentPage}`,
+                path: `${langUrlPrefix +
+                  langUrlWorkPrefix}/${paginationName}/${currentPage}`,
                 component: workTemplate,
                 // Data passed to context is available in page queries as GraphQL variables.
                 context: {
@@ -575,8 +571,8 @@ exports.createPages = ({ graphql, actions }) => {
                   // only if its > 1 (not resulting in /page/0)
                   prevPath:
                     currentPage - 1 > 1
-                      ? `/${langUrlWorkPrefix}/${paginationName +
-                          (currentPage - 1)}`
+                      ? `/${langUrlWorkPrefix}/${paginationName}/${currentPage -
+                          1}`
                       : `/${langUrlWorkPrefix}`,
                   // current index in loop plus 1
                   // index = 3 > /page/3
@@ -584,8 +580,8 @@ exports.createPages = ({ graphql, actions }) => {
                   // only if its <= totalPages (not resulting in more pages than there are)
                   nextPath:
                     currentPage + 1 <= totalPagesInWork
-                      ? `/${langUrlWorkPrefix}/${paginationName +
-                          (currentPage + 1)}`
+                      ? `/${langUrlWorkPrefix}/${paginationName}/${currentPage +
+                          1}`
                       : null,
                   totalCountWork,
                   tagsWork,

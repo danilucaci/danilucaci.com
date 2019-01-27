@@ -53,7 +53,6 @@ class Layout extends Component {
     this.checkDNT();
     this.checkGDPRStatus();
     // this.checkFontsLoaded();
-    this.detectLanguage();
   }
 
   componentDidUpdate() {
