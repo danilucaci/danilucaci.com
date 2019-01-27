@@ -10,7 +10,6 @@ import SiteHeader from "../components/SiteHeader/SiteHeader";
 import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
 import SEO from "../components/SEO/SEO";
-import config from "../../data/SiteConfig";
 import { BulletList, BulletListItem, Copy } from "../components/Copy/Copy";
 import ContactCard from "../components/ContactCard/ContactCard";
 import CaseStudyCard from "../components/CaseStudyCard/CaseStudyCard";
@@ -191,13 +190,9 @@ class Index extends Component {
         location={this.props.location}
         locale={this.props.pageContext.locale}
       >
-        <Helmet>
-          <title>{`${config.siteTitle}`}</title>
-        </Helmet>
         <SEO />
         <SiteHeader />
         <Main role="main">
-          <Helmet title={config.siteTitle} />
           <SEO />
           <IndexHeader>
             <FormattedMessage id="indexH1">

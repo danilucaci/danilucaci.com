@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import styled, { css } from "styled-components";
 import Helmet from "react-helmet";
 
-import config from "../../data/SiteConfig";
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
 import SiteHeader from "../components/SiteHeader/SiteHeader";
@@ -10,7 +9,7 @@ import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
 import { Icon } from "../components/Icon/Icon";
 import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
-
+import intlMessages from "../i18n/i18n";
 import { Copy } from "../components/Copy/Copy";
 import { PrimaryButton } from "../components/Button/Button";
 
@@ -127,7 +126,12 @@ const TwitterIcon = styled(Icon)`
 const ContactPage = (props) => {
   return (
     <Layout location={props.location} locale={props.pageContext.locale}>
-      <Helmet title={`Contact Me - ${config.siteTitle}`} />
+      <Helmet
+        title={`${
+          intlMessages[props.pageContext.locale].meta.contactMetaTitle
+        }`}
+      />
+
       <SEO />
       <SiteHeader />
       <Main role="main">

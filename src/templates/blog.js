@@ -1,11 +1,10 @@
 import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
 
 import SEO from "../components/SEO/SEO";
-import config from "../../data/SiteConfig";
 import Layout from "../components/Layout";
 import SiteHeader from "../components/SiteHeader/SiteHeader";
 import { Main } from "../components/Main/Main";
@@ -15,6 +14,8 @@ import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
 import PostListing from "../components/PostListing/PostListing";
 import Tags from "../components/Tags/Tags";
 import Pagination from "../components/Pagination/Pagination";
+
+import intlMessages from "../i18n/i18n";
 
 const BlogWrapper = styled.div`
   max-width: ${theme.contain.blog};
@@ -85,9 +86,7 @@ const BlogPage = (props) => {
       <SiteHeader />
       <Main role="main">
         <BlogWrapper>
-          <Helmet
-            title={`danilucaci.com Personal Blog - ${config.siteTitle}`}
-          />
+          <Helmet title={`${intlMessages[lang].meta.blogMetaTitle}`} />
           <SEO />
           <BlogHeader>
             <BlogInfo>

@@ -5,7 +5,6 @@ import styled, { css } from "styled-components";
 // import rehypeReact from "rehype-react";
 
 import { theme, rem, mediaMin, mediaMax } from "../theme/globalStyles";
-import config from "../../data/SiteConfig";
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
 import SiteHeader from "../components/SiteHeader/SiteHeader";
@@ -20,6 +19,7 @@ import {
   textPassiveEventSupport,
   validate_luhn,
 } from "../helpers/helpers";
+import intlMessages from "../i18n/i18n";
 
 const ArticleWrapper = styled.article`
   max-width: ${theme.contain.content};
@@ -469,15 +469,13 @@ class Post extends Component {
     const postNode = this.props.data.markdownRemark;
     const postInfo = postNode.frontmatter;
     const image = postInfo.image.childImageSharp.fluid;
+    const lang = this.props.pageContext.lang;
 
     return (
-      <Layout
-        location={this.props.location}
-        locale={this.props.pageContext.lang}
-      >
-        <Helmet>
-          <title>{`${postInfo.title} - ${config.siteTitle}`}</title>
-        </Helmet>
+      <Layout location={this.props.location} locale={lang}>
+        <Helmet
+          title={`${postInfo.title} || ${intlMessages[lang].meta.siteTitle}`}
+        />
         <SEO postPath={slug} postNode={postNode} postSEO />
         <SiteHeader showScrollIndicator />
         <Main role="main" id="main">

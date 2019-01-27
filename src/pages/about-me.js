@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
@@ -14,6 +14,7 @@ import config from "../../data/SiteConfig";
 import SocialNav from "../components/SocialNav/SocialNav";
 import ContactCard from "../components/ContactCard/ContactCard";
 import { Copy } from "../components/Copy/Copy";
+import intlMessages from "../i18n/i18n";
 
 const AboutMeWrapper = styled.div`
   max-width: ${theme.contain.content};
@@ -148,7 +149,11 @@ const AboutPage = (props) => {
       <SiteHeader />
       <Main role="main">
         <AboutMeWrapper>
-          <Helmet title={`About Me - ${config.siteTitle}`} />
+          <Helmet
+            title={`${
+              intlMessages[props.pageContext.locale].meta.aboutMetaTitle
+            }`}
+          />
           <SEO />
           <HeaderInfo>
             {/* <StyledNameHeader>Hi! I’m Dani Lucaci.</StyledNameHeader> */}

@@ -10,11 +10,11 @@ import SiteHeader from "../components/SiteHeader/SiteHeader";
 import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
 import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
-import config from "../../data/SiteConfig";
 import PostListing from "../components/PostListing/PostListing";
 import Tags from "../components/Tags/Tags";
 import Pagination from "../components/Pagination/Pagination";
 import { SectionHeader } from "../components/Headings/Headings";
+import intlMessages from "../i18n/i18n";
 
 const TagWrapper = styled.div`
   max-width: ${theme.contain.blog};
@@ -123,7 +123,7 @@ const TagPage = (props) => {
 
   return (
     <Layout location={props.location} locale={lang}>
-      <Helmet title={config.siteTitle} />
+      <Helmet title={`${intlMessages[lang].meta.tagListingMetaTitle}`} />
       <SEO />
       <SiteHeader />
       <Main role="main">

@@ -9,7 +9,6 @@ import enData from "react-intl/locale-data/en";
 import esData from "react-intl/locale-data/es";
 
 import { theme } from "../theme/globalStyles";
-import config from "../../data/SiteConfig";
 import GlobalFonts from "../theme/globalFonts";
 import GlobalReset from "../theme/globalReset";
 import GlobalAria from "../theme/globalAria";
@@ -20,14 +19,9 @@ import { checkForDoNotTrack } from "../helpers/helpers";
 import CookieConsent from "./CookieConsent/CookieConsent";
 
 require("./prism.css");
+import intlMessages from "../i18n/i18n";
 
 // console.log("env: " + process.env.GATSBY_ASSETS_URL);
-
-// Messages
-import en from "../i18n/en.json";
-import es from "../i18n/es.json";
-
-const intlMessages = { en, es };
 
 addLocaleData([...enData, ...esData]);
 
@@ -205,6 +199,7 @@ class Layout extends Component {
         return t;
       }(document, "script", "twitter-wjs"));
     `;
+
     return (
       <ThemeProvider theme={theme}>
         <IntlProvider
@@ -213,20 +208,12 @@ class Layout extends Component {
         >
           <Page id="back_to_top">
             <Helmet>
-              {/*  */}
-              {/*  */}
-              {/*  */}
-              {/*  */}
-              {/* CHANGE THIS TO A LOCALE VERSION */}
-              {/*  */}
-              {/*  */}
-              {/*  */}
-              {/*  */}
-              {/*  */}
-              {/*  */}
               <html lang={this.props.locale} />
-              <title>{config.siteTitle}</title>
-              <meta name="description" content={config.siteDescription} />
+              <title>{intlMessages[this.props.locale].meta.siteTitle}</title>
+              <meta
+                name="description"
+                content={intlMessages[this.props.locale].meta.siteDescription}
+              />
               {this.state.hasAnalyticsConsent &&
                 this.state.hasAnalyticsConsent &&
                 HotjarScript}

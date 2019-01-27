@@ -11,8 +11,8 @@ import SiteHeader from "../components/SiteHeader/SiteHeader";
 import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
 import CaseStudyListing from "../components/CaseStudyListing/CaseStudyListing";
-import Tags from "../components/Tags/Tags";
 import Pagination from "../components/Pagination/Pagination";
+import intlMessages from "../i18n/i18n";
 
 const Wrapper = styled.div`
   max-width: ${theme.contain.content};
@@ -54,7 +54,7 @@ const WorkPage = (props) => {
       <SiteHeader />
       <Main role="main">
         <Wrapper>
-          <Helmet title={`Work || ${config.siteTitle}`} />
+          <Helmet title={`${intlMessages[lang].meta.workMetaTitle}`} />
           <SEO />
           <WorkHeader>
             <FormattedMessage id="caseStudiesHeader">
