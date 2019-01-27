@@ -213,6 +213,17 @@ class Layout extends Component {
         >
           <Page id="back_to_top">
             <Helmet>
+              {/*  */}
+              {/*  */}
+              {/*  */}
+              {/*  */}
+              {/* CHANGE THIS TO A LOCALE VERSION */}
+              {/*  */}
+              {/*  */}
+              {/*  */}
+              {/*  */}
+              {/*  */}
+              {/*  */}
               <html lang={this.props.locale} />
               <title>{config.siteTitle}</title>
               <meta name="description" content={config.siteDescription} />

@@ -217,7 +217,7 @@ const Pagination = (props) => {
           <StyledIcon>
             <use xlinkHref="#left" />
           </StyledIcon>
-          <FormattedMessage id="pagination_prev">
+          <FormattedMessage id="paginationPrev">
             {(txt) => <PaginationLabel>{txt}</PaginationLabel>}
           </FormattedMessage>
         </Prev>
@@ -226,7 +226,7 @@ const Pagination = (props) => {
           <StyledIcon disabled={!prevPath}>
             <use xlinkHref="#left" />
           </StyledIcon>
-          <FormattedMessage id="pagination_prev">
+          <FormattedMessage id="paginationPrev">
             {(txt) => <PaginationLabel>{txt}</PaginationLabel>}
           </FormattedMessage>
         </DisabledPrev>
@@ -236,14 +236,14 @@ const Pagination = (props) => {
         <MobileCopy>
           {currentPage}
           &nbsp;
-          <FormattedMessage id="pagination_of" />
+          <FormattedMessage id="paginationOf" />
           &nbsp;
           {totalPages}
         </MobileCopy>
       </PaginationContent>
       {nextPath ? (
         <Next to={nextPath}>
-          <FormattedMessage id="pagination_next">
+          <FormattedMessage id="paginationNext">
             {(txt) => <PaginationLabel>{txt}</PaginationLabel>}
           </FormattedMessage>
           <StyledIcon>
@@ -252,7 +252,7 @@ const Pagination = (props) => {
         </Next>
       ) : (
         <DisabledNext>
-          <FormattedMessage id="pagination_next">
+          <FormattedMessage id="paginationNext">
             {(txt) => <PaginationLabel>{txt}</PaginationLabel>}
           </FormattedMessage>
           <StyledIcon disabled={!nextPath}>

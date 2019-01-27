@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { graphql } from "gatsby";
+import React from "react";
 import Helmet from "react-helmet";
 import styled, { css } from "styled-components";
+import { FormattedMessage } from "react-intl";
 
 import config from "../../data/SiteConfig";
 import { theme, mediaMin, rem } from "../theme/globalStyles";
@@ -57,7 +57,9 @@ const WorkPage = (props) => {
           <Helmet title={`Work || ${config.siteTitle}`} />
           <SEO />
           <WorkHeader>
-            <h1>Case Studies</h1>
+            <FormattedMessage id="caseStudiesHeader">
+              {(txt) => <h1>{txt}</h1>}
+            </FormattedMessage>
           </WorkHeader>
           <CaseStudyListing edges={edgesWork} />
           {totalPagesInWork > 1 && (

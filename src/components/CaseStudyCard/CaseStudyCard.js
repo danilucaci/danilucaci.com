@@ -2,6 +2,7 @@ import React from "react";
 import Img from "gatsby-image";
 import styled from "styled-components";
 import { theme, mediaMin, rem, mediaMax } from "../../theme/globalStyles";
+import { FormattedMessage } from "react-intl";
 
 import { Copy } from "../Copy/Copy";
 import { BoldLink } from "../Link/Link";
@@ -113,7 +114,9 @@ const CaseStudyCard = (props) => {
         <HRBottom />
         <StyledH3>{props.title}</StyledH3>
         <Copy small>{props.description}</Copy>
-        <ContinueLink to={props.slug}>Continue Reading →</ContinueLink>
+        <FormattedMessage id="articleLinkContinue">
+          {(txt) => <ContinueLink to={props.slug}>{txt}</ContinueLink>}
+        </FormattedMessage>
       </CaseStudyCardContents>
     </StyledCaseStudyCard>
   );

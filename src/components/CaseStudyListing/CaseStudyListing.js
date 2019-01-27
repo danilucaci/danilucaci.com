@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-
 import styled from "styled-components";
-import { theme, mediaMin, rem } from "../../theme/globalStyles";
 
 import CaseStudyCard from "../CaseStudyCard/CaseStudyCard";
 

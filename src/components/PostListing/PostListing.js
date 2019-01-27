@@ -43,7 +43,7 @@ class PostListing extends Component {
 
     return (
       <Wrapper>
-        <FormattedMessage id="blog_article_list">
+        <FormattedMessage id="blogArticleList">
           {(txt) => <StyledH2>{txt}</StyledH2>}
         </FormattedMessage>
         {postList.map((post) => (

@@ -56,7 +56,7 @@ const Article = (props) => {
         <ArticleInfo date={props.date} timeToRead={props.timeToRead} />
       </header>
       <Copy className="copy">{props.snippet}</Copy>
-      <FormattedMessage id="article_link_continue">
+      <FormattedMessage id="articleLinkContinue">
         {(txt) => <ContinueLink to={props.slug}>{txt}</ContinueLink>}
       </FormattedMessage>
     </StyledArticle>

@@ -200,34 +200,34 @@ class Index extends Component {
           <Helmet title={config.siteTitle} />
           <SEO />
           <IndexHeader>
-            <FormattedMessage id="index_h1">
+            <FormattedMessage id="indexH1">
               {(txt) => <StyledH1>{txt}</StyledH1>}
             </FormattedMessage>
-            <FormattedMessage id="index_subhead">
+            <FormattedMessage id="indexSubhead">
               {(txt) => <Subhead>{txt}</Subhead>}
             </FormattedMessage>
             <Subhead />
           </IndexHeader>
           <AltStack>
             <StackContents>
-              <FormattedMessage id="index_services_heading">
+              <FormattedMessage id="indexServicesHeading">
                 {(txt) => <ServicesH2>{txt}</ServicesH2>}
               </FormattedMessage>
               <ServicesItem>
-                <FormattedMessage id="index_services_1">
+                <FormattedMessage id="indexServices1">
                   {(txt) => <ServicesH4>{txt}</ServicesH4>}
                 </FormattedMessage>
                 <BulletList>
-                  <FormattedMessage id="index_services_list_1">
+                  <FormattedMessage id="indexServicesList01">
                     {(txt) => <BulletListItem>{txt}</BulletListItem>}
                   </FormattedMessage>
-                  <FormattedMessage id="index_services_list_2">
+                  <FormattedMessage id="indexServicesList02">
                     {(txt) => <BulletListItem>{txt}</BulletListItem>}
                   </FormattedMessage>
-                  <FormattedMessage id="index_services_list_3">
+                  <FormattedMessage id="indexServicesList03">
                     {(txt) => <BulletListItem>{txt}</BulletListItem>}
                   </FormattedMessage>
-                  <FormattedMessage id="index_services_list_4">
+                  <FormattedMessage id="indexServicesList04">
                     {(txt) => <BulletListItem>{txt}</BulletListItem>}
                   </FormattedMessage>
                 </BulletList>
