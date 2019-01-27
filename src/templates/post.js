@@ -248,11 +248,39 @@ const renderAst = new rehypeReact({
 }).Compiler;
 
 class Post extends Component {
-  state = {};
+  state = {
+    copyURLMessages: {
+      en: {
+        default: "Copy page link",
+        copied: "Page link copied!",
+        error: "Couldn't copy the link",
+      },
+      es: {
+        default: "Copiar enlace",
+        copied: "Enlace copiado!",
+        error: "No he podido copiar",
+      },
+    },
+    copyCodeMessages: {
+      en: {
+        default: "Copy",
+        copied: "Copied!",
+        error: "Couldn't copy",
+      },
+      es: {
+        default: "Copiar",
+        copied: "Copiado!",
+        error: "No he podido copiar",
+      },
+    },
+  };
 
   componentDidMount() {
-    const copyURLButton = document.querySelector(".js-copyURL");
+    const copyURLButton = document.querySelector(".js-copyURL > span");
     copyURLButton.addEventListener("click", this.copyURL);
+    copyURLButton.textContent = `${
+      this.state.copyURLMessages[this.props.pageContext.lang].default
+    }`;
 
     // Test via a getter in the options object to see if the passive property is accessed
     // https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#feature-detection
@@ -286,14 +314,22 @@ class Post extends Component {
 
     try {
       document.execCommand("copy");
-      copyURLButton.textContent = "Page link copied!";
+      copyURLButton.textContent = `${
+        this.state.copyURLMessages[this.props.pageContext.lang].copied
+      }`;
       setTimeout(() => {
-        copyURLButton.textContent = "Copy page link";
+        copyURLButton.textContent = `${
+          this.state.copyURLMessages[this.props.pageContext.lang].default
+        }`;
       }, 2000);
     } catch (err) {
-      copyURLButton.textContent = "Couldn't copy the link";
+      copyURLButton.textContent = `${
+        this.state.copyURLMessages[this.props.pageContext.lang].error
+      }`;
       setTimeout(() => {
-        copyURLButton.textContent = "Copy page link";
+        copyURLButton.textContent = `${
+          this.state.copyURLMessages[this.props.pageContext.lang].default
+        }`;
       }, 2000);
     }
 
@@ -311,7 +347,9 @@ class Post extends Component {
 
     getCodeNodes.forEach((codeNode) => {
       const copyLink = document.createElement("span");
-      copyLink.textContent = "Copy";
+      copyLink.textContent = `${
+        this.state.copyCodeMessages[this.props.pageContext.lang].default
+      }`;
       copyLink.className = "js-codeCopy";
       codeNode.appendChild(copyLink);
     });
@@ -347,20 +385,34 @@ class Post extends Component {
 
     try {
       document.execCommand("copy");
-      currentCopyButton.textContent = "Copied!";
+      currentCopyButton.textContent = `${
+        this.state.copyCodeMessages[this.props.pageContext.lang].copied
+      }`;
 
       // If the textContent was changed, trigger a setTimeout after 2000ms
       // and change it back to "Copy"
-      if (currentCopyButton.textContent === "Copied!") {
+      if (
+        currentCopyButton.textContent ===
+        `${this.state.copyCodeMessages[this.props.pageContext.lang].copied}`
+      ) {
         setTimeout(() => {
-          currentCopyButton.textContent = "Copy";
+          currentCopyButton.textContent = `${
+            this.state.copyCodeMessages[this.props.pageContext.lang].default
+          }`;
         }, 2000);
       }
     } catch (err) {
-      currentCopyButton.textContent = "Couldn't copy";
-      if (currentCopyButton.textContent === "Couldn't copy") {
+      currentCopyButton.textContent = `${
+        this.state.copyCodeMessages[this.props.pageContext.lang].error
+      }`;
+      if (
+        currentCopyButton.textContent ===
+        `${this.state.copyCodeMessages[this.props.pageContext.lang].error}`
+      ) {
         setTimeout(() => {
-          currentCopyButton.textContent = "Copy";
+          currentCopyButton.textContent = `${
+            this.state.copyCodeMessages[this.props.pageContext.lang].default
+          }`;
         }, 2000);
       }
     }

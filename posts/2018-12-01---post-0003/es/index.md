@@ -18,3 +18,12 @@ twinPost: "How to make better gifs 3"
 ##Como hacer videos mas ligeros
 
 Los gifs pesan demasiado.
+
+```javascript
+getCodeNodes.forEach((codeNode) => {
+    const copyLink = document.createElement("span");
+    copyLink.textContent = "Copy";
+    copyLink.className = "js-codeCopy";
+    codeNode.appendChild(copyLink);
+});
+```

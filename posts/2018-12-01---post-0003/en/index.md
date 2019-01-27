@@ -18,3 +18,12 @@ twinPost: "Como hacer mejores gifs 3"
 ##How to use the video tag to make better, lightweight gifs.
 
 Gifs are great but they are too big. Do this to make them smaller and better.
+
+```javascript
+getCodeNodes.forEach((codeNode) => {
+    const copyLink = document.createElement("span");
+    copyLink.textContent = "Copy";
+    copyLink.className = "js-codeCopy";
+    codeNode.appendChild(copyLink);
+});
+```
