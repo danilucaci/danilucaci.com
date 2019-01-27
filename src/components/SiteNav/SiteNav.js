@@ -1,5 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
+
 import { theme, rem, mediaMin } from "../../theme/globalStyles";
 import SiteNavList from "../SiteNavList/SiteNavList";
 import MenuButton from "../MenuButton/MenuButton";
@@ -23,10 +25,16 @@ const SiteNav = (props) => {
   return (
     <StyledSiteNav aria-label="Page Menu" role="navigation">
       <Logo locale={props.locale} />
-      <MenuButton onClick={props.onClick} showNav={props.showNav} />
+      <MenuButton showNav={props.showNav} onClick={props.onClick} />
       <SiteNavList showNav={props.showNav} locale={props.locale} />
     </StyledSiteNav>
   );
+};
+
+SiteNav.propTypes = {
+  locale: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  showNav: PropTypes.bool.isRequired,
 };
 
 export default SiteNav;

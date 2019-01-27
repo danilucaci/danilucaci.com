@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
 
@@ -73,5 +73,9 @@ class SiteHeader extends Component {
     );
   }
 }
+
+SiteHeader.propTypes = {
+  locale: PropTypes.string.isRequired,
+};
 
 export default SiteHeader;

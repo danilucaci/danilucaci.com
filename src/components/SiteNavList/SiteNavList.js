@@ -110,7 +110,7 @@ const SiteNavList = (props) => {
   );
 };
 
-StyledSiteNavList.propTypes = {
+SiteNavList.propTypes = {
   locale: PropTypes.string.isRequired,
   showNav: PropTypes.bool.isRequired,
 };
