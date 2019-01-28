@@ -41,7 +41,6 @@ exports.onCreatePage = ({ page, actions }) => {
           }
         }
       }
-      console.log(`${localizedPath} ${lang}`);
 
       return createPage({
         ...page,
@@ -207,10 +206,14 @@ exports.createPages = ({ graphql, actions }) => {
                   timeToRead
                   frontmatter {
                     title
+                    description
+                    date(formatString: "DD MMMM YYYY")
+                    category
                     snippet
                     tags
+                    posted
+                    lang
                     twinPost
-                    date(formatString: "DD MMMM YYYY")
                   }
                 }
               }
@@ -225,9 +228,14 @@ exports.createPages = ({ graphql, actions }) => {
                     timeToRead
                     frontmatter {
                       title
+                      description
+                      date(formatString: "DD MMMM YYYY")
+                      category
                       snippet
                       tags
-                      date(formatString: "DD MMMM YYYY")
+                      posted
+                      lang
+                      twinPost
                     }
                   }
                 }
@@ -254,43 +262,18 @@ exports.createPages = ({ graphql, actions }) => {
                     title
                     description
                     date(formatString: "DD MMMM YYYY")
+                    category
                     tags
+                    posted
                     twinPost
+                    lang
                     image {
                       childImageSharp {
-                        fluid(maxWidth: 936) {
+                        fluid(maxWidth: 744) {
                           src
                           srcSet
                           aspectRatio
                           sizes
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-              tags: group(field: frontmatter___tags) {
-                fieldValue
-                totalCount
-                edges {
-                  node {
-                    fields {
-                      slug
-                    }
-                    timeToRead
-                    frontmatter {
-                      title
-                      description
-                      date(formatString: "DD MMMM YYYY")
-                      tags
-                      image {
-                        childImageSharp {
-                          fluid(maxWidth: 936) {
-                            src
-                            srcSet
-                            aspectRatio
-                            sizes
-                          }
                         }
                       }
                     }
@@ -321,7 +304,6 @@ exports.createPages = ({ graphql, actions }) => {
           // Work / case studies
           const totalCountWork = result.data.work.totalCount;
           const edgesWork = result.data.work.edges;
-          const tagsWork = result.data.work.tags;
 
           // Controls
           // Limit of posts to show per paginated page
@@ -368,7 +350,6 @@ exports.createPages = ({ graphql, actions }) => {
                   prevPath: null,
                   nextPath: `/blog/${paginationName}2`,
                   totalCountBlog,
-                  tagsBlog,
                   // need it for react-intl
                   lang,
                 },
@@ -401,7 +382,6 @@ exports.createPages = ({ graphql, actions }) => {
                       ? `/blog/${paginationName}${currentPage + 1}`
                       : null,
                   totalCountBlog,
-                  tagsBlog,
                   // need it for react-intl
                   lang,
                 },
@@ -552,7 +532,6 @@ exports.createPages = ({ graphql, actions }) => {
                   prevPath: null,
                   nextPath: `/${langUrlWorkPrefix}/${paginationName}2`,
                   totalCountWork,
-                  tagsWork,
                   // need it for react-intl
                   lang,
                 },
@@ -590,7 +569,6 @@ exports.createPages = ({ graphql, actions }) => {
                           1}`
                       : null,
                   totalCountWork,
-                  tagsWork,
                   // need it for react-intl
                   lang,
                 },
