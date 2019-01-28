@@ -554,7 +554,7 @@ exports.createPages = ({ graphql, actions }) => {
             } else {
               createPage({
                 path: `${langUrlPrefix +
-                  langUrlWorkPrefix}/${paginationName}/${currentPage}`,
+                  langUrlWorkPrefix}/${paginationName}${currentPage}`,
                 component: workTemplate,
                 // Data passed to context is available in page queries as GraphQL variables.
                 context: {
