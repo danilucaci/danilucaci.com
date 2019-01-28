@@ -225,7 +225,11 @@ const AboutPage = (props) => {
         </AboutMeWrapper>
       </Main>
       <ContactCard />
-      <SiteFooter gray changeLanguage={changeLanguage} />
+      <SiteFooter
+        gray
+        changeLanguage={changeLanguage}
+        locale={props.pageContext.locale}
+      />
     </Layout>
   );
 };

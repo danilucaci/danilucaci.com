@@ -280,7 +280,11 @@ class Index extends Component {
         <Stack>
           <ContactCard />
         </Stack>
-        <SiteFooter gray changeLanguage={changeLanguage} />
+        <SiteFooter
+          gray
+          changeLanguage={changeLanguage}
+          locale={this.props.pageContext.locale}
+        />
       </Layout>
     );
   }

@@ -194,7 +194,10 @@ const ContactPage = (props) => {
           </PathWrapper>
         </ContactMeWrapper>
       </Main>
-      <SiteFooter changeLanguage={changeLanguage} />
+      <SiteFooter
+        changeLanguage={changeLanguage}
+        locale={props.pageContext.locale}
+      />
     </Layout>
   );
 };

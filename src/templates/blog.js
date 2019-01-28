@@ -134,7 +134,7 @@ const BlogPage = (props) => {
           )}
         </BlogWrapper>
       </Main>
-      <SiteFooter changeLanguage={changeLanguage} />
+      <SiteFooter changeLanguage={changeLanguage} locale={lang} />
     </Layout>
   );
 };

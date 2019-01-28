@@ -100,7 +100,7 @@ const WorkPage = (props) => {
           )}
         </Wrapper>
       </Main>
-      <SiteFooter changeLanguage={changeLanguage} />
+      <SiteFooter changeLanguage={changeLanguage} locale={lang} />
     </Layout>
   );
 };

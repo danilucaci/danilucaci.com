@@ -212,7 +212,7 @@ class LegalDoc extends Component {
           </PageWrapper>
         </Main>
         <ScrollToTop />
-        <SiteFooter changeLanguage={changeLanguage} />
+        <SiteFooter changeLanguage={changeLanguage} locale={lang} />
       </Layout>
     );
   }

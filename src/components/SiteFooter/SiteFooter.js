@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { Link } from "gatsby";
+import { Link, graphql, StaticQuery } from "gatsby";
 import { FormattedMessage } from "react-intl";
 
 import { theme, rem } from "../../theme/globalStyles";
+import { GreyLink } from "../Link/Link";
 import { Copy, CopyBold } from "../Copy/Copy";
 import SocialNav from "../SocialNav/SocialNav";
 
@@ -18,11 +19,20 @@ const StyledFooter = styled.footer`
 `;
 
 const StyledCopyright = styled(CopyBold)``;
+
+const LegalDocsContainer = styled.div``;
+
+const LegalDoc = styled(GreyLink)`
+  margin-right: ${rem(16)};
+`;
+
 const StyledCopy = styled(Copy)`
   margin: ${rem(8)} 0;
 `;
 
 const SiteFooter = (props) => {
+  let pageLocale = props.locale;
+
   return (
     <StyledFooter gray={props.gray} role="contentinfo">
       <StyledCopyright small>
@@ -32,6 +42,37 @@ const SiteFooter = (props) => {
         This site is built with Gatsby.js and hosted on Netlify.
       </StyledCopy>
       <SocialNav />
+      <StaticQuery
+        query={LEGAL_PAGES_QUERY}
+        render={(data) => {
+          let docsList = [];
+          let localizedDocsList = [];
+          // Should sort the docs based on the frontmatter order prop
+          // The order changes when switching language
+          let sortedLocalizedDocsList = [];
+
+          data.allMarkdownRemark.edges.forEach((edge) => {
+            docsList.push({
+              slug: edge.node.fields.slug,
+              title: edge.node.frontmatter.title,
+              lang: edge.node.frontmatter.lang,
+              order: edge.node.frontmatter.order,
+            });
+          });
+
+          localizedDocsList = docsList.filter((doc) => doc.lang === pageLocale);
+
+          return (
+            <LegalDocsContainer>
+              {localizedDocsList.map((localizedDoc) => (
+                <LegalDoc to={localizedDoc.slug} key={localizedDoc.title}>
+                  {localizedDoc.title}
+                </LegalDoc>
+              ))}
+            </LegalDocsContainer>
+          );
+        }}
+      />
       <FormattedMessage id="footerChangeLanguage">
         {(txt) => <Link to={props.changeLanguage}>{txt}</Link>}
       </FormattedMessage>
@@ -41,6 +82,26 @@ const SiteFooter = (props) => {
 
 SiteFooter.propTypes = {
   changeLanguage: PropTypes.string.isRequired,
+  locale: PropTypes.string.isRequired,
 };
 
 export default SiteFooter;
+
+const LEGAL_PAGES_QUERY = graphql`
+  query LEGAL_PAGES_QUERY {
+    allMarkdownRemark(filter: { frontmatter: { category: { eq: "legal" } } }) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            lang
+            order
+          }
+        }
+      }
+    }
+  }
+`;

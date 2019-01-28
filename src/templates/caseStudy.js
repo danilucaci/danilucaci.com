@@ -516,7 +516,7 @@ class Post extends Component {
           </ArticleWrapper>
         </Main>
         <ScrollToTop />
-        <SiteFooter changeLanguage={changeLanguage} />
+        <SiteFooter changeLanguage={changeLanguage} locale={lang} />
       </Layout>
     );
   }

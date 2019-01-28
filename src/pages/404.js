@@ -24,7 +24,7 @@ const NotFoundPage = (props) => {
       <Main role="main">
         <h1>404 de mine</h1>
       </Main>
-      <SiteFooter changeLanguage={changeLanguage} />
+      <SiteFooter changeLanguage={changeLanguage} locale={lang} />
     </Layout>
   );
 };
