@@ -9,6 +9,8 @@ const StyledSiteNavListItem = styled.li`
   text-decoration: none;
   list-style-type: none;
   text-align: center;
+  font-family: ${theme.fonts.bodyRegular};
+  font-weight: 400;
   width: 100%;
   transition-delay: 0.4s;
   transition: max-height, transform ease-out 0.2s;
@@ -43,14 +45,14 @@ const StyledSiteNavListItem = styled.li`
   `};
 
   & > a {
-    color: ${theme.colors.dark900};
+    color: ${theme.colors.dark700};
     display: block;
 
     .fonts-loaded & {
-      font-family: ${theme.fonts.header};
+      font-family: ${theme.fonts.bodyRegular};
     }
 
-    font-weight: 700;
+    font-weight: 400;
     font-size: ${rem(24)};
     line-height: ${rem(32)};
     text-decoration: none;
@@ -59,7 +61,7 @@ const StyledSiteNavListItem = styled.li`
 
     &:visited,
     &:link {
-      color: ${theme.colors.dark900};
+      color: ${theme.colors.dark700};
     }
 
     &:hover {
@@ -68,41 +70,41 @@ const StyledSiteNavListItem = styled.li`
     }
 
     ${mediaMin.s`
-    background-color: transparent;
-    font-weight: 700;
-    font-size: ${theme.fontSizes.s};
-    line-height: ${theme.lineHeights.s};
+      background-color: transparent;
+      font-size: ${theme.fontSizes.s};
+      line-height: ${theme.lineHeights.s};
   `};
 
     &.current-nav-item {
       background-color: ${theme.colors.main600};
+      color: ${theme.colors.gray100};
+      font-weight: 700;
+      font-family: ${theme.fonts.bodyBold};
 
       &:hover {
         color: ${theme.colors.gray100};
       }
 
-      color: ${theme.colors.gray100};
-
       ${mediaMin.s`
-      background-color: transparent;
-      color: ${theme.colors.dark900};
-      
-      &:hover {
-        color: ${theme.colors.main600};
-      }
+        background-color: transparent;
+        color: ${theme.colors.dark900};
+        
+        &:hover {
+          color: ${theme.colors.main600};
+        }
 
-      &:after {
-        content: '';
-        display: block;
-        background-color: ${theme.colors.main600};
-        width: 100%;
-        position: absolute;
-        bottom: -1px;
-        left: 0;
-        right: 0;
-        height: ${rem(4)};
-        z-index: 10;
-      };
+        /* &:after {
+          content: '';
+          display: block;
+          background-color: ${theme.colors.main600};
+          width: 100%;
+          position: absolute;
+          bottom: -1px;
+          left: 0;
+          right: 0;
+          height: ${rem(4)};
+          z-index: 10;
+        }; */
     `};
     }
   }
