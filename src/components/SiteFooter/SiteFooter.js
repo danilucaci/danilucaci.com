@@ -25,7 +25,9 @@ const StyledCopy = styled(Copy)`
 const SiteFooter = (props) => {
   return (
     <StyledFooter gray={props.gray} role="contentinfo">
-      <StyledCopyright small>&copy; Dani Lucaci.</StyledCopyright>
+      <StyledCopyright small>
+        &copy; {new Date().getFullYear()} Dani Lucaci.
+      </StyledCopyright>
       <StyledCopy small>
         This site is built with Gatsby.js and hosted on Netlify.
       </StyledCopy>
