@@ -52,7 +52,7 @@ class Layout extends Component {
   componentDidMount() {
     this.checkDNT();
     this.checkGDPRStatus();
-    // this.checkFontsLoaded();
+    this.checkFontsLoaded();
   }
 
   componentDidUpdate() {
@@ -144,22 +144,30 @@ class Layout extends Component {
   };
 
   loadFonts = () => {
-    var OpenSansRegular = new FontFaceObserver("OpenSans Regular");
-    var OpenSansBold = new FontFaceObserver("OpenSans Bold", {
+    var RobotoMonoRegular = new FontFaceObserver("Roboto Mono Regular");
+    var RobotoMonoItalic = new FontFaceObserver("Roboto Mono Italic", {
+      style: "italic",
+    });
+    var OpenSansRegular = new FontFaceObserver("Open Sans Regular");
+    var OpenSansBold = new FontFaceObserver("Open Sans Bold", {
       weight: 700,
     });
-    var OpenSansItalic = new FontFaceObserver("OpenSans Italic", {
+    var OpenSansItalic = new FontFaceObserver("Open Sans Italic", {
       style: "italic",
     });
     var MontserratBold = new FontFaceObserver("Montserrat Bold", {
       weight: 700,
     });
+    var MontserratRegular = new FontFaceObserver("Montserrat Regular");
 
     Promise.all([
+      RobotoMonoRegular.load(),
+      RobotoMonoItalic.load(),
       OpenSansRegular.load(),
       OpenSansBold.load(),
       OpenSansItalic.load(),
       MontserratBold.load(),
+      MontserratRegular.load(),
     ]).then(function() {
       document.documentElement.className += " fonts-loaded";
       // Optimization for Repeat Views

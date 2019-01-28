@@ -49,10 +49,13 @@ export const theme = {
   fonts: {
     code:
       "'Ubuntu Mono', Consolas, Menlo, 'Liberation Mono', Courier, monospace",
-    bodyRegular: "OpenSans Regular",
-    bodyBold: "OpenSans Bold",
-    bodyItalic: "OpenSans Italic",
+    codeLoaded: "Roboto Mono Regular",
+    codeLoadedItalic: "Roboto Mono Italic",
+    bodyRegular: "Open Sans Regular",
+    bodyBold: "Open Sans Bold",
+    bodyItalic: "Open Sans Italic",
     header: "Montserrat Bold",
+    headerRegular: "Montserrat Regular",
   },
   fontSizes: {
     h1: "3rem",

@@ -9,7 +9,7 @@ const StyledSiteNavListItem = styled.li`
   text-decoration: none;
   list-style-type: none;
   text-align: center;
-  font-family: ${theme.fonts.bodyRegular};
+  font-family: ${theme.fonts.headerRegular};
   font-weight: 400;
   width: 100%;
   transition-delay: 0.4s;
@@ -49,7 +49,7 @@ const StyledSiteNavListItem = styled.li`
     display: block;
 
     .fonts-loaded & {
-      font-family: ${theme.fonts.bodyRegular};
+      font-family: ${theme.fonts.headerRegular};
     }
 
     font-weight: 400;
@@ -79,7 +79,7 @@ const StyledSiteNavListItem = styled.li`
       background-color: ${theme.colors.main600};
       color: ${theme.colors.gray100};
       font-weight: 700;
-      font-family: ${theme.fonts.bodyBold};
+      font-family: ${theme.fonts.header};
 
       &:hover {
         color: ${theme.colors.gray100};
