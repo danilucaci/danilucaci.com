@@ -9,7 +9,7 @@ tags:
     - E-Commerce Checkout
 posted: true
 image: "./movie_app_presentation.png"
-lang: "es"
+locale: "es"
 twinPost: "Movie booking app 8"
 ---
 

@@ -11,7 +11,7 @@ tags:
     - webvr
     - aframe
 posted: true
-lang: "en"
+locale: "en"
 twinPost: "Usando Aframe en la web 9"
 ---
 

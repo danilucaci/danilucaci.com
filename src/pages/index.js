@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { graphql } from "gatsby";
 import { FormattedMessage } from "react-intl";
@@ -185,22 +186,19 @@ class Index extends Component {
   render() {
     const caseStudyList = this.getCaseStudyList();
 
-    let lang = this.props.pageContext.locale;
+    let locale = this.props.pageContext.locale;
     let changeLanguage = "";
 
-    if (lang === "en") {
+    if (locale === "en") {
       changeLanguage = "/es";
-    } else if (lang === "es") {
+    } else if (locale === "es") {
       changeLanguage = "/";
     }
 
     return (
-      <Layout
-        location={this.props.location}
-        locale={this.props.pageContext.locale}
-      >
+      <Layout location={this.props.location} locale={locale}>
         <SEO />
-        <SiteHeader locale={this.props.pageContext.locale} />
+        <SiteHeader locale={locale} />
         <Main role="main">
           <SEO />
           <IndexHeader>
@@ -280,17 +278,14 @@ class Index extends Component {
         <Stack>
           <ContactCard />
         </Stack>
-        <SiteFooter
-          gray
-          changeLanguage={changeLanguage}
-          locale={this.props.pageContext.locale}
-        />
+        <SiteFooter gray changeLanguage={changeLanguage} locale={locale} />
       </Layout>
     );
   }
 }
 
 export default Index;
+
 export const pageQuery = graphql`
   query WorkEntryByLocale($locale: String!) {
     work: allMarkdownRemark(
@@ -300,7 +295,7 @@ export const pageQuery = graphql`
         frontmatter: {
           posted: { eq: true }
           category: { eq: "work" }
-          lang: { eq: $locale }
+          locale: { eq: $locale }
         }
       }
     ) {

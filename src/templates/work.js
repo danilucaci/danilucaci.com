@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import styled, { css } from "styled-components";
 import { FormattedMessage } from "react-intl";
@@ -46,7 +47,7 @@ const WorkPage = (props) => {
     prevPath,
     nextPath,
     edgesWork,
-    lang,
+    locale,
   } = props.pageContext;
 
   const workLocaleLabels = {
@@ -61,26 +62,29 @@ const WorkPage = (props) => {
 
   let changeLanguage = "";
 
-  if (lang === "en" && currentPage > 1) {
+  if (locale === "en" && currentPage > 1) {
     changeLanguage =
-      "/es" + workLocaleLabels[lang] + paginationPageLabels[lang] + currentPage;
-  } else if (lang === "en" && currentPage === 1) {
-    changeLanguage = "/es" + workLocaleLabels[lang];
+      "/es" +
+      workLocaleLabels[locale] +
+      paginationPageLabels[locale] +
+      currentPage;
+  } else if (locale === "en" && currentPage === 1) {
+    changeLanguage = "/es" + workLocaleLabels[locale];
   }
 
-  if (lang === "es" && currentPage > 1) {
+  if (locale === "es" && currentPage > 1) {
     changeLanguage =
-      workLocaleLabels[lang] + paginationPageLabels[lang] + currentPage;
-  } else if (lang === "es" && currentPage === 1) {
-    changeLanguage = workLocaleLabels[lang];
+      workLocaleLabels[locale] + paginationPageLabels[locale] + currentPage;
+  } else if (locale === "es" && currentPage === 1) {
+    changeLanguage = workLocaleLabels[locale];
   }
 
   return (
-    <Layout location={props.location} locale={lang}>
-      <SiteHeader locale={lang} />
+    <Layout location={props.location} locale={locale}>
+      <SiteHeader locale={locale} />
       <Main role="main">
         <Wrapper>
-          <Helmet title={`${intlMessages[lang].meta.workMetaTitle}`} />
+          <Helmet title={`${intlMessages[locale].meta.workMetaTitle}`} />
           <SEO />
           <WorkHeader>
             <FormattedMessage id="caseStudiesHeader">
@@ -95,12 +99,12 @@ const WorkPage = (props) => {
               paginationPathPrefix={paginationPathPrefix}
               prevPath={prevPath}
               nextPath={nextPath}
-              lang={lang}
+              locale={locale}
             />
           )}
         </Wrapper>
       </Main>
-      <SiteFooter changeLanguage={changeLanguage} locale={lang} />
+      <SiteFooter changeLanguage={changeLanguage} locale={locale} />
     </Layout>
   );
 };

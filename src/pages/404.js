@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import Layout from "../components/Layout";
 import SEO from "../components/SEO/SEO";
@@ -8,23 +9,23 @@ import SiteFooter from "../components/SiteFooter/SiteFooter";
 import intlMessages from "../i18n/i18n";
 
 const NotFoundPage = (props) => {
-  let lang = props.pageContext.locale;
+  let locale = props.pageContext.locale;
   let changeLanguage = "";
 
-  if (lang === "en") {
+  if (locale === "en") {
     changeLanguage = "/es/404";
-  } else if (lang === "es") {
+  } else if (locale === "es") {
     changeLanguage = "/404";
   }
   return (
-    <Layout location={props.location} locale={lang}>
-      <Helmet title={`${intlMessages[lang].meta.pageNotFoundMetaTitle}`} />
+    <Layout location={props.location} locale={locale}>
+      <Helmet title={`${intlMessages[locale].meta.pageNotFoundMetaTitle}`} />
       <SEO />
-      <SiteHeader locale={lang} />
+      <SiteHeader locale={locale} />
       <Main role="main">
         <h1>404 de mine</h1>
       </Main>
-      <SiteFooter changeLanguage={changeLanguage} locale={lang} />
+      <SiteFooter changeLanguage={changeLanguage} locale={locale} />
     </Layout>
   );
 };

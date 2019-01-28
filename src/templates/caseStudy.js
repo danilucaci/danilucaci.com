@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import styled, { css } from "styled-components";
@@ -393,7 +394,7 @@ const PostContent = styled.section`
 //   },
 // }).Compiler;
 
-class Post extends Component {
+class CaseStudy extends Component {
   state = {};
 
   componentDidMount() {
@@ -470,24 +471,24 @@ class Post extends Component {
     const postNode = this.props.data.markdownRemark;
     const postInfo = postNode.frontmatter;
     const image = postInfo.image.childImageSharp.fluid;
-    const lang = this.props.pageContext.lang;
+    const locale = this.props.pageContext.locale;
     const twinPost = this.props.pageContext.twinPost;
 
     let changeLanguage = "";
 
-    if (lang === "en") {
+    if (locale === "en") {
       changeLanguage = "/es/trabajos/" + twinPost;
-    } else if (lang === "es") {
+    } else if (locale === "es") {
       changeLanguage = "/work/" + twinPost;
     }
 
     return (
-      <Layout location={this.props.location} locale={lang}>
+      <Layout location={this.props.location} locale={locale}>
         <Helmet
-          title={`${postInfo.title} || ${intlMessages[lang].meta.siteTitle}`}
+          title={`${postInfo.title} || ${intlMessages[locale].meta.siteTitle}`}
         />
         <SEO postPath={slug} postNode={postNode} postSEO />
-        <SiteHeader showScrollIndicator locale={lang} />
+        <SiteHeader showScrollIndicator locale={locale} />
         <Main role="main" id="main">
           <ArticleWrapper>
             <StyledHeader>
@@ -516,13 +517,13 @@ class Post extends Component {
           </ArticleWrapper>
         </Main>
         <ScrollToTop />
-        <SiteFooter changeLanguage={changeLanguage} locale={lang} />
+        <SiteFooter changeLanguage={changeLanguage} locale={locale} />
       </Layout>
     );
   }
 }
 
-export default Post;
+export default CaseStudy;
 
 export const pageQuery = graphql`
   query WorkEntryBySlug($slug: String) {

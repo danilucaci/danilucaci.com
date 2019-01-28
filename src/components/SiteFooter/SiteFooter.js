@@ -55,12 +55,14 @@ const SiteFooter = (props) => {
             docsList.push({
               slug: edge.node.fields.slug,
               title: edge.node.frontmatter.title,
-              lang: edge.node.frontmatter.lang,
+              locale: edge.node.frontmatter.locale,
               order: edge.node.frontmatter.order,
             });
           });
 
-          localizedDocsList = docsList.filter((doc) => doc.lang === pageLocale);
+          localizedDocsList = docsList.filter(
+            (doc) => doc.locale === pageLocale
+          );
 
           return (
             <LegalDocsContainer>
@@ -97,7 +99,7 @@ const LEGAL_PAGES_QUERY = graphql`
           }
           frontmatter {
             title
-            lang
+            locale
             order
           }
         }

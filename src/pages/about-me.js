@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
@@ -144,25 +145,21 @@ const Col2of2 = styled.div`
 `;
 
 const AboutPage = (props) => {
-  let lang = props.pageContext.locale;
+  let locale = props.pageContext.locale;
   let changeLanguage = "";
 
-  if (lang === "en") {
+  if (locale === "en") {
     changeLanguage = "/es/sobre-mi";
-  } else if (lang === "es") {
+  } else if (locale === "es") {
     changeLanguage = "/about-me";
   }
 
   return (
-    <Layout location={props.location} locale={props.pageContext.locale}>
-      <SiteHeader locale={props.pageContext.locale} />
+    <Layout location={props.location} locale={locale}>
+      <SiteHeader locale={locale} />
       <Main role="main">
         <AboutMeWrapper>
-          <Helmet
-            title={`${
-              intlMessages[props.pageContext.locale].meta.aboutMetaTitle
-            }`}
-          />
+          <Helmet title={`${intlMessages[locale].meta.aboutMetaTitle}`} />
           <SEO />
           <HeaderInfo>
             {/* <StyledNameHeader>Hi! I’m Dani Lucaci.</StyledNameHeader> */}
@@ -225,11 +222,7 @@ const AboutPage = (props) => {
         </AboutMeWrapper>
       </Main>
       <ContactCard />
-      <SiteFooter
-        gray
-        changeLanguage={changeLanguage}
-        locale={props.pageContext.locale}
-      />
+      <SiteFooter gray changeLanguage={changeLanguage} locale={locale} />
     </Layout>
   );
 };

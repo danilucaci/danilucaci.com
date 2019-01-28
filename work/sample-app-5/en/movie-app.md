@@ -9,7 +9,7 @@ tags:
     - E-Commerce Checkout
 posted: true
 image: "./movie_app_presentation.png"
-lang: "en"
+locale: "en"
 twinPost: "Applicacion de pelis 6"
 ---
 

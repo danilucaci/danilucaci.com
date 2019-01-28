@@ -11,7 +11,7 @@ tags:
     - css3
     - perfmatters
 posted: true
-lang: "en"
+locale: "en"
 twinPost: "How to make better gifs 4"
 ---
 

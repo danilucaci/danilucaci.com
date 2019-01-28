@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import Helmet from "react-helmet";
 
@@ -124,25 +125,21 @@ const TwitterIcon = styled(Icon)`
 `;
 
 const ContactPage = (props) => {
-  let lang = props.pageContext.locale;
+  let locale = props.pageContext.locale;
   let changeLanguage = "";
 
-  if (lang === "en") {
+  if (locale === "en") {
     changeLanguage = "/es/contacto";
-  } else if (lang === "es") {
+  } else if (locale === "es") {
     changeLanguage = "/contact";
   }
 
   return (
-    <Layout location={props.location} locale={props.pageContext.locale}>
-      <Helmet
-        title={`${
-          intlMessages[props.pageContext.locale].meta.contactMetaTitle
-        }`}
-      />
+    <Layout location={props.location} locale={locale}>
+      <Helmet title={`${intlMessages[locale].meta.contactMetaTitle}`} />
 
       <SEO />
-      <SiteHeader locale={props.pageContext.locale} />
+      <SiteHeader locale={locale} />
       <Main role="main">
         <ContactMeWrapper>
           <StyledH1>Let's talk</StyledH1>
@@ -194,10 +191,7 @@ const ContactPage = (props) => {
           </PathWrapper>
         </ContactMeWrapper>
       </Main>
-      <SiteFooter
-        changeLanguage={changeLanguage}
-        locale={props.pageContext.locale}
-      />
+      <SiteFooter changeLanguage={changeLanguage} locale={locale} />
     </Layout>
   );
 };

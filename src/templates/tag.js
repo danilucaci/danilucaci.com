@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import styled, { css } from "styled-components";
@@ -111,7 +112,7 @@ const TagPage = (props) => {
     nextPath,
     edges,
     tag,
-    lang,
+    locale,
   } = props.pageContext;
 
   const frontMatterTags = props.data.allMarkdownRemark;
@@ -128,25 +129,25 @@ const TagPage = (props) => {
 
   let changeLanguage = "";
 
-  if (lang === "en" && currentPage > 1) {
+  if (locale === "en" && currentPage > 1) {
     changeLanguage =
-      "/es" + paginationPathPrefix + paginationPageLabels[lang] + currentPage;
-  } else if (lang === "en" && currentPage === 1) {
+      "/es" + paginationPathPrefix + paginationPageLabels[locale] + currentPage;
+  } else if (locale === "en" && currentPage === 1) {
     changeLanguage = "/es" + paginationPathPrefix;
   }
 
-  if (lang === "es" && currentPage > 1) {
+  if (locale === "es" && currentPage > 1) {
     changeLanguage =
-      paginationPathPrefix + paginationPageLabels[lang] + currentPage;
-  } else if (lang === "es" && currentPage === 1) {
+      paginationPathPrefix + paginationPageLabels[locale] + currentPage;
+  } else if (locale === "es" && currentPage === 1) {
     changeLanguage = paginationPathPrefix;
   }
 
   return (
-    <Layout location={props.location} locale={lang}>
-      <Helmet title={`${intlMessages[lang].meta.tagListingMetaTitle}`} />
+    <Layout location={props.location} locale={locale}>
+      <Helmet title={`${intlMessages[locale].meta.tagListingMetaTitle}`} />
       <SEO />
-      <SiteHeader locale={lang} />
+      <SiteHeader locale={locale} />
       <Main role="main">
         <TagWrapper>
           <TagHeader>
@@ -173,12 +174,12 @@ const TagPage = (props) => {
               paginationPathPrefix={paginationPathPrefix}
               prevPath={prevPath}
               nextPath={nextPath}
-              lang={lang}
+              locale={locale}
             />
           )}
         </TagWrapper>
       </Main>
-      <SiteFooter changeLanguage={changeLanguage} locale={lang} />
+      <SiteFooter changeLanguage={changeLanguage} locale={locale} />
     </Layout>
   );
 };

@@ -1,8 +1,8 @@
 ---
-title: "Terminos y Condiciones"
+title: "Términos y Condiciones"
 category: "legal"
 posted: true
-lang: "es"
+locale: "es"
 date: "12/02/2019"
 twinPost: "Terms and Conditions"
 order: 3

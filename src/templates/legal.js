@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import styled from "styled-components";
@@ -167,25 +168,25 @@ class LegalDoc extends Component {
     const slug = this.props.data.markdownRemark.fields.slug;
     const postNode = this.props.data.markdownRemark;
     const postInfo = postNode.frontmatter;
-    const lang = this.props.pageContext.lang;
+    const locale = this.props.pageContext.locale;
     const twinPost = this.props.pageContext.twinPost;
     const lastUpdated = postInfo.date;
 
     let changeLanguage = "";
 
-    if (lang === "en") {
+    if (locale === "en") {
       changeLanguage = "/es/" + twinPost;
-    } else if (lang === "es") {
+    } else if (locale === "es") {
       changeLanguage = "/" + twinPost;
     }
 
     return (
-      <Layout location={this.props.location} locale={lang}>
+      <Layout location={this.props.location} locale={locale}>
         <Helmet
-          title={`${postInfo.title} || ${intlMessages[lang].meta.siteTitle}`}
+          title={`${postInfo.title} || ${intlMessages[locale].meta.siteTitle}`}
         />
         <SEO postPath={slug} postNode={postNode} postSEO />
-        <SiteHeader showScrollIndicator locale={lang} />
+        <SiteHeader showScrollIndicator locale={locale} />
         <Main role="main" id="main">
           <PageWrapper>
             <PostH1>{postInfo.title}</PostH1>
@@ -212,7 +213,7 @@ class LegalDoc extends Component {
           </PageWrapper>
         </Main>
         <ScrollToTop />
-        <SiteFooter changeLanguage={changeLanguage} locale={lang} />
+        <SiteFooter changeLanguage={changeLanguage} locale={locale} />
       </Layout>
     );
   }

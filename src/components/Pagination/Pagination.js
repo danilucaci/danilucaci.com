@@ -184,7 +184,9 @@ const Pagination = (props) => {
         pagination.push(
           <CurrentPaginationNumber
             key={page}
-            to={paginationPathPrefix + paginationPageLabels[props.lang] + page}
+            to={
+              paginationPathPrefix + paginationPageLabels[props.locale] + page
+            }
           >
             {page}
           </CurrentPaginationNumber>
@@ -201,7 +203,9 @@ const Pagination = (props) => {
         pagination.push(
           <PaginationNumber
             key={page}
-            to={paginationPathPrefix + paginationPageLabels[props.lang] + page}
+            to={
+              paginationPathPrefix + paginationPageLabels[props.locale] + page
+            }
           >
             {page}
           </PaginationNumber>

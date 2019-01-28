@@ -17,27 +17,27 @@ exports.onCreatePage = ({ page, actions }) => {
     // First delete the one made by gatsby
     deletePage(page);
 
-    Object.keys(locales).map((lang) => {
-      // const localizedPath = locales[lang].default
+    Object.keys(locales).map((locale) => {
+      // const localizedPath = locales[locale].default
       //   ? page.path
-      //   : locales[lang].path + page.path;
+      //   : locales[locale].path + page.path;
       let localizedPath = "";
       let hasTrailingSlash = page.path.endsWith("/") && page.path.length > 2;
 
       // Translate page urls
-      if (locales[lang].default) {
+      if (locales[locale].default) {
         localizedPath = hasTrailingSlash ? page.path.slice(0, -1) : page.path;
       } else {
         if (page.path === "/") {
-          localizedPath = locales[lang].path;
+          localizedPath = locales[locale].path;
         } else if (page.path.includes("/about-me")) {
-          localizedPath = locales[lang].path + "/sobre-mi";
+          localizedPath = locales[locale].path + "/sobre-mi";
         } else if (page.path.includes("/contact")) {
-          localizedPath = locales[lang].path + "/contacto";
+          localizedPath = locales[locale].path + "/contacto";
         } else {
-          localizedPath = locales[lang].path + page.path;
+          localizedPath = locales[locale].path + page.path;
           if (hasTrailingSlash) {
-            localizedPath = `${locales[lang].path}${page.path.slice(0, -1)}`;
+            localizedPath = `${locales[locale].path}${page.path.slice(0, -1)}`;
           }
         }
       }
@@ -46,7 +46,7 @@ exports.onCreatePage = ({ page, actions }) => {
         ...page,
         path: localizedPath,
         context: {
-          locale: lang,
+          locale: locale,
         },
       });
     });
@@ -118,11 +118,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       Object.prototype.hasOwnProperty.call(node.frontmatter, "title")
     ) {
       if (node.frontmatter.category === "work") {
-        if (node.frontmatter.lang === "en") {
+        if (node.frontmatter.locale === "en") {
           slug = `/work/${_.kebabCase(node.frontmatter.title)}`;
         }
 
-        if (node.frontmatter.lang === "es") {
+        if (node.frontmatter.locale === "es") {
           slug = `/trabajos/${_.kebabCase(node.frontmatter.title)}`;
         }
       } else if (node.frontmatter.category === "blog") {
@@ -172,14 +172,14 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  Object.keys(locales).map((lang) => {
-    let langUrlPrefix = "/";
-    let langUrlWorkPrefix = "work";
+  Object.keys(locales).map((locale) => {
+    let localeUrlPrefix = "/";
+    let localeUrlWorkPrefix = "work";
     let paginationName = "page/";
 
-    if (lang === "es") {
-      langUrlPrefix = "/es/";
-      langUrlWorkPrefix = "trabajos";
+    if (locale === "es") {
+      localeUrlPrefix = "/es/";
+      localeUrlWorkPrefix = "trabajos";
       paginationName = "pagina/";
     }
 
@@ -193,8 +193,8 @@ exports.createPages = ({ graphql, actions }) => {
               filter: {
                 frontmatter: {
                   posted: { eq: true }
-                  category: { ne: "work" }
-                  lang: { eq: "${lang}" }
+                  category: { eq: "blog" }
+                  locale: { eq: "${locale}" }
                 }
               }
             ) {
@@ -213,7 +213,7 @@ exports.createPages = ({ graphql, actions }) => {
                     snippet
                     tags
                     posted
-                    lang
+                    locale
                     twinPost
                   }
                 }
@@ -235,7 +235,7 @@ exports.createPages = ({ graphql, actions }) => {
                       snippet
                       tags
                       posted
-                      lang
+                      locale
                       twinPost
                     }
                   }
@@ -249,7 +249,7 @@ exports.createPages = ({ graphql, actions }) => {
                 frontmatter: {
                   posted: { eq: true }
                   category: { eq: "work" }
-                  lang: { eq: "${lang}" }
+                  locale: { eq: "${locale}" }
                 }
               }
             ) {
@@ -267,7 +267,7 @@ exports.createPages = ({ graphql, actions }) => {
                     tags
                     posted
                     twinPost
-                    lang
+                    locale
                     image {
                       childImageSharp {
                         fluid(maxWidth: 744) {
@@ -288,7 +288,7 @@ exports.createPages = ({ graphql, actions }) => {
                 frontmatter: {
                   posted: { eq: true }
                   category: { eq: "legal" }
-                  lang: { eq: "${lang}" }
+                  locale: { eq: "${locale}" }
                 }
               }
             ) {
@@ -303,7 +303,7 @@ exports.createPages = ({ graphql, actions }) => {
                     category
                     posted
                     twinPost
-                    lang
+                    locale
                   }
                 }
               }
@@ -367,7 +367,7 @@ exports.createPages = ({ graphql, actions }) => {
           ) {
             if (currentPage === 1) {
               createPage({
-                path: `${langUrlPrefix}blog`,
+                path: `${localeUrlPrefix}blog`,
                 component: blogTemplate,
                 // Data passed to context is available in page queries as GraphQL variables.
                 context: {
@@ -382,12 +382,12 @@ exports.createPages = ({ graphql, actions }) => {
                   nextPath: `/blog/${paginationName}2`,
                   totalCountBlog,
                   // need it for react-intl
-                  lang,
+                  locale,
                 },
               });
             } else {
               createPage({
-                path: `${langUrlPrefix}blog/${paginationName + currentPage}`,
+                path: `${localeUrlPrefix}blog/${paginationName + currentPage}`,
                 component: blogTemplate,
                 // Data passed to context is available in page queries as GraphQL variables.
                 context: {
@@ -414,7 +414,7 @@ exports.createPages = ({ graphql, actions }) => {
                       : null,
                   totalCountBlog,
                   // need it for react-intl
-                  lang,
+                  locale,
                 },
               });
             }
@@ -443,7 +443,7 @@ exports.createPages = ({ graphql, actions }) => {
             ) {
               if (currentPage === 1) {
                 createPage({
-                  path: `${langUrlPrefix}blog/tags/${tag.fieldValue}`,
+                  path: `${localeUrlPrefix}blog/tags/${tag.fieldValue}`,
                   component: tagTemplate,
                   // Data passed to context is available in page queries as GraphQL variables.
                   context: {
@@ -458,12 +458,12 @@ exports.createPages = ({ graphql, actions }) => {
                     totalCount: tag.totalCount,
                     tag: tag.fieldValue,
                     // need it for react-intl
-                    lang,
+                    locale,
                   },
                 });
               } else {
                 createPage({
-                  path: `${langUrlPrefix}blog/tags/${
+                  path: `${localeUrlPrefix}blog/tags/${
                     tag.fieldValue
                   }/${paginationName + currentPage}`,
                   component: tagTemplate,
@@ -497,7 +497,7 @@ exports.createPages = ({ graphql, actions }) => {
                     totalCount: tag.totalCount,
                     tag: tag.fieldValue,
                     // need it for react-intl
-                    lang,
+                    locale,
                   },
                 });
               }
@@ -511,7 +511,7 @@ exports.createPages = ({ graphql, actions }) => {
           edgesBlog.forEach((edge) => {
             createPage({
               path:
-                lang === "en"
+                locale === "en"
                   ? edge.node.fields.slug
                   : `/es${edge.node.fields.slug}`,
               component: postTemplate,
@@ -519,7 +519,7 @@ exports.createPages = ({ graphql, actions }) => {
               context: {
                 slug: edge.node.fields.slug,
                 // need it for react-intl
-                lang,
+                locale,
                 twinPost: _.kebabCase(edge.node.frontmatter.twinPost),
               },
             });
@@ -532,7 +532,7 @@ exports.createPages = ({ graphql, actions }) => {
           edgesLegal.forEach((edge) => {
             createPage({
               path:
-                lang === "en"
+                locale === "en"
                   ? edge.node.fields.slug
                   : `/es${edge.node.fields.slug}`,
               component: legalTemplate,
@@ -540,7 +540,7 @@ exports.createPages = ({ graphql, actions }) => {
               context: {
                 slug: edge.node.fields.slug,
                 // need it for react-intl
-                lang,
+                locale,
                 twinPost: _.kebabCase(edge.node.frontmatter.twinPost),
               },
             });
@@ -568,7 +568,7 @@ exports.createPages = ({ graphql, actions }) => {
           ) {
             if (currentPage === 1) {
               createPage({
-                path: langUrlPrefix + langUrlWorkPrefix,
+                path: localeUrlPrefix + localeUrlWorkPrefix,
                 component: workTemplate,
                 // Data passed to context is available in page queries as GraphQL variables.
                 context: {
@@ -580,18 +580,18 @@ exports.createPages = ({ graphql, actions }) => {
                   ).map(({ node }) => node),
                   currentPage,
                   totalPagesInWork,
-                  paginationPathPrefix: `/${langUrlWorkPrefix}`,
+                  paginationPathPrefix: `/${localeUrlWorkPrefix}`,
                   prevPath: null,
-                  nextPath: `/${langUrlWorkPrefix}/${paginationName}2`,
+                  nextPath: `/${localeUrlWorkPrefix}/${paginationName}2`,
                   totalCountWork,
                   // need it for react-intl
-                  lang,
+                  locale,
                 },
               });
             } else {
               createPage({
-                path: `${langUrlPrefix +
-                  langUrlWorkPrefix}/${paginationName}${currentPage}`,
+                path: `${localeUrlPrefix +
+                  localeUrlWorkPrefix}/${paginationName}${currentPage}`,
                 component: workTemplate,
                 // Data passed to context is available in page queries as GraphQL variables.
                 context: {
@@ -602,27 +602,27 @@ exports.createPages = ({ graphql, actions }) => {
                   ).map(({ node }) => node),
                   currentPage,
                   totalPagesInWork,
-                  paginationPathPrefix: `/${langUrlWorkPrefix}`,
+                  paginationPathPrefix: `/${localeUrlWorkPrefix}`,
                   // current index in loop minus 1
                   // for index = 2, /page/1
                   // only if its > 1 (not resulting in /page/0)
                   prevPath:
                     currentPage - 1 > 1
-                      ? `/${langUrlWorkPrefix}/${paginationName}/${currentPage -
+                      ? `/${localeUrlWorkPrefix}/${paginationName}${currentPage -
                           1}`
-                      : `/${langUrlWorkPrefix}`,
+                      : `/${localeUrlWorkPrefix}`,
                   // current index in loop plus 1
                   // index = 3 > /page/3
                   // nextPath = null
                   // only if its <= totalPages (not resulting in more pages than there are)
                   nextPath:
                     currentPage + 1 <= totalPagesInWork
-                      ? `/${langUrlWorkPrefix}/${paginationName}/${currentPage +
+                      ? `/${localeUrlWorkPrefix}/${paginationName}${currentPage +
                           1}`
                       : null,
                   totalCountWork,
                   // need it for react-intl
-                  lang,
+                  locale,
                 },
               });
             }
@@ -635,7 +635,7 @@ exports.createPages = ({ graphql, actions }) => {
           edgesWork.forEach((edge) => {
             createPage({
               path:
-                lang === "en"
+                locale === "en"
                   ? edge.node.fields.slug
                   : `/es${edge.node.fields.slug}`,
               component: caseStudyTemplate,
@@ -643,7 +643,7 @@ exports.createPages = ({ graphql, actions }) => {
               context: {
                 slug: edge.node.fields.slug,
                 // need it for react-intl
-                lang,
+                locale,
                 twinPost: _.kebabCase(edge.node.frontmatter.twinPost),
               },
             });

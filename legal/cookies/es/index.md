@@ -2,7 +2,7 @@
 title: "Aviso de Cookies"
 category: "legal"
 posted: true
-lang: "es"
+locale: "es"
 date: "12/02/2019"
 twinPost: "Cookie Notice"
 order: 1

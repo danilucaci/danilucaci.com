@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import styled from "styled-components";
@@ -71,7 +72,7 @@ const BlogPage = (props) => {
     prevPath,
     nextPath,
     edges,
-    lang,
+    locale,
   } = props.pageContext;
 
   const frontMatterTags = props.data.allMarkdownRemark;
@@ -87,26 +88,26 @@ const BlogPage = (props) => {
 
   let changeLanguage = "";
 
-  if (lang === "en" && currentPage > 1) {
+  if (locale === "en" && currentPage > 1) {
     changeLanguage =
-      "/es" + paginationPathPrefix + paginationPageLabels[lang] + currentPage;
-  } else if (lang === "en" && currentPage === 1) {
+      "/es" + paginationPathPrefix + paginationPageLabels[locale] + currentPage;
+  } else if (locale === "en" && currentPage === 1) {
     changeLanguage = "/es" + paginationPathPrefix;
   }
 
-  if (lang === "es" && currentPage > 1) {
+  if (locale === "es" && currentPage > 1) {
     changeLanguage =
-      paginationPathPrefix + paginationPageLabels[lang] + currentPage;
-  } else if (lang === "es" && currentPage === 1) {
+      paginationPathPrefix + paginationPageLabels[locale] + currentPage;
+  } else if (locale === "es" && currentPage === 1) {
     changeLanguage = paginationPathPrefix;
   }
 
   return (
-    <Layout location={props.location} locale={lang}>
-      <SiteHeader locale={lang} />
+    <Layout location={props.location} locale={locale}>
+      <SiteHeader locale={locale} />
       <Main role="main">
         <BlogWrapper>
-          <Helmet title={`${intlMessages[lang].meta.blogMetaTitle}`} />
+          <Helmet title={`${intlMessages[locale].meta.blogMetaTitle}`} />
           <SEO />
           <BlogHeader>
             <BlogInfo>
@@ -129,12 +130,12 @@ const BlogPage = (props) => {
               paginationPathPrefix={paginationPathPrefix}
               prevPath={prevPath}
               nextPath={nextPath}
-              lang={lang}
+              locale={locale}
             />
           )}
         </BlogWrapper>
       </Main>
-      <SiteFooter changeLanguage={changeLanguage} locale={lang} />
+      <SiteFooter changeLanguage={changeLanguage} locale={locale} />
     </Layout>
   );
 };
@@ -146,7 +147,7 @@ export const pageQuery = graphql`
     allMarkdownRemark(
       sort: { fields: [fields___date], order: DESC }
       filter: {
-        frontmatter: { posted: { eq: true }, category: { ne: "work" } }
+        frontmatter: { posted: { eq: true }, category: { eq: "blog" } }
       }
     ) {
       tags: group(field: frontmatter___tags) {

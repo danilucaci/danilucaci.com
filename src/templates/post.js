@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import styled from "styled-components";
@@ -279,7 +280,7 @@ class Post extends Component {
     const copyURLButton = document.querySelector(".js-copyURL > span");
     copyURLButton.addEventListener("click", this.copyURL);
     copyURLButton.textContent = `${
-      this.state.copyURLMessages[this.props.pageContext.lang].default
+      this.state.copyURLMessages[this.props.pageContext.locale].default
     }`;
 
     // Test via a getter in the options object to see if the passive property is accessed
@@ -315,20 +316,20 @@ class Post extends Component {
     try {
       document.execCommand("copy");
       copyURLButton.textContent = `${
-        this.state.copyURLMessages[this.props.pageContext.lang].copied
+        this.state.copyURLMessages[this.props.pageContext.locale].copied
       }`;
       setTimeout(() => {
         copyURLButton.textContent = `${
-          this.state.copyURLMessages[this.props.pageContext.lang].default
+          this.state.copyURLMessages[this.props.pageContext.locale].default
         }`;
       }, 2000);
     } catch (err) {
       copyURLButton.textContent = `${
-        this.state.copyURLMessages[this.props.pageContext.lang].error
+        this.state.copyURLMessages[this.props.pageContext.locale].error
       }`;
       setTimeout(() => {
         copyURLButton.textContent = `${
-          this.state.copyURLMessages[this.props.pageContext.lang].default
+          this.state.copyURLMessages[this.props.pageContext.locale].default
         }`;
       }, 2000);
     }
@@ -348,7 +349,7 @@ class Post extends Component {
     getCodeNodes.forEach((codeNode) => {
       const copyLink = document.createElement("span");
       copyLink.textContent = `${
-        this.state.copyCodeMessages[this.props.pageContext.lang].default
+        this.state.copyCodeMessages[this.props.pageContext.locale].default
       }`;
       copyLink.className = "js-codeCopy";
       codeNode.appendChild(copyLink);
@@ -386,32 +387,32 @@ class Post extends Component {
     try {
       document.execCommand("copy");
       currentCopyButton.textContent = `${
-        this.state.copyCodeMessages[this.props.pageContext.lang].copied
+        this.state.copyCodeMessages[this.props.pageContext.locale].copied
       }`;
 
       // If the textContent was changed, trigger a setTimeout after 2000ms
       // and change it back to "Copy"
       if (
         currentCopyButton.textContent ===
-        `${this.state.copyCodeMessages[this.props.pageContext.lang].copied}`
+        `${this.state.copyCodeMessages[this.props.pageContext.locale].copied}`
       ) {
         setTimeout(() => {
           currentCopyButton.textContent = `${
-            this.state.copyCodeMessages[this.props.pageContext.lang].default
+            this.state.copyCodeMessages[this.props.pageContext.locale].default
           }`;
         }, 2000);
       }
     } catch (err) {
       currentCopyButton.textContent = `${
-        this.state.copyCodeMessages[this.props.pageContext.lang].error
+        this.state.copyCodeMessages[this.props.pageContext.locale].error
       }`;
       if (
         currentCopyButton.textContent ===
-        `${this.state.copyCodeMessages[this.props.pageContext.lang].error}`
+        `${this.state.copyCodeMessages[this.props.pageContext.locale].error}`
       ) {
         setTimeout(() => {
           currentCopyButton.textContent = `${
-            this.state.copyCodeMessages[this.props.pageContext.lang].default
+            this.state.copyCodeMessages[this.props.pageContext.locale].default
           }`;
         }, 2000);
       }
@@ -449,23 +450,23 @@ class Post extends Component {
     const postInfo = postNode.frontmatter;
     const twinPost = this.props.pageContext.twinPost;
     const introCopy = postInfo.intro.split("|");
-    const lang = this.props.pageContext.lang;
+    const locale = this.props.pageContext.locale;
 
     let changeLanguage = "";
 
-    if (lang === "en") {
+    if (locale === "en") {
       changeLanguage = "/es/blog/" + twinPost;
-    } else if (lang === "es") {
+    } else if (locale === "es") {
       changeLanguage = "/blog/" + twinPost;
     }
 
     return (
-      <Layout location={this.props.location} locale={lang}>
+      <Layout location={this.props.location} locale={locale}>
         <Helmet
-          title={`${postInfo.title} || ${intlMessages[lang].meta.siteTitle}`}
+          title={`${postInfo.title} || ${intlMessages[locale].meta.siteTitle}`}
         />
         <SEO postPath={slug} postNode={postNode} postSEO />
-        <SiteHeader showScrollIndicator locale={lang} />
+        <SiteHeader showScrollIndicator locale={locale} />
         <Main role="main">
           <PostWrapper>
             <StyledPostHeader>
@@ -501,7 +502,7 @@ class Post extends Component {
           />
         </Main>
         <ScrollToTop />
-        <SiteFooter changeLanguage={changeLanguage} locale={lang} />
+        <SiteFooter changeLanguage={changeLanguage} locale={locale} />
       </Layout>
     );
   }

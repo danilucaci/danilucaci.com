@@ -2,7 +2,7 @@
 title: "Aviso de Privacidad"
 category: "legal"
 posted: true
-lang: "es"
+locale: "es"
 date: "12/02/2019"
 twinPost: "Privacy Notice"
 order: 2

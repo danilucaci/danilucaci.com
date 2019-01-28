@@ -8,7 +8,7 @@ tags:
     - iOS
     - E-Commerce Checkout
 posted: true
-lang: "en"
+locale: "en"
 image: "./movie_app_presentation.png"
 twinPost: "Applicacion de pelis 2"
 ---
