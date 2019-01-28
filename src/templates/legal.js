@@ -1,0 +1,207 @@
+import React, { Component } from "react";
+import Helmet from "react-helmet";
+import { graphql } from "gatsby";
+import styled from "styled-components";
+
+import { theme, rem, mediaMin } from "../theme/globalStyles";
+import SEO from "../components/SEO/SEO";
+import Layout from "../components/Layout";
+import SiteHeader from "../components/SiteHeader/SiteHeader";
+import { Main } from "../components/Main/Main";
+import SiteFooter from "../components/SiteFooter/SiteFooter";
+import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
+import { calculateScroll, textPassiveEventSupport } from "../helpers/helpers";
+import intlMessages from "../i18n/i18n";
+
+const ArticleWrapper = styled.article`
+  max-width: ${theme.contain.content};
+  margin-left: auto;
+  margin-right: auto;
+
+  padding-left: ${theme.gutters.s};
+  padding-right: ${theme.gutters.s};
+
+  ${mediaMin.s`
+    padding-left: ${theme.gutters.m};
+    padding-right: ${theme.gutters.m};
+`};
+`;
+
+const PostH1 = styled.h1`
+  margin-top: ${rem(8)};
+  margin-bottom: ${rem(8)};
+
+  ${mediaMin.m`
+    margin-top: ${rem(16)};
+    margin-bottom: ${rem(16)};
+  `};
+`;
+
+const PostContent = styled.section`
+  display: block;
+
+  max-width: ${theme.contain.post};
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: ${rem(16)};
+
+  ${mediaMin.s`
+    margin-top: ${rem(32)};
+    margin-bottom: ${rem(56)};
+  `};
+
+  h2 {
+    display: block;
+    margin-top: ${rem(32)};
+    margin-bottom: ${rem(16)};
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+
+    ${mediaMin.xs`
+      margin-top: ${rem(64)};
+      margin-bottom: ${rem(32)};
+    `};
+  }
+
+  h3 {
+    display: block;
+    margin-top: ${rem(32)};
+    margin-bottom: ${rem(16)};
+
+    ${mediaMin.xs`
+      margin-top: ${rem(64)};
+      margin-bottom: ${rem(32)};
+    `};
+  }
+
+  h4 {
+    display: block;
+    margin-top: ${rem(32)};
+    margin-bottom: ${rem(16)};
+  }
+
+  h5 {
+    display: block;
+    margin-top: ${rem(32)};
+    margin-bottom: ${rem(16)};
+  }
+
+  p {
+    margin-bottom: ${rem(32)};
+  }
+
+  p + ul {
+    margin-top: -${rem(16)};
+  }
+
+  ul + p {
+    margin-top: ${rem(32)};
+  }
+
+  ul {
+    list-style-type: disc;
+    list-style-position: outside;
+  }
+
+  li {
+    margin-left: ${rem(24)};
+  }
+
+  strong {
+    color: ${theme.colors.dark800};
+
+    .fonts-loaded & {
+      font-family: ${theme.fonts.bodyBold};
+    }
+
+    font-weight: 700;
+    font-style: normal;
+
+    font-size: ${theme.fontSizes.m};
+    line-height: ${theme.lineHeights.m};
+  }
+`;
+
+class LegalDoc extends Component {
+  state = {};
+
+  componentDidMount() {
+    // Test via a getter in the options object to see if the passive property is accessed
+    // https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#feature-detection
+    var supportsPassive = textPassiveEventSupport();
+    // Use our detect's results. passive applied if supported, capture will be false either way.
+    window.addEventListener(
+      "scroll",
+      this.handlePageScroll,
+      supportsPassive ? { passive: true } : false
+    );
+
+    this.handlePageScroll();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handlePageScroll);
+  }
+
+  handlePageScroll = () => {
+    this.handleScrollLine();
+  };
+
+  handleScrollLine = () => {
+    let scrollLine = document.querySelector(".js-scrollLine");
+    let scrolled = calculateScroll();
+    scrollLine.style.width = scrolled + "%";
+  };
+
+  render() {
+    const slug = this.props.data.markdownRemark.fields.slug;
+    const postNode = this.props.data.markdownRemark;
+    const postInfo = postNode.frontmatter;
+    const lang = this.props.pageContext.lang;
+    const twinPost = this.props.pageContext.twinPost;
+
+    let changeLanguage = "";
+
+    if (lang === "en") {
+      changeLanguage = "/es/" + twinPost;
+    } else if (lang === "es") {
+      changeLanguage = "/" + twinPost;
+    }
+
+    return (
+      <Layout location={this.props.location} locale={lang}>
+        <Helmet
+          title={`${postInfo.title} || ${intlMessages[lang].meta.siteTitle}`}
+        />
+        <SEO postPath={slug} postNode={postNode} postSEO />
+        <SiteHeader showScrollIndicator locale={lang} />
+        <Main role="main" id="main">
+          <ArticleWrapper>
+            <PostH1>{postInfo.title}</PostH1>
+            <PostContent dangerouslySetInnerHTML={{ __html: postNode.html }} />
+          </ArticleWrapper>
+        </Main>
+        <ScrollToTop />
+        <SiteFooter changeLanguage={changeLanguage} />
+      </Layout>
+    );
+  }
+}
+
+export default LegalDoc;
+
+export const legalPageQuery = graphql`
+  query LegalEntryBySlug($slug: String) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
+      html
+      frontmatter {
+        title
+      }
+      fields {
+        slug
+      }
+    }
+  }
+`;

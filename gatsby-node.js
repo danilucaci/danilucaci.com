@@ -125,9 +125,10 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         if (node.frontmatter.lang === "es") {
           slug = `/trabajos/${_.kebabCase(node.frontmatter.title)}`;
         }
-      }
-      if (node.frontmatter.category === "blog") {
+      } else if (node.frontmatter.category === "blog") {
         slug = `/blog/${_.kebabCase(node.frontmatter.title)}`;
+      } else if (node.frontmatter.category === "legal") {
+        slug = `/${_.kebabCase(node.frontmatter.title)}`;
       }
     } else if (parsedFilePath.name !== "index" && parsedFilePath.dir !== "") {
       slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
@@ -190,9 +191,9 @@ exports.createPages = ({ graphql, actions }) => {
               limit: 2000
               sort: { fields: [frontmatter___date], order: DESC }
               filter: {
-                frontmatter: { 
-                  posted: { eq: true }, 
-                  category: { ne: "work" }, 
+                frontmatter: {
+                  posted: { eq: true }
+                  category: { ne: "work" }
                   lang: { eq: "${lang}" }
                 }
               }
@@ -245,9 +246,9 @@ exports.createPages = ({ graphql, actions }) => {
               limit: 2000
               sort: { fields: [frontmatter___date], order: DESC }
               filter: {
-                frontmatter: { 
-                  posted: { eq: true }, 
-                  category: { eq: "work" },
+                frontmatter: {
+                  posted: { eq: true }
+                  category: { eq: "work" }
                   lang: { eq: "${lang}" }
                 }
               }
@@ -281,6 +282,32 @@ exports.createPages = ({ graphql, actions }) => {
                 }
               }
             }
+            legal: allMarkdownRemark(
+              limit: 100
+              filter: {
+                frontmatter: {
+                  posted: { eq: true }
+                  category: { eq: "legal" }
+                  lang: { eq: "${lang}" }
+                }
+              }
+            ) {
+              edges {
+                node {
+                  fields {
+                    slug
+                  }
+                  frontmatter {
+                    title
+                    date(formatString: "DD MMMM YYYY")
+                    category
+                    posted
+                    twinPost
+                    lang
+                  }
+                }
+              }
+            }
           }
         `).then((result) => {
           if (result.errors) {
@@ -294,12 +321,16 @@ exports.createPages = ({ graphql, actions }) => {
           const tagTemplate = path.resolve("src/templates/tag.js");
           const workTemplate = path.resolve("src/templates/work.js");
           const caseStudyTemplate = path.resolve("src/templates/caseStudy.js");
+          const legalTemplate = path.resolve("src/templates/legal.js");
 
           // Data Sources
           // Blog
           const totalCountBlog = result.data.blog.totalCount;
           const edgesBlog = result.data.blog.edges;
           const tagsBlog = result.data.blog.tags;
+
+          // Legal Docs
+          const edgesLegal = result.data.legal.edges;
 
           // Work / case studies
           const totalCountWork = result.data.work.totalCount;
@@ -489,6 +520,28 @@ exports.createPages = ({ graphql, actions }) => {
                 slug: edge.node.fields.slug,
                 // need it for react-intl
                 lang,
+                twinPost: _.kebabCase(edge.node.frontmatter.twinPost),
+              },
+            });
+          });
+
+          /*******************************************************
+           * Legal Pages Creation
+           */
+
+          edgesLegal.forEach((edge) => {
+            createPage({
+              path:
+                lang === "en"
+                  ? edge.node.fields.slug
+                  : `/es${edge.node.fields.slug}`,
+              component: legalTemplate,
+              // Data passed to context is available in page queries as GraphQL variables.
+              context: {
+                slug: edge.node.fields.slug,
+                // need it for react-intl
+                lang,
+                date: edge.node.frontmatter.date,
                 twinPost: _.kebabCase(edge.node.frontmatter.twinPost),
               },
             });
