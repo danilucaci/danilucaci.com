@@ -541,7 +541,6 @@ exports.createPages = ({ graphql, actions }) => {
                 slug: edge.node.fields.slug,
                 // need it for react-intl
                 lang,
-                date: edge.node.frontmatter.date,
                 twinPost: _.kebabCase(edge.node.frontmatter.twinPost),
               },
             });

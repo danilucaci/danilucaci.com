@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import styled from "styled-components";
+import { FormattedDate, FormattedMessage } from "react-intl";
 
 import { theme, rem, mediaMin } from "../theme/globalStyles";
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
+import { Copy } from "../components/Copy/Copy";
 import SiteHeader from "../components/SiteHeader/SiteHeader";
 import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
@@ -13,8 +15,8 @@ import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import { calculateScroll, textPassiveEventSupport } from "../helpers/helpers";
 import intlMessages from "../i18n/i18n";
 
-const ArticleWrapper = styled.article`
-  max-width: ${theme.contain.content};
+const PageWrapper = styled.section`
+  max-width: ${theme.contain.post};
   margin-left: auto;
   margin-right: auto;
 
@@ -124,9 +126,15 @@ const PostContent = styled.section`
   }
 `;
 
-class LegalDoc extends Component {
-  state = {};
+const Time = styled(Copy)`
+  display: inline-block;
+  font-variant: small-caps;
+  text-transform: lowercase;
+  letter-spacing: ${rem(0.5)};
+  font-feature-settings: "smcp", "c2sc", "onum";
+`;
 
+class LegalDoc extends Component {
   componentDidMount() {
     // Test via a getter in the options object to see if the passive property is accessed
     // https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#feature-detection
@@ -161,6 +169,7 @@ class LegalDoc extends Component {
     const postInfo = postNode.frontmatter;
     const lang = this.props.pageContext.lang;
     const twinPost = this.props.pageContext.twinPost;
+    const lastUpdated = postInfo.date;
 
     let changeLanguage = "";
 
@@ -178,10 +187,29 @@ class LegalDoc extends Component {
         <SEO postPath={slug} postNode={postNode} postSEO />
         <SiteHeader showScrollIndicator locale={lang} />
         <Main role="main" id="main">
-          <ArticleWrapper>
+          <PageWrapper>
             <PostH1>{postInfo.title}</PostH1>
+            <FormattedMessage id="legalUpdated">
+              {(txt) => (
+                <Copy small>
+                  {txt}&nbsp;
+                  <FormattedDate
+                    value={lastUpdated}
+                    year="numeric"
+                    month="long"
+                    day="numeric"
+                  >
+                    {(txt) => (
+                      <Time as="time" dateTime={txt}>
+                        {txt}
+                      </Time>
+                    )}
+                  </FormattedDate>
+                </Copy>
+              )}
+            </FormattedMessage>
             <PostContent dangerouslySetInnerHTML={{ __html: postNode.html }} />
-          </ArticleWrapper>
+          </PageWrapper>
         </Main>
         <ScrollToTop />
         <SiteFooter changeLanguage={changeLanguage} />
@@ -198,6 +226,7 @@ export const legalPageQuery = graphql`
       html
       frontmatter {
         title
+        date
       }
       fields {
         slug
