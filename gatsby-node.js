@@ -10,10 +10,6 @@ require("dotenv").config({
 // Create pages with translated url for locales
 const locales = require("./src/locales/locales");
 
-exports.onCreatePage = ({ page }) => {
-  console.log(page);
-};
-
 exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions;
 
@@ -26,18 +22,26 @@ exports.onCreatePage = ({ page, actions }) => {
       //   ? page.path
       //   : locales[lang].path + page.path;
       let localizedPath = "";
+      let hasTrailingSlash = page.path.endsWith("/") && page.path.length > 2;
+
       // Translate page urls
       if (locales[lang].default) {
-        localizedPath = page.path;
+        localizedPath = hasTrailingSlash ? page.path.slice(0, -1) : page.path;
       } else {
-        if (page.path.includes("/about-me")) {
+        if (page.path === "/") {
+          localizedPath = locales[lang].path;
+        } else if (page.path.includes("/about-me")) {
           localizedPath = locales[lang].path + "/sobre-mi";
-        } else if (page.path.includes("/contact/")) {
+        } else if (page.path.includes("/contact")) {
           localizedPath = locales[lang].path + "/contacto";
         } else {
           localizedPath = locales[lang].path + page.path;
+          if (hasTrailingSlash) {
+            localizedPath = `${locales[lang].path}${page.path.slice(0, -1)}`;
+          }
         }
       }
+      console.log(`${localizedPath} ${lang}`);
 
       return createPage({
         ...page,
@@ -56,6 +60,8 @@ exports.onCreatePage = ({ page, actions }) => {
 //
 // this has be adjusted for translated links
 // I don't really need it
+//
+// one way to do it is looping over en/posts and then es/posts
 //
 // const postNodes = [];
 // function addSiblingNodes(createNodeField) {

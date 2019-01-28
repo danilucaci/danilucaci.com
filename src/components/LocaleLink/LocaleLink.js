@@ -6,7 +6,12 @@ import { injectIntl, intlShape } from "react-intl";
 import locales from "../../locales/locales";
 
 const LocaleLink = ({ to, intl: { locale }, ...props }) => {
-  const path = locales[locale].default ? to : `/${locale}${to}`;
+  let path = locales[locale].default ? to : `/${locale}${to}`;
+
+  // logo link to /es and not /es/
+  if (to === "/" && !locales[locale].default) {
+    path = `/${locale}`;
+  }
 
   return <Link {...props} to={path} />;
 };
