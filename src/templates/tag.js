@@ -106,7 +106,7 @@ const OtherTagsWrapper = styled.div`
 const TagPage = (props) => {
   const {
     currentPage,
-    totalPagesInBlogBlog,
+    totalPagesInBlog,
     paginationPathPrefix,
     prevPath,
     nextPath,
@@ -167,10 +167,10 @@ const TagPage = (props) => {
             </OtherTagsWrapper>
           </TagHeader>
           <PostListing edges={edges} />
-          {totalPagesInBlogBlog > 1 && (
+          {totalPagesInBlog > 1 && (
             <Pagination
               currentPage={currentPage}
-              totalPages={totalPagesInBlogBlog}
+              totalPages={totalPagesInBlog}
               paginationPathPrefix={paginationPathPrefix}
               prevPath={prevPath}
               nextPath={nextPath}
