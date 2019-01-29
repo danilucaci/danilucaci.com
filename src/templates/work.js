@@ -120,16 +120,6 @@ WorkPage.propTypes = {
     paginationPathPrefix: PropTypes.string.isRequired,
     edgesWork: PropTypes.arrayOf(PropTypes.object).isRequired,
   }),
-  pathContext: PropTypes.shape({
-    locale: PropTypes.string.isRequired,
-    nextPath: PropTypes.string,
-    prevPath: PropTypes.string,
-    currentPage: PropTypes.number.isRequired,
-    totalCountWork: PropTypes.number.isRequired,
-    totalPagesInWork: PropTypes.number.isRequired,
-    paginationPathPrefix: PropTypes.string.isRequired,
-    edgesWork: PropTypes.arrayOf(PropTypes.object).isRequired,
-  }),
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
       tags: PropTypes.arrayOf(PropTypes.object).isRequired,

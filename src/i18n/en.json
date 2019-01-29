@@ -1,15 +1,15 @@
 {
   "meta": {
-    "siteTitle": "Dani Lucaci — UX/UI Designer and Front–End Developer",
+    "siteTitle": "Dani Lucaci - UX/UI Designer and Front–End Developer",
     "siteTitleShort": "danilucaci.com",
-    "siteTitleAlt": "Dani Lucaci — Personal Website and Blog",
-    "siteDescription": "My personal blog where I write about UX/UI Design and Front–End Development || Dani Lucaci — UX/UI Designer and Front–End Developer.",
-    "blogMetaTitle": "danilucaci.com — Blog || UX/UI Designer and Front–End Developer.",
-    "tagListingMetaTitle": "danilucaci.com — Blog || UX/UI Designer and Front–End Developer.",
-    "workMetaTitle": "Case Studies — danilucaci.com || UX/UI Designer and Front–End Developer.",
-    "contactMetaTitle": "Contact — danilucaci.com || UX/UI Designer and Front–End Developer.",
-    "aboutMeMetaTitle": "About Me — danilucaci.com || UX/UI Designer and Front–End Developer.",
-    "pageNotFoundMetaTitle": "Sorry, this page doesn't exist — danilucaci.com || UX/UI Designer and Front–End Developer."
+    "siteTitleAlt": "Dani Lucaci - Personal Website and Blog",
+    "siteDescription": "My personal blog where I write about UX/UI Design and Front–End Development | Dani Lucaci - UX/UI Designer and Front–End Developer.",
+    "blogMetaTitle": "Blog - danilucaci.com | UX/UI Designer and Front–End Developer.",
+    "tagListingMetaTitle": "Blog Tags - danilucaci.com | UX/UI Designer and Front–End Developer.",
+    "workMetaTitle": "Case Studies - danilucaci.com | UX/UI Designer and Front–End Developer.",
+    "contactMetaTitle": "Contact - danilucaci.com | UX/UI Designer and Front–End Developer.",
+    "aboutMeMetaTitle": "About Me - danilucaci.com | UX/UI Designer and Front–End Developer.",
+    "pageNotFoundMetaTitle": "Sorry, this page doesn't exist - danilucaci.com | UX/UI Designer and Front–End Developer."
   },
   "siteNavAbout": "About Me",
   "siteNavBlog": "Blog",

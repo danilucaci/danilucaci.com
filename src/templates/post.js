@@ -514,11 +514,6 @@ Post.propTypes = {
     slug: PropTypes.string.isRequired,
     twinPost: PropTypes.string.isRequired,
   }),
-  pathContext: PropTypes.shape({
-    locale: PropTypes.string.isRequired,
-    slug: PropTypes.string.isRequired,
-    twinPost: PropTypes.string.isRequired,
-  }),
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
       fields: PropTypes.shape({

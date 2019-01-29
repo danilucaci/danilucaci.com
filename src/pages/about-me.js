@@ -231,9 +231,6 @@ AboutPage.propTypes = {
   pageContext: PropTypes.shape({
     locale: PropTypes.string.isRequired,
   }),
-  pathContext: PropTypes.shape({
-    locale: PropTypes.string.isRequired,
-  }),
   data: PropTypes.shape({
     aboutImage: PropTypes.object.isRequired,
   }),

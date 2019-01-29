@@ -49,7 +49,7 @@ const SiteFooter = (props) => {
           let localizedDocsList = [];
           // Should sort the docs based on the frontmatter order prop
           // The order changes when switching language
-          let sortedLocalizedDocsList = [];
+          // let sortedLocalizedDocsList = [];
 
           data.allMarkdownRemark.edges.forEach((edge) => {
             docsList.push({

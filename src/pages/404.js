@@ -34,9 +34,6 @@ NotFoundPage.propTypes = {
   pageContext: PropTypes.shape({
     locale: PropTypes.string.isRequired,
   }),
-  pathContext: PropTypes.shape({
-    locale: PropTypes.string.isRequired,
-  }),
 };
 
 export default NotFoundPage;
