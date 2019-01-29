@@ -523,6 +523,34 @@ class CaseStudy extends Component {
   }
 }
 
+CaseStudy.propTypes = {
+  pageContext: PropTypes.shape({
+    locale: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
+    twinPost: PropTypes.string.isRequired,
+  }),
+  pathContext: PropTypes.shape({
+    locale: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
+    twinPost: PropTypes.string.isRequired,
+  }),
+  data: PropTypes.shape({
+    markdownRemark: PropTypes.shape({
+      fields: PropTypes.shape({
+        slug: PropTypes.string.isRequired,
+      }),
+      frontmatter: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        date: PropTypes.string.isRequired,
+        image: PropTypes.object.isRequired,
+        description: PropTypes.string.isRequired,
+        tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+      }),
+      html: PropTypes.string.isRequired,
+    }),
+  }),
+};
+
 export default CaseStudy;
 
 export const pageQuery = graphql`

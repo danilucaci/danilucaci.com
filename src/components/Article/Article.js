@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
 
@@ -61,6 +62,15 @@ const Article = (props) => {
       </FormattedMessage>
     </StyledArticle>
   );
+};
+
+Article.propTypes = {
+  title: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
+  tagsInPost: PropTypes.arrayOf(PropTypes.string).isRequired,
+  timeToRead: PropTypes.number.isRequired,
 };
 
 export default Article;

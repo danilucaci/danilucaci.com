@@ -139,6 +139,8 @@ const SiteNavListItem = (props) => {
 
 SiteNavListItem.propTypes = {
   children: PropTypes.string.isRequired,
+  showNav: PropTypes.bool.isRequired,
+  to: PropTypes.string.isRequired,
 };
 
 export default SiteNavListItem;

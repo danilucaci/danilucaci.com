@@ -1,5 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
+
 import { theme, rem, mediaMin } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
 import { PrimaryButton, GhostButton } from "../Button/Button";
@@ -64,6 +66,13 @@ const CookieConsent = (props) => {
       <StyledGhostButton onClick={props.deniesCookies}>Deny</StyledGhostButton>
     </StyledCookieConsent>
   );
+};
+
+CookieConsent.propTypes = {
+  acceptsCookies: PropTypes.func.isRequired,
+  askGDPRConsent: PropTypes.bool.isRequired,
+  doNotTrackActive: PropTypes.bool.isRequired,
+  deniesCookies: PropTypes.func.isRequired,
 };
 
 export default CookieConsent;

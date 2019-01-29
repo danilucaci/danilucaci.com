@@ -284,6 +284,20 @@ class Index extends Component {
   }
 }
 
+Index.propTypes = {
+  pageContext: PropTypes.shape({
+    locale: PropTypes.string.isRequired,
+  }),
+  pathContext: PropTypes.shape({
+    locale: PropTypes.string.isRequired,
+  }),
+  data: PropTypes.shape({
+    work: PropTypes.shape({
+      edges: PropTypes.arrayOf(PropTypes.object).isRequired,
+    }),
+  }),
+};
+
 export default Index;
 
 export const pageQuery = graphql`

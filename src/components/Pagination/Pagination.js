@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { FormattedMessage } from "react-intl";
 
@@ -266,6 +267,15 @@ const Pagination = (props) => {
       )}
     </PaginationWrapper>
   );
+};
+
+Pagination.propTypes = {
+  currentPage: PropTypes.number.isRequired,
+  totalPages: PropTypes.number.isRequired,
+  paginationPathPrefix: PropTypes.string.isRequired,
+  prevPath: PropTypes.string,
+  nextPath: PropTypes.string,
+  locale: PropTypes.string.isRequired,
 };
 
 export default Pagination;

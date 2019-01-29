@@ -55,6 +55,7 @@ class SiteHeader extends Component {
 
   render() {
     let shouldRenderScroll = this.props.showScrollIndicator;
+
     return (
       <StyledSiteHeaderWrapper>
         <StyledSiteHeader role="banner">
@@ -76,6 +77,7 @@ class SiteHeader extends Component {
 
 SiteHeader.propTypes = {
   locale: PropTypes.string.isRequired,
+  optionalBool: PropTypes.bool,
 };
 
 export default SiteHeader;

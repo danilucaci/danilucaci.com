@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 
 import { theme, mediaMin, rem } from "../../../theme/globalStyles";
@@ -37,8 +38,11 @@ const StyledTag = styled(LocaleLink)`
   }
 `;
 
-const Tag = (props) => {
-  return <StyledTag to={props.link}>{props.label}</StyledTag>;
+const Tag = (props) => <StyledTag to={props.link}>{props.label}</StyledTag>;
+
+Tag.propTypes = {
+  link: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
 };
 
 export default Tag;

@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 import Img from "gatsby-image";
 import styled from "styled-components";
 import { theme, mediaMin, rem, mediaMax } from "../../theme/globalStyles";
@@ -120,6 +122,15 @@ const CaseStudyCard = (props) => {
       </CaseStudyCardContents>
     </StyledCaseStudyCard>
   );
+};
+
+CaseStudyCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  image: PropTypes.object.isRequired,
+  tagsInCaseStudy: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default CaseStudyCard;

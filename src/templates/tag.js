@@ -106,7 +106,7 @@ const OtherTagsWrapper = styled.div`
 const TagPage = (props) => {
   const {
     currentPage,
-    totalPagesInBlog,
+    totalPagesInBlogBlog,
     paginationPathPrefix,
     prevPath,
     nextPath,
@@ -167,10 +167,10 @@ const TagPage = (props) => {
             </OtherTagsWrapper>
           </TagHeader>
           <PostListing edges={edges} />
-          {totalPagesInBlog > 1 && (
+          {totalPagesInBlogBlog > 1 && (
             <Pagination
               currentPage={currentPage}
-              totalPages={totalPagesInBlog}
+              totalPages={totalPagesInBlogBlog}
               paginationPathPrefix={paginationPathPrefix}
               prevPath={prevPath}
               nextPath={nextPath}
@@ -184,6 +184,34 @@ const TagPage = (props) => {
   );
 };
 
+TagPage.propTypes = {
+  pageContext: PropTypes.shape({
+    locale: PropTypes.string.isRequired,
+    nextPath: PropTypes.string,
+    prevPath: PropTypes.string,
+    currentPage: PropTypes.number.isRequired,
+    totalCount: PropTypes.number.isRequired,
+    totalPagesInBlog: PropTypes.number.isRequired,
+    paginationPathPrefix: PropTypes.string.isRequired,
+    edges: PropTypes.arrayOf(PropTypes.object).isRequired,
+  }),
+  pathContext: PropTypes.shape({
+    locale: PropTypes.string.isRequired,
+    nextPath: PropTypes.string,
+    prevPath: PropTypes.string,
+    currentPage: PropTypes.number.isRequired,
+    totalCount: PropTypes.number.isRequired,
+    totalPagesInBlog: PropTypes.number.isRequired,
+    paginationPathPrefix: PropTypes.string.isRequired,
+    edges: PropTypes.arrayOf(PropTypes.object).isRequired,
+  }),
+  data: PropTypes.shape({
+    allMarkdownRemark: PropTypes.shape({
+      tags: PropTypes.arrayOf(PropTypes.object).isRequired,
+    }),
+  }),
+};
+
 export default TagPage;
 
 export const pageQuery = graphql`
@@ -191,9 +219,7 @@ export const pageQuery = graphql`
     allMarkdownRemark(
       limit: 200
       sort: { fields: [fields___date], order: DESC }
-      filter: {
-        frontmatter: { posted: { eq: true }, category: { ne: "work" } }
-      }
+      filter: { frontmatter: { posted: { eq: true }, category: { ne: "" } } }
     ) {
       tags: group(field: frontmatter___tags) {
         fieldValue

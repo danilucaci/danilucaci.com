@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { FormattedDate } from "react-intl";
 
@@ -47,6 +48,10 @@ const ArticleDate = (props) => {
       </FormattedDate>
     </Wrapper>
   );
+};
+
+ArticleDate.propTypes = {
+  date: PropTypes.string.isRequired,
 };
 
 export default ArticleDate;

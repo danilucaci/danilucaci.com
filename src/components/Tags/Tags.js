@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 
 import Tag from "./Tag/Tag";
@@ -17,7 +17,6 @@ const TagsWrapper = styled.div`
 
 const Tags = (props) => {
   let tagsInPost = props.tagsInPost;
-
   return (
     <TagsWrapper spaced={props.spaced} inline={props.inline}>
       {tagsInPost &&
@@ -26,6 +25,11 @@ const Tags = (props) => {
         ))}
     </TagsWrapper>
   );
+};
+
+Tags.propTypes = {
+  optionalBool: PropTypes.bool,
+  tagsInPost: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default Tags;

@@ -1,12 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import urljoin from "url-join";
+import { TwitterShareButton, LinkedinShareButton } from "react-share";
 
 import config from "../../../data/SiteConfig";
 import { theme, rem, mediaMax, mediaMin } from "../../theme/globalStyles";
-
-import { TwitterShareButton, LinkedinShareButton } from "react-share";
-
 import { Icon } from "../Icon/Icon";
 
 const StyledSocialShare = styled.div`
@@ -106,7 +105,6 @@ const LinkedinIcon = styled(StyledIcon)`
 
 const SocialShare = (props) => {
   const url = urljoin(config.siteUrl, config.pathPrefix, props.slug);
-
   return (
     <StyledSocialShare>
       <LinkedinShareButton
@@ -142,6 +140,13 @@ const SocialShare = (props) => {
       </StyledCopyButton>
     </StyledSocialShare>
   );
+};
+
+SocialShare.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  slug: PropTypes.string.isRequired,
+  snippet: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default SocialShare;

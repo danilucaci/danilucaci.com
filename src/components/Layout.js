@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import styled, { ThemeProvider } from "styled-components";
 var FontFaceObserver = require("fontfaceobserver");
@@ -245,5 +246,9 @@ class Layout extends Component {
     );
   }
 }
+
+Layout.propTypes = {
+  locale: PropTypes.string.isRequired,
+};
 
 export default Layout;

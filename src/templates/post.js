@@ -508,6 +508,37 @@ class Post extends Component {
   }
 }
 
+Post.propTypes = {
+  pageContext: PropTypes.shape({
+    locale: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
+    twinPost: PropTypes.string.isRequired,
+  }),
+  pathContext: PropTypes.shape({
+    locale: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
+    twinPost: PropTypes.string.isRequired,
+  }),
+  data: PropTypes.shape({
+    markdownRemark: PropTypes.shape({
+      fields: PropTypes.shape({
+        slug: PropTypes.string.isRequired,
+      }),
+      frontmatter: PropTypes.shape({
+        category: PropTypes.string.isRequired,
+        date: PropTypes.string.isRequired,
+        image: PropTypes.object,
+        intro: PropTypes.string.isRequired,
+        snippet: PropTypes.string.isRequired,
+        tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+        title: PropTypes.string.isRequired,
+      }),
+      timeToRead: PropTypes.number.isRequired,
+      htmlAst: PropTypes.object.isRequired,
+    }),
+  }),
+};
+
 export default Post;
 
 export const pageQuery = graphql`

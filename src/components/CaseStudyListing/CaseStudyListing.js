@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import CaseStudyCard from "../CaseStudyCard/CaseStudyCard";
@@ -43,5 +44,9 @@ class CaseStudyListing extends Component {
     );
   }
 }
+
+CaseStudyListing.propTypes = {
+  edges: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default CaseStudyListing;

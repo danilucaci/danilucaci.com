@@ -140,6 +140,34 @@ const BlogPage = (props) => {
   );
 };
 
+BlogPage.propTypes = {
+  pageContext: PropTypes.shape({
+    locale: PropTypes.string.isRequired,
+    nextPath: PropTypes.string,
+    prevPath: PropTypes.string,
+    currentPage: PropTypes.number.isRequired,
+    totalCountBlog: PropTypes.number.isRequired,
+    totalPagesInBlog: PropTypes.number.isRequired,
+    paginationPathPrefix: PropTypes.string.isRequired,
+    edges: PropTypes.arrayOf(PropTypes.object).isRequired,
+  }),
+  pathContext: PropTypes.shape({
+    locale: PropTypes.string.isRequired,
+    nextPath: PropTypes.string,
+    prevPath: PropTypes.string,
+    currentPage: PropTypes.number.isRequired,
+    totalCountBlog: PropTypes.number.isRequired,
+    totalPagesInBlog: PropTypes.number.isRequired,
+    paginationPathPrefix: PropTypes.string.isRequired,
+    edges: PropTypes.arrayOf(PropTypes.object).isRequired,
+  }),
+  data: PropTypes.shape({
+    allMarkdownRemark: PropTypes.shape({
+      tags: PropTypes.arrayOf(PropTypes.object).isRequired,
+    }),
+  }),
+};
+
 export default BlogPage;
 
 export const pageQuery = graphql`

@@ -219,6 +219,31 @@ class LegalDoc extends Component {
   }
 }
 
+LegalDoc.propTypes = {
+  pageContext: PropTypes.shape({
+    locale: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
+    twinPost: PropTypes.string.isRequired,
+  }),
+  pathContext: PropTypes.shape({
+    locale: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
+    twinPost: PropTypes.string.isRequired,
+  }),
+  data: PropTypes.shape({
+    markdownRemark: PropTypes.shape({
+      fields: PropTypes.shape({
+        slug: PropTypes.string.isRequired,
+      }),
+      frontmatter: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        date: PropTypes.string.isRequired,
+      }),
+      html: PropTypes.string.isRequired,
+    }),
+  }),
+};
+
 export default LegalDoc;
 
 export const legalPageQuery = graphql`

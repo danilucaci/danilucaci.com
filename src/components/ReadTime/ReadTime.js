@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
 
@@ -37,6 +38,10 @@ const ReadTime = (props) => {
       </FormattedMessage>
     </Wrapper>
   );
+};
+
+ReadTime.propTypes = {
+  timeToRead: PropTypes.number.isRequired,
 };
 
 export default ReadTime;

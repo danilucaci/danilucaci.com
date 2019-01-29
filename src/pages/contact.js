@@ -196,4 +196,13 @@ const ContactPage = (props) => {
   );
 };
 
+ContactPage.propTypes = {
+  pageContext: PropTypes.shape({
+    locale: PropTypes.string.isRequired,
+  }),
+  pathContext: PropTypes.shape({
+    locale: PropTypes.string.isRequired,
+  }),
+};
+
 export default ContactPage;
