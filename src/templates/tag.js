@@ -219,7 +219,9 @@ export const pageQuery = graphql`
     allMarkdownRemark(
       limit: 200
       sort: { fields: [fields___date], order: DESC }
-      filter: { frontmatter: { posted: { eq: true }, category: { ne: "" } } }
+      filter: {
+        frontmatter: { posted: { eq: true }, category: { eq: "blog" } }
+      }
     ) {
       tags: group(field: frontmatter___tags) {
         fieldValue
