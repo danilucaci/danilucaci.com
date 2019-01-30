@@ -5,7 +5,6 @@ posted: true
 locale: "en"
 date: "12/02/2019"
 twinPost: "Aviso de Privacidad"
-order: 2
 ---
 
 ##Privacy Notice

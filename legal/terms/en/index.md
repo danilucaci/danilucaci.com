@@ -5,7 +5,6 @@ posted: true
 locale: "en"
 date: "12/02/2019"
 twinPost: "Términos y Condiciones"
-order: 3
 ---
 
 ##Terms and Conditions

@@ -20,10 +20,8 @@ import { checkForDoNotTrack } from "../helpers/helpers";
 import CookieConsent from "./CookieConsent/CookieConsent";
 
 require("./prism.css");
+
 import intlMessages from "../i18n/i18n";
-
-// console.log("env: " + process.env.GATSBY_ASSETS_URL);
-
 addLocaleData([...enData, ...esData]);
 
 const Page = styled.div`
@@ -43,15 +41,13 @@ class Layout extends Component {
     hasGDPRConsent: false,
     hasAnalyticsConsent: true,
     askGDPRConsent: true,
-    cookieName: "DaniLucaciCookieConsent",
-    cookieValues: { marketing: "true", analytics: "true" },
-    cookieExpires: 1500,
-    // cookieSecure: false,
-    // cookieDomain: "/",
+    acceptsCookie: { necessary: true, analytics: true },
+    deniesCookie: { necessary: true, analytics: false },
+    cookieExp: 730,
   };
 
   componentDidMount() {
-    this.checkDNT();
+    // this.checkDNT();
     this.checkGDPRStatus();
     this.checkFontsLoaded();
   }
@@ -82,66 +78,118 @@ class Layout extends Component {
       this.setState((prevState) => ({
         doNotTrackActive: !prevState.doNotTrackActive,
       }));
-      console.log(`%cDoNotTrack Active`, "color: #79E36B");
+      console.log(`%c DNT Active`, "color: #79E36B");
     }
   };
 
   checkGDPRStatus = () => {
-    let danilucaciCookieConsent = Cookies.getJSON(this.state.cookieName);
-    if (danilucaciCookieConsent) {
-      this.setState((prevState) => ({
-        askGDPRConsent: !prevState.askGDPRConsent,
-        hasGDPRConsent: !prevState.hasGDPRConsent,
-      }));
+    if (process.env.DL_COOKIE_NAME) {
+      let DLCookie = Cookies.getJSON(process.env.DL_COOKIE_NAME);
+
+      if (DLCookie) {
+        if (DLCookie.analytics) {
+          this.setState((prevState) => ({
+            askGDPRConsent: !prevState.askGDPRConsent,
+            hasGDPRConsent: !prevState.hasGDPRConsent,
+          }));
+        } else if (!DLCookie.analytics) {
+          this.setState((prevState) => ({
+            askGDPRConsent: !prevState.askGDPRConsent,
+          }));
+        }
+      } else {
+        console.log(`%c Didn't find a cookie.`, "color: #79E36B");
+      }
+    } else {
+      console.warn("dl.com Can't read cookie name.");
     }
   };
 
   showGDPRStatus = () => {
-    let danilucaciCookieConsent = Cookies.getJSON(this.state.cookieName);
-    if (danilucaciCookieConsent) {
-      console.groupCollapsed(
-        `%cdanilucaci.com GDPR Consent Found`,
-        "color: #79E36B"
-      );
-      console.log("HasGDPRConsent: ", this.state.hasGDPRConsent);
-      console.log("AskGDPRConsent: ", this.state.askGDPRConsent);
-      console.log("CookieSet: ", danilucaciCookieConsent);
-      console.groupEnd();
+    if (process.env.DL_COOKIE_NAME) {
+      let DLCookie = Cookies.getJSON(process.env.DL_COOKIE_NAME);
+      if (DLCookie) {
+        if (DLCookie.analytics) {
+          console.log(`%c Cookies Accepted.`, "color: #79E36B");
+        } else if (!DLCookie.analytics) {
+          console.log(`%c Cookies Denied.`, "color: #79E36B");
+        }
+      } else {
+        console.log(`%c Didn't find a cookie.`, "color: #79E36B");
+      }
     } else {
-      console.groupCollapsed(
-        `%cdanilucaci.com GDPR Consent Not Found`,
-        "color: #79E36B"
-      );
-      console.log("HasGDPRConsent: ", this.state.hasGDPRConsent);
-      console.log("AskGDPRConsent: ", this.state.askGDPRConsent);
-      console.log("CookieSet: ", danilucaciCookieConsent);
-      console.groupEnd();
+      console.warn("dl.com Can't read cookie name.");
     }
   };
 
   acceptsCookies = () => {
-    Cookies.set(this.state.cookieName, this.state.cookieValues, {
-      expires: this.state.cookieExpires,
-    });
+    const hasCookieData =
+      process.env.DL_COOKIE_DOMAIN && process.env.DL_COOKIE_SECURE;
 
-    this.setState((prevState) => ({
-      askGDPRConsent: !prevState.askGDPRConsent,
-      hasGDPRConsent: !prevState.hasGDPRConsent,
-    }));
+    if (process.env.DL_COOKIE_NAME) {
+      if (hasCookieData) {
+        const secure = process.env.DL_COOKIE_SECURE === "true";
 
-    console.log(`%cdanilucaci.com Cookies Accepted`, "color: #79E36B");
-    this.showGDPRStatus();
+        Cookies.set(process.env.DL_COOKIE_NAME, this.state.acceptsCookie, {
+          expires: this.state.cookieExp,
+          domain: process.env.DL_COOKIE_DOMAIN,
+          secure: secure,
+        });
+
+        this.setState((prevState) => ({
+          askGDPRConsent: !prevState.askGDPRConsent,
+          hasGDPRConsent: !prevState.hasGDPRConsent,
+        }));
+
+        this.showGDPRStatus();
+      } else {
+        console.error("Can't read cookie data.");
+      }
+    } else {
+      console.error("Can't read cookie name.");
+    }
   };
 
   deniesCookies = () => {
-    Cookies.remove(this.state.cookieName);
+    const hasCookieData =
+      process.env.DL_COOKIE_DOMAIN && process.env.DL_COOKIE_SECURE;
 
-    this.setState((prevState) => ({
-      askGDPRConsent: !prevState.askGDPRConsent,
-    }));
+    if (process.env.DL_COOKIE_NAME) {
+      if (hasCookieData) {
+        const secure = process.env.DL_COOKIE_SECURE === "true";
 
-    console.log(`%cdanilucaci.com Cookies Removed`, "color: #79E36B");
-    this.showGDPRStatus();
+        Cookies.set(process.env.DL_COOKIE_NAME, this.state.deniesCookie, {
+          expires: this.state.cookieExp,
+          domain: process.env.DL_COOKIE_DOMAIN,
+          secure: secure,
+        });
+
+        this.setState((prevState) => ({
+          askGDPRConsent: !prevState.askGDPRConsent,
+        }));
+
+        this.showGDPRStatus();
+      } else {
+        console.error("Can't read cookie data.");
+      }
+    } else {
+      console.error("Can't read cookie name.");
+    }
+  };
+
+  removeCookies = () => {
+    if (process.env.DL_COOKIE_NAME) {
+      Cookies.remove(process.env.DL_COOKIE_NAME);
+
+      this.setState((prevState) => ({
+        askGDPRConsent: !prevState.askGDPRConsent,
+      }));
+
+      console.log(`%c Cookies Removed`, "color: #79E36B");
+      this.showGDPRStatus();
+    } else {
+      console.error("Can't read cookie name.");
+    }
   };
 
   loadFonts = () => {
@@ -223,9 +271,7 @@ class Layout extends Component {
                 name="description"
                 content={intlMessages[this.props.locale].meta.siteDescription}
               />
-              {this.state.hasAnalyticsConsent &&
-                this.state.hasAnalyticsConsent &&
-                HotjarScript}
+              {this.state.hasAnalyticsConsent && HotjarScript && TwitterScript}
             </Helmet>
             <SkipToMainContent />
             <GlobalFonts />
@@ -238,6 +284,7 @@ class Layout extends Component {
               acceptsCookies={this.acceptsCookies}
               deniesCookies={this.deniesCookies}
               doNotTrackActive={this.state.doNotTrackActive}
+              pageLocale={this.props.locale}
             />
             {this.props.children}
           </Page>

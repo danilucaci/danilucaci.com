@@ -1,44 +1,37 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
+import { FormattedMessage } from "react-intl";
+import { graphql, StaticQuery } from "gatsby";
 
 import { theme, rem, mediaMin } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
 import { PrimaryButton, GhostButton } from "../Button/Button";
+import LocaleLink from "../LocaleLink/LocaleLink";
 
 const StyledCookieConsent = styled.div`
-  background-color: ${theme.colors.gray100};
+  background-color: ${theme.colors.sectionBackground};
   display: ${(props) => (props.askGDPRConsent ? "block" : "none")};
   display: ${(props) => (props.askGDPRConsent ? "flex" : "none")};
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   padding: ${rem(24)};
-  ${theme.shadow.default};
+  ${theme.shadow.navbar};
   position: fixed;
-  z-index: 1000;
+  z-index: 10;
   will-change: transform;
   bottom: 0;
   left: 0;
   width: 100%;
 
   ${mediaMin.xxs`
-    bottom: ${rem(24)};
-    left: ${rem(24)};
-    width: ${rem(248)};
+    width: 100%;
   `};
 `;
 
-/**
-|--------------------------------------------------
-| MAKE THIS SOMEWHAT TRANSPARENT AND FULL WIDTH, INLINE BUTTONS, LESS INTRUSIVE
-| We use cookies to ensure that we give you the best experience on our website. 
-| Click here for more information. ACCEPT COOKIES | DENY COOKIES
-|--------------------------------------------------
-*/
-
 const StyledPrimaryButton = styled(PrimaryButton)`
   width: 100%;
-  margin-top: ${rem(8)};
-  margin-bottom: ${rem(8)};
+  margin-left: ${rem(16)};
   display: block;
 
   ${mediaMin.xxs`
@@ -58,12 +51,54 @@ const StyledGhostButton = styled(GhostButton)`
 const CookieConsent = (props) => {
   return (
     <StyledCookieConsent askGDPRConsent={props.askGDPRConsent}>
-      <Copy>This page uses cookies.</Copy>
-      {props.doNotTrackActive && <Copy>You have Do Not Track Active.</Copy>}
-      <StyledPrimaryButton onClick={props.acceptsCookies}>
-        Accept
-      </StyledPrimaryButton>
-      <StyledGhostButton onClick={props.deniesCookies}>Deny</StyledGhostButton>
+      <FormattedMessage id="cookieMessage">
+        {(txt) => <Copy small>{txt}</Copy>}
+      </FormattedMessage>
+      <StaticQuery
+        query={COOKIE_CONSENT_QUERY}
+        render={(data) => {
+          let docsList = [];
+          let localizedDocsList = [];
+          data.allMarkdownRemark.edges.forEach((edge) => {
+            docsList.push({
+              slug: edge.node.fields.slug,
+              title: edge.node.frontmatter.title,
+              locale: edge.node.frontmatter.locale,
+            });
+          });
+
+          localizedDocsList = docsList.filter(
+            (doc) => doc.locale === props.pageLocale
+          );
+
+          return (
+            <div>
+              {localizedDocsList.map((localizedDoc) => (
+                <FormattedMessage id="cookieLearnMore" key={localizedDoc.title}>
+                  {(txt) => (
+                    <LocaleLink to={localizedDoc.slug}>{txt}</LocaleLink>
+                  )}
+                </FormattedMessage>
+              ))}
+            </div>
+          );
+        }}
+      />
+
+      <FormattedMessage id="cookieDeny">
+        {(txt) => (
+          <StyledGhostButton onClick={props.deniesCookies}>
+            {txt}
+          </StyledGhostButton>
+        )}
+      </FormattedMessage>
+      <FormattedMessage id="cookieAccept">
+        {(txt) => (
+          <StyledPrimaryButton onClick={props.acceptsCookies}>
+            {txt}
+          </StyledPrimaryButton>
+        )}
+      </FormattedMessage>
     </StyledCookieConsent>
   );
 };
@@ -73,6 +108,32 @@ CookieConsent.propTypes = {
   askGDPRConsent: PropTypes.bool.isRequired,
   doNotTrackActive: PropTypes.bool.isRequired,
   deniesCookies: PropTypes.func.isRequired,
+  pageLocale: PropTypes.string.isRequired,
 };
 
 export default CookieConsent;
+
+const COOKIE_CONSENT_QUERY = graphql`
+  query COOKIE_CONSENT_QUERY {
+    allMarkdownRemark(
+      filter: {
+        frontmatter: {
+          category: { eq: "legal" }
+          forCookieConsent: { eq: true }
+        }
+      }
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            locale
+          }
+        }
+      }
+    }
+  }
+`;

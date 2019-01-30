@@ -35,5 +35,9 @@
   "articleLinkContinue": "Continue Reading →",
   "tagListingHeader": "Blog posts found for:",
   "tagListingOther": "Other blog tags:",
-  "caseStudiesHeader": "Case Studies"
+  "caseStudiesHeader": "Case Studies",
+  "cookieMessage": "This site uses cookies to ensure you get the best experience.",
+  "cookieLearnMore": "Cookie policy.",
+  "cookieAccept": "Accept cookies.",
+  "cookieDeny": "Deny cookies."
 }

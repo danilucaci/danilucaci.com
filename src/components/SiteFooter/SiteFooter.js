@@ -47,16 +47,12 @@ const SiteFooter = (props) => {
         render={(data) => {
           let docsList = [];
           let localizedDocsList = [];
-          // Should sort the docs based on the frontmatter order prop
-          // The order changes when switching language
-          // let sortedLocalizedDocsList = [];
 
           data.allMarkdownRemark.edges.forEach((edge) => {
             docsList.push({
               slug: edge.node.fields.slug,
               title: edge.node.frontmatter.title,
               locale: edge.node.frontmatter.locale,
-              order: edge.node.frontmatter.order,
             });
           });
 
@@ -100,7 +96,6 @@ const LEGAL_PAGES_QUERY = graphql`
           frontmatter {
             title
             locale
-            order
           }
         }
       }

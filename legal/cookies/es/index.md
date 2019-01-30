@@ -5,7 +5,7 @@ posted: true
 locale: "es"
 date: "12/02/2019"
 twinPost: "Cookie Notice"
-order: 1
+forCookieConsent: true
 ---
 
 ##Aviso de Cookies
