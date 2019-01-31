@@ -45,20 +45,15 @@ const SiteFooter = (props) => {
       <StaticQuery
         query={LEGAL_PAGES_QUERY}
         render={(data) => {
-          let docsList = [];
           let localizedDocsList = [];
 
-          data.allMarkdownRemark.edges.forEach((edge) => {
-            docsList.push({
+          localizedDocsList = data.allMarkdownRemark.edges
+            .map((edge) => ({
               slug: edge.node.fields.slug,
               title: edge.node.frontmatter.title,
               locale: edge.node.frontmatter.locale,
-            });
-          });
-
-          localizedDocsList = docsList.filter(
-            (doc) => doc.locale === pageLocale
-          );
+            }))
+            .filter((edge) => edge.locale === pageLocale);
 
           return (
             <LegalDocsContainer>
