@@ -24,6 +24,10 @@ require("./prism.css");
 import intlMessages from "../i18n/i18n";
 addLocaleData([...enData, ...esData]);
 
+const DL_COOKIE_NAME = process.env.DL_COOKIE_NAME;
+const DL_COOKIE_SECURE = process.env.DL_COOKIE_SECURE;
+const DL_COOKIE_DOMAIN = process.env.DL_COOKIE_DOMAIN;
+
 const Page = styled.div`
   /* Sticky Footer  */
   display: flex;
@@ -83,9 +87,8 @@ class Layout extends Component {
   };
 
   checkGDPRStatus = () => {
-    if (process.env.DL_COOKIE_NAME) {
-      let DLCookie = Cookies.getJSON(process.env.DL_COOKIE_NAME);
-
+    if (DL_COOKIE_NAME) {
+      let DLCookie = Cookies.getJSON(DL_COOKIE_NAME);
       if (DLCookie) {
         if (DLCookie.analytics) {
           this.setState((prevState) => ({
@@ -106,8 +109,8 @@ class Layout extends Component {
   };
 
   showGDPRStatus = () => {
-    if (process.env.DL_COOKIE_NAME) {
-      let DLCookie = Cookies.getJSON(process.env.DL_COOKIE_NAME);
+    if (DL_COOKIE_NAME) {
+      let DLCookie = Cookies.getJSON(DL_COOKIE_NAME);
       if (DLCookie) {
         if (DLCookie.analytics) {
           console.log(`%c Cookies Accepted.`, "color: #79E36B");
@@ -123,16 +126,15 @@ class Layout extends Component {
   };
 
   acceptsCookies = () => {
-    const hasCookieData =
-      process.env.DL_COOKIE_DOMAIN && process.env.DL_COOKIE_SECURE;
+    const hasCookieData = DL_COOKIE_DOMAIN && DL_COOKIE_SECURE;
 
-    if (process.env.DL_COOKIE_NAME) {
+    if (DL_COOKIE_NAME) {
       if (hasCookieData) {
-        const secure = process.env.DL_COOKIE_SECURE === "true";
+        const secure = DL_COOKIE_SECURE === "true";
 
-        Cookies.set(process.env.DL_COOKIE_NAME, this.state.acceptsCookie, {
+        Cookies.set(DL_COOKIE_NAME, this.state.acceptsCookie, {
           expires: this.state.cookieExp,
-          domain: process.env.DL_COOKIE_DOMAIN,
+          domain: DL_COOKIE_DOMAIN,
           secure: secure,
         });
 
@@ -151,16 +153,15 @@ class Layout extends Component {
   };
 
   deniesCookies = () => {
-    const hasCookieData =
-      process.env.DL_COOKIE_DOMAIN && process.env.DL_COOKIE_SECURE;
+    const hasCookieData = DL_COOKIE_DOMAIN && DL_COOKIE_SECURE;
 
-    if (process.env.DL_COOKIE_NAME) {
+    if (DL_COOKIE_NAME) {
       if (hasCookieData) {
-        const secure = process.env.DL_COOKIE_SECURE === "true";
+        const secure = DL_COOKIE_SECURE === "true";
 
-        Cookies.set(process.env.DL_COOKIE_NAME, this.state.deniesCookie, {
+        Cookies.set(DL_COOKIE_NAME, this.state.deniesCookie, {
           expires: this.state.cookieExp,
-          domain: process.env.DL_COOKIE_DOMAIN,
+          domain: DL_COOKIE_DOMAIN,
           secure: secure,
         });
 
@@ -178,8 +179,8 @@ class Layout extends Component {
   };
 
   removeCookies = () => {
-    if (process.env.DL_COOKIE_NAME) {
-      Cookies.remove(process.env.DL_COOKIE_NAME);
+    if (DL_COOKIE_NAME) {
+      Cookies.remove(DL_COOKIE_NAME);
 
       this.setState((prevState) => ({
         askGDPRConsent: !prevState.askGDPRConsent,
