@@ -158,7 +158,7 @@ const TagPage = (props) => {
               <FormattedMessage id="tagListingOther">
                 {(txt) => <StyledSectionHeader>{txt}</StyledSectionHeader>}
               </FormattedMessage>
-              <Tags tagsInPost={allTags} />
+              <Tags tags={allTags} />
             </OtherTagsWrapper>
           </TagHeader>
           <PostListing edges={edges} />

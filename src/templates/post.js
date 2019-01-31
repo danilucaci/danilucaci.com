@@ -476,7 +476,7 @@ class Post extends Component {
                   <ArticleDate date={postInfo.date} />
                   <ReadTime timeToRead={postNode.timeToRead} />
                 </PostDateReadTimeWrapper>
-                <Tags tagsInPost={postInfo.tags} inline />
+                <Tags tags={postInfo.tags} inline />
                 <SocialShareWrapper>
                   <SocialShare
                     slug={slug}

@@ -75,11 +75,7 @@ const BlogPage = (props) => {
     locale,
   } = props.pageContext;
 
-  const frontMatterTags = props.data.allMarkdownRemark;
-  let allTags = [];
-  frontMatterTags.tags.forEach((tag) => {
-    allTags.push(tag.fieldValue);
-  });
+  let allTags = props.data.allMarkdownRemark.tags.map((tag) => tag.fieldValue);
 
   const paginationPageLabels = {
     es: "/page/",
@@ -119,7 +115,7 @@ const BlogPage = (props) => {
               <FormattedMessage id="blogExplore">
                 {(txt) => <TagsTitle>{txt}</TagsTitle>}
               </FormattedMessage>
-              <Tags tagsInPost={allTags} />
+              <Tags tags={allTags} />
             </TagsWrapper>
           </BlogHeader>
           <PostListing edges={edges} />

@@ -16,11 +16,11 @@ const TagsWrapper = styled.div`
 `;
 
 const Tags = (props) => {
-  let tagsInPost = props.tagsInPost;
+  let tags = props.tags;
   return (
     <TagsWrapper spaced={props.spaced} inline={props.inline}>
-      {tagsInPost &&
-        tagsInPost.map((tag) => (
+      {tags &&
+        tags.map((tag) => (
           <Tag key={tag} link={`/blog/tags/${tag}`} label={tag} />
         ))}
     </TagsWrapper>
@@ -29,7 +29,7 @@ const Tags = (props) => {
 
 Tags.propTypes = {
   optionalBool: PropTypes.bool,
-  tagsInPost: PropTypes.arrayOf(PropTypes.string).isRequired,
+  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default Tags;

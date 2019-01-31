@@ -23,7 +23,7 @@ const StyledH2 = styled.h2`
 const PostListing = (props) => {
   let postList = props.edges.map((edge) => ({
     slug: edge.fields.slug,
-    tagsInPost: edge.frontmatter.tags,
+    tags: edge.frontmatter.tags,
     category: edge.frontmatter.category,
     title: edge.frontmatter.title,
     date: edge.frontmatter.date,
@@ -40,7 +40,7 @@ const PostListing = (props) => {
         <Article
           key={post.title}
           slug={post.slug}
-          tagsInPost={post.tagsInPost}
+          tags={post.tags}
           category={post.category}
           title={post.title}
           date={post.date}

@@ -52,7 +52,7 @@ const Article = (props) => {
   return (
     <StyledArticle>
       <header>
-        <Tags tagsInPost={props.tagsInPost} spaced />
+        <Tags tags={props.tags} spaced />
         <StyledH3>{props.title}</StyledH3>
         <ArticleInfo date={props.date} timeToRead={props.timeToRead} />
       </header>
@@ -69,7 +69,7 @@ Article.propTypes = {
   category: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
-  tagsInPost: PropTypes.arrayOf(PropTypes.string).isRequired,
+  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
   timeToRead: PropTypes.number.isRequired,
 };
 
