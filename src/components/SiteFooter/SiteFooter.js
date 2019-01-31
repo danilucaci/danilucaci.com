@@ -45,9 +45,7 @@ const SiteFooter = (props) => {
       <StaticQuery
         query={LEGAL_PAGES_QUERY}
         render={(data) => {
-          let localizedDocsList = [];
-
-          localizedDocsList = data.allMarkdownRemark.edges
+          let localizedDocsList = data.allMarkdownRemark.edges
             .map((edge) => ({
               slug: edge.node.fields.slug,
               title: edge.node.frontmatter.title,

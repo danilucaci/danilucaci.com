@@ -57,20 +57,13 @@ const CookieConsent = (props) => {
       <StaticQuery
         query={COOKIE_CONSENT_QUERY}
         render={(data) => {
-          let docsList = [];
-          let localizedDocsList = [];
-          data.allMarkdownRemark.edges.forEach((edge) => {
-            docsList.push({
+          let localizedDocsList = data.allMarkdownRemark.edges
+            .map((edge) => ({
               slug: edge.node.fields.slug,
               title: edge.node.frontmatter.title,
               locale: edge.node.frontmatter.locale,
-            });
-          });
-
-          localizedDocsList = docsList.filter(
-            (doc) => doc.locale === props.pageLocale
-          );
-
+            }))
+            .filter((edge) => edge.locale === props.pageLocale);
           return (
             <div>
               {localizedDocsList.map((localizedDoc) => (
