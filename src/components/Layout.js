@@ -62,10 +62,12 @@ class Layout extends Component {
 
   checkFontsLoaded = () => {
     if (sessionStorage.fontsLoadedPolyfill) {
-      var isLoaded = document.documentElement.className.indexOf("fonts-loaded");
+      var isLoaded = document.documentElement.className.includes(
+        "fonts-loaded"
+      );
 
       // Only add the class when it is not already added
-      if (isLoaded === -1) {
+      if (!isLoaded) {
         document.documentElement.className += " fonts-loaded";
       }
 
@@ -74,6 +76,39 @@ class Layout extends Component {
     } else {
       this.loadFonts();
     }
+  };
+
+  loadFonts = () => {
+    var RobotoMonoRegular = new FontFaceObserver("Roboto Mono Regular");
+    var RobotoMonoItalic = new FontFaceObserver("Roboto Mono Italic", {
+      style: "italic",
+    });
+    var OpenSansRegular = new FontFaceObserver("Open Sans Regular");
+    var OpenSansBold = new FontFaceObserver("Open Sans Bold", {
+      weight: 700,
+    });
+    var OpenSansItalic = new FontFaceObserver("Open Sans Italic", {
+      style: "italic",
+    });
+    var MontserratBold = new FontFaceObserver("Montserrat Bold", {
+      weight: 700,
+    });
+    var MontserratRegular = new FontFaceObserver("Montserrat Regular");
+
+    Promise.all([
+      RobotoMonoRegular.load(),
+      RobotoMonoItalic.load(),
+      OpenSansRegular.load(),
+      OpenSansBold.load(),
+      OpenSansItalic.load(),
+      MontserratBold.load(),
+      MontserratRegular.load(),
+    ]).then(function() {
+      document.documentElement.className += " fonts-loaded";
+      // Optimization for Repeat Views
+      sessionStorage.fontsLoadedPolyfill = true;
+      console.log("%c Fonts loaded.", "color: #79E36B");
+    });
   };
 
   checkDNT = () => {
@@ -191,39 +226,6 @@ class Layout extends Component {
     } else {
       console.error("Can't read cookie name.");
     }
-  };
-
-  loadFonts = () => {
-    var RobotoMonoRegular = new FontFaceObserver("Roboto Mono Regular");
-    var RobotoMonoItalic = new FontFaceObserver("Roboto Mono Italic", {
-      style: "italic",
-    });
-    var OpenSansRegular = new FontFaceObserver("Open Sans Regular");
-    var OpenSansBold = new FontFaceObserver("Open Sans Bold", {
-      weight: 700,
-    });
-    var OpenSansItalic = new FontFaceObserver("Open Sans Italic", {
-      style: "italic",
-    });
-    var MontserratBold = new FontFaceObserver("Montserrat Bold", {
-      weight: 700,
-    });
-    var MontserratRegular = new FontFaceObserver("Montserrat Regular");
-
-    Promise.all([
-      RobotoMonoRegular.load(),
-      RobotoMonoItalic.load(),
-      OpenSansRegular.load(),
-      OpenSansBold.load(),
-      OpenSansItalic.load(),
-      MontserratBold.load(),
-      MontserratRegular.load(),
-    ]).then(function() {
-      document.documentElement.className += " fonts-loaded";
-      // Optimization for Repeat Views
-      sessionStorage.fontsLoadedPolyfill = true;
-      console.log("%c Fonts loaded.", "color: #79E36B");
-    });
   };
 
   render() {
