@@ -115,12 +115,7 @@ const TagPage = (props) => {
     locale,
   } = props.pageContext;
 
-  const frontMatterTags = props.data.allMarkdownRemark;
-  let allTags = [];
-
-  frontMatterTags.tags.forEach((tag) => {
-    allTags.push(tag.fieldValue);
-  });
+  let allTags = props.data.allMarkdownRemark.tags.map((tag) => tag.fieldValue);
 
   const paginationPageLabels = {
     es: "/page/",
