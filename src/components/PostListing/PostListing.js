@@ -20,49 +20,37 @@ const StyledH2 = styled.h2`
   `};
 `;
 
-class PostListing extends Component {
-  getPostList() {
-    let postList = [];
+const PostListing = (props) => {
+  let postList = props.edges.map((edge) => ({
+    slug: edge.fields.slug,
+    tagsInPost: edge.frontmatter.tags,
+    category: edge.frontmatter.category,
+    title: edge.frontmatter.title,
+    date: edge.frontmatter.date,
+    snippet: edge.frontmatter.snippet,
+    timeToRead: edge.timeToRead,
+  }));
 
-    this.props.edges.forEach((edge) => {
-      postList.push({
-        slug: edge.fields.slug,
-        tagsInPost: edge.frontmatter.tags,
-        category: edge.frontmatter.category,
-        title: edge.frontmatter.title,
-        date: edge.frontmatter.date,
-        snippet: edge.frontmatter.snippet,
-        timeToRead: edge.timeToRead,
-      });
-    });
-
-    return postList;
-  }
-
-  render() {
-    const postList = this.getPostList();
-
-    return (
-      <Wrapper>
-        <FormattedMessage id="blogArticleList">
-          {(txt) => <StyledH2>{txt}</StyledH2>}
-        </FormattedMessage>
-        {postList.map((post) => (
-          <Article
-            key={post.title}
-            slug={post.slug}
-            tagsInPost={post.tagsInPost}
-            category={post.category}
-            title={post.title}
-            date={post.date}
-            snippet={post.snippet}
-            timeToRead={post.timeToRead}
-          />
-        ))}
-      </Wrapper>
-    );
-  }
-}
+  return (
+    <Wrapper>
+      <FormattedMessage id="blogArticleList">
+        {(txt) => <StyledH2>{txt}</StyledH2>}
+      </FormattedMessage>
+      {postList.map((post) => (
+        <Article
+          key={post.title}
+          slug={post.slug}
+          tagsInPost={post.tagsInPost}
+          category={post.category}
+          title={post.title}
+          date={post.date}
+          snippet={post.snippet}
+          timeToRead={post.timeToRead}
+        />
+      ))}
+    </Wrapper>
+  );
+};
 
 PostListing.propTypes = {
   edges: PropTypes.arrayOf(PropTypes.object).isRequired,
