@@ -24,6 +24,7 @@ require("./prism.css");
 import intlMessages from "../i18n/i18n";
 addLocaleData([...enData, ...esData]);
 
+const NODE_ENV = process.env.NODE_ENV;
 const DL_COOKIE_NAME = process.env.DL_COOKIE_NAME;
 const DL_COOKIE_SECURE = process.env.DL_COOKIE_SECURE;
 const DL_COOKIE_DOMAIN = process.env.DL_COOKIE_DOMAIN;
@@ -43,11 +44,10 @@ class Layout extends Component {
   state = {
     doNotTrackActive: false,
     hasGDPRConsent: false,
-    hasAnalyticsConsent: true,
     askGDPRConsent: true,
     acceptsCookie: { necessary: true, analytics: true },
     deniesCookie: { necessary: true, analytics: false },
-    cookieExp: 730,
+    cookieExp: 730, // cookieExp set in days
   };
 
   componentDidMount() {
@@ -57,7 +57,13 @@ class Layout extends Component {
   }
 
   componentDidUpdate() {
-    this.showGDPRStatus();
+    if (NODE_ENV === "development") {
+      this.showGDPRStatus();
+    }
+
+    if (this.state.hasGDPRConsent) {
+      this.loadAnalytics();
+    }
   }
 
   checkFontsLoaded = () => {
@@ -65,13 +71,13 @@ class Layout extends Component {
       var isLoaded = document.documentElement.className.includes(
         "fonts-loaded"
       );
-
       // Only add the class when it is not already added
       if (!isLoaded) {
         document.documentElement.className += " fonts-loaded";
       }
-
-      console.log("%c Fonts already loaded.", "color: #79E36B");
+      if (NODE_ENV === "development") {
+        console.log("%c Fonts already loaded.", "color: #79E36B");
+      }
       return;
     } else {
       this.loadFonts();
@@ -107,7 +113,9 @@ class Layout extends Component {
       document.documentElement.className += " fonts-loaded";
       // Optimization for Repeat Views
       sessionStorage.fontsLoadedPolyfill = true;
-      console.log("%c Fonts loaded.", "color: #79E36B");
+      if (NODE_ENV === "development") {
+        console.log("%c Fonts loaded.", "color: #79E36B");
+      }
     });
   };
 
@@ -117,7 +125,9 @@ class Layout extends Component {
       this.setState((prevState) => ({
         doNotTrackActive: !prevState.doNotTrackActive,
       }));
-      console.log(`%c DNT Active`, "color: #79E36B");
+      if (NODE_ENV === "development") {
+        console.log(`%c DNT Active`, "color: #79E36B");
+      }
     }
   };
 
@@ -136,10 +146,14 @@ class Layout extends Component {
           }));
         }
       } else {
-        console.log(`%c Didn't find a cookie.`, "color: #79E36B");
+        if (NODE_ENV === "development") {
+          console.log(`%c Didn't find a cookie.`, "color: #79E36B");
+        }
       }
     } else {
-      console.warn("dl.com Can't read cookie name.");
+      if (NODE_ENV === "development") {
+        console.error("dl.com Can't read cookie name.");
+      }
     }
   };
 
@@ -156,7 +170,7 @@ class Layout extends Component {
         console.log(`%c Didn't find a cookie.`, "color: #79E36B");
       }
     } else {
-      console.warn("dl.com Can't read cookie name.");
+      console.error("dl.com Can't read cookie name.");
     }
   };
 
@@ -178,12 +192,18 @@ class Layout extends Component {
           hasGDPRConsent: !prevState.hasGDPRConsent,
         }));
 
-        this.showGDPRStatus();
+        if (NODE_ENV === "development") {
+          this.showGDPRStatus();
+        }
       } else {
-        console.error("Can't read cookie data.");
+        if (NODE_ENV === "development") {
+          console.error("Can't read cookie data.");
+        }
       }
     } else {
-      console.error("Can't read cookie name.");
+      if (NODE_ENV === "development") {
+        console.error("Can't read cookie name.");
+      }
     }
   };
 
@@ -206,10 +226,14 @@ class Layout extends Component {
 
         this.showGDPRStatus();
       } else {
-        console.error("Can't read cookie data.");
+        if (NODE_ENV === "development") {
+          console.error("Can't read cookie data.");
+        }
       }
     } else {
-      console.error("Can't read cookie name.");
+      if (NODE_ENV === "development") {
+        console.error("Can't read cookie name.");
+      }
     }
   };
 
@@ -220,46 +244,57 @@ class Layout extends Component {
       this.setState((prevState) => ({
         askGDPRConsent: !prevState.askGDPRConsent,
       }));
-
-      console.log(`%c Cookies Removed`, "color: #79E36B");
+      if (NODE_ENV === "development") {
+        console.log(`%c Cookies Removed`, "color: #79E36B");
+      }
       this.showGDPRStatus();
     } else {
-      console.error("Can't read cookie name.");
+      if (NODE_ENV === "development") {
+        console.error("Can't read cookie name.");
+      }
     }
   };
 
-  render() {
-    const HotjarScript = `
-      <!-- Hotjar Tracking Code for www.danilucaci.com -->
-      <script>
-          (function(h,o,t,j,a,r){
-              h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-              h._hjSettings={hjid:1122540,hjsv:6};
-              a=o.getElementsByTagName('head')[0];
-              r=o.createElement('script');r.async=1;
-              r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-              a.appendChild(r);
-          })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-      </script>
-    `;
-    const TwitterScript = `
-      window.twttr = (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0],
-          t = window.twttr || {};
-        if (d.getElementById(id)) return t;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "https://platform.twitter.com/widgets.js";
-        fjs.parentNode.insertBefore(js, fjs);
+  loadAnalytics = () => {
+    this.loadHotjarScript();
+    this.loadTwitterScript();
+  };
 
-        t._e = [];
-        t.ready = function(f) {
-          t._e.push(f);
+  loadHotjarScript = () =>
+    (function(h, o, t, j, a, r) {
+      // Hotjar Tracking Code for www.danilucaci.com -->
+      h.hj =
+        h.hj ||
+        function() {
+          (h.hj.q = h.hj.q || []).push(arguments);
         };
-        return t;
-      }(document, "script", "twitter-wjs"));
-    `;
+      h._hjSettings = { hjid: 1122540, hjsv: 6 };
+      a = o.getElementsByTagName("head")[0];
+      r = o.createElement("script");
+      r.async = 1;
+      r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+      a.appendChild(r);
+    })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
 
+  loadTwitterScript = () =>
+    (window.twttr = (function(d, s, id) {
+      var js,
+        fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {};
+      if (d.getElementById(id)) return t;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+
+      t._e = [];
+      t.ready = function(f) {
+        t._e.push(f);
+      };
+      return t;
+    })(document, "script", "twitter-wjs"));
+
+  render() {
     return (
       <ThemeProvider theme={theme}>
         <IntlProvider
@@ -274,7 +309,6 @@ class Layout extends Component {
                 name="description"
                 content={intlMessages[this.props.locale].meta.siteDescription}
               />
-              {this.state.hasAnalyticsConsent && HotjarScript && TwitterScript}
             </Helmet>
             <SkipToMainContent />
             <GlobalFonts />
@@ -282,13 +316,15 @@ class Layout extends Component {
             <GlobalAria />
             <GlobalHTML />
             <SVGSprite />
-            <CookieConsent
-              askGDPRConsent={this.state.askGDPRConsent}
-              acceptsCookies={this.acceptsCookies}
-              deniesCookies={this.deniesCookies}
-              doNotTrackActive={this.state.doNotTrackActive}
-              pageLocale={this.props.locale}
-            />
+            {this.state.askGDPRConsent && (
+              <CookieConsent
+                askGDPRConsent={this.state.askGDPRConsent}
+                acceptsCookies={this.acceptsCookies}
+                deniesCookies={this.deniesCookies}
+                doNotTrackActive={this.state.doNotTrackActive}
+                pageLocale={this.props.locale}
+              />
+            )}
             {this.props.children}
           </Page>
         </IntlProvider>

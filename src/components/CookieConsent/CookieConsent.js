@@ -11,8 +11,8 @@ import LocaleLink from "../LocaleLink/LocaleLink";
 
 const StyledCookieConsent = styled.div`
   background-color: ${theme.colors.sectionBackground};
-  display: ${(props) => (props.askGDPRConsent ? "block" : "none")};
-  display: ${(props) => (props.askGDPRConsent ? "flex" : "none")};
+  display: block;
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   padding: ${rem(24)};
@@ -50,7 +50,7 @@ const StyledGhostButton = styled(GhostButton)`
 
 const CookieConsent = (props) => {
   return (
-    <StyledCookieConsent askGDPRConsent={props.askGDPRConsent}>
+    <StyledCookieConsent>
       <FormattedMessage id="cookieMessage">
         {(txt) => <Copy small>{txt}</Copy>}
       </FormattedMessage>
@@ -98,7 +98,6 @@ const CookieConsent = (props) => {
 
 CookieConsent.propTypes = {
   acceptsCookies: PropTypes.func.isRequired,
-  askGDPRConsent: PropTypes.bool.isRequired,
   doNotTrackActive: PropTypes.bool.isRequired,
   deniesCookies: PropTypes.func.isRequired,
   pageLocale: PropTypes.string.isRequired,
