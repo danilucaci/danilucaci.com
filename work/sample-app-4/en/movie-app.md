@@ -1,7 +1,7 @@
 ---
-title: "Movie booking app 5"
+title: "Sample app 4"
 description: "A case study on improving the experience of searching, finding and booking movies in a cinema."
-date: "2018-11-02"
+date: "2018-12-27"
 category: "work"
 tags:
     - UX/UI Design
@@ -10,7 +10,7 @@ tags:
 posted: true
 image: "./movie_app_presentation.png"
 locale: "en"
-twinPost: "Applicacion de pelis 5"
+twinPost: "Applicacion de muestra 4"
 ---
 
 I decided to design this app as each time I tried to find and book a movie, all the websites and apps that I used had outdated designs, no real benefit to their membership plans and very limited searching and filtering features.

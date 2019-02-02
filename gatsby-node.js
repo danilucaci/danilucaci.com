@@ -10,6 +10,11 @@ require("dotenv").config({
 // Create pages with translated url for locales
 const locales = require("./src/locales/locales");
 
+// Only store posts in blog or work category
+// used in addSiblingNodes() for adding nextTitle/Slug and prevTitle/Slug
+// to blog posts and work case studies
+let allPostNodes = [];
+
 exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions;
 
@@ -55,56 +60,6 @@ exports.onCreatePage = ({ page, actions }) => {
   });
 };
 
-// Add next and previous posts links based on posted date
-//
-// this has be adjusted for translated links
-// I don't really need it
-//
-// one way to do it is looping over en/posts and then es/posts
-//
-// const postNodes = [];
-// function addSiblingNodes(createNodeField) {
-//   postNodes.sort(
-//     ({ frontmatter: { date: date1 } }, { frontmatter: { date: date2 } }) => {
-//       const dateA = moment(date1, siteConfig.dateFromFormat);
-//       const dateB = moment(date2, siteConfig.dateFromFormat);
-
-//       if (dateA.isBefore(dateB)) return 1;
-//       if (dateB.isBefore(dateA)) return -1;
-//       return 0;
-//     }
-//   );
-
-//   for (let i = 0; i < postNodes.length; i += 1) {
-//     const nextID = i + 1 < postNodes.length ? i + 1 : 0;
-//     const prevID = i - 1 > 0 ? i - 1 : postNodes.length - 1;
-//     const currNode = postNodes[i];
-//     const nextNode = postNodes[nextID];
-//     const prevNode = postNodes[prevID];
-
-//     createNodeField({
-//       node: currNode,
-//       name: "nextTitle",
-//       value: nextNode.frontmatter.title,
-//     });
-//     createNodeField({
-//       node: currNode,
-//       name: "nextSlug",
-//       value: nextNode.fields.slug,
-//     });
-//     createNodeField({
-//       node: currNode,
-//       name: "prevTitle",
-//       value: prevNode.frontmatter.title,
-//     });
-//     createNodeField({
-//       node: currNode,
-//       name: "prevSlug",
-//       value: prevNode.fields.slug,
-//     });
-//   }
-// }
-
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
   let slug;
@@ -118,6 +73,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       Object.prototype.hasOwnProperty.call(node.frontmatter, "title")
     ) {
       if (node.frontmatter.category === "work") {
+        // Only store posts in blog or work category
+        // used in addSiblingNodes() for adding nextTitle/Slug and prevTitle/Slug
+        // to blog posts and work case studies
+        allPostNodes.push(node);
+
         if (node.frontmatter.locale === "en") {
           slug = `/work/${_.kebabCase(node.frontmatter.title)}`;
         }
@@ -126,6 +86,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
           slug = `/trabajos/${_.kebabCase(node.frontmatter.title)}`;
         }
       } else if (node.frontmatter.category === "blog") {
+        // Only store posts in blog or work category
+        // used in addSiblingNodes() for adding nextTitle/Slug and prevTitle/Slug
+        // to blog posts and work case studies
+        allPostNodes.push(node);
+
         slug = `/blog/${_.kebabCase(node.frontmatter.title)}`;
       } else if (node.frontmatter.category === "legal") {
         slug = `/${_.kebabCase(node.frontmatter.title)}`;
@@ -138,36 +103,111 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       slug = `${parsedFilePath.name}/`;
     }
 
-    if (Object.prototype.hasOwnProperty.call(node, "frontmatter")) {
-      if (Object.prototype.hasOwnProperty.call(node.frontmatter, "date")) {
-        const date = moment(node.frontmatter.date, siteConfig.dateFromFormat);
-        if (!date.isValid) console.warn(`Invalid date.`, node.frontmatter);
-
-        createNodeField({
-          node,
-          name: "date",
-          value: date.toISOString(),
-        });
-      }
-    }
-
     createNodeField({
       node,
       name: "slug",
       value: slug,
     });
-
-    // postNodes.push(node);
   }
 };
 
-// exports.setFieldsOnGraphQLNodeType = ({ type, actions }) => {
-//   const { name } = type;
-//   const { createNodeField } = actions;
-//   if (name === "MarkdownRemark") {
-//     addSiblingNodes(createNodeField);
-//   }
-// };
+function sortNodesByDate(nodesArr) {
+  return nodesArr.sort(
+    ({ frontmatter: { date: date1 } }, { frontmatter: { date: date2 } }) => {
+      let dateA = moment(date1, siteConfig.dateFromFormat);
+      let dateB = moment(date2, siteConfig.dateFromFormat);
+
+      if (dateA.isBefore(dateB)) return -1;
+      if (dateB.isBefore(dateA)) return 1;
+      return 0;
+    }
+  );
+}
+
+function filterNodesByCategory(category = "blog") {
+  // allPostNodes = Only store posts in blog or work category
+  // filled in when calling onCreateNode
+  return allPostNodes.filter((node) => node.frontmatter.category === category);
+}
+
+function filterNodesByLocale(arr = [], locale = "en") {
+  return arr.filter((node) => node.frontmatter.locale === locale);
+}
+
+// Used to log the values of the array when gatsby creates the nodes
+function logNodes(arr = []) {
+  arr.forEach((node) => {
+    console.log(
+      `${node.frontmatter.title} ${node.frontmatter.locale} ${
+        node.frontmatter.category
+      } ${node.frontmatter.date}`
+    );
+  });
+}
+
+// Creates prevTitle/Slug and nextTitle/Slug
+// for each locale in the blog and work categories
+function createSiblingNodes(arr = [], createNodeField) {
+  for (let i = 0; i < arr.length; i += 1) {
+    let nextID = i + 1 < arr.length ? i + 1 : null;
+    let prevID = i - 1 >= 0 ? i - 1 : null;
+    let currNode = arr[i];
+    let nextNode = nextID === null ? null : arr[nextID];
+    let prevNode = prevID === null ? null : arr[prevID];
+
+    createNodeField({
+      node: currNode,
+      name: "nextTitle",
+      value: nextNode === null ? null : nextNode.frontmatter.title,
+    });
+    createNodeField({
+      node: currNode,
+      name: "nextSlug",
+      value: nextNode === null ? null : nextNode.fields.slug,
+    });
+    createNodeField({
+      node: currNode,
+      name: "prevTitle",
+      value: prevNode === null ? null : prevNode.frontmatter.title,
+    });
+    createNodeField({
+      node: currNode,
+      name: "prevSlug",
+      value: prevNode === null ? null : prevNode.fields.slug,
+    });
+  }
+}
+
+function addSiblingNodesByLocale(categoryArr, createNodeField) {
+  Object.keys(locales).map((locale) => {
+    // Temporal array that stores the locale posts on each category
+    let _localeConsumableArr = filterNodesByLocale(categoryArr, locale);
+
+    // Sort the posts in each category locale entry by date
+    _localeConsumableArr = sortNodesByDate(_localeConsumableArr);
+
+    // Create prevTitle/Slug and nextTitle/Slug
+    // for each locale in the blog and work categories
+    createSiblingNodes(_localeConsumableArr, createNodeField);
+  });
+}
+
+// Add next and previous posts links based on posted date
+function addSiblingNodes(createNodeField) {
+  let blogPostNodes = filterNodesByCategory("blog");
+  let workPostNodes = filterNodesByCategory("work");
+
+  addSiblingNodesByLocale(blogPostNodes, createNodeField);
+  addSiblingNodesByLocale(workPostNodes, createNodeField);
+}
+
+exports.setFieldsOnGraphQLNodeType = ({ type, actions }) => {
+  const { name } = type;
+  const { createNodeField } = actions;
+  if (name === "MarkdownRemark") {
+    addSiblingNodes(createNodeField);
+  }
+};
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
@@ -215,6 +255,12 @@ exports.createPages = ({ graphql, actions }) => {
                     posted
                     locale
                     twinPost
+                  }
+                  fields{
+                    nextTitle
+                    nextSlug
+                    prevSlug
+                    prevTitle
                   }
                 }
               }
@@ -278,6 +324,12 @@ exports.createPages = ({ graphql, actions }) => {
                         }
                       }
                     }
+                  }
+                  fields{
+                    nextTitle
+                    nextSlug
+                    prevSlug
+                    prevTitle
                   }
                 }
               }
@@ -521,6 +573,10 @@ exports.createPages = ({ graphql, actions }) => {
                 // need it for react-intl
                 locale,
                 twinPost: _.kebabCase(edge.node.frontmatter.twinPost),
+                nextTitle: edge.node.fields.nextTitle,
+                nextSlug: edge.node.fields.nextSlug,
+                prevSlug: edge.node.fields.prevSlug,
+                prevTitle: edge.node.fields.prevTitle,
               },
             });
           });
@@ -645,6 +701,10 @@ exports.createPages = ({ graphql, actions }) => {
                 // need it for react-intl
                 locale,
                 twinPost: _.kebabCase(edge.node.frontmatter.twinPost),
+                nextTitle: edge.node.fields.nextTitle,
+                nextSlug: edge.node.fields.nextSlug,
+                prevSlug: edge.node.fields.prevSlug,
+                prevTitle: edge.node.fields.prevTitle,
               },
             });
           });

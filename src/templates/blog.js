@@ -159,7 +159,7 @@ export default BlogPage;
 export const pageQuery = graphql`
   query allTagsInBlog {
     allMarkdownRemark(
-      sort: { fields: [fields___date], order: DESC }
+      sort: { fields: [frontmatter___date], order: DESC }
       filter: {
         frontmatter: { posted: { eq: true }, category: { eq: "blog" } }
       }

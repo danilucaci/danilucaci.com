@@ -473,6 +473,10 @@ class CaseStudy extends Component {
     const image = postInfo.image.childImageSharp.fluid;
     const locale = this.props.pageContext.locale;
     const twinPost = this.props.pageContext.twinPost;
+    const nextTitle = this.props.pageContext.nextTitle;
+    const nextSlug = this.props.pageContext.nextSlug;
+    const prevSlug = this.props.pageContext.prevSlug;
+    const prevTitle = this.props.pageContext.prevTitle;
 
     let changeLanguage = "";
 
@@ -481,7 +485,7 @@ class CaseStudy extends Component {
     } else if (locale === "es") {
       changeLanguage = "/work/" + twinPost;
     }
-
+    console.log(this.props.pageContext);
     return (
       <Layout location={this.props.location} locale={locale}>
         <Helmet
@@ -528,6 +532,22 @@ CaseStudy.propTypes = {
     locale: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     twinPost: PropTypes.string.isRequired,
+    nextTitle: PropTypes.oneOfType([
+      PropTypes.string.isRequired,
+      PropTypes.object.isRequired,
+    ]),
+    nextSlug: PropTypes.oneOfType([
+      PropTypes.string.isRequired,
+      PropTypes.object.isRequired,
+    ]),
+    prevSlug: PropTypes.oneOfType([
+      PropTypes.string.isRequired,
+      PropTypes.object.isRequired,
+    ]),
+    prevTitle: PropTypes.oneOfType([
+      PropTypes.string.isRequired,
+      PropTypes.object.isRequired,
+    ]),
   }),
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({

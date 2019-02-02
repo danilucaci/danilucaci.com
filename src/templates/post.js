@@ -451,6 +451,10 @@ class Post extends Component {
     const twinPost = this.props.pageContext.twinPost;
     const introCopy = postInfo.intro.split("|");
     const locale = this.props.pageContext.locale;
+    const nextTitle = this.props.pageContext.nextTitle;
+    const nextSlug = this.props.pageContext.nextSlug;
+    const prevSlug = this.props.pageContext.prevSlug;
+    const prevTitle = this.props.pageContext.prevTitle;
 
     let changeLanguage = "";
 
@@ -513,6 +517,22 @@ Post.propTypes = {
     locale: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     twinPost: PropTypes.string.isRequired,
+    nextTitle: PropTypes.oneOfType([
+      PropTypes.string.isRequired,
+      PropTypes.object.isRequired,
+    ]),
+    nextSlug: PropTypes.oneOfType([
+      PropTypes.string.isRequired,
+      PropTypes.object.isRequired,
+    ]),
+    prevSlug: PropTypes.oneOfType([
+      PropTypes.string.isRequired,
+      PropTypes.object.isRequired,
+    ]),
+    prevTitle: PropTypes.oneOfType([
+      PropTypes.string.isRequired,
+      PropTypes.object.isRequired,
+    ]),
   }),
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({

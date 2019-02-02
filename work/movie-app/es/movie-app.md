@@ -1,7 +1,7 @@
 ---
-title: "Applicacion de pelis"
+title: "Applicacion de muestra 0"
 description: "Estudio de caso de pelis."
-date: "2018-11-02"
+date: "2019-01-02"
 category: "work"
 tags:
     - UX/UI Design
@@ -10,7 +10,7 @@ tags:
 posted: true
 image: "./movie_app_presentation.png"
 locale: "es"
-twinPost: "Movie booking app"
+twinPost: "Sample app 0"
 ---
 
 I decided to design this app as each time I tried to find and book a movie, all the websites and apps that I used had outdated designs, no real benefit to their membership plans and very limited searching and filtering features.
