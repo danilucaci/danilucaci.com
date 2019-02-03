@@ -95,13 +95,9 @@ const StyledIcon = styled(Icon)`
   `};
 `;
 
-const TwitterIcon = styled(StyledIcon)`
-  fill: ${theme.colors.social.twitter};
-`;
+const TwitterIcon = styled(StyledIcon)``;
 
-const LinkedinIcon = styled(StyledIcon)`
-  fill: ${theme.colors.social.linkedin};
-`;
+const LinkedinIcon = styled(StyledIcon)``;
 
 const SocialShare = (props) => {
   const url = urljoin(config.siteUrl, config.pathPrefix, props.slug);

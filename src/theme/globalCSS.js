@@ -4,7 +4,7 @@ import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
 const GlobalHTML = createGlobalStyle`
   html {
     background-color: #F5F6F7;
-    color: #292C33;
+    color: #3A4554;
     font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     font-size: 100%;
     line-height: 2; /* 32px */
@@ -50,7 +50,6 @@ const GlobalHTML = createGlobalStyle`
     color: ${theme.colors.dark900};
     font-weight: 700;
     font-style: normal;
-    ${"" /* letter-spacing: ${theme.letterSpacing.h1}; */}
 
     .fonts-loaded & {
       font-family: ${theme.fonts.header};
@@ -73,7 +72,6 @@ const GlobalHTML = createGlobalStyle`
     color: ${theme.colors.dark900};
     font-weight: 700;
     font-style: normal;
-    ${"" /* letter-spacing: ${theme.letterSpacing.h2}; */}
 
     .fonts-loaded & {
       font-family: ${theme.fonts.header};
@@ -96,7 +94,6 @@ const GlobalHTML = createGlobalStyle`
     color: ${theme.colors.dark900};
     font-weight: 700;
     font-style: normal;
-    ${"" /* letter-spacing: ${theme.letterSpacing.h3}; */}
 
     .fonts-loaded & {
       font-family: ${theme.fonts.header};
@@ -121,7 +118,6 @@ const GlobalHTML = createGlobalStyle`
     font-style: normal;
     font-size: ${theme.fontSizes.h4};
     line-height: ${theme.lineHeights.h4};
-    ${"" /* letter-spacing: ${theme.letterSpacing.h4}; */}
 
     .fonts-loaded & {
       font-family: ${theme.fonts.header};
@@ -134,7 +130,6 @@ const GlobalHTML = createGlobalStyle`
     font-style: normal;
     font-size: ${theme.fontSizes.sectionHeader};
     line-height: ${theme.lineHeights.sectionHeader};
-    letter-spacing: ${theme.letterSpacing.sectionHeader};
     text-transform: uppercase;
 
     .fonts-loaded & {
@@ -224,6 +219,10 @@ const GlobalHTML = createGlobalStyle`
     font-family: ${theme.fonts.code};
     font-size: ${theme.fontSizes.m};
     line-height: ${theme.lineHeights.m};
+
+    .fonts-loaded & {
+      font-family: ${theme.fonts.codeLoaded};
+    }
   }
 
   .sr-only {

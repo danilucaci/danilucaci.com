@@ -121,7 +121,6 @@ const MailIcon = styled(Icon)`
 const TwitterIcon = styled(Icon)`
   margin-left: ${rem(8)};
   margin-bottom: ${rem(4)};
-  fill: ${theme.colors.social.twitter};
 `;
 
 const ContactPage = (props) => {
