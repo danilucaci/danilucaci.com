@@ -2,7 +2,5 @@
   <defs>
     <polygon id="a" points="9.64 15.84 18.46 7 19.64 8.18 9.64 18.18 5 13.54 6.16 12.36"/>
   </defs>
-  <g fill-rule="evenodd">
-    <use xlink:href="#a"/>
-  </g>
+  <use fill-rule="evenodd" xlink:href="#a"/>
 </svg>
