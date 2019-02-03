@@ -10,13 +10,14 @@ export const theme = {
     pageDark500: "#0F2030",
     light200: "#99ABBF",
     light100: "#D8E1EB",
+    buttonLight: "#E0F1FF",
     gray500: "#A1A8B5",
     gray400: "#CBCED4",
     gray300: "#E6E8EB",
     gray200: "#F5F6F7",
     gray100: "#FFFFFF",
     main600: "#0946B0",
-    main500: "#2C6DD4",
+    main500: "#2265C9",
     main400: "#458FDE",
     main300: "#62B0F5",
     main200: "#9ED2FF",
@@ -36,6 +37,18 @@ export const theme = {
       "box-shadow: 0px 2px 4px 0px hsla(0,0%,40%,0.2), 0px 6px 12px 0px hsla(0,0%,70%,0.24)",
     mobileCookieConsent:
       "box-shadow: 0px -2px 4px 0px hsla(0,0%,40%,0.2), 0px -6px 12px 0px hsla(0,0%,70%,0.4)",
+    buttons: {
+      tertiary:
+        "box-shadow: 0 2px 2px 0 rgba(12,52,117,0.13), 0 2px 8px -2px rgba(16,41,82,0.27)",
+      mainGhost:
+        "box-shadow: 0 1px 3px 0 rgba(0,23,61,0.64), 0 3px 11px -2px rgba(16,41,82,0.33)",
+      darkGhost:
+        "box-shadow: 0 2px 4px 0 rgba(61,61,61,0.64), 0 3px 11px -2px rgba(82,82,82,0.33)",
+      main:
+        "box-shadow: 0 2px 4px 0 rgba(0,20,51,0.60), 0 6px 14px -2px rgba(0,62,161,0.33)",
+      loadComments:
+        "box-shadow: 0 2px 4px 0 rgba(61,61,61,0.64), 0 3px 11px -2px rgba(82,82,82,0.33)",
+    },
   },
   fonts: {
     code:
@@ -87,6 +100,9 @@ export const theme = {
   letterSpacing: {
     sectionHeaderXL: "1px",
     sectionHeaderS: "1px",
+  },
+  borderRadius: {
+    buttons: "3px",
   },
   gutters: {
     s: "1em",

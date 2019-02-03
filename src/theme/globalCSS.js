@@ -7,7 +7,6 @@ const GlobalHTML = createGlobalStyle`
     color: #3A4554;
     font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     font-size: 100%;
-    line-height: 2; /* 32px */
 
     -ms-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
@@ -206,6 +205,10 @@ const GlobalHTML = createGlobalStyle`
     &:visited,
     &:link {
       color: ${theme.colors.main600};
+    }
+
+    .fonts-loaded & {
+      font-family: ${theme.fonts.bodyRegular};
     }
 
     a:hover {

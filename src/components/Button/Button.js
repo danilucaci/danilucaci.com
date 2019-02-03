@@ -1,83 +1,149 @@
 import styled from "styled-components";
 import { theme, rem } from "../../theme/globalStyles";
 
-export const BaseButton = styled.button`
+export const PrimaryButton = styled.button`
+  background-color: ${theme.colors.main600};
   border: none;
-  outline: none;
-  text-align: center;
+  border-radius: ${theme.borderRadius.buttons};
+  color: ${theme.colors.buttonLight};
 
+  text-align: center;
+  text-decoration: none;
   font-size: ${theme.fontSizes.button};
   line-height: ${theme.lineHeights.button};
   font-style: normal;
   font-weight: 700;
-  text-align: center;
-  height: ${rem(48)};
 
-  .fonts-loaded {
+  padding: ${rem(12)} ${rem(40)};
+  height: ${rem(48)};
+  width: ${rem(288)};
+
+  white-space: nowrap;
+
+  .fonts-loaded & {
     font-family: ${theme.fonts.bodyBold};
   }
 
   &:hover {
     cursor: pointer;
+    background-color: ${theme.colors.main500};
+    ${theme.shadow.buttons.main};
   }
 `;
 
-export const PrimaryButton = styled(BaseButton)`
+export const MainGhostButton = styled.button`
+  background-color: transparent;
+  border: 2px solid ${theme.colors.main600};
+  border-radius: ${theme.borderRadius.buttons};
+  color: ${theme.colors.main600};
+
+  text-align: center;
+  text-decoration: none;
+  font-size: ${theme.fontSizes.button};
+  line-height: ${theme.lineHeights.button};
+  font-style: normal;
+  font-weight: 700;
+
+  padding: ${rem(12)} ${rem(40)};
+  height: ${rem(48)};
+  width: ${rem(288)};
+
+  white-space: nowrap;
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.bodyBold};
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: ${theme.colors.gray100};
+    ${theme.shadow.buttons.mainGhost};
+  }
+`;
+
+export const DarkGhostButton = styled.button`
+  background-color: transparent;
+  border: 2px solid ${theme.colors.dark800};
+  border-radius: ${theme.borderRadius.buttons};
+  color: ${theme.colors.dark800};
+
+  text-align: center;
+  text-decoration: none;
+  font-size: ${theme.fontSizes.button};
+  line-height: ${theme.lineHeights.button};
+  font-style: normal;
+  font-weight: 700;
+
+  padding: ${rem(12)} ${rem(40)};
+  height: ${rem(48)};
+  width: ${rem(288)};
+
+  white-space: nowrap;
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.bodyBold};
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: ${theme.colors.gray100};
+    ${theme.shadow.buttons.darkGhost};
+  }
+`;
+
+export const PrimaryButtonSmall = styled.button`
   background-color: ${theme.colors.main600};
-  color: ${theme.colors.gray100};
+  border: none;
+  border-radius: ${theme.borderRadius.buttons};
+  color: ${theme.colors.buttonLight};
+
+  text-align: center;
+  text-decoration: none;
+  font-size: ${theme.fontSizes.button};
+  line-height: ${theme.lineHeights.button};
+  font-style: normal;
+  font-weight: 400;
+
+  white-space: nowrap;
+
   padding: ${rem(8)} ${rem(16)};
+  height: ${rem(40)};
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.bodyRegular};
+  }
 
   &:hover {
     background-color: ${theme.colors.main500};
-    ${theme.shadow.hover};
+    cursor: pointer;
+    ${theme.shadow.buttons.main};
   }
 `;
 
-export const GhostButton = styled(BaseButton)`
-  background-color: ${theme.colors.gray100};
-  border: 2px solid ${theme.colors.dark900};
+export const TertiaryButton = styled.button`
+  border: none;
+  background-color: transparent;
+  border-radius: ${theme.borderRadius.buttons};
+  color: ${theme.colors.dark800};
+
+  text-align: center;
+  font-size: ${theme.fontSizes.button};
+  line-height: ${theme.lineHeights.button};
+  font-style: normal;
+  font-weight: 400;
+  text-decoration: underline;
+  text-align: center;
+
+  white-space: nowrap;
+
+  height: ${rem(40)};
   padding: ${rem(8)} ${rem(16)};
 
-  &:hover {
-    ${theme.shadow.hover};
-    color: ${theme.colors.main600};
-    border-color: ${theme.colors.main600};
+  .fonts-loaded & {
+    font-family: ${theme.fonts.bodyRegular};
   }
-`;
 
-export const MailButton = styled(BaseButton)`
-  background-color: ${theme.colors.main600};
-  color: ${theme.colors.gray100};
-  height: ${rem(48)};
-
-  & a {
-    color: ${theme.colors.gray100};
-    width: 100%;
-    height: 100%;
-    text-decoration: none;
-    font-size: ${theme.fontSizes.button};
-    line-height: ${theme.lineHeights.button};
-    display: block;
-    padding: ${rem(12)} ${rem(16)};
-
-    &:active,
-    &:focus {
-      background-color: transparent;
-      color: ${theme.colors.gray100};
-      cursor: pointer;
-    }
-
-    &:visited,
-    &:link {
-      background-color: transparent;
-      color: ${theme.colors.gray100};
-      cursor: pointer;
-    }
-
-    &:hover {
-      background-color: transparent;
-      color: ${theme.colors.gray100};
-      cursor: pointer;
-    }
+  &:hover {
+    cursor: pointer;
   }
 `;

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { theme, mediaMin, rem } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
 import { Icon } from "../Icon/Icon";
-import { MailButton } from "../Button/Button";
+import { PrimaryButton } from "../Button/Button";
 
 const StyledContactCard = styled.aside`
   background-color: ${theme.colors.gray100};
@@ -61,7 +61,7 @@ const StyledH2 = styled.h2`
   z-index: 5;
 `;
 
-const StyledMailToButton = styled(MailButton)`
+const StyledMailToButton = styled(PrimaryButton)`
   margin-top: ${rem(32)};
   width: 100%;
 
