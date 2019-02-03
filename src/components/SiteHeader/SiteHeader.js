@@ -12,11 +12,8 @@ const StyledSiteHeaderWrapper = styled.div`
   display: block;
   will-change: transform;
   z-index: 100;
-
-  ${mediaMin.m`
-    position: fixed;
-    top: 0;
-  `};
+  position: fixed;
+  top: 0;
 `;
 
 const StyledSiteHeader = styled.header`

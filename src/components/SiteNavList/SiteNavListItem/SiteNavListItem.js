@@ -12,34 +12,14 @@ const StyledSiteNavListItem = styled.li`
   font-family: ${theme.fonts.headerRegular};
   font-weight: 400;
   width: 100%;
-  transition-delay: 0.4s;
-  transition: max-height, transform ease-out 0.2s;
-  will-change: max-height;
-  position: relative;
 
-  ${(props) =>
-    props.showNav
-      ? css`
-          max-height: 100em;
-          opacity: 1;
-          transform: translateY(0);
-        `
-      : css`
-          max-height: 0em;
-          opacity: 0;
-          transform: translateY(-40%);
-        `};
-
-  ${mediaMax.xs`
-    margin: ${rem(24)} 0;
+  ${mediaMax.s`
+    margin: ${rem(16)} 0;
   `};
 
   ${mediaMin.s`
     display: inline-block;
     width: auto;
-    max-height: 100em;
-    opacity: 1;
-    transform: none;
     font-size: ${theme.fontSizes.m};
     line-height: ${theme.fontSizes.m};
   `};
@@ -73,39 +53,22 @@ const StyledSiteNavListItem = styled.li`
       background-color: transparent;
       font-size: ${theme.fontSizes.s};
       line-height: ${theme.lineHeights.s};
+      padding: ${rem(16)} ${rem(24)};
   `};
 
     &.current-nav-item {
-      background-color: ${theme.colors.main600};
-      color: ${theme.colors.gray100};
+      background-color: ${theme.colors.gray300};
+      color: ${theme.colors.dark900};
       font-weight: 700;
       font-family: ${theme.fonts.header};
 
       &:hover {
-        color: ${theme.colors.gray100};
+        color: ${theme.colors.main600};
       }
 
       ${mediaMin.s`
         background-color: transparent;
-        color: ${theme.colors.dark900};
-        
-        &:hover {
-          color: ${theme.colors.main600};
-        }
-
-        /* &:after {
-          content: '';
-          display: block;
-          background-color: ${theme.colors.main600};
-          width: 100%;
-          position: absolute;
-          bottom: -1px;
-          left: 0;
-          right: 0;
-          height: ${rem(4)};
-          z-index: 10;
-        }; */
-    `};
+      `};
     }
   }
 `;
@@ -121,11 +84,7 @@ const isPartiallyActive = ({ isPartiallyCurrent }) => {
 
 const SiteNavListItem = (props) => {
   return (
-    <StyledSiteNavListItem
-      role="menuitem"
-      tabIndex="-1"
-      showNav={props.showNav}
-    >
+    <StyledSiteNavListItem role="menuitem" tabIndex="-1">
       <LocaleLink
         to={props.to}
         getProps={isPartiallyActive}
@@ -139,7 +98,6 @@ const SiteNavListItem = (props) => {
 
 SiteNavListItem.propTypes = {
   children: PropTypes.string.isRequired,
-  showNav: PropTypes.bool.isRequired,
   to: PropTypes.string.isRequired,
 };
 

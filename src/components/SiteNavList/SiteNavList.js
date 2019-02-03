@@ -11,44 +11,45 @@ const StyledSiteNavList = styled.ul`
   display: block;
   text-align: center;
 
-  transition: transform, opacity linear 0.2s;
-  will-change: transform, opacity;
+  position: absolute;
+  z-index: 10;
+
+  height: 100%;
+  height: 100vh;
+  width: 100%;
+  left: 0;
+
+  padding-left: ${rem(16)};
+  padding-right: ${rem(16)};
+
+  transition: transform ease 0.25s;
+  will-change: transform;
 
   ${(props) =>
     props.showNav
       ? css`
-          transform: scaleY(1);
-          pointer-events: auto;
-          z-index: 10;
+          transform: translateX(0);
+          visibility: visible;
           opacity: 1;
         `
       : css`
-          transform: scaleY(0);
-          pointer-events: none;
+          transform: translateX(100%);
+          visibility: hidden;
           opacity: 0;
         `};
 
-  ${mediaMax.s`
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 100%;
-    height: 100vh;
-    padding-left: ${rem(16)};
-    padding-right: ${rem(16)};
-  `};
-
   ${mediaMin.s`
+    position: static;
+    height: auto;
+    width: auto;
+    padding-left: 0;
+    visibility: visible;
+    opacity: 1;
+    padding-right: 0;
     background-color: transparent;
     float: right;
-    pointer-events: auto;
-    opacity: 1;
-    z-index: 10;
-    /* transform: none; */
+    transform: none;
   `};
-
-  transform: translateY(0);
-  transition: transform ease 0.15s;
 `;
 
 const SiteNavList = (props) => {
@@ -71,37 +72,24 @@ const SiteNavList = (props) => {
     <StyledSiteNavList showNav={props.showNav} role="menu">
       <FormattedMessage id="siteNavWork">
         {(txt) => (
-          <SiteNavListItem
-            showNav={props.showNav}
-            to={workLocaleLabels[`${props.locale}`]}
-          >
+          <SiteNavListItem to={workLocaleLabels[`${props.locale}`]}>
             {txt}
           </SiteNavListItem>
         )}
       </FormattedMessage>
       <FormattedMessage id="siteNavBlog">
-        {(txt) => (
-          <SiteNavListItem showNav={props.showNav} to="/blog">
-            {txt}
-          </SiteNavListItem>
-        )}
+        {(txt) => <SiteNavListItem to="/blog">{txt}</SiteNavListItem>}
       </FormattedMessage>
       <FormattedMessage id="siteNavAbout">
         {(txt) => (
-          <SiteNavListItem
-            showNav={props.showNav}
-            to={aboutMeLocaleLabels[`${props.locale}`]}
-          >
+          <SiteNavListItem to={aboutMeLocaleLabels[`${props.locale}`]}>
             {txt}
           </SiteNavListItem>
         )}
       </FormattedMessage>
       <FormattedMessage id="siteNavContact">
         {(txt) => (
-          <SiteNavListItem
-            showNav={props.showNav}
-            to={contactLocaleLabels[`${props.locale}`]}
-          >
+          <SiteNavListItem to={contactLocaleLabels[`${props.locale}`]}>
             {txt}
           </SiteNavListItem>
         )}
