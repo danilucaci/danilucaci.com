@@ -39,5 +39,6 @@
   "cookieMessage": "danilucaci.com utiliza cookies para ayudar a mejorar la  experiencia en la página.",
   "cookieLearnMore": "Leer más.",
   "cookieAccept": "👌🏻 De acuerdo",
-  "cookieDeny": "No, gracias."
+  "cookieDeny": "No, gracias.",
+  "footerBuiltWith": "Desarollado con Gatsby.js. Hospedado en Netlify."
 }

@@ -34,3 +34,16 @@ export const BoldLink = styled(DefaultLink)`
 export const GreyLink = styled(DefaultLink)`
   color: ${theme.colors.dark900};
 `;
+
+export const LightSecondaryLink = styled(DefaultLink)`
+  color: ${theme.colors.light200};
+
+  &:visited,
+  &:link {
+    color: ${theme.colors.light200};
+  }
+
+  &:hover {
+    background-color: transparent;
+  }
+`;

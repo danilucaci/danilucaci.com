@@ -1,12 +1,15 @@
 import React from "react";
 
 import styled, { css } from "styled-components";
-import config from "../../../data/SiteConfig";
 import { theme, rem, mediaMin } from "../../theme/globalStyles";
 
 import { Icon } from "../Icon/Icon";
 
 const Wrapper = styled.div``;
+
+const StyledIcon = styled(Icon)`
+  fill: ${(props) => (props.light ? theme.colors.light100 : null)};
+`;
 
 const StyledLink = styled.a`
   display: inline-block;
@@ -25,7 +28,7 @@ const StyledLink = styled.a`
   }
 `;
 
-const SocialNav = () => {
+const SocialNav = (props) => {
   return (
     <Wrapper>
       <StyledLink
@@ -36,9 +39,9 @@ const SocialNav = () => {
         <span className="sr-only">
           View danilucaci Github account, opens in new window
         </span>
-        <Icon size="40" aria-hidden="true">
+        <StyledIcon size="40" aria-hidden="true" light={props.light}>
           <use xlinkHref="#github" />
-        </Icon>
+        </StyledIcon>
       </StyledLink>
       <StyledLink
         target="_blank"
@@ -48,9 +51,9 @@ const SocialNav = () => {
         <span className="sr-only">
           View danilucaci Twitter account, opens in new window
         </span>
-        <Icon size="40" aria-hidden="true">
+        <StyledIcon size="40" aria-hidden="true" light={props.light}>
           <use xlinkHref="#twitter" />
-        </Icon>
+        </StyledIcon>
       </StyledLink>
       <StyledLink
         target="_blank"
@@ -60,9 +63,9 @@ const SocialNav = () => {
         <span className="sr-only">
           View danilucaci Drible account, opens in new window
         </span>
-        <Icon size="40" aria-hidden="true">
+        <StyledIcon size="40" aria-hidden="true" light={props.light}>
           <use xlinkHref="#dribbble" />
-        </Icon>
+        </StyledIcon>
       </StyledLink>
       <StyledLink
         target="_blank"
@@ -72,9 +75,9 @@ const SocialNav = () => {
         <span className="sr-only">
           View danilucaci Linkedin account, opens in new window
         </span>
-        <Icon size="40" aria-hidden="true">
+        <StyledIcon size="40" aria-hidden="true" light={props.light}>
           <use xlinkHref="#linkedin" />
-        </Icon>
+        </StyledIcon>
       </StyledLink>
     </Wrapper>
   );

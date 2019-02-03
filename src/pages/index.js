@@ -187,7 +187,7 @@ const Index = (props) => {
   return (
     <Layout location={props.location} locale={locale}>
       <SEO />
-      <SiteHeader locale={locale} />
+      <SiteHeader locale={locale} changeLanguage={changeLanguage} />
       <Main role="main">
         <SEO />
         <IndexHeader>
@@ -267,7 +267,7 @@ const Index = (props) => {
       <Stack>
         <ContactCard />
       </Stack>
-      <SiteFooter gray changeLanguage={changeLanguage} locale={locale} />
+      <SiteFooter locale={locale} />
     </Layout>
   );
 };

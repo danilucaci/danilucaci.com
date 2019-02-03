@@ -138,7 +138,7 @@ const ContactPage = (props) => {
       <Helmet title={`${intlMessages[locale].meta.contactMetaTitle}`} />
 
       <SEO />
-      <SiteHeader locale={locale} />
+      <SiteHeader locale={locale} changeLanguage={changeLanguage} />
       <Main role="main">
         <ContactMeWrapper>
           <StyledH1>Let's talk</StyledH1>
@@ -190,7 +190,7 @@ const ContactPage = (props) => {
           </PathWrapper>
         </ContactMeWrapper>
       </Main>
-      <SiteFooter changeLanguage={changeLanguage} locale={locale} />
+      <SiteFooter locale={locale} />
     </Layout>
   );
 };

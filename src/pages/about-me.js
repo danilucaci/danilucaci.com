@@ -156,7 +156,7 @@ const AboutPage = (props) => {
 
   return (
     <Layout location={props.location} locale={locale}>
-      <SiteHeader locale={locale} />
+      <SiteHeader changeLanguage={changeLanguage} locale={locale} />
       <Main role="main">
         <AboutMeWrapper>
           <Helmet title={`${intlMessages[locale].meta.aboutMetaTitle}`} />
@@ -222,7 +222,7 @@ const AboutPage = (props) => {
         </AboutMeWrapper>
       </Main>
       <ContactCard />
-      <SiteFooter gray changeLanguage={changeLanguage} locale={locale} />
+      <SiteFooter locale={locale} />
     </Layout>
   );
 };

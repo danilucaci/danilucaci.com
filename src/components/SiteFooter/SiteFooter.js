@@ -1,47 +1,63 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { Link, graphql, StaticQuery } from "gatsby";
+import { graphql, StaticQuery } from "gatsby";
 import { FormattedMessage } from "react-intl";
 
-import { theme, rem } from "../../theme/globalStyles";
-import { GreyLink } from "../Link/Link";
+import { theme, rem, mediaMin } from "../../theme/globalStyles";
+import { LightSecondaryLink } from "../Link/Link";
 import { Copy, CopyBold } from "../Copy/Copy";
 import SocialNav from "../SocialNav/SocialNav";
 
 const StyledFooter = styled.footer`
   display: block;
   text-align: center;
-  background-color: ${(props) =>
-    props.gray ? theme.colors.pageBackground : theme.colors.gray100};
+  background-color: ${theme.colors.pageDark500};
   width: 100%;
-  padding: ${rem(56)} ${rem(16)};
+  padding: ${rem(64)} ${rem(16)} ${rem(40)};
+
+  ${mediaMin.s`
+    padding: ${rem(80)} ${rem(16)} ${rem(56)};
+  `};
 `;
 
-const StyledCopyright = styled(CopyBold)``;
-
-const LegalDocsContainer = styled.div``;
-
-const LegalDoc = styled(GreyLink)`
-  margin-right: ${rem(16)};
+const StyledCopyright = styled(CopyBold)`
+  color: ${theme.colors.light100};
+  margin-bottom: ${rem(8)};
 `;
 
 const StyledCopy = styled(Copy)`
-  margin: ${rem(8)} 0;
+  color: ${theme.colors.light100};
+  margin-bottom: ${rem(16)};
+`;
+
+const LegalDocsContainer = styled.div`
+  margin-top: ${rem(56)};
+  ${mediaMin.s`
+      margin-top: ${rem(24)};
+  `};
+`;
+
+const LegalDoc = styled(LightSecondaryLink)`
+  margin-right: ${rem(16)};
 `;
 
 const SiteFooter = (props) => {
   let pageLocale = props.locale;
 
   return (
-    <StyledFooter gray={props.gray} role="contentinfo">
+    <StyledFooter role="contentinfo">
       <StyledCopyright small>
         &copy; {new Date().getFullYear()} Dani Lucaci.
       </StyledCopyright>
-      <StyledCopy small>
-        This site is built with Gatsby.js and hosted on Netlify.
-      </StyledCopy>
-      <SocialNav />
+      <FormattedMessage id="footerBuiltWith">
+        {(txt) => (
+          <StyledCopy small light>
+            {txt}
+          </StyledCopy>
+        )}
+      </FormattedMessage>
+      <SocialNav light />
       <StaticQuery
         query={LEGAL_PAGES_QUERY}
         render={(data) => {
@@ -64,15 +80,11 @@ const SiteFooter = (props) => {
           );
         }}
       />
-      <FormattedMessage id="footerChangeLanguage">
-        {(txt) => <Link to={props.changeLanguage}>{txt}</Link>}
-      </FormattedMessage>
     </StyledFooter>
   );
 };
 
 SiteFooter.propTypes = {
-  changeLanguage: PropTypes.string.isRequired,
   locale: PropTypes.string.isRequired,
 };
 

@@ -470,7 +470,11 @@ class Post extends Component {
           title={`${postInfo.title} || ${intlMessages[locale].meta.siteTitle}`}
         />
         <SEO postPath={slug} postNode={postNode} postSEO />
-        <SiteHeader showScrollIndicator locale={locale} />
+        <SiteHeader
+          changeLanguage={changeLanguage}
+          showScrollIndicator
+          locale={locale}
+        />
         <Main role="main">
           <PostWrapper>
             <StyledPostHeader>
@@ -506,7 +510,7 @@ class Post extends Component {
           />
         </Main>
         <ScrollToTop />
-        <SiteFooter changeLanguage={changeLanguage} locale={locale} />
+        <SiteFooter locale={locale} />
       </Layout>
     );
   }

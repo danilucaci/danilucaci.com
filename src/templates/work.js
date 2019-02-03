@@ -81,7 +81,7 @@ const WorkPage = (props) => {
 
   return (
     <Layout location={props.location} locale={locale}>
-      <SiteHeader locale={locale} />
+      <SiteHeader locale={locale} changeLanguage={changeLanguage} />
       <Main role="main">
         <Wrapper>
           <Helmet title={`${intlMessages[locale].meta.workMetaTitle}`} />
@@ -104,7 +104,7 @@ const WorkPage = (props) => {
           )}
         </Wrapper>
       </Main>
-      <SiteFooter changeLanguage={changeLanguage} locale={locale} />
+      <SiteFooter locale={locale} />
     </Layout>
   );
 };

@@ -492,7 +492,11 @@ class CaseStudy extends Component {
           title={`${postInfo.title} || ${intlMessages[locale].meta.siteTitle}`}
         />
         <SEO postPath={slug} postNode={postNode} postSEO />
-        <SiteHeader showScrollIndicator locale={locale} />
+        <SiteHeader
+          changeLanguage={changeLanguage}
+          showScrollIndicator
+          locale={locale}
+        />
         <Main role="main" id="main">
           <ArticleWrapper>
             <StyledHeader>
@@ -521,7 +525,7 @@ class CaseStudy extends Component {
           </ArticleWrapper>
         </Main>
         <ScrollToTop />
-        <SiteFooter changeLanguage={changeLanguage} locale={locale} />
+        <SiteFooter locale={locale} />
       </Layout>
     );
   }

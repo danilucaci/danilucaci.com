@@ -100,7 +100,7 @@ const BlogPage = (props) => {
 
   return (
     <Layout location={props.location} locale={locale}>
-      <SiteHeader locale={locale} />
+      <SiteHeader changeLanguage={changeLanguage} locale={locale} />
       <Main role="main">
         <BlogWrapper>
           <Helmet title={`${intlMessages[locale].meta.blogMetaTitle}`} />
@@ -131,7 +131,7 @@ const BlogPage = (props) => {
           )}
         </BlogWrapper>
       </Main>
-      <SiteFooter changeLanguage={changeLanguage} locale={locale} />
+      <SiteFooter locale={locale} />
     </Layout>
   );
 };

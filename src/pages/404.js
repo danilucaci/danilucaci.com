@@ -21,11 +21,11 @@ const NotFoundPage = (props) => {
     <Layout location={props.location} locale={locale}>
       <Helmet title={`${intlMessages[locale].meta.pageNotFoundMetaTitle}`} />
       <SEO />
-      <SiteHeader locale={locale} />
+      <SiteHeader changeLanguage={changeLanguage} locale={locale} />
       <Main role="main">
         <h1>404 de mine</h1>
       </Main>
-      <SiteFooter changeLanguage={changeLanguage} locale={locale} />
+      <SiteFooter locale={locale} />
     </Layout>
   );
 };

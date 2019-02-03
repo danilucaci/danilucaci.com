@@ -186,7 +186,11 @@ class LegalDoc extends Component {
           title={`${postInfo.title} || ${intlMessages[locale].meta.siteTitle}`}
         />
         <SEO postPath={slug} postNode={postNode} postSEO />
-        <SiteHeader showScrollIndicator locale={locale} />
+        <SiteHeader
+          showScrollIndicator
+          changeLanguage={changeLanguage}
+          locale={locale}
+        />
         <Main role="main" id="main">
           <PageWrapper>
             <PostH1>{postInfo.title}</PostH1>
@@ -213,7 +217,7 @@ class LegalDoc extends Component {
           </PageWrapper>
         </Main>
         <ScrollToTop />
-        <SiteFooter changeLanguage={changeLanguage} locale={locale} />
+        <SiteFooter locale={locale} />
       </Layout>
     );
   }

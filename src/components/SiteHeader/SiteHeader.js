@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
-import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
+import styled from "styled-components";
+import { Link, graphql, StaticQuery } from "gatsby";
+import { FormattedMessage } from "react-intl";
 
+import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
 import SiteNav from "../SiteNav/SiteNav";
 
 const StyledSiteHeaderWrapper = styled.div`
@@ -64,6 +66,9 @@ class SiteHeader extends Component {
             showNav={this.state.showNav}
             locale={this.props.locale}
           />
+          {/* <FormattedMessage id="footerChangeLanguage">
+          {(txt) => <Link to={props.changeLanguage}>{txt}</Link>}
+        </FormattedMessage> */}
         </StyledSiteHeader>
         {shouldRenderScroll && (
           <ScrollContainer showScrollIndicator={this.props.showScrollIndicator}>
@@ -77,6 +82,7 @@ class SiteHeader extends Component {
 
 SiteHeader.propTypes = {
   locale: PropTypes.string.isRequired,
+  changeLanguage: PropTypes.string.isRequired,
   optionalBool: PropTypes.bool,
 };
 
