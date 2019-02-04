@@ -41,5 +41,9 @@
   "cookieLearnMore": "Leer más.",
   "cookieAccept": "👌🏻 De acuerdo",
   "cookieDeny": "No, gracias.",
+  "contactCardTitle": "Tienes algún proyecto en mente? Hablemos!",
+  "contactCardDescription": "Si tienes algún proyecto en mente en el que mis servicios podrían ayudar, no dudes en ponerte en contacto conmigo:",
+  "contactCardEmail": "hola@danilucaci.com",
+  "contactCardCTA": "Contactar",
   "footerBuiltWith": "Desarollado con Gatsby.js. Hospedado en Netlify."
 }

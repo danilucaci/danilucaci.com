@@ -81,7 +81,7 @@ const Tag = styled(Copy)`
   margin-right: ${rem(16)};
   margin-top: ${rem(8)};
   margin-bottom: ${rem(8)};
-  padding: ${rem(6)} ${rem(8)};
+  padding: ${rem(4)} ${rem(8)};
 
   ${mediaMin.xxl`
     margin-right: ${rem(16)};
@@ -102,8 +102,7 @@ const HRBottom = styled(HR)`
 `;
 
 const StyledH3 = styled.h3`
-  margin-top: ${rem(12)};
-  margin-bottom: ${rem(16)};
+  margin-bottom: ${rem(8)};
 `;
 
 const ContinueLink = styled(BoldLink)`

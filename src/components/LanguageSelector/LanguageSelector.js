@@ -122,6 +122,10 @@ const CurrentLanguageSelector = styled.li`
     text-align: right;
     font-size: ${theme.fontSizes.s};
     line-height: ${theme.lineHeights.s};
+
+    &:hover {
+      background-color: transparent;
+    }
   }
 `;
 
@@ -137,6 +141,10 @@ const LanguageSelectorItem = styled.li`
     display: inline-block;
     font-size: ${theme.fontSizes.s};
     line-height: ${theme.lineHeights.s};
+
+    &:hover {
+      background-color: transparent;
+    }
   }
 `;
 

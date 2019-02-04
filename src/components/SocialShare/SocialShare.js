@@ -37,7 +37,7 @@ const CopyIcon = styled(Icon)`
   transition: transform ease 0.15s;
 
   &:hover {
-    transform: scale(1.2);
+    transform: scale(1.15);
   }
 
   ${mediaMin.xl`

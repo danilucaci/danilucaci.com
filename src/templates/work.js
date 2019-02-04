@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import styled, { css } from "styled-components";
+import intlMessages from "../i18n/i18n";
 import { FormattedMessage } from "react-intl";
 
 import { theme, mediaMin, rem } from "../theme/globalStyles";
@@ -13,9 +14,35 @@ import { Copy } from "../components/Copy/Copy";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
 import CaseStudyListing from "../components/CaseStudyListing/CaseStudyListing";
 import Pagination from "../components/Pagination/Pagination";
-import intlMessages from "../i18n/i18n";
+import ContactCard from "../components/ContactCard/ContactCard";
+import { HR } from "../components/HR/HR";
 
-const Wrapper = styled.div`
+const Stack = styled.section`
+  margin-bottom: ${theme.stack.section.s};
+
+  ${mediaMin.s`
+    margin-bottom: ${theme.stack.section.m};
+  `};
+
+  ${mediaMin.m`
+  margin-bottom: ${theme.stack.section.xl};
+  `};
+`;
+
+const AltStack = styled(Stack)`
+  max-width: ${theme.contain.page};
+  margin: 0 auto;
+
+  padding-left: ${theme.gutters.s};
+  padding-right: ${theme.gutters.s};
+
+  ${mediaMin.s`
+    padding-left: ${theme.gutters.m};
+    padding-right: ${theme.gutters.m};
+  `};
+`;
+
+const StackContents = styled.div`
   max-width: ${theme.contain.content};
   margin: 0 auto;
 
@@ -26,9 +53,13 @@ const Wrapper = styled.div`
     padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
   `};
+`;
 
-  ${mediaMin.xl`
-    margin-top: ${rem(24)};
+const StyledHR = styled(HR)`
+  margin-bottom: ${rem(32)};
+
+  ${mediaMin.m`
+    margin-bottom: ${rem(56)};
   `};
 `;
 
@@ -40,7 +71,9 @@ const WorkHeader = styled.header`
     margin-bottom: ${rem(88)};
   `};
 
-  z-index: 5;
+  ${mediaMin.xl`
+    margin-top: ${rem(24)};
+  `};
 `;
 
 const Subhead = styled(Copy)`
@@ -102,29 +135,39 @@ const WorkPage = (props) => {
         currentPath={props.location.pathname}
       />
       <Main role="main">
-        <Wrapper>
-          <Helmet title={`${intlMessages[locale].meta.workMetaTitle}`} />
-          <SEO />
+        <Helmet title={`${intlMessages[locale].meta.workMetaTitle}`} />
+        <SEO />
+        <StackContents>
           <WorkHeader>
             <FormattedMessage id="caseStudiesHeader">
               {(txt) => <h1>{txt}</h1>}
             </FormattedMessage>
             <FormattedMessage id="caseStudiesDescription">
-              {(txt) => <Subhead>{txt}</Subhead>}
+              {(txt) => <Copy>{txt}</Copy>}
             </FormattedMessage>
           </WorkHeader>
-          <CaseStudyListing edges={edgesWork} />
-          {totalPagesInWork > 1 && (
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPagesInWork}
-              paginationPathPrefix={paginationPathPrefix}
-              prevPath={prevPath}
-              nextPath={nextPath}
-              locale={locale}
-            />
-          )}
-        </Wrapper>
+        </StackContents>
+        <Stack>
+          <StackContents>
+            <CaseStudyListing edges={edgesWork} />
+            {totalPagesInWork > 1 && (
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPagesInWork}
+                paginationPathPrefix={paginationPathPrefix}
+                prevPath={prevPath}
+                nextPath={nextPath}
+                locale={locale}
+              />
+            )}
+          </StackContents>
+        </Stack>
+        <Stack>
+          <AltStack>
+            <StyledHR />
+            <ContactCard locale={locale} />
+          </AltStack>
+        </Stack>
       </Main>
       <SiteFooter locale={locale} />
     </Layout>

@@ -10,25 +10,25 @@ export const theme = {
     pageDark500: "#0F2030",
     light200: "#99ABBF",
     light100: "#D8E1EB",
-    buttonLight: "#E0F1FF",
+    buttonLight: "#F0F8FF",
     gray500: "#A1A8B5",
     gray400: "#CBCED4",
     gray300: "#E6E8EB",
     gray200: "#F5F6F7",
     gray100: "#FFFFFF",
     main600: "#0946B0",
-    main500: "#2265C9",
+    main500: "#185DC4",
     main400: "#458FDE",
     main300: "#62B0F5",
     main200: "#9ED2FF",
     main100: "#E3F2FC",
-    scrollToTop: "#E6E8EB",
+    scrollToTop: "#CBCED4",
   },
   shadow: {
     default:
       "box-shadow: 0px 2px 4px 0px hsla(0,0%,40%,0.2), 0px 6px 12px 0px hsla(0,0%,70%,0.24)",
     hover:
-      "box-shadow: 0px 2px 8px -4px hsla(0,0%,40%,0.4), 0px 8px 20px -4px hsla(0,0%,70%,0.4)",
+      "box-shadow: 0px 2px 8px -4px hsla(0,0%,40%,0.4), 0px 8px 20px -2px hsla(0,0%,70%,0.4)",
     navbar:
       "box-shadow: 0px 2px 4px -2px hsla(0,0%,40%,0.3), 0px 4px 8px -2px hsla(0,0%,60%,0.24)",
     image:
@@ -45,7 +45,7 @@ export const theme = {
       darkGhost:
         "box-shadow: 0 2px 4px 0 rgba(61,61,61,0.64), 0 3px 11px -2px rgba(82,82,82,0.33)",
       main:
-        "box-shadow: 0 2px 4px 0 rgba(0,20,51,0.60), 0 6px 14px -2px rgba(0,62,161,0.33)",
+        "box-shadow: 0 2px 4px 0 rgba(0,31,82,0.59), 0 6px 14px -2px rgba(0,74,153,0.33)",
       loadComments:
         "box-shadow: 0 2px 4px 0 rgba(61,61,61,0.64), 0 3px 11px -2px rgba(82,82,82,0.33)",
     },
@@ -128,6 +128,13 @@ export const theme = {
       s: "2rem",
       m: "3.5rem",
       xl: "3.5rem",
+    },
+  },
+  stack: {
+    section: {
+      s: "3.5em",
+      m: "6.5em",
+      xl: "9em",
     },
   },
   contain: {

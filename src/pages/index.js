@@ -66,14 +66,14 @@ const Subhead = styled(Copy)`
 `;
 
 const Stack = styled.section`
-  margin-bottom: ${rem(48)};
+  margin-bottom: ${theme.stack.section.s};
 
   ${mediaMin.s`
-    margin-bottom: ${rem(80)};
+    margin-bottom: ${theme.stack.section.m};
   `};
 
   ${mediaMin.m`
-    margin-bottom: ${rem(144)};
+  margin-bottom: ${theme.stack.section.xl};
   `};
 `;
 
@@ -249,11 +249,12 @@ const Index = (props) => {
         </AltStack>
         <Stack>
           <StackContents>
-            <CaseStudiesH2>Case Studies</CaseStudiesH2>
-            <CaseStudiesCopy>
-              Case studies showcasing my discovery, research, prototyping and
-              designing iterative process.
-            </CaseStudiesCopy>
+            <FormattedMessage id="caseStudiesHeader">
+              {(txt) => <CaseStudiesH2>{txt}</CaseStudiesH2>}
+            </FormattedMessage>
+            <FormattedMessage id="caseStudiesDescription">
+              {(txt) => <CaseStudiesCopy>{txt}</CaseStudiesCopy>}
+            </FormattedMessage>
             {caseStudyList.map((caseStudyCard) => (
               <CaseStudyCard
                 key={caseStudyCard.title}

@@ -23,7 +23,8 @@ const StyledLink = styled.a`
   }
 
   &:hover {
-    transform: scale(1.2);
+    background-color: transparent;
+    transform: scale(1.15);
     cursor: pointer;
   }
 `;

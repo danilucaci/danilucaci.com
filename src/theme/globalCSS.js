@@ -213,9 +213,9 @@ const GlobalHTML = createGlobalStyle`
       font-family: ${theme.fonts.bodyRegular};
     }
 
-    a:hover {
+    &:hover {
       cursor: pointer;
-      background-color: ${theme.colors.gray300};
+      background-color: ${theme.colors.main100};
     }
   }
 

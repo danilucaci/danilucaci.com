@@ -17,7 +17,7 @@ const StyledFooter = styled.footer`
   padding: ${rem(64)} ${rem(16)} ${rem(40)};
 
   ${mediaMin.s`
-    padding: ${rem(80)} ${rem(16)} ${rem(56)};
+    padding: ${rem(80)} ${rem(24)} ${rem(56)};
   `};
 `;
 

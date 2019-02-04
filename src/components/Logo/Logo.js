@@ -31,6 +31,7 @@ const StyledLogo = styled(LocaleLink)`
   }
 
   &:hover {
+    background-color: transparent;
     color: ${theme.colors.main600};
     cursor: pointer;
   }
