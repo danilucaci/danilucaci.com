@@ -15,7 +15,7 @@ const Wrapper = styled.section`
 const StyledH2 = styled.h2`
   margin-bottom: ${rem(16)};
 
-  ${mediaMin.s`
+  ${mediaMin.m`
     margin-bottom: ${rem(24)};
   `};
 `;

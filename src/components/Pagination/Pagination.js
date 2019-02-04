@@ -14,7 +14,11 @@ const PaginationWrapper = styled.nav`
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  margin-top: ${rem(48)};
+  margin-top: ${rem(56)};
+
+  ${mediaMin.xl`
+    margin-top: ${rem(72)};
+  `};
 `;
 
 const StyledIcon = styled(Icon)`

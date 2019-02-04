@@ -14,8 +14,8 @@ import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
 import PostListing from "../components/PostListing/PostListing";
 import Tags from "../components/Tags/Tags";
 import Pagination from "../components/Pagination/Pagination";
-import { SectionHeader } from "../components/Headings/Headings";
 import intlMessages from "../i18n/i18n";
+import { SectionHeader } from "../components/Headings/Headings";
 
 const TagWrapper = styled.div`
   max-width: ${theme.contain.blog};
@@ -30,28 +30,12 @@ const TagWrapper = styled.div`
   `};
 `;
 
-const StyledSectionHeader = styled(SectionHeader)``;
-
-const PostsFor = styled.span`
-  color: ${theme.colors.dark700};
-  font-size: ${theme.fontSizes.sectionHeader};
-  line-height: ${theme.lineHeights.sectionHeader};
-  letter-spacing: ${theme.letterSpacing.sectionHeader};
-  text-transform: uppercase;
-
-  display: block;
-`;
-
 const TagHeader = styled.header`
   margin-bottom: ${rem(56)};
   color: ${theme.colors.dark900};
 
-  ${mediaMin.s`
-    margin-bottom: ${rem(88)};
-  `};
-
   ${mediaMin.l`
-    margin-bottom: ${rem(128)};
+    margin-bottom: ${rem(112)};
   `};
 `;
 
@@ -62,7 +46,7 @@ const TagTitleWrapper = styled.div`
 
   ${mediaMin.l`
     margin-right: ${rem(12)};
-    width: calc(50% - ${rem(12)});
+    width: calc(42% - ${rem(12)});
   `};
 `;
 
@@ -72,21 +56,16 @@ const TagTitle = styled.span`
 
   font-weight: 700;
   font-style: normal;
-  letter-spacing: ${theme.letterSpacing.h2};
 
   .fonts-loaded & {
     font-family: ${theme.fonts.header};
   }
 
   font-size: ${theme.fontSizes.h2s};
-
-  ${mediaMin.xs`
-    font-size: ${theme.fontSizes.h2};
-  `}
-
   line-height: ${theme.lineHeights.h2s};
 
   ${mediaMin.xs`
+    font-size: ${theme.fontSizes.h2};
     line-height: ${theme.lineHeights.h2};
   `}
 `;
@@ -99,7 +78,7 @@ const OtherTagsWrapper = styled.div`
     display: inline-block;
     vertical-align: top;
     margin-left: ${rem(12)};
-    width: calc(50% - ${rem(12)});
+    width: calc(58% - ${rem(12)});
   `};
 `;
 
@@ -153,14 +132,14 @@ const TagPage = (props) => {
             <TagTitleWrapper>
               <h1>
                 <FormattedMessage id="tagListingHeader">
-                  {(txt) => <PostsFor>{txt}</PostsFor>}
+                  {(txt) => <SectionHeader>{txt}</SectionHeader>}
                 </FormattedMessage>
                 <TagTitle>#{tag}</TagTitle>
               </h1>
             </TagTitleWrapper>
             <OtherTagsWrapper>
               <FormattedMessage id="tagListingOther">
-                {(txt) => <StyledSectionHeader>{txt}</StyledSectionHeader>}
+                {(txt) => <SectionHeader>{txt}</SectionHeader>}
               </FormattedMessage>
               <Tags tags={allTags} />
             </OtherTagsWrapper>

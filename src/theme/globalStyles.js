@@ -127,7 +127,7 @@ export const theme = {
     bottom: {
       s: "2rem",
       m: "3.5rem",
-      xl: "3.5rem",
+      xl: "4.5rem",
     },
   },
   stack: {

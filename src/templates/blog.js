@@ -6,17 +6,16 @@ import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
 
 import SEO from "../components/SEO/SEO";
+import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
 import Layout from "../components/Layout";
 import SiteHeader from "../components/SiteHeader/SiteHeader";
 import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
-import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
-
 import PostListing from "../components/PostListing/PostListing";
 import Tags from "../components/Tags/Tags";
 import Pagination from "../components/Pagination/Pagination";
-
 import intlMessages from "../i18n/i18n";
+import { SectionHeader } from "../components/Headings/Headings";
 
 const BlogWrapper = styled.div`
   max-width: ${theme.contain.blog};
@@ -34,19 +33,10 @@ const BlogWrapper = styled.div`
 
 const BlogHeader = styled.header`
   margin-bottom: ${rem(56)};
-  color: ${theme.colors.dark900};
 
   ${mediaMin.s`
-    margin-bottom: ${rem(88)};
+    margin-bottom: ${rem(112)};
   `};
-`;
-
-const BlogInfo = styled.div`
-  ${mediaMin.l``};
-`;
-
-const TagsWrapper = styled.div`
-  margin-top: ${rem(16)};
 `;
 
 const BlogTitle = styled.h2`
@@ -62,7 +52,9 @@ ${mediaMin.xs`
   line-height: ${theme.lineHeights.h2};
 `}`;
 
-const TagsTitle = styled.h4``;
+const TagsWrapper = styled.div`
+  margin-top: ${rem(16)};
+`;
 
 const BlogPage = (props) => {
   const {
@@ -110,14 +102,12 @@ const BlogPage = (props) => {
           <Helmet title={`${intlMessages[locale].meta.blogMetaTitle}`} />
           <SEO />
           <BlogHeader>
-            <BlogInfo>
-              <FormattedMessage id="blogTitle">
-                {(txt) => <BlogTitle as="h1">{txt}</BlogTitle>}
-              </FormattedMessage>
-            </BlogInfo>
+            <FormattedMessage id="blogTitle">
+              {(txt) => <BlogTitle as="h1">{txt}</BlogTitle>}
+            </FormattedMessage>
             <TagsWrapper>
               <FormattedMessage id="blogExplore">
-                {(txt) => <TagsTitle>{txt}</TagsTitle>}
+                {(txt) => <SectionHeader>{txt}</SectionHeader>}
               </FormattedMessage>
               <Tags tags={allTags} />
             </TagsWrapper>
