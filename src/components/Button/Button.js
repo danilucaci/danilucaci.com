@@ -24,7 +24,8 @@ export const PrimaryButton = styled.button`
     font-family: ${theme.fonts.bodyBold};
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     cursor: pointer;
     background-color: ${theme.colors.main500};
     ${theme.shadow.buttons.main};
@@ -54,7 +55,8 @@ export const MainGhostButton = styled.button`
     font-family: ${theme.fonts.bodyBold};
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     cursor: pointer;
     background-color: ${theme.colors.gray100};
     ${theme.shadow.buttons.mainGhost};
@@ -84,7 +86,8 @@ export const DarkGhostButton = styled.button`
     font-family: ${theme.fonts.bodyBold};
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     cursor: pointer;
     background-color: ${theme.colors.gray100};
     ${theme.shadow.buttons.darkGhost};
@@ -113,7 +116,8 @@ export const PrimaryButtonSmall = styled.button`
     font-family: ${theme.fonts.bodyRegular};
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: ${theme.colors.main500};
     cursor: pointer;
     ${theme.shadow.buttons.main};
@@ -143,7 +147,8 @@ export const TertiaryButton = styled.button`
     font-family: ${theme.fonts.bodyRegular};
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     cursor: pointer;
   }
 `;
