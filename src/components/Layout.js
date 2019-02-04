@@ -60,10 +60,6 @@ class Layout extends Component {
     if (NODE_ENV === "development") {
       this.showGDPRStatus();
     }
-
-    if (this.state.hasGDPRConsent) {
-      this.loadAnalytics();
-    }
   }
 
   checkFontsLoaded = () => {
@@ -140,6 +136,11 @@ class Layout extends Component {
             askGDPRConsent: !prevState.askGDPRConsent,
             hasGDPRConsent: !prevState.hasGDPRConsent,
           }));
+
+          // Load the analytics scripts when cookies are accepted
+          this.loadAnalytics();
+
+          // Don't load analytics scripts if analytics cookies are not accepted
         } else if (!DLCookie.analytics) {
           this.setState((prevState) => ({
             askGDPRConsent: !prevState.askGDPRConsent,
@@ -187,14 +188,8 @@ class Layout extends Component {
           secure: secure,
         });
 
-        this.setState((prevState) => ({
-          askGDPRConsent: !prevState.askGDPRConsent,
-          hasGDPRConsent: !prevState.hasGDPRConsent,
-        }));
-
-        if (NODE_ENV === "development") {
-          this.showGDPRStatus();
-        }
+        // Check to see if the cookie was set
+        this.checkGDPRStatus();
       } else {
         if (NODE_ENV === "development") {
           console.error("Can't read cookie data.");
@@ -220,11 +215,8 @@ class Layout extends Component {
           secure: secure,
         });
 
-        this.setState((prevState) => ({
-          askGDPRConsent: !prevState.askGDPRConsent,
-        }));
-
-        this.showGDPRStatus();
+        // Check to see if the cookie was set
+        this.checkGDPRStatus();
       } else {
         if (NODE_ENV === "development") {
           console.error("Can't read cookie data.");
