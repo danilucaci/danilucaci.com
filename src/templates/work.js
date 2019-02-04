@@ -86,10 +86,6 @@ const WorkHeader = styled.header`
   ${mediaMin.s`
     margin-bottom: ${rem(88)};
   `};
-
-  ${mediaMin.xxl`
-    margin-top: ${rem(24)};
-  `};
 `;
 
 const WorkPage = (props) => {
