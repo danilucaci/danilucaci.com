@@ -13,6 +13,7 @@ import SEO from "../components/SEO/SEO";
 import { BulletList, BulletListItem, Copy } from "../components/Copy/Copy";
 import ContactCard from "../components/ContactCard/ContactCard";
 import CaseStudyCard from "../components/CaseStudyCard/CaseStudyCard";
+import { HR } from "../components/HR/HR";
 
 const IndexHeader = styled.header`
   max-width: ${theme.contain.content};
@@ -78,9 +79,16 @@ const Stack = styled.section`
 `;
 
 const AltStack = styled(Stack)`
-  background-color: ${theme.colors.gray100};
-  padding-top: ${rem(112)};
-  padding-bottom: ${rem(72)};
+  max-width: ${theme.contain.page};
+  margin: 0 auto;
+
+  padding-left: ${theme.gutters.s};
+  padding-right: ${theme.gutters.s};
+
+  ${mediaMin.s`
+    padding-left: ${theme.gutters.m};
+    padding-right: ${theme.gutters.m};
+  `};
 `;
 
 const StackContents = styled.div`
@@ -93,6 +101,14 @@ const StackContents = styled.div`
   ${mediaMin.s`
     padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
+  `};
+`;
+
+const StyledHR = styled(HR)`
+  margin-bottom: ${rem(32)};
+
+  ${mediaMin.m`
+    margin-bottom: ${rem(56)};
   `};
 `;
 
@@ -270,7 +286,10 @@ const Index = (props) => {
         </Stack>
       </Main>
       <Stack>
-        <ContactCard />
+        <AltStack>
+          <StyledHR />
+          <ContactCard locale={locale} />
+        </AltStack>
       </Stack>
       <SiteFooter locale={locale} />
     </Layout>
