@@ -17,7 +17,7 @@ import Pagination from "../components/Pagination/Pagination";
 import ContactCard from "../components/ContactCard/ContactCard";
 import { HR } from "../components/HR/HR";
 
-const Stack = styled.section`
+const OuterWrapper = styled.section`
   margin-bottom: ${theme.stack.section.s};
 
   ${mediaMin.s`
@@ -25,12 +25,12 @@ const Stack = styled.section`
   `};
 
   ${mediaMin.m`
-  margin-bottom: ${theme.stack.section.xl};
+      margin-bottom: ${theme.stack.section.xl};
   `};
 `;
 
-const AltStack = styled(Stack)`
-  max-width: ${theme.contain.page};
+const InnerWrapper = styled.div`
+  max-width: ${theme.contain.content};
   margin: 0 auto;
 
   padding-left: ${theme.gutters.s};
@@ -42,8 +42,24 @@ const AltStack = styled(Stack)`
   `};
 `;
 
-const StackContents = styled.div`
-  max-width: ${theme.contain.content};
+const ContactWrapper = styled.div`
+  margin-bottom: calc(${theme.stack.section.s} - ${theme.mainMargins.bottom.s});
+
+  ${mediaMin.s`
+    margin-bottom: calc(${theme.stack.section.m} - ${
+    theme.mainMargins.bottom.m
+  });
+  `};
+
+  ${mediaMin.m`
+    margin-bottom: calc(${theme.stack.section.xl} - ${
+    theme.mainMargins.bottom.xl
+  });
+  `};
+`;
+
+const ContactInner = styled.div`
+  max-width: ${theme.contain.page};
   margin: 0 auto;
 
   padding-left: ${theme.gutters.s};
@@ -71,19 +87,8 @@ const WorkHeader = styled.header`
     margin-bottom: ${rem(88)};
   `};
 
-  ${mediaMin.xl`
+  ${mediaMin.xxl`
     margin-top: ${rem(24)};
-  `};
-`;
-
-const Subhead = styled(Copy)`
-  color: ${theme.colors.dark700};
-  font-size: ${theme.fontSizes.subheadS};
-  line-height: ${theme.lineHeights.subheadS};
-
-  ${mediaMin.s`
-    font-size: ${theme.fontSizes.subhead};
-    line-height: ${theme.lineHeights.subhead};
   `};
 `;
 
@@ -137,18 +142,18 @@ const WorkPage = (props) => {
       <Main role="main">
         <Helmet title={`${intlMessages[locale].meta.workMetaTitle}`} />
         <SEO />
-        <StackContents>
-          <WorkHeader>
+        <WorkHeader>
+          <InnerWrapper>
             <FormattedMessage id="caseStudiesHeader">
               {(txt) => <h1>{txt}</h1>}
             </FormattedMessage>
             <FormattedMessage id="caseStudiesDescription">
               {(txt) => <Copy>{txt}</Copy>}
             </FormattedMessage>
-          </WorkHeader>
-        </StackContents>
-        <Stack>
-          <StackContents>
+          </InnerWrapper>
+        </WorkHeader>
+        <OuterWrapper>
+          <InnerWrapper>
             <CaseStudyListing edges={edgesWork} />
             {totalPagesInWork > 1 && (
               <Pagination
@@ -160,14 +165,14 @@ const WorkPage = (props) => {
                 locale={locale}
               />
             )}
-          </StackContents>
-        </Stack>
-        <Stack>
-          <AltStack>
+          </InnerWrapper>
+        </OuterWrapper>
+        <ContactWrapper>
+          <ContactInner>
             <StyledHR />
             <ContactCard locale={locale} />
-          </AltStack>
-        </Stack>
+          </ContactInner>
+        </ContactWrapper>
       </Main>
       <SiteFooter locale={locale} />
     </Layout>
