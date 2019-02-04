@@ -62,8 +62,23 @@ const TagsWrapper = styled.div`
 `;
 
 const Tag = styled(Copy)`
+  background-color: ${theme.colors.gray300};
+  border-radius: ${theme.borderRadius.buttons};
+  color: ${theme.colors.dark800};
   display: inline-block;
+
+  text-decoration: none;
+
+  font-size: ${theme.fontSizes.s};
+  line-height: ${theme.fontSizes.s};
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.bodyRegular};
+  }
+
   margin-right: ${rem(16)};
+  margin-top: ${rem(16)};
+  padding: ${rem(6)} ${rem(8)};
 `;
 
 const HRTop = styled(HR)`

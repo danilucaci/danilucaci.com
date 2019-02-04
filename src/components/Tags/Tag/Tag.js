@@ -20,7 +20,7 @@ const StyledTag = styled(LocaleLink)`
   }
 
   margin-right: ${rem(16)};
-  margin-top: ${rem(12)};
+  margin-top: ${rem(16)};
   padding: ${rem(6)} ${rem(8)};
 
   &:visited,
