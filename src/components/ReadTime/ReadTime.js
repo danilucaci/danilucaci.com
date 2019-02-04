@@ -14,13 +14,12 @@ const Wrapper = styled.div`
 
 const Label = styled(Copy)`
   display: inline-block;
-  font-feature-settings: "smcp", "c2sc", "onum";
 `;
 
 const StyledIcon = styled(Icon)`
   display: inline-block;
   margin-right: ${rem(2)};
-  margin-bottom: ${rem(4)};
+  margin-bottom: ${rem(2)};
 `;
 
 const ReadTime = (props) => {

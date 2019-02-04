@@ -15,16 +15,12 @@ const StyledArticle = styled.article`
   margin-bottom: ${theme.gutters.m};
 
   ${mediaMin.s`
-    padding: ${rem(16)} ${rem(24)} ${rem(16)};
+    padding: ${rem(16)} ${rem(32)} ${rem(24)} ${rem(32)};
   `};
-
-  position: relative;
 
   &:hover {
     ${theme.shadow.hover};
-  }
 
-  &:hover {
     & h3 {
       color: ${theme.colors.main600};
     }
@@ -42,7 +38,13 @@ const ContinueLink = styled(BoldLink)`
   }
 `;
 
+const ArticleCopy = styled(Copy)`
+  margin-top: ${rem(12)};
+  margin-bottom: ${rem(16)};
+`;
+
 const StyledH3 = styled.h3`
+  margin-top: ${rem(8)};
   margin-bottom: ${rem(8)};
 `;
 
@@ -50,11 +52,11 @@ const Article = (props) => {
   return (
     <StyledArticle>
       <header>
-        <Tags tags={props.tags} spaced />
+        <Tags tags={props.tags} />
         <StyledH3>{props.title}</StyledH3>
         <ArticleInfo date={props.date} timeToRead={props.timeToRead} />
       </header>
-      <Copy className="copy">{props.snippet}</Copy>
+      <ArticleCopy className="copy">{props.snippet}</ArticleCopy>
       <FormattedMessage id="articleLinkContinue">
         {(txt) => <ContinueLink to={props.slug}>{txt}</ContinueLink>}
       </FormattedMessage>

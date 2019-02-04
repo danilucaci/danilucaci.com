@@ -22,10 +22,6 @@ const StyledIcon = styled(Icon)`
 
 const Time = styled(Copy)`
   display: inline-block;
-  font-variant: small-caps;
-  text-transform: lowercase;
-  letter-spacing: ${rem(0.5)};
-  font-feature-settings: "smcp", "c2sc", "onum";
 `;
 
 const ArticleDate = (props) => {
@@ -41,7 +37,7 @@ const ArticleDate = (props) => {
         day="numeric"
       >
         {(txt) => (
-          <Time as="time" dateTime={txt}>
+          <Time as="time" dateTime={txt} small>
             {txt}
           </Time>
         )}
