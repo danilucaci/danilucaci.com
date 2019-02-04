@@ -6,7 +6,9 @@ const GlobalHTML = createGlobalStyle`
     background-color: #F5F6F7;
     color: #3A4554;
     font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-    font-size: 100%;
+    font-size: 16px;
+    line-height: 24px;
+    ${"" /* font-size: 100%; */}
 
     -ms-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
