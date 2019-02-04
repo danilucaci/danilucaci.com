@@ -6,9 +6,8 @@ import { theme, mediaMin, rem } from "../../../theme/globalStyles";
 import LocaleLink from "../../LocaleLink/LocaleLink";
 
 const StyledTag = styled(LocaleLink)`
-  background-color: transparent;
-  border-radius: ${rem(4)};
-  border: 1px solid ${theme.colors.grey500};
+  background-color: ${theme.colors.gray300};
+  border-radius: ${theme.borderRadius.buttons};
   display: inline-block;
 
   text-decoration: none;
@@ -22,7 +21,7 @@ const StyledTag = styled(LocaleLink)`
 
   margin-right: ${rem(16)};
   margin-top: ${rem(12)};
-  padding: ${rem(6)} ${rem(10)};
+  padding: ${rem(6)} ${rem(8)};
 
   &:visited,
   &:link {
@@ -30,6 +29,7 @@ const StyledTag = styled(LocaleLink)`
   }
 
   &:hover {
+    background-color: ${theme.colors.gray400};
     text-decoration: underline;
   }
 
