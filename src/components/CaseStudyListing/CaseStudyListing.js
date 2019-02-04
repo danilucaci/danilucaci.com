@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import CaseStudyCard from "../CaseStudyCard/CaseStudyCard";
 
-const Wrapper = styled.section``;
+const CaseStudyListingWrapper = styled.div``;
 
 const CaseStudyListing = (props) => {
   let caseStudyList = props.edges.map((edge) => ({
@@ -17,7 +17,7 @@ const CaseStudyListing = (props) => {
   }));
 
   return (
-    <Wrapper>
+    <CaseStudyListingWrapper>
       {caseStudyList.map((caseStudyCard) => (
         <CaseStudyCard
           key={caseStudyCard.title}
@@ -29,7 +29,7 @@ const CaseStudyListing = (props) => {
           image={caseStudyCard.image}
         />
       ))}
-    </Wrapper>
+    </CaseStudyListingWrapper>
   );
 };
 
