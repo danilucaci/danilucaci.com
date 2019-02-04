@@ -478,12 +478,12 @@ class CaseStudy extends Component {
     const prevSlug = this.props.pageContext.prevSlug;
     const prevTitle = this.props.pageContext.prevTitle;
 
-    let changeLanguage = "";
+    let twinPostURL = "";
 
     if (locale === "en") {
-      changeLanguage = "/es/trabajos/" + twinPost;
+      twinPostURL = "/es/trabajos/" + twinPost;
     } else if (locale === "es") {
-      changeLanguage = "/work/" + twinPost;
+      twinPostURL = "/work/" + twinPost;
     }
     console.log(this.props.pageContext);
     return (
@@ -493,7 +493,7 @@ class CaseStudy extends Component {
         />
         <SEO postPath={slug} postNode={postNode} postSEO />
         <SiteHeader
-          changeLanguage={changeLanguage}
+          twinPostURL={twinPostURL}
           showScrollIndicator
           locale={locale}
         />

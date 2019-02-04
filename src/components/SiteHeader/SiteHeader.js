@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { Link, graphql, StaticQuery } from "gatsby";
-import { FormattedMessage } from "react-intl";
 
 import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
 import SiteNav from "../SiteNav/SiteNav";
@@ -62,10 +60,9 @@ class SiteHeader extends Component {
             onClick={this.openNav}
             showNav={this.state.showNav}
             locale={this.props.locale}
+            twinPostURL={this.props.twinPostURL}
+            currentPath={this.props.currentPath}
           />
-          {/* <FormattedMessage id="footerChangeLanguage">
-          {(txt) => <Link to={props.changeLanguage}>{txt}</Link>}
-        </FormattedMessage> */}
         </StyledSiteHeader>
         {shouldRenderScroll && (
           <ScrollContainer showScrollIndicator={this.props.showScrollIndicator}>
@@ -79,7 +76,8 @@ class SiteHeader extends Component {
 
 SiteHeader.propTypes = {
   locale: PropTypes.string.isRequired,
-  changeLanguage: PropTypes.string.isRequired,
+  twinPostURL: PropTypes.string.isRequired,
+  currentPath: PropTypes.string.isRequired,
   optionalBool: PropTypes.bool,
 };
 

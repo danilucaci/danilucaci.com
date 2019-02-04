@@ -146,17 +146,17 @@ const Col2of2 = styled.div`
 
 const AboutPage = (props) => {
   let locale = props.pageContext.locale;
-  let changeLanguage = "";
+  let twinPostURL = "";
 
   if (locale === "en") {
-    changeLanguage = "/es/sobre-mi";
+    twinPostURL = "/es/sobre-mi";
   } else if (locale === "es") {
-    changeLanguage = "/about-me";
+    twinPostURL = "/about-me";
   }
 
   return (
     <Layout location={props.location} locale={locale}>
-      <SiteHeader changeLanguage={changeLanguage} locale={locale} />
+      <SiteHeader twinPostURL={twinPostURL} locale={locale} />
       <Main role="main">
         <AboutMeWrapper>
           <Helmet title={`${intlMessages[locale].meta.aboutMetaTitle}`} />

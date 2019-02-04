@@ -172,12 +172,12 @@ class LegalDoc extends Component {
     const twinPost = this.props.pageContext.twinPost;
     const lastUpdated = postInfo.date;
 
-    let changeLanguage = "";
+    let twinPostURL = "";
 
     if (locale === "en") {
-      changeLanguage = "/es/" + twinPost;
+      twinPostURL = "/es/" + twinPost;
     } else if (locale === "es") {
-      changeLanguage = "/" + twinPost;
+      twinPostURL = "/" + twinPost;
     }
 
     return (
@@ -188,7 +188,7 @@ class LegalDoc extends Component {
         <SEO postPath={slug} postNode={postNode} postSEO />
         <SiteHeader
           showScrollIndicator
-          changeLanguage={changeLanguage}
+          twinPostURL={twinPostURL}
           locale={locale}
         />
         <Main role="main" id="main">

@@ -122,27 +122,27 @@ const TagPage = (props) => {
     en: "/pagina/",
   };
 
-  let changeLanguage = "";
+  let twinPostURL = "";
 
   if (locale === "en" && currentPage > 1) {
-    changeLanguage =
+    twinPostURL =
       "/es" + paginationPathPrefix + paginationPageLabels[locale] + currentPage;
   } else if (locale === "en" && currentPage === 1) {
-    changeLanguage = "/es" + paginationPathPrefix;
+    twinPostURL = "/es" + paginationPathPrefix;
   }
 
   if (locale === "es" && currentPage > 1) {
-    changeLanguage =
+    twinPostURL =
       paginationPathPrefix + paginationPageLabels[locale] + currentPage;
   } else if (locale === "es" && currentPage === 1) {
-    changeLanguage = paginationPathPrefix;
+    twinPostURL = paginationPathPrefix;
   }
 
   return (
     <Layout location={props.location} locale={locale}>
       <Helmet title={`${intlMessages[locale].meta.tagListingMetaTitle}`} />
       <SEO />
-      <SiteHeader locale={locale} changeLanguage={changeLanguage} />
+      <SiteHeader locale={locale} twinPostURL={twinPostURL} />
       <Main role="main">
         <TagWrapper>
           <TagHeader>

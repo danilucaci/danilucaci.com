@@ -37,7 +37,7 @@ const StyledSiteNavListItem = styled.li`
     line-height: ${rem(32)};
     text-decoration: none;
     width: 100%;
-    padding: ${rem(16)} ${rem(16)};
+    padding: ${rem(16)} 0;
 
     &:visited,
     &:link {
@@ -53,6 +53,10 @@ const StyledSiteNavListItem = styled.li`
       background-color: transparent;
       font-size: ${theme.fontSizes.s};
       line-height: ${theme.lineHeights.s};
+      padding: ${rem(16)} ${rem(12)};
+  `};
+
+    ${mediaMin.l`
       padding: ${rem(16)} ${rem(24)};
   `};
 

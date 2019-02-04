@@ -10,18 +10,18 @@ import intlMessages from "../i18n/i18n";
 
 const NotFoundPage = (props) => {
   let locale = props.pageContext.locale;
-  let changeLanguage = "";
+  let twinPostURL = "";
 
   if (locale === "en") {
-    changeLanguage = "/es/404";
+    twinPostURL = "/es/404";
   } else if (locale === "es") {
-    changeLanguage = "/404";
+    twinPostURL = "/404";
   }
   return (
     <Layout location={props.location} locale={locale}>
       <Helmet title={`${intlMessages[locale].meta.pageNotFoundMetaTitle}`} />
       <SEO />
-      <SiteHeader changeLanguage={changeLanguage} locale={locale} />
+      <SiteHeader twinPostURL={twinPostURL} locale={locale} />
       <Main role="main">
         <h1>404 de mine</h1>
       </Main>

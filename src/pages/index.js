@@ -176,18 +176,22 @@ const Index = (props) => {
   }));
 
   let locale = props.pageContext.locale;
-  let changeLanguage = "";
+  let twinPostURL = "";
 
   if (locale === "en") {
-    changeLanguage = "/es";
+    twinPostURL = "/es";
   } else if (locale === "es") {
-    changeLanguage = "/";
+    twinPostURL = "/";
   }
 
   return (
     <Layout location={props.location} locale={locale}>
       <SEO />
-      <SiteHeader locale={locale} changeLanguage={changeLanguage} />
+      <SiteHeader
+        currentPath={props.location.pathname}
+        locale={locale}
+        twinPostURL={twinPostURL}
+      />
       <Main role="main">
         <SEO />
         <IndexHeader>

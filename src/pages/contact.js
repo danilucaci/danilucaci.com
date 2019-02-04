@@ -125,12 +125,12 @@ const TwitterIcon = styled(Icon)`
 
 const ContactPage = (props) => {
   let locale = props.pageContext.locale;
-  let changeLanguage = "";
+  let twinPostURL = "";
 
   if (locale === "en") {
-    changeLanguage = "/es/contacto";
+    twinPostURL = "/es/contacto";
   } else if (locale === "es") {
-    changeLanguage = "/contact";
+    twinPostURL = "/contact";
   }
 
   return (
@@ -138,7 +138,7 @@ const ContactPage = (props) => {
       <Helmet title={`${intlMessages[locale].meta.contactMetaTitle}`} />
 
       <SEO />
-      <SiteHeader locale={locale} changeLanguage={changeLanguage} />
+      <SiteHeader locale={locale} twinPostURL={twinPostURL} />
       <Main role="main">
         <ContactMeWrapper>
           <StyledH1>Let's talk</StyledH1>

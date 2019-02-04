@@ -456,12 +456,12 @@ class Post extends Component {
     const prevSlug = this.props.pageContext.prevSlug;
     const prevTitle = this.props.pageContext.prevTitle;
 
-    let changeLanguage = "";
+    let twinPostURL = "";
 
     if (locale === "en") {
-      changeLanguage = "/es/blog/" + twinPost;
+      twinPostURL = "/es/blog/" + twinPost;
     } else if (locale === "es") {
-      changeLanguage = "/blog/" + twinPost;
+      twinPostURL = "/blog/" + twinPost;
     }
 
     return (
@@ -471,7 +471,7 @@ class Post extends Component {
         />
         <SEO postPath={slug} postNode={postNode} postSEO />
         <SiteHeader
-          changeLanguage={changeLanguage}
+          twinPostURL={twinPostURL}
           showScrollIndicator
           locale={locale}
         />

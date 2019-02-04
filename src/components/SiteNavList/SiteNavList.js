@@ -4,11 +4,12 @@ import styled, { css } from "styled-components";
 import { FormattedMessage } from "react-intl";
 
 import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
+import LanguageSelector from "../LanguageSelector/LanguageSelector";
 import SiteNavListItem from "./SiteNavListItem/SiteNavListItem";
 
 const StyledSiteNavList = styled.ul`
   background-color: ${theme.colors.gray100};
-  display: block;
+  display: inline-block;
   text-align: center;
 
   position: absolute;
@@ -18,7 +19,9 @@ const StyledSiteNavList = styled.ul`
   height: 100vh;
   width: 100%;
   left: 0;
+  top: calc(${theme.navBarHeight} - ${rem(8)});
 
+  padding-top: ${rem(24)};
   padding-left: ${rem(16)};
   padding-right: ${rem(16)};
 
@@ -42,12 +45,12 @@ const StyledSiteNavList = styled.ul`
     position: static;
     height: auto;
     width: auto;
+    padding-top: 0;
     padding-left: 0;
     visibility: visible;
     opacity: 1;
     padding-right: 0;
     background-color: transparent;
-    float: right;
     transform: none;
   `};
 `;
@@ -94,12 +97,19 @@ const SiteNavList = (props) => {
           </SiteNavListItem>
         )}
       </FormattedMessage>
+      <LanguageSelector
+        currentPath={props.currentPath}
+        locale={props.locale}
+        twinPostURL={props.twinPostURL}
+      />
     </StyledSiteNavList>
   );
 };
 
 SiteNavList.propTypes = {
   locale: PropTypes.string.isRequired,
+  twinPostURL: PropTypes.string.isRequired,
+  currentPath: PropTypes.string.isRequired,
   showNav: PropTypes.bool.isRequired,
 };
 

@@ -82,25 +82,25 @@ const BlogPage = (props) => {
     en: "/pagina/",
   };
 
-  let changeLanguage = "";
+  let twinPostURL = "";
 
   if (locale === "en" && currentPage > 1) {
-    changeLanguage =
+    twinPostURL =
       "/es" + paginationPathPrefix + paginationPageLabels[locale] + currentPage;
   } else if (locale === "en" && currentPage === 1) {
-    changeLanguage = "/es" + paginationPathPrefix;
+    twinPostURL = "/es" + paginationPathPrefix;
   }
 
   if (locale === "es" && currentPage > 1) {
-    changeLanguage =
+    twinPostURL =
       paginationPathPrefix + paginationPageLabels[locale] + currentPage;
   } else if (locale === "es" && currentPage === 1) {
-    changeLanguage = paginationPathPrefix;
+    twinPostURL = paginationPathPrefix;
   }
 
   return (
     <Layout location={props.location} locale={locale}>
-      <SiteHeader changeLanguage={changeLanguage} locale={locale} />
+      <SiteHeader twinPostURL={twinPostURL} locale={locale} />
       <Main role="main">
         <BlogWrapper>
           <Helmet title={`${intlMessages[locale].meta.blogMetaTitle}`} />

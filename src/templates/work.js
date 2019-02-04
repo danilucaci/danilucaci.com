@@ -60,28 +60,28 @@ const WorkPage = (props) => {
     en: "/pagina/",
   };
 
-  let changeLanguage = "";
+  let twinPostURL = "";
 
   if (locale === "en" && currentPage > 1) {
-    changeLanguage =
+    twinPostURL =
       "/es" +
       workLocaleLabels[locale] +
       paginationPageLabels[locale] +
       currentPage;
   } else if (locale === "en" && currentPage === 1) {
-    changeLanguage = "/es" + workLocaleLabels[locale];
+    twinPostURL = "/es" + workLocaleLabels[locale];
   }
 
   if (locale === "es" && currentPage > 1) {
-    changeLanguage =
+    twinPostURL =
       workLocaleLabels[locale] + paginationPageLabels[locale] + currentPage;
   } else if (locale === "es" && currentPage === 1) {
-    changeLanguage = workLocaleLabels[locale];
+    twinPostURL = workLocaleLabels[locale];
   }
 
   return (
     <Layout location={props.location} locale={locale}>
-      <SiteHeader locale={locale} changeLanguage={changeLanguage} />
+      <SiteHeader locale={locale} twinPostURL={twinPostURL} />
       <Main role="main">
         <Wrapper>
           <Helmet title={`${intlMessages[locale].meta.workMetaTitle}`} />

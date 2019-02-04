@@ -8,7 +8,8 @@ import MenuButton from "../MenuButton/MenuButton";
 import { Logo } from "../Logo/Logo";
 
 const StyledSiteNav = styled.nav`
-  display: block;
+  display: flex;
+  justify-content: space-between;
   max-width: ${theme.contain.content};
   margin-left: auto;
   margin-right: auto;
@@ -26,7 +27,12 @@ const SiteNav = (props) => {
     <StyledSiteNav aria-label="Page Menu" role="navigation">
       <Logo locale={props.locale} />
       <MenuButton showNav={props.showNav} onClick={props.onClick} />
-      <SiteNavList showNav={props.showNav} locale={props.locale} />
+      <SiteNavList
+        showNav={props.showNav}
+        locale={props.locale}
+        twinPostURL={props.twinPostURL}
+        currentPath={props.currentPath}
+      />
     </StyledSiteNav>
   );
 };
@@ -34,6 +40,8 @@ const SiteNav = (props) => {
 SiteNav.propTypes = {
   locale: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
+  twinPostURL: PropTypes.string.isRequired,
+  currentPath: PropTypes.string.isRequired,
   showNav: PropTypes.bool.isRequired,
 };
 
