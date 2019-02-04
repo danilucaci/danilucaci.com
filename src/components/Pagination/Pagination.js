@@ -14,12 +14,12 @@ const PaginationWrapper = styled.nav`
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  padding-top: ${rem(24)};
+  margin-top: ${rem(48)};
 `;
 
 const StyledIcon = styled(Icon)`
   align-self: center;
-  margin-bottom: ${rem(2)};
+  margin: ${rem(8)} 0;
 
   ${(props) =>
     props.disabled &&
@@ -29,48 +29,20 @@ const StyledIcon = styled(Icon)`
 `;
 
 const StyledLink = styled(BoldLink)`
+  text-decoration: none;
+  white-space: nowrap;
+  height: ${rem(48)};
+
   &:visited,
   &:link {
-    color: ${theme.colors.dark900};
+    color: ${theme.colors.dark800};
   }
 
   &:hover {
-    color: ${theme.colors.dark900};
+    color: ${theme.colors.dark800};
     background-color: ${theme.colors.gray300};
     cursor: pointer;
   }
-`;
-
-const PaginationContent = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: ${rem(16)};
-  padding-right: ${rem(16)};
-  white-space: nowrap;
-`;
-
-const MobileCopy = styled(CopyBold)`
-  display: flex;
-  flex: 1 1 100%;
-  white-space: nowrap;
-  text-align: center;
-
-  ${mediaMin.xxxs`
-    margin-left: -${rem(32)};
-  `};
-
-  ${mediaMin.s`
-    margin-left: 0;
-    display: none;
-  `};
-`;
-
-const PaginationLabel = styled.span`
-  ${mediaMax.xxxs`
-    display: none;
-  `};
 `;
 
 const DisabledPrev = styled(CopyBold)`
@@ -87,13 +59,12 @@ const DisabledPrev = styled(CopyBold)`
 
 const Prev = styled(StyledLink)`
   color: ${theme.colors.dark800};
+  display: flex;
   text-align: left;
-  height: ${rem(48)};
-  padding: ${rem(8)} ${rem(24)} ${rem(8)} 0;
+
   margin-left: 0;
   margin-right: auto;
-  text-decoration: none;
-  white-space: nowrap;
+  padding: ${rem(8)} ${rem(24)} ${rem(8)} 0;
 
   ${mediaMax.xs`
     padding: ${rem(8)} ${rem(48)} ${rem(8)} 0;
@@ -104,12 +75,10 @@ const Next = styled(StyledLink)`
   color: ${theme.colors.dark800};
   display: flex;
   text-align: right;
-  height: ${rem(48)};
-  padding: ${rem(8)} 0 ${rem(8)} ${rem(24)};
+
   margin-right: 0;
   margin-left: auto;
-  text-decoration: none;
-  white-space: nowrap;
+  padding: ${rem(8)} 0 ${rem(8)} ${rem(24)};
 
   ${mediaMax.xs`
     padding: ${rem(8)} 0 ${rem(8)} ${rem(48)};
@@ -120,27 +89,59 @@ const DisabledNext = styled(CopyBold)`
   color: ${theme.colors.gray500};
   display: flex;
   text-align: right;
-  height: ${rem(48)};
-  padding: ${rem(8)} 0 ${rem(8)} ${rem(16)};
-  margin-left: auto;
-  margin-right: 0;
   text-decoration: none;
   white-space: nowrap;
+
+  height: ${rem(48)};
+  margin-left: auto;
+  margin-right: 0;
+  padding: ${rem(8)} 0 ${rem(8)} ${rem(16)};
+`;
+
+const PaginationContent = styled.div`
+  display: flex;
+  justify-content: center;
+  white-space: nowrap;
+
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: ${rem(16)};
+  padding-right: ${rem(16)};
+`;
+
+const MobileCopy = styled(CopyBold)`
+  display: flex;
+  flex: 1 1 100%;
+  white-space: nowrap;
+  text-align: center;
+
+  ${mediaMin.xxxs`
+    margin-left: -${rem(28)};
+  `};
+
+  ${mediaMin.s`
+    margin-left: 0;
+    display: none;
+  `};
+`;
+
+const PaginationLabel = styled.span`
+  ${mediaMax.xxxs`
+    display: none;
+  `};
 `;
 
 const PaginationNumber = styled(StyledLink)`
+  border-radius: 50%;
   display: none;
+
+  text-align: center;
+  text-decoration: none;
 
   height: ${rem(48)};
   width: ${rem(48)};
   margin: ${rem(4)};
   padding: ${rem(8)} ${rem(12)} ${rem(16)};
-  text-align: center;
-  text-decoration: none;
-
-  &:hover {
-    border-radius: 50%;
-  }
 
   ${mediaMin.s`
     display: inline-block;
@@ -148,12 +149,11 @@ const PaginationNumber = styled(StyledLink)`
 `;
 
 const CurrentPaginationNumber = styled(PaginationNumber)`
-  background-color: ${theme.colors.dark900};
-  border-radius: 50%;
+  background-color: ${theme.colors.dark800};
   color: ${theme.colors.gray100} !important;
 
   &:hover {
-    background-color: ${theme.colors.dark900};
+    background-color: ${theme.colors.dark800};
   }
 `;
 
