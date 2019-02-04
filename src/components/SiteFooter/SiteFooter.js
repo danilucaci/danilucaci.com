@@ -24,6 +24,7 @@ const StyledFooter = styled.footer`
 const StyledCopyright = styled(CopyBold)`
   color: ${theme.colors.light100};
   margin-bottom: ${rem(8)};
+  white-space: nowrap;
 `;
 
 const StyledCopy = styled(Copy)`
@@ -39,7 +40,9 @@ const LegalDocsContainer = styled.div`
 `;
 
 const LegalDoc = styled(LightSecondaryLink)`
+  display: inline-block;
   margin-right: ${rem(16)};
+  white-space: nowrap;
 `;
 
 const SiteFooter = (props) => {
