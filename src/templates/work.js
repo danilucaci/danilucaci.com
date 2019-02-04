@@ -4,12 +4,12 @@ import Helmet from "react-helmet";
 import styled, { css } from "styled-components";
 import { FormattedMessage } from "react-intl";
 
-import config from "../../data/SiteConfig";
 import { theme, mediaMin, rem } from "../theme/globalStyles";
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
 import SiteHeader from "../components/SiteHeader/SiteHeader";
 import { Main } from "../components/Main/Main";
+import { Copy } from "../components/Copy/Copy";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
 import CaseStudyListing from "../components/CaseStudyListing/CaseStudyListing";
 import Pagination from "../components/Pagination/Pagination";
@@ -26,6 +26,10 @@ const Wrapper = styled.div`
     padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
   `};
+
+  ${mediaMin.xl`
+    margin-top: ${rem(24)};
+  `};
 `;
 
 const WorkHeader = styled.header`
@@ -37,6 +41,17 @@ const WorkHeader = styled.header`
   `};
 
   z-index: 5;
+`;
+
+const Subhead = styled(Copy)`
+  color: ${theme.colors.dark700};
+  font-size: ${theme.fontSizes.subheadS};
+  line-height: ${theme.lineHeights.subheadS};
+
+  ${mediaMin.s`
+    font-size: ${theme.fontSizes.subhead};
+    line-height: ${theme.lineHeights.subhead};
+  `};
 `;
 
 const WorkPage = (props) => {
@@ -93,6 +108,9 @@ const WorkPage = (props) => {
           <WorkHeader>
             <FormattedMessage id="caseStudiesHeader">
               {(txt) => <h1>{txt}</h1>}
+            </FormattedMessage>
+            <FormattedMessage id="caseStudiesDescription">
+              {(txt) => <Subhead>{txt}</Subhead>}
             </FormattedMessage>
           </WorkHeader>
           <CaseStudyListing edges={edgesWork} />
