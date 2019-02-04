@@ -12,11 +12,13 @@ import { HR } from "../HR/HR";
 
 const StyledCaseStudyCard = styled.article`
   background-color: ${theme.colors.gray100};
-  ${theme.shadow.default};
-
   margin-bottom: ${rem(32)};
 
-  ${mediaMin.xl`
+  ${mediaMin.s`
+    margin-bottom: ${rem(40)};
+  `};
+
+  ${mediaMin.xxl`
     margin-bottom: ${rem(64)};
     display: flex;
   `};
@@ -27,9 +29,9 @@ const StyledCaseStudyCard = styled.article`
 `;
 
 const CaseStudyImgWrapper = styled.div`
-  ${mediaMin.xl`
-    margin-left: ${rem(12)};
+  ${mediaMin.xxl`
     max-width: ${rem(552)};
+    margin-left: ${rem(24)};
     flex: 1 1 60%;
     float: right;
     order: 2;
@@ -40,11 +42,12 @@ const CaseStudyCardContents = styled.div`
   padding: ${rem(8)} ${rem(16)} ${rem(24)} ${rem(16)};
 
   ${mediaMin.s`
-    padding: ${rem(8)} ${rem(32)} ${rem(24)};
+    padding: ${rem(16)} ${rem(32)} ${rem(32)};
   `};
 
-  ${mediaMin.xl`
-    margin-right: ${rem(12)};
+  ${mediaMin.xxl`
+    padding-top: 0;
+    padding-right: 0;
     max-width: ${rem(360)};
     flex: 1 1 40%;
     display: flex;
@@ -56,8 +59,8 @@ const CaseStudyCardContents = styled.div`
 const TagsWrapper = styled.div`
   margin: ${rem(8)} 0;
 
-  ${mediaMin.s`
-    margin: ${rem(12)} 0;
+  ${mediaMin.xxl`
+    margin: ${rem(16)} 0;
   `};
 `;
 
@@ -68,23 +71,28 @@ const Tag = styled(Copy)`
   display: inline-block;
 
   text-decoration: none;
-
   font-size: ${theme.fontSizes.s};
-  line-height: ${theme.fontSizes.s};
+  line-height: ${theme.lineHeights.s};
 
   .fonts-loaded & {
     font-family: ${theme.fonts.bodyRegular};
   }
 
   margin-right: ${rem(16)};
-  margin-top: ${rem(16)};
+  margin-top: ${rem(8)};
+  margin-bottom: ${rem(8)};
   padding: ${rem(6)} ${rem(8)};
+
+  ${mediaMin.xxl`
+    margin-right: ${rem(16)};
+    margin-bottom: ${rem(16)};
+  `};
 `;
 
 const HRTop = styled(HR)`
   border: 1px solid ${theme.colors.sectionBackground};
 
-  ${mediaMin.xl`
+  ${mediaMin.xxl`
     display: none;
   `};
 `;
@@ -102,7 +110,7 @@ const ContinueLink = styled(BoldLink)`
   display: inline-block;
   margin-top: ${rem(32)};
 
-  ${mediaMin.xl`
+  ${mediaMin.xxl`
     margin-top: auto;
     margin-bottom: 0;
   `};
@@ -119,16 +127,12 @@ const CaseStudyCard = (props) => {
         <Img title={props.title} alt={props.description} fluid={props.image} />
       </CaseStudyImgWrapper>
       <CaseStudyCardContents>
-        <HRTop />
         <TagsWrapper>
+          <HRTop />
           {props.tagsInCaseStudy &&
-            props.tagsInCaseStudy.map((tag) => (
-              <Tag key={tag} small>
-                {tag}
-              </Tag>
-            ))}
+            props.tagsInCaseStudy.map((tag) => <Tag key={tag}>{tag}</Tag>)}
+          <HRBottom />
         </TagsWrapper>
-        <HRBottom />
         <StyledH3>{props.title}</StyledH3>
         <Copy small>{props.description}</Copy>
         <FormattedMessage id="articleLinkContinue">

@@ -4,9 +4,8 @@ description: "A case study on improving the experience of searching, finding and
 date: "2018-12-29"
 category: "work"
 tags:
-    - UX/UI Design
-    - iOS
-    - E-Commerce Checkout
+    - Lean UX
+    - Checkout Optimization
 posted: true
 image: "./movie_app_presentation.png"
 locale: "en"

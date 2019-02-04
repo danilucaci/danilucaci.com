@@ -4,9 +4,8 @@ description: "Estudio de caso de pelis."
 date: "2019-01-02"
 category: "work"
 tags:
-    - UX/UI Design
-    - iOS
-    - E-Commerce Checkout
+    - Lean UX
+    - Checkout Optimization
 posted: true
 image: "./movie_app_presentation.png"
 locale: "es"
