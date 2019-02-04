@@ -496,6 +496,7 @@ class CaseStudy extends Component {
           twinPostURL={twinPostURL}
           showScrollIndicator
           locale={locale}
+          currentPath={this.props.location.pathname}
         />
         <Main role="main" id="main">
           <ArticleWrapper>

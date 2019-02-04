@@ -136,9 +136,12 @@ const ContactPage = (props) => {
   return (
     <Layout location={props.location} locale={locale}>
       <Helmet title={`${intlMessages[locale].meta.contactMetaTitle}`} />
-
       <SEO />
-      <SiteHeader locale={locale} twinPostURL={twinPostURL} />
+      <SiteHeader
+        locale={locale}
+        twinPostURL={twinPostURL}
+        currentPath={props.location.pathname}
+      />
       <Main role="main">
         <ContactMeWrapper>
           <StyledH1>Let's talk</StyledH1>

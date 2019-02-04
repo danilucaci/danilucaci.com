@@ -471,9 +471,10 @@ class Post extends Component {
         />
         <SEO postPath={slug} postNode={postNode} postSEO />
         <SiteHeader
-          twinPostURL={twinPostURL}
           showScrollIndicator
           locale={locale}
+          twinPostURL={twinPostURL}
+          currentPath={this.props.location.pathname}
         />
         <Main role="main">
           <PostWrapper>

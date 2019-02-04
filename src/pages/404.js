@@ -21,7 +21,11 @@ const NotFoundPage = (props) => {
     <Layout location={props.location} locale={locale}>
       <Helmet title={`${intlMessages[locale].meta.pageNotFoundMetaTitle}`} />
       <SEO />
-      <SiteHeader twinPostURL={twinPostURL} locale={locale} />
+      <SiteHeader
+        twinPostURL={twinPostURL}
+        locale={locale}
+        currentPath={props.location.pathname}
+      />
       <Main role="main">
         <h1>404 de mine</h1>
       </Main>

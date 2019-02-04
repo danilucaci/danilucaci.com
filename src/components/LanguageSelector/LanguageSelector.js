@@ -27,7 +27,7 @@ const StyledLanguageSelector = styled.li`
   padding: ${rem(12)};
 
   ${mediaMax.s`
-    margin-top: ${rem(64)};
+    margin-top: ${rem(8)};
   `};
 
   ${mediaMin.s`
@@ -37,7 +37,7 @@ const StyledLanguageSelector = styled.li`
   `};
 
   ${mediaMin.l`
-    margin-left: ${rem(24)};
+    margin-left: ${rem(16)};
   `};
 `;
 
@@ -48,6 +48,7 @@ const StyledLanguageDropdown = styled.ul`
   ${theme.shadow.dropdown};
 
   display: block;
+
   visibility: hidden;
   opacity: 0;
   transform: scale(0);
@@ -58,14 +59,20 @@ const StyledLanguageDropdown = styled.ul`
   top: 100%;
   right: 0;
 
+  ${mediaMax.s`
+    left: 0;
+  `};
+
+  ${mediaMin.s`
+    top: 85%;
+  `};
+
   padding: ${rem(4)} 0;
 `;
 
 const LanguageDropdownLabel = styled.span`
   display: inline-block;
   vertical-align: middle;
-
-  outline: 1px solid lightgray;
 
   ${mediaMin.s`
     position: absolute;
@@ -79,10 +86,15 @@ const LanguageDropdownLabel = styled.span`
   `};
 `;
 
+const CurrentLanguageIcon = styled(Icon)`
+  display: inline-block;
+  fill: ${theme.colors.main600};
+  margin-left: -${rem(24)};
+  margin-right: ${rem(4)};
+`;
+
 const WorldIcon = styled(Icon)`
   display: inline-block;
-
-  outline: 1px solid lightgray;
 
   ${mediaMax.s`
     margin-right: ${rem(4)};
@@ -92,26 +104,75 @@ const WorldIcon = styled(Icon)`
 const DropdownIcon = styled(Icon)`
   display: inline-block;
 
-  outline: 1px solid lightgray;
-
   ${mediaMax.s`
     margin-left: ${rem(8)};
   `};
 `;
 
-const LanguageSelectorEN = styled.li`
+const CurrentLanguageSelector = styled.li`
+  background-color: ${theme.colors.gray300};
   display: block;
-  padding: ${rem(4)} ${rem(20)};
+  padding: ${rem(4)} ${rem(32)} ${rem(4)} ${rem(40)};
   white-space: nowrap;
+
+  & a {
+    color: ${theme.colors.main600};
+    text-decoration: none;
+    display: inline-block;
+    text-align: right;
+    font-size: ${theme.fontSizes.s};
+    line-height: ${theme.lineHeights.s};
+  }
 `;
 
-const LanguageSelectorES = styled.li`
+const LanguageSelectorItem = styled.li`
   display: block;
-  padding: ${rem(4)} ${rem(20)};
+  padding: ${rem(4)} ${rem(32)} ${rem(4)} ${rem(40)};
   white-space: nowrap;
+
+  & a {
+    color: ${theme.colors.dark700};
+    text-decoration: none;
+    text-align: right;
+    display: inline-block;
+    font-size: ${theme.fontSizes.s};
+    line-height: ${theme.lineHeights.s};
+  }
 `;
 
 const LanguageSelector = (props) => {
+  function handleLocales() {
+    if (props.locale === "en") {
+      return (
+        <>
+          <CurrentLanguageSelector>
+            <CurrentLanguageIcon>
+              <use xlinkHref="#check" />
+            </CurrentLanguageIcon>
+            <Link to={props.currentPath}>English</Link>
+          </CurrentLanguageSelector>
+          <LanguageSelectorItem>
+            <Link to={props.twinPostURL}>Español</Link>
+          </LanguageSelectorItem>
+        </>
+      );
+    } else if (props.locale === "es") {
+      return (
+        <>
+          <LanguageSelectorItem>
+            <Link to={props.twinPostURL}>English</Link>
+          </LanguageSelectorItem>
+          <CurrentLanguageSelector>
+            <CurrentLanguageIcon>
+              <use xlinkHref="#check" />
+            </CurrentLanguageIcon>
+            <Link to={props.currentPath}>Español</Link>
+          </CurrentLanguageSelector>
+        </>
+      );
+    }
+  }
+
   return (
     <StyledLanguageSelector>
       <WorldIcon>
@@ -123,14 +184,7 @@ const LanguageSelector = (props) => {
       <DropdownIcon>
         <use xlinkHref="#dropdown" />
       </DropdownIcon>
-      <StyledLanguageDropdown>
-        <LanguageSelectorEN>
-          <Link to={props.currentPath}>Read in english</Link>
-        </LanguageSelectorEN>
-        <LanguageSelectorES>
-          <Link to={props.twinPostURL}>Leer en español</Link>
-        </LanguageSelectorES>
-      </StyledLanguageDropdown>
+      <StyledLanguageDropdown>{handleLocales()}</StyledLanguageDropdown>
     </StyledLanguageSelector>
   );
 };

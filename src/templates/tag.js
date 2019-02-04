@@ -142,7 +142,11 @@ const TagPage = (props) => {
     <Layout location={props.location} locale={locale}>
       <Helmet title={`${intlMessages[locale].meta.tagListingMetaTitle}`} />
       <SEO />
-      <SiteHeader locale={locale} twinPostURL={twinPostURL} />
+      <SiteHeader
+        locale={locale}
+        twinPostURL={twinPostURL}
+        currentPath={props.location.pathname}
+      />
       <Main role="main">
         <TagWrapper>
           <TagHeader>

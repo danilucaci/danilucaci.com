@@ -81,7 +81,11 @@ const WorkPage = (props) => {
 
   return (
     <Layout location={props.location} locale={locale}>
-      <SiteHeader locale={locale} twinPostURL={twinPostURL} />
+      <SiteHeader
+        locale={locale}
+        twinPostURL={twinPostURL}
+        currentPath={props.location.pathname}
+      />
       <Main role="main">
         <Wrapper>
           <Helmet title={`${intlMessages[locale].meta.workMetaTitle}`} />

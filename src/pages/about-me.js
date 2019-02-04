@@ -156,7 +156,11 @@ const AboutPage = (props) => {
 
   return (
     <Layout location={props.location} locale={locale}>
-      <SiteHeader twinPostURL={twinPostURL} locale={locale} />
+      <SiteHeader
+        twinPostURL={twinPostURL}
+        locale={locale}
+        currentPath={props.location.pathname}
+      />
       <Main role="main">
         <AboutMeWrapper>
           <Helmet title={`${intlMessages[locale].meta.aboutMetaTitle}`} />

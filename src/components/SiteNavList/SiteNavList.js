@@ -21,7 +21,6 @@ const StyledSiteNavList = styled.ul`
   left: 0;
   top: calc(${theme.navBarHeight} - ${rem(8)});
 
-  padding-top: ${rem(24)};
   padding-left: ${rem(16)};
   padding-right: ${rem(16)};
 
@@ -34,24 +33,26 @@ const StyledSiteNavList = styled.ul`
           transform: translateX(0);
           visibility: visible;
           opacity: 1;
+          pointer-events: auto;
         `
       : css`
           transform: translateX(100%);
           visibility: hidden;
           opacity: 0;
+          pointer-events: none;
         `};
 
   ${mediaMin.s`
-    position: static;
+    background-color: transparent;
+    padding-left: 0;
+    padding-right: 0;
     height: auto;
     width: auto;
-    padding-top: 0;
-    padding-left: 0;
+    position: static;
+    transform: none;
     visibility: visible;
     opacity: 1;
-    padding-right: 0;
-    background-color: transparent;
-    transform: none;
+    pointer-events: auto;
   `};
 `;
 

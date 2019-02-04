@@ -188,8 +188,9 @@ class LegalDoc extends Component {
         <SEO postPath={slug} postNode={postNode} postSEO />
         <SiteHeader
           showScrollIndicator
-          twinPostURL={twinPostURL}
           locale={locale}
+          twinPostURL={twinPostURL}
+          currentPath={props.location.pathname}
         />
         <Main role="main" id="main">
           <PageWrapper>

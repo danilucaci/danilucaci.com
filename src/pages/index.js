@@ -188,9 +188,9 @@ const Index = (props) => {
     <Layout location={props.location} locale={locale}>
       <SEO />
       <SiteHeader
-        currentPath={props.location.pathname}
         locale={locale}
         twinPostURL={twinPostURL}
+        currentPath={props.location.pathname}
       />
       <Main role="main">
         <SEO />

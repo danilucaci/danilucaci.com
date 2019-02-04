@@ -100,7 +100,11 @@ const BlogPage = (props) => {
 
   return (
     <Layout location={props.location} locale={locale}>
-      <SiteHeader twinPostURL={twinPostURL} locale={locale} />
+      <SiteHeader
+        twinPostURL={twinPostURL}
+        locale={locale}
+        currentPath={props.location.pathname}
+      />
       <Main role="main">
         <BlogWrapper>
           <Helmet title={`${intlMessages[locale].meta.blogMetaTitle}`} />
