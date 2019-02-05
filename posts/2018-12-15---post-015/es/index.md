@@ -1,37 +1,33 @@
 ---
-title: "Post numero 15"
-description: "Como usar aframe"
+title: "Como Labelbox Soporta Enormes Maquinas con Prisma"
+description: "Con una cosa rapida evolving product and millions of data points managed and stored, Labelbox, a machine learning annotation platform, uses Prisma across their organization to improve database workflows."
 date: "2018-12-15"
 category: "blog"
-intro: "Diviertete con aframe en la web.
-|
-Mola mazo"
-snippet: "Diviertete con aframe en la web."
+intro: "Con una cosa rapida evolving product and millions of data points managed and stored, Labelbox, a machine learning annotation platform, uses Prisma across their organization to improve database workflows."
+snippet: "Con una cosa rapida product and millions of data points managed and stored, Labelbox, a machine learning annotation platform, uses Prisma across their organization to improve database workflows."
 tags:
     - webvr
     - aframe
 posted: true
 locale: "es"
-twinPost: "Post number 15"
+twinPost: "How Labelbox Supports Vast Machine Learning Needs with Prisma"
 ---
 
-##Como usar aframe en la web
+##Resumen
+Prisma ayuda Labelbox deliver the flexible feature set their customers need to create and manage machine learning training data:
+Prisma simplifies how Labelbox interacts with their rapidly evolving MySQL database
+Prisma speeds up Labelbox's development process with streamlined DB migrations
+Prisma helps the Labelbox Customer Success Team efficiently extract relevant information from the main Labelbox database
 
-Como usar aframe.
+##About Labelbox
+Imagine that on any given day you had to build features to measure cow health, trucker safety, fashion, and sports; that companies with vast data sets and very precise needs relied on your software to get accurate assessments.
+This is the challenge and the opportunity of Labelbox— a company that emerged out of stealth mode in March 2018 and focuses on labeling data to train machine learning models. As machine learning algorithms depend on having the most accurate training data, Labelbox creates tools to support that sort of collaborative labeling.
 
-```javascript
-componentDidMount() {
-  // Test via a getter in the options object to see if the passive property is accessed
-  // https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#feature-detection
-  var supportsPassive = textPassiveEventSupport();
-  // Use our detect's results. passive applied if supported, capture will be false either way.
-  window.addEventListener(
-    "scroll",
-    this.handlePageScroll,
-    supportsPassive ? { passive: true } : false
-  );
+## What Labelbox needed to manage their data
+Labelbox’s customers train algorithms based on information labeled with the company’s tool. This results in Labelbox retaining millions of human assessments.
 
-  this.handlePageScroll();
-  this.addSafariVideoControls();
-}
-```
+Thus, to build out their product and wrangle the associated immense quantity of information, Labelbox had to deal with a number of challenges related to data handling, fetching, and searching. Labelbox sought some specific capabilities for working with their data:
+
+## The ability to resolve data from different databases
+* A fine-grained permission system for their database
+* Easy database migrations in order to quickly address customer feature requests
