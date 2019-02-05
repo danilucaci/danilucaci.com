@@ -244,7 +244,7 @@ export default AboutPage;
 
 export const query = graphql`
   query {
-    aboutImage: file(relativePath: { regex: "/bwp/" }) {
+    aboutImage: file(relativePath: { regex: "/danilucaci_profile_image/" }) {
       childImageSharp {
         fluid(maxWidth: 480, maxHeight: 480, cropFocus: NORTH) {
           ...GatsbyImageSharpFluid

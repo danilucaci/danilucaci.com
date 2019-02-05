@@ -23,6 +23,7 @@ import { HR } from "../components/HR/HR";
 import SiblingPosts from "../components/SiblingPosts/SiblingPosts";
 import { LoadComments } from "../components/Button/Button";
 import { Icon } from "../components/Icon/Icon";
+import AuthorCard from "../components/AuthorCard/AuthorCard";
 import {
   calculateScroll,
   selectDummyNodeToCopy,
@@ -249,6 +250,27 @@ export const LoadCommentsLabel = styled.span`
 `;
 
 export const CommentsWrapper = styled.div`
+  width: 100%;
+  max-width: ${theme.contain.inner.col10};
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: ${theme.spacing.components.s};
+
+  padding-left: ${theme.gutters.s};
+  padding-right: ${theme.gutters.s};
+
+  ${mediaMin.s`
+    padding-left: ${theme.gutters.m};
+    padding-right: ${theme.gutters.m};
+    margin-bottom: ${theme.spacing.components.m};
+  `};
+
+  ${mediaMin.m`
+    margin-bottom: ${theme.spacing.components.xl};
+  `};
+`;
+
+export const AuthorCardWrapper = styled.div`
   width: 100%;
   max-width: ${theme.contain.inner.col10};
   margin-left: auto;
@@ -556,6 +578,11 @@ class Post extends Component {
           />
         </Main>
         <ScrollToTop />
+
+        <AuthorCardWrapper>
+          <AuthorCard />
+        </AuthorCardWrapper>
+
         {(prevSlug || nextSlug) && (
           <SiblingPosts
             nextSlug={nextSlug}

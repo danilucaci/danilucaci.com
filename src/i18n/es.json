@@ -58,5 +58,9 @@
   "contactCardDescription": "Si tienes algún proyecto en mente en el que mis servicios podrían ayudar, no dudes en ponerte en contacto conmigo:",
   "contactCardEmail": "hola@danilucaci.com",
   "contactCardCTA": "Contactar",
-  "footerBuiltWith": "Desarollado con Gatsby.js. Hospedado en Netlify."
+  "footerBuiltWith": "Desarollado con Gatsby.js. Hospedado en Netlify.",
+  "authorCardName": "Dani Lucaci",
+  "authorCardDescription": "Diseñador UX/UI y Desarollador Front–End",
+  "authorCardImageTitle": "Dani Lucaci, autor de la página y del artículo.",
+  "authorCardImageDescription": "Dani Lucaci, autor de la página y del artículo."
 }
