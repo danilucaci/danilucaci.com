@@ -10,7 +10,7 @@ import SiteHeader from "../components/SiteHeader/SiteHeader";
 import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
 import SEO from "../components/SEO/SEO";
-import { BulletList, BulletListItem, Copy } from "../components/Copy/Copy";
+import { Copy } from "../components/Copy/Copy";
 import ContactCard from "../components/ContactCard/ContactCard";
 import CaseStudyCard from "../components/CaseStudyCard/CaseStudyCard";
 import { HR } from "../components/HR/HR";
@@ -49,59 +49,52 @@ const StyledH1 = styled.h1`
 
   ${mediaMin.m`
     max-width: ${rem(648)};
-    margin-bottom: ${rem(32)};
   `};
 `;
 
 const Subhead = styled(Copy)`
   font-size: ${theme.fontSizes.subheadS};
   line-height: ${theme.lineHeights.subheadS};
-  letter-spacing: normal;
 
   ${mediaMin.l`
     font-size: ${theme.fontSizes.subhead};
     line-height: ${theme.lineHeights.subhead};
-
     max-width: ${rem(744)};
   `};
 `;
 
-const Stack = styled.section`
-  margin-bottom: ${theme.spacing.row.s};
+const Row = styled.section`
+  margin: ${theme.spacing.row.s} 0;
+  padding: 0 ${theme.gutters.s};
 
   ${mediaMin.s`
-    margin-bottom: ${theme.spacing.row.m};
+    margin: ${theme.spacing.row.m} 0;
+    padding: 0 ${theme.gutters.m};
+    `};
+
+  ${mediaMin.m`
+    margin: ${theme.spacing.row.xl} 0;
+    padding: 0 ${theme.gutters.xl};
+  `};
+`;
+
+const AltRow = styled.section`
+  background-color: ${theme.colors.sectionBackground};
+
+  padding: ${theme.spacing.row.s} ${theme.gutters.s};
+
+  ${mediaMin.s`
+    padding: ${theme.spacing.row.m} ${theme.gutters.m};
   `};
 
   ${mediaMin.m`
-    margin-bottom: ${theme.spacing.row.xl};
+    padding: ${theme.spacing.row.xl} ${theme.gutters.xl};
   `};
 `;
 
-const AltStack = styled(Stack)`
+const RowContents = styled.div`
   max-width: ${theme.contain.wrapper.col10};
   margin: 0 auto;
-
-  padding-left: ${theme.gutters.s};
-  padding-right: ${theme.gutters.s};
-
-  ${mediaMin.s`
-    padding-left: ${theme.gutters.m};
-    padding-right: ${theme.gutters.m};
-  `};
-`;
-
-const StackContents = styled.div`
-  max-width: ${theme.contain.wrapper.col10};
-  margin: 0 auto;
-
-  padding-left: ${theme.gutters.s};
-  padding-right: ${theme.gutters.s};
-
-  ${mediaMin.s`
-    padding-left: ${theme.gutters.m};
-    padding-right: ${theme.gutters.m};
-  `};
 `;
 
 const StyledHR = styled(HR)`
@@ -134,7 +127,7 @@ const ServicesH4 = styled.h4`
   `};
 `;
 
-const ServicesItem = styled.section`
+const ServicesEntry = styled.section`
   display: inline-block;
   vertical-align: top;
 
@@ -219,52 +212,72 @@ const Index = (props) => {
           </FormattedMessage>
           <Subhead />
         </IndexHeader>
-        <AltStack>
-          <StackContents>
+        <AltRow>
+          <RowContents>
             <FormattedMessage id="indexServicesHeading">
               {(txt) => <ServicesH2>{txt}</ServicesH2>}
             </FormattedMessage>
-            <ServicesItem>
-              <FormattedMessage id="indexServices1">
+            <ServicesEntry>
+              <FormattedMessage id="indexServices1Title">
                 {(txt) => <ServicesH4>{txt}</ServicesH4>}
               </FormattedMessage>
-              <BulletList>
-                <FormattedMessage id="indexServicesList01">
-                  {(txt) => <BulletListItem>{txt}</BulletListItem>}
+              <ul>
+                <FormattedMessage id="indexServices1Item1">
+                  {(txt) => <li>{txt}</li>}
                 </FormattedMessage>
-                <FormattedMessage id="indexServicesList02">
-                  {(txt) => <BulletListItem>{txt}</BulletListItem>}
+                <FormattedMessage id="indexServices1Item2">
+                  {(txt) => <li>{txt}</li>}
                 </FormattedMessage>
-                <FormattedMessage id="indexServicesList03">
-                  {(txt) => <BulletListItem>{txt}</BulletListItem>}
+                <FormattedMessage id="indexServices1Item3">
+                  {(txt) => <li>{txt}</li>}
                 </FormattedMessage>
-                <FormattedMessage id="indexServicesList04">
-                  {(txt) => <BulletListItem>{txt}</BulletListItem>}
+                <FormattedMessage id="indexServices1Item4">
+                  {(txt) => <li>{txt}</li>}
                 </FormattedMessage>
-              </BulletList>
-            </ServicesItem>
-            <ServicesItem>
-              <ServicesH4>UI Design</ServicesH4>
-              <BulletList>
-                <BulletListItem>Competitor Research</BulletListItem>
-                <BulletListItem>Wireframing</BulletListItem>
-                <BulletListItem>Lo–Fi Prototypes</BulletListItem>
-                <BulletListItem>Hi–Fi Prototypes</BulletListItem>
-              </BulletList>
-            </ServicesItem>
-            <ServicesItem>
-              <ServicesH4>Front&ndash;End Development</ServicesH4>
-              <BulletList>
-                <BulletListItem>Competitor Research</BulletListItem>
-                <BulletListItem>Wireframing</BulletListItem>
-                <BulletListItem>Lo–Fi Prototypes</BulletListItem>
-                <BulletListItem>Hi–Fi Prototypes</BulletListItem>
-              </BulletList>
-            </ServicesItem>
-          </StackContents>
-        </AltStack>
-        <Stack>
-          <StackContents>
+              </ul>
+            </ServicesEntry>
+            <ServicesEntry>
+              <FormattedMessage id="indexServices2Title">
+                {(txt) => <ServicesH4>{txt}</ServicesH4>}
+              </FormattedMessage>
+              <ul>
+                <FormattedMessage id="indexServices2Item1">
+                  {(txt) => <li>{txt}</li>}
+                </FormattedMessage>
+                <FormattedMessage id="indexServices2Item2">
+                  {(txt) => <li>{txt}</li>}
+                </FormattedMessage>
+                <FormattedMessage id="indexServices2Item3">
+                  {(txt) => <li>{txt}</li>}
+                </FormattedMessage>
+                <FormattedMessage id="indexServices2Item4">
+                  {(txt) => <li>{txt}</li>}
+                </FormattedMessage>
+              </ul>
+            </ServicesEntry>
+            <ServicesEntry>
+              <FormattedMessage id="indexServices3Title">
+                {(txt) => <ServicesH4>{txt}</ServicesH4>}
+              </FormattedMessage>
+              <ul>
+                <FormattedMessage id="indexServices3Item1">
+                  {(txt) => <li>{txt}</li>}
+                </FormattedMessage>
+                <FormattedMessage id="indexServices3Item2">
+                  {(txt) => <li>{txt}</li>}
+                </FormattedMessage>
+                <FormattedMessage id="indexServices3Item3">
+                  {(txt) => <li>{txt}</li>}
+                </FormattedMessage>
+                <FormattedMessage id="indexServices3Item4">
+                  {(txt) => <li>{txt}</li>}
+                </FormattedMessage>
+              </ul>
+            </ServicesEntry>
+          </RowContents>
+        </AltRow>
+        <Row>
+          <RowContents>
             <FormattedMessage id="caseStudiesHeader">
               {(txt) => <CaseStudiesH2>{txt}</CaseStudiesH2>}
             </FormattedMessage>
@@ -282,15 +295,15 @@ const Index = (props) => {
                 image={caseStudyCard.image}
               />
             ))}
-          </StackContents>
-        </Stack>
+          </RowContents>
+        </Row>
+        <Row>
+          <RowContents>
+            <StyledHR />
+            <ContactCard locale={locale} />
+          </RowContents>
+        </Row>
       </Main>
-      <Stack>
-        <AltStack>
-          <StyledHR />
-          <ContactCard locale={locale} />
-        </AltStack>
-      </Stack>
       <SiteFooter locale={locale} />
     </Layout>
   );
