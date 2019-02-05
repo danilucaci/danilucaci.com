@@ -11,7 +11,7 @@ const TagsWrapper = styled.div`
 const Tags = (props) => {
   let tags = props.tags;
   return (
-    <TagsWrapper spaced={props.spaced} inline={props.inline}>
+    <TagsWrapper>
       {tags &&
         tags.map((tag) => (
           <Tag key={tag} link={`/blog/tags/${tag}`} label={tag} />
