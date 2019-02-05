@@ -15,6 +15,7 @@ import Img from "gatsby-image";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import { Copy } from "../components/Copy/Copy";
 import { HR } from "../components/HR/HR";
+import SiblingPosts from "../components/SiblingPosts/SiblingPosts";
 import {
   calculateScroll,
   textPassiveEventSupport,
@@ -485,7 +486,7 @@ class CaseStudy extends Component {
     } else if (locale === "es") {
       twinPostURL = "/work/" + twinPost;
     }
-    console.log(this.props.pageContext);
+
     return (
       <Layout location={this.props.location} locale={locale}>
         <Helmet
@@ -526,6 +527,14 @@ class CaseStudy extends Component {
           </ArticleWrapper>
         </Main>
         <ScrollToTop />
+        {(prevSlug || nextSlug) && (
+          <SiblingPosts
+            nextSlug={nextSlug}
+            nextTitle={nextTitle}
+            prevSlug={prevSlug}
+            prevTitle={prevTitle}
+          />
+        )}
         <SiteFooter locale={locale} />
       </Layout>
     );
