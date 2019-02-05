@@ -19,7 +19,7 @@ const StyledScrollToTop = styled.a`
 
   &:hover {
     background-color: ${theme.colors.gray400};
-    transform: scale(1.15);
+    transform: scale(1.1);
     transition: transform ease 150ms;
   }
 `;
