@@ -26,8 +26,8 @@ const SiblingPostsWrapper = styled.div`
   `};
 
   ${mediaMin.l`
-  margin-bottom: ${rem(80)};
-`};
+    margin-bottom: ${rem(80)};
+  `};
 `;
 
 const SiblingPostsContents = styled.nav`
@@ -44,15 +44,15 @@ const SiblingPostsContents = styled.nav`
 
 const PreviousItemsContainer = styled.div`
   margin-right: ${rem(8)};
-  flex: 1 1 50%;
+  flex: 0 1 50%;
 `;
 
 const PrevSectionHeader = styled(SectionHeader)`
   margin-bottom: ${rem(12)};
 
   ${mediaMin.s`
-  margin-bottom: ${rem(8)};
-`};
+    margin-bottom: ${rem(8)};
+  `};
 `;
 
 const PrevArticleLink = styled(LocaleLink)`
@@ -83,7 +83,12 @@ const PrevArticleLink = styled(LocaleLink)`
 
 const NextItemsContainer = styled.div`
   margin-left: ${rem(8)};
-  flex: 1 1 50%;
+  flex: 0 1 50%;
+
+  &:only-child {
+    margin-left: auto;
+    margin-right: 0;
+  }
 `;
 
 const NextSectionHeader = styled(SectionHeader)`
@@ -91,8 +96,8 @@ const NextSectionHeader = styled(SectionHeader)`
   margin-bottom: ${rem(12)};
 
   ${mediaMin.s`
-  margin-bottom: ${rem(8)};
-`};
+    margin-bottom: ${rem(8)};
+  `};
 `;
 
 const NextArticleLink = styled(LocaleLink)`
