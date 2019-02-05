@@ -9,8 +9,11 @@ import { theme, rem, mediaMax, mediaMin } from "../../theme/globalStyles";
 import { Icon } from "../Icon/Icon";
 
 const StyledSocialShare = styled.div`
-  margin-left: -${rem(4)};
   white-space: nowrap;
+
+  ${mediaMin.s`
+    margin-left: ${rem(24)};
+  `};
 
   & .SocialMediaShareButton {
     display: inline-block;
@@ -30,8 +33,8 @@ const StyledCopyButton = styled.div`
 `;
 
 const CopyIcon = styled(Icon)`
-  width: ${rem(40)};
-  height: ${rem(40)};
+  width: ${rem(32)};
+  height: ${rem(32)};
   fill: ${theme.colors.dark800};
   will-change: transform;
   transition: transform ease 0.15s;
@@ -39,16 +42,14 @@ const CopyIcon = styled(Icon)`
   &:hover {
     transform: scale(1.15);
   }
-
-  ${mediaMin.xl`
-    width: ${rem(32)};
-    height: ${rem(32)};
-  `};
 `;
 
 const CopyTooltip = styled.span`
   background-color: ${theme.colors.gray100};
-  ${theme.shadow.hover};
+  border: 1px solid ${theme.colors.gray400};
+  border-radius: ${theme.borderRadius.buttons};
+  ${theme.shadow.dropdown};
+
   display: none;
   white-space: nowrap;
   font-size: ${theme.fontSizes.xs};
@@ -61,7 +62,7 @@ const CopyTooltip = styled.span`
   position: absolute;
 
   top: -${rem(44)};
-  left: -${rem(32)};
+  left: -${rem(64)};
 
   &:after {
     content: "";
@@ -73,31 +74,22 @@ const CopyTooltip = styled.span`
     transform: rotate(45deg);
     position: absolute;
     top: ${rem(24)};
-    left: ${rem(40)};
+    left: ${rem(68)};
   }
 
   padding: ${rem(8)};
 `;
 
 const StyledIcon = styled(Icon)`
-  width: ${rem(40)};
-  height: ${rem(40)};
+  width: ${rem(32)};
+  height: ${rem(32)};
   will-change: transform;
   transition: transform ease 0.15s;
 
   &:hover {
-    transform: scale(1.2);
+    transform: scale(1.15);
   }
-
-  ${mediaMin.xl`
-    width: ${rem(32)};
-    height: ${rem(32)};
-  `};
 `;
-
-const TwitterIcon = styled(StyledIcon)``;
-
-const LinkedinIcon = styled(StyledIcon)``;
 
 const SocialShare = (props) => {
   const url = urljoin(config.siteUrl, config.pathPrefix, props.slug);
@@ -108,17 +100,17 @@ const SocialShare = (props) => {
         title={props.title}
         description={props.snippet}
       >
-        <LinkedinIcon aria-hidden="true">
+        <StyledIcon aria-hidden="true">
           <use xlinkHref="#linkedin" />
-        </LinkedinIcon>
+        </StyledIcon>
         <span className="sr-only">
           Share article on linkedin, opens in new window.
         </span>
       </LinkedinShareButton>
       <TwitterShareButton url={url} title={props.title}>
-        <TwitterIcon aria-hidden="true">
+        <StyledIcon aria-hidden="true">
           <use xlinkHref="#twitter" />
-        </TwitterIcon>
+        </StyledIcon>
         <span className="sr-only">
           Share article on twitter, opens in new window.
         </span>
