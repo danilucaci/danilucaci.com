@@ -18,14 +18,14 @@ import ContactCard from "../components/ContactCard/ContactCard";
 import { HR } from "../components/HR/HR";
 
 const OuterWrapper = styled.section`
-  margin-bottom: ${theme.spacing.row.s};
+  margin-bottom: ${theme.spacing.components.s};
 
   ${mediaMin.s`
-    margin-bottom: ${theme.spacing.row.m};
+    margin-bottom: ${theme.spacing.components.m};
   `};
 
   ${mediaMin.m`
-      margin-bottom: ${theme.spacing.row.xl};
+      margin-bottom: ${theme.spacing.components.xl};
   `};
 `;
 
@@ -43,14 +43,14 @@ const InnerWrapper = styled.div`
 `;
 
 const ContactWrapper = styled.div`
-  margin-bottom: ${theme.spacing.row.s};
+  margin-bottom: ${theme.spacing.components.s};
 
   ${mediaMin.s`
-    margin-bottom: ${theme.spacing.row.m};
+    margin-bottom: ${theme.spacing.components.m};
   `};
 
   ${mediaMin.m`
-    margin-bottom: ${theme.spacing.row.xl};
+    margin-bottom: ${theme.spacing.components.xl};
   `};
 `;
 
@@ -76,11 +76,16 @@ const StyledHR = styled(HR)`
 `;
 
 const WorkHeader = styled.header`
-  margin-bottom: ${rem(56)};
   color: ${theme.colors.dark900};
 
-  ${mediaMin.s`
-    margin-bottom: ${rem(88)};
+  margin-bottom: ${theme.spacing.components.s};
+
+  ${mediaMin.m`
+    margin-bottom: ${theme.spacing.components.m};
+  `};
+
+  ${mediaMin.l`
+    margin-bottom: ${theme.spacing.components.xl};
   `};
 `;
 
