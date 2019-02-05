@@ -20,10 +20,10 @@ const SiblingPostsWrapper = styled.div`
   padding-right: ${theme.gutters.s};
 
   ${mediaMin.s`
-  margin-bottom: ${rem(56)};
-  padding-left: ${theme.gutters.m};
-  padding-right: ${theme.gutters.m};
-`};
+    margin-bottom: ${rem(56)};
+    padding-left: ${theme.gutters.m};
+    padding-right: ${theme.gutters.m};
+  `};
 
   ${mediaMin.l`
   margin-bottom: ${rem(80)};
@@ -44,7 +44,7 @@ const SiblingPostsContents = styled.nav`
 
 const PreviousItemsContainer = styled.div`
   margin-right: ${rem(8)};
-  flex: 1 1 auto;
+  flex: 1 1 50%;
 `;
 
 const PrevSectionHeader = styled(SectionHeader)`
@@ -83,7 +83,7 @@ const PrevArticleLink = styled(LocaleLink)`
 
 const NextItemsContainer = styled.div`
   margin-left: ${rem(8)};
-  flex: 1 1 auto;
+  flex: 1 1 50%;
 `;
 
 const NextSectionHeader = styled(SectionHeader)`
