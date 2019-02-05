@@ -16,7 +16,7 @@ import CaseStudyCard from "../components/CaseStudyCard/CaseStudyCard";
 import { HR } from "../components/HR/HR";
 
 const IndexHeader = styled.header`
-  max-width: ${theme.contain.content};
+  max-width: ${theme.contain.wrapper.col10};
   margin: 0 auto;
 
   padding-left: ${theme.gutters.s};
@@ -67,19 +67,19 @@ const Subhead = styled(Copy)`
 `;
 
 const Stack = styled.section`
-  margin-bottom: ${theme.stack.section.s};
+  margin-bottom: ${theme.spacing.row.s};
 
   ${mediaMin.s`
-    margin-bottom: ${theme.stack.section.m};
+    margin-bottom: ${theme.spacing.row.m};
   `};
 
   ${mediaMin.m`
-  margin-bottom: ${theme.stack.section.xl};
+    margin-bottom: ${theme.spacing.row.xl};
   `};
 `;
 
 const AltStack = styled(Stack)`
-  max-width: ${theme.contain.page};
+  max-width: ${theme.contain.wrapper.col10};
   margin: 0 auto;
 
   padding-left: ${theme.gutters.s};
@@ -92,7 +92,7 @@ const AltStack = styled(Stack)`
 `;
 
 const StackContents = styled.div`
-  max-width: ${theme.contain.content};
+  max-width: ${theme.contain.wrapper.col10};
   margin: 0 auto;
 
   padding-left: ${theme.gutters.s};

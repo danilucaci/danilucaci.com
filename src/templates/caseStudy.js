@@ -24,7 +24,7 @@ import {
 import intlMessages from "../i18n/i18n";
 
 const ArticleWrapper = styled.article`
-  max-width: ${theme.contain.content};
+  max-width: ${theme.contain.wrapper.col10};
   margin-left: auto;
   margin-right: auto;
 
@@ -81,7 +81,7 @@ const Tag = styled(Copy)`
 
 const CaseStudyImgWrapper = styled.div`
   display: block;
-  max-width: ${theme.contain.blog};
+  max-width: ${theme.contain.inner.col8};
   margin-left: auto;
   margin-right: auto;
 `;
@@ -89,7 +89,7 @@ const CaseStudyImgWrapper = styled.div`
 const PostContent = styled.section`
   display: block;
 
-  max-width: ${theme.contain.post};
+  max-width: ${theme.contain.inner.col6};
   margin-left: auto;
   margin-right: auto;
   margin-top: ${rem(16)};

@@ -18,19 +18,19 @@ import ContactCard from "../components/ContactCard/ContactCard";
 import { HR } from "../components/HR/HR";
 
 const OuterWrapper = styled.section`
-  margin-bottom: ${theme.stack.section.s};
+  margin-bottom: ${theme.spacing.row.s};
 
   ${mediaMin.s`
-    margin-bottom: ${theme.stack.section.m};
+    margin-bottom: ${theme.spacing.row.m};
   `};
 
   ${mediaMin.m`
-      margin-bottom: ${theme.stack.section.xl};
+      margin-bottom: ${theme.spacing.row.xl};
   `};
 `;
 
 const InnerWrapper = styled.div`
-  max-width: ${theme.contain.content};
+  max-width: ${theme.contain.wrapper.col10};
   margin: 0 auto;
 
   padding-left: ${theme.gutters.s};
@@ -43,23 +43,19 @@ const InnerWrapper = styled.div`
 `;
 
 const ContactWrapper = styled.div`
-  margin-bottom: calc(${theme.stack.section.s} - ${theme.mainMargins.bottom.s});
+  margin-bottom: ${theme.spacing.row.s};
 
   ${mediaMin.s`
-    margin-bottom: calc(${theme.stack.section.m} - ${
-    theme.mainMargins.bottom.m
-  });
+    margin-bottom: ${theme.spacing.row.m};
   `};
 
   ${mediaMin.m`
-    margin-bottom: calc(${theme.stack.section.xl} - ${
-    theme.mainMargins.bottom.xl
-  });
+    margin-bottom: ${theme.spacing.row.xl};
   `};
 `;
 
 const ContactInner = styled.div`
-  max-width: ${theme.contain.page};
+  max-width: ${theme.contain.wrapper.col12};
   margin: 0 auto;
 
   padding-left: ${theme.gutters.s};

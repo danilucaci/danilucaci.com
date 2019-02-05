@@ -128,24 +128,32 @@ export const theme = {
       m: "1.5em",
       xl: "2em",
     },
-    bottom: {
-      s: "2rem",
-      m: "3.5rem",
-      xl: "4.5rem",
-    },
   },
-  stack: {
-    section: {
-      s: "3.5em",
-      m: "6.5em",
+  spacing: {
+    row: {
+      s: "4em",
+      m: "7em",
       xl: "9em",
+    },
+    components: {
+      s: "4em",
+      m: "5em",
+      xl: "7em",
     },
   },
   contain: {
-    page: "73.5em",
-    content: "61.5em",
-    blog: "46.5em",
-    post: "34.5em",
+    wrapper: {
+      col12: "73.5em",
+      col10: "61.5em",
+      col8: "49.5em",
+      col6: "37.5em",
+    },
+    inner: {
+      col12: "70.5em",
+      col10: "58.5em",
+      col8: "46.5em",
+      col6: "34.5em",
+    },
   },
   iconsScale: "1.2",
   logoWidth: "6em",

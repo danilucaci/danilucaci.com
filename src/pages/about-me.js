@@ -18,7 +18,7 @@ import { Copy } from "../components/Copy/Copy";
 import intlMessages from "../i18n/i18n";
 
 const AboutMeWrapper = styled.div`
-  max-width: ${theme.contain.content};
+  max-width: ${theme.contain.wrapper.col10};
   margin-left: auto;
   margin-right: auto;
 

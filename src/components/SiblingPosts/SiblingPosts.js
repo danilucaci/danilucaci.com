@@ -10,23 +10,29 @@ import LocaleLink from "../LocaleLink/LocaleLink";
 
 const SiblingPostsWrapper = styled.div`
   width: 100%;
-  max-width: ${theme.contain.content};
+  max-width: ${theme.contain.inner.col10};
   margin-left: auto;
   margin-right: auto;
 
+  margin-top: ${rem(32)};
   margin-bottom: ${rem(32)};
 
   padding-left: ${theme.gutters.s};
   padding-right: ${theme.gutters.s};
 
   ${mediaMin.s`
-    margin-bottom: ${rem(56)};
     padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
   `};
 
+  ${mediaMin.m`
+    margin-top: ${rem(56)};
+    margin-bottom: ${rem(56)};
+  `};
+
   ${mediaMin.l`
-    margin-bottom: ${rem(80)};
+    margin-top: ${rem(112)};
+    margin-bottom: ${rem(112)};
   `};
 `;
 

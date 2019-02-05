@@ -10,7 +10,7 @@ import { Logo } from "../Logo/Logo";
 const StyledSiteNav = styled.nav`
   display: flex;
   justify-content: space-between;
-  max-width: ${theme.contain.content};
+  max-width: ${theme.contain.wrapper.col10};
   margin-left: auto;
   margin-right: auto;
   padding-right: ${theme.gutters.s};

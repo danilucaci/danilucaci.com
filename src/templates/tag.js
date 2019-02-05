@@ -18,7 +18,7 @@ import intlMessages from "../i18n/i18n";
 import { SectionHeader } from "../components/Headings/Headings";
 
 const TagWrapper = styled.div`
-  max-width: ${theme.contain.blog};
+  max-width: ${theme.contain.wrapper.col8};
   margin: 0 auto;
 
   padding-left: ${theme.gutters.s};

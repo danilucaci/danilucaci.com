@@ -15,7 +15,7 @@ import { Copy } from "../components/Copy/Copy";
 import { PrimaryButton } from "../components/Button/Button";
 
 const ContactMeWrapper = styled.div`
-  max-width: ${theme.contain.content};
+  max-width: ${theme.contain.wrapper.col10};
   margin-left: auto;
   margin-right: auto;
 

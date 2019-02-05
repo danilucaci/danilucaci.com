@@ -17,7 +17,7 @@ import { calculateScroll, textPassiveEventSupport } from "../helpers/helpers";
 import intlMessages from "../i18n/i18n";
 
 const PageWrapper = styled.section`
-  max-width: ${theme.contain.post};
+  max-width: ${theme.contain.inner.col6};
   margin-left: auto;
   margin-right: auto;
 
@@ -43,7 +43,7 @@ const PostH1 = styled.h1`
 const PostContent = styled.section`
   display: block;
 
-  max-width: ${theme.contain.post};
+  max-width: ${theme.contain.inner.col6};
   margin-left: auto;
   margin-right: auto;
   margin-top: ${rem(16)};
