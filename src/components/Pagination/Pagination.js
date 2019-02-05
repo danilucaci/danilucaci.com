@@ -14,10 +14,14 @@ const PaginationWrapper = styled.nav`
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  margin-top: ${rem(56)};
+  margin-top: ${rem(32)};
+
+  ${mediaMin.m`
+    margin-top: ${rem(56)};
+  `};
 
   ${mediaMin.xl`
-    margin-top: ${rem(72)};
+    margin-top: ${rem(64)};
   `};
 `;
 
