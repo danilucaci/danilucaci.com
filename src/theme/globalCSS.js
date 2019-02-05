@@ -185,14 +185,8 @@ const GlobalHTML = createGlobalStyle`
 
   ul,
   ol {
-    margin: 0;
-    padding: 0;
+    margin-left: 1em;
     list-style-position: outside;
-    margin-block-start: 0px;
-    margin-block-end: 0px;
-    margin-inline-start: 1rem;
-    margin-inline-end: 0px;
-    padding-inline-start: 0px;
   }
 
   p:empty {
