@@ -179,8 +179,14 @@ const GlobalHTML = createGlobalStyle`
     line-height: ${theme.lineHeights.m};
   }
 
+  ul {
+    list-style-type: disc;
+  }
+
   ul,
   ol {
+    margin: 0;
+    padding: 0;
     list-style-position: outside;
     margin-block-start: 0px;
     margin-block-end: 0px;
