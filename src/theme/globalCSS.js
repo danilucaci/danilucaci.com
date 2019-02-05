@@ -164,7 +164,8 @@ const GlobalHTML = createGlobalStyle`
     }
   }
 
-  p,ul {
+  p,
+  ul {
     color: ${theme.colors.dark800};
 
     .fonts-loaded & {
@@ -176,6 +177,16 @@ const GlobalHTML = createGlobalStyle`
 
     font-size: ${theme.fontSizes.m};
     line-height: ${theme.lineHeights.m};
+  }
+
+  ul,
+  ol {
+    list-style-position: outside;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-start: 1rem;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
   }
 
   p:empty {
