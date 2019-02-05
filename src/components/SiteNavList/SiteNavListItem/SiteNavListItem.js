@@ -45,6 +45,7 @@ const StyledSiteNavListItem = styled.li`
     }
 
     &:hover {
+      background-color: transparent;
       color: ${theme.colors.main600};
       cursor: pointer;
     }
@@ -67,6 +68,7 @@ const StyledSiteNavListItem = styled.li`
       font-family: ${theme.fonts.header};
 
       &:hover {
+        background-color: transparent;
         color: ${theme.colors.main600};
       }
 
