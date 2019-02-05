@@ -10,6 +10,7 @@ import { Copy } from "../Copy/Copy";
 const Wrapper = styled.div`
   display: inline-block;
   white-space: nowrap;
+  margin-left: -${rem(2)};
 `;
 
 const Label = styled(Copy)`
@@ -18,8 +19,7 @@ const Label = styled(Copy)`
 
 const StyledIcon = styled(Icon)`
   display: inline-block;
-  margin-right: ${rem(2)};
-  margin-bottom: ${rem(2)};
+  margin-bottom: ${rem(3)};
 `;
 
 const ReadTime = (props) => {
