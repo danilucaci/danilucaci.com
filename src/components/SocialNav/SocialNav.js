@@ -24,7 +24,7 @@ const StyledLink = styled.a`
 
   &:hover {
     background-color: transparent;
-    transform: scale(1.15);
+    transform: scale(${theme.iconsScale});
     cursor: pointer;
   }
 `;

@@ -73,6 +73,8 @@ export const theme = {
     subheadS: "1.25rem",
     sectionHeaderXL: "1rem",
     sectionHeaderS: "0.8125rem",
+    siblingPostsXL: "1.5rem",
+    siblingPostsS: "1rem",
     button: "1rem",
     xl: "1.5rem",
     l: "1.25rem",
@@ -92,6 +94,8 @@ export const theme = {
     subheadS: "2rem",
     sectionHeaderXL: "1.5rem",
     sectionHeaderS: "1.25rem",
+    siblingPostsXL: "2rem",
+    siblingPostsS: "1.5rem",
     button: "1.5rem",
     m: "2rem",
     s: "1.5rem",
@@ -143,6 +147,7 @@ export const theme = {
     blog: "46.5em",
     post: "34.5em",
   },
+  iconsScale: "1.2",
   logoWidth: "6em",
   logoHeight: "3em",
   navBarHeight: "3.5em",
@@ -163,7 +168,6 @@ export const theme = {
                   /* For Edge */
                   -ms-overflow-style: -ms-autohiding-scrollbar;
                   -ms-overflow-style: none;`,
-  mailToLink: "mailto:hello@danilucaci.com?body=Hi%20Dani%2C%0A",
   breakpoints: {
     xxxs: "22.5em", //360
     xxs: "26.5em", //424

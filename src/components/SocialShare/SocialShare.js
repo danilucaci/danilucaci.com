@@ -40,7 +40,7 @@ const CopyIcon = styled(Icon)`
   transition: transform ease 0.15s;
 
   &:hover {
-    transform: scale(1.15);
+    transform: scale(${theme.iconsScale});
   }
 `;
 
@@ -87,7 +87,7 @@ const StyledIcon = styled(Icon)`
   transition: transform ease 0.15s;
 
   &:hover {
-    transform: scale(1.15);
+    transform: scale(${theme.iconsScale});
   }
 `;
 
