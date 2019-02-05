@@ -9,23 +9,24 @@ const StyledContactCard = styled.aside`
   border-top: ${rem(8)} solid ${theme.colors.main600};
   background-color: ${theme.colors.gray100};
   width: 100%;
-  padding: ${rem(24)} ${rem(20)} ${rem(32)};
+
+  padding: ${rem(24)} ${rem(24)} ${rem(32)};
+
+  ${mediaMin.s`
+    padding: ${rem(24)} ${rem(32)} ${rem(32)};
+  `};
+
   ${mediaMin.l`
-    padding: ${rem(48)} ${rem(64)} ${rem(56)};
+    padding: ${rem(48)} ${rem(80)} ${rem(56)};
   `};
 
   ${mediaMin.xxl`
-    padding: ${rem(56)} ${rem(148)} ${rem(64)};
+    padding: ${rem(56)} ${rem(112)} ${rem(64)};
   `};
 
   ${mediaMin.xxxl`
-    padding: ${rem(80)} ${rem(200)} ${rem(96)};
+    padding: ${rem(80)} ${rem(148)} ${rem(96)};
   `};
-`;
-
-const StyledContactCardContents = styled.div`
-  max-width: ${theme.contain.content};
-  margin: 0 auto;
 `;
 
 const StyledH2 = styled.h2`
@@ -70,11 +71,6 @@ const StyledMailToButton = styled.a`
   }
 `;
 
-const CopyContainer = styled.div`
-  /* max-width: ${rem(600)}; */
-  
-`;
-
 const StyledCopy = styled(Copy)`
   display: inline;
 `;
@@ -95,26 +91,24 @@ const ContactCard = (props) => {
 
   return (
     <StyledContactCard>
-      <StyledContactCardContents>
-        <FormattedMessage id="contactCardTitle">
-          {(txt) => <StyledH2>{txt}</StyledH2>}
+      <FormattedMessage id="contactCardTitle">
+        {(txt) => <StyledH2>{txt}</StyledH2>}
+      </FormattedMessage>
+      <div>
+        <FormattedMessage id="contactCardDescription">
+          {(txt) => <StyledCopy>{txt} </StyledCopy>}
         </FormattedMessage>
-        <CopyContainer>
-          <FormattedMessage id="contactCardDescription">
-            {(txt) => <StyledCopy>{txt} </StyledCopy>}
-          </FormattedMessage>
-          <FormattedMessage id="contactCardEmail">
-            {(txt) => <MailLink href={emailURL}>{txt}</MailLink>}
-          </FormattedMessage>
-        </CopyContainer>
-        <FormattedMessage id="contactCardCTA">
-          {(txt) => (
-            <StyledMailToButton role="button" href={emailURL}>
-              {txt}
-            </StyledMailToButton>
-          )}
+        <FormattedMessage id="contactCardEmail">
+          {(txt) => <MailLink href={emailURL}>{txt}</MailLink>}
         </FormattedMessage>
-      </StyledContactCardContents>
+      </div>
+      <FormattedMessage id="contactCardCTA">
+        {(txt) => (
+          <StyledMailToButton role="button" href={emailURL}>
+            {txt}
+          </StyledMailToButton>
+        )}
+      </FormattedMessage>
     </StyledContactCard>
   );
 };
