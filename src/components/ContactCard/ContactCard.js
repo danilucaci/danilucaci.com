@@ -48,7 +48,12 @@ const StyledMailToButton = styled.a`
 
   padding: ${rem(12)} ${rem(40)};
   height: ${rem(48)};
-  width: ${rem(288)};
+  width: 100%;
+
+  ${mediaMin.xxs`  
+    width: ${rem(288)};
+  `};
+
   margin-top: ${rem(24)};
 
   white-space: nowrap;

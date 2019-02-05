@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme, rem } from "../../theme/globalStyles";
+import { theme, rem, mediaMin } from "../../theme/globalStyles";
 
 export const PrimaryButton = styled.button`
   background-color: ${theme.colors.main600};
@@ -16,7 +16,11 @@ export const PrimaryButton = styled.button`
 
   padding: ${rem(12)} ${rem(40)};
   height: ${rem(48)};
-  width: ${rem(288)};
+  width: 100%;
+
+  ${mediaMin.xxs`  
+    width: ${rem(288)};
+  `};
 
   white-space: nowrap;
 
@@ -47,7 +51,11 @@ export const MainGhostButton = styled.button`
 
   padding: ${rem(12)} ${rem(40)};
   height: ${rem(48)};
-  width: ${rem(288)};
+  width: 100%;
+
+  ${mediaMin.xxs`  
+    width: ${rem(288)};
+  `};
 
   white-space: nowrap;
 
@@ -78,7 +86,11 @@ export const DarkGhostButton = styled.button`
 
   padding: ${rem(12)} ${rem(40)};
   height: ${rem(48)};
-  width: ${rem(288)};
+  width: 100%;
+
+  ${mediaMin.xxs`  
+    width: ${rem(288)};
+  `};
 
   white-space: nowrap;
 
