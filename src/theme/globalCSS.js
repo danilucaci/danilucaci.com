@@ -125,19 +125,7 @@ const GlobalHTML = createGlobalStyle`
     }
   }
 
-  h5 {
-    color: ${theme.colors.dark700};
-    font-weight: 700;
-    font-style: normal;
-    font-size: ${theme.fontSizes.sectionHeader};
-    line-height: ${theme.lineHeights.sectionHeader};
-    text-transform: uppercase;
-
-    .fonts-loaded & {
-      font-family: ${theme.fonts.header};
-    }
-  }
-
+  
   h2,
   h3,
   h4 {
