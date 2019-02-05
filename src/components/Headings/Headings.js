@@ -9,12 +9,20 @@ export const H3 = styled.h3``;
 
 export const H4 = styled.h4``;
 
-export const SectionHeader = styled.h4`
+export const SectionHeader = styled.span`
   color: ${theme.colors.dark700};
+  display: block;
   text-transform: uppercase;
   font-size: ${theme.fontSizes.sectionHeaderS};
   line-height: ${theme.lineHeights.sectionHeaderS};
   letter-spacing: ${theme.letterSpacing.sectionHeaderS};
+
+  font-weight: 700;
+  font-style: normal;
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.header};
+  }
 
   ${mediaMin.s`
     font-size: ${theme.fontSizes.sectionHeaderXL};
