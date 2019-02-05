@@ -164,3 +164,45 @@ export const TertiaryButton = styled.button`
     cursor: pointer;
   }
 `;
+
+export const LoadComments = styled.button`
+  background-color: transparent;
+  border: 2px solid ${theme.colors.gray400};
+  border-radius: ${theme.borderRadius.buttons};
+  color: ${theme.colors.dark700};
+
+  text-align: center;
+  text-decoration: none;
+  font-size: ${theme.fontSizes.button};
+  line-height: ${theme.lineHeights.button};
+
+  & * {
+    font-size: ${theme.fontSizes.button};
+    line-height: ${theme.lineHeights.button};
+  }
+
+  font-style: normal;
+  font-weight: 400;
+
+  padding: ${rem(16)} ${rem(24)};
+  height: ${rem(56)};
+
+  width: 100%;
+
+  ${mediaMin.xxs`  
+    width: ${rem(288)};
+  `};
+
+  white-space: nowrap;
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.bodyRegular};
+  }
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    border: 2px solid ${theme.colors.dark700};
+    background-color: transparent;
+  }
+`;
