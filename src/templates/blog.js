@@ -24,33 +24,41 @@ const BlogWrapper = styled.div`
 
   padding-left: ${theme.gutters.s};
   padding-right: ${theme.gutters.s};
-
   ${mediaMin.s`
     padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
   `};
+
+  margin-bottom: ${theme.spacing.row.s};
+  ${mediaMin.m`
+    margin-bottom: ${theme.spacing.row.m};
+  `};
+  ${mediaMin.l`
+    margin-bottom: ${theme.spacing.row.xl};
+  `};
 `;
 
 const BlogHeader = styled.header`
-  margin-bottom: ${rem(56)};
+  margin-bottom: ${theme.spacing.components.s};
 
-  ${mediaMin.s`
-    margin-bottom: ${rem(112)};
+  ${mediaMin.m`
+    margin-bottom: ${theme.spacing.components.m};
+  `};
+
+  ${mediaMin.l`
+    margin-bottom: ${theme.spacing.components.xl};
   `};
 `;
 
 const BlogTitle = styled.h2`
-font-size: ${theme.fontSizes.h2s};
+  font-size: ${theme.fontSizes.h2s};
+  line-height: ${theme.lineHeights.h2s};
 
-${mediaMin.xs`
+  ${mediaMin.xs`
   font-size: ${theme.fontSizes.h2};
-`}
-
-line-height: ${theme.lineHeights.h2s};
-
-${mediaMin.xs`
   line-height: ${theme.lineHeights.h2};
-`}`;
+`}
+`;
 
 const TagsWrapper = styled.div`
   margin-top: ${rem(16)};

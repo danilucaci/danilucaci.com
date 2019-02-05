@@ -28,14 +28,25 @@ const TagWrapper = styled.div`
     padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
   `};
+
+  margin-bottom: ${theme.spacing.row.s};
+  ${mediaMin.m`
+    margin-bottom: ${theme.spacing.row.m};
+  `};
+  ${mediaMin.l`
+    margin-bottom: ${theme.spacing.row.xl};
+  `};
 `;
 
 const TagHeader = styled.header`
-  margin-bottom: ${rem(56)};
-  color: ${theme.colors.dark900};
+  margin-bottom: ${theme.spacing.components.s};
+
+  ${mediaMin.m`
+    margin-bottom: ${theme.spacing.components.m};
+  `};
 
   ${mediaMin.l`
-    margin-bottom: ${rem(112)};
+    margin-bottom: ${theme.spacing.components.xl};
   `};
 `;
 
