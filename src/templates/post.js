@@ -18,6 +18,10 @@ import Tags from "../components/Tags/Tags";
 import ReadTime from "../components/ReadTime/ReadTime";
 import ArticleDate from "../components/ArticleDate/ArticleDate";
 import { Copy } from "../components/Copy/Copy";
+import { HR } from "../components/HR/HR";
+import SiblingPosts from "../components/SiblingPosts/SiblingPosts";
+import { LoadComments } from "../components/Button/Button";
+import { Icon } from "../components/Icon/Icon";
 import {
   calculateScroll,
   selectDummyNodeToCopy,
@@ -26,7 +30,7 @@ import {
 import intlMessages from "../i18n/i18n";
 
 const PostWrapper = styled.div`
-  max-width: ${theme.contain.content};
+  max-width: ${theme.contain.wrapper.col8};
   margin-left: auto;
   margin-right: auto;
 
@@ -39,88 +43,74 @@ const PostWrapper = styled.div`
   `};
 `;
 
-const StyledPostHeader = styled.header`
-  padding-top: ${rem(16)};
-  padding-bottom: ${rem(32)};
-
-  ${mediaMin.s`
-    padding-bottom: ${rem(40)};
-  `};
-
-  ${mediaMin.l`
-    padding-top: ${rem(16)};
-  `};
+const StyledPageHeader = styled.header`
+  max-width: ${theme.contain.inner.col8};
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 const PostH1 = styled.h1`
-  margin-bottom: ${rem(8)};
-
-  ${mediaMin.m`
-    margin-bottom: ${rem(32)};
-  `};
-`;
-
-const StyledPostIntro = styled.div`
-  ${mediaMin.m`
-    width: calc(((100% / 10) * 6) - ${rem(12)});
-    margin-right: ${rem(12)};
-    display: inline-block;
-    vertical-align: top;
-  `};
-`;
-
-const IntroCopy = styled(Copy)`
-  &:first-of-type {
-    margin-bottom: ${rem(16)};
-  }
+  margin-top: ${rem(8)};
+  margin-bottom: ${rem(16)};
 `;
 
 const PostInfo = styled.aside`
-  margin-top: ${rem(16)};
-  margin-bottom: ${rem(16)};
+  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: baseline;
 
-  ${mediaMin.m`
-    padding: ${rem(16)} ${rem(16)};
-    background-color: ${theme.colors.gray100};
-    ${theme.shadow.default};
-    float: right;
-    width: calc(((100% / 10) * 4) - ${rem(12)});
-    margin-left: ${rem(12)};
-    display: inline-block;
-    vertical-align: top;
-    margin-top: 0;
-    margin-bottom: 0;
+  padding: ${rem(8)} 0 ${rem(4)};
+
+  ${mediaMin.xs`
+    flex-direction: row;
+    padding: ${rem(8)} 0 ${rem(8)};
   `};
 `;
 
 const PostDateReadTimeWrapper = styled.div`
   display: inline-block;
+  margin-bottom: ${rem(8)};
+  margin-right: ${rem(16)};
 
-  ${mediaMin.xxxs`
-    margin-right: ${rem(16)};
-  `};
-
-  ${mediaMin.m`
-    margin-right: 0;
+  ${mediaMin.xs`
+    margin-bottom: 0;
   `};
 `;
 
 const SocialShareWrapper = styled.div`
-  margin-top: ${rem(8)};
-  display: block;
-  ${mediaMin.m`
-    margin-top: ${rem(16)};
-  `};
+  display: inline-block;
+`;
+
+const StyledIntroContainer = styled.div`
+  max-width: ${theme.contain.inner.col6};
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: ${rem(32)};
+  margin-bottom: ${rem(32)};
+`;
+
+const IntroCopy = styled(Copy)`
+  &:first-of-type {
+    margin-bottom: ${rem(32)};
+  }
 `;
 
 const PostContent = styled.section`
   display: block;
-  max-width: ${theme.contain.post};
+  max-width: ${theme.contain.inner.col6};
   margin-left: auto;
   margin-right: auto;
 
-  ${mediaMin.s`
-    margin-bottom: ${rem(56)};
+  margin-bottom: ${theme.spacing.components.s};
+
+  ${mediaMin.m`
+    margin-bottom: ${theme.spacing.components.m};
+  `};
+
+  ${mediaMin.xl`
+    margin-bottom: ${theme.spacing.components.xl};
   `};
 
   header h1,
@@ -130,38 +120,40 @@ const PostContent = styled.section`
 
   h2 {
     display: block;
-    margin-bottom: ${rem(16)};
     margin-top: ${rem(32)};
+    margin-bottom: ${rem(16)};
 
     ${mediaMin.xs`
-      margin-bottom: ${rem(32)};
       margin-top: ${rem(64)};
+      margin-bottom: ${rem(32)};
     `};
   }
 
   h3 {
     display: block;
-    margin-bottom: ${rem(16)};
     margin-top: ${rem(32)};
+    margin-bottom: ${rem(16)};
 
     ${mediaMin.xs`
-      margin-bottom: ${rem(32)};
       margin-top: ${rem(64)};
+      margin-bottom: ${rem(32)};
     `};
   }
 
   h4 {
     display: block;
-    margin-bottom: ${rem(16)};
     margin-top: ${rem(32)};
+    margin-bottom: ${rem(16)};
 
     ${mediaMin.xs`
-      margin-bottom: ${rem(32)};
       margin-top: ${rem(64)};
+      margin-bottom: ${rem(32)};
     `};
   }
 
-  p {
+  p,
+  ul,
+  ol {
     margin-bottom: ${rem(32)};
   }
 
@@ -239,6 +231,35 @@ const DummyInput = styled.textarea`
   left: -1000em;
   background-color: transparent;
   color: transparent;
+`;
+
+export const LoadCommentsIcon = styled(Icon)`
+  margin-top: -${rem(3)};
+  fill: ${theme.colors.gray500};
+`;
+
+export const LoadCommentsLabel = styled.span`
+  display: inline-block;
+`;
+
+export const LoadCommentsWrapper = styled.div`
+  max-width: ${theme.contain.inner.col8};
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: ${theme.spacing.components.s};
+
+  padding-left: ${theme.gutters.s};
+  padding-right: ${theme.gutters.s};
+
+  ${mediaMin.s`
+    padding-left: ${theme.gutters.m};
+    padding-right: ${theme.gutters.m};
+    margin-bottom: ${theme.spacing.components.m};
+  `};
+
+  ${mediaMin.m`
+    margin-bottom: ${theme.spacing.components.xl};
+  `};
 `;
 
 const renderAst = new rehypeReact({
@@ -478,14 +499,15 @@ class Post extends Component {
         />
         <Main role="main">
           <PostWrapper>
-            <StyledPostHeader>
+            <StyledPageHeader>
+              <Tags tags={postInfo.tags} inline />
               <PostH1>{postInfo.title}</PostH1>
+              <HR />
               <PostInfo>
                 <PostDateReadTimeWrapper>
                   <ArticleDate date={postInfo.date} />
                   <ReadTime timeToRead={postNode.timeToRead} />
                 </PostDateReadTimeWrapper>
-                <Tags tags={postInfo.tags} inline />
                 <SocialShareWrapper>
                   <SocialShare
                     slug={slug}
@@ -495,12 +517,13 @@ class Post extends Component {
                   />
                 </SocialShareWrapper>
               </PostInfo>
-              <StyledPostIntro>
+              <HR />
+              <StyledIntroContainer>
                 {introCopy.map((paragraph) => (
                   <IntroCopy key={paragraph}>{paragraph}</IntroCopy>
                 ))}
-              </StyledPostIntro>
-            </StyledPostHeader>
+              </StyledIntroContainer>
+            </StyledPageHeader>
             <PostContent>{renderAst(postNode.htmlAst)}</PostContent>
           </PostWrapper>
           <DummyInput
@@ -511,6 +534,25 @@ class Post extends Component {
           />
         </Main>
         <ScrollToTop />
+        {(prevSlug || nextSlug) && (
+          <SiblingPosts
+            nextSlug={nextSlug}
+            nextTitle={nextTitle}
+            prevSlug={prevSlug}
+            prevTitle={prevTitle}
+          />
+        )}
+
+        <LoadCommentsWrapper>
+          <LoadComments>
+            <LoadCommentsIcon aria-hidden="true">
+              <use xlinkHref="#comments" />
+            </LoadCommentsIcon>
+            <FormattedMessage id="loadComments">
+              {(txt) => <LoadCommentsLabel>{txt}</LoadCommentsLabel>}
+            </FormattedMessage>
+          </LoadComments>
+        </LoadCommentsWrapper>
         <SiteFooter locale={locale} />
       </Layout>
     );
