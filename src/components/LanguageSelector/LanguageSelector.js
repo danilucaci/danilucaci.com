@@ -18,7 +18,7 @@ const StyledLanguageSelector = styled.li`
 
   &:hover {
     & ul {
-      visibility: visible;
+      /* visibility: visible; */
       opacity: 1;
       transform: scale(1);
     }
@@ -49,7 +49,7 @@ const StyledLanguageDropdown = styled.ul`
 
   display: block;
 
-  visibility: hidden;
+  /* visibility: hidden; */
   opacity: 0;
   transform: scale(0);
   transition: transform, visibility, opacity 0.2s ease;
@@ -154,13 +154,19 @@ const LanguageSelector = (props) => {
       return (
         <>
           <CurrentLanguageSelector>
-            <CurrentLanguageIcon>
+            <CurrentLanguageIcon arriaHidden="true">
               <use xlinkHref="#check" />
             </CurrentLanguageIcon>
-            <Link to={props.currentPath}>English</Link>
+            <Link to={props.currentPath}>
+              <span className="sr-only">change the page language to</span>
+              English
+            </Link>
           </CurrentLanguageSelector>
           <LanguageSelectorItem>
-            <Link to={props.twinPostURL}>Español</Link>
+            <Link to={props.twinPostURL}>
+              <span className="sr-only">cambiar el idioma de la página al</span>
+              Español
+            </Link>
           </LanguageSelectorItem>
         </>
       );
@@ -168,13 +174,19 @@ const LanguageSelector = (props) => {
       return (
         <>
           <LanguageSelectorItem>
-            <Link to={props.twinPostURL}>English</Link>
+            <Link to={props.twinPostURL}>
+              <span className="sr-only">change the page language to</span>
+              English
+            </Link>
           </LanguageSelectorItem>
           <CurrentLanguageSelector>
-            <CurrentLanguageIcon>
+            <CurrentLanguageIcon arriaHidden="true">
               <use xlinkHref="#check" />
             </CurrentLanguageIcon>
-            <Link to={props.currentPath}>Español</Link>
+            <Link to={props.currentPath}>
+              <span className="sr-only">cambiar el idioma de la página al</span>
+              Español
+            </Link>
           </CurrentLanguageSelector>
         </>
       );
@@ -183,13 +195,13 @@ const LanguageSelector = (props) => {
 
   return (
     <StyledLanguageSelector>
-      <WorldIcon>
+      <WorldIcon arriaHidden="true">
         <use xlinkHref="#world" />
       </WorldIcon>
       <FormattedMessage id="changeLanguageToggle">
         {(txt) => <LanguageDropdownLabel>{txt}</LanguageDropdownLabel>}
       </FormattedMessage>
-      <DropdownIcon>
+      <DropdownIcon arriaHidden="true">
         <use xlinkHref="#dropdown" />
       </DropdownIcon>
       <StyledLanguageDropdown>{handleLocales()}</StyledLanguageDropdown>
