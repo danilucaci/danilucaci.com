@@ -166,7 +166,7 @@ export const TertiaryButton = styled.button`
 `;
 
 export const LoadComments = styled.button`
-  background-color: transparent;
+  background-color: ${theme.colors.gray100};
   border: 2px solid ${theme.colors.gray400};
   border-radius: ${theme.borderRadius.buttons};
   color: ${theme.colors.dark700};
@@ -201,8 +201,13 @@ export const LoadComments = styled.button`
 
   &:hover,
   &:focus {
+    color: ${theme.colors.dark900};
     cursor: pointer;
     border: 2px solid ${theme.colors.dark700};
-    background-color: transparent;
+    background-color: ${theme.colors.gray100};
+
+    & svg {
+      fill: ${theme.colors.dark700};
+    }
   }
 `;

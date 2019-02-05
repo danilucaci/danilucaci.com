@@ -29,6 +29,7 @@
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
     "babel-polyfill": "^6.26.0",
+    "disqus-react": "^1.0.5",
     "dotenv": "^6.2.0",
     "event-source-polyfill": "^1.0.5",
     "fontfaceobserver": "^2.1.0",

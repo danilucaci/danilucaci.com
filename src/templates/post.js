@@ -4,6 +4,7 @@ import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import styled from "styled-components";
 import rehypeReact from "rehype-react";
+import Disqus from "disqus-react";
 import { FormattedMessage } from "react-intl";
 
 import { theme, rem, mediaMin, mediaMax } from "../theme/globalStyles";
@@ -233,6 +234,11 @@ const DummyInput = styled.textarea`
   color: transparent;
 `;
 
+export const StyledLoadComments = styled(LoadComments)`
+  margin: ${rem(32)} auto;
+  display: block;
+`;
+
 export const LoadCommentsIcon = styled(Icon)`
   margin-top: -${rem(3)};
   fill: ${theme.colors.gray500};
@@ -242,8 +248,9 @@ export const LoadCommentsLabel = styled.span`
   display: inline-block;
 `;
 
-export const LoadCommentsWrapper = styled.div`
-  max-width: ${theme.contain.inner.col8};
+export const CommentsWrapper = styled.div`
+  width: 100%;
+  max-width: ${theme.contain.inner.col10};
   margin-left: auto;
   margin-right: auto;
   margin-bottom: ${theme.spacing.components.s};
@@ -485,6 +492,12 @@ class Post extends Component {
       twinPostURL = "/blog/" + twinPost;
     }
 
+    const disqusShortname = process.env.DISQUS_SHORTNAME;
+    const disqusConfig = {
+      identifier: postInfo.title,
+      title: postInfo.title,
+    };
+
     return (
       <Layout location={this.props.location} locale={locale}>
         <Helmet
@@ -543,16 +556,20 @@ class Post extends Component {
           />
         )}
 
-        <LoadCommentsWrapper>
-          <LoadComments>
+        <CommentsWrapper>
+          <StyledLoadComments>
             <LoadCommentsIcon aria-hidden="true">
               <use xlinkHref="#comments" />
             </LoadCommentsIcon>
             <FormattedMessage id="loadComments">
               {(txt) => <LoadCommentsLabel>{txt}</LoadCommentsLabel>}
             </FormattedMessage>
-          </LoadComments>
-        </LoadCommentsWrapper>
+          </StyledLoadComments>
+          <Disqus.DiscussionEmbed
+            shortname={disqusShortname}
+            config={disqusConfig}
+          />
+        </CommentsWrapper>
         <SiteFooter locale={locale} />
       </Layout>
     );
