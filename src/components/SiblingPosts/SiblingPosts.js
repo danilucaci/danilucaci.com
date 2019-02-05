@@ -14,8 +14,7 @@ const SiblingPostsWrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
 
-  margin-top: ${rem(32)};
-  margin-bottom: ${rem(32)};
+  margin-bottom: ${theme.spacing.components.s};
 
   padding-left: ${theme.gutters.s};
   padding-right: ${theme.gutters.s};
@@ -26,13 +25,11 @@ const SiblingPostsWrapper = styled.div`
   `};
 
   ${mediaMin.m`
-    margin-top: ${rem(56)};
-    margin-bottom: ${rem(56)};
+    margin-bottom: ${theme.spacing.components.m};
   `};
 
-  ${mediaMin.l`
-    margin-top: ${rem(112)};
-    margin-bottom: ${rem(112)};
+  ${mediaMin.m`
+    margin-bottom: ${theme.spacing.components.xl};
   `};
 `;
 
