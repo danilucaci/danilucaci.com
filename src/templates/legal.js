@@ -17,7 +17,7 @@ import { calculateScroll, textPassiveEventSupport } from "../helpers/helpers";
 import intlMessages from "../i18n/i18n";
 
 const PageWrapper = styled.section`
-  max-width: ${theme.contain.inner.col6};
+  max-width: ${theme.contain.inner.col8};
   margin-left: auto;
   margin-right: auto;
 
@@ -43,7 +43,7 @@ const PostH1 = styled.h1`
 const PostContent = styled.section`
   display: block;
 
-  max-width: ${theme.contain.inner.col6};
+  max-width: ${theme.contain.inner.col8};
   margin-left: auto;
   margin-right: auto;
   margin-top: ${rem(16)};
@@ -101,15 +101,6 @@ const PostContent = styled.section`
 
   ul + p {
     margin-top: ${rem(32)};
-  }
-
-  ul {
-    list-style-type: disc;
-    list-style-position: outside;
-  }
-
-  li {
-    margin-left: ${rem(24)};
   }
 
   strong {
@@ -190,7 +181,7 @@ class LegalDoc extends Component {
           showScrollIndicator
           locale={locale}
           twinPostURL={twinPostURL}
-          currentPath={props.location.pathname}
+          currentPath={this.props.location.pathname}
         />
         <Main role="main" id="main">
           <PageWrapper>
