@@ -4,12 +4,13 @@ import { Icon } from "../Icon/Icon";
 import { theme, rem, mediaMin } from "../../theme/globalStyles";
 
 const StyledScrollToTop = styled.a`
+  background-color: ${theme.colors.gray300};
+  opacity: 0.88;
   text-decoration: none;
   position: fixed;
-  bottom: ${rem(20)};
-  right: ${rem(20)};
+  bottom: ${rem(24)};
+  right: ${rem(24)};
   display: block;
-  background-color: ${theme.colors.scrollToTop};
 
   ${theme.shadow.default};
 
@@ -17,7 +18,8 @@ const StyledScrollToTop = styled.a`
   will-change: transform;
 
   &:hover {
-    transform: scale(1.2);
+    background-color: ${theme.colors.gray400};
+    transform: scale(1.15);
     transition: transform ease 150ms;
   }
 `;
