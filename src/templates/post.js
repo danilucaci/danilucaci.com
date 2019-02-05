@@ -302,6 +302,7 @@ class Post extends Component {
         error: "No he podido copiar",
       },
     },
+    loadComments: false,
   };
 
   componentDidMount() {
@@ -472,6 +473,14 @@ class Post extends Component {
   //   });
   // };
 
+  loadComments = () => {
+    console.log("Add commments yo");
+
+    this.setState((prevState) => ({
+      loadComments: !prevState.loadComments,
+    }));
+  };
+
   render() {
     const slug = this.props.data.markdownRemark.fields.slug;
     const postNode = this.props.data.markdownRemark;
@@ -557,18 +566,22 @@ class Post extends Component {
         )}
 
         <CommentsWrapper>
-          <StyledLoadComments>
-            <LoadCommentsIcon aria-hidden="true">
-              <use xlinkHref="#comments" />
-            </LoadCommentsIcon>
-            <FormattedMessage id="loadComments">
-              {(txt) => <LoadCommentsLabel>{txt}</LoadCommentsLabel>}
-            </FormattedMessage>
-          </StyledLoadComments>
-          <Disqus.DiscussionEmbed
-            shortname={disqusShortname}
-            config={disqusConfig}
-          />
+          {!this.state.loadComments && (
+            <StyledLoadComments onClick={this.loadComments}>
+              <LoadCommentsIcon aria-hidden="true">
+                <use xlinkHref="#comments" />
+              </LoadCommentsIcon>
+              <FormattedMessage id="loadComments">
+                {(txt) => <LoadCommentsLabel>{txt}</LoadCommentsLabel>}
+              </FormattedMessage>
+            </StyledLoadComments>
+          )}
+          {this.state.loadComments && (
+            <Disqus.DiscussionEmbed
+              shortname={disqusShortname}
+              config={disqusConfig}
+            />
+          )}
         </CommentsWrapper>
         <SiteFooter locale={locale} />
       </Layout>
