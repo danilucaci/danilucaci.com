@@ -525,8 +525,8 @@ class CaseStudy extends Component {
             <PostContent dangerouslySetInnerHTML={{ __html: postNode.html }} />
             {/* <PostContent>{renderAst(postNode.htmlAst)}</PostContent> */}
           </ArticleWrapper>
+          <ScrollToTop />
         </Main>
-        <ScrollToTop />
         {(prevSlug || nextSlug) && (
           <SiblingPosts
             nextSlug={nextSlug}

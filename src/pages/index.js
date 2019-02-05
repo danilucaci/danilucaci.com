@@ -127,7 +127,7 @@ const ServicesH4 = styled.h4`
   `};
 `;
 
-const ServicesEntry = styled.section`
+const ServicesEntry = styled.div`
   display: inline-block;
   vertical-align: top;
 
@@ -201,7 +201,7 @@ const Index = (props) => {
         twinPostURL={twinPostURL}
         currentPath={props.location.pathname}
       />
-      <Main role="main">
+      <Main role="main" id="main">
         <SEO />
         <IndexHeader>
           <FormattedMessage id="indexH1">

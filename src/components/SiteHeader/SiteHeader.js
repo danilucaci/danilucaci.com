@@ -5,16 +5,20 @@ import styled from "styled-components";
 import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
 import SiteNav from "../SiteNav/SiteNav";
 
-const StyledSiteHeaderWrapper = styled.div`
+const StyledSiteHeaderWrapper = styled.header`
   width: 100%;
   display: block;
   will-change: transform;
   z-index: 100;
   position: fixed;
   top: 0;
+
+  & ul {
+    margin-left: 0 !important;
+  }
 `;
 
-const StyledSiteHeader = styled.header`
+const StyledSiteHeader = styled.div`
   background-color: ${theme.colors.gray100};
   ${theme.shadow.navbar};
   width: 100%;
@@ -54,8 +58,8 @@ class SiteHeader extends Component {
     let shouldRenderScroll = this.props.showScrollIndicator;
 
     return (
-      <StyledSiteHeaderWrapper>
-        <StyledSiteHeader role="banner">
+      <StyledSiteHeaderWrapper role="banner">
+        <StyledSiteHeader>
           <SiteNav
             onClick={this.openNav}
             showNav={this.state.showNav}

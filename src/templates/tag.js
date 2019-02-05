@@ -17,7 +17,7 @@ import Pagination from "../components/Pagination/Pagination";
 import intlMessages from "../i18n/i18n";
 import { SectionHeader } from "../components/Headings/Headings";
 
-const TagWrapper = styled.div`
+const TagWrapper = styled.section`
   max-width: ${theme.contain.wrapper.col8};
   margin: 0 auto;
 
@@ -137,7 +137,7 @@ const TagPage = (props) => {
         twinPostURL={twinPostURL}
         currentPath={props.location.pathname}
       />
-      <Main role="main">
+      <Main role="main" id="main">
         <TagWrapper>
           <TagHeader>
             <TagTitleWrapper>

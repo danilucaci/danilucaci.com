@@ -31,7 +31,7 @@ import {
 } from "../helpers/helpers";
 import intlMessages from "../i18n/i18n";
 
-const PostWrapper = styled.div`
+const PostWrapper = styled.article`
   max-width: ${theme.contain.wrapper.col8};
   margin-left: auto;
   margin-right: auto;
@@ -56,7 +56,7 @@ const PostH1 = styled.h1`
   margin-bottom: ${rem(16)};
 `;
 
-const PostInfo = styled.aside`
+const PostInfo = styled.div`
   display: block;
   display: flex;
   flex-direction: column;
@@ -249,7 +249,7 @@ export const LoadCommentsLabel = styled.span`
   display: inline-block;
 `;
 
-export const CommentsWrapper = styled.div`
+export const CommentsWrapper = styled.aside`
   width: 100%;
   max-width: ${theme.contain.inner.col10};
   margin-left: auto;
@@ -270,7 +270,7 @@ export const CommentsWrapper = styled.div`
   `};
 `;
 
-export const AuthorCardWrapper = styled.div`
+export const AuthorCardWrapper = styled.aside`
   width: 100%;
   max-width: ${theme.contain.inner.col10};
   margin-left: auto;
@@ -541,7 +541,7 @@ class Post extends Component {
           twinPostURL={twinPostURL}
           currentPath={this.props.location.pathname}
         />
-        <Main role="main">
+        <Main role="main" id="main">
           <PostWrapper>
             <StyledPageHeader>
               <Tags tags={postInfo.tags} inline />
@@ -576,8 +576,8 @@ class Post extends Component {
             readOnly={true}
             suppressContentEditableWarning={true}
           />
+          <ScrollToTop />
         </Main>
-        <ScrollToTop />
 
         <AuthorCardWrapper>
           <AuthorCard />

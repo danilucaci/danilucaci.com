@@ -14,7 +14,7 @@ import intlMessages from "../i18n/i18n";
 import { Copy } from "../components/Copy/Copy";
 import { PrimaryButton } from "../components/Button/Button";
 
-const ContactMeWrapper = styled.div`
+const ContactMeWrapper = styled.section`
   max-width: ${theme.contain.wrapper.col10};
   margin-left: auto;
   margin-right: auto;
@@ -142,7 +142,7 @@ const ContactPage = (props) => {
         twinPostURL={twinPostURL}
         currentPath={props.location.pathname}
       />
-      <Main role="main">
+      <Main role="main" id="main">
         <ContactMeWrapper>
           <StyledH1>Let's talk</StyledH1>
           <Subhead>

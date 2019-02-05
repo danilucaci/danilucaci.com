@@ -40,7 +40,7 @@ const PostH1 = styled.h1`
   `};
 `;
 
-const PostContent = styled.section`
+const PostContent = styled.div`
   display: block;
 
   max-width: ${theme.contain.inner.col8};

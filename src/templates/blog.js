@@ -17,7 +17,7 @@ import Pagination from "../components/Pagination/Pagination";
 import intlMessages from "../i18n/i18n";
 import { SectionHeader } from "../components/Headings/Headings";
 
-const BlogWrapper = styled.div`
+const BlogWrapper = styled.section`
   max-width: ${theme.contain.wrapper.col8};
   margin-left: auto;
   margin-right: auto;
@@ -105,7 +105,7 @@ const BlogPage = (props) => {
         locale={locale}
         currentPath={props.location.pathname}
       />
-      <Main role="main">
+      <Main role="main" id="main">
         <BlogWrapper>
           <Helmet title={`${intlMessages[locale].meta.blogMetaTitle}`} />
           <SEO />

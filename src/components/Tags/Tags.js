@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 
 import Tag from "./Tag/Tag";
 
-const TagsWrapper = styled.div`
+const TagsWrapper = styled.nav`
   display: ${(props) => (props.inline ? "inline-block" : "block")};
 `;
 

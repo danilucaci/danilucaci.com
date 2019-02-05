@@ -9,7 +9,7 @@ import { Copy } from "../Copy/Copy";
 import { TertiaryButton, PrimaryButtonSmall } from "../Button/Button";
 import LocaleLink from "../LocaleLink/LocaleLink";
 
-const StyledCookieConsent = styled.div`
+const StyledCookieConsent = styled.aside`
   background-color: ${theme.colors.gray100};
   border-top: ${rem(8)} solid ${theme.colors.main600};
   display: block;

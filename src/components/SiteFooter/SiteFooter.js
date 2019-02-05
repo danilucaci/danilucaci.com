@@ -32,7 +32,7 @@ const StyledCopy = styled(Copy)`
   margin-bottom: ${rem(16)};
 `;
 
-const LegalDocsContainer = styled.div`
+const LegalDocsContainer = styled.nav`
   margin-top: ${rem(56)};
   ${mediaMin.s`
       margin-top: ${rem(24)};

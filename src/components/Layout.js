@@ -293,7 +293,7 @@ class Layout extends Component {
           locale={this.props.locale}
           messages={intlMessages[this.props.locale]}
         >
-          <Page id="back_to_top">
+          <Page>
             <Helmet>
               <html lang={this.props.locale} />
               <title>{intlMessages[this.props.locale].meta.siteTitle}</title>

@@ -17,7 +17,7 @@ import ContactCard from "../components/ContactCard/ContactCard";
 import { Copy } from "../components/Copy/Copy";
 import intlMessages from "../i18n/i18n";
 
-const AboutMeWrapper = styled.div`
+const AboutMeWrapper = styled.section`
   max-width: ${theme.contain.wrapper.col10};
   margin-left: auto;
   margin-right: auto;
@@ -31,7 +31,7 @@ const AboutMeWrapper = styled.div`
   `};
 `;
 
-const HeaderInfo = styled.div`
+const HeaderInfo = styled.header`
   display: block;
   width: 100%;
   ${"" /* Create a containment block for floated elements to prevent overflowing the container */} ${"" /* prettier-ignore */}
@@ -161,7 +161,7 @@ const AboutPage = (props) => {
         locale={locale}
         currentPath={props.location.pathname}
       />
-      <Main role="main">
+      <Main role="main" id="main">
         <AboutMeWrapper>
           <Helmet title={`${intlMessages[locale].meta.aboutMetaTitle}`} />
           <SEO />

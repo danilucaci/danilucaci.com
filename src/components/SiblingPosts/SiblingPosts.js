@@ -8,7 +8,7 @@ import { HR } from "../HR/HR";
 import { SectionHeader } from "../Headings/Headings";
 import LocaleLink from "../LocaleLink/LocaleLink";
 
-const SiblingPostsWrapper = styled.div`
+const SiblingPostsWrapper = styled.nav`
   width: 100%;
   max-width: ${theme.contain.inner.col10};
   margin-left: auto;
@@ -33,7 +33,7 @@ const SiblingPostsWrapper = styled.div`
   `};
 `;
 
-const SiblingPostsContents = styled.nav`
+const SiblingPostsContents = styled.div`
   display: flex;
 
   padding-top: ${rem(16)};

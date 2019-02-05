@@ -136,7 +136,7 @@ const WorkPage = (props) => {
         twinPostURL={twinPostURL}
         currentPath={props.location.pathname}
       />
-      <Main role="main">
+      <Main role="main" id="main">
         <Helmet title={`${intlMessages[locale].meta.workMetaTitle}`} />
         <SEO />
         <WorkHeader>

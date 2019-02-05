@@ -32,7 +32,7 @@ const ScrollToTopIcon = styled(Icon)`
 
 const ScrollToTop = () => {
   return (
-    <StyledScrollToTop href="#back_to_top" title="Back to top">
+    <StyledScrollToTop href="#main" title="Back to top">
       <ScrollToTopIcon>
         <use xlinkHref="#up" />
       </ScrollToTopIcon>
