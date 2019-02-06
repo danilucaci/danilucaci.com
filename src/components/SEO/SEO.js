@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import urljoin from "url-join";
 import config from "../../../data/SiteConfig";
@@ -162,6 +163,15 @@ const SEO = (props) => {
       <meta name="twitter:description" content={description} />
     </Helmet>
   );
+};
+
+SEO.propTypes = {
+  locale: PropTypes.string.isRequired,
+  currentPath: PropTypes.string.isRequired,
+  currentPage: PropTypes.string,
+  postSEO: PropTypes.bool,
+  postImage: PropTypes.string,
+  postNode: PropTypes.object,
 };
 
 export default SEO;
