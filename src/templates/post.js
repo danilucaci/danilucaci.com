@@ -270,27 +270,6 @@ export const CommentsWrapper = styled.aside`
   `};
 `;
 
-export const AuthorCardWrapper = styled.aside`
-  width: 100%;
-  max-width: ${theme.contain.inner.col10};
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: ${theme.spacing.components.s};
-
-  padding-left: ${theme.gutters.s};
-  padding-right: ${theme.gutters.s};
-
-  ${mediaMin.s`
-    padding-left: ${theme.gutters.m};
-    padding-right: ${theme.gutters.m};
-    margin-bottom: ${theme.spacing.components.m};
-  `};
-
-  ${mediaMin.m`
-    margin-bottom: ${theme.spacing.components.xl};
-  `};
-`;
-
 const renderAst = new rehypeReact({
   createElement: React.createElement,
   components: {
@@ -569,7 +548,9 @@ class Post extends Component {
               </StyledIntroContainer>
             </StyledPageHeader>
             <PostContent>{renderAst(postNode.htmlAst)}</PostContent>
+            <AuthorCard />
           </PostWrapper>
+
           <DummyInput
             className="js-dummyInput"
             contentEditable={true}
@@ -578,10 +559,6 @@ class Post extends Component {
           />
           <ScrollToTop />
         </Main>
-
-        <AuthorCardWrapper>
-          <AuthorCard />
-        </AuthorCardWrapper>
 
         {(prevSlug || nextSlug) && (
           <SiblingPosts

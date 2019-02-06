@@ -8,9 +8,24 @@ import { FormattedMessage } from "react-intl";
 import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
 import SocialNav from "../SocialNav/SocialNav";
+import { HR } from "../HR/HR";
 
-const StyledAuthorCard = styled.aside`
-  background-color: ${theme.colors.gray100};
+export const AuthorCardWrapper = styled.footer`
+  width: 100%;
+  max-width: ${theme.contain.inner.col10};
+  margin-bottom: ${theme.spacing.components.s};
+
+  ${mediaMin.s`
+    padding-right: ${theme.gutters.m};
+    margin-bottom: ${theme.spacing.components.m};
+  `};
+
+  ${mediaMin.m`
+    margin-bottom: ${theme.spacing.components.xl};
+  `};
+`;
+
+const StyledAuthorCard = styled.div`
   padding: ${rem(24)} ${rem(40)} ${rem(32)};
   display: flex;
   flex-direction: column;
@@ -69,38 +84,42 @@ const AuthorDescription = styled(Copy)`
 
 const AuthorCard = (props) => {
   return (
-    <StyledAuthorCard>
-      <StaticQuery
-        query={AUTHOR_IMAGE_QUERY}
-        render={(data) => {
-          let image = data.authorImageQuery.childImageSharp.fluid;
+    <AuthorCardWrapper>
+      <HR />
+      <StyledAuthorCard>
+        <StaticQuery
+          query={AUTHOR_IMAGE_QUERY}
+          render={(data) => {
+            let image = data.authorImageQuery.childImageSharp.fluid;
 
-          return (
-            <FormattedMessage id="authorCardImageTitle">
-              {(imageTitle) => (
-                <AuthorImage
-                  title={imageTitle}
-                  alt="Dani Lucaci portrait image"
-                  fluid={image}
-                />
-              )}
-            </FormattedMessage>
-          );
-        }}
-      />
+            return (
+              <FormattedMessage id="authorCardImageTitle">
+                {(imageTitle) => (
+                  <AuthorImage
+                    title={imageTitle}
+                    alt="Dani Lucaci portrait image"
+                    fluid={image}
+                  />
+                )}
+              </FormattedMessage>
+            );
+          }}
+        />
 
-      <AuthorInfo>
-        <FormattedMessage id="authorCardName">
-          {(name) => <h4>{name}</h4>}
-        </FormattedMessage>
-        <FormattedMessage id="authorCardDescription">
-          {(description) => (
-            <AuthorDescription>{description}</AuthorDescription>
-          )}
-        </FormattedMessage>
-        <SocialNav />
-      </AuthorInfo>
-    </StyledAuthorCard>
+        <AuthorInfo>
+          <FormattedMessage id="authorCardName">
+            {(name) => <h4>{name}</h4>}
+          </FormattedMessage>
+          <FormattedMessage id="authorCardDescription">
+            {(description) => (
+              <AuthorDescription>{description}</AuthorDescription>
+            )}
+          </FormattedMessage>
+          <SocialNav />
+        </AuthorInfo>
+      </StyledAuthorCard>
+      <HR />
+    </AuthorCardWrapper>
   );
 };
 
