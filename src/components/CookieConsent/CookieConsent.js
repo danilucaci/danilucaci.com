@@ -33,15 +33,16 @@ const StyledCookieConsent = styled.aside`
     border-top: 1px solid ${theme.colors.gray400};
     border-bottom: 1px solid ${theme.colors.gray400};
     border-right: 1px solid ${theme.colors.gray400};
-    flex-direction: row;
-    ${theme.shadow.dropdown};
-    bottom: ${rem(24)};
-    padding: ${rem(8)} ${rem(24)};
     border-radius: 3px;
+
+    flex-direction: row;
+    bottom: ${rem(20)};
+    padding: ${rem(10)} ${rem(10)} ${rem(10)} ${rem(16)};
     width: 96%;
-    max-width: 49em;
+    max-width: 64em;
     margin-left: auto;
     margin-right: auto;
+    ${theme.shadow.dropdown};
   `};
 `;
 
