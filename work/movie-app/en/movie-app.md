@@ -1,7 +1,7 @@
 ---
-title: "Sample app 0"
+title: "Movie booking app"
 description: "A case study on improving the experience of searching, finding and booking movies in a cinema."
-date: "2019-01-02"
+date: "2019-02-02"
 category: "work"
 tags:
     - Lean UX
@@ -9,7 +9,7 @@ tags:
 posted: true
 image: "./movie_app_presentation.png"
 locale: "en"
-twinPost: "Applicacion de muestra 0"
+twinPost: "Aplicación para un cine"
 ---
 
 I decided to design this app as each time I tried to find and book a movie, all the websites and apps that I used had outdated designs, no real benefit to their membership plans and very limited searching and filtering features.

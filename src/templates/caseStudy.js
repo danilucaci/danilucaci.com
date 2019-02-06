@@ -70,13 +70,17 @@ const CaseStudyDescription = styled(Copy)`
   line-height: ${rem(40)};
 `;
 
-const TagsWrapper = styled.div`
-  margin-bottom: ${rem(8)};
-`;
+const TagsWrapper = styled.div``;
 
 const Tag = styled(Copy)`
   display: inline-block;
   margin-right: ${rem(16)};
+  margin-top: ${rem(8)};
+  margin-bottom: ${rem(8)};
+
+  ${mediaMin.xxl`
+    margin-right: ${rem(24)};
+  `};
 `;
 
 const CaseStudyImgWrapper = styled.div`

@@ -65,41 +65,28 @@ const TagsWrapper = styled.div`
 `;
 
 const Tag = styled(Copy)`
-  background-color: ${theme.colors.gray300};
-  border-radius: ${theme.borderRadius.buttons};
-  color: ${theme.colors.dark800};
   display: inline-block;
 
   text-decoration: none;
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};
 
-  .fonts-loaded & {
-    font-family: ${theme.fonts.bodyRegular};
-  }
-
   margin-right: ${rem(16)};
   margin-top: ${rem(8)};
   margin-bottom: ${rem(8)};
-  padding: ${rem(4)} ${rem(8)};
 
   ${mediaMin.xxl`
-    margin-right: ${rem(16)};
-    margin-bottom: ${rem(16)};
+    margin-bottom: ${rem(12)};
   `};
 `;
 
 const HRTop = styled(HR)`
-  border: 1px solid ${theme.colors.sectionBackground};
-
   ${mediaMin.xxl`
     display: none;
   `};
 `;
 
-const HRBottom = styled(HR)`
-  border: 1px solid ${theme.colors.sectionBackground};
-`;
+const HRBottom = styled(HR)``;
 
 const StyledH3 = styled.h3`
   margin-bottom: ${rem(8)};
