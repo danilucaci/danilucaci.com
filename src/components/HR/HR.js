@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { theme, mediaMin, rem, mediaMax } from "../../theme/globalStyles";
+import { theme } from "../../theme/globalStyles";
 
 export const HR = styled.span`
   display: block;
-  border: 2px solid ${theme.colors.sectionBackground};
+  border: 1px solid ${theme.colors.gray300};
 `;
