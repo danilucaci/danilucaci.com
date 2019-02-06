@@ -16,6 +16,8 @@ import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import { Copy } from "../components/Copy/Copy";
 import { HR } from "../components/HR/HR";
 import SiblingPosts from "../components/SiblingPosts/SiblingPosts";
+import AuthorCard from "../components/AuthorCard/AuthorCard";
+
 import {
   calculateScroll,
   textPassiveEventSupport,
@@ -98,9 +100,14 @@ const PostContent = styled.section`
   margin-right: auto;
   margin-top: ${rem(16)};
 
-  ${mediaMin.s`
-    margin-top: ${rem(32)};
-    margin-bottom: ${rem(56)};
+  margin-bottom: ${theme.spacing.components.s};
+
+  ${mediaMin.m`
+    margin-bottom: ${theme.spacing.components.m};
+  `};
+
+  ${mediaMin.xl`
+    margin-bottom: ${theme.spacing.components.xl};
   `};
 
   header h1,
@@ -528,6 +535,7 @@ class CaseStudy extends Component {
             </CaseStudyImgWrapper>
             <PostContent dangerouslySetInnerHTML={{ __html: postNode.html }} />
             {/* <PostContent>{renderAst(postNode.htmlAst)}</PostContent> */}
+            <AuthorCard />
           </ArticleWrapper>
           <ScrollToTop />
         </Main>
