@@ -478,7 +478,6 @@ class CaseStudy extends Component {
   };
 
   render() {
-    const slug = this.props.data.markdownRemark.fields.slug;
     const postNode = this.props.data.markdownRemark;
     const postInfo = postNode.frontmatter;
     const image = postInfo.image.childImageSharp.fluid;
@@ -503,7 +502,7 @@ class CaseStudy extends Component {
           locale={locale}
           postNode={postNode}
           postSEO
-          // postImage={image.src}
+          postImage={image.src}
           currentPath={this.props.location.pathname}
         />
         <SiteHeader
