@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Helmet from "react-helmet";
 import styled, { ThemeProvider } from "styled-components";
 var FontFaceObserver = require("fontfaceobserver");
 import Cookies from "js-cookie";
@@ -16,8 +15,12 @@ import GlobalAria from "../theme/globalAria";
 import GlobalHTML from "../theme/globalCSS";
 import { SVGSprite } from "./SVGSprite/SVGSprite";
 import SkipToMainContent from "./SkipToMainContent/SkipToMainContent";
-import { checkForDoNotTrack } from "../helpers/helpers";
 import CookieConsent from "./CookieConsent/CookieConsent";
+import {
+  checkForDoNotTrack,
+  detectDataSaverMode,
+  detectSlowConnectionType,
+} from "../helpers/helpers";
 
 require("./prism.css");
 
@@ -76,7 +79,11 @@ class Layout extends Component {
       }
       return;
     } else {
-      this.loadFonts();
+      if (detectDataSaverMode() || detectSlowConnectionType()) {
+        return;
+      } else {
+        this.loadFonts();
+      }
     }
   };
 

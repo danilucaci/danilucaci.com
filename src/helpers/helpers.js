@@ -128,3 +128,23 @@ export function detectBrowserLanguage() {
     navigator.userLanguage
   );
 }
+
+export function detectDataSaverMode() {
+  if (navigator.connection && navigator.connection.saveData) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+export function detectSlowConnectionType() {
+  if (
+    navigator.connection &&
+    (navigator.connection.effectiveType === "slow-2g" ||
+      navigator.connection.effectiveType === "2g")
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
