@@ -124,7 +124,7 @@ const MobileCopy = styled(CopyBold)`
   text-align: center;
 
   ${mediaMin.xxxs`
-    margin-left: -${rem(28)};
+    margin-left: -${rem(12)};
   `};
 
   ${mediaMin.s`
