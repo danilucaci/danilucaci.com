@@ -70,11 +70,10 @@ const Row = styled.section`
   ${mediaMin.s`
     margin: ${theme.spacing.row.m} 0;
     padding: 0 ${theme.gutters.m};
-    `};
+  `};
 
   ${mediaMin.m`
     margin: ${theme.spacing.row.xl} 0;
-    padding: 0 ${theme.gutters.xl};
   `};
 `;
 
@@ -88,7 +87,7 @@ const AltRow = styled.section`
   `};
 
   ${mediaMin.m`
-    padding: ${theme.spacing.row.xl} ${theme.gutters.xl};
+    padding: ${theme.spacing.row.xl} ${theme.gutters.m};
   `};
 `;
 
