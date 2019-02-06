@@ -1,38 +1,70 @@
-import React, { Component } from "react";
+import React from "react";
 import Helmet from "react-helmet";
 import urljoin from "url-join";
 import config from "../../../data/SiteConfig";
 
-class SEO extends Component {
-  render() {
-    const { postNode, postPath, postSEO } = this.props;
-    let title;
-    let description;
-    let postURL;
-    let image = config.siteLogo;
+const SEO = (props) => {
+  let {
+    postNode,
+    postPath,
+    postSEO,
+    legalDocs,
+    postImage,
+    locale = "en",
+    currentPage = "site",
+    currentPath = "/",
+  } = props;
 
-    if (postSEO) {
-      const postMeta = postNode.frontmatter;
-      ({ title } = postMeta);
-      description = postMeta.snippet;
-      postURL = urljoin(config.siteUrl, config.pathPrefix, postPath);
-    } else {
-      title = config.siteTitle;
-      description = config.siteDescription;
+  let title;
+  let description;
+  let postURL;
+  let imageUrl;
+  let pageURL;
+
+  let siteUrl = config.siteUrl;
+
+  if (currentPage === "site" && locale === "en") {
+    pageURL = siteUrl;
+  } else {
+    pageURL = urljoin(siteUrl, currentPath);
+  }
+
+  title = config[locale][currentPage].title;
+  description = config[locale][currentPage].description;
+
+  if (postImage) {
+    if (locale === "en") {
+      imageUrl = urljoin(siteUrl, postImage);
+    } else if (locale === "es") {
+      imageUrl = urljoin(siteUrl, locale, postImage);
     }
+  }
 
-    image = urljoin(config.siteUrl, config.pathPrefix, image);
-    const blogURL = urljoin(config.siteUrl, config.pathPrefix);
-    const schemaOrgJSONLD = [
-      {
-        "@context": "http://schema.org",
-        "@type": "WebSite",
-        url: blogURL,
-        name: title,
-        alternateName: config.siteTitleAlt ? config.siteTitleAlt : "",
-      },
-    ];
-    if (postSEO) {
+  if (postSEO) {
+    title = postNode.frontmatter.title;
+    description = postNode.frontmatter.snippet;
+    postURL = urljoin(siteUrl, currentPath);
+  }
+
+  if (legalDocs) {
+    title = postNode.frontmatter.title;
+    postURL = urljoin(siteUrl, currentPath);
+  }
+
+  let schemaOrgJSONLD = [
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      url: pageURL,
+      name: title,
+      alternateName: config[locale][currentPage].siteTitleAlt
+        ? config[locale][currentPage].siteTitleAlt
+        : "",
+    },
+  ];
+
+  if (postSEO) {
+    if (postImage) {
       schemaOrgJSONLD.push(
         {
           "@context": "http://schema.org",
@@ -44,7 +76,7 @@ class SEO extends Component {
               item: {
                 "@id": postURL,
                 name: title,
-                image,
+                image: imageUrl,
               },
             },
           ],
@@ -52,52 +84,95 @@ class SEO extends Component {
         {
           "@context": "http://schema.org",
           "@type": "BlogPosting",
-          url: blogURL,
+          url: pageURL,
           name: title,
-          alternateName: config.siteTitleAlt ? config.siteTitleAlt : "",
+          alternateName: config[locale][currentPage].siteTitleAlt
+            ? config[locale][currentPage].siteTitleAlt
+            : "",
           headline: title,
           image: {
             "@type": "ImageObject",
-            url: image,
+            url: imageUrl,
           },
           description,
         }
       );
+    } else {
+      schemaOrgJSONLD.push(
+        {
+          "@context": "http://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              item: {
+                "@id": postURL,
+                name: title,
+              },
+            },
+          ],
+        },
+        {
+          "@context": "http://schema.org",
+          "@type": "BlogPosting",
+          url: pageURL,
+          name: title,
+          alternateName: config[locale][currentPage].siteTitleAlt
+            ? config[locale][currentPage].siteTitleAlt
+            : "",
+          headline: title,
+          description,
+        }
+      );
     }
-    return (
-      <Helmet>
-        {/* General tags */}
-        <meta name="description" content={description} />
-        <meta name="image" content={image} />
-
-        {/* Schema.org tags */}
-        <script type="application/ld+json">
-          {JSON.stringify(schemaOrgJSONLD)}
-        </script>
-
-        {/* OpenGraph tags */}
-        <meta property="og:url" content={postSEO ? postURL : blogURL} />
-        {postSEO ? <meta property="og:type" content="article" /> : null}
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:image" content={image} />
-        <meta
-          property="fb:app_id"
-          content={config.siteFBAppID ? config.siteFBAppID : ""}
-        />
-
-        {/* Twitter Card tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:creator"
-          content={config.userTwitter ? config.userTwitter : ""}
-        />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={image} />
-      </Helmet>
-    );
   }
-}
+
+  return (
+    <Helmet>
+      <html lang={locale} />
+      <title>{title}</title>
+      {/* General tags */}
+      <meta name="description" content={description} />
+      {imageUrl && <meta name="image" content={imageUrl} />}
+
+      {/* Schema.org tags */}
+      <script type="application/ld+json">
+        {JSON.stringify(schemaOrgJSONLD)}
+      </script>
+
+      {/* OpenGraph tags */}
+      {(postSEO || legalDocs) && <meta property="og:url" content={postURL} />}
+      {!postSEO && !legalDocs && <meta property="og:url" content={pageURL} />}
+      {postSEO && <meta property="og:type" content="article" />}
+
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+
+      {imageUrl && <meta property="og:image" content={imageUrl} />}
+      <meta
+        property="fb:app_id"
+        content={
+          config[locale][currentPage].siteFBAppID
+            ? config[locale][currentPage].siteFBAppID
+            : ""
+        }
+      />
+
+      {/* Twitter Card tags */}
+      {imageUrl ? (
+        <>
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:image" content={imageUrl} />
+        </>
+      ) : (
+        <meta name="twitter:card" content="summary" />
+      )}
+      <meta name="twitter:site" content="@danilucaci" />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+    </Helmet>
+  );
+};
 
 export default SEO;

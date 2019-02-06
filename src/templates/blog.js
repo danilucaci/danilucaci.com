@@ -107,8 +107,11 @@ const BlogPage = (props) => {
       />
       <Main role="main" id="main">
         <BlogWrapper>
-          <Helmet title={`${intlMessages[locale].meta.blogMetaTitle}`} />
-          <SEO />
+          <SEO
+            locale={locale}
+            currentPage="blog"
+            currentPath={props.location.pathname}
+          />
           <BlogHeader>
             <FormattedMessage id="blogTitle">
               {(txt) => <BlogTitle as="h1">{txt}</BlogTitle>}

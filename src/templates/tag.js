@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import styled, { css } from "styled-components";
 import { FormattedMessage } from "react-intl";
@@ -130,8 +129,11 @@ const TagPage = (props) => {
 
   return (
     <Layout location={props.location} locale={locale}>
-      <Helmet title={`${intlMessages[locale].meta.tagListingMetaTitle}`} />
-      <SEO />
+      <SEO
+        locale={locale}
+        currentPage="tags"
+        currentPath={props.location.pathname}
+      />
       <SiteHeader
         locale={locale}
         twinPostURL={twinPostURL}

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import urljoin from "url-join";
 import { TwitterShareButton, LinkedinShareButton } from "react-share";
 
@@ -92,7 +92,8 @@ const StyledIcon = styled(Icon)`
 `;
 
 const SocialShare = (props) => {
-  const url = urljoin(config.siteUrl, config.pathPrefix, props.slug);
+  const url = urljoin(config.siteUrl, props.slug);
+
   return (
     <StyledSocialShare>
       <LinkedinShareButton

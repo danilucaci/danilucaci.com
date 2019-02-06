@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Helmet from "react-helmet";
-import styled, { css } from "styled-components";
-import intlMessages from "../i18n/i18n";
+import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
 
 import { theme, mediaMin, rem } from "../theme/globalStyles";
@@ -137,8 +135,11 @@ const WorkPage = (props) => {
         currentPath={props.location.pathname}
       />
       <Main role="main" id="main">
-        <Helmet title={`${intlMessages[locale].meta.workMetaTitle}`} />
-        <SEO />
+        <SEO
+          locale={locale}
+          currentPage="work"
+          currentPath={props.location.pathname}
+        />
         <WorkHeader>
           <InnerWrapper>
             <FormattedMessage id="caseStudiesHeader">

@@ -294,14 +294,6 @@ class Layout extends Component {
           messages={intlMessages[this.props.locale]}
         >
           <Page>
-            <Helmet>
-              <html lang={this.props.locale} />
-              <title>{intlMessages[this.props.locale].meta.siteTitle}</title>
-              <meta
-                name="description"
-                content={intlMessages[this.props.locale].meta.siteDescription}
-              />
-            </Helmet>
             <SkipToMainContent />
             <GlobalFonts />
             <GlobalReset />

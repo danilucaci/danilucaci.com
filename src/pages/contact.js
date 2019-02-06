@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import Helmet from "react-helmet";
 
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
@@ -10,7 +9,6 @@ import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
 import { Icon } from "../components/Icon/Icon";
 import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
-import intlMessages from "../i18n/i18n";
 import { Copy } from "../components/Copy/Copy";
 import { PrimaryButton } from "../components/Button/Button";
 
@@ -135,8 +133,11 @@ const ContactPage = (props) => {
 
   return (
     <Layout location={props.location} locale={locale}>
-      <Helmet title={`${intlMessages[locale].meta.contactMetaTitle}`} />
-      <SEO />
+      <SEO
+        locale={locale}
+        currentPage="contact"
+        currentPath={props.location.pathname}
+      />
       <SiteHeader
         locale={locale}
         twinPostURL={twinPostURL}

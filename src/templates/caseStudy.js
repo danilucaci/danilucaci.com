@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Helmet from "react-helmet";
 import { graphql } from "gatsby";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 // import rehypeReact from "rehype-react";
 
 import { theme, rem, mediaMin, mediaMax } from "../theme/globalStyles";
@@ -500,10 +499,13 @@ class CaseStudy extends Component {
 
     return (
       <Layout location={this.props.location} locale={locale}>
-        <Helmet
-          title={`${postInfo.title} || ${intlMessages[locale].meta.siteTitle}`}
+        <SEO
+          locale={locale}
+          postPath={slug}
+          postNode={postNode}
+          postSEO
+          currentPath={this.props.location.pathname}
         />
-        <SEO postPath={slug} postNode={postNode} postSEO />
         <SiteHeader
           twinPostURL={twinPostURL}
           showScrollIndicator

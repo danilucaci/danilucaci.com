@@ -510,10 +510,13 @@ class Post extends Component {
 
     return (
       <Layout location={this.props.location} locale={locale}>
-        <Helmet
-          title={`${postInfo.title} || ${intlMessages[locale].meta.siteTitle}`}
+        <SEO
+          locale={locale}
+          postPath={slug}
+          postNode={postNode}
+          postSEO
+          currentPath={this.props.location.pathname}
         />
-        <SEO postPath={slug} postNode={postNode} postSEO />
         <SiteHeader
           showScrollIndicator
           locale={locale}
@@ -533,7 +536,7 @@ class Post extends Component {
                 </PostDateReadTimeWrapper>
                 <SocialShareWrapper>
                   <SocialShare
-                    slug={slug}
+                    slug={this.props.location.pathname}
                     title={postInfo.title}
                     snippet={postInfo.snippet}
                     onClick={this.copyURL}

@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import Helmet from "react-helmet";
 
 import Layout from "../components/Layout";
 import SEO from "../components/SEO/SEO";
@@ -23,8 +22,11 @@ const NotFoundPage = (props) => {
   }
   return (
     <Layout location={props.location} locale={locale}>
-      <Helmet title={`${intlMessages[locale].meta.pageNotFoundMetaTitle}`} />
-      <SEO />
+      <SEO
+        locale={locale}
+        currentPage="notFound"
+        currentPath={props.location.pathname}
+      />
       <SiteHeader
         twinPostURL={twinPostURL}
         locale={locale}

@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { graphql } from "gatsby";
 import { FormattedMessage } from "react-intl";
 
@@ -195,14 +195,13 @@ const Index = (props) => {
 
   return (
     <Layout location={props.location} locale={locale}>
-      <SEO />
+      <SEO locale={locale} currentPath={props.location.pathname} />
       <SiteHeader
         locale={locale}
         twinPostURL={twinPostURL}
         currentPath={props.location.pathname}
       />
       <Main role="main" id="main">
-        <SEO />
         <IndexHeader>
           <FormattedMessage id="indexH1">
             {(txt) => <StyledH1>{txt}</StyledH1>}

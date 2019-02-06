@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import styled from "styled-components";
 import { FormattedDate, FormattedMessage } from "react-intl";
@@ -173,10 +172,12 @@ class LegalDoc extends Component {
 
     return (
       <Layout location={this.props.location} locale={locale}>
-        <Helmet
-          title={`${postInfo.title} || ${intlMessages[locale].meta.siteTitle}`}
+        <SEO
+          postPath={slug}
+          postNode={postNode}
+          legalDocs
+          currentPath={this.props.location.pathname}
         />
-        <SEO postPath={slug} postNode={postNode} postSEO />
         <SiteHeader
           showScrollIndicator
           locale={locale}
