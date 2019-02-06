@@ -1,6 +1,6 @@
 ---
 title: "Sample app 2"
-description: "A case study on improving the experience of searching, finding and booking movies in a cinema."
+snippet: "A case study on improving the experience of searching, finding and booking movies in a cinema."
 date: "2018-12-29"
 category: "work"
 tags:

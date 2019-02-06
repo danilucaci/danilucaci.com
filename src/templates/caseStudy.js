@@ -501,9 +501,9 @@ class CaseStudy extends Component {
       <Layout location={this.props.location} locale={locale}>
         <SEO
           locale={locale}
-          postPath={slug}
           postNode={postNode}
           postSEO
+          // postImage={image.src}
           currentPath={this.props.location.pathname}
         />
         <SiteHeader
@@ -521,14 +521,12 @@ class CaseStudy extends Component {
               </TagsWrapper>
               <HR />
               <PostH1>{postInfo.title}</PostH1>
-              <CaseStudyDescription>
-                {postInfo.description}
-              </CaseStudyDescription>
+              <CaseStudyDescription>{postInfo.snippet}</CaseStudyDescription>
             </StyledHeader>
             <CaseStudyImgWrapper>
               <Img
                 title={postInfo.title}
-                alt={postInfo.description}
+                alt={postInfo.snippet}
                 fluid={image}
                 // fadeIn={true}
                 // add gatsby-image props here
@@ -586,7 +584,7 @@ CaseStudy.propTypes = {
         title: PropTypes.string.isRequired,
         date: PropTypes.string.isRequired,
         image: PropTypes.object.isRequired,
-        description: PropTypes.string.isRequired,
+        snippet: PropTypes.string.isRequired,
         tags: PropTypes.arrayOf(PropTypes.string).isRequired,
       }),
       html: PropTypes.string.isRequired,
@@ -603,7 +601,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "DD MMMM YYYY")
-        description
+        snippet
         tags
         image {
           childImageSharp {

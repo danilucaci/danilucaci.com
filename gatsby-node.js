@@ -247,7 +247,6 @@ exports.createPages = ({ graphql, actions }) => {
                   timeToRead
                   frontmatter {
                     title
-                    description
                     date(formatString: "DD MMMM YYYY")
                     category
                     snippet
@@ -275,7 +274,6 @@ exports.createPages = ({ graphql, actions }) => {
                     timeToRead
                     frontmatter {
                       title
-                      description
                       date(formatString: "DD MMMM YYYY")
                       category
                       snippet
@@ -307,11 +305,11 @@ exports.createPages = ({ graphql, actions }) => {
                   }
                   frontmatter {
                     title
-                    description
                     date(formatString: "DD MMMM YYYY")
                     category
                     tags
                     posted
+                    snippet
                     twinPost
                     locale
                     image {

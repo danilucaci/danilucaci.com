@@ -1,6 +1,5 @@
 ---
 title: "Post number 9"
-description: "How to use the video tag to make better, lightweight gifs."
 date: "2018-12-09"
 category: "blog"
 intro: "Gifs are great but they are too big.

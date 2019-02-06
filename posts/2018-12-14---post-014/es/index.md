@@ -1,6 +1,5 @@
 ---
 title: "Los Problemas de pensar 'Schema-First' en un GraphQL Server"
-description: "Como usar aframe"
 date: "2018-12-14"
 category: "blog"
 intro: "Herramientas para GraphQL server development has exploded in the last two years. | We believe that the need for most tools comes from the popular schema-first approach — and can be solved by an alternative: code-first."

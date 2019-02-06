@@ -1,6 +1,5 @@
 ---
 title: "Post number 3"
-description: "How to use the video tag to make better, lightweight gifs."
 date: "2018-12-03"
 category: "blog"
 intro: "Gifs are great but they are too big.
@@ -30,7 +29,7 @@ class Index extends Component {
         tagsInCaseStudy: edge.node.frontmatter.tags,
         title: edge.node.frontmatter.title,
         date: edge.node.frontmatter.date,
-        description: edge.node.frontmatter.description,
+        snippet: edge.node.frontmatter.snippet,
         image: edge.node.frontmatter.image.childImageSharp.fluid,
       });
     });
@@ -123,7 +122,7 @@ class Index extends Component {
                   tagsInCaseStudy={caseStudyCard.tagsInCaseStudy}
                   title={caseStudyCard.title}
                   date={caseStudyCard.date}
-                  description={caseStudyCard.description}
+                  snippet={caseStudyCard.snippet}
                   image={caseStudyCard.image}
                 />
               ))}

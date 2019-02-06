@@ -1,6 +1,5 @@
 ---
 title: "Post numero 3"
-description: "Como hacer mejores gifs, que pesan menos."
 date: "2018-12-03"
 category: "blog"
 intro: "Los gifs molan, pero pesan demasiado.
@@ -31,7 +30,7 @@ class Index extends Component {
         tagsInCaseStudy: edge.node.frontmatter.tags,
         title: edge.node.frontmatter.title,
         date: edge.node.frontmatter.date,
-        description: edge.node.frontmatter.description,
+        snippet: edge.node.frontmatter.snippet,
         image: edge.node.frontmatter.image.childImageSharp.fluid,
       });
     });
@@ -124,7 +123,7 @@ class Index extends Component {
                   tagsInCaseStudy={caseStudyCard.tagsInCaseStudy}
                   title={caseStudyCard.title}
                   date={caseStudyCard.date}
-                  description={caseStudyCard.description}
+                  snippet={caseStudyCard.snippet}
                   image={caseStudyCard.image}
                 />
               ))}

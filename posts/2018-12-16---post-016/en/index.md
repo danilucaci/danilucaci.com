@@ -1,6 +1,5 @@
 ---
 title: "Firefox 65: WebP support, Flexbox Inspector"
-description: "Have fun with aframe and use ar on the web"
 date: "2018-12-16"
 category: "blog"
 intro: "Well now, there’s no better way to usher out the first month of the year than with a great new Firefox release. 

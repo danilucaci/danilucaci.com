@@ -1,6 +1,5 @@
 ---
 title: "Como Labelbox Soporta Enormes Maquinas con Prisma"
-description: "Con una cosa rapida evolving product and millions of data points managed and stored, Labelbox, a machine learning annotation platform, uses Prisma across their organization to improve database workflows."
 date: "2018-12-15"
 category: "blog"
 intro: "Con una cosa rapida evolving product and millions of data points managed and stored, Labelbox, a machine learning annotation platform, uses Prisma across their organization to improve database workflows."

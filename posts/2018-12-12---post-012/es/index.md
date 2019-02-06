@@ -1,6 +1,5 @@
 ---
 title: "Post numero 12"
-description: "Como usar aframe"
 date: "2018-12-12"
 category: "blog"
 intro: "Diviertete con aframe en la web.

@@ -1,6 +1,5 @@
 ---
 title: "Post number 12"
-description: "Have fun with aframe and use ar on the web"
 date: "2018-12-12"
 category: "blog"
 intro: "Have fun with aframe and use ar on the web.

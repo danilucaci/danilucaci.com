@@ -110,7 +110,7 @@ const CaseStudyCard = (props) => {
   return (
     <StyledCaseStudyCard>
       <CaseStudyImgWrapper>
-        <Img title={props.title} alt={props.description} fluid={props.image} />
+        <Img title={props.title} alt={props.snippet} fluid={props.image} />
       </CaseStudyImgWrapper>
       <CaseStudyCardContents>
         <TagsWrapper>
@@ -120,7 +120,7 @@ const CaseStudyCard = (props) => {
           <HRBottom />
         </TagsWrapper>
         <StyledH3>{props.title}</StyledH3>
-        <Copy small>{props.description}</Copy>
+        <Copy small>{props.snippet}</Copy>
         <FormattedMessage id="articleLinkContinue">
           {(txt) => <ContinueLink to={props.slug}>{txt}</ContinueLink>}
         </FormattedMessage>
@@ -133,7 +133,7 @@ CaseStudyCard.propTypes = {
   title: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  snippet: PropTypes.string.isRequired,
   image: PropTypes.object.isRequired,
   tagsInCaseStudy: PropTypes.arrayOf(PropTypes.string).isRequired,
 };

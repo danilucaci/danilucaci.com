@@ -1,6 +1,5 @@
 ---
 title: "Firefox 65: Soporte para WebP, Flexbox Inspector"
-description: "Como usar aframe"
 date: "2018-12-16"
 category: "blog"
 intro: "Ahora bien, there’s no better way to usher out the first month of the year than with a great new Firefox release. 

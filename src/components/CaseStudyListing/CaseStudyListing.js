@@ -12,7 +12,7 @@ const CaseStudyListing = (props) => {
     tagsInCaseStudy: edge.frontmatter.tags,
     title: edge.frontmatter.title,
     date: edge.frontmatter.date,
-    description: edge.frontmatter.description,
+    snippet: edge.frontmatter.snippet,
     image: edge.frontmatter.image.childImageSharp.fluid,
   }));
 
@@ -25,7 +25,7 @@ const CaseStudyListing = (props) => {
           tagsInCaseStudy={caseStudyCard.tagsInCaseStudy}
           title={caseStudyCard.title}
           date={caseStudyCard.date}
-          description={caseStudyCard.description}
+          snippet={caseStudyCard.snippet}
           image={caseStudyCard.image}
         />
       ))}

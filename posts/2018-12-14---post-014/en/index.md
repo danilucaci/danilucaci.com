@@ -1,6 +1,5 @@
 ---
 title: "The Problems of 'Schema-First' GraphQL Server Development"
-description: "Tooling for GraphQL server development has exploded in the last two years. We believe that the need for most tools comes from the popular schema-first approach — and can be solved by an alternative: code-first."
 date: "2018-12-14"
 category: "blog"
 intro: "Tooling for GraphQL server development has exploded in the last two years. | We believe that the need for most tools comes from the popular schema-first approach — and can be solved by an alternative: code-first."

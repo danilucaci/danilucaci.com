@@ -1,6 +1,6 @@
 ---
 title: "Movie booking app"
-description: "A case study on improving the experience of searching, finding and booking movies in a cinema."
+snippet: "A case study on improving the experience of searching, finding and booking movies in a cinema."
 date: "2019-02-02"
 category: "work"
 tags:

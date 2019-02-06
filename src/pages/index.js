@@ -180,7 +180,7 @@ const Index = (props) => {
     tagsInCaseStudy: edge.node.frontmatter.tags,
     title: edge.node.frontmatter.title,
     date: edge.node.frontmatter.date,
-    description: edge.node.frontmatter.description,
+    snippet: edge.node.frontmatter.snippet,
     image: edge.node.frontmatter.image.childImageSharp.fluid,
   }));
 
@@ -290,7 +290,7 @@ const Index = (props) => {
                 tagsInCaseStudy={caseStudyCard.tagsInCaseStudy}
                 title={caseStudyCard.title}
                 date={caseStudyCard.date}
-                description={caseStudyCard.description}
+                snippet={caseStudyCard.snippet}
                 image={caseStudyCard.image}
               />
             ))}
@@ -342,7 +342,7 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
-            description
+            snippet
             date(formatString: "DD MMMM YYYY")
             category
             tags

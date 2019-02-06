@@ -512,7 +512,6 @@ class Post extends Component {
       <Layout location={this.props.location} locale={locale}>
         <SEO
           locale={locale}
-          postPath={slug}
           postNode={postNode}
           postSEO
           currentPath={this.props.location.pathname}

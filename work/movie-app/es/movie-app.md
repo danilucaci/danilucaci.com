@@ -1,6 +1,6 @@
 ---
 title: "Aplicación para un cine"
-description: "Estudio de caso de pelis."
+snippet: "Estudio de caso de pelis."
 date: "2019-02-02"
 category: "work"
 tags:

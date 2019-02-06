@@ -1,6 +1,5 @@
 ---
 title: "Post numero 5"
-description: "Como hacer mejores gifs, que pesan menos."
 date: "2018-12-05"
 category: "blog"
 intro: "Los gifs molan, pero pesan demasiado.

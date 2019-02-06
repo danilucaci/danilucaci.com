@@ -6,7 +6,6 @@ import config from "../../../data/SiteConfig";
 const SEO = (props) => {
   let {
     postNode,
-    postPath,
     postSEO,
     legalDocs,
     postImage,
@@ -29,8 +28,10 @@ const SEO = (props) => {
     pageURL = urljoin(siteUrl, currentPath);
   }
 
-  title = config[locale][currentPage].title;
-  description = config[locale][currentPage].description;
+  if (!postSEO) {
+    title = config[locale][currentPage].title;
+    description = config[locale][currentPage].description;
+  }
 
   if (postImage) {
     if (locale === "en") {
@@ -57,9 +58,7 @@ const SEO = (props) => {
       "@type": "WebSite",
       url: pageURL,
       name: title,
-      alternateName: config[locale][currentPage].siteTitleAlt
-        ? config[locale][currentPage].siteTitleAlt
-        : "",
+      alternateName: config[locale][currentPage].titleAlt,
     },
   ];
 
@@ -143,31 +142,21 @@ const SEO = (props) => {
 
       {/* OpenGraph tags */}
       {(postSEO || legalDocs) && <meta property="og:url" content={postURL} />}
+      {(postSEO || legalDocs) && <meta property="og:type" content="article" />}
+
       {!postSEO && !legalDocs && <meta property="og:url" content={pageURL} />}
-      {postSEO && <meta property="og:type" content="article" />}
 
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
 
       {imageUrl && <meta property="og:image" content={imageUrl} />}
-      <meta
-        property="fb:app_id"
-        content={
-          config[locale][currentPage].siteFBAppID
-            ? config[locale][currentPage].siteFBAppID
-            : ""
-        }
-      />
+      <meta property="fb:app_id" content={process.env.FACEBOOK_APP_ID} />
 
       {/* Twitter Card tags */}
-      {imageUrl ? (
-        <>
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:image" content={imageUrl} />
-        </>
-      ) : (
-        <meta name="twitter:card" content="summary" />
-      )}
+      {imageUrl && <meta name="twitter:card" content="summary_large_image" />}
+      {imageUrl && <meta name="twitter:image" content={imageUrl} />}
+      {!imageUrl && <meta name="twitter:card" content="summary" />}
+
       <meta name="twitter:site" content="@danilucaci" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />

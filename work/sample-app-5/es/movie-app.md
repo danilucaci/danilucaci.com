@@ -1,6 +1,6 @@
 ---
 title: "Applicacion de muestra 5"
-description: "Estudio de caso de pelis."
+snippet: "Estudio de caso de pelis."
 date: "2018-12-26"
 category: "work"
 tags:
