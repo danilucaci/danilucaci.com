@@ -10,7 +10,7 @@ import LocaleLink from "../LocaleLink/LocaleLink";
 
 const SiblingPostsWrapper = styled.nav`
   width: 100%;
-  max-width: ${theme.contain.inner.col10};
+  max-width: ${theme.contain.wrapper.col10};
   margin-left: auto;
   margin-right: auto;
 
