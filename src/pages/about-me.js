@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
 import styled from "styled-components";
+import { FormattedMessage } from "react-intl";
 
 import SEO from "../components/SEO/SEO";
 import { theme, mediaMin, rem } from "../theme/globalStyles";
@@ -14,10 +15,14 @@ import SocialNav from "../components/SocialNav/SocialNav";
 import ContactCard from "../components/ContactCard/ContactCard";
 import { Copy } from "../components/Copy/Copy";
 
-const AboutMeWrapper = styled.section`
+const AboutMeWrapper = styled.section``;
+
+const HeaderInfo = styled.header`
+  display: block;
+  width: 100%;
   max-width: ${theme.contain.wrapper.col10};
-  margin-left: auto;
-  margin-right: auto;
+  /* Create a containment block for floated elements to prevent overflowing the container */
+  overflow: visible;
 
   padding-left: ${theme.gutters.s};
   padding-right: ${theme.gutters.s};
@@ -26,14 +31,10 @@ const AboutMeWrapper = styled.section`
     padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
   `};
-`;
 
-const HeaderInfo = styled.header`
-  display: block;
-  width: 100%;
-  ${"" /* Create a containment block for floated elements to prevent overflowing the container */} ${"" /* prettier-ignore */}
-  overflow: visible;
   margin-bottom: ${rem(48)};
+  margin-left: auto;
+  margin-right: auto;
 
   ${mediaMin.m`
     margin-bottom: ${rem(96)};
@@ -141,6 +142,63 @@ const Col2of2 = styled.div`
   `};
 `;
 
+const MoreAboutMeWrapper = styled.section`
+  background-color: ${theme.colors.gray100};
+  padding-top: ${theme.spacing.row.s};
+  padding-bottom: ${theme.spacing.row.s};
+
+  ${mediaMin.s`
+    padding-top: ${theme.spacing.row.m};
+    padding-bottom: ${theme.spacing.row.m};
+  `};
+
+  ${mediaMin.m`
+    padding-top: ${theme.spacing.row.xl};
+    padding-bottom: ${theme.spacing.row.xl};
+  `};
+`;
+
+const MoreAboutMeInner = styled.div`
+  max-width: ${theme.contain.wrapper.col10};
+  margin: 0 auto;
+
+  padding-left: ${theme.gutters.s};
+  padding-right: ${theme.gutters.s};
+
+  ${mediaMin.s`
+    padding-left: ${theme.gutters.m};
+    padding-right: ${theme.gutters.m};
+  `};
+`;
+
+const ContactWrapper = styled.div`
+  margin-top: ${theme.spacing.components.s};
+  margin-bottom: ${theme.spacing.components.s};
+
+  ${mediaMin.s`
+    margin-top: ${theme.spacing.components.m};
+    margin-bottom: ${theme.spacing.components.m};
+  `};
+
+  ${mediaMin.m`
+    margin-top: ${theme.spacing.components.xl};
+    margin-bottom: ${theme.spacing.components.xl};
+  `};
+`;
+
+const ContactInner = styled.div`
+  max-width: ${theme.contain.wrapper.col10};
+  margin: 0 auto;
+
+  padding-left: ${theme.gutters.s};
+  padding-right: ${theme.gutters.s};
+
+  ${mediaMin.s`
+    padding-left: ${theme.gutters.m};
+    padding-right: ${theme.gutters.m};
+  `};
+`;
+
 const AboutPage = (props) => {
   let locale = props.pageContext.locale;
   let twinPostURL = "";
@@ -166,66 +224,81 @@ const AboutPage = (props) => {
             currentPath={props.location.pathname}
           />
           <HeaderInfo>
-            {/* <StyledNameHeader>Hi! I’m Dani Lucaci.</StyledNameHeader> */}
-            <StyledH1>About Me</StyledH1>
+            <FormattedMessage id="aboutMeTitle">
+              {(txt) => <StyledH1>{txt}</StyledH1>}
+            </FormattedMessage>
             <AboutImageWrapper>
-              <Img
-                title="Dani Lucaci portrait image"
-                alt="Dani Lucaci portrait image"
-                fluid={props.data.aboutImage.childImageSharp.fluid}
-              />
+              <FormattedMessage id="aboutTheBlogImageTitle">
+                {(txt) => (
+                  <Img
+                    alt={txt}
+                    fluid={props.data.aboutImage.childImageSharp.fluid}
+                  />
+                )}
+              </FormattedMessage>
             </AboutImageWrapper>
-            <Subhead>
-              I am a UX/UI Designer and Front–End Developer that likes to create
-              products that help their users achieve their personal goals and
-              are built with performance, accesibility and user interaction in
-              mind.
-            </Subhead>
+            <FormattedMessage id="aboutMeSubTitle">
+              {(txt) => <Subhead>{txt}</Subhead>}
+            </FormattedMessage>
             <StyledSocialNav>
-              <SocialHeader>You can find me on social media</SocialHeader>
               <SocialNav />
             </StyledSocialNav>
           </HeaderInfo>
-          <Col1of2>
-            <StyledH3>More about me</StyledH3>
-            <StyledCopy>
-              I was born in Bucharest, Romania, but moved to Spain at a young
-              age. I am currently living in Barcelona, Spain, where I am
-              finishing my Multimedia degree from the UOC (Universitat Oberta de
-              Catalunya).
-            </StyledCopy>
-            <StyledCopy>
-              Previously I was an Automotive Photographer —for about 4 years—
-              covering motorsport events in Spain and Europe.
-            </StyledCopy>
-          </Col1of2>
-          <Col2of2>
-            <StyledH3>About this blog</StyledH3>
-            <StyledCopy>
-              This blog was built as an personal challenge to improve my coding
-              skills and as such I decided to build it using Gatsby.js,
-              React.js, Styled Components and hosted it on Netlify.
-            </StyledCopy>
-            <StyledCopy>
-              If you’d like to see the source code for yourself,{" "}
-              <a href="https://github.com/danilucaci/danilucaci.com">
-                the repository is publicly available
-              </a>{" "}
-              and if you have any questions regarding any of the functionality,
-              feel free to{" "}
-              <a
-                href="https://twitter.com/messages/compose?recipient_id=734468984658071554&ref_src=twsrc%5Etfw"
-                data-screen-name="@danilucaci"
-                data-show-count="false"
-              >
-                send me a tweet
-              </a>
-              .
-            </StyledCopy>
-          </Col2of2>
+          <MoreAboutMeWrapper>
+            <MoreAboutMeInner>
+              <Col1of2>
+                <FormattedMessage id="moreAboutMeTitle">
+                  {(txt) => <StyledH3>{txt}</StyledH3>}
+                </FormattedMessage>
+                <FormattedMessage id="moreAboutMeP1">
+                  {(txt) => <StyledCopy>{txt}</StyledCopy>}
+                </FormattedMessage>
+                <FormattedMessage id="moreAboutMeP2">
+                  {(txt) => <StyledCopy>{txt}</StyledCopy>}
+                </FormattedMessage>
+              </Col1of2>
+              <Col2of2>
+                <FormattedMessage id="aboutTheBlog">
+                  {(txt) => <StyledH3>{txt}</StyledH3>}
+                </FormattedMessage>
+                <FormattedMessage id="aboutTheBlogP1">
+                  {(txt) => <StyledCopy>{txt}</StyledCopy>}
+                </FormattedMessage>
+                <StyledCopy>
+                  <FormattedMessage id="aboutTheBlogP2">
+                    {(txt) => <>{txt}</>}
+                  </FormattedMessage>
+                  <a href="https://github.com/danilucaci/danilucaci.com">
+                    github
+                  </a>
+                  <FormattedMessage id="aboutTheBlogP3">
+                    {(txt) => <>{txt}</>}
+                  </FormattedMessage>
+                  <FormattedMessage id="aboutTheBlogP4">
+                    {(txt) => (
+                      <a
+                        href="https://twitter.com/messages/compose?recipient_id=734468984658071554&ref_src=twsrc%5Etfw"
+                        data-screen-name="@danilucaci"
+                        data-show-count="false"
+                      >
+                        {txt}
+                      </a>
+                    )}
+                  </FormattedMessage>
+                  <FormattedMessage id="aboutTheBlogP5">
+                    {(txt) => <>{txt}</>}
+                  </FormattedMessage>
+                </StyledCopy>
+              </Col2of2>
+            </MoreAboutMeInner>
+          </MoreAboutMeWrapper>
         </AboutMeWrapper>
       </Main>
-      <ContactCard />
+      <ContactWrapper>
+        <ContactInner>
+          <ContactCard locale={locale} />
+        </ContactInner>
+      </ContactWrapper>
       <SiteFooter locale={locale} />
     </Layout>
   );
