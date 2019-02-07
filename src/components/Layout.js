@@ -4,6 +4,7 @@ import styled, { ThemeProvider } from "styled-components";
 var FontFaceObserver = require("fontfaceobserver");
 import Cookies from "js-cookie";
 import { IntlProvider, addLocaleData } from "react-intl";
+import Helmet from "react-helmet";
 // Locale data
 import enData from "react-intl/locale-data/en";
 import esData from "react-intl/locale-data/es";
@@ -301,6 +302,23 @@ class Layout extends Component {
           messages={intlMessages[this.props.locale]}
         >
           <Page>
+            {/* {this.state.hasGDPRConsent && (
+              <Helmet>
+                <script
+                  async
+                  src="https://www.googletagmanager.com/gtag/js?id=UA-93929073-1"
+                />
+                <script>
+                  {`
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+
+                  gtag('config', 'UA-93929073-1');
+                `}
+                </script>
+              </Helmet>
+            )} */}
             <SkipToMainContent />
             <GlobalFonts />
             <GlobalReset />
