@@ -34,11 +34,13 @@ const HeaderInfo = styled.header`
   margin-left: auto;
   margin-right: auto;
 
-  ${mediaMin.m`
+  ${mediaMin.xl`
+    display: flex;
+    justify-content: space-between;
     margin-bottom: ${rem(96)};
   `};
 
-  ${mediaMin.xl`
+  ${mediaMin.xxl`
     margin-top: ${rem(56)};
   `};
 `;
@@ -49,23 +51,10 @@ const ImageWrapper = styled.div`
   vertical-align: middle;
   width: 100%;
   margin: ${theme.gutters.s} 0;
-  /* 
-  shape-outside: circle at 50%;
-  overflow: hidden;
-  border-radius: 50%;
-
-  & * {
-    border-radius: 50%;
-    overflow: hidden;
-  } */
-
-  ${mediaMin.l`
-    margin-bottom: 0;
-    margin-right: ${rem(12)};
-    width: calc((100% / 2) - ${rem(12)});
-  `};
 
   ${mediaMin.xl`
+    margin-bottom: 0;
+    margin-right: ${rem(12)};
     width: calc(((100% / 10) * 4) - ${rem(12)});
   `};
 `;
@@ -73,22 +62,21 @@ const ImageWrapper = styled.div`
 const InfoWrapper = styled.div`
   display: inline-block;
   vertical-align: middle;
-  border-radius: 50%;
-
-  ${mediaMin.l`
-    margin-left: ${rem(12)};
-    width: calc((100% / 2) - ${rem(12)});
-  `};
 
   ${mediaMin.xl`
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: ${rem(32)} 0;
     margin-left: ${rem(12)};
     width: calc(((100% / 10) * 6) - ${rem(12)});
   `};
 `;
 
 const StyledH1 = styled.h1`
-  margin-top: auto;
-  margin-bottom: ${rem(16)};
+  ${mediaMin.xxl`  
+    margin-bottom: ${rem(16)};
+  `};
 `;
 
 const StyledH3 = styled.h3`
@@ -96,20 +84,19 @@ const StyledH3 = styled.h3`
 `;
 
 const StyledSocialNav = styled.div`
-  display: inline-block;
-
-  ${mediaMin.l`
-    margin-top: ${rem(32)};
-    margin-bottom: auto;
+  ${mediaMin.xl`
+    margin-top: auto;
   `};
 `;
 
 const Subhead = styled(Copy)`
-  margin-bottom: ${rem(32)};
+  ${mediaMin.xl`
+    margin-bottom: ${rem(32)};
+  `};
 `;
 
 const StyledCopy = styled(Copy)`
-  margin-bottom: ${rem(28)};
+  margin-bottom: ${rem(32)};
 
   &:last-of-type {
     margin-bottom: 0;
@@ -119,7 +106,7 @@ const StyledCopy = styled(Copy)`
 const Col1 = styled.div`
   margin-bottom: ${rem(48)};
 
-  ${mediaMin.m`
+  ${mediaMin.l`
     display: inline-block;
     vertical-align: top;
     margin-bottom: 0;
@@ -129,7 +116,7 @@ const Col1 = styled.div`
 `;
 
 const Col2 = styled.div`
-  ${mediaMin.m`
+  ${mediaMin.l`
     display: inline-block;
     vertical-align: top;
     margin-left: ${rem(12)};
@@ -316,7 +303,7 @@ export const query = graphql`
   query {
     aboutImage: file(relativePath: { regex: "/danilucaci_profile_image/" }) {
       childImageSharp {
-        fluid(maxWidth: 480, maxHeight: 480, cropFocus: NORTH) {
+        fluid(maxWidth: 480, maxHeight: 560, cropFocus: NORTH) {
           ...GatsbyImageSharpFluid
         }
       }
