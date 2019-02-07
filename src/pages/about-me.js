@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
 
 import SEO from "../components/SEO/SEO";
-import { theme, mediaMin, rem } from "../theme/globalStyles";
+import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
 import Layout from "../components/Layout";
 import SiteHeader from "../components/SiteHeader/SiteHeader";
 import { Main } from "../components/Main/Main";
@@ -46,16 +46,16 @@ const HeaderInfo = styled.header`
 `;
 
 const ImageWrapper = styled.div`
-  background: #dadada;
+  background: ${theme.colors.sectionBackground};
   display: inline-block;
   vertical-align: middle;
   width: 100%;
   margin: ${theme.gutters.s} 0;
 
   ${mediaMin.xl`
-    margin-bottom: 0;
-    margin-right: ${rem(12)};
-    width: calc(((100% / 10) * 4) - ${rem(12)});
+    height: 100%;
+    margin: 0 ${rem(16)} 0 0;
+    width: calc(((100% / 10) * 4) - ${rem(16)});
   `};
 `;
 
@@ -67,15 +67,21 @@ const InfoWrapper = styled.div`
     display: inline-flex;
     flex-direction: column;
     justify-content: space-between;
+    padding-bottom: ${rem(16)};
+    margin-left: ${rem(16)};
+    width: calc(((100% / 10) * 6) - ${rem(16)});
+  `};
+
+  ${mediaMin.xxl`
     padding: ${rem(32)} 0;
-    margin-left: ${rem(12)};
-    width: calc(((100% / 10) * 6) - ${rem(12)});
   `};
 `;
 
 const StyledH1 = styled.h1`
-  ${mediaMin.xxl`  
-    margin-bottom: ${rem(16)};
+  margin-bottom: ${rem(8)};
+
+  ${mediaMax.xl`
+    margin-top: ${rem(16)};  
   `};
 `;
 
@@ -84,15 +90,15 @@ const StyledH3 = styled.h3`
 `;
 
 const StyledSocialNav = styled.div`
+  margin-top: ${rem(16)};
+
   ${mediaMin.xl`
     margin-top: auto;
   `};
 `;
 
 const Subhead = styled(Copy)`
-  ${mediaMin.xl`
-    margin-bottom: ${rem(32)};
-  `};
+  margin-bottom: ${rem(16)};
 `;
 
 const StyledCopy = styled(Copy)`
