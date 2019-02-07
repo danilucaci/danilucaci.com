@@ -136,6 +136,9 @@ const SEO = (props) => {
       <meta name="description" content={description} />
       {imageUrl && <meta name="image" content={imageUrl} />}
 
+      {/* You may choose whether Twitter widgets on your site help to tailor content and suggestions for Twitter users. You can opt out of having information from your website used for personalization by following the instructions below. Include the following snippet within the <meta> and <link> elements on your pages that include Twitter for Websites widgets: */}
+      <meta name="twitter:dnt" content="on" />
+
       {/* Schema.org tags */}
       <script type="application/ld+json">
         {JSON.stringify(schemaOrgJSONLD)}
