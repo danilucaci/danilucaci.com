@@ -90,7 +90,7 @@ export const theme = {
     h3: "2rem",
     h3s: "1.5rem",
     h4: "2rem",
-    subhead: "2.5rem",
+    subhead: "2.375rem",
     subheadS: "2rem",
     sectionHeaderXL: "1.5rem",
     sectionHeaderS: "1.25rem",

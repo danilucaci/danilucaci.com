@@ -7,13 +7,13 @@ import Layout from "../components/Layout";
 import SiteHeader from "../components/SiteHeader/SiteHeader";
 import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
-import { Icon } from "../components/Icon/Icon";
 import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
 import { Copy } from "../components/Copy/Copy";
-import { PrimaryButton } from "../components/Button/Button";
+import { HR } from "../components/HR/HR";
+import { FormattedMessage } from "react-intl";
 
 const ContactMeWrapper = styled.section`
-  max-width: ${theme.contain.wrapper.col10};
+  max-width: ${theme.contain.wrapper.col8};
   margin-left: auto;
   margin-right: auto;
 
@@ -23,28 +23,13 @@ const ContactMeWrapper = styled.section`
   ${mediaMin.m`
     padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
+    margin-top: ${rem(16)};
+    margin-bottom: ${rem(80)};
   `};
 
   ${mediaMin.xl`
     margin-top: ${rem(56)};
-  `};
-`;
-
-const Subhead = styled(Copy)`
-  font-size: ${theme.fontSizes.subheads};
-  line-height: ${theme.lineHeights.subheads};
-  margin-bottom: ${rem(28)};
-
-  ${mediaMin.s`
-    font-size: ${theme.fontSizes.subhead};
-    line-height: ${theme.lineHeights.subhead};
-  `};
-
-  ${mediaMin.l`
-    display: inline-block;
-    vertical-align: top;
-    margin-right: ${rem(24)};
-    width: calc(70% - ${rem(24)});
+    margin-bottom: ${rem(144)};
   `};
 `;
 
@@ -52,82 +37,99 @@ const StyledH1 = styled.h1`
   display: block;
   width: 100%;
   margin-bottom: ${rem(16)};
+`;
+
+const Subhead = styled(Copy)`
+  font-size: ${theme.fontSizes.subheads};
+  line-height: ${theme.lineHeights.subheads};
+  margin-bottom: ${rem(32)};
 
   ${mediaMin.s`
-    margin-bottom: ${rem(24)};
+    font-size: ${theme.fontSizes.subhead};
+    line-height: ${theme.lineHeights.subhead};
   `};
 `;
 
-const ContactInfo = styled.aside`
-  ${mediaMin.l`
-    display: inline-block;
-    vertical-align: top;
-    width: 30%;
-  `};
-`;
+const StyledMailToButton = styled.a`
+  background-color: ${theme.colors.main600};
+  border-radius: ${theme.borderRadius.buttons};
+  color: ${theme.colors.buttonLight} !important;
+  display: block;
 
-const ContactInfoItem = styled.div`
-  ${mediaMax.l`
-    display: inline-block;
-    vertical-align: top;
-    margin-right: ${rem(16)};
-  `};
+  text-align: center;
+  text-decoration: none;
+  font-size: ${theme.fontSizes.button};
+  line-height: ${theme.lineHeights.button};
+  font-style: normal;
+  font-weight: 700;
 
-  ${(props) =>
-    props.separate &&
-    css`
-      margin-bottom: ${rem(24)};
-    `};
-`;
-
-const PathWrapper = styled.div`
+  padding: ${rem(12)} ${rem(40)};
+  height: ${rem(48)};
   width: 100%;
-  margin-top: ${rem(32)};
 
-  & h3 {
-    margin-bottom: ${rem(24)};
+  ${mediaMin.xxs`  
+    width: ${rem(288)};
+  `};
+
+  margin-top: ${rem(24)};
+
+  ${mediaMin.m`  
+    margin-top: ${rem(8)};
+  `};
+
+  white-space: nowrap;
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.bodyBold};
+  }
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    background-color: ${theme.colors.main500};
+    ${theme.shadow.buttons.main};
   }
 `;
 
-const StyledPrimaryButton = styled(PrimaryButton)`
-  margin-bottom: ${rem(16)};
-  width: 100%;
+const StyledLink = styled.a`
+  display: inline;
+  white-space: nowrap;
+`;
 
-  ${mediaMin.m`
-    display: inline-block;
-    width: ${rem(256)};
-    margin-right: ${rem(24)};
+const SayHiContainer = styled.div`
+  margin-top: ${rem(40)};
+
+  ${mediaMin.m`  
+    margin-top: ${rem(80)};
+  `};
+
+  ${mediaMin.xl`  
+    margin-top: ${rem(112)};
   `};
 `;
 
-const StyledList = styled.ul`
-  list-style-type: disc;
-  margin-top: ${rem(8)};
-  padding-left: ${rem(20)};
+const SayHiTitle = styled.h3`
+  margin-top: ${rem(24)};
+
+  ${mediaMin.m`  
+    margin-top: ${rem(32)};
+  `};
 `;
 
-const StyledListItem = styled.li`
-  padding-left: ${rem(4)};
-`;
-
-const MailIcon = styled(Icon)`
-  fill: ${theme.colors.dark800};
-  margin-left: ${rem(8)};
-  margin-bottom: ${rem(4)};
-`;
-
-const TwitterIcon = styled(Icon)`
-  margin-left: ${rem(8)};
-  margin-bottom: ${rem(4)};
+const SayHiDescription = styled(Copy)`
+  display: inline;
 `;
 
 const ContactPage = (props) => {
   let locale = props.pageContext.locale;
   let twinPostURL = "";
+  let emailURL = "";
 
   if (locale === "en") {
     twinPostURL = "/es/contacto";
+    emailURL = "mailto:hello@danilucaci.com";
   } else if (locale === "es") {
+    emailURL = "mailto:hola@danilucaci.com";
     twinPostURL = "/contact";
   }
 
@@ -145,53 +147,53 @@ const ContactPage = (props) => {
       />
       <Main role="main" id="main">
         <ContactMeWrapper>
-          <StyledH1>Let's talk</StyledH1>
-          <Subhead>
-            If you have a project in mind and you think my services would help,
-            or you simply want to know more about me or what I do, feel free to
-            send me a message.
-          </Subhead>
-          <ContactInfo>
-            <ContactInfoItem separate>
-              <h4>I prefer email for:</h4>
-              <StyledList>
-                <StyledListItem>Everything work related</StyledListItem>
-                <StyledListItem>
-                  Project or colaboration proposals
-                </StyledListItem>
-                <StyledListItem>Longer messages</StyledListItem>
-              </StyledList>
-            </ContactInfoItem>
-            <ContactInfoItem>
-              <h4>I prefer twitter for:</h4>
-              <StyledList>
-                <StyledListItem>Everything else</StyledListItem>
-              </StyledList>
-            </ContactInfoItem>
-          </ContactInfo>
-          <PathWrapper>
-            <h3>Choose your path:</h3>
-            <StyledPrimaryButton>
-              <a href={theme.mailToLink}>
-                Email
-                <MailIcon>
-                  <use xlinkHref="#mail" />
-                </MailIcon>
-              </a>
-            </StyledPrimaryButton>
-            <StyledPrimaryButton>
-              <a
-                href="https://twitter.com/messages/compose?recipient_id=734468984658071554&ref_src=twsrc%5Etfw"
-                data-screen-name="@danilucaci"
-                data-show-count="false"
-              >
-                Tweet
-                <TwitterIcon>
-                  <use xlinkHref="#twitter" />
-                </TwitterIcon>
-              </a>
-            </StyledPrimaryButton>
-          </PathWrapper>
+          <FormattedMessage id="contactPageTitle">
+            {(txt) => <StyledH1>{txt}</StyledH1>}
+          </FormattedMessage>
+          <FormattedMessage id="contactPageDescription">
+            {(txt) => <Subhead>{txt}</Subhead>}
+          </FormattedMessage>
+          <FormattedMessage id="contactPageWorkInfo">
+            {(txt) => (
+              <Copy>
+                {txt}{" "}
+                <FormattedMessage id="contactPageEmail">
+                  {(txt) => <StyledLink href={emailURL}>{txt}</StyledLink>}
+                </FormattedMessage>
+              </Copy>
+            )}
+          </FormattedMessage>
+          <FormattedMessage id="contactPageCTA">
+            {(txt) => (
+              <StyledMailToButton role="button" href={emailURL}>
+                {txt}
+              </StyledMailToButton>
+            )}
+          </FormattedMessage>
+          <SayHiContainer>
+            <HR />
+            <FormattedMessage id="contactPageOtherTitle">
+              {(txt) => <SayHiTitle>{txt}</SayHiTitle>}
+            </FormattedMessage>
+            <FormattedMessage id="contactPageOtherDescription">
+              {(txt) => (
+                <SayHiDescription>
+                  {txt}
+                  <FormattedMessage id="contactPageOtherDescriptionLink">
+                    {(txt) => (
+                      <StyledLink
+                        target="_blank"
+                        rel="noopener"
+                        href="https://twitter.com/danilucaci"
+                      >
+                        {txt}
+                      </StyledLink>
+                    )}
+                  </FormattedMessage>
+                </SayHiDescription>
+              )}
+            </FormattedMessage>
+          </SayHiContainer>
         </ContactMeWrapper>
       </Main>
       <SiteFooter locale={locale} />
