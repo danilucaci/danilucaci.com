@@ -302,7 +302,8 @@ class Layout extends Component {
           messages={intlMessages[this.props.locale]}
         >
           <Page>
-            {/* {this.state.hasGDPRConsent && (
+            {/* 
+            {this.state.hasGDPRConsent && (
               <Helmet>
                 <script
                   async
@@ -314,11 +315,21 @@ class Layout extends Component {
                   function gtag(){dataLayer.push(arguments);}
                   gtag('js', new Date());
 
-                  gtag('config', 'UA-93929073-1');
+                  gtag('config', 'UA-93929073-1', {'anonymize_ip': true});
                 `}
                 </script>
+                {`<!-- Google Tag Manager -->`}
+                <script>
+                  {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                  })(window,document,'script','dataLayer','GTM-TJ6RBXR');`}
+                </script>
+                {`<!-- End Google Tag Manager -->`}
               </Helmet>
-            )} */}
+            )}
+             */}
             <SkipToMainContent />
             <GlobalFonts />
             <GlobalReset />
