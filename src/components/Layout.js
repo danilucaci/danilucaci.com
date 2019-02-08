@@ -67,7 +67,6 @@ class Layout extends Component {
   };
 
   componentDidMount() {
-    // this.checkDNT();
     this.checkGDPRStatus();
     this.checkFontsLoaded();
   }
@@ -133,18 +132,6 @@ class Layout extends Component {
         console.log("%c Fonts loaded.", "color: #79E36B");
       }
     });
-  };
-
-  checkDNT = () => {
-    let doNotTrack = checkForDoNotTrack();
-    if (doNotTrack) {
-      this.setState((prevState) => ({
-        doNotTrackActive: !prevState.doNotTrackActive,
-      }));
-      if (NODE_ENV === "development") {
-        console.log(`%c DNT Active`, "color: #79E36B");
-      }
-    }
   };
 
   checkGDPRStatus = () => {
@@ -307,7 +294,6 @@ class Layout extends Component {
                 askGDPRConsent={this.state.askGDPRConsent}
                 acceptsCookies={this.acceptsCookies}
                 deniesCookies={this.deniesCookies}
-                doNotTrackActive={this.state.doNotTrackActive}
                 pageLocale={this.props.locale}
               />
             )}

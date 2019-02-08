@@ -143,7 +143,6 @@ const CookieConsent = (props) => {
 
 CookieConsent.propTypes = {
   acceptsCookies: PropTypes.func.isRequired,
-  doNotTrackActive: PropTypes.bool.isRequired,
   deniesCookies: PropTypes.func.isRequired,
   pageLocale: PropTypes.string.isRequired,
 };
