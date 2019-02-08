@@ -268,7 +268,10 @@ class Layout extends Component {
   };
 
   loadGTM = () => {
-    initGA();
+    if (!window._DL_GA_INITIALIZED) {
+      initGA();
+      window._DL_GA_INITIALIZED = true;
+    }
     logPageView();
   };
 
