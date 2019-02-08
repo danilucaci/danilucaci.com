@@ -258,7 +258,11 @@ const AboutPage = (props) => {
                   <FormattedMessage id="aboutTheBlogP2">
                     {(txt) => <>{txt}</>}
                   </FormattedMessage>
-                  <a href="https://github.com/danilucaci/danilucaci.com">
+                  <a
+                    target="_blank"
+                    rel="noopener"
+                    href="https://github.com/danilucaci/danilucaci.com"
+                  >
                     github
                   </a>
                   <FormattedMessage id="aboutTheBlogP3">
@@ -267,9 +271,9 @@ const AboutPage = (props) => {
                   <FormattedMessage id="aboutTheBlogP4">
                     {(txt) => (
                       <a
-                        href="https://twitter.com/messages/compose?recipient_id=734468984658071554&ref_src=twsrc%5Etfw"
-                        data-screen-name="@danilucaci"
-                        data-show-count="false"
+                        target="_blank"
+                        rel="noopener"
+                        href="https://twitter.com/danilucaci"
                       >
                         {txt}
                       </a>

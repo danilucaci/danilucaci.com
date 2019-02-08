@@ -182,9 +182,9 @@ const ContactPage = (props) => {
                   <FormattedMessage id="contactPageOtherDescriptionLink">
                     {(txt) => (
                       <StyledLink
-                        href="https://twitter.com/messages/compose?recipient_id=734468984658071554&ref_src=twsrc%5Etfw"
-                        data-screen-name="@danilucaci"
-                        data-show-count="false"
+                        target="_blank"
+                        rel="noopener"
+                        href="https://twitter.com/danilucaci"
                       >
                         {txt}
                       </StyledLink>
