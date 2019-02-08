@@ -8,6 +8,7 @@ import Helmet from "react-helmet";
 // Locale data
 import enData from "react-intl/locale-data/en";
 import esData from "react-intl/locale-data/es";
+import ReactGA from "react-ga";
 
 import { theme } from "../theme/globalStyles";
 import GlobalFonts from "../theme/globalFonts";
@@ -32,6 +33,17 @@ const NODE_ENV = process.env.NODE_ENV;
 const DL_COOKIE_NAME = process.env.DL_COOKIE_NAME;
 const DL_COOKIE_SECURE = process.env.DL_COOKIE_SECURE;
 const DL_COOKIE_DOMAIN = process.env.DL_COOKIE_DOMAIN;
+const GA_ID = process.env.GA_ID;
+
+export const initGA = () => {
+  console.log("%c GA Init!", "color: #79E36B");
+  ReactGA.initialize(GA_ID);
+};
+
+export const logPageView = () => {
+  ReactGA.set({ page: window.location.pathname });
+  ReactGA.pageview(window.location.pathname);
+};
 
 const Page = styled.div`
   /* Sticky Footer  */
@@ -145,8 +157,8 @@ class Layout extends Component {
             hasGDPRConsent: !prevState.hasGDPRConsent,
           }));
 
-          // Load the analytics scripts when cookies are accepted
-          this.loadAnalytics();
+          // Load the analytics when cookies are accepted
+          this.loadGTM();
 
           // Don't load analytics scripts if analytics cookies are not accepted
         } else if (!DLCookie.analytics) {
@@ -255,44 +267,10 @@ class Layout extends Component {
     }
   };
 
-  loadAnalytics = () => {
-    this.loadHotjarScript();
-    this.loadTwitterScript();
+  loadGTM = () => {
+    initGA();
+    logPageView();
   };
-
-  loadHotjarScript = () =>
-    (function(h, o, t, j, a, r) {
-      // Hotjar Tracking Code for www.danilucaci.com -->
-      h.hj =
-        h.hj ||
-        function() {
-          (h.hj.q = h.hj.q || []).push(arguments);
-        };
-      h._hjSettings = { hjid: 1122540, hjsv: 6 };
-      a = o.getElementsByTagName("head")[0];
-      r = o.createElement("script");
-      r.async = 1;
-      r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-      a.appendChild(r);
-    })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
-
-  loadTwitterScript = () =>
-    (window.twttr = (function(d, s, id) {
-      var js,
-        fjs = d.getElementsByTagName(s)[0],
-        t = window.twttr || {};
-      if (d.getElementById(id)) return t;
-      js = d.createElement(s);
-      js.id = id;
-      js.src = "https://platform.twitter.com/widgets.js";
-      fjs.parentNode.insertBefore(js, fjs);
-
-      t._e = [];
-      t.ready = function(f) {
-        t._e.push(f);
-      };
-      return t;
-    })(document, "script", "twitter-wjs"));
 
   render() {
     return (
@@ -302,22 +280,8 @@ class Layout extends Component {
           messages={intlMessages[this.props.locale]}
         >
           <Page>
-            {/* 
             {this.state.hasGDPRConsent && (
               <Helmet>
-                <script
-                  async
-                  src="https://www.googletagmanager.com/gtag/js?id=UA-93929073-1"
-                />
-                <script>
-                  {`
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-
-                  gtag('config', 'UA-93929073-1', {'anonymize_ip': true});
-                `}
-                </script>
                 {`<!-- Google Tag Manager -->`}
                 <script>
                   {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -329,7 +293,6 @@ class Layout extends Component {
                 {`<!-- End Google Tag Manager -->`}
               </Helmet>
             )}
-             */}
             <SkipToMainContent />
             <GlobalFonts />
             <GlobalReset />
