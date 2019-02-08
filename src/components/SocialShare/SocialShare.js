@@ -2,13 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import urljoin from "url-join";
-import { TwitterShareButton, LinkedinShareButton } from "react-share";
 
 import config from "../../../data/SiteConfig";
 import { theme, rem, mediaMax, mediaMin } from "../../theme/globalStyles";
 import { Icon } from "../Icon/Icon";
 
-const StyledSocialShare = styled.div`
+const SocialShareWrapper = styled.div`
   white-space: nowrap;
 
   ${mediaMin.s`
@@ -21,7 +20,15 @@ const StyledSocialShare = styled.div`
   }
 `;
 
-const StyledCopyButton = styled.div`
+const SocialShareButton = styled.a`
+  &:hover {
+    background-color: transparent;
+  }
+`;
+
+const StyledCopyButton = styled.button`
+  border: none;
+  background-color: transparent;
   display: inline-block;
   position: relative;
 
@@ -88,6 +95,7 @@ const StyledIcon = styled(Icon)`
 
   &:hover {
     transform: scale(${theme.iconsScale});
+    background-color: transparent;
   }
 `;
 
@@ -95,39 +103,44 @@ const SocialShare = (props) => {
   const url = urljoin(config.siteUrl, props.slug);
 
   return (
-    <StyledSocialShare>
-      <LinkedinShareButton
-        url={url}
-        title={props.title}
-        description={props.snippet}
+    <SocialShareWrapper>
+      <SocialShareButton
+        target="_blank"
+        rel="noopener"
+        href={`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${
+          props.title
+        }&summary=${props.snippet}`}
+        aria-label="Share on Linkedin"
       >
         <StyledIcon aria-hidden="true">
           <use xlinkHref="#linkedin" />
         </StyledIcon>
-        <span className="sr-only">
-          Share article on linkedin, opens in new window.
-        </span>
-      </LinkedinShareButton>
-      <TwitterShareButton url={url} title={props.title}>
+      </SocialShareButton>
+
+      <SocialShareButton
+        target="_blank"
+        rel="noopener"
+        href={`https://twitter.com/intent/tweet?text=${props.title}&url=${url}`}
+        aria-label="Share on Twitter"
+      >
         <StyledIcon aria-hidden="true">
           <use xlinkHref="#twitter" />
         </StyledIcon>
-        <span className="sr-only">
-          Share article on twitter, opens in new window.
-        </span>
-      </TwitterShareButton>
+      </SocialShareButton>
+
       <StyledCopyButton
         className="js-copyURL"
         onClick={props.onClick}
         role="button"
         tabIndex="0"
+        aria-label="Copy page link"
       >
         <CopyIcon aria-hidden="true">
           <use xlinkHref="#copy" />
         </CopyIcon>
         <CopyTooltip aria-hidden="true">Copy page link</CopyTooltip>
       </StyledCopyButton>
-    </StyledSocialShare>
+    </SocialShareWrapper>
   );
 };
 
