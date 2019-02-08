@@ -199,6 +199,11 @@ const AboutPage = (props) => {
 
   return (
     <Layout location={props.location} locale={locale}>
+      <SEO
+        locale={locale}
+        currentPage="about"
+        currentPath={props.location.pathname}
+      />
       <SiteHeader
         twinPostURL={twinPostURL}
         locale={locale}
@@ -206,11 +211,6 @@ const AboutPage = (props) => {
       />
       <Main role="main" id="main">
         <AboutMeWrapper>
-          <SEO
-            locale={locale}
-            currentPage="about"
-            currentPath={props.location.pathname}
-          />
           <HeaderInfo>
             <ImageWrapper>
               <FormattedMessage id="aboutTheBlogImageTitle">

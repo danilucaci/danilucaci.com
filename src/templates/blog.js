@@ -100,6 +100,11 @@ const BlogPage = (props) => {
 
   return (
     <Layout location={props.location} locale={locale}>
+      <SEO
+        locale={locale}
+        currentPage="blog"
+        currentPath={props.location.pathname}
+      />
       <SiteHeader
         twinPostURL={twinPostURL}
         locale={locale}
@@ -107,11 +112,6 @@ const BlogPage = (props) => {
       />
       <Main role="main" id="main">
         <BlogWrapper>
-          <SEO
-            locale={locale}
-            currentPage="blog"
-            currentPath={props.location.pathname}
-          />
           <BlogHeader>
             <FormattedMessage id="blogTitle">
               {(txt) => <BlogTitle as="h1">{txt}</BlogTitle>}

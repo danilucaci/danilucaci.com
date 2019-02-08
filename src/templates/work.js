@@ -129,17 +129,17 @@ const WorkPage = (props) => {
 
   return (
     <Layout location={props.location} locale={locale}>
+      <SEO
+        locale={locale}
+        currentPage="work"
+        currentPath={props.location.pathname}
+      />
       <SiteHeader
         locale={locale}
         twinPostURL={twinPostURL}
         currentPath={props.location.pathname}
       />
       <Main role="main" id="main">
-        <SEO
-          locale={locale}
-          currentPage="work"
-          currentPath={props.location.pathname}
-        />
         <WorkHeader>
           <InnerWrapper>
             <FormattedMessage id="caseStudiesHeader">

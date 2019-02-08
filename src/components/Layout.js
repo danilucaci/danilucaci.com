@@ -19,7 +19,6 @@ import { SVGSprite } from "./SVGSprite/SVGSprite";
 import SkipToMainContent from "./SkipToMainContent/SkipToMainContent";
 import CookieConsent from "./CookieConsent/CookieConsent";
 import {
-  checkForDoNotTrack,
   detectDataSaverMode,
   detectSlowConnectionType,
 } from "../helpers/helpers";
@@ -41,8 +40,14 @@ export const initGA = () => {
 };
 
 export const logPageView = () => {
-  ReactGA.set({ page: window.location.pathname });
-  ReactGA.pageview(window.location.pathname);
+  // https://github.com/nfl/react-helmet/issues/189
+  // still a bug, need to set a 0 setTimeout for
+  // the title to be set in <helmet>
+  // 100ms seems to work so far
+  setTimeout(() => {
+    ReactGA.set({ page: window.location.pathname });
+    ReactGA.pageview(window.location.pathname);
+  }, 100);
 };
 
 const Page = styled.div`
@@ -73,7 +78,7 @@ class Layout extends Component {
 
   componentDidUpdate() {
     if (NODE_ENV === "development") {
-      this.showGDPRStatus();
+      // this.showGDPRStatus();
     }
   }
 
@@ -165,6 +170,14 @@ class Layout extends Component {
     }
   };
 
+  loadGTM = () => {
+    if (!window._DL_GA_INITIALIZED) {
+      initGA();
+      window._DL_GA_INITIALIZED = true;
+    }
+    logPageView();
+  };
+
   showGDPRStatus = () => {
     if (DL_COOKIE_NAME) {
       let DLCookie = Cookies.getJSON(DL_COOKIE_NAME);
@@ -252,14 +265,6 @@ class Layout extends Component {
         console.error("Can't read cookie name.");
       }
     }
-  };
-
-  loadGTM = () => {
-    if (!window._DL_GA_INITIALIZED) {
-      initGA();
-      window._DL_GA_INITIALIZED = true;
-    }
-    logPageView();
   };
 
   render() {
