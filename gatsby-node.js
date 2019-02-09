@@ -70,7 +70,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
     if (
       Object.prototype.hasOwnProperty.call(node, "frontmatter") &&
-      Object.prototype.hasOwnProperty.call(node.frontmatter, "title")
+      Object.prototype.hasOwnProperty.call(node.frontmatter, "slug")
     ) {
       if (node.frontmatter.category === "work") {
         // Only store posts in blog or work category
@@ -79,11 +79,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         allPostNodes.push(node);
 
         if (node.frontmatter.locale === "en") {
-          slug = `/work/${_.kebabCase(node.frontmatter.title)}`;
+          slug = `/work/${_.kebabCase(node.frontmatter.slug)}`;
         }
 
         if (node.frontmatter.locale === "es") {
-          slug = `/trabajos/${_.kebabCase(node.frontmatter.title)}`;
+          slug = `/trabajos/${_.kebabCase(node.frontmatter.slug)}`;
         }
       } else if (node.frontmatter.category === "blog") {
         // Only store posts in blog or work category
@@ -91,9 +91,9 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         // to blog posts and work case studies
         allPostNodes.push(node);
 
-        slug = `/blog/${_.kebabCase(node.frontmatter.title)}`;
+        slug = `/blog/${_.kebabCase(node.frontmatter.slug)}`;
       } else if (node.frontmatter.category === "legal") {
-        slug = `/${_.kebabCase(node.frontmatter.title)}`;
+        slug = `/${_.kebabCase(node.frontmatter.slug)}`;
       }
     } else if (parsedFilePath.name !== "index" && parsedFilePath.dir !== "") {
       slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;

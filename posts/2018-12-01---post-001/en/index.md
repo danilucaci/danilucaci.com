@@ -1,5 +1,6 @@
 ---
 title: "Post number 1"
+slug: "number 1"
 date: "2018-12-01"
 category: "blog"
 intro: "Gifs are great but they are too big.
@@ -11,7 +12,7 @@ tags:
     - perfmatters
 posted: true
 locale: "en"
-twinPost: "Post numero 1"
+twinPost: "numero 1"
 ---
 
 ##How to use the video tag to make better, lightweight gifs.

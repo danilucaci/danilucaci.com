@@ -37,7 +37,7 @@ const StyledLogo = styled(LocaleLink)`
   }
 `;
 
-export const Logo = (props) => {
+export const Logo = () => {
   return <StyledLogo to="/">danilucaci</StyledLogo>;
 };
 

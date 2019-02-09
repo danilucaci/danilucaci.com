@@ -1,10 +1,12 @@
 ---
-title: "Privacy Notice"
+title: "Privacy Policy"
+slug: "privacy policy"
 category: "legal"
 posted: true
 locale: "en"
 date: "12/02/2019"
-twinPost: "Aviso de Privacidad"
+twinPost: "Politica Privacidad"
+forCookieConsent: true
 ---
 
 ##Privacy Notice

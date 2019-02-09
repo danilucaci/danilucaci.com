@@ -1,5 +1,6 @@
 ---
 title: "Applicacion de muestra 2"
+slug: "muestra 2"
 snippet: "Estudio de caso de pelis."
 date: "2018-12-29"
 category: "work"
@@ -9,7 +10,7 @@ tags:
 posted: true
 image: "./movie_app_presentation.png"
 locale: "es"
-twinPost: "Sample app 2"
+twinPost: "sample 2"
 ---
 
 I decided to design this app as each time I tried to find and book a movie, all the websites and apps that I used had outdated designs, no real benefit to their membership plans and very limited searching and filtering features.

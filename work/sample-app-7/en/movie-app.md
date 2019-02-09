@@ -1,5 +1,6 @@
 ---
 title: "Sample app 7"
+slug: "sample 7"
 snippet: "A case study on improving the experience of searching, finding and booking movies in a cinema."
 date: "2018-12-24"
 category: "work"
@@ -10,7 +11,7 @@ tags:
 posted: true
 image: "./movie_app_presentation.png"
 locale: "en"
-twinPost: "Applicacion de muestra 7"
+twinPost: "muestra 7"
 ---
 
 I decided to design this app as each time I tried to find and book a movie, all the websites and apps that I used had outdated designs, no real benefit to their membership plans and very limited searching and filtering features.

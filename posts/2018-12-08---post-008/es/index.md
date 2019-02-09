@@ -1,5 +1,6 @@
 ---
 title: "Post numero 8"
+slug: "numero 8"
 date: "2018-12-08"
 category: "blog"
 intro: "Los gifs molan, pero pesan demasiado.
@@ -11,7 +12,7 @@ tags:
     - perfmatters
 posted: true
 locale: "es"
-twinPost: "Post number 8"
+twinPost: "number 8"
 ---
 
 ##Como hacer videos mas ligeros

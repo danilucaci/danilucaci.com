@@ -1,11 +1,11 @@
 ---
-title: "Aviso de Cookies"
+title: "Politica de Cookies"
+slug: "politica cookies"
 category: "legal"
 posted: true
 locale: "es"
 date: "12/02/2019"
-twinPost: "Cookie Notice"
-forCookieConsent: true
+twinPost: "Cookie Policy"
 ---
 
 ##Aviso de Cookies

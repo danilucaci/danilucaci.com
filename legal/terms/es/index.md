@@ -1,5 +1,6 @@
 ---
 title: "Términos y Condiciones"
+slug: "Términos y Condiciones"
 category: "legal"
 posted: true
 locale: "es"
