@@ -29,6 +29,7 @@ import intlMessages from "../i18n/i18n";
 addLocaleData([...enData, ...esData]);
 
 const NODE_ENV = process.env.NODE_ENV;
+const DL_CONSENT_COOKIE_NAME = process.env.DL_CONSENT_COOKIE_NAME;
 const DL_COOKIE_NAME = process.env.DL_COOKIE_NAME;
 const DL_COOKIE_SECURE = process.env.DL_COOKIE_SECURE;
 const DL_COOKIE_DOMAIN = process.env.DL_COOKIE_DOMAIN;
@@ -74,6 +75,7 @@ class Layout extends Component {
   };
 
   componentDidMount() {
+    this.setInitialConsentCookie();
     this.checkGDPRStatus();
     this.checkFontsLoaded();
   }
@@ -141,6 +143,32 @@ class Layout extends Component {
     });
   };
 
+  setInitialConsentCookie = () => {
+    const secure = DL_COOKIE_SECURE === true;
+
+    Cookies.set(DL_CONSENT_COOKIE_NAME, false, {
+      expires: this.state.cookieExp,
+      domain: DL_COOKIE_DOMAIN,
+      secure: secure,
+    });
+
+    let DLConsentCookieName = Cookies.getJSON(DL_CONSENT_COOKIE_NAME);
+    console.log("Initial: ", DLConsentCookieName);
+  };
+
+  setAcceptedConsentCookie = () => {
+    const secure = DL_COOKIE_SECURE === true;
+
+    Cookies.set(DL_CONSENT_COOKIE_NAME, true, {
+      expires: this.state.cookieExp,
+      domain: DL_COOKIE_DOMAIN,
+      secure: secure,
+    });
+
+    let DLConsentCookieName = Cookies.getJSON(DL_CONSENT_COOKIE_NAME);
+    console.log("Accepted: ", DLConsentCookieName);
+  };
+
   checkGDPRStatus = () => {
     if (DL_COOKIE_NAME) {
       let DLCookie = Cookies.getJSON(DL_COOKIE_NAME);
@@ -150,6 +178,10 @@ class Layout extends Component {
             askCookieConsent: !prevState.askCookieConsent,
             hasGDPRConsent: !prevState.hasGDPRConsent,
           }));
+
+          // Set the initial cookie consent value to true
+          // It is conected to GTM
+          this.setAcceptedConsentCookie();
 
           // Load the analytics when cookies are accepted
           this.loadGTM();
@@ -194,7 +226,7 @@ class Layout extends Component {
 
     if (DL_COOKIE_NAME) {
       if (hasCookieData) {
-        const secure = DL_COOKIE_SECURE === "true";
+        const secure = DL_COOKIE_SECURE === true;
 
         Cookies.set(DL_COOKIE_NAME, this.state.acceptsCookie, {
           expires: this.state.cookieExp,
@@ -221,7 +253,7 @@ class Layout extends Component {
 
     if (DL_COOKIE_NAME) {
       if (hasCookieData) {
-        const secure = DL_COOKIE_SECURE === "true";
+        const secure = DL_COOKIE_SECURE === true;
 
         Cookies.set(DL_COOKIE_NAME, this.state.deniesCookie, {
           expires: this.state.cookieExp,
