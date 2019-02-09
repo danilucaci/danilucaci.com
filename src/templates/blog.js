@@ -102,6 +102,7 @@ const BlogPage = (props) => {
     <Layout location={props.location} locale={locale}>
       <SEO
         locale={locale}
+        twinPostURL={twinPostURL}
         currentPage="blog"
         currentPath={props.location.pathname}
       />

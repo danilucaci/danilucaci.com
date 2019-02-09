@@ -11,6 +11,7 @@ const SEO = (props) => {
     legalDocs,
     postImage,
     locale = "en",
+    twinPostURL,
     currentPage = "site",
     currentPath = "/",
   } = props;
@@ -21,7 +22,17 @@ const SEO = (props) => {
   let imageUrl;
   let pageURL;
 
+  let localeCountryCode = {
+    en: "en",
+    es: "es",
+  };
+
   let siteUrl = config.siteUrl;
+
+  let alternateLocale =
+    locale === "en" ? localeCountryCode["es"] : localeCountryCode["en"];
+
+  let alternateUrl = (pageURL = urljoin(siteUrl, twinPostURL));
 
   if (currentPage === "site" && locale === "en") {
     pageURL = siteUrl;
@@ -130,7 +141,27 @@ const SEO = (props) => {
 
   return (
     <Helmet>
-      <html lang={locale} />
+      <html lang={localeCountryCode[locale]} />
+      {(postSEO || legalDocs) && <link rel="canonical" href={postURL} />}
+      {!postSEO && !legalDocs && <link rel="canonical" href={pageURL} />}
+
+      {(postSEO || legalDocs) && (
+        <link
+          rel="alternate"
+          href={postURL}
+          hreflang={localeCountryCode[locale]}
+        />
+      )}
+      {!postSEO && !legalDocs && (
+        <link
+          rel="alternate"
+          href={pageURL}
+          hreflang={localeCountryCode[locale]}
+        />
+      )}
+
+      <link rel="alternate" href={alternateUrl} hreflang={alternateLocale} />
+
       <title>{title}</title>
       {/* General tags */}
       <meta name="description" content={description} />
@@ -170,6 +201,7 @@ const SEO = (props) => {
 
 SEO.propTypes = {
   locale: PropTypes.string.isRequired,
+  twinPostURL: PropTypes.string.isRequired,
   currentPath: PropTypes.string.isRequired,
   currentPage: PropTypes.string,
   postSEO: PropTypes.bool,

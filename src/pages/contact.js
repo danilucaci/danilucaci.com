@@ -137,6 +137,7 @@ const ContactPage = (props) => {
     <Layout location={props.location} locale={locale}>
       <SEO
         locale={locale}
+        twinPostURL={twinPostURL}
         currentPage="contact"
         currentPath={props.location.pathname}
       />

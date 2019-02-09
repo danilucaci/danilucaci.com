@@ -24,6 +24,7 @@ const NotFoundPage = (props) => {
     <Layout location={props.location} locale={locale}>
       <SEO
         locale={locale}
+        twinPostURL={twinPostURL}
         currentPage="notFound"
         currentPath={props.location.pathname}
       />

@@ -131,6 +131,7 @@ const TagPage = (props) => {
     <Layout location={props.location} locale={locale}>
       <SEO
         locale={locale}
+        twinPostURL={twinPostURL}
         currentPage="tags"
         currentPath={props.location.pathname}
       />

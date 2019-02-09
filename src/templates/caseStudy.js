@@ -500,6 +500,7 @@ class CaseStudy extends Component {
       <Layout location={this.props.location} locale={locale}>
         <SEO
           locale={locale}
+          twinPostURL={twinPostURL}
           postNode={postNode}
           postSEO
           postImage={image.src}

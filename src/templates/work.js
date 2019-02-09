@@ -131,6 +131,7 @@ const WorkPage = (props) => {
     <Layout location={props.location} locale={locale}>
       <SEO
         locale={locale}
+        twinPostURL={twinPostURL}
         currentPage="work"
         currentPath={props.location.pathname}
       />

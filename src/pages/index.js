@@ -194,7 +194,11 @@ const Index = (props) => {
 
   return (
     <Layout location={props.location} locale={locale}>
-      <SEO locale={locale} currentPath={props.location.pathname} />
+      <SEO
+        locale={locale}
+        currentPath={props.location.pathname}
+        twinPostURL={twinPostURL}
+      />
       <SiteHeader
         locale={locale}
         twinPostURL={twinPostURL}

@@ -145,28 +145,20 @@ class Layout extends Component {
 
   setInitialConsentCookie = () => {
     const secure = DL_COOKIE_SECURE === true;
-
     Cookies.set(DL_CONSENT_COOKIE_NAME, false, {
       expires: this.state.cookieExp,
       domain: DL_COOKIE_DOMAIN,
       secure: secure,
     });
-
-    let DLConsentCookieName = Cookies.getJSON(DL_CONSENT_COOKIE_NAME);
-    console.log("Initial: ", DLConsentCookieName);
   };
 
   setAcceptedConsentCookie = () => {
     const secure = DL_COOKIE_SECURE === true;
-
     Cookies.set(DL_CONSENT_COOKIE_NAME, true, {
       expires: this.state.cookieExp,
       domain: DL_COOKIE_DOMAIN,
       secure: secure,
     });
-
-    let DLConsentCookieName = Cookies.getJSON(DL_CONSENT_COOKIE_NAME);
-    console.log("Accepted: ", DLConsentCookieName);
   };
 
   checkGDPRStatus = () => {

@@ -173,6 +173,8 @@ class LegalDoc extends Component {
     return (
       <Layout location={this.props.location} locale={locale}>
         <SEO
+          locale={locale}
+          twinPostURL={twinPostURL}
           postNode={postNode}
           legalDocs
           currentPath={this.props.location.pathname}
