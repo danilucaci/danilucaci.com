@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styled, { ThemeProvider } from "styled-components";
-var FontFaceObserver = require("fontfaceobserver");
+let FontFaceObserver = require("fontfaceobserver");
 import Cookies from "js-cookie";
+import ReactGA from "react-ga";
 import { IntlProvider, addLocaleData } from "react-intl";
 import Helmet from "react-helmet";
 // Locale data
 import enData from "react-intl/locale-data/en";
 import esData from "react-intl/locale-data/es";
-import ReactGA from "react-ga";
 
 import { theme } from "../theme/globalStyles";
 import GlobalFonts from "../theme/globalFonts";
@@ -34,11 +34,13 @@ const DL_COOKIE_SECURE = process.env.DL_COOKIE_SECURE;
 const DL_COOKIE_DOMAIN = process.env.DL_COOKIE_DOMAIN;
 const GA_ID = process.env.GA_ID;
 
+// Google Analytics Init
 export const initGA = () => {
   console.log("%c GA Init!", "color: #79E36B");
   ReactGA.initialize(GA_ID);
 };
 
+// Google Analytics Log pages views
 export const logPageView = () => {
   // https://github.com/nfl/react-helmet/issues/189
   // still a bug, need to set a 0 setTimeout for
@@ -63,12 +65,12 @@ const Page = styled.div`
 
 class Layout extends Component {
   state = {
-    doNotTrackActive: false,
     hasGDPRConsent: false,
-    askGDPRConsent: true,
+    GTMScriptLoaded: false,
+    askCookieConsent: true,
     acceptsCookie: { necessary: true, analytics: true },
     deniesCookie: { necessary: true, analytics: false },
-    cookieExp: 730, // cookieExp set in days
+    cookieExp: 780, // cookieExp set in days same as GA expiry date
   };
 
   componentDidMount() {
@@ -76,11 +78,11 @@ class Layout extends Component {
     this.checkFontsLoaded();
   }
 
-  componentDidUpdate() {
-    if (NODE_ENV === "development") {
-      // this.showGDPRStatus();
-    }
-  }
+  // componentDidUpdate() {
+  //   if (NODE_ENV === "development") {
+  //     this.showGDPRStatus();
+  //   }
+  // }
 
   checkFontsLoaded = () => {
     if (sessionStorage.fontsLoadedPolyfill) {
@@ -145,7 +147,7 @@ class Layout extends Component {
       if (DLCookie) {
         if (DLCookie.analytics) {
           this.setState((prevState) => ({
-            askGDPRConsent: !prevState.askGDPRConsent,
+            askCookieConsent: !prevState.askCookieConsent,
             hasGDPRConsent: !prevState.hasGDPRConsent,
           }));
 
@@ -155,7 +157,7 @@ class Layout extends Component {
           // Don't load analytics scripts if analytics cookies are not accepted
         } else if (!DLCookie.analytics) {
           this.setState((prevState) => ({
-            askGDPRConsent: !prevState.askGDPRConsent,
+            askCookieConsent: !prevState.askCookieConsent,
           }));
         }
       } else {
@@ -165,17 +167,9 @@ class Layout extends Component {
       }
     } else {
       if (NODE_ENV === "development") {
-        console.error("dl.com Can't read cookie name.");
+        console.error("dl.com Can't read env cookie name.");
       }
     }
-  };
-
-  loadGTM = () => {
-    if (!window._DL_GA_INITIALIZED) {
-      initGA();
-      window._DL_GA_INITIALIZED = true;
-    }
-    logPageView();
   };
 
   showGDPRStatus = () => {
@@ -249,25 +243,37 @@ class Layout extends Component {
     }
   };
 
-  removeCookies = () => {
-    if (DL_COOKIE_NAME) {
-      Cookies.remove(DL_COOKIE_NAME);
-
-      this.setState((prevState) => ({
-        askGDPRConsent: !prevState.askGDPRConsent,
-      }));
-      if (NODE_ENV === "development") {
-        console.log(`%c Cookies Removed`, "color: #79E36B");
-      }
-      this.showGDPRStatus();
-    } else {
-      if (NODE_ENV === "development") {
-        console.error("Can't read cookie name.");
-      }
+  loadGTM = () => {
+    // Avoids initializing GA each time a page loads
+    // Creating a script tag each time
+    if (!window._DL_GA_INITIALIZED) {
+      initGA();
+      window._DL_GA_INITIALIZED = true;
     }
+    logPageView();
   };
 
   render() {
+    let GTMScript = null;
+
+    if (!window._DL_GTM_INITIALIZED && this.state.hasGDPRConsent) {
+      GTMScript = (
+        <Helmet>
+          {`<!-- Google Tag Manager -->`}
+          <script>
+            {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','GTM-TJ6RBXR');`}
+          </script>
+          {`<!-- End Google Tag Manager -->`}
+        </Helmet>
+      );
+
+      window._DL_GTM_INITIALIZED = true;
+    }
+
     return (
       <ThemeProvider theme={theme}>
         <IntlProvider
@@ -275,28 +281,16 @@ class Layout extends Component {
           messages={intlMessages[this.props.locale]}
         >
           <Page>
-            {this.state.hasGDPRConsent && (
-              <Helmet>
-                {`<!-- Google Tag Manager -->`}
-                <script>
-                  {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                  })(window,document,'script','dataLayer','GTM-TJ6RBXR');`}
-                </script>
-                {`<!-- End Google Tag Manager -->`}
-              </Helmet>
-            )}
+            {GTMScript}
             <SkipToMainContent />
             <GlobalFonts />
             <GlobalReset />
             <GlobalAria />
             <GlobalHTML />
             <SVGSprite />
-            {this.state.askGDPRConsent && (
+            {this.state.askCookieConsent && (
               <CookieConsent
-                askGDPRConsent={this.state.askGDPRConsent}
+                askCookieConsent={this.state.askCookieConsent}
                 acceptsCookies={this.acceptsCookies}
                 deniesCookies={this.deniesCookies}
                 pageLocale={this.props.locale}
