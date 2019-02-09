@@ -30,11 +30,9 @@ const StyledSkipToMainContent = styled.a`
 
 const SkipToMainContent = () => {
   return (
-    <React.Fragment>
-      <StyledSkipToMainContent href="#main">
-        Skip to main content
-      </StyledSkipToMainContent>
-    </React.Fragment>
+    <StyledSkipToMainContent href="#main">
+      Skip to main content
+    </StyledSkipToMainContent>
   );
 };
 
