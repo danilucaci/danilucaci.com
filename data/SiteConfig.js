@@ -3,12 +3,22 @@ module.exports = {
   siteUrl: "https://www.danilucaci.com", // Domain of your website without pathPrefix.
   pathPrefix: "/", // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
   dateFromFormat: "YYYY-MM-DD", // Date format used in the frontmatter.
-  dateFormat: "YYYY MMMM DD", // Date format for display.
   userDescription:
     "Hi! I’m Dani. UX/UI Designer and Front–End Developer. I prototype, design and develop interfaces that have a strong focus on accesibility, performance and user interaction. I use the latest front-end techniques and design methods to create scalable and easy to use experiences.", // User description to display in the author segment.
-  themeColor: "#141C29", // Used for setting manifest and progress theme colors.
+  themeColor: "#121C26", // Used for setting manifest and progress theme colors.
   backgroundColor: "#E8E9EB", // Used for setting manifest background color.
+  socialLinks: {
+    twitter: "https://twitter.com/danilucaci",
+    linkedin: "https://www.linkedin.com/in/danielmlucaci/",
+    github: "https://github.com/danilucaci",
+  },
   en: {
+    websiteSchema: {
+      url: "https://www.danilucaci.com",
+      name: "Dani Lucaci - UX/UI Designer and Front–End Developer",
+      email: "hello@danilucaci.com",
+      jobTitle: "UX/UI Designer and Front–End Developer",
+    },
     site: {
       title: "Dani Lucaci - UX/UI Designer and Front–End Developer",
       // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
@@ -58,6 +68,12 @@ module.exports = {
     copyright: "&copy;2018 Copyright Dani Lucaci. All rights reserved.",
   },
   es: {
+    websiteSchema: {
+      url: "https://www.danilucaci.com/es",
+      name: "Dani Lucaci - Diseñador UX/UI y Desarollador Front–End",
+      email: "hola@danilucaci.com",
+      jobTitle: "Diseñador UX/UI y Desarollador Front–End",
+    },
     site: {
       title: "Dani Lucaci - Diseñador UX/UI y Desarollador Front–End.",
       // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.

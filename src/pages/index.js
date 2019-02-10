@@ -346,7 +346,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
             snippet
-            date(formatString: "DD MMMM YYYY")
+            date(formatString: "YYYY-MM-DD")
             category
             tags
             posted

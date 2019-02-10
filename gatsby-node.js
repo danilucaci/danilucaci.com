@@ -247,7 +247,7 @@ exports.createPages = ({ graphql, actions }) => {
                   timeToRead
                   frontmatter {
                     title
-                    date(formatString: "DD MMMM YYYY")
+                    date(formatString: "YYYY-MM-DD")
                     category
                     snippet
                     tags
@@ -274,7 +274,7 @@ exports.createPages = ({ graphql, actions }) => {
                     timeToRead
                     frontmatter {
                       title
-                      date(formatString: "DD MMMM YYYY")
+                      date(formatString: "YYYY-MM-DD")
                       category
                       snippet
                       tags
@@ -305,7 +305,7 @@ exports.createPages = ({ graphql, actions }) => {
                   }
                   frontmatter {
                     title
-                    date(formatString: "DD MMMM YYYY")
+                    date(formatString: "YYYY-MM-DD")
                     category
                     tags
                     posted
@@ -349,7 +349,7 @@ exports.createPages = ({ graphql, actions }) => {
                   }
                   frontmatter {
                     title
-                    date(formatString: "DD MMMM YYYY")
+                    date(formatString: "YYYY-MM-DD")
                     category
                     posted
                     twinPost

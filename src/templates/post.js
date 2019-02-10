@@ -647,7 +647,7 @@ export const pageQuery = graphql`
       timeToRead
       frontmatter {
         title
-        date(formatString: "DD MMMM YYYY")
+        date(formatString: "YYYY-MM-DD")
         snippet
         intro
         category

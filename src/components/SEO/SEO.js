@@ -21,6 +21,7 @@ const SEO = (props) => {
   let postURL;
   let imageUrl;
   let pageURL;
+  let postDate;
 
   let localeCountryCode = {
     en: "en",
@@ -29,9 +30,9 @@ const SEO = (props) => {
 
   let siteUrl = config.siteUrl;
 
+  // for rel alternate
   let alternateLocale =
     locale === "en" ? localeCountryCode["es"] : localeCountryCode["en"];
-
   let alternateUrl = (pageURL = urljoin(siteUrl, twinPostURL));
 
   if (currentPage === "site" && locale === "en") {
@@ -45,6 +46,7 @@ const SEO = (props) => {
     description = config[locale][currentPage].description;
   }
 
+  // load an image in schema if there is one
   if (postImage) {
     if (locale === "en") {
       imageUrl = urljoin(siteUrl, postImage);
@@ -56,6 +58,7 @@ const SEO = (props) => {
   if (postSEO) {
     title = postNode.frontmatter.title;
     description = postNode.frontmatter.snippet;
+    postDate = postNode.frontmatter.date;
     postURL = urljoin(siteUrl, currentPath);
   }
 
@@ -68,74 +71,93 @@ const SEO = (props) => {
     {
       "@context": "http://schema.org",
       "@type": "WebSite",
-      url: pageURL,
-      name: title,
-      alternateName: config[locale][currentPage].titleAlt,
+      url: config[locale].websiteSchema.url,
+      name: config[locale].websiteSchema.name,
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Person",
+      name: "Dani Lucaci",
+      alternateName: "Daniel Marian Lucaci",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Barcelona",
+        addressCountry: "Spain",
+      },
+      url: "www.danilucaci.com",
+      // image: "",
+      sameAs: [
+        config.socialLinks.twitter,
+        config.socialLinks.linkedin,
+        config.socialLinks.github,
+      ],
+      jobTitle: config[locale].websiteSchema.jobTitle,
+      worksFor: {
+        "@type": "Organization",
+        name: "danilucaci.com",
+      },
     },
   ];
 
   if (postSEO) {
     if (postImage) {
-      schemaOrgJSONLD.push(
-        {
-          "@context": "http://schema.org",
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            {
-              "@type": "ListItem",
-              position: 1,
-              item: {
-                "@id": postURL,
-                name: title,
-                image: imageUrl,
-              },
-            },
-          ],
+      schemaOrgJSONLD.push({
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        url: pageURL,
+        name: title,
+        alternateName: config[locale][currentPage].siteTitleAlt
+          ? config[locale][currentPage].siteTitleAlt
+          : "",
+        headline: title,
+        description,
+        image: {
+          "@type": "ImageObject",
+          url: imageUrl,
         },
-        {
-          "@context": "http://schema.org",
-          "@type": "BlogPosting",
-          url: pageURL,
-          name: title,
-          alternateName: config[locale][currentPage].siteTitleAlt
-            ? config[locale][currentPage].siteTitleAlt
-            : "",
-          headline: title,
-          image: {
+        datePublished: postDate,
+        dateModified: postDate,
+        author: {
+          "@type": "Person",
+          name: "Dani Lucaci",
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "danilucaci.com",
+          logo: {
             "@type": "ImageObject",
-            url: imageUrl,
+            url: "https://google.com/logo.jpg",
           },
-          description,
-        }
-      );
-    } else {
-      schemaOrgJSONLD.push(
-        {
-          "@context": "http://schema.org",
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            {
-              "@type": "ListItem",
-              position: 1,
-              item: {
-                "@id": postURL,
-                name: title,
-              },
-            },
-          ],
         },
-        {
-          "@context": "http://schema.org",
-          "@type": "BlogPosting",
-          url: pageURL,
-          name: title,
-          alternateName: config[locale][currentPage].siteTitleAlt
-            ? config[locale][currentPage].siteTitleAlt
-            : "",
-          headline: title,
-          description,
-        }
-      );
+        mainEntityOfPage: pageURL,
+      });
+    } else {
+      schemaOrgJSONLD.push({
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        url: pageURL,
+        name: title,
+        description,
+        alternateName: config[locale][currentPage].siteTitleAlt
+          ? config[locale][currentPage].siteTitleAlt
+          : "",
+        headline: title,
+        datePublished: postDate,
+        dateModified: postDate,
+        author: {
+          "@type": "Person",
+          name: "Dani Lucaci",
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "danilucaci.com",
+          logo: {
+            "@type": "ImageObject",
+            url: "https://google.com/logo.jpg",
+          },
+        },
+        mainEntityOfPage: pageURL,
+      });
     }
   }
 
@@ -144,7 +166,6 @@ const SEO = (props) => {
       <html lang={localeCountryCode[locale]} />
       {(postSEO || legalDocs) && <link rel="canonical" href={postURL} />}
       {!postSEO && !legalDocs && <link rel="canonical" href={pageURL} />}
-
       {(postSEO || legalDocs) && (
         <link
           rel="alternate"
@@ -159,42 +180,36 @@ const SEO = (props) => {
           hreflang={localeCountryCode[locale]}
         />
       )}
-
       <link rel="alternate" href={alternateUrl} hreflang={alternateLocale} />
-
       <title>{title}</title>
-      {/* General tags */}
+      <meta name="theme-color" content={config.themeColor} />
       <meta name="description" content={description} />
       {imageUrl && <meta name="image" content={imageUrl} />}
 
+      {/* OpenGraph tags */}
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      {(postSEO || legalDocs) && <meta property="og:url" content={postURL} />}
+      {(postSEO || legalDocs) && <meta property="og:type" content="article" />}
+      {!postSEO && !legalDocs && <meta property="og:url" content={pageURL} />}
+      {imageUrl && <meta property="og:image" content={imageUrl} />}
+      {/* <meta property="fb:app_id" content={process.env.FACEBOOK_APP_ID} /> */}
+
+      {/* Twitter Card tags */}
       {/* You may choose whether Twitter widgets on your site help to tailor content and suggestions for Twitter users. You can opt out of having information from your website used for personalization by following the instructions below. Include the following snippet within the <meta> and <link> elements on your pages that include Twitter for Websites widgets: */}
       <meta name="twitter:dnt" content="on" />
+      <meta name="twitter:site" content="@danilucaci" />
+      <meta name="twitter:creator" content="@danilucaci" />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      {imageUrl && <meta name="twitter:card" content="summary_large_image" />}
+      {imageUrl && <meta name="twitter:image" content={imageUrl} />}
+      {!imageUrl && <meta name="twitter:card" content="summary" />}
 
       {/* Schema.org tags */}
       <script type="application/ld+json">
         {JSON.stringify(schemaOrgJSONLD)}
       </script>
-
-      {/* OpenGraph tags */}
-      {(postSEO || legalDocs) && <meta property="og:url" content={postURL} />}
-      {(postSEO || legalDocs) && <meta property="og:type" content="article" />}
-
-      {!postSEO && !legalDocs && <meta property="og:url" content={pageURL} />}
-
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-
-      {imageUrl && <meta property="og:image" content={imageUrl} />}
-      <meta property="fb:app_id" content={process.env.FACEBOOK_APP_ID} />
-
-      {/* Twitter Card tags */}
-      {imageUrl && <meta name="twitter:card" content="summary_large_image" />}
-      {imageUrl && <meta name="twitter:image" content={imageUrl} />}
-      {!imageUrl && <meta name="twitter:card" content="summary" />}
-
-      <meta name="twitter:site" content="@danilucaci" />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
     </Helmet>
   );
 };

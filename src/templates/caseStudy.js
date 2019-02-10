@@ -600,7 +600,7 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
-        date(formatString: "DD MMMM YYYY")
+        date(formatString: "YYYY-MM-DD")
         snippet
         tags
         image {
