@@ -13,7 +13,7 @@ import { HR } from "../HR/HR";
 export const AuthorCardWrapper = styled.footer`
   width: 100%;
   max-width: ${theme.contain.inner.col10};
-  margin-bottom: ${theme.spacing.components.s};
+  /* margin-bottom: ${theme.spacing.components.s};
 
   ${mediaMin.s`
     padding-right: ${theme.gutters.m};
@@ -22,7 +22,7 @@ export const AuthorCardWrapper = styled.footer`
 
   ${mediaMin.m`
     margin-bottom: ${theme.spacing.components.xl};
-  `};
+  `}; */
 `;
 
 const StyledAuthorCard = styled.div`
@@ -118,7 +118,7 @@ const AuthorCard = (props) => {
           <SocialNav />
         </AuthorInfo>
       </StyledAuthorCard>
-      <HR />
+      {/* <HR /> */}
     </AuthorCardWrapper>
   );
 };
