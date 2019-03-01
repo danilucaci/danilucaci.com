@@ -6,13 +6,12 @@ date: "2019-02-02"
 category: "work"
 tags:
     - Rediseño
-    - Optimización de Proceso de Compra
+    - Proceso de Compra
 posted: true
-image: "./movie_app_presentation.png"
+image: "./ux_case_study_movie_app_presentation@2x.png"
 locale: "es"
 twinPost: "Movie Booking App UX Case Study"
 ---
-
 
 <div class="container-8col">
 
@@ -155,7 +154,7 @@ He is trying to find a movie that he and his date might like to watch tonight. T
 
 <div class="container-8col">
 
-![The first Persona created based on the reseach findings, Alex](persona_alex.png "The first Persona created based on the reseach findings, Alex")
+![The first Persona created based on the reseach findings, Alex](ux_case_study_personas_alex.png "The first Persona created based on the reseach findings, Alex")
 
 </div>
 
@@ -165,7 +164,7 @@ She is a movie enthusiast that likes to watch several movies each month, however
 
 <div class="container-8col">
 
-![The second Persona created based on the reseach findings, Ana.](persona_ana.png "The second Persona created based on the reseach findings, Ana")
+![The second Persona created based on the reseach findings, Ana.](ux_case_study_personas_ana.png "The second Persona created based on the reseach findings, Ana")
 
 </div>
 
@@ -218,7 +217,7 @@ Before I started sketching the nav bar with the searching, filtering and sorting
 
 <div class="container-375">
 
-![Airbnb shows their filtering options even when search is not active.](./airbnb_nav_bar@2x.png "Airbnb shows their filtering options even when search is not active.")
+![Airbnb shows their filtering options even when search is not active.](./ux_case_study_airbnb_nav_bar@2x.png "Airbnb shows their filtering options even when search is not active.")
 
 </div>
 
@@ -226,7 +225,7 @@ The first product I used for the comparison was Airbnb’s iOS app. One of the r
 
 <div class="container-375">
 
-![Asos.com was using a similar aproach to Airbnb but without the search bar.](./asos_applied.png "Asos.com was using a similar aproach to Airbnb but without the search bar.")
+![Asos.com was using a similar aproach to Airbnb but without the search bar.](./ux_case_study_asos_ios_nav_bar@2x.png "Asos.com was using a similar aproach to Airbnb but without the search bar.")
 
 </div>
 
@@ -234,7 +233,7 @@ Asos.com’s sort and filter buttons have more visual weight that Airbnb’s one
 
 <div class="container-375">
 
-![Crutchfield.com shows the search bar and sort and filter buttons at the same time.](./crutchfield.png "Crutchfield.com shows the search bar and sort and filter buttons at the same time.")
+![Crutchfield.com shows the search bar and sort and filter buttons at the same time.](./ux_case_study_crutchfield_example.png "Crutchfield.com shows the search bar and sort and filter buttons at the same time.")
 
 </div>
 
@@ -242,7 +241,7 @@ Crutchfield.com’s website shows the search bar and sorting and filtering optio
 
 <div class="container-375">
 
-![zalando.es offered the most complete filtering and searching experience.](./zalando.png "zalando.es offered the most complete filtering and searching experience.")
+![zalando.es offered the most complete filtering and searching experience.](./ux_case_study_zalando_example.png "zalando.es offered the most complete filtering and searching experience.")
 
 </div>
 
@@ -265,12 +264,12 @@ Once I did the initial competitive research to see which were the currently used
 <div class="container-12col">
 <div class="container-375">
 
-![Final version of the nav bar in with sorting applied, showing both buttons and search bar.](./nav_bars_1@2x.png "Final version of the nav bar in with sorting applied, showing both buttons and search bar.")
+![Final version of the nav bar in with sorting applied, showing both buttons and search bar.](./ux_case_study_nav_bar_sort_applied@2x.png "Final version of the nav bar in with sorting applied, showing both buttons and search bar.")
 
 </div>
 <div class="container-375">
 
-![Final version of the nav bar with active filter and sort buttons.](./nav_bars_2@2x.png "Final version of the nav bar with active filter and sort buttons.")
+![Final version of the nav bar with active filter and sort buttons.](./ux_case_study_nav_bar_filter_and_sort_applied@2x.png "Final version of the nav bar with active filter and sort buttons.")
 
 </div>
 </div>
@@ -285,7 +284,7 @@ By using checkbox style buttons for the filters, users can easily enable and dis
 
 <div class="container-wireflow">
 
-![Wireflow diagram of the movie searching and filtering experience.](./wire_flow_alex_search_and_filter.png "Wireflow diagram of the movie searching and filtering experience.")
+![Wireflow diagram of the movie searching and filtering experience.](./ux_case_study_wire_flow_alex_search_and_filter.png "Wireflow diagram of the movie searching and filtering experience.")
 
 </div>
 
@@ -299,10 +298,10 @@ The searching experience was designed to show in real time the number of results
 <span class="video-iphoneX--container">
 <span class="video-iphoneX--video">
 <video autoplay loop muted playsinline controls>
-<source src="./movie_searching_prototype.webm" type="video/webm">
-<source src="./movie_searching_prototype.mp4" type="video/mp4">
+<source src="./ux_case_study_movie_searching_prototype.webm" type="video/webm">
+<source src="./ux_case_study_movie_searching_prototype.mp4" type="video/mp4">
 Your browser does not support HTML5 video.
-<a href="./movie_searching_prototype.gif">View the GIF version of the movie searching experience prototype.</a>
+<a href="./ux_case_study_movie_searching_prototype.gif">View the GIF version of the movie searching experience prototype.</a>
 </video>
 </span>
 </span>
@@ -316,10 +315,10 @@ Your browser does not support HTML5 video.
 <span class="video-iphoneX--container">
 <span class="video-iphoneX--video">
 <video autoplay loop muted playsinline controls>
-<source src="./movie_filtering_prototype.webm" type="video/webm">
-<source src="./movie_filtering_prototype.mp4" type="video/mp4">
+<source src="./ux_case_study_movie_filtering_prototype.webm" type="video/webm">
+<source src="./ux_case_study_movie_filtering_prototype.mp4" type="video/mp4">
 Your browser does not support HTML5 video.
-<a href="./movie_filtering_prototype.gif">View the gif version of the movie filtering interaction prototype.</a>
+<a href="./ux_case_study_movie_filtering_prototype.gif">View the gif version of the movie filtering interaction prototype.</a>
 </video>
 </span>
 </span>
@@ -332,10 +331,10 @@ Your browser does not support HTML5 video.
 <span class="video-iphoneX--container">
 <span class="video-iphoneX--video">
 <video autoplay loop muted playsinline controls>
-<source src="./movie_filtering_prototype.webm" type="video/webm">
-<source src="./movie_filtering_prototype.mp4" type="video/mp4">
+<source src="./ux_case_study_seat_choosing_prototype.webm" type="video/webm">
+<source src="./ux_case_study_seat_choosing_prototype.mp4" type="video/mp4">
 Your browser does not support HTML5 video.
-<a href="./movie_filtering_prototype.gif">View the gif version of the movie filtering interaction prototype.</a>
+<a href="./ux_case_study_seat_choosing_prototype.gif">View the gif version of the movie filtering interaction prototype.</a>
 </video>
 </span>
 </span>
@@ -368,7 +367,7 @@ After some initial research for best practices when creating a guest checkout ex
 <div class="container-12col">
 <div class="container-375">
 
-![Users can sign in to use their saved personal information or as a guest, when booking a movie.](./5_4_login_or_guest@2x.png "Users can sign in to use their saved personal information or as a guest, when booking a movie.")
+![Users can sign in to use their saved personal information or as a guest, when booking a movie.](./ux_case_study_choose_guest_checkout_screen@2x.png "Users can sign in to use their saved personal information or as a guest, when booking a movie.")
 
 </div>
 <div class="pros-cons">
@@ -395,7 +394,7 @@ According to the same research, privacy-concerned users are less reluctant to sh
 <div class="container-12col">
 <div class="container-375">
 
-![Guest checkout with the order summary and available payment methods.](./5_5_1_guest_checkout@2x.png "Guest checkout with the order summary and available payment methods.")
+![Guest checkout with the order summary and available payment methods.](./ux_case_study_guest_checkout_payment_methods@2x.png "Guest checkout with the order summary and available payment methods.")
 
 </div>
 <div class="pros-cons">
@@ -417,10 +416,9 @@ Users should also be able to compare the different costs associated to each paym
 
 <div class="container-375">
 
-![Guest checkout with credit card form interaction.](./5_5_2_payment_selected@2x.png "Guest checkout with credit card form interaction.")
+![Guest checkout with credit card form interaction.](./ux_case_study_guest_checkout_optimized_credit_card_form@2x.png "Guest checkout with credit card form interaction.")
 
 </div>
-
 <div class="pros-cons">
 <div class="pros-cons__component">
 
@@ -444,15 +442,16 @@ Form fields used for credit cards should also use input masks that auto-insert a
 
 <div class="container-375">
 
-![Users can sign in to use their saved personal information or as a guest, when booking a movie.](./5_5_3_guest_order_confirmation@2x.png "Users can sign in to use their saved personal information or as a guest, when booking a movie.")
+![Users can sign in to use their saved personal information or as a guest, when booking a movie.](./ux_case_study_guest_checkout_delayed_account_creation@2x.png "Users can sign in to use their saved personal information or as a guest, when booking a movie.")
 
 </div>
+
 
 ### Guest checkout wireflow diagram
 
 <div class="container-wireflow">
 
-![Wireflow diagram of the guest checkout experience.](./wire_flow_alex_checkout.png "Wireflow diagram of the guest checkout experience.")
+![Wireflow diagram of the guest checkout experience.](./ux_case_study_wire_flow_alex_checkout.png "Wireflow diagram of the guest checkout experience.")
 
 </div>
 
@@ -462,10 +461,10 @@ Form fields used for credit cards should also use input masks that auto-insert a
 <span class="video-iphoneX--container">
 <span class="video-iphoneX--video">
 <video autoplay loop muted playsinline controls>
-<source src="./guest_checkout_prototype.webm" type="video/webm">
-<source src="./guest_checkout_prototype.mp4" type="video/mp4">
+<source src="./ux_case_study_guest_checkout_prototype.webm" type="video/webm">
+<source src="./ux_case_study_guest_checkout_prototype.mp4" type="video/mp4">
 Your browser does not support HTML5 video.
-<a href="./guest_checkout_prototype.gif">View the GIF version of the guest checkout final prototype.</a>
+<a href="./ux_case_study_guest_checkout_prototype.gif">View the GIF version of the guest checkout final prototype.</a>
 </video>
 </span>
 </span>
@@ -499,7 +498,7 @@ The 4 segments were:
 
 <div class="container-wireflow">
 
-![Wireflow diagram of the membership sign up process.](./wire_flow_ana_offers_and_benefits.png "Wireflow diagram of the membership sign up process.")
+![Wireflow diagram of the membership sign up process.](./ux_case_study_wire_flow_ana_membership_sign_up.png "Wireflow diagram of the membership sign up process.")
 
 </div>
 
@@ -511,7 +510,7 @@ In order to design this checkout step I decided to do some research to find whic
 
 <div class="container-375">
 
-![Shipping information screen with optimized copy to avoid confusing users with the different shipping options.](./7_2_1_guest_checkout_shipping@2x.png "Shipping information screen with optimized copy to avoid confusing users with the different shipping options.")
+![Shipping information screen with optimized copy to avoid confusing users with the different shipping options.](./ux_case_study_shipping_methods_selection@2x.png "Shipping information screen with optimized copy to avoid confusing users with the different shipping options.")
 
 </div>
 
@@ -527,7 +526,7 @@ The diferent delivery methods were also designed following the recomendations of
 
 <div class="container-375">
 
-![Example of how not to label delivery methods. It’s not clear to the user which is the exact day the product would arrive.](./wireframe.png "Example of how not to label delivery methods. It’s not clear to the user which is the exact day the product would arrive.")
+![Example of how not to label delivery methods. It’s not clear to the user which is the exact day the product would arrive.](./ux_case_study_confusing_shipping_example.png "Example of how not to label delivery methods. It’s not clear to the user which is the exact day the product would arrive.")
 
 </div>
 
@@ -537,7 +536,7 @@ A label of “3-5 days” doesn’t take into consideration the processing time 
 
 <div class="container-375">
 
-![Example of a correct way to label delivery methods.](./wireframe.png "Example of a correct way to label delivery methods.")
+![Example of a correct way to label delivery methods.](./ux_case_study_correct_shipping_implementation_example.png "Example of a correct way to label delivery methods.")
 
 </div>
 
@@ -548,7 +547,7 @@ However, in order for the final date to be usefull to the user, it should take i
 
 <div class="container-375">
 
-![Example of a correct implementation of delivery methods from amazon.co.uk.](./wireframe.png "Example of a correct implementation of delivery methods from amazon.co.uk.")
+![Example of a correct implementation of delivery methods from amazon.co.uk.](./ux_case_study_amazon_shipping_example.png "Example of a correct implementation of delivery methods from amazon.co.uk.")
 
 </div>
 
@@ -558,10 +557,10 @@ However, in order for the final date to be usefull to the user, it should take i
 <span class="video-iphoneX--container">
 <span class="video-iphoneX--video">
 <video autoplay loop muted playsinline controls>
-<source src="./membership_offers_and_discounts_prototype.webm" type="video/webm">
-<source src="./membership_offers_and_discounts_prototype.mp4" type="video/mp4">
+<source src="./ux_case_study_membership_checkout_prototype.webm" type="video/webm">
+<source src="./ux_case_study_membership_checkout_prototype.mp4" type="video/mp4">
 Your browser does not support HTML5 video.
-<a href="./membership_offers_and_discounts_prototype.gif">View the GIF version of the seat choosing process prototype.</a>
+<a href="./ux_case_study_membership_checkout_prototype.gif">View the GIF version of the seat choosing process prototype.</a>
 </video>
 </span>
 </span>
