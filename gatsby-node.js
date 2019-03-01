@@ -230,12 +230,6 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create english pages
   await graphql(`{ ${gatsbyNodeQuery(enLocale)} }`).then((result) => {
-    if (result.errors) {
-      console.log(result.errors);
-    }
-
-    console.log(result.errors);
-
     const localeUrlPrefix = "/";
     const localeUrlWorkPrefix = "work";
     const paginationName = "page/";
@@ -539,10 +533,6 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create spanish pages
   await graphql(`{ ${gatsbyNodeQuery(esLocale)} }`).then((result) => {
-    if (result.errors) {
-      console.log(result.errors);
-    }
-
     const localeUrlPrefix = "/es/";
     const localeUrlWorkPrefix = "trabajos";
     const paginationName = "pagina/";
