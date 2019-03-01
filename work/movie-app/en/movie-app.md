@@ -1,262 +1,227 @@
 ---
-title: "Movie booking app"
-slug: "Movie app"
-snippet: "A case study on improving the experience of searching, finding and booking movies in a cinema."
+title: "Movie Booking App - UX Case Study"
+slug: "Movie Booking App UX Case Study"
+snippet: "A case study on improving the experience of searching, finding and booking movies using a User-Centered Design process."
 date: "2019-02-02"
 category: "work"
 tags:
-    - Lean UX
+    - Redesign
     - Checkout Optimization
 posted: true
 image: "./movie_app_presentation.png"
 locale: "en"
-twinPost: "Aplicación cine"
+twinPost: "Aplicación Cinema Estudio de Caso UX"
 ---
 
-I decided to design this app as each time I tried to find and book a movie, all the websites and apps that I used had outdated designs, no real benefit to their membership plans and very limited searching and filtering features.
-
-Therefore, I decided to see how I could improve the movie searching and booking experience.
-
-The app was design based on my personal assumptions, pain points and needs, so it would need to be validated with real user testing, to see if other users are having the same issues and if the design solutions created, help them achieve their end goals.
-
-To solve the different pain points the users were having and design the features to solve them, I decided to follow a modified version of Jeff Gothelf’s Lean UX process. Based on the initial assumptions, I made two proto-personas, Ana and Alex. Then, using the sub-hypothesis statements, I started working on a list of features that would serve each of their pain points and needs.
-
-**The final design includes:**
-
-* Advanced faceted search and filtering to allow users to find movies.
-* Save movies for later.
-* In-app movie reviews and ability to follow favorite reviewers.
-* Membership plans with multiple benefits.
-* Guest checkout experience.
-* Segmented, highly optimized checkout flow.
-
-<div class="toc">
-<h3 class="toc__title">Table of Contents</h3>
-<!-- TOC -->
-
-- [Previous Assumptions](#previous-assumptions)
-- [Proto–Personas](#protopersonas)
-- [User Stories](#user-stories)
-- [Lean UX sub-hypothesis statements](#lean-ux-sub-hypothesis-statements)
-- [Advanced Filtering and Searching](#advanced-filtering-and-searching)
-- [Read reviews and follow reviewers](#read-reviews-and-follow-reviewers)
-- [Save favorite movies](#save-favorite-movies)
-- [Movie booking guest checkout](#movie-booking-guest-checkout)
-
-<!-- /TOC -->
-</div>
-
-##Previous Assumptions
-
-* Users have difficulties searching and finding movies.
-* Users have to exit the app, or website, to read reviews for the movie they would like to watch.
-* They have difficulties viewing the movie trailers as they don’t always load correctly.
-* Users can’t purchase movie tickets without having to sign up, no guest checkout experience is available.
-* Users that like to watch many movies each month, feel that the tickets are too expensive.
-* The UI is overloaded with adds.
-* Main CTA’s don't stand out or are unclear to what will happen if they are pressed.
-
-Based on these assumptions I created two proto-personas to create the features that would solve their pain points and needs.
-
-##Proto–Personas
-
-###Ana
-
-She is a cinema enthusiast that would like to watch several movies each month without having to spend too much money. She doesn't mind signing up for a membership plan if it provides the right benefits to her.
+<div class="container-8col">
 
 <div class="container-8col">
 
-![Proto-Persona Ana](persona_ana.png "Proto-Persona Ana")
+##Overview
+
+This app is a personal project that I decided to create as each time I tried to see a movie using one of my local cinema's website or app, I found that they all had outdated designs limited functionalities that helped people decide which movie to see.
+
+Therefore, I decided to see how I could improve the experience of searching, finding and booking a movie using an iOS App.
+
+####Tools Used
+* Pen and paper
+* Sketch
+* InVision
+* Principle
+
+####Deliverables
+* Personas
+* Paper Prototype
+* Wireframes
+* Wireflow diagrams
+* Low-Fidelity prototype
+* High-fidelity prototype
+
+####Methods
+* Survey
+* User Interviews
+* Affinity Diagram
+* Problem Statements
+* HMW's
+* Feature Prioritization
+* MOSCOW
+* Crazy 8's
+
+####Prototypes
+
+* <a href="https://invis.io/N5OJ253T2PF" target="_blank" rel="noopener">InVision Low-Fidelity Prototype<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
+* <a href="https://invis.io/2DQQCS4PAYS" target="_blank" rel="noopener">InVision High-Fidelity Prototype<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
 
 </div>
 
-###Alex
+</div>
 
-He is in a crowded and noisy restaurant with his date and they decided they would like to see a movie tonight. They are not sure which movie they might like, so they need a way to search and filter movies, read reviews and book the tickets easily without wasting too much time.
+## Initial Problem Assumptions
+
+When I began working on this project I had some initial assumptions that I wanted to validate with user research to see if other people had the same problems and if they had other problems that I haven't identified yet.
+
+* **People think that ticket prices are too high if they would like to see several movies each month.**
+* **Current websites and apps have outdated, ugly, designs.**
+* **People don't have a way to search, filter or sort for movies in the app/website.**
+
+To validate my initial assumptions I used a survey and I interviewed 5 users.
+
+The initial research would also help me learn more about them and answer some of the questions that I had:
+
+## Previous Questions
+
+* How are people deciding which movie to see?
+* How are they finding out more about the movie they would like to see?
+* How many movies do they see each month?
+    * Why this many?
+* Do they prefer to see movies in a cinema or at home?
+    * Why?
+* How are they seeing the movies? Alone, with a date, in a group?
+    * Why?
+* Which difficulties are they having when:
+    * Searching for a cinema
+    * Searching for a movie to see
+    * Using the available websites to purchase movie tickets
+    * Selecting seats
+    * Buying and paying for the tickets
+
+## Survey Findings
+
+Based on the survey responses I found that:
+
+* **83% of people feel that prices are too high**
+* **78% of people use external websites or apps to learn more about a movie**
+* **62% of people decide with one or more persons which one to see**
+
+## User Interview Findings
+
+From the user interviews that I did,  I had the following insights:
+
+* **Movie ticket prices are too high.**
+* **Snacks are too expensive**
+* **Some of people interviewed prefer to bring their own snacks**
+* **They would consider seeing more movies if the cinema had offers or discounts**
+* **They think the overall design is pretty ugly**
+* **They use google o services such as imdb.com to learn more about each movie**
+* **They miss having a tool that shows them which movies are available on a particular time of day or on a specific day**
+* **They feel that they will be spammed when they have to sign up before paying for tickets**
+* **Information about the cinema is hard to find (the seats, services, etc)**
+
+## Affinity Diagram
+
+Based on the research findings, I created an Affinity Diagram to help me group the different takeaways I had from the research. From this I decided to work on the following:
+
+* **Searching and filtering movies**
+* **Checkout problems**
+* **Increase value to the user**
 
 <div class="container-8col">
 
-![Proto-Persona Alex](persona_alex.png "Proto-Persona Ana Alex")
+![Affinity Diagram used to group the findings from the user research.](wireframe.png "Affinity Diagram used to group the findings from the user research.")
 
 </div>
 
-The next step was to create the user stories for each of their main pain points.
 
-##User Stories
+## Problem Statements
+
+Based on the main groups of pain points from the Affinity Diagram, I created the following problem statements for each of the main Personas.
+
+>Users are currently having difficulties deciding which movie they would like to see.
+
+#####How Might We:
+
+**Improve our app so that we can help users decide which movie they would like to see faster?**
+
+>Users become frustrated when they have to create an account before they can make a purchase.
+
+#####How Might We:
+
+**Improve the checkout process so that users are less frustrated and they are able to make a purchase faster?**
+
+>Movie enthusiasts feel that ticket prices are too high, which is preventing them from being able to see as many movies as they would like to. 
+
+#####How Might We:
+
+**Improve the checkout process so that users are less frustrated and they are able to make a purchase faster?**
+
+##Personas
+
+My next step was to create the user personas, based on the research findings, to help me design the different features of the app. These feature were based on the different pain points each persona had, and the outcomes they were trying to achieve.
 
 ###Alex
 
-#####User Story
+He is trying to find a movie that he and his date might like to watch tonight. They are not movie experts and just want to watch a movie. In order to decide which one, they read movie reviews, watch movie trailers and compare several ones before making a final decision.
 
->“As a person on a date I want to be able to find a movie to watch tonight with my date, which we will both enjoy.”
+<div class="container-8col">
 
-#####User Need
+![The first Persona created based on the reseach findings, Alex](persona_alex.png "The first Persona created based on the reseach findings, Alex")
 
-**Search and find movies.**
-
-####Feature:
-
-* Advanced Filtering and Searching.
-
-#####User Need
-
-**Read reviews and follow favorite reviewers.**
-
-####Features:
-
-* Find, read and write reviews.
-* Follow favorite reviewers.
-
-#####User Need
-
-**Save his favorite movies for later.**
-
-####Feature:
-
-* Save favorite movies.
-
-#####User Need
-
-**Choose the best showtime and seats.**
-
-####Features:
-
-* See all the available seats for each movie session.
-* Interactive seat choosing interface.
-* See each theaters layout and where the seats are.
-
-#####User Story
-
->“As a user I need a fast and easy way to book a movie so that I can cary on with my date.”
-
-####Featuress:
-
-* Guest checkout with an option to create an account at the end.
-* Multiple payment options.
-* Biometric payment options using Apple Pay.
-* Segmented checkout.
+</div>
 
 ###Ana
 
-#####User Story
+She is a movie enthusiast that likes to watch several movies each month, however she feels current prices are too high and that cinemas aren’t valuing their most loyal customers.
 
->“As a cinema enthusiast, I need a membership plan with offers and discounts so that I can watch as many movies as I would like, without having to spend too much money.”
+<div class="container-8col">
 
-#####User Need
-
-**Membership plan with offers and discounts.**
-
-####Features:
-
-* Membership plan with offers and discounts.
-* Members only special movie screenings.
-
-#####User Need
-
-**Unlimited movie viewing each month.**
-
-####Features:
-
-* Membership plan with unlimited movie viewing each month.
-* Priority access to the cinema bar to avoid long queues.
-
-**To sum up, the main paint points these features are solving for the personas are:**
-
-* Offer a membership plan for users that would like to watch many movies. The plans should be based on a subscription model and offer unlimited movies, significant discounts, and several other benefits for the users. This way they will feel that the plans offer a decent value and are worth the investment. As an added benefit for cinema enthusiast, the plan would offer special preview screenings and a priority bar access to avoid long queues.
-* Create an easy to use and straightforward way of searching for movies, learning more about them and purchasing the tickets with having to register or spend too much time in the process.
-
-##Lean UX sub-hypothesis statements
-
-Following the next step in the Lean UX process, Jeff Gothelf recommends we create a sub-hypotheses features list to get a better picture of which persona each feature is serving.
-
-The sub-hypothesis statement definition:
-
->“We will create **this feature** for **this persona** in order to achieve **this outcome**.”
-
-So I began working on the sketches of how each feature could be designed. First I started with the user story of Alex and his need to search, filter and decide on a movie.
-
-##Advanced Filtering and Searching
-
-####Sub-hypothesis statement
-
-<span class="sub-hypothesis">We will create **an advanced searching and filtering feature** for **Alex** in order to **help him find a movie that he and his date would like to watch.**</span>
-
-One of the more challenging parts of the design of this app for me was how to implement the searching and filtering feature. The final design was the result of several trials and errors made before I decided on the final version.
-
-####First versions of the search, and filtering and sorting features
-
-Before I decided on the final version I tried several other ones, however, they all had their pros and cons.
-
-My first design of the nav bar included the search bar and the tabbed navigation which showed movies being screened during the day, week, upcoming or by how popular they were.
-
-<div class="container-12col">
-<div class="container-375">
-
-![The first version of the nav bar.](./nav_bars_3@2x.png "The first version of the nav bar.")
+![The second Persona created based on the reseach findings, Ana.](persona_ana.png "The second Persona created based on the reseach findings, Ana")
 
 </div>
-<div class="pros-cons">
-<div class="pros-cons__component">
 
-####Pros
+## Feature Prioritization
 
-* Search bar is always visible.
-* Users can easily see the movies which are playing today, this week, upcoming or by how popular they are.
+In order to decide which features to include in the initial MVP, I decided to use a Prioritizacion Matrix based on the value it would provide to the end-user and by how difficult it would be to create and then the MOSCOW method.
 
-</div>
-<div class="pros-cons__component">
+<div class="container-8col">
 
-####Cons
-
-* The filter and sort buttons are hidden behind the search bar. The user has to initiate the search by tapping the search button.
-* Once search is activated, the tabbed navigation is a duplicate of the filtering options available.
-* Do I show the tabbed navigation when filtering is open, or not? Will it confuse the user?
+![Feature Prioritization Matrix based on the value to the user and difficulty to implement.](wireframe.png "Feature Prioritization Matrix based on the value to the user and difficulty to implement.")
 
 </div>
-</div>
-</div>
 
-One of the biggest issues of this version for me was what happened if the user was on the Upcoming tab when Search was activated? Is the filtering, searching and sorting applied only on the results of the Upcoming tab, or are they applied on the entire list of movies the app has currently available?
+## MOSCOW Prioritization
 
-<div class="container-12col">
-<div class="container-375">
+In order to decide which features to include in the initial MVP, I decided to use a Prioritizacion Matrix based on the value it would provide to the end-user and by how difficult it would be to create and then the MOSCOW method.
 
-![Tabbed navigation hidden when search is activated.](./nav_bars_7@2x.png "Tabbed navigation hidden when search is activated.")
+<div class="container-8col">
 
-</div>
-<div class="container-375">
-
-![Tabbed navigation still shown. Is filtering applied only on this tab?](./nav_bars_5@2x.png "Tabbed navigation still shown. Is filtering applied only on this tab?")
+![MOSCOW method used to identify the main features to include in the MVP.](wireframe.png "MOSCOW method used to identify the main features to include in the MVP.")
 
 </div>
+
+##Selected Features for the MVP
+
+>We will create **an advanced search, filter and sort feature** for **Alex** in order to **help him decide which movie he would like to see faster**.
+
+>We will create **a optimized guest checkout experience** for **Alex** in order to **help him buy his movie ticket without any frustration**.
+
+>We will create **a membership plan** for **Ana** in order to **reduce the cost of seeing several movies a month for movie enthusiasts**.
+
+
+## Ideation
+
+I used the Crazy 8’s ideation method to help me find different solutions for each of the main features of the initial MVP.
+
+<div class="container-8col">
+
+![Crazy 8’s method used to sketch-out different solutions to the design problem.](wireframe.png "Crazy 8’s method used to sketch-out different solutions to the design problem.")
+
 </div>
 
-In order to try to solve this issue I removed the tabbed navigation and showed the filter and sort button all time, however when the search bar was activated and the user was typing, the sort and filter buttons had to move below it to make room for the larger search bar, which caused layout shifts or I had to leave extra room in the nav bar for when the search bar was active.
+## Movie Searching and Filtering
 
-So I had to keep searching for a better solution.
+The first feature I started working on was on the ability to search, filter and sort movies, which was designed to help users find a movie easier, using different filtering options, while also beeing able to sort the results based on several category specific criteria.
 
-<div class="container-12col">
-<div class="container-375">
+Most users had difficulties deciding which movie they would like to see, so I designed this feature to allow them to easily find a movie based on the movie’s genre, showtime, user reviews or length. This ways they didn’t have to use other products or services to learn more about the movies and compare them.
 
-![Showing the search bar, the filter and sort button at the same time.](./nav_bars_6@2x.png "Showing the search bar, the filter and sort button at the same time.")
-
-</div>
-<div class="container-375">
-
-![The Filter and Sort buttons have to move to make room for the search bar when it is active.](./nav_bars_4@2x.png "The Filter and Sort buttons have to move to make room for the search bar when it is active.")
-
-</div>
-</div>
-
-In order to find a better solution to this design problem, I decided to do some competitive analysis—even though most of the apps analyzed were not direct competitors—to see how other apps were solving this issue and what design patterns they were using.
+Before I started sketching the nav bar with the searching, filtering and sorting buttons, I decided to see which patterns were being used by other apps or websites that needed a similar feature.
 
 <div class="container-375">
 
-![Airbnb shows the options to choose dates and guests even when the search is not active.](./airbnb_nav_bar@2x.png "Airbnb shows the options to choose dates and guests even when the search is not active.")
+![Airbnb shows their filtering options even when search is not active.](./airbnb_nav_bar@2x.png "Airbnb shows their filtering options even when search is not active.")
 
 </div>
 
-The first design studied was how Airbnb was showing their buttons to choose the dates and guests when searching for a home. This way there is no need to hide the buttons behind the search bar.
+The first product I used for the comparison was Airbnb’s iOS app. One of the reasons for which I considered Airbnb’s design patterns for the searching feature was because their buttons for “Dates” and “Guests” are always visible bellow the search bar, therefore, their users can always see them and know where to find them.
 
 <div class="container-375">
 
@@ -264,9 +229,7 @@ The first design studied was how Airbnb was showing their buttons to choose the 
 
 </div>
 
-Asos.com shows their sort and filter buttons with a more visual weight that Airbnb, however, they show the search bar in a different screen. One of the benefits of the way Asos.com implements their sorting and filtering options is that it allows them to easily indicate if the sorting or filtering options are applied to remind the user that the results shown are being affected by them. 
-
-Another good design pattern used is indicating the number of available results the applied filters return.
+Asos.com’s sort and filter buttons have more visual weight that Airbnb’s ones, however, they were showing the search bar on a different screen. One of the benefits of the way Asos.com implements their sorting and filtering options is that it allows them to easily indicate which sorting or filtering options are applied to remind the user that the search results are being affected by them.
 
 <div class="container-375">
 
@@ -274,21 +237,29 @@ Another good design pattern used is indicating the number of available results t
 
 </div>
 
-Crutchfield.com’s website shows the search bar and sorting and filtering options at the same time, even though their sort and filter buttons are more separated from the search bar and don’t have the same visual weight as the Asos.com example.
+Crutchfield.com’s website shows the search bar and sorting and filtering options at the same time, even though their sort and filter buttons are more separated from the search bar and don’t have the same visual weight as the Asos.com example, which could cause their users to overlook them.
 
 <div class="container-375">
 
-![zalando.es features the most complete filtering and searching experience.](./zalando.png "zalando.es features the most complete filtering and searching experience.")
+![zalando.es offered the most complete filtering and searching experience.](./zalando.png "zalando.es offered the most complete filtering and searching experience.")
 
 </div>
 
-zalando.es features one of the best filtering experiences for their users.
-
-Besides always showing the filtering button, they also indicate their users which filtering options have been activated. Furthermore, users are also able to remove individual filters without having to open the filtering menu again.
+zalando.es had a more complete searching and filtering experience for their users. Besides always showing the filtering button, they also indicate which filtering options have been activated. Furthermore, users are also able to remove individual filters without having to open the filtering menu again.
 
 A “clear all filters” button is also used to allow their users to easily clear all the current filters applied.
 
-###The final version
+## Low-Fidelity Prototype
+
+Once I did the initial competitive research to see which were the currently used design patterns, I began working on the low-fidelity prototype of the movie searching, filtering and sorting feature for the MVP.
+
+<div class="container-8col">
+
+![Low-Fidelity prototype of the movie searching, filtering and sorting feature.](wireframe.png "Low-Fidelity prototype of the movie searching, filtering and sorting feature.")
+
+</div>
+
+###Movie searching and filtering final version
 
 <div class="container-12col">
 <div class="container-375">
@@ -303,43 +274,23 @@ A “clear all filters” button is also used to allow their users to easily cle
 </div>
 </div>
 
-The final version included with the app had all the features I needed and none of the disadvantages.
+For the final version of the searching, filtering and sorting feature, I decided to use a combination of the different design patterns mentioned above, which allowed me to include a full-width search bar without having to hide the filter and sort buttons. This design also allowed me to clearly indicate their current state and to allow the users to easily remove any filters applied.
 
-I decided to use a combination of the different design patterns mentioned above, which allowed me to include a full-width search bar, always visible filter and sort buttons and applied filters.
-
-Another benefit of using this approach is that users can apply different filters to improve their search, without having mutually exclusive options, as the <a href="https://baymard.com/blog/allow-applying-of-multiple-filter-values" target="_blank" rel="noopener">Baymard Institute recomends<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> in their article on E-Commerce UX, where they found that 45% of the users tested, tried to apply multiple filters at some point.
+The filtering options were designed in a way that users could apply different filters to improve their search, without having mutually exclusive options, as the <a href="https://baymard.com/blog/allow-applying-of-multiple-filter-values" target="_blank" rel="noopener">Baymard Institute recomends<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> in their article on E-Commerce UX, where they found that 45% of the users tested, tried to apply multiple filters at some point.
 
 By using checkbox style buttons for the filters, users can easily enable and disable filtering options, which don’t have to depend on each other.
 
-###Filtering options final prototype
+### Movie searching and filtering wireflow diagram
 
-<figure>
-<span class="video-iphoneX--container">
-<span class="video-iphoneX--video">
-<video autoplay loop muted playsinline controls>
-<source src="./movie_filtering_prototype.webm" type="video/webm">
-<source src="./movie_filtering_prototype.mp4" type="video/mp4">
-Your browser does not support HTML5 video.
-<a href="./movie_filtering_prototype.gif">View the gif version of the movie filtering interaction prototype.</a>
-</video>
-</span>
-</span>
-<figcaption>The final prototype and design of the movie filtering interaction.</figcaption>
-</figure>
+<div class="container-wireflow">
 
-###Sorting options
-
-Another important part of the movie finding experience I studied was the sorting functionality. Besides the normal sorting options of “Price Low to High” or “Rating” I decided to improve the sorting experience by using category-specific sorting options. The Baymard Institute encourages designers should provide category-specific <a href="https://baymard.com/blog/category-specific-sorting/" target="_blank" rel="noopener">sorting options<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> to allow their users improve the results they see by using category-specific options such as—in my case—Popularity (the most booked movies), or by user rating (the highest rated movies first).
-
-<div class="container-375">
-
-![Sorting modal with category-specific options.](./sort_modal@2x.png "Sorting modal with category-specific options.")
+![Wireflow diagram of the movie searching and filtering experience.](./wire_flow_alex_search_and_filter.png "Wireflow diagram of the movie searching and filtering experience.")
 
 </div>
 
-By using a combination of the mutually exclusive filters and the enhanced sorting with category-specific options, users can easily find the movies that best suits their personal needs and tastes.
+## Movie searching and filtering prototypes
 
-###Movie searching
+###Movie Searching Prototype
 
 The searching experience was designed to show in real time the number of results the query typed by the user has, as well as showing only the relevant results.
 
@@ -354,194 +305,64 @@ Your browser does not support HTML5 video.
 </video>
 </span>
 </span>
-<figcaption>The final prototype and design of the movie searching experience.</figcaption>
+<figcaption>High fidelity prototype of the movie searching feature.</figcaption>
 </figure>
 
-###Movie searching and filtering wireflow diagram
 
-<div class="container-wireflow">
-
-![Wireflow diagram of the movie searching and filtering experience.](./wire_flow_alex_search_and_filter.png "Wireflow diagram of the movie searching and filtering experience.")
-
-</div>
-
-##Read reviews and follow reviewers
-
-####Sub-hypothesis statement
-
-<span class="sub-hypothesis">We will create **in app movie reviews** for **Alex** in order for **him to be able to read reviews other users have made.**</span>
-
-Users can read reviews of the movies they might like to watch directly in the app without having to look for them on Google. They can also follow a reviewer and see all the other reviews the reviewer has made, by opening the reviewer's profile.
-
-By allowing users to read reviews made by others, the principle of social validation is used which increases their confidence in whether they would enjoy the movie or not.
-
-###Reading reviews prototype
+### Movie Filtering Prototype
 
 <figure>
 <span class="video-iphoneX--container">
 <span class="video-iphoneX--video">
 <video autoplay loop muted playsinline controls>
-<source src="./movie_reviews_prototype.webm" type="video/webm">
-<source src="./movie_reviews_prototype.mp4" type="video/mp4">
+<source src="./movie_filtering_prototype.webm" type="video/webm">
+<source src="./movie_filtering_prototype.mp4" type="video/mp4">
 Your browser does not support HTML5 video.
-<a href="./movie_reviews_prototype.gif">View the GIF version of the movie review and following a reviewer prototype.</a>
+<a href="./movie_filtering_prototype.gif">View the gif version of the movie filtering interaction prototype.</a>
 </video>
 </span>
 </span>
-<figcaption>The final prototype and design of reading a movie review and following a reviewer.</figcaption>
+<figcaption>High fidelity prototype of the movie filtering feature.</figcaption>
 </figure>
 
-##Save favorite movies
-
-####Sub-hypothesis
-
-<span class="sub-hypothesis">We will create **a save favorite movies feature** for **Alex** so that he can **save his favorite movies for later.**</span>
-
-Users can save their favorite movies for later, in the app, so that they can have a list of the movies they would like to see. They can save the movie in any of the movie listing screens or within the movie details page. Once users have saved a movie, they can check their personal list of movies on their account page.
-
-<div class="container-12col">
-<div class="container-375">
-
-![The user can save his favorite movies either from the movie listing screens or from the movie details screen.](./1_0_showtimes@2x.png "The user can save his favorite movies either from the movie listing screens or from the movie details screen.")
-
-</div>
-<div class="container-375">
-
-![Saving a movie as a favorite from the movie details screen.](./5_2_choose_session_nav_bar@2x.png "Saving a movie as a favorite from the movie details screen.")
-
-</div>
-<div class="container-375">
-
-![List of the movies a user has marked as his favorite.](./4_10_saved_movies@2x.png "List of the movies a user has marked as his favorite.")
-
-</div>
-</div>
-</div>
-
-###Saving a favorite movie and reading reviews wireflow diagram
-
-<div class="container-wireflow">
-
-![Wireflow diagram of saving a favorite movie and reading reviews.](./wire_flow_alex_save_favorite_movie_and_reviews.png "Wireflow diagram of saving a favorite movie and reading reviews.")
-
-</div>
-
-###Choose movie session and seats.
-
-####Sub-hypothesis
-
-<span class="sub-hypothesis">We will create **a seat choosing feature** for **Alex** so that he can **see which seats are best and book them.**</span>
-
-###Choosing a movie session
-
-Once users have decided which movie they would like to see, they can filter the available showtimes by the day or the time the movie is playing or by the type of viewing experience, such as IMAX, 3D, 4D, etc.
-
-After that, users can then choose the exact movie session. When choosing a showtime, users will be able to see how many available seats are left for each of the sessions to decide whether they should hurry or not to buy the seats if not many are left.
-
-<div class="container-375">
-
-![Users can choose a movie session by type of experience, by day, by the time of day and see how many seats are available in each session.](./5_2_choose_session@2x.png "Users can choose a movie session by the type of experience, by day, by time of day and see how many seats are available in each session.")
-
-</div>
-
-###Choose movie seats
-
-The seat choosing process has been another part of the app's design where I had to try several versions before I decided on the final one.
-
-###The initial version
-
-In the first version of the design, I tried to pack all of the different seats a movie theater might have, however, I soon realized that this layout isn’t always the same and most cinemas have small and large rooms with many more seats than this approach has.
-
-Another issue I had was that the tap sizes were not large enough to meet the iOS requirements of 44pt or the Android ones of 48pt. 
-
-When the user tried to choose a seat, he might accidentally choose one next to the seat he is trying to pick, so I had to increase the size of the seats in order to have large enough tap sizes.
-
-<div class="container-12col">
-<div class="container-375">
-
-![The initial version of the seat choosing process where the tap size wasn’t large enough.](./movie_seats_1@2x.png "The initial version of the seat choosing process where the tap size wasn’t large enough.")
-
-</div>
-<div class="pros-cons">
-<div class="pros-cons__component">
-
-####Pros
-
-* All of the cinema's seats are always visible.
-* Can easily indicate which seats have been chosen.
-* Fits up to 20 or more chosen seats at the same time without clipping.
-
-</div>
-<div class="pros-cons__component">
-
-####Cons
-
-* Not a realistic seat layout and theater floor plan.
-* Tap size isn’t large enough.
-* Users might select the wrong seat due to the small tap size.
-
-</div>
-</div>
-</div>
-
-###The improved version
-
-In order to solve the issues of the initial design, I increased the padding between each of the seats and the size of each of them to have a larger and more appropriate tap size.
-
-In order to solve the issue of the layout not being realistic, I decided to use a scrolling seat floor plan with a mini-map in the bottom of the screen, where the user could get an idea of the general location of the current view inside the theater's room.
-
-This approach solved most of the issues I had with the initial one, and also allowed me to show a large number of selected seats the user has chosen, as not every purchase is going to be a 2 seat purchase for a couple. A group of friends of 6 or more people might also want to watch a movie, so I had to think of a way to show more than 2 or 3 chosen seats at the same time.
-
-<div class="container-375">
-
-![The final version of the seat choosing process with a mini–map and scolling seat interface.](./movie_seats_2@2x.png "The final version of the seat choosing process with a mini–map and scolling seat interface.")
-
-</div>
-
-###The final prototype
+### Movie Seat Choosing Prototype
 
 <figure>
 <span class="video-iphoneX--container">
 <span class="video-iphoneX--video">
 <video autoplay loop muted playsinline controls>
-<source src="./choosing_seats_prototype.webm" type="video/webm">
-<source src="./choosing_seats_prototype.mp4" type="video/mp4">
+<source src="./movie_filtering_prototype.webm" type="video/webm">
+<source src="./movie_filtering_prototype.mp4" type="video/mp4">
 Your browser does not support HTML5 video.
-<a href="./choosing_seats_prototype.gif">View the GIF version of the seat choosing process prototype.</a>
+<a href="./movie_filtering_prototype.gif">View the gif version of the movie filtering interaction prototype.</a>
 </video>
 </span>
 </span>
-<figcaption>The final version of the seat choosing process with a mini-map and scrolling seat interface.</figcaption>
+<figcaption>High fidelity prototype of the seat choosing process with a mini–map and scrolling seat interface.</figcaption>
 </figure>
 
-##Movie booking guest checkout
 
-###Sub-hypothesis statement
+## Movie booking guest checkout
 
-<span class="sub-hypothesis">We will create **a guest checkout flow** for **Alex** in order for him to be able to **purchase movie tickets without having to create an account**.<span>
+The second most important feature of this app was the guest checkout user flow.
 
-One of the most important parts of this project was how to design the checkout flow in a way that reduces the perceived friction to a minimum and allows the users to complete the purchase as fast as possible.
+One of the most important issues people had in the interviews was that they didn’t like the fact that they have to register before beying able to pay for a movie ticket. Most of them felt that they would receive allot of spam, especially if the overall design of the website/app wasn’t really up-to-date.
 
-####The main optimizations made to the checkout flow are:
+Even though guest checkout flow’s are usually designed for users which don’t have an account, they are also particularly useful for users that might have forgotten their password and just don’t want to go through the password-reset-process at that moment.
 
-* Segmented checkout flow.
-* Guest checkout flow for all users, registered or not.
-* Ability to create an account in the order confirmation page.
-* Fewer form fields, only require the necessary ones.
-* Single form field for the user’s name.
-* Explain why information is required.
-* Multiple payment options, third–party and biometric.
-* Always visible—and detailed—order summary.
-* A detailed breakdown of the previous steps in the checkout.
-* Offer store pick–up as a shipping option.
-* Address auto-completion.
-* Billing address defaults to billing.
-* Optional form fields behind a link.
-* Country and city detection from the zip code (with manual override if the autocompletion fails).
-* Respect the “back button” mental model.
-* Correct usage of the different mobile keyboards.
+## Low-Fidelity Prototype
 
-###Movie booking guest checkout flow
+After some initial research for best practices when creating a guest checkout experience, I started working on the low-fidelity wireframes for the prototype.
+
+<div class="container-8col">
+
+![Low-Fidelity prototype of the guest checkout feature.](wireframe.png "Low-Fidelity prototype of the guest checkout feature.")
+
+</div>
+
+## Guest Checkout Flow Improvements
+
+### Delayed account creation
 
 <div class="container-12col">
 <div class="container-375">
@@ -552,33 +373,23 @@ One of the most important parts of this project was how to design the checkout f
 <div class="pros-cons">
 <div class="pros-cons__component">
 
-The first checkout optimization made was allowing the users to continue the checkout as a guest. According to the research made by the Baymard Institute, <a href="https://baymard.com/blog/delayed-account-creation" target="_blank" rel="noopener">up to 37% of the users tested<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>, would abandon the checkout if they were forced to create an account. 
+#### Guest checkout as an option for all users
 
-Guest checkout experiences are also helpful to registered users who might have forgotten their passwords, which according to the same research, causes up to 19% of all users to abandon the checkout process.
+Research has found that <a href="https://baymard.com/blog/delayed-account-creation" target="_blank" rel="noopener">up to 37% of the users tested<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>, would abandon the checkout if they were forced to create an account. Guest checkout experiences are also helpful to registered users who might have forgotten their passwords, which according to the same research, causes up to 19% of all users to abandon the checkout process.
 
-By having to create an account first, users will have a general perceived friction which they will feel during the entire process as they will think that the rest of the form fields are related to the account creation step, even though it is only one extra form field (password).
+#### Delayed account creation
 
-Designers should also let their users know that they can still create an account at the end of the checkout flow if they would like to do so.
+Designers should let their users know that they can still create an account at the end of the checkout flow if they would like to do so.
 
-Also, according to the research by the Baymard Institute, privacy-concerned users <a href="https://baymard.com/blog/checkout-experience-seemingly-unnecessary-information" target="_blank" rel="noopener">are less reluctant to share<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> their personal information, such as their phone number or email address, if we explain why we are asking for it.
+#### Explain why information is needed
 
-</div>
-</div>
-</div>
-
-###Delayed account creation
-
-<div class="container-375">
-
-![Users can sign in to use their saved personal information or as a guest, when booking a movie.](./5_5_3_guest_order_confirmation@2x.png "Users can sign in to use their saved personal information or as a guest, when booking a movie.")
+According to the same research, privacy-concerned users are less reluctant to share their personal information, such as their phone number or email address, if we explain why we are asking for it.
 
 </div>
+</div>
+</div>
 
-###Guest checkout payment methods
-
-The different payment methods the app accepts are presented using 3 buttons placed next to each other, following recommendations from the research findings of the Baymard Institute. <a href="https://baymard.com/blog/payment-method-selection" target="_blank" rel="noopener">According to their research<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>, payment methods should be placed together in close proximity (Gestalt principles would help here) so that users can easily compare them with a single glance and see which one is currently active. Users should also be able to compare the different costs associated to each payment method—if they apply—such as a 2% fee when using a particular payment type. 
-
-Designers should also choose by default the most popular payment method in their country or region, to speed up the process for the user and nudge their users towards the payment method they would have chosen anyway.
+### Guest checkout payment methods
 
 <div class="container-12col">
 <div class="container-375">
@@ -586,24 +397,57 @@ Designers should also choose by default the most popular payment method in their
 ![Guest checkout with the order summary and available payment methods.](./5_5_1_guest_checkout@2x.png "Guest checkout with the order summary and available payment methods.")
 
 </div>
+<div class="pros-cons">
+<div class="pros-cons__component">
+
+#### Payment methods placed in close proximity
+
+The different payment methods the app accepts are presented using 3 buttons placed next to each other, following the <a href="https://baymard.com/blog/payment-method-selection" target="_blank" rel="noopener">recommendations of the research<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> made by the Baymard Institute. According to their research, payment methods should be placed together in close proximity (Gestalt principles would help here) so that users can easily compare them with a single glance and see which one is currently active.
+
+Users should also be able to compare the different costs associated to each payment method—if they apply—such as a 2% fee when using a particular payment type. 
+
+</div>
+</div>
+</div>
+
+### Optimizing the payment form
+
+<div class="container-12col">
+
 <div class="container-375">
 
 ![Guest checkout with credit card form interaction.](./5_5_2_payment_selected@2x.png "Guest checkout with credit card form interaction.")
 
 </div>
+
+<div class="pros-cons">
+<div class="pros-cons__component">
+
+#### Insert spaces every 4 digits
+
+The input field for the credit card number was designed to auto insert spaces every 4 digits (for Visa cards, others may differ), as research has found that <a href="https://baymard.com/blog/credit-card-field-auto-format-spaces" target="_blank" rel="noopener">as many as 23% of the users tested<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> would double check the card numbers they typed in groups of 4 digits by manually inserting spaces, so that they are able to easily read and verify the number.
+
+Furthermore, a simple <a href="https://gist.github.com/DiegoSalazar/4075533" target="_blank" rel="noopener">Luhn validation script<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> could be used to check if the card number is valid.
+
+#### Match the printed format of the expiration date
+
+The expiration date input field was designed to match the physical layout and format of “MM/YY” found on most credit cards. Research has shown that most users will try to follow the same format printed on the card when typing the number. Therefore, forms should be designed in a way that they respect the physical format found on credit cards.
+
+Form fields used for credit cards should also use input masks that auto-insert a forwards slash character after the MM in the expiration date and of course, use the appropiate keyboard type for each input field.
+
+</div>
+</div>
 </div>
 
-In order to design the credit card form, several best practices were used.
+### Order confirmation with option to sign up
 
-The input field for the credit card number was designed to auto insert spaces every 4 digits (when Visa cards are used, others differ), as most users double check the card numbers they typed using groups of 4 digits or they insert spaces manually to be able to easily read and verify the number. Research has shown that <a href="https://baymard.com/blog/credit-card-field-auto-format-spaces" target="_blank" rel="noopener">as many as 23% of the users tested<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> would insert spaces every 4 digits, therefore, credit card forms should allow the users to insert spaces—or better yet, auto-insert them— without causing any validation errors. Furthermore, a simple <a href="https://gist.github.com/DiegoSalazar/4075533" target="_blank" rel="noopener">Luhn validation script<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> could be used to check if the card number is valid.
+<div class="container-375">
 
-Another best practice used was to recognize the credit card type from the number the user has typed, this way we don’t need to add another form field for it.
+![Users can sign in to use their saved personal information or as a guest, when booking a movie.](./5_5_3_guest_order_confirmation@2x.png "Users can sign in to use their saved personal information or as a guest, when booking a movie.")
 
-The expiration date input field was designed to match the physical layout and format of “MM/YY” found on most credit cards. Research has shown that <a href="https://baymard.com/blog/how-to-format-expiration-date-fields" target="_blank" rel="noopener">most users will try to follow the same format<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> printed on the card when typing the number. Therefore, forms should be designed in a way that they respect the physical format found on credit cards.
+</div>
 
-Form fields used for credit cards should also use input masks that auto-insert a forwards slash character after the MM in the expiration date.
-
-###Movie booking guest checkout wireflow diagram
+### Guest checkout wireflow diagram
 
 <div class="container-wireflow">
 
@@ -611,7 +455,7 @@ Form fields used for credit cards should also use input masks that auto-insert a
 
 </div>
 
-###Guest checkout prototype
+### Guest checkout high-fidelity prototype
 
 <figure>
 <span class="video-iphoneX--container">
@@ -627,11 +471,87 @@ Your browser does not support HTML5 video.
 <figcaption>The final prototype of the guest checkout process.</figcaption>
 </figure>
 
-##Membership plan with offers and discounts.
+## Membership plan
 
-In order to respond to the user need of the proto-persona Ana, I decided to create a membership plan that had several discounts and benefits. There are two different plans, based on a monthly or yearly rate, which include unlimited movies viewing each month and discounts when buying snacks or tickets. 
+One of the main reason why I decided to design this app was that most of the cinemas that I used to go to didn’t really have any decent membership plans that would provide any decent value. 
 
-###Membership plan with offers and discounts prototype
+Most of them gave a point for each euro spent, which users could collect, and when they reached a number of points (100 points, more or less) they could exchange them for a movie ticket. 
+
+Considering that a normal ticket usually costs between 5 and 7 euros, people needed to spend about 100 euros before they could get a free ticket, so it’s not really worth it.
+
+This feature of the app was my atempt to see how the experience could be improved in a way that users would actually feel that it actually provides any real value.
+
+Furthermore, based on the findings in the user interviews, my assumptions that most users found the prices to be expensive were validated, so I began working on a solution.
+
+### Designing the membership plan sign up
+
+The sign flow for the membership plan was divided into 4 segments to avoid overwhelming the users with too many form fields at once.
+
+The 4 segments were:
+
+* **Contact details**
+* **Shipping information**
+* **Payment information**
+* **Finished (confirmation screen)**
+
+### Membership sign up wireflow diagram
+
+<div class="container-wireflow">
+
+![Wireflow diagram of the membership sign up process.](./wire_flow_ana_offers_and_benefits.png "Wireflow diagram of the membership sign up process.")
+
+</div>
+
+### Shipping information optimizations
+
+The shipping information step was needed so that users could receive a copy of their membership card.
+
+In order to design this checkout step I decided to do some research to find which are the UX best practices of designing a Shipping Information checkout step.
+
+<div class="container-375">
+
+![Shipping information screen with optimized copy to avoid confusing users with the different shipping options.](./7_2_1_guest_checkout_shipping@2x.png "Shipping information screen with optimized copy to avoid confusing users with the different shipping options.")
+
+</div>
+
+#### No hidden fees
+
+Hidden charges and delivery costs were found to be one of the main reasons why customers decide to abandon a checkout, so I decided to clearly indicate all the delivery costs the users might have to pay.
+
+#### Store pick-up and delivery methods
+
+Reseach has found that when the store pick-up option isn’t listed next to the other delivery methods, users will miss it and won’t be able to compare if the extra cost of paying the extra 2 or 3 euros for a faster delivery method, would be worth it.
+
+The diferent delivery methods were also designed following the recomendations of another study which found that when using labels such as 2 Days Express or 1 Day Premium users would be confused of the exact date they would receive the product.
+
+<div class="container-375">
+
+![Example of how not to label delivery methods. It’s not clear to the user which is the exact day the product would arrive.](./wireframe.png "Example of how not to label delivery methods. It’s not clear to the user which is the exact day the product would arrive.")
+
+</div>
+
+By using labels like these, users are forced to have to personally calculate the day in which the product would arrive.
+
+A label of “3-5 days” doesn’t take into consideration the processing time each order might need, the daily cut off time, such as: orders after 4pm will be sent the following day, or if the user chooses a 1 Day Premium  shipping option on a friday, which would mean that the order is shipped monday, ultimately making it a 3 day shipping method with a premium cost.
+
+<div class="container-375">
+
+![Example of a correct way to label delivery methods.](./wireframe.png "Example of a correct way to label delivery methods.")
+
+</div>
+
+By using labels such as “Arrives by“ or “Get it by”, users would take the delivery date as a promise which would increase their confidence when they have have to decide if the extra cost of a premium delivery is worth it.
+
+However, in order for the final date to be usefull to the user, it should take into account all the necesary factors such as order cut of time, the current time and date or the delivery estimate of the shipping company.
+
+
+<div class="container-375">
+
+![Example of a correct implementation of delivery methods from amazon.co.uk.](./wireframe.png "Example of a correct implementation of delivery methods from amazon.co.uk.")
+
+</div>
+
+### Membership sign up high fidelity prototype
 
 <figure>
 <span class="video-iphoneX--container">
@@ -647,38 +567,6 @@ Your browser does not support HTML5 video.
 <figcaption>Membership plan with offers and discounts final prototype.</figcaption>
 </figure>
 
-###Membership plan with offers and discounts wireflow diagram
+## Next Steps
 
-<div class="container-wireflow">
-
-![Wireflow diagram of membership plan with offers and discounts.](./wire_flow_ana_offers_and_benefits.png "Wireflow diagram of membership plan with offers and discounts")
-
-</div>
-
-##Membership plan sign up process
-
-After creating the different membership plans I began working on the sign-up flow for the membership plans. It included a segmented checkout flow divided into 4 parts:
-
-* Account creation
-* Shipping information
-* Payment information
-* Order confirmation
-
-The process was divided into 4 parts to avoid showing on the same screen too many form fields and leading to choice paralysis. This way the form had a linear process which respected the mental model of moving backward on each step when the user wanted to modify any information added.
-
-<div class="container-12col">
-<div class="container-375">
-
-![The first step in the membership sign up process.](./7_2_guest_checkout_details_added@2x.png "The first step in the membership sign up process.")
-
-</div>
-<div class="pros-cons">
-<div class="pros-cons__component">
-
-The first step in the membership sign up process was collection the user's personal information, such as the email address, phone number, full name, and password. The user could also log in if he/she already had an account previously to use the saved personal information.
-
-The form fields used are implemented using the correct keyboards for each type of data.
-
-</div>
-</div>
-</div>
+#### DUNNOO

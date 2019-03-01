@@ -47,7 +47,7 @@ const StyledHeader = styled.header`
     border-left: 8px solid ${theme.colors.main600};
     padding: ${rem(32)} ${rem(48)};
     margin-top: 0;
-    margin-bottom: ${rem(32)};
+    margin-bottom: 0;
     ${theme.shadow.default};
   `};
 
@@ -89,6 +89,11 @@ const CaseStudyImgWrapper = styled.div`
   max-width: ${theme.contain.inner.col8};
   margin-left: auto;
   margin-right: auto;
+
+  ${mediaMin.l`
+    margin-top: ${rem(64)};
+    margin-bottom: ${rem(64)};
+  `};
 `;
 
 const PostContent = styled.section`
