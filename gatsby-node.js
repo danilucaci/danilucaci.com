@@ -20,7 +20,7 @@ exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions;
 
   return new Promise((resolve) => {
-    // First delete the one made by gatsby
+    // First delete the page made by gatsby
     deletePage(page);
 
     Object.keys(locales).map((locale) => {
@@ -213,6 +213,18 @@ exports.setFieldsOnGraphQLNodeType = ({ type, actions }) => {
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
+  // Template Pages Path
+  const blogTemplate = path.resolve("src/templates/blog.js");
+  const postTemplate = path.resolve("src/templates/post.js");
+  const tagTemplate = path.resolve("src/templates/tag.js");
+  const workTemplate = path.resolve("src/templates/work.js");
+  const caseStudyTemplate = path.resolve("src/templates/caseStudy.js");
+  const legalTemplate = path.resolve("src/templates/legal.js");
+
+  // Controls
+  // Limit of posts to show per paginated page
+  const postsPerPage = 5;
+
   Object.keys(locales).map((locale) => {
     let localeUrlPrefix = "/";
     let localeUrlWorkPrefix = "work";
@@ -224,23 +236,15 @@ exports.createPages = ({ graphql, actions }) => {
       paginationName = "pagina/";
     }
 
-    return graphql(`
-          {
-            ${gatsbyNodeQuery(locale)}
-          }
-        `).then((result) => {
+    return graphql(` 
+      { 
+        ${gatsbyNodeQuery(locale)} 
+      } 
+    `).then((result) => {
       if (result.errors) {
         console.log(result.errors);
         reject(result.errors);
       }
-
-      // Template Pages Path
-      const blogTemplate = path.resolve("src/templates/blog.js");
-      const postTemplate = path.resolve("src/templates/post.js");
-      const tagTemplate = path.resolve("src/templates/tag.js");
-      const workTemplate = path.resolve("src/templates/work.js");
-      const caseStudyTemplate = path.resolve("src/templates/caseStudy.js");
-      const legalTemplate = path.resolve("src/templates/legal.js");
 
       // Data Sources
       // Blog
@@ -254,10 +258,6 @@ exports.createPages = ({ graphql, actions }) => {
       // Work / case studies
       const totalCountWork = result.data.work.totalCount;
       const edgesWork = result.data.work.edges;
-
-      // Controls
-      // Limit of posts to show per paginated page
-      const postsPerPage = 5;
 
       // Total amount of paginated pages with 5 posts each
       // amount of pages in the blog / 5
