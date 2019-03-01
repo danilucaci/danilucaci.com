@@ -125,6 +125,28 @@ const GlobalHTML = createGlobalStyle`
     }
   }
 
+  h5 {
+    color: ${theme.colors.dark700};
+    display: block;
+    text-transform: uppercase;
+    font-size: ${theme.fontSizes.sectionHeaderS};
+    line-height: ${theme.lineHeights.sectionHeaderS};
+    letter-spacing: ${theme.letterSpacing.sectionHeaderS};
+
+    font-weight: 700;
+    font-style: normal;
+
+    .fonts-loaded & {
+      font-family: ${theme.fonts.header};
+    }
+
+    ${mediaMin.s`
+      font-size: ${theme.fontSizes.sectionHeaderXL};
+      line-height: ${theme.lineHeights.sectionHeaderXL};
+      letter-spacing: ${theme.letterSpacing.sectionHeaderXL};
+    `}
+  }
+
   
   h2,
   h3,
