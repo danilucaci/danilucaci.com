@@ -29,10 +29,9 @@ import {
   selectDummyNodeToCopy,
   textPassiveEventSupport,
 } from "../helpers/helpers";
-import intlMessages from "../i18n/i18n";
 
 const PostWrapper = styled.article`
-  max-width: ${theme.contain.wrapper.col8};
+  max-width: ${theme.contain.wrapper.col10};
   margin-left: auto;
   margin-right: auto;
 
