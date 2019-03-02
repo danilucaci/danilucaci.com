@@ -20,7 +20,22 @@ import AuthorCard from "../components/AuthorCard/AuthorCard";
 
 import { calculateScroll, textPassiveEventSupport } from "../helpers/helpers";
 
-const ArticleWrapper = styled.article``;
+const ArticleWrapper = styled.article`
+  & footer {
+    @media screen and (max-width: ${theme.breakpoints.s}) {
+      margin-left: ${theme.gutters.s};
+      margin-right: ${theme.gutters.s};
+      width: auto;
+    }
+
+    @media screen and (min-width: ${theme.breakpoints
+        .s}) and (max-width: ${theme.breakpoints.xxl}) {
+      margin-left: ${theme.gutters.m};
+      margin-right: ${theme.gutters.m};
+      width: auto;
+    }
+  }
+`;
 
 const StyledHeader = styled.header`
   max-width: ${theme.contain.inner.col10};
@@ -186,6 +201,14 @@ const OverviewListLink = styled.a`
 
 const PostContent = styled.section`
   display: block;
+
+  padding-left: ${theme.gutters.s};
+  padding-right: ${theme.gutters.s};
+
+  ${mediaMin.s`
+    padding-left: ${theme.gutters.m};
+    padding-right: ${theme.gutters.m};
+  `};
 
   max-width: ${theme.contain.inner.col6};
   margin-left: auto;
