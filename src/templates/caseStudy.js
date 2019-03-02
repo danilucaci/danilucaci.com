@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import styled from "styled-components";
 // import rehypeReact from "rehype-react";
+import { FormattedMessage } from "react-intl";
 
 import { theme, rem, mediaMin, mediaMax } from "../theme/globalStyles";
 import SEO from "../components/SEO/SEO";
@@ -17,15 +18,12 @@ import { HR } from "../components/HR/HR";
 import SiblingPosts from "../components/SiblingPosts/SiblingPosts";
 import AuthorCard from "../components/AuthorCard/AuthorCard";
 
-import {
-  calculateScroll,
-  textPassiveEventSupport,
-  validate_luhn,
-} from "../helpers/helpers";
-import intlMessages from "../i18n/i18n";
+import { calculateScroll, textPassiveEventSupport } from "../helpers/helpers";
 
-const ArticleWrapper = styled.article`
-  max-width: ${theme.contain.wrapper.col10};
+const ArticleWrapper = styled.article``;
+
+const StyledHeader = styled.header`
+  max-width: ${theme.contain.inner.col10};
   margin-left: auto;
   margin-right: auto;
 
@@ -36,9 +34,7 @@ const ArticleWrapper = styled.article`
     padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
 `};
-`;
 
-const StyledHeader = styled.header`
   margin-top: ${rem(16)};
   margin-bottom: ${rem(16)};
 
@@ -94,6 +90,98 @@ const CaseStudyImgWrapper = styled.div`
     margin-top: ${rem(64)};
     margin-bottom: ${rem(64)};
   `};
+`;
+
+const OverviewContainer = styled.div`
+  background-color: ${theme.colors.sectionBackground};
+  width: 100%;
+
+  padding-left: ${theme.gutters.s};
+  padding-right: ${theme.gutters.s};
+  padding-top: ${rem(32)};
+  padding-bottom: ${rem(32)};
+
+  ${mediaMin.s`
+    padding-left: ${theme.gutters.m};
+    padding-right: ${theme.gutters.m};
+  `};
+
+  margin: ${rem(32)} 0 ${rem(64)};
+
+  ${mediaMin.m`    
+    padding-top: ${rem(88)};
+    padding-bottom: ${rem(88)};
+    margin: ${rem(64)} 0 ${rem(112)};
+  `};
+`;
+
+const OverviewIntro = styled.div`
+  display: block;
+  max-width: ${theme.contain.inner.col6};
+  margin-left: auto;
+  margin-right: auto;
+
+  margin-bottom: ${rem(32)};
+
+  ${mediaMin.m`    
+    margin-bottom: ${rem(64)};
+  `};
+
+  p:first-of-type {
+    margin-bottom: ${rem(32)};
+  }
+
+  h2 {
+    display: block;
+    margin-bottom: ${rem(16)};
+
+    ${mediaMin.xs`
+      margin-bottom: ${rem(32)};
+    `};
+  }
+`;
+
+const OverviewItems = styled.div`
+  display: block;
+  max-width: ${theme.contain.inner.col10};
+  margin-left: auto;
+  margin-right: auto;
+
+  ${mediaMin.s`
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  `};
+`;
+
+const OverviewItem = styled.div`
+  display: block;
+
+  h4 {
+    margin-bottom: ${rem(16)};
+  }
+
+  ${mediaMin.s`
+    display: inline-block;
+    vertical-align: top;
+    flex: 1 1 auto;
+    width: calc((100% / 2) - ${rem(32)});
+  `};
+
+  ${mediaMin.xl`
+    flex: 1 1 auto;
+    width: calc((100% / 4) - ${rem(32)});
+  `};
+
+  & + & {
+    ${mediaMin.xl`
+      margin-left: ${rem(32)};
+    `};
+  }
+`;
+
+const OverviewListLink = styled.a`
+  display: block;
 `;
 
 const PostContent = styled.section`
@@ -199,11 +287,6 @@ const PostContent = styled.section`
     }
   }
 
-  .toc__title {
-    margin: 0;
-    margin-bottom: ${rem(8)};
-  }
-
   p {
     margin-bottom: ${rem(32)};
   }
@@ -254,6 +337,7 @@ const PostContent = styled.section`
 
   .container-12col {
     margin: ${rem(32)} 0;
+    padding-top: ${rem(32)};
 
     ${mediaMin.xxl`
       & .container-375 {
@@ -264,23 +348,17 @@ const PostContent = styled.section`
     ${mediaMin.xxl`
       display: flex;
       justify-content: center;
-      background-color: ${theme.colors.gray100};
-      ${theme.shadow.default};
       max-width: ${rem(1008)};
       margin-right: -${rem(216)};
       margin-left: -${rem(216)};
-      padding: ${rem(32)} ${rem(48)};
     `};
 
     ${mediaMin.xxxl`
       display: flex;
       justify-content: center;
-      background-color: ${theme.colors.gray100};
-      ${theme.shadow.default};
       max-width: ${rem(1128)};
       margin-right: -${rem(288)};
       margin-left: -${rem(288)};
-      padding: ${rem(32)} ${rem(48)};
     `};
   }
 
@@ -308,7 +386,6 @@ const PostContent = styled.section`
       display: inline-block;
       vertical-align: top;
       width: calc(50% - ${rem(32)});
-      margin-left: ${rem(32)};
     `};
   }
 
@@ -322,25 +399,9 @@ const PostContent = styled.section`
     `};
   }
 
-  .container-375:first-of-type {
-    ${mediaMin.xxl`
-      margin-right: ${rem(32)};
-    `};
-  }
-
-  .container-375:nth-of-type(3) {
-    ${mediaMin.xxl`
-      margin-left: ${rem(32)};
-    `};
-  }
-
-  .container-375 {
+  .l-screenshot {
     width: 100%;
     margin-bottom: ${rem(32)};
-
-    ${mediaMin.xxs`
-      width: ${rem(375)};
-    `};
 
     & > figure {
       margin: 0;
@@ -357,6 +418,36 @@ const PostContent = styled.section`
     ${mediaMin.xxl`
       display: inline-block;
       vertical-align: top;
+    `};
+  }
+
+  .l-screenshot--contain-320 {
+    ${mediaMin.xxs`
+      max-width: ${rem(320)};
+    `};
+  }
+
+  .l-screenshot--contain-375 {
+    ${mediaMin.xxs`
+      max-width: ${rem(375)};
+    `};
+  }
+
+  .l-screenshot:first-of-type {
+    ${mediaMin.xxl`
+      margin-right: ${rem(32)};
+    `};
+  }
+
+  .l-screenshot:first-of-type {
+    ${mediaMin.xxl`
+      margin-right: ${rem(32)};
+    `};
+  }
+
+  .l-screenshot:nth-of-type(3) {
+    ${mediaMin.xxl`
+      margin-left: ${rem(32)};
     `};
   }
 
@@ -380,25 +471,17 @@ const PostContent = styled.section`
     padding: ${rem(16)} ${theme.gutters.s};
 
     ${mediaMin.m`
+      border-left: 8px solid ${theme.colors.main600};
       margin-right: -${theme.gutters.m};
       margin-left: -${theme.gutters.m};
       padding: ${rem(32)} ${theme.gutters.m};
     `};
 
     ${mediaMin.xl`
-      ${theme.shadow.default};
       margin-right: -${rem(96)};
       margin-left: -${rem(96)};
       padding: ${rem(32)} ${rem(96)};
     `};
-  }
-
-  .sub-hypothesis {
-    color: ${theme.colors.main600};
-
-    & * {
-      color: ${theme.colors.main600};
-    }
   }
 `;
 
@@ -425,11 +508,7 @@ class CaseStudy extends Component {
     );
 
     this.handlePageScroll();
-    // this.addSafariVideoControls();
     this.removeAnchorsFromTabIndex();
-
-    let validate = validate_luhn("4111 1111 1111 1111");
-    // console.log("Credit Card is: ", validate);
   }
 
   componentWillUnmount() {
@@ -440,17 +519,11 @@ class CaseStudy extends Component {
     this.handleScrollLine();
   };
 
-  // addSafariVideoControls = () => {
-  //   if (
-  //     navigator.userAgent.indexOf("Safari") != -1 &&
-  //     navigator.userAgent.indexOf("Chrome") == -1
-  //   ) {
-  //     let videos = document.querySelectorAll("video");
-  //     videos.forEach((video) => {
-  //       video.controls = true;
-  //     });
-  //   }
-  // };
+  removeHeaderTabIndex = (arr) => {
+    arr.forEach((header) => {
+      header.tabIndex = -1;
+    });
+  };
 
   removeAnchorsFromTabIndex = () => {
     const h2s = Array.from(document.querySelectorAll("h2 a"));
@@ -458,22 +531,11 @@ class CaseStudy extends Component {
     const h4s = Array.from(document.querySelectorAll("h4 a"));
     const h5s = Array.from(document.querySelectorAll("h5 a"));
 
-    // refactor this into a function
-    h2s.forEach((h2) => {
-      h2.tabIndex = -1;
-    });
-
-    h3s.forEach((h3) => {
-      h3.tabIndex = -1;
-    });
-
-    h4s.forEach((h4) => {
-      h4.tabIndex = -1;
-    });
-
-    h5s.forEach((h5) => {
-      h5.tabIndex = -1;
-    });
+    // Remove the headers from tab index
+    this.removeHeaderTabIndex(h2s);
+    this.removeHeaderTabIndex(h3s);
+    this.removeHeaderTabIndex(h4s);
+    this.removeHeaderTabIndex(h5s);
   };
 
   handleScrollLine = () => {
@@ -485,6 +547,11 @@ class CaseStudy extends Component {
   render() {
     const postNode = this.props.data.markdownRemark;
     const postInfo = postNode.frontmatter;
+    const introCopy = postInfo.intro.split("|");
+    const tools = postInfo.tools;
+    const deliverables = postInfo.deliverables;
+    const methods = postInfo.methods;
+    const links = postInfo.links;
     const image = postInfo.image.childImageSharp.fluid;
     const locale = this.props.pageContext.locale;
     const twinPost = this.props.pageContext.twinPost;
@@ -492,6 +559,11 @@ class CaseStudy extends Component {
     const nextSlug = this.props.pageContext.nextSlug;
     const prevSlug = this.props.pageContext.prevSlug;
     const prevTitle = this.props.pageContext.prevTitle;
+
+    console.log(prevSlug);
+    console.log(nextSlug);
+    console.log(prevTitle);
+    console.log(nextTitle);
 
     let twinPostURL = "";
 
@@ -538,6 +610,67 @@ class CaseStudy extends Component {
                 // https://www.gatsbyjs.org/packages/gatsby-image/
               />
             </CaseStudyImgWrapper>
+            <OverviewContainer>
+              <OverviewIntro>
+                <FormattedMessage id="caseStudyOverview">
+                  {(txt) => <h2>{txt}</h2>}
+                </FormattedMessage>
+                {introCopy.map((entry, index) => (
+                  <p key={index}>{entry}</p>
+                ))}
+              </OverviewIntro>
+              <OverviewItems>
+                <OverviewItem>
+                  <FormattedMessage id="caseStudyOverviewTools">
+                    {(txt) => <h4>{txt}</h4>}
+                  </FormattedMessage>
+                  <ul>
+                    {tools.map((entry, index) => (
+                      <li key={index}>{entry}</li>
+                    ))}
+                  </ul>
+                </OverviewItem>
+                <OverviewItem>
+                  <FormattedMessage id="caseStudyOverviewDeliverables">
+                    {(txt) => <h4>{txt}</h4>}
+                  </FormattedMessage>
+                  <ul>
+                    {deliverables.map((entry, index) => (
+                      <li key={index}>{entry}</li>
+                    ))}
+                  </ul>
+                </OverviewItem>
+                <OverviewItem>
+                  <FormattedMessage id="caseStudyOverviewMethods">
+                    {(txt) => <h4>{txt}</h4>}
+                  </FormattedMessage>
+                  <ul>
+                    {methods.map((entry, index) => (
+                      <li key={index}>{entry}</li>
+                    ))}
+                  </ul>
+                </OverviewItem>
+                <OverviewItem>
+                  <FormattedMessage id="caseStudyOverviewLinks">
+                    {(txt) => <h4>{txt}</h4>}
+                  </FormattedMessage>
+                  <ul>
+                    {links.map((entry, index) => (
+                      <li key={index}>
+                        <OverviewListLink
+                          href={entry.link}
+                          target="_blank"
+                          rel="noopener"
+                          key={index}
+                        >
+                          {entry.name}
+                        </OverviewListLink>
+                      </li>
+                    ))}
+                  </ul>
+                </OverviewItem>
+              </OverviewItems>
+            </OverviewContainer>
             <PostContent dangerouslySetInnerHTML={{ __html: postNode.html }} />
             {/* <PostContent>{renderAst(postNode.htmlAst)}</PostContent> */}
             <AuthorCard />
@@ -590,7 +723,12 @@ CaseStudy.propTypes = {
         date: PropTypes.string.isRequired,
         image: PropTypes.object.isRequired,
         snippet: PropTypes.string.isRequired,
+        intro: PropTypes.string.isRequired,
         tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+        tools: PropTypes.arrayOf(PropTypes.string).isRequired,
+        deliverables: PropTypes.arrayOf(PropTypes.string).isRequired,
+        methods: PropTypes.arrayOf(PropTypes.string).isRequired,
+        links: PropTypes.array.isRequired,
       }),
       html: PropTypes.string.isRequired,
     }),
@@ -607,6 +745,14 @@ export const pageQuery = graphql`
         title
         date(formatString: "YYYY-MM-DD")
         snippet
+        intro
+        tools
+        deliverables
+        methods
+        links {
+          name
+          link
+        }
         tags
         image {
           childImageSharp {

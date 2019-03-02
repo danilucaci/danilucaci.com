@@ -304,13 +304,19 @@ const GlobalHTML = createGlobalStyle`
     left: 0px;
   }
 
-  .video-iphoneX--container {
+  .video-iphoneX {
     position: relative;
     display: block;
     width: 100%;
 
     ${mediaMin.xxs`
       width: ${rem(375)};
+    `};
+  }
+
+  .video-iphoneX--contain--320 {
+    ${mediaMin.xxs`
+      max-width: ${rem(320)};
     `};
   }
 

@@ -10,6 +10,18 @@ export function calculateScroll() {
   return scrolled;
 }
 
+export function addSafariVideoControls() {
+  if (
+    navigator.userAgent.indexOf("Safari") != -1 &&
+    navigator.userAgent.indexOf("Chrome") == -1
+  ) {
+    let videos = document.querySelectorAll("video");
+    videos.forEach((video) => {
+      video.controls = true;
+    });
+  }
+}
+
 // https://gist.github.com/matthagemann/382adfc57adbd5af078dc93feef01fe1
 export function slugify(string) {
   const a = "àáäâãåèéëêìíïîòóöôùúüûñçßÿœæŕśńṕẃǵǹḿǘẍźḧ·/_,:;";
