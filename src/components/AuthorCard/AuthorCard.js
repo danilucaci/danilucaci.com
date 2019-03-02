@@ -11,18 +11,19 @@ import SocialNav from "../SocialNav/SocialNav";
 import { HR } from "../HR/HR";
 
 export const AuthorCardWrapper = styled.footer`
+  background-color: ${theme.colors.sectionBackground};
   width: 100%;
   max-width: ${theme.contain.inner.col10};
-  /* margin-bottom: ${theme.spacing.components.s};
+  margin-left: auto;
+  margin-right: auto;
 
+  margin-bottom: ${theme.spacing.components.s};
   ${mediaMin.s`
-    padding-right: ${theme.gutters.m};
     margin-bottom: ${theme.spacing.components.m};
   `};
-
   ${mediaMin.m`
     margin-bottom: ${theme.spacing.components.xl};
-  `}; */
+  `};
 `;
 
 const StyledAuthorCard = styled.div`
@@ -118,7 +119,7 @@ const AuthorCard = (props) => {
           <SocialNav />
         </AuthorInfo>
       </StyledAuthorCard>
-      {/* <HR /> */}
+      <HR />
     </AuthorCardWrapper>
   );
 };

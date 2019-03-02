@@ -14,8 +14,6 @@ const SiblingPostsWrapper = styled.nav`
   margin-left: auto;
   margin-right: auto;
 
-  margin-bottom: ${theme.spacing.components.s};
-
   padding-left: ${theme.gutters.s};
   padding-right: ${theme.gutters.s};
 
@@ -24,10 +22,10 @@ const SiblingPostsWrapper = styled.nav`
     padding-right: ${theme.gutters.m};
   `};
 
-  ${mediaMin.m`
+  margin-bottom: ${theme.spacing.components.s};
+  ${mediaMin.s`
     margin-bottom: ${theme.spacing.components.m};
   `};
-
   ${mediaMin.m`
     margin-bottom: ${theme.spacing.components.xl};
   `};
