@@ -279,8 +279,10 @@ class Layout extends Component {
 
   render() {
     let GTMScript = null;
+    // fix for webpack window is not defined
+    const globalWindow = typeof window !== "undefined";
 
-    if (!window._DL_GTM_INITIALIZED && this.state.hasGDPRConsent) {
+    if (!globalWindow._DL_GTM_INITIALIZED && this.state.hasGDPRConsent) {
       GTMScript = (
         <Helmet>
           {`<!-- Google Tag Manager -->`}
