@@ -6,6 +6,7 @@ import { FormattedMessage } from "react-intl";
 
 import { theme, mediaMin, mediaMax, rem } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
+import { Input, SubmitButton, Checkbox } from "../Input/Input";
 
 const StyledSubscribeCard = styled.aside`
   background-color: ${theme.colors.gray100};
@@ -32,30 +33,59 @@ const StyledSubscribeCard = styled.aside`
   `};
 `;
 
-const FormContainer = styled.div`
-  margin-top: ${rem(32)};
+const FormContainer = styled.div``;
 
-  label {
-    display: block;
-    margin-bottom: ${rem(16)};
-  }
+const StyledForm = styled.form`
+  width: 100%;
+`;
 
-  input {
-    display: block;
-    padding: ${rem(8)};
-    margin-bottom: ${rem(16)};
-  }
+const InputWrapper = styled.div`
+  display: block;
+  width: 100%;
+`;
+
+const StyledLabel = styled.label`
+  display: inline-block;
+  margin-top: ${rem(16)};
+  margin-right: ${rem(16)};
+`;
+
+const StyledCheckboxLabel = styled.label`
+  display: inline-block;
+  margin-top: ${rem(16)};
+  width: 100%;
+`;
+
+const StyledInput = styled(Input)`
+  display: inline-block;
+  width: 100%;
+  margin-top: ${rem(8)};
+  padding: ${rem(12)} ${rem(8)};
+`;
+
+const StyledSubmitButton = styled(SubmitButton)`
+  margin-top: ${rem(16)};
+
+  ${mediaMin.xxs`  
+    width: auto;
+    display: inline-block;
+  `};
+`;
+
+const StyledCheckbox = styled(Checkbox)`
+  display: inline-block;
+  margin-right: ${rem(8)};
 `;
 
 const SubscribeCard = (props) => {
   let locale = props.locale;
 
-  const gdprCheckboxLabel = {
+  const consentCheckboxLabel = {
     en: "I accept the privacy policy.",
     es: "Accepto la privacidad",
   };
 
-  const gdprConsents = {
+  const consentValue = {
     en: {
       no: "I do not accept the privacy policy.",
       yes: "I accept the privacy policy.",
@@ -67,8 +97,8 @@ const SubscribeCard = (props) => {
   };
 
   const [email, setEmail] = useState("");
-  const [acceptsGDPRCheckbox, setAcceptsGDPRCheckbox] = useState(false);
-  const [GDPRConsentMSG, setGDPRConsentMSG] = useState(gdprConsents[locale].no);
+  const [acceptsConsentCheckbox, setAcceptsConsentCheckbox] = useState(false);
+  const [checkboxValue, setCheckboxValue] = useState(consentValue[locale].no);
   const [allowSubmit, setAllowSubmit] = useState(false);
   const [MCSubscribed, setMCSubscribed] = useState("");
   const [MCAlreadySubscribed, setMCAlreadySubscribed] = useState("");
@@ -79,7 +109,7 @@ const SubscribeCard = (props) => {
     console.log(`email: ${email}`);
 
     const mailChimpResult = await addToMailchimp(email, {
-      DLPO: GDPRConsentMSG,
+      DLPO: checkboxValue,
     });
 
     console.log(mailChimpResult);
@@ -103,10 +133,10 @@ const SubscribeCard = (props) => {
     }
   }
 
-  function handleGDPRCheckbox(e) {
-    setAcceptsGDPRCheckbox(e.target.checked);
-    setGDPRConsentMSG(gdprConsents[locale].yes);
-    setAllowSubmit(acceptsGDPRCheckbox);
+  function handleConsentCheckbox(e) {
+    setAcceptsConsentCheckbox(e.target.checked);
+    setCheckboxValue(consentValue[locale].yes);
+    setAllowSubmit(acceptsConsentCheckbox);
   }
 
   return (
@@ -114,31 +144,38 @@ const SubscribeCard = (props) => {
       <h2>Subscribe</h2>
       <Copy>Subscribe to my info</Copy>
       <FormContainer>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Your Email (required)
-            <input
-              type="email"
-              value={email}
-              name="email"
-              autoCapitalize="off"
-              autoCorrect="off"
-              autoComplete="email"
-              onChange={(e) => setEmail(e.target.value)}
+        <StyledForm onSubmit={handleSubmit}>
+          <InputWrapper>
+            <StyledLabel>
+              Your Email (required)
+              <StyledInput
+                type="email"
+                value={email}
+                name="email"
+                autoCapitalize="off"
+                autoCorrect="off"
+                autoComplete="email"
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </StyledLabel>
+            <StyledSubmitButton
+              type="submit"
+              value="Subscribe"
+              disabled={!acceptsConsentCheckbox}
             />
-          </label>
-          <label>
-            <input
+          </InputWrapper>
+          <StyledCheckboxLabel>
+            <StyledCheckbox
               type="checkbox"
-              name="gdprcheckbox"
-              value={GDPRConsentMSG}
-              onChange={handleGDPRCheckbox}
+              name="consentcheckbox"
+              value={checkboxValue}
+              onChange={handleConsentCheckbox}
               required
             />
-            {gdprCheckboxLabel[locale]}
-          </label>
-          <input type="submit" value="Submit" disabled={!acceptsGDPRCheckbox} />
-        </form>
+            {consentCheckboxLabel[locale]}
+          </StyledCheckboxLabel>
+        </StyledForm>
         {MCSubscribed && <p>{MCSubscribed}</p>}
         {MCAlreadySubscribed && <p>{MCAlreadySubscribed}</p>}
         {MCError && <p>{MCError}</p>}

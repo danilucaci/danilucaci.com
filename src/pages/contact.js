@@ -13,6 +13,7 @@ import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
 import { Copy } from "../components/Copy/Copy";
 import { HR } from "../components/HR/HR";
 import SubscribeCard from "../components/SubscribeCard/SubscribeCard";
+import ContactForm from "../components/ContactForm/ContactForm";
 
 const ContactMeWrapper = styled.section`
   max-width: ${theme.contain.wrapper.col10};
@@ -150,81 +151,6 @@ const ContactPage = (props) => {
     twinPostURL = "/contact";
   }
 
-  const gdprCheckboxLabel = {
-    en: "I accept the privacy policy.",
-    es: "Accepto la privacidad",
-  };
-
-  const gdprConsents = {
-    en: {
-      no: "I do not accept the privacy policy.",
-      yes: "I accept the privacy policy.",
-    },
-    es: {
-      no: "No accepto la privacidad.",
-      yes: "Si Accepto la privacidad.",
-    },
-  };
-
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [message, setMessage] = useState("");
-  const [botField, setBotField] = useState("");
-  const [acceptsGDPRCheckbox, setAcceptsGDPRCheckbox] = useState(false);
-  const [GDPRConsentMSG, setGDPRConsentMSG] = useState(gdprConsents[locale].no);
-  const [GDPRInputMSG, setGDPRInputMSG] = useState();
-  const [allowSubmit, setAllowSubmit] = useState(false);
-  const [formSubmitMessage, setFormSubmitMessage] = useState("");
-  const [formSubmitError, setFormSubmitError] = useState("");
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    console.log(`email: ${email}`);
-    console.log(`name: ${name}`);
-    console.log(`message: ${message}`);
-
-    const form = e.target;
-
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({
-        "form-name": form.getAttribute("name"),
-        email: email,
-        name: name,
-        message: message,
-        botfield: botField,
-        gdprcheckbox: acceptsGDPRCheckbox,
-        gdprcheckboxmessage: GDPRConsentMSG,
-      }),
-    })
-      .then(() => {
-        console.log(`email: ${email}`);
-        console.log(`name: ${name}`);
-        console.log(`message: ${message}`);
-        console.log(`botfield: ${botField}`);
-        console.log(`acceptsGDPRCheckbox: ${acceptsGDPRCheckbox}`);
-        console.log(`GDPRConsentMSG: ${GDPRConsentMSG}`);
-        setFormSubmitMessage("Thanks, Message Sent!");
-      })
-      // .then(() => navigate(form.getAttribute("action")))
-      .catch((error) => setFormSubmitError(error));
-  }
-
-  function handleGDPRCheckbox(e) {
-    setAcceptsGDPRCheckbox(e.target.checked);
-    setGDPRConsentMSG(gdprConsents[locale].yes);
-    setAllowSubmit(acceptsGDPRCheckbox);
-  }
-
-  function encode(data) {
-    return Object.keys(data)
-      .map(
-        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
-      )
-      .join("&");
-  }
-
   return (
     <Layout location={props.location} locale={locale}>
       <SEO
@@ -263,90 +189,7 @@ const ContactPage = (props) => {
               </StyledMailToButton>
             )}
           </FormattedMessage>
-          <FormContainer>
-            <form
-              name="contact"
-              method="post"
-              action="/thanks/"
-              data-netlify="true"
-              data-netlify-honeypot="botfield"
-              onSubmit={handleSubmit}
-            >
-              {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
-              <input
-                type="hidden"
-                name="form-name"
-                arria-hidden="true"
-                value="contact"
-              />
-              <input
-                style={{ display: "none" }}
-                arria-hidden="true"
-                name="botfield"
-                onChange={(e) => setBotField(e.target.value)}
-              />
-              <input
-                style={{ display: "none" }}
-                arria-hidden="true"
-                type="text"
-                value={GDPRConsentMSG}
-                onChange={(e) => setGDPRInputMSG(e.target.value)}
-                name="gdprcheckboxmessage"
-              />
-              <label>
-                Full Name (required)
-                <input
-                  type="text"
-                  value={name}
-                  name="fullname"
-                  autoCorrect="off"
-                  autoComplete="name"
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </label>
-              <label>
-                Your Email (required)
-                <input
-                  type="email"
-                  value={email}
-                  name="email"
-                  autoCapitalize="off"
-                  autoCorrect="off"
-                  autoComplete="email"
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </label>
-              <label>
-                Your Message (required)
-                <textarea
-                  rows="4"
-                  cols="50"
-                  value={message}
-                  name="message"
-                  onChange={(e) => setMessage(e.target.value)}
-                  required
-                />
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="gdprcheckbox"
-                  value={GDPRConsentMSG}
-                  onChange={handleGDPRCheckbox}
-                  required
-                />
-                {gdprCheckboxLabel[locale]}
-              </label>
-              <input
-                type="submit"
-                value="Submit"
-                disabled={!acceptsGDPRCheckbox}
-              />
-              {formSubmitMessage && <p>{formSubmitMessage}</p>}
-              {formSubmitError && <p>{formSubmitError}</p>}
-            </form>
-          </FormContainer>
+          <ContactForm locale={locale} />
           <SayHiContainer>
             <HR />
             <FormattedMessage id="contactPageOtherTitle">
