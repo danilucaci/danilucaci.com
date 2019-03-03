@@ -45,6 +45,12 @@ const StyledHeader = styled.header`
   padding-left: ${theme.gutters.s};
   padding-right: ${theme.gutters.s};
 
+  @media screen and (min-width: ${theme.breakpoints.s}) and (max-width: ${theme
+      .breakpoints.l}) {
+    margin-left: ${theme.gutters.m};
+    margin-right: ${theme.gutters.m};
+  }
+
   ${mediaMin.s`
     padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
@@ -113,8 +119,8 @@ const OverviewContainer = styled.div`
 
   padding-left: ${theme.gutters.s};
   padding-right: ${theme.gutters.s};
-  padding-top: ${rem(32)};
-  padding-bottom: ${rem(32)};
+  padding-top: ${rem(48)};
+  padding-bottom: ${rem(48)};
 
   ${mediaMin.s`
     padding-left: ${theme.gutters.m};
@@ -158,11 +164,12 @@ const OverviewIntro = styled.div`
 
 const OverviewItems = styled.div`
   display: block;
-  max-width: ${theme.contain.inner.col10};
+  max-width: ${theme.contain.inner.col6};
   margin-left: auto;
   margin-right: auto;
 
-  ${mediaMin.s`
+  ${mediaMin.xl`
+    max-width: ${theme.contain.inner.col10};
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -171,6 +178,10 @@ const OverviewItems = styled.div`
 
 const OverviewItem = styled.div`
   display: block;
+
+  ${mediaMax.xl`
+      margin-bottom: ${rem(32)};
+  `};
 
   h4 {
     margin-bottom: ${rem(16)};
@@ -360,12 +371,15 @@ const PostContent = styled.section`
 
   .container-12col {
     margin: ${rem(32)} 0;
-    padding-top: ${rem(32)};
+
+    ${mediaMin.xxl`
+      padding-top: ${rem(16)};
+    `};
 
     ${mediaMin.xxl`
       & .container-375 {
-        margin-bottom: 0;
-      }
+          margin-bottom: 0;
+        }
     `};
 
     ${mediaMin.xxl`
@@ -438,9 +452,14 @@ const PostContent = styled.section`
       margin-top: ${rem(32)};
     }
 
+    h4 {
+      margin-top: 0;
+    }
+
     ${mediaMin.xxl`
       display: inline-block;
       vertical-align: top;
+      flex: 1 1 auto;
     `};
   }
 

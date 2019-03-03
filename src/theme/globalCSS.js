@@ -310,7 +310,7 @@ const GlobalHTML = createGlobalStyle`
     width: 100%;
 
     ${mediaMin.xxs`
-      width: ${rem(375)};
+      max-width: ${rem(375)};
     `};
   }
 
