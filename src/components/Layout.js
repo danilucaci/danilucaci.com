@@ -307,21 +307,10 @@ class Layout extends Component {
           messages={intlMessages[this.props.locale]}
         >
           <Page>
-            {GTMScript}
-            <SkipToMainContent />
             <GlobalFonts />
             <GlobalReset />
             <GlobalAria />
             <GlobalHTML />
-            <SVGSprite />
-            {this.state.askCookieConsent && (
-              <CookieConsent
-                askCookieConsent={this.state.askCookieConsent}
-                acceptsCookies={this.acceptsCookies}
-                deniesCookies={this.deniesCookies}
-                pageLocale={this.props.locale}
-              />
-            )}
             {this.props.children}
           </Page>
         </IntlProvider>
