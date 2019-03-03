@@ -602,11 +602,6 @@ class CaseStudy extends Component {
     const prevSlug = this.props.pageContext.prevSlug;
     const prevTitle = this.props.pageContext.prevTitle;
 
-    console.log(prevSlug);
-    console.log(nextSlug);
-    console.log(prevTitle);
-    console.log(nextTitle);
-
     let twinPostURL = "";
 
     if (locale === "en") {
