@@ -70,6 +70,9 @@ const SubscribeCard = (props) => {
   const [acceptsGDPRCheckbox, setAcceptsGDPRCheckbox] = useState(false);
   const [GDPRConsentMSG, setGDPRConsentMSG] = useState(gdprConsents[locale].no);
   const [allowSubmit, setAllowSubmit] = useState(false);
+  const [MCSubscribed, setMCSubscribed] = useState("");
+  const [MCAlreadySubscribed, setMCAlreadySubscribed] = useState("");
+  const [MCError, setMCError] = useState("");
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -82,18 +85,20 @@ const SubscribeCard = (props) => {
     console.log(mailChimpResult);
 
     if (mailChimpResult.result.includes("error")) {
-      console.warn("Not ok!");
+      setMCError("Sorry, something went wrong.");
     }
 
     if (mailChimpResult.result.includes("success")) {
       if (mailChimpResult.msg.includes("We need to confirm your email")) {
-        console.log("Great! Now Confirm.");
+        setMCSubscribed(
+          "Thanks for subscribing! Please confirm your email to continue."
+        );
       }
     }
 
     if (mailChimpResult.result.includes("error")) {
       if (mailChimpResult.msg.includes("is already subscribed to")) {
-        console.log("You Already Subscribed");
+        setMCAlreadySubscribed("Sorry, you are already to my newsletter.");
       }
     }
   }
@@ -110,25 +115,33 @@ const SubscribeCard = (props) => {
       <Copy>Subscribe to my info</Copy>
       <FormContainer>
         <form onSubmit={handleSubmit}>
-          <label htmlFor="email">Your Email</label>
-          <input
-            type="email"
-            value={email}
-            name="email"
-            autoCapitalize="off"
-            autoCorrect="off"
-            autoComplete="email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="checkbox"
-            value="Acceptas?"
-            required={GDPRConsentMSG}
-            onChange={handleGDPRCheckbox}
-          />
-          <label htmlFor="email">{gdprCheckboxLabel[locale]}</label>
+          <label>
+            Your Email (required)
+            <input
+              type="email"
+              value={email}
+              name="email"
+              autoCapitalize="off"
+              autoCorrect="off"
+              autoComplete="email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="gdprcheckbox"
+              value={GDPRConsentMSG}
+              onChange={handleGDPRCheckbox}
+              required
+            />
+            {gdprCheckboxLabel[locale]}
+          </label>
           <input type="submit" value="Submit" disabled={!acceptsGDPRCheckbox} />
         </form>
+        {MCSubscribed && <p>{MCSubscribed}</p>}
+        {MCAlreadySubscribed && <p>{MCAlreadySubscribed}</p>}
+        {MCError && <p>{MCError}</p>}
       </FormContainer>
     </StyledSubscribeCard>
   );

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { FormattedMessage } from "react-intl";
+import addToMailchimp from "gatsby-plugin-mailchimp";
 
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
@@ -11,7 +11,7 @@ import SiteFooter from "../components/SiteFooter/SiteFooter";
 import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
 import { Copy } from "../components/Copy/Copy";
 import { HR } from "../components/HR/HR";
-import SubscribeCard from "../components/SubscribeCard/SubscribeCard";
+import { FormattedMessage } from "react-intl";
 
 const ContactMeWrapper = styled.section`
   max-width: ${theme.contain.wrapper.col10};
@@ -97,6 +97,21 @@ const StyledLink = styled.a`
   white-space: nowrap;
 `;
 
+const FormContainer = styled.div`
+  margin-top: ${rem(32)};
+
+  label {
+    display: block;
+    margin-bottom: ${rem(16)};
+  }
+
+  input {
+    display: block;
+    padding: ${rem(8)};
+    margin-bottom: ${rem(16)};
+  }
+`;
+
 const SayHiContainer = styled.div`
   margin-top: ${rem(40)};
 
@@ -132,6 +147,61 @@ const ContactPage = (props) => {
   } else if (locale === "es") {
     emailURL = "mailto:hola@danilucaci.com";
     twinPostURL = "/contact";
+  }
+
+  const gdprConsents = {
+    en: {
+      no: "I do not accept the privacy policy.",
+      yes: "I accept the privacy policy.",
+    },
+    es: {
+      no: "No accepto la privacidad.",
+      yes: "Si Accepto la privacidad.",
+    },
+  };
+
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [message, setMessage] = useState("");
+  const [acceptsGDPRCheckbox, setAcceptsGDPRCheckbox] = useState(false);
+  const [GDPRConsentMSG, setGDPRConsentMSG] = useState(gdprConsents[locale].no);
+  const [allowSubmit, setAllowSubmit] = useState(false);
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    console.log(`email: ${email}`);
+    console.log(`name: ${name}`);
+    console.log(`message: ${message}`);
+
+    const mailChimpResult = await addToMailchimp(email, {
+      FULLNAME: name,
+      MESSAGE: message,
+      DLPO: GDPRConsentMSG,
+    });
+
+    console.log(mailChimpResult);
+
+    if (mailChimpResult.result.includes("error")) {
+      console.warn("Not ok!");
+    }
+
+    if (mailChimpResult.result.includes("success")) {
+      if (mailChimpResult.msg.includes("We need to confirm your email")) {
+        console.log("Great! Now Confirm.");
+      }
+    }
+
+    if (mailChimpResult.result.includes("error")) {
+      if (mailChimpResult.msg.includes("is already subscribed to")) {
+        console.log("You Already Subscribed");
+      }
+    }
+  }
+
+  function handleGDPRCheckbox(e) {
+    setAcceptsGDPRCheckbox(e.target.checked);
+    setGDPRConsentMSG(gdprConsents[locale].yes);
+    setAllowSubmit(acceptsGDPRCheckbox);
   }
 
   return (
@@ -172,6 +242,48 @@ const ContactPage = (props) => {
               </StyledMailToButton>
             )}
           </FormattedMessage>
+          <FormContainer>
+            <form onSubmit={handleSubmit}>
+              <label htmlFor="fullName">Your Name</label>
+              <input
+                type="text"
+                value={name}
+                name="fullName"
+                autoCorrect="off"
+                autoComplete="name"
+                onChange={(e) => setName(e.target.value)}
+              />
+              <label htmlFor="email">Your Email</label>
+              <input
+                type="email"
+                value={email}
+                name="email"
+                autoCapitalize="off"
+                autoCorrect="off"
+                autoComplete="email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <label htmlFor="message">Your Message</label>
+              <textarea
+                rows="4"
+                cols="50"
+                value={message}
+                name="message"
+                onChange={(e) => setMessage(e.target.value)}
+              />
+              <input
+                type="checkbox"
+                value="Acceptas?"
+                required={GDPRConsentMSG}
+                onChange={handleGDPRCheckbox}
+              />
+              <input
+                type="submit"
+                value="Submit"
+                disabled={!acceptsGDPRCheckbox}
+              />
+            </form>
+          </FormContainer>
           <SayHiContainer>
             <HR />
             <FormattedMessage id="contactPageOtherTitle">
@@ -198,7 +310,6 @@ const ContactPage = (props) => {
           </SayHiContainer>
         </ContactMeWrapper>
       </Main>
-      <SubscribeCard locale={locale} />
       <SiteFooter locale={locale} />
     </Layout>
   );
