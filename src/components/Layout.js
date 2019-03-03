@@ -308,9 +308,11 @@ class Layout extends Component {
         >
           <Page>
             <GlobalFonts />
+            <SVGSprite />
             <GlobalReset />
             <GlobalAria />
             <GlobalHTML />
+            <CookieConsent />
             {this.props.children}
           </Page>
         </IntlProvider>
