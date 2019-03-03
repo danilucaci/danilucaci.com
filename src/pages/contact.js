@@ -282,7 +282,6 @@ const ContactPage = (props) => {
               <input
                 style={{ display: "none" }}
                 arria-hidden="true"
-                value={botField}
                 name="botfield"
                 onChange={(e) => setBotField(e.target.value)}
               />
