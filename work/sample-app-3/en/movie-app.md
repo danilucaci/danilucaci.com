@@ -2,6 +2,35 @@
 title: "Sample app 3"
 slug: "sample 3"
 snippet: "A case study on improving the experience of searching, finding and booking movies in a cinema."
+intro: "Esto es una aplicación that I decided to create as each time I tried to see a movie using one of my local cinema's website or app, I found that they all had outdated designs limited functionalities that helped people decide which movie to see.
+|
+Therefore, I decided to see how I could improve the experience of searching, finding and booking a movie using an iOS App."
+tools: 
+    - Lapiz y papel
+    - Sketch
+    - InVision
+    - Principle
+deliverables: 
+    - Personas
+    - Prototipos en papel
+    - Wireframes
+    - Wireflow diagrams
+    - Low-Fidelity prototype
+    - High-fidelity prototype
+methods: 
+    - Encuestas
+    - User Interviews
+    - Affinity Diagram
+    - Problem Statements
+    - HMW's
+    - Feature Prioritization
+    - MOSCOW
+    - Crazy 8's
+links:
+    - name: "Low-Fidelity Prototype"
+      link: "https://invis.io/N5OJ253T2PF"
+    - name: "High-Fidelity Prototype"
+      link: "https://invis.io/2DQQCS4PAYS"
 date: "2018-12-28"
 category: "work"
 tags:
