@@ -52,14 +52,19 @@ export const theme = {
   },
   fonts: {
     code:
-      "'Ubuntu Mono', Consolas, Menlo, 'Liberation Mono', Courier, monospace",
-    codeLoaded: "Roboto Mono Regular",
-    codeLoadedItalic: "Roboto Mono Italic",
-    bodyRegular: "Open Sans Regular",
-    bodyBold: "Open Sans Bold",
-    bodyItalic: "Open Sans Italic",
-    header: "Montserrat Bold",
-    headerRegular: "Montserrat Regular",
+      "'Roboto Mono Regular', 'Ubuntu Mono', Consolas, Menlo, 'Liberation Mono', Courier, monospace",
+    codeItalic:
+      "'Roboto Mono Italic', 'Ubuntu Mono', Consolas, Menlo, 'Liberation Mono', Courier, monospace",
+    bodyRegular:
+      "'Open Sans Regular', BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    bodyBold:
+      "'Open Sans Bold', BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    bodyItalic:
+      "'Open Sans Italic', BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    header:
+      "'Montserrat Bold', BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    headerRegular:
+      "'Montserrat Regular', BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji'",
   },
   fontSizes: {
     h1: "2.5rem",

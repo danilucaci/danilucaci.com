@@ -10,9 +10,7 @@ const StyledSiteNavListItem = styled.li`
   list-style-type: none;
   text-align: center;
 
-  .fonts-loaded & {
-    font-family: ${theme.fonts.headerRegular};
-  }
+  font-family: ${theme.fonts.headerRegular};
 
   font-weight: 400;
   width: 100%;
@@ -32,9 +30,7 @@ const StyledSiteNavListItem = styled.li`
     color: ${theme.colors.dark700};
     display: block;
 
-    .fonts-loaded & {
-      font-family: ${theme.fonts.headerRegular};
-    }
+    font-family: ${theme.fonts.headerRegular};
 
     font-weight: 400;
     font-size: ${rem(24)};

@@ -15,9 +15,7 @@ const StyledLogo = styled(LocaleLink)`
   color: ${theme.colors.dark900};
   display: inline-block;
 
-  .fonts-loaded & {
-    font-family: ${theme.fonts.header};
-  }
+  font-family: ${theme.fonts.header};
 
   font-weight: 700;
   font-size: ${theme.fontSizes.m};

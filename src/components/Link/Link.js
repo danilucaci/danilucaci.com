@@ -8,9 +8,7 @@ export const DefaultLink = styled(LocaleLink)`
   font-style: normal;
   font-weight: 400;
 
-  .fonts-loaded & {
-    font-family: ${theme.fonts.bodyRegular};
-  }
+  font-family: ${theme.fonts.bodyRegular};
 
   &:visited,
   &:link {
@@ -26,9 +24,7 @@ export const DefaultLink = styled(LocaleLink)`
 export const BoldLink = styled(DefaultLink)`
   font-weight: 700;
 
-  .fonts-loaded & {
-    font-family: ${theme.fonts.bodyBold};
-  }
+  font-family: ${theme.fonts.bodyBold};
 `;
 
 export const GreyLink = styled(DefaultLink)`

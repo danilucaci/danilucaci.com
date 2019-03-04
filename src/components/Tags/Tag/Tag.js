@@ -15,9 +15,7 @@ const StyledTag = styled(LocaleLink)`
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.fontSizes.s};
 
-  .fonts-loaded & {
-    font-family: ${theme.fonts.bodyRegular};
-  }
+  font-family: ${theme.fonts.bodyRegular};
 
   margin-right: ${rem(16)};
   margin-top: ${rem(8)};

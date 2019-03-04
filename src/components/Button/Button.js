@@ -11,6 +11,7 @@ export const PrimaryButton = styled.button`
   text-decoration: none;
   font-size: ${theme.fontSizes.button};
   line-height: ${theme.lineHeights.button};
+  font-family: ${theme.fonts.bodyBold};
   font-style: normal;
   font-weight: 700;
 
@@ -23,10 +24,6 @@ export const PrimaryButton = styled.button`
   `};
 
   white-space: nowrap;
-
-  .fonts-loaded & {
-    font-family: ${theme.fonts.bodyBold};
-  }
 
   &:hover,
   &:focus {
@@ -46,6 +43,7 @@ export const MainGhostButton = styled.button`
   text-decoration: none;
   font-size: ${theme.fontSizes.button};
   line-height: ${theme.lineHeights.button};
+  font-family: ${theme.fonts.bodyBold};
   font-style: normal;
   font-weight: 700;
 
@@ -58,10 +56,6 @@ export const MainGhostButton = styled.button`
   `};
 
   white-space: nowrap;
-
-  .fonts-loaded & {
-    font-family: ${theme.fonts.bodyBold};
-  }
 
   &:hover,
   &:focus {
@@ -81,6 +75,7 @@ export const DarkGhostButton = styled.button`
   text-decoration: none;
   font-size: ${theme.fontSizes.button};
   line-height: ${theme.lineHeights.button};
+  font-family: ${theme.fonts.bodyBold};
   font-style: normal;
   font-weight: 700;
 
@@ -93,10 +88,6 @@ export const DarkGhostButton = styled.button`
   `};
 
   white-space: nowrap;
-
-  .fonts-loaded & {
-    font-family: ${theme.fonts.bodyBold};
-  }
 
   &:hover,
   &:focus {
@@ -116,6 +107,7 @@ export const PrimaryButtonSmall = styled.button`
   text-decoration: none;
   font-size: ${theme.fontSizes.button};
   line-height: ${theme.lineHeights.button};
+  font-family: ${theme.fonts.bodyRegular};
   font-style: normal;
   font-weight: 400;
 
@@ -123,10 +115,6 @@ export const PrimaryButtonSmall = styled.button`
 
   padding: ${rem(8)} ${rem(16)};
   height: ${rem(40)};
-
-  .fonts-loaded & {
-    font-family: ${theme.fonts.bodyRegular};
-  }
 
   &:hover,
   &:focus {
@@ -145,6 +133,7 @@ export const TertiaryButton = styled.button`
   text-align: center;
   font-size: ${theme.fontSizes.button};
   line-height: ${theme.lineHeights.button};
+  font-family: ${theme.fonts.bodyRegular};
   font-style: normal;
   font-weight: 400;
   text-decoration: underline;
@@ -154,10 +143,6 @@ export const TertiaryButton = styled.button`
 
   height: ${rem(40)};
   padding: ${rem(8)} ${rem(16)};
-
-  .fonts-loaded & {
-    font-family: ${theme.fonts.bodyRegular};
-  }
 
   &:hover,
   &:focus {
@@ -175,6 +160,7 @@ export const LoadComments = styled.button`
   text-decoration: none;
   font-size: ${theme.fontSizes.button};
   line-height: ${theme.lineHeights.button};
+  font-family: ${theme.fonts.bodyRegular};
 
   & * {
     font-size: ${theme.fontSizes.button};
@@ -194,10 +180,6 @@ export const LoadComments = styled.button`
   `};
 
   white-space: nowrap;
-
-  .fonts-loaded & {
-    font-family: ${theme.fonts.bodyRegular};
-  }
 
   &:hover,
   &:focus {

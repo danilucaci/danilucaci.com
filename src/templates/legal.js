@@ -105,9 +105,7 @@ const PostContent = styled.div`
   strong {
     color: ${theme.colors.dark800};
 
-    .fonts-loaded & {
-      font-family: ${theme.fonts.bodyBold};
-    }
+    font-family: ${theme.fonts.bodyBold};
 
     font-weight: 700;
     font-style: normal;

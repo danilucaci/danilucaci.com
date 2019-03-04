@@ -82,9 +82,7 @@ const StyledMailToButton = styled.a`
 
   white-space: nowrap;
 
-  .fonts-loaded & {
-    font-family: ${theme.fonts.bodyBold};
-  }
+  font-family: ${theme.fonts.bodyBold};
 
   &:hover,
   &:focus {

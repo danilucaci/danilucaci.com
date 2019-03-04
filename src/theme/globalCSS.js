@@ -51,19 +51,13 @@ const GlobalHTML = createGlobalStyle`
     color: ${theme.colors.dark900};
     font-weight: 700;
     font-style: normal;
-
-    .fonts-loaded & {
-      font-family: ${theme.fonts.header};
-    }
-
+    font-family: ${theme.fonts.header};
     font-size: ${theme.fontSizes.h1s};
-
     ${mediaMin.xs`
       font-size: ${theme.fontSizes.h1};
     `}
 
     line-height: ${theme.lineHeights.h1s};
-
     ${mediaMin.xs`
       line-height: ${theme.lineHeights.h1};
     `}
@@ -73,13 +67,8 @@ const GlobalHTML = createGlobalStyle`
     color: ${theme.colors.dark900};
     font-weight: 700;
     font-style: normal;
-
-    .fonts-loaded & {
-      font-family: ${theme.fonts.header};
-    }
-
+    font-family: ${theme.fonts.header};
     font-size: ${theme.fontSizes.h2s};
-
     ${mediaMin.xs`
       font-size: ${theme.fontSizes.h2};
     `}
@@ -95,13 +84,8 @@ const GlobalHTML = createGlobalStyle`
     color: ${theme.colors.dark900};
     font-weight: 700;
     font-style: normal;
-
-    .fonts-loaded & {
-      font-family: ${theme.fonts.header};
-    }
-
+    font-family: ${theme.fonts.header};
     font-size: ${theme.fontSizes.h3s};
-
     ${mediaMin.xs`
       font-size: ${theme.fontSizes.h3};
     `}
@@ -119,10 +103,7 @@ const GlobalHTML = createGlobalStyle`
     font-style: normal;
     font-size: ${theme.fontSizes.h4};
     line-height: ${theme.lineHeights.h4};
-
-    .fonts-loaded & {
-      font-family: ${theme.fonts.header};
-    }
+    font-family: ${theme.fonts.header};
   }
 
   h5 {
@@ -132,21 +113,15 @@ const GlobalHTML = createGlobalStyle`
     font-size: ${theme.fontSizes.sectionHeaderS};
     line-height: ${theme.lineHeights.sectionHeaderS};
     letter-spacing: ${theme.letterSpacing.sectionHeaderS};
-
     font-weight: 700;
     font-style: normal;
-
-    .fonts-loaded & {
-      font-family: ${theme.fonts.header};
-    }
-
+    font-family: ${theme.fonts.header};
     ${mediaMin.s`
       font-size: ${theme.fontSizes.sectionHeaderXL};
       line-height: ${theme.lineHeights.sectionHeaderXL};
       letter-spacing: ${theme.letterSpacing.sectionHeaderXL};
     `}
   }
-
   
   h2,
   h3,
@@ -189,15 +164,10 @@ const GlobalHTML = createGlobalStyle`
   p,
   ul {
     color: ${theme.colors.dark800};
-
-    .fonts-loaded & {
-      font-family: ${theme.fonts.bodyRegular};
-    }
-    
     font-weight: 400;
     font-style: normal;
-
     font-size: ${theme.fontSizes.m};
+    font-family: ${theme.fonts.bodyRegular};
     line-height: ${theme.lineHeights.m};
   }
 
@@ -230,9 +200,6 @@ const GlobalHTML = createGlobalStyle`
       color: ${theme.colors.main600};
     }
 
-    .fonts-loaded & {
-      font-family: ${theme.fonts.bodyRegular};
-    }
 
     &:hover {
       cursor: pointer;
@@ -245,10 +212,7 @@ const GlobalHTML = createGlobalStyle`
     font-family: ${theme.fonts.code};
     font-size: ${theme.fontSizes.m};
     line-height: ${theme.lineHeights.m};
-
-    .fonts-loaded & {
-      font-family: ${theme.fonts.codeLoaded};
-    }
+    font-family: ${theme.fonts.code};
   }
 
   .sr-only {
@@ -284,10 +248,6 @@ const GlobalHTML = createGlobalStyle`
     line-height: ${theme.lineHeights.s};
     color: ${theme.colors.dark700};
     margin-top: ${rem(8)};
-
-    .fonts-loaded & {
-      font-family: ${theme.fonts.bodyRegular};
-    }
 
     font-weight: 400;
     font-style: normal;

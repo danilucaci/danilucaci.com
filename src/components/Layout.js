@@ -78,7 +78,7 @@ class Layout extends Component {
   componentDidMount() {
     this.setInitialConsentCookie();
     this.checkGDPRStatus();
-    this.checkFontsLoaded();
+    // this.checkFontsLoaded();
   }
 
   componentDidUpdate() {

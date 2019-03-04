@@ -165,9 +165,7 @@ const PostContent = styled.section`
     font-size: ${theme.fontSizes.xs};
     line-height: ${theme.lineHeights.xs};
 
-    .fonts-loaded & {
-      font-family: ${theme.fonts.bodyRegular};
-    }
+    font-family: ${theme.fonts.bodyRegular};
 
     position: absolute;
     top: ${rem(12)};
@@ -211,9 +209,7 @@ const TOCEntry = styled.a`
   font-weight: 400;
   padding: ${rem(8)} 0;
 
-  .fonts-loaded & {
-    font-family: ${theme.fonts.bodyRegular};
-  }
+  font-family: ${theme.fonts.bodyRegular};
 
   &:visited,
   &:link {

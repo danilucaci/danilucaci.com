@@ -18,9 +18,7 @@ export const Input = styled.input`
 
   width: 100%;
 
-  .fonts-loaded & {
-    font-family: ${theme.fonts.bodyRegular};
-  }
+  font-family: ${theme.fonts.bodyRegular};
 
   &:focus {
     color: ${theme.colors.dark800};
@@ -52,9 +50,7 @@ export const TextArea = styled.textarea`
 
   width: 100%;
 
-  .fonts-loaded & {
-    font-family: ${theme.fonts.bodyRegular};
-  }
+  font-family: ${theme.fonts.bodyRegular};
 
   &:focus {
     color: ${theme.colors.dark800};
@@ -95,9 +91,7 @@ export const SubmitButton = styled.input`
 
   white-space: nowrap;
 
-  .fonts-loaded & {
-    font-family: ${theme.fonts.bodyBold};
-  }
+  font-family: ${theme.fonts.bodyBold};
 
   &:hover,
   &:focus {

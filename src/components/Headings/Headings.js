@@ -20,9 +20,7 @@ export const SectionHeader = styled.span`
   font-weight: 700;
   font-style: normal;
 
-  .fonts-loaded & {
-    font-family: ${theme.fonts.header};
-  }
+  font-family: ${theme.fonts.header};
 
   ${mediaMin.s`
     font-size: ${theme.fontSizes.sectionHeaderXL};

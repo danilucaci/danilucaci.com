@@ -67,9 +67,7 @@ const TagTitle = styled.span`
   font-weight: 700;
   font-style: normal;
 
-  .fonts-loaded & {
-    font-family: ${theme.fonts.header};
-  }
+  font-family: ${theme.fonts.header};
 
   font-size: ${theme.fontSizes.h2s};
   line-height: ${theme.lineHeights.h2s};

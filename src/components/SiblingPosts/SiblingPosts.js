@@ -71,10 +71,8 @@ const PrevArticleLink = styled(LocaleLink)`
   line-height: ${theme.lineHeights.siblingPostsXL};
 `};
 
-  .fonts-loaded & {
-    font-family: ${theme.fonts.headerRegular};
-    font-weight: 400;
-  }
+  font-family: ${theme.fonts.headerRegular};
+  font-weight: 400;
 
   &:hover {
     background-color: transparent;
@@ -117,7 +115,7 @@ const NextArticleLink = styled(LocaleLink)`
   line-height: ${theme.lineHeights.siblingPostsXL};
 `};
 
-  .fonts-loaded & {
+  
     font-family: ${theme.fonts.headerRegular};
     font-weight: 400;
   }
