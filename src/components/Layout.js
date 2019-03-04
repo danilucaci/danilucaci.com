@@ -72,6 +72,7 @@ class Layout extends Component {
     acceptsCookie: { necessary: true, analytics: true },
     deniesCookie: { necessary: true, analytics: false },
     cookieExp: 780, // cookieExp set in days same as GA expiry date
+    showLogs: true,
   };
 
   componentDidMount() {
@@ -81,7 +82,7 @@ class Layout extends Component {
   }
 
   componentDidUpdate() {
-    // if (NODE_ENV !== "development") {
+    // if (this.state.showLogs) {
     //   this.showGDPRStatus();
     // }
     console.log(NODE_ENV);
@@ -101,7 +102,7 @@ class Layout extends Component {
       if (!isLoaded) {
         document.documentElement.className += " fonts-loaded";
       }
-      if (NODE_ENV !== "development") {
+      if (this.state.showLogs) {
         console.log("%c Fonts already loaded.", "color: #79E36B");
       }
       return;
@@ -143,7 +144,7 @@ class Layout extends Component {
       document.documentElement.className += " fonts-loaded";
       // Optimization for Repeat Views
       sessionStorage.fontsLoadedPolyfill = true;
-      if (NODE_ENV !== "development") {
+      if (this.state.showLogs) {
         console.log("%c Fonts loaded.", "color: #79E36B");
       }
     });
@@ -191,12 +192,12 @@ class Layout extends Component {
           }));
         }
       } else {
-        if (NODE_ENV !== "development") {
+        if (this.state.showLogs) {
           console.log(`%c Didn't find a cookie.`, "color: #79E36B");
         }
       }
     } else {
-      if (NODE_ENV !== "development") {
+      if (this.state.showLogs) {
         console.error("dl.com Can't read env cookie name.");
       }
     }
@@ -235,12 +236,12 @@ class Layout extends Component {
         // Check to see if the cookie was set
         this.checkGDPRStatus();
       } else {
-        if (NODE_ENV !== "development") {
+        if (this.state.showLogs) {
           console.error("Can't read cookie data.");
         }
       }
     } else {
-      if (NODE_ENV !== "development") {
+      if (this.state.showLogs) {
         console.error("Can't read cookie name.");
       }
     }
@@ -262,12 +263,12 @@ class Layout extends Component {
         // Check to see if the cookie was set
         this.checkGDPRStatus();
       } else {
-        if (NODE_ENV !== "development") {
+        if (this.state.showLogs) {
           console.error("Can't read cookie data.");
         }
       }
     } else {
-      if (NODE_ENV !== "development") {
+      if (this.state.showLogs) {
         console.error("Can't read cookie name.");
       }
     }
