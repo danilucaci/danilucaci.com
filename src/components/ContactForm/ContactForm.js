@@ -71,7 +71,7 @@ const ContactForm = (props) => {
   const [dateSent, setDateSent] = useState(submitTimeStamp());
   const [botField, setBotField] = useState("");
   const [acceptsConsentCheckbox, setAcceptsConsentCheckbox] = useState(false);
-  const [consentCheckboxValue, setConsentCheckboxValue] = useState(
+  const [consentCheckboxMessage, setConsentCheckboxMessage] = useState(
     consentValue[locale].no
   );
   const [allowSubmit, setAllowSubmit] = useState(false);
@@ -96,8 +96,8 @@ const ContactForm = (props) => {
         message: message,
         datesent: dateSent,
         botfield: botField,
-        acceptsConsentCheckbox: acceptsConsentCheckbox,
-        consentcheckboxvalue: consentCheckboxValue,
+        acceptsconsentcheckbox: acceptsConsentCheckbox,
+        consentcheckboxmessage: consentCheckboxMessage,
       }),
     })
       .then(() => {
@@ -107,7 +107,7 @@ const ContactForm = (props) => {
         console.log(`dateSent: ${submitTimeStamp()}`);
         console.log(`botfield: ${botField}`);
         console.log(`acceptsConsentCheckbox: ${acceptsConsentCheckbox}`);
-        console.log(`consentcheckboxvalue: ${consentCheckboxValue}`);
+        console.log(`consentcheckboxmessage: ${consentCheckboxMessage}`);
         setFormSubmitMessage("Message Sent!");
       })
       // .then(() => navigate(form.getAttribute("action")))
@@ -116,7 +116,7 @@ const ContactForm = (props) => {
 
   function handleConsentCheckbox(e) {
     setAcceptsConsentCheckbox(e.target.checked);
-    setConsentCheckboxValue(consentValue[locale].yes);
+    setConsentCheckboxMessage(consentValue[locale].yes);
     setAllowSubmit(acceptsConsentCheckbox);
     setDateSent(submitTimeStamp());
   }
@@ -161,6 +161,18 @@ const ContactForm = (props) => {
           value={dateSent}
           onChange={() => setDateSent(submitTimeStamp())}
           name="datesent"
+        />
+        <input
+          style={{ display: "none" }}
+          arria-hidden="true"
+          type="text"
+          value={
+            acceptsConsentCheckbox === true
+              ? consentValue[locale].yes
+              : consentValue[locale].no
+          }
+          name="consentcheckboxmessage"
+          readOnly={true}
         />
         <input
           style={{ display: "none" }}
