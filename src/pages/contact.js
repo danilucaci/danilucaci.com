@@ -99,21 +99,6 @@ const StyledLink = styled.a`
   white-space: nowrap;
 `;
 
-const FormContainer = styled.div`
-  margin-top: ${rem(32)};
-
-  label {
-    display: block;
-    margin-bottom: ${rem(16)};
-  }
-
-  input {
-    display: block;
-    padding: ${rem(8)};
-    margin-bottom: ${rem(16)};
-  }
-`;
-
 const SayHiContainer = styled.div`
   margin-top: ${rem(40)};
 

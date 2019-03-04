@@ -13,7 +13,7 @@ export const Input = styled.input`
   font-style: normal;
   font-weight: 400;
 
-  padding: ${rem(16)} ${rem(24)};
+  padding: ${rem(12)} ${rem(16)};
   height: ${rem(48)};
 
   width: 100%;
@@ -29,12 +29,7 @@ export const Input = styled.input`
   }
 `;
 
-export const Checkbox = styled.input`
-  &:focus {
-    color: ${theme.colors.dark800};
-    outline: 1px solid ${theme.colors.dark800};
-  }
-`;
+export const Checkbox = styled.input``;
 
 export const TextArea = styled.textarea`
   background-color: ${theme.colors.gray100};
@@ -76,7 +71,7 @@ export const SubmitButton = styled.input`
   font-style: normal;
   font-weight: 700;
 
-  padding: ${rem(12)} ${rem(40)};
+  padding: ${rem(12)} ${rem(24)};
   height: ${rem(48)};
   margin-top: ${rem(16)};
   width: 100%;
@@ -105,4 +100,8 @@ export const SubmitButton = styled.input`
     background-color: ${theme.colors.main500};
     ${theme.shadow.buttons.main};
   }
+`;
+
+export const Label = styled.label`
+  margin-bottom: ${rem(4)};
 `;
