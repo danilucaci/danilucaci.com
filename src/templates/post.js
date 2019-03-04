@@ -475,8 +475,6 @@ class Post extends Component {
   // };
 
   loadComments = () => {
-    console.log("Add commments yo");
-
     this.setState((prevState) => ({
       loadComments: !prevState.loadComments,
     }));
@@ -573,7 +571,7 @@ class Post extends Component {
           />
         )}
 
-        <CommentsWrapper>
+        {/* <CommentsWrapper>
           {!this.state.loadComments && (
             <StyledLoadComments onClick={this.loadComments}>
               <LoadCommentsIcon aria-hidden="true">
@@ -590,7 +588,7 @@ class Post extends Component {
               config={disqusConfig}
             />
           )}
-        </CommentsWrapper>
+        </CommentsWrapper> */}
         <SiteFooter locale={locale} />
       </Layout>
     );
