@@ -66,12 +66,14 @@ const ContactForm = (props) => {
   };
 
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
+  const [fullName, setFullName] = useState("");
   const [message, setMessage] = useState("");
-  const [botField, setBotField] = useState("");
+  const [dateSent, setDateSent] = useState(submitTimeStamp());
+  const [botField, setBotField] = useState();
   const [acceptsConsentCheckbox, setAcceptsConsentCheckbox] = useState(false);
-  const [checkboxValue, setCheckboxValue] = useState(consentValue[locale].no);
-  const [consentInputValue, setConsentInputValue] = useState();
+  const [consentCheckboxValue, setConsentCheckboxValue] = useState(
+    consentValue[locale].no
+  );
   const [allowSubmit, setAllowSubmit] = useState(false);
   const [formSubmitMessage, setFormSubmitMessage] = useState("");
   const [formSubmitError, setFormSubmitError] = useState("");
@@ -90,22 +92,22 @@ const ContactForm = (props) => {
       body: encode({
         "form-name": form.getAttribute("name"),
         email: email,
-        name: name,
+        fullname: fullName,
         message: message,
-        dateSent: submitTimeStamp(),
+        datesent: dateSent,
         botfield: botField,
-        consentcheckboxaccepted: acceptsConsentCheckbox,
-        consentcheckboxvalue: checkboxValue,
+        acceptsConsentCheckbox: acceptsConsentCheckbox,
+        consentcheckboxvalue: consentCheckboxValue,
       }),
     })
       .then(() => {
+        console.log(`fullname: ${fullName}`);
         console.log(`email: ${email}`);
-        console.log(`name: ${name}`);
         console.log(`message: ${message}`);
-        console.log(`date: ${submitTimeStamp()}`);
+        console.log(`dateSent: ${submitTimeStamp()}`);
         console.log(`botfield: ${botField}`);
         console.log(`acceptsConsentCheckbox: ${acceptsConsentCheckbox}`);
-        console.log(`checkboxValue: ${checkboxValue}`);
+        console.log(`consentcheckboxvalue: ${consentCheckboxValue}`);
         setFormSubmitMessage("Message Sent!");
       })
       // .then(() => navigate(form.getAttribute("action")))
@@ -114,8 +116,9 @@ const ContactForm = (props) => {
 
   function handleConsentCheckbox(e) {
     setAcceptsConsentCheckbox(e.target.checked);
-    setCheckboxValue(consentValue[locale].yes);
+    setConsentCheckboxValue(consentValue[locale].yes);
     setAllowSubmit(acceptsConsentCheckbox);
+    setDateSent(submitTimeStamp());
   }
 
   function encode(data) {
@@ -137,6 +140,7 @@ const ContactForm = (props) => {
         onSubmit={handleSubmit}
       >
         {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
+        {/* These have to be input types, otherwise they don't show in the form atributes */}
         <input
           type="hidden"
           name="form-name"
@@ -147,25 +151,38 @@ const ContactForm = (props) => {
           style={{ display: "none" }}
           arria-hidden="true"
           name="botfield"
+          value={botField}
           onChange={(e) => setBotField(e.target.value)}
         />
         <input
           style={{ display: "none" }}
           arria-hidden="true"
           type="text"
-          value={checkboxValue}
-          onChange={(e) => setConsentInputValue(e.target.value)}
-          name="checkboxvalue"
+          value={dateSent}
+          onChange={() => setDateSent(submitTimeStamp())}
+          name="datesent"
+        />
+        <input
+          style={{ display: "none" }}
+          arria-hidden="true"
+          type="text"
+          value={
+            acceptsConsentCheckbox === true
+              ? consentValue[locale].yes
+              : consentValue[locale].no
+          }
+          name="acceptsConsentCheckbox"
+          readOnly={true}
         />
         <StyledLabel>
           Full Name (required)
           <StyledInput
             type="text"
-            value={name}
+            value={fullName}
             name="fullname"
             autoCorrect="off"
             autoComplete="name"
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setFullName(e.target.value)}
             required
           />
         </StyledLabel>
@@ -196,7 +213,6 @@ const ContactForm = (props) => {
           <StyledCheckbox
             type="checkbox"
             name="consentcheckbox"
-            value={checkboxValue}
             onChange={handleConsentCheckbox}
             required
           />
