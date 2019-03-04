@@ -89,7 +89,7 @@ const StyledInput = styled(Input)`
   display: inline-block;
   width: 100%;
 
-  ${mediaMin.s`
+  ${mediaMin.l`
     margin-right: ${rem(16)};
     width: ${rem(360)};
   `};
@@ -98,7 +98,7 @@ const StyledInput = styled(Input)`
 const StyledSubmitButton = styled(SubmitButton)`
   margin-top: ${rem(16)};
 
-  ${mediaMin.s`  
+  ${mediaMin.l`  
     width: auto;
     margin-top: 0;
     display: inline-block;
