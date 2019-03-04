@@ -22,7 +22,7 @@ const GlobalFonts = createGlobalStyle`
   font-family: 'Roboto Mono Regular';
   font-style: normal;
   /* displays text with fallback font and replaces when the font is ready */
-  font-display: fallback;
+  font-display: swap;
   font-weight: 400;
   src: 
   ${"" /* local('Roboto Mono Regular'), */}
@@ -34,7 +34,7 @@ const GlobalFonts = createGlobalStyle`
   font-family: 'Roboto Mono Italic';
   font-style: italic;
   /* displays text with fallback font and replaces when the font is ready */
-  font-display: fallback;
+  font-display: swap;
   font-weight: 400;
   src: 
   ${"" /* local('Roboto Mono Italic'), */}
@@ -46,7 +46,7 @@ const GlobalFonts = createGlobalStyle`
   font-family: 'Open Sans Regular';
   font-style: normal;
   /* displays text with fallback font and replaces when the font is ready */
-  font-display: fallback;
+  font-display: swap;
   font-weight: 400;
   src: 
   ${"" /* local('Open Sans Regular'), */}
@@ -58,7 +58,7 @@ const GlobalFonts = createGlobalStyle`
   font-family: 'Open Sans Bold';
   font-style: normal;
   /* displays text with fallback font and replaces when the font is ready */
-  font-display: fallback;
+  font-display: swap;
   font-weight: 700;
   src: 
   ${"" /* local('Open Sans Bold'), */}
@@ -70,7 +70,7 @@ const GlobalFonts = createGlobalStyle`
   font-family: 'Open Sans Italic';
   font-style: italic;
   /* displays text with fallback font and replaces when the font is ready */
-  font-display: fallback;
+  font-display: swap;
   font-weight: 400;
   src: 
   ${"" /* local('Open Sans Italic'), */}
@@ -82,7 +82,7 @@ const GlobalFonts = createGlobalStyle`
   font-family: 'Montserrat Regular';
   font-style: normal;
   /* displays text with fallback font and replaces when the font is ready */
-  font-display: fallback;
+  font-display: swap;
   font-weight: 400;
   src: 
   ${"" /* local('Montserrat Regular'), */}
@@ -94,7 +94,7 @@ const GlobalFonts = createGlobalStyle`
   font-family: 'Montserrat Bold';
   font-style: normal;
   /* displays text with fallback font and replaces when the font is ready */
-  font-display: fallback;
+  font-display: swap;
   font-weight: 700;
   src: 
   ${"" /* local('Montserrat Bold'), */}
