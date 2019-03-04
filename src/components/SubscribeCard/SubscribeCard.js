@@ -15,21 +15,21 @@ const StyledSubscribeCard = styled.aside`
   margin-left: auto;
   margin-right: auto;
 
-  padding-top: ${rem(40)};
-  padding-bottom: ${rem(40)};
-  padding-left: ${theme.gutters.s};
-  padding-right: ${theme.gutters.s};
+  margin-top: ${theme.spacing.components.s};
+  margin-bottom: ${theme.spacing.components.s};
+
+  padding: ${rem(32)} ${rem(24)};
 
   ${mediaMin.m`
-    padding-left: ${theme.gutters.m};
-    padding-right: ${theme.gutters.m};
-    margin-top: ${rem(16)};
-    margin-bottom: ${rem(80)};
+    padding: ${rem(32)} ${rem(80)};
+    margin-top: ${theme.spacing.components.m};
+    margin-bottom: ${theme.spacing.components.m};
   `};
 
-  ${mediaMin.xl`
-    margin-top: ${rem(56)};
-    margin-bottom: ${rem(144)};
+  ${mediaMin.xxl`
+    padding: ${rem(48)} ${rem(144)} ${rem(32)} ${rem(144)};
+    margin-top: ${theme.spacing.components.xl};
+    margin-bottom: ${theme.spacing.components.xl};
   `};
 `;
 
@@ -44,30 +44,68 @@ const InputWrapper = styled.div`
   width: 100%;
 `;
 
-const StyledLabel = styled.label`
-  display: inline-block;
-  margin-top: ${rem(16)};
-  margin-right: ${rem(16)};
+const StyledH2 = styled.h2`
+  margin-bottom: ${rem(8)};
+
+  ${mediaMax.m`
+    margin-bottom: ${rem(16)};
+    font-size: ${theme.fontSizes.h1s};
+    line-height: ${theme.lineHeights.h1s};
+  `};
+`;
+
+const Subtitle = styled(Copy)`
+  margin-bottom: ${rem(8)};
+`;
+
+const AltCopy = styled(Copy)`
+  font-size: ${theme.fontSizes.s};
+  line-height: ${theme.lineHeights.s};
+  color: ${theme.colors.dark700};
+
+  margin-bottom: ${rem(32)};
+
+  ${mediaMin.m`
+    margin-bottom: ${rem(24)};
+  `};
+`;
+
+const SigupErrorMessage = styled(Copy)`
+  border: 1px solid ${theme.colors.gray400};
+  border-radius: ${theme.borderRadius.buttons};
+  display: block;
+  background-color: ${theme.colors.gray100};
+  font-size: ${theme.fontSizes.s};
+  line-height: ${theme.lineHeights.s};
+  color: ${theme.colors.dark800};
+  padding: ${rem(16)};
+  margin-top: ${rem(24)};
+  ${theme.shadow.dropdown}
 `;
 
 const StyledCheckboxLabel = styled.label`
   display: inline-block;
-  margin-top: ${rem(16)};
+  margin-top: ${rem(12)};
+  margin-bottom: ${rem(12)};
   width: 100%;
 `;
 
 const StyledInput = styled(Input)`
   display: inline-block;
   width: 100%;
-  margin-top: ${rem(8)};
-  padding: ${rem(12)} ${rem(8)};
+
+  ${mediaMin.l`
+    margin-right: ${rem(16)};
+    width: ${rem(360)};
+  `};
 `;
 
 const StyledSubmitButton = styled(SubmitButton)`
   margin-top: ${rem(16)};
 
-  ${mediaMin.xxs`  
+  ${mediaMin.l`  
     width: auto;
+    margin-top: 0;
     display: inline-block;
   `};
 `;
@@ -81,8 +119,8 @@ const SubscribeCard = (props) => {
   let locale = props.locale;
 
   const consentCheckboxLabel = {
-    en: "I accept the privacy policy.",
-    es: "Accepto la privacidad",
+    en: "I have read and I accept the privacy policy.",
+    es: "He leído y accepto la política de privacidad.",
   };
 
   const consentValue = {
@@ -91,8 +129,24 @@ const SubscribeCard = (props) => {
       yes: "I accept the privacy policy.",
     },
     es: {
-      no: "No accepto la privacidad.",
-      yes: "Si Accepto la privacidad.",
+      no: "No accepto la política de privacidad.",
+      yes: "He leído y accepto la política de privacidad.",
+    },
+  };
+
+  const MCErrors = {
+    en: {
+      generic: "Sorry 😔, something went wrong, please try again later.",
+      many:
+        "Sorry 😔, you have too many subscribe attemps, please try again later.",
+      already: "It looks like you have already subscribed to my newsletter 👌🏻",
+    },
+    es: {
+      generic:
+        "Lo siento 😔, algo ha salido mal, por favor intentalo de nuevo más tarde.",
+      many:
+        "Lo siento 😔, has hecho demasiadas intentos de subscribir, por favor intentalo de nuevo más tarde.",
+      already: "Parece que ya eres miembro de mi newsletter 👌🏻",
     },
   };
 
@@ -100,8 +154,6 @@ const SubscribeCard = (props) => {
   const [acceptsConsentCheckbox, setAcceptsConsentCheckbox] = useState(false);
   const [checkboxValue, setCheckboxValue] = useState(consentValue[locale].no);
   const [allowSubmit, setAllowSubmit] = useState(false);
-  const [MCSubscribed, setMCSubscribed] = useState("");
-  const [MCAlreadySubscribed, setMCAlreadySubscribed] = useState("");
   const [MCError, setMCError] = useState("");
 
   async function handleSubmit(e) {
@@ -112,24 +164,18 @@ const SubscribeCard = (props) => {
       DLPO: checkboxValue,
     });
 
-    console.log(mailChimpResult);
-
-    if (mailChimpResult.result.includes("error")) {
-      setMCError("Sorry, something went wrong.");
-    }
-
-    if (mailChimpResult.result.includes("success")) {
-      if (mailChimpResult.msg.includes("We need to confirm your email")) {
-        setMCSubscribed(
-          "Thanks for subscribing! Please confirm your email to continue."
-        );
-      }
-    }
-
-    if (mailChimpResult.result.includes("error")) {
-      if (mailChimpResult.msg.includes("is already subscribed to")) {
-        setMCAlreadySubscribed("Sorry, you are already to my newsletter.");
-      }
+    if (
+      mailChimpResult.result.includes("error") &&
+      mailChimpResult.msg.includes("is already subscribed to")
+    ) {
+      setMCError(MCErrors[locale].already);
+    } else if (
+      mailChimpResult.result.includes("error") &&
+      mailChimpResult.msg.includes("many")
+    ) {
+      setMCError(MCErrors[locale].many);
+    } else if (mailChimpResult.result.includes("error")) {
+      setMCError(MCErrors[locale].many);
     }
   }
 
@@ -141,24 +187,29 @@ const SubscribeCard = (props) => {
 
   return (
     <StyledSubscribeCard>
-      <h2>Subscribe</h2>
-      <Copy>Subscribe to my info</Copy>
+      <FormattedMessage id="subscribeCardTitle">
+        {(txt) => <StyledH2>{txt}</StyledH2>}
+      </FormattedMessage>
+      <FormattedMessage id="subscribeCardSubTitle">
+        {(txt) => <Subtitle>{txt}</Subtitle>}
+      </FormattedMessage>
+      <FormattedMessage id="subscribeCardSpam">
+        {(txt) => <AltCopy>{txt}</AltCopy>}
+      </FormattedMessage>
       <FormContainer>
         <StyledForm onSubmit={handleSubmit}>
           <InputWrapper>
-            <StyledLabel>
-              Your Email (required)
-              <StyledInput
-                type="email"
-                value={email}
-                name="email"
-                autoCapitalize="off"
-                autoCorrect="off"
-                autoComplete="email"
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </StyledLabel>
+            <StyledInput
+              type="email"
+              value={email}
+              name="email"
+              autoCapitalize="off"
+              autoCorrect="off"
+              autoComplete="email"
+              placeholder="Email address"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
             <StyledSubmitButton
               type="submit"
               value="Subscribe"
@@ -176,9 +227,7 @@ const SubscribeCard = (props) => {
             {consentCheckboxLabel[locale]}
           </StyledCheckboxLabel>
         </StyledForm>
-        {MCSubscribed && <p>{MCSubscribed}</p>}
-        {MCAlreadySubscribed && <p>{MCAlreadySubscribed}</p>}
-        {MCError && <p>{MCError}</p>}
+        {MCError && <SigupErrorMessage>{MCError}</SigupErrorMessage>}
       </FormContainer>
     </StyledSubscribeCard>
   );

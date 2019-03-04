@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { FormattedMessage } from "react-intl";
-import { navigate } from "gatsby";
 
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
@@ -12,11 +11,13 @@ import SiteFooter from "../components/SiteFooter/SiteFooter";
 import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
 import { Copy } from "../components/Copy/Copy";
 import { HR } from "../components/HR/HR";
-import SubscribeCard from "../components/SubscribeCard/SubscribeCard";
 import ContactForm from "../components/ContactForm/ContactForm";
+import SocialNav from "../components/SocialNav/SocialNav";
 
 const ContactMeWrapper = styled.section`
   max-width: ${theme.contain.wrapper.col10};
+  margin-top: ${rem(24)};
+  margin-bottom: ${rem(64)};
   margin-left: auto;
   margin-right: auto;
 
@@ -26,70 +27,91 @@ const ContactMeWrapper = styled.section`
   ${mediaMin.m`
     padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
-    margin-top: ${rem(16)};
+    margin-top: ${rem(40)};
     margin-bottom: ${rem(80)};
   `};
+`;
 
-  ${mediaMin.xl`
-    margin-top: ${rem(56)};
-    margin-bottom: ${rem(144)};
+const ContactMeHeader = styled.header`
+  ${mediaMin.m`
+    max-width: ${rem(640)};
+    margin-left: auto;
+    margin-right: auto;
+  `};
+
+  ${mediaMin.xxl`
+    display: inline-block;
+    vertical-align: top;
+    width: calc(50% - ${rem(12)});
+    margin-right: ${rem(12)};
+  `};
+`;
+
+const ContactFormWrapper = styled.div`
+  ${mediaMin.m`
+    max-width: ${rem(640)};
+    margin-left: auto;
+    margin-right: auto;
+  `};
+
+  ${mediaMin.xxl`
+    display: inline-block;
+    vertical-align: top;
+    float: right;
+    width: calc(50% - ${rem(12)});
+    margin-top: -${rem(20)};
+    margin-left: ${rem(12)};
+    margin-bottom: ${rem(128)};
+  `};
+`;
+
+const TopHR = styled(HR)`
+  margin-top: ${rem(32)};
+  margin-bottom: ${rem(24)};
+
+  ${mediaMin.xxl`
+      display: none;
   `};
 `;
 
 const StyledH1 = styled.h1`
   display: block;
   width: 100%;
-  margin-bottom: ${rem(16)};
+  margin-bottom: ${rem(8)};
+  margin-left: auto;
+  margin-right: auto;
+
+  max-width: ${rem(640)};
+
+  ${mediaMin.xxl`
+    max-width: auto;
+    margin-left: 0;
+    margin-right: 0;
+  `};
 `;
 
 const Subhead = styled(Copy)`
-  font-size: ${theme.fontSizes.subheads};
-  line-height: ${theme.lineHeights.subheads};
-  margin-bottom: ${rem(32)};
+  font-size: ${theme.fontSizes.subheadS};
+  line-height: ${theme.lineHeights.subheadS};
+  margin-bottom: ${rem(16)};
+  color: ${theme.colors.dark700};
 
   ${mediaMin.s`
     font-size: ${theme.fontSizes.subhead};
     line-height: ${theme.lineHeights.subhead};
   `};
+
+  ${mediaMin.xxl`
+    margin-bottom: ${rem(32)};
+  `};
 `;
 
-const StyledMailToButton = styled.a`
-  background-color: ${theme.colors.main600};
-  border-radius: ${theme.borderRadius.buttons};
-  color: ${theme.colors.buttonLight} !important;
-  display: block;
+const Description = styled(Copy)`
+  margin-bottom: ${rem(16)};
 
-  text-align: center;
-  text-decoration: none;
-  font-size: ${theme.fontSizes.button};
-  line-height: ${theme.lineHeights.button};
-  font-style: normal;
-  font-weight: 700;
-
-  padding: ${rem(12)} ${rem(40)};
-  height: ${rem(48)};
-  width: 100%;
-
-  ${mediaMin.xxs`  
-    width: ${rem(288)};
+  ${mediaMin.xxl`
+    margin-bottom: ${rem(32)};
   `};
-
-  margin-top: ${rem(24)};
-
-  ${mediaMin.m`  
-    margin-top: ${rem(8)};
-  `};
-
-  white-space: nowrap;
-
-  font-family: ${theme.fonts.bodyBold};
-
-  &:hover,
-  &:focus {
-    cursor: pointer;
-    background-color: ${theme.colors.main500};
-    ${theme.shadow.buttons.main};
-  }
 `;
 
 const StyledLink = styled.a`
@@ -97,35 +119,27 @@ const StyledLink = styled.a`
   white-space: nowrap;
 `;
 
-const FormContainer = styled.div`
-  margin-top: ${rem(32)};
+const SayHiWrapper = styled.div`
+  margin-top: ${rem(48)};
 
-  label {
-    display: block;
-    margin-bottom: ${rem(16)};
-  }
-
-  input {
-    display: block;
-    padding: ${rem(8)};
-    margin-bottom: ${rem(16)};
-  }
-`;
-
-const SayHiContainer = styled.div`
-  margin-top: ${rem(40)};
-
-  ${mediaMin.m`  
-    margin-top: ${rem(80)};
+  ${mediaMin.m`
+    max-width: ${rem(640)};
+    margin-left: auto;
+    margin-right: auto;
   `};
 
-  ${mediaMin.xl`  
-    margin-top: ${rem(112)};
+  ${mediaMin.xxl`
+    display: inline-block;
+    vertical-align: top;
+    margin-top: ${rem(32)};
+    width: calc(50% - ${rem(12)});
+    margin-right: ${rem(12)};
   `};
 `;
 
 const SayHiTitle = styled.h3`
   margin-top: ${rem(24)};
+  margin-bottom: ${rem(8)};
 
   ${mediaMin.m`  
     margin-top: ${rem(32)};
@@ -135,17 +149,17 @@ const SayHiTitle = styled.h3`
 const SayHiDescription = styled(Copy)`
   display: inline;
 `;
+const SocialNavWrapper = styled.div`
+  margin-top: ${rem(16)};
+`;
 
 const ContactPage = (props) => {
   let locale = props.pageContext.locale;
   let twinPostURL = "";
-  let emailURL = "";
 
   if (locale === "en") {
     twinPostURL = "/es/contacto";
-    emailURL = "mailto:hello@danilucaci.com";
   } else if (locale === "es") {
-    emailURL = "mailto:hola@danilucaci.com";
     twinPostURL = "/contact";
   }
 
@@ -167,28 +181,29 @@ const ContactPage = (props) => {
           <FormattedMessage id="contactPageTitle">
             {(txt) => <StyledH1>{txt}</StyledH1>}
           </FormattedMessage>
-          <FormattedMessage id="contactPageDescription">
-            {(txt) => <Subhead>{txt}</Subhead>}
-          </FormattedMessage>
-          <FormattedMessage id="contactPageWorkInfo">
-            {(txt) => (
-              <Copy>
-                {txt}{" "}
-                <FormattedMessage id="contactPageEmail">
-                  {(txt) => <StyledLink href={emailURL}>{txt}</StyledLink>}
-                </FormattedMessage>
-              </Copy>
-            )}
-          </FormattedMessage>
-          <FormattedMessage id="contactPageCTA">
-            {(txt) => (
-              <StyledMailToButton role="button" href={emailURL}>
-                {txt}
-              </StyledMailToButton>
-            )}
-          </FormattedMessage>
-          <ContactForm locale={locale} />
-          <SayHiContainer>
+          <ContactMeHeader>
+            <FormattedMessage id="contactPageSubhead">
+              {(txt) => <Subhead>{txt}</Subhead>}
+            </FormattedMessage>
+            <FormattedMessage id="contactPageDescription">
+              {(txt) => <Description>{txt}</Description>}
+            </FormattedMessage>
+            <FormattedMessage id="contactPageWorkInfo">
+              {(txt) => (
+                <Copy>
+                  {txt}{" "}
+                  <StyledLink href="mailto:info@danilucaci.com">
+                    info@danilucaci.com
+                  </StyledLink>
+                </Copy>
+              )}
+            </FormattedMessage>
+          </ContactMeHeader>
+          <ContactFormWrapper>
+            <TopHR />
+            <ContactForm locale={locale} />
+          </ContactFormWrapper>
+          <SayHiWrapper>
             <HR />
             <FormattedMessage id="contactPageOtherTitle">
               {(txt) => <SayHiTitle>{txt}</SayHiTitle>}
@@ -211,10 +226,12 @@ const ContactPage = (props) => {
                 </SayHiDescription>
               )}
             </FormattedMessage>
-          </SayHiContainer>
+            <SocialNavWrapper>
+              <SocialNav />
+            </SocialNavWrapper>
+          </SayHiWrapper>
         </ContactMeWrapper>
       </Main>
-      <SubscribeCard locale={locale} />
       <SiteFooter locale={locale} />
     </Layout>
   );

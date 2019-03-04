@@ -8,39 +8,32 @@ import { FormattedMessage } from "react-intl";
 import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
 import SocialNav from "../SocialNav/SocialNav";
-import { HR } from "../HR/HR";
 
-export const AuthorCardWrapper = styled.footer`
-  background-color: ${theme.colors.sectionBackground};
+export const StyledAuthorCard = styled.footer`
+  background-color: ${theme.colors.gray100};
   width: 100%;
   max-width: ${theme.contain.inner.col10};
   margin-left: auto;
   margin-right: auto;
 
-  margin-bottom: ${theme.spacing.components.s};
-  ${mediaMin.s`
-    margin-bottom: ${theme.spacing.components.m};
-  `};
-  ${mediaMin.m`
-    margin-bottom: ${theme.spacing.components.xl};
-  `};
-`;
-
-const StyledAuthorCard = styled.div`
   padding: ${rem(24)} ${rem(40)} ${rem(32)};
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 
+  margin-bottom: ${theme.spacing.components.s};
+
   ${mediaMin.s`
     padding: ${rem(32)} ${rem(48)};
+    margin-bottom: ${theme.spacing.components.m};
   `};
 
   ${mediaMin.m`
+    margin-bottom: ${theme.spacing.components.xl};
     text-align: left;
     flex-direction: row;
-    padding: ${rem(64)} ${rem(56)};
+    padding: ${rem(64)} ${rem(48)};
   `};
 `;
 
@@ -85,42 +78,38 @@ const AuthorDescription = styled(Copy)`
 
 const AuthorCard = (props) => {
   return (
-    <AuthorCardWrapper>
-      <HR />
-      <StyledAuthorCard>
-        <StaticQuery
-          query={AUTHOR_IMAGE_QUERY}
-          render={(data) => {
-            let image = data.authorImageQuery.childImageSharp.fluid;
+    <StyledAuthorCard>
+      <StaticQuery
+        query={AUTHOR_IMAGE_QUERY}
+        render={(data) => {
+          let image = data.authorImageQuery.childImageSharp.fluid;
 
-            return (
-              <FormattedMessage id="authorCardImageTitle">
-                {(imageTitle) => (
-                  <AuthorImage
-                    title={imageTitle}
-                    alt="Dani Lucaci portrait image"
-                    fluid={image}
-                  />
-                )}
-              </FormattedMessage>
-            );
-          }}
-        />
+          return (
+            <FormattedMessage id="authorCardImageTitle">
+              {(imageTitle) => (
+                <AuthorImage
+                  title={imageTitle}
+                  alt="Dani Lucaci portrait image"
+                  fluid={image}
+                />
+              )}
+            </FormattedMessage>
+          );
+        }}
+      />
 
-        <AuthorInfo>
-          <FormattedMessage id="authorCardName">
-            {(name) => <h4>{name}</h4>}
-          </FormattedMessage>
-          <FormattedMessage id="authorCardDescription">
-            {(description) => (
-              <AuthorDescription>{description}</AuthorDescription>
-            )}
-          </FormattedMessage>
-          <SocialNav />
-        </AuthorInfo>
-      </StyledAuthorCard>
-      <HR />
-    </AuthorCardWrapper>
+      <AuthorInfo>
+        <FormattedMessage id="authorCardName">
+          {(name) => <h4>{name}</h4>}
+        </FormattedMessage>
+        <FormattedMessage id="authorCardDescription">
+          {(description) => (
+            <AuthorDescription>{description}</AuthorDescription>
+          )}
+        </FormattedMessage>
+        <SocialNav />
+      </AuthorInfo>
+    </StyledAuthorCard>
   );
 };
 

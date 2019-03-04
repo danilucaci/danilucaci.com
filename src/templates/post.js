@@ -24,6 +24,7 @@ import SiblingPosts from "../components/SiblingPosts/SiblingPosts";
 import { LoadComments } from "../components/Button/Button";
 import { Icon } from "../components/Icon/Icon";
 import AuthorCard from "../components/AuthorCard/AuthorCard";
+import SubscribeCard from "../components/SubscribeCard/SubscribeCard";
 import {
   calculateScroll,
   selectDummyNodeToCopy,
@@ -470,8 +471,6 @@ class Post extends Component {
   // };
 
   loadComments = () => {
-    console.log("Add commments yo");
-
     this.setState((prevState) => ({
       loadComments: !prevState.loadComments,
     }));
@@ -547,6 +546,7 @@ class Post extends Component {
             </StyledPageHeader>
             <PostContent>{renderAst(postNode.htmlAst)}</PostContent>
             <AuthorCard />
+            <SubscribeCard locale={locale} />
           </PostWrapper>
 
           <DummyInput
@@ -567,7 +567,7 @@ class Post extends Component {
           />
         )}
 
-        <CommentsWrapper>
+        {/* <CommentsWrapper>
           {!this.state.loadComments && (
             <StyledLoadComments onClick={this.loadComments}>
               <LoadCommentsIcon aria-hidden="true">
@@ -584,7 +584,7 @@ class Post extends Component {
               config={disqusConfig}
             />
           )}
-        </CommentsWrapper>
+        </CommentsWrapper> */}
         <SiteFooter locale={locale} />
       </Layout>
     );

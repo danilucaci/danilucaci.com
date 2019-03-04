@@ -10,7 +10,9 @@ const StyledSiteNavListItem = styled.li`
   list-style-type: none;
   text-align: center;
 
-  font-family: ${theme.fonts.headerRegular};
+  .fonts-loaded & {
+    font-family: ${theme.fonts.headerRegular};
+  }
 
   font-weight: 400;
   width: 100%;
@@ -65,7 +67,10 @@ const StyledSiteNavListItem = styled.li`
       background-color: ${theme.colors.gray300};
       color: ${theme.colors.dark900};
       font-weight: 700;
-      font-family: ${theme.fonts.header};
+
+      .fonts-loaded & {
+        font-family: ${theme.fonts.header};
+      }
 
       &:hover {
         background-color: transparent;

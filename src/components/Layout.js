@@ -10,8 +10,24 @@ import Helmet from "react-helmet";
 import enData from "react-intl/locale-data/en";
 import esData from "react-intl/locale-data/es";
 
+import {
+  RobotoMonoRegularWoff2,
+  RobotoMonoRegularWoff,
+  RobotoMonoItalicWoff2,
+  RobotoMonoItalicWoff,
+  OpenSansRegularWoff2,
+  OpenSansRegularWoff,
+  OpenSansItalicWoff2,
+  OpenSansItalicWoff,
+  OpenSansBoldWoff2,
+  OpenSansBoldWoff,
+  MontserratRegularWoff2,
+  MontserratRegularWoff,
+  MontserratBoldWoff2,
+  MontserratBoldWoff,
+} from "../fonts";
+
 import { theme } from "../theme/globalStyles";
-import GlobalFonts from "../theme/globalFonts";
 import GlobalReset from "../theme/globalReset";
 import GlobalAria from "../theme/globalAria";
 import GlobalHTML from "../theme/globalCSS";
@@ -31,7 +47,8 @@ addLocaleData([...enData, ...esData]);
 const NODE_ENV = process.env.NODE_ENV;
 const GATSBY_DL_CONSENT_COOKIE_NAME = process.env.GATSBY_DL_CONSENT_COOKIE_NAME;
 const GATSBY_DL_COOKIE_NAME = process.env.GATSBY_DL_COOKIE_NAME;
-const GATSBY_DL_COOKIE_SECURE = process.env.GATSBY_DL_COOKIE_SECURE;
+const GATSBY_DL_COOKIE_SECURE =
+  NODE_ENV === "development" ? false : process.env.GATSBY_DL_COOKIE_SECURE;
 const GATSBY_DL_COOKIE_DOMAIN = process.env.GATSBY_DL_COOKIE_DOMAIN;
 const GATSBY_GA_ID = process.env.GATSBY_GA_ID;
 
@@ -62,6 +79,89 @@ const Page = styled.div`
   & main {
     flex: 1 0 auto;
   }
+  @font-face {
+  font-family: 'Roboto Mono Regular';
+  font-style: normal;
+  /* displays text with fallback font and replaces when the font is ready */
+  font-display: swap;
+  font-weight: 400;
+  src: 
+  ${"" /* local('Roboto Mono Regular'), */}
+  url('${RobotoMonoRegularWoff2}') format('woff2'),
+  url('${RobotoMonoRegularWoff}') format('woff');
+}
+
+@font-face {
+  font-family: 'Roboto Mono Italic';
+  font-style: italic;
+  /* displays text with fallback font and replaces when the font is ready */
+  font-display: swap;
+  font-weight: 400;
+  src: 
+  ${"" /* local('Roboto Mono Italic'), */}
+  url('${RobotoMonoItalicWoff2}') format('woff2'),
+  url('${RobotoMonoItalicWoff}') format('woff');
+}
+
+@font-face {
+  font-family: 'Open Sans Regular';
+  font-style: normal;
+  /* displays text with fallback font and replaces when the font is ready */
+  font-display: swap;
+  font-weight: 400;
+  src: 
+  ${"" /* local('Open Sans Regular'), */}
+  url('${OpenSansRegularWoff2}') format('woff2'),
+  url('${OpenSansRegularWoff}') format('woff');
+}
+
+@font-face {
+  font-family: 'Open Sans Bold';
+  font-style: normal;
+  /* displays text with fallback font and replaces when the font is ready */
+  font-display: swap;
+  font-weight: 700;
+  src: 
+  ${"" /* local('Open Sans Bold'), */}
+  url('${OpenSansBoldWoff2}') format('woff2'),
+  url('${OpenSansBoldWoff}') format('woff');
+}
+
+@font-face {
+  font-family: 'Open Sans Italic';
+  font-style: italic;
+  /* displays text with fallback font and replaces when the font is ready */
+  font-display: swap;
+  font-weight: 400;
+  src: 
+  ${"" /* local('Open Sans Italic'), */}
+  url('${OpenSansItalicWoff2}') format('woff2'),
+  url('${OpenSansItalicWoff}') format('woff');
+}
+
+@font-face {
+  font-family: 'Montserrat Regular';
+  font-style: normal;
+  /* displays text with fallback font and replaces when the font is ready */
+  font-display: swap;
+  font-weight: 400;
+  src: 
+  ${"" /* local('Montserrat Regular'), */}
+  url('${MontserratRegularWoff2}') format('woff2'),
+  url('${MontserratRegularWoff}') format('woff');
+}
+
+@font-face {
+  font-family: 'Montserrat Bold';
+  font-style: normal;
+  /* displays text with fallback font and replaces when the font is ready */
+  font-display: swap;
+  font-weight: 700;
+  src: 
+  ${"" /* local('Montserrat Bold'), */}
+  url('${MontserratBoldWoff2}') format('woff2'),
+  url('${MontserratBoldWoff}') format('woff');
+}
 `;
 
 class Layout extends Component {
@@ -213,10 +313,8 @@ class Layout extends Component {
   };
 
   acceptsCookies = () => {
-    const hasCookieData = GATSBY_DL_COOKIE_DOMAIN && GATSBY_DL_COOKIE_SECURE;
-
     if (GATSBY_DL_COOKIE_NAME) {
-      if (hasCookieData) {
+      if (GATSBY_DL_COOKIE_DOMAIN) {
         Cookies.set(GATSBY_DL_COOKIE_NAME, this.state.acceptsCookie, {
           expires: this.state.cookieExp,
           domain: GATSBY_DL_COOKIE_DOMAIN,
@@ -238,10 +336,8 @@ class Layout extends Component {
   };
 
   deniesCookies = () => {
-    const hasCookieData = GATSBY_DL_COOKIE_DOMAIN && GATSBY_DL_COOKIE_SECURE;
-
     if (GATSBY_DL_COOKIE_NAME) {
-      if (hasCookieData) {
+      if (GATSBY_DL_COOKIE_DOMAIN) {
         Cookies.set(GATSBY_DL_COOKIE_NAME, this.state.deniesCookie, {
           expires: this.state.cookieExp,
           domain: GATSBY_DL_COOKIE_DOMAIN,
@@ -304,7 +400,6 @@ class Layout extends Component {
           <Page>
             {GTMScript}
             <SkipToMainContent />
-            <GlobalFonts />
             <GlobalReset />
             <GlobalAria />
             <GlobalHTML />

@@ -1,5 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
+import { Link } from "gatsby";
 import { FormattedMessage } from "react-intl";
 
 import { theme, mediaMin, rem } from "../../theme/globalStyles";
@@ -34,7 +36,7 @@ const StyledH2 = styled.h2`
   margin-bottom: ${rem(8)};
 `;
 
-const StyledMailToButton = styled.a`
+const StyledMailToButton = styled(Link)`
   background-color: ${theme.colors.main600};
   border-radius: ${theme.borderRadius.buttons};
   color: ${theme.colors.buttonLight} !important;
@@ -73,18 +75,14 @@ const StyledCopy = styled(Copy)`
   display: inline;
 `;
 
-const MailLink = styled.a`
-  display: inline;
-  white-space: nowrap;
-`;
+function ContactCard(props) {
+  let locale = props.locale;
+  let twinPostURL = "";
 
-const ContactCard = (props) => {
-  let emailURL = "";
-
-  if (props.locale === "en") {
-    emailURL = "mailto:hello@danilucaci.com";
-  } else if (props.locale === "es") {
-    emailURL = "mailto:hola@danilucaci.com";
+  if (locale === "en") {
+    twinPostURL = "/contact";
+  } else if (locale === "es") {
+    twinPostURL = "/es/contacto";
   }
 
   return (
@@ -96,19 +94,20 @@ const ContactCard = (props) => {
         <FormattedMessage id="contactCardDescription">
           {(txt) => <StyledCopy>{txt} </StyledCopy>}
         </FormattedMessage>
-        <FormattedMessage id="contactCardEmail">
-          {(txt) => <MailLink href={emailURL}>{txt}</MailLink>}
-        </FormattedMessage>
       </div>
       <FormattedMessage id="contactCardCTA">
         {(txt) => (
-          <StyledMailToButton role="button" href={emailURL}>
+          <StyledMailToButton role="button" to={twinPostURL}>
             {txt}
           </StyledMailToButton>
         )}
       </FormattedMessage>
     </StyledContactCard>
   );
-};
+}
 
 export default ContactCard;
+
+ContactCard.propTypes = {
+  locale: PropTypes.string.isRequired,
+};
