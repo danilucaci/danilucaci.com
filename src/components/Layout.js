@@ -31,7 +31,8 @@ addLocaleData([...enData, ...esData]);
 const NODE_ENV = process.env.NODE_ENV;
 const GATSBY_DL_CONSENT_COOKIE_NAME = process.env.GATSBY_DL_CONSENT_COOKIE_NAME;
 const GATSBY_DL_COOKIE_NAME = process.env.GATSBY_DL_COOKIE_NAME;
-const GATSBY_DL_COOKIE_SECURE = process.env.GATSBY_DL_COOKIE_SECURE;
+const GATSBY_DL_COOKIE_SECURE =
+  NODE_ENV === "development" ? false : process.env.GATSBY_DL_COOKIE_SECURE;
 const GATSBY_DL_COOKIE_DOMAIN = process.env.GATSBY_DL_COOKIE_DOMAIN;
 const GATSBY_GA_ID = process.env.GATSBY_GA_ID;
 
@@ -85,6 +86,8 @@ class Layout extends Component {
     // if (this.state.showLogs) {
     //   this.showGDPRStatus();
     // }
+
+    console.log(typeof GATSBY_DL_COOKIE_SECURE);
   }
 
   checkFontsLoaded = () => {
@@ -213,10 +216,8 @@ class Layout extends Component {
   };
 
   acceptsCookies = () => {
-    const hasCookieData = GATSBY_DL_COOKIE_DOMAIN && GATSBY_DL_COOKIE_SECURE;
-
     if (GATSBY_DL_COOKIE_NAME) {
-      if (hasCookieData) {
+      if (GATSBY_DL_COOKIE_DOMAIN) {
         Cookies.set(GATSBY_DL_COOKIE_NAME, this.state.acceptsCookie, {
           expires: this.state.cookieExp,
           domain: GATSBY_DL_COOKIE_DOMAIN,
@@ -238,10 +239,8 @@ class Layout extends Component {
   };
 
   deniesCookies = () => {
-    const hasCookieData = GATSBY_DL_COOKIE_DOMAIN && GATSBY_DL_COOKIE_SECURE;
-
     if (GATSBY_DL_COOKIE_NAME) {
-      if (hasCookieData) {
+      if (GATSBY_DL_COOKIE_DOMAIN) {
         Cookies.set(GATSBY_DL_COOKIE_NAME, this.state.deniesCookie, {
           expires: this.state.cookieExp,
           domain: GATSBY_DL_COOKIE_DOMAIN,
