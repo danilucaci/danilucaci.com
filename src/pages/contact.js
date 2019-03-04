@@ -12,7 +12,6 @@ import SiteFooter from "../components/SiteFooter/SiteFooter";
 import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
 import { Copy } from "../components/Copy/Copy";
 import { HR } from "../components/HR/HR";
-import SubscribeCard from "../components/SubscribeCard/SubscribeCard";
 import ContactForm from "../components/ContactForm/ContactForm";
 
 const ContactMeWrapper = styled.section`
@@ -201,7 +200,6 @@ const ContactPage = (props) => {
           </SayHiContainer>
         </ContactMeWrapper>
       </Main>
-      <SubscribeCard locale={locale} />
       <SiteFooter locale={locale} />
     </Layout>
   );

@@ -24,6 +24,7 @@ import SiblingPosts from "../components/SiblingPosts/SiblingPosts";
 import { LoadComments } from "../components/Button/Button";
 import { Icon } from "../components/Icon/Icon";
 import AuthorCard from "../components/AuthorCard/AuthorCard";
+import SubscribeCard from "../components/SubscribeCard/SubscribeCard";
 import {
   calculateScroll,
   selectDummyNodeToCopy,
@@ -551,6 +552,7 @@ class Post extends Component {
             </StyledPageHeader>
             <PostContent>{renderAst(postNode.htmlAst)}</PostContent>
             <AuthorCard />
+            <SubscribeCard locale={locale} />
           </PostWrapper>
 
           <DummyInput
