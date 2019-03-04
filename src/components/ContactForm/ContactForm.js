@@ -137,24 +137,24 @@ const ContactForm = (props) => {
         onSubmit={handleSubmit}
       >
         {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
-        <StyledInput
+        <input
           type="hidden"
           name="form-name"
           arria-hidden="true"
           value="contact"
         />
-        <StyledInput
+        <input
           style={{ display: "none" }}
           arria-hidden="true"
           name="botfield"
           onChange={(e) => setBotField(e.target.value)}
         />
-        <StyledInput
+        <input
           style={{ display: "none" }}
           arria-hidden="true"
           type="text"
           value={checkboxValue}
-          onChange={(e) => setGDPRInputMSG(e.target.value)}
+          onChange={(e) => setConsentInputValue(e.target.value)}
           name="checkboxvalue"
         />
         <StyledLabel>
