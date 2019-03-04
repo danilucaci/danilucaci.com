@@ -85,12 +85,6 @@ class Layout extends Component {
     // if (this.state.showLogs) {
     //   this.showGDPRStatus();
     // }
-    console.log(NODE_ENV);
-    console.log(GATSBY_DL_CONSENT_COOKIE_NAME);
-    console.log(GATSBY_DL_COOKIE_NAME);
-    console.log(GATSBY_DL_COOKIE_SECURE);
-    console.log(GATSBY_DL_COOKIE_DOMAIN);
-    console.log(GATSBY_GA_ID);
   }
 
   checkFontsLoaded = () => {
@@ -151,20 +145,18 @@ class Layout extends Component {
   };
 
   setInitialConsentCookie = () => {
-    const secure = GATSBY_DL_COOKIE_SECURE === true;
     Cookies.set(GATSBY_DL_CONSENT_COOKIE_NAME, false, {
       expires: this.state.cookieExp,
       domain: GATSBY_DL_COOKIE_DOMAIN,
-      secure: secure,
+      secure: GATSBY_DL_COOKIE_SECURE,
     });
   };
 
   setAcceptedConsentCookie = () => {
-    const secure = GATSBY_DL_COOKIE_SECURE === true;
     Cookies.set(GATSBY_DL_CONSENT_COOKIE_NAME, true, {
       expires: this.state.cookieExp,
       domain: GATSBY_DL_COOKIE_DOMAIN,
-      secure: secure,
+      secure: GATSBY_DL_COOKIE_SECURE,
     });
   };
 
@@ -225,12 +217,10 @@ class Layout extends Component {
 
     if (GATSBY_DL_COOKIE_NAME) {
       if (hasCookieData) {
-        const secure = GATSBY_DL_COOKIE_SECURE === true;
-
         Cookies.set(GATSBY_DL_COOKIE_NAME, this.state.acceptsCookie, {
           expires: this.state.cookieExp,
           domain: GATSBY_DL_COOKIE_DOMAIN,
-          secure: secure,
+          secure: GATSBY_DL_COOKIE_SECURE,
         });
 
         // Check to see if the cookie was set
@@ -252,12 +242,10 @@ class Layout extends Component {
 
     if (GATSBY_DL_COOKIE_NAME) {
       if (hasCookieData) {
-        const secure = GATSBY_DL_COOKIE_SECURE === true;
-
         Cookies.set(GATSBY_DL_COOKIE_NAME, this.state.deniesCookie, {
           expires: this.state.cookieExp,
           domain: GATSBY_DL_COOKIE_DOMAIN,
-          secure: secure,
+          secure: GATSBY_DL_COOKIE_SECURE,
         });
 
         // Check to see if the cookie was set
