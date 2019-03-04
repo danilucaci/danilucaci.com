@@ -9,7 +9,11 @@ const StyledSiteNavListItem = styled.li`
   text-decoration: none;
   list-style-type: none;
   text-align: center;
-  font-family: ${theme.fonts.headerRegular};
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.headerRegular};
+  }
+
   font-weight: 400;
   width: 100%;
 
