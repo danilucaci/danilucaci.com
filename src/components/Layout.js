@@ -29,16 +29,16 @@ import intlMessages from "../i18n/i18n";
 addLocaleData([...enData, ...esData]);
 
 const NODE_ENV = process.env.NODE_ENV;
-const DL_CONSENT_COOKIE_NAME = process.env.DL_CONSENT_COOKIE_NAME;
-const DL_COOKIE_NAME = process.env.DL_COOKIE_NAME;
-const DL_COOKIE_SECURE = process.env.DL_COOKIE_SECURE;
-const DL_COOKIE_DOMAIN = process.env.DL_COOKIE_DOMAIN;
-const GA_ID = process.env.GA_ID;
+const GATSBY_DL_CONSENT_COOKIE_NAME = process.env.GATSBY_DL_CONSENT_COOKIE_NAME;
+const GATSBY_DL_COOKIE_NAME = process.env.GATSBY_DL_COOKIE_NAME;
+const GATSBY_DL_COOKIE_SECURE = process.env.GATSBY_DL_COOKIE_SECURE;
+const GATSBY_DL_COOKIE_DOMAIN = process.env.GATSBY_DL_COOKIE_DOMAIN;
+const GATSBY_GA_ID = process.env.GATSBY_GA_ID;
 
 // Google Analytics Init
 export const initGA = () => {
   console.log("%c GA Init!", "color: #79E36B");
-  ReactGA.initialize(GA_ID);
+  ReactGA.initialize(GATSBY_GA_ID);
 };
 
 // Google Analytics Log pages views
@@ -144,26 +144,26 @@ class Layout extends Component {
   };
 
   setInitialConsentCookie = () => {
-    const secure = DL_COOKIE_SECURE === true;
-    Cookies.set(DL_CONSENT_COOKIE_NAME, false, {
+    const secure = GATSBY_DL_COOKIE_SECURE === true;
+    Cookies.set(GATSBY_DL_CONSENT_COOKIE_NAME, false, {
       expires: this.state.cookieExp,
-      domain: DL_COOKIE_DOMAIN,
+      domain: GATSBY_DL_COOKIE_DOMAIN,
       secure: secure,
     });
   };
 
   setAcceptedConsentCookie = () => {
-    const secure = DL_COOKIE_SECURE === true;
-    Cookies.set(DL_CONSENT_COOKIE_NAME, true, {
+    const secure = GATSBY_DL_COOKIE_SECURE === true;
+    Cookies.set(GATSBY_DL_CONSENT_COOKIE_NAME, true, {
       expires: this.state.cookieExp,
-      domain: DL_COOKIE_DOMAIN,
+      domain: GATSBY_DL_COOKIE_DOMAIN,
       secure: secure,
     });
   };
 
   checkGDPRStatus = () => {
-    if (DL_COOKIE_NAME) {
-      let DLCookie = Cookies.getJSON(DL_COOKIE_NAME);
+    if (GATSBY_DL_COOKIE_NAME) {
+      let DLCookie = Cookies.getJSON(GATSBY_DL_COOKIE_NAME);
       if (DLCookie) {
         if (DLCookie.analytics) {
           this.setState((prevState) => ({
@@ -197,8 +197,8 @@ class Layout extends Component {
   };
 
   showGDPRStatus = () => {
-    if (DL_COOKIE_NAME) {
-      let DLCookie = Cookies.getJSON(DL_COOKIE_NAME);
+    if (GATSBY_DL_COOKIE_NAME) {
+      let DLCookie = Cookies.getJSON(GATSBY_DL_COOKIE_NAME);
       if (DLCookie) {
         if (DLCookie.analytics) {
           console.log(`%c Cookies Accepted.`, "color: #79E36B");
@@ -214,15 +214,15 @@ class Layout extends Component {
   };
 
   acceptsCookies = () => {
-    const hasCookieData = DL_COOKIE_DOMAIN && DL_COOKIE_SECURE;
+    const hasCookieData = GATSBY_DL_COOKIE_DOMAIN && GATSBY_DL_COOKIE_SECURE;
 
-    if (DL_COOKIE_NAME) {
+    if (GATSBY_DL_COOKIE_NAME) {
       if (hasCookieData) {
-        const secure = DL_COOKIE_SECURE === true;
+        const secure = GATSBY_DL_COOKIE_SECURE === true;
 
-        Cookies.set(DL_COOKIE_NAME, this.state.acceptsCookie, {
+        Cookies.set(GATSBY_DL_COOKIE_NAME, this.state.acceptsCookie, {
           expires: this.state.cookieExp,
-          domain: DL_COOKIE_DOMAIN,
+          domain: GATSBY_DL_COOKIE_DOMAIN,
           secure: secure,
         });
 
@@ -241,15 +241,15 @@ class Layout extends Component {
   };
 
   deniesCookies = () => {
-    const hasCookieData = DL_COOKIE_DOMAIN && DL_COOKIE_SECURE;
+    const hasCookieData = GATSBY_DL_COOKIE_DOMAIN && GATSBY_DL_COOKIE_SECURE;
 
-    if (DL_COOKIE_NAME) {
+    if (GATSBY_DL_COOKIE_NAME) {
       if (hasCookieData) {
-        const secure = DL_COOKIE_SECURE === true;
+        const secure = GATSBY_DL_COOKIE_SECURE === true;
 
-        Cookies.set(DL_COOKIE_NAME, this.state.deniesCookie, {
+        Cookies.set(GATSBY_DL_COOKIE_NAME, this.state.deniesCookie, {
           expires: this.state.cookieExp,
-          domain: DL_COOKIE_DOMAIN,
+          domain: GATSBY_DL_COOKIE_DOMAIN,
           secure: secure,
         });
 
