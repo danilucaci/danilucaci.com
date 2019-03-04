@@ -69,7 +69,7 @@ const ContactForm = (props) => {
   const [fullName, setFullName] = useState("");
   const [message, setMessage] = useState("");
   const [dateSent, setDateSent] = useState(submitTimeStamp());
-  const [botField, setBotField] = useState();
+  const [botField, setBotField] = useState(null);
   const [acceptsConsentCheckbox, setAcceptsConsentCheckbox] = useState(false);
   const [consentCheckboxValue, setConsentCheckboxValue] = useState(
     consentValue[locale].no
