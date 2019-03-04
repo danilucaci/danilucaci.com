@@ -174,18 +174,6 @@ const ContactForm = (props) => {
           name="consentcheckboxmessage"
           readOnly={true}
         />
-        <input
-          style={{ display: "none" }}
-          arria-hidden="true"
-          type="text"
-          value={
-            acceptsConsentCheckbox === true
-              ? consentValue[locale].yes
-              : consentValue[locale].no
-          }
-          name="acceptsConsentCheckbox"
-          readOnly={true}
-        />
         <StyledLabel>
           Full Name (required)
           <StyledInput
@@ -224,7 +212,7 @@ const ContactForm = (props) => {
         <StyledCheckboxLabel>
           <StyledCheckbox
             type="checkbox"
-            name="consentcheckbox"
+            name="acceptsconsentcheckbox"
             onChange={handleConsentCheckbox}
             required
           />
