@@ -71,11 +71,16 @@ const AltCopy = styled(Copy)`
 `;
 
 const SigupErrorMessage = styled(Copy)`
+  border: 1px solid ${theme.colors.gray400};
+  border-radius: ${theme.borderRadius.buttons};
+  display: block;
+  background-color: ${theme.colors.gray100};
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};
-  color: ${theme.colors.dark700};
-
-  margin-top: ${rem(16)};
+  color: ${theme.colors.dark800};
+  padding: ${rem(16)};
+  margin-top: ${rem(24)};
+  ${theme.shadow.dropdown}
 `;
 
 const StyledCheckboxLabel = styled.label`
@@ -131,16 +136,16 @@ const SubscribeCard = (props) => {
 
   const MCErrors = {
     en: {
-      generic: "Sorry 😐, something went wrong.",
+      generic: "Sorry 😔, something went wrong, please try again later.",
       many:
-        "Sorry 😐, you have too many subscribe attemps, please try again later.",
+        "Sorry 😔, you have too many subscribe attemps, please try again later.",
       already: "It looks like you have already subscribed to my newsletter 👌🏻",
     },
     es: {
       generic:
-        "Lo siento 😐, algo ha salido mal, por favor intentalo de nuevo más tarde.",
+        "Lo siento 😔, algo ha salido mal, por favor intentalo de nuevo más tarde.",
       many:
-        "Lo siento 😐, has hecho demasiadas intentos de subscribir, por favor intentalo de nuevo más tarde.",
+        "Lo siento 😔, has hecho demasiadas intentos de subscribir, por favor intentalo de nuevo más tarde.",
       already: "Parece que ya eres miembro de mi newsletter 👌🏻",
     },
   };
