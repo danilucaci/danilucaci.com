@@ -2,43 +2,41 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { FormattedMessage } from "react-intl";
-import { navigate } from "gatsby";
 
 import { theme, mediaMin, mediaMax, rem } from "../../theme/globalStyles";
 import { Input, SubmitButton, TextArea, Checkbox } from "../Input/Input";
+import { Copy } from "../Copy/Copy";
 
-const FormContainer = styled.div`
-  max-width: ${rem(320)};
-  margin-top: ${rem(32)};
+const FormContainer = styled.div``;
+
+const StyledForm = styled.form`
+  width: 100%;
 `;
 
 const StyledLabel = styled.label`
   display: block;
   margin-top: ${rem(16)};
-  width: 100%;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
 `;
 
 const StyledCheckboxLabel = styled.label`
   display: inline-block;
-  outline: 1px solid lightgray;
   margin-top: ${rem(16)};
-  width: 100%;
 `;
 
 const StyledInput = styled(Input)`
   display: block;
-  width: 100%;
   margin-top: ${rem(8)};
-  padding: ${rem(12)} ${rem(8)};
 `;
 
 const StyledSubmitButton = styled(SubmitButton)``;
 
 const StyledTextArea = styled(TextArea)`
   display: block;
-  width: 100%;
   margin-top: ${rem(8)};
-  padding: ${rem(12)} ${rem(8)};
 `;
 
 const StyledCheckbox = styled(Checkbox)`
@@ -46,12 +44,33 @@ const StyledCheckbox = styled(Checkbox)`
   margin-right: ${rem(8)};
 `;
 
+const EmailStatusMessage = styled(Copy)`
+  font-size: ${theme.fontSizes.s};
+  line-height: ${theme.lineHeights.s};
+  color: ${theme.colors.dark700};
+
+  margin-top: ${rem(16)};
+`;
+
 const ContactForm = (props) => {
   let locale = props.locale;
 
   const consentCheckboxLabel = {
     en: "I accept the privacy policy.",
-    es: "Accepto la privacidad",
+    es: "He leído y accepto la política de privacidad.",
+  };
+
+  const formSubmitStatus = {
+    success: {
+      en:
+        "Thanks for getting in touch. I will get back to you in about 24 hours.",
+      es:
+        "Gracias por ponerte en contacto conmigo. Recibirás una respuesta en aproximadadmente 24 horas.",
+    },
+    error: {
+      en: "Message Sent!",
+      es: "He leído y accepto la política de privacidad.",
+    },
   };
 
   const consentValue = {
@@ -60,8 +79,8 @@ const ContactForm = (props) => {
       yes: "I accept the privacy policy.",
     },
     es: {
-      no: "No accepto la privacidad.",
-      yes: "Si Accepto la privacidad.",
+      no: "No accepto la política de privacidad.",
+      yes: "He leído y accepto la política de privacidad.",
     },
   };
 
@@ -108,7 +127,7 @@ const ContactForm = (props) => {
         console.log(`botfield: ${botField}`);
         console.log(`acceptsConsentCheckbox: ${acceptsConsentCheckbox}`);
         console.log(`consentcheckboxmessage: ${consentCheckboxMessage}`);
-        setFormSubmitMessage("Message Sent!");
+        setFormSubmitMessage(`${formSubmitStatus[locale].success}`);
       })
       // .then(() => navigate(form.getAttribute("action")))
       .catch((error) => setFormSubmitError(error));
@@ -131,7 +150,7 @@ const ContactForm = (props) => {
 
   return (
     <FormContainer>
-      <form
+      <StyledForm
         name="contact"
         method="post"
         action="/thanks/"
@@ -182,6 +201,7 @@ const ContactForm = (props) => {
             name="fullname"
             autoCorrect="off"
             autoComplete="name"
+            placeholder="Your name"
             onChange={(e) => setFullName(e.target.value)}
             required
           />
@@ -195,6 +215,7 @@ const ContactForm = (props) => {
             autoCapitalize="off"
             autoCorrect="off"
             autoComplete="email"
+            placeholder="Email address"
             onChange={(e) => setEmail(e.target.value)}
             required
           />
@@ -202,9 +223,10 @@ const ContactForm = (props) => {
         <StyledLabel>
           Your Message (required)
           <StyledTextArea
-            rows="12"
+            rows="10"
             value={message}
             name="message"
+            placeholder="Your message"
             onChange={(e) => setMessage(e.target.value)}
             required
           />
@@ -223,9 +245,13 @@ const ContactForm = (props) => {
           value="Submit"
           disabled={!acceptsConsentCheckbox}
         />
-        {formSubmitMessage && <p>{formSubmitMessage}</p>}
-        {formSubmitError && <p>{formSubmitError}</p>}
-      </form>
+        {formSubmitMessage && (
+          <EmailStatusMessage>{formSubmitMessage}</EmailStatusMessage>
+        )}
+        {formSubmitError && (
+          <EmailStatusMessage>{formSubmitError}</EmailStatusMessage>
+        )}
+      </StyledForm>
     </FormContainer>
   );
 };

@@ -9,13 +9,11 @@ export const Input = styled.input`
 
   font-size: ${theme.fontSizes.button};
   line-height: ${theme.lineHeights.button};
-
   font-style: normal;
   font-weight: 400;
 
   padding: ${rem(12)} ${rem(16)};
   height: ${rem(48)};
-
   width: 100%;
 
   .fonts-loaded & {
@@ -39,12 +37,10 @@ export const TextArea = styled.textarea`
 
   font-size: ${theme.fontSizes.button};
   line-height: ${theme.lineHeights.button};
-
   font-style: normal;
   font-weight: 400;
 
   padding: ${rem(16)};
-
   width: 100%;
 
   .fonts-loaded & {

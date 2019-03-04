@@ -53,6 +53,7 @@ const StyledH1 = styled.h1`
 `;
 
 const Subhead = styled(Copy)`
+  color: ${theme.colors.dark700};
   font-size: ${theme.fontSizes.subheadS};
   line-height: ${theme.lineHeights.subheadS};
 
