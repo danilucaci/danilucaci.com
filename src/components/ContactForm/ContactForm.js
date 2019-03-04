@@ -45,11 +45,16 @@ const StyledCheckbox = styled(Checkbox)`
 `;
 
 const EmailStatusMessage = styled(Copy)`
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s};
-  color: ${theme.colors.dark700};
-
-  margin-top: ${rem(16)};
+  border: 1px solid ${theme.colors.gray400};
+  border-radius: ${theme.borderRadius.buttons};
+  display: block;
+  background-color: ${theme.colors.gray100};
+  font-size: ${theme.fontSizes};
+  line-height: ${theme.lineHeights};
+  color: ${theme.colors.dark800};
+  padding: ${rem(16)};
+  margin-top: ${rem(24)};
+  ${theme.shadow.dropdown}
 `;
 
 const ContactForm = (props) => {
@@ -63,13 +68,14 @@ const ContactForm = (props) => {
   const formSubmitStatus = {
     success: {
       en:
-        "Thanks for getting in touch. I will get back to you in about 24 hours.",
+        "Mesage sent 🎉! Thanks for getting in touch. I will get back to you in about 24 hours.",
       es:
-        "Gracias por ponerte en contacto conmigo. Recibirás una respuesta en aproximadadmente 24 horas.",
+        "Mensaje enviado 🎉! Gracias por ponerte en contacto conmigo. Recibirás una respuesta en aproximadamente 24 horas.",
     },
     error: {
-      en: "Message Sent!",
-      es: "He leído y accepto la política de privacidad.",
+      en: "Sorry 😔, your message couldn't be sent, please try again later.",
+      es:
+        "Lo siento 😔, tu mensaje no ha podido ser enviado, por favor prueba más tarde de nuevo.",
     },
   };
 
@@ -127,7 +133,7 @@ const ContactForm = (props) => {
         console.log(`botfield: ${botField}`);
         console.log(`acceptsConsentCheckbox: ${acceptsConsentCheckbox}`);
         console.log(`consentcheckboxmessage: ${consentCheckboxMessage}`);
-        setFormSubmitMessage(`${formSubmitStatus[locale].success}`);
+        setFormSubmitMessage(formSubmitStatus.success[locale]);
       })
       // .then(() => navigate(form.getAttribute("action")))
       .catch((error) => setFormSubmitError(error));
