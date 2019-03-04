@@ -34,9 +34,10 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-mailchimp',
+      resolve: "gatsby-plugin-mailchimp",
       options: {
-        endpoint: 'https://danilucaci.us18.list-manage.com/subscribe/post?u=2173ab7ebb6627103bae34cba&amp;id=17f5614ea6', // see instructions section below
+        endpoint:
+          "https://danilucaci.us18.list-manage.com/subscribe/post?u=2173ab7ebb6627103bae34cba&amp;id=17f5614ea6", // see instructions section below
       },
     },
     {

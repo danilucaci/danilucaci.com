@@ -16,46 +16,52 @@ const locales = require("./src/locales/locales");
 // to blog posts and work case studies
 let allPostNodes = [];
 
+// Replacing '/' would result in empty string which is invalid
+const replacePath = (path) => (path === `/` ? path : path.replace(/\/$/, ``));
+
 exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions;
 
   return new Promise((resolve) => {
     // First delete the page made by gatsby
-    deletePage(page);
+    const oldPage = Object.assign({}, page);
 
-    Object.keys(locales).map((locale) => {
-      // const localizedPath = locales[locale].default
-      //   ? page.path
-      //   : locales[locale].path + page.path;
-      let localizedPath = "";
-      let hasTrailingSlash = page.path.endsWith("/") && page.path.length > 2;
+    // Remove trailing slash unless page is /
+    page.path = replacePath(page.path);
 
-      // Translate page urls
-      if (locales[locale].default) {
-        localizedPath = hasTrailingSlash ? page.path.slice(0, -1) : page.path;
-      } else {
-        if (page.path === "/") {
-          localizedPath = locales[locale].path;
-        } else if (page.path.includes("/about-me")) {
-          localizedPath = locales[locale].path + "/sobre-mi";
-        } else if (page.path.includes("/contact")) {
-          localizedPath = locales[locale].path + "/contacto";
+    if (page.path !== oldPage.path) {
+      deletePage(oldPage);
+
+      Object.keys(locales).map((locale) => {
+        // const localizedPath = locales[locale].default
+        //   ? page.path
+        //   : locales[locale].path + page.path;
+        let localizedPath = "";
+
+        // Translate page urls
+        if (locales[locale].default) {
+          localizedPath = page.path;
         } else {
-          localizedPath = locales[locale].path + page.path;
-          if (hasTrailingSlash) {
-            localizedPath = `${locales[locale].path}${page.path.slice(0, -1)}`;
+          if (page.path === "/") {
+            localizedPath = locales[locale].path;
+          } else if (page.path.includes("/about-me")) {
+            localizedPath = locales[locale].path + "/sobre-mi";
+          } else if (page.path.includes("/contact")) {
+            localizedPath = locales[locale].path + "/contacto";
+          } else {
+            localizedPath = locales[locale].path + page.path;
           }
         }
-      }
 
-      return createPage({
-        ...page,
-        path: localizedPath,
-        context: {
-          locale: locale,
-        },
+        return createPage({
+          ...page,
+          path: localizedPath,
+          context: {
+            locale: locale,
+          },
+        });
       });
-    });
+    }
 
     resolve();
   });
