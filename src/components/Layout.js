@@ -80,11 +80,17 @@ class Layout extends Component {
     this.checkFontsLoaded();
   }
 
-  // componentDidUpdate() {
-  //   if (NODE_ENV !== "development") {
-  //     this.showGDPRStatus();
-  //   }
-  // }
+  componentDidUpdate() {
+    // if (NODE_ENV !== "development") {
+    //   this.showGDPRStatus();
+    // }
+    console.log(NODE_ENV);
+    console.log(GATSBY_DL_CONSENT_COOKIE_NAME);
+    console.log(GATSBY_DL_COOKIE_NAME);
+    console.log(GATSBY_DL_COOKIE_SECURE);
+    console.log(GATSBY_DL_COOKIE_DOMAIN);
+    console.log(GATSBY_GA_ID);
+  }
 
   checkFontsLoaded = () => {
     if (sessionStorage.fontsLoadedPolyfill) {
