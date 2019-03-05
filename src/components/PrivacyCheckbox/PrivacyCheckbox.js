@@ -24,6 +24,14 @@ const StyledCheckbox = styled(Checkbox)`
   margin-right: ${rem(8)};
 `;
 
+const Required = styled.span`
+  display: inline-block;
+  margin-left: ${rem(8)};
+  font-size: ${theme.fontSizes.s};
+  line-height: ${theme.lineHeights.s};
+  color: ${theme.colors.dark700};
+`;
+
 const LearnMoreLink = styled(ExternalLocaleLink)`
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s} !important;
@@ -72,6 +80,9 @@ function PrivacyCheckbox({ locale, ...rest }) {
           );
         }}
       />
+      <FormattedMessage id="formPrivacyRequired">
+        {(txt) => <Required>{txt}</Required>}
+      </FormattedMessage>
     </StyledCheckboxWrapper>
   );
 }

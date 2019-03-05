@@ -51,6 +51,7 @@
   "formPlaceholderMessage": "Tu mensaje",
   "formPrivacyMore1": "He leído y accepto ",
   "formPrivacyMore2": "la política de privacidad.",
+  "formPrivacyRequired": "(obligatorio)",
   "footerBuiltWith": "Desarollado con Gatsby.js. Hospedado en Netlify.",
   "indexH1": "Hola, soy Dani!",
   "indexSubhead": "Soy un diseñador UX/UI basado en Barcelona.",
