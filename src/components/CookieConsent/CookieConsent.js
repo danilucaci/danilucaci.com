@@ -7,7 +7,7 @@ import { graphql, StaticQuery } from "gatsby";
 import { theme, rem, mediaMin } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
 import { TertiaryButton, PrimaryButtonSmall } from "../Button/Button";
-import LocaleLink from "../LocaleLink/LocaleLink";
+import ExternalLocaleLink from "../ExternalLocaleLink/ExternalLocaleLink";
 
 const StyledCookieConsent = styled.aside`
   background-color: ${theme.colors.gray100};
@@ -46,7 +46,7 @@ const StyledCookieConsent = styled.aside`
   `};
 `;
 
-const LearnMoreLink = styled(LocaleLink)`
+const LearnMoreLink = styled(ExternalLocaleLink)`
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s} !important;
   display: inline;
@@ -109,7 +109,11 @@ const CookieConsent = (props) => {
                     key={localizedDoc.title}
                   >
                     {(txt) => (
-                      <LearnMoreLink to={localizedDoc.slug}>
+                      <LearnMoreLink
+                        href={localizedDoc.slug}
+                        target="_blank"
+                        rel="noopener"
+                      >
                         {txt}
                       </LearnMoreLink>
                     )}
