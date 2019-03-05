@@ -118,7 +118,6 @@ const SubscribeCard = (props) => {
   const [email, setEmail] = useState("");
   const [acceptsConsentCheckbox, setAcceptsConsentCheckbox] = useState(false);
   const [checkboxValue, setCheckboxValue] = useState(CONSENT_VALUE[locale].no);
-  const [allowSubmit, setAllowSubmit] = useState(false);
   const [MCError, setMCError] = useState("");
 
   async function handleSubmit(e) {
@@ -145,7 +144,6 @@ const SubscribeCard = (props) => {
   function handleConsentCheckbox(e) {
     setAcceptsConsentCheckbox(e.target.checked);
     setCheckboxValue(CONSENT_VALUE[locale].yes);
-    setAllowSubmit(acceptsConsentCheckbox);
   }
 
   return (

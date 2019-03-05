@@ -63,7 +63,6 @@ const ContactForm = (props) => {
   const [consentCheckboxMessage, setConsentCheckboxMessage] = useState(
     CONSENT_VALUE[locale].no
   );
-  const [allowSubmit, setAllowSubmit] = useState(false);
   const [formSubmitMessage, setFormSubmitMessage] = useState("");
   const [formSubmitError, setFormSubmitError] = useState("");
 
