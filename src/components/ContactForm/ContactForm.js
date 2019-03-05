@@ -90,13 +90,13 @@ const ContactForm = (props) => {
       }),
     })
       .then(() => {
-        console.log(`fullname: ${fullName}`);
-        console.log(`email: ${email}`);
-        console.log(`message: ${message}`);
-        console.log(`dateSent: ${submitTimeStamp()}`);
-        console.log(`botfield: ${botField}`);
-        console.log(`acceptsConsentCheckbox: ${acceptsConsentCheckbox}`);
-        console.log(`consentcheckboxmessage: ${consentCheckboxMessage}`);
+        // console.log(`fullname: ${fullName}`);
+        // console.log(`email: ${email}`);
+        // console.log(`message: ${message}`);
+        // console.log(`dateSent: ${submitTimeStamp()}`);
+        // console.log(`botfield: ${botField}`);
+        // console.log(`acceptsConsentCheckbox: ${acceptsConsentCheckbox}`);
+        // console.log(`consentcheckboxmessage: ${consentCheckboxMessage}`);
         setFormSubmitMessage(FORM_SUBMIT_STATUS.success[locale]);
       })
       // .then(() => navigate(form.getAttribute("action")))
@@ -106,7 +106,7 @@ const ContactForm = (props) => {
   function handleConsentCheckbox(e) {
     setAcceptsConsentCheckbox(e.target.checked);
     setConsentCheckboxMessage(CONSENT_VALUE[locale].yes);
-    setAllowSubmit(acceptsConsentCheckbox);
+    // setAllowSubmit(acceptsConsentCheckbox);
     setDateSent(submitTimeStamp());
   }
 
@@ -204,7 +204,8 @@ const ContactForm = (props) => {
           locale={locale}
           required
         />
-        <StyledSubmitButton disabled={!acceptsConsentCheckbox} type="Submit" />
+        <StyledSubmitButton type="Submit" />
+        {/* <StyledSubmitButton disabled={!acceptsConsentCheckbox} type="Submit" /> */}
         {formSubmitMessage && (
           <EmailStatusMessage>{formSubmitMessage}</EmailStatusMessage>
         )}

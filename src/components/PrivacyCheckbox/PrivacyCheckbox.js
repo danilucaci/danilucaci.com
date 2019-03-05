@@ -8,25 +8,42 @@ import { theme, mediaMin, mediaMax, rem } from "../../theme/globalStyles";
 import { Checkbox } from "../Checkbox/Checkbox";
 import ExternalLocaleLink from "../ExternalLocaleLink/ExternalLocaleLink";
 
-const StyledCheckboxWrapper = styled.span`
-  display: inline-block;
-  margin-top: ${rem(12)};
-  margin-bottom: ${rem(12)};
-  width: 100%;
-`;
-
 const StyledCheckboxLabel = styled.label`
-  display: inline;
+  display: inline-block;
+  margin-top: ${rem(8)};
+  margin-bottom: ${rem(8)};
+  display: inline-block;
 `;
 
 const StyledCheckbox = styled(Checkbox)`
   display: inline-block;
   margin-right: ${rem(8)};
+
+  &:not(:checked) {
+    & ~ input {
+      pointer-events: none !important;
+      background-color: ${theme.colors.dark700};
+      color: ${theme.colors.gray100};
+
+      &:hover,
+      &:focus {
+        background-color: ${theme.colors.dark700};
+        box-shadow: none;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &:checked {
+    & ~ input {
+      pointer-events: auto !important;
+    }
+  }
 `;
 
 const Required = styled.span`
   display: inline-block;
-  margin-left: ${rem(8)};
+  margin-left: ${rem(6)};
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};
   color: ${theme.colors.dark700};
@@ -35,15 +52,16 @@ const Required = styled.span`
 const LearnMoreLink = styled(ExternalLocaleLink)`
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s} !important;
-  display: inline;
+  display: inline-block;
+  margin-left: ${rem(6)};
   white-space: nowrap;
 `;
 
 function PrivacyCheckbox({ locale, ...rest }) {
   return (
-    <StyledCheckboxWrapper>
+    <>
+      <StyledCheckbox {...rest} />
       <StyledCheckboxLabel>
-        <StyledCheckbox {...rest} />
         <FormattedMessage id="formPrivacyMore1">
           {(txt) => <>{txt}</>}
         </FormattedMessage>
@@ -83,7 +101,7 @@ function PrivacyCheckbox({ locale, ...rest }) {
       <FormattedMessage id="formPrivacyRequired">
         {(txt) => <Required>{txt}</Required>}
       </FormattedMessage>
-    </StyledCheckboxWrapper>
+    </>
   );
 }
 
