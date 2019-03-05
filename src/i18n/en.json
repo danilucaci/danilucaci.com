@@ -49,6 +49,8 @@
   "formPlaceholderEmail": "Email address",
   "formPlaceholderFullName": "Full name",
   "formPlaceholderMessage": "Your message",
+  "formPrivacyMore1": "I have read and I accept the ",
+  "formPrivacyMore2": "privacy policy.",
   "indexH1": "Hi, i'm Dani!",
   "indexSubhead": "I’m a UX/UI Designer and Front-End Developer based in Barcelona. I help teams prototype, design and develop digital products using the latest front-end techniques and design patterns to create scalable, user focused experiences.",
   "indexServicesHeading": "My services",

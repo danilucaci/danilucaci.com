@@ -2,10 +2,13 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { FormattedMessage } from "react-intl";
+import { graphql, StaticQuery } from "gatsby";
 
 import { theme, mediaMin, mediaMax, rem } from "../../theme/globalStyles";
 import { Input, SubmitButton, TextArea, Checkbox } from "../Input/Input";
 import { Copy } from "../Copy/Copy";
+import LocaleLink from "../LocaleLink/LocaleLink";
+import { CONSENT_VALUE, FORM_SUBMIT_STATUS } from "../../i18n/i18n";
 
 const FormContainer = styled.div``;
 
@@ -57,38 +60,15 @@ const EmailStatusMessage = styled(Copy)`
   ${theme.shadow.dropdown}
 `;
 
+const LearnMoreLink = styled(LocaleLink)`
+  font-size: ${theme.fontSizes.s};
+  line-height: ${theme.lineHeights.s} !important;
+  display: inline;
+  white-space: nowrap;
+`;
+
 const ContactForm = (props) => {
   let locale = props.locale;
-
-  const consentCheckboxLabel = {
-    en: "I accept the privacy policy.",
-    es: "He leído y accepto la política de privacidad.",
-  };
-
-  const formSubmitStatus = {
-    success: {
-      en:
-        "Mesage sent 🎉! Thanks for getting in touch. I will get back to you in about 24 hours.",
-      es:
-        "Mensaje enviado 🎉! Gracias por ponerte en contacto conmigo. Recibirás una respuesta en aproximadamente 24 horas.",
-    },
-    error: {
-      en: "Sorry 😔, your message couldn't be sent, please try again later.",
-      es:
-        "Lo siento 😔, tu mensaje no ha podido ser enviado, por favor prueba más tarde de nuevo.",
-    },
-  };
-
-  const consentValue = {
-    en: {
-      no: "I do not accept the privacy policy.",
-      yes: "I accept the privacy policy.",
-    },
-    es: {
-      no: "No accepto la política de privacidad.",
-      yes: "He leído y accepto la política de privacidad.",
-    },
-  };
 
   const [email, setEmail] = useState("");
   const [fullName, setFullName] = useState("");
@@ -97,7 +77,7 @@ const ContactForm = (props) => {
   const [botField, setBotField] = useState("");
   const [acceptsConsentCheckbox, setAcceptsConsentCheckbox] = useState(false);
   const [consentCheckboxMessage, setConsentCheckboxMessage] = useState(
-    consentValue[locale].no
+    CONSENT_VALUE[locale].no
   );
   const [allowSubmit, setAllowSubmit] = useState(false);
   const [formSubmitMessage, setFormSubmitMessage] = useState("");
@@ -133,7 +113,7 @@ const ContactForm = (props) => {
         console.log(`botfield: ${botField}`);
         console.log(`acceptsConsentCheckbox: ${acceptsConsentCheckbox}`);
         console.log(`consentcheckboxmessage: ${consentCheckboxMessage}`);
-        setFormSubmitMessage(formSubmitStatus.success[locale]);
+        setFormSubmitMessage(FORM_SUBMIT_STATUS.success[locale]);
       })
       // .then(() => navigate(form.getAttribute("action")))
       .catch((error) => setFormSubmitError(error));
@@ -141,7 +121,7 @@ const ContactForm = (props) => {
 
   function handleConsentCheckbox(e) {
     setAcceptsConsentCheckbox(e.target.checked);
-    setConsentCheckboxMessage(consentValue[locale].yes);
+    setConsentCheckboxMessage(CONSENT_VALUE[locale].yes);
     setAllowSubmit(acceptsConsentCheckbox);
     setDateSent(submitTimeStamp());
   }
@@ -193,8 +173,8 @@ const ContactForm = (props) => {
           type="text"
           value={
             acceptsConsentCheckbox === true
-              ? consentValue[locale].yes
-              : consentValue[locale].no
+              ? CONSENT_VALUE[locale].yes
+              : CONSENT_VALUE[locale].no
           }
           name="consentcheckboxmessage"
           readOnly={true}
@@ -244,7 +224,41 @@ const ContactForm = (props) => {
             onChange={handleConsentCheckbox}
             required
           />
-          {consentCheckboxLabel[locale]}
+          <StaticQuery
+            query={CONTACT_FORM_QUERY}
+            render={(data) => {
+              let localizedDocsList = data.allMarkdownRemark.edges
+                .map((edge) => ({
+                  slug: edge.node.fields.slug,
+                  title: edge.node.frontmatter.title,
+                  locale: edge.node.frontmatter.locale,
+                }))
+                .filter((edge) => edge.locale === props.locale);
+              return (
+                <>
+                  {localizedDocsList.map((localizedDoc) => (
+                    <FormattedMessage
+                      id="formPrivacyMore1"
+                      key={localizedDoc.title}
+                    >
+                      {(txt1) => (
+                        <>
+                          {txt1}
+                          <FormattedMessage id="formPrivacyMore2">
+                            {(txt2) => (
+                              <LearnMoreLink to={localizedDoc.slug}>
+                                {txt2}
+                              </LearnMoreLink>
+                            )}
+                          </FormattedMessage>
+                        </>
+                      )}
+                    </FormattedMessage>
+                  ))}
+                </>
+              );
+            }}
+          />
         </StyledCheckboxLabel>
         <StyledSubmitButton
           type="submit"
@@ -267,3 +281,28 @@ ContactForm.propTypes = {
 };
 
 export default ContactForm;
+
+const CONTACT_FORM_QUERY = graphql`
+  query CONTACT_FORM_QUERY {
+    allMarkdownRemark(
+      filter: {
+        frontmatter: {
+          category: { eq: "legal" }
+          forCookieConsent: { eq: true }
+        }
+      }
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            locale
+          }
+        }
+      }
+    }
+  }
+`;

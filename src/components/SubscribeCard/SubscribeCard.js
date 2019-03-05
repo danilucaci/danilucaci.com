@@ -3,10 +3,13 @@ import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import addToMailchimp from "gatsby-plugin-mailchimp";
 import { FormattedMessage } from "react-intl";
+import { graphql, StaticQuery } from "gatsby";
 
 import { theme, mediaMin, mediaMax, rem } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
 import { Input, SubmitButton, Checkbox } from "../Input/Input";
+import LocaleLink from "../LocaleLink/LocaleLink";
+import { CONSENT_VALUE, MC_ERRORS } from "../../i18n/i18n";
 
 const StyledSubscribeCard = styled.aside`
   background-color: ${theme.colors.gray100};
@@ -80,6 +83,7 @@ const SigupErrorMessage = styled(Copy)`
   color: ${theme.colors.dark800};
   padding: ${rem(16)};
   margin-top: ${rem(24)};
+  max-width: ${rem(450)};
   ${theme.shadow.dropdown}
 `;
 
@@ -115,51 +119,24 @@ const StyledCheckbox = styled(Checkbox)`
   margin-right: ${rem(8)};
 `;
 
+const LearnMoreLink = styled(LocaleLink)`
+  font-size: ${theme.fontSizes.s};
+  line-height: ${theme.lineHeights.s} !important;
+  display: inline;
+  white-space: nowrap;
+`;
+
 const SubscribeCard = (props) => {
   let locale = props.locale;
 
-  const consentCheckboxLabel = {
-    en: "I have read and I accept the privacy policy.",
-    es: "He leído y accepto la política de privacidad.",
-  };
-
-  const consentValue = {
-    en: {
-      no: "I do not accept the privacy policy.",
-      yes: "I accept the privacy policy.",
-    },
-    es: {
-      no: "No accepto la política de privacidad.",
-      yes: "He leído y accepto la política de privacidad.",
-    },
-  };
-
-  const MCErrors = {
-    en: {
-      generic: "Sorry 😔, something went wrong, please try again later.",
-      many:
-        "Sorry 😔, you have too many subscribe attemps, please try again later.",
-      already: "It looks like you have already subscribed to my newsletter 👌🏻",
-    },
-    es: {
-      generic:
-        "Lo siento 😔, algo ha salido mal, por favor intentalo de nuevo más tarde.",
-      many:
-        "Lo siento 😔, has hecho demasiadas intentos de subscribir, por favor intentalo de nuevo más tarde.",
-      already: "Parece que ya eres miembro de mi newsletter 👌🏻",
-    },
-  };
-
   const [email, setEmail] = useState("");
   const [acceptsConsentCheckbox, setAcceptsConsentCheckbox] = useState(false);
-  const [checkboxValue, setCheckboxValue] = useState(consentValue[locale].no);
+  const [checkboxValue, setCheckboxValue] = useState(CONSENT_VALUE[locale].no);
   const [allowSubmit, setAllowSubmit] = useState(false);
   const [MCError, setMCError] = useState("");
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(`email: ${email}`);
-
     const mailChimpResult = await addToMailchimp(email, {
       DLPO: checkboxValue,
     });
@@ -168,20 +145,20 @@ const SubscribeCard = (props) => {
       mailChimpResult.result.includes("error") &&
       mailChimpResult.msg.includes("is already subscribed to")
     ) {
-      setMCError(MCErrors[locale].already);
+      setMCError(MC_ERRORS[locale].already);
     } else if (
       mailChimpResult.result.includes("error") &&
       mailChimpResult.msg.includes("many")
     ) {
-      setMCError(MCErrors[locale].many);
+      setMCError(MC_ERRORS[locale].many);
     } else if (mailChimpResult.result.includes("error")) {
-      setMCError(MCErrors[locale].many);
+      setMCError(MC_ERRORS[locale].many);
     }
   }
 
   function handleConsentCheckbox(e) {
     setAcceptsConsentCheckbox(e.target.checked);
-    setCheckboxValue(consentValue[locale].yes);
+    setCheckboxValue(CONSENT_VALUE[locale].yes);
     setAllowSubmit(acceptsConsentCheckbox);
   }
 
@@ -224,7 +201,41 @@ const SubscribeCard = (props) => {
               onChange={handleConsentCheckbox}
               required
             />
-            {consentCheckboxLabel[locale]}
+            <StaticQuery
+              query={SUBSCRIBE_CARD_QUERY}
+              render={(data) => {
+                let localizedDocsList = data.allMarkdownRemark.edges
+                  .map((edge) => ({
+                    slug: edge.node.fields.slug,
+                    title: edge.node.frontmatter.title,
+                    locale: edge.node.frontmatter.locale,
+                  }))
+                  .filter((edge) => edge.locale === props.locale);
+                return (
+                  <>
+                    {localizedDocsList.map((localizedDoc) => (
+                      <FormattedMessage
+                        id="formPrivacyMore1"
+                        key={localizedDoc.title}
+                      >
+                        {(txt1) => (
+                          <>
+                            {txt1}
+                            <FormattedMessage id="formPrivacyMore2">
+                              {(txt2) => (
+                                <LearnMoreLink to={localizedDoc.slug}>
+                                  {txt2}
+                                </LearnMoreLink>
+                              )}
+                            </FormattedMessage>
+                          </>
+                        )}
+                      </FormattedMessage>
+                    ))}
+                  </>
+                );
+              }}
+            />
           </StyledCheckboxLabel>
         </StyledForm>
         {MCError && <SigupErrorMessage>{MCError}</SigupErrorMessage>}
@@ -234,9 +245,32 @@ const SubscribeCard = (props) => {
 };
 
 SubscribeCard.propTypes = {
-  pageContext: PropTypes.shape({
-    locale: PropTypes.string.isRequired,
-  }),
+  locale: PropTypes.string.isRequired,
 };
 
 export default SubscribeCard;
+
+const SUBSCRIBE_CARD_QUERY = graphql`
+  query SUBSCRIBE_CARD_QUERY {
+    allMarkdownRemark(
+      filter: {
+        frontmatter: {
+          category: { eq: "legal" }
+          forCookieConsent: { eq: true }
+        }
+      }
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            locale
+          }
+        }
+      }
+    }
+  }
+`;

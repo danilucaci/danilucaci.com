@@ -49,6 +49,8 @@
   "formPlaceholderEmail": "Dirección de email",
   "formPlaceholderFullName": "Nombre completo",
   "formPlaceholderMessage": "Tu mensaje",
+  "formPrivacyMore1": "He leído y accepto la ",
+  "formPrivacyMore2": "política de privacidad.",
   "footerBuiltWith": "Desarollado con Gatsby.js. Hospedado en Netlify.",
   "indexH1": "Hola, soy Dani!",
   "indexSubhead": "Soy un diseñador UX/UI basado en Barcelona.",
