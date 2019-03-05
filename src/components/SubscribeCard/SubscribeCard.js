@@ -6,7 +6,8 @@ import { FormattedMessage } from "react-intl";
 
 import { theme, mediaMin, mediaMax, rem } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
-import { Input, SubmitButton, Checkbox } from "../Input/Input";
+import Input from "../Input/Input";
+import SubmitButton from "../SubmitButton/SubmitButton";
 import { CONSENT_VALUE, MC_ERRORS } from "../../i18n/i18n";
 import PrivacyCheckbox from "../PrivacyCheckbox/PrivacyCheckbox";
 
@@ -163,13 +164,12 @@ const SubscribeCard = (props) => {
               autoCapitalize="off"
               autoCorrect="off"
               autoComplete="email"
-              placeholder="Email address"
+              placeholderType="email"
               onChange={(e) => setEmail(e.target.value)}
               required
             />
             <StyledSubmitButton
-              type="submit"
-              value="Subscribe"
+              type="Subscribe"
               disabled={!acceptsConsentCheckbox}
             />
           </InputWrapper>

@@ -4,9 +4,8 @@ import styled from "styled-components";
 import { injectIntl, intlShape } from "react-intl";
 
 import { theme, rem, mediaMin } from "../../theme/globalStyles";
-import { toUpperCamelCase } from "../../helpers/helpers";
 
-const StyledInput = styled.input`
+const StyledTextArea = styled.textarea`
   background-color: ${theme.colors.gray100};
   border: 2px solid ${theme.colors.gray400};
   border-radius: ${theme.borderRadius.buttons};
@@ -17,8 +16,7 @@ const StyledInput = styled.input`
   font-style: normal;
   font-weight: 400;
 
-  padding: ${rem(12)} ${rem(16)};
-  height: ${rem(48)};
+  padding: ${rem(16)};
   width: 100%;
 
   font-family: ${theme.fonts.bodyRegular};
@@ -30,19 +28,16 @@ const StyledInput = styled.input`
   }
 `;
 
-function Input({ intl, placeholderType = "", ...rest }) {
-  let str = toUpperCamelCase(placeholderType);
-
+function TextArea({ intl, ...rest }) {
   const placeholder = intl.formatMessage({
-    id: `formPlaceholder${str}`,
+    id: `formPlaceholderMessage`,
   });
 
-  return <StyledInput placeholder={placeholder} {...rest} />;
+  return <StyledTextArea placeholder={placeholder} {...rest} />;
 }
 
-Input.propTypes = {
+TextArea.propTypes = {
   intl: intlShape.isRequired,
-  placeholderType: PropTypes.string.isRequired,
 };
 
-export default injectIntl(Input);
+export default injectIntl(TextArea);

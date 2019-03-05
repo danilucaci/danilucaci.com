@@ -160,3 +160,9 @@ export function detectSlowConnectionType() {
     return false;
   }
 }
+
+export function toUpperCamelCase(string) {
+  return string.toLowerCase().replace(/(?:(^.)|(\s+.))/g, function(match) {
+    return match.charAt(match.length - 1).toUpperCase();
+  });
+}

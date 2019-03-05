@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { FormattedMessage } from "react-intl";
 
 import { theme, mediaMin, mediaMax, rem } from "../../theme/globalStyles";
-import { Input, SubmitButton, TextArea } from "../Input/Input";
+import Label from "../Label/Label";
+import Input from "../Input/Input";
+import SubmitButton from "../SubmitButton/SubmitButton";
+import TextArea from "../TextArea/TextArea";
 import { Copy } from "../Copy/Copy";
 import { CONSENT_VALUE, FORM_SUBMIT_STATUS } from "../../i18n/i18n";
 import PrivacyCheckbox from "../PrivacyCheckbox/PrivacyCheckbox";
@@ -15,7 +17,7 @@ const StyledForm = styled.form`
   width: 100%;
 `;
 
-const StyledLabel = styled.label`
+const StyledLabel = styled(Label)`
   display: block;
   margin-top: ${rem(16)};
 
@@ -161,40 +163,36 @@ const ContactForm = (props) => {
           name="consentcheckboxmessage"
           readOnly={true}
         />
-        <StyledLabel>
-          Full Name (required)
+        <StyledLabel labelType="full name">
           <StyledInput
             type="text"
             value={fullName}
             name="fullname"
+            placeholderType="full name"
             autoCorrect="off"
             autoComplete="name"
-            placeholder="Your name"
             onChange={(e) => setFullName(e.target.value)}
             required
           />
         </StyledLabel>
-        <StyledLabel>
-          Your Email (required)
+        <StyledLabel labelType="email">
           <StyledInput
             type="email"
             value={email}
             name="email"
+            placeholderType="email"
             autoCapitalize="off"
             autoCorrect="off"
             autoComplete="email"
-            placeholder="Email address"
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </StyledLabel>
-        <StyledLabel>
-          Your Message (required)
+        <StyledLabel labelType="message">
           <StyledTextArea
             rows="10"
             value={message}
             name="message"
-            placeholder="Your message"
             onChange={(e) => setMessage(e.target.value)}
             required
           />
@@ -206,11 +204,7 @@ const ContactForm = (props) => {
           locale={locale}
           required
         />
-        <StyledSubmitButton
-          type="submit"
-          value="Submit"
-          disabled={!acceptsConsentCheckbox}
-        />
+        <StyledSubmitButton disabled={!acceptsConsentCheckbox} type="Submit" />
         {formSubmitMessage && (
           <EmailStatusMessage>{formSubmitMessage}</EmailStatusMessage>
         )}

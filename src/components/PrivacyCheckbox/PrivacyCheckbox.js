@@ -5,7 +5,7 @@ import { FormattedMessage } from "react-intl";
 import { graphql, StaticQuery } from "gatsby";
 
 import { theme, mediaMin, mediaMax, rem } from "../../theme/globalStyles";
-import { Checkbox } from "../Input/Input";
+import { Checkbox } from "../Checkbox/Checkbox";
 import ExternalLocaleLink from "../ExternalLocaleLink/ExternalLocaleLink";
 
 const StyledCheckboxWrapper = styled.span`
