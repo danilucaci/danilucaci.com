@@ -3,13 +3,12 @@ import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import addToMailchimp from "gatsby-plugin-mailchimp";
 import { FormattedMessage } from "react-intl";
-import { graphql, StaticQuery } from "gatsby";
 
 import { theme, mediaMin, mediaMax, rem } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
 import { Input, SubmitButton, Checkbox } from "../Input/Input";
-import LocaleLink from "../LocaleLink/LocaleLink";
 import { CONSENT_VALUE, MC_ERRORS } from "../../i18n/i18n";
+import PrivacyCheckbox from "../PrivacyCheckbox/PrivacyCheckbox";
 
 const StyledSubscribeCard = styled.aside`
   background-color: ${theme.colors.gray100};
@@ -87,13 +86,6 @@ const SigupErrorMessage = styled(Copy)`
   ${theme.shadow.dropdown}
 `;
 
-const StyledCheckboxLabel = styled.label`
-  display: inline-block;
-  margin-top: ${rem(12)};
-  margin-bottom: ${rem(12)};
-  width: 100%;
-`;
-
 const StyledInput = styled(Input)`
   display: inline-block;
   width: 100%;
@@ -112,18 +104,6 @@ const StyledSubmitButton = styled(SubmitButton)`
     margin-top: 0;
     display: inline-block;
   `};
-`;
-
-const StyledCheckbox = styled(Checkbox)`
-  display: inline-block;
-  margin-right: ${rem(8)};
-`;
-
-const LearnMoreLink = styled(LocaleLink)`
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s} !important;
-  display: inline;
-  white-space: nowrap;
 `;
 
 const SubscribeCard = (props) => {
@@ -193,50 +173,15 @@ const SubscribeCard = (props) => {
               disabled={!acceptsConsentCheckbox}
             />
           </InputWrapper>
-          <StyledCheckboxLabel>
-            <StyledCheckbox
-              type="checkbox"
-              name="consentcheckbox"
-              value={checkboxValue}
-              onChange={handleConsentCheckbox}
-              required
-            />
-            <StaticQuery
-              query={SUBSCRIBE_CARD_QUERY}
-              render={(data) => {
-                let localizedDocsList = data.allMarkdownRemark.edges
-                  .map((edge) => ({
-                    slug: edge.node.fields.slug,
-                    title: edge.node.frontmatter.title,
-                    locale: edge.node.frontmatter.locale,
-                  }))
-                  .filter((edge) => edge.locale === props.locale);
-                return (
-                  <>
-                    {localizedDocsList.map((localizedDoc) => (
-                      <FormattedMessage
-                        id="formPrivacyMore1"
-                        key={localizedDoc.title}
-                      >
-                        {(txt1) => (
-                          <>
-                            {txt1}
-                            <FormattedMessage id="formPrivacyMore2">
-                              {(txt2) => (
-                                <LearnMoreLink to={localizedDoc.slug}>
-                                  {txt2}
-                                </LearnMoreLink>
-                              )}
-                            </FormattedMessage>
-                          </>
-                        )}
-                      </FormattedMessage>
-                    ))}
-                  </>
-                );
-              }}
-            />
-          </StyledCheckboxLabel>
+          <PrivacyCheckbox
+            type="checkbox"
+            name="consentcheckbox"
+            value={checkboxValue}
+            onChange={handleConsentCheckbox}
+            checkboxValue={checkboxValue}
+            locale={locale}
+            required
+          />
         </StyledForm>
         {MCError && <SigupErrorMessage>{MCError}</SigupErrorMessage>}
       </FormContainer>
@@ -249,28 +194,3 @@ SubscribeCard.propTypes = {
 };
 
 export default SubscribeCard;
-
-const SUBSCRIBE_CARD_QUERY = graphql`
-  query SUBSCRIBE_CARD_QUERY {
-    allMarkdownRemark(
-      filter: {
-        frontmatter: {
-          category: { eq: "legal" }
-          forCookieConsent: { eq: true }
-        }
-      }
-    ) {
-      edges {
-        node {
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            locale
-          }
-        }
-      }
-    }
-  }
-`;

@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { FormattedMessage } from "react-intl";
-import { graphql, StaticQuery } from "gatsby";
 
 import { theme, mediaMin, mediaMax, rem } from "../../theme/globalStyles";
-import { Input, SubmitButton, TextArea, Checkbox } from "../Input/Input";
+import { Input, SubmitButton, TextArea } from "../Input/Input";
 import { Copy } from "../Copy/Copy";
-import LocaleLink from "../LocaleLink/LocaleLink";
 import { CONSENT_VALUE, FORM_SUBMIT_STATUS } from "../../i18n/i18n";
+import PrivacyCheckbox from "../PrivacyCheckbox/PrivacyCheckbox";
 
 const FormContainer = styled.div``;
 
@@ -25,11 +24,6 @@ const StyledLabel = styled.label`
   }
 `;
 
-const StyledCheckboxLabel = styled.label`
-  display: inline-block;
-  margin-top: ${rem(16)};
-`;
-
 const StyledInput = styled(Input)`
   display: block;
   margin-top: ${rem(8)};
@@ -40,11 +34,6 @@ const StyledSubmitButton = styled(SubmitButton)``;
 const StyledTextArea = styled(TextArea)`
   display: block;
   margin-top: ${rem(8)};
-`;
-
-const StyledCheckbox = styled(Checkbox)`
-  display: inline-block;
-  margin-right: ${rem(8)};
 `;
 
 const EmailStatusMessage = styled(Copy)`
@@ -58,13 +47,6 @@ const EmailStatusMessage = styled(Copy)`
   padding: ${rem(16)};
   margin-top: ${rem(24)};
   ${theme.shadow.dropdown}
-`;
-
-const LearnMoreLink = styled(LocaleLink)`
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s} !important;
-  display: inline;
-  white-space: nowrap;
 `;
 
 const ContactForm = (props) => {
@@ -217,49 +199,13 @@ const ContactForm = (props) => {
             required
           />
         </StyledLabel>
-        <StyledCheckboxLabel>
-          <StyledCheckbox
-            type="checkbox"
-            name="acceptsconsentcheckbox"
-            onChange={handleConsentCheckbox}
-            required
-          />
-          <StaticQuery
-            query={CONTACT_FORM_QUERY}
-            render={(data) => {
-              let localizedDocsList = data.allMarkdownRemark.edges
-                .map((edge) => ({
-                  slug: edge.node.fields.slug,
-                  title: edge.node.frontmatter.title,
-                  locale: edge.node.frontmatter.locale,
-                }))
-                .filter((edge) => edge.locale === props.locale);
-              return (
-                <>
-                  {localizedDocsList.map((localizedDoc) => (
-                    <FormattedMessage
-                      id="formPrivacyMore1"
-                      key={localizedDoc.title}
-                    >
-                      {(txt1) => (
-                        <>
-                          {txt1}
-                          <FormattedMessage id="formPrivacyMore2">
-                            {(txt2) => (
-                              <LearnMoreLink to={localizedDoc.slug}>
-                                {txt2}
-                              </LearnMoreLink>
-                            )}
-                          </FormattedMessage>
-                        </>
-                      )}
-                    </FormattedMessage>
-                  ))}
-                </>
-              );
-            }}
-          />
-        </StyledCheckboxLabel>
+        <PrivacyCheckbox
+          type="checkbox"
+          name="acceptsconsentcheckbox"
+          onChange={handleConsentCheckbox}
+          locale={locale}
+          required
+        />
         <StyledSubmitButton
           type="submit"
           value="Submit"
@@ -281,28 +227,3 @@ ContactForm.propTypes = {
 };
 
 export default ContactForm;
-
-const CONTACT_FORM_QUERY = graphql`
-  query CONTACT_FORM_QUERY {
-    allMarkdownRemark(
-      filter: {
-        frontmatter: {
-          category: { eq: "legal" }
-          forCookieConsent: { eq: true }
-        }
-      }
-    ) {
-      edges {
-        node {
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            locale
-          }
-        }
-      }
-    }
-  }
-`;
