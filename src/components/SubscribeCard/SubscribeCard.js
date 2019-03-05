@@ -24,13 +24,13 @@ const StyledSubscribeCard = styled.aside`
   padding: ${rem(32)} ${rem(24)};
 
   ${mediaMin.m`
-    padding: ${rem(32)} ${rem(80)};
+    padding: ${rem(32)} ${rem(56)};
     margin-top: ${theme.spacing.components.m};
     margin-bottom: ${theme.spacing.components.m};
   `};
 
   ${mediaMin.xxl`
-    padding: ${rem(48)} ${rem(144)} ${rem(32)} ${rem(144)};
+    padding: ${rem(64)} ${rem(80)} ${rem(56)} ${rem(96)};
     margin-top: ${theme.spacing.components.xl};
     margin-bottom: ${theme.spacing.components.xl};
   `};
@@ -94,6 +94,11 @@ const StyledInput = styled(Input)`
   ${mediaMin.l`
     margin-right: ${rem(16)};
     width: ${rem(360)};
+  `};
+
+  ${mediaMin.xxl`
+    margin-right: ${rem(16)};
+    width: ${rem(400)};
   `};
 `;
 
