@@ -8,6 +8,21 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
+// Replacing '/' would result in empty string which is invalid
+function replacePath(path) {
+  return path === `/` ? path : path.replace(/\/$/, ``);
+}
+
+/*******************************************************
+ * Split into chunks of 5 posts per paginated page
+ * and pass them to the blog, tag or work template pages
+ */
+function slicePosts(array, postsPerPage, currentPage) {
+  return array
+    .slice(0)
+    .slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage);
+}
+
 // Create pages with translated url for locales
 const locales = require("./src/locales/locales");
 
@@ -16,52 +31,46 @@ const locales = require("./src/locales/locales");
 // to blog posts and work case studies
 let allPostNodes = [];
 
-// Replacing '/' would result in empty string which is invalid
-const replacePath = (path) => (path === `/` ? path : path.replace(/\/$/, ``));
-
 exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions;
 
   return new Promise((resolve) => {
     // First delete the page made by gatsby
-    const oldPage = Object.assign({}, page);
+    deletePage(page);
 
-    // Remove trailing slash unless page is /
-    page.path = replacePath(page.path);
+    Object.keys(locales).map((locale) => {
+      // const localizedPath = locales[locale].default
+      //   ? page.path
+      //   : locales[locale].path + page.path;
+      let localizedPath = "";
+      let hasTrailingSlash = page.path.endsWith("/") && page.path.length > 2;
 
-    if (page.path !== oldPage.path) {
-      deletePage(oldPage);
-
-      Object.keys(locales).map((locale) => {
-        // const localizedPath = locales[locale].default
-        //   ? page.path
-        //   : locales[locale].path + page.path;
-        let localizedPath = "";
-
-        // Translate page urls
-        if (locales[locale].default) {
-          localizedPath = page.path;
+      // Translate page urls
+      if (locales[locale].default) {
+        localizedPath = hasTrailingSlash ? page.path.slice(0, -1) : page.path;
+      } else {
+        if (page.path === "/") {
+          localizedPath = locales[locale].path;
+        } else if (page.path.includes("/about-me")) {
+          localizedPath = locales[locale].path + "/sobre-mi";
+        } else if (page.path.includes("/contact")) {
+          localizedPath = locales[locale].path + "/contacto";
         } else {
-          if (page.path === "/") {
-            localizedPath = locales[locale].path;
-          } else if (page.path.includes("/about-me")) {
-            localizedPath = locales[locale].path + "/sobre-mi";
-          } else if (page.path.includes("/contact")) {
-            localizedPath = locales[locale].path + "/contacto";
-          } else {
-            localizedPath = locales[locale].path + page.path;
+          localizedPath = locales[locale].path + page.path;
+          if (hasTrailingSlash) {
+            localizedPath = `${locales[locale].path}${page.path.slice(0, -1)}`;
           }
         }
+      }
 
-        return createPage({
-          ...page,
-          path: localizedPath,
-          context: {
-            locale: locale,
-          },
-        });
+      return createPage({
+        ...page,
+        path: localizedPath,
+        context: {
+          locale: locale,
+        },
       });
-    }
+    });
 
     resolve();
   });
@@ -840,14 +849,3 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 };
-
-/*******************************************************
- * Split into chunks of 5 posts per paginated page
- * and pass them to the blog, tag or work template pages
- */
-
-function slicePosts(array, postsPerPage, currentPage) {
-  return array
-    .slice(0)
-    .slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage);
-}
