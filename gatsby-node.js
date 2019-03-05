@@ -43,11 +43,15 @@ exports.onCreatePage = ({ page, actions }) => {
       //   ? page.path
       //   : locales[locale].path + page.path;
       let localizedPath = "";
+
+      // Remove trailing slash from page path
       let hasTrailingSlash = page.path.endsWith("/") && page.path.length > 2;
 
-      // Translate page urls
+      // Create default english urls
       if (locales[locale].default) {
         localizedPath = hasTrailingSlash ? page.path.slice(0, -1) : page.path;
+
+        // Translate urls to spanish
       } else {
         if (page.path === "/") {
           localizedPath = locales[locale].path;
@@ -57,6 +61,8 @@ exports.onCreatePage = ({ page, actions }) => {
           localizedPath = locales[locale].path + "/contacto";
         } else {
           localizedPath = locales[locale].path + page.path;
+
+          // If the has a trailing slash, remove it
           if (hasTrailingSlash) {
             localizedPath = `${locales[locale].path}${page.path.slice(0, -1)}`;
           }
