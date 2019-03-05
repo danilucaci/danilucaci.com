@@ -149,6 +149,15 @@ const SayHiTitle = styled.h3`
 const SayHiDescription = styled(Copy)`
   display: inline;
 `;
+
+const BottomHR = styled(HR)`
+  margin-top: ${rem(24)};
+
+  ${mediaMin.m`  
+    margin-top: ${rem(32)};
+  `};
+`;
+
 const SocialNavWrapper = styled.div`
   margin-top: ${rem(16)};
 `;
@@ -226,6 +235,7 @@ const ContactPage = (props) => {
                 </SayHiDescription>
               )}
             </FormattedMessage>
+            <BottomHR />
             <SocialNavWrapper>
               <SocialNav />
             </SocialNavWrapper>
