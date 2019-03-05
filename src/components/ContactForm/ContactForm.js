@@ -60,9 +60,9 @@ const ContactForm = (props) => {
   const [dateSent, setDateSent] = useState(submitTimeStamp());
   const [botField, setBotField] = useState("");
   const [acceptsConsentCheckbox, setAcceptsConsentCheckbox] = useState(false);
-  const [consentCheckboxMessage, setConsentCheckboxMessage] = useState(
-    CONSENT_VALUE[locale].no
-  );
+  // const [consentCheckboxMessage, setConsentCheckboxMessage] = useState(
+  //   CONSENT_VALUE[locale].no
+  // );
   const [formSubmitMessage, setFormSubmitMessage] = useState("");
   const [formSubmitError, setFormSubmitError] = useState("");
 
@@ -93,17 +93,17 @@ const ContactForm = (props) => {
         datesent: dateSent,
         botfield: botField,
         acceptsconsentcheckbox: acceptsConsentCheckbox,
-        consentcheckboxmessage: consentCheckboxMessage,
+        consentcheckboxmessage: CONSENT_VALUE[locale].yes,
       }),
     })
       .then(() => {
-        // console.log(`fullname: ${fullName}`);
-        // console.log(`email: ${email}`);
-        // console.log(`message: ${message}`);
-        // console.log(`dateSent: ${submitTimeStamp()}`);
-        // console.log(`botfield: ${botField}`);
-        // console.log(`acceptsConsentCheckbox: ${acceptsConsentCheckbox}`);
-        // console.log(`consentcheckboxmessage: ${consentCheckboxMessage}`);
+        console.log(`fullname: ${fullName}`);
+        console.log(`email: ${email}`);
+        console.log(`message: ${message}`);
+        console.log(`dateSent: ${submitTimeStamp()}`);
+        console.log(`botfield: ${botField}`);
+        console.log(`acceptsConsentCheckbox: ${acceptsConsentCheckbox}`);
+        console.log(`consentcheckboxmessage: ${CONSENT_VALUE[locale].yes}`);
         setFormSubmitMessage(FORM_SUBMIT_STATUS.success[locale]);
       })
       // .then(() => navigate(form.getAttribute("action")))
@@ -112,8 +112,7 @@ const ContactForm = (props) => {
 
   function handleConsentCheckbox(e) {
     setAcceptsConsentCheckbox(e.target.checked);
-    setConsentCheckboxMessage(CONSENT_VALUE[locale].yes);
-    // setAllowSubmit(acceptsConsentCheckbox);
+    // setConsentCheckboxMessage(CONSENT_VALUE[locale].yes);
     setDateSent(submitTimeStamp());
   }
 
@@ -162,11 +161,12 @@ const ContactForm = (props) => {
           style={{ display: "none" }}
           arria-hidden="true"
           type="text"
-          value={
-            acceptsConsentCheckbox === true
-              ? CONSENT_VALUE[locale].yes
-              : CONSENT_VALUE[locale].no
-          }
+          value={CONSENT_VALUE[locale].yes}
+          // value={
+          //   acceptsConsentCheckbox === true
+          //     ? CONSENT_VALUE[locale].yes
+          //     : CONSENT_VALUE[locale].no
+          // }
           name="consentcheckboxmessage"
           readOnly={true}
         />
