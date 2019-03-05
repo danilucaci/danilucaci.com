@@ -66,6 +66,14 @@ const ContactForm = (props) => {
   const [formSubmitMessage, setFormSubmitMessage] = useState("");
   const [formSubmitError, setFormSubmitError] = useState("");
 
+  let thanksURL;
+
+  if (locale === "en") {
+    thanksURL = "/es/gracias";
+  } else if (locale === "es") {
+    thanksURL = "/thanks";
+  }
+
   function submitTimeStamp() {
     return new Date();
   }
@@ -122,7 +130,7 @@ const ContactForm = (props) => {
       <StyledForm
         name="contact"
         method="post"
-        action="/thanks/"
+        action={thanksURL}
         data-netlify="true"
         data-netlify-honeypot="botfield"
         onSubmit={handleSubmit}

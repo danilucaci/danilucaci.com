@@ -58,6 +58,12 @@ module.exports = {
       description:
         "My personal blog where I write about UX/UI Design and Front–End Development | Dani Lucaci - UX/UI Designer and Front–End Developer.",
     },
+    thanks: {
+      title:
+        "Thanks - danilucaci.com | UX/UI Designer and Front–End Developer.",
+      description:
+        "My personal blog where I write about UX/UI Design and Front–End Development | Dani Lucaci - UX/UI Designer and Front–End Developer.",
+    },
     notFound: {
       title:
         "Sorry, this page doesn't exist - danilucaci.com | UX/UI Designer and Front–End Developer.",
@@ -111,6 +117,12 @@ module.exports = {
     about: {
       title:
         "Sobre Mi - danilucaci.com | Diseñador UX/UI y Desarollador Front–End.",
+      description:
+        "Este es mi página web y blog personal en el que escribo sobre Diseño UX/UI y desarollo Front–End Development | Dani Lucaci - Diseñador UX/UI y Desarollador Front–End.",
+    },
+    thanks: {
+      title:
+        "Gracias - danilucaci.com | Diseñador UX/UI y Desarollador Front–End.",
       description:
         "Este es mi página web y blog personal en el que escribo sobre Diseño UX/UI y desarollo Front–End Development | Dani Lucaci - Diseñador UX/UI y Desarollador Front–End.",
     },

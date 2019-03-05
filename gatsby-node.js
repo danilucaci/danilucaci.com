@@ -59,6 +59,8 @@ exports.onCreatePage = ({ page, actions }) => {
           localizedPath = locales[locale].path + "/sobre-mi";
         } else if (page.path.includes("/contact")) {
           localizedPath = locales[locale].path + "/contacto";
+        } else if (page.path.includes("/thanks")) {
+          localizedPath = locales[locale].path + "/gracias";
         } else {
           localizedPath = locales[locale].path + page.path;
 

@@ -95,6 +95,10 @@
   "paginationOf": "of",
   "tagListingHeader": "Blog posts found for:",
   "tagListingOther": "Other blog tags:",
+  "thanksTitle": "Thanks!",
+  "thanksSubTitle": "Your message has been sent! 🎉",
+  "thanksCopy": "You will receive a response from me in about 24 hours.",
+  "thanksGoHome": "Go to the home page",
   "legalUpdated": "Last updated:",
   "loadComments": "Load Comments"
 }
