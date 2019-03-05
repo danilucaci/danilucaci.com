@@ -16,7 +16,7 @@ export const StyledAuthorCard = styled.footer`
   margin-left: auto;
   margin-right: auto;
 
-  padding: ${rem(24)} ${rem(40)} ${rem(32)};
+  padding: ${rem(40)};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,11 +25,10 @@ export const StyledAuthorCard = styled.footer`
   margin-bottom: ${theme.spacing.components.s};
 
   ${mediaMin.s`
-    padding: ${rem(32)} ${rem(48)};
     margin-bottom: ${theme.spacing.components.m};
   `};
 
-  ${mediaMin.m`
+  ${mediaMin.l`
     margin-bottom: ${theme.spacing.components.xl};
     text-align: left;
     flex-direction: row;
@@ -40,14 +39,12 @@ export const StyledAuthorCard = styled.footer`
 const AuthorImage = styled(Img)`
   display: block;
   border-radius: 50%;
-  width: ${rem(64)};
-  height: ${rem(64)};
-  margin-bottom: ${rem(8)};
+  margin-bottom: ${rem(16)};
+  width: ${rem(144)};
+  height: ${rem(144)};
 
-  ${mediaMin.m`
+  ${mediaMin.l`
     margin-left: auto;
-    width: ${rem(104)};
-    height: ${rem(104)};
     margin-right: ${rem(24)};
     margin-bottom: 0;
   `};
@@ -57,12 +54,13 @@ const AuthorInfo = styled.div`
   display: flex;
   flex-direction: column;
 
-  ${mediaMin.m`
+  ${mediaMin.l`
     padding-right: ${rem(40)};
     margin-right: auto;
   `};
 
   ${mediaMin.xl`
+    margin-top: -${rem(8)};
     padding-right: ${rem(80)};
   `};
 `;
@@ -70,10 +68,7 @@ const AuthorInfo = styled.div`
 const AuthorDescription = styled(Copy)`
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};
-
-  ${mediaMax.m`
-      margin-bottom: ${rem(8)}
-  `};
+  margin-bottom: ${rem(12)};
 `;
 
 const AuthorCard = (props) => {
