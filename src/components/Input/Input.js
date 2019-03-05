@@ -30,6 +30,7 @@ const StyledInput = styled.input`
   }
 `;
 
+// High 5 to: https://stackoverflow.com/questions/39630620/react-intl-how-to-use-formattedmessage-in-input-placeholder
 function Input({ intl, placeholderType = "", ...rest }) {
   let str = toUpperCamelCase(placeholderType);
 

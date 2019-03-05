@@ -49,6 +49,7 @@ const StyledSubmitButton = styled.input`
   }
 `;
 
+// High 5 to: https://stackoverflow.com/questions/39630620/react-intl-how-to-use-formattedmessage-in-input-placeholder
 function SubmitButton({ intl, type, ...rest }) {
   let str = toUpperCamelCase(type);
 

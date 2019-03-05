@@ -10,6 +10,7 @@ const StyledLabel = styled.label`
   margin-bottom: ${rem(4)};
 `;
 
+// High 5 to: https://stackoverflow.com/questions/39630620/react-intl-how-to-use-formattedmessage-in-input-placeholder
 function Label({ intl, labelType, children, ...rest }) {
   let str = toUpperCamelCase(labelType);
 
