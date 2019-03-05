@@ -46,7 +46,7 @@ const Required = styled.span`
   margin-left: ${rem(6)};
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};
-  color: ${theme.colors.dark700};
+  color: ${theme.colors.dark900};
 `;
 
 const LearnMoreLink = styled(ExternalLocaleLink)`
