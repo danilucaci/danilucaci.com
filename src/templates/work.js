@@ -53,7 +53,7 @@ const ContactWrapper = styled.div`
 `;
 
 const ContactInner = styled.div`
-  max-width: ${theme.contain.wrapper.col12};
+  max-width: ${theme.contain.wrapper.col10};
   margin: 0 auto;
 
   padding-left: ${theme.gutters.s};

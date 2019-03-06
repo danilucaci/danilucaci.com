@@ -25,10 +25,6 @@ const StyledContactCard = styled.aside`
   ${mediaMin.xxl`
     padding: ${rem(56)} ${rem(112)} ${rem(64)};
   `};
-
-  ${mediaMin.xxxl`
-    padding: ${rem(80)} ${rem(148)} ${rem(96)};
-  `};
 `;
 
 const StyledH2 = styled.h2`
