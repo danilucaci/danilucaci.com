@@ -1,5 +1,7 @@
-import React, { Fragment } from "react";
+import React from "react";
 import styled from "styled-components";
+import { FormattedMessage } from "react-intl";
+
 import { theme, rem } from "../../theme/globalStyles";
 
 const StyledSkipToMainContent = styled.a`
@@ -13,8 +15,8 @@ const StyledSkipToMainContent = styled.a`
 
   &:focus,
   &:active {
-    color: ${theme.colors.main600};
-    background-color: ${theme.colors.gray100};
+    color: ${theme.colors.gray100};
+    background-color: ${theme.colors.main600};
     left: auto;
     top: auto;
     width: auto;
@@ -30,9 +32,11 @@ const StyledSkipToMainContent = styled.a`
 
 const SkipToMainContent = () => {
   return (
-    <StyledSkipToMainContent href="#main">
-      Skip to main content
-    </StyledSkipToMainContent>
+    <FormattedMessage id="skipToMainContent">
+      {(txt) => (
+        <StyledSkipToMainContent href="#main">{txt}</StyledSkipToMainContent>
+      )}
+    </FormattedMessage>
   );
 };
 

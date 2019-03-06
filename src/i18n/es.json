@@ -96,6 +96,7 @@
   "subscribeCardTitle": "¡Suscribete para los artículos más recientes!",
   "subscribeCardSubTitle": "Únete a mi newsletter mensual para recibir los artículos más recientes que he publicado sobre diseño UX/UI y desarollo Front-End.",
   "subscribeCardSpam": "Solo eso, sin spam o mensajes de publicidad 😎.",
+  "skipToMainContent": "Saltar al contenido principal",
   "tagListingHeader": "Artículos etiquetados:",
   "tagListingOther": "Otros tags del blog:",
   "thanksTitle": "¡Gracias!",
@@ -104,5 +105,4 @@
   "thanksGoHome": "Volver al inicio",
   "legalUpdated": "Actualizado el:",
   "loadComments": "Cargar comentarios"
-
 }
