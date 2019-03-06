@@ -196,7 +196,11 @@ const LanguageSelector = (props) => {
   return (
     <StyledLanguageSelector>
       <WorldIcon arriaHidden="true">
-        <use xlinkHref="#world" />
+        {props.locale === "en" ? (
+          <use xlinkHref="#en" />
+        ) : (
+          <use xlinkHref="#es" />
+        )}
       </WorldIcon>
       <FormattedMessage id="changeLanguageToggle">
         {(txt) => <LanguageDropdownLabel>{txt}</LanguageDropdownLabel>}
