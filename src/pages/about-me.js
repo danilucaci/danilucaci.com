@@ -163,7 +163,12 @@ const ContactWrapper = styled.div`
   margin-top: ${theme.spacing.components.s};
   margin-bottom: ${theme.spacing.components.s};
 
+  padding-left: ${theme.gutters.s};
+  padding-right: ${theme.gutters.s};
+
   ${mediaMin.s`
+    padding-left: ${theme.gutters.m};
+    padding-right: ${theme.gutters.m};
     margin-top: ${theme.spacing.components.m};
     margin-bottom: ${theme.spacing.components.m};
   `};
@@ -171,19 +176,6 @@ const ContactWrapper = styled.div`
   ${mediaMin.m`
     margin-top: ${theme.spacing.components.xl};
     margin-bottom: ${theme.spacing.components.xl};
-  `};
-`;
-
-const ContactInner = styled.div`
-  max-width: ${theme.contain.wrapper.col12};
-  margin: 0 auto;
-
-  padding-left: ${theme.gutters.s};
-  padding-right: ${theme.gutters.s};
-
-  ${mediaMin.s`
-    padding-left: ${theme.gutters.m};
-    padding-right: ${theme.gutters.m};
   `};
 `;
 
@@ -290,9 +282,7 @@ const AboutPage = (props) => {
         </AboutMeWrapper>
       </Main>
       <ContactWrapper>
-        <ContactInner>
-          <ContactCard locale={locale} />
-        </ContactInner>
+        <ContactCard locale={locale} />
       </ContactWrapper>
       <SiteFooter locale={locale} />
     </Layout>

@@ -8,6 +8,8 @@ import { theme, mediaMin, rem } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
 
 const StyledContactCard = styled.aside`
+  max-width: ${theme.contain.inner.col10};
+  margin: 0 auto;
   border-top: ${rem(8)} solid ${theme.colors.main600};
   background-color: ${theme.colors.gray100};
   width: 100%;

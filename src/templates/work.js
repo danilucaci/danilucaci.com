@@ -42,8 +42,12 @@ const InnerWrapper = styled.div`
 
 const ContactWrapper = styled.div`
   margin-bottom: ${theme.spacing.components.s};
+  padding-left: ${theme.gutters.s};
+  padding-right: ${theme.gutters.s};
 
   ${mediaMin.s`
+    padding-left: ${theme.gutters.m};
+    padding-right: ${theme.gutters.m};
     margin-bottom: ${theme.spacing.components.m};
   `};
 
@@ -52,21 +56,11 @@ const ContactWrapper = styled.div`
   `};
 `;
 
-const ContactInner = styled.div`
-  max-width: ${theme.contain.wrapper.col10};
-  margin: 0 auto;
-
-  padding-left: ${theme.gutters.s};
-  padding-right: ${theme.gutters.s};
-
-  ${mediaMin.s`
-    padding-left: ${theme.gutters.m};
-    padding-right: ${theme.gutters.m};
-  `};
-`;
-
 const StyledHR = styled(HR)`
   margin-bottom: ${rem(32)};
+  max-width: ${theme.contain.inner.col10};
+  margin-left: auto;
+  margin-right: auto;
 
   ${mediaMin.m`
     margin-bottom: ${rem(56)};
@@ -169,10 +163,8 @@ const WorkPage = (props) => {
           </InnerWrapper>
         </OuterWrapper>
         <ContactWrapper>
-          <ContactInner>
-            <StyledHR />
-            <ContactCard locale={locale} />
-          </ContactInner>
+          <StyledHR />
+          <ContactCard locale={locale} />
         </ContactWrapper>
       </Main>
       <SiteFooter locale={locale} />
