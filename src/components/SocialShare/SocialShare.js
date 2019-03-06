@@ -21,6 +21,8 @@ const SocialShareWrapper = styled.div`
 `;
 
 const SocialShareButton = styled.a`
+  margin-right: ${rem(8)};
+
   &:hover {
     background-color: transparent;
   }
