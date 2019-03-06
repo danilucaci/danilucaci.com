@@ -552,6 +552,7 @@ class Post extends Component {
             className="js-dummyInput"
             contentEditable={true}
             readOnly={true}
+            aria-hidden="true"
             suppressContentEditableWarning={true}
           />
           <ScrollToTop />
