@@ -47,7 +47,7 @@ twinPost: "Aplicación Cinema Estudio de Caso UX"
 When I began working on this project I had some initial assumptions that I wanted to validate with user research to see if other people had the same problems and if they had other problems that I haven't identified yet.
 
 * **People think that ticket prices are too high if they would like to see several movies each month.**
-* **Current websites and apps have outdated, ugly, designs.**
+* **Current websites and apps have outdated designs.**
 * **People don't have a way to search, filter or sort for movies in the app/website.**
 
 To validate my initial assumptions I used a survey and I interviewed 5 users.
@@ -101,7 +101,7 @@ Based on the research findings, I created an Affinity Diagram to help me group t
 * **Checkout problems**
 * **Increase value to the user**
 
-<div class="container-8col">
+<div class="l-10col">
 
 ![Affinity Diagram used to group the findings from the user research.](wireframe.png "Affinity Diagram used to group the findings from the user research.")
 
@@ -138,7 +138,7 @@ My next step was to create the user personas, based on the research findings, to
 
 He is trying to find a movie that he and his date might like to watch tonight. They are not movie experts and just want to watch a movie. In order to decide which one, they read movie reviews, watch movie trailers and compare several ones before making a final decision.
 
-<div class="container-8col">
+<div class="l-10col">
 
 ![The first Persona created based on the reseach findings, Alex](ux_case_study_personas_alex.png "The first Persona created based on the reseach findings, Alex")
 
@@ -148,7 +148,7 @@ He is trying to find a movie that he and his date might like to watch tonight. T
 
 She is a movie enthusiast that likes to watch several movies each month, however she feels current prices are too high and that cinemas aren’t valuing their most loyal customers.
 
-<div class="container-8col">
+<div class="l-10col">
 
 ![The second Persona created based on the reseach findings, Ana.](ux_case_study_personas_ana.png "The second Persona created based on the reseach findings, Ana")
 
@@ -158,7 +158,7 @@ She is a movie enthusiast that likes to watch several movies each month, however
 
 In order to decide which features to include in the initial MVP, I decided to use a Prioritizacion Matrix based on the value it would provide to the end-user and by how difficult it would be to create and then the MOSCOW method.
 
-<div class="container-8col">
+<div class="l-10col">
 
 ![Feature Prioritization Matrix based on the value to the user and difficulty to implement.](wireframe.png "Feature Prioritization Matrix based on the value to the user and difficulty to implement.")
 
@@ -166,7 +166,7 @@ In order to decide which features to include in the initial MVP, I decided to us
 
 ## MOSCOW Method
 
-<div class="container-8col">
+<div class="l-10col">
 
 ![MOSCOW method used to identify the main features to include in the MVP.](wireframe.png "MOSCOW method used to identify the main features to include in the MVP.")
 
@@ -185,7 +185,7 @@ In order to decide which features to include in the initial MVP, I decided to us
 
 I used the Crazy 8’s ideation method to help me find different solutions for each of the main features of the initial MVP.
 
-<div class="container-8col">
+<div class="l-10col">
 
 ![Crazy 8’s method used to sketch-out different solutions to the design problem.](wireframe.png "Crazy 8’s method used to sketch-out different solutions to the design problem.")
 
@@ -199,7 +199,7 @@ Most users had difficulties deciding which movie they would like to see, so I de
 
 Before I started sketching the nav bar with the searching, filtering and sorting buttons, I decided to see which patterns were being used by other apps or websites that needed a similar feature.
 
-<div class="l-screenshot l-screenshot--contain-375">
+<div class="screenshot">
 
 ![Airbnb shows their filtering options even when search is not active.](./ux_case_study_airbnb_nav_bar@2x.png "Airbnb shows their filtering options even when search is not active.")
 
@@ -207,7 +207,7 @@ Before I started sketching the nav bar with the searching, filtering and sorting
 
 The first product I used for the comparison was Airbnb’s iOS app. One of the reasons for which I considered Airbnb’s design patterns for the searching feature was because their buttons for “Dates” and “Guests” are always visible bellow the search bar, therefore, their users can always see them and know where to find them.
 
-<div class="l-screenshot l-screenshot--contain-375">
+<div class="screenshot">
 
 ![Asos.com was using a similar aproach to Airbnb but without the search bar.](./ux_case_study_asos_ios_nav_bar@2x.png "Asos.com was using a similar aproach to Airbnb but without the search bar.")
 
@@ -215,7 +215,7 @@ The first product I used for the comparison was Airbnb’s iOS app. One of the r
 
 Asos.com’s sort and filter buttons have more visual weight that Airbnb’s ones, however, they were showing the search bar on a different screen. One of the benefits of the way Asos.com implements their sorting and filtering options is that it allows them to easily indicate which sorting or filtering options are applied to remind the user that the search results are being affected by them.
 
-<div class="l-screenshot l-screenshot--contain-375">
+<div class="screenshot">
 
 ![Crutchfield.com shows the search bar and sort and filter buttons at the same time.](./ux_case_study_crutchfield_example.png "Crutchfield.com shows the search bar and sort and filter buttons at the same time.")
 
@@ -223,7 +223,7 @@ Asos.com’s sort and filter buttons have more visual weight that Airbnb’s one
 
 Crutchfield.com’s website shows the search bar and sorting and filtering options at the same time, even though their sort and filter buttons are more separated from the search bar and don’t have the same visual weight as the Asos.com example, which could cause their users to overlook them.
 
-<div class="l-screenshot l-screenshot--contain-375">
+<div class="screenshot">
 
 ![zalando.es offered the most complete filtering and searching experience.](./ux_case_study_zalando_example.png "zalando.es offered the most complete filtering and searching experience.")
 
@@ -237,7 +237,7 @@ A “clear all filters” button is also used to allow their users to easily cle
 
 Once I did the initial competitive research to see which were the currently used design patterns, I began working on the low-fidelity prototype of the movie searching, filtering and sorting feature for the MVP.
 
-<div class="container-8col">
+<div class="l-10col">
 
 ![Low-Fidelity prototype of the movie searching, filtering and sorting feature.](wireframe.png "Low-Fidelity prototype of the movie searching, filtering and sorting feature.")
 
@@ -245,13 +245,13 @@ Once I did the initial competitive research to see which were the currently used
 
 ### Movie Searching and Filtering Final Version
 
-<div class="container-12col">
-<div class="l-screenshot l-screenshot--contain-375">
+<div class="screeshot-container">
+<div class="screenshot">
 
 ![Final version of the nav bar in with sorting applied, showing both buttons and search bar.](./ux_case_study_nav_bar_sort_applied@2x.png "Final version of the nav bar in with sorting applied, showing both buttons and search bar.")
 
 </div>
-<div class="l-screenshot l-screenshot--contain-375">
+<div class="screenshot">
 
 ![Final version of the nav bar with active filter and sort buttons.](./ux_case_study_nav_bar_filter_and_sort_applied@2x.png "Final version of the nav bar with active filter and sort buttons.")
 
@@ -266,7 +266,7 @@ By using checkbox style buttons for the filters, users can easily enable and dis
 
 ### Movie Searching and Filtering Wireflow Diagram
 
-<div class="container-wireflow">
+<div class="diagram">
 
 ![Wireflow diagram of the movie searching and filtering experience.](./ux_case_study_wire_flow_alex_search_and_filter.png "Wireflow diagram of the movie searching and filtering experience.")
 
@@ -274,13 +274,13 @@ By using checkbox style buttons for the filters, users can easily enable and dis
 
 ## Movie Searching and Filtering High-Fidelity Prototypes
 
-<div class="container-12col">
-<div class="l-screenshot l-screenshot--contain-320">
+<div class="screenshot-container">
+<div class="screenshot">
 
 #### Movie Searching Prototype
 
 <figure>
-<span class="video-iphoneX video-iphoneX--contain--320">
+<span class="video-iphoneX">
 <span class="video-iphoneX--video">
 <video autoplay loop muted playsinline controls>
 <source src="./ux_case_study_movie_searching_prototype.webm" type="video/webm">
@@ -294,12 +294,12 @@ Your browser does not support HTML5 video.
 </figure>
 
 </div>
-<div class="l-screenshot l-screenshot--contain-320">
+<div class="screenshot">
 
 #### Movie Filtering Prototype
 
 <figure>
-<span class="video-iphoneX video-iphoneX--contain--320">
+<span class="video-iphoneX">
 <span class="video-iphoneX--video">
 <video autoplay loop muted playsinline controls>
 <source src="./ux_case_study_movie_filtering_prototype.webm" type="video/webm">
@@ -313,12 +313,12 @@ Your browser does not support HTML5 video.
 </figure>
 
 </div>
-<div class="l-screenshot l-screenshot--contain-320">
+<div class="screenshot">
 
 #### Movie Seat Choosing Prototype
 
 <figure>
-<span class="video-iphoneX video-iphoneX--contain--320">
+<span class="video-iphoneX">
 <span class="video-iphoneX--video">
 <video autoplay loop muted playsinline controls>
 <source src="./ux_case_study_seat_choosing_prototype.webm" type="video/webm">
@@ -347,7 +347,7 @@ Even though guest checkout flow’s are usually designed for users which don’t
 
 After some initial research for best practices when creating a guest checkout experience, I started working on the low-fidelity wireframes for the prototype.
 
-<div class="container-8col">
+<div class="l-10col">
 
 ![Low-Fidelity prototype of the guest checkout feature.](wireframe.png "Low-Fidelity prototype of the guest checkout feature.")
 
@@ -357,14 +357,14 @@ After some initial research for best practices when creating a guest checkout ex
 
 ### Delayed Account Creation
 
-<div class="container-12col">
-<div class="l-screenshot l-screenshot--contain-375">
+<div class="screenshot-container">
+<div class="screenshot">
 
 ![Users can sign in to use their saved personal information or as a guest, when booking a movie.](./ux_case_study_choose_guest_checkout_screen@2x.png "Users can sign in to use their saved personal information or as a guest, when booking a movie.")
 
 </div>
-<div class="pros-cons">
-<div class="pros-cons__component">
+<div class="info">
+<div class="info__item">
 
 #### Guest checkout as an option for all users
 
@@ -384,14 +384,14 @@ According to the same research, privacy-concerned users are less reluctant to sh
 
 ### Guest Checkout Payment Methods
 
-<div class="container-12col">
-<div class="l-screenshot l-screenshot--contain-375">
+<div class="screenshot-container">
+<div class="screenshot">
 
 ![Guest checkout with the order summary and available payment methods.](./ux_case_study_guest_checkout_payment_methods@2x.png "Guest checkout with the order summary and available payment methods.")
 
 </div>
-<div class="pros-cons">
-<div class="pros-cons__component">
+<div class="info">
+<div class="info__item">
 
 #### Payment methods placed in close proximity
 
@@ -405,15 +405,15 @@ Users should also be able to compare the different costs associated to each paym
 
 ### Optimizing The Payment Form
 
-<div class="container-12col">
+<div class="screenshot-container">
 
-<div class="l-screenshot l-screenshot--contain-375">
+<div class="screenshot">
 
 ![Guest checkout with credit card form interaction.](./ux_case_study_guest_checkout_optimized_credit_card_form@2x.png "Guest checkout with credit card form interaction.")
 
 </div>
-<div class="pros-cons">
-<div class="pros-cons__component">
+<div class="info">
+<div class="info__item">
 
 #### Insert spaces every 4 digits
 
@@ -433,7 +433,7 @@ Form fields used for credit cards should also use input masks that auto-insert a
 
 ### Order Confirmation With Option To Sign Up
 
-<div class="l-screenshot l-screenshot--contain-375">
+<div class="screenshot">
 
 ![Users can sign in to use their saved personal information or as a guest, when booking a movie.](./ux_case_study_guest_checkout_delayed_account_creation@2x.png "Users can sign in to use their saved personal information or as a guest, when booking a movie.")
 
@@ -442,7 +442,7 @@ Form fields used for credit cards should also use input masks that auto-insert a
 
 ### Guest Checkout Wireflow Diagram
 
-<div class="container-wireflow">
+<div class="diagram">
 
 ![Wireflow diagram of the guest checkout experience.](./ux_case_study_wire_flow_alex_checkout.png "Wireflow diagram of the guest checkout experience.")
 
@@ -489,7 +489,7 @@ The 4 segments were:
 
 ### Membership Sign Up Wireflow Diagram
 
-<div class="container-wireflow">
+<div class="diagram">
 
 ![Wireflow diagram of the membership sign up process.](./ux_case_study_wire_flow_ana_membership_sign_up.png "Wireflow diagram of the membership sign up process.")
 
@@ -501,7 +501,7 @@ The shipping information step was needed so that users could receive a copy of t
 
 In order to design this checkout step I decided to do some research to find which are the UX best practices of designing a Shipping Information checkout step.
 
-<div class="l-screenshot l-screenshot--contain-375">
+<div class="screenshot">
 
 ![Shipping information screen with optimized copy to avoid confusing users with the different shipping options.](./ux_case_study_shipping_methods_selection@2x.png "Shipping information screen with optimized copy to avoid confusing users with the different shipping options.")
 
@@ -517,7 +517,7 @@ Reseach has found that when the store pick-up option isn’t listed next to the 
 
 The diferent delivery methods were also designed following the recomendations of another study which found that when using labels such as 2 Days Express or 1 Day Premium users would be confused of the exact date they would receive the product.
 
-<div class="l-screenshot l-screenshot--contain-375">
+<div class="screenshot">
 
 ![Example of how not to label delivery methods. It’s not clear to the user which is the exact day the product would arrive.](./ux_case_study_confusing_shipping_example.png "Example of how not to label delivery methods. It’s not clear to the user which is the exact day the product would arrive.")
 
@@ -527,7 +527,7 @@ By using labels like these, users are forced to have to personally calculate the
 
 A label of “3-5 days” doesn’t take into consideration the processing time each order might need, the daily cut off time, such as: orders after 4pm will be sent the following day, or if the user chooses a 1 Day Premium  shipping option on a friday, which would mean that the order is shipped monday, ultimately making it a 3 day shipping method with a premium cost.
 
-<div class="l-screenshot l-screenshot--contain-375">
+<div class="screenshot">
 
 ![Example of a correct way to label delivery methods.](./ux_case_study_correct_shipping_implementation_example.png "Example of a correct way to label delivery methods.")
 
@@ -538,7 +538,7 @@ By using labels such as “Arrives by“ or “Get it by”, users would take th
 However, in order for the final date to be usefull to the user, it should take into account all the necesary factors such as order cut of time, the current time and date or the delivery estimate of the shipping company.
 
 
-<div class="l-screenshot l-screenshot--contain-375">
+<div class="screenshot">
 
 ![Example of a correct implementation of delivery methods from amazon.co.uk.](./ux_case_study_amazon_shipping_example.png "Example of a correct implementation of delivery methods from amazon.co.uk.")
 

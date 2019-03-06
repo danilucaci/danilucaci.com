@@ -38,67 +38,28 @@ const ArticleWrapper = styled.article`
 `;
 
 const StyledHeader = styled.header`
-  max-width: ${theme.contain.inner.col10};
+  max-width: ${theme.contain.wrapper.col8};
   margin-left: auto;
   margin-right: auto;
 
   padding-left: ${theme.gutters.s};
   padding-right: ${theme.gutters.s};
 
-  @media screen and (min-width: ${theme.breakpoints.s}) and (max-width: ${theme
-      .breakpoints.l}) {
-    margin-left: ${theme.gutters.m};
-    margin-right: ${theme.gutters.m};
-  }
-
   ${mediaMin.s`
     padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
 `};
-
-  margin-top: ${rem(16)};
-  margin-bottom: ${rem(16)};
-
-  ${mediaMin.l`
-    background-color: ${theme.colors.gray100};
-    border-left: 8px solid ${theme.colors.main600};
-    padding: ${rem(32)} ${rem(48)};
-    margin-top: 0;
-    margin-bottom: 0;
-    ${theme.shadow.default};
-  `};
-
-  ${mediaMin.xxl`
-    padding: ${rem(24)} ${rem(96)} ${rem(40)};
-  `};
 `;
 
 const PostH1 = styled.h1`
-  margin-top: ${rem(8)};
-  margin-bottom: ${rem(8)};
-
-  ${mediaMin.m`
-    margin-top: ${rem(16)};
-    margin-bottom: ${rem(16)};
-  `};
+  margin-top: ${rem(16)};
+  margin-bottom: ${rem(16)};
 `;
 
 const CaseStudyDescription = styled(Copy)`
   font-size: ${rem(24)};
   line-height: ${rem(40)};
-`;
-
-const TagsWrapper = styled.div``;
-
-const Tag = styled(Copy)`
-  display: inline-block;
-  margin-right: ${rem(16)};
-  margin-top: ${rem(8)};
-  margin-bottom: ${rem(8)};
-
-  ${mediaMin.xxl`
-    margin-right: ${rem(24)};
-  `};
+  margin-top: ${rem(16)};
 `;
 
 const CaseStudyImgWrapper = styled.div`
@@ -107,9 +68,12 @@ const CaseStudyImgWrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
 
-  ${mediaMin.l`
-    margin-top: ${rem(64)};
-    margin-bottom: ${rem(64)};
+  margin-top: ${rem(64)};
+  margin-bottom: ${rem(64)};
+
+  ${mediaMin.xl`
+    margin-top: ${rem(112)};
+    margin-bottom: ${rem(112)};
   `};
 `;
 
@@ -179,6 +143,10 @@ const OverviewItems = styled.div`
 const OverviewItem = styled.div`
   display: block;
 
+  ${mediaMax.xxs`
+      margin-left: ${rem(4)};
+  `};
+
   ${mediaMax.xl`
       margin-bottom: ${rem(32)};
   `};
@@ -187,11 +155,11 @@ const OverviewItem = styled.div`
     margin-bottom: ${rem(16)};
   }
 
-  ${mediaMin.s`
+  ${mediaMin.xxs`
     display: inline-block;
     vertical-align: top;
     flex: 1 1 auto;
-    width: calc((100% / 2) - ${rem(32)});
+    width: calc((100% / 2) - ${rem(24)});
   `};
 
   ${mediaMin.xl`
@@ -200,8 +168,12 @@ const OverviewItem = styled.div`
   `};
 
   & + & {
+    ${mediaMin.xxs`
+      margin-right: ${rem(24)};
+    `};
+
     ${mediaMin.xl`
-      margin-left: ${rem(32)};
+      margin-right: ${rem(32)};
     `};
   }
 `;
@@ -243,36 +215,22 @@ const PostContent = styled.section`
 
   h2 {
     display: block;
-    margin-top: ${rem(32)};
-    margin-bottom: ${rem(16)};
 
     &:first-of-type {
       margin-top: 0;
     }
 
-    ${mediaMin.xs`
-      margin-top: ${rem(64)};
-      margin-bottom: ${rem(32)};
-    `};
+    margin-top: ${rem(64)};
+    margin-bottom: ${rem(32)};
   }
 
   h3 {
     display: block;
-    margin-top: ${rem(32)};
-    margin-bottom: ${rem(16)};
-
-    ${mediaMin.xs`
-      margin-top: ${rem(64)};
-      margin-bottom: ${rem(32)};
-    `};
+    margin-top: ${rem(64)};
+    margin-bottom: ${rem(32)};
   }
 
-  h4 {
-    display: block;
-    margin-top: ${rem(32)};
-    margin-bottom: ${rem(16)};
-  }
-
+  h4,
   h5 {
     display: block;
     margin-top: ${rem(32)};
@@ -325,21 +283,13 @@ const PostContent = styled.section`
     margin-bottom: ${rem(32)};
   }
 
-  p + ul {
-    margin-top: -${rem(16)};
+  /* fix for markdown nested p tags inside li tags */
+  li > p + ul {
+    margin-top: -${rem(32)};
   }
 
   ul + p {
     margin-top: ${rem(32)};
-  }
-
-  ul {
-    list-style-type: disc;
-    list-style-position: outside;
-  }
-
-  li {
-    margin-left: ${rem(24)};
   }
 
   strong {
@@ -367,7 +317,7 @@ const PostContent = styled.section`
     `};
   }
 
-  .container-12col {
+  .screenshot-container {
     margin: ${rem(32)} 0;
 
     ${mediaMin.xxl`
@@ -397,7 +347,27 @@ const PostContent = styled.section`
     `};
   }
 
-  .container-wireflow {
+  .diagram {
+    margin: ${rem(32)} 0;
+
+    ${mediaMin.xxl`
+      max-width: ${rem(936)};
+      margin-right: -${rem(216)};
+      margin-left: -${rem(216)};
+    `};
+  }
+
+  .l-10col {
+    margin: ${rem(32)} 0;
+
+    ${mediaMin.xxl`
+      max-width: ${rem(936)};
+      margin-right: -${rem(216)};
+      margin-left: -${rem(216)};
+    `};
+  }
+
+  .l-12col {
     margin: ${rem(32)} 0;
 
     ${mediaMin.xxl`
@@ -413,7 +383,7 @@ const PostContent = styled.section`
     `};
   }
 
-  .pros-cons {
+  .info {
     margin-top: ${rem(32)};
 
     ${mediaMin.xxl`
@@ -424,17 +394,17 @@ const PostContent = styled.section`
     `};
   }
 
-  .pros-cons__component > h4 {
+  .info__item > h4 {
     margin-top: 0;
   }
 
-  .pros-cons__component:first-of-type {
+  .info__item:first-of-type {
     ${mediaMin.xxl`
       margin-bottom: ${rem(32)};
     `};
   }
 
-  .l-screenshot {
+  .screenshot {
     width: 100%;
     margin-bottom: ${rem(32)};
 
@@ -454,6 +424,16 @@ const PostContent = styled.section`
       margin-top: 0;
     }
 
+    ${mediaMax.xxs`
+      max-width: ${rem(300)};
+      margin-left: auto;
+      margin-right: auto;
+    `};
+
+    ${mediaMin.xxs`
+      max-width: ${rem(375)};
+    `};
+
     ${mediaMin.xxl`
       display: inline-block;
       vertical-align: top;
@@ -461,34 +441,82 @@ const PostContent = styled.section`
     `};
   }
 
-  .l-screenshot--contain-320 {
-    ${mediaMin.xxs`
-      max-width: ${rem(320)};
+  .screenshot:first-of-type {
+    ${mediaMin.xxl`
+      margin-right: ${rem(32)};
     `};
   }
 
-  .l-screenshot--contain-375 {
+  .screenshot:first-of-type {
+    ${mediaMin.xxl`
+      margin-right: ${rem(32)};
+    `};
+  }
+
+  .screenshot:nth-of-type(3) {
+    ${mediaMin.xxl`
+      margin-left: ${rem(32)};
+    `};
+  }
+
+  figure {
+    width: 100%;
+    margin-top: ${rem(32)};
+    margin-bottom: ${rem(32)};
+  }
+
+  figcaption {
+    font-size: ${theme.fontSizes.s};
+    line-height: ${theme.lineHeights.s};
+    color: ${theme.colors.dark700};
+    margin-top: ${rem(16)};
+
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  video {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    vertical-align: middle;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+  }
+
+  .video-iphoneX {
+    position: relative;
+    display: block;
+    width: 100%;
+
+    ${mediaMax.xxs`
+      width: ${rem(300)};
+      margin-left: auto;
+      margin-right: auto;
+    `};
+
     ${mediaMin.xxs`
       max-width: ${rem(375)};
     `};
   }
 
-  .l-screenshot:first-of-type {
-    ${mediaMin.xxl`
-      margin-right: ${rem(32)};
-    `};
+  .video-iphoneX--video {
+    padding-bottom: 216.53333333333333%;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    background-color: ${theme.colors.sectionBackground};
+    display: block;
   }
 
-  .l-screenshot:first-of-type {
-    ${mediaMin.xxl`
-      margin-right: ${rem(32)};
-    `};
-  }
-
-  .l-screenshot:nth-of-type(3) {
-    ${mediaMin.xxl`
-      margin-left: ${rem(32)};
-    `};
+  .fig__16-9 {
+    background-color: ${theme.colors.sectionBackground};
+    position: relative;
+    display: block;
+    max-width: 744px;
+    outline: 1px solid red;
   }
 
   blockquote {
@@ -508,19 +536,19 @@ const PostContent = styled.section`
 
     margin-right: -${theme.gutters.s};
     margin-left: -${theme.gutters.s};
-    padding: ${rem(16)} ${theme.gutters.s};
+    padding: ${rem(24)} ${theme.gutters.s};
 
     ${mediaMin.m`
       border-left: 8px solid ${theme.colors.main600};
       margin-right: -${theme.gutters.m};
       margin-left: -${theme.gutters.m};
-      padding: ${rem(32)} ${theme.gutters.m};
+      padding: ${rem(40)} ${theme.gutters.m};
     `};
 
     ${mediaMin.xl`
       margin-right: -${rem(96)};
       margin-left: -${rem(96)};
-      padding: ${rem(32)} ${rem(96)};
+      padding: ${rem(40)} ${rem(96)};
     `};
   }
 `;
@@ -627,12 +655,12 @@ class CaseStudy extends Component {
         <Main role="main" id="main">
           <ArticleWrapper>
             <StyledHeader>
-              <TagsWrapper>
+              {/* <TagsWrapper>
                 {postInfo.tags &&
                   postInfo.tags.map((tag) => <Tag key={tag}>{tag}</Tag>)}
-              </TagsWrapper>
-              <HR />
+              </TagsWrapper> */}
               <PostH1>{postInfo.title}</PostH1>
+              {/* <HR /> */}
               <CaseStudyDescription>{postInfo.snippet}</CaseStudyDescription>
             </StyledHeader>
             <CaseStudyImgWrapper>
@@ -791,7 +819,7 @@ export const pageQuery = graphql`
         tags
         image {
           childImageSharp {
-            fluid(maxWidth: 936) {
+            fluid(maxWidth: 1128) {
               ...GatsbyImageSharpFluid_noBase64
             }
           }

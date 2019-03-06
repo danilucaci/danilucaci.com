@@ -86,7 +86,7 @@ function gatsbyNodeQuery(locale) {
           locale
           image {
             childImageSharp {
-              fluid(maxWidth: 744) {
+              fluid(maxWidth: 1128) {
                 src
                 srcSet
                 aspectRatio
