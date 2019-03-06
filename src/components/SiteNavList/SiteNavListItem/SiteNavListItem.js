@@ -60,7 +60,7 @@ const StyledSiteNavListItem = styled.li`
   `};
 
     ${mediaMin.l`
-      padding: ${rem(16)} ${rem(24)};
+      padding: ${rem(16)};
   `};
 
     &.current-nav-item {
