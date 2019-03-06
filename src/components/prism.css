@@ -68,13 +68,13 @@ pre[class*="language-"] {
 
 @media screen and (min-width: 50em) {
   .gatsby-highlight {
-    margin-left: -6rem;
-    margin-right: -6rem;
+    margin-left: -12rem;
+    margin-right: -12rem;
   }
 
   pre[class*="language-"] {
-    padding-left: 6rem;
-    padding-right: 6rem;
+    padding-left: 12rem;
+    padding-right: 2rem;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
   }
