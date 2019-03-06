@@ -9,14 +9,14 @@ import { Copy } from "../Copy/Copy";
 
 const Wrapper = styled.div`
   display: inline-block;
-  margin-right: ${rem(16)};
+  margin-right: ${rem(20)};
   margin-left: -${rem(2)};
   white-space: nowrap;
 `;
 
 const StyledIcon = styled(Icon)`
   display: inline-block;
-  margin-right: ${rem(2)};
+  margin-right: ${rem(3)};
   margin-bottom: ${rem(4)};
 `;
 

@@ -19,6 +19,7 @@ const Label = styled(Copy)`
 
 const StyledIcon = styled(Icon)`
   display: inline-block;
+  margin-right: ${rem(2)};
   margin-bottom: ${rem(3)};
 `;
 
