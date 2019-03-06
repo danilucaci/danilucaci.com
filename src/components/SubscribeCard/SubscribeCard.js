@@ -18,6 +18,7 @@ import PrivacyCheckbox from "../PrivacyCheckbox/PrivacyCheckbox";
 
 const StyledSubscribeCard = styled.aside`
   background-color: ${theme.colors.gray100};
+  border-top: ${rem(8)} solid ${theme.colors.main600};
   width: 100%;
   max-width: ${theme.contain.wrapper.col10};
   margin-left: auto;
