@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import styled from "styled-components";
 import rehypeReact from "rehype-react";
-import Disqus from "disqus-react";
-import { FormattedMessage } from "react-intl";
+// import Disqus from "disqus-react";
+// import { FormattedMessage } from "react-intl";
 
 import { theme, rem, mediaMin, mediaMax } from "../theme/globalStyles";
 import SEO from "../components/SEO/SEO";

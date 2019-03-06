@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
-import { theme, mediaMin, mediaMax, rem } from "../../theme/globalStyles";
+import { theme, rem } from "../../theme/globalStyles";
 import Label from "../Label/Label";
 import Input from "../Input/Input";
 import SubmitButton from "../SubmitButton/SubmitButton";
