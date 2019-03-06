@@ -52,24 +52,6 @@ const GATSBY_DL_COOKIE_SECURE =
 const GATSBY_DL_COOKIE_DOMAIN = process.env.GATSBY_DL_COOKIE_DOMAIN;
 const GATSBY_GA_ID = process.env.GATSBY_GA_ID;
 
-// Google Analytics Init
-export const initGA = () => {
-  console.log("%c GA Init!", "color: #79E36B");
-  ReactGA.initialize(GATSBY_GA_ID);
-};
-
-// Google Analytics Log pages views
-export const logPageView = () => {
-  // https://github.com/nfl/react-helmet/issues/189
-  // still a bug, need to set a 0 setTimeout for
-  // the title to be set in <helmet>
-  // 100ms seems to work so far
-  setTimeout(() => {
-    ReactGA.set({ page: window.location.pathname });
-    ReactGA.pageview(window.location.pathname);
-  }, 100);
-};
-
 const Page = styled.div`
   /* Sticky Footer  */
   display: flex;
@@ -167,15 +149,15 @@ const Page = styled.div`
 class Layout extends Component {
   state = {
     hasGDPRConsent: false,
-    GTMScriptLoaded: false,
-    askCookieConsent: true,
-    acceptsCookie: { necessary: true, analytics: true },
-    deniesCookie: { necessary: true, analytics: false },
+    askCookieConsent: false,
+    acceptsCookie: { necessary: true, analytics: true, dismissed: false },
+    deniesCookie: { necessary: true, analytics: false, dismissed: true },
     cookieExp: 780, // cookieExp set in days same as GA expiry date
     showLogs: true,
   };
 
   componentDidMount() {
+    // Tied to GTM Cookie_Consent_Accepted variable to fire analytics
     this.setInitialConsentCookie();
     this.checkGDPRStatus();
     // this.checkFontsLoaded();
@@ -245,6 +227,7 @@ class Layout extends Component {
   };
 
   setInitialConsentCookie = () => {
+    // Tied to GTM Cookie_Consent_Accepted variable to fire analytics
     Cookies.set(GATSBY_DL_CONSENT_COOKIE_NAME, false, {
       expires: this.state.cookieExp,
       domain: GATSBY_DL_COOKIE_DOMAIN,
@@ -261,12 +244,18 @@ class Layout extends Component {
   };
 
   checkGDPRStatus = () => {
+    // If it can read the cookie name from the .env variable
     if (GATSBY_DL_COOKIE_NAME) {
       let DLCookie = Cookies.getJSON(GATSBY_DL_COOKIE_NAME);
+      // If it can find a previously set cookie
       if (DLCookie) {
-        if (DLCookie.analytics) {
+        // If the cookie has analytics accepted
+        if (DLCookie.analytics && !DLCookie.dismissed) {
+          if (this.state.showLogs) {
+            console.log(`%c The user accepted cookies.`, "color: #79E36B");
+          }
+
           this.setState((prevState) => ({
-            askCookieConsent: !prevState.askCookieConsent,
             hasGDPRConsent: !prevState.hasGDPRConsent,
           }));
 
@@ -278,14 +267,32 @@ class Layout extends Component {
           this.loadGTM();
 
           // Don't load analytics scripts if analytics cookies are not accepted
-        } else if (!DLCookie.analytics) {
-          this.setState((prevState) => ({
-            askCookieConsent: !prevState.askCookieConsent,
-          }));
+        } else if (!DLCookie.analytics && DLCookie.dismissed) {
+          if (this.state.showLogs) {
+            console.log(
+              `%c The user doesn't accept cookies.`,
+              "color: #79E36B"
+            );
+          }
+          if (this.state.askCookieConsent === true) {
+            this.setState((prevState) => ({
+              askCookieConsent: !prevState.askCookieConsent,
+            }));
+          }
         }
+        // If it doesn't have analytics accepted set the state to ask for the consent
+        // and open the cookieConsent pop up
+        // This way it doesn't show up with js disabled
       } else {
+        this.setState((prevState) => ({
+          askCookieConsent: !prevState.askCookieConsent,
+        }));
+
         if (this.state.showLogs) {
-          console.log(`%c Didn't find a cookie.`, "color: #79E36B");
+          console.log(
+            `%c Didn't find a previous cookie, asking for the consent.`,
+            "color: #79E36B"
+          );
         }
       }
     } else {
@@ -295,20 +302,44 @@ class Layout extends Component {
     }
   };
 
+  // Google Analytics Init
+  initGA = () => {
+    console.log("%c GA Init!", "color: #79E36B");
+    ReactGA.initialize(GATSBY_GA_ID);
+  };
+
+  // Google Analytics Log pages views
+  logPageView = () => {
+    // https://github.com/nfl/react-helmet/issues/189
+    // still a bug, need to set a 0 setTimeout for
+    // the title to be set in <helmet>
+    // 100ms seems to work so far
+    setTimeout(() => {
+      ReactGA.set({ page: window.location.pathname });
+      ReactGA.pageview(window.location.pathname);
+    }, 100);
+  };
+
   showGDPRStatus = () => {
     if (GATSBY_DL_COOKIE_NAME) {
-      let DLCookie = Cookies.getJSON(GATSBY_DL_COOKIE_NAME);
-      if (DLCookie) {
-        if (DLCookie.analytics) {
-          console.log(`%c Cookies Accepted.`, "color: #79E36B");
-        } else if (!DLCookie.analytics) {
-          console.log(`%c Cookies Denied.`, "color: #79E36B");
+      if (GATSBY_DL_COOKIE_DOMAIN) {
+        let DLCookie = Cookies.getJSON(GATSBY_DL_COOKIE_NAME);
+        if (DLCookie) {
+          if (DLCookie.analytics) {
+            console.log(`%c Cookies Accepted.`, "color: #79E36B");
+          } else if (!DLCookie.analytics) {
+            console.log(`%c Cookies Denied.`, "color: #79E36B");
+          }
+        } else {
+          console.log(`%c Didn't find a cookie.`, "color: #79E36B");
         }
       } else {
-        console.log(`%c Didn't find a cookie.`, "color: #79E36B");
+        if (this.state.showLogs) {
+          console.warn("Can't read cookie domain name .env.");
+        }
       }
     } else {
-      console.error("dl.com Can't read cookie name.");
+      console.warn("Can't read cookie domain name .env.");
     }
   };
 
@@ -325,12 +356,12 @@ class Layout extends Component {
         this.checkGDPRStatus();
       } else {
         if (this.state.showLogs) {
-          console.error("Can't read cookie data.");
+          console.warn("Can't read cookie domain name .env.");
         }
       }
     } else {
       if (this.state.showLogs) {
-        console.error("Can't read cookie name.");
+        console.warn("Can't read cookie name .env.");
       }
     }
   };
@@ -348,12 +379,12 @@ class Layout extends Component {
         this.checkGDPRStatus();
       } else {
         if (this.state.showLogs) {
-          console.error("Can't read cookie data.");
+          console.warn("Can't read cookie domain name .env.");
         }
       }
     } else {
       if (this.state.showLogs) {
-        console.error("Can't read cookie name.");
+        console.warn("Can't read cookie name .env.");
       }
     }
   };
@@ -362,10 +393,10 @@ class Layout extends Component {
     // Avoids initializing GA each time a page loads
     // Creating a script tag each time
     if (!window._DL_GA_INITIALIZED) {
-      initGA();
+      this.initGA();
       window._DL_GA_INITIALIZED = true;
     }
-    logPageView();
+    this.logPageView();
   };
 
   render() {
@@ -404,14 +435,12 @@ class Layout extends Component {
             <GlobalAria />
             <GlobalHTML />
             <SVGSprite />
-            {this.state.askCookieConsent && (
-              <CookieConsent
-                askCookieConsent={this.state.askCookieConsent}
-                acceptsCookies={this.acceptsCookies}
-                deniesCookies={this.deniesCookies}
-                pageLocale={this.props.locale}
-              />
-            )}
+            <CookieConsent
+              askCookieConsent={this.state.askCookieConsent}
+              acceptsCookies={this.acceptsCookies}
+              deniesCookies={this.deniesCookies}
+              pageLocale={this.props.locale}
+            />
             {this.props.children}
           </Page>
         </IntlProvider>

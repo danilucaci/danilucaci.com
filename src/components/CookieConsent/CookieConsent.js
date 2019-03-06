@@ -12,8 +12,8 @@ import ExternalLocaleLink from "../ExternalLocaleLink/ExternalLocaleLink";
 const StyledCookieConsent = styled.aside`
   background-color: ${theme.colors.gray100};
   border-top: ${rem(8)} solid ${theme.colors.main600};
-  display: block;
-  display: flex;
+  display: ${(props) => (props.showConsent ? "block" : "none")};
+  display: ${(props) => (props.showConsent ? "flex" : "none")};
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
@@ -29,15 +29,11 @@ const StyledCookieConsent = styled.aside`
   width: 100%;
 
   ${mediaMin.m`
-    border-left: 8px solid ${theme.colors.main600};
-    border-top: 1px solid ${theme.colors.gray400};
-    border-bottom: 1px solid ${theme.colors.gray400};
-    border-right: 1px solid ${theme.colors.gray400};
-    border-radius: 3px;
-
+    border: 2px solid ${theme.colors.gray400};
+    border-radius: 4px;
     flex-direction: row;
-    bottom: ${rem(20)};
-    padding: ${rem(10)} ${rem(10)} ${rem(10)} ${rem(16)};
+    bottom: ${rem(12)};
+    padding: ${rem(10)} ${rem(16)};
     width: 96%;
     max-width: 64em;
     margin-left: auto;
@@ -86,7 +82,7 @@ const StyledPrimaryButton = styled(PrimaryButtonSmall)`
 
 const CookieConsent = (props) => {
   return (
-    <StyledCookieConsent>
+    <StyledCookieConsent showConsent={props.askCookieConsent}>
       <CopyContainer>
         <FormattedMessage id="cookieMessage">
           {(txt) => <StyledCopy>{txt} </StyledCopy>}
