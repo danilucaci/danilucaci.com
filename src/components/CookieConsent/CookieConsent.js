@@ -6,20 +6,15 @@ import { graphql, StaticQuery } from "gatsby";
 
 import { theme, rem, mediaMin } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
-import { TertiaryButton, PrimaryButtonSmall } from "../Button/Button";
+import { DarkGhostButton, PrimaryButton } from "../Button/Button";
 import ExternalLocaleLink from "../ExternalLocaleLink/ExternalLocaleLink";
 
 const StyledCookieConsent = styled.aside`
   background-color: ${theme.colors.gray100};
   border-top: ${rem(8)} solid ${theme.colors.main600};
   display: ${(props) => (props.showConsent ? "block" : "none")};
-  display: ${(props) => (props.showConsent ? "flex" : "none")};
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  ${theme.shadow.mobileCookieConsent};
 
-  padding: ${rem(8)} ${rem(16)} ${rem(24)};
+  padding: ${rem(16)} ${rem(24)} ${rem(24)};
   position: fixed;
   z-index: 10;
   will-change: transform;
@@ -28,16 +23,14 @@ const StyledCookieConsent = styled.aside`
   right: 0;
   width: 100%;
 
-  ${mediaMin.m`
+  ${theme.shadow.mobileCookieConsent};
+
+  ${mediaMin.s`
     border: 2px solid ${theme.colors.gray400};
     border-radius: 4px;
-    flex-direction: row;
-    bottom: ${rem(12)};
-    padding: ${rem(10)} ${rem(16)};
-    width: 96%;
-    max-width: 64em;
-    margin-left: auto;
-    margin-right: auto;
+    bottom: ${rem(16)};
+    left: ${rem(16)};
+    max-width: ${rem(340)};
     ${theme.shadow.dropdown};
   `};
 `;
@@ -55,29 +48,27 @@ const StyledCopy = styled(Copy)`
   line-height: ${theme.lineHeights.s} !important;
 `;
 
-const CopyContainer = styled.div`
-  width: 100%;
-
-  ${mediaMin.m`
-    flex-grow: 3;
-  `};
-`;
+const CopyContainer = styled.div``;
 
 const ButtonsContainer = styled.div`
-  display: flex;
+  display: block;
+  width: 100%;
   margin-top: ${rem(24)};
 
   ${mediaMin.m`
-    margin-top: 0;
-    margin-left: ${rem(16)};
-    flex-grow: 1;
+    margin-top: ${rem(40)};  
   `};
 `;
 
-const StyledGhostButton = styled(TertiaryButton)``;
+const StyledPrimaryButton = styled(PrimaryButton)`
+  display: block;
+`;
 
-const StyledPrimaryButton = styled(PrimaryButtonSmall)`
-  margin-left: ${rem(16)};
+const StyledGhostButton = styled(DarkGhostButton)`
+  border: 2px solid ${theme.colors.gray500};
+  display: block;
+  width: 100%;
+  margin-top: ${rem(8)};
 `;
 
 const CookieConsent = (props) => {
@@ -122,18 +113,18 @@ const CookieConsent = (props) => {
       </CopyContainer>
 
       <ButtonsContainer>
-        <FormattedMessage id="cookieDeny">
-          {(txt) => (
-            <StyledGhostButton onClick={props.deniesCookies}>
-              {txt}
-            </StyledGhostButton>
-          )}
-        </FormattedMessage>
         <FormattedMessage id="cookieAccept">
           {(txt) => (
             <StyledPrimaryButton onClick={props.acceptsCookies}>
               {txt}
             </StyledPrimaryButton>
+          )}
+        </FormattedMessage>
+        <FormattedMessage id="cookieDeny">
+          {(txt) => (
+            <StyledGhostButton onClick={props.deniesCookies}>
+              {txt}
+            </StyledGhostButton>
           )}
         </FormattedMessage>
       </ButtonsContainer>

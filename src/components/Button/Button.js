@@ -11,17 +11,17 @@ export const PrimaryButton = styled.button`
   text-decoration: none;
   font-size: ${theme.fontSizes.button};
   line-height: ${theme.lineHeights.button};
-  font-family: ${theme.fonts.bodyBold};
+
+  & .fonts-loaded {
+    font-family: ${theme.fonts.bodyBold};
+  }
+
   font-style: normal;
   font-weight: 700;
 
   padding: ${rem(12)} ${rem(40)};
   height: ${rem(48)};
   width: 100%;
-
-  ${mediaMin.xxs`  
-    width: ${rem(288)};
-  `};
 
   white-space: nowrap;
 
@@ -43,17 +43,17 @@ export const MainGhostButton = styled.button`
   text-decoration: none;
   font-size: ${theme.fontSizes.button};
   line-height: ${theme.lineHeights.button};
-  font-family: ${theme.fonts.bodyBold};
+
+  & .fonts-loaded {
+    font-family: ${theme.fonts.bodyBold};
+  }
+
   font-style: normal;
   font-weight: 700;
 
   padding: ${rem(12)} ${rem(40)};
   height: ${rem(48)};
   width: 100%;
-
-  ${mediaMin.xxs`  
-    width: ${rem(288)};
-  `};
 
   white-space: nowrap;
 
@@ -75,17 +75,17 @@ export const DarkGhostButton = styled.button`
   text-decoration: none;
   font-size: ${theme.fontSizes.button};
   line-height: ${theme.lineHeights.button};
-  font-family: ${theme.fonts.bodyBold};
+
+  & .fonts-loaded {
+    font-family: ${theme.fonts.bodyBold};
+  }
+
   font-style: normal;
   font-weight: 700;
 
   padding: ${rem(12)} ${rem(40)};
   height: ${rem(48)};
   width: 100%;
-
-  ${mediaMin.xxs`  
-    width: ${rem(288)};
-  `};
 
   white-space: nowrap;
 
@@ -107,7 +107,11 @@ export const PrimaryButtonSmall = styled.button`
   text-decoration: none;
   font-size: ${theme.fontSizes.button};
   line-height: ${theme.lineHeights.button};
-  font-family: ${theme.fonts.bodyRegular};
+
+  & .fonts-loaded {
+    font-family: ${theme.fonts.bodyRegular};
+  }
+
   font-style: normal;
   font-weight: 400;
 
@@ -133,7 +137,11 @@ export const TertiaryButton = styled.button`
   text-align: center;
   font-size: ${theme.fontSizes.button};
   line-height: ${theme.lineHeights.button};
-  font-family: ${theme.fonts.bodyRegular};
+
+  & .fonts-loaded {
+    font-family: ${theme.fonts.bodyRegular};
+  }
+
   font-style: normal;
   font-weight: 400;
   text-decoration: underline;
@@ -160,7 +168,10 @@ export const LoadComments = styled.button`
   text-decoration: none;
   font-size: ${theme.fontSizes.button};
   line-height: ${theme.lineHeights.button};
-  font-family: ${theme.fonts.bodyRegular};
+
+  & .fonts-loaded {
+    font-family: ${theme.fonts.bodyRegular};
+  }
 
   & * {
     font-size: ${theme.fontSizes.button};
