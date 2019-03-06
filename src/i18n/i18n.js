@@ -18,9 +18,9 @@ export const CONSENT_VALUE = {
 export const FORM_SUBMIT_STATUS = {
   success: {
     en:
-      "Mesage sent 🎉! Thanks for getting in touch. I will get back to you in about 24 hours.",
+      "Thank you for contacting me. \n I will send you a response in about 24 hours.",
     es:
-      "Mensaje enviado 🎉! Gracias por ponerte en contacto conmigo. Recibirás una respuesta en aproximadamente 24 horas.",
+      "Gracias por contactar conmigo. \n Recibirás una respuesta en aproximadamente 24 horas.",
   },
   error: {
     en: "Sorry 😔, your message couldn't be sent, please try again later.",
@@ -47,8 +47,19 @@ export const MC_ERRORS = {
     generic:
       "Lo siento 😔, algo ha salido mal, por favor intentalo de nuevo más tarde.",
     many:
-      "Lo siento 😔, tienes demasiadas intentos para subscribir, por favor intentalo de nuevo más tarde.",
+      "Lo siento 😔, has hecho demasiados intentos, por favor intentalo de nuevo más tarde.",
     already: "Parece que ya eres miembro de mi newsletter 👌🏻",
+  },
+};
+
+export const MC_SUCCESS = {
+  en: {
+    message:
+      "Thanks for joining my newsletter! You will receive a confirmation email shortly.",
+  },
+  es: {
+    message:
+      "¡Gracias por suscribirte a mi newsletter! Pronto recibirás un email de confirmación.",
   },
 };
 

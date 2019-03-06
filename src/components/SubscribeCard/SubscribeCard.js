@@ -8,7 +8,12 @@ import { theme, mediaMin, mediaMax, rem } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
 import Input from "../Input/Input";
 import SubmitButton from "../SubmitButton/SubmitButton";
-import { CONSENT_VALUE, MC_ERRORS, INPUT_EMAIL_ERROR } from "../../i18n/i18n";
+import {
+  CONSENT_VALUE,
+  MC_ERRORS,
+  MC_SUCCESS,
+  INPUT_EMAIL_ERROR,
+} from "../../i18n/i18n";
 import PrivacyCheckbox from "../PrivacyCheckbox/PrivacyCheckbox";
 
 const StyledSubscribeCard = styled.aside`
@@ -99,17 +104,28 @@ const AltCopy = styled(Copy)`
 `;
 
 const SigupErrorMessage = styled(Copy)`
-  border: 1px solid ${theme.colors.gray400};
+  border: ${rem(2)} solid ${theme.colors.danger500};
   border-radius: ${theme.borderRadius.buttons};
-  display: block;
+  display: inline-block;
   background-color: ${theme.colors.gray100};
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};
   color: ${theme.colors.dark800};
   padding: ${rem(16)};
-  margin-top: ${rem(24)};
-  max-width: ${rem(450)};
-  ${theme.shadow.dropdown}
+  margin-top: ${rem(8)};
+`;
+
+const SigupSuccessMessage = styled(Copy)`
+  border: ${rem(2)} solid ${theme.colors.main600};
+  border-radius: ${theme.borderRadius.buttons};
+  display: inline-block;
+  background-color: ${theme.colors.gray100};
+  font-size: ${theme.fontSizes.s};
+  line-height: ${theme.lineHeights.s};
+  color: ${theme.colors.dark800};
+  padding: ${rem(16)};
+  margin-top: ${rem(8)};
+  ${theme.shadow.buttons.mainGhost}
 `;
 
 const StyledInput = styled(Input)`
@@ -134,6 +150,7 @@ const SubscribeCard = (props) => {
   const [acceptsConsentCheckbox, setAcceptsConsentCheckbox] = useState(false);
   const [checkboxValue, setCheckboxValue] = useState(CONSENT_VALUE[locale].no);
   const [MCError, setMCError] = useState("");
+  const [MCSuccess, setMCSuccess] = useState("");
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -141,24 +158,48 @@ const SubscribeCard = (props) => {
       DLPO: checkboxValue,
     });
 
-    if (
+    console.log(mailChimpResult);
+
+    if (mailChimpResult.result.includes("success")) {
+      handleMCSuccess();
+    } else if (
       mailChimpResult.result.includes("error") &&
       mailChimpResult.msg.includes("is already subscribed to")
     ) {
-      setMCError(MC_ERRORS[locale].already);
+      handleMCError(MC_ERRORS[locale].already);
     } else if (
       mailChimpResult.result.includes("error") &&
       mailChimpResult.msg.includes("many")
     ) {
-      setMCError(MC_ERRORS[locale].many);
+      handleMCError(MC_ERRORS[locale].many);
     } else if (mailChimpResult.result.includes("error")) {
-      setMCError(MC_ERRORS[locale].many);
+      handleMCError(MC_ERRORS[locale].many);
     }
   }
 
   function handleConsentCheckbox(e) {
     setAcceptsConsentCheckbox(e.target.checked);
     setCheckboxValue(CONSENT_VALUE[locale].yes);
+  }
+
+  function handleMCSuccess() {
+    setMCSuccess(MC_SUCCESS[locale].message);
+
+    // self clearing setTimeout
+    let timer = setTimeout(() => {
+      setMCSuccess("");
+      clearTimeout(timer);
+    }, 5000);
+  }
+
+  function handleMCError(message) {
+    setMCError(message);
+
+    // self clearing setTimeout
+    let timer = setTimeout(() => {
+      setMCError("");
+      clearTimeout(timer);
+    }, 5000);
   }
 
   return (
@@ -191,10 +232,17 @@ const SubscribeCard = (props) => {
               />
               <InputStatusIcon arriaHidden="true" />
             </StyledLabel>
-            <StyledSubmitButton
-              type="Subscribe"
-              disabled={!acceptsConsentCheckbox}
-            />
+            {MCSuccess !== "" ? (
+              <StyledSubmitButton
+                type="success"
+                disabled={!acceptsConsentCheckbox}
+              />
+            ) : (
+              <StyledSubmitButton
+                type="subscribe"
+                disabled={!acceptsConsentCheckbox}
+              />
+            )}
           </InputsWrapper>
           <PrivacyCheckbox
             type="checkbox"
@@ -207,6 +255,7 @@ const SubscribeCard = (props) => {
           />
         </StyledForm>
         {MCError && <SigupErrorMessage>{MCError}</SigupErrorMessage>}
+        {MCSuccess && <SigupSuccessMessage>{MCSuccess}</SigupSuccessMessage>}
       </FormContainer>
     </StyledSubscribeCard>
   );

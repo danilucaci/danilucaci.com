@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 
@@ -8,7 +8,6 @@ import Input from "../Input/Input";
 import SubmitButton from "../SubmitButton/SubmitButton";
 import TextArea from "../TextArea/TextArea";
 import { Copy } from "../Copy/Copy";
-import { Icon } from "../Icon/Icon";
 import {
   CONSENT_VALUE,
   FORM_SUBMIT_STATUS,
@@ -68,16 +67,17 @@ const StyledTextArea = styled(TextArea)`
 `;
 
 const EmailStatusMessage = styled(Copy)`
-  border: 1px solid ${theme.colors.gray400};
+  border: ${rem(2)} solid ${theme.colors.success400};
   border-radius: ${theme.borderRadius.buttons};
   display: block;
   background-color: ${theme.colors.gray100};
-  font-size: ${theme.fontSizes};
-  line-height: ${theme.lineHeights};
+  font-size: ${theme.fontSizes.s};
+  line-height: ${theme.lineHeights.s};
   color: ${theme.colors.dark800};
   padding: ${rem(16)};
   margin-top: ${rem(24)};
-  ${theme.shadow.dropdown}
+  ${theme.shadow.buttons.mainGhost};
+  white-space: pre-line;
 `;
 
 const ContactForm = (props) => {
@@ -126,23 +126,36 @@ const ContactForm = (props) => {
       }),
     })
       .then(() => {
-        console.log(`fullname: ${fullName}`);
-        console.log(`email: ${email}`);
-        console.log(`message: ${message}`);
-        console.log(`dateSent: ${submitTimeStamp()}`);
-        console.log(`botfield: ${botField}`);
-        console.log(`acceptsConsentCheckbox: ${acceptsConsentCheckbox}`);
-        console.log(`consentcheckboxmessage: ${CONSENT_VALUE[locale].yes}`);
-        setFormSubmitMessage(FORM_SUBMIT_STATUS.success[locale]);
+        // showFormInputs();
+        handleFormSuccess();
       })
       // .then(() => navigate(form.getAttribute("action")))
       .catch((error) => setFormSubmitError(error));
+  }
+
+  function showFormInputs() {
+    console.log(`fullname: ${fullName}`);
+    console.log(`email: ${email}`);
+    console.log(`message: ${message}`);
+    console.log(`dateSent: ${submitTimeStamp()}`);
+    console.log(`botfield: ${botField}`);
+    console.log(`acceptsConsentCheckbox: ${acceptsConsentCheckbox}`);
   }
 
   function handleConsentCheckbox(e) {
     setAcceptsConsentCheckbox(e.target.checked);
     // setConsentCheckboxMessage(CONSENT_VALUE[locale].yes);
     setDateSent(submitTimeStamp());
+  }
+
+  function handleFormSuccess() {
+    setFormSubmitMessage(FORM_SUBMIT_STATUS.success[locale]);
+
+    // self clearing setTimeout
+    let timer = setTimeout(() => {
+      setFormSubmitMessage("");
+      clearTimeout(timer);
+    }, 6000);
   }
 
   function encode(data) {
@@ -246,7 +259,12 @@ const ContactForm = (props) => {
           locale={locale}
           required
         />
-        <StyledSubmitButton type="Submit" />
+        {formSubmitMessage !== "" ? (
+          <StyledSubmitButton type="sent" />
+        ) : (
+          <StyledSubmitButton type="Submit" />
+        )}
+
         {/* <StyledSubmitButton disabled={!acceptsConsentCheckbox} type="Submit" /> */}
         {formSubmitMessage && (
           <EmailStatusMessage>{formSubmitMessage}</EmailStatusMessage>
