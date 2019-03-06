@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-
 import Img from "gatsby-image";
 import styled from "styled-components";
 import { theme, mediaMin, rem, mediaMax } from "../../theme/globalStyles";
@@ -29,6 +28,8 @@ const StyledCaseStudyCard = styled.article`
 `;
 
 const CaseStudyImgWrapper = styled.div`
+  padding: ${rem(24)} 0;
+
   ${mediaMin.xxl`
     max-width: ${rem(552)};
     margin-left: ${rem(24)};
@@ -39,15 +40,10 @@ const CaseStudyImgWrapper = styled.div`
 `;
 
 const CaseStudyCardContents = styled.div`
-  padding: ${rem(8)} ${rem(16)} ${rem(24)} ${rem(16)};
-
-  ${mediaMin.s`
-    padding: ${rem(16)} ${rem(32)} ${rem(32)};
-  `};
+  padding: ${rem(24)};
 
   ${mediaMin.xxl`
-    padding-top: 0;
-    padding-right: 0;
+    padding: ${rem(48)} ${rem(40)} ${rem(40)};
     max-width: ${rem(360)};
     flex: 1 1 40%;
     display: flex;
@@ -56,40 +52,20 @@ const CaseStudyCardContents = styled.div`
   `};
 `;
 
-const TagsWrapper = styled.div`
-  margin: ${rem(8)} 0;
-
-  ${mediaMin.xxl`
-    margin: ${rem(16)} 0;
-  `};
-`;
-
-const Tag = styled(Copy)`
-  display: inline-block;
-
-  text-decoration: none;
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s};
-
-  margin-right: ${rem(16)};
-  margin-top: ${rem(8)};
-  margin-bottom: ${rem(8)};
-
-  ${mediaMin.xxl`
-    margin-bottom: ${rem(12)};
-  `};
-`;
-
 const HRTop = styled(HR)`
+  margin-bottom: ${rem(16)};
+
   ${mediaMin.xxl`
-    display: none;
+      display: none;
   `};
 `;
 
-const HRBottom = styled(HR)``;
+const HRBottom = styled(HR)`
+  margin-bottom: ${rem(16)};
+`;
 
 const StyledH3 = styled.h3`
-  margin-bottom: ${rem(8)};
+  margin-bottom: ${rem(16)};
 `;
 
 const ContinueLink = styled(BoldLink)`
@@ -113,13 +89,9 @@ const CaseStudyCard = (props) => {
         <Img title={props.title} alt={props.snippet} fluid={props.image} />
       </CaseStudyImgWrapper>
       <CaseStudyCardContents>
-        <TagsWrapper>
-          <HRTop />
-          {props.tagsInCaseStudy &&
-            props.tagsInCaseStudy.map((tag) => <Tag key={tag}>{tag}</Tag>)}
-          <HRBottom />
-        </TagsWrapper>
+        <HRTop />
         <StyledH3>{props.title}</StyledH3>
+        <HRBottom />
         <Copy small>{props.snippet}</Copy>
         <FormattedMessage id="articleLinkContinue">
           {(txt) => <ContinueLink to={props.slug}>{txt}</ContinueLink>}
