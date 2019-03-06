@@ -10,7 +10,7 @@ module.exports = {
   dateFromFormat: "YYYY-MM-DD", // Date format used in the frontmatter.
   userDescription:
     "Hi! I’m Dani. UX/UI Designer and Front–End Developer. I prototype, design and develop interfaces that have a strong focus on accesibility, performance and user interaction. I use the latest front-end techniques and design methods to create scalable and easy to use experiences.", // User description to display in the author segment.
-  themeColor: "#0946B0", // Used for setting manifest and progress theme colors.
+  themeColor: "#F5F6F7", // Used for setting manifest and progress theme colors.
   backgroundColor: "#F5F6F7", // Used for setting manifest background color.
   socialLinks: {
     twitter: "https://twitter.com/danilucaci",
