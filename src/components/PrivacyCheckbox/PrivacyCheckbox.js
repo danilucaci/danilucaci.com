@@ -9,6 +9,8 @@ import { Checkbox } from "../Checkbox/Checkbox";
 import ExternalLocaleLink from "../ExternalLocaleLink/ExternalLocaleLink";
 
 const StyledCheckboxLabel = styled.label`
+  font-size: ${theme.fontSizes.m};
+  line-height: ${theme.lineHeights.m};
   display: inline-block;
   margin-top: ${rem(8)};
   margin-bottom: ${rem(8)};
@@ -44,24 +46,23 @@ const StyledCheckbox = styled(Checkbox)`
 const Required = styled.span`
   display: inline-block;
   margin-left: ${rem(6)};
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s};
+  font-size: ${theme.fontSizes.m};
+  line-height: ${theme.lineHeights.m};
   color: ${theme.colors.dark900};
 `;
 
 const LearnMoreLink = styled(ExternalLocaleLink)`
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s} !important;
-  display: inline-block;
+  font-size: ${theme.fontSizes.m};
+  line-height: ${theme.lineHeights.m};
+  display: inline;
   margin-left: ${rem(6)};
-  white-space: nowrap;
 `;
 
 function PrivacyCheckbox({ locale, ...rest }) {
   return (
     <>
-      <StyledCheckbox {...rest} />
-      <StyledCheckboxLabel>
+      <StyledCheckbox id="privacycheckbox" {...rest} />
+      <StyledCheckboxLabel htmlFor="privacycheckbox">
         <FormattedMessage id="formPrivacyMore1">
           {(txt) => <>{txt}</>}
         </FormattedMessage>
