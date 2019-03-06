@@ -1,6 +1,17 @@
+const urljoin = require("url-join");
+const config = require("./data/SiteConfig");
+
 module.exports = {
   siteMetadata: {
-    siteUrl: `https://www.danilucaci.com`,
+    siteUrl: `${config.siteUrl}`,
+    // rssMetadata: {
+    //   site_url: `${config.siteUrl}`,
+    //   feed_url: urljoin(config.siteUrl, config.siteRss),
+    //   title: config.siteTitle,
+    //   description: config.siteDescription,
+    //   image_url: `${config.siteUrl}/logos/logo-512.png`,
+    //   copyright: config.copyright,
+    // },
   },
   plugins: [
     "gatsby-plugin-react-helmet",
@@ -82,6 +93,25 @@ module.exports = {
         path: `${__dirname}/src/images/`,
       },
     },
+    {
+      resolve: "gatsby-plugin-manifest",
+      options: {
+        name: config.siteTitle,
+        short_name: config.siteTitleShort,
+        description: config.siteDescription,
+        start_url: config.pathPrefix,
+        background_color: config.backgroundColor,
+        theme_color: config.themeColor,
+        display: "browser",
+        // This path is relative to the root of the site.
+        icon: "src/images/android-chrome-512x512.png",
+        // An optional attribute which provides support for CORS check.
+        // If you do not provide a crossOrigin option, it will skip CORS for manifest.
+        // Any invalid keyword or empty string defaults to `anonymous`
+        crossOrigin: `use-credentials`,
+      },
+    },
+    "gatsby-plugin-offline",
     {
       resolve: "gatsby-transformer-remark",
       options: {

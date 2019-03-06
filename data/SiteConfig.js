@@ -1,22 +1,29 @@
 module.exports = {
   siteLogo: "logo.svg", // Logo used for SEO and manifest.
   siteUrl: "https://www.danilucaci.com", // Domain of your website without pathPrefix.
+  siteTitle: "Dani Lucaci - UX/UI Designer and Front–End Developer",
+  siteTitleShort: "danilucaci", // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
+  siteTitleAlt: "Dani Lucaci - Personal Website and Blog", // Alternative site title for SEO.
+  siteDescription:
+    "My personal blog where I write about UX/UI Design and Front–End Development | Dani Lucaci - UX/UI Designer and Front–End Developer.", // Website description used for RSS feeds/meta description tag.
   pathPrefix: "/", // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
   dateFromFormat: "YYYY-MM-DD", // Date format used in the frontmatter.
   userDescription:
     "Hi! I’m Dani. UX/UI Designer and Front–End Developer. I prototype, design and develop interfaces that have a strong focus on accesibility, performance and user interaction. I use the latest front-end techniques and design methods to create scalable and easy to use experiences.", // User description to display in the author segment.
-  themeColor: "#121C26", // Used for setting manifest and progress theme colors.
-  backgroundColor: "#E8E9EB", // Used for setting manifest background color.
+  themeColor: "#0946B0", // Used for setting manifest and progress theme colors.
+  backgroundColor: "#F5F6F7", // Used for setting manifest background color.
   socialLinks: {
     twitter: "https://twitter.com/danilucaci",
     linkedin: "https://www.linkedin.com/in/danielmlucaci/",
     github: "https://github.com/danilucaci",
   },
+  // Copyright string for the footer of the website and RSS feed.
+  copyright: "&copy;2018 Copyright Dani Lucaci. All rights reserved.",
   en: {
     websiteSchema: {
       url: "https://www.danilucaci.com",
       name: "Dani Lucaci - UX/UI Designer and Front–End Developer",
-      email: "hello@danilucaci.com",
+      email: "info@danilucaci.com",
       jobTitle: "UX/UI Designer and Front–End Developer",
     },
     site: {
@@ -77,7 +84,7 @@ module.exports = {
     websiteSchema: {
       url: "https://www.danilucaci.com/es",
       name: "Dani Lucaci - Diseñador UX/UI y Desarollador Front–End",
-      email: "hola@danilucaci.com",
+      email: "info@danilucaci.com",
       jobTitle: "Diseñador UX/UI y Desarollador Front–End",
     },
     site: {
@@ -132,7 +139,5 @@ module.exports = {
       description:
         "Este es mi página web y blog personal en el que escribo sobre Diseño UX/UI y desarollo Front–End Development | Dani Lucaci - Diseñador UX/UI y Desarollador Front–End.",
     },
-    // Copyright string for the footer of the website and RSS feed.
-    copyright: "&copy;2018 Copyright Dani Lucaci. All rights reserved.",
   },
 };
