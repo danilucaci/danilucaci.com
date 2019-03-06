@@ -14,7 +14,6 @@ import SiteFooter from "../components/SiteFooter/SiteFooter";
 import PostListing from "../components/PostListing/PostListing";
 import Tags from "../components/Tags/Tags";
 import Pagination from "../components/Pagination/Pagination";
-import intlMessages from "../i18n/i18n";
 import { SectionHeader } from "../components/Headings/Headings";
 
 const BlogWrapper = styled.section`
@@ -105,6 +104,8 @@ const BlogPage = (props) => {
         twinPostURL={twinPostURL}
         currentPage="blog"
         currentPath={props.location.pathname}
+        prevPath={prevPath}
+        nextPath={nextPath}
       />
       <SiteHeader
         twinPostURL={twinPostURL}

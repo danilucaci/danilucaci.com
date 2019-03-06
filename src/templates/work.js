@@ -134,6 +134,8 @@ const WorkPage = (props) => {
         twinPostURL={twinPostURL}
         currentPage="work"
         currentPath={props.location.pathname}
+        prevPath={prevPath}
+        nextPath={nextPath}
       />
       <SiteHeader
         locale={locale}

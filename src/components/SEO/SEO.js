@@ -10,6 +10,8 @@ const SEO = (props) => {
     postSEO,
     legalDocs,
     postImage,
+    prevPath,
+    nextPath,
     locale = "en",
     twinPostURL,
     currentPage = "site",
@@ -22,6 +24,8 @@ const SEO = (props) => {
   let imageUrl;
   let pageURL;
   let postDate;
+  let prevRelURL;
+  let nextRelURL;
 
   let localeCountryCode = {
     en: "en",
@@ -39,6 +43,22 @@ const SEO = (props) => {
     pageURL = siteUrl;
   } else {
     pageURL = urljoin(siteUrl, currentPath);
+  }
+
+  if (prevPath) {
+    if (locale === "en") {
+      prevRelURL = urljoin(siteUrl, prevPath);
+    } else if (locale === "es") {
+      prevRelURL = urljoin(siteUrl, locale, prevPath);
+    }
+  }
+
+  if (nextPath) {
+    if (locale === "en") {
+      nextRelURL = urljoin(siteUrl, nextPath);
+    } else if (locale === "es") {
+      nextRelURL = urljoin(siteUrl, locale, nextPath);
+    }
   }
 
   if (!postSEO) {
@@ -185,6 +205,10 @@ const SEO = (props) => {
       <meta name="theme-color" content={config.themeColor} />
       <meta name="description" content={description} />
       {imageUrl && <meta name="image" content={imageUrl} />}
+
+      {/* Pagination from blog and work pages */}
+      {prevRelURL && <link rel="prev" href={prevRelURL} />}
+      {nextRelURL && <link rel="next" href={nextRelURL} />}
 
       {/* OpenGraph tags */}
       <meta property="og:title" content={title} />
