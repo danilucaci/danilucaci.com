@@ -37,7 +37,7 @@ const StyledLanguageSelector = styled.li`
   `};
 
   ${mediaMin.l`
-    margin-left: ${rem(16)};
+    margin-left: ${rem(8)};
   `};
 `;
 
