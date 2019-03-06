@@ -17,7 +17,7 @@ const StyledCaseStudyCard = styled.article`
     margin-bottom: ${rem(40)};
   `};
 
-  ${mediaMin.xxl`
+  ${mediaMin.xl`
     margin-bottom: ${rem(64)};
     display: flex;
   `};
@@ -30,8 +30,8 @@ const StyledCaseStudyCard = styled.article`
 const CaseStudyImgWrapper = styled.div`
   padding: ${rem(24)} 0;
 
-  ${mediaMin.xxl`
-    max-width: ${rem(552)};
+  ${mediaMin.xl`
+    max-width: calc(60% - ${rem(24)});
     margin-left: ${rem(24)};
     flex: 1 1 60%;
     float: right;
@@ -42,9 +42,9 @@ const CaseStudyImgWrapper = styled.div`
 const CaseStudyCardContents = styled.div`
   padding: ${rem(24)};
 
-  ${mediaMin.xxl`
-    padding: ${rem(48)} ${rem(40)} ${rem(40)};
-    max-width: ${rem(360)};
+  ${mediaMin.xl`
+    max-width: 40%;
+    padding: ${rem(40)} 0 ${rem(40)} ${rem(40)};
     flex: 1 1 40%;
     display: flex;
     flex-direction: column;
@@ -55,7 +55,7 @@ const CaseStudyCardContents = styled.div`
 const HRTop = styled(HR)`
   margin-bottom: ${rem(16)};
 
-  ${mediaMin.xxl`
+  ${mediaMin.xl`
       display: none;
   `};
 `;
@@ -72,7 +72,7 @@ const ContinueLink = styled(BoldLink)`
   display: inline-block;
   margin-top: ${rem(32)};
 
-  ${mediaMin.xxl`
+  ${mediaMin.xl`
     margin-top: auto;
     margin-bottom: 0;
   `};
