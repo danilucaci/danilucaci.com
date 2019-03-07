@@ -19,6 +19,8 @@ const AboutMeWrapper = styled.section``;
 
 const HeaderInfo = styled.header`
   display: block;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: ${theme.contain.wrapper.col10};
 
@@ -34,13 +36,10 @@ const HeaderInfo = styled.header`
   margin-left: auto;
   margin-right: auto;
 
-  ${mediaMin.xl`
-    display: flex;
+  ${mediaMin.m`
+    flex-direction: row; 
     justify-content: space-between;
     margin-bottom: ${rem(96)};
-  `};
-
-  ${mediaMin.xxl`
     margin-top: ${rem(56)};
   `};
 `;
@@ -51,36 +50,42 @@ const ImageWrapper = styled.div`
   vertical-align: middle;
   width: 100%;
   margin: ${theme.gutters.s} 0;
+  order: 2;
 
-  ${mediaMin.xl`
+  ${mediaMin.m`
+    order: 1;
     height: 100%;
     margin: 0 ${rem(16)} 0 0;
     width: calc(((100% / 10) * 4) - ${rem(16)});
+    border-radius: 50%;
   `};
 `;
 
 const InfoWrapper = styled.div`
   display: inline-block;
   vertical-align: middle;
+  order: 1;
 
-  ${mediaMin.xl`
+  ${mediaMin.m`
+    order: 2;
     display: inline-flex;
     flex-direction: column;
     justify-content: space-between;
     padding-bottom: ${rem(16)};
     margin-left: ${rem(16)};
     width: calc(((100% / 10) * 6) - ${rem(16)});
+    padding-bottom: ${rem(16)};
   `};
 
-  ${mediaMin.xxl`
-    padding: ${rem(32)} 0;
+  ${mediaMin.xl`
+    padding: ${rem(24)} 0;
   `};
 `;
 
 const StyledH1 = styled.h1`
   margin-bottom: ${rem(8)};
 
-  ${mediaMax.xl`
+  ${mediaMax.m`
     margin-top: ${rem(16)};  
   `};
 `;
@@ -91,9 +96,11 @@ const StyledH3 = styled.h3`
 
 const StyledSocialNav = styled.div`
   margin-top: ${rem(16)};
+  margin-bottom: ${rem(16)};
 
-  ${mediaMin.xl`
+  ${mediaMin.m`
     margin-top: auto;
+    margin-bottom: 0;
   `};
 `;
 
