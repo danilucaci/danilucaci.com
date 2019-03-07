@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
+import { FormattedMessage } from "react-intl";
 
 import { theme, rem, mediaMin } from "../../theme/globalStyles";
 import { Icon } from "../Icon/Icon";
@@ -48,16 +49,24 @@ const MenuButton = (props) => {
   const showNav = props.showNav;
 
   return (
-    <StyledMenuButton
-      aria-haspopup="true"
-      aria-expanded="false"
-      onClick={props.onClick}
-    >
-      Menu
-      <StyledIcon main animate={!showNav} aria-hidden="true">
-        {showNav ? <use xlinkHref="#close" /> : <use xlinkHref="#hamburger" />}
-      </StyledIcon>
-    </StyledMenuButton>
+    <FormattedMessage id="buttonMenu">
+      {(txt) => (
+        <StyledMenuButton
+          aria-haspopup="true"
+          aria-expanded="false"
+          onClick={props.onClick}
+        >
+          {txt}
+          <StyledIcon main animate={!showNav} aria-hidden="true">
+            {showNav ? (
+              <use xlinkHref="#close" />
+            ) : (
+              <use xlinkHref="#hamburger" />
+            )}
+          </StyledIcon>
+        </StyledMenuButton>
+      )}
+    </FormattedMessage>
   );
 };
 
