@@ -59,7 +59,7 @@ const ContactFormWrapper = styled.div`
     vertical-align: top;
     float: right;
     width: calc(50% - ${rem(12)});
-    margin-top: -${rem(20)};
+    margin-top: -${rem(24)};
     margin-left: ${rem(12)};
     margin-bottom: ${rem(128)};
   `};
@@ -97,8 +97,8 @@ const Subhead = styled(Copy)`
   color: ${theme.colors.dark700};
 
   ${mediaMin.s`
-    font-size: ${theme.fontSizes.subhead};
-    line-height: ${theme.lineHeights.subhead};
+    font-size: ${rem(24)};
+    line-height: ${rem(34)};
   `};
 
   ${mediaMin.xxl`
