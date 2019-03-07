@@ -1,12 +1,12 @@
 ---
-title: "Aplicación Cinema - Estudio de Caso UX"
-slug: "Aplicación Cinema Estudio de Caso UX"
-snippet: "Lorem ipsum dolor sit amet consectetur adipiscing elit congue. Convallis tellus sociosqu bibendum quisque a augue hac, iaculis magnis porttitor leo nibh himenaeos senectus urna, elementum platea netus vivamus fringilla tempus."
-intro: "Esto es una aplicación that I decided to create as each time I tried to see a movie using one of my local cinema's website or app, I found that they all had outdated designs limited functionalities that helped people decide which movie to see.
+title: "Aplicación de Cine - Estudio de Caso UX"
+slug: "Aplicación de Cine Estudio de Caso UX"
+snippet: "Estudio de caso sobre como mejorar la experiencia de busqueda y compra de entradas para una película, basado en proceso de diseño User-Centered Design."
+intro: "Esta aplicación es un proyecto personal que decidí crear, ya que cada vez que intentaba ver una película o comprar una entrada usando las páginas web o aplicaciones de los cines de mi ciudad, me encontré con diseños antiguos, con muchos fallos de usabilidad.
 |
-Therefore, I decided to see how I could improve the experience of searching, finding and booking a movie using an iOS App."
+Por ello, decidí diseñar este proyecto para ver como podría mejorar la experiencia de busqueda y compra de entradas en un cine, usando una aplicación para iOS."
 tools: 
-    - Lapiz y papel
+    - Lápiz y papel
     - Sketch
     - InVision
     - Principle
@@ -14,12 +14,12 @@ deliverables:
     - Personas
     - Prototipos en papel
     - Wireframes
-    - Wireflow diagrams
-    - Low-Fidelity prototype
-    - High-fidelity prototype
+    - Diagramas de Wireflow
+    - Prototipos de Baja Fidelidad
+    - Prototipos de Alta Fidelidad
 methods: 
     - Encuestas
-    - User Interviews
+    - Entrevistas con usuarios
     - Affinity Diagram
     - Problem Statements
     - HMW's
@@ -27,9 +27,9 @@ methods:
     - MOSCOW
     - Crazy 8's
 links:
-    - name: "Low-Fidelity Prototype"
+    - name: "Prototipo de Baja Fidelidad"
       link: "https://invis.io/N5OJ253T2PF"
-    - name: "High-Fidelity Prototype"
+    - name: "Prototipo de Alta Fidelidad"
       link: "https://invis.io/2DQQCS4PAYS"
 date: "2019-02-02"
 category: "work"
@@ -42,19 +42,19 @@ locale: "es"
 twinPost: "Movie Booking App UX Case Study"
 ---
 
-## Initial Problem Assumptions
+## Suposiciones iniciales
 
 When I began working on this project I had some initial assumptions that I wanted to validate with user research to see if other people had the same problems and if they had other problems that I haven't identified yet.
 
-* **People think that ticket prices are too high if they would like to see several movies each month.**
-* **Current websites and apps have outdated designs.**
-* **People don't have a way to search, filter or sort for movies in the app/website.**
+* People think that ticket prices are too high if they would like to see several movies each month.
+* Current websites and apps have outdated designs.
+* People don't have a way to search, filter or sort for movies in the app/website.
 
 To validate my initial assumptions I used a survey and I interviewed 5 users.
 
 The initial research would also help me learn more about them and answer some of the questions that I had:
 
-## Previous Questions
+## Preguntas Previas
 
 * How are people deciding which movie to see?
 * How are they finding out more about the movie they would like to see?
@@ -71,27 +71,27 @@ The initial research would also help me learn more about them and answer some of
     * Selecting seats
     * Buying and paying for the tickets
 
-## Survey Findings
+## Resultados de las Encuentas
 
 Based on the survey responses I found that:
 
-* **83% of people feel that prices are too high**
-* **78% of people use external websites or apps to learn more about a movie**
-* **62% of people decide with one or more persons which one to see**
+* 83% of people feel that prices are too high
+* 78% of people use external websites or apps to learn more about a movie
+* 62% of people decide with one or more persons which one to see
 
-## User Interview Findings
+## Resultados de las Entrevistas
 
 From the user interviews that I did,  I had the following insights:
 
-* **Movie ticket prices are too high.**
-* **Snacks are too expensive**
-* **Some of people interviewed prefer to bring their own snacks**
-* **They would consider seeing more movies if the cinema had offers or discounts**
-* **They think the overall design is pretty ugly**
-* **They use google o services such as imdb.com to learn more about each movie**
-* **They miss having a tool that shows them which movies are available on a particular time of day or on a specific day**
-* **They feel that they will be spammed when they have to sign up before paying for tickets**
-* **Information about the cinema is hard to find (the seats, services, etc)**
+* Movie ticket prices are too high.
+* Snacks are too expensive
+* Some of people interviewed prefer to bring their own snacks
+* They would consider seeing more movies if the cinema had offers or discounts
+* They think the overall design is pretty ugly
+* They use google o services such as imdb.com to learn more about each movie
+* They miss having a tool that shows them which movies are available on a particular time of day or on a specific day
+* They feel that they will be spammed when they have to sign up before paying for tickets
+* Information about the cinema is hard to find (the seats, services, etc)
 
 ## Affinity Diagram
 
@@ -562,4 +562,4 @@ Your browser does not support HTML5 video.
 
 ## Next Steps
 
-#### DUNNOO
+#### Algo

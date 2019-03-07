@@ -39,16 +39,16 @@ tags:
 posted: true
 image: "./ux_case_study_movie_app_presentation@2x.png"
 locale: "en"
-twinPost: "Aplicación Cinema Estudio de Caso UX"
+twinPost: "Aplicación de Cine Estudio de Caso UX"
 ---
 
 ## Initial Problem Assumptions
 
 When I began working on this project I had some initial assumptions that I wanted to validate with user research to see if other people had the same problems and if they had other problems that I haven't identified yet.
 
-* **People think that ticket prices are too high if they would like to see several movies each month.**
-* **Current websites and apps have outdated designs.**
-* **People don't have a way to search, filter or sort for movies in the app/website.**
+* People think that ticket prices are too high if they would like to see several movies each month.
+* Current websites and apps have outdated designs.
+* People don't have a way to search, filter or sort for movies in the app/website.
 
 To validate my initial assumptions I used a survey and I interviewed 5 users.
 
@@ -75,23 +75,23 @@ The initial research would also help me learn more about them and answer some of
 
 Based on the survey responses I found that:
 
-* **83% of people feel that prices are too high**
-* **78% of people use external websites or apps to learn more about a movie**
-* **62% of people decide with one or more persons which one to see**
+* 83% of people feel that prices are too high
+* 78% of people use external websites or apps to learn more about a movie
+* 62% of people decide with one or more persons which one to see
 
 ## User Interview Findings
 
 From the user interviews that I did,  I had the following insights:
 
-* **Movie ticket prices are too high.**
-* **Snacks are too expensive**
-* **Some of people interviewed prefer to bring their own snacks**
-* **They would consider seeing more movies if the cinema had offers or discounts**
-* **They think the overall design is pretty ugly**
-* **They use google o services such as imdb.com to learn more about each movie**
-* **They miss having a tool that shows them which movies are available on a particular time of day or on a specific day**
-* **They feel that they will be spammed when they have to sign up before paying for tickets**
-* **Information about the cinema is hard to find (the seats, services, etc)**
+* Movie ticket prices are too high.
+* Snacks are too expensive
+* Some of people interviewed prefer to bring their own snacks
+* They would consider seeing more movies if the cinema had offers or discounts
+* They think the overall design is pretty ugly
+* They use google o services such as imdb.com to learn more about each movie
+* They miss having a tool that shows them which movies are available on a particular time of day or on a specific day
+* They feel that they will be spammed when they have to sign up before paying for tickets
+* Information about the cinema is hard to find (the seats, services, etc)
 
 ## Affinity Diagram
 
@@ -562,4 +562,4 @@ Your browser does not support HTML5 video.
 
 ## Next Steps
 
-#### DUNNOO
+#### Something
