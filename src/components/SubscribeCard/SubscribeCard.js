@@ -15,6 +15,7 @@ import {
   INPUT_EMAIL_ERROR,
 } from "../../i18n/i18n";
 import PrivacyCheckbox from "../PrivacyCheckbox/PrivacyCheckbox";
+import SelfDestruct from "../SelfDestruct/SelfDestruct";
 
 const StyledSubscribeCard = styled.aside`
   background-color: ${theme.colors.gray100};
@@ -147,11 +148,17 @@ const StyledSubmitButton = styled(SubmitButton)`
 const SubscribeCard = (props) => {
   let locale = props.locale;
 
+  // Controls the form status messages render duration time
+  // It is passed to the useExpiration component
+  // To render a component with an error or success message
+  const expireAfter = 6000;
+
   const [email, setEmail] = useState("");
   const [acceptsConsentCheckbox, setAcceptsConsentCheckbox] = useState(false);
   const [checkboxValue, setCheckboxValue] = useState(CONSENT_VALUE[locale].no);
   const [MCError, setMCError] = useState("");
-  const [MCSuccess, setMCSuccess] = useState("");
+  const [showMCError, setShowMCError] = useState(false);
+  const [showMCSuccess, setShowMCSuccess] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -178,29 +185,36 @@ const SubscribeCard = (props) => {
     }
   }
 
+  useEffect(() => {
+    if (showMCSuccess) {
+      // self clearing setTimeout
+      let showMCSuccessTimer = setTimeout(() => {
+        setShowMCSuccess(false);
+      }, expireAfter);
+      return () => clearTimeout(showMCSuccessTimer);
+    }
+
+    if (showMCError) {
+      // self clearing setTimeout
+      let showMCErrorTimer = setTimeout(() => {
+        setMCError(false);
+      }, expireAfter);
+      return () => clearTimeout(showMCErrorTimer);
+    }
+  }, [showMCSuccess, showMCError]);
+
   function handleConsentCheckbox(e) {
     setAcceptsConsentCheckbox(e.target.checked);
     setCheckboxValue(CONSENT_VALUE[locale].yes);
   }
 
   function handleMCSuccess() {
-    setMCSuccess(MC_SUCCESS[locale].message);
-
-    // self clearing setTimeout
-    let timer = setTimeout(() => {
-      setMCSuccess("");
-      clearTimeout(timer);
-    }, 5000);
+    setShowMCSuccess(true);
   }
 
   function handleMCError(message) {
+    setShowMCError(true);
     setMCError(message);
-
-    // self clearing setTimeout
-    let timer = setTimeout(() => {
-      setMCError("");
-      clearTimeout(timer);
-    }, 5000);
   }
 
   return (
@@ -233,13 +247,13 @@ const SubscribeCard = (props) => {
               />
               <InputStatusIcon arriaHidden="true" />
             </StyledLabel>
-            {MCSuccess && (
+
+            {showMCSuccess ? (
               <StyledSubmitButton
                 type="success"
                 disabled={!acceptsConsentCheckbox}
               />
-            )}
-            {!MCSuccess && (
+            ) : (
               <StyledSubmitButton
                 type="subscribe"
                 disabled={!acceptsConsentCheckbox}
@@ -256,8 +270,20 @@ const SubscribeCard = (props) => {
             required
           />
         </StyledForm>
-        {MCError && <SigupErrorMessage>{MCError}</SigupErrorMessage>}
-        {MCSuccess && <SigupSuccessMessage>{MCSuccess}</SigupSuccessMessage>}
+
+        {showMCSuccess && (
+          <SelfDestruct time={expireAfter}>
+            <SigupSuccessMessage>
+              {MC_SUCCESS[locale].message}
+            </SigupSuccessMessage>
+          </SelfDestruct>
+        )}
+
+        {showMCError && (
+          <SelfDestruct time={expireAfter}>
+            <SigupErrorMessage>{MCError}</SigupErrorMessage>
+          </SelfDestruct>
+        )}
       </FormContainer>
     </StyledSubscribeCard>
   );
