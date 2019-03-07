@@ -67,7 +67,11 @@ const StyledLanguageDropdown = styled.ul`
     top: 85%;
   `};
 
-  padding: ${rem(4)} 0;
+  padding: ${rem(8)} 0;
+
+  ${mediaMin.s`
+    padding: ${rem(4)} 0;
+  `};
 `;
 
 const LanguageDropdownLabel = styled.span`
@@ -89,8 +93,14 @@ const LanguageDropdownLabel = styled.span`
 const CurrentLanguageIcon = styled(Icon)`
   display: inline-block;
   fill: ${theme.colors.main600};
-  margin-left: -${rem(24)};
-  margin-right: ${rem(4)};
+  position: absolute;
+  left: ${rem(48)};
+  top: ${rem(12)};
+
+  ${mediaMin.s`
+    left: ${rem(12)};
+    top: ${rem(6)};
+  `};
 `;
 
 const WorldIcon = styled(Icon)`
@@ -112,32 +122,43 @@ const DropdownIcon = styled(Icon)`
 const CurrentLanguageSelector = styled.li`
   background-color: ${theme.colors.gray300};
   display: block;
-  padding: ${rem(4)} ${rem(32)} ${rem(4)} ${rem(40)};
   white-space: nowrap;
+  position: relative;
 
   & a {
+    padding: ${rem(12)} ${rem(32)};
+    width: 100%;
     color: ${theme.colors.main600};
     text-decoration: none;
     display: inline-block;
-    text-align: right;
+    text-align: center;
     font-size: ${theme.fontSizes.s};
     line-height: ${theme.lineHeights.s};
 
     &:hover {
       background-color: transparent;
     }
+
+    ${mediaMin.s`
+      padding: ${rem(6)} ${rem(40)};
+    `};
   }
 `;
 
 const LanguageSelectorItem = styled.li`
   display: block;
-  padding: ${rem(4)} ${rem(32)} ${rem(4)} ${rem(40)};
   white-space: nowrap;
 
+  &:hover {
+    background-color: ${theme.colors.gray200};
+  }
+
   & a {
+    padding: ${rem(12)} ${rem(32)};
+    width: 100%;
     color: ${theme.colors.dark700};
     text-decoration: none;
-    text-align: right;
+    text-align: center;
     display: inline-block;
     font-size: ${theme.fontSizes.s};
     line-height: ${theme.lineHeights.s};
@@ -145,6 +166,10 @@ const LanguageSelectorItem = styled.li`
     &:hover {
       background-color: transparent;
     }
+
+    ${mediaMin.s`
+      padding: ${rem(6)} ${rem(40)};
+    `};
   }
 `;
 
