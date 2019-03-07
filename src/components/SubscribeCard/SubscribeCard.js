@@ -174,7 +174,7 @@ const SubscribeCard = (props) => {
     ) {
       handleMCError(MC_ERRORS[locale].many);
     } else if (mailChimpResult.result.includes("error")) {
-      handleMCError(MC_ERRORS[locale].many);
+      handleMCError(MC_ERRORS[locale].generic);
     }
   }
 
@@ -233,12 +233,13 @@ const SubscribeCard = (props) => {
               />
               <InputStatusIcon arriaHidden="true" />
             </StyledLabel>
-            {MCSuccess !== "" ? (
+            {MCSuccess && (
               <StyledSubmitButton
                 type="success"
                 disabled={!acceptsConsentCheckbox}
               />
-            ) : (
+            )}
+            {!MCSuccess && (
               <StyledSubmitButton
                 type="subscribe"
                 disabled={!acceptsConsentCheckbox}
