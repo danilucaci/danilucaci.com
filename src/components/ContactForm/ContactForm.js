@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import { theme, rem } from "../../theme/globalStyles";
 import Label from "../Label/Label";
@@ -59,7 +59,15 @@ const StyledInput = styled(Input)`
   margin-top: ${rem(8)};
 `;
 
-const StyledSubmitButton = styled(SubmitButton)``;
+const StyledSubmitButton = styled(SubmitButton)`
+  ${(props) =>
+    props.turnOff &&
+    css`
+      pointer-events: none !important;
+      background-color: ${theme.colors.success500};
+      color: ${theme.colors.success100};
+    `}
+`;
 
 const StyledTextArea = styled(TextArea)`
   display: block;
@@ -80,20 +88,17 @@ const EmailStatusMessage = styled(Copy)`
   white-space: pre-line;
 `;
 
-const ContactForm = (props) => {
+function ContactForm(props) {
   let locale = props.locale;
 
-  const [email, setEmail] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [message, setMessage] = useState("");
-  const [dateSent, setDateSent] = useState(submitTimeStamp());
-  const [botField, setBotField] = useState("");
-  const [acceptsConsentCheckbox, setAcceptsConsentCheckbox] = useState(false);
-  // const [consentCheckboxMessage, setConsentCheckboxMessage] = useState(
-  //   CONSENT_VALUE[locale].no
-  // );
-  const [formSubmitMessage, setFormSubmitMessage] = useState("");
-  const [formSubmitError, setFormSubmitError] = useState("");
+  let [email, setEmail] = useState("");
+  let [fullName, setFullName] = useState("");
+  let [message, setMessage] = useState("");
+  let [dateSent, setDateSent] = useState(mailSentTimeStamp());
+  let [botField, setBotField] = useState("");
+  let [acceptsConsentCheckbox, setAcceptsConsentCheckbox] = useState(false);
+  let [formSubmitMessage, setFormSubmitMessage] = useState("");
+  let [formSubmitError, setFormSubmitError] = useState("");
 
   let thanksURL;
 
@@ -103,14 +108,13 @@ const ContactForm = (props) => {
     thanksURL = "/thanks";
   }
 
-  function submitTimeStamp() {
+  function mailSentTimeStamp() {
     return new Date();
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
     const form = e.target;
-
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -126,8 +130,8 @@ const ContactForm = (props) => {
       }),
     })
       .then(() => {
-        // showFormInputs();
-        handleFormSuccess();
+        showFormInputs();
+        handleFormSent();
       })
       // .then(() => navigate(form.getAttribute("action")))
       .catch((error) => setFormSubmitError(error));
@@ -137,23 +141,23 @@ const ContactForm = (props) => {
     console.log(`fullname: ${fullName}`);
     console.log(`email: ${email}`);
     console.log(`message: ${message}`);
-    console.log(`dateSent: ${submitTimeStamp()}`);
+    console.log(`dateSent: ${mailSentTimeStamp()}`);
     console.log(`botfield: ${botField}`);
     console.log(`acceptsConsentCheckbox: ${acceptsConsentCheckbox}`);
   }
 
   function handleConsentCheckbox(e) {
     setAcceptsConsentCheckbox(e.target.checked);
-    // setConsentCheckboxMessage(CONSENT_VALUE[locale].yes);
-    setDateSent(submitTimeStamp());
+    setDateSent(mailSentTimeStamp());
   }
 
-  function handleFormSuccess() {
+  function handleFormSent() {
     setFormSubmitMessage(FORM_SUBMIT_STATUS.success[locale]);
 
     // self clearing setTimeout
     let timer = setTimeout(() => {
       setFormSubmitMessage("");
+
       clearTimeout(timer);
     }, 6000);
   }
@@ -196,7 +200,7 @@ const ContactForm = (props) => {
           arria-hidden="true"
           type="text"
           value={dateSent}
-          onChange={() => setDateSent(submitTimeStamp())}
+          onChange={() => setDateSent(mailSentTimeStamp())}
           name="datesent"
         />
         <input
@@ -204,11 +208,6 @@ const ContactForm = (props) => {
           arria-hidden="true"
           type="text"
           value={CONSENT_VALUE[locale].yes}
-          // value={
-          //   acceptsConsentCheckbox === true
-          //     ? CONSENT_VALUE[locale].yes
-          //     : CONSENT_VALUE[locale].no
-          // }
           name="consentcheckboxmessage"
           readOnly={true}
         />
@@ -259,13 +258,9 @@ const ContactForm = (props) => {
           locale={locale}
           required
         />
-        {formSubmitMessage !== "" ? (
-          <StyledSubmitButton type="sent" />
-        ) : (
-          <StyledSubmitButton type="Submit" />
-        )}
+        {formSubmitMessage && <StyledSubmitButton type="sent" turnOff={true} />}
+        {!formSubmitMessage && <StyledSubmitButton type="submit" />}
 
-        {/* <StyledSubmitButton disabled={!acceptsConsentCheckbox} type="Submit" /> */}
         {formSubmitMessage && (
           <EmailStatusMessage>{formSubmitMessage}</EmailStatusMessage>
         )}
@@ -275,7 +270,7 @@ const ContactForm = (props) => {
       </StyledForm>
     </FormContainer>
   );
-};
+}
 
 ContactForm.propTypes = {
   locale: PropTypes.string.isRequired,

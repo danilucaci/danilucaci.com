@@ -38,7 +38,7 @@ const StyledCheckbox = styled(Checkbox)`
 
   &:checked {
     & ~ input {
-      pointer-events: auto !important;
+      pointer-events: auto;
     }
   }
 `;
