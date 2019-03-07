@@ -51,7 +51,11 @@ const PreviousItemsContainer = styled.div`
 const PrevSectionHeader = styled(SectionHeader)`
   margin-bottom: ${rem(12)};
 
+  /* Breaks line if a \n character is inside the text */
+  white-space: pre-line;
+
   ${mediaMin.s`
+    white-space: normal;
     margin-bottom: ${rem(8)};
   `};
 `;
@@ -93,31 +97,40 @@ const NextItemsContainer = styled.div`
 const NextSectionHeader = styled(SectionHeader)`
   text-align: right;
   margin-bottom: ${rem(12)};
+  display: block;
+  margin-right: 0;
+  margin-left: auto;
+
+  /* Breaks line if a \n character is inside the text */
+  white-space: pre-line;
 
   ${mediaMin.s`
+    white-space: normal;
     margin-bottom: ${rem(8)};
   `};
 `;
 
 const NextArticleLink = styled(LocaleLink)`
   color: ${theme.colors.dark900} !important;
+  display: block;
+
   text-align: right;
   text-decoration: none;
   font-size: ${theme.fontSizes.siblingPostsS};
   line-height: ${theme.lineHeights.siblingPostsS};
 
-  display: block;
   margin-right: 0;
   margin-left: auto;
 
-  ${mediaMin.s`
-  font-size: ${theme.fontSizes.siblingPostsXL};
-  line-height: ${theme.lineHeights.siblingPostsXL};
-`};
+  font-weight: 400;
 
-  
+  ${mediaMin.s`
+    font-size: ${theme.fontSizes.siblingPostsXL};
+    line-height: ${theme.lineHeights.siblingPostsXL};
+  `};
+
+  .fonts-loaded {
     font-family: ${theme.fonts.headerRegular};
-    font-weight: 400;
   }
 
   &:hover {
