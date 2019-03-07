@@ -162,7 +162,7 @@ const GlobalHTML = createGlobalStyle`
   }
 
   p,
-  ul {
+  ul,ol {
     color: ${theme.colors.dark800};
     font-weight: 400;
     font-style: normal;

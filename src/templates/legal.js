@@ -13,7 +13,6 @@ import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import { calculateScroll, textPassiveEventSupport } from "../helpers/helpers";
-import intlMessages from "../i18n/i18n";
 
 const PageWrapper = styled.section`
   max-width: ${theme.contain.inner.col8};
@@ -41,15 +40,18 @@ const PostH1 = styled.h1`
 
 const PostContent = styled.div`
   display: block;
-
   max-width: ${theme.contain.inner.col8};
   margin-left: auto;
   margin-right: auto;
-  margin-top: ${rem(16)};
 
-  ${mediaMin.s`
-    margin-top: ${rem(32)};
-    margin-bottom: ${rem(56)};
+  margin-bottom: ${theme.spacing.components.s};
+
+  ${mediaMin.m`
+    margin-bottom: ${theme.spacing.components.m};
+  `};
+
+  ${mediaMin.xl`
+    margin-bottom: ${theme.spacing.components.xl};
   `};
 
   h2 {
@@ -57,14 +59,14 @@ const PostContent = styled.div`
     margin-top: ${rem(32)};
     margin-bottom: ${rem(16)};
 
-    &:first-of-type {
-      margin-top: 0;
-    }
-
     ${mediaMin.xs`
       margin-top: ${rem(64)};
       margin-bottom: ${rem(32)};
     `};
+
+    &:first-of-type {
+      margin-top: ${rem(32)};
+    }
   }
 
   h3 {
@@ -82,36 +84,17 @@ const PostContent = styled.div`
     display: block;
     margin-top: ${rem(32)};
     margin-bottom: ${rem(16)};
+
+    ${mediaMin.xs`
+      margin-top: ${rem(64)};
+      margin-bottom: ${rem(32)};
+    `};
   }
 
-  h5 {
-    display: block;
-    margin-top: ${rem(32)};
-    margin-bottom: ${rem(16)};
-  }
-
-  p {
+  p,
+  ul,
+  ol {
     margin-bottom: ${rem(32)};
-  }
-
-  p + ul {
-    margin-top: -${rem(16)};
-  }
-
-  ul + p {
-    margin-top: ${rem(32)};
-  }
-
-  strong {
-    color: ${theme.colors.dark800};
-
-    font-family: ${theme.fonts.bodyBold};
-
-    font-weight: 700;
-    font-style: normal;
-
-    font-size: ${theme.fontSizes.m};
-    line-height: ${theme.lineHeights.m};
   }
 `;
 
@@ -121,6 +104,11 @@ const Time = styled(Copy)`
   text-transform: lowercase;
   letter-spacing: ${rem(0.5)};
   font-feature-settings: "smcp", "c2sc", "onum";
+  margin-bottom: ${rem(32)};
+
+  & + h2 {
+    margin-bottom: 0;
+  }
 `;
 
 class LegalDoc extends Component {
