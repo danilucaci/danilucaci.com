@@ -26,18 +26,10 @@ const StyledLanguageSelector = styled.li`
 
   padding: ${rem(12)};
 
-  ${mediaMax.s`
-    margin-top: ${rem(8)};
-  `};
-
   ${mediaMin.s`
-    margin-left: ${rem(12)};
+    margin-top: 0;
     border: none;
-    padding: ${rem(16)} 0;
-  `};
-
-  ${mediaMin.l`
-    margin-left: ${rem(8)};
+    padding: ${rem(16)} ${rem(12)};
   `};
 `;
 
@@ -68,10 +60,6 @@ const StyledLanguageDropdown = styled.ul`
   `};
 
   padding: ${rem(8)} 0;
-
-  ${mediaMin.s`
-    padding: ${rem(4)} 0;
-  `};
 `;
 
 const LanguageDropdownLabel = styled.span`
@@ -105,18 +93,10 @@ const CurrentLanguageIcon = styled(Icon)`
 
 const WorldIcon = styled(Icon)`
   display: inline-block;
-
-  ${mediaMax.s`
-    margin-right: ${rem(4)};
-  `};
 `;
 
 const DropdownIcon = styled(Icon)`
   display: inline-block;
-
-  ${mediaMax.s`
-    margin-left: ${rem(8)};
-  `};
 `;
 
 const CurrentLanguageSelector = styled.li`

@@ -17,11 +17,10 @@ const StyledSiteNavListItem = styled.li`
   font-weight: 400;
   width: 100%;
 
-  ${mediaMax.s`
-    margin: ${rem(16)} 0;
-  `};
+  margin: ${rem(16)} 0;
 
   ${mediaMin.s`
+    margin: 0;
     display: inline-block;
     width: auto;
     font-size: ${theme.fontSizes.m};
