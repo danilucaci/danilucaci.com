@@ -14,6 +14,7 @@ import {
   INPUT_EMAIL_ERROR,
 } from "../../i18n/i18n";
 import PrivacyCheckbox from "../PrivacyCheckbox/PrivacyCheckbox";
+import SelfDestruct from "../SelfDestruct/SelfDestruct";
 
 const FormContainer = styled.div``;
 
@@ -91,14 +92,10 @@ const EmailStatusMessage = styled(Copy)`
 function ContactForm(props) {
   let locale = props.locale;
 
-  let [email, setEmail] = useState("");
-  let [fullName, setFullName] = useState("");
-  let [message, setMessage] = useState("");
-  let [dateSent, setDateSent] = useState(mailSentTimeStamp());
-  let [botField, setBotField] = useState("");
-  let [acceptsConsentCheckbox, setAcceptsConsentCheckbox] = useState(false);
-  let [formSubmitMessage, setFormSubmitMessage] = useState("");
-  let [formSubmitError, setFormSubmitError] = useState("");
+  // Controls the form status messages render duration time
+  // It is passed to the useExpiration component
+  // To render a component with an error or success message
+  const expireAfter = 6000;
 
   let thanksURL;
 
@@ -111,6 +108,15 @@ function ContactForm(props) {
   function mailSentTimeStamp() {
     return new Date();
   }
+
+  const [email, setEmail] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [message, setMessage] = useState("");
+  const [dateSent, setDateSent] = useState(mailSentTimeStamp());
+  const [botField, setBotField] = useState("");
+  const [acceptsConsentCheckbox, setAcceptsConsentCheckbox] = useState(false);
+  const [showFormSuccess, setShowFormSuccess] = useState(false);
+  const [showFormError, setShowFormError] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -130,11 +136,19 @@ function ContactForm(props) {
       }),
     })
       .then(() => {
-        showFormInputs();
+        // showFormInputs();
         handleFormSent();
       })
       // .then(() => navigate(form.getAttribute("action")))
-      .catch((error) => setFormSubmitError(error));
+      .catch((error) => setShowFormError(true));
+  }
+
+  function encode(data) {
+    return Object.keys(data)
+      .map(
+        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+      )
+      .join("&");
   }
 
   function showFormInputs() {
@@ -152,23 +166,28 @@ function ContactForm(props) {
   }
 
   function handleFormSent() {
-    setFormSubmitMessage(FORM_SUBMIT_STATUS.success[locale]);
-
-    // self clearing setTimeout
-    let timer = setTimeout(() => {
-      setFormSubmitMessage("");
-
-      clearTimeout(timer);
-    }, 6000);
+    if (!showFormError) {
+      setShowFormSuccess(true);
+    }
   }
 
-  function encode(data) {
-    return Object.keys(data)
-      .map(
-        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
-      )
-      .join("&");
-  }
+  useEffect(() => {
+    if (showFormSuccess) {
+      // self clearing setTimeout
+      let showSuccessTimer = setTimeout(() => {
+        setShowFormSuccess(false);
+      }, expireAfter);
+      return () => clearTimeout(showSuccessTimer);
+    }
+
+    if (showFormError) {
+      // self clearing setTimeout
+      let showErrorTimer = setTimeout(() => {
+        setShowFormError(false);
+      }, expireAfter);
+      return () => clearTimeout(showErrorTimer);
+    }
+  }, [showFormSuccess, showFormError]);
 
   return (
     <FormContainer>
@@ -258,14 +277,26 @@ function ContactForm(props) {
           locale={locale}
           required
         />
-        {formSubmitMessage && <StyledSubmitButton type="sent" turnOff={true} />}
-        {!formSubmitMessage && <StyledSubmitButton type="submit" />}
 
-        {formSubmitMessage && (
-          <EmailStatusMessage>{formSubmitMessage}</EmailStatusMessage>
+        {showFormSuccess ? (
+          <>
+            <StyledSubmitButton type="sent" turnOff={true} />
+            <SelfDestruct time={expireAfter}>
+              <EmailStatusMessage>
+                {FORM_SUBMIT_STATUS.success[locale]}
+              </EmailStatusMessage>
+            </SelfDestruct>
+          </>
+        ) : (
+          <StyledSubmitButton type="submit" />
         )}
-        {formSubmitError && (
-          <EmailStatusMessage>{formSubmitError}</EmailStatusMessage>
+
+        {showFormError && (
+          <SelfDestruct time={expireAfter}>
+            <EmailStatusMessage>
+              {FORM_SUBMIT_STATUS.error[locale]}
+            </EmailStatusMessage>
+          </SelfDestruct>
         )}
       </StyledForm>
     </FormContainer>
