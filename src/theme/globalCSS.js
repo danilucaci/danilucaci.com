@@ -31,9 +31,9 @@ const GlobalHTML = createGlobalStyle`
   }
 
   ::selection {
-    color: #ffffff;
+    color: ${theme.colors.dark900} !important;
     text-shadow: none;
-    background: #0946B0;
+    background: ${theme.colors.light100};
   }
 
   @media screen and (min-device-width: 45em) {

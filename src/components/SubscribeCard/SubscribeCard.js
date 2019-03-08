@@ -105,17 +105,17 @@ const AltCopy = styled(Copy)`
   `};
 `;
 
-const SigupErrorMessage = styled(Copy)`
-  border: ${rem(2)} solid ${theme.colors.danger500};
-  border-radius: ${theme.borderRadius.buttons};
-  display: inline-block;
-  background-color: ${theme.colors.gray100};
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s};
-  color: ${theme.colors.dark800};
-  padding: ${rem(16)};
-  margin-top: ${rem(8)};
-`;
+// const SigupErrorMessage = styled(Copy)`
+//   border: ${rem(2)} solid ${theme.colors.danger500};
+//   border-radius: ${theme.borderRadius.buttons};
+//   display: inline-block;
+//   background-color: ${theme.colors.gray100};
+//   font-size: ${theme.fontSizes.s};
+//   line-height: ${theme.lineHeights.s};
+//   color: ${theme.colors.dark800};
+//   padding: ${rem(16)};
+//   margin-top: ${rem(8)};
+// `;
 
 const SigupSuccessMessage = styled(Copy)`
   border: ${rem(2)} solid ${theme.colors.main600};
@@ -124,10 +124,10 @@ const SigupSuccessMessage = styled(Copy)`
   background-color: ${theme.colors.gray100};
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};
-  color: ${theme.colors.dark800};
+  color: ${theme.colors.main600};
   padding: ${rem(16)};
   margin-top: ${rem(8)};
-  ${theme.shadow.buttons.mainGhost}
+  ${theme.shadow.subscribeSuccessMessage}
 `;
 
 const StyledInput = styled(Input)`
@@ -281,7 +281,7 @@ const SubscribeCard = (props) => {
 
         {showMCError && (
           <SelfDestruct time={expireAfter}>
-            <SigupErrorMessage>{MCError}</SigupErrorMessage>
+            <SigupSuccessMessage>{MCError}</SigupSuccessMessage>
           </SelfDestruct>
         )}
       </FormContainer>

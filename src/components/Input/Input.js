@@ -37,6 +37,16 @@ const StyledInput = styled.input`
   height: ${rem(48)};
   width: 100%;
 
+  /* Change Autocomplete styles in Chrome*/
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    border: 2px solid ${theme.colors.dark900};
+    -webkit-text-fill-color: ${theme.colors.success600};
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
   font-family: ${theme.fonts.bodyRegular};
 
   &:focus {
@@ -52,7 +62,26 @@ const StyledInput = styled.input`
   /*  3. In Focus */
   &:valid:not(:placeholder-shown):focus {
     color: ${theme.colors.success600};
-    background: white;
+    background-color: white !important;
+    border: 2px solid ${theme.colors.success400};
+    padding-right: ${rem(40)};
+
+    & ~ span {
+      display: block !important;
+      ${optimizedSuccessSVGDataURI};
+      background-size: ${rem(24)};
+      background-repeat: no-repeat;
+      background-position: 0px 0px;
+    }
+  }
+
+  /*  When input is... */
+  /*  1. Valid */
+  /*  2. NOT Empty */
+  /*  3. NOT In Focus */
+  &:valid:not(:placeholder-shown) {
+    color: ${theme.colors.success600};
+    background-color: white !important;
     border: 2px solid ${theme.colors.success400};
     padding-right: ${rem(40)};
 
@@ -71,7 +100,7 @@ const StyledInput = styled.input`
   /*  3. NOT In Focus */
   &:valid:not(:focus):not(:placeholder-shown) {
     color: ${theme.colors.success600};
-    background-color: white;
+    background-color: white !important;
     border: 2px solid ${theme.colors.success400};
     padding-right: ${rem(40)};
 

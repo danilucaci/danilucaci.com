@@ -65,8 +65,9 @@ const StyledSubmitButton = styled(SubmitButton)`
     props.turnOff &&
     css`
       pointer-events: none !important;
-      background-color: ${theme.colors.success500};
-      color: ${theme.colors.success100};
+      background-color: ${theme.colors.main600};
+      color: ${theme.colors.main100};
+      ${theme.shadow.buttons.main} !important;
     `}
 `;
 
@@ -82,10 +83,10 @@ const EmailStatusMessage = styled(Copy)`
   background-color: ${theme.colors.gray100};
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};
-  color: ${theme.colors.dark800};
+  color: ${theme.colors.success600};
   padding: ${rem(16)};
   margin-top: ${rem(24)};
-  ${theme.shadow.buttons.mainGhost};
+  ${theme.shadow.successMessage};
   white-space: pre-line;
 `;
 

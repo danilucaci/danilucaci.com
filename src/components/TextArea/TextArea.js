@@ -37,6 +37,14 @@ const StyledTextArea = styled.textarea`
 
   font-family: ${theme.fonts.bodyRegular};
 
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    border: 2px solid ${theme.colors.dark900};
+    -webkit-text-fill-color: ${theme.colors.success600};
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
   &:focus {
     background: white;
     color: ${theme.colors.dark900};
