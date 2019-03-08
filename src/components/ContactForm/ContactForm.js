@@ -76,17 +76,36 @@ const StyledTextArea = styled(TextArea)`
   margin-top: ${rem(8)};
 `;
 
+const SuccessTitle = styled.span`
+  color: ${theme.colors.main600};
+  display: block;
+  font-size: ${theme.fontSizes};
+  line-height: ${theme.lineHeights.s};
+  font-weight: 700;
+
+  & .fonts-loaded {
+    font-family: ${theme.fonts.bodyBold};
+  }
+`;
+
+const SuccessSubTitle = styled.span`
+  color: ${theme.colors.main600};
+  display: block;
+  font-size: ${theme.fontSizes.s};
+  line-height: ${theme.lineHeights.s};
+`;
+
 const EmailStatusMessage = styled(Copy)`
-  border: ${rem(2)} solid ${theme.colors.success400};
+  border: ${rem(2)} solid ${theme.colors.main600};
   border-radius: ${theme.borderRadius.buttons};
   display: block;
   background-color: ${theme.colors.gray100};
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};
-  color: ${theme.colors.success600};
+  color: ${theme.colors.main600};
   padding: ${rem(16)};
   margin-top: ${rem(24)};
-  ${theme.shadow.successMessage};
+  ${theme.shadow.subscribeSuccessMessage};
   white-space: pre-line;
 `;
 
@@ -284,7 +303,12 @@ function ContactForm(props) {
             <StyledSubmitButton type="sent" turnOff={true} />
             <SelfDestruct time={expireAfter}>
               <EmailStatusMessage>
-                {FORM_SUBMIT_STATUS.success[locale]}
+                <SuccessTitle>
+                  {FORM_SUBMIT_STATUS.successTitle[locale]}
+                </SuccessTitle>
+                <SuccessSubTitle>
+                  {FORM_SUBMIT_STATUS.successSubtitle[locale]}
+                </SuccessSubTitle>
               </EmailStatusMessage>
             </SelfDestruct>
           </>

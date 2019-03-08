@@ -38,11 +38,13 @@ export const CONSENT_VALUE = {
 };
 
 export const FORM_SUBMIT_STATUS = {
-  success: {
-    en:
-      "Thank you for contacting me. \n I will send you a response in about 24 hours.",
-    es:
-      "Gracias por contactar conmigo. \n Recibirás una respuesta en aproximadamente 24 horas.",
+  successTitle: {
+    en: "Thank you for contacting me! 🎉",
+    es: "!Gracias por contactar conmigo¡ 🎉",
+  },
+  successSubtitle: {
+    en: "I will send you a response in about 24 hours.",
+    es: "Recibirás una respuesta en aproximadamente 24 horas.",
   },
   error: {
     en: "Sorry 😔, your message couldn't be sent, please try again later.",
