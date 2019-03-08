@@ -9,8 +9,8 @@ import { Checkbox } from "../Checkbox/Checkbox";
 import ExternalLocaleLink from "../ExternalLocaleLink/ExternalLocaleLink";
 
 const StyledCheckboxLabel = styled.label`
-  font-size: ${theme.fontSizes.m};
-  line-height: ${theme.lineHeights.m};
+  font-size: ${theme.fontSizes.s};
+  line-height: ${theme.lineHeights.s};
   display: inline-block;
   margin-top: ${rem(8)};
   margin-bottom: ${rem(8)};
@@ -46,19 +46,41 @@ const StyledCheckbox = styled(Checkbox)`
 const Required = styled.span`
   display: inline-block;
   margin-left: ${rem(6)};
-  font-size: ${theme.fontSizes.m};
-  line-height: ${theme.lineHeights.m};
+  font-size: ${theme.fontSizes.s};
+  line-height: ${theme.lineHeights.s};
   color: ${theme.colors.dark900};
 `;
 
-const LearnMoreLink = styled(ExternalLocaleLink)`
-  font-size: ${theme.fontSizes.m};
-  line-height: ${theme.lineHeights.m};
+const AndSpan = styled.span`
+  font-size: ${theme.fontSizes.s};
+  line-height: ${theme.lineHeights.s};
   display: inline;
-  margin-left: ${rem(6)};
+`;
+
+const LearnMoreLink = styled(ExternalLocaleLink)`
+  font-size: ${theme.fontSizes.s};
+  line-height: ${theme.lineHeights.s};
+  display: inline;
+  margin-left: ${rem(5)};
+  color: ${theme.colors.dark800} !important;
+
+  &:hover {
+    background-color: ${theme.colors.gray300} !important;
+  }
 `;
 
 function PrivacyCheckbox({ locale, ...rest }) {
+  let legalLinks = {
+    en: {
+      avisoLegal: "",
+      privacidad: "",
+    },
+    es: {
+      avisoLegal: "",
+      privacidad: "",
+    },
+  };
+
   return (
     <>
       <StyledCheckbox id="privacycheckbox" {...rest} />
@@ -67,38 +89,23 @@ function PrivacyCheckbox({ locale, ...rest }) {
           {(txt) => <>{txt}</>}
         </FormattedMessage>
       </StyledCheckboxLabel>
-      <StaticQuery
-        query={PRIVACY_CHECKBOX_QUERY}
-        render={(data) => {
-          let localizedDocsList = data.allMarkdownRemark.edges
-            .map((edge) => ({
-              slug: edge.node.fields.slug,
-              title: edge.node.frontmatter.title,
-              locale: edge.node.frontmatter.locale,
-            }))
-            .filter((edge) => edge.locale === locale);
-          return (
-            <>
-              {localizedDocsList.map((localizedDoc) => (
-                <FormattedMessage
-                  id="formPrivacyMore2"
-                  key={localizedDoc.title}
-                >
-                  {(txt) => (
-                    <LearnMoreLink
-                      href={localizedDoc.slug}
-                      target="_blank"
-                      rel="noopener"
-                    >
-                      {txt}
-                    </LearnMoreLink>
-                  )}
-                </FormattedMessage>
-              ))}
-            </>
-          );
-        }}
-      />
+      <FormattedMessage id="formPrivacyMore2">
+        {(txt) => (
+          <LearnMoreLink href="" target="_blank" rel="noopener">
+            {txt}
+          </LearnMoreLink>
+        )}
+      </FormattedMessage>
+      <FormattedMessage id="formPrivacyMore3">
+        {(txt) => <AndSpan>{txt}</AndSpan>}
+      </FormattedMessage>
+      <FormattedMessage id="formPrivacyMore4">
+        {(txt) => (
+          <LearnMoreLink href="" target="_blank" rel="noopener">
+            {txt}
+          </LearnMoreLink>
+        )}
+      </FormattedMessage>
       <FormattedMessage id="formPrivacyRequired">
         {(txt) => <Required>{txt}</Required>}
       </FormattedMessage>

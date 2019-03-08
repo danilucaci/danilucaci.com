@@ -42,8 +42,7 @@ const ContactMeHeader = styled.header`
   ${mediaMin.xxl`
     display: inline-block;
     vertical-align: top;
-    width: calc(50% - ${rem(12)});
-    margin-right: ${rem(12)};
+    width: calc(46% - ${rem(24)});
   `};
 `;
 
@@ -57,11 +56,9 @@ const ContactFormWrapper = styled.div`
   ${mediaMin.xxl`
     display: inline-block;
     vertical-align: top;
-    float: right;
-    width: calc(50% - ${rem(12)});
+    width: 54%;
     margin-top: -${rem(24)};
-    margin-left: ${rem(12)};
-    margin-bottom: ${rem(128)};
+    margin-left: ${rem(24)};
   `};
 `;
 
@@ -121,6 +118,8 @@ const StyledLink = styled.a`
 
 const SayHiWrapper = styled.div`
   margin-top: ${rem(48)};
+  width: 100%;
+  margin-top: ${rem(32)};
 
   ${mediaMin.m`
     max-width: ${rem(640)};
@@ -129,11 +128,10 @@ const SayHiWrapper = styled.div`
   `};
 
   ${mediaMin.xxl`
-    display: inline-block;
-    vertical-align: top;
-    margin-top: ${rem(32)};
-    width: calc(50% - ${rem(12)});
-    margin-right: ${rem(12)};
+    max-width: 100%;
+    margin-top: ${rem(64)};
+    margin-left: 0;
+    margin-right: 0;
   `};
 `;
 
@@ -160,6 +158,11 @@ const BottomHR = styled(HR)`
 
 const SocialNavWrapper = styled.div`
   margin-top: ${rem(16)};
+  margin-bottom: ${rem(64)};
+
+  ${mediaMin.xxl`
+    margin-bottom: ${rem(112)};
+  `};
 `;
 
 const ContactPage = (props) => {
