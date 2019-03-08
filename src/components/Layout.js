@@ -161,7 +161,7 @@ class Layout extends Component {
     // Tied to GTM Cookie_Consent_Accepted variable to fire analytics
     this.setInitialConsentCookie();
     this.checkGDPRStatus();
-    // this.checkFontsLoaded();
+    this.checkFontsLoaded();
   }
 
   componentDidUpdate() {

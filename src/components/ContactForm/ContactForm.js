@@ -76,10 +76,10 @@ const StyledTextArea = styled(TextArea)`
   margin-top: ${rem(8)};
 `;
 
-const SuccessTitle = styled.span`
+const SuccessTitle = styled(Copy)`
   color: ${theme.colors.main600};
   display: block;
-  font-size: ${theme.fontSizes};
+  font-size: ${theme.fontSizes.m};
   line-height: ${theme.lineHeights.s};
   font-weight: 700;
 
@@ -88,14 +88,14 @@ const SuccessTitle = styled.span`
   }
 `;
 
-const SuccessSubTitle = styled.span`
+const SuccessSubtitle = styled(Copy)`
   color: ${theme.colors.main600};
   display: block;
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};
 `;
 
-const EmailStatusMessage = styled(Copy)`
+const EmailStatusMessage = styled.div`
   border: ${rem(2)} solid ${theme.colors.main600};
   border-radius: ${theme.borderRadius.buttons};
   display: block;
@@ -306,9 +306,9 @@ function ContactForm(props) {
                 <SuccessTitle>
                   {FORM_SUBMIT_STATUS.successTitle[locale]}
                 </SuccessTitle>
-                <SuccessSubTitle>
+                <SuccessSubtitle>
                   {FORM_SUBMIT_STATUS.successSubtitle[locale]}
-                </SuccessSubTitle>
+                </SuccessSubtitle>
               </EmailStatusMessage>
             </SelfDestruct>
           </>

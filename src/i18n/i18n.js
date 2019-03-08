@@ -78,12 +78,14 @@ export const MC_ERRORS = {
 
 export const MC_SUCCESS = {
   en: {
+    title: "Thanks for joining my newsletter!",
     message:
-      "Thanks for joining my newsletter! You will receive a confirmation email shortly.",
+      "Now you just need to confirm your email address. Please click on the link you will receive in your inbox.",
   },
   es: {
+    title: "¡Gracias por suscribirte a mi newsletter!",
     message:
-      "¡Gracias por suscribirte a mi newsletter! Pronto recibirás un email de confirmación.",
+      "Ahora solo falta que confirmes la suscripción siguiendo el enlace que llegará a tu mail.",
   },
 };
 

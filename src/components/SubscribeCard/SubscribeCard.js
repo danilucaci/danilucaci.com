@@ -117,7 +117,26 @@ const AltCopy = styled(Copy)`
 //   margin-top: ${rem(8)};
 // `;
 
-const SigupSuccessMessage = styled(Copy)`
+const SuccessTitle = styled(Copy)`
+  color: ${theme.colors.main600};
+  display: block;
+  font-size: ${theme.fontSizes.m};
+  line-height: ${theme.lineHeights.s};
+  font-weight: 700;
+
+  & .fonts-loaded {
+    font-family: ${theme.fonts.bodyBold};
+  }
+`;
+
+const SuccessMessage = styled(Copy)`
+  color: ${theme.colors.main600};
+  display: block;
+  font-size: ${theme.fontSizes.s};
+  line-height: ${theme.lineHeights.s};
+`;
+
+const SigupSuccessMessage = styled.div`
   border: ${rem(2)} solid ${theme.colors.main600};
   border-radius: ${theme.borderRadius.buttons};
   display: inline-block;
@@ -126,6 +145,7 @@ const SigupSuccessMessage = styled(Copy)`
   line-height: ${theme.lineHeights.s};
   color: ${theme.colors.main600};
   padding: ${rem(16)};
+  max-width: ${rem(540)};
   margin-top: ${rem(8)};
   ${theme.shadow.subscribeSuccessMessage}
 `;
@@ -274,7 +294,8 @@ const SubscribeCard = (props) => {
         {showMCSuccess && (
           <SelfDestruct time={expireAfter}>
             <SigupSuccessMessage>
-              {MC_SUCCESS[locale].message}
+              <SuccessTitle>{MC_SUCCESS[locale].title}</SuccessTitle>
+              <SuccessMessage>{MC_SUCCESS[locale].message}</SuccessMessage>
             </SigupSuccessMessage>
           </SelfDestruct>
         )}
