@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, createContext } from "react";
 import PropTypes from "prop-types";
 import styled, { ThemeProvider } from "styled-components";
 let FontFaceObserver = require("fontfaceobserver");
@@ -39,7 +39,7 @@ import {
   detectSlowConnectionType,
 } from "../helpers/helpers";
 
-require("./prism.css");
+require("../theme/prism.css");
 
 import intlMessages from "../i18n/i18n";
 addLocaleData([...enData, ...esData]);
@@ -61,6 +61,7 @@ const Page = styled.div`
   & main {
     flex: 1 0 auto;
   }
+  
   @font-face {
   font-family: 'Roboto Mono Regular';
   font-style: normal;
@@ -436,11 +437,11 @@ class Layout extends Component {
             <GlobalHTML />
             <SVGSprite />
             {/* <CookieConsent
-              askCookieConsent={this.state.askCookieConsent}
-              acceptsCookies={this.acceptsCookies}
-              deniesCookies={this.deniesCookies}
-              pageLocale={this.props.locale}
-            /> */}
+                  askCookieConsent={this.state.askCookieConsent}
+                  acceptsCookies={this.acceptsCookies}
+                  deniesCookies={this.deniesCookies}
+                  pageLocale={this.props.locale}
+                /> */}
             {this.props.children}
           </Page>
         </IntlProvider>

@@ -13,8 +13,9 @@ import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
 import PostListing from "../components/PostListing/PostListing";
 import Tags from "../components/Tags/Tags";
 import Pagination from "../components/Pagination/Pagination";
-import intlMessages from "../i18n/i18n";
 import { SectionHeader } from "../components/Headings/Headings";
+
+import { localePaths } from "../i18n/i18n";
 
 const TagWrapper = styled.section`
   max-width: ${theme.contain.wrapper.col8};
@@ -104,25 +105,28 @@ const TagPage = (props) => {
 
   let allTags = props.data.allMarkdownRemark.tags.map((tag) => tag.fieldValue);
 
-  const paginationPageLabels = {
-    es: "/page/",
-    en: "/pagina/",
-  };
-
   let twinPostURL = "";
 
   if (locale === "en" && currentPage > 1) {
     twinPostURL =
-      "/es" + paginationPathPrefix + paginationPageLabels[locale] + currentPage;
+      localePaths["es"].siteLocalePrefix +
+      paginationPathPrefix +
+      localePaths["es"].paginationName +
+      currentPage;
   } else if (locale === "en" && currentPage === 1) {
-    twinPostURL = "/es" + paginationPathPrefix;
+    twinPostURL = localePaths["es"].siteLocalePrefix + paginationPathPrefix;
   }
 
   if (locale === "es" && currentPage > 1) {
-    twinPostURL =
-      paginationPathPrefix + paginationPageLabels[locale] + currentPage;
+    twinPostURL = (
+      paginationPathPrefix +
+      localePaths["en"].paginationName +
+      currentPage
+    ).slice(4);
   } else if (locale === "es" && currentPage === 1) {
-    twinPostURL = paginationPathPrefix;
+    twinPostURL = (
+      localePaths["en"].siteLocalePrefix + paginationPathPrefix
+    ).slice(4);
   }
 
   return (

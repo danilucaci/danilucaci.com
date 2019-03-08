@@ -1,8 +1,11 @@
 import styled from "styled-components";
-import { theme } from "../../theme/globalStyles";
-import LocaleLink from "../LocaleLink/LocaleLink";
+import { Link } from "gatsby";
+// import LocaleLink from "../LocaleLink/LocaleLink";
 
-export const DefaultLink = styled(LocaleLink)`
+import { theme } from "../../theme/globalStyles";
+
+// export const DefaultLink = styled(LocaleLink)`
+export const DefaultLink = styled(Link)`
   color: ${theme.colors.main600};
   text-decoration: underline;
   font-style: normal;

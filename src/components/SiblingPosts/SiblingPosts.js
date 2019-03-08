@@ -6,7 +6,7 @@ import { FormattedMessage } from "react-intl";
 import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
 import { HR } from "../HR/HR";
 import { SectionHeader } from "../Headings/Headings";
-import LocaleLink from "../LocaleLink/LocaleLink";
+import { DefaultLink } from "../Link/Link";
 
 const SiblingPostsWrapper = styled.nav`
   width: 100%;
@@ -60,7 +60,7 @@ const PrevSectionHeader = styled(SectionHeader)`
   `};
 `;
 
-const PrevArticleLink = styled(LocaleLink)`
+const PrevArticleLink = styled(DefaultLink)`
   color: ${theme.colors.dark900} !important;
   text-decoration: none;
   font-size: ${theme.fontSizes.siblingPostsS};
@@ -110,7 +110,7 @@ const NextSectionHeader = styled(SectionHeader)`
   `};
 `;
 
-const NextArticleLink = styled(LocaleLink)`
+const NextArticleLink = styled(DefaultLink)`
   color: ${theme.colors.dark900} !important;
   display: block;
 

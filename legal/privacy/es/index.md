@@ -4,9 +4,10 @@ slug: "politica privacidad"
 category: "legal"
 posted: true
 locale: "es"
-date: "12/02/2019"
+date: "12/03/2019"
 twinPost: "Privacy policy"
 forCookieConsent: true
+privacy: true
 ---
 
 ## Proteccion De Datos De Caracter Personal Segun El RGPD

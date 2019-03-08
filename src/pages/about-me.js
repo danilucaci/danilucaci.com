@@ -15,6 +15,8 @@ import SocialNav from "../components/SocialNav/SocialNav";
 import ContactCard from "../components/ContactCard/ContactCard";
 import { Copy } from "../components/Copy/Copy";
 
+import { localePaths } from "../i18n/i18n";
+
 const AboutMeWrapper = styled.section``;
 
 const HeaderInfo = styled.header`
@@ -191,9 +193,9 @@ const AboutPage = (props) => {
   let twinPostURL = "";
 
   if (locale === "en") {
-    twinPostURL = "/es/sobre-mi";
+    twinPostURL = localePaths["es"].about;
   } else if (locale === "es") {
-    twinPostURL = "/about-me";
+    twinPostURL = localePaths["en"].about;
   }
 
   return (

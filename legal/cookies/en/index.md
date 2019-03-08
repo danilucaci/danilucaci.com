@@ -4,7 +4,7 @@ slug: "cookie policy"
 category: "legal"
 posted: true
 locale: "en"
-date: "12/02/2019"
+date: "12/03/2019"
 twinPost: "Politica Cookies"
 ---
 

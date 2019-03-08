@@ -14,6 +14,7 @@ import CaseStudyListing from "../components/CaseStudyListing/CaseStudyListing";
 import Pagination from "../components/Pagination/Pagination";
 import ContactCard from "../components/ContactCard/ContactCard";
 import { HR } from "../components/HR/HR";
+import { localePaths } from "../i18n/i18n";
 
 const OuterWrapper = styled.section`
   margin-bottom: ${theme.spacing.components.s};
@@ -92,33 +93,20 @@ const WorkPage = (props) => {
     locale,
   } = props.pageContext;
 
-  const workLocaleLabels = {
-    es: "/work",
-    en: "/trabajos",
-  };
-
-  const paginationPageLabels = {
-    es: "/page/",
-    en: "/pagina/",
-  };
-
   let twinPostURL = "";
 
   if (locale === "en" && currentPage > 1) {
     twinPostURL =
-      "/es" +
-      workLocaleLabels[locale] +
-      paginationPageLabels[locale] +
-      currentPage;
+      localePaths["es"].work + localePaths["es"].paginationName + currentPage;
   } else if (locale === "en" && currentPage === 1) {
-    twinPostURL = "/es" + workLocaleLabels[locale];
+    localePaths["es"].work + localePaths["es"].paginationName;
   }
 
   if (locale === "es" && currentPage > 1) {
     twinPostURL =
-      workLocaleLabels[locale] + paginationPageLabels[locale] + currentPage;
+      localePaths["en"].work + localePaths["en"].paginationName + currentPage;
   } else if (locale === "es" && currentPage === 1) {
-    twinPostURL = workLocaleLabels[locale];
+    localePaths["en"].work + localePaths["en"].paginationName;
   }
 
   return (

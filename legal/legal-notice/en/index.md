@@ -6,6 +6,7 @@ posted: true
 locale: "en"
 date: "12/03/2019"
 twinPost: "Aviso Legal"
+legalNotice: true
 ---
 
 # Legal Notice

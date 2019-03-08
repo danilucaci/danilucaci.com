@@ -1,8 +1,8 @@
 module.exports = {
   en: {
+    default: true,
     path: "/",
     locale: "English",
-    default: true,
   },
   es: {
     path: "/es",

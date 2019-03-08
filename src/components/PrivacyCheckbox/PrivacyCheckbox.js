@@ -57,7 +57,7 @@ const AndSpan = styled.span`
   display: inline;
 `;
 
-const LearnMoreLink = styled(ExternalLocaleLink)`
+const LearnMoreLink = styled.a`
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};
   display: inline;
@@ -70,46 +70,68 @@ const LearnMoreLink = styled(ExternalLocaleLink)`
 `;
 
 function PrivacyCheckbox({ locale, ...rest }) {
-  let legalLinks = {
-    en: {
-      avisoLegal: "",
-      privacidad: "",
-    },
-    es: {
-      avisoLegal: "",
-      privacidad: "",
-    },
-  };
-
   return (
-    <>
-      <StyledCheckbox id="privacycheckbox" {...rest} />
-      <StyledCheckboxLabel htmlFor="privacycheckbox">
-        <FormattedMessage id="formPrivacyMore1">
-          {(txt) => <>{txt}</>}
-        </FormattedMessage>
-      </StyledCheckboxLabel>
-      <FormattedMessage id="formPrivacyMore2">
-        {(txt) => (
-          <LearnMoreLink href="" target="_blank" rel="noopener">
-            {txt}
-          </LearnMoreLink>
-        )}
-      </FormattedMessage>
-      <FormattedMessage id="formPrivacyMore3">
-        {(txt) => <AndSpan>{txt}</AndSpan>}
-      </FormattedMessage>
-      <FormattedMessage id="formPrivacyMore4">
-        {(txt) => (
-          <LearnMoreLink href="" target="_blank" rel="noopener">
-            {txt}
-          </LearnMoreLink>
-        )}
-      </FormattedMessage>
-      <FormattedMessage id="formPrivacyRequired">
-        {(txt) => <Required>{txt}</Required>}
-      </FormattedMessage>
-    </>
+    <StaticQuery
+      query={PRIVACY_CHECKBOX_QUERY}
+      render={(data) => {
+        let legalNoticeLink = data.allMarkdownRemark.edges
+          .map((edge) => ({
+            slug: edge.node.fields.slug,
+            locale: edge.node.frontmatter.locale,
+            legalNotice: edge.node.frontmatter.legalNotice,
+          }))
+          .filter(
+            (edge) => edge.locale === locale && edge.legalNotice === true
+          );
+
+        let privacyLink = data.allMarkdownRemark.edges
+          .map((edge) => ({
+            slug: edge.node.fields.slug,
+            locale: edge.node.frontmatter.locale,
+            privacy: edge.node.frontmatter.privacy,
+          }))
+          .filter((edge) => edge.locale === locale && edge.privacy === true);
+
+        return (
+          <>
+            <StyledCheckbox id="privacycheckbox" {...rest} />
+            <StyledCheckboxLabel htmlFor="privacycheckbox">
+              <FormattedMessage id="formPrivacyMore1">
+                {(txt) => <>{txt}</>}
+              </FormattedMessage>
+            </StyledCheckboxLabel>
+            <FormattedMessage id="formPrivacyMore2">
+              {(txt) => (
+                <LearnMoreLink
+                  href={legalNoticeLink[0].slug}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  {txt}
+                </LearnMoreLink>
+              )}
+            </FormattedMessage>
+            <FormattedMessage id="formPrivacyMore3">
+              {(txt) => <AndSpan>{txt}</AndSpan>}
+            </FormattedMessage>
+            <FormattedMessage id="formPrivacyMore4">
+              {(txt) => (
+                <LearnMoreLink
+                  href={privacyLink[0].slug}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  {txt}
+                </LearnMoreLink>
+              )}
+            </FormattedMessage>
+            <FormattedMessage id="formPrivacyRequired">
+              {(txt) => <Required>{txt}</Required>}
+            </FormattedMessage>
+          </>
+        );
+      }}
+    />
   );
 }
 
@@ -121,22 +143,16 @@ export default PrivacyCheckbox;
 
 const PRIVACY_CHECKBOX_QUERY = graphql`
   query PRIVACY_CHECKBOX_QUERY {
-    allMarkdownRemark(
-      filter: {
-        frontmatter: {
-          category: { eq: "legal" }
-          forCookieConsent: { eq: true }
-        }
-      }
-    ) {
+    allMarkdownRemark(filter: { frontmatter: { category: { eq: "legal" } } }) {
       edges {
         node {
           fields {
             slug
           }
           frontmatter {
-            title
             locale
+            legalNotice
+            privacy
           }
         }
       }

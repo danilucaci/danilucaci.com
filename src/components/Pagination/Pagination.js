@@ -8,6 +8,8 @@ import { BoldLink } from "../Link/Link";
 import { Icon } from "../Icon/Icon";
 import { CopyBold } from "../Copy/Copy";
 
+import { localePaths } from "../../i18n/i18n";
+
 const PaginationWrapper = styled.nav`
   display: flex;
   flex-direction: row;
@@ -169,15 +171,11 @@ const Pagination = (props) => {
   const {
     currentPage,
     totalPages,
-    paginationPathPrefix,
+    locale,
     prevPath,
     nextPath,
+    paginationPathPrefix,
   } = props;
-
-  const paginationPageLabels = {
-    en: "/page/",
-    es: "/pagina/",
-  };
 
   let pagination = [];
 
@@ -194,7 +192,7 @@ const Pagination = (props) => {
           <CurrentPaginationNumber
             key={page}
             to={
-              paginationPathPrefix + paginationPageLabels[props.locale] + page
+              paginationPathPrefix + localePaths[locale].paginationName + page
             }
           >
             {page}
@@ -213,7 +211,7 @@ const Pagination = (props) => {
           <PaginationNumber
             key={page}
             to={
-              paginationPathPrefix + paginationPageLabels[props.locale] + page
+              paginationPathPrefix + localePaths[locale].paginationName + page
             }
           >
             {page}

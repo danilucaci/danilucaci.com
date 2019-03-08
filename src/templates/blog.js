@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
@@ -15,6 +14,8 @@ import PostListing from "../components/PostListing/PostListing";
 import Tags from "../components/Tags/Tags";
 import Pagination from "../components/Pagination/Pagination";
 import { SectionHeader } from "../components/Headings/Headings";
+
+import { localePaths } from "../i18n/i18n";
 
 const BlogWrapper = styled.section`
   max-width: ${theme.contain.wrapper.col8};
@@ -75,26 +76,20 @@ const BlogPage = (props) => {
   } = props.pageContext;
 
   let allTags = props.data.allMarkdownRemark.tags.map((tag) => tag.fieldValue);
-
-  const paginationPageLabels = {
-    es: "/page/",
-    en: "/pagina/",
-  };
-
   let twinPostURL = "";
 
   if (locale === "en" && currentPage > 1) {
     twinPostURL =
-      "/es" + paginationPathPrefix + paginationPageLabels[locale] + currentPage;
+      localePaths["es"].blog + localePaths["es"].paginationName + currentPage;
   } else if (locale === "en" && currentPage === 1) {
-    twinPostURL = "/es" + paginationPathPrefix;
+    twinPostURL = localePaths["es"].blog;
   }
 
   if (locale === "es" && currentPage > 1) {
     twinPostURL =
-      paginationPathPrefix + paginationPageLabels[locale] + currentPage;
+      localePaths["en"].blog + localePaths["en"].paginationName + currentPage;
   } else if (locale === "es" && currentPage === 1) {
-    twinPostURL = paginationPathPrefix;
+    twinPostURL = localePaths["en"].blog;
   }
 
   return (

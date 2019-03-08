@@ -43,6 +43,13 @@ const LegalDoc = styled(LightSecondaryLink)`
   display: inline-block;
   margin-right: ${rem(16)};
   white-space: nowrap;
+  font-size: ${theme.fontSizes.s};
+  line-height: ${theme.lineHeights.s};
+  margin-top: ${rem(12)};
+
+  ${mediaMin.l`
+      margin-top: 0;
+  `};
 `;
 
 const SiteFooter = (props) => {

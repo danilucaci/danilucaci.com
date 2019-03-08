@@ -13,6 +13,7 @@ import { Copy } from "../components/Copy/Copy";
 import { HR } from "../components/HR/HR";
 import ContactForm from "../components/ContactForm/ContactForm";
 import SocialNav from "../components/SocialNav/SocialNav";
+import { localePaths } from "../i18n/i18n";
 
 const ContactMeWrapper = styled.section`
   max-width: ${theme.contain.wrapper.col10};
@@ -170,9 +171,9 @@ const ContactPage = (props) => {
   let twinPostURL = "";
 
   if (locale === "en") {
-    twinPostURL = "/es/contacto";
+    twinPostURL = localePaths["es"].contact;
   } else if (locale === "es") {
-    twinPostURL = "/contact";
+    twinPostURL = localePaths["en"].contact;
   }
 
   return (
