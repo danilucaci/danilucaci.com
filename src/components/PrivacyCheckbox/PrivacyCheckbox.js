@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { FormattedMessage } from "react-intl";
 import { graphql, StaticQuery } from "gatsby";
 
 import { theme, mediaMin, mediaMax, rem } from "../../theme/globalStyles";
 import { Checkbox } from "../Checkbox/Checkbox";
-import ExternalLocaleLink from "../ExternalLocaleLink/ExternalLocaleLink";
 
 const StyledCheckboxLabel = styled.label`
   font-size: ${theme.fontSizes.s};

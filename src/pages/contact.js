@@ -43,7 +43,7 @@ const ContactMeHeader = styled.header`
   ${mediaMin.xxl`
     display: inline-block;
     vertical-align: top;
-    width: calc(46% - ${rem(24)});
+    width: calc(45% - ${rem(24)});
   `};
 `;
 
@@ -57,7 +57,7 @@ const ContactFormWrapper = styled.div`
   ${mediaMin.xxl`
     display: inline-block;
     vertical-align: top;
-    width: 54%;
+    width: 55%;
     margin-top: -${rem(24)};
     margin-left: ${rem(24)};
   `};

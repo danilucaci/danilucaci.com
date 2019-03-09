@@ -65,7 +65,7 @@ const StyledSubmitButton = styled(SubmitButton)`
     props.turnOff &&
     css`
       pointer-events: none !important;
-      background-color: ${theme.colors.main600};
+      background-color: ${theme.colors.main500};
       color: ${theme.colors.main100};
       ${theme.shadow.buttons.main} !important;
     `}

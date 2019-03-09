@@ -50,9 +50,9 @@ export const theme = {
     mobileCookieConsent:
       "box-shadow: 0px -2px 4px 0px hsla(0,0%,40%,0.2), 0px -6px 12px 0px hsla(0,0%,70%,0.4)",
     successMessage:
-      "box-shadow: 0px 0px 8px -2px hsla(136,78%,21%,1), 0px -4px 20px -6px hsla(125,47%,85%,1)",
+      "box-shadow: 0px 0px 8px -2px hsla(136,78%,21%,1), 0px 4px 20px -6px hsla(125,47%,85%,1)",
     subscribeSuccessMessage:
-      "box-shadow: 0px 0px 8px -2px hsla(216,78%,43%,0.6), 0px -4px 12px -4px hsla(208,100%,81%,0.8)",
+      "box-shadow: 0px 0px 8px -2px hsla(216,78%,43%,0.6), 0px 4px 12px -4px hsla(208,100%,81%,0.8)",
     buttons: {
       tertiary:
         "box-shadow: 0 2px 2px 0px rgba(12,52,117,0.13), 0 2px 8px -2px rgba(16,41,82,0.27)",
