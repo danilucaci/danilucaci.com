@@ -56,6 +56,23 @@ pre[class*="language-"] {
   overflow: auto;
 }
 
+pre[class*="language-"]::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
+  background-color: #FFFFFF;
+}
+
+pre[class*="language-"]::-webkit-scrollbar {
+  height: 0.5rem;
+  background-color: #CBCED4;
+}
+
+pre[class*="language-"]::-webkit-scrollbar-thumb {
+  border-radius: 0.5rem;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  background-color: #CBCED4;
+}
+
 .gatsby-highlight {
   margin-left: -1rem;
   margin-right: -1rem;

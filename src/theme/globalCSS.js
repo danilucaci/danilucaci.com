@@ -26,6 +26,23 @@ const GlobalCSS = createGlobalStyle`
     ${"" /* scroll-behavior: smooth; */}
   }
 
+  body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: ${rem(8)};
+    background-color: ${theme.colors.gray100};
+  }
+
+  body::-webkit-scrollbar {
+    width: ${rem(10)};
+    background-color: ${theme.colors.gray400};
+  }
+
+  body::-webkit-scrollbar-thumb {
+    border-radius: ${rem(12)};
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: ${theme.colors.gray400};
+  }
+
   svg {
     position: absolute;
   }
