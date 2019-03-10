@@ -29,6 +29,7 @@ const StyledTag = styled(LocaleLink)`
 
   &:hover {
     background-color: ${theme.colors.gray400};
+    color: ${theme.colors.dark900};
     text-decoration: underline;
   }
 
