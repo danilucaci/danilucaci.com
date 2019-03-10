@@ -165,7 +165,7 @@ class Layout extends Component {
   }
 
   componentDidUpdate() {
-    // if (this.state.showLogs) {
+    // if (this.state.showLogs === true) {
     //   this.showGDPRStatus();
     // }
   }
@@ -179,7 +179,7 @@ class Layout extends Component {
       if (!isLoaded) {
         document.documentElement.className += " fonts-loaded";
       }
-      if (this.state.showLogs) {
+      if (this.state.showLogs === true) {
         console.log("%c Fonts already loaded.", "color: #79E36B");
       }
       return;
@@ -221,7 +221,7 @@ class Layout extends Component {
       document.documentElement.className += " fonts-loaded";
       // Optimization for Repeat Views
       sessionStorage.fontsLoadedPolyfill = true;
-      if (this.state.showLogs) {
+      if (this.state.showLogs === true) {
         console.log("%c Fonts loaded.", "color: #79E36B");
       }
     });
@@ -252,7 +252,7 @@ class Layout extends Component {
       if (DLCookie) {
         // If the cookie has analytics accepted
         if (DLCookie.analytics && !DLCookie.dismissed) {
-          if (this.state.showLogs) {
+          if (this.state.showLogs === true) {
             console.log(`%c The user accepted cookies.`, "color: #79E36B");
           }
 
@@ -269,7 +269,7 @@ class Layout extends Component {
 
           // Don't load analytics scripts if analytics cookies are not accepted
         } else if (!DLCookie.analytics && DLCookie.dismissed) {
-          if (this.state.showLogs) {
+          if (this.state.showLogs === true) {
             console.log(
               `%c The user doesn't accept cookies.`,
               "color: #79E36B"
@@ -289,7 +289,7 @@ class Layout extends Component {
           askCookieConsent: !prevState.askCookieConsent,
         }));
 
-        if (this.state.showLogs) {
+        if (this.state.showLogs === true) {
           console.log(
             `%c Didn't find a previous cookie, asking for the consent.`,
             "color: #79E36B"
@@ -297,7 +297,7 @@ class Layout extends Component {
         }
       }
     } else {
-      if (this.state.showLogs) {
+      if (this.state.showLogs === true) {
         console.error("dl.com Can't read env cookie name.");
       }
     }
@@ -335,7 +335,7 @@ class Layout extends Component {
           console.log(`%c Didn't find a cookie.`, "color: #79E36B");
         }
       } else {
-        if (this.state.showLogs) {
+        if (this.state.showLogs === true) {
           console.warn("Can't read cookie domain name .env.");
         }
       }
@@ -356,12 +356,12 @@ class Layout extends Component {
         // Check to see if the cookie was set
         this.checkGDPRStatus();
       } else {
-        if (this.state.showLogs) {
+        if (this.state.showLogs === true) {
           console.warn("Can't read cookie domain name .env.");
         }
       }
     } else {
-      if (this.state.showLogs) {
+      if (this.state.showLogs === true) {
         console.warn("Can't read cookie name .env.");
       }
     }
@@ -379,12 +379,12 @@ class Layout extends Component {
         // Check to see if the cookie was set
         this.checkGDPRStatus();
       } else {
-        if (this.state.showLogs) {
+        if (this.state.showLogs === true) {
           console.warn("Can't read cookie domain name .env.");
         }
       }
     } else {
-      if (this.state.showLogs) {
+      if (this.state.showLogs === true) {
         console.warn("Can't read cookie name .env.");
       }
     }
