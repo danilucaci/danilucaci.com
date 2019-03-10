@@ -33,25 +33,24 @@ export const Checkbox = styled.input`
   /* Box hover */
   &:hover + label:before {
     border: 2px solid ${theme.colors.dark900};
-    transform: scale(1.15);
+    transform: scale(1.1);
+  }
+
+  &:checked:hover + label:before {
+    background: ${theme.colors.main500};
+    transform: scale(1.1);
   }
 
   /* Box focus */
   &:focus + label:before {
     border: 2px solid ${theme.colors.dark900};
-    transform: scale(1.15);
+    transform: scale(1.1);
   }
 
-  /* Disabled state label. */
-  &:disabled + label {
-    background: ${theme.colors.gray500};
-    cursor: auto;
-  }
-
-  /* Disabled box. */
-  &:disabled + label:before {
-    background: ${theme.colors.gray500};
-    box-shadow: none;
+  /* Box checked */
+  &:checked:focus + label:before {
+    background: ${theme.colors.main500};
+    transform: scale(1.1);
   }
 
   /* Remove border from :before when checked */
@@ -63,18 +62,24 @@ export const Checkbox = styled.input`
   /* Box checked */
   &:checked:hover + label:after {
     transform-origin: center center;
-    transform: scale(1.15) rotate(35deg);
+    transform: scale(1.1) rotate(35deg);
+  }
+
+  /* Box checked */
+  &:checked:focus + label:after {
+    transform-origin: center center;
+    transform: scale(1.1) rotate(35deg);
   }
 
   /* Checkmark */
   &:checked + label:after {
     content: "";
     position: absolute;
-    left: ${rem(6)};
+    left: ${rem(7)};
     bottom: ${rem(7)};
     background: none;
-    width: ${rem(8)};
-    height: ${rem(14)};
+    width: ${rem(7)};
+    height: ${rem(13)};
     border-top: none;
     border-left: none;
     border-bottom: 3px solid white;
