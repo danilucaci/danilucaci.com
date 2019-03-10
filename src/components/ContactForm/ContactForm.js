@@ -82,7 +82,7 @@ function ContactForm(props) {
   const [dateSent, setDateSent] = useState(mailSentTimeStamp());
   const [botField, setBotField] = useState("");
   const [acceptsConsentCheckbox, setAcceptsConsentCheckbox] = useState(false);
-  const [showFormSent, setShowFormSent] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
   const [showFormLoading, setShowFormLoading] = useState(false);
   const [showFormSuccess, setShowFormSuccess] = useState(false);
   const [showFormError, setShowFormError] = useState(false);
@@ -107,6 +107,10 @@ function ContactForm(props) {
 
   async function handleSubmit(e) {
     e.preventDefault();
+
+    setShowFormLoading(true);
+    setFormSubmitted(true);
+
     const form = e.target;
     fetch("/", {
       method: "POST",
@@ -124,8 +128,6 @@ function ContactForm(props) {
     })
       .then(() => {
         // showFormInputs();
-        setShowFormSent(true);
-        setShowFormLoading(true);
         handleFormSent();
       })
       .catch((error) => handleFormError(error));
@@ -137,12 +139,12 @@ function ContactForm(props) {
   }
 
   function handleFormSent() {
-    let timer = setTimeout(() => {
-      setShowFormLoading(false);
-      setShowFormSuccess(true);
+    // let timer = setTimeout(() => {
+    setShowFormLoading(false);
+    setShowFormSuccess(true);
 
-      clearTimeout(timer);
-    }, 800);
+    // clearTimeout(timer);
+    // }, 800);
   }
 
   function handleFormError(error) {
@@ -244,7 +246,7 @@ function ContactForm(props) {
           required
         />
 
-        {showFormSent && (
+        {formSubmitted && (
           <EmailLoading
             showFormLoading={showFormLoading}
             showFormSuccess={showFormSuccess}
@@ -254,7 +256,7 @@ function ContactForm(props) {
           />
         )}
 
-        {!showFormSent && <SubmitButton />}
+        {!formSubmitted && <SubmitButton />}
       </StyledForm>
     </FormContainer>
   );

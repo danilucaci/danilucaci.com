@@ -141,12 +141,13 @@ const Page = styled.div`
 `;
 
 class Layout extends Component {
+  // cookieExp set in days same as GA expiry date
   state = {
     hasGDPRConsent: false,
     askCookieConsent: false,
     acceptsCookie: { necessary: true, analytics: true, dismissed: false },
     deniesCookie: { necessary: true, analytics: false, dismissed: true },
-    cookieExp: 780, // cookieExp set in days same as GA expiry date
+    cookieExp: 780,
     showLogs: true,
   };
 
