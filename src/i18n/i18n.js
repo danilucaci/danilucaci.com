@@ -51,6 +51,10 @@ export const FORM_SUBMIT_STATUS = {
     es:
       "Lo siento 😔, tu mensaje no ha podido ser enviado, por favor prueba más tarde de nuevo.",
   },
+  cta: {
+    en: "Message Sent!",
+    es: "¡Mensaje Enviado!",
+  },
 };
 
 export const INPUT_EMAIL_ERROR = {

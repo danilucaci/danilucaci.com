@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 
@@ -7,15 +7,10 @@ import Label from "../Label/Label";
 import Input from "../Input/Input";
 import SubmitButton from "../SubmitButton/SubmitButton";
 import TextArea from "../TextArea/TextArea";
-import { Copy } from "../Copy/Copy";
-import {
-  CONSENT_VALUE,
-  FORM_SUBMIT_STATUS,
-  INPUT_EMAIL_ERROR,
-} from "../../i18n/i18n";
+
+import { CONSENT_VALUE, INPUT_EMAIL_ERROR } from "../../i18n/i18n";
 import PrivacyCheckbox from "../PrivacyCheckbox/PrivacyCheckbox";
-import SelfDestruct from "../SelfDestruct/SelfDestruct";
-import Spinner from "../Spinner/Spinner";
+import EmailLoading from "../EmailLoading/EmailLoading";
 
 const FormContainer = styled.div``;
 
@@ -77,46 +72,8 @@ const StyledTextArea = styled(TextArea)`
   margin-top: ${rem(8)};
 `;
 
-const SuccessTitle = styled(Copy)`
-  color: ${theme.colors.main600};
-  display: block;
-  font-size: ${theme.fontSizes.m};
-  line-height: ${theme.lineHeights.s};
-  font-weight: 700;
-
-  & .fonts-loaded {
-    font-family: ${theme.fonts.bodyBold};
-  }
-`;
-
-const SuccessSubtitle = styled(Copy)`
-  color: ${theme.colors.main600};
-  display: block;
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s};
-`;
-
-const EmailStatusMessage = styled.div`
-  border: ${rem(2)} solid ${theme.colors.main600};
-  border-radius: ${theme.borderRadius.buttons};
-  display: block;
-  background-color: ${theme.colors.gray100};
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s};
-  color: ${theme.colors.main600};
-  padding: ${rem(16)};
-  margin-top: ${rem(24)};
-  ${theme.shadow.subscribeSuccessMessage};
-  white-space: pre-line;
-`;
-
 function ContactForm(props) {
   let locale = props.locale;
-
-  // Controls the form status messages render duration time
-  // It is passed to the useExpiration component
-  // To render a component with an error or success message
-  const expireAfter = 6000;
 
   let thanksURL;
 
@@ -136,14 +93,33 @@ function ContactForm(props) {
   const [dateSent, setDateSent] = useState(mailSentTimeStamp());
   const [botField, setBotField] = useState("");
   const [acceptsConsentCheckbox, setAcceptsConsentCheckbox] = useState(false);
+  const [showFormSent, setShowFormSent] = useState(false);
   const [showFormLoading, setShowFormLoading] = useState(false);
   const [showFormSuccess, setShowFormSuccess] = useState(false);
   const [showFormError, setShowFormError] = useState(false);
+  const [formErrorRes, setFormErrorRes] = useState({});
+
+  function showFormInputs() {
+    console.log(`fullname: ${fullName}`);
+    console.log(`email: ${email}`);
+    console.log(`message: ${message}`);
+    console.log(`dateSent: ${mailSentTimeStamp()}`);
+    console.log(`botfield: ${botField}`);
+    console.log(`acceptsConsentCheckbox: ${acceptsConsentCheckbox}`);
+  }
+
+  function encode(data) {
+    return Object.keys(data)
+      .map(
+        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+      )
+      .join("&");
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
     const form = e.target;
-    fetch("/", {
+    fetch("/s", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({
@@ -158,30 +134,12 @@ function ContactForm(props) {
       }),
     })
       .then(() => {
-        showFormInputs();
+        // showFormInputs();
+        setShowFormSent(true);
         setShowFormLoading(true);
         handleFormSent();
       })
-      // .then(() => navigate(form.getAttribute("action")))
-      .catch((error) => setShowFormError(true));
-  }
-
-  function encode(data) {
-    return Object.keys(data)
-      .map(
-        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
-      )
-      .join("&");
-  }
-
-  function showFormInputs() {
-    console.log(`fullname: ${fullName}`);
-    console.log(`email: ${email}`);
-    console.log(`message: ${message}`);
-    console.log(`dateSent: ${mailSentTimeStamp()}`);
-    console.log(`botfield: ${botField}`);
-    console.log(`acceptsConsentCheckbox: ${acceptsConsentCheckbox}`);
-    console.log(`alog: ${CONSENT_VALUE[locale].yes}`);
+      .catch((error) => handleFormError(error));
   }
 
   function handleConsentCheckbox(e) {
@@ -190,33 +148,23 @@ function ContactForm(props) {
   }
 
   function handleFormSent() {
-    if (!showFormError) {
-      let timer = setTimeout(() => {
-        setShowFormLoading(false);
-        setShowFormSuccess(true);
+    // let timer = setTimeout(() => {
+    setShowFormLoading(false);
+    setShowFormSuccess(true);
 
-        clearTimeout(timer);
-      }, 2000);
-    }
+    // clearTimeout(timer);
+    // }, 1000);
   }
 
-  useEffect(() => {
-    if (showFormSuccess) {
-      // self clearing setTimeout
-      let showSuccessTimer = setTimeout(() => {
-        setShowFormSuccess(false);
-      }, expireAfter);
-      return () => clearTimeout(showSuccessTimer);
-    }
+  function handleFormError(error) {
+    let timer = setTimeout(() => {
+      setShowFormLoading(false);
+      setShowFormError(true);
+      setFormErrorRes(error);
 
-    if (showFormError) {
-      // self clearing setTimeout
-      let showErrorTimer = setTimeout(() => {
-        setShowFormError(false);
-      }, expireAfter);
-      return () => clearTimeout(showErrorTimer);
-    }
-  }, [showFormSuccess, showFormError]);
+      clearTimeout(timer);
+    }, 4000);
+  }
 
   return (
     <FormContainer>
@@ -307,35 +255,17 @@ function ContactForm(props) {
           required
         />
 
-        {showFormSuccess && (
-          <>
-            <StyledSubmitButton type="sent" turnOff={true} />
-            <SelfDestruct time={expireAfter}>
-              <EmailStatusMessage>
-                <SuccessTitle>
-                  {FORM_SUBMIT_STATUS.successTitle[locale]}
-                </SuccessTitle>
-                <SuccessSubtitle>
-                  {FORM_SUBMIT_STATUS.successSubtitle[locale]}
-                </SuccessSubtitle>
-              </EmailStatusMessage>
-            </SelfDestruct>
-          </>
+        {showFormSent && (
+          <EmailLoading
+            showFormSuccess={showFormSuccess}
+            showFormLoading={showFormLoading}
+            showFormError={showFormError}
+            formErrorRes={formErrorRes}
+            locale={locale}
+          />
         )}
 
-        {showFormLoading && <Spinner />}
-
-        {!showFormSuccess && !showFormLoading && (
-          <StyledSubmitButton type="submit" />
-        )}
-
-        {showFormError && (
-          <SelfDestruct time={expireAfter}>
-            <EmailStatusMessage>
-              {FORM_SUBMIT_STATUS.error[locale]}
-            </EmailStatusMessage>
-          </SelfDestruct>
-        )}
+        {!showFormSuccess && !showFormLoading && <StyledSubmitButton />}
       </StyledForm>
     </FormContainer>
   );

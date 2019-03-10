@@ -52,7 +52,7 @@ const StyledSubmitButton = styled.input`
 `;
 
 // High 5 to: https://stackoverflow.com/questions/39630620/react-intl-how-to-use-formattedmessage-in-input-placeholder
-function SubmitButton({ intl, type, ...rest }) {
+function SubmitButton({ intl, type = "submit", ...rest }) {
   let str = toUpperCamelCase(type);
 
   const placeholder = intl.formatMessage({ id: `formSubmit${str}` });
@@ -62,7 +62,7 @@ function SubmitButton({ intl, type, ...rest }) {
 
 SubmitButton.propTypes = {
   intl: intlShape.isRequired,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
 };
 
 export default injectIntl(SubmitButton);
