@@ -56,17 +56,6 @@ const StyledInput = styled(Input)`
   margin-top: ${rem(8)};
 `;
 
-const StyledSubmitButton = styled(SubmitButton)`
-  ${(props) =>
-    props.turnOff &&
-    css`
-      pointer-events: none !important;
-      background-color: ${theme.colors.main500};
-      color: ${theme.colors.main100};
-      ${theme.shadow.buttons.main} !important;
-    `}
-`;
-
 const StyledTextArea = styled(TextArea)`
   display: block;
   margin-top: ${rem(8)};
@@ -119,7 +108,7 @@ function ContactForm(props) {
   async function handleSubmit(e) {
     e.preventDefault();
     const form = e.target;
-    fetch("/s", {
+    fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({
@@ -257,15 +246,15 @@ function ContactForm(props) {
 
         {showFormSent && (
           <EmailLoading
-            showFormSuccess={showFormSuccess}
             showFormLoading={showFormLoading}
+            showFormSuccess={showFormSuccess}
             showFormError={showFormError}
             formErrorRes={formErrorRes}
             locale={locale}
           />
         )}
 
-        {!showFormSuccess && !showFormLoading && <StyledSubmitButton />}
+        {!showFormSent && <SubmitButton />}
       </StyledForm>
     </FormContainer>
   );
