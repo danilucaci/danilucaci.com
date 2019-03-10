@@ -4,7 +4,7 @@ import styled, { keyframes } from "styled-components";
 import { FormattedMessage } from "react-intl";
 import { graphql, StaticQuery } from "gatsby";
 
-import { theme, mediaMin, mediaMax, rem } from "../../theme/globalStyles";
+import { theme, rem } from "../../theme/globalStyles";
 import { Checkbox } from "../Checkbox/Checkbox";
 
 const StyledCheckboxLabel = styled.label`

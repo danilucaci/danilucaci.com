@@ -7,7 +7,7 @@ import { graphql, StaticQuery } from "gatsby";
 import { theme, rem, mediaMin } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
 import { DarkGhostButton, PrimaryButton } from "../Button/Button";
-import ExternalLocaleLink from "../ExternalLocaleLink/ExternalLocaleLink";
+import { DefaultLink } from "../Link/Link";
 
 const StyledCookieConsent = styled.aside`
   background-color: ${theme.colors.gray100};
@@ -35,7 +35,7 @@ const StyledCookieConsent = styled.aside`
   `};
 `;
 
-const LearnMoreLink = styled(ExternalLocaleLink)`
+const LearnMoreLink = styled(DefaultLink)`
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s} !important;
   display: inline;
@@ -88,6 +88,7 @@ const CookieConsent = (props) => {
                 locale: edge.node.frontmatter.locale,
               }))
               .filter((edge) => edge.locale === props.pageLocale);
+            console.log(localizedDocsList);
             return (
               <>
                 {localizedDocsList.map((localizedDoc) => (
@@ -97,7 +98,7 @@ const CookieConsent = (props) => {
                   >
                     {(txt) => (
                       <LearnMoreLink
-                        href={localizedDoc.slug}
+                        to={localizedDoc.slug}
                         target="_blank"
                         rel="noopener"
                       >
