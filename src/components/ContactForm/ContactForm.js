@@ -142,7 +142,7 @@ function ContactForm(props) {
       setShowFormSuccess(true);
 
       clearTimeout(timer);
-    }, 500);
+    }, 800);
   }
 
   function handleFormError(error) {
