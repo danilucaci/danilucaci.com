@@ -137,12 +137,12 @@ function ContactForm(props) {
   }
 
   function handleFormSent() {
-    // let timer = setTimeout(() => {
-    setShowFormLoading(false);
-    setShowFormSuccess(true);
+    let timer = setTimeout(() => {
+      setShowFormLoading(false);
+      setShowFormSuccess(true);
 
-    // clearTimeout(timer);
-    // }, 1000);
+      clearTimeout(timer);
+    }, 500);
   }
 
   function handleFormError(error) {
