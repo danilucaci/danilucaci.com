@@ -4,14 +4,15 @@ slug: "politica privacidad"
 category: "legal"
 posted: true
 locale: "es"
-date: "12/03/2019"
+date: "2019-03-12"
 twinPost: "Privacy policy"
 forCookieConsent: true
 privacy: true
 ---
 
-## Proteccion De Datos De Caracter Personal Segun El RGPD
-Marian Daniel Lucaci, en aplicación de la normativa vigente en materia de protección de datos de carácter personal, informa que los datos personales que se recogen a través de los formularios del Sitio web: https://www.danilucaci.com, se incluyen en los ficheros automatizados específicos de usuarios de los servicios de Marian Daniel Lucaci
+## Protección De Datos De Caracter Personal Según El RGPD
+
+Marian Daniel Lucaci, en aplicación de la normativa vigente en materia de protección de datos de carácter personal, informa que los datos personales que se recogen a través de los formularios del Sitio web: <a href="https://www.danilucaci.com/es" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>, se incluyen en los ficheros automatizados específicos de usuarios de los servicios de Marian Daniel Lucaci
 
 La recogida y tratamiento automatizado de los datos de carácter personal tiene como finalidad el mantenimiento de la relación comercial y el desempeño de tareas de información, formación, asesoramiento y otras actividades propias de Marian Daniel Lucaci
 
@@ -19,29 +20,29 @@ Estos datos únicamente serán cedidos a aquellas entidades que sean necesarias 
 
 Marian Daniel Lucaci adopta las medidas necesarias para garantizar la seguridad, integridad y confidencialidad de los datos conforme a lo dispuesto en el Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protección de las personas físicas en lo que respecta al tratamiento de datos personales y a la libre circulación de los mismos.
 
-El usuario podrá en cualquier momento ejercitar los derechos de acceso, oposición, rectificación, cancelación, limitación y portabilidad reconocidos en el citado Reglamento (UE). El ejercicio de estos derechos puede realizarlo el propio usuario a través de email a: info@danilucaci.com o en la dirección: Carrer Anastasi Pinós, 20, 2º, 2ª, C.P. 25005 - Lleida (Lleida).
+El usuario podrá en cualquier momento ejercitar los derechos de acceso, oposición, rectificación, cancelación, limitación y portabilidad reconocidos en el citado Reglamento (UE). El ejercicio de estos derechos puede realizarlo el propio usuario a través de email a: <a href="mailto:info@danilucaci.com">info@danilucaci.com</a> o en la dirección: Carrer Anastasi Pinós, 20, 2º, 2ª, C.P. 25005 - Lleida (Lleida).
 
 El usuario manifiesta que todos los datos facilitados por él son ciertos y correctos, y se compromete a mantenerlos actualizados, comunicando los cambios a Marian Daniel Lucaci
 
 ## Finalidad Del Tratamiento De Los Datos Personales
 
-### Con Que Finalidad Trataremos Tus Datos Personales
+### Con Qúe Finalidad Trataremos Tus Datos Personales
 
-En Marian Daniel Lucaci, trataremos tus datos personales recabados a través del Sitio Web: https://www.danilucaci.com, con las siguientes finalidades:
+En Marian Daniel Lucaci, trataremos tus datos personales recabados a través del Sitio Web: <a href="https://www.danilucaci.com/es" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>, con las siguientes finalidades:
 
-1. En caso de contratación de los bienes y servicios ofertados a través de https://www.danilucaci.com, para mantener la relación contractual, así como la gestión, administración, información, prestación y mejora del servicio.
-2. Envío de información solicitada a través de los formularios dispuestos en https://www.danilucaci.com.
-3. Remitir boletines (newsletters), así como comunicaciones comerciales de promociones y/o publicidad de https://www.danilucaci.com y del sector.
+1. En caso de contratación de los bienes y servicios ofertados a través de <a href="https://www.danilucaci.com/es" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>, para mantener la relación contractual, así como la gestión, administración, información, prestación y mejora del servicio.
+2. Envío de información solicitada a través de los formularios dispuestos en <a href="https://www.danilucaci.com/es" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>.
+3. Remitir boletines (newsletters), así como comunicaciones comerciales de promociones y/o publicidad de <a href="https://www.danilucaci.com/es" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> y del sector.
 
 Te recordamos que puedes oponerte al envío de comunicaciones comerciales por cualquier vía y en cualquier  momento, remitiendo un correo electrónico a la dirección anteriormente indicada.
 
 Los campos de dichos registros son de cumplimentación obligatoria, siendo imposible realizar las finalidades expresadas si no se aportan esos datos.
 
-## Por Cuanto Tiempo Se Conservan Los Datos Personales Recabados
+## Por Cúanto Tiempo Se Conservan Los Datos Personales Recabados
 
 Los datos personales proporcionados se conservarán mientras se mantenga la relación comercial o no solicites su supresión y durante el plazo por el cuál pudieran derivarse responsabilidades legales por los servicios prestados.
 
-## Legitimacion
+## Legitimación
 El tratamiento de tus datos se realiza con las siguientes bases jurídicas que legitiman el mismo:
 
 1. La solicitud de información y/o la contratación de los servicios de Marian Daniel Lucaci, cuyos términos y condiciones se pondrán a tu disposición en todo caso, de forma previa a una eventual contratación.
@@ -61,18 +62,18 @@ Como encargados de tratamiento, tenemos contratados a los siguientes proveedores
 
 En los casos en que el usuario incluya ficheros con datos de carácter personal en los servidores de alojamiento compartido, Marian Daniel Lucaci no se hace responsable del incumplimiento por parte del usuario del RGPD.
 
-## Retencion De Datos En Conformidad A La LSSI
+## Retención De Datos En Conformidad A La LSSI
 
 Marian Daniel Lucaci informa de que, como prestador de servicio de alojamiento de datos y en virtud de lo establecido en la Ley 34/2002 de 11 de julio de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI), retiene por un periodo máximo de 12 meses la información imprescindible para identificar el origen de los datos alojados y el momento en que se inició la prestación del servicio. La retención de estos datos no afecta al secreto de las comunicaciones y sólo podrán ser utilizados en el marco de una investigación criminal o para la salvaguardia de la seguridad pública, poniéndose a disposición de los jueces y/o tribunales o del Ministerio que así los requiera.
 
 La comunicación de datos a las Fuerzas y Cuerpos del Estado se hará en virtud a lo dispuesto en la normativa sobre protección de datos personales.
 
 ## Derechos Propiedad Intelectual
-https://www.danilucaci.com
+<a href="https://www.danilucaci.com/es" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
 
-Marian Daniel Lucaci es titular de todos los derechos de autor, propiedad intelectual, industrial, "know how" y cuantos otros derechos guardan relación con los contenidos del sitio web https://www.danilucaci.com y los servicios ofertados en el mismo, así como de los programas necesarios para su implementación y la información relacionada.
+Marian Daniel Lucaci es titular de todos los derechos de autor, propiedad intelectual, industrial, "know how" y cuantos otros derechos guardan relación con los contenidos del sitio web <a href="https://www.danilucaci.com/es" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> y los servicios ofertados en el mismo, así como de los programas necesarios para su implementación y la información relacionada.
 
-No se permite la reproducción, publicación y/o uso no estrictamente privado de los contenidos, totales o parciales, del sitio web https://www.danilucaci.com sin el consentimiento previo y por escrito.
+No se permite la reproducción, publicación y/o uso no estrictamente privado de los contenidos, totales o parciales, del sitio web <a href="https://www.danilucaci.com/es" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> sin el consentimiento previo y por escrito.
 
 ## Propiedad Intelectual Del Software
 
@@ -99,7 +100,7 @@ El usuario es responsable respecto a las leyes y reglamentos en vigor y las regl
 
 El usuario indemnizará a Marian Daniel Lucaci por los gastos que generara la imputación de Marian Daniel Lucaci en alguna causa cuya responsabilidad fuera atribuible al usuario, incluidos honorarios y gastos de defensa jurídica, incluso en el caso de una decisión judicial no definitiva.
 
-## Proteccion De La Informacion Alojada
+## Protección De La Información Alojada
 
 Marian Daniel Lucaci realiza copias de seguridad de los contenidos alojados en sus servidores, sin embargo no se responsabiliza de la pérdida o el borrado accidental de los datos por parte de los usuarios. De igual manera, no garantiza la reposición total de los datos borrados por los usuarios, ya que los citados datos podrían haber sido suprimidos y/o modificados durante el periodo del tiempo transcurrido desde la última copia de seguridad.
 

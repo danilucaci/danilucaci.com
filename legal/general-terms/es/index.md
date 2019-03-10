@@ -4,11 +4,11 @@ slug: "Condiciones Generales de Contratación"
 category: "legal"
 posted: true
 locale: "es"
-date: "12/03/2019"
+date: "2019-03-12"
 twinPost: "General Contracting Conditions"
 ---
 
-https://www.danilucaci.com (en adelante, la Web) es un sitio web propiedad de Marian Daniel Lucaci, en adelante EL PROPIETARIO, con CIF/NIF nº: X6225803W y domicilio social en: Carrer Anastasi Pinós, 20, 2º, 2ª, C.P. 25005 - Lleida (Lleida).
+<a href="https://www.danilucaci.com/es" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a> (en adelante, la Web) es un sitio web propiedad de Marian Daniel Lucaci, en adelante EL PROPIETARIO, con CIF/NIF nº: X6225803W y domicilio social en: Carrer Anastasi Pinós, 20, 2º, 2ª, C.P. 25005 - Lleida (Lleida).
 
 El acceso, reproducción y uso de los servicios de la Web requiere la aceptación previa de las Condiciones de Uso vigentes en cada momento; EL PROPIETARIO se reserva el derecho de modificar dichas Condiciones cuando lo considere oportuno, mediante la publicación del nuevo texto en la Web.
 

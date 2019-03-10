@@ -4,11 +4,11 @@ slug: "General Contracting Conditions"
 category: "legal"
 posted: true
 locale: "en"
-date: "12/03/2019"
+date: "2019-03-12"
 twinPost: "Condiciones Generales de Contratación"
 ---
 
-https://www.danilucaci.com (hereinafter, the Website) is a website owned by Marian Daniel Lucaci, hereinafter THE OWNER, with CIF / NIF No.: X6225803W and registered office at: Carrer Anastasi Pinós, 20, 2º, 2ª, C.P. 25005 - Lleida (Lleida).
+<a href="https://www.danilucaci.com" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> (hereinafter, the Website) is a website owned by Marian Daniel Lucaci, hereinafter THE OWNER, with CIF / NIF No.: X6225803W and registered office at: Carrer Anastasi Pinós, 20, 2º, 2ª, C.P. 25005 - Lleida (Lleida).
 
 The access, reproduction and use of the services of the Web requires the prior acceptance of the current Conditions of Use at any time; THE OWNER reserves the right to modify said Conditions when it deems appropriate, by publishing the new text on the Web. It is the responsibility of the user to know the Conditions of Use before accessing the products and services of the Web;
 
@@ -24,7 +24,7 @@ In addition to the above, THE OWNER is responsible for the selection, design of 
 
 THE OWNER is also the sole owner of the graphic design and image of the Web, reserving the pertinent legal actions that may correspond against the persons who perform imitations or unfair uses thereof.
 
-### Web Contents And Downloads Uses Permitted And Prohibited
+## Web Contents And Downloads Uses Permitted And Prohibited
 
 ### It Is Allowed
 

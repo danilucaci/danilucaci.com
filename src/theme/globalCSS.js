@@ -1,7 +1,7 @@
-import styled, { createGlobalStyle } from "styled-components";
-import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
+import { createGlobalStyle } from "styled-components";
+import { theme, mediaMin, rem } from "../theme/globalStyles";
 
-const GlobalHTML = createGlobalStyle`
+const GlobalCSS = createGlobalStyle`
   html {
     background-color: #F5F6F7;
     color: #3A4554;
@@ -53,6 +53,7 @@ const GlobalHTML = createGlobalStyle`
     font-style: normal;
     font-family: ${theme.fonts.header};
     font-size: ${theme.fontSizes.h1s};
+
     ${mediaMin.xs`
       font-size: ${theme.fontSizes.h1};
     `}
@@ -69,6 +70,7 @@ const GlobalHTML = createGlobalStyle`
     font-style: normal;
     font-family: ${theme.fonts.header};
     font-size: ${theme.fontSizes.h2s};
+
     ${mediaMin.xs`
       font-size: ${theme.fontSizes.h2};
     `}
@@ -86,6 +88,7 @@ const GlobalHTML = createGlobalStyle`
     font-style: normal;
     font-family: ${theme.fonts.header};
     font-size: ${theme.fontSizes.h3s};
+
     ${mediaMin.xs`
       font-size: ${theme.fontSizes.h3};
     `}
@@ -116,6 +119,7 @@ const GlobalHTML = createGlobalStyle`
     font-weight: 700;
     font-style: normal;
     font-family: ${theme.fonts.header};
+
     ${mediaMin.s`
       font-size: ${theme.fontSizes.sectionHeaderXL};
       line-height: ${theme.lineHeights.sectionHeaderXL};
@@ -159,6 +163,15 @@ const GlobalHTML = createGlobalStyle`
     0% {
       color: ${theme.colors.dark900};
     }
+  }
+
+  strong, b {
+    color: ${theme.colors.dark800};
+    font-weight: 700 !important;
+    font-style: normal;
+    font-size: ${theme.fontSizes.m};
+    font-family: ${theme.fonts.bodyBold};
+    line-height: ${theme.lineHeights.m};
   }
 
   p,
@@ -238,4 +251,4 @@ const GlobalHTML = createGlobalStyle`
   }
 `;
 
-export default GlobalHTML;
+export default GlobalCSS;

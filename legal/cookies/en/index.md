@@ -4,11 +4,11 @@ slug: "cookie policy"
 category: "legal"
 posted: true
 locale: "en"
-date: "12/03/2019"
+date: "2019-03-12"
 twinPost: "Politica Cookies"
 ---
 
-Marian Daniel Lucaci provides information about the use of cookies on its website: https://www.danilucaci.com.
+Marian Daniel Lucaci provides information about the use of cookies on its website: <a href="https://www.danilucaci.com" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>.
 
 ## What Are Cookies
 
@@ -20,19 +20,19 @@ Among others, they make it possible for a webpage to store and recover informati
 
 Depending on the entity managing the domain from which the cookies are sent and processing the data, two types of cookie can be distinguished:
 
-* Proprietary cookies: Sent to the user’s device from equipment or a domain managed by the publisher of the website from which the service requested by the user is provided.
-* Third-party cookies: Sent to the user’s device from equipment or a domain that is not managed by the website published, but rather by another entity that processes the data obtained through the cookies. In cases where the cookies are installed from a computer or domain managed by the publisher, but the information collected through them is managed by a third party, they cannot be considered proprietary cookies. There is also another classification based on the period of time during which cookies remain stored in the client’s browser:
-* Session cookies: Designed to collect and store data while the user browses through a website. These are normally used to store information which is only kept for the provision of the service requested by the user on a single occasion (e.g. a list of bought products).
-* Persistent cookies: The data is still stored in the computer terminal and can be accessed and processed for a time period defined by the cookie owner, which can range from a few minutes to several years.
+* **Proprietary cookies:** Sent to the user’s device from equipment or a domain managed by the publisher of the website from which the service requested by the user is provided.
+* **Third-party cookies:** Sent to the user’s device from equipment or a domain that is not managed by the website published, but rather by another entity that processes the data obtained through the cookies. In cases where the cookies are installed from a computer or domain managed by the publisher, but the information collected through them is managed by a third party, they cannot be considered proprietary cookies. There is also another classification based on the period of time during which cookies remain stored in the client’s browser:
+* **Session cookies:** Designed to collect and store data while the user browses through a website. These are normally used to store information which is only kept for the provision of the service requested by the user on a single occasion (e.g. a list of bought products).
+* **Persistent cookies:** The data is still stored in the computer terminal and can be accessed and processed for a time period defined by the cookie owner, which can range from a few minutes to several years.
 
 Finally, there is another classification involving six types of cookies according to the purpose of the processing of the data obtained:
 
-* Technical cookies: Cookies that allow you to browse the website, platform or application and use the different options or services that it provides, such as controlling data traffic and communication, session identification, accessing to restricted access sections, saving elements that make up an order, undertaking the order process, processing sign up requests or event participation, using security elements during browsing, storing security contents to broadcast videos or audio, or sharing content via social networks.
-* Personalisation cookies: Let you access the service with some general predefined features in terms of a series of criteria on your terminal, such as language, browser used to access the service, regional settings for the location you are accessing the service from, etc.
-* Analytical cookies: Allow the person responsible for them to monitor and analyse the behaviour of the users of the websites to which they are linked. The information collected through this type of cookie is used to measure the activity of the websites, application or platform and to create browsing profiles of the users of said sites, applications and platforms, with the object of making improvements based on analysis of the usage data of the users of the service.
-* Advertising cookies: Allow the most efficient management possible of advertising spaces, etc.
-* Behavioural advertising cookies: These store your behavioural data, obtained by continually observing your browsing habits, to enable the development of a specific profile so that advertising can be displayed accordingly.
-* Cookies from external social networks: These are used so that visitors can interact with the content of different social platforms (Facebook, YouTube, Twitter, LinkedIn, etc.) and are generated only for the users of these social networks. The conditions of use of these cookies and the information collected is regulated by the privacy policy of the corresponding social platform.
+* **Technical cookies:** Cookies that allow you to browse the website, platform or application and use the different options or services that it provides, such as controlling data traffic and communication, session identification, accessing to restricted access sections, saving elements that make up an order, undertaking the order process, processing sign up requests or event participation, using security elements during browsing, storing security contents to broadcast videos or audio, or sharing content via social networks.
+* **Personalisation cookies:** Let you access the service with some general predefined features in terms of a series of criteria on your terminal, such as language, browser used to access the service, regional settings for the location you are accessing the service from, etc.
+* **Analytical cookies:** Allow the person responsible for them to monitor and analyse the behaviour of the users of the websites to which they are linked. The information collected through this type of cookie is used to measure the activity of the websites, application or platform and to create browsing profiles of the users of said sites, applications and platforms, with the object of making improvements based on analysis of the usage data of the users of the service.
+* **Advertising cookies:** Allow the most efficient management possible of advertising spaces, etc.
+* **Behavioural advertising cookies:** These store your behavioural data, obtained by continually observing your browsing habits, to enable the development of a specific profile so that advertising can be displayed accordingly.
+* **Cookies from external social networks:** These are used so that visitors can interact with the content of different social platforms (Facebook, YouTube, Twitter, LinkedIn, etc.) and are generated only for the users of these social networks. The conditions of use of these cookies and the information collected is regulated by the privacy policy of the corresponding social platform.
 
 ## How To Disable And Eliminate Cookies
 
@@ -42,15 +42,15 @@ The “Help” functionality can also help you. On this website, users can alway
 
 You can allow, block or eliminate cookies installed, through the options of your browser’s setting:
 
-* Microsoft Internet Explorer and Microsoft Edge: http://windows.microsoft.com/en-gb/windows-vista/Block-or-allow-cookies
-* Mozilla Firefox: https://support.mozilla.org/en-US/kb/block-websites-storing-site-preferences
-* Chrome: https://support.google.com/accounts/answer/61416?hl=en
-* Safari: http://safari.helpmax.net/en/privacy-and-security/managing-cookies/
-* Opera: https://help.opera.com/en/latest/web-preferences/#cookies
+* <a href="http://windows.microsoft.com/en-gb/windows-vista/Block-or-allow-cookies" target="_blank" rel="noopener">Microsoft Internet Explorer and Microsoft Edge<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
+* <a href="https://support.mozilla.org/en-US/kb/block-websites-storing-site-preferences" target="_blank" rel="noopener">Mozilla Firefox<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
+* <a href="https://support.google.com/accounts/answer/61416?hl=en" target="_blank" rel="noopener">Chrome<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
+* <a href="https://support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac" target="_blank" rel="noopener">Safari<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
+* <a href="https://help.opera.com/en/latest/web-preferences/#cookies" target="_blank" rel="noopener">Opera<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
 
 You can also manage cookie storage in your browser by means of tools like these:
-* Ghostery: www.ghostery.com
-* Your Online Choices: www.youronlinechoices.com
+* <a href="https://www.ghostery.com" target="_blank" rel="noopener">Ghostery<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
+* <a href="https://www.youronlinechoices.com" target="_blank" rel="noopener">Your Online Choices<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
 
 ## Cookies Used by danilucaci.com
 
@@ -59,10 +59,10 @@ The cookies used on this website are listed below, with their type and function:
 # PENDIENTE
 
 ## Cookie Policy Acceptance
-Marian Daniel Lucaci, through https://www.danilucaci.com, understands that you accept the use of cookies. However, the group displays information about its Cookie Policy on any website page at the start of every session so that you will be aware of it.
+Marian Daniel Lucaci, through <a href="https://www.danilucaci.com" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>, understands that you accept the use of cookies. However, the group displays information about its Cookie Policy on any website page at the start of every session so that you will be aware of it.
 
 **With this information, you can take the following actions:**
 
-* Accept cookies: This warning will not longer be viewed when accessing any website page during the current session.
-* Close: The notification is hidden on this page.
-* Change the settings: You can find more information about cookies, reading the Cookie Policy of our website: https://www.danilucaci.com, and changing your browser settings.
+* **Accept cookies:** This warning will not longer be viewed when accessing any website page during the current session.
+* **Close:** The notification is hidden on this page.
+* **Change the settings:** You can find more information about cookies, reading the Cookie Policy of our website: <a href="https://www.danilucaci.com" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>, and changing your browser settings.

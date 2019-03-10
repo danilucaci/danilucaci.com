@@ -26,16 +26,15 @@ const PageWrapper = styled.section`
     padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
 `};
+
+  p {
+    font-feature-settings: "onum";
+  }
 `;
 
 const PostH1 = styled.h1`
-  margin-top: ${rem(8)};
-  margin-bottom: ${rem(8)};
-
-  ${mediaMin.m`
-    margin-top: ${rem(16)};
-    margin-bottom: ${rem(16)};
-  `};
+  margin-top: ${rem(16)};
+  margin-bottom: ${rem(16)};
 `;
 
 const PostContent = styled.div`
@@ -44,9 +43,11 @@ const PostContent = styled.div`
   margin-left: auto;
   margin-right: auto;
 
+  margin-top: ${rem(16)};
   margin-bottom: ${theme.spacing.components.s};
 
   ${mediaMin.m`
+    margin-top: ${rem(32)};
     margin-bottom: ${theme.spacing.components.m};
   `};
 
@@ -56,39 +57,27 @@ const PostContent = styled.div`
 
   h2 {
     display: block;
-    margin-top: ${rem(32)};
-    margin-bottom: ${rem(16)};
 
-    ${mediaMin.xs`
-      margin-top: ${rem(64)};
-      margin-bottom: ${rem(32)};
-    `};
+    margin-top: ${rem(64)};
+    margin-bottom: ${rem(32)};
 
-    &:first-of-type {
+    & + h3 {
       margin-top: ${rem(32)};
     }
   }
 
   h3 {
     display: block;
-    margin-top: ${rem(32)};
-    margin-bottom: ${rem(16)};
 
-    ${mediaMin.xs`
-      margin-top: ${rem(64)};
-      margin-bottom: ${rem(32)};
-    `};
+    margin-top: ${rem(64)};
+    margin-bottom: ${rem(32)};
   }
 
   h4 {
     display: block;
-    margin-top: ${rem(32)};
-    margin-bottom: ${rem(16)};
 
-    ${mediaMin.xs`
-      margin-top: ${rem(64)};
-      margin-bottom: ${rem(32)};
-    `};
+    margin-top: ${rem(64)};
+    margin-bottom: ${rem(32)};
   }
 
   p,
@@ -100,15 +89,6 @@ const PostContent = styled.div`
 
 const Time = styled(Copy)`
   display: inline-block;
-  font-variant: small-caps;
-  text-transform: lowercase;
-  letter-spacing: ${rem(0.5)};
-  font-feature-settings: "smcp", "c2sc", "onum";
-  margin-bottom: ${rem(32)};
-
-  & + h2 {
-    margin-bottom: 0;
-  }
 `;
 
 class LegalDoc extends Component {
@@ -176,7 +156,7 @@ class LegalDoc extends Component {
             <PostH1>{postInfo.title}</PostH1>
             <FormattedMessage id="legalUpdated">
               {(txt) => (
-                <Copy small>
+                <Copy>
                   {txt}&nbsp;
                   <FormattedDate
                     value={lastUpdated}

@@ -30,7 +30,7 @@ import {
 import { theme } from "../theme/globalStyles";
 import GlobalReset from "../theme/globalReset";
 import GlobalAria from "../theme/globalAria";
-import GlobalHTML from "../theme/globalCSS";
+import GlobalCSS from "../theme/globalCSS";
 import { SVGSprite } from "./SVGSprite/SVGSprite";
 import SkipToMainContent from "./SkipToMainContent/SkipToMainContent";
 import CookieConsent from "./CookieConsent/CookieConsent";
@@ -434,7 +434,7 @@ class Layout extends Component {
             <SkipToMainContent />
             <GlobalReset />
             <GlobalAria />
-            <GlobalHTML />
+            <GlobalCSS />
             <SVGSprite />
             {/* <CookieConsent
                   askCookieConsent={this.state.askCookieConsent}

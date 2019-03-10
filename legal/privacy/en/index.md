@@ -4,7 +4,7 @@ slug: "privacy policy"
 category: "legal"
 posted: true
 locale: "en"
-date: "12/03/2019"
+date: "2019-03-12"
 twinPost: "Politica Privacidad"
 forCookieConsent: true
 privacy: true
@@ -12,7 +12,7 @@ privacy: true
 
 ## Personal Data Protection According To GDPR
 
-Marian Daniel Lucaci under current legislation regarding personal data protection, reports that personal data collected through the forms available on the website: https://www.danilucaci.com , are included in computerized files for user specific services of Marian Daniel Lucaci.
+Marian Daniel Lucaci under current legislation regarding personal data protection, reports that personal data collected through the forms available on the website: <a href="https://www.danilucaci.com" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> , are included in computerized files for user specific services of Marian Daniel Lucaci.
 
 Personal data collection and processing are aimed at maintaining business relationship and performance in tasks of information, training, counseling and other activities.
 
@@ -20,7 +20,7 @@ Data only will be transferred to those entities that are necessary for the sole 
 
 Marian Daniel Lucaci will adopt the necessary measures to ensure the security, integrity and confidentiality for data in accordance with the provisions in the EU General Data Protection Regulation (GDPR).
 
-User may at any time exercise their rights in access, opposition, rectification, limitation, portability and cancellation recognized in Data Protection Regulation. User can exercise these rights free via email to: info@danilucaci.com or in the address: Carrer Anastasi Pinós, 20, 2º, 2ª, C.P. 25005 - Lleida (Lleida). 
+User may at any time exercise their rights in access, opposition, rectification, limitation, portability and cancellation recognized in Data Protection Regulation. User can exercise these rights free via email to: <a href="mailto:info@danilucaci.com">info@danilucaci.com</a> or in the address: Carrer Anastasi Pinós, 20, 2º, 2ª, C.P. 25005 - Lleida (Lleida). 
 
 You represent that all information provided by him are true and correct and undertake to keep them updated, communicating changes to Marian Daniel Lucaci.
 
@@ -28,9 +28,9 @@ You represent that all information provided by him are true and correct and unde
 
 ### What Purpose Will We Treat Your Personal Data
 
-In Marian Daniel Lucaci, we will treat your personal data collected through the Website: https://www.danilucaci.com, withthe following purposes:
-1. In case of contracting the goods and services offered through: https://www.danilucaci.com, to maintain the contractual relationship, as well as the management, administration, information, provision and improvement of the service.
-2. Sending requested information through the forms provided at https://www.danilucaci.com.
+In Marian Daniel Lucaci, we will treat your personal data collected through the Website: <a href="https://www.danilucaci.com" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>, with the following purposes:
+1. In case of contracting the goods and services offered through: <a href="https://www.danilucaci.com" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>, to maintain the contractual relationship, as well as the management, administration, information, provision and improvement of the service.
+2. Sending requested information through the forms provided at <a href="https://www.danilucaci.com" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>.
 3. Send newsletters, as well as commercial communications of promotions and/or advertising of Marian Daniel Lucaci, and the sector.
 
 We remind you that you can oppose the sending of commercial communications by any means and at any time, by sending an email to the address indicated above.
@@ -71,9 +71,9 @@ Data communication to State Forces will be under legal provisions on personal da
 
 ## Intellectual Property Rights
 
-Marian Daniel Lucaci owns all copyrights, intellectual property, industrial, "know how" and any other rights related to the content from the website https://www.danilucaci.com and the services offered on it, as well as the programs necessary for its implementation and related information.
+Marian Daniel Lucaci owns all copyrights, intellectual property, industrial, "know how" and any other rights related to the content from the website <a href="https://www.danilucaci.com" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> and the services offered on it, as well as the programs necessary for its implementation and related information.
 
-No available any reproduction, publication and/or use for the contents strictly private, full or partial, at the website https://www.danilucaci.com without a prior written consent.
+No available any reproduction, publication and/or use for the contents strictly private, full or partial, at the website <a href="https://www.danilucaci.com" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> without a prior written consent.
 
 ## Software Intellectual Property Rights
 
