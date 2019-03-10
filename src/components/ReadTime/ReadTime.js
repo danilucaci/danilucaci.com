@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
 
-import { rem } from "../../theme/globalStyles";
+import { theme, rem } from "../../theme/globalStyles";
 import { Icon } from "../Icon/Icon";
 import { Copy } from "../Copy/Copy";
 
@@ -19,6 +19,7 @@ const Label = styled(Copy)`
 
 const StyledIcon = styled(Icon)`
   display: inline-block;
+  fill: ${theme.colors.dark700};
   margin-right: ${rem(2)};
   margin-bottom: ${rem(3)};
 `;

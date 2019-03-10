@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { FormattedDate } from "react-intl";
 
-import { rem } from "../../theme/globalStyles";
+import { theme, rem } from "../../theme/globalStyles";
 import { Icon } from "../Icon/Icon";
 import { Copy } from "../Copy/Copy";
 
@@ -16,6 +16,7 @@ const Wrapper = styled.div`
 
 const StyledIcon = styled(Icon)`
   display: inline-block;
+  fill: ${theme.colors.dark700};
   margin-right: ${rem(3)};
   margin-bottom: ${rem(4)};
 `;
