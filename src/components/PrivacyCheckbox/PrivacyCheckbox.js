@@ -98,6 +98,13 @@ function PrivacyCheckbox({ locale, ...rest }) {
               <FormattedMessage id="formPrivacyMore1">
                 {(txt) => <>{txt}</>}
               </FormattedMessage>
+              <FormattedMessage id="formPrivacyCheckboxHiddenLabel">
+                {(txt) => (
+                  <span className="aria-hidden" aria-hidden="true">
+                    {txt}
+                  </span>
+                )}
+              </FormattedMessage>
             </StyledCheckboxLabel>
             <FormattedMessage id="formPrivacyMore2">
               {(txt) => (

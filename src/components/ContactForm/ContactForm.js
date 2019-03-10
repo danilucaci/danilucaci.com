@@ -15,6 +15,7 @@ import {
 } from "../../i18n/i18n";
 import PrivacyCheckbox from "../PrivacyCheckbox/PrivacyCheckbox";
 import SelfDestruct from "../SelfDestruct/SelfDestruct";
+import Spinner from "../Spinner/Spinner";
 
 const FormContainer = styled.div``;
 
@@ -135,6 +136,7 @@ function ContactForm(props) {
   const [dateSent, setDateSent] = useState(mailSentTimeStamp());
   const [botField, setBotField] = useState("");
   const [acceptsConsentCheckbox, setAcceptsConsentCheckbox] = useState(false);
+  const [showFormLoading, setShowFormLoading] = useState(false);
   const [showFormSuccess, setShowFormSuccess] = useState(false);
   const [showFormError, setShowFormError] = useState(false);
 
@@ -156,7 +158,8 @@ function ContactForm(props) {
       }),
     })
       .then(() => {
-        // showFormInputs();
+        showFormInputs();
+        setShowFormLoading(true);
         handleFormSent();
       })
       // .then(() => navigate(form.getAttribute("action")))
@@ -178,6 +181,7 @@ function ContactForm(props) {
     console.log(`dateSent: ${mailSentTimeStamp()}`);
     console.log(`botfield: ${botField}`);
     console.log(`acceptsConsentCheckbox: ${acceptsConsentCheckbox}`);
+    console.log(`alog: ${CONSENT_VALUE[locale].yes}`);
   }
 
   function handleConsentCheckbox(e) {
@@ -187,7 +191,12 @@ function ContactForm(props) {
 
   function handleFormSent() {
     if (!showFormError) {
-      setShowFormSuccess(true);
+      let timer = setTimeout(() => {
+        setShowFormLoading(false);
+        setShowFormSuccess(true);
+
+        clearTimeout(timer);
+      }, 2000);
     }
   }
 
@@ -298,7 +307,7 @@ function ContactForm(props) {
           required
         />
 
-        {showFormSuccess ? (
+        {showFormSuccess && (
           <>
             <StyledSubmitButton type="sent" turnOff={true} />
             <SelfDestruct time={expireAfter}>
@@ -312,7 +321,11 @@ function ContactForm(props) {
               </EmailStatusMessage>
             </SelfDestruct>
           </>
-        ) : (
+        )}
+
+        {showFormLoading && <Spinner />}
+
+        {!showFormSuccess && !showFormLoading && (
           <StyledSubmitButton type="submit" />
         )}
 

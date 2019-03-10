@@ -256,6 +256,18 @@ const GlobalCSS = createGlobalStyle`
     border: 0;
   }
   
+
+  .aria-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+  
   ${"" /* a[href*="http://"]:not([href*="danilucaci.com"]):after { */}
   ${"" /* a[href*="//"]:not([href*="http://192.168.1.5:8000"]):after { */}
   .external-link {

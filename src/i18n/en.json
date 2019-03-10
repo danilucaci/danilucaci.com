@@ -58,6 +58,7 @@
   "formSubmitSubscribe": "Subscribe",
   "formSubmitSuccess": "Subscribed! 🎉",
   "formPrivacyMore1": "I have read and accept the ",
+  "formPrivacyCheckboxHiddenLabel": "legal notice and the privacy policy:",
   "formPrivacyMore2": "legal notice",
   "formPrivacyMore3": " and the",
   "formPrivacyMore4": "privacy policy.",

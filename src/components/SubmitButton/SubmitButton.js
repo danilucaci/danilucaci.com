@@ -16,9 +16,11 @@ const StyledSubmitButton = styled.input`
   text-decoration: none;
   font-size: ${theme.fontSizes.button};
   line-height: ${theme.lineHeights.button};
+
   & .fonts-loaded {
     font-family: ${theme.fonts.bodyBold};
   }
+
   font-style: normal;
   font-weight: 700;
 

@@ -88,7 +88,7 @@ const CookieConsent = (props) => {
                 locale: edge.node.frontmatter.locale,
               }))
               .filter((edge) => edge.locale === props.pageLocale);
-            console.log(localizedDocsList);
+
             return (
               <>
                 {localizedDocsList.map((localizedDoc) => (
