@@ -61,15 +61,14 @@ const Page = styled.div`
   & main {
     flex: 1 0 auto;
   }
-  
+
   @font-face {
   font-family: 'Roboto Mono Regular';
   font-style: normal;
   /* displays text with fallback font and replaces when the font is ready */
   font-display: swap;
   font-weight: 400;
-  src: 
-  ${"" /* local('Roboto Mono Regular'), */}
+  src: local('Roboto Mono Regular'), 
   url('${RobotoMonoRegularWoff2}') format('woff2'),
   url('${RobotoMonoRegularWoff}') format('woff');
 }
@@ -80,8 +79,7 @@ const Page = styled.div`
   /* displays text with fallback font and replaces when the font is ready */
   font-display: swap;
   font-weight: 400;
-  src: 
-  ${"" /* local('Roboto Mono Italic'), */}
+  src: local('Roboto Mono Italic'), 
   url('${RobotoMonoItalicWoff2}') format('woff2'),
   url('${RobotoMonoItalicWoff}') format('woff');
 }
@@ -92,8 +90,7 @@ const Page = styled.div`
   /* displays text with fallback font and replaces when the font is ready */
   font-display: swap;
   font-weight: 400;
-  src: 
-  ${"" /* local('Open Sans Regular'), */}
+  src: local('Open Sans Regular'), 
   url('${OpenSansRegularWoff2}') format('woff2'),
   url('${OpenSansRegularWoff}') format('woff');
 }
@@ -104,8 +101,7 @@ const Page = styled.div`
   /* displays text with fallback font and replaces when the font is ready */
   font-display: swap;
   font-weight: 700;
-  src: 
-  ${"" /* local('Open Sans Bold'), */}
+  src: local('Open Sans Bold'), 
   url('${OpenSansBoldWoff2}') format('woff2'),
   url('${OpenSansBoldWoff}') format('woff');
 }
@@ -116,8 +112,7 @@ const Page = styled.div`
   /* displays text with fallback font and replaces when the font is ready */
   font-display: swap;
   font-weight: 400;
-  src: 
-  ${"" /* local('Open Sans Italic'), */}
+  src: local('Open Sans Italic'), 
   url('${OpenSansItalicWoff2}') format('woff2'),
   url('${OpenSansItalicWoff}') format('woff');
 }
@@ -128,8 +123,7 @@ const Page = styled.div`
   /* displays text with fallback font and replaces when the font is ready */
   font-display: swap;
   font-weight: 400;
-  src: 
-  ${"" /* local('Montserrat Regular'), */}
+  src: local('Montserrat Regular'), 
   url('${MontserratRegularWoff2}') format('woff2'),
   url('${MontserratRegularWoff}') format('woff');
 }
@@ -140,8 +134,7 @@ const Page = styled.div`
   /* displays text with fallback font and replaces when the font is ready */
   font-display: swap;
   font-weight: 700;
-  src: 
-  ${"" /* local('Montserrat Bold'), */}
+  src: local('Montserrat Bold'), 
   url('${MontserratBoldWoff2}') format('woff2'),
   url('${MontserratBoldWoff}') format('woff');
 }
