@@ -436,12 +436,12 @@ class Layout extends Component {
             <GlobalAria />
             <GlobalCSS />
             <SVGSprite />
-            {/* <CookieConsent
-                  askCookieConsent={this.state.askCookieConsent}
-                  acceptsCookies={this.acceptsCookies}
-                  deniesCookies={this.deniesCookies}
-                  pageLocale={this.props.locale}
-                /> */}
+            <CookieConsent
+              askCookieConsent={this.state.askCookieConsent}
+              acceptsCookies={this.acceptsCookies}
+              deniesCookies={this.deniesCookies}
+              pageLocale={this.props.locale}
+            />
             {this.props.children}
           </Page>
         </IntlProvider>
