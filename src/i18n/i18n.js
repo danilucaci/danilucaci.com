@@ -44,7 +44,7 @@ export const FORM_SUBMIT_STATUS = {
   },
   successSubtitle: {
     en: "You’ll hear back from me in about 24—48 hours.",
-    es: "Te enviaré una respuesta en un plazo de 24-48 horas.",
+    es: "Recibirás una respuesta en un plazo de 24-48 horas.",
   },
   error: {
     en: "Sorry 😔, your message couldn't be sent, please try again later.",
