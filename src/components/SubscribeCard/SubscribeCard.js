@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import addToMailchimp from "gatsby-plugin-mailchimp";
 import { FormattedMessage } from "react-intl";
 
@@ -8,14 +8,11 @@ import { theme, mediaMin, mediaMax, rem } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
 import Input from "../Input/Input";
 import SubmitButton from "../SubmitButton/SubmitButton";
-import {
-  CONSENT_VALUE,
-  MC_ERRORS,
-  MC_SUCCESS,
-  INPUT_EMAIL_ERROR,
-} from "../../i18n/i18n";
 import PrivacyCheckbox from "../PrivacyCheckbox/PrivacyCheckbox";
-import SelfDestruct from "../SelfDestruct/SelfDestruct";
+import { CONSENT_VALUE, INPUT_EMAIL_ERROR } from "../../i18n/i18n";
+import MCLoadingCTA from "../MCLoadingCTA/MCLoadingCTA";
+import MCSuccessMessage from "../MCSuccessMessage/MCSuccessMessage";
+import MCErrorMessage from "../MCErrorMessage/MCErrorMessage";
 
 const StyledSubscribeCard = styled.aside`
   background-color: ${theme.colors.gray100};
@@ -59,14 +56,28 @@ const StyledLabel = styled.label`
   width: 100%;
   position: relative;
 
-  ${mediaMin.l`
-    margin-right: ${rem(16)};
-    width: ${rem(360)};
+  ${mediaMin.xl`
+    max-width: calc(60% - ${rem(8)});
+    margin-top: 0;
+    margin-right: ${rem(8)};
+    display: inline-block;
+    vertical-align: middle;
   `};
+`;
 
-  ${mediaMin.xxl`
-    margin-right: ${rem(16)};
-    width: ${rem(400)};
+const StyledInput = styled(Input)`
+  display: inline-block;
+`;
+
+const StyledSubmitButton = styled(SubmitButton)`
+  margin-top: ${rem(16)};
+
+  ${mediaMin.l`
+    width: auto;
+    margin-top: 0;
+    margin-right: ${rem(8)};
+    display: inline-block;
+    vertical-align: middle;
   `};
 `;
 
@@ -105,136 +116,71 @@ const AltCopy = styled(Copy)`
   `};
 `;
 
-// const SigupErrorMessage = styled(Copy)`
-//   border: ${rem(2)} solid ${theme.colors.danger500};
-//   border-radius: ${theme.borderRadius.buttons};
-//   display: inline-block;
-//   background-color: ${theme.colors.gray100};
-//   font-size: ${theme.fontSizes.s};
-//   line-height: ${theme.lineHeights.s};
-//   color: ${theme.colors.dark800};
-//   padding: ${rem(16)};
-//   margin-top: ${rem(8)};
-// `;
-
-const SuccessTitle = styled(Copy)`
-  color: ${theme.colors.main600};
-  display: block;
-  font-size: ${theme.fontSizes.m};
-  line-height: ${theme.lineHeights.s};
-  font-weight: 700;
-
-  & .fonts-loaded {
-    font-family: ${theme.fonts.bodyBold};
-  }
-`;
-
-const SuccessMessage = styled(Copy)`
-  color: ${theme.colors.main600};
-  display: block;
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s};
-`;
-
-const SigupSuccessMessage = styled.div`
-  border: ${rem(2)} solid ${theme.colors.main600};
-  border-radius: ${theme.borderRadius.buttons};
-  display: inline-block;
-  background-color: ${theme.colors.gray100};
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s};
-  color: ${theme.colors.main600};
-  padding: ${rem(16)};
-  max-width: ${rem(540)};
-  margin-top: ${rem(8)};
-  ${theme.shadow.subscribeSuccessMessage}
-`;
-
-const StyledInput = styled(Input)`
-  display: inline-block;
-  width: 100%;
-`;
-
-const StyledSubmitButton = styled(SubmitButton)`
-  margin-top: ${rem(16)};
-
-  ${mediaMin.l`  
-    width: auto;
-    margin-top: 0;
-    display: inline-block;
-  `};
-`;
-
 const SubscribeCard = (props) => {
   let locale = props.locale;
-
-  // Controls the form status messages render duration time
-  // It is passed to the useExpiration component
-  // To render a component with an error or success message
-  const expireAfter = 6000;
 
   const [email, setEmail] = useState("");
   const [acceptsConsentCheckbox, setAcceptsConsentCheckbox] = useState(false);
   const [checkboxValue, setCheckboxValue] = useState(CONSENT_VALUE[locale].no);
-  const [MCError, setMCError] = useState("");
+  const [MCSent, setMCSent] = useState(false);
+  const [showMCLoading, setShowMCLoading] = useState(false);
   const [showMCError, setShowMCError] = useState(false);
+  const [MCError, setMCError] = useState("");
   const [showMCSuccess, setShowMCSuccess] = useState(false);
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    const mailChimpResult = await addToMailchimp(email, {
-      DLPO: checkboxValue,
-    });
-
-    console.log(mailChimpResult);
-
-    if (mailChimpResult.result.includes("success")) {
-      handleMCSuccess();
-    } else if (
-      mailChimpResult.result.includes("error") &&
-      mailChimpResult.msg.includes("is already subscribed to")
-    ) {
-      handleMCError(MC_ERRORS[locale].already);
-    } else if (
-      mailChimpResult.result.includes("error") &&
-      mailChimpResult.msg.includes("many")
-    ) {
-      handleMCError(MC_ERRORS[locale].many);
-    } else if (mailChimpResult.result.includes("error")) {
-      handleMCError(MC_ERRORS[locale].generic);
-    }
-  }
-
-  useEffect(() => {
-    if (showMCSuccess) {
-      // self clearing setTimeout
-      let showMCSuccessTimer = setTimeout(() => {
-        setShowMCSuccess(false);
-      }, expireAfter);
-      return () => clearTimeout(showMCSuccessTimer);
-    }
-
-    if (showMCError) {
-      // self clearing setTimeout
-      let showMCErrorTimer = setTimeout(() => {
-        setMCError(false);
-      }, expireAfter);
-      return () => clearTimeout(showMCErrorTimer);
-    }
-  }, [showMCSuccess, showMCError]);
 
   function handleConsentCheckbox(e) {
     setAcceptsConsentCheckbox(e.target.checked);
     setCheckboxValue(CONSENT_VALUE[locale].yes);
   }
 
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setShowMCLoading(true);
+    setMCSent(true);
+
+    const MCResponse = await addToMailchimp(email, {
+      DLPO: checkboxValue,
+    })
+      .then((MCResponse) => {
+        handleFormSent(MCResponse.result, MCResponse.msg);
+      })
+      .catch((error) => handleFormError(error));
+  }
+
+  function handleFormSent(result, msg) {
+    // let timer = setTimeout(() => {
+    if (result.includes("success")) {
+      handleMCSuccess();
+    } else if (
+      result.includes("error") &&
+      msg.includes("is already subscribed to")
+    ) {
+      setShowMCError(true);
+      setShowMCLoading(false);
+      setMCError("already");
+    } else if (result.includes("error") && msg.includes("many")) {
+      setShowMCError(true);
+      setShowMCLoading(false);
+      setMCError("many");
+    } else if (result.includes("error")) {
+      setShowMCError(true);
+      setShowMCLoading(false);
+      setMCError("generic");
+    }
+    // clearTimeout(timer);
+    // }, 800);
+  }
+
   function handleMCSuccess() {
+    setShowMCLoading(false);
     setShowMCSuccess(true);
   }
 
-  function handleMCError(message) {
+  function handleFormError(error) {
+    setShowMCLoading(false);
     setShowMCError(true);
-    setMCError(message);
+    setMCError("generic");
+    console.warn(error);
   }
 
   return (
@@ -267,15 +213,18 @@ const SubscribeCard = (props) => {
               />
               <InputStatusIcon arriaHidden="true" />
             </StyledLabel>
-
-            {showMCSuccess ? (
-              <StyledSubmitButton
-                type="success"
-                disabled={!acceptsConsentCheckbox}
+            {MCSent && (
+              <MCLoadingCTA
+                showMCLoading={showMCLoading}
+                showMCSuccess={showMCSuccess}
+                showMCError={showMCError}
+                MCError={MCError}
+                locale={locale}
               />
-            ) : (
+            )}
+            {!MCSent && (
               <StyledSubmitButton
-                type="subscribe"
+                type="submit"
                 disabled={!acceptsConsentCheckbox}
               />
             )}
@@ -291,20 +240,8 @@ const SubscribeCard = (props) => {
           />
         </StyledForm>
 
-        {showMCSuccess && (
-          <SelfDestruct time={expireAfter}>
-            <SigupSuccessMessage>
-              <SuccessTitle>{MC_SUCCESS[locale].title}</SuccessTitle>
-              <SuccessMessage>{MC_SUCCESS[locale].message}</SuccessMessage>
-            </SigupSuccessMessage>
-          </SelfDestruct>
-        )}
-
-        {showMCError && (
-          <SelfDestruct time={expireAfter}>
-            <SigupSuccessMessage>{MCError}</SigupSuccessMessage>
-          </SelfDestruct>
-        )}
+        {showMCSuccess && <MCSuccessMessage locale={locale} />}
+        {showMCError && <MCErrorMessage locale={locale} MCError={MCError} />}
       </FormContainer>
     </StyledSubscribeCard>
   );

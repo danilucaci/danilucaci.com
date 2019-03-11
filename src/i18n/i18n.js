@@ -39,21 +39,29 @@ export const CONSENT_VALUE = {
 
 export const FORM_SUBMIT_STATUS = {
   successTitle: {
-    en: "Thank you for contacting me! 🎉",
-    es: "!Gracias por contactar conmigo¡ 🎉",
+    en: "Thank you for contacting me!",
+    es: "!Gracias por contactar conmigo¡",
   },
   successSubtitle: {
-    en: "I will send you a response in about 24 hours.",
-    es: "Recibirás una respuesta en aproximadamente 24 horas.",
+    en: "You’ll hear back from me in about 24—48 hours.",
+    es: "Te enviaré una respuesta en un plazo de 24-48 horas.",
   },
   error: {
     en: "Sorry 😔, your message couldn't be sent, please try again later.",
     es:
-      "Lo siento 😔, tu mensaje no ha podido ser enviado, por favor prueba más tarde de nuevo.",
+      "Lo siento 😔, tu mensaje no ha podido ser enviado, por favor prueba de nuevo más tarde.",
   },
   cta: {
     en: "Message Sent!",
     es: "¡Mensaje Enviado!",
+  },
+  subscribeCta: {
+    en: "Subscribed! 🎉",
+    es: "¡Suscrito! 🎉",
+  },
+  errorCta: {
+    en: "Something went wrong 😔",
+    es: "Algo ha salido mal 😔",
   },
 };
 
@@ -69,7 +77,7 @@ export const MC_ERRORS = {
     generic: "Sorry 😔, something went wrong, please try again later.",
     many:
       "Sorry 😔, you have too many subscribe attemps, please try again later.",
-    already: "It looks like you have already subscribed to my newsletter 👌🏻",
+    already: "It seems that you already are a member of my newsletter 👌🏻",
   },
   es: {
     generic:
@@ -84,12 +92,12 @@ export const MC_SUCCESS = {
   en: {
     title: "Thanks for joining my newsletter!",
     message:
-      "Now you just need to confirm your email address. Please click on the link you will receive in your inbox.",
+      "Now you just need to confirm your subscription by clicking on the link you will receive in your inbox.",
   },
   es: {
     title: "¡Gracias por suscribirte a mi newsletter!",
     message:
-      "Ahora solo falta que confirmes la suscripción siguiendo el enlace que llegará a tu mail.",
+      "Para acabar, solo tienes que confirmar tu suscripción haciendo click en el enlace que llegará a tu buzón.",
   },
 };
 

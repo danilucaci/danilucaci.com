@@ -9,7 +9,7 @@ import EmailErrorMessage from "../EmailErrorMessage/EmailErrorMessage";
 import { Icon } from "../Icon/Icon";
 import { FORM_SUBMIT_STATUS } from "../../i18n/i18n";
 
-const StyledLoading = styled.div``;
+const StyledLoadingWrapper = styled.div``;
 
 const StyledLoadingCTA = styled.div`
   background-color: ${theme.colors.main500};
@@ -52,12 +52,8 @@ function EmailLoading({
   showFormLoading = true,
   locale = "en",
 }) {
-  if (showFormError) {
-    console.log("Wrong");
-  }
-
   return (
-    <StyledLoading>
+    <StyledLoadingWrapper>
       <StyledLoadingCTA>
         {showFormLoading ? (
           <Spinner locale={locale} />
@@ -74,7 +70,7 @@ function EmailLoading({
       {showFormError && (
         <EmailErrorMessage locale={locale} formErrorRes={formErrorRes} />
       )}
-    </StyledLoading>
+    </StyledLoadingWrapper>
   );
 }
 

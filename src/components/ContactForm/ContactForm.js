@@ -148,13 +148,13 @@ function ContactForm(props) {
   }
 
   function handleFormError(error) {
-    let timer = setTimeout(() => {
-      setShowFormLoading(false);
-      setShowFormError(true);
-      setFormErrorRes(error);
+    // let timer = setTimeout(() => {
+    setShowFormLoading(false);
+    setShowFormError(true);
+    setFormErrorRes(error);
 
-      clearTimeout(timer);
-    }, 4000);
+    // clearTimeout(timer);
+    // }, 4000);
   }
 
   return (
