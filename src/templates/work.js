@@ -99,14 +99,14 @@ const WorkPage = (props) => {
     twinPostURL =
       localePaths["es"].work + localePaths["es"].paginationName + currentPage;
   } else if (locale === "en" && currentPage === 1) {
-    localePaths["es"].work + localePaths["es"].paginationName;
+    twinPostURL = localePaths["es"].work;
   }
 
   if (locale === "es" && currentPage > 1) {
     twinPostURL =
       localePaths["en"].work + localePaths["en"].paginationName + currentPage;
   } else if (locale === "es" && currentPage === 1) {
-    localePaths["en"].work + localePaths["en"].paginationName;
+    twinPostURL = localePaths["en"].work;
   }
 
   return (
