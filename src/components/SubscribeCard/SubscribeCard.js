@@ -96,7 +96,6 @@ const StyledH2 = styled.h2`
   line-height: ${theme.lineHeights.h2s};
 
   ${mediaMin.m`
-    margin-bottom: ${rem(16)};
     font-size: ${theme.fontSizes.h2};
     line-height: ${theme.lineHeights.h2};
   `};

@@ -17,24 +17,53 @@ const StyledContactCard = styled.aside`
   padding: ${rem(24)} ${rem(24)} ${rem(32)};
 
   ${mediaMin.s`
-    padding: ${rem(24)} ${rem(32)} ${rem(32)};
+    padding: ${rem(40)} ${rem(32)} ${rem(40)} ${rem(32)};
   `};
 
   ${mediaMin.l`
-    padding: ${rem(48)} ${rem(80)} ${rem(56)};
+    padding: ${rem(64)} ${rem(80)} ${rem(56)} ${rem(72)};
   `};
 
   ${mediaMin.xxl`
-    padding: ${rem(56)} ${rem(112)} ${rem(64)};
+    padding: ${rem(64)} ${rem(112)} ${rem(56)} ${rem(96)};
   `};
 `;
 
 const StyledH2 = styled.h2`
-  display: block;
-  margin-bottom: ${rem(8)};
+  margin-bottom: ${rem(16)};
+  font-size: ${theme.fontSizes.h2s};
+  line-height: ${theme.lineHeights.h2s};
+
+  ${mediaMin.m`
+    font-size: ${theme.fontSizes.h2};
+    line-height: ${theme.lineHeights.h2};
+  `};
 `;
 
-const StyledMailToButton = styled(Link)`
+const Subtitle = styled(Copy)`
+  color: ${theme.colors.dark700};
+  display: block;
+  font-size: ${theme.fontSizes.subheadS};
+  line-height: ${theme.lineHeights.subheadS};
+  margin-bottom: ${rem(16)};
+
+  ${mediaMin.s`
+    font-size: ${theme.fontSizes.subheadCompact};
+    line-height: ${theme.lineHeights.subheadCompact};
+    margin-bottom: ${rem(12)};
+    width: 96%;
+  `};
+`;
+
+const Info = styled(Copy)`
+  display: block;
+/* 
+  ${mediaMin.s`
+    width: 100%;
+  `}; */
+`;
+
+const StyledContactButton = styled(Link)`
   background-color: ${theme.colors.main600};
   border-radius: ${theme.borderRadius.buttons};
   color: ${theme.colors.buttonLight} !important;
@@ -51,7 +80,7 @@ const StyledMailToButton = styled(Link)`
   height: ${rem(48)};
   width: 100%;
 
-  ${mediaMin.xxs`  
+  ${mediaMin.l`  
     width: ${rem(288)};
   `};
 
@@ -69,10 +98,6 @@ const StyledMailToButton = styled(Link)`
   }
 `;
 
-const StyledCopy = styled(Copy)`
-  display: inline;
-`;
-
 function ContactCard(props) {
   let locale = props.locale;
   let twinPostURL = "";
@@ -88,16 +113,20 @@ function ContactCard(props) {
       <FormattedMessage id="contactCardTitle">
         {(txt) => <StyledH2>{txt}</StyledH2>}
       </FormattedMessage>
-      <div>
-        <FormattedMessage id="contactCardDescription">
-          {(txt) => <StyledCopy>{txt} </StyledCopy>}
-        </FormattedMessage>
-      </div>
+
+      <FormattedMessage id="contactCardDescription">
+        {(txt) => <Subtitle>{txt} </Subtitle>}
+      </FormattedMessage>
+
+      <FormattedMessage id="contactCardInfo">
+        {(txt) => <Info small>{txt} </Info>}
+      </FormattedMessage>
+
       <FormattedMessage id="contactCardCTA">
         {(txt) => (
-          <StyledMailToButton role="button" to={twinPostURL}>
+          <StyledContactButton role="button" to={twinPostURL}>
             {txt}
-          </StyledMailToButton>
+          </StyledContactButton>
         )}
       </FormattedMessage>
     </StyledContactCard>
