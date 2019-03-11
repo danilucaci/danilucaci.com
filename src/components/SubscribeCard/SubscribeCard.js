@@ -28,13 +28,13 @@ const StyledSubscribeCard = styled.aside`
   padding: ${rem(32)} ${rem(24)};
 
   ${mediaMin.m`
-    padding: ${rem(32)} ${rem(56)};
+    padding: ${rem(64)} ${rem(56)} ${rem(40)} ${rem(64)};
     margin-top: ${theme.spacing.components.m};
     margin-bottom: ${theme.spacing.components.m};
   `};
 
-  ${mediaMin.xxl`
-    padding: ${rem(64)} ${rem(80)} ${rem(56)} ${rem(96)};
+  ${mediaMin.xxxl`
+    padding: ${rem(64)} ${rem(120)} ${rem(56)} ${rem(144)};
     margin-top: ${theme.spacing.components.xl};
     margin-bottom: ${theme.spacing.components.xl};
   `};
@@ -72,7 +72,7 @@ const StyledInput = styled(Input)`
 const StyledSubmitButton = styled(SubmitButton)`
   margin-top: ${rem(16)};
 
-  ${mediaMin.l`
+  ${mediaMin.xl`
     width: auto;
     margin-top: 0;
     margin-right: ${rem(8)};
@@ -91,12 +91,14 @@ const InputStatusIcon = styled.span`
 `;
 
 const StyledH2 = styled.h2`
-  margin-bottom: ${rem(8)};
+  margin-bottom: ${rem(16)};
+  font-size: ${theme.fontSizes.h2s};
+  line-height: ${theme.lineHeights.h2s};
 
-  ${mediaMax.m`
+  ${mediaMin.m`
     margin-bottom: ${rem(16)};
-    font-size: ${theme.fontSizes.h1s};
-    line-height: ${theme.lineHeights.h1s};
+    font-size: ${theme.fontSizes.h2};
+    line-height: ${theme.lineHeights.h2};
   `};
 `;
 

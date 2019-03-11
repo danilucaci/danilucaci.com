@@ -11,7 +11,7 @@ const StyledCheckboxLabel = styled.label`
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};
   display: inline-block;
-  margin-top: ${rem(8)};
+  margin-top: ${rem(12)};
   margin-bottom: ${rem(8)};
   display: inline-block;
 `;
