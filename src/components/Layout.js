@@ -347,6 +347,10 @@ class Layout extends Component {
           secure: GATSBY_DL_COOKIE_SECURE,
         });
 
+        this.setState((prevState) => ({
+          askCookieConsent: !prevState.askCookieConsent,
+        }));
+
         // Check to see if the cookie was set
         this.checkGDPRStatus();
       } else {
