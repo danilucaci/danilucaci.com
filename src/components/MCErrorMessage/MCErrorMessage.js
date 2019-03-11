@@ -32,7 +32,7 @@ const StatusMessageWrapper = styled.div`
   margin-top: ${rem(24)};
   white-space: pre-line;
 
-  ${theme.shadow.subscribeSuccessMessage};
+  ${theme.shadow.subscribeErrorMessage};
 
   ${mediaMin.xl`
       max-width: 59%;

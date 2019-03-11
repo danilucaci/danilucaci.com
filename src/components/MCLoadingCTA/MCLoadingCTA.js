@@ -13,7 +13,7 @@ const StyledLoadingCTA = styled.div`
       ? css`
           background-color: ${theme.colors.danger500};
           color: ${theme.colors.danger100};
-          ${theme.shadow.buttons.main};
+          ${theme.shadow.buttons.error};
         `
       : css`
           background-color: ${theme.colors.main500};

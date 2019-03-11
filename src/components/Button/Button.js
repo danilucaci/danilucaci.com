@@ -19,7 +19,7 @@ export const PrimaryButton = styled.button`
   font-style: normal;
   font-weight: 700;
 
-  padding: ${rem(12)} ${rem(40)};
+  padding: ${rem(10)} ${rem(40)};
   height: ${rem(48)};
   width: 100%;
 
@@ -51,7 +51,7 @@ export const MainGhostButton = styled.button`
   font-style: normal;
   font-weight: 700;
 
-  padding: ${rem(12)} ${rem(40)};
+  padding: ${rem(10)} ${rem(40)};
   height: ${rem(48)};
   width: 100%;
 
@@ -67,7 +67,7 @@ export const MainGhostButton = styled.button`
 
 export const DarkGhostButton = styled.button`
   background-color: transparent;
-  border: 2px solid ${theme.colors.dark800};
+  border: 2px solid ${theme.colors.gray400};
   border-radius: ${theme.borderRadius.buttons};
   color: ${theme.colors.dark800};
 
@@ -83,7 +83,7 @@ export const DarkGhostButton = styled.button`
   font-style: normal;
   font-weight: 700;
 
-  padding: ${rem(12)} ${rem(40)};
+  padding: ${rem(10)} ${rem(40)};
   height: ${rem(48)};
   width: 100%;
 
@@ -117,8 +117,8 @@ export const PrimaryButtonSmall = styled.button`
 
   white-space: nowrap;
 
-  padding: ${rem(8)} ${rem(16)};
-  height: ${rem(40)};
+  padding: ${rem(10)} ${rem(16)};
+  height: ${rem(48)};
 
   &:hover,
   &:focus {
@@ -149,8 +149,8 @@ export const TertiaryButton = styled.button`
 
   white-space: nowrap;
 
-  height: ${rem(40)};
-  padding: ${rem(8)} ${rem(16)};
+  height: ${rem(48)};
+  padding: ${rem(10)} ${rem(16)};
 
   &:hover,
   &:focus {

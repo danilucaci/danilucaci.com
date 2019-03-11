@@ -65,7 +65,6 @@ const StyledPrimaryButton = styled(PrimaryButton)`
 `;
 
 const StyledGhostButton = styled(DarkGhostButton)`
-  border: 2px solid ${theme.colors.gray500};
   display: block;
   width: 100%;
   margin-top: ${rem(8)};

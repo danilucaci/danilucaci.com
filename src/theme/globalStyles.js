@@ -23,7 +23,7 @@ export const theme = {
     main200: "#9ED2FF",
     main100: "#E3F2FC",
     danger600: "#821C00",
-    danger500: "#A6441B",
+    danger500: "#99360C",
     danger400: "#D97543",
     danger300: "#F7BA97",
     danger200: "#F7E6D5",
@@ -48,24 +48,28 @@ export const theme = {
     dropdown:
       "box-shadow: 0px 2px 4px 0px hsla(0,0%,40%,0.2), 0px 6px 12px 0px hsla(0,0%,70%,0.24)",
     mobileCookieConsent:
-      "box-shadow: 0px -2px 4px 0px hsla(0,0%,40%,0.2), 0px -6px 12px 0px hsla(0,0%,70%,0.4)",
+      "box-shadow: 0 -6px 46px 0 rgba(204,219,255,0.60), 0 0 18px 0 rgba(31,66,125,0.60)",
     successMessage:
-      "box-shadow: 0px 0px 8px -2px hsla(136,78%,21%,1), 0px 4px 20px -6px hsla(125,47%,85%,1)",
+      "box-shadow: 0 2px 12px -2px rgba(133,198,255,0.40), 0 2px 8px -2px rgba(0,86,214,0.30)",
     subscribeSuccessMessage:
-      "box-shadow: 0px 0px 8px -2px hsla(216,78%,43%,0.6), 0px 4px 12px -4px hsla(208,100%,81%,0.8)",
+      "box-shadow: 0 2px 12px -2px rgba(133,198,255,0.40), 0 2px 8px -2px rgba(0,86,214,0.30)",
+    subscribeErrorMessage:
+      "box-shadow: 0 2px 12px -2px rgba(247,230,213,0.50), 0 2px 8px -2px rgba(166,68,27,0.50)",
     buttons: {
       tertiary:
-        "box-shadow: 0 2px 2px 0px rgba(12,52,117,0.13), 0 2px 8px -2px rgba(16,41,82,0.27)",
+        "box-shadow: 0 2px 6px 0 rgba(8,36,82,0.13), 0 2px 12px -2px rgba(12,31,61,0.27)",
       mainGhost:
-        "box-shadow: 0 1px 3px 0px rgba(0,23,61,0.64), 0 3px 11px -2px rgba(16,41,82,0.33)",
+        "box-shadow: 0 1px 3px 0 rgba(0,77,204,0.64), 0 3px 11px -2px rgba(0,72,189,0.33)",
       darkGhost:
-        "box-shadow: 0 2px 4px 0px rgba(61,61,61,0.64), 0 3px 11px -2px rgba(82,82,82,0.33)",
+        "box-shadow: 0 2px 6px 0 rgba(8,36,82,0.13), 0 2px 12px -2px rgba(12,31,61,0.27)",
       main:
-        "box-shadow: 0 2px 4px 0px rgba(0,31,82,0.59), 0 6px 14px -2px rgba(0,74,153,0.33)",
+        "box-shadow: 0 2px 4px 0 rgba(0,77,204,0.64), 0 6px 14px -2px rgba(0,91,189,0.33)",
       success:
         "box-shadow: 0 0px 8px -2px rgba(12,97,34,0.8), 0 2px 16px -2px rgba(85,161,98,0.48)",
+      error:
+        "box-shadow: 0 4px 10px 0 rgba(204,150,96,0.80), 0 2px 5px -2px rgba(166,30,0,0.60)",
       loadComments:
-        "box-shadow: 0 2px 4px 0px rgba(61,61,61,0.64), 0 3px 11px -2px rgba(82,82,82,0.33)",
+        "box-shadow: 0 2px 2px 0 rgba(8,36,82,0.13), 0 2px 8px -2px rgba(12,31,61,0.27)",
     },
   },
   fonts: {
