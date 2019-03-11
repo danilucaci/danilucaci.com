@@ -12,7 +12,7 @@ privacy: true
 
 ## Personal Data Protection According To GDPR
 
-Marian Daniel Lucaci under current legislation regarding personal data protection, reports that personal data collected through the forms available on the website: <a href="https://www.danilucaci.com" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> , are included in computerized files for user specific services of Marian Daniel Lucaci.
+Marian Daniel Lucaci under current legislation regarding personal data protection, reports that personal data collected through the forms available on the website: www.danilucaci.com, are included in computerized files for user specific services of Marian Daniel Lucaci.
 
 Personal data collection and processing are aimed at maintaining business relationship and performance in tasks of information, training, counseling and other activities.
 
@@ -28,9 +28,9 @@ You represent that all information provided by him are true and correct and unde
 
 ### What Purpose Will We Treat Your Personal Data
 
-In Marian Daniel Lucaci, we will treat your personal data collected through the Website: <a href="https://www.danilucaci.com" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>, with the following purposes:
-1. In case of contracting the goods and services offered through: <a href="https://www.danilucaci.com" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>, to maintain the contractual relationship, as well as the management, administration, information, provision and improvement of the service.
-2. Sending requested information through the forms provided at <a href="https://www.danilucaci.com" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>.
+In Marian Daniel Lucaci, we will treat your personal data collected through the Website: www.danilucaci.com, with the following purposes:
+1. In case of contracting the goods and services offered through: www.danilucaci.com, to maintain the contractual relationship, as well as the management, administration, information, provision and improvement of the service.
+2. Sending requested information through the forms provided at www.danilucaci.com.
 3. Send newsletters, as well as commercial communications of promotions and/or advertising of Marian Daniel Lucaci, and the sector.
 
 We remind you that you can oppose the sending of commercial communications by any means and at any time, by sending an email to the address indicated above.
@@ -55,7 +55,20 @@ Data will not be communicated to any third party outside Marian Daniel Lucaci, e
 
 As treatment managers, we have hired following service providers, having committed to compliance with regulatory provisions, applicable in terms for data protection, at time for hiring:
 
-# PENDIENTE
+##### Domain Hosting
+* **<a href="https://www.ionos.com/" target="_blank" rel="noopener">ionos.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>:** I use the services provided by ionos.com as a domain name hosting provider for www.danilucaci.com. Their privacy policy can be read in the following link: <a href="https://www.ionos.com/terms-gtc/terms-privacy/" target="_blank" rel="noopener">ionos.com privacy policy<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
+
+##### Web Hosting 
+* **<a href="https://www.netlify.com/" target="_blank" rel="noopener">netlify.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>:** I use the services provided by netlify.com as a hosting provider for www.danilucaci.com. Their privacy policy can be read in the following link: <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">netlify.com privacy policy<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
+
+##### Services Used To Send Newsletters
+* **<a href="https://mailchimp.com/en/" target="_blank" rel="noopener">mailchimp.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>:** I use the services provided by mailchimp.com so that I can send newsletters to the subscribers of www.danilucaci.com. Their privacy policy can be read in the following link: <a href="https://mailchimp.com/legal/" target="_blank" rel="noopener">mailchimp.com privacy policy<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> 
+
+##### Email Service Provider
+* **<a href="https://www.zoho.com/" target="_blank" rel="noopener">zoho.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>:** I use the services provided by zoho.com as a personal email provider so that I can communicate with the clients of www.danilucaci.com or any person interested in contacting me. Their privacy policy can be read in the following link: <a href="https://www.zoho.com/privacy.html" target="_blank" rel="noopener">zoho.com privacy policy<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> 
+
+##### Email Client
+* **<a href="https://sparkmailapp.com/" target="_blank" rel="noopener">sparkmailapp.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>:** I use the services provided by sparkmailapp.com as a personal email client so that I can communicate with the clients of www.danilucaci.com or any person interested in contacting me. Their privacy policy can be read in the following link: <a href="https://sparkmailapp.com/privacy" target="_blank" rel="noopener">sparkmailapp.com privacy policy<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> 
 
 ## Data Collected By Service Users
 
@@ -71,9 +84,9 @@ Data communication to State Forces will be under legal provisions on personal da
 
 ## Intellectual Property Rights
 
-Marian Daniel Lucaci owns all copyrights, intellectual property, industrial, "know how" and any other rights related to the content from the website <a href="https://www.danilucaci.com" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> and the services offered on it, as well as the programs necessary for its implementation and related information.
+Marian Daniel Lucaci owns all copyrights, intellectual property, industrial, "know how" and any other rights related to the content from the website www.danilucaci.com and the services offered on it, as well as the programs necessary for its implementation and related information.
 
-No available any reproduction, publication and/or use for the contents strictly private, full or partial, at the website <a href="https://www.danilucaci.com" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> without a prior written consent.
+No available any reproduction, publication and/or use for the contents strictly private, full or partial, at the website www.danilucaci.com without a prior written consent.
 
 ## Software Intellectual Property Rights
 

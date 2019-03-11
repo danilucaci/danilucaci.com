@@ -12,7 +12,7 @@ privacy: true
 
 ## Protección De Datos De Caracter Personal Según El RGPD
 
-Marian Daniel Lucaci, en aplicación de la normativa vigente en materia de protección de datos de carácter personal, informa que los datos personales que se recogen a través de los formularios del Sitio web: <a href="https://www.danilucaci.com/es" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>, se incluyen en los ficheros automatizados específicos de usuarios de los servicios de Marian Daniel Lucaci
+Marian Daniel Lucaci, en aplicación de la normativa vigente en materia de protección de datos de carácter personal, informa que los datos personales que se recogen a través de los formularios del Sitio web: www.danilucaci.com, se incluyen en los ficheros automatizados específicos de usuarios de los servicios de Marian Daniel Lucaci
 
 La recogida y tratamiento automatizado de los datos de carácter personal tiene como finalidad el mantenimiento de la relación comercial y el desempeño de tareas de información, formación, asesoramiento y otras actividades propias de Marian Daniel Lucaci
 
@@ -28,21 +28,22 @@ El usuario manifiesta que todos los datos facilitados por él son ciertos y corr
 
 ### Con Qúe Finalidad Trataremos Tus Datos Personales
 
-En Marian Daniel Lucaci, trataremos tus datos personales recabados a través del Sitio Web: <a href="https://www.danilucaci.com/es" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>, con las siguientes finalidades:
+En Marian Daniel Lucaci, trataremos tus datos personales recabados a través del Sitio Web: www.danilucaci.com, con las siguientes finalidades:
 
-1. En caso de contratación de los bienes y servicios ofertados a través de <a href="https://www.danilucaci.com/es" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>, para mantener la relación contractual, así como la gestión, administración, información, prestación y mejora del servicio.
-2. Envío de información solicitada a través de los formularios dispuestos en <a href="https://www.danilucaci.com/es" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>.
-3. Remitir boletines (newsletters), así como comunicaciones comerciales de promociones y/o publicidad de <a href="https://www.danilucaci.com/es" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> y del sector.
+1. En caso de contratación de los bienes y servicios ofertados a través de www.danilucaci.com, para mantener la relación contractual, así como la gestión, administración, información, prestación y mejora del servicio.
+2. Envío de información solicitada a través de los formularios dispuestos en www.danilucaci.com.
+3. Remitir boletines (newsletters), así como comunicaciones comerciales de promociones y/o publicidad de www.danilucaci.com y del sector.
 
 Te recordamos que puedes oponerte al envío de comunicaciones comerciales por cualquier vía y en cualquier  momento, remitiendo un correo electrónico a la dirección anteriormente indicada.
 
 Los campos de dichos registros son de cumplimentación obligatoria, siendo imposible realizar las finalidades expresadas si no se aportan esos datos.
 
-## Por Cúanto Tiempo Se Conservan Los Datos Personales Recabados
+## Por Cuanto Tiempo Se Conservan Los Datos Personales Recabados
 
 Los datos personales proporcionados se conservarán mientras se mantenga la relación comercial o no solicites su supresión y durante el plazo por el cuál pudieran derivarse responsabilidades legales por los servicios prestados.
 
 ## Legitimación
+
 El tratamiento de tus datos se realiza con las siguientes bases jurídicas que legitiman el mismo:
 
 1. La solicitud de información y/o la contratación de los servicios de Marian Daniel Lucaci, cuyos términos y condiciones se pondrán a tu disposición en todo caso, de forma previa a una eventual contratación.
@@ -56,7 +57,20 @@ Los datos no se comunicarán a ningún tercero ajeno a Marian Daniel Lucaci, sal
 
 Como encargados de tratamiento, tenemos contratados a los siguientes proveedores de servicios, habiéndose comprometido al cumplimiento de las disposiciones normativas, de aplicación en materia de protección de datos, en el momento de su contratación:
 
-# PENDIENTE
+##### Hosting dominio 
+* **<a href="https://www.ionos.es/" target="_blank" rel="noopener">ionos.es<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>:** Utilizo la empresa ionos.es como proveedor de nombre de dominio para la página web www.danilucaci.com. Su política de privacidad se puede consultar en el siguiente enlace: <a href="https://www.ionos.es/terms-gtc/terms-privacy/" target="_blank" rel="noopener">política de privacidad ionos.es<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
+
+##### Hosting web 
+* **<a href="https://www.netlify.com/" target="_blank" rel="noopener">netlify.com<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>:** Utilizo la empresa netlify.com como proveedor de hosting para la página web www.danilucaci.com. Su política de privacidad se puede consultar en el siguiente enlace: <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">política de privacidad netlify.com<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
+
+##### Servicios de Mensajería y envío de boletines electrónicos
+* **<a href="https://mailchimp.com/en/" target="_blank" rel="noopener">mailchimp.com<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>:** Utilizo el servicio de la empresa mailchimp.com para poder enviar boletínes electrónicos o newsletters a los usuarios de esta página www.danilucaci.com. Su política de privacidad se puede consultar en el siguiente enlace: <a href="https://mailchimp.com/legal/" target="_blank" rel="noopener">política de privacidad mailchimp.com<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a> 
+
+##### Proveedor de correo electrónico
+* **<a href="https://www.zoho.com/" target="_blank" rel="noopener">zoho.com<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>:** Utilizo los servicios de la empresa zoho.com como proveedor de correo electrónico personal para poder comunicarme con los posibles clientes de www.danilucaci.com o con cualquier persona interesada en ponerse en contacto conmigo. Su política de privacidad se puede consultar en el siguiente enlace: <a href="https://www.zoho.com/privacy.html" target="_blank" rel="noopener">política de privacidad zoho.com<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a> 
+
+##### Cliente de correo electrónico
+* **<a href="https://sparkmailapp.com/es/" target="_blank" rel="noopener">sparkmailapp.com<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>:** Utilizo los servicios de la empresa sparkmailapp.com como cliente de gestión de correo electrónico personal para poder comunicarme con los posibles clientes de www.danilucaci.com o con cualquier persona interesada en ponerse en contacto conmigo. Su política de privacidad se puede consultar en el siguiente enlace: <a href="https://sparkmailapp.com/es/privacy" target="_blank" rel="noopener">política de privacidad sparkmailapp.com<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a> 
 
 ## Datos Recopilados Por Usuarios De Los Servicios
 
@@ -69,11 +83,11 @@ Marian Daniel Lucaci informa de que, como prestador de servicio de alojamiento d
 La comunicación de datos a las Fuerzas y Cuerpos del Estado se hará en virtud a lo dispuesto en la normativa sobre protección de datos personales.
 
 ## Derechos Propiedad Intelectual
-<a href="https://www.danilucaci.com/es" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
+www.danilucaci.com
 
-Marian Daniel Lucaci es titular de todos los derechos de autor, propiedad intelectual, industrial, "know how" y cuantos otros derechos guardan relación con los contenidos del sitio web <a href="https://www.danilucaci.com/es" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> y los servicios ofertados en el mismo, así como de los programas necesarios para su implementación y la información relacionada.
+Marian Daniel Lucaci es titular de todos los derechos de autor, propiedad intelectual, industrial, "know how" y cuantos otros derechos guardan relación con los contenidos del sitio web www.danilucaci.com y los servicios ofertados en el mismo, así como de los programas necesarios para su implementación y la información relacionada.
 
-No se permite la reproducción, publicación y/o uso no estrictamente privado de los contenidos, totales o parciales, del sitio web <a href="https://www.danilucaci.com/es" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> sin el consentimiento previo y por escrito.
+No se permite la reproducción, publicación y/o uso no estrictamente privado de los contenidos, totales o parciales, del sitio web www.danilucaci.com sin el consentimiento previo y por escrito.
 
 ## Propiedad Intelectual Del Software
 

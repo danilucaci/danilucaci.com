@@ -9,7 +9,7 @@ twinPost: "Legal Notice"
 legalNotice: true
 ---
 
-Marian Daniel Lucaci, con CIF/NIF no: X6225803W y dirección en: Carrer Anastasi Pinós, 20, 2o, 2a, 25005 - Lleida (Lleida), no puede asumir ninguna responsabilidad derivada del uso incorrecto, inapropiado o ilícito de la información aparecida en las páginas web de: <a href="https://www.danilucaci.com/es" target="_blank" rel="noopener">www.danilucaci.com<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
+Marian Daniel Lucaci, con CIF/NIF no: X6225803W y dirección en: Carrer Anastasi Pinós, 20, 2o, 2a, 25005 - Lleida (Lleida), no puede asumir ninguna responsabilidad derivada del uso incorrecto, inapropiado o ilícito de la información aparecida en las páginas web de: www.danilucaci.com.
 
 Con los límites establecidos en la ley, Marian Daniel Lucaci no asume ninguna responsabilidad derivada de la falta de veracidad, integridad, actualización y precisión de los datos o informaciones que contienen sus páginas web.
 
