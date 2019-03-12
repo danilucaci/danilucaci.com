@@ -107,6 +107,6 @@ module.exports = {
     "no-unused-": 0,
     "prefer-template": 0,
     "dot-notation": 0,
-    "forbid-prop-types": 1,
+    "no-underscore-dangle": 0,
   },
 };
