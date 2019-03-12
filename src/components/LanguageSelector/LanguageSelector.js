@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
 import { Link } from "gatsby";
 
@@ -157,7 +157,7 @@ const LanguageSelector = (props) => {
   function handleLocales() {
     if (props.locale === "en") {
       return (
-        <>
+        <React.Fragment>
           <CurrentLanguageSelector>
             <CurrentLanguageIcon arriaHidden="true">
               <use xlinkHref="#check" />
@@ -173,11 +173,11 @@ const LanguageSelector = (props) => {
               Español
             </Link>
           </LanguageSelectorItem>
-        </>
+        </React.Fragment>
       );
     } else if (props.locale === "es") {
       return (
-        <>
+        <React.Fragment>
           <LanguageSelectorItem>
             <Link to={props.twinPostURL}>
               <span className="sr-only">change the page language to</span>
@@ -193,7 +193,7 @@ const LanguageSelector = (props) => {
               Español
             </Link>
           </CurrentLanguageSelector>
-        </>
+        </React.Fragment>
       );
     }
   }
@@ -201,11 +201,7 @@ const LanguageSelector = (props) => {
   return (
     <StyledLanguageSelector>
       <WorldIcon arriaHidden="true">
-        {props.locale === "en" ? (
-          <use xlinkHref="#en" />
-        ) : (
-          <use xlinkHref="#es" />
-        )}
+        {props.locale === "en" ? <use xlinkHref="#en" /> : <use xlinkHref="#es" />}
       </WorldIcon>
       <FormattedMessage id="changeLanguageToggle">
         {(txt) => <LanguageDropdownLabel>{txt}</LanguageDropdownLabel>}
