@@ -43,9 +43,10 @@ const InnerWrapper = styled.div`
 `;
 
 const ContactWrapper = styled.div`
-  margin-bottom: ${theme.spacing.components.s};
   padding-left: ${theme.gutters.s};
   padding-right: ${theme.gutters.s};
+
+  margin-bottom: ${theme.spacing.components.s};
 
   ${mediaMin.s`
     padding-left: ${theme.gutters.m};
@@ -59,28 +60,21 @@ const ContactWrapper = styled.div`
 `;
 
 const StyledHR = styled(HR)`
-  margin-bottom: ${rem(32)};
   max-width: ${theme.contain.inner.col10};
   margin-left: auto;
   margin-right: auto;
 
+  margin-bottom: ${rem(32)};
+
   ${mediaMin.m`
-    margin-bottom: ${rem(56)};
+    margin-bottom: ${rem(64)};
   `};
 `;
 
 const WorkHeader = styled.header`
   color: ${theme.colors.dark900};
 
-  margin-bottom: ${theme.spacing.components.s};
-
-  ${mediaMin.m`
-    margin-bottom: ${theme.spacing.components.m};
-  `};
-
-  ${mediaMin.l`
-    margin-bottom: ${theme.spacing.components.xl};
-  `};
+  margin-bottom: ${rem(40)};
 `;
 
 function WorkPage(props) {
@@ -120,6 +114,8 @@ function WorkPage(props) {
       />
       <SiteHeader locale={locale} twinPostURL={twinPostURL} currentPath={props.location.pathname} />
       <Main role="main" id="main">
+        <DribbblePosts locale={locale} />
+        <StyledHR />
         <WorkHeader>
           <InnerWrapper>
             <FormattedMessage id="caseStudiesHeader">{(txt) => <h1>{txt}</h1>}</FormattedMessage>
@@ -143,7 +139,6 @@ function WorkPage(props) {
             )}
           </InnerWrapper>
         </OuterWrapper>
-        <DribbblePosts locale={locale} />
         <ContactWrapper>
           <StyledHR />
           <ContactCard locale={locale} />

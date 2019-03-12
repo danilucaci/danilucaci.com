@@ -17,7 +17,7 @@ const DribbblePostsWrapper = styled.section`
   max-width: ${theme.contain.wrapper.col10};
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: ${theme.spacing.components.s};
+  margin-bottom: ${rem(32)};
 
   padding-left: ${theme.gutters.s};
   padding-right: ${theme.gutters.s};
@@ -25,20 +25,21 @@ const DribbblePostsWrapper = styled.section`
   ${mediaMin.s`
     padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
-    margin-bottom: ${theme.spacing.components.m};
-  `};
-
-  ${mediaMin.m`
-    margin-bottom: ${theme.spacing.components.xl};
+    margin-bottom: ${rem(64)};
   `};
 `;
 
 const DribbblePostH1 = styled.h2`
+  margin-top: ${rem(16)};
   margin-bottom: ${rem(8)};
 `;
 
 const DribbbleSubhead = styled(Copy)`
-  margin-bottom: ${rem(32)};
+  margin-bottom: ${rem(40)};
+
+  ${mediaMin.s`
+      max-width: 80%;
+  `};
 `;
 
 const ErrorMessage = styled.p`
