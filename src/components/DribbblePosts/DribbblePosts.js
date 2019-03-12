@@ -71,20 +71,24 @@ function DribbblePosts({ locale }) {
   const placeholderArr = Array.from(new Array(shotsPerPage), (val, index) => index + 1);
 
   React.useEffect(() => {
+    let didCancel = false;
+
     const getDribbblePosts = async () => {
       try {
         setIsLoading(true);
         setIsError(false);
         const dribbblePosts = await axios.get(`https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&per_page=${shotsPerPage}`);
 
-        setDribbbleRes({
-          status: dribbblePosts.status,
-          statusText: dribbblePosts.statusText,
-          posts: dribbblePosts.data,
-        });
+        if (!didCancel) {
+          setDribbbleRes({
+            status: dribbblePosts.status,
+            statusText: dribbblePosts.statusText,
+            posts: dribbblePosts.data,
+          });
 
-        setIsLoading(false);
-        setDataFetched(true);
+          setIsLoading(false);
+          setDataFetched(true);
+        }
       } catch (error) {
         console.warn(error);
         setIsLoading(false);
@@ -96,6 +100,10 @@ function DribbblePosts({ locale }) {
     if (dataFetched !== true) {
       getDribbblePosts();
     }
+    return () => {
+      console.log(didCancel);
+      didCancel = true;
+    };
   }, [dribbbleRes, isError, dataFetched, isLoading]);
 
   return (
