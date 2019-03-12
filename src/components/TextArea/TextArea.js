@@ -42,6 +42,7 @@ const StyledTextArea = styled.textarea`
     border: 2px solid ${theme.colors.dark900};
     -webkit-text-fill-color: ${theme.colors.success600};
     -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+    box-shadow: 0 0 0px 1000px #fff inset;
     transition: background-color 5000s ease-in-out 0s;
   }
 

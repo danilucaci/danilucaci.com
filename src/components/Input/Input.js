@@ -42,6 +42,7 @@ const StyledInput = styled.input`
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus {
     border: 2px solid ${theme.colors.dark900};
+    box-shadow: 0 0 0px 1000px #fff inset;
     -webkit-text-fill-color: ${theme.colors.success600};
     -webkit-box-shadow: 0 0 0px 1000px #fff inset;
     transition: background-color 5000s ease-in-out 0s;
@@ -54,25 +55,6 @@ const StyledInput = styled.input`
     color: ${theme.colors.dark900};
     border: 2px solid ${theme.colors.dark900};
     outline: none;
-  }
-
-  /*  When input is... */
-  /*  1. Valid */
-  /*  2. NOT Empty */
-  /*  3. In Focus */
-  &:valid:not(:placeholder-shown):focus {
-    color: ${theme.colors.success600};
-    background-color: white !important;
-    border: 2px solid ${theme.colors.success400};
-    padding-right: ${rem(40)};
-
-    & ~ span {
-      display: block !important;
-      ${optimizedSuccessSVGDataURI};
-      background-size: ${rem(24)};
-      background-repeat: no-repeat;
-      background-position: 0px 0px;
-    }
   }
 
   /*  When input is... */
@@ -113,34 +95,6 @@ const StyledInput = styled.input`
     }
   }
 
-  /*  When input is... */
-  /*  1. NOT Valid */
-  /*  2. Required */
-  /*  2. NOT Empty */
-  &:invalid:required:not(:placeholder-shown) {
-    color: ${theme.colors.success600};
-    background: ${theme.colors.success100};
-    border: 2px solid ${theme.colors.success400};
-    padding-right: ${rem(40)};
-
-    & ~ span {
-      display: block !important;
-      ${optimizedSuccessSVGDataURI};
-      background-size: ${rem(24)};
-      background-repeat: no-repeat;
-      background-position: 0px 0px;
-    }
-  }
-
-  /*  When input is... */
-  /*  1. Default State */
-  /*  2. Required */
-  /*  2. Empty */
-  /* Remove the red box-shadow for firefox */
-  &:placeholder-shown:required {
-    box-shadow: none;
-  }
-
   /* https://css-tricks.com/form-validation-ux-html-css/ */
   /*  When input is... */
   /*  1. NOT Empty */
@@ -150,8 +104,10 @@ const StyledInput = styled.input`
     color: ${theme.colors.danger600};
     background: ${theme.colors.danger100};
     border: 2px solid ${theme.colors.danger500};
+    
     /* Remove the red box-shadow for firefox */
     box-shadow: none;
+    
     padding-right: ${rem(40)};
 
     & ~ span {
@@ -163,26 +119,23 @@ const StyledInput = styled.input`
     }
   }
 
+  /* https://css-tricks.com/form-validation-ux-html-css/ */
   /*  When input is... */
-  /* Realtime check */
   /*  1. NOT Empty */
-  /*  2. IN Focus */
+  /*  2. NOT in Focus */
   /*  3. NOT Valid */
-  &:focus:invalid:not(:placeholder-shown) {
-    color: ${theme.colors.danger600};
-    background: ${theme.colors.danger100};
-    border: 2px solid ${theme.colors.danger500};
+  &:invalid:focus:not(:placeholder-shown) {
     /* Remove the red box-shadow for firefox */
     box-shadow: none;
-    padding-right: ${rem(40)};
+  }
 
-    & ~ span {
-      display: block !important;
-      ${optimizedErrorSVGDataURI};
-      background-size: ${rem(24)};
-      background-repeat: no-repeat;
-      background-position: 0px 0px;
-    }
+  /*  When input is... */
+  /*  1. Default State */
+  /*  2. Required */
+  /*  2. Empty */
+  /* Remove the red box-shadow for firefox */
+  &:placeholder-shown:required {
+    box-shadow: none !important;
   }
 `;
 
