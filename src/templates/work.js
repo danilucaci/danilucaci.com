@@ -13,6 +13,7 @@ import SiteFooter from "../components/SiteFooter/SiteFooter";
 import CaseStudyListing from "../components/CaseStudyListing/CaseStudyListing";
 import Pagination from "../components/Pagination/Pagination";
 import ContactCard from "../components/ContactCard/ContactCard";
+import DribbblePosts from "../components/DribbblePosts/DribbblePosts";
 import { HR } from "../components/HR/HR";
 import { localePaths } from "../i18n/i18n";
 
@@ -82,7 +83,7 @@ const WorkHeader = styled.header`
   `};
 `;
 
-const WorkPage = (props) => {
+function WorkPage(props) {
   const {
     currentPage,
     totalPagesInWork,
@@ -96,15 +97,13 @@ const WorkPage = (props) => {
   let twinPostURL = "";
 
   if (locale === "en" && currentPage > 1) {
-    twinPostURL =
-      localePaths["es"].work + localePaths["es"].paginationName + currentPage;
+    twinPostURL = localePaths["es"].work + localePaths["es"].paginationName + currentPage;
   } else if (locale === "en" && currentPage === 1) {
     twinPostURL = localePaths["es"].work;
   }
 
   if (locale === "es" && currentPage > 1) {
-    twinPostURL =
-      localePaths["en"].work + localePaths["en"].paginationName + currentPage;
+    twinPostURL = localePaths["en"].work + localePaths["en"].paginationName + currentPage;
   } else if (locale === "es" && currentPage === 1) {
     twinPostURL = localePaths["en"].work;
   }
@@ -119,17 +118,11 @@ const WorkPage = (props) => {
         prevPath={prevPath}
         nextPath={nextPath}
       />
-      <SiteHeader
-        locale={locale}
-        twinPostURL={twinPostURL}
-        currentPath={props.location.pathname}
-      />
+      <SiteHeader locale={locale} twinPostURL={twinPostURL} currentPath={props.location.pathname} />
       <Main role="main" id="main">
         <WorkHeader>
           <InnerWrapper>
-            <FormattedMessage id="caseStudiesHeader">
-              {(txt) => <h1>{txt}</h1>}
-            </FormattedMessage>
+            <FormattedMessage id="caseStudiesHeader">{(txt) => <h1>{txt}</h1>}</FormattedMessage>
             <FormattedMessage id="caseStudiesDescription">
               {(txt) => <Copy>{txt}</Copy>}
             </FormattedMessage>
@@ -150,6 +143,7 @@ const WorkPage = (props) => {
             )}
           </InnerWrapper>
         </OuterWrapper>
+        <DribbblePosts locale={locale} />
         <ContactWrapper>
           <StyledHR />
           <ContactCard locale={locale} />
@@ -158,9 +152,10 @@ const WorkPage = (props) => {
       <SiteFooter locale={locale} />
     </Layout>
   );
-};
+}
 
 WorkPage.propTypes = {
+  location: PropTypes.object,
   pageContext: PropTypes.shape({
     locale: PropTypes.string.isRequired,
     nextPath: PropTypes.string,
@@ -170,7 +165,7 @@ WorkPage.propTypes = {
     totalPagesInWork: PropTypes.number.isRequired,
     paginationPathPrefix: PropTypes.string.isRequired,
     edgesWork: PropTypes.arrayOf(PropTypes.object).isRequired,
-  }),
+  }).isRequired,
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
       tags: PropTypes.arrayOf(PropTypes.object).isRequired,

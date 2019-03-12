@@ -26,6 +26,15 @@ export const localePaths = {
   },
 };
 
+export const EXTERNAL_LINK = {
+  en: {
+    srOnly: "Opens in new window",
+  },
+  es: {
+    srOnly: "Abre en nueva ventana",
+  },
+};
+
 export const CONSENT_VALUE = {
   en: {
     no: "I do not accept the privacy policy.",
@@ -48,8 +57,7 @@ export const FORM_SUBMIT_STATUS = {
   },
   error: {
     en: "Sorry 😔, your message couldn't be sent, please try again later.",
-    es:
-      "Lo siento 😔, tu mensaje no ha podido ser enviado, por favor prueba de nuevo más tarde.",
+    es: "Lo siento 😔, tu mensaje no ha podido ser enviado, por favor prueba de nuevo más tarde.",
   },
   cta: {
     en: "Message Sent!",
@@ -75,15 +83,12 @@ export const INPUT_EMAIL_ERROR = {
 export const MC_ERRORS = {
   en: {
     generic: "Sorry 😔, something went wrong, please try again later.",
-    many:
-      "Sorry 😔, you have too many subscribe attemps, please try again later.",
+    many: "Sorry 😔, you have too many subscribe attemps, please try again later.",
     already: "It seems that you already are a member of my newsletter 👌🏻",
   },
   es: {
-    generic:
-      "Lo siento 😔, algo ha salido mal, por favor intentalo de nuevo más tarde.",
-    many:
-      "Lo siento 😔, has hecho demasiados intentos, por favor intentalo de nuevo más tarde.",
+    generic: "Lo siento 😔, algo ha salido mal, por favor intentalo de nuevo más tarde.",
+    many: "Lo siento 😔, has hecho demasiados intentos, por favor intentalo de nuevo más tarde.",
     already: "Parece que ya eres miembro de mi newsletter 👌🏻",
   },
 };
@@ -98,6 +103,15 @@ export const MC_SUCCESS = {
     title: "¡Gracias por suscribirte a mi newsletter!",
     message:
       "Para acabar, solo tienes que confirmar tu suscripción haciendo click en el enlace que llegará a tu buzón.",
+  },
+};
+
+export const DRIBBBLE_STATUS = {
+  en: {
+    error: "Something went wrong... The projects from Dribbble couldn‘t be loaded 😔.",
+  },
+  es: {
+    error: "Algo ha salido mal... Los proyectos de Dribbble no se han podido cargar 😔.",
   },
 };
 
