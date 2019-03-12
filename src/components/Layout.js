@@ -1,7 +1,6 @@
 import React, { Component, createContext } from "react";
 import PropTypes from "prop-types";
 import styled, { ThemeProvider } from "styled-components";
-let FontFaceObserver = require("fontfaceobserver");
 import Cookies from "js-cookie";
 import ReactGA from "react-ga";
 import { IntlProvider, addLocaleData } from "react-intl";
@@ -34,14 +33,14 @@ import GlobalCSS from "../theme/globalCSS";
 import { SVGSprite } from "./SVGSprite/SVGSprite";
 import SkipToMainContent from "./SkipToMainContent/SkipToMainContent";
 import CookieConsent from "./CookieConsent/CookieConsent";
-import {
-  detectDataSaverMode,
-  detectSlowConnectionType,
-} from "../helpers/helpers";
+import { detectDataSaverMode, detectSlowConnectionType } from "../helpers/helpers";
+
+import intlMessages from "../i18n/i18n";
+
+const FontFaceObserver = require("fontfaceobserver");
 
 require("../theme/prism.css");
 
-import intlMessages from "../i18n/i18n";
 addLocaleData([...enData, ...esData]);
 
 const NODE_ENV = process.env.NODE_ENV;
@@ -141,7 +140,6 @@ const Page = styled.div`
 `;
 
 class Layout extends Component {
-  // cookieExp set in days same as GA expiry date
   state = {
     hasGDPRConsent: false,
     askCookieConsent: false,
@@ -150,58 +148,54 @@ class Layout extends Component {
     cookieExp: 780,
     showLogs: true,
   };
+  // cookieExp set in days same as GA expiry date
 
   componentDidMount() {
     // Tied to GTM Cookie_Consent_Accepted variable to fire analytics
+    this.checkFontsLoaded();
     this.setInitialConsentCookie();
     this.checkGDPRStatus();
-    this.checkFontsLoaded();
   }
 
-  componentDidUpdate() {
-    // if (this.state.showLogs === true) {
-    //   this.showGDPRStatus();
-    // }
-  }
+  // componentDidUpdate() {
+  // if (this.state.showLogs === true) {
+  //   this.showGDPRStatus();
+  // }
+  // }
 
-  checkFontsLoaded = () => {
-    if (sessionStorage.fontsLoadedPolyfill) {
-      var isLoaded = document.documentElement.className.includes(
-        "fonts-loaded"
-      );
-      // Only add the class when it is not already added
-      if (!isLoaded) {
-        document.documentElement.className += " fonts-loaded";
-      }
-      if (this.state.showLogs === true) {
-        console.log("%c Fonts already loaded.", "color: #79E36B");
-      }
-      return;
-    } else {
-      if (detectDataSaverMode() || detectSlowConnectionType()) {
-        return;
-      } else {
-        this.loadFonts();
-      }
-    }
+  setInitialConsentCookie = () => {
+    // Tied to GTM Cookie_Consent_Accepted variable to fire analytics
+    Cookies.set(GATSBY_DL_CONSENT_COOKIE_NAME, false, {
+      expires: this.state.cookieExp,
+      domain: GATSBY_DL_COOKIE_DOMAIN,
+      secure: GATSBY_DL_COOKIE_SECURE,
+    });
+  };
+
+  setAcceptedConsentCookie = () => {
+    Cookies.set(GATSBY_DL_CONSENT_COOKIE_NAME, true, {
+      expires: this.state.cookieExp,
+      domain: GATSBY_DL_COOKIE_DOMAIN,
+      secure: GATSBY_DL_COOKIE_SECURE,
+    });
   };
 
   loadFonts = () => {
-    var RobotoMonoRegular = new FontFaceObserver("Roboto Mono Regular");
-    var RobotoMonoItalic = new FontFaceObserver("Roboto Mono Italic", {
+    const RobotoMonoRegular = new FontFaceObserver("Roboto Mono Regular");
+    const RobotoMonoItalic = new FontFaceObserver("Roboto Mono Italic", {
       style: "italic",
     });
-    var OpenSansRegular = new FontFaceObserver("Open Sans Regular");
-    var OpenSansBold = new FontFaceObserver("Open Sans Bold", {
+    const OpenSansRegular = new FontFaceObserver("Open Sans Regular");
+    const OpenSansBold = new FontFaceObserver("Open Sans Bold", {
       weight: 700,
     });
-    var OpenSansItalic = new FontFaceObserver("Open Sans Italic", {
+    const OpenSansItalic = new FontFaceObserver("Open Sans Italic", {
       style: "italic",
     });
-    var MontserratBold = new FontFaceObserver("Montserrat Bold", {
+    const MontserratBold = new FontFaceObserver("Montserrat Bold", {
       weight: 700,
     });
-    var MontserratRegular = new FontFaceObserver("Montserrat Regular");
+    const MontserratRegular = new FontFaceObserver("Montserrat Regular");
 
     Promise.all([
       RobotoMonoRegular.load(),
@@ -221,33 +215,34 @@ class Layout extends Component {
     });
   };
 
-  setInitialConsentCookie = () => {
-    // Tied to GTM Cookie_Consent_Accepted variable to fire analytics
-    Cookies.set(GATSBY_DL_CONSENT_COOKIE_NAME, false, {
-      expires: this.state.cookieExp,
-      domain: GATSBY_DL_COOKIE_DOMAIN,
-      secure: GATSBY_DL_COOKIE_SECURE,
-    });
-  };
-
-  setAcceptedConsentCookie = () => {
-    Cookies.set(GATSBY_DL_CONSENT_COOKIE_NAME, true, {
-      expires: this.state.cookieExp,
-      domain: GATSBY_DL_COOKIE_DOMAIN,
-      secure: GATSBY_DL_COOKIE_SECURE,
-    });
+  checkFontsLoaded = () => {
+    if (sessionStorage.fontsLoadedPolyfill) {
+      const isLoaded = document.documentElement.className.includes("fonts-loaded");
+      // Only add the class when it is not already added
+      if (!isLoaded) {
+        document.documentElement.className += " fonts-loaded";
+      }
+      if (this.state.showLogs === true) {
+        console.log("%c Fonts already loaded.", "color: #79E36B");
+      }
+    } else {
+      if (detectDataSaverMode() || detectSlowConnectionType()) {
+        return;
+      }
+      this.loadFonts();
+    }
   };
 
   checkGDPRStatus = () => {
     // If it can read the cookie name from the .env variable
     if (GATSBY_DL_COOKIE_NAME) {
-      let DLCookie = Cookies.getJSON(GATSBY_DL_COOKIE_NAME);
+      const DLCookie = Cookies.getJSON(GATSBY_DL_COOKIE_NAME);
       // If it can find a previously set cookie
       if (DLCookie) {
         // If the cookie has analytics accepted
         if (DLCookie.analytics && !DLCookie.dismissed) {
           if (this.state.showLogs === true) {
-            console.log(`%c The user accepted cookies.`, "color: #79E36B");
+            console.log("%c The user accepted cookies.", "color: #79E36B");
           }
 
           this.setState((prevState) => ({
@@ -264,10 +259,7 @@ class Layout extends Component {
           // Don't load analytics scripts if analytics cookies are not accepted
         } else if (!DLCookie.analytics && DLCookie.dismissed) {
           if (this.state.showLogs === true) {
-            console.log(
-              `%c The user doesn't accept cookies.`,
-              "color: #79E36B"
-            );
+            console.log("%c The user doesn't accept cookies.", "color: #79E36B");
           }
           if (this.state.askCookieConsent === true) {
             this.setState((prevState) => ({
@@ -285,15 +277,13 @@ class Layout extends Component {
 
         if (this.state.showLogs === true) {
           console.log(
-            `%c Didn't find a previous cookie, asking for the consent.`,
-            "color: #79E36B"
+            "%c Didn't find a previous cookie, asking for the consent.",
+            "color: #79E36B",
           );
         }
       }
-    } else {
-      if (this.state.showLogs === true) {
-        console.error("dl.com Can't read env cookie name.");
-      }
+    } else if (this.state.showLogs === true) {
+      console.error("dl.com Can't read env cookie name.");
     }
   };
 
@@ -309,29 +299,30 @@ class Layout extends Component {
     // still a bug, need to set a 0 setTimeout for
     // the title to be set in <helmet>
     // 100ms seems to work so far
-    setTimeout(() => {
+
+    const timer = setTimeout(() => {
       ReactGA.set({ page: window.location.pathname });
       ReactGA.pageview(window.location.pathname);
+
+      clearTimeout(timer);
     }, 100);
   };
 
   showGDPRStatus = () => {
     if (GATSBY_DL_COOKIE_NAME) {
       if (GATSBY_DL_COOKIE_DOMAIN) {
-        let DLCookie = Cookies.getJSON(GATSBY_DL_COOKIE_NAME);
+        const DLCookie = Cookies.getJSON(GATSBY_DL_COOKIE_NAME);
         if (DLCookie) {
           if (DLCookie.analytics) {
-            console.log(`%c Cookies Accepted.`, "color: #79E36B");
+            console.log("%c Cookies Accepted.", "color: #79E36B");
           } else if (!DLCookie.analytics) {
-            console.log(`%c Cookies Denied.`, "color: #79E36B");
+            console.log("%c Cookies Denied.", "color: #79E36B");
           }
         } else {
-          console.log(`%c Didn't find a cookie.`, "color: #79E36B");
+          console.log("%c Didn't find a cookie.", "color: #79E36B");
         }
-      } else {
-        if (this.state.showLogs === true) {
-          console.warn("Can't read cookie domain name .env.");
-        }
+      } else if (this.state.showLogs === true) {
+        console.warn("Can't read cookie domain name .env.");
       }
     } else {
       console.warn("Can't read cookie domain name .env.");
@@ -353,15 +344,11 @@ class Layout extends Component {
 
         // Check to see if the cookie was set
         this.checkGDPRStatus();
-      } else {
-        if (this.state.showLogs === true) {
-          console.warn("Can't read cookie domain name .env.");
-        }
+      } else if (this.state.showLogs === true) {
+        console.warn("Can't read cookie domain name .env.");
       }
-    } else {
-      if (this.state.showLogs === true) {
-        console.warn("Can't read cookie name .env.");
-      }
+    } else if (this.state.showLogs === true) {
+      console.warn("Can't read cookie name .env.");
     }
   };
 
@@ -376,15 +363,11 @@ class Layout extends Component {
 
         // Check to see if the cookie was set
         this.checkGDPRStatus();
-      } else {
-        if (this.state.showLogs === true) {
-          console.warn("Can't read cookie domain name .env.");
-        }
+      } else if (this.state.showLogs === true) {
+        console.warn("Can't read cookie domain name .env.");
       }
-    } else {
-      if (this.state.showLogs === true) {
-        console.warn("Can't read cookie name .env.");
-      }
+    } else if (this.state.showLogs === true) {
+      console.warn("Can't read cookie name .env.");
     }
   };
 
@@ -399,7 +382,8 @@ class Layout extends Component {
   };
 
   render() {
-    let GTMScript = null;
+    const GTMScript = null;
+
     // fix for webpack window is not defined
     const globalWindow = typeof window !== "undefined";
 
@@ -409,7 +393,7 @@ class Layout extends Component {
           {`<!-- Google Tag Manager -->`}
           <script>
             {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                new Date().getTime(),event:'gtm.js'});let f=d.getElementsByTagName(s)[0],
                 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
                 })(window,document,'script','dataLayer','GTM-TJ6RBXR');`}
@@ -423,10 +407,7 @@ class Layout extends Component {
 
     return (
       <ThemeProvider theme={theme}>
-        <IntlProvider
-          locale={this.props.locale}
-          messages={intlMessages[this.props.locale]}
-        >
+        <IntlProvider locale={this.props.locale} messages={intlMessages[this.props.locale]}>
           <Page>
             {GTMScript}
             <SkipToMainContent />
@@ -450,6 +431,7 @@ class Layout extends Component {
 
 Layout.propTypes = {
   locale: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default Layout;
