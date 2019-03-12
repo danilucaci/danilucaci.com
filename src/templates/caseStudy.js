@@ -4,6 +4,7 @@ import { graphql } from "gatsby";
 import styled from "styled-components";
 // import rehypeReact from "rehype-react";
 import { FormattedMessage } from "react-intl";
+import Img from "gatsby-image";
 
 import { theme, rem, mediaMin, mediaMax } from "../theme/globalStyles";
 import SEO from "../components/SEO/SEO";
@@ -11,7 +12,6 @@ import Layout from "../components/Layout";
 import SiteHeader from "../components/SiteHeader/SiteHeader";
 import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
-import Img from "gatsby-image";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import { Copy } from "../components/Copy/Copy";
 import { HR } from "../components/HR/HR";
@@ -28,8 +28,8 @@ const ArticleWrapper = styled.article`
       width: auto;
     }
 
-    @media screen and (min-width: ${theme.breakpoints
-        .s}) and (max-width: ${theme.breakpoints.xxl}) {
+    @media screen and (min-width: ${theme.breakpoints.s}) and (max-width: ${theme.breakpoints
+  .xxl}) {
       margin-left: ${theme.gutters.m};
       margin-right: ${theme.gutters.m};
       width: auto;
@@ -288,6 +288,10 @@ const PostContent = styled.section`
     margin-top: -${rem(32)};
   }
 
+  li {
+    margin-bottom: ${rem(4)};
+  }
+
   ul + p {
     margin-top: ${rem(32)};
   }
@@ -302,6 +306,39 @@ const PostContent = styled.section`
 
     font-size: ${theme.fontSizes.m};
     line-height: ${theme.lineHeights.m};
+  }
+
+  blockquote {
+    background-color: ${theme.colors.gray100};
+
+    & > p {
+      color: ${theme.colors.main600};
+      margin-bottom: 0;
+    }
+
+    strong {
+      color: ${theme.colors.main600};
+    }
+
+    margin-top: ${rem(32)};
+    margin-bottom: ${rem(32)};
+
+    margin-right: -${theme.gutters.s};
+    margin-left: -${theme.gutters.s};
+    padding: ${rem(24)} ${theme.gutters.s};
+
+    ${mediaMin.m`
+      border-left: 8px solid ${theme.colors.main600};
+      margin-right: -${theme.gutters.m};
+      margin-left: -${theme.gutters.m};
+      padding: ${rem(40)} ${theme.gutters.m};
+    `};
+
+    ${mediaMin.xl`
+      margin-right: -${rem(96)};
+      margin-left: -${rem(96)};
+      padding: ${rem(40)} ${rem(96)};
+    `};
   }
 
   figure img,
@@ -518,39 +555,6 @@ const PostContent = styled.section`
     max-width: 744px;
     outline: 1px solid red;
   }
-
-  blockquote {
-    background-color: ${theme.colors.gray100};
-
-    & > p {
-      color: ${theme.colors.main600};
-      margin-bottom: 0;
-    }
-
-    strong {
-      color: ${theme.colors.main600};
-    }
-
-    margin-top: ${rem(32)};
-    margin-bottom: ${rem(32)};
-
-    margin-right: -${theme.gutters.s};
-    margin-left: -${theme.gutters.s};
-    padding: ${rem(24)} ${theme.gutters.s};
-
-    ${mediaMin.m`
-      border-left: 8px solid ${theme.colors.main600};
-      margin-right: -${theme.gutters.m};
-      margin-left: -${theme.gutters.m};
-      padding: ${rem(40)} ${theme.gutters.m};
-    `};
-
-    ${mediaMin.xl`
-      margin-right: -${rem(96)};
-      margin-left: -${rem(96)};
-      padding: ${rem(40)} ${rem(96)};
-    `};
-  }
 `;
 
 // const renderAst = new rehypeReact({
@@ -567,12 +571,12 @@ class CaseStudy extends Component {
   componentDidMount() {
     // Test via a getter in the options object to see if the passive property is accessed
     // https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#feature-detection
-    var supportsPassive = textPassiveEventSupport();
+    const supportsPassive = textPassiveEventSupport();
     // Use our detect's results. passive applied if supported, capture will be false either way.
     window.addEventListener(
       "scroll",
       this.handlePageScroll,
-      supportsPassive ? { passive: true } : false
+      supportsPassive ? { passive: true } : false,
     );
 
     this.handlePageScroll();
@@ -607,8 +611,8 @@ class CaseStudy extends Component {
   };
 
   handleScrollLine = () => {
-    let scrollLine = document.querySelector(".js-scrollLine");
-    let scrolled = calculateScroll();
+    const scrollLine = document.querySelector(".js-scrollLine");
+    const scrolled = calculateScroll();
     scrollLine.style.width = scrolled + "%";
   };
 
@@ -759,23 +763,11 @@ CaseStudy.propTypes = {
     locale: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     twinPost: PropTypes.string.isRequired,
-    nextTitle: PropTypes.oneOfType([
-      PropTypes.string.isRequired,
-      PropTypes.object.isRequired,
-    ]),
-    nextSlug: PropTypes.oneOfType([
-      PropTypes.string.isRequired,
-      PropTypes.object.isRequired,
-    ]),
-    prevSlug: PropTypes.oneOfType([
-      PropTypes.string.isRequired,
-      PropTypes.object.isRequired,
-    ]),
-    prevTitle: PropTypes.oneOfType([
-      PropTypes.string.isRequired,
-      PropTypes.object.isRequired,
-    ]),
-  }),
+    nextTitle: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.object.isRequired]),
+    nextSlug: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.object.isRequired]),
+    prevSlug: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.object.isRequired]),
+    prevTitle: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.object.isRequired]),
+  }).isRequired,
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
       fields: PropTypes.shape({
@@ -795,7 +787,7 @@ CaseStudy.propTypes = {
       }),
       html: PropTypes.string.isRequired,
     }),
-  }),
+  }).isRequired,
 };
 
 export default CaseStudy;
