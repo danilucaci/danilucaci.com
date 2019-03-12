@@ -97,7 +97,7 @@ module.exports = {
     "no-use-before-define": 0,
     "no-unused-vars": 1,
     "no-undef": 2,
-    "no-inline-comments": 1,
+    "no-inline-comments": 0,
     "no-trailing-spaces": 1,
     "no-multiple-empty-lines": 1,
     "space-in-parens": 1,
@@ -108,5 +108,6 @@ module.exports = {
     "prefer-template": 0,
     "dot-notation": 0,
     "no-underscore-dangle": 0,
+    "template-curly-spacing": 0,
   },
 };
