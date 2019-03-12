@@ -4,31 +4,7 @@ import styled, { css, keyframes } from "styled-components";
 
 import { theme, mediaMin, rem } from "../../theme/globalStyles";
 
-const StyledDribbblePost = styled.figure`
-  display: inline-block;
-  vertical-align: middle;
-
-  position: relative;
-  overflow: hidden;
-  height: 100%;
-  width: 100%;
-  margin-bottom: ${rem(24)};
-
-  ${mediaMin.m`
-    width: calc(50% - ${rem(12)});
-    margin-bottom: ${rem(32)};
-  
-    &:nth-of-type(1n) {
-      margin-right: ${rem(12)};
-      margin-left: 0;
-    }
-  
-    &:nth-of-type(2n) {
-      margin-left: ${rem(12)};
-      margin-right: 0;
-    } 
-  `};
-`;
+const StyledDribbblePost = styled.figure``;
 
 const PostBGImg = styled.span`
   display: block;
@@ -53,9 +29,37 @@ const StyledLink = styled.a`
   color: ${theme.colors.dark700} !important;
   text-decoration: none !important;
 
+  display: inline-block;
+  vertical-align: middle;
+
   &:hover {
     background-color: transparent !important;
   }
+
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  margin-bottom: ${rem(24)};
+
+  &:hover {
+    ${theme.shadow.hover};
+  }
+
+  ${mediaMin.m`
+    width: calc(50% - ${rem(12)});
+    margin-bottom: ${rem(32)};
+  
+    &:nth-of-type(1n) {
+      margin-right: ${rem(12)};
+      margin-left: 0;
+    }
+  
+    &:nth-of-type(2n) {
+      margin-left: ${rem(12)};
+      margin-right: 0;
+    } 
+  `};
 `;
 
 function DribbblePost(props) {
@@ -95,13 +99,13 @@ function DribbblePost(props) {
   }
 
   return (
-    <StyledDribbblePost>
-      <StyledLink href={htmlURL} target="_blank" rel="noopener noreferrer">
+    <StyledLink href={htmlURL} target="_blank" rel="noopener noreferrer">
+      <StyledDribbblePost>
         <PostBGImg>
           <StyledImg sizes="(max-width: 936px) 100vw" srcSet={imgSrcSet} alt={title} />
         </PostBGImg>
-      </StyledLink>
-    </StyledDribbblePost>
+      </StyledDribbblePost>
+    </StyledLink>
   );
 }
 
