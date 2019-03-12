@@ -24,7 +24,7 @@ const StatusMessageWrapper = styled.div`
   ${theme.shadow.subscribeSuccessMessage};
 
   ${mediaMin.xl`
-      max-width: 59%;
+      max-width: 84%;
   `};
 `;
 

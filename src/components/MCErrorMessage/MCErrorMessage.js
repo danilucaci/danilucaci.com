@@ -31,12 +31,9 @@ const StatusMessageWrapper = styled.div`
   padding: ${rem(16)};
   margin-top: ${rem(24)};
   white-space: pre-line;
+  width: 100%;
 
   ${theme.shadow.subscribeErrorMessage};
-
-  ${mediaMin.xl`
-      max-width: 59%;
-  `};
 `;
 
 function EmailErrorMessage({ locale, MCError = "" }) {
