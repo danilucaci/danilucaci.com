@@ -39,7 +39,7 @@ const DribbbleSubhead = styled(Copy)`
 
   ${mediaMin.s`
       margin-bottom: ${rem(48)};
-      max-width: 80%;
+      max-width: 85%;
   `};
 `;
 
