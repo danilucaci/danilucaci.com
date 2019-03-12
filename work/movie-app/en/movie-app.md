@@ -39,7 +39,7 @@ tags:
 posted: true
 image: "./ux_case_study_movie_app_presentation@2x.png"
 locale: "en"
-twinPost: "Aplicación de Cine Estudio de Caso UX"
+twinPost: "Compra de Entradas para un Cine - Estudio de Caso UX"
 ---
 
 ## Initial Problem Assumptions

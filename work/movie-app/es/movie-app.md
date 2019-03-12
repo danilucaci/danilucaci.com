@@ -1,5 +1,5 @@
 ---
-title: "Aplicación de Cine - Estudio de Caso UX"
+title: "Compra de Entradas para un Cine - Estudio de Caso UX"
 slug: "Aplicación de Cine Estudio de Caso UX"
 snippet: "Estudio de caso sobre como mejorar la experiencia de busqueda y compra de entradas para una película, basado en proceso de diseño User-Centered Design."
 intro: "Esta aplicación es un proyecto personal que decidí crear, ya que cada vez que intentaba ver una película o comprar una entrada usando las páginas web o aplicaciones de los cines de mi ciudad, me encontré con diseños antiguos, con muchos fallos de usabilidad.
@@ -39,7 +39,7 @@ tags:
 posted: true
 image: "./ux_case_study_movie_app_presentation@2x.png"
 locale: "es"
-twinPost: "Movie Booking App UX Case Study"
+twinPost: "Movie Booking App - UX Case Study"
 ---
 
 ## Suposiciones iniciales
