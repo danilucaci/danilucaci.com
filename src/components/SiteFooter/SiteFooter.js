@@ -53,13 +53,11 @@ const LegalDoc = styled(LightSecondaryLink)`
 `;
 
 const SiteFooter = (props) => {
-  let pageLocale = props.locale;
+  const pageLocale = props.locale;
 
   return (
     <StyledFooter role="contentinfo">
-      <StyledCopyright small>
-        &copy; {new Date().getFullYear()} Dani Lucaci.
-      </StyledCopyright>
+      <StyledCopyright small>&copy; {new Date().getFullYear()} Dani Lucaci.</StyledCopyright>
       <FormattedMessage id="footerBuiltWith">
         {(txt) => (
           <StyledCopy small light>
@@ -71,7 +69,7 @@ const SiteFooter = (props) => {
       <StaticQuery
         query={LEGAL_PAGES_QUERY}
         render={(data) => {
-          let localizedDocsList = data.allMarkdownRemark.edges
+          const localizedDocsList = data.allMarkdownRemark.edges
             .map((edge) => ({
               slug: edge.node.fields.slug,
               title: edge.node.frontmatter.title,

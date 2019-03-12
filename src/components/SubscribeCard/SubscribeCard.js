@@ -118,7 +118,7 @@ const AltCopy = styled(Copy)`
 `;
 
 const SubscribeCard = (props) => {
-  let locale = props.locale;
+  const locale = props.locale;
 
   const [email, setEmail] = useState("");
   const [acceptsConsentCheckbox, setAcceptsConsentCheckbox] = useState(false);
@@ -152,10 +152,7 @@ const SubscribeCard = (props) => {
     // let timer = setTimeout(() => {
     if (result.includes("success")) {
       handleMCSuccess();
-    } else if (
-      result.includes("error") &&
-      msg.includes("is already subscribed to")
-    ) {
+    } else if (result.includes("error") && msg.includes("is already subscribed to")) {
       setShowMCError(true);
       setShowMCLoading(false);
       setMCError("already");
@@ -223,12 +220,7 @@ const SubscribeCard = (props) => {
                 locale={locale}
               />
             )}
-            {!MCSent && (
-              <StyledSubmitButton
-                type="submit"
-                disabled={!acceptsConsentCheckbox}
-              />
-            )}
+            {!MCSent && <StyledSubmitButton type="submit" disabled={!acceptsConsentCheckbox} />}
           </InputsWrapper>
           <PrivacyCheckbox
             type="checkbox"

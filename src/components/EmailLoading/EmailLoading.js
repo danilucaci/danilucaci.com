@@ -58,18 +58,16 @@ function EmailLoading({
         {showFormLoading ? (
           <Spinner locale={locale} />
         ) : (
-          <>
+          <React.Fragment>
             {FORM_SUBMIT_STATUS.cta[locale]}
             <StyledIcon aria-hidden="true">
               <use xlinkHref="#correct" />
             </StyledIcon>
-          </>
+          </React.Fragment>
         )}
       </StyledLoadingCTA>
       {showFormSuccess && <EmailSuccessMessage locale={locale} />}
-      {showFormError && (
-        <EmailErrorMessage locale={locale} formErrorRes={formErrorRes} />
-      )}
+      {showFormError && <EmailErrorMessage locale={locale} formErrorRes={formErrorRes} />}
     </StyledLoadingWrapper>
   );
 }
