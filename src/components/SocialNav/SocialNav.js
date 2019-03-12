@@ -1,11 +1,11 @@
 import React from "react";
-
 import styled, { css } from "styled-components";
 import { theme, rem, mediaMax, mediaMin } from "../../theme/globalStyles";
+import { FormattedMessage } from "react-intl";
 
 import { Icon } from "../Icon/Icon";
 
-const Wrapper = styled.div``;
+const Wrapper = styled.nav``;
 
 const StyledIcon = styled(Icon)`
   fill: ${(props) => (props.light ? theme.colors.light100 : null)};
@@ -40,59 +40,41 @@ const StyledLink = styled.a`
   }
 `;
 
-const SocialNav = (props) => {
-  return (
-    <Wrapper>
-      <StyledLink
-        target="_blank"
-        rel="noopener"
-        href="https://github.com/danilucaci"
-      >
-        <span className="sr-only">
-          View danilucaci Github account, opens in new window
-        </span>
-        <StyledIcon aria-hidden="true" light={props.light}>
-          <use xlinkHref="#github" />
-        </StyledIcon>
-      </StyledLink>
-      <StyledLink
-        target="_blank"
-        rel="noopener"
-        href="https://twitter.com/danilucaci"
-      >
-        <span className="sr-only">
-          View danilucaci Twitter account, opens in new window
-        </span>
-        <StyledIcon aria-hidden="true" light={props.light}>
-          <use xlinkHref="#twitter" />
-        </StyledIcon>
-      </StyledLink>
-      <StyledLink
-        target="_blank"
-        rel="noopener"
-        href="https://dribbble.com/danilucaci"
-      >
-        <span className="sr-only">
-          View danilucaci Drible account, opens in new window
-        </span>
-        <StyledIcon aria-hidden="true" light={props.light}>
-          <use xlinkHref="#dribbble" />
-        </StyledIcon>
-      </StyledLink>
-      <StyledLink
-        target="_blank"
-        rel="noopener"
-        href="https://www.linkedin.com/in/danielmlucaci"
-      >
-        <span className="sr-only">
-          View danilucaci Linkedin account, opens in new window
-        </span>
-        <StyledIcon aria-hidden="true" light={props.light}>
-          <use xlinkHref="#linkedin" />
-        </StyledIcon>
-      </StyledLink>
-    </Wrapper>
-  );
-};
+const SocialNav = (props) => (
+  <Wrapper>
+    <StyledLink target="_blank" rel="noopener" href="https://github.com/danilucaci">
+      <FormattedMessage id="socialNavGithub">
+        {(txt) => <span className="sr-only">{txt}</span>}
+      </FormattedMessage>
+      <StyledIcon aria-hidden="true" light={props.light}>
+        <use xlinkHref="#github" />
+      </StyledIcon>
+    </StyledLink>
+    <StyledLink target="_blank" rel="noopener" href="https://twitter.com/danilucaci">
+      <FormattedMessage id="socialNavTwitter">
+        {(txt) => <span className="sr-only">{txt}</span>}
+      </FormattedMessage>
+      <StyledIcon aria-hidden="true" light={props.light}>
+        <use xlinkHref="#twitter" />
+      </StyledIcon>
+    </StyledLink>
+    <StyledLink target="_blank" rel="noopener" href="https://dribbble.com/danilucaci">
+      <FormattedMessage id="socialNavDribbble">
+        {(txt) => <span className="sr-only">{txt}</span>}
+      </FormattedMessage>
+      <StyledIcon aria-hidden="true" light={props.light}>
+        <use xlinkHref="#dribbble" />
+      </StyledIcon>
+    </StyledLink>
+    <StyledLink target="_blank" rel="noopener" href="https://www.linkedin.com/in/danielmlucaci">
+      <FormattedMessage id="socialNavLinkedin">
+        {(txt) => <span className="sr-only">{txt}</span>}
+      </FormattedMessage>
+      <StyledIcon aria-hidden="true" light={props.light}>
+        <use xlinkHref="#linkedin" />
+      </StyledIcon>
+    </StyledLink>
+  </Wrapper>
+);
 
 export default SocialNav;
