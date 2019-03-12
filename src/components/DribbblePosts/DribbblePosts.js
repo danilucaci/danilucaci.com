@@ -59,10 +59,14 @@ function DribbblePosts({ locale }) {
     statusText: "",
     posts: [],
   });
-  const [isLoading, setIsLoading] = React.useState(false);
+
+  // Set isLoading by default to true, if set in .useEffect it will be changed on each render
+  // and the cause a new render
+  const [isLoading, setIsLoading] = React.useState(true);
   const [isError, setIsError] = React.useState(false);
   const [dataFetched, setDataFetched] = React.useState(false);
 
+  // How many posts per page and placeholder elements
   const shotsPerPage = 6;
 
   // Create index's in the placeholder array to use as a key in the render method with .map()
@@ -75,10 +79,11 @@ function DribbblePosts({ locale }) {
 
     const getDribbblePosts = async () => {
       try {
-        setIsLoading(true);
-        setIsError(false);
+        // If isLoading is set here it will cause a rerender
+        // setIsLoading(true);
         const dribbblePosts = await axios.get(`https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&per_page=${shotsPerPage}`);
 
+        // didCancel gets set to true when the component unmounts in the return from useEffect
         if (!didCancel) {
           setDribbbleRes({
             status: dribbblePosts.status,
@@ -91,17 +96,20 @@ function DribbblePosts({ locale }) {
         }
       } catch (error) {
         console.warn(error);
-        setIsLoading(false);
-        setDataFetched(true);
-        setIsError(true);
+        if (!didCancel) {
+          setIsLoading(false);
+          setDataFetched(true);
+          setIsError(true);
+        }
       }
     };
 
-    if (dataFetched !== true) {
+    if (dataFetched !== true && !didCancel) {
       getDribbblePosts();
     }
+
     return () => {
-      console.log(didCancel);
+      // Prevent memory leak
       didCancel = true;
     };
   }, [dribbbleRes, isError, dataFetched, isLoading]);
