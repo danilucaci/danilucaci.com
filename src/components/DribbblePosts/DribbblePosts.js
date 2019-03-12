@@ -29,15 +29,16 @@ const DribbblePostsWrapper = styled.section`
   `};
 `;
 
-const DribbblePostH1 = styled.h2`
+const DribbblePostH1 = styled.h1`
   margin-top: ${rem(16)};
   margin-bottom: ${rem(8)};
 `;
 
 const DribbbleSubhead = styled(Copy)`
-  margin-bottom: ${rem(40)};
+  margin-bottom: ${rem(32)};
 
   ${mediaMin.s`
+      margin-bottom: ${rem(48)};
       max-width: 80%;
   `};
 `;

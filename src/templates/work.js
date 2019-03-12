@@ -74,7 +74,11 @@ const StyledHR = styled(HR)`
 const WorkHeader = styled.header`
   color: ${theme.colors.dark900};
 
-  margin-bottom: ${rem(40)};
+  margin-bottom: ${rem(32)};
+
+  ${mediaMin.s`
+      margin-bottom: ${rem(48)};
+  `};
 `;
 
 function WorkPage(props) {
