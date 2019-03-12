@@ -20,8 +20,8 @@ import ArticleDate from "../components/ArticleDate/ArticleDate";
 import { Copy } from "../components/Copy/Copy";
 import { HR } from "../components/HR/HR";
 import SiblingPosts from "../components/SiblingPosts/SiblingPosts";
-import { LoadComments } from "../components/Button/Button";
-import { Icon } from "../components/Icon/Icon";
+// import { LoadComments } from "../components/Button/Button";
+// import { Icon } from "../components/Icon/Icon";
 import AuthorCard from "../components/AuthorCard/AuthorCard";
 import SubscribeCard from "../components/SubscribeCard/SubscribeCard";
 import {
@@ -182,45 +182,45 @@ const PostContent = styled.section`
   }
 `;
 
-const PostTOC = styled.nav`
-  background-color: ${theme.colors.sectionBackground};
-  padding: ${rem(16)} ${rem(20)};
+// const PostTOC = styled.nav`
+//   background-color: ${theme.colors.sectionBackground};
+//   padding: ${rem(16)} ${rem(20)};
 
-  & h3 {
-    margin-top: 0;
-    margin-bottom: ${rem(8)};
-  }
+//   & h3 {
+//     margin-top: 0;
+//     margin-bottom: ${rem(8)};
+//   }
 
-  ${mediaMin.xl`
-    margin-left: -${rem(96)};
-    margin-right: -${rem(96)};
-    padding-left: ${rem(96)};
-    padding-right: ${rem(96)};
-    padding-top: ${rem(32)};
-    padding-bottom: ${rem(32)};
-  `};
-`;
+//   ${mediaMin.xl`
+//     margin-left: -${rem(96)};
+//     margin-right: -${rem(96)};
+//     padding-left: ${rem(96)};
+//     padding-right: ${rem(96)};
+//     padding-top: ${rem(32)};
+//     padding-bottom: ${rem(32)};
+//   `};
+// `;
 
-const TOCEntry = styled.a`
-  display: block;
-  color: ${theme.colors.dark900};
-  text-decoration: none;
-  font-style: normal;
-  font-weight: 400;
-  padding: ${rem(8)} 0;
+// const TOCEntry = styled.a`
+//   display: block;
+//   color: ${theme.colors.dark900};
+//   text-decoration: none;
+//   font-style: normal;
+//   font-weight: 400;
+//   padding: ${rem(8)} 0;
 
-  font-family: ${theme.fonts.bodyRegular};
+//   font-family: ${theme.fonts.bodyRegular};
 
-  &:visited,
-  &:link {
-    color: ${theme.colors.dark900};
-  }
+//   &:visited,
+//   &:link {
+//     color: ${theme.colors.dark900};
+//   }
 
-  &:hover {
-    cursor: pointer;
-    text-decoration: underline;
-  }
-`;
+//   &:hover {
+//     cursor: pointer;
+//     text-decoration: underline;
+//   }
+// `;
 
 const DummyInput = styled.textarea`
   position: absolute;
@@ -230,40 +230,40 @@ const DummyInput = styled.textarea`
   color: transparent;
 `;
 
-export const StyledLoadComments = styled(LoadComments)`
-  margin: ${rem(32)} auto;
-  display: block;
-`;
+// export const StyledLoadComments = styled(LoadComments)`
+//   margin: ${rem(32)} auto;
+//   display: block;
+// `;
 
-export const LoadCommentsIcon = styled(Icon)`
-  margin-top: -${rem(3)};
-  fill: ${theme.colors.gray500};
-`;
+// export const LoadCommentsIcon = styled(Icon)`
+//   margin-top: -${rem(3)};
+//   fill: ${theme.colors.gray500};
+// `;
 
-export const LoadCommentsLabel = styled.span`
-  display: inline-block;
-`;
+// export const LoadCommentsLabel = styled.span`
+//   display: inline-block;
+// `;
 
-export const CommentsWrapper = styled.aside`
-  width: 100%;
-  max-width: ${theme.contain.inner.col10};
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: ${theme.spacing.components.s};
+// export const CommentsWrapper = styled.aside`
+//   width: 100%;
+//   max-width: ${theme.contain.inner.col10};
+//   margin-left: auto;
+//   margin-right: auto;
+//   margin-bottom: ${theme.spacing.components.s};
 
-  padding-left: ${theme.gutters.s};
-  padding-right: ${theme.gutters.s};
+//   padding-left: ${theme.gutters.s};
+//   padding-right: ${theme.gutters.s};
 
-  ${mediaMin.s`
-    padding-left: ${theme.gutters.m};
-    padding-right: ${theme.gutters.m};
-    margin-bottom: ${theme.spacing.components.m};
-  `};
+//   ${mediaMin.s`
+//     padding-left: ${theme.gutters.m};
+//     padding-right: ${theme.gutters.m};
+//     margin-bottom: ${theme.spacing.components.m};
+//   `};
 
-  ${mediaMin.m`
-    margin-bottom: ${theme.spacing.components.xl};
-  `};
-`;
+//   ${mediaMin.m`
+//     margin-bottom: ${theme.spacing.components.xl};
+//   `};
+// `;
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
@@ -336,6 +336,7 @@ class Post extends Component {
     const copyURLButton = document.querySelector(".js-copyURL > span");
 
     dummyNode.value = window.location.href;
+    
     selectDummyNodeToCopy(dummyNode);
 
     try {
@@ -469,11 +470,11 @@ class Post extends Component {
   //   });
   // };
 
-  loadComments = () => {
-    this.setState((prevState) => ({
-      loadComments: !prevState.loadComments,
-    }));
-  };
+  // loadComments = () => {
+  //   this.setState((prevState) => ({
+  //     loadComments: !prevState.loadComments,
+  //   }));
+  // };
 
   render() {
     const slug = this.props.data.markdownRemark.fields.slug;
@@ -487,6 +488,11 @@ class Post extends Component {
     const prevSlug = this.props.pageContext.prevSlug;
     const prevTitle = this.props.pageContext.prevTitle;
 
+    console.log(nextTitle);
+    console.log(nextSlug);
+    console.log(prevSlug);
+    console.log(prevTitle);
+
     let twinPostURL = "";
 
     if (locale === "en") {
@@ -495,11 +501,11 @@ class Post extends Component {
       twinPostURL = "/blog/" + twinPost;
     }
 
-    const disqusShortname = process.env.DISQUS_SHORTNAME;
-    const disqusConfig = {
-      identifier: postInfo.title,
-      title: postInfo.title,
-    };
+    // const disqusShortname = process.env.DISQUS_SHORTNAME;
+    // const disqusConfig = {
+    //   identifier: postInfo.title,
+    //   title: postInfo.title,
+    // };
 
     return (
       <Layout location={this.props.location} locale={locale}>
