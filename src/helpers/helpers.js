@@ -1,21 +1,16 @@
 export function calculateScroll() {
-  let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-  let clientHeight =
-    window.innerHeight || document.documentElement.clientHeight;
-  let docScrollHeight =
-    document.body.scrollHeight || document.documentElement.scrollHeight;
-  let docHeight = docScrollHeight - clientHeight;
-  let scrolled = (winScroll / docHeight) * 100;
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  const clientHeight = window.innerHeight || document.documentElement.clientHeight;
+  const docScrollHeight = document.body.scrollHeight || document.documentElement.scrollHeight;
+  const docHeight = docScrollHeight - clientHeight;
+  const scrolled = (winScroll / docHeight) * 100;
 
   return scrolled;
 }
 
 export function addSafariVideoControls() {
-  if (
-    navigator.userAgent.indexOf("Safari") != -1 &&
-    navigator.userAgent.indexOf("Chrome") == -1
-  ) {
-    let videos = document.querySelectorAll("video");
+  if (navigator.userAgent.indexOf("Safari") != -1 && navigator.userAgent.indexOf("Chrome") == -1) {
+    const videos = document.querySelectorAll("video");
     videos.forEach((video) => {
       video.controls = true;
     });
@@ -48,25 +43,23 @@ export function slugify(string) {
  * @return {Boolean}      Returns true if element is in the viewport
  */
 export function isInViewport(element) {
-  let distance = element.getBoundingClientRect();
+  const distance = element.getBoundingClientRect();
 
   return (
     distance.top >= 0 &&
     distance.left >= 0 &&
-    distance.bottom <=
-      (window.innerHeight || document.documentElement.clientHeight) &&
-    distance.right <=
-      (window.innerWidth || document.documentElement.clientWidth)
+    distance.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    distance.right <= (window.innerWidth || document.documentElement.clientWidth)
   );
 }
 
 export function selectDummyNodeToCopy(dummyNode) {
   // For iOS
   if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
-    let range = document.createRange();
+    const range = document.createRange();
     range.selectNodeContents(dummyNode);
 
-    let select = window.getSelection();
+    const select = window.getSelection();
     select.removeAllRanges();
     select.addRange(range);
     dummyNode.setSelectionRange(0, 999999);
@@ -80,10 +73,10 @@ export function selectDummyNodeToCopy(dummyNode) {
 // Test via a getter in the options object to see if the passive property is accessed
 // https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#feature-detection
 export function textPassiveEventSupport() {
-  var supportsPassive = false;
+  let supportsPassive = false;
   try {
-    var opts = Object.defineProperty({}, "passive", {
-      get: function() {
+    const opts = Object.defineProperty({}, "passive", {
+      get() {
         supportsPassive = true;
       },
     });
@@ -106,7 +99,7 @@ export function validate_luhn(value) {
     bEven = false;
   value = value.replace(/\D/g, "");
 
-  for (var n = value.length - 1; n >= 0; n--) {
+  for (let n = value.length - 1; n >= 0; n--) {
     var cDigit = value.charAt(n),
       nDigit = parseInt(cDigit, 10);
 
@@ -127,26 +120,23 @@ export function checkForDoNotTrack() {
   // IE 11 and Edge have: window.doNotTrack.
   // Gecko 32 Firefox has: navigator.doNotTrack returning yes or no, not 1 or 0.
   // Safari 7.1.3+ has: window.doNotTrack.
-  var dnt = window.doNotTrack || navigator.msDoNotTrack || navigator.doNotTrack;
+  const dnt = window.doNotTrack || navigator.msDoNotTrack || navigator.doNotTrack;
   if (dnt !== "1" && dnt !== "yes") {
     return false;
-  } else return true;
+  } return true;
 }
 
 export function detectBrowserLanguage() {
   return (
-    (navigator.languages && navigator.languages[0]) ||
-    navigator.language ||
-    navigator.userLanguage
+    (navigator.languages && navigator.languages[0]) || navigator.language || navigator.userLanguage
   );
 }
 
 export function detectDataSaverMode() {
   if (navigator.connection && navigator.connection.saveData) {
     return true;
-  } else {
-    return false;
   }
+  return false;
 }
 
 export function detectSlowConnectionType() {
@@ -156,13 +146,10 @@ export function detectSlowConnectionType() {
       navigator.connection.effectiveType === "2g")
   ) {
     return true;
-  } else {
-    return false;
   }
+  return false;
 }
 
 export function toUpperCamelCase(string) {
-  return string.toLowerCase().replace(/(?:(^.)|(\s+.))/g, function(match) {
-    return match.charAt(match.length - 1).toUpperCase();
-  });
+  return string.toLowerCase().replace(/(?:(^.)|(\s+.))/g, (match) => match.charAt(match.length - 1).toUpperCase());
 }
