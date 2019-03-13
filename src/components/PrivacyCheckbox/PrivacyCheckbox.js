@@ -79,9 +79,7 @@ function PrivacyCheckbox({ locale, ...rest }) {
             locale: edge.node.frontmatter.locale,
             legalNotice: edge.node.frontmatter.legalNotice,
           }))
-          .filter(
-            (edge) => edge.locale === locale && edge.legalNotice === true
-          );
+          .filter((edge) => edge.locale === locale && edge.legalNotice === true);
 
         let privacyLink = data.allMarkdownRemark.edges
           .map((edge) => ({
@@ -92,12 +90,10 @@ function PrivacyCheckbox({ locale, ...rest }) {
           .filter((edge) => edge.locale === locale && edge.privacy === true);
 
         return (
-          <>
+          <React.Fragment>
             <StyledCheckbox id="privacycheckbox" {...rest} />
             <StyledCheckboxLabel htmlFor="privacycheckbox">
-              <FormattedMessage id="formPrivacyMore1">
-                {(txt) => <>{txt}</>}
-              </FormattedMessage>
+              <FormattedMessage id="formPrivacyMore1">{(txt) => <>{txt}</>}</FormattedMessage>
               <FormattedMessage id="formPrivacyCheckboxHiddenLabel">
                 {(txt) => (
                   <span className="aria-hidden" aria-hidden="true">
@@ -108,11 +104,7 @@ function PrivacyCheckbox({ locale, ...rest }) {
             </StyledCheckboxLabel>
             <FormattedMessage id="formPrivacyMore2">
               {(txt) => (
-                <LearnMoreLink
-                  href={legalNoticeLink[0].slug}
-                  target="_blank"
-                  rel="noopener"
-                >
+                <LearnMoreLink href={legalNoticeLink[0].slug} target="_blank" rel="noopener">
                   {txt}
                 </LearnMoreLink>
               )}
@@ -122,11 +114,7 @@ function PrivacyCheckbox({ locale, ...rest }) {
             </FormattedMessage>
             <FormattedMessage id="formPrivacyMore4">
               {(txt) => (
-                <LearnMoreLink
-                  href={privacyLink[0].slug}
-                  target="_blank"
-                  rel="noopener"
-                >
+                <LearnMoreLink href={privacyLink[0].slug} target="_blank" rel="noopener">
                   {txt}
                 </LearnMoreLink>
               )}
@@ -134,7 +122,7 @@ function PrivacyCheckbox({ locale, ...rest }) {
             <FormattedMessage id="formPrivacyRequired">
               {(txt) => <Required>{txt}</Required>}
             </FormattedMessage>
-          </>
+          </React.Fragment>
         );
       }}
     />

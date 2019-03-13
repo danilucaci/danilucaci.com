@@ -99,9 +99,7 @@ function ContactForm(props) {
 
   function encode(data) {
     return Object.keys(data)
-      .map(
-        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
-      )
+      .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
       .join("&");
   }
 
@@ -117,9 +115,9 @@ function ContactForm(props) {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({
         "form-name": form.getAttribute("name"),
-        email: email,
+        email,
         fullname: fullName,
-        message: message,
+        message,
         datesent: dateSent,
         botfield: botField,
         acceptsconsentcheckbox: acceptsConsentCheckbox,
@@ -169,12 +167,7 @@ function ContactForm(props) {
       >
         {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
         {/* These have to be input types, otherwise they don't show in the form atributes */}
-        <input
-          type="hidden"
-          name="form-name"
-          arria-hidden="true"
-          value="contact"
-        />
+        <input type="hidden" name="form-name" arria-hidden="true" value="contact" />
         <input
           style={{ display: "none" }}
           arria-hidden="true"
@@ -196,7 +189,7 @@ function ContactForm(props) {
           type="text"
           value={CONSENT_VALUE[locale].yes}
           name="consentcheckboxmessage"
-          readOnly={true}
+          readOnly
         />
         <StyledLabel labelType="full name">
           <StyledInput

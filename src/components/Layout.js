@@ -390,7 +390,7 @@ class Layout extends Component {
     if (!globalWindow._DL_GTM_INITIALIZED && this.state.hasGDPRConsent) {
       GTMScript = (
         <Helmet>
-          {`<!-- Google Tag Manager -->`}
+          {"<!-- Google Tag Manager -->"}
           <script>
             {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                 new Date().getTime(),event:'gtm.js'});let f=d.getElementsByTagName(s)[0],
@@ -398,7 +398,7 @@ class Layout extends Component {
                 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
                 })(window,document,'script','dataLayer','GTM-TJ6RBXR');`}
           </script>
-          {`<!-- End Google Tag Manager -->`}
+          {"<!-- End Google Tag Manager -->"}
         </Helmet>
       );
 

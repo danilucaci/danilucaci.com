@@ -162,6 +162,26 @@ const PostContent = styled.section`
     margin-bottom: ${rem(32)};
   }
 
+  .gatsby-resp-image-figure {
+    margin-top: ${rem(32)};
+    margin-bottom: ${rem(32)};
+
+    ${mediaMin.xxl`
+      max-width: ${rem(936)};
+      margin-right: -${rem(192)};
+      margin-left: -${rem(192)};
+    `};
+  }
+
+  figure img,
+  figure video {
+    ${theme.shadow.image} !important;
+  }
+
+  figcaption {
+    margin-top: ${rem(12)};
+  }
+
   .js-codeCopy {
     background-color: ${theme.colors.gray100};
     display: none;
@@ -184,47 +204,58 @@ const PostContent = styled.section`
       display: block;
     }
   }
+
+  & .toc {
+    background-color: ${theme.colors.sectionBackground};
+    padding: ${rem(16)} ${rem(20)};
+
+    & p {
+      margin-bottom: 0;
+    }
+
+    & ul {
+      margin-bottom: 0;
+      list-style-type: none;
+      margin-left: 0;
+    }
+
+    & h3 {
+      margin-top: 0;
+      margin-bottom: ${rem(8)};
+    }
+
+    ${mediaMin.xl`
+      margin-left: -${rem(64)};
+      margin-right: -${rem(64)};
+      padding-left: ${rem(64)};
+      padding-right: ${rem(64)};
+      padding-top: ${rem(48)};
+      padding-bottom: ${rem(48)};
+    `};
+
+    & a {
+      display: block;
+      color: ${theme.colors.dark900};
+      text-decoration: none;
+      font-style: normal;
+      font-weight: 400;
+      padding: ${rem(8)} 0;
+
+      font-family: ${theme.fonts.bodyRegular};
+
+      &:visited,
+      &:link {
+        color: ${theme.colors.dark900};
+      }
+
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+        background-color: transparent;
+      }
+    }
+  }
 `;
-
-// const PostTOC = styled.nav`
-//   background-color: ${theme.colors.sectionBackground};
-//   padding: ${rem(16)} ${rem(20)};
-
-//   & h3 {
-//     margin-top: 0;
-//     margin-bottom: ${rem(8)};
-//   }
-
-//   ${mediaMin.xl`
-//     margin-left: -${rem(96)};
-//     margin-right: -${rem(96)};
-//     padding-left: ${rem(96)};
-//     padding-right: ${rem(96)};
-//     padding-top: ${rem(32)};
-//     padding-bottom: ${rem(32)};
-//   `};
-// `;
-
-// const TOCEntry = styled.a`
-//   display: block;
-//   color: ${theme.colors.dark900};
-//   text-decoration: none;
-//   font-style: normal;
-//   font-weight: 400;
-//   padding: ${rem(8)} 0;
-
-//   font-family: ${theme.fonts.bodyRegular};
-
-//   &:visited,
-//   &:link {
-//     color: ${theme.colors.dark900};
-//   }
-
-//   &:hover {
-//     cursor: pointer;
-//     text-decoration: underline;
-//   }
-// `;
 
 const DummyInput = styled.textarea`
   position: absolute;
@@ -239,16 +270,16 @@ export const StyledLoadComments = styled(LoadComments)`
   display: block;
 `;
 
-export const LoadCommentsIcon = styled(Icon)`
+const LoadCommentsIcon = styled(Icon)`
   margin-top: -${rem(3)};
   fill: ${theme.colors.gray500};
 `;
 
-export const LoadCommentsLabel = styled.span`
+const LoadCommentsLabel = styled.span`
   display: inline-block;
 `;
 
-export const CommentsWrapper = styled.aside`
+const CommentsWrapper = styled.aside`
   width: 100%;
   max-width: ${theme.contain.inner.col10};
   margin-left: auto;
@@ -267,6 +298,18 @@ export const CommentsWrapper = styled.aside`
   ${mediaMin.m`
     margin-bottom: ${theme.spacing.components.xl};
   `};
+`;
+
+const BottomHR = styled(HR)`
+  margin-bottom: ${theme.spacing.components.s};
+
+  ${mediaMin.s`
+  margin-bottom: ${theme.spacing.components.m};
+`};
+
+  ${mediaMin.m`
+  margin-bottom: ${theme.spacing.components.xl};
+`};
 `;
 
 // eslint-disable
@@ -380,6 +423,9 @@ class Post extends Component {
               </StyledIntroContainer>
             </StyledPageHeader>
             <PostContent>{renderAst(postNode.htmlAst)}</PostContent>
+
+            <BottomHR />
+
             <AuthorCard />
             <SubscribeCard locale={locale} />
           </PostWrapper>

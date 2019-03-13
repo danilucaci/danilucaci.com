@@ -4,7 +4,6 @@
  * @author Lea Verou
  */
 
-
 code[class*="language-"],
 pre[class*="language-"] {
   color: rgb(240, 240, 240);
@@ -30,7 +29,7 @@ pre[class*="language-"] ::-moz-selection,
 code[class*="language-"]::-moz-selection,
 code[class*="language-"] ::-moz-selection {
   text-shadow: none;
-  background: #383e49;
+  background: #F5F6F7;
 }
 
 pre[class*="language-"]::selection,
@@ -38,7 +37,7 @@ pre[class*="language-"] ::selection,
 code[class*="language-"]::selection,
 code[class*="language-"] ::selection {
   text-shadow: none;
-  background: #9aa2b1;
+  background: #F5F6F7;
 }
 
 @media print {
@@ -52,7 +51,7 @@ code[class*="language-"] ::selection {
 /* Code blocks */
 pre[class*="language-"] {
   overflow: auto;
-  padding: 3rem 1rem;
+  padding: 2rem 1rem;
 }
 
 pre[class*="language-"]::-webkit-scrollbar-track {
@@ -78,10 +77,30 @@ pre[class*="language-"]::-webkit-scrollbar-thumb {
   margin-bottom: 1.75rem;
 }
 
+.gatsby-highlight-code-line {
+  background-color: #003254;
+  display: block;
+  margin-left: -1em;
+  margin-right: -1em;
+  padding-right: 1em;
+  padding-left: 0.7em;
+  border-left: .25em solid #00BCF5;
+}
+
 @media screen and (min-width: 39em) {
   .gatsby-highlight {
     margin-left: -2rem;
     margin-right: -2rem;
+  }
+
+  .gatsby-highlight-code-line {
+    background-color: #003254;
+    display: block;
+    margin-left: -2em;
+    margin-right: -2em;
+    padding-right: 2em;
+    padding-left: 1.7em;
+    border-left: .25em solid #00BCF5;
   }
 
   pre[class*="language-"] {
@@ -94,6 +113,16 @@ pre[class*="language-"]::-webkit-scrollbar-thumb {
   .gatsby-highlight {
     margin-left: -4rem;
     margin-right: -4rem;
+  }
+
+  .gatsby-highlight-code-line {
+    background-color: #003254;
+    display: block;
+    margin-left: -4em;
+    margin-right: -4em;
+    padding-right: 2em;
+    padding-left: 3.7em;
+    border-left: .25em solid #00BCF5;
   }
 
   pre[class*="language-"] {
@@ -110,8 +139,10 @@ pre[class*="language-"] {
 /* Inline code */
 
 :not(pre)>code[class*="language-"] {
-  padding: .1em;
-  border-radius: .3em;
+  background: #CBCED4;
+  color: #121C26;
+  padding: 0.1em 0.25em;
+  border-radius: 0.1875em;
   white-space: normal;
 }
 
@@ -138,7 +169,7 @@ pre[class*="language-"] {
 .token.symbol,
 .token.attr-name,
 .token.deleted {
-  color: #D1AB4B;
+  color: #DBA92A;
 }
 
 .token.string,
@@ -146,7 +177,7 @@ pre[class*="language-"] {
 .token.attr-value,
 .token.builtin,
 .token.inserted {
-  color: #9FCC7C;
+  color: #7DBD4B;
 }
 
 .token.operator,
@@ -154,22 +185,22 @@ pre[class*="language-"] {
 .token.url,
 .language-css .token.string,
 .style .token.string {
-  color: #62CDD9;
+  color: #73BBFF;
 }
 
 .token.atrule,
 .token.keyword {
-  color: #FF80FF;
+  color: #FF73FF;
 }
 
 .token.function {
-  color: #62CDD9;
+  color: #73BBFF;
 }
 
 .token.regex,
 .token.important,
 .token.variable {
-  color: #FF80FF;
+  color: #FF73FF;
 }
 
 .token.important,
@@ -221,7 +252,7 @@ pre.line-numbers>code {
 
 .line-numbers-rows>span:before {
   content: counter(linenumber);
-  color: #5C6370;
+  color: #BEC5D1;
   display: block;
   padding-right: 0.8em;
   text-align: right;
