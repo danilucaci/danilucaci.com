@@ -61,6 +61,9 @@ As treatment managers, we have hired following service providers, having committ
 ##### Web Hosting 
 * **<a href="https://www.netlify.com/" target="_blank" rel="noopener">netlify.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>:** I use the services provided by netlify.com as a hosting provider for www.danilucaci.com. Their privacy policy can be read in the following link: <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">netlify.com privacy policy<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
 
+##### Comments on the Blog
+* **<a href="https://www.disqus.com/" target="_blank" rel="noopener">disqus.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>:** I use the services provided by disqus.com so that I can use comments on the blog pages of www.danilucaci.com. Their privacy policy can be read in the following link: <a href="https://help.disqus.com/terms-and-policies/disqus-privacy-policy" target="_blank" rel="noopener">disqus.com privacy policy<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
+
 ##### Services Used To Send Newsletters
 * **<a href="https://mailchimp.com/en/" target="_blank" rel="noopener">mailchimp.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>:** I use the services provided by mailchimp.com so that I can send newsletters to the subscribers of www.danilucaci.com. Their privacy policy can be read in the following link: <a href="https://mailchimp.com/legal/" target="_blank" rel="noopener">mailchimp.com privacy policy<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> 
 
