@@ -75,19 +75,17 @@ const BlogPage = (props) => {
     locale,
   } = props.pageContext;
 
-  let allTags = props.data.allMarkdownRemark.tags.map((tag) => tag.fieldValue);
+  const allTags = props.data.allMarkdownRemark.tags.map((tag) => tag.fieldValue);
   let twinPostURL = "";
 
   if (locale === "en" && currentPage > 1) {
-    twinPostURL =
-      localePaths["es"].blog + localePaths["es"].paginationName + currentPage;
+    twinPostURL = localePaths["es"].blog + localePaths["es"].paginationName + currentPage;
   } else if (locale === "en" && currentPage === 1) {
     twinPostURL = localePaths["es"].blog;
   }
 
   if (locale === "es" && currentPage > 1) {
-    twinPostURL =
-      localePaths["en"].blog + localePaths["en"].paginationName + currentPage;
+    twinPostURL = localePaths["en"].blog + localePaths["en"].paginationName + currentPage;
   } else if (locale === "es" && currentPage === 1) {
     twinPostURL = localePaths["en"].blog;
   }
@@ -102,11 +100,7 @@ const BlogPage = (props) => {
         prevPath={prevPath}
         nextPath={nextPath}
       />
-      <SiteHeader
-        twinPostURL={twinPostURL}
-        locale={locale}
-        currentPath={props.location.pathname}
-      />
+      <SiteHeader twinPostURL={twinPostURL} locale={locale} currentPath={props.location.pathname} />
       <Main role="main" id="main">
         <BlogWrapper>
           <BlogHeader>
@@ -148,12 +142,12 @@ BlogPage.propTypes = {
     totalPagesInBlog: PropTypes.number.isRequired,
     paginationPathPrefix: PropTypes.string.isRequired,
     edges: PropTypes.arrayOf(PropTypes.object).isRequired,
-  }),
+  }).isRequired,
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
       tags: PropTypes.arrayOf(PropTypes.object).isRequired,
     }),
-  }),
+  }).isRequired,
 };
 
 export default BlogPage;
@@ -162,9 +156,7 @@ export const pageQuery = graphql`
   query allTagsInBlog {
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: {
-        frontmatter: { posted: { eq: true }, category: { eq: "blog" } }
-      }
+      filter: { frontmatter: { posted: { eq: true }, category: { eq: "blog" } } }
     ) {
       tags: group(field: frontmatter___tags) {
         fieldValue

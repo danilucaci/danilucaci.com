@@ -169,7 +169,7 @@ WorkPage.propTypes = {
     allMarkdownRemark: PropTypes.shape({
       tags: PropTypes.arrayOf(PropTypes.object).isRequired,
     }),
-  }),
+  }).isRequired,
 };
 
 export default WorkPage;
