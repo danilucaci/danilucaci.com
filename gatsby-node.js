@@ -27,18 +27,16 @@ const caseStudyTemplate = path.resolve("src/templates/caseStudy.js");
 const legalTemplate = path.resolve("src/templates/legal.js");
 
 // Replacing '/' would result in empty string which is invalid
-function replacePath(path) {
-  return path === `/` ? path : path.replace(/\/$/, ``);
-}
+// function replacePath(path) {
+//   return path === "/" ? path : path.replace(/\/$/, "");
+// }
 
 /*******************************************************
  * Split into chunks of 5 posts per paginated page
  * and pass them to the blog, tag or work template pages
  */
-function slicePosts(array, postsPerPage, currentPage) {
-  return array
-    .slice(0)
-    .slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage);
+function slicePosts(array, currentPage) {
+  return array.slice(0).slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage);
 }
 
 // Only store posts in blog or work category
@@ -81,9 +79,7 @@ exports.onCreatePage = ({ page, actions }) => {
 
           // If the has a trailing slash, remove it
           if (hasTrailingSlash) {
-            localizedPath = `${
-              localePaths[locale].siteLocalePrefix
-            }${page.path.slice(0, -1)}`;
+            localizedPath = `${localePaths[locale].siteLocalePrefix}${page.path.slice(0, -1)}`;
           }
         }
       }
@@ -92,7 +88,7 @@ exports.onCreatePage = ({ page, actions }) => {
         ...page,
         path: localizedPath,
         context: {
-          locale: locale,
+          locale,
         },
       });
     });
@@ -120,15 +116,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         allPostNodes.push(node);
 
         if (node.frontmatter.locale === enLocale) {
-          slug = `${localePaths[enLocale].work}/${_.kebabCase(
-            node.frontmatter.slug
-          )}`;
+          slug = `${localePaths[enLocale].work}/${_.kebabCase(node.frontmatter.slug)}`;
         }
 
         if (node.frontmatter.locale === esLocale) {
-          slug = `${localePaths[esLocale].work}/${_.kebabCase(
-            node.frontmatter.slug
-          )}`;
+          slug = `${localePaths[esLocale].work}/${_.kebabCase(node.frontmatter.slug)}`;
         }
       } else if (node.frontmatter.category === "blog") {
         // Only store posts in blog or work category
@@ -137,15 +129,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         allPostNodes.push(node);
 
         if (node.frontmatter.locale === enLocale) {
-          slug = `${localePaths[enLocale].blog}/${_.kebabCase(
-            node.frontmatter.slug
-          )}`;
+          slug = `${localePaths[enLocale].blog}/${_.kebabCase(node.frontmatter.slug)}`;
         }
 
         if (node.frontmatter.locale === esLocale) {
-          slug = `${localePaths[esLocale].blog}/${_.kebabCase(
-            node.frontmatter.slug
-          )}`;
+          slug = `${localePaths[esLocale].blog}/${_.kebabCase(node.frontmatter.slug)}`;
         }
       } else if (node.frontmatter.category === "legal") {
         if (node.frontmatter.locale === enLocale) {
@@ -171,16 +159,14 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 };
 
 function sortNodesByDate(nodesArr) {
-  return nodesArr.sort(
-    ({ frontmatter: { date: date1 } }, { frontmatter: { date: date2 } }) => {
-      let dateA = moment(date1, siteConfig.dateFromFormat);
-      let dateB = moment(date2, siteConfig.dateFromFormat);
+  return nodesArr.sort(({ frontmatter: { date: date1 } }, { frontmatter: { date: date2 } }) => {
+    let dateA = moment(date1, siteConfig.dateFromFormat);
+    let dateB = moment(date2, siteConfig.dateFromFormat);
 
-      if (dateA.isBefore(dateB)) return -1;
-      if (dateB.isBefore(dateA)) return 1;
-      return 0;
-    }
-  );
+    if (dateA.isBefore(dateB)) return -1;
+    if (dateB.isBefore(dateA)) return 1;
+    return 0;
+  });
 }
 
 function filterNodesByCategory(category = "blog") {
@@ -196,11 +182,9 @@ function filterNodesByLocale(arr = [], locale = enLocale) {
 // Used to log the values of the array when gatsby creates the nodes
 function logNodes(arr = []) {
   arr.forEach((node) => {
-    console.log(
-      `${node.frontmatter.title} ${node.frontmatter.locale} ${
-        node.frontmatter.category
-      } ${node.frontmatter.date}`
-    );
+    console.log(`${node.frontmatter.title} ${node.frontmatter.locale} ${node.frontmatter.category} ${
+      node.frontmatter.date
+    }`);
   });
 }
 
@@ -308,15 +292,13 @@ exports.createPages = async ({ graphql, actions }) => {
      * For the next ones return path under /blog/page/n
      */
 
-    for (let currentPage = 1; currentPage <= totalPagesInBlog; currentPage++) {
+    for (let currentPage = 1; currentPage <= totalPagesInBlog; currentPage += 1) {
       if (currentPage === 1) {
         createPage({
           path: localePaths[enLocale].blog,
           component: blogTemplate,
           context: {
-            edges: slicePosts(edgesBlog, postsPerPage, currentPage).map(
-              ({ node }) => node
-            ),
+            edges: slicePosts(edgesBlog, currentPage).map(({ node }) => node),
             currentPage,
             totalPagesInBlog,
             paginationPathPrefix: localePaths[enLocale].blog,
@@ -332,9 +314,7 @@ exports.createPages = async ({ graphql, actions }) => {
           path: localePaths[enLocale].blog + paginationName + currentPage,
           component: blogTemplate,
           context: {
-            edges: slicePosts(edgesBlog, postsPerPage, currentPage).map(
-              ({ node }) => node
-            ),
+            edges: slicePosts(edgesBlog, currentPage).map(({ node }) => node),
             currentPage,
             totalPagesInBlog,
             paginationPathPrefix: localePaths[enLocale].blog,
@@ -343,9 +323,7 @@ exports.createPages = async ({ graphql, actions }) => {
             // only if its > 1 (not resulting in /page/0)
             prevPath:
               currentPage - 1 > 1
-                ? localePaths[enLocale].blog +
-                  paginationName +
-                  `${currentPage - 1}`
+                ? localePaths[enLocale].blog + paginationName + `${currentPage - 1}`
                 : localePaths[enLocale].blog,
             // current index in loop plus 1
             // index = 3 > /page/3
@@ -353,9 +331,7 @@ exports.createPages = async ({ graphql, actions }) => {
             // only if its <= totalPages (not resulting in more pages than there are)
             nextPath:
               currentPage + 1 <= totalPagesInBlog
-                ? localePaths[enLocale].blog +
-                  paginationName +
-                  `${currentPage + 1}`
+                ? localePaths[enLocale].blog + paginationName + `${currentPage + 1}`
                 : null,
             totalCountBlog,
             // necessary for react-intl
@@ -384,27 +360,20 @@ exports.createPages = async ({ graphql, actions }) => {
       for (
         let currentPage = 1;
         currentPage <= Math.ceil(tag.totalCount / postsPerPage);
-        currentPage++
+        currentPage += 1
       ) {
         if (currentPage === 1) {
           createPage({
             path: localePaths[enLocale].blog + "/tags/" + tag.fieldValue,
             component: tagTemplate,
             context: {
-              edges: slicePosts(tag.edges, postsPerPage, currentPage).map(
-                ({ node }) => node
-              ),
+              edges: slicePosts(tag.edges, currentPage).map(({ node }) => node),
               currentPage,
               totalPagesInBlog: Math.ceil(tag.totalCount / postsPerPage),
-              paginationPathPrefix:
-                localePaths[enLocale].blog + "/tags/" + tag.fieldValue,
+              paginationPathPrefix: localePaths[enLocale].blog + "/tags/" + tag.fieldValue,
               prevPath: null,
               nextPath:
-                localePaths[enLocale].blog +
-                "/tags/" +
-                tag.fieldValue +
-                paginationName +
-                "2",
+                localePaths[enLocale].blog + "/tags/" + tag.fieldValue + paginationName + "2",
               totalCount: tag.totalCount,
               tag: tag.fieldValue,
               // necessary for react-intl
@@ -413,18 +382,14 @@ exports.createPages = async ({ graphql, actions }) => {
           });
         } else {
           createPage({
-            path: `${localePaths[enLocale].blog}/tags/${
-              tag.fieldValue
-            }${paginationName + currentPage}`,
+            path: `${localePaths[enLocale].blog}/tags/${tag.fieldValue}${paginationName +
+              currentPage}`,
             component: tagTemplate,
             context: {
-              edges: slicePosts(tag.edges, postsPerPage, currentPage).map(
-                ({ node }) => node
-              ),
+              edges: slicePosts(tag.edges, currentPage).map(({ node }) => node),
               currentPage,
               totalPagesInBlog: Math.ceil(tag.totalCount / postsPerPage),
-              paginationPathPrefix:
-                localePaths[enLocale].blog + "/tags/" + tag.fieldValue,
+              paginationPathPrefix: localePaths[enLocale].blog + "/tags/" + tag.fieldValue,
               // current index in loop minus 1
               // for index = 2, /page/1
               // only if its > 1 (not resulting in /page/0)
@@ -511,15 +476,13 @@ exports.createPages = async ({ graphql, actions }) => {
      * For the next ones return path under /work/page/n
      */
 
-    for (let currentPage = 1; currentPage <= totalPagesInWork; currentPage++) {
+    for (let currentPage = 1; currentPage <= totalPagesInWork; currentPage += 1) {
       if (currentPage === 1) {
         createPage({
           path: localePaths[enLocale].work,
           component: workTemplate,
           context: {
-            edgesWork: slicePosts(edgesWork, postsPerPage, currentPage).map(
-              ({ node }) => node
-            ),
+            edgesWork: slicePosts(edgesWork, currentPage).map(({ node }) => node),
             currentPage,
             totalPagesInWork,
             paginationPathPrefix: localePaths[enLocale].work,
@@ -535,9 +498,7 @@ exports.createPages = async ({ graphql, actions }) => {
           path: localePaths[enLocale].work + paginationName + currentPage,
           component: workTemplate,
           context: {
-            edgesWork: slicePosts(edgesWork, postsPerPage, currentPage).map(
-              ({ node }) => node
-            ),
+            edgesWork: slicePosts(edgesWork, currentPage).map(({ node }) => node),
             currentPage,
             totalPagesInWork,
             paginationPathPrefix: localePaths[enLocale].work,
@@ -546,9 +507,7 @@ exports.createPages = async ({ graphql, actions }) => {
             // only if its > 1 (not resulting in /page/0)
             prevPath:
               currentPage - 1 > 1
-                ? localePaths[enLocale].work +
-                  paginationName +
-                  `${currentPage - 1}`
+                ? localePaths[enLocale].work + paginationName + `${currentPage - 1}`
                 : localePaths[enLocale].work,
             // current index in loop plus 1
             // index = 3 > /page/3
@@ -556,9 +515,7 @@ exports.createPages = async ({ graphql, actions }) => {
             // only if its <= totalPages (not resulting in more pages than there are)
             nextPath:
               currentPage + 1 <= totalPagesInWork
-                ? localePaths[enLocale].work +
-                  paginationName +
-                  `${currentPage + 1}`
+                ? localePaths[enLocale].work + paginationName + `${currentPage + 1}`
                 : null,
             totalCountWork,
             // necessary for react-intl
@@ -627,15 +584,13 @@ exports.createPages = async ({ graphql, actions }) => {
      * For the next ones return path under /blog/page/n
      */
 
-    for (let currentPage = 1; currentPage <= totalPagesInBlog; currentPage++) {
+    for (let currentPage = 1; currentPage <= totalPagesInBlog; currentPage += 1) {
       if (currentPage === 1) {
         createPage({
           path: localePaths[esLocale].blog,
           component: blogTemplate,
           context: {
-            edges: slicePosts(edgesBlog, postsPerPage, currentPage).map(
-              ({ node }) => node
-            ),
+            edges: slicePosts(edgesBlog, currentPage).map(({ node }) => node),
             currentPage,
             totalPagesInBlog,
             paginationPathPrefix: localePaths[esLocale].blog,
@@ -651,9 +606,7 @@ exports.createPages = async ({ graphql, actions }) => {
           path: localePaths[esLocale].blog + paginationName + currentPage,
           component: blogTemplate,
           context: {
-            edges: slicePosts(edgesBlog, postsPerPage, currentPage).map(
-              ({ node }) => node
-            ),
+            edges: slicePosts(edgesBlog, currentPage).map(({ node }) => node),
             currentPage,
             totalPagesInBlog,
             paginationPathPrefix: localePaths[esLocale].blog,
@@ -662,9 +615,7 @@ exports.createPages = async ({ graphql, actions }) => {
             // only if its > 1 (not resulting in /page/0)
             prevPath:
               currentPage - 1 > 1
-                ? localePaths[esLocale].blog +
-                  paginationName +
-                  `${currentPage - 1}`
+                ? localePaths[esLocale].blog + paginationName + `${currentPage - 1}`
                 : localePaths[esLocale].blog,
             // current index in loop plus 1
             // index = 3 > /page/3
@@ -672,9 +623,7 @@ exports.createPages = async ({ graphql, actions }) => {
             // only if its <= totalPages (not resulting in more pages than there are)
             nextPath:
               currentPage + 1 <= totalPagesInBlog
-                ? localePaths[esLocale].blog +
-                  paginationName +
-                  `${currentPage + 1}`
+                ? localePaths[esLocale].blog + paginationName + `${currentPage + 1}`
                 : null,
             totalCountBlog,
             // necessary for react-intl
@@ -703,26 +652,20 @@ exports.createPages = async ({ graphql, actions }) => {
       for (
         let currentPage = 1;
         currentPage <= Math.ceil(tag.totalCount / postsPerPage);
-        currentPage++
+        currentPage += 1
       ) {
         if (currentPage === 1) {
           createPage({
             path: localePaths[esLocale].blog + "/tags/" + tag.fieldValue,
             component: tagTemplate,
             context: {
-              edges: slicePosts(tag.edges, postsPerPage, currentPage).map(
-                ({ node }) => node
-              ),
+              edges: slicePosts(tag.edges, currentPage).map(({ node }) => node),
               currentPage,
               totalPagesInBlog: Math.ceil(tag.totalCount / postsPerPage),
-              paginationPathPrefix:
-                localePaths[esLocale].blog + "/tags/" + tag.fieldValue,
+              paginationPathPrefix: localePaths[esLocale].blog + "/tags/" + tag.fieldValue,
               prevPath: null,
               nextPath:
-                localePaths[esLocale].blog +
-                "/tags/" +
-                tag.fieldValue +
-                (paginationName + 2),
+                localePaths[esLocale].blog + "/tags/" + tag.fieldValue + (paginationName + 2),
               totalCount: tag.totalCount,
               tag: tag.fieldValue,
               // necessary for react-intl
@@ -732,20 +675,13 @@ exports.createPages = async ({ graphql, actions }) => {
         } else {
           createPage({
             path:
-              localePaths[esLocale].blog +
-              "/tags/" +
-              tag.fieldValue +
-              paginationName +
-              currentPage,
+              localePaths[esLocale].blog + "/tags/" + tag.fieldValue + paginationName + currentPage,
             component: tagTemplate,
             context: {
-              edges: slicePosts(tag.edges, postsPerPage, currentPage).map(
-                ({ node }) => node
-              ),
+              edges: slicePosts(tag.edges, currentPage).map(({ node }) => node),
               currentPage,
               totalPagesInBlog: Math.ceil(tag.totalCount / postsPerPage),
-              paginationPathPrefix:
-                localePaths[esLocale].blog + "/tags/" + tag.fieldValue,
+              paginationPathPrefix: localePaths[esLocale].blog + "/tags/" + tag.fieldValue,
               // current index in loop minus 1
               // for index = 2, /page/1
               // only if its > 1 (not resulting in /page/0)
@@ -832,15 +768,13 @@ exports.createPages = async ({ graphql, actions }) => {
      * For the next ones return path under /work/page/n
      */
 
-    for (let currentPage = 1; currentPage <= totalPagesInWork; currentPage++) {
+    for (let currentPage = 1; currentPage <= totalPagesInWork; currentPage += 1) {
       if (currentPage === 1) {
         createPage({
           path: localePaths[esLocale].work,
           component: workTemplate,
           context: {
-            edgesWork: slicePosts(edgesWork, postsPerPage, currentPage).map(
-              ({ node }) => node
-            ),
+            edgesWork: slicePosts(edgesWork, currentPage).map(({ node }) => node),
             currentPage,
             totalPagesInWork,
             paginationPathPrefix: localePaths[esLocale].work,
@@ -856,9 +790,7 @@ exports.createPages = async ({ graphql, actions }) => {
           path: localePaths[esLocale].work + paginationName + currentPage,
           component: workTemplate,
           context: {
-            edgesWork: slicePosts(edgesWork, postsPerPage, currentPage).map(
-              ({ node }) => node
-            ),
+            edgesWork: slicePosts(edgesWork, currentPage).map(({ node }) => node),
             currentPage,
             totalPagesInWork,
             paginationPathPrefix: localePaths[esLocale].work,
@@ -867,9 +799,7 @@ exports.createPages = async ({ graphql, actions }) => {
             // only if its > 1 (not resulting in /page/0)
             prevPath:
               currentPage - 1 > 1
-                ? localePaths[esLocale].work +
-                  paginationName +
-                  `${currentPage - 1}`
+                ? localePaths[esLocale].work + paginationName + `${currentPage - 1}`
                 : localePaths[esLocale].work,
             // current index in loop plus 1
             // index = 3 > /page/3
@@ -877,9 +807,7 @@ exports.createPages = async ({ graphql, actions }) => {
             // only if its <= totalPages (not resulting in more pages than there are)
             nextPath:
               currentPage + 1 <= totalPagesInWork
-                ? localePaths[esLocale].work +
-                  paginationName +
-                  `${currentPage + 1}`
+                ? localePaths[esLocale].work + paginationName + `${currentPage + 1}`
                 : null,
             totalCountWork,
             // necessary for react-intl

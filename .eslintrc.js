@@ -109,5 +109,7 @@ module.exports = {
     "dot-notation": 0,
     "no-underscore-dangle": 0,
     "template-curly-spacing": 0,
+    "prefer-const": 0,
+    "no-lonely-if": 0,
   },
 };
