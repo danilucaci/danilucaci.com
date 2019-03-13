@@ -26,12 +26,13 @@ import { Icon } from "../components/Icon/Icon";
 import AuthorCard from "../components/AuthorCard/AuthorCard";
 import SubscribeCard from "../components/SubscribeCard/SubscribeCard";
 import {
-  calculateScroll,
-  selectDummyNodeToCopy,
+  handleScrollLine,
   textPassiveEventSupport,
+  copyURL,
+  addCopyButtonsToCodeNodes,
 } from "../helpers/helpers";
 
-import { localePaths } from "../i18n/i18n";
+import { localePaths, COPY_URL_MESSAGES } from "../i18n/i18n";
 
 const PostWrapper = styled.article`
   max-width: ${theme.contain.wrapper.col10};
@@ -278,39 +279,13 @@ const renderAst = new rehypeReact({
 
 class Post extends Component {
   state = {
-    copyURLMessages: {
-      en: {
-        default: "Copy page link",
-        copied: "Page link copied!",
-        error: "Couldn't copy the link",
-      },
-      es: {
-        default: "Copiar enlace",
-        copied: "Enlace copiado!",
-        error: "No he podido copiar",
-      },
-    },
-    copyCodeMessages: {
-      en: {
-        default: "Copy",
-        copied: "Copied!",
-        error: "Couldn't copy",
-      },
-      es: {
-        default: "Copiar",
-        copied: "Copiado!",
-        error: "No he podido copiar",
-      },
-    },
     loadComments: false,
   };
 
   componentDidMount() {
     const copyURLButton = document.querySelector(".js-copyURL > span");
-    copyURLButton.addEventListener("click", this.copyURL);
-    copyURLButton.textContent = `${
-      this.state.copyURLMessages[this.props.pageContext.locale].default
-    }`;
+    copyURLButton.addEventListener("click", copyURL);
+    copyURLButton.textContent = `${COPY_URL_MESSAGES[this.props.pageContext.locale].default}`;
 
     // Test via a getter in the options object to see if the passive property is accessed
     // https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#feature-detection
@@ -318,157 +293,17 @@ class Post extends Component {
     // Use our detect's results. passive applied if supported, capture will be false either way.
     window.addEventListener(
       "scroll",
-      this.handlePageScroll,
+      handleScrollLine,
       supportsPassive ? { passive: true } : false,
     );
 
-    this.addCopyButtonsToCodeNodes();
-    this.handlePageScroll();
+    addCopyButtonsToCodeNodes(this.props.pageContext.locale);
+    handleScrollLine();
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.handlePageScroll);
+    window.removeEventListener("scroll", handleScrollLine);
   }
-
-  /****************************************************************
-   * Code to handle the url copying and code snippets
-   * It's all using a dummy input element which holds the content
-   * Which is supposed to be copied to the clipboard
-   */
-  copyURL = () => {
-    const dummyNode = document.querySelector(".js-dummyInput");
-    const copyURLButton = document.querySelector(".js-copyURL > span");
-
-    dummyNode.value = window.location.href;
-
-    selectDummyNodeToCopy(dummyNode);
-
-    try {
-      document.execCommand("copy");
-      copyURLButton.textContent = `${
-        this.state.copyURLMessages[this.props.pageContext.locale].copied
-      }`;
-      setTimeout(() => {
-        copyURLButton.textContent = `${
-          this.state.copyURLMessages[this.props.pageContext.locale].default
-        }`;
-      }, 2000);
-    } catch (err) {
-      copyURLButton.textContent = `${
-        this.state.copyURLMessages[this.props.pageContext.locale].error
-      }`;
-      setTimeout(() => {
-        copyURLButton.textContent = `${
-          this.state.copyURLMessages[this.props.pageContext.locale].default
-        }`;
-      }, 2000);
-    }
-
-    window.getSelection().removeAllRanges();
-  };
-
-  /*****************************************************************
-   * Get each code hightlight made by gatsby and insert a span tag
-   * to attach a click listener to trigger the code copying logic
-   */
-  addCopyButtonsToCodeNodes = () => {
-    const getCodeNodes = Array.from(document.querySelectorAll(".gatsby-highlight"));
-
-    getCodeNodes.forEach((codeNode) => {
-      const copyLink = document.createElement("span");
-      copyLink.textContent = `${
-        this.state.copyCodeMessages[this.props.pageContext.locale].default
-      }`;
-      copyLink.className = "js-codeCopy";
-      codeNode.appendChild(copyLink);
-    });
-
-    this.addEventListenersToCopyButtons();
-  };
-
-  /*****************************************************************
-   * Get all the inserted span tags to trigger the code copying
-   */
-  addEventListenersToCopyButtons = () => {
-    const getCopyButtons = Array.from(document.querySelectorAll(".js-codeCopy"));
-
-    getCopyButtons.forEach((copyButton) => {
-      copyButton.addEventListener("click", this.copyCode);
-    });
-  };
-
-  /*****************************************************************
-   * Get the textContent of the clicked inserted copy tag and
-   * insert into the dummy input element to be able to use
-   * execCommand("copy") as it only works on input elements
-   */
-  copyCode = (e) => {
-    const dummyNode = document.querySelector(".js-dummyInput");
-    const currentCopyButton = e.target;
-
-    dummyNode.value = e.target.previousElementSibling.textContent;
-
-    selectDummyNodeToCopy(dummyNode);
-
-    try {
-      document.execCommand("copy");
-      currentCopyButton.textContent = `${
-        this.state.copyCodeMessages[this.props.pageContext.locale].copied
-      }`;
-
-      // If the textContent was changed, trigger a setTimeout after 2000ms
-      // and change it back to "Copy"
-      if (
-        currentCopyButton.textContent ===
-        `${this.state.copyCodeMessages[this.props.pageContext.locale].copied}`
-      ) {
-        setTimeout(() => {
-          currentCopyButton.textContent = `${
-            this.state.copyCodeMessages[this.props.pageContext.locale].default
-          }`;
-        }, 2000);
-      }
-    } catch (err) {
-      currentCopyButton.textContent = `${
-        this.state.copyCodeMessages[this.props.pageContext.locale].error
-      }`;
-      if (
-        currentCopyButton.textContent ===
-        `${this.state.copyCodeMessages[this.props.pageContext.locale].error}`
-      ) {
-        setTimeout(() => {
-          currentCopyButton.textContent = `${
-            this.state.copyCodeMessages[this.props.pageContext.locale].default
-          }`;
-        }, 2000);
-      }
-    }
-
-    window.getSelection().removeAllRanges();
-  };
-
-  handlePageScroll = () => {
-    this.handleScrollLine();
-    // this.handleTOCScroll();
-  };
-
-  handleScrollLine = () => {
-    const scrollLine = document.querySelector(".js-scrollLine");
-    const scrolled = calculateScroll();
-    scrollLine.style.width = scrolled + "%";
-  };
-
-  // handleTOCScroll = () => {
-  //   let h2s = document.querySelectorAll("h2");
-
-  //   h2s.forEach((heading) => {
-  //     let isVis = isInViewport(heading);
-
-  //     if (isVis) {
-  //       // console.log("heading: ", heading);
-  //     }
-  //   });
-  // };
 
   loadComments = () => {
     this.setState((prevState) => ({
@@ -477,7 +312,6 @@ class Post extends Component {
   };
 
   render() {
-    // const slug = this.props.data.markdownRemark.fields.slug;
     const postNode = this.props.data.markdownRemark;
     const postInfo = postNode.frontmatter;
     const twinPost = this.props.pageContext.twinPost;
@@ -534,7 +368,7 @@ class Post extends Component {
                     slug={this.props.location.pathname}
                     title={postInfo.title}
                     snippet={postInfo.snippet}
-                    onClick={this.copyURL}
+                    onClick={copyURL}
                   />
                 </SocialShareWrapper>
               </PostInfo>

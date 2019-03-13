@@ -15,3 +15,16 @@ twinPost: "Como Añadir un Formulario de Contacto en Webs Estaticas"
 ---
 
 ## What options do we have for static sites?
+
+```jsx
+  /*****************************************************************
+   * Get all the inserted span tags to trigger the code copying
+   */
+  addEventListenersToCopyButtons = () => {
+    const getCopyButtons = Array.from(document.querySelectorAll(".js-codeCopy"));
+
+    getCopyButtons.forEach((copyButton) => {
+      copyButton.addEventListener("click", copyCode(event, this.props.pageContext.locale));
+    });
+  };
+```

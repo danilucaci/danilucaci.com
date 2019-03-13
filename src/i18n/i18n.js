@@ -35,6 +35,32 @@ export const EXTERNAL_LINK = {
   },
 };
 
+export const COPY_URL_MESSAGES = {
+  en: {
+    default: "Copy page link",
+    copied: "Page link copied!",
+    error: "Couldn't copy the link",
+  },
+  es: {
+    default: "Copiar enlace",
+    copied: "Enlace copiado!",
+    error: "No he podido copiar",
+  },
+};
+
+export const COPY_CODE_MESSAGES = {
+  en: {
+    default: "Copy",
+    copied: "Copied!",
+    error: "Couldn't copy",
+  },
+  es: {
+    default: "Copiar",
+    copied: "Copiado!",
+    error: "No he podido copiar",
+  },
+};
+
 export const CONSENT_VALUE = {
   en: {
     no: "I do not accept the privacy policy.",

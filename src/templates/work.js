@@ -154,7 +154,6 @@ function WorkPage(props) {
 }
 
 WorkPage.propTypes = {
-  location: PropTypes.object,
   pageContext: PropTypes.shape({
     locale: PropTypes.string.isRequired,
     nextPath: PropTypes.string,
@@ -164,11 +163,6 @@ WorkPage.propTypes = {
     totalPagesInWork: PropTypes.number.isRequired,
     paginationPathPrefix: PropTypes.string.isRequired,
     edgesWork: PropTypes.arrayOf(PropTypes.object).isRequired,
-  }).isRequired,
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      tags: PropTypes.arrayOf(PropTypes.object).isRequired,
-    }),
   }).isRequired,
 };
 

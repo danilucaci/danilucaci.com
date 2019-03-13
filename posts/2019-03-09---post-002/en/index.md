@@ -16,3 +16,15 @@ twinPost: "Como Crear Gif's Más Ligeros Para Navegadores Modernos"
 ---
 
 ## Gifs are great but not
+
+```jsx
+    const postNode = this.props.data.markdownRemark;
+    const postInfo = postNode.frontmatter;
+    const twinPost = this.props.pageContext.twinPost;
+    const introCopy = postInfo.intro.split("|");
+    const locale = this.props.pageContext.locale;
+    const nextTitle = this.props.pageContext.nextTitle;
+    const nextSlug = this.props.pageContext.nextSlug;
+    const prevSlug = this.props.pageContext.prevSlug;
+    const prevTitle = this.props.pageContext.prevTitle;
+```
