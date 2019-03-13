@@ -1,4 +1,4 @@
-import React, { Component, createContext } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styled, { ThemeProvider } from "styled-components";
 import Cookies from "js-cookie";
@@ -382,7 +382,7 @@ class Layout extends Component {
   };
 
   render() {
-    const GTMScript = null;
+    let GTMScript = null;
 
     // fix for webpack window is not defined
     const globalWindow = typeof window !== "undefined";
