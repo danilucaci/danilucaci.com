@@ -1,10 +1,11 @@
+/* eslint-disable react/jsx-boolean-value */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import styled from "styled-components";
 import rehypeReact from "rehype-react";
-// import Disqus from "disqus-react";
-// import { FormattedMessage } from "react-intl";
+import Disqus from "disqus-react";
+import { FormattedMessage } from "react-intl";
 
 import { theme, rem, mediaMin, mediaMax } from "../theme/globalStyles";
 import SEO from "../components/SEO/SEO";
@@ -20,8 +21,8 @@ import ArticleDate from "../components/ArticleDate/ArticleDate";
 import { Copy } from "../components/Copy/Copy";
 import { HR } from "../components/HR/HR";
 import SiblingPosts from "../components/SiblingPosts/SiblingPosts";
-// import { LoadComments } from "../components/Button/Button";
-// import { Icon } from "../components/Icon/Icon";
+import { LoadComments } from "../components/Button/Button";
+import { Icon } from "../components/Icon/Icon";
 import AuthorCard from "../components/AuthorCard/AuthorCard";
 import SubscribeCard from "../components/SubscribeCard/SubscribeCard";
 import {
@@ -29,6 +30,8 @@ import {
   selectDummyNodeToCopy,
   textPassiveEventSupport,
 } from "../helpers/helpers";
+
+import { localePaths } from "../i18n/i18n";
 
 const PostWrapper = styled.article`
   max-width: ${theme.contain.wrapper.col10};
@@ -230,41 +233,42 @@ const DummyInput = styled.textarea`
   color: transparent;
 `;
 
-// export const StyledLoadComments = styled(LoadComments)`
-//   margin: ${rem(32)} auto;
-//   display: block;
-// `;
+export const StyledLoadComments = styled(LoadComments)`
+  margin: ${rem(32)} auto;
+  display: block;
+`;
 
-// export const LoadCommentsIcon = styled(Icon)`
-//   margin-top: -${rem(3)};
-//   fill: ${theme.colors.gray500};
-// `;
+export const LoadCommentsIcon = styled(Icon)`
+  margin-top: -${rem(3)};
+  fill: ${theme.colors.gray500};
+`;
 
-// export const LoadCommentsLabel = styled.span`
-//   display: inline-block;
-// `;
+export const LoadCommentsLabel = styled.span`
+  display: inline-block;
+`;
 
-// export const CommentsWrapper = styled.aside`
-//   width: 100%;
-//   max-width: ${theme.contain.inner.col10};
-//   margin-left: auto;
-//   margin-right: auto;
-//   margin-bottom: ${theme.spacing.components.s};
+export const CommentsWrapper = styled.aside`
+  width: 100%;
+  max-width: ${theme.contain.inner.col10};
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: ${theme.spacing.components.s};
 
-//   padding-left: ${theme.gutters.s};
-//   padding-right: ${theme.gutters.s};
+  padding-left: ${theme.gutters.s};
+  padding-right: ${theme.gutters.s};
 
-//   ${mediaMin.s`
-//     padding-left: ${theme.gutters.m};
-//     padding-right: ${theme.gutters.m};
-//     margin-bottom: ${theme.spacing.components.m};
-//   `};
+  ${mediaMin.s`
+    padding-left: ${theme.gutters.m};
+    padding-right: ${theme.gutters.m};
+    margin-bottom: ${theme.spacing.components.m};
+  `};
 
-//   ${mediaMin.m`
-//     margin-bottom: ${theme.spacing.components.xl};
-//   `};
-// `;
+  ${mediaMin.m`
+    margin-bottom: ${theme.spacing.components.xl};
+  `};
+`;
 
+// eslint-disable
 const renderAst = new rehypeReact({
   createElement: React.createElement,
   components: {
@@ -310,12 +314,12 @@ class Post extends Component {
 
     // Test via a getter in the options object to see if the passive property is accessed
     // https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#feature-detection
-    var supportsPassive = textPassiveEventSupport();
+    const supportsPassive = textPassiveEventSupport();
     // Use our detect's results. passive applied if supported, capture will be false either way.
     window.addEventListener(
       "scroll",
       this.handlePageScroll,
-      supportsPassive ? { passive: true } : false
+      supportsPassive ? { passive: true } : false,
     );
 
     this.addCopyButtonsToCodeNodes();
@@ -332,11 +336,11 @@ class Post extends Component {
    * Which is supposed to be copied to the clipboard
    */
   copyURL = () => {
-    let dummyNode = document.querySelector(".js-dummyInput");
+    const dummyNode = document.querySelector(".js-dummyInput");
     const copyURLButton = document.querySelector(".js-copyURL > span");
 
     dummyNode.value = window.location.href;
-    
+
     selectDummyNodeToCopy(dummyNode);
 
     try {
@@ -368,9 +372,7 @@ class Post extends Component {
    * to attach a click listener to trigger the code copying logic
    */
   addCopyButtonsToCodeNodes = () => {
-    const getCodeNodes = Array.from(
-      document.querySelectorAll(".gatsby-highlight")
-    );
+    const getCodeNodes = Array.from(document.querySelectorAll(".gatsby-highlight"));
 
     getCodeNodes.forEach((codeNode) => {
       const copyLink = document.createElement("span");
@@ -388,9 +390,7 @@ class Post extends Component {
    * Get all the inserted span tags to trigger the code copying
    */
   addEventListenersToCopyButtons = () => {
-    const getCopyButtons = Array.from(
-      document.querySelectorAll(".js-codeCopy")
-    );
+    const getCopyButtons = Array.from(document.querySelectorAll(".js-codeCopy"));
 
     getCopyButtons.forEach((copyButton) => {
       copyButton.addEventListener("click", this.copyCode);
@@ -403,8 +403,8 @@ class Post extends Component {
    * execCommand("copy") as it only works on input elements
    */
   copyCode = (e) => {
-    let dummyNode = document.querySelector(".js-dummyInput");
-    let currentCopyButton = e.target;
+    const dummyNode = document.querySelector(".js-dummyInput");
+    const currentCopyButton = e.target;
 
     dummyNode.value = e.target.previousElementSibling.textContent;
 
@@ -453,8 +453,8 @@ class Post extends Component {
   };
 
   handleScrollLine = () => {
-    let scrollLine = document.querySelector(".js-scrollLine");
-    let scrolled = calculateScroll();
+    const scrollLine = document.querySelector(".js-scrollLine");
+    const scrolled = calculateScroll();
     scrollLine.style.width = scrolled + "%";
   };
 
@@ -470,14 +470,14 @@ class Post extends Component {
   //   });
   // };
 
-  // loadComments = () => {
-  //   this.setState((prevState) => ({
-  //     loadComments: !prevState.loadComments,
-  //   }));
-  // };
+  loadComments = () => {
+    this.setState((prevState) => ({
+      loadComments: !prevState.loadComments,
+    }));
+  };
 
   render() {
-    const slug = this.props.data.markdownRemark.fields.slug;
+    // const slug = this.props.data.markdownRemark.fields.slug;
     const postNode = this.props.data.markdownRemark;
     const postInfo = postNode.frontmatter;
     const twinPost = this.props.pageContext.twinPost;
@@ -488,24 +488,20 @@ class Post extends Component {
     const prevSlug = this.props.pageContext.prevSlug;
     const prevTitle = this.props.pageContext.prevTitle;
 
-    console.log(nextTitle);
-    console.log(nextSlug);
-    console.log(prevSlug);
-    console.log(prevTitle);
-
     let twinPostURL = "";
 
     if (locale === "en") {
-      twinPostURL = "/es/blog/" + twinPost;
+      twinPostURL = localePaths["es"].blog + "/" + twinPost;
     } else if (locale === "es") {
-      twinPostURL = "/blog/" + twinPost;
+      twinPostURL = localePaths["en"].blog + "/" + twinPost;
     }
 
-    // const disqusShortname = process.env.DISQUS_SHORTNAME;
-    // const disqusConfig = {
-    //   identifier: postInfo.title,
-    //   title: postInfo.title,
-    // };
+    const disqusShortname = process.env.GATSBY_DISQUS_SHORTNAME;
+    const disqusConfig = {
+      url: this.props.location.href,
+      identifier: postInfo.title,
+      title: postInfo.title,
+    };
 
     return (
       <Layout location={this.props.location} locale={locale}>
@@ -556,10 +552,10 @@ class Post extends Component {
 
           <DummyInput
             className="js-dummyInput"
-            contentEditable={true}
+            contentEditable="true"
             readOnly={true}
             aria-hidden="true"
-            suppressContentEditableWarning={true}
+            suppressContentEditableWarning="true"
           />
           <ScrollToTop />
         </Main>
@@ -573,7 +569,7 @@ class Post extends Component {
           />
         )}
 
-        {/* <CommentsWrapper>
+        <CommentsWrapper>
           {!this.state.loadComments && (
             <StyledLoadComments onClick={this.loadComments}>
               <LoadCommentsIcon aria-hidden="true">
@@ -585,12 +581,9 @@ class Post extends Component {
             </StyledLoadComments>
           )}
           {this.state.loadComments && (
-            <Disqus.DiscussionEmbed
-              shortname={disqusShortname}
-              config={disqusConfig}
-            />
+            <Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
           )}
-        </CommentsWrapper> */}
+        </CommentsWrapper>
         <SiteFooter locale={locale} />
       </Layout>
     );
@@ -602,23 +595,11 @@ Post.propTypes = {
     locale: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     twinPost: PropTypes.string.isRequired,
-    nextTitle: PropTypes.oneOfType([
-      PropTypes.string.isRequired,
-      PropTypes.object.isRequired,
-    ]),
-    nextSlug: PropTypes.oneOfType([
-      PropTypes.string.isRequired,
-      PropTypes.object.isRequired,
-    ]),
-    prevSlug: PropTypes.oneOfType([
-      PropTypes.string.isRequired,
-      PropTypes.object.isRequired,
-    ]),
-    prevTitle: PropTypes.oneOfType([
-      PropTypes.string.isRequired,
-      PropTypes.object.isRequired,
-    ]),
-  }),
+    nextTitle: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.object.isRequired]),
+    nextSlug: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.object.isRequired]),
+    prevSlug: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.object.isRequired]),
+    prevTitle: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.object.isRequired]),
+  }).isRequired,
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
       fields: PropTypes.shape({
@@ -636,7 +617,7 @@ Post.propTypes = {
       timeToRead: PropTypes.number.isRequired,
       htmlAst: PropTypes.object.isRequired,
     }),
-  }),
+  }).isRequired,
 };
 
 export default Post;
