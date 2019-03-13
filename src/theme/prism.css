@@ -51,9 +51,8 @@ code[class*="language-"] ::selection {
 
 /* Code blocks */
 pre[class*="language-"] {
-  padding: 2em 1em;
-  margin: 1em 0;
   overflow: auto;
+  padding: 3rem 1rem;
 }
 
 pre[class*="language-"]::-webkit-scrollbar-track {
@@ -79,7 +78,7 @@ pre[class*="language-"]::-webkit-scrollbar-thumb {
   margin-bottom: 1.75rem;
 }
 
-@media screen and (min-width: 40em) {
+@media screen and (min-width: 39em) {
   .gatsby-highlight {
     margin-left: -2rem;
     margin-right: -2rem;
@@ -91,27 +90,15 @@ pre[class*="language-"]::-webkit-scrollbar-thumb {
   }
 }
 
-@media screen and (min-width: 45em) {
+@media screen and (min-width: 50em) {
   .gatsby-highlight {
-    margin-left: -5rem;
-    margin-right: -5rem;
+    margin-left: -4rem;
+    margin-right: -4rem;
   }
 
   pre[class*="language-"] {
-    padding-left: 5rem;
-    padding-right: 2rem;
-  }
-}
-
-@media screen and (min-width: 63em) {
-  .gatsby-highlight {
-    margin-left: -12rem;
-    margin-right: -12rem;
-  }
-
-  pre[class*="language-"] {
-    padding-left: 12rem;
-    padding-right: 2rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
   }
 }
 
