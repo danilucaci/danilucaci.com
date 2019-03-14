@@ -8,6 +8,8 @@ import DribbblePostPlaceholder from "../DribbblePostPlaceholder/DribbblePostPlac
 import DribbblePost from "../DribbblePost/DribbblePost";
 import { theme, mediaMin, rem } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
+import { LoadComments } from "../Button/Button";
+import Spinner from "../Spinner/Spinner";
 
 import { DRIBBBLE_STATUS } from "../../i18n/i18n";
 
@@ -39,7 +41,6 @@ const DribbbleSubhead = styled(Copy)`
 
   ${mediaMin.s`
       margin-bottom: ${rem(48)};
-      max-width: 85%;
   `};
 `;
 
@@ -55,8 +56,25 @@ const ErrorMessage = styled.p`
   margin-bottom: ${rem(32)};
 `;
 
+const StyledLoadMore = styled(LoadComments)`
+  margin: ${rem(16)} auto;
+  display: block;
+
+  ${(props) => (props.isLoadingMore ? "cursor: wait" : "cursor: auto")}
+`;
+
+const LoadMoreLabel = styled.span`
+  display: inline-block;
+`;
+
 function DribbblePosts({ locale }) {
-  const [dribbbleRes, setDribbbleRes] = React.useState({
+  // How many posts per page and placeholder elements
+  // Also handles how many more shots to load
+  // when the "Load More..." button is pressed
+  const SHOTS_PER_PAGE = 4;
+  const dribbblePage = 1;
+
+  const [dribbblePosts, setDribbblePosts] = React.useState({
     status: 0,
     statusText: "",
     posts: [],
@@ -65,16 +83,15 @@ function DribbblePosts({ locale }) {
   // Set isLoading by default to true, if set in .useEffect it will be changed on each render
   // and the cause a new render
   const [isLoading, setIsLoading] = React.useState(true);
+  const [isLoadingMore, setIsLoadingMore] = React.useState(false);
   const [isError, setIsError] = React.useState(false);
   const [dataFetched, setDataFetched] = React.useState(false);
-
-  // How many posts per page and placeholder elements
-  const shotsPerPage = 6;
+  const [fetchedShotsPerPage, setFetchedShotsPerPage] = React.useState(SHOTS_PER_PAGE);
 
   // Create index's in the placeholder array to use as a key in the render method with .map()
   // Show as many placeholder items as posts I want on the page
   // This way I don't get reflow
-  const placeholderArr = Array.from(new Array(shotsPerPage), (val, index) => index + 1);
+  const placeholderArr = Array.from(new Array(SHOTS_PER_PAGE), (val, index) => index + 1);
 
   React.useEffect(() => {
     let didCancel = false;
@@ -83,23 +100,33 @@ function DribbblePosts({ locale }) {
       try {
         // If isLoading is set here it will cause a rerender
         // setIsLoading(true);
-        const dribbblePosts = await axios.get(`https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&per_page=${shotsPerPage}`);
+        const dribbbleRes = await axios.get(`https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&page=${dribbblePage}&per_page=${fetchedShotsPerPage}`);
 
         // didCancel gets set to true when the component unmounts in the return from useEffect
         if (!didCancel) {
-          setDribbbleRes({
-            status: dribbblePosts.status,
-            statusText: dribbblePosts.statusText,
-            posts: dribbblePosts.data,
+          setDribbblePosts({
+            status: dribbbleRes.status,
+            statusText: dribbbleRes.statusText,
+            posts: dribbbleRes.data,
           });
 
-          setIsLoading(false);
+          /**
+          |--------------------------------------------------
+          | Handle each loading variable separetely
+          | to avoid rendering placeholders
+          | for the already fetched shots
+          | and only add new placeholders for the incomming shots
+          |--------------------------------------------------
+          */
+          if (isLoading) setIsLoading(false);
+          if (isLoadingMore) setIsLoadingMore(false);
           setDataFetched(true);
         }
       } catch (error) {
         console.warn(error);
         if (!didCancel) {
           setIsLoading(false);
+          setIsLoadingMore(false);
           setDataFetched(true);
           setIsError(true);
         }
@@ -114,7 +141,21 @@ function DribbblePosts({ locale }) {
       // Prevent memory leak
       didCancel = true;
     };
-  }, [dribbbleRes, isError, dataFetched, isLoading]);
+  }, [
+    dribbblePosts,
+    isError,
+    dataFetched,
+    isLoading,
+    isLoadingMore,
+    SHOTS_PER_PAGE,
+    fetchedShotsPerPage,
+  ]);
+
+  function loadMorePosts() {
+    setFetchedShotsPerPage(fetchedShotsPerPage + SHOTS_PER_PAGE);
+    setDataFetched(false);
+    setIsLoadingMore(true);
+  }
 
   return (
     <DribbblePostsWrapper>
@@ -125,8 +166,20 @@ function DribbblePosts({ locale }) {
         {(txt) => <DribbbleSubhead>{txt}</DribbbleSubhead>}
       </FormattedMessage>
       {isError && <ErrorMessage>{DRIBBBLE_STATUS[locale].error}</ErrorMessage>}
+
       {isLoading && placeholderArr.map((i) => <DribbblePostPlaceholder key={i} />)}
-      {!isLoading && dribbbleRes.posts.map((post) => <DribbblePost key={post.id} post={post} />)}
+      {!isLoading && dribbblePosts.posts.map((post) => <DribbblePost key={post.id} post={post} />)}
+
+      {isLoadingMore && placeholderArr.map((i) => <DribbblePostPlaceholder key={i} />)}
+
+      <StyledLoadMore onClick={loadMorePosts} isLoadingMore={isLoadingMore}>
+        {!isLoadingMore && (
+          <FormattedMessage id="dribbbleLoadMore">
+            {(txt) => <LoadMoreLabel>{txt}</LoadMoreLabel>}
+          </FormattedMessage>
+        )}
+        {isLoadingMore && <Spinner />}
+      </StyledLoadMore>
     </DribbblePostsWrapper>
   );
 }

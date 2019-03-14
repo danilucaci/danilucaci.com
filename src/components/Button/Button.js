@@ -196,8 +196,9 @@ export const LoadComments = styled.button`
   &:focus {
     color: ${theme.colors.dark900};
     cursor: pointer;
-    border: 2px solid ${theme.colors.dark700};
+    border: 2px solid ${theme.colors.dark900};
     background-color: ${theme.colors.gray100};
+    outline: none;
 
     & svg {
       fill: ${theme.colors.dark700};
