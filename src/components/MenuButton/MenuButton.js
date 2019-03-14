@@ -12,8 +12,6 @@ const StyledMenuButton = styled.button`
   background-color: ${theme.colors.gray100};
   color: ${theme.colors.dark900};
 
-  font-family: ${theme.fonts.bodyRegular};
-
   font-weight: 700;
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};
@@ -51,18 +49,10 @@ const MenuButton = (props) => {
   return (
     <FormattedMessage id="buttonMenu">
       {(txt) => (
-        <StyledMenuButton
-          aria-haspopup="true"
-          aria-expanded="false"
-          onClick={props.onClick}
-        >
+        <StyledMenuButton aria-haspopup="true" aria-expanded="false" onClick={props.onClick}>
           {txt}
           <StyledIcon main animate={!showNav} aria-hidden="true">
-            {showNav ? (
-              <use xlinkHref="#close" />
-            ) : (
-              <use xlinkHref="#hamburger" />
-            )}
+            {showNav ? <use xlinkHref="#close" /> : <use xlinkHref="#hamburger" />}
           </StyledIcon>
         </StyledMenuButton>
       )}

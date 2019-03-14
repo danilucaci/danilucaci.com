@@ -13,8 +13,8 @@ const MessageTitle = styled(Copy)`
   line-height: ${theme.lineHeights.s};
   font-weight: 700;
 
-  & .fonts-loaded {
-    font-family: ${theme.fonts.bodyBold};
+  .fonts-loaded & {
+    font-family: ${theme.fonts.header};
   }
 `;
 
@@ -45,9 +45,7 @@ function EmailSuccessMessage(props) {
   return (
     <StatusMessageWrapper>
       <MessageTitle>{FORM_SUBMIT_STATUS.successTitle[locale]}</MessageTitle>
-      <MessageSubtitle>
-        {FORM_SUBMIT_STATUS.successSubtitle[locale]}
-      </MessageSubtitle>
+      <MessageSubtitle>{FORM_SUBMIT_STATUS.successSubtitle[locale]}</MessageSubtitle>
     </StatusMessageWrapper>
   );
 }

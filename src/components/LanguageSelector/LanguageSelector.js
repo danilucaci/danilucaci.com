@@ -13,6 +13,11 @@ const StyledLanguageSelector = styled.li`
   display: inline-block;
   list-style-type: none;
   position: relative;
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.headerRegular};
+  }
+
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};
 
@@ -105,6 +110,10 @@ const CurrentLanguageSelector = styled.li`
   white-space: nowrap;
   position: relative;
 
+  .fonts-loaded & {
+    font-family: ${theme.fonts.headerRegular};
+  }
+
   & a {
     padding: ${rem(12)} ${rem(32)};
     width: 100%;
@@ -131,6 +140,10 @@ const LanguageSelectorItem = styled.li`
 
   &:hover {
     background-color: ${theme.colors.gray200};
+  }
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.headerRegular};
   }
 
   & a {

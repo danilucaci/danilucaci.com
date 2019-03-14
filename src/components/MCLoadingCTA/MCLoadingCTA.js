@@ -4,12 +4,11 @@ import styled, { css } from "styled-components";
 
 import { theme, rem, mediaMin } from "../../theme/globalStyles";
 import Spinner from "../Spinner/Spinner";
-import { Icon } from "../Icon/Icon";
 import { FORM_SUBMIT_STATUS } from "../../i18n/i18n";
 
 const StyledLoadingCTA = styled.div`
   ${(props) =>
-    props.error
+    (props.error
       ? css`
           background-color: ${theme.colors.danger500};
           color: ${theme.colors.danger100};
@@ -20,7 +19,7 @@ const StyledLoadingCTA = styled.div`
           color: ${theme.colors.buttonLight};
           ${theme.shadow.buttons.main};
           border: none;
-        `}
+        `)}
 
   border-radius: ${theme.borderRadius.buttons};
 
@@ -29,7 +28,7 @@ const StyledLoadingCTA = styled.div`
   font-size: ${theme.fontSizes.button};
   line-height: ${theme.lineHeights.button};
 
-  & .fonts-loaded {
+  .fonts-loaded & {
     font-family: ${theme.fonts.bodyBold};
   }
 
@@ -56,20 +55,12 @@ const StyledLoadingCTA = styled.div`
   `};
 `;
 
-function MCLoadingCTA({
-  showMCError = false,
-  showMCLoading = true,
-  locale = "en",
-}) {
+function MCLoadingCTA({ showMCError = false, showMCLoading = true, locale = "en" }) {
   return (
     <StyledLoadingCTA error={showMCError}>
       {showMCLoading && <Spinner locale={locale} />}
-      {!showMCLoading && !showMCError && (
-        <>{FORM_SUBMIT_STATUS.subscribeCta[locale]}</>
-      )}
-      {!showMCLoading && showMCError && (
-        <>{FORM_SUBMIT_STATUS.errorCta[locale]}</>
-      )}
+      {!showMCLoading && !showMCError && <>{FORM_SUBMIT_STATUS.subscribeCta[locale]}</>}
+      {!showMCLoading && showMCError && <>{FORM_SUBMIT_STATUS.errorCta[locale]}</>}
     </StyledLoadingCTA>
   );
 }

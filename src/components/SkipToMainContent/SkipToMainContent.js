@@ -30,14 +30,10 @@ const StyledSkipToMainContent = styled.a`
   }
 `;
 
-const SkipToMainContent = () => {
-  return (
-    <FormattedMessage id="skipToMainContent">
-      {(txt) => (
-        <StyledSkipToMainContent href="#main">{txt}</StyledSkipToMainContent>
-      )}
-    </FormattedMessage>
-  );
-};
+const SkipToMainContent = () => (
+  <FormattedMessage id="skipToMainContent">
+    {(txt) => <StyledSkipToMainContent href="#main">{txt}</StyledSkipToMainContent>}
+  </FormattedMessage>
+);
 
 export default SkipToMainContent;

@@ -6,15 +6,13 @@ const StyledExternalLinkIcon = styled.span`
   display: inline;
 `;
 
-const ExternalLinkIcon = (props) => {
-  return (
-    <StyledExternalLinkIcon>
-      <FormattedMessage id="externalLinkSrOnly">
-        {(txt) => <span className="sr-only">{txt}</span>}
-      </FormattedMessage>
-      <span aria-hidden="true" className="external-link" />
-    </StyledExternalLinkIcon>
-  );
-};
+const ExternalLinkIcon = (props) => (
+  <StyledExternalLinkIcon>
+    <FormattedMessage id="externalLinkSrOnly">
+      {(txt) => <span className="sr-only">{txt}</span>}
+    </FormattedMessage>
+    <span aria-hidden="true" className="external-link" />
+  </StyledExternalLinkIcon>
+);
 
 export default ExternalLinkIcon;

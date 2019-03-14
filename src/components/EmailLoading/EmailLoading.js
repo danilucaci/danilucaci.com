@@ -22,7 +22,7 @@ const StyledLoadingCTA = styled.div`
   font-size: ${theme.fontSizes.button};
   line-height: ${theme.lineHeights.button};
 
-  & .fonts-loaded {
+  .fonts-loaded & {
     font-family: ${theme.fonts.bodyBold};
   }
 

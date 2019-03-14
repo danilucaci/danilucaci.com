@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import Img from "gatsby-image";
 import styled from "styled-components";
-import { theme, mediaMin, rem, mediaMax } from "../../theme/globalStyles";
 import { FormattedMessage } from "react-intl";
 
+import { theme, mediaMin, rem } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
 import { BoldLink } from "../Link/Link";
 import { HR } from "../HR/HR";
@@ -82,24 +82,22 @@ const ContinueLink = styled(BoldLink)`
   }
 `;
 
-const CaseStudyCard = (props) => {
-  return (
-    <StyledCaseStudyCard>
-      <CaseStudyImgWrapper>
-        <Img title={props.title} alt={props.snippet} fluid={props.image} />
-      </CaseStudyImgWrapper>
-      <CaseStudyCardContents>
-        <HRTop />
-        <StyledH3>{props.title}</StyledH3>
-        <HRBottom />
-        <Copy small>{props.snippet}</Copy>
-        <FormattedMessage id="articleLinkContinue">
-          {(txt) => <ContinueLink to={props.slug}>{txt}</ContinueLink>}
-        </FormattedMessage>
-      </CaseStudyCardContents>
-    </StyledCaseStudyCard>
-  );
-};
+const CaseStudyCard = (props) => (
+  <StyledCaseStudyCard>
+    <CaseStudyImgWrapper>
+      <Img title={props.title} alt={props.snippet} fluid={props.image} />
+    </CaseStudyImgWrapper>
+    <CaseStudyCardContents>
+      <HRTop />
+      <StyledH3>{props.title}</StyledH3>
+      <HRBottom />
+      <Copy small>{props.snippet}</Copy>
+      <FormattedMessage id="articleLinkContinue">
+        {(txt) => <ContinueLink to={props.slug}>{txt}</ContinueLink>}
+      </FormattedMessage>
+    </CaseStudyCardContents>
+  </StyledCaseStudyCard>
+);
 
 CaseStudyCard.propTypes = {
   title: PropTypes.string.isRequired,

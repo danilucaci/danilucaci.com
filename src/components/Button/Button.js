@@ -12,7 +12,7 @@ export const PrimaryButton = styled.button`
   font-size: ${theme.fontSizes.button};
   line-height: ${theme.lineHeights.button};
 
-  & .fonts-loaded {
+  .fonts-loaded & {
     font-family: ${theme.fonts.bodyBold};
   }
 
@@ -44,7 +44,7 @@ export const MainGhostButton = styled.button`
   font-size: ${theme.fontSizes.button};
   line-height: ${theme.lineHeights.button};
 
-  & .fonts-loaded {
+  .fonts-loaded & {
     font-family: ${theme.fonts.bodyBold};
   }
 
@@ -76,7 +76,7 @@ export const DarkGhostButton = styled.button`
   font-size: ${theme.fontSizes.button};
   line-height: ${theme.lineHeights.button};
 
-  & .fonts-loaded {
+  .fonts-loaded & {
     font-family: ${theme.fonts.bodyBold};
   }
 
@@ -108,7 +108,7 @@ export const PrimaryButtonSmall = styled.button`
   font-size: ${theme.fontSizes.button};
   line-height: ${theme.lineHeights.button};
 
-  & .fonts-loaded {
+  .fonts-loaded & {
     font-family: ${theme.fonts.bodyRegular};
   }
 
@@ -138,7 +138,7 @@ export const TertiaryButton = styled.button`
   font-size: ${theme.fontSizes.button};
   line-height: ${theme.lineHeights.button};
 
-  & .fonts-loaded {
+  .fonts-loaded & {
     font-family: ${theme.fonts.bodyRegular};
   }
 
@@ -169,7 +169,7 @@ export const LoadComments = styled.button`
   font-size: ${theme.fontSizes.button};
   line-height: ${theme.lineHeights.button};
 
-  & .fonts-loaded {
+  .fonts-loaded & {
     font-family: ${theme.fonts.bodyRegular};
   }
 

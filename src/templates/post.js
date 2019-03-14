@@ -265,7 +265,7 @@ const DummyInput = styled.textarea`
   color: transparent;
 `;
 
-export const StyledLoadComments = styled(LoadComments)`
+const StyledLoadComments = styled(LoadComments)`
   margin: ${rem(32)} auto;
   display: block;
 `;

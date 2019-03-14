@@ -75,7 +75,9 @@ const PrevArticleLink = styled(DefaultLink)`
   line-height: ${theme.lineHeights.siblingPostsXL};
 `};
 
-  font-family: ${theme.fonts.headerRegular};
+  .fonts-loaded & {
+    font-family: ${theme.fonts.headerRegular};
+  }
   font-weight: 400;
 
   &:hover {
@@ -129,7 +131,7 @@ const NextArticleLink = styled(DefaultLink)`
     line-height: ${theme.lineHeights.siblingPostsXL};
   `};
 
-  .fonts-loaded {
+  .fonts-loaded & {
     font-family: ${theme.fonts.headerRegular};
   }
 
@@ -139,50 +141,38 @@ const NextArticleLink = styled(DefaultLink)`
   }
 `;
 
-const SiblingPosts = ({ prevSlug, prevTitle, nextSlug, nextTitle }) => {
-  return (
-    <SiblingPostsWrapper>
-      <HR />
-      <SiblingPostsContents>
-        {prevSlug && (
-          <PreviousItemsContainer>
-            <FormattedMessage id="articlePrev">
-              {(txt) => <PrevSectionHeader>{txt}</PrevSectionHeader>}
-            </FormattedMessage>
-            <PrevArticleLink to={prevSlug}>{prevTitle}</PrevArticleLink>
-          </PreviousItemsContainer>
-        )}
-        {nextSlug && (
-          <NextItemsContainer>
-            <FormattedMessage id="articleNext">
-              {(txt) => <NextSectionHeader>{txt}</NextSectionHeader>}
-            </FormattedMessage>
-            <NextArticleLink to={nextSlug}>{nextTitle}</NextArticleLink>
-          </NextItemsContainer>
-        )}
-      </SiblingPostsContents>
-      <HR />
-    </SiblingPostsWrapper>
-  );
-};
+const SiblingPosts = ({
+  prevSlug, prevTitle, nextSlug, nextTitle,
+}) => (
+  <SiblingPostsWrapper>
+    <HR />
+    <SiblingPostsContents>
+      {prevSlug && (
+        <PreviousItemsContainer>
+          <FormattedMessage id="articlePrev">
+            {(txt) => <PrevSectionHeader>{txt}</PrevSectionHeader>}
+          </FormattedMessage>
+          <PrevArticleLink to={prevSlug}>{prevTitle}</PrevArticleLink>
+        </PreviousItemsContainer>
+      )}
+      {nextSlug && (
+        <NextItemsContainer>
+          <FormattedMessage id="articleNext">
+            {(txt) => <NextSectionHeader>{txt}</NextSectionHeader>}
+          </FormattedMessage>
+          <NextArticleLink to={nextSlug}>{nextTitle}</NextArticleLink>
+        </NextItemsContainer>
+      )}
+    </SiblingPostsContents>
+    <HR />
+  </SiblingPostsWrapper>
+);
 
 SiblingPosts.propTypes = {
-  nextTitle: PropTypes.oneOfType([
-    PropTypes.string.isRequired,
-    PropTypes.object.isRequired,
-  ]),
-  nextSlug: PropTypes.oneOfType([
-    PropTypes.string.isRequired,
-    PropTypes.object.isRequired,
-  ]),
-  prevSlug: PropTypes.oneOfType([
-    PropTypes.string.isRequired,
-    PropTypes.object.isRequired,
-  ]),
-  prevTitle: PropTypes.oneOfType([
-    PropTypes.string.isRequired,
-    PropTypes.object.isRequired,
-  ]),
+  nextTitle: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.object.isRequired]),
+  nextSlug: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.object.isRequired]),
+  prevSlug: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.object.isRequired]),
+  prevTitle: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.object.isRequired]),
 };
 
 export default SiblingPosts;

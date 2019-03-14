@@ -12,8 +12,8 @@ const MessageTitle = styled(Copy)`
   font-size: ${theme.fontSizes.m};
   line-height: ${theme.lineHeights.s};
 
-  & .fonts-loaded {
-    font-family: ${theme.fonts.bodyRegular};
+  .fonts-loaded & {
+    font-family: ${theme.fonts.header};
   }
 `;
 

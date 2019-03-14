@@ -11,8 +11,6 @@ export const DefaultLink = styled(Link)`
   font-style: normal;
   font-weight: 400;
 
-  font-family: ${theme.fonts.bodyRegular};
-
   &:visited,
   &:link {
     color: ${theme.colors.main600};
@@ -26,7 +24,6 @@ export const DefaultLink = styled(Link)`
 
 export const BoldLink = styled(DefaultLink)`
   font-weight: 700;
-
   font-family: ${theme.fonts.bodyBold};
 `;
 

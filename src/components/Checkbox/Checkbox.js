@@ -87,17 +87,3 @@ export const Checkbox = styled.input`
     transform: rotate(35deg);
   }
 `;
-
-const toggleCheckbox = keyframes`
-  0% {
-    transform: scale(1) rotate(35deg);
-  }
-
-  50% {
-    transform: scale(1.5) rotate(35deg);
-  }
-
-  100% {
-    transform: scale(1) rotate(35deg);
-  }
-`;

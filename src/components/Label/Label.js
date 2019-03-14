@@ -11,7 +11,9 @@ const StyledLabel = styled.label`
 `;
 
 // High 5 to: https://stackoverflow.com/questions/39630620/react-intl-how-to-use-formattedmessage-in-input-placeholder
-function Label({ intl, labelType, children, ...rest }) {
+function Label({
+  intl, labelType, children, ...rest
+}) {
   let str = toUpperCamelCase(labelType);
 
   const labelValue = intl.formatMessage({ id: `formLabel${str}` });

@@ -48,7 +48,7 @@ const ErrorMessage = styled.p`
   color: ${theme.colors.danger500};
   font-weight: 700;
 
-  & .fonts-loaded {
+  .fonts-loaded & {
     font-family: ${theme.fonts.bodyBold};
   }
 

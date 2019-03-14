@@ -5,7 +5,7 @@ const GlobalCSS = createGlobalStyle`
   html {
     background-color: #F5F6F7;
     color: #3A4554;
-    font-family: "Open Sans", "Montserrat", BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-family: "Open Sans", BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     font-size: 16px;
     line-height: 24px;
     ${"" /* font-size: 100%; */}

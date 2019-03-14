@@ -2,10 +2,9 @@ import React from "react";
 import { graphql, StaticQuery } from "gatsby";
 import Img from "gatsby-image";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
 
-import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
+import { theme, rem, mediaMin } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
 import SocialNav from "../SocialNav/SocialNav";
 
@@ -71,50 +70,38 @@ const AuthorDescription = styled(Copy)`
   margin-bottom: ${rem(12)};
 `;
 
-const AuthorCard = (props) => {
-  return (
-    <StyledAuthorCard>
-      <StaticQuery
-        query={AUTHOR_IMAGE_QUERY}
-        render={(data) => {
-          let image = data.authorImageQuery.childImageSharp.fluid;
+const AuthorCard = () => (
+  <StyledAuthorCard>
+    <StaticQuery
+      query={AUTHOR_IMAGE_QUERY}
+      render={(data) => {
+        let image = data.authorImageQuery.childImageSharp.fluid;
 
-          return (
-            <FormattedMessage id="authorCardImageTitle">
-              {(imageTitle) => (
-                <AuthorImage
-                  title={imageTitle}
-                  alt="Dani Lucaci portrait image"
-                  fluid={image}
-                />
-              )}
-            </FormattedMessage>
-          );
-        }}
-      />
+        return (
+          <FormattedMessage id="authorCardImageTitle">
+            {(imageTitle) => (
+              <AuthorImage title={imageTitle} alt="Dani Lucaci portrait image" fluid={image} />
+            )}
+          </FormattedMessage>
+        );
+      }}
+    />
 
-      <AuthorInfo>
-        <FormattedMessage id="authorCardName">
-          {(name) => <h4>{name}</h4>}
-        </FormattedMessage>
-        <FormattedMessage id="authorCardDescription">
-          {(description) => (
-            <AuthorDescription>{description}</AuthorDescription>
-          )}
-        </FormattedMessage>
-        <SocialNav />
-      </AuthorInfo>
-    </StyledAuthorCard>
-  );
-};
+    <AuthorInfo>
+      <FormattedMessage id="authorCardName">{(name) => <h4>{name}</h4>}</FormattedMessage>
+      <FormattedMessage id="authorCardDescription">
+        {(description) => <AuthorDescription>{description}</AuthorDescription>}
+      </FormattedMessage>
+      <SocialNav />
+    </AuthorInfo>
+  </StyledAuthorCard>
+);
 
 export default AuthorCard;
 
 const AUTHOR_IMAGE_QUERY = graphql`
   query {
-    authorImageQuery: file(
-      relativePath: { regex: "/danilucaci_profile_image/" }
-    ) {
+    authorImageQuery: file(relativePath: { regex: "/danilucaci_profile_image/" }) {
       childImageSharp {
         fluid(maxWidth: 104, maxHeight: 104) {
           ...GatsbyImageSharpFluid

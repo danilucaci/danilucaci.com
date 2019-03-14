@@ -64,8 +64,6 @@ const CopyTooltip = styled.span`
   font-size: ${theme.fontSizes.xs};
   line-height: ${theme.lineHeights.xs};
 
-  font-family: ${theme.fonts.bodyRegular};
-
   position: absolute;
 
   top: -${rem(44)};

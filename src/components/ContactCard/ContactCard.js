@@ -76,6 +76,10 @@ const StyledContactButton = styled(Link)`
   font-style: normal;
   font-weight: 700;
 
+  .fonts-loaded & {
+    font-family: ${theme.fonts.bodyBold};
+  }
+
   padding: ${rem(12)} ${rem(40)};
   height: ${rem(48)};
   width: 100%;
@@ -87,8 +91,6 @@ const StyledContactButton = styled(Link)`
   margin-top: ${rem(24)};
 
   white-space: nowrap;
-
-  font-family: ${theme.fonts.bodyBold};
 
   &:hover,
   &:focus {
@@ -118,9 +120,7 @@ function ContactCard(props) {
         {(txt) => <Subtitle>{txt} </Subtitle>}
       </FormattedMessage>
 
-      <FormattedMessage id="contactCardInfo">
-        {(txt) => <Info small>{txt} </Info>}
-      </FormattedMessage>
+      <FormattedMessage id="contactCardInfo">{(txt) => <Info small>{txt} </Info>}</FormattedMessage>
 
       <FormattedMessage id="contactCardCTA">
         {(txt) => (
