@@ -3,9 +3,10 @@ import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { FormattedMessage } from "react-intl";
 
-import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
+import { theme, rem, mediaMin } from "../../theme/globalStyles";
 import LanguageSelector from "../LanguageSelector/LanguageSelector";
 import SiteNavListItem from "./SiteNavListItem/SiteNavListItem";
+import { localePaths } from "../../i18n/i18n";
 
 const StyledSiteNavList = styled.ul`
   background-color: ${theme.colors.gray100};
@@ -28,7 +29,7 @@ const StyledSiteNavList = styled.ul`
   will-change: transform;
 
   ${(props) =>
-    props.showNav
+    (props.showNav
       ? css`
           transform: translateX(0);
           visibility: visible;
@@ -40,7 +41,7 @@ const StyledSiteNavList = styled.ul`
           visibility: hidden;
           opacity: 0;
           pointer-events: none;
-        `};
+        `)};
 
   ${mediaMin.s`
     background-color: transparent;
@@ -56,56 +57,25 @@ const StyledSiteNavList = styled.ul`
   `};
 `;
 
-const SiteNavList = (props) => {
-  const aboutMeLocaleLabels = {
-    en: "/about-me",
-    es: "/sobre-mi",
-  };
-
-  const workLocaleLabels = {
-    en: "/work",
-    es: "/trabajos",
-  };
-
-  const contactLocaleLabels = {
-    en: "/contact",
-    es: "/contacto",
-  };
-
-  return (
-    <StyledSiteNavList showNav={props.showNav} role="menu">
-      <FormattedMessage id="siteNavWork">
-        {(txt) => (
-          <SiteNavListItem to={workLocaleLabels[`${props.locale}`]}>
-            {txt}
-          </SiteNavListItem>
-        )}
-      </FormattedMessage>
-      <FormattedMessage id="siteNavBlog">
-        {(txt) => <SiteNavListItem to="/blog">{txt}</SiteNavListItem>}
-      </FormattedMessage>
-      <FormattedMessage id="siteNavAbout">
-        {(txt) => (
-          <SiteNavListItem to={aboutMeLocaleLabels[`${props.locale}`]}>
-            {txt}
-          </SiteNavListItem>
-        )}
-      </FormattedMessage>
-      <FormattedMessage id="siteNavContact">
-        {(txt) => (
-          <SiteNavListItem to={contactLocaleLabels[`${props.locale}`]}>
-            {txt}
-          </SiteNavListItem>
-        )}
-      </FormattedMessage>
-      <LanguageSelector
-        currentPath={props.currentPath}
-        locale={props.locale}
-        twinPostURL={props.twinPostURL}
-      />
-    </StyledSiteNavList>
-  );
-};
+const SiteNavList = ({
+  locale, currentPath, twinPostURL, showNav,
+}) => (
+  <StyledSiteNavList showNav={showNav} role="menu">
+    <FormattedMessage id="siteNavWork">
+      {(txt) => <SiteNavListItem to={localePaths[locale].work}>{txt}</SiteNavListItem>}
+    </FormattedMessage>
+    <FormattedMessage id="siteNavBlog">
+      {(txt) => <SiteNavListItem to="/blog">{txt}</SiteNavListItem>}
+    </FormattedMessage>
+    <FormattedMessage id="siteNavAbout">
+      {(txt) => <SiteNavListItem to={localePaths[locale].about}>{txt}</SiteNavListItem>}
+    </FormattedMessage>
+    <FormattedMessage id="siteNavContact">
+      {(txt) => <SiteNavListItem to={localePaths[locale].contact}>{txt}</SiteNavListItem>}
+    </FormattedMessage>
+    <LanguageSelector currentPath={currentPath} locale={locale} twinPostURL={twinPostURL} />
+  </StyledSiteNavList>
+);
 
 SiteNavList.propTypes = {
   locale: PropTypes.string.isRequired,

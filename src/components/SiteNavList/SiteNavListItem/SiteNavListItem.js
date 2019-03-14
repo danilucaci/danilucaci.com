@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 
-import LocaleLink from "../../LocaleLink/LocaleLink";
-import { theme, rem, mediaMin, mediaMax } from "../../../theme/globalStyles";
+import { Link } from "gatsby";
+import { theme, rem, mediaMin } from "../../../theme/globalStyles";
 
 const StyledSiteNavListItem = styled.li`
   text-decoration: none;
@@ -31,7 +31,9 @@ const StyledSiteNavListItem = styled.li`
     color: ${theme.colors.dark700};
     display: block;
 
-    font-family: ${theme.fonts.headerRegular};
+    .fonts-loaded & {
+      font-family: ${theme.fonts.headerRegular};
+    }
 
     font-weight: 400;
     font-size: ${rem(24)};
@@ -88,23 +90,16 @@ const StyledSiteNavListItem = styled.li`
  * this link will be active when itself or deeper routes
  * are current
  */
-const isPartiallyActive = ({ isPartiallyCurrent }) => {
-  return isPartiallyCurrent ? { className: "current-nav-item" } : null;
-};
+const isPartiallyActive = ({ isPartiallyCurrent }) =>
+  (isPartiallyCurrent ? { className: "current-nav-item" } : null);
 
-const SiteNavListItem = (props) => {
-  return (
-    <StyledSiteNavListItem role="menuitem" tabIndex="-1">
-      <LocaleLink
-        to={props.to}
-        getProps={isPartiallyActive}
-        aria-current="page"
-      >
-        {props.children}
-      </LocaleLink>
-    </StyledSiteNavListItem>
-  );
-};
+const SiteNavListItem = (props) => (
+  <StyledSiteNavListItem role="menuitem" tabIndex="-1">
+    <Link to={props.to} getProps={isPartiallyActive} aria-current="page">
+      {props.children}
+    </Link>
+  </StyledSiteNavListItem>
+);
 
 SiteNavListItem.propTypes = {
   children: PropTypes.string.isRequired,
