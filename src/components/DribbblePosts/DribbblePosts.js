@@ -104,11 +104,12 @@ function DribbblePosts({ locale }) {
 
         // didCancel gets set to true when the component unmounts in the return from useEffect
         if (!didCancel) {
-          setDribbblePosts({
+          setDribbblePosts((prevState) => ({
+            ...prevState,
             status: dribbbleRes.status,
             statusText: dribbbleRes.statusText,
             posts: dribbbleRes.data,
-          });
+          }));
 
           /**
           |--------------------------------------------------
