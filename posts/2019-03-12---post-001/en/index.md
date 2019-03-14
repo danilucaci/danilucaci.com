@@ -3,10 +3,10 @@ title: "How to Add a Contact Form on a Static Site"
 slug: "contact form on static sites"
 date: "2019-03-12"
 category: "blog"
-intro: "Static site generators like Gatsby.js are great for perfomance and tooling, but adding a contact form on them is not that easy if you don’t have a back-end to receive the form submissions.
+intro: "Static site generators like Gatsby.js are great for perfomance and tooling, but adding a contact form on them is not that easy if you don’t have a back-end server to receive your form submissions.
 |
 After comparing some of the available options out there —paid or free—, this is how I managed to include a contact form on my Gatsby.js static site."
-snippet: "How I used React Hooks and Netlify forms to add a GDPR compliant contact form for my Gatsby.js site."
+snippet: "How I used React Hooks and Netlify forms to add a GDPR compliant contact form on my Gatsby.js site."
 tags:
     - gatsby.js
     - react.js
@@ -43,7 +43,7 @@ In my case, as a designer that needs a contact form to be able to be reached by 
 
 Even though Gatsby.js has many useful plugins that let you add pretty much any kind of functionality to your site, there are no plugins that let you handle form submissions.
 
-So after looking for ways to add a contact form on Google, StackOverflow or Github, I eventually found a <a href="https://github.com/agarrharr/awesome-static-website-services" target="_blank" rel="noopener noreferer">gist on github<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> that had a bunch of resources available for static sites, not only for Gatsby but also for static site generators such as Hugo or Jekyll.
+So after searching to see what services and solutions are available for static sites, I eventually came across a <a href="https://github.com/agarrharr/awesome-static-website-services" target="_blank" rel="noopener noreferer">repo on github<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> that had a bunch of resources available for static sites, not only for Gatsby but also for other static site generators such as Hugo or Jekyll.
 
 After comparing a couple of services, I soon realized that most of them didn’t have a free plan, and if they did, it was really limited, so I decided to use Netlify’s forms since I am already hosting the site there.
 
@@ -88,7 +88,7 @@ And now you’re all set to start receiving form submissions on your Gatsby.js s
 
 ## Spam Protection
 
-If you need to enable spam filtering, and you probably should, or you’ll spend your 100 form submissions a month pretty fast, Netlify gives you 2 options.
+If you need to enable spam filtering —and you probably should, or you’ll spend your 100 form submissions a month pretty fast— Netlify gives you 2 options.
 
 The first one is to use a hidden “honeypot” input field which only bots trying to submit your form will see and complete, so if Netlify sees this field completed, the form will just be ignored. In my example, mine is called `data-netlify-honeypot="botfield"`.
 
@@ -115,9 +115,9 @@ In my case I decided to handle both cases.
 
 ### 1. The User has Disabled Javascript in Her Browser
 
-When javascript is disabled in the users' browser, she will be redirected to my custom `action={thanksURL}` page, so that I don’t have to rely on Netlify's default screen.
+When javascript is disabled in the users' browser, she will be redirected to my custom `action={thanksURL}` page. This way I don’t have to rely on Netlify's default screen.
 
-![Custom confirmation page shown when users have javascript disabled](contact_form_confirmation_screen.png "Custom confirmation page shown when users have javascript disabled.")
+![Custom confirmation page shown when users have javascript disabled](./contact_form_confirmation_screen_with_javascript_disabled.png "Custom confirmation page shown when users have javascript disabled.")
 
 ### 2. The User Has Enabled Javascript in Her Browser
 
@@ -245,7 +245,7 @@ Your browser does not support HTML5 video.
 
 In order to handle the form validation I decided to use <abbr title="Cascading Style Sheets">CSS</abbr> only since I could get most of what I needed without having to use javascript. Furthermore, it also worked when someone tried to contact me using a browser that has javascript disabled.
 
-My solution is based on using <abbr title="Cascading Style Sheets">CSS</abbr> Level 3 selectors such as `&:valid`, `:not()`, `:placeholder-shown` or `:invalid`, if you’d like to learn more you can read <a href="https://css-tricks.com/form-validation-ux-html-css/" target="_blank" rel="noopener noreferer">this article from css-tricks<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>.
+My solution is based on using <abbr title="Cascading Style Sheets">CSS</abbr> Level 3 selectors such as `&:valid`, `:not()`, `:placeholder-shown` or `:invalid`. If you’d like to learn more about them, you can read <a href="https://css-tricks.com/form-validation-ux-html-css/" target="_blank" rel="noopener noreferer">this article from css-tricks<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>.
 
 By using a combination of these <abbr title="Cascading Style Sheets">CSS</abbr> selectors, I could even get real-time validation while users are typing information in the form fields.
 
@@ -290,7 +290,7 @@ Your browser does not support HTML5 video.
 <figcaption>Contact Form With a Loading Indicator and Status Messages</figcaption>
 </figure>
 
-Besides validating the form fields, you should also make sure to use the appropriate attributes on each input field, such as the email input field type I’m using, by setting the correct type, disabling `autoCapitalize` and `autoCorrect` and by setting `autoComplete` to email, so that the users' browser can autocomplete the data faster without the user having to type everything.
+Besides validating the form fields, you should also make sure that you’re using the wright attributes on each input field, such as the `email` input field type I’m using, by setting the correct type. In this example I disabled auto capitalization with `autoCapitalize` and auto correction with `autoCorrect`. I also set the  `autoComplete` to `email`, so that the users' browser can autocomplete the data faster without them having to type everything by hand.
 
 ```jsx
 <StyledInput
@@ -349,5 +349,5 @@ Since I wanted to still be able to receive messages if anyone had javascript dis
 
 ## The Contact Form with All the Options Included
 
-![GDPR compliant contact form made with Gatsby.js](gatsby_js_contact_form_screen.png "GDPR compliant contact form made with Gatsby.js.")
+![GDPR compliant contact form made with Gatsby.js](./gatsby_js_gdpr_contact_form_screen.png "GDPR compliant contact form made with Gatsby.js.")
 

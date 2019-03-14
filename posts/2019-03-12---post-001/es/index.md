@@ -26,7 +26,7 @@ twinPost: "contact form on static sites"
 - [Qué Necesitas Para Empezar](#qué-necesitas-para-empezar)
 - [Protección Antispam](#protección-antispam)
 - [Gestionando los Envios de los Formularios](#gestionando-los-envios-de-los-formularios)
-- [Mostrando un Indicador de Carga](#mostrando-un-indicador-de-carga)
+- [Mostrando un Indicador del Estado de Carga](#mostrando-un-indicador-del-estado-de-carga)
 - [Validación de Formularios con CSS](#validación-de-formularios-con-css)
 - [Puntos Extra, Formulario de Contacto que Cumple con la RGPD](#puntos-extra-formulario-de-contacto-que-cumple-con-la-rgpd)
 - [El Formulario de Contacto con Todas las Opciones Incluidas](#el-formulario-de-contacto-con-todas-las-opciones-incluidas)
@@ -43,11 +43,11 @@ En mi caso, siendo un diseñador que necesita un formulario de contacto para que
 
 Aunque Gatsby.js tiene una gran cantidad de plugins útiles que te permiten añadir muchos tipos de funcionalidades a tu página, no hay ninguno que permita gestionar peticiones de formularios.
 
-Así que después de buscar un poco en Google, Stackoverflow o en Github, finalmente conseguí encontrar <a href="https://github.com/agarrharr/awesome-static-website-services" target="_blank" rel="noopener noreferer">un gist en Github<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a> que tenía un listado de muchos recursos útiles para las webs estáticas, no solo para Gatsby.js, si no que también para las creadas con Hugo o Jekyll.
+Así que después de buscar que servicios o soluciones hay para las webs estáticas, finalmente conseguí encontrar <a href="https://github.com/agarrharr/awesome-static-website-services" target="_blank" rel="noopener noreferer">un repositorio en Github<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a> que tenía un listado de muchos recursos útiles para las webs estáticas, no solo para Gatsby.js, si no que también para las creadas con Hugo o Jekyll.
 
-Una vez comparé las distintas soluciones disponibles, me di cuenta de que la mayoría no ofrece una versión gratuita, y si la ofrece es muy limitada, así que decidí usar los formularios de Netlify, ya que ahí es donde tengo la web hospedada igualmente.
+Después de comparar los distintos servicios disponibles, me di cuenta de que la mayoría no ofrecen una versión gratuita, y si la ofrecen, esta es muy limitada. Al final decidí optar por los formularios que ofrece Netlify, que es donde tengo la web hospedada tambíen, asi que me pareció la mejor opción.
 
-Netlify te ofrece un buen plan para empezar que te permite tener hasta 100 peticiones al mes, y si lo superas, tendrás que pasarte a alguno de los planes de pago Pro.
+Netlify te ofrece un buen plan para empezar que te permite tener hasta 100 peticiones al mes, y si superas ese limite, tendrás que pasarte a alguno de los planes de pago Pro.
 
 ## Qué Necesitas Para Empezar
 
@@ -87,17 +87,17 @@ Ahora ya puedes empezar a recibir mensajes a tu formulario de contacto en tu web
 
 ## Protección Antispam
 
-Si necesitas activar el filtro de spam, y te recomiendo hacerlo si no es posible que llegues a tu limite de 100 peticiones al mes bastante rápido, Netlify te ofrece 2 opciones.
+Si necesitas activar el filtro de spam —yo te recomiendo hacerlo si no es posible que llegues a tu limite de 100 peticiones al mes bastante rápido— Netlify te ofrece 2 opciones.
 
-La primera es usando un input oculto tipo “honeypot” el cual solo los bots que intenten rellenar el formulario verán, y si Netlify detecta ese campo como completado, simplemente ignorará ese envío al formulario. En mi ejemplo, el mio se llama `data-netlify-honeypot="botfield"`.
+La primera es usando un input oculto tipo “honeypot” el cual solo los bots que intenten rellenar el formulario verán, y si Netlify detecta ese campo como completado, simplemente ignorará la presentación de ese formulario. En mi ejemplo, el mio se llama `data-netlify-honeypot="botfield"`.
 
-La segunda manera de activar el filtro Spam es usando reCAPTCHA 2, y si necesitas aprender como implementarlo, puedes <a href="https://www.netlify.com/docs/form-handling/" target="_blank" rel="noopener noreferer"> leer el artículo de Netlify<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> en el que explican como hacerlo.
+La segunda manera de activar el filtro Spam es usando reCAPTCHA 2, y si necesitas aprender como implementarlo, puedes <a href="https://www.netlify.com/docs/form-handling/" target="_blank" rel="noopener noreferer"> leer el artículo de Netlify<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> en el que explican como puedes hacerlo.
 
-Yo utilizo el campo “honeypot”, así que seguiré explicando todo siguiendo ese método.
+Yo utilizo el campo “honeypot”, así que seguiré explicando siguiendo ese método.
 
 ## Gestionando los Envios de los Formularios
 
-Por defecto, cuando alguien te presenta un formulario, Netlify les redirige a una página genérica de agradecimiento, lo cual esta bien, pero podemos crear una personalizada o un componente de React para cuando el usuario tiene activado el javascript en su navegador.
+Por defecto, cuando alguien te presenta un formulario, Netlify les redirige a una página genérica de agradecimiento, lo cual esta bien, pero podemos crear una personalizada, o podemos crear un componente React para cuando el usuario tiene activado el javascript en su navegador.
 
 ```jsx{4,7}
 <StyledForm
@@ -114,11 +114,11 @@ En mi caso he decidido implementar ambos casos.
 
 ### 1. El Usuario ha Desactivado Javascript en su Navegador
 
-Cuando el usuario tiene javascript deshabilitado en su navegador, será redirigido a una página hecha por mi usando el atributo `action={thanksURL}` del formulario, y de este modo no tengo que depender de la pantalla por defecto de Netlify.
+Cuando el usuario tiene javascript deshabilitado en su navegador, será redirigido a una página hecha por mi usando el atributo `action={thanksURL}` del formulario. De esta manera, no tengo que depender de la pantalla por defecto de Netlify.
 
-![Página de confirmación personalizada para los usuarios que tienen javascript deshabilitado](pantalla_confirmacion_formulario_contacto.png "Página de confirmación personalizada para los usuarios que tienen javascript deshabilitado.")
+![Página de confirmación personalizada para los usuarios que tienen javascript deshabilitado](./pagina_confirmacion_formulario_contacto_javascript_deshabilitado.png "Página de confirmación personalizada para los usuarios que tienen javascript deshabilitado.")
 
-### 2. El Usuario ha Activado Javascript en su Navegador
+### 2. El Usuario Tiene Activado Javascript en su Navegador
 
 Cuando el usuario tiene javascript habilitado en su navegador, el formulario será gestionado por la función `onSubmit={handleSubmit}`, y teniendo en cuenta de que todo se realiza de forma asíncrona, puedo mostrar un indicador del estado de carga mientras la información es enviada a los servidores de Netlify. 
 
@@ -156,7 +156,7 @@ Lo primero que hace la función `handleSubmit()` es cambiar el valor de la varia
 
 Después cambia el valor de la variable de estado `formSubmited` de `false` a `true` para que el componente `<EmailLoading ... />` se muestre en pantalla (más sobre eso más adelante).
 
-## Mostrando un Indicador de Carga
+## Mostrando un Indicador del Estado de Carga
 
 Cuando `fetch()` devuelve una respuesta, se ejecuta la función `handleFormSent()` que cambiará el valor de la variable de estado `formLoading` a `false` y el valor de la variable `showFormSuccess` a `true`, si no se ha devuelto ningún error.
 
@@ -167,7 +167,7 @@ function handleFormSent() {
 }
 ```
 
-Si la respuesta devuelve un error, la función `handleFormError()` se ejecutará dentro del bloque `catch()`el cual cambiará el valor de la variable de estado `showFormError` a `true`, para que muestre en pantalla un mensaje de error.
+Si la respuesta devuelve un error, la función `handleFormError()` se ejecutará dentro del bloque `catch()`, el cual cambiará el valor de la variable de estado `showFormError` a `true`, para que muestre en pantalla un mensaje de error.
 
 ```jsx
 function handleFormSent() {
@@ -242,7 +242,7 @@ Tu navegador no soporta el vídeo HTML5.
 
 Para validar la información introducida en el formulario he decido usar solo <abbr title="Cascading Style Sheets">CSS</abbr> ya que me permite tener los resultados que necesito sin tener que usar javascript. De esta forma, los usuarios siguen pudiendo presentar formularios cuando tienen deshabilitado javascript en su navegador.
 
-Mi solución esta basada en usar los selectores de nivel 3 de <abbr title="Cascading Style Sheets">CSS</abbr> como `&:valid`, `:not()`, `:placeholder-shown` o `:invalid`, si te gustaría leer más sobre ellos, puedes leer <a href="https://css-tricks.com/form-validation-ux-html-css/" target="_blank" rel="noopener noreferer">este articulo de css-tricks<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> en el que lo explican más.
+Mi solución esta basada en usar los selectores de nivel 3 de <abbr title="Cascading Style Sheets">CSS</abbr> como `&:valid`, `:not()`, `:placeholder-shown` o `:invalid`. Si te gustaría leer más sobre ellos, puedes leer <a href="https://css-tricks.com/form-validation-ux-html-css/" target="_blank" rel="noopener noreferer">este articulo de css-tricks<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> en el que lo explican más.
 
 Usando una combinación de estos selectores <abbr title="Cascading Style Sheets">CSS</abbr>, puedo tener hasta validación del formulario en tiempo real mientras el usuario esta introduciendo la información.
 
@@ -287,7 +287,7 @@ Tu navegador no soporta el vídeo HTML5.
 <figcaption>Contact Form With a Loading Indicator and Status Messages</figcaption>
 </figure>
 
-Aparte de la validación de la información del formulario, también deberías asegurarte de usar los atributos correctos para cada tipo de input, como, por ejemplo, en el input tipo email que estoy usando. Para este caso he desactivado las mayúsculas automáticas con `autoCapitalize` y la autocorección con ` autoCorrect`. También he añadido el atributo `autoComplete` para que el navegador autocomplete la información de contacto del usuario.
+Aparte de la validación de la información del formulario, también deberías asegurarte de usar los atributos correctos para cada tipo de input, como, por ejemplo, en el input tipo `email` que estoy usando. Para este caso he desactivado las mayúsculas automáticas con `autoCapitalize` y la autocorección con ` autoCorrect`. También he añadido el atributo `autoComplete` para que el navegador autocomplete la información de contacto del usuario.
 
 ```jsx
 <StyledInput
@@ -319,11 +319,9 @@ Antes de continuar leyendo, deberías tener en cuenta de que solo siguiendo esto
 
 ### Desactivar el Botón de Enviar con CSS
 
-According to the current privacy laws in Europe, users can send you their personal information before giving your a consent to use or store their personal information. So I had to add a checkbox —that isn’t checked by default— which controls if the form can be submitted.
+De acuerdo con las leyes actuales de privacidad, los usuarios no pueden enviarte su información personal si no te han dado un consentimiento expreso previamente.
 
-Since I wanted to still be able to receive messages if anyone had js disabled, I decided to use the checkbox hack to disable the submit button.
-
-A simple way of doing it is by disabling `pointer-events` for the submit button. However you should know that the button is still focusable with the tab key, and can be triggered, but if you set the checkbox to be required, HTML5 compatible browsers will require it before sending the form.
+Por ello, añadí el checkbox —que no puede estar marcado por defecto— que controla si el formulario puede ser presentado o no y una forma sencilla de conseguir esto es desactivando los `pointer-events` en el botón de enviar.
 
 ```css
 &:not(:checked) {
@@ -348,5 +346,5 @@ A simple way of doing it is by disabling `pointer-events` for the submit button.
 
 ## El Formulario de Contacto con Todas las Opciones Incluidas
 
-![GDPR compliant contact form made with Gatsby.js](gatsby_js_contact_form_screen.png "GDPR compliant contact form made with Gatsby.js.")
+![Formulario de contacto creado con Gatsby.js que cumple con la RGPD.](./formulario_contacto_gatsby_js_rgpd.png "Formulario de contacto creado con Gatsby.js que cumple con la RGPD.")
 
