@@ -146,7 +146,6 @@ class Layout extends Component {
     acceptsCookie: { necessary: true, analytics: true, dismissed: false },
     deniesCookie: { necessary: true, analytics: false, dismissed: true },
     cookieExp: 780,
-    showLogs: true,
   };
   // cookieExp set in days same as GA expiry date
 
@@ -158,7 +157,7 @@ class Layout extends Component {
   }
 
   // componentDidUpdate() {
-  // if (this.state.showLogs === true) {
+  // if (NODE_ENV === "development") {
   //   this.showGDPRStatus();
   // }
   // }
@@ -205,11 +204,11 @@ class Layout extends Component {
       OpenSansItalic.load(),
       MontserratBold.load(),
       MontserratRegular.load(),
-    ]).then(function() {
+    ]).then(() => {
       document.documentElement.className += " fonts-loaded";
       // Optimization for Repeat Views
       sessionStorage.fontsLoadedPolyfill = true;
-      if (this.state.showLogs === true) {
+      if (NODE_ENV === "development") {
         console.log("%c Fonts loaded.", "color: #79E36B");
       }
     });
@@ -222,10 +221,11 @@ class Layout extends Component {
       if (!isLoaded) {
         document.documentElement.className += " fonts-loaded";
       }
-      if (this.state.showLogs === true) {
+      if (NODE_ENV === "development") {
         console.log("%c Fonts already loaded.", "color: #79E36B");
       }
     } else {
+      // Don’t load fonts if  the user has data saver on or is on a slow connection
       if (detectDataSaverMode() || detectSlowConnectionType()) {
         return;
       }
@@ -241,7 +241,7 @@ class Layout extends Component {
       if (DLCookie) {
         // If the cookie has analytics accepted
         if (DLCookie.analytics && !DLCookie.dismissed) {
-          if (this.state.showLogs === true) {
+          if (NODE_ENV === "development") {
             console.log("%c The user accepted cookies.", "color: #79E36B");
           }
 
@@ -258,7 +258,7 @@ class Layout extends Component {
 
           // Don't load analytics scripts if analytics cookies are not accepted
         } else if (!DLCookie.analytics && DLCookie.dismissed) {
-          if (this.state.showLogs === true) {
+          if (NODE_ENV === "development") {
             console.log("%c The user doesn't accept cookies.", "color: #79E36B");
           }
           if (this.state.askCookieConsent === true) {
@@ -275,21 +275,23 @@ class Layout extends Component {
           askCookieConsent: !prevState.askCookieConsent,
         }));
 
-        if (this.state.showLogs === true) {
+        if (NODE_ENV === "development") {
           console.log(
             "%c Didn't find a previous cookie, asking for the consent.",
             "color: #79E36B",
           );
         }
       }
-    } else if (this.state.showLogs === true) {
+    } else if (NODE_ENV === "development") {
       console.error("dl.com Can't read env cookie name.");
     }
   };
 
   // Google Analytics Init
   initGA = () => {
-    console.log("%c GA Init!", "color: #79E36B");
+    if (NODE_ENV === "development") {
+      console.log("%c GA Init!", "color: #79E36B");
+    }
     ReactGA.initialize(GATSBY_GA_ID);
   };
 
@@ -314,18 +316,28 @@ class Layout extends Component {
         const DLCookie = Cookies.getJSON(GATSBY_DL_COOKIE_NAME);
         if (DLCookie) {
           if (DLCookie.analytics) {
-            console.log("%c Cookies Accepted.", "color: #79E36B");
+            if (NODE_ENV === "development") {
+              console.log("%c Cookies Accepted.", "color: #79E36B");
+            }
           } else if (!DLCookie.analytics) {
-            console.log("%c Cookies Denied.", "color: #79E36B");
+            if (NODE_ENV === "development") {
+              console.log("%c Cookies Denied.", "color: #79E36B");
+            }
           }
         } else {
-          console.log("%c Didn't find a cookie.", "color: #79E36B");
+          if (NODE_ENV === "development") {
+            console.log("%c Didn't find a cookie.", "color: #79E36B");
+          }
         }
-      } else if (this.state.showLogs === true) {
-        console.warn("Can't read cookie domain name .env.");
+      } else if (NODE_ENV === "development") {
+        if (NODE_ENV === "development") {
+          console.warn("Can't read cookie domain name .env.");
+        }
       }
     } else {
-      console.warn("Can't read cookie domain name .env.");
+      if (NODE_ENV === "development") {
+        console.warn("Can't read cookie domain name .env.");
+      }
     }
   };
 
@@ -344,10 +356,10 @@ class Layout extends Component {
 
         // Check to see if the cookie was set
         this.checkGDPRStatus();
-      } else if (this.state.showLogs === true) {
+      } else if (NODE_ENV === "development") {
         console.warn("Can't read cookie domain name .env.");
       }
-    } else if (this.state.showLogs === true) {
+    } else if (NODE_ENV === "development") {
       console.warn("Can't read cookie name .env.");
     }
   };
@@ -363,10 +375,10 @@ class Layout extends Component {
 
         // Check to see if the cookie was set
         this.checkGDPRStatus();
-      } else if (this.state.showLogs === true) {
+      } else if (NODE_ENV === "development") {
         console.warn("Can't read cookie domain name .env.");
       }
-    } else if (this.state.showLogs === true) {
+    } else if (NODE_ENV === "development") {
       console.warn("Can't read cookie name .env.");
     }
   };
