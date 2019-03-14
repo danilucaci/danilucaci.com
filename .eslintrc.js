@@ -111,5 +111,6 @@ module.exports = {
     "template-curly-spacing": 0,
     "prefer-const": 0,
     "no-lonely-if": 0,
+    "import/prefer-default-export": 0,
   },
 };
