@@ -25,19 +25,22 @@ const StyledScrollToTop = styled.a`
 `;
 
 const ScrollToTopIcon = styled(Icon)`
-  width: ${rem(40)};
-  height: ${rem(40)};
+  width: ${rem(56)};
+  height: ${rem(56)};
   padding: ${rem(8)};
+
+  ${mediaMin.s`
+    width: ${rem(40)};
+    height: ${rem(40)};
+  `};
 `;
 
-const ScrollToTop = () => {
-  return (
-    <StyledScrollToTop href="#main" title="Back to top">
-      <ScrollToTopIcon>
-        <use xlinkHref="#up" />
-      </ScrollToTopIcon>
-    </StyledScrollToTop>
-  );
-};
+const ScrollToTop = () => (
+  <StyledScrollToTop href="#main" title="Back to top">
+    <ScrollToTopIcon>
+      <use xlinkHref="#up" />
+    </ScrollToTopIcon>
+  </StyledScrollToTop>
+);
 
 export default ScrollToTop;
