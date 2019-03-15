@@ -99,7 +99,7 @@ const CookieConsent = (props) => {
                       <LearnMoreLink
                         to={localizedDoc.slug}
                         target="_blank"
-                        rel="noopener"
+                        rel="noopener noreferrer"
                       >
                         {txt}
                       </LearnMoreLink>

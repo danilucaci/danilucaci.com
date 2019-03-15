@@ -38,16 +38,16 @@ Tienes la opción de permitir, bloquear o eliminar las cookies instaladas en tu 
 
 Puede usted permitir, bloquear o eliminar las cookies instaladas en su equipo mediante la configuración de las opciones del navegador instalado en su ordenador:
 
-* <a href="http://windows.microsoft.com/es-es/windows-vista/Block-or-allow-cookies" target="_blank" rel="noopener">Microsoft Internet Explorer and Microsoft Edge<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
-* <a href="http://support.mozilla.org/es/kb/impedir-que-los-sitios-web-guarden-sus-preferencia" target="_blank" rel="noopener">Mozilla Firefox<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
-* <a href="https://support.google.com/accounts/answer/61416?hl=es" target="_blank" rel="noopener">Chrome<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
-* <a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Safari<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
-* <a href="https://help.opera.com/en/latest/web-preferences/#cookies" target="_blank" rel="noopener">Opera<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
+* <a href="http://windows.microsoft.com/es-es/windows-vista/Block-or-allow-cookies" target="_blank" rel="noopener noreferrer">Microsoft Internet Explorer and Microsoft Edge<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
+* <a href="http://support.mozilla.org/es/kb/impedir-que-los-sitios-web-guarden-sus-preferencia" target="_blank" rel="noopener noreferrer">Mozilla Firefox<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
+* <a href="https://support.google.com/accounts/answer/61416?hl=es" target="_blank" rel="noopener noreferrer">Chrome<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
+* <a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer">Safari<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
+* <a href="https://help.opera.com/en/latest/web-preferences/#cookies" target="_blank" rel="noopener noreferrer">Opera<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
 
 Además, también puede gestionar el almacén de cookies en su navegador a través de herramientas como las siguientes
 
-* <a href="https://www.ghostery.com" target="_blank" rel="noopener">Ghostery<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
-* <a href="https://www.youronlinechoices.com/es" target="_blank" rel="noopener">Your Online Choices<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
+* <a href="https://www.ghostery.com" target="_blank" rel="noopener noreferrer">Ghostery<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
+* <a href="https://www.youronlinechoices.com/es" target="_blank" rel="noopener noreferrer">Your Online Choices<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
 
 ## Cookies Utilizadas en www.danilucaci.com
 
@@ -67,13 +67,13 @@ A continuación se identifican las cookies que están siendo utilizadas en este 
 
 ## \_ga
 * **Duración:** 2 años
-* **Descrición:** Sirve para distinguir a los usuarios. Generada por Google Analytics. Google almacena la informacion recogida por las cookies en servidores ubicados en Estados Unidos, cumpliendo con la legislación Europea en cuanto a protección de datos personales y se compromete a no compartirla con terceros, excepto cuando la ley le obligue a ello o sea necesario para el funcionamiento del sistema. Google no asocia su direccion IP con ninguna otra informacion que tenga. Si desea obtener mas informacion acerca de las cookies usadas por Google Analytics, por favor acceda a esta direccion: <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage?hl=es&csw" target="_blank" rel="noopener">Uso de las cookies de Google Analytics en sitios web<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>.
+* **Descrición:** Sirve para distinguir a los usuarios. Generada por Google Analytics. Google almacena la informacion recogida por las cookies en servidores ubicados en Estados Unidos, cumpliendo con la legislación Europea en cuanto a protección de datos personales y se compromete a no compartirla con terceros, excepto cuando la ley le obligue a ello o sea necesario para el funcionamiento del sistema. Google no asocia su direccion IP con ninguna otra informacion que tenga. Si desea obtener mas informacion acerca de las cookies usadas por Google Analytics, por favor acceda a esta direccion: <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage?hl=es&csw" target="_blank" rel="noopener noreferrer">Uso de las cookies de Google Analytics en sitios web<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>.
 * **Tipo:** Terceros
 * **Finalidad:** Cookie de análisis
 
 ## \_gid
 * **Duración**: 1 año
-* **Descrición**: Generada por Google Analytics. Google almacena la informacion recogida por las cookies en servidores ubicados en Estados Unidos, cumpliendo con la legislación Europea en cuanto a protección de datos personales y se compromete a no compartirla con terceros, excepto cuando la ley le obligue a ello o sea necesario para el funcionamiento del sistema. Google no asocia su direccion IP con ninguna otra informacion que tenga. Si desea obtener mas informacion acerca de las cookies usadas por Google Analytics, por favor acceda a esta direccion: <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage?hl=es&csw" target="_blank" rel="noopener">Uso de las cookies de Google Analytics en sitios web<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>.
+* **Descrición**: Generada por Google Analytics. Google almacena la informacion recogida por las cookies en servidores ubicados en Estados Unidos, cumpliendo con la legislación Europea en cuanto a protección de datos personales y se compromete a no compartirla con terceros, excepto cuando la ley le obligue a ello o sea necesario para el funcionamiento del sistema. Google no asocia su direccion IP con ninguna otra informacion que tenga. Si desea obtener mas informacion acerca de las cookies usadas por Google Analytics, por favor acceda a esta direccion: <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage?hl=es&csw" target="_blank" rel="noopener noreferrer">Uso de las cookies de Google Analytics en sitios web<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>.
 * **Tipo**: Terceros
 * **Finalidad**: Cookie de análisis
 

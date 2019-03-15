@@ -42,7 +42,7 @@ const StyledLink = styled.a`
 
 const SocialNav = (props) => (
   <Wrapper>
-    <StyledLink target="_blank" rel="noopener" href="https://github.com/danilucaci">
+    <StyledLink target="_blank" rel="noopener noreferrer" href="https://github.com/danilucaci">
       <FormattedMessage id="socialNavGithub">
         {(txt) => <span className="sr-only">{txt}</span>}
       </FormattedMessage>
@@ -50,7 +50,7 @@ const SocialNav = (props) => (
         <use xlinkHref="#github" />
       </StyledIcon>
     </StyledLink>
-    <StyledLink target="_blank" rel="noopener" href="https://twitter.com/danilucaci">
+    <StyledLink target="_blank" rel="noopener noreferrer" href="https://twitter.com/danilucaci">
       <FormattedMessage id="socialNavTwitter">
         {(txt) => <span className="sr-only">{txt}</span>}
       </FormattedMessage>
@@ -58,7 +58,7 @@ const SocialNav = (props) => (
         <use xlinkHref="#twitter" />
       </StyledIcon>
     </StyledLink>
-    <StyledLink target="_blank" rel="noopener" href="https://dribbble.com/danilucaci">
+    <StyledLink target="_blank" rel="noopener noreferrer" href="https://dribbble.com/danilucaci">
       <FormattedMessage id="socialNavDribbble">
         {(txt) => <span className="sr-only">{txt}</span>}
       </FormattedMessage>
@@ -66,7 +66,7 @@ const SocialNav = (props) => (
         <use xlinkHref="#dribbble" />
       </StyledIcon>
     </StyledLink>
-    <StyledLink target="_blank" rel="noopener" href="https://www.linkedin.com/in/danielmlucaci">
+    <StyledLink target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/danielmlucaci">
       <FormattedMessage id="socialNavLinkedin">
         {(txt) => <span className="sr-only">{txt}</span>}
       </FormattedMessage>

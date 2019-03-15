@@ -104,7 +104,7 @@ function PrivacyCheckbox({ locale, ...rest }) {
             </StyledCheckboxLabel>
             <FormattedMessage id="formPrivacyMore2">
               {(txt) => (
-                <LearnMoreLink href={legalNoticeLink[0].slug} target="_blank" rel="noopener">
+                <LearnMoreLink href={legalNoticeLink[0].slug} target="_blank" rel="noopener noreferrer">
                   {txt}
                 </LearnMoreLink>
               )}
@@ -114,7 +114,7 @@ function PrivacyCheckbox({ locale, ...rest }) {
             </FormattedMessage>
             <FormattedMessage id="formPrivacyMore4">
               {(txt) => (
-                <LearnMoreLink href={privacyLink[0].slug} target="_blank" rel="noopener">
+                <LearnMoreLink href={privacyLink[0].slug} target="_blank" rel="noopener noreferrer">
                   {txt}
                 </LearnMoreLink>
               )}

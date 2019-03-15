@@ -262,7 +262,7 @@ const AboutPage = (props) => {
                   </FormattedMessage>
                   <a
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
                     href="https://github.com/danilucaci/danilucaci.com"
                   >
                     github
@@ -274,7 +274,7 @@ const AboutPage = (props) => {
                     {(txt) => (
                       <a
                         target="_blank"
-                        rel="noopener"
+                        rel="noopener noreferrer"
                         href="https://twitter.com/danilucaci"
                       >
                         {txt}

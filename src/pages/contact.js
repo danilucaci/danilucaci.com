@@ -229,7 +229,7 @@ const ContactPage = (props) => {
                     {(txt) => (
                       <StyledLink
                         target="_blank"
-                        rel="noopener"
+                        rel="noopener noreferrer"
                         href="https://twitter.com/danilucaci"
                       >
                         {txt}

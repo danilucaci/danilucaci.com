@@ -111,7 +111,7 @@ const NotFoundPage = (props) => {
                 </FormattedMessage>
                 <a
                   target="_blank"
-                  rel="noopener"
+                  rel="noopener noreferrer"
                   href="https://twitter.com/danilucaci"
                 >
                   @danilucaci

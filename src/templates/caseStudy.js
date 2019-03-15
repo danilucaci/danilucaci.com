@@ -727,7 +727,7 @@ class CaseStudy extends Component {
                         <OverviewListLink
                           href={entry.link}
                           target="_blank"
-                          rel="noopener"
+                          rel="noopener noreferrer"
                           key={index}
                         >
                           {entry.name}

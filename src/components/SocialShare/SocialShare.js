@@ -104,7 +104,7 @@ const SocialShare = (props) => {
     <SocialShareWrapper>
       <SocialShareButton
         target="_blank"
-        rel="noopener"
+        rel="noopener noreferrer"
         href={`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${
           props.title
         }&summary=${props.snippet}`}
@@ -117,7 +117,7 @@ const SocialShare = (props) => {
 
       <SocialShareButton
         target="_blank"
-        rel="noopener"
+        rel="noopener noreferrer"
         href={`https://twitter.com/intent/tweet?text=${props.title}&url=${url}`}
         aria-label="Share on Twitter"
       >
