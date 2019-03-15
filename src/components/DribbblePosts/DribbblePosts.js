@@ -70,11 +70,6 @@ function DribbblePosts({ locale }) {
   // Also handles how many more shots to load
   // when the "Load More..." button is pressed
   const SHOTS_PER_PAGE = 4;
-  const dribbblePage = 1;
-
-  const [dribbblePosts, setDribbblePosts] = React.useState({
-    posts: [],
-  });
 
   // Set isLoading by default to true
   // If set in useEffect() it will be changed on each render
@@ -83,7 +78,10 @@ function DribbblePosts({ locale }) {
   const [isLoadingMore, setIsLoadingMore] = React.useState(false);
   const [isError, setIsError] = React.useState(false);
   const [postsFetched, setPostsFetched] = React.useState(false);
-  const [fetchedShotsPerPage, setFetchedShotsPerPage] = React.useState(SHOTS_PER_PAGE);
+  // Fetch from &page=1 initially, then &page=2, &page=3 ...
+  const [dribbblePage, setDribbblePage] = React.useState(1);
+  // The fetched posts I’m rendering on the page
+  const [dribbblePosts, setDribbblePosts] = React.useState([]);
 
   /**
   /* --------------------------------------------------
@@ -106,14 +104,13 @@ function DribbblePosts({ locale }) {
       try {
         // If isLoading is set here it will cause a rerender
         // setIsLoading(true);
-        const dribbbleRes = await axios.get(`https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&page=${dribbblePage}&per_page=${fetchedShotsPerPage}`);
+        const dribbbleRes = await axios.get(`https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&page=${dribbblePage}&per_page=${SHOTS_PER_PAGE}`);
 
         // didCancel gets set to true when the component unmounts in the return from useEffect
         if (!didCancel) {
-          setDribbblePosts((prevState) => ({
-            ...prevState,
-            posts: dribbbleRes.data,
-          }));
+          // Load the posts from the next page from Dribbble
+          // with the previous ones loaded
+          setDribbblePosts([...dribbblePosts, ...dribbbleRes.data]);
 
           /**
            * --------------------------------------------------
@@ -144,15 +141,13 @@ function DribbblePosts({ locale }) {
       // Prevent memory leak when moving to another page
       didCancel = true;
     };
-  }, [dribbblePosts, fetchedShotsPerPage, postsFetched, isLoading, isLoadingMore, isError]);
+  }, [dribbblePosts, postsFetched, dribbblePage, isLoading, isLoadingMore, isError]);
 
-  // To load more posts, add SHOTS_PER_PAGE to fetchedShotsPerPage,
-  // The axios.get() url will change and request more posts
-  // Initially requests fetchedShotsPerPage = SHOTS_PER_PAGE
-  // Load more happens and requests fetchedShotsPerPage + SHOTS_PER_PAGE
-  // 4 posts, 4 + 4 = 8 posts, 4 + 4 + 4 = 12 posts ...
   function loadMorePosts() {
-    setFetchedShotsPerPage(fetchedShotsPerPage + SHOTS_PER_PAGE);
+    // Load posts with pagination, SHOTS_PER_PAGE on each page
+    // To load more fetch them from the next page
+    // so that I don’t refetch the posts I had -> less bandwidth used
+    setDribbblePage(dribbblePage + 1);
     setPostsFetched(false);
     setIsLoadingMore(true);
   }
@@ -168,7 +163,7 @@ function DribbblePosts({ locale }) {
       {isError && <ErrorMessage>{DRIBBBLE_STATUS[locale].error}</ErrorMessage>}
 
       {isLoading && placeholderArr.map((i) => <DribbblePostPlaceholder key={i} />)}
-      {!isLoading && dribbblePosts.posts.map((post) => <DribbblePost key={post.id} post={post} />)}
+      {!isLoading && dribbblePosts.map((post) => <DribbblePost key={post.id} post={post} />)}
 
       {isLoadingMore && placeholderArr.map((i) => <DribbblePostPlaceholder key={i} />)}
 
