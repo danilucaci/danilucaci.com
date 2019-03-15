@@ -99,12 +99,16 @@ function DribbblePosts({ locale }) {
 
   React.useEffect(() => {
     let didCancel = false;
+    let dribbbleRes = "";
 
-    const getDribbblePosts = async () => {
+    async function getDribbblePosts() {
       try {
         // If isLoading is set here it will cause a rerender
         // setIsLoading(true);
-        const dribbbleRes = await axios.get(`https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&page=${dribbblePage}&per_page=${SHOTS_PER_PAGE}`);
+        if (!postsFetched) {
+          dribbbleRes = await axios.get(`https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&page=${dribbblePage}&per_page=${SHOTS_PER_PAGE}`);
+          setPostsFetched(true);
+        }
 
         // didCancel gets set to true when the component unmounts in the return from useEffect
         if (!didCancel) {
@@ -120,18 +124,17 @@ function DribbblePosts({ locale }) {
            */
           if (isLoading) setIsLoading(false);
           if (isLoadingMore) setIsLoadingMore(false);
-          setPostsFetched(true);
         }
       } catch (error) {
         console.warn(error);
         if (!didCancel) {
-          setIsLoading(false);
-          setIsLoadingMore(false);
+          if (isLoading) setIsLoading(false);
+          if (isLoadingMore) setIsLoadingMore(false);
           setPostsFetched(true);
           setIsError(true);
         }
       }
-    };
+    }
 
     if (!postsFetched && !didCancel) {
       getDribbblePosts();
@@ -167,7 +170,7 @@ function DribbblePosts({ locale }) {
 
       {isLoadingMore && placeholderArr.map((i) => <DribbblePostPlaceholder key={i} />)}
 
-      <StyledLoadMore onClick={loadMorePosts} isLoadingMore={isLoadingMore}>
+      <StyledLoadMore onClick={loadMorePosts}>
         {!isLoadingMore && (
           <FormattedMessage id="dribbbleLoadMore">
             {(txt) => <LoadMoreLabel>{txt}</LoadMoreLabel>}
