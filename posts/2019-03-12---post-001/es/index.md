@@ -95,7 +95,7 @@ La segunda manera de activar el filtro Spam es usando reCAPTCHA 2, y si necesita
 
 Yo utilizo el campo “honeypot”, así que seguiré explicando siguiendo ese método.
 
-## Gestionando los Envios de los Formularios
+## Gestionando los Envíos de los Formularios
 
 Por defecto, cuando alguien te presenta un formulario, Netlify les redirige a una página genérica de agradecimiento, lo cual esta bien, pero podemos crear una personalizada, o podemos crear un componente React para cuando el usuario tiene activado el javascript en su navegador.
 
