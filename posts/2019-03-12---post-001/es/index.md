@@ -22,8 +22,8 @@ twinPost: "contact form on static sites"
 
 <!-- TOC -->
 
-- [Qué Opciones Tenemos](#qué-opciones-tenemos)
-- [Qué Necesitas Para Empezar](#qué-necesitas-para-empezar)
+- [¿Qué Opciones Tenemos?](#¿qué-opciones-tenemos)
+- [¿Qué Necesitas Para Empezar?](#¿qué-necesitas-para-empezar)
 - [Protección Antispam](#protección-antispam)
 - [Gestionando los Envios de los Formularios](#gestionando-los-envios-de-los-formularios)
 - [Mostrando un Indicador del Estado de Carga](#mostrando-un-indicador-del-estado-de-carga)
@@ -35,7 +35,7 @@ twinPost: "contact form on static sites"
 
 </nav>
 
-## Qué Opciones Tenemos
+## ¿Qué Opciones Tenemos?
 
 Teniendo en cuenta que Gatsby.js simplemente genera una versión en HTML de tu página en el modo de producción, si necesitas tener un formulario de contacto en tu web, tendrás que tener un servidor back-end que reciba todos los envíos del formulario.
 
@@ -49,7 +49,7 @@ Después de comparar los distintos servicios disponibles, me di cuenta de que la
 
 Netlify te ofrece un buen plan para empezar que te permite tener hasta 100 peticiones al mes, y si superas ese limite, tendrás que pasarte a alguno de los planes de pago Pro.
 
-## Qué Necesitas Para Empezar
+## ¿Qué Necesitas Para Empezar?
 
 Si tienes tu web hospedada en Netlify, ya puedes empezar a usar su servicio de formularios.
 

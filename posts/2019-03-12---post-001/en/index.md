@@ -22,8 +22,8 @@ twinPost: "Formulario Contacto en Webs Estaticas"
 
 <!-- TOC -->
 
-- [What Options Do We Have](#what-options-do-we-have)
-- [What Do You Need To Get Started](#what-do-you-need-to-get-started)
+- [What Options Do We Currently Have?](#what-options-do-we-currently-have)
+- [What Do You Need To Get Started?](#what-do-you-need-to-get-started)
 - [Spam Protection](#spam-protection)
 - [Handling Form Submissions](#handling-form-submissions)
 - [Showing a Loading Indicator](#showing-a-loading-indicator)
@@ -35,7 +35,7 @@ twinPost: "Formulario Contacto en Webs Estaticas"
 
 </nav>
 
-## What Options Do We Have
+## What Options Do We Currently Have?
 
 Since Gatsby.js simply generates an <abbr title="Hyper Text Markup Language">HTML</abbr> version of your site in production mode, if you need to have a contact form on your site, you will need a back-end server to receive any form submissions.
 
@@ -50,7 +50,7 @@ After comparing a couple of services, I soon realized that most of them didn’t
 They offer a great free starter package that lets you receive 100 form submissions per month, and after that, you’ll need to upgrade to a Pro plan.
 
 
-## What Do You Need To Get Started
+## What Do You Need To Get Started?
 
 If you host your website on Netlify, you can start using their forms service right away.
 
