@@ -73,8 +73,6 @@ function DribbblePosts({ locale }) {
   const dribbblePage = 1;
 
   const [dribbblePosts, setDribbblePosts] = React.useState({
-    status: 0,
-    statusText: "",
     posts: [],
   });
 
@@ -104,7 +102,7 @@ function DribbblePosts({ locale }) {
   React.useEffect(() => {
     let didCancel = false;
 
-    async function getDribbblePosts() {
+    const getDribbblePosts = async () => {
       try {
         // If isLoading is set here it will cause a rerender
         // setIsLoading(true);
@@ -114,8 +112,6 @@ function DribbblePosts({ locale }) {
         if (!didCancel) {
           setDribbblePosts((prevState) => ({
             ...prevState,
-            status: dribbbleRes.status,
-            statusText: dribbbleRes.statusText,
             posts: dribbbleRes.data,
           }));
 
@@ -138,7 +134,7 @@ function DribbblePosts({ locale }) {
           setIsError(true);
         }
       }
-    }
+    };
 
     if (!postsFetched && !didCancel) {
       getDribbblePosts();
@@ -148,16 +144,13 @@ function DribbblePosts({ locale }) {
       // Prevent memory leak when moving to another page
       didCancel = true;
     };
-  }, [
-    dribbblePosts,
-    isError,
-    postsFetched,
-    isLoading,
-    isLoadingMore,
-    SHOTS_PER_PAGE,
-    fetchedShotsPerPage,
-  ]);
+  }, [dribbblePosts, fetchedShotsPerPage, postsFetched, isLoading, isLoadingMore, isError]);
 
+  // To load more posts, add SHOTS_PER_PAGE to fetchedShotsPerPage,
+  // The axios.get() url will change and request more posts
+  // Initially requests fetchedShotsPerPage = SHOTS_PER_PAGE
+  // Load more happens and requests fetchedShotsPerPage + SHOTS_PER_PAGE
+  // 4 posts, 4 + 4 = 8 posts, 4 + 4 + 4 = 12 posts ...
   function loadMorePosts() {
     setFetchedShotsPerPage(fetchedShotsPerPage + SHOTS_PER_PAGE);
     setPostsFetched(false);
