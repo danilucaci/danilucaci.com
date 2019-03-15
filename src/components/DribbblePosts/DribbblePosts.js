@@ -59,8 +59,6 @@ const ErrorMessage = styled.p`
 const StyledLoadMore = styled(LoadComments)`
   margin: ${rem(16)} auto;
   display: block;
-
-  ${(props) => (props.isLoadingMore ? "cursor: wait" : "cursor: auto")}
 `;
 
 const LoadMoreLabel = styled.span`
@@ -80,23 +78,33 @@ function DribbblePosts({ locale }) {
     posts: [],
   });
 
-  // Set isLoading by default to true, if set in .useEffect it will be changed on each render
+  // Set isLoading by default to true
+  // If set in useEffect() it will be changed on each render
   // and the cause a new render
   const [isLoading, setIsLoading] = React.useState(true);
   const [isLoadingMore, setIsLoadingMore] = React.useState(false);
   const [isError, setIsError] = React.useState(false);
-  const [dataFetched, setDataFetched] = React.useState(false);
+  const [postsFetched, setPostsFetched] = React.useState(false);
   const [fetchedShotsPerPage, setFetchedShotsPerPage] = React.useState(SHOTS_PER_PAGE);
 
-  // Create index's in the placeholder array to use as a key in the render method with .map()
-  // Show as many placeholder items as posts I want on the page
-  // This way I don't get reflow
-  const placeholderArr = Array.from(new Array(SHOTS_PER_PAGE), (val, index) => index + 1);
+  /**
+  /* --------------------------------------------------
+   * Create index's in the placeholder array to use as a key in the render method with .map()
+   * Show as many placeholder items as posts I want on the page
+   * This way I don't get reflow
+   * --------------------------------------------------
+   * Steps:
+   * 1 - Create a new Array with a length = to SHOTS_PER_PAGE (SHOTS_PER_PAGE = 4, 4 elements)
+   * 2 - The second argument for Array.from() is a map function that runs on each element
+   * The array is initialized with `undefined` on each position.
+   * The value of `v` below will be `undefined`.
+   */
+  const placeholderArr = Array.from({ length: SHOTS_PER_PAGE }, (v, i) => i);
 
   React.useEffect(() => {
     let didCancel = false;
 
-    const getDribbblePosts = async () => {
+    async function getDribbblePosts() {
       try {
         // If isLoading is set here it will cause a rerender
         // setIsLoading(true);
@@ -112,40 +120,38 @@ function DribbblePosts({ locale }) {
           }));
 
           /**
-          |--------------------------------------------------
-          | Handle each loading variable separetely
-          | to avoid rendering placeholders
-          | for the already fetched shots
-          | and only add new placeholders for the incomming shots
-          |--------------------------------------------------
-          */
+           * --------------------------------------------------
+           *  Handle each loading variable separetely
+           *  to avoid rendering placeholders for the already fetched shots
+           *  and only add new placeholders for the incomming shots
+           */
           if (isLoading) setIsLoading(false);
           if (isLoadingMore) setIsLoadingMore(false);
-          setDataFetched(true);
+          setPostsFetched(true);
         }
       } catch (error) {
         console.warn(error);
         if (!didCancel) {
           setIsLoading(false);
           setIsLoadingMore(false);
-          setDataFetched(true);
+          setPostsFetched(true);
           setIsError(true);
         }
       }
-    };
+    }
 
-    if (dataFetched !== true && !didCancel) {
+    if (!postsFetched && !didCancel) {
       getDribbblePosts();
     }
 
     return () => {
-      // Prevent memory leak
+      // Prevent memory leak when moving to another page
       didCancel = true;
     };
   }, [
     dribbblePosts,
     isError,
-    dataFetched,
+    postsFetched,
     isLoading,
     isLoadingMore,
     SHOTS_PER_PAGE,
@@ -154,7 +160,7 @@ function DribbblePosts({ locale }) {
 
   function loadMorePosts() {
     setFetchedShotsPerPage(fetchedShotsPerPage + SHOTS_PER_PAGE);
-    setDataFetched(false);
+    setPostsFetched(false);
     setIsLoadingMore(true);
   }
 
@@ -179,7 +185,7 @@ function DribbblePosts({ locale }) {
             {(txt) => <LoadMoreLabel>{txt}</LoadMoreLabel>}
           </FormattedMessage>
         )}
-        {isLoadingMore && <Spinner />}
+        {isLoadingMore && <Spinner dark />}
       </StyledLoadMore>
     </DribbblePostsWrapper>
   );
