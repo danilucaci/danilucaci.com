@@ -207,7 +207,7 @@ const PostContent = styled.section`
 
   & .toc {
     background-color: ${theme.colors.sectionBackground};
-    padding: ${rem(16)} ${rem(20)};
+    padding: ${rem(24)} ${rem(16)};
 
     & p {
       margin-bottom: 0;
@@ -224,7 +224,17 @@ const PostContent = styled.section`
       margin-bottom: ${rem(8)};
     }
 
-    ${mediaMin.xl`
+    margin-left: -${rem(16)};
+    margin-right: -${rem(16)};
+
+    ${mediaMin.m`
+      margin-left: -${rem(24)};
+      margin-right: -${rem(24)};
+      padding-left: ${rem(24)};
+      padding-right: ${rem(24)};
+    `};
+
+    ${mediaMin.l`
       margin-left: -${rem(64)};
       margin-right: -${rem(64)};
       padding-left: ${rem(64)};
