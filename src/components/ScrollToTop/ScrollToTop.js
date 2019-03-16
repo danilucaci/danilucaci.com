@@ -25,8 +25,8 @@ const StyledScrollToTop = styled.a`
 `;
 
 const ScrollToTopIcon = styled(Icon)`
-  width: ${rem(56)};
-  height: ${rem(56)};
+  width: ${rem(48)};
+  height: ${rem(48)};
   padding: ${rem(8)};
 
   ${mediaMin.s`
