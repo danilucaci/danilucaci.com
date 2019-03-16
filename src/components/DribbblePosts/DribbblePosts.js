@@ -99,7 +99,7 @@ function DribbblePosts({ locale }) {
 
   React.useEffect(() => {
     let didCancel = false;
-    let dribbbleRes = "";
+    let dribbbleRes = {};
 
     async function getDribbblePosts() {
       try {
@@ -110,7 +110,7 @@ function DribbblePosts({ locale }) {
           setPostsFetched(true);
         }
 
-        // didCancel gets set to true when the component unmounts in the return from useEffect
+        // didCancel will be set to true when the component unmounts in the return from useEffect
         if (!didCancel) {
           // Load the posts from the next page from Dribbble
           // with the previous ones loaded
