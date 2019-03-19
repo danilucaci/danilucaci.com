@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import axios from "axios";
 import { FormattedMessage } from "react-intl";
 
 import DribbblePostPlaceholder from "../DribbblePostPlaceholder/DribbblePostPlaceholder";
@@ -10,10 +9,9 @@ import { theme, mediaMin, rem } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
 import { LoadComments } from "../Button/Button";
 import Spinner from "../Spinner/Spinner";
+import useDribbbleReducer from "./DribbblePostsReducer";
 
 import { DRIBBBLE_STATUS } from "../../i18n/i18n";
-
-const GATSBY_DRIBBBLE_TOKEN = process.env.GATSBY_DRIBBBLE_TOKEN;
 
 const DribbblePostsWrapper = styled.section`
   max-width: ${theme.contain.wrapper.col10};
@@ -65,23 +63,38 @@ const LoadMoreLabel = styled.span`
   display: inline-block;
 `;
 
+const NoMore = styled.div`
+  background-color: transparent;
+  border: 2px solid ${theme.colors.gray400};
+  border-radius: ${theme.borderRadius.buttons};
+  margin: ${rem(16)} auto;
+  display: block;
+  text-align: center;
+
+  padding: ${rem(14)} ${rem(24)} ${rem(16)};
+  height: ${rem(56)};
+
+  width: 100%;
+
+  ${mediaMin.xxs`  
+    max-width: ${rem(320)};
+  `};
+`;
+
 function DribbblePosts({ locale }) {
+  // -------------shotsPerPage-------------
   // How many posts per page and placeholder elements
   // Also handles how many more shots to load
   // when the "Load More..." button is pressed
-  const SHOTS_PER_PAGE = 4;
-
-  // Set isLoading by default to true
-  // If set in useEffect() it will be changed on each render
-  // and the cause a new render
-  const [isLoading, setIsLoading] = React.useState(true);
-  const [isLoadingMore, setIsLoadingMore] = React.useState(false);
-  const [isError, setIsError] = React.useState(false);
-  const [postsFetched, setPostsFetched] = React.useState(false);
-  // Fetch from &page=1 initially, then &page=2, &page=3 ...
-  const [dribbblePage, setDribbblePage] = React.useState(1);
-  // The fetched posts I’m rendering on the page
-  const [dribbblePosts, setDribbblePosts] = React.useState([]);
+  const {
+    dribbblePosts,
+    shotsPerPage,
+    isLoading,
+    isLoadingMore,
+    isError,
+    loadMorePosts,
+    noMoreShots,
+  } = useDribbbleReducer();
 
   /**
   /* --------------------------------------------------
@@ -90,70 +103,12 @@ function DribbblePosts({ locale }) {
    * This way I don't get reflow
    * --------------------------------------------------
    * Steps:
-   * 1 - Create a new Array with a length = to SHOTS_PER_PAGE (SHOTS_PER_PAGE = 4, 4 elements)
+   * 1 - Create a new Array with a length = to shotsPerPage (shotsPerPage = 4, 4 elements)
    * 2 - The second argument for Array.from() is a map function that runs on each element
    * The array is initialized with `undefined` on each position.
    * The value of `v` below will be `undefined`.
    */
-  const placeholderArr = Array.from({ length: SHOTS_PER_PAGE }, (v, i) => i);
-
-  React.useEffect(() => {
-    let didCancel = false;
-    let dribbbleRes = {};
-
-    async function getDribbblePosts() {
-      try {
-        // If isLoading is set here it will cause a rerender
-        // setIsLoading(true);
-        if (!postsFetched) {
-          dribbbleRes = await axios.get(`https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&page=${dribbblePage}&per_page=${SHOTS_PER_PAGE}`);
-          setPostsFetched(true);
-        }
-
-        // didCancel will be set to true when the component unmounts in the return from useEffect
-        if (!didCancel) {
-          // Load the posts from the next page from Dribbble
-          // with the previous ones loaded
-          setDribbblePosts([...dribbblePosts, ...dribbbleRes.data]);
-
-          /**
-           * --------------------------------------------------
-           *  Handle each loading variable separetely
-           *  to avoid rendering placeholders for the already fetched shots
-           *  and only add new placeholders for the incomming shots
-           */
-          if (isLoading) setIsLoading(false);
-          if (isLoadingMore) setIsLoadingMore(false);
-        }
-      } catch (error) {
-        console.warn(error);
-        if (!didCancel) {
-          if (isLoading) setIsLoading(false);
-          if (isLoadingMore) setIsLoadingMore(false);
-          setPostsFetched(true);
-          setIsError(true);
-        }
-      }
-    }
-
-    if (!postsFetched && !didCancel) {
-      getDribbblePosts();
-    }
-
-    return () => {
-      // Prevent memory leak when moving to another page
-      didCancel = true;
-    };
-  }, [dribbblePosts, postsFetched, dribbblePage, isLoading, isLoadingMore, isError]);
-
-  function loadMorePosts() {
-    // Load posts with pagination, SHOTS_PER_PAGE on each page
-    // To load more fetch them from the next page
-    // so that I don’t refetch the posts I had -> less bandwidth used
-    setDribbblePage(dribbblePage + 1);
-    setPostsFetched(false);
-    setIsLoadingMore(true);
-  }
+  const placeholderArr = Array.from({ length: shotsPerPage }, (v, i) => i);
 
   return (
     <DribbblePostsWrapper>
@@ -170,14 +125,22 @@ function DribbblePosts({ locale }) {
 
       {isLoadingMore && placeholderArr.map((i) => <DribbblePostPlaceholder key={i} />)}
 
-      <StyledLoadMore onClick={loadMorePosts}>
-        {!isLoadingMore && (
-          <FormattedMessage id="dribbbleLoadMore">
+      {!noMoreShots ? (
+        <StyledLoadMore onClick={loadMorePosts}>
+          {!isLoading && !isLoadingMore && (
+            <FormattedMessage id="dribbbleLoadMore">
+              {(txt) => <LoadMoreLabel>{txt}</LoadMoreLabel>}
+            </FormattedMessage>
+          )}
+          {(isLoading || isLoadingMore) && <Spinner dark />}
+        </StyledLoadMore>
+      ) : (
+        <NoMore>
+          <FormattedMessage id="dribbbleNoMore">
             {(txt) => <LoadMoreLabel>{txt}</LoadMoreLabel>}
           </FormattedMessage>
-        )}
-        {isLoadingMore && <Spinner dark />}
-      </StyledLoadMore>
+        </NoMore>
+      )}
     </DribbblePostsWrapper>
   );
 }
