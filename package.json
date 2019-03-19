@@ -13,9 +13,9 @@
   },
   "main": "n/a",
   "scripts": {
-    "dev:cl": "rm -rf public && rm -rf .cache && gatsby develop -H 192.168.1.44",
+    "dev:cl": "rm -rf public && rm -rf .cache && gatsby develop -H 192.168.1.12",
     "clean": "rm -rf public && rm -rf .cache",
-    "dev": "gatsby develop -H 192.168.1.44",
+    "dev": "gatsby develop -H 192.168.1.12",
     "sprite": "gulp build:svg",
     "serve": "gatsby serve",
     "build": "gatsby build",
