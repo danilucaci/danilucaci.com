@@ -206,22 +206,13 @@ const AboutPage = (props) => {
         currentPage="about"
         currentPath={props.location.pathname}
       />
-      <SiteHeader
-        twinPostURL={twinPostURL}
-        locale={locale}
-        currentPath={props.location.pathname}
-      />
+      <SiteHeader twinPostURL={twinPostURL} locale={locale} currentPath={props.location.pathname} />
       <Main role="main" id="main">
         <AboutMeWrapper>
           <HeaderInfo>
             <ImageWrapper>
               <FormattedMessage id="aboutTheBlogImageTitle">
-                {(txt) => (
-                  <Img
-                    alt={txt}
-                    fluid={props.data.aboutImage.childImageSharp.fluid}
-                  />
-                )}
+                {(txt) => <Img alt={txt} fluid={props.data.aboutImage.childImageSharp.fluid} />}
               </FormattedMessage>
             </ImageWrapper>
             <InfoWrapper>
@@ -257,9 +248,7 @@ const AboutPage = (props) => {
                   {(txt) => <StyledCopy>{txt}</StyledCopy>}
                 </FormattedMessage>
                 <StyledCopy>
-                  <FormattedMessage id="aboutTheBlogP2">
-                    {(txt) => <>{txt}</>}
-                  </FormattedMessage>
+                  <FormattedMessage id="aboutTheBlogP2">{(txt) => <>{txt}</>}</FormattedMessage>
                   <a
                     target="_blank"
                     rel="noopener noreferrer"
@@ -267,9 +256,7 @@ const AboutPage = (props) => {
                   >
                     github
                   </a>
-                  <FormattedMessage id="aboutTheBlogP3">
-                    {(txt) => <>{txt}</>}
-                  </FormattedMessage>
+                  <FormattedMessage id="aboutTheBlogP3">{(txt) => <>{txt}</>}</FormattedMessage>
                   <FormattedMessage id="aboutTheBlogP4">
                     {(txt) => (
                       <a
@@ -281,9 +268,7 @@ const AboutPage = (props) => {
                       </a>
                     )}
                   </FormattedMessage>
-                  <FormattedMessage id="aboutTheBlogP5">
-                    {(txt) => <>{txt}</>}
-                  </FormattedMessage>
+                  <FormattedMessage id="aboutTheBlogP5">{(txt) => <>{txt}</>}</FormattedMessage>
                 </StyledCopy>
               </Col2>
             </MoreAboutMeInner>
