@@ -71,9 +71,10 @@ export default function useDribbbleReducer() {
           state.dribbblePage
         }&per_page=${state.shotsPerPage}`);
 
-        // I always fetch multiples of 2, if the result isn’t a multiple of 2
+        // I always fetch multiples of state.shotsPerPage
+        // If the result isn’t a multiple of state.shotsPerPage
         // Modulo is 1, the end of the list
-        const mod = dribbbleRes.data.length % 2;
+        const mod = dribbbleRes.data.length % state.shotsPerPage;
 
         if (!didCancel) {
           if (mod === 0) {
