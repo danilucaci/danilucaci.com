@@ -1,5 +1,5 @@
-import styled, { keyframes } from "styled-components";
-import { theme, rem, mediaMin } from "../../theme/globalStyles";
+import styled from "styled-components";
+import { theme, rem } from "../../theme/globalStyles";
 
 export const Checkbox = styled.input`
   will-change: transform;
@@ -75,7 +75,7 @@ export const Checkbox = styled.input`
   &:checked + label:after {
     content: "";
     position: absolute;
-    left: ${rem(7)};
+    left: ${rem(6)};
     bottom: ${rem(7)};
     background: none;
     width: ${rem(7)};

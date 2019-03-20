@@ -249,7 +249,7 @@ function ContactForm(props) {
           />
         )}
 
-        {!formSubmitted && <SubmitButton />}
+        {!formSubmitted && <SubmitButton disabled={!acceptsConsentCheckbox} />}
       </StyledForm>
     </FormContainer>
   );

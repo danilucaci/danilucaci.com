@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
 import { graphql, StaticQuery } from "gatsby";
 
@@ -19,7 +19,7 @@ const StyledCheckboxLabel = styled.label`
 const StyledCheckbox = styled(Checkbox)`
   display: inline-block;
   margin-right: ${rem(8)};
-
+/* 
   &:not(:checked) {
     & ~ input {
       pointer-events: none !important;
@@ -39,7 +39,7 @@ const StyledCheckbox = styled(Checkbox)`
     & ~ input {
       pointer-events: auto;
     }
-  }
+  } */
 `;
 
 const Required = styled.span`
@@ -104,7 +104,11 @@ function PrivacyCheckbox({ locale, ...rest }) {
             </StyledCheckboxLabel>
             <FormattedMessage id="formPrivacyMore2">
               {(txt) => (
-                <LearnMoreLink href={legalNoticeLink[0].slug} target="_blank" rel="noopener noreferrer">
+                <LearnMoreLink
+                  href={legalNoticeLink[0].slug}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {txt}
                 </LearnMoreLink>
               )}
