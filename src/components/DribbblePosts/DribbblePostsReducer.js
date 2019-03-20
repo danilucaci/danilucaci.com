@@ -63,6 +63,13 @@ export default function useDribbbleReducer() {
   React.useEffect(() => {
     let didCancel = false;
     let dribbbleRes = {};
+    // const theEnd = dribbbleRes.data.map((x) => dribbblePosts.some((post) => post.id === x.id));
+    // console.log(theEnd);
+    // dispatch({ type: "FETCH_SUCCESS_LAST", payload: dribbbleRes.data });
+    // function checkForLast(arr) {
+    //   return arr.map((x) => dribbblePosts.some((post) => post.id === x.id));
+    // }
+
     dispatch({ type: "FETCH_INIT" });
 
     const fetchData = async () => {
@@ -71,17 +78,8 @@ export default function useDribbbleReducer() {
           state.dribbblePage
         }&per_page=${state.shotsPerPage}`);
 
-        // I always fetch multiples of state.shotsPerPage
-        // If the result isn’t a multiple of state.shotsPerPage
-        // Modulo is 1, the end of the list
-        const mod = dribbbleRes.data.length % state.shotsPerPage;
-
         if (!didCancel) {
-          if (mod === 0) {
-            dispatch({ type: "FETCH_SUCCESS", payload: dribbbleRes.data });
-          } else {
-            dispatch({ type: "FETCH_SUCCESS_LAST", payload: dribbbleRes.data });
-          }
+          dispatch({ type: "FETCH_SUCCESS", payload: dribbbleRes.data });
         }
       } catch (error) {
         if (!didCancel) {
