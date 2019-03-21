@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
-import { theme, rem } from "../../theme/globalStyles";
+import { rem } from "../../theme/globalStyles";
 import Label from "../Label/Label";
 import Input from "../Input/Input";
 import SubmitButton from "../SubmitButton/SubmitButton";
 import TextArea from "../TextArea/TextArea";
 
-import { CONSENT_VALUE, INPUT_EMAIL_ERROR } from "../../i18n/i18n";
+import { CONSENT_VALUE, INPUT_EMAIL_ERROR, localePaths } from "../../i18n/i18n";
 import PrivacyCheckbox from "../PrivacyCheckbox/PrivacyCheckbox";
 import EmailLoading from "../EmailLoading/EmailLoading";
 
@@ -64,24 +64,13 @@ const StyledTextArea = styled(TextArea)`
 function ContactForm(props) {
   let locale = props.locale;
 
-  let thanksURL;
-
-  if (locale === "en") {
-    thanksURL = "/es/gracias";
-  } else if (locale === "es") {
-    thanksURL = "/thanks";
-  }
-
-  function mailSentTimeStamp() {
-    return new Date();
-  }
-
   const [email, setEmail] = useState("");
   const [fullName, setFullName] = useState("");
   const [message, setMessage] = useState("");
-  const [dateSent, setDateSent] = useState(mailSentTimeStamp());
+  const [dateSent, setDateSent] = useState(() => new Date());
   const [botField, setBotField] = useState("");
   const [acceptsConsentCheckbox, setAcceptsConsentCheckbox] = useState(false);
+  const [checkboxValue, setCheckboxValue] = useState(CONSENT_VALUE[locale].no);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [showFormLoading, setShowFormLoading] = useState(false);
   const [showFormSuccess, setShowFormSuccess] = useState(false);
@@ -92,8 +81,9 @@ function ContactForm(props) {
     console.log(`fullname: ${fullName}`);
     console.log(`email: ${email}`);
     console.log(`message: ${message}`);
-    console.log(`dateSent: ${mailSentTimeStamp()}`);
+    console.log(`dateSent: ${dateSent}`);
     console.log(`botfield: ${botField}`);
+    console.log(`checkboxValue: ${checkboxValue}`);
     console.log(`acceptsConsentCheckbox: ${acceptsConsentCheckbox}`);
   }
 
@@ -121,7 +111,6 @@ function ContactForm(props) {
         datesent: dateSent,
         botfield: botField,
         acceptsconsentcheckbox: acceptsConsentCheckbox,
-        consentcheckboxmessage: CONSENT_VALUE[locale].yes,
       }),
     })
       .then(() => {
@@ -133,26 +122,23 @@ function ContactForm(props) {
 
   function handleConsentCheckbox(e) {
     setAcceptsConsentCheckbox(e.target.checked);
-    setDateSent(mailSentTimeStamp());
+    setDateSent(() => new Date());
+    if (e.target.checked) {
+      setCheckboxValue(CONSENT_VALUE[locale].yes);
+    } else {
+      setCheckboxValue(CONSENT_VALUE[locale].no);
+    }
   }
 
   function handleFormSent() {
-    // let timer = setTimeout(() => {
     setShowFormLoading(false);
     setShowFormSuccess(true);
-
-    // clearTimeout(timer);
-    // }, 800);
   }
 
   function handleFormError(error) {
-    // let timer = setTimeout(() => {
     setShowFormLoading(false);
     setShowFormError(true);
     setFormErrorRes(error);
-
-    // clearTimeout(timer);
-    // }, 4000);
   }
 
   return (
@@ -160,7 +146,7 @@ function ContactForm(props) {
       <StyledForm
         name="contact"
         method="post"
-        action={thanksURL}
+        action={localePaths[locale].thanks}
         data-netlify="true"
         data-netlify-honeypot="botfield"
         onSubmit={handleSubmit}
@@ -180,16 +166,8 @@ function ContactForm(props) {
           arria-hidden="true"
           type="text"
           value={dateSent}
-          onChange={() => setDateSent(mailSentTimeStamp())}
+          onChange={() => setDateSent(() => new Date())}
           name="datesent"
-        />
-        <input
-          style={{ display: "none" }}
-          arria-hidden="true"
-          type="text"
-          value={CONSENT_VALUE[locale].yes}
-          name="consentcheckboxmessage"
-          readOnly
         />
         <StyledLabel labelType="full name">
           <StyledInput
@@ -234,6 +212,7 @@ function ContactForm(props) {
         <PrivacyCheckbox
           type="checkbox"
           name="acceptsconsentcheckbox"
+          value={checkboxValue}
           onChange={handleConsentCheckbox}
           locale={locale}
           required

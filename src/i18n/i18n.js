@@ -63,12 +63,12 @@ export const COPY_CODE_MESSAGES = {
 
 export const CONSENT_VALUE = {
   en: {
-    no: "I do not accept the privacy policy.",
-    yes: "I have read and I accept the privacy policy.",
+    no: "I have not read and I do not accept the legal notice and the privacy policy.",
+    yes: "I have read and accept the legal notice and the privacy policy.",
   },
   es: {
-    no: "No accepto la política de privacidad.",
-    yes: "He leído y accepto la política de privacidad.",
+    no: "No he leído y no accepto el aviso legal y la política de privacidad.",
+    yes: "He leído y accepto el aviso legal y la política de privacidad.",
   },
 };
 
