@@ -117,7 +117,7 @@ const AltCopy = styled(Copy)`
   `};
 `;
 
-const SubscribeCard = (props) => {
+function SubscribeCard(props) {
   const locale = props.locale;
 
   const [email, setEmail] = useState("");
@@ -139,13 +139,15 @@ const SubscribeCard = (props) => {
     setShowMCLoading(true);
     setMCSent(true);
 
-    const MCResponse = await addToMailchimp(email, {
-      DLPO: checkboxValue,
-    })
-      .then((MCResponse) => {
-        handleFormSent(MCResponse.result, MCResponse.msg);
-      })
-      .catch((error) => handleFormError(error));
+    try {
+      const MCResponse = await addToMailchimp(email, {
+        DLPO: checkboxValue,
+      });
+
+      handleFormSent(MCResponse.result, MCResponse.msg);
+    } catch (error) {
+      handleFormError(error);
+    }
   }
 
   function handleFormSent(result, msg) {
@@ -238,7 +240,7 @@ const SubscribeCard = (props) => {
       </FormContainer>
     </StyledSubscribeCard>
   );
-};
+}
 
 SubscribeCard.propTypes = {
   locale: PropTypes.string.isRequired,
