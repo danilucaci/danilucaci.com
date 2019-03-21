@@ -129,11 +129,6 @@ function SubscribeCard(props) {
   const [MCError, setMCError] = useState("");
   const [showMCSuccess, setShowMCSuccess] = useState(false);
 
-  function handleConsentCheckbox(e) {
-    setAcceptsConsentCheckbox(e.target.checked);
-    setCheckboxValue(CONSENT_VALUE[locale].yes);
-  }
-
   async function handleSubmit(e) {
     e.preventDefault();
     setShowMCLoading(true);
@@ -151,7 +146,6 @@ function SubscribeCard(props) {
   }
 
   function handleFormSent(result, msg) {
-    // let timer = setTimeout(() => {
     if (result.includes("success")) {
       handleMCSuccess();
     } else if (result.includes("error") && msg.includes("is already subscribed to")) {
@@ -167,8 +161,15 @@ function SubscribeCard(props) {
       setShowMCLoading(false);
       setMCError("generic");
     }
-    // clearTimeout(timer);
-    // }, 800);
+  }
+
+  function handleConsentCheckbox(e) {
+    setAcceptsConsentCheckbox(e.target.checked);
+    if (e.target.checked) {
+      setCheckboxValue(CONSENT_VALUE[locale].yes);
+    } else {
+      setCheckboxValue(CONSENT_VALUE[locale].no);
+    }
   }
 
   function handleMCSuccess() {
