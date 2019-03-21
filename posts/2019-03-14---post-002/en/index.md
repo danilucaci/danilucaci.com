@@ -13,7 +13,7 @@ tags:
     - async data fetching
 posted: true
 locale: "en"
-twinPost: "Como Importar Publicaciones de Dribbble con React Hooks"
+twinPost: "Como Importar Publicaciones de Dribbble usando React Hooks"
 ---
 
 <nav class="toc">
