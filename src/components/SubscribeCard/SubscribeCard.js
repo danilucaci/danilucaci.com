@@ -117,9 +117,7 @@ const AltCopy = styled(Copy)`
   `};
 `;
 
-function SubscribeCard(props) {
-  const locale = props.locale;
-
+function SubscribeCard({ locale }) {
   const [email, setEmail] = useState("");
   const [acceptsConsentCheckbox, setAcceptsConsentCheckbox] = useState(false);
   const [checkboxValue, setCheckboxValue] = useState(CONSENT_VALUE[locale].no);

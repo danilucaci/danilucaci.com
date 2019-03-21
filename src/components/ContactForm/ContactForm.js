@@ -61,9 +61,7 @@ const StyledTextArea = styled(TextArea)`
   margin-top: ${rem(8)};
 `;
 
-function ContactForm(props) {
-  let locale = props.locale;
-
+function ContactForm({ locale }) {
   const [email, setEmail] = useState("");
   const [fullName, setFullName] = useState("");
   const [message, setMessage] = useState("");
@@ -77,15 +75,15 @@ function ContactForm(props) {
   const [showFormError, setShowFormError] = useState(false);
   const [formErrorRes, setFormErrorRes] = useState({});
 
-  function showFormInputs() {
-    console.log(`fullname: ${fullName}`);
-    console.log(`email: ${email}`);
-    console.log(`message: ${message}`);
-    console.log(`dateSent: ${dateSent}`);
-    console.log(`botfield: ${botField}`);
-    console.log(`checkboxValue: ${checkboxValue}`);
-    console.log(`acceptsConsentCheckbox: ${acceptsConsentCheckbox}`);
-  }
+  // function showFormInputs() {
+  //   console.log(`fullname: ${fullName}`);
+  //   console.log(`email: ${email}`);
+  //   console.log(`message: ${message}`);
+  //   console.log(`dateSent: ${dateSent}`);
+  //   console.log(`botfield: ${botField}`);
+  //   console.log(`checkboxValue: ${checkboxValue}`);
+  //   console.log(`acceptsConsentCheckbox: ${acceptsConsentCheckbox}`);
+  // }
 
   function encode(data) {
     return Object.keys(data)
