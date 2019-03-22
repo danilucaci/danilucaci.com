@@ -13,7 +13,9 @@ import SEO from "../components/SEO/SEO";
 import { Copy } from "../components/Copy/Copy";
 import ContactCard from "../components/ContactCard/ContactCard";
 import CaseStudyCard from "../components/CaseStudyCard/CaseStudyCard";
+import DribbblePosts from "../components/DribbblePosts/DribbblePosts";
 import { HR } from "../components/HR/HR";
+import { localePaths } from "../i18n/i18n";
 
 const IndexHeader = styled.header`
   max-width: ${theme.contain.wrapper.col10};
@@ -65,11 +67,9 @@ const Subhead = styled(Copy)`
 
 const Row = styled.section`
   margin: ${theme.spacing.row.s} 0;
-  padding: 0 ${theme.gutters.s};
 
   ${mediaMin.s`
     margin: ${theme.spacing.row.m} 0;
-    padding: 0 ${theme.gutters.m};
   `};
 
   ${mediaMin.m`
@@ -80,20 +80,31 @@ const Row = styled.section`
 const AltRow = styled.section`
   background-color: ${theme.colors.sectionBackground};
 
-  padding: ${theme.spacing.row.s} ${theme.gutters.s};
+  padding-top: ${theme.spacing.row.s};
+  padding-bottom: ${theme.spacing.row.s};
 
   ${mediaMin.s`
-    padding: ${theme.spacing.row.m} ${theme.gutters.m};
+    padding-top: ${theme.spacing.row.m};
+    padding-bottom: ${theme.spacing.row.m};
   `};
 
   ${mediaMin.m`
-    padding: ${theme.spacing.row.xl} ${theme.gutters.m};
+    padding-top: ${theme.spacing.row.xl};
+    padding-bottom: ${theme.spacing.row.xl};
   `};
 `;
 
 const RowContents = styled.div`
   max-width: ${theme.contain.wrapper.col10};
   margin: 0 auto;
+
+  padding-left: ${theme.gutters.s};
+  padding-right: ${theme.gutters.s};
+
+  ${mediaMin.s`
+    padding-left: ${theme.gutters.m};
+    padding-right: ${theme.gutters.m};
+  `};
 `;
 
 const StyledHR = styled(HR)`
@@ -184,34 +195,16 @@ const Index = (props) => {
   }));
 
   let locale = props.pageContext.locale;
-  let twinPostURL = "";
-
-  if (locale === "en") {
-    twinPostURL = "/es";
-  } else if (locale === "es") {
-    twinPostURL = "/";
-  }
+  let twinPostURL = locale === "en" ? localePaths["es"].index : localePaths["en"].index;
 
   return (
     <Layout location={props.location} locale={locale}>
-      <SEO
-        locale={locale}
-        currentPath={props.location.pathname}
-        twinPostURL={twinPostURL}
-      />
-      <SiteHeader
-        locale={locale}
-        twinPostURL={twinPostURL}
-        currentPath={props.location.pathname}
-      />
+      <SEO locale={locale} currentPath={props.location.pathname} twinPostURL={twinPostURL} />
+      <SiteHeader locale={locale} twinPostURL={twinPostURL} currentPath={props.location.pathname} />
       <Main role="main" id="main">
         <IndexHeader>
-          <FormattedMessage id="indexH1">
-            {(txt) => <StyledH1>{txt}</StyledH1>}
-          </FormattedMessage>
-          <FormattedMessage id="indexSubhead">
-            {(txt) => <Subhead>{txt}</Subhead>}
-          </FormattedMessage>
+          <FormattedMessage id="indexH1">{(txt) => <StyledH1>{txt}</StyledH1>}</FormattedMessage>
+          <FormattedMessage id="indexSubhead">{(txt) => <Subhead>{txt}</Subhead>}</FormattedMessage>
           <Subhead />
         </IndexHeader>
         <AltRow>
@@ -279,7 +272,11 @@ const Index = (props) => {
           </RowContents>
         </AltRow>
         <Row>
+          <DribbblePosts locale={locale} />
+        </Row>
+        <Row>
           <RowContents>
+            <StyledHR />
             <FormattedMessage id="caseStudiesHeader">
               {(txt) => <CaseStudiesH2>{txt}</CaseStudiesH2>}
             </FormattedMessage>
@@ -314,12 +311,12 @@ const Index = (props) => {
 Index.propTypes = {
   pageContext: PropTypes.shape({
     locale: PropTypes.string.isRequired,
-  }),
+  }).isRequired,
   data: PropTypes.shape({
     work: PropTypes.shape({
       edges: PropTypes.arrayOf(PropTypes.object).isRequired,
     }),
-  }),
+  }).isRequired,
 };
 
 export default Index;
@@ -330,11 +327,7 @@ export const pageQuery = graphql`
       limit: 5
       sort: { fields: [frontmatter___date], order: DESC }
       filter: {
-        frontmatter: {
-          posted: { eq: true }
-          category: { eq: "work" }
-          locale: { eq: $locale }
-        }
+        frontmatter: { posted: { eq: true }, category: { eq: "work" }, locale: { eq: $locale } }
       }
     ) {
       totalCount

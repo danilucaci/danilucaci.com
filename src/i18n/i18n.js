@@ -8,6 +8,7 @@ export const localePaths = {
   en: {
     default: true,
     siteLocalePrefix: "/",
+    index: "/",
     contact: "/contact",
     about: "/about-me",
     work: "/work",
@@ -17,6 +18,7 @@ export const localePaths = {
   },
   es: {
     siteLocalePrefix: "/es",
+    index: "/es",
     contact: "/es/contacto",
     about: "/es/sobre-mi",
     work: "/es/trabajos",
