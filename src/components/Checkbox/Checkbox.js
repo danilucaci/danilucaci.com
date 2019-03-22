@@ -78,7 +78,7 @@ export const Checkbox = styled.input`
     left: ${rem(6)};
     bottom: ${rem(7)};
     background: none;
-    width: ${rem(7)};
+    width: ${rem(8)};
     height: ${rem(13)};
     border-top: none;
     border-left: none;
