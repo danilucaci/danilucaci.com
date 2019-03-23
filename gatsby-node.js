@@ -1,7 +1,5 @@
 const path = require("path");
 const _ = require("lodash");
-const moment = require("moment");
-const siteConfig = require("./data/SiteConfig");
 const gatsbyNodeQuery = require("./src/helpers/gatsbyNodeQuery");
 
 require("dotenv").config({
@@ -38,11 +36,6 @@ const legalTemplate = path.resolve("src/templates/legal.js");
 function slicePosts(array, currentPage) {
   return array.slice(0).slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage);
 }
-
-// Only store posts in blog or work category
-// used in addSiblingNodes() for adding nextTitle/Slug and prevTitle/Slug
-// to blog posts and work case studies
-let allPostNodes = [];
 
 exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions;
@@ -110,11 +103,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       Object.prototype.hasOwnProperty.call(node.frontmatter, "slug")
     ) {
       if (node.frontmatter.category === "work") {
-        // Only store posts in blog or work category
-        // used in addSiblingNodes() for adding nextTitle/Slug and prevTitle/Slug
-        // to blog posts and work case studies
-        allPostNodes.push(node);
-
         if (node.frontmatter.locale === enLocale) {
           slug = `${localePaths[enLocale].work}/${_.kebabCase(node.frontmatter.slug)}`;
         }
@@ -123,11 +111,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
           slug = `${localePaths[esLocale].work}/${_.kebabCase(node.frontmatter.slug)}`;
         }
       } else if (node.frontmatter.category === "blog") {
-        // Only store posts in blog or work category
-        // used in addSiblingNodes() for adding nextTitle/Slug and prevTitle/Slug
-        // to blog posts and work case studies
-        allPostNodes.push(node);
-
         if (node.frontmatter.locale === enLocale) {
           slug = `${localePaths[enLocale].blog}/${_.kebabCase(node.frontmatter.slug)}`;
         }
@@ -158,103 +141,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 };
 
-function sortNodesByDate(nodesArr) {
-  return nodesArr.sort(({ frontmatter: { date: date1 } }, { frontmatter: { date: date2 } }) => {
-    let dateA = moment(date1, siteConfig.dateFromFormat);
-    let dateB = moment(date2, siteConfig.dateFromFormat);
-
-    if (dateA.isBefore(dateB)) return -1;
-    if (dateB.isBefore(dateA)) return 1;
-    return 0;
-  });
-}
-
-function filterNodesByCategory(category = "blog") {
-  // allPostNodes = Only store posts in blog or work category
-  // filled in when calling onCreateNode
-  return allPostNodes.filter((node) => node.frontmatter.category === category);
-}
-
-function filterNodesByLocale(arr = [], locale = enLocale) {
-  return arr.filter((node) => node.frontmatter.locale === locale);
-}
-
-// Used to log the values of the array when gatsby creates the nodes
-function logNodes(arr = []) {
-  arr.forEach((node) => {
-    console.log(`${node.frontmatter.title} ${node.frontmatter.locale} ${node.frontmatter.category} ${
-      node.frontmatter.date
-    }`);
-  });
-}
-
-// Creates prevTitle/Slug and nextTitle/Slug
-// for each locale in the blog and work categories
-function createSiblingNodes(arr = [], createNodeField) {
-  for (let i = 0; i < arr.length; i += 1) {
-    let nextID = i + 1 < arr.length ? i + 1 : null;
-    let prevID = i - 1 >= 0 ? i - 1 : null;
-    let currNode = arr[i];
-    let nextNode = nextID === null ? null : arr[nextID];
-    let prevNode = prevID === null ? null : arr[prevID];
-
-    createNodeField({
-      node: currNode,
-      name: "nextTitle",
-      value: nextNode === null ? null : nextNode.frontmatter.title,
-    });
-    createNodeField({
-      node: currNode,
-      name: "nextSlug",
-      value: nextNode === null ? null : nextNode.fields.slug,
-    });
-    createNodeField({
-      node: currNode,
-      name: "prevTitle",
-      value: prevNode === null ? null : prevNode.frontmatter.title,
-    });
-    createNodeField({
-      node: currNode,
-      name: "prevSlug",
-      value: prevNode === null ? null : prevNode.fields.slug,
-    });
-
-    console.log(currNode.fields);
-  }
-}
-
-function addSiblingNodesByLocale(categoryArr, createNodeField) {
-  Object.keys(localePaths).map((locale) => {
-    // Temporal array that stores the locale posts on each category
-    let _localeConsumableArr = filterNodesByLocale(categoryArr, locale);
-
-    // Sort the posts in each category locale entry by date
-    _localeConsumableArr = sortNodesByDate(_localeConsumableArr);
-
-    // Create prevTitle/Slug and nextTitle/Slug
-    // for each locale in the blog and work categories
-    createSiblingNodes(_localeConsumableArr, createNodeField);
-  });
-}
-
-// Add next and previous posts links based on posted date
-function addSiblingNodes(createNodeField) {
-  const blogPostNodes = filterNodesByCategory("blog");
-  const workPostNodes = filterNodesByCategory("work");
-
-  addSiblingNodesByLocale(blogPostNodes, createNodeField);
-  addSiblingNodesByLocale(workPostNodes, createNodeField);
-}
-
-exports.setFieldsOnGraphQLNodeType = ({ type, actions }) => {
-  const { name } = type;
-  const { createNodeField } = actions;
-
-  if (name === "MarkdownRemark") {
-    addSiblingNodes(createNodeField);
-  }
-};
-
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
@@ -262,7 +148,6 @@ exports.createPages = async ({ graphql, actions }) => {
   try {
     const result = await graphql(`{ ${gatsbyNodeQuery(enLocale)} }`);
     const paginationName = localePaths[enLocale].paginationName;
-
     // Data Sources
     // Blog
     const totalCountBlog = result.data.blog.totalCount;
@@ -431,19 +316,39 @@ exports.createPages = async ({ graphql, actions }) => {
      * Posts Page Creation
      */
 
-    edgesBlog.forEach((edge) => {
+    edgesBlog.forEach((edge, index) => {
+      let nextTitle = null;
+      let nextSlug = null;
+      let prevTitle = null;
+      let prevSlug = null;
+
+      if (index === 0 && edgesBlog.length > 1) {
+        prevTitle = edgesBlog[index + 1].node.frontmatter.title;
+        prevSlug = edgesBlog[index + 1].node.fields.slug;
+      } else if (index > 0 && index + 1 < edgesBlog.length) {
+        prevTitle = edgesBlog[index + 1].node.frontmatter.title;
+        prevSlug = edgesBlog[index + 1].node.fields.slug;
+        nextTitle = edgesBlog[index - 1].node.frontmatter.title;
+        nextSlug = edgesBlog[index - 1].node.fields.slug;
+      } else if (index === edgesBlog.length - 1 && edgesBlog.length > 1) {
+        prevTitle = null;
+        prevSlug = null;
+        nextTitle = edgesBlog[index - 1].node.frontmatter.title;
+        nextSlug = edgesBlog[index - 1].node.fields.slug;
+      }
+
       createPage({
         path: edge.node.fields.slug,
         component: postTemplate,
         context: {
           slug: edge.node.fields.slug,
           twinPost: _.kebabCase(edge.node.frontmatter.twinPost),
-          nextTitle: edge.node.fields.nextTitle,
-          nextSlug: edge.node.fields.nextSlug,
-          prevSlug: edge.node.fields.prevSlug,
-          prevTitle: edge.node.fields.prevTitle,
           // necessary for react-intl
           locale: enLocale,
+          nextTitle,
+          nextSlug,
+          prevTitle,
+          prevSlug,
         },
       });
     });
@@ -533,19 +438,39 @@ exports.createPages = async ({ graphql, actions }) => {
      * Work Case Studies Creation
      */
 
-    edgesWork.forEach((edge) => {
+    edgesWork.forEach((edge, index) => {
+      let nextTitle = null;
+      let nextSlug = null;
+      let prevTitle = null;
+      let prevSlug = null;
+
+      if (index === 0 && edgesWork.length > 1) {
+        prevTitle = edgesWork[index + 1].node.frontmatter.title;
+        prevSlug = edgesWork[index + 1].node.fields.slug;
+      } else if (index > 0 && index + 1 < edgesWork.length) {
+        prevTitle = edgesWork[index + 1].node.frontmatter.title;
+        prevSlug = edgesWork[index + 1].node.fields.slug;
+        nextTitle = edgesWork[index - 1].node.frontmatter.title;
+        nextSlug = edgesWork[index - 1].node.fields.slug;
+      } else if (index === edgesWork.length - 1 && edgesWork.length > 1) {
+        prevTitle = null;
+        prevSlug = null;
+        nextTitle = edgesWork[index - 1].node.frontmatter.title;
+        nextSlug = edgesWork[index - 1].node.fields.slug;
+      }
+
       createPage({
         path: edge.node.fields.slug,
         component: caseStudyTemplate,
         context: {
           slug: edge.node.fields.slug,
           twinPost: _.kebabCase(edge.node.frontmatter.twinPost),
-          nextTitle: edge.node.fields.nextTitle,
-          nextSlug: edge.node.fields.nextSlug,
-          prevSlug: edge.node.fields.prevSlug,
-          prevTitle: edge.node.fields.prevTitle,
           // necessary for react-intl
           locale: enLocale,
+          nextTitle,
+          nextSlug,
+          prevTitle,
+          prevSlug,
         },
       });
     });
@@ -726,19 +651,39 @@ exports.createPages = async ({ graphql, actions }) => {
      * Posts Page Creation
      */
 
-    edgesBlog.forEach((edge) => {
+    edgesBlog.forEach((edge, index) => {
+      let nextTitle = null;
+      let nextSlug = null;
+      let prevTitle = null;
+      let prevSlug = null;
+
+      if (index === 0 && edgesBlog.length > 1) {
+        prevTitle = edgesBlog[index + 1].node.frontmatter.title;
+        prevSlug = edgesBlog[index + 1].node.fields.slug;
+      } else if (index > 0 && index + 1 < edgesBlog.length) {
+        prevTitle = edgesBlog[index + 1].node.frontmatter.title;
+        prevSlug = edgesBlog[index + 1].node.fields.slug;
+        nextTitle = edgesBlog[index - 1].node.frontmatter.title;
+        nextSlug = edgesBlog[index - 1].node.fields.slug;
+      } else if (index === edgesBlog.length - 1 && edgesBlog.length > 1) {
+        prevTitle = null;
+        prevSlug = null;
+        nextTitle = edgesBlog[index - 1].node.frontmatter.title;
+        nextSlug = edgesBlog[index - 1].node.fields.slug;
+      }
+
       createPage({
         path: edge.node.fields.slug,
         component: postTemplate,
         context: {
           slug: edge.node.fields.slug,
-          // necessary for react-intl
           twinPost: _.kebabCase(edge.node.frontmatter.twinPost),
-          nextTitle: edge.node.fields.nextTitle,
-          nextSlug: edge.node.fields.nextSlug,
-          prevSlug: edge.node.fields.prevSlug,
-          prevTitle: edge.node.fields.prevTitle,
+          // necessary for react-intl
           locale: esLocale,
+          nextTitle,
+          nextSlug,
+          prevTitle,
+          prevSlug,
         },
       });
     });
@@ -753,8 +698,8 @@ exports.createPages = async ({ graphql, actions }) => {
         component: legalTemplate,
         context: {
           slug: edge.node.fields.slug,
-          // necessary for react-intl
           twinPost: _.kebabCase(edge.node.frontmatter.twinPost),
+          // necessary for react-intl
           locale: esLocale,
         },
       });
@@ -828,19 +773,40 @@ exports.createPages = async ({ graphql, actions }) => {
      * Work Case Studies Creation
      */
 
-    edgesWork.forEach((edge) => {
+    edgesWork.forEach((edge, index) => {
+      let nextTitle = null;
+      let nextSlug = null;
+      let prevTitle = null;
+      let prevSlug = null;
+
+      if (index === 0 && edgesWork.length > 1) {
+        prevTitle = edgesWork[index + 1].node.frontmatter.title;
+        prevSlug = edgesWork[index + 1].node.fields.slug;
+      } else if (index > 0 && index + 1 < edgesWork.length) {
+        prevTitle = edgesWork[index + 1].node.frontmatter.title;
+        prevSlug = edgesWork[index + 1].node.fields.slug;
+        nextTitle = edgesWork[index - 1].node.frontmatter.title;
+        nextSlug = edgesWork[index - 1].node.fields.slug;
+      } else if (index === edgesWork.length - 1 && edgesWork.length > 1) {
+        prevTitle = null;
+        prevSlug = null;
+        nextTitle = edgesWork[index - 1].node.frontmatter.title;
+        nextSlug = edgesWork[index - 1].node.fields.slug;
+      }
+
       createPage({
         path: edge.node.fields.slug,
         component: caseStudyTemplate,
         context: {
           slug: edge.node.fields.slug,
           twinPost: _.kebabCase(edge.node.frontmatter.twinPost),
-          nextTitle: edge.node.fields.nextTitle,
-          nextSlug: edge.node.fields.nextSlug,
-          prevSlug: edge.node.fields.prevSlug,
-          prevTitle: edge.node.fields.prevTitle,
+
           // necessary for react-intl
           locale: esLocale,
+          nextTitle,
+          nextSlug,
+          prevTitle,
+          prevSlug,
         },
       });
     });

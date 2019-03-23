@@ -15,10 +15,6 @@ const gatsbyNodeQuery = (locale) =>
       node {
         fields {
           slug
-
-
-
-
         }
         timeToRead
         frontmatter {
@@ -72,10 +68,6 @@ const gatsbyNodeQuery = (locale) =>
       node {
         fields {
           slug
-
-
-
-
         }
         frontmatter {
           title
