@@ -1,5 +1,5 @@
-function gatsbyNodeQuery(locale) {
-  return `blog: allMarkdownRemark(
+const gatsbyNodeQuery = (locale) =>
+  `blog: allMarkdownRemark(
     limit: 2000
     sort: { fields: [frontmatter___date], order: DESC }
     filter: {
@@ -15,6 +15,10 @@ function gatsbyNodeQuery(locale) {
       node {
         fields {
           slug
+
+
+
+
         }
         timeToRead
         frontmatter {
@@ -26,12 +30,6 @@ function gatsbyNodeQuery(locale) {
           posted
           locale
           twinPost
-        }
-        fields{
-          nextTitle
-          nextSlug
-          prevSlug
-          prevTitle
         }
       }
     }
@@ -74,6 +72,10 @@ function gatsbyNodeQuery(locale) {
       node {
         fields {
           slug
+
+
+
+
         }
         frontmatter {
           title
@@ -94,12 +96,6 @@ function gatsbyNodeQuery(locale) {
               }
             }
           }
-        }
-        fields{
-          nextTitle
-          nextSlug
-          prevSlug
-          prevTitle
         }
       }
     }
@@ -130,6 +126,5 @@ function gatsbyNodeQuery(locale) {
       }
     }
   }`;
-}
 
 module.exports = gatsbyNodeQuery;
