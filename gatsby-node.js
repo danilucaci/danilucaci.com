@@ -218,6 +218,8 @@ function createSiblingNodes(arr = [], createNodeField) {
       name: "prevSlug",
       value: prevNode === null ? null : prevNode.fields.slug,
     });
+
+    console.log(currNode.fields);
   }
 }
 
@@ -237,8 +239,8 @@ function addSiblingNodesByLocale(categoryArr, createNodeField) {
 
 // Add next and previous posts links based on posted date
 function addSiblingNodes(createNodeField) {
-  let blogPostNodes = filterNodesByCategory("blog");
-  let workPostNodes = filterNodesByCategory("work");
+  const blogPostNodes = filterNodesByCategory("blog");
+  const workPostNodes = filterNodesByCategory("work");
 
   addSiblingNodesByLocale(blogPostNodes, createNodeField);
   addSiblingNodesByLocale(workPostNodes, createNodeField);
@@ -247,6 +249,7 @@ function addSiblingNodes(createNodeField) {
 exports.setFieldsOnGraphQLNodeType = ({ type, actions }) => {
   const { name } = type;
   const { createNodeField } = actions;
+
   if (name === "MarkdownRemark") {
     addSiblingNodes(createNodeField);
   }
@@ -256,7 +259,8 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
   // Create english pages
-  await graphql(`{ ${gatsbyNodeQuery(enLocale)} }`).then((result) => {
+  try {
+    const result = await graphql(`{ ${gatsbyNodeQuery(enLocale)} }`);
     const paginationName = localePaths[enLocale].paginationName;
 
     // Data Sources
@@ -545,10 +549,13 @@ exports.createPages = async ({ graphql, actions }) => {
         },
       });
     });
-  });
+  } catch (error) {
+    console.warn("Error running the english graphql query: ", error);
+  }
 
   // Create spanish pages
-  await graphql(`{ ${gatsbyNodeQuery(esLocale)} }`).then((result) => {
+  try {
+    const result = await graphql(`{ ${gatsbyNodeQuery(esLocale)} }`);
     const paginationName = localePaths[esLocale].paginationName;
 
     // Data Sources
@@ -837,5 +844,7 @@ exports.createPages = async ({ graphql, actions }) => {
         },
       });
     });
-  });
+  } catch (error) {
+    console.warn("Error running the spanish graphql query: ", error);
+  }
 };
