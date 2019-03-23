@@ -24,7 +24,7 @@ twinPost: "Como Importar Publicaciones de Dribbble usando React Hooks"
 
 - [Registering a New Dribbble App](#registering-a-new-dribbble-app)
 - [Making Async Requests With React Hooks](#making-async-requests-with-react-hooks)
-- [Rendering Placeholder Elements While Data is being Fetched](#rendering-placeholder-elements-while-data-is-being-fetched)
+- [Rendering Placeholder Elements While Data is Fetched](#rendering-placeholder-elements-while-data-is-fetched)
 - [Loading More Shots](#loading-more-shots)
 - [(Update) Refactoring to useReducer](#update-refactoring-to-usereducer)
 - [Final Demo](#final-demo)
@@ -44,14 +44,14 @@ For that, you will need to follow these steps —I’m assuming you already have
 - Then click on **Applications**
 - Under **Developers**, click on _Register a new application_
 
-![Dribbble screen in which you can register your new app.](./register_app_with_dribbble.png "Dribbble screen in which you can register your new app.")
+Now you should be able to add your own information, similar to how I did it in this example:
 
-Now you should be able to add your own information, similar to how I did it in this example.
+![Dribbble screen in which you can register your new app.](./register_app_with_dribbble.png "Dribbble screen in which you can register your new app.")
 
 #### The most important things are:
 
 - The **Callback URL** is your sites’ URL which you should type including the `https://` part, otherwise you’ll get an error.
-- You’ll need the **Client ID** and **Client Secret** to make a POST request later on, in order to get an access token.
+- The **Client ID** and **Client Secret** which you’ll need to be able to make a POST request, in order to get an access token.
 
 ### Getting a Dribbble Access Code
 
@@ -89,15 +89,15 @@ https://dribbble.com/oauth/token?client_id=CLIENT_ID&client_secret=CLIENT_SECRET
 
 This will give you the access token you need to be able to make requests to Dribbbles’s V2 API.
 
-- **CLIENT\_ID**: the client id from the Dribbble account page (look at the first screenshot in this tutorial)
-- **CLIENT\_SECRET**: the client secret from the Dribbble account page (look at the first screenshot)
-- **CODE\_FROM\_PREVIOUS\_URL**: the code you get after you visit the URL with the `callback_url` of your site
+- **CLIENT\_ID**: is the client id from the Dribbble account page (look at the first screenshot in this tutorial)
+- **CLIENT\_SECRET**: is the client secret from the Dribbble account page (look at the first screenshot)
+- **CODE\_FROM\_PREVIOUS\_URL**: is the code you get after you visit the URL with the `callback_url` of your site
 
 ### Making a POST Request With Postman
 
-- Open up Postman
-- Make a new `POST` **Request**
-- Use the URL from the previous step with your `CLIENT_ID`, `CLIENT_SECRET` and `CODE_FROM_PREVIOUS_URL`
+1. Open up Postman
+2. Make a new `POST` **Request**
+3. Use the URL from the previous step with your `CLIENT_ID`, `CLIENT_SECRET` and `CODE_FROM_PREVIOUS_URL`
 
 Now you should receive a JSON response similar to this one:
 
@@ -119,7 +119,9 @@ If it doesn’t work, and instead you receive this response —or any response c
 }
 ```
 
-You should start over and get a new code. When I was trying to register mine, I wasn’t able to get the access token and I kept getting this error. After searching for a solution, I found this <a href="https://developer.dribbble.com/v1/oauth/" target="_blank" rel="noopener noreferer">help page from the Dribbble API docs<span class="sr-only">Opens in a new window</span><span aria-hidden="true" class="external-link"></span></a> in which they explain what you can do in case you get an error from the API.
+You should start over and get a new code. 
+
+When I was trying to register mine, I wasn’t able to get the access token and I kept getting this error. After searching for a solution, I found this <a href="https://developer.dribbble.com/v1/oauth/" target="_blank" rel="noopener noreferer">help page from the Dribbble API docs<span class="sr-only">Opens in a new window</span><span aria-hidden="true" class="external-link"></span></a> in which they explain what you can do in case you get an error response from the API.
 
 If everything went fine, you should now have your access token which you can use to send requests to  Dribbble’s V2 API 🎉.
 
@@ -127,7 +129,9 @@ If everything went fine, you should now have your access token which you can use
 
 In order to be able to send requests to the API, I decided to use React Hooks. If you don’t want to use hooks, you can <a href="https://matthewelsom.com/blog/display-shots-on-webpage-with-dribbble-v2-api.html" target="_blank" rel="noopener noreferer nofollow">read this article<span class="sr-only">Opens in a new window</span><span aria-hidden="true" class="external-link"></span></a> in which you can learn how to send requests to Dribbble’s API using ajax.
 
-Using React Hooks to fetch data from an API is pretty easy, however, you should learn how they work first because it’s **really** easy to enter an infinite loop of data fetching that will reach the API’s limit in a second.
+Using React Hooks to fetch data from an API is pretty easy. But you should learn how they work first.
+
+It’s **really** easy to enter an infinite loop of data fetching that will reach the API’s limit in a second.
 
 You should be particularly careful if your API is a paid service like Firebase or AWS.
 
@@ -143,7 +147,7 @@ Before you continue, I recommend you to read the guide on <a href="https://overr
 
 Although mine is based on Robin’s article, I did change it quite a bit, so that I can render placeholder elements, besides spinners as loading indicators, while the data is being fetched.
 
-But first, let’s start with fetching shots from Dribbble.
+But first, let’s start with fetching the shots from Dribbble.
 
 ### The Dribbble V2 API Endpoint
 
@@ -196,11 +200,17 @@ React.useEffect(() => {
 
 You can see I’m also destructuring the previous state in the `dribbblePosts` array, because `setState()` doesn’t merge the previous state values as it happens when using classes.
 
-I’m destructuring the previous values plus the new ones so that I can merge the posts from the previous requests with the new data from the incoming requests when a user clicks on the *Load More* button to fetch more posts, which we’ll get to later on.
+I’m destructuring the previous values plus the new ones so that I can merge the posts from the previous requests with the new data from the incoming requests.
 
-So far, so good, however, if you try to run the code you will enter an infinite loop, and the Dribbble API will give you a `429 Too Many Requests` error.
+When a user clicks on the *Load More* button to fetch more posts, a new network request is made, which will fetch more shots.
 
-You’ll also get a memory leak if you navigate to another page from where the component is rendered before the state is set. Since the data is being fetched asynchronously using `async await` if you navigate to a different page before it resolves, React will try to save the data in a state variable of a component that has been unmounted and it will throw an error.
+So far, so good.
+
+But if you try to run the code it will enter an infinite loop and the Dribbble API will give you a `429 Too Many Requests` error.
+
+You’ll also get a memory leak if you navigate to another page from where the component is rendered before the state is set. 
+
+Since the data is being fetched asynchronously using `async await` if you navigate to a different page before it resolves, React will try to save the data in a state variable of a component that has been unmounted and it will throw an error.
 
 ```js
 index.js:2177 Warning: Can’t perform a React state update on an unmounted component. 
@@ -214,7 +224,11 @@ So let’s see how to fix these issues.
 
 Basically, the loop happens because each time `state` is changed in React, it triggers a new render. Then on each render, a new request will be made, which changes `state` again, which causes a new render, and so on...
 
-One solution would be to simply add an empty array as a dependency of the `useEffect()` hook, so that it only runs on the first render. However, in my case it wouldn’t work, because I’m changing the state again with `if (isLoading) setIsLoading(false)`.
+One solution would be to simply add an empty array as a dependency of the `useEffect()` hook, so that it only runs on the first render. However, in my case it wouldn’t work, because I’m changing the state again with:
+
+```jsx
+if (isLoading) setIsLoading(false);
+```
 
 ```jsx{11,13,22}
 const [isLoading, setIsLoading] = React.useState(true);
@@ -243,11 +257,11 @@ React.useEffect(() => {
 
 This happens because the first time the component renders, the request will be made and the response from the API will be stored in the `dribbblePosts` array, which will trigger a render when state is changed.
 
-Then on the second render, the `dribbblePosts` will have the data stored inside, however, the API call will run again since there’s nothing preventing it from executing. 
+Then on the second render, the `dribbblePosts` will have the data stored inside, but the API call will run again since there’s nothing preventing it from executing. 
 
-Then the response will be stored again in state, which leads to a new render.
+Then the response is stored again in state, which triggers a new render.
 
-The same thing will happen once `setIsLoading(false)` is run, state will change again, a new render will happen, and a new API call will be triggered.
+The same thing will happen once `setIsLoading(false)` is run. State will change again, a new render will be triggered, and a new API call will be made.
 
 And you’ve probably noticed that this is the perfect recipe for an infinite loop, which will give you a ` 429 Too Many Calls` error.
 
@@ -338,13 +352,16 @@ React.useEffect(() => {
 
 By using a boolean `didCancel` I can avoid saving data in state if the component is unmounted. The cleanup function can be used to toggle the boolean from `false` to `true`. Then the next time it’s executed, it won’t save anything in state. This way React won’t try to save data in the state of a component that has been unmounted.
 
-Note that this doesn’t cancel also the axios data fetching part. If you’d like to learn how to do that, you can read their <a href="https://github.com/axios/axios#cancellation" target="_blank" rel="noopener noreferer">docs<span class="sr-only">Opens in a new window</span><span aria-hidden="true" class="external-link"></span></a> in which they explain how it can be achieved.
+Note that this doesn’t cancel also the axios data fetching part. If you’d like to learn more about cancelling axios requests, you can follow <a href="https://github.com/axios/axios#cancellation" target="_blank" rel="noopener noreferer">their instructions<span class="sr-only">Opens in a new window</span><span aria-hidden="true" class="external-link"></span></a>.
 
-Great, so far we have a `useEffect()` hook that only fetches data from the Dribbble API once, and stores it only when the component is still mounted.
+Great, so far we have a `useEffect()` hook that:
+
+* only fetches data from the Dribbble API once
+* then stores it only while the component is still mounted
 
 With just these optimizations we could start working, however, in my case I wanted to display placeholder elements while the data is being fetched, to avoid large layout shifts when the posts were rendered.
 
-## Rendering Placeholder Elements While Data is being Fetched
+## Rendering Placeholder Elements While Data is Fetched
 
 While the shots from Dribbble are fetched, I wanted to render a spinner and placeholder elements that were as large as the final image from Dribbble. To do so, I used the API’s pagination features and a certain amount of shots per request.
 
@@ -358,25 +375,25 @@ The Dribbble V2 API gives you the ability to use pagination with the `&page=X` a
 
 ### Creating the Placeholder Elements
 
-On the initial load of the component, I wanted to only show 4 or 6 shots, so I’m storing the amount of shots I want in a const.
+On the initial load of the component, I wanted to only show 4 or 6 shots. To do that, I’m using a constant that stores the amount of shots I want to fetch.
 
 ```jsx
 const SHOTS_PER_PAGE = 4;
 ```
 
-This was then used in the `axios.get()` URL to fetch 4 shots on each paginated page, and also to create the placeholder elements. These we made by creating an array that had as many values inside, as the lenght of the `SHOTS_PER_PAGE` const.
+This was then used in the `axios.get()` URL to fetch 4 shots on each paginated page and to create the placeholder elements. The placeholders we made by creating an array that had as many values inside, as the lenght of the `SHOTS_PER_PAGE` const.
 
 ```jsx
 const placeholderArr = Array.from({ length: SHOTS_PER_PAGE }, (v, i) => i);
 ```
 
-When using `Array.from()` you can specify a second argument which is a `map()` function, that will be run on each of the elements in the array. This way I can create a pre-filled array which I can use to map over while `isLoading=true`, and render placeholder elements.
+When using `Array.from()` you can specify a second argument which is a `map()` function, that will run on each of the elements in the array. This way I can create a pre-filled array which I can use to map over while `isLoading=true`, and render placeholder elements.
 
 ```jsx
 {isLoading && placeholderArr.map((i) => <DribbblePostPlaceholder key={i} />)}
 ```
 
-To create these elements you can use the following code. It’s simply a wrapper div with `position: relative;` and a child element with a `padding-bottom: 75%;`. The padding-bottom of 75% is used to have the same aspect ratio as the images fetched from Dribbble.
+To create these elements you can use the following code. It’s just a wrapper div with `position: relative;` and a child element with a `padding-bottom: 75%;`. The padding-bottom of 75% is used to have the same aspect ratio as the images fetched from Dribbble.
 
 I’m also using a `background-position` animation to animate the background from a light gray to a darker one, to simulate a loading indicator.
 
@@ -425,7 +442,7 @@ function DribbblePostPlaceholder() {
 }
 ```
 
-Once `isLoading` is changed to `false`, the placeholder elements are swapped for the shots from Dribbble.
+Once `isLoading` is changed to `false`, the placeholder elements are replaced with the shots from Dribbble.
 
 ```jsx
 {!isLoading && dribbblePosts.map((post) => <DribbblePost key={post.id} post={post} />)}
@@ -449,9 +466,11 @@ Your browser does not support HTML5 video.
 
 ## Loading More Shots
 
-When I was designing the page where the component is mounted, I only wanted to show 4 or 6 shots at most, but I also wanted to have an option to load more shots if any user wanted to see more of them, without having to redirect them to the Dribbble homepage.
+When I was designing the page where the component is mounted, I only wanted to show 4 or 6 shots at most. 
 
-Initially, I thought of fetching several posts, 20 or so, and slicing the array into 4 to 6 long chunks so that I only rendered a couple of shots at a time. But I soon realized that it wasn’t a really good idea to download that many images, especially for the users who are visiting my site on a mobile connection with limited bandwidth.
+But I also wanted to have an option to load more shots if any user wanted to see more of them, without having to redirect them to the Dribbble homepage.
+
+Initially, I thought of fetching several posts, 20 or so, and slicing the array into 4 to 6 long chunks so that I only rendered a couple of shots at a time. But I soon realized that it wasn’t a really good idea to download that many images. This was important for the users who are visiting my site on a mobile connection with limited bandwidth.
 
 So I decided to only load 4 shots initially, and if any user wanted to see more, they could use the *Load More* button which would fetch 4 shots more.
 
@@ -479,7 +498,7 @@ function loadMorePosts() {
 }
 ```
 
-Furthermore, the `isLoadingMore` variable lets me load more placeholder elements while the new shots are being fetched from the API.
+In addition to that, the `isLoadingMore` variable lets me load more placeholder elements while the new shots are fetched from the API.
 
 By using a different variable and not the original `isLoading` one, I could avoid changing the shots I already had and rendered, thus adding new placeholders and shots below the ones I already had.
 
@@ -565,9 +584,12 @@ function DribbblePosts() {
   );
 }
 ```
+
 ## (Update) Refactoring to useReducer
 
-So far the component is working great, however, I need to use a lot of checks and if statements that stop rendering when the state changes. Currently, I have more than 4 different state changes inside the `useEffect` hook, and the dependency list is getting pretty long
+So far the component is working great.
+
+Nevertheless, I need to have a lot of if statements that stop rendering when the state changes. Currently, I have more than 4 different state changes inside the `useEffect` hook, and the dependency list is getting pretty long:
 
 ```jsx
 [dribbblePosts, postsFetched, dribbblePage, isLoading, isError, isLoadingMore]
@@ -575,7 +597,7 @@ So far the component is working great, however, I need to use a lot of checks an
 
 A great solution to this problem is to use the reducer hook, which lets me combine several state changes in a single call.
 
-Actually not much code needs to change, the components render method is practically the same, I only need to extract the data fetching logic in a separate file —so that I can have cleaner code— and I also need to destructure the variables I need in the render method from the data fetching function.
+Actually not much code needs to change, the components render method is practically the same. I only need to extract the data fetching logic in a separate file —so that I can have cleaner code. I also need to destructure the variables used in the render method from the custom hook `useDribbbleReducer()`.
 
 ```jsx
 function DribbblePosts({ locale }) {
@@ -659,8 +681,6 @@ In order to still be able to add new shots to the existing ones, I needed to mer
 export default function useDribbbleReducer() {
   const initialState = {
     dribbblePage: 1,
-    shotsPerPage: 4,
-    noMoreShots: false,
     dribbblePosts: [],
     isLoading: true,
     isLoadingMore: false,
@@ -695,7 +715,7 @@ export default function useDribbbleReducer() {
     fetchData();
 
     return () => {
-      // Prevent memory leak when moving to another page
+      // Prevent memory leak when navigating to another page
       didCancel = true;
     };
   }, [state.dribbblePage]);
@@ -708,7 +728,7 @@ export default function useDribbbleReducer() {
 }
 ```
 
-As you can see, the dependency list of the `useEffect` hook is much cleaner, and only needs to be aware of the changes made to the `dribbblePage` variable which is updated when I want to load more shots from the API, using pagination. `shotsPerPage` is never updated, the eslint hooks plugin adds it in.
+As you can see, the dependency list of the `useEffect` hook is now much cleaner. It only needs to be aware of the changes made to the `dribbblePage` variable which is updated when I want to load more shots from the API, using pagination.
 
 The only check I need to keep doing is the `didCancel` to prevent saving data into state if the component unmonunts before the async function resolves.
 

@@ -1,6 +1,6 @@
 ---
 title: "Como Añadir un Formulario de Contacto en una Web Estática"
-slug: "Formulario Contacto en Webs Estaticas"
+slug: "Formulario Contacto en Web Estatica"
 date: "2019-03-12"
 category: "blog"
 intro: "Los generadores de webs estáticas como Gatsby.js son muy buenos para crear páginas con un buen rendimiento y para trabajar con las mejores herramientas de desarrollo, pero poder añadir un formulario de contacto a una de ellas no es tan sencillo si no tienes un back-end para gestionar las solicitudes de envío.
@@ -13,7 +13,7 @@ tags:
     - contact forms
 posted: true
 locale: "es"
-twinPost: "contact form on static sites"
+twinPost: "contact form on static site"
 ---
 
 <nav class="toc">
@@ -25,7 +25,7 @@ twinPost: "contact form on static sites"
 - [¿Qué Opciones Tenemos?](#¿qué-opciones-tenemos)
 - [¿Qué Necesitas Para Empezar?](#¿qué-necesitas-para-empezar)
 - [Protección Antispam](#protección-antispam)
-- [Gestionando los Envios de los Formularios](#gestionando-los-envios-de-los-formularios)
+- [Gestionando los Envíos de los Formularios](#gestionando-los-envíos-de-los-formularios)
 - [Mostrando un Indicador del Estado de Carga](#mostrando-un-indicador-del-estado-de-carga)
 - [Validación de Formularios con CSS](#validación-de-formularios-con-css)
 - [Puntos Extra, Formulario de Contacto que Cumple con la RGPD](#puntos-extra-formulario-de-contacto-que-cumple-con-la-rgpd)
@@ -317,32 +317,11 @@ Esto también es relativamente fácil hacer con Netlify ya que puedes enviar los
 
 Antes de continuar leyendo, deberías tener en cuenta de que solo siguiendo estos pasos **no estarás cumpliendo con la RGPD, faltan muchos otros pasos y más información que no esta detallada en este artículo**, por tanto, deberías consultar con tu propio abogado como hice yo.
 
-### Desactivar el Botón de Enviar con CSS
+### Desactivar el Botón de Enviar
 
 De acuerdo con las leyes actuales de privacidad, los usuarios no pueden enviarte su información personal si no te han dado un consentimiento expreso previamente.
 
-Por ello, añadí el checkbox —que no puede estar marcado por defecto— que controla si el formulario puede ser presentado o no y una forma sencilla de conseguir esto es desactivando los `pointer-events` en el botón de enviar.
-
-```css
-&:not(:checked) {
-  & ~ input {
-    pointer-events: none !important;
-    background-color: ${theme.colors.dark700};
-    color: ${theme.colors.gray100};
-
-    &:hover,
-    &:focus {
-      background-color: ${theme.colors.dark700};
-    }
-  }
-}
-
-&:checked {
-  & ~ input {
-    pointer-events: auto;
-  }
-}
-```
+Por ello, añadí el checkbox —que no puede estar marcado por defecto— que controla si el formulario puede ser presentado o no.
 
 ## El Formulario de Contacto con Todas las Opciones Incluidas
 
