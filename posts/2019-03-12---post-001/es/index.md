@@ -9,8 +9,7 @@ Después de comparar las distintas soluciones disponibles —gratis o de pago—
 snippet: "Como he usado React Hooks y formularios de Netlify para añadir un formulario de contacto que cumple con la RGPD en mi página web estática creada con Gatsby.js."
 tags:
     - gatsby.js
-    - react.js
-    - contact forms
+    - forms
 posted: true
 locale: "es"
 twinPost: "contact form on static site"
