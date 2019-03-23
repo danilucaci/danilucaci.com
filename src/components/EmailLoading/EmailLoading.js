@@ -56,7 +56,7 @@ function EmailLoading({
     <StyledLoadingWrapper>
       <StyledLoadingCTA>
         {showFormLoading ? (
-          <Spinner locale={locale} />
+          <Spinner />
         ) : (
           <React.Fragment>
             {FORM_SUBMIT_STATUS.cta[locale]}
