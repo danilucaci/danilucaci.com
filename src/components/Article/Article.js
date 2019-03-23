@@ -45,24 +45,22 @@ const ArticleCopy = styled(Copy)`
 
 const StyledH3 = styled.h3`
   margin-top: ${rem(8)};
-  margin-bottom: ${rem(8)};
+  margin-bottom: ${rem(12)};
 `;
 
-const Article = (props) => {
-  return (
-    <StyledArticle>
-      <header>
-        <Tags tags={props.tags} />
-        <StyledH3>{props.title}</StyledH3>
-        <ArticleInfo date={props.date} timeToRead={props.timeToRead} />
-      </header>
-      <ArticleCopy className="copy">{props.snippet}</ArticleCopy>
-      <FormattedMessage id="articleLinkContinue">
-        {(txt) => <ContinueLink to={props.slug}>{txt}</ContinueLink>}
-      </FormattedMessage>
-    </StyledArticle>
-  );
-};
+const Article = (props) => (
+  <StyledArticle>
+    <header>
+      <Tags tags={props.tags} />
+      <StyledH3>{props.title}</StyledH3>
+      <ArticleInfo date={props.date} timeToRead={props.timeToRead} />
+    </header>
+    <ArticleCopy className="copy">{props.snippet}</ArticleCopy>
+    <FormattedMessage id="articleLinkContinue">
+      {(txt) => <ContinueLink to={props.slug}>{txt}</ContinueLink>}
+    </FormattedMessage>
+  </StyledArticle>
+);
 
 Article.propTypes = {
   title: PropTypes.string.isRequired,
