@@ -97,8 +97,10 @@ const StyledIntroContainer = styled.div`
 `;
 
 const IntroCopy = styled(Copy)`
-  &:first-of-type {
-    margin-bottom: ${rem(32)};
+  margin-bottom: ${rem(32)};
+
+  &:last-of-type {
+    margin-bottom: 0;
   }
 `;
 
@@ -107,7 +109,6 @@ const PostContent = styled.section`
   max-width: ${theme.contain.inner.col6};
   margin-left: auto;
   margin-right: auto;
-
   margin-bottom: ${theme.spacing.components.s};
 
   ${mediaMin.m`
@@ -246,7 +247,7 @@ const PostContent = styled.section`
     & a {
       display: block;
       color: ${theme.colors.dark900};
-      text-decoration: none;
+      text-decoration: underline;
       font-style: normal;
       font-weight: 400;
       padding: ${rem(8)} 0;
@@ -260,7 +261,6 @@ const PostContent = styled.section`
 
       &:hover {
         cursor: pointer;
-        text-decoration: underline;
         background-color: transparent;
       }
     }
