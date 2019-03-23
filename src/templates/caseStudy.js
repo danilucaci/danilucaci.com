@@ -18,7 +18,11 @@ import { HR } from "../components/HR/HR";
 import SiblingPosts from "../components/SiblingPosts/SiblingPosts";
 import AuthorCard from "../components/AuthorCard/AuthorCard";
 
-import { calculateScroll, textPassiveEventSupport } from "../helpers/helpers";
+import {
+  calculateScroll,
+  textPassiveEventSupport,
+  addEventListenersToCopyButtons,
+} from "../helpers/helpers";
 
 const ArticleWrapper = styled.article`
   & footer {
@@ -682,8 +686,8 @@ class CaseStudy extends Component {
                 <FormattedMessage id="caseStudyOverview">
                   {(txt) => <h2>{txt}</h2>}
                 </FormattedMessage>
-                {introCopy.map((entry, index) => (
-                  <p key={index}>{entry}</p>
+                {introCopy.map((entry) => (
+                  <p key={addEventListenersToCopyButtons}>{entry}</p>
                 ))}
               </OverviewIntro>
               <OverviewItems>
@@ -692,8 +696,8 @@ class CaseStudy extends Component {
                     {(txt) => <h4>{txt}</h4>}
                   </FormattedMessage>
                   <ul>
-                    {tools.map((entry, index) => (
-                      <li key={index}>{entry}</li>
+                    {tools.map((entry) => (
+                      <li key={entry}>{entry}</li>
                     ))}
                   </ul>
                 </OverviewItem>
@@ -702,8 +706,8 @@ class CaseStudy extends Component {
                     {(txt) => <h4>{txt}</h4>}
                   </FormattedMessage>
                   <ul>
-                    {deliverables.map((entry, index) => (
-                      <li key={index}>{entry}</li>
+                    {deliverables.map((entry) => (
+                      <li key={addEventListenersToCopyButtons}>{entry}</li>
                     ))}
                   </ul>
                 </OverviewItem>
@@ -712,8 +716,8 @@ class CaseStudy extends Component {
                     {(txt) => <h4>{txt}</h4>}
                   </FormattedMessage>
                   <ul>
-                    {methods.map((entry, index) => (
-                      <li key={index}>{entry}</li>
+                    {methods.map((entry) => (
+                      <li key={addEventListenersToCopyButtons}>{entry}</li>
                     ))}
                   </ul>
                 </OverviewItem>
@@ -722,13 +726,13 @@ class CaseStudy extends Component {
                     {(txt) => <h4>{txt}</h4>}
                   </FormattedMessage>
                   <ul>
-                    {links.map((entry, index) => (
-                      <li key={index}>
+                    {links.map((entry) => (
+                      <li key={addEventListenersToCopyButtons}>
                         <OverviewListLink
                           href={entry.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          key={index}
+                          key={addEventListenersToCopyButtons}
                         >
                           {entry.name}
                         </OverviewListLink>
