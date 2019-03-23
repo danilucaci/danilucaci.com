@@ -174,6 +174,10 @@ const PostContent = styled.section`
     `};
   }
 
+  figure {
+    margin-bottom: ${rem(32)};
+  }
+
   figure img,
   figure video {
     ${theme.shadow.image} !important;
@@ -209,6 +213,9 @@ const PostContent = styled.section`
   & .toc {
     background-color: ${theme.colors.sectionBackground};
     padding: ${rem(24)} ${rem(16)};
+
+    margin-top: ${rem(64)};
+    margin-bottom: ${rem(64)};
 
     & p {
       margin-bottom: 0;
@@ -247,7 +254,7 @@ const PostContent = styled.section`
     & a {
       display: block;
       color: ${theme.colors.dark900};
-      text-decoration: underline;
+      text-decoration: none;
       font-style: normal;
       font-weight: 400;
       padding: ${rem(8)} 0;
@@ -262,6 +269,7 @@ const PostContent = styled.section`
       &:hover {
         cursor: pointer;
         background-color: transparent;
+        text-decoration: underline;
       }
     }
   }
@@ -323,12 +331,12 @@ const BottomHR = styled(HR)`
 `;
 
 // eslint-disable
-const renderAst = new rehypeReact({
-  createElement: React.createElement,
-  components: {
-    "item-1": Copy,
-  },
-}).Compiler;
+// const renderAst = new rehypeReact({
+//   createElement: React.createElement,
+//   components: {
+//     "item-1": Copy,
+//   },
+// }).Compiler;
 
 class Post extends Component {
   state = {
@@ -432,7 +440,8 @@ class Post extends Component {
                 ))}
               </StyledIntroContainer>
             </StyledPageHeader>
-            <PostContent>{renderAst(postNode.htmlAst)}</PostContent>
+            <PostContent dangerouslySetInnerHTML={{ __html: postNode.html }} />
+            {/* <PostContent>{renderAst(postNode.htmlAst)}</PostContent> */}
 
             <BottomHR />
 
@@ -505,7 +514,8 @@ Post.propTypes = {
         title: PropTypes.string.isRequired,
       }),
       timeToRead: PropTypes.number.isRequired,
-      htmlAst: PropTypes.object.isRequired,
+      html: PropTypes.string.isRequired,
+      // htmlAst: PropTypes.object.isRequired,
     }),
   }).isRequired,
 };
@@ -515,7 +525,7 @@ export default Post;
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
-      htmlAst
+      html
       timeToRead
       frontmatter {
         title
