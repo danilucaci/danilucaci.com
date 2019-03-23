@@ -1,11 +1,11 @@
 ---
-title: "Como Importar Publicaciones de Dribbble usando React Hooks"
-slug: "Como Importar Publicaciones de Dribbble usando React Hooks"
+title: "Cómo Importar Publicaciones de Dribbble con React Hooks"
+slug: "Importar Publicaciones de Dribbble con React Hooks"
 date: "2019-03-14"
 category: "blog"
 intro: "Cuando estaba diseñando mi portofolio, quería tener todos los trabajos que publiqué en Dribbble en mi página, para así poder tener el trabajo que he hecho en un mismo lugar.
 |
-En este artículo enseñare como he usando la API V2 de Dribbble, Axios y Reacto Hooks para importar todos los trabajos publicados en Dribbble a mi portofolio creado con Gatsby.js."
+En este artículo enseñare cómo he usando la API V2 de Dribbble, Axios y Reacto Hooks para importar todos los trabajos publicados en Dribbble a mi portofolio creado con Gatsby.js."
 snippet: "."
 tags:
     - gatsby.js
@@ -13,7 +13,7 @@ tags:
     - async data fetching
 posted: true
 locale: "es"
-twinPost: "How to Fetch Dribbble Shots Using React Hooks"
+twinPost: "Fetch Dribbble Shots Using React Hooks"
 ---
 
 <nav class="toc">
