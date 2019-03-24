@@ -148,6 +148,10 @@ BlogPage.propTypes = {
       tags: PropTypes.arrayOf(PropTypes.object).isRequired,
     }),
   }).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+    href: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default BlogPage;
