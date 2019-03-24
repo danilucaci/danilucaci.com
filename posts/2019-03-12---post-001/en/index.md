@@ -79,12 +79,7 @@ If you are adding your form to a static site generator such as Gatsby.js, you wi
 This step is necessary, otherwise, your form won’t show up in your Netlify admin panel.
 
 ```jsx
-<input
-  type="hidden"
-  name="form-name"
-  arria-hidden="true"
-  value="contact"
-/>
+<input type="hidden" name="form-name" arria-hidden="true" value="contact" />
 ```
 
 ### Spam Protection
@@ -103,7 +98,7 @@ So let’s start building the form.
 
 ## Handling Form Submissions
 
-By default, when anyone submits your forms, Netlify will redirect them to a generic confirmation screen. If you’re ok with using their default screen, you’re good to go. 
+By default, when anyone submits your forms, Netlify will redirect them to a generic confirmation screen. If you’re ok with using their default screen, you’re good to go.
 
 But you can also create a custom “Thank You” page or use a React component for when javascript is enabled in the user’s browser.
 
@@ -160,7 +155,7 @@ async function handleSubmit(e) {
 
 From this example, you can see I’m using the new React Hooks API, but it could be done in a similar way with classes.
 
-The first thing the `handleSubmit()` function does is to set the state value of `showFormLoading` to `true`. Then, a loading indicator (spinner icon) is rendered. 
+The first thing the `handleSubmit()` function does is to set the state value of `showFormLoading` to `true`. Then, a loading indicator (spinner icon) is rendered.
 
 Immediately after that, it toggles the state value `formSubmited` from `false` to `true`, so that a `<EmailLoading ... />` component gets rendered on the screen (more on that later).
 
@@ -195,15 +190,17 @@ While the form data is sent over to Netlify’s servers, a spinner icon replaces
 Then, when `formSubmitted` is set to `true`, the `<EmailLoading />` component will render and it will display the loading indicator, together with the success, or error messages, on the screen.
 
 ```jsx
-{formSubmitted && (
-  <EmailLoading
-    showFormLoading={showFormLoading}
-    showFormSuccess={showFormSuccess}
-    showFormError={showFormError}
-    formErrorRes={formErrorRes}
-    locale={locale}
-  />
-)}
+{
+  formSubmitted && (
+    <EmailLoading
+      showFormLoading={showFormLoading}
+      showFormSuccess={showFormSuccess}
+      showFormError={showFormError}
+      formErrorRes={formErrorRes}
+      locale={locale}
+    />
+  );
+}
 ```
 
 The `<EmailLoading />` component simply returns a loading indicator when `isLoading` is `true` and a success/error message when the response is returned.
@@ -227,24 +224,28 @@ The `<EmailLoading />` component simply returns a loading indicator when `isLoad
 ### Contact Form with Loading Indicator and Status Messages Demo
 
 <figure>
-<span class="video-iphoneX">
-<span class="video-iphoneX--video">
-<video autoplay loop muted playsinline controls>
-<source src="./.webm" type="video/webm">
-<source src="./.mp4" type="video/mp4">
-Your browser does not support HTML5 video.
-<a href="./.gif">See the Contact Form With a Loading Indicator and Status Messages Gif.</a>
-</video>
-</span>
-</span>
-<figcaption>Contact Form With a Loading Indicator and Status Messages</figcaption>
+  <span class="video-iphoneX">
+    <span class="video-iphoneX--video">
+      <video autoplay loop muted playsinline controls>
+        <source src="./.webm" type="video/webm" />
+        <source src="./.mp4" type="video/mp4" />
+        Your browser does not support HTML5 video.
+        <a href="./.gif">
+          See the Contact Form With a Loading Indicator and Status Messages Gif.
+        </a>
+      </video>
+    </span>
+  </span>
+  <figcaption>
+    Contact Form With a Loading Indicator and Status Messages
+  </figcaption>
 </figure>
 
 ## Form Validation with CSS
 
-In order to handle the form validation, I decided to use only CSS. 
+In order to handle the form validation, I decided to use only CSS.
 
-My solution is based on using CSS Level 3 selectors such as `&:valid`, `:not()`, `:placeholder-shown` or `:invalid`. 
+My solution is based on using CSS Level 3 selectors such as `&:valid`, `:not()`, `:placeholder-shown` or `:invalid`.
 
 If you’d like to learn more about them, you can read <a href="https://css-tricks.com/form-validation-ux-html-css/" target="_blank" rel="noopener noreferer">this article from css-tricks<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>.
 
@@ -279,22 +280,26 @@ In this case, I’m also showing an svg icon inserted with a ES6 template litera
 ### Form Input Validation and Interaction Demo
 
 <figure>
-<span class="video-iphoneX">
-<span class="video-iphoneX--video">
-<video autoplay loop muted playsinline controls>
-<source src="./.webm" type="video/webm">
-<source src="./.mp4" type="video/mp4">
-Your browser does not support HTML5 video.
-<a href="./.gif">See the Contact Form With a Loading Indicator and Status Messages Gif.</a>
-</video>
-</span>
-</span>
-<figcaption>Contact Form With a Loading Indicator and Status Messages</figcaption>
+  <span class="video-iphoneX">
+    <span class="video-iphoneX--video">
+      <video autoplay loop muted playsinline controls>
+        <source src="./.webm" type="video/webm" />
+        <source src="./.mp4" type="video/mp4" />
+        Your browser does not support HTML5 video.
+        <a href="./.gif">
+          See the Contact Form With a Loading Indicator and Status Messages Gif.
+        </a>
+      </video>
+    </span>
+  </span>
+  <figcaption>
+    Contact Form With a Loading Indicator and Status Messages
+  </figcaption>
 </figure>
 
-Besides validating the form fields, you should also make sure that you’re using the wright attributes on each input field. 
+Besides validating the form fields, you should also make sure that you’re using the wright attributes on each input field.
 
-In my example, I use the `email` input type, which has auto capitalization  disabled with `autoCapitalize=off` and auto correction disabled with `autoCorrect=off`. 
+In my example, I use the `email` input type, which has auto capitalization disabled with `autoCapitalize=off` and auto correction disabled with `autoCorrect=off`.
 
 I also set the `autoComplete` attribute to `email`, so that the user's browser can autocomplete her email faster without having to type it.
 
@@ -314,7 +319,7 @@ I also set the `autoComplete` attribute to `email`, so that the user's browser c
 />
 ```
 
-The regular expression used in the `pattern` fields is used to test if the entered email is correct, particularly the part after the *@* that contains the domain name. The value stored in the `title` attribute will be shown when the input field isn’t valid. However, each browser shows this message differently, so test it first.
+The regular expression used in the `pattern` fields is used to test if the entered email is correct, particularly the part after the _@_ that contains the domain name. The value stored in the `title` attribute will be shown when the input field isn’t valid. However, each browser shows this message differently, so test it first.
 
 The `INPUT_EMAIL_ERROR[locale]` simply stores a localized version of the title since this blog is translated into spanish and english.
 
@@ -326,20 +331,22 @@ This is also pretty straightforward to do with Netlify forms since you can send 
 
 **Note:**
 
-Before you continue reading, you should note that by simply following these steps, **you won’t be fully GDPR compliant. There’s much more involved with being GDPR compliant, which I won’t show here.** 
+Before you continue reading, you should note that by simply following these steps, **you won’t be fully GDPR compliant. There’s much more involved with being GDPR compliant, which I won’t show here.**
 
 To be sure, you should talk to your own lawyer like I did.
 
 ### Disabling the Submit Button
 
-According to the current privacy laws in Europe, users can’t send you their personal information before giving you their consent to use or store their personal information. 
+According to the current privacy laws in Europe, users can’t send you their personal information before giving you their consent to use or store their personal information.
 
 So I had to add a checkbox which isn’t checked by default— that controls if the form can be submitted.
 
 This was pretty easy to do by using a boolean state variable that is set to `true` when the checkbox is enabled. Otherwise, the button is disabled by default, until the checkbox is enabled.
 
 ```jsx
-{!formSubmitted && <SubmitButton disabled={!acceptsConsentCheckbox} />}
+{
+  !formSubmitted && <SubmitButton disabled={!acceptsConsentCheckbox} />;
+}
 ```
 
 Then in your Netlify forms panel, you should see all the form submissions, with the user’s consent value.
@@ -362,7 +369,9 @@ function ContactForm({ locale }) {
 
   function encode(data) {
     return Object.keys(data)
-      .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .map(
+        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+      )
       .join("&");
   }
 
@@ -423,7 +432,12 @@ function ContactForm({ locale }) {
         data-netlify-honeypot="botfield"
         onSubmit={handleSubmit}
       >
-        <input type="hidden" name="form-name" arria-hidden="true" value="contact" />
+        <input
+          type="hidden"
+          name="form-name"
+          arria-hidden="true"
+          value="contact"
+        />
         <input
           style={{ display: "none" }}
           arria-hidden="true"
@@ -504,6 +518,6 @@ Adding a contact form on a static site generator like Gatsby.js turned out to be
 
 By using a service such as Netlify, it’s pretty straightforward to build, and it can also be GDPR compliant.
 
-Hope it helped you learn how to add one on your site. 
+Hope it helped you learn how to add one on your site.
 
 Feel free to comment bellow if you know any alternatives to using Netlify. So far I’m happy with it, but it can always be improved 🤔.

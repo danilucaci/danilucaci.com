@@ -20,30 +20,3 @@ twinPost: "gdpr mailchimp form on gatsby site"
 ## What Do You Need To Get Started
 
 First of all, you need to install the Mailchimp plugin:
-
-You can either install it with npm:
-
-```jsx
-npm install gatsby-plugin-mailchimp
-```
-
-Or with yarn:
-
-```jsx
-yarn add gatsby-plugin-mailchimp
-```
-
-Then you need to add it to your site’s `gatsby-config` file.
-
-```jsx
-plugins: [
-  ...
-  {
-    resolve: "gatsby-plugin-mailchimp",
-    options: {
-        endpoint:
-        "your-mailchimp-endpoint",
-    },
-  },
-]
-```

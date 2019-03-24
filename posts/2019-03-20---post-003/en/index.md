@@ -7,7 +7,7 @@ intro: "Having a newsletter is must for any blogger.
 |
 But before you can start building your own, first need to be sure you are compliant with Europe’s GDPR laws.
 |
-In this articule you will learn how you can build you own GDPR Compliant Mailchimp form with Gatsby.js."
+In this article you will learn how you can build you own GDPR Compliant Mailchimp form with Gatsby.js."
 snippet: "How I added a GDPR compliant Mailchimp form to my Gatsby.js personal blog."
 tags:
     - gatsby.js
@@ -37,14 +37,11 @@ Then you need to add it to your site’s `gatsby-config` file.
 
 ```jsx
 plugins: [
-  ...
-  {
+  ...{
     resolve: "gatsby-plugin-mailchimp",
     options: {
-        endpoint:
-        "your-mailchimp-endpoint",
+      endpoint: "your-mailchimp-endpoint",
     },
   },
-]
+];
 ```
-

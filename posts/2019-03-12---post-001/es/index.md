@@ -74,15 +74,10 @@ Si estas usando tu formulario en un generador de webs estáticas como Gatsby.js,
 Este paso es importante ya que si no, el formulario no aparecerá en el panel de usuario de Netlify.
 
 ```jsx
-<input
-  type="hidden"
-  name="form-name"
-  arria-hidden="true"
-  value="contact"
-/>
+<input type="hidden" name="form-name" arria-hidden="true" value="contact" />
 ```
 
-Ahora ya puedes empezar a recibir mensajes a tu formulario de contacto en tu web estática hecha con Gatsby.js 🎉. 
+Ahora ya puedes empezar a recibir mensajes a tu formulario de contacto en tu web estática hecha con Gatsby.js 🎉.
 
 ## Protección Antispam
 
@@ -119,7 +114,7 @@ Cuando el usuario tiene javascript deshabilitado en su navegador, será redirigi
 
 ### 2. El Usuario Tiene Activado Javascript en su Navegador
 
-Cuando el usuario tiene javascript habilitado en su navegador, el formulario será gestionado por la función `onSubmit={handleSubmit}`, y teniendo en cuenta de que todo se realiza de forma asíncrona, puedo mostrar un indicador del estado de carga mientras la información es enviada a los servidores de Netlify. 
+Cuando el usuario tiene javascript habilitado en su navegador, el formulario será gestionado por la función `onSubmit={handleSubmit}`, y teniendo en cuenta de que todo se realiza de forma asíncrona, puedo mostrar un indicador del estado de carga mientras la información es enviada a los servidores de Netlify.
 
 ```jsx{4,5,20}
 async function handleSubmit(e) {
@@ -173,7 +168,7 @@ function handleFormSent() {
   let timer = setTimeout(() => {
     setShowFormLoading(false);
     setShowFormSuccess(true);
-    
+
     clearTimeout(timer);
   }, 800);
 }
@@ -192,15 +187,17 @@ Con esto puedes retrasar la ejecución para ver el indicador durante más tiempo
 Cuando `formSubmitted` cambia a `true`, el componente `<EmailLoading />` se mostrará en pantalla y a la vez mostrará el indicador del estado de carga y luego los mensajes de error o éxito dependiendo de la respuesta del servidor.
 
 ```jsx
-{formSubmitted && (
-  <EmailLoading
-    showFormLoading={showFormLoading}
-    showFormSuccess={showFormSuccess}
-    showFormError={showFormError}
-    formErrorRes={formErrorRes}
-    locale={locale}
-  />
-)}
+{
+  formSubmitted && (
+    <EmailLoading
+      showFormLoading={showFormLoading}
+      showFormSuccess={showFormSuccess}
+      showFormError={showFormError}
+      formErrorRes={formErrorRes}
+      locale={locale}
+    />
+  );
+}
 ```
 
 El componente `<EmailLoading ... />` simplemente devuelve un indicador del estado de carga de la información cuando `isLoading` es equivalente a `true` o un mensaje de éxito o error cuando recibe la respuesta del servidor.
@@ -224,17 +221,21 @@ El componente `<EmailLoading ... />` simplemente devuelve un indicador del estad
 ### El Resultado Final del Indicador de Carga
 
 <figure>
-<span class="video-iphoneX">
-<span class="video-iphoneX--video">
-<video autoplay loop muted playsinline controls>
-<source src="./.webm" type="video/webm">
-<source src="./.mp4" type="video/mp4">
-Tu navegador no soporta el vídeo HTML5.
-<a href="./.gif">See the Contact Form With a Loading Indicator and Status Messages Gif.</a>
-</video>
-</span>
-</span>
-<figcaption>Contact Form With a Loading Indicator and Status Messages</figcaption>
+  <span class="video-iphoneX">
+    <span class="video-iphoneX--video">
+      <video autoplay loop muted playsinline controls>
+        <source src="./.webm" type="video/webm" />
+        <source src="./.mp4" type="video/mp4" />
+        Tu navegador no soporta el vídeo HTML5.
+        <a href="./.gif">
+          See the Contact Form With a Loading Indicator and Status Messages Gif.
+        </a>
+      </video>
+    </span>
+  </span>
+  <figcaption>
+    Contact Form With a Loading Indicator and Status Messages
+  </figcaption>
 </figure>
 
 ## Validación de Formularios con CSS
@@ -273,20 +274,24 @@ En este caso, también estoy mostrando un icono svg insertado usando un template
 ### Como Queda Mientras se Rellena el Campo
 
 <figure>
-<span class="video-iphoneX">
-<span class="video-iphoneX--video">
-<video autoplay loop muted playsinline controls>
-<source src="./.webm" type="video/webm">
-<source src="./.mp4" type="video/mp4">
-Tu navegador no soporta el vídeo HTML5.
-<a href="./.gif">See the Contact Form With a Loading Indicator and Status Messages Gif.</a>
-</video>
-</span>
-</span>
-<figcaption>Contact Form With a Loading Indicator and Status Messages</figcaption>
+  <span class="video-iphoneX">
+    <span class="video-iphoneX--video">
+      <video autoplay loop muted playsinline controls>
+        <source src="./.webm" type="video/webm" />
+        <source src="./.mp4" type="video/mp4" />
+        Tu navegador no soporta el vídeo HTML5.
+        <a href="./.gif">
+          See the Contact Form With a Loading Indicator and Status Messages Gif.
+        </a>
+      </video>
+    </span>
+  </span>
+  <figcaption>
+    Contact Form With a Loading Indicator and Status Messages
+  </figcaption>
 </figure>
 
-Aparte de la validación de la información del formulario, también deberías asegurarte de usar los atributos correctos para cada tipo de input, como, por ejemplo, en el input tipo `email` que estoy usando. Para este caso he desactivado las mayúsculas automáticas con `autoCapitalize` y la autocorección con ` autoCorrect`. También he añadido el atributo `autoComplete` para que el navegador autocomplete la información de contacto del usuario.
+Aparte de la validación de la información del formulario, también deberías asegurarte de usar los atributos correctos para cada tipo de input, como, por ejemplo, en el input tipo `email` que estoy usando. Para este caso he desactivado las mayúsculas automáticas con `autoCapitalize` y la autocorección con `autoCorrect`. También he añadido el atributo `autoComplete` para que el navegador autocomplete la información de contacto del usuario.
 
 ```jsx
 <StyledInput
@@ -304,7 +309,7 @@ Aparte de la validación de la información del formulario, también deberías a
 />
 ```
 
-El regular expression que utilizo en el atributo `pattern` sirve para comprobar si formato del email introducido es correcto, en concreto la parte que sigue después de la *@* que contiene el dominio del email. El valor guardado en `title` será el que es mostrado al usuario cuando el formato del email introducido no es válido, pero deberías tener en cuenta que cada navegador muestra el mensaje de forma distinta, así que pruébalo primero.
+El regular expression que utilizo en el atributo `pattern` sirve para comprobar si formato del email introducido es correcto, en concreto la parte que sigue después de la _@_ que contiene el dominio del email. El valor guardado en `title` será el que es mostrado al usuario cuando el formato del email introducido no es válido, pero deberías tener en cuenta que cada navegador muestra el mensaje de forma distinta, así que pruébalo primero.
 
 La variable `INPUT_EMAIL_ERROR[locale]` simplemente guarda una versión traducida del `title` ya que el blog lo he traducido al inglés y castellano.
 
@@ -325,4 +330,3 @@ Por ello, añadí el checkbox —que no puede estar marcado por defecto— que c
 ## El Formulario de Contacto con Todas las Opciones Incluidas
 
 ![Formulario de contacto creado con Gatsby.js que cumple con la RGPD.](./formulario_contacto_gatsby_js_rgpd.png "Formulario de contacto creado con Gatsby.js que cumple con la RGPD.")
-
