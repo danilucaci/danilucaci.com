@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import styled from "styled-components";
 import { FormattedDate, FormattedMessage } from "react-intl";
-
 import { theme, rem, mediaMin } from "../theme/globalStyles";
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
@@ -95,12 +94,12 @@ class LegalDoc extends Component {
   componentDidMount() {
     // Test via a getter in the options object to see if the passive property is accessed
     // https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#feature-detection
-    var supportsPassive = textPassiveEventSupport();
+    let supportsPassive = textPassiveEventSupport();
     // Use our detect's results. passive applied if supported, capture will be false either way.
     window.addEventListener(
       "scroll",
       this.handlePageScroll,
-      supportsPassive ? { passive: true } : false
+      supportsPassive ? { passive: true } : false,
     );
 
     this.handlePageScroll();
@@ -158,15 +157,10 @@ class LegalDoc extends Component {
               {(txt) => (
                 <Copy>
                   {txt}&nbsp;
-                  <FormattedDate
-                    value={lastUpdated}
-                    year="numeric"
-                    month="long"
-                    day="numeric"
-                  >
-                    {(txt) => (
-                      <Time as="time" dateTime={txt}>
-                        {txt}
+                  <FormattedDate value={lastUpdated} year="numeric" month="long" day="numeric">
+                    {(txt2) => (
+                      <Time as="time" dateTime={txt2}>
+                        {txt2}
                       </Time>
                     )}
                   </FormattedDate>
@@ -188,7 +182,7 @@ LegalDoc.propTypes = {
     locale: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     twinPost: PropTypes.string.isRequired,
-  }),
+  }).isRequired,
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
       fields: PropTypes.shape({
@@ -200,7 +194,10 @@ LegalDoc.propTypes = {
       }),
       html: PropTypes.string.isRequired,
     }),
-  }),
+  }).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default LegalDoc;
