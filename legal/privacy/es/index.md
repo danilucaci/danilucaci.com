@@ -34,7 +34,7 @@ En Marian Daniel Lucaci, trataremos tus datos personales recabados a través del
 2. Envío de información solicitada a través de los formularios dispuestos en www.danilucaci.com.
 3. Remitir boletines (newsletters), así como comunicaciones comerciales de promociones y/o publicidad de www.danilucaci.com y del sector.
 
-Te recordamos que puedes oponerte al envío de comunicaciones comerciales por cualquier vía y en cualquier  momento, remitiendo un correo electrónico a la dirección anteriormente indicada.
+Te recordamos que puedes oponerte al envío de comunicaciones comerciales por cualquier vía y en cualquier momento, remitiendo un correo electrónico a la dirección anteriormente indicada.
 
 Los campos de dichos registros son de cumplimentación obligatoria, siendo imposible realizar las finalidades expresadas si no se aportan esos datos.
 
@@ -57,23 +57,29 @@ Los datos no se comunicarán a ningún tercero ajeno a Marian Daniel Lucaci, sal
 
 Como encargados de tratamiento, tenemos contratados a los siguientes proveedores de servicios, habiéndose comprometido al cumplimiento de las disposiciones normativas, de aplicación en materia de protección de datos, en el momento de su contratación:
 
-##### Hosting dominio 
-* **<a href="https://www.ionos.es/" target="_blank" rel="noopener noreferrer">ionos.es<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>:** Utilizo la empresa ionos.es como proveedor de nombre de dominio para la página web www.danilucaci.com. Su política de privacidad se puede consultar en el siguiente enlace: <a href="https://www.ionos.es/terms-gtc/terms-privacy/" target="_blank" rel="noopener noreferrer">política de privacidad ionos.es<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
+##### Hosting dominio
 
-##### Hosting web 
-* **<a href="https://www.netlify.com/" target="_blank" rel="noopener noreferrer">netlify.com<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>:** Utilizo la empresa netlify.com como proveedor de hosting para la página web www.danilucaci.com. Su política de privacidad se puede consultar en el siguiente enlace: <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">política de privacidad netlify.com<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
+- **<a href="https://www.ionos.es/" target="_blank" rel="noopener noreferrer">ionos.es<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>:** Utilizo la empresa ionos.es como proveedor de nombre de dominio para la página web www.danilucaci.com. Su política de privacidad se puede consultar en el siguiente enlace: <a href="https://www.ionos.es/terms-gtc/terms-privacy/" target="_blank" rel="noopener noreferrer">política de privacidad ionos.es<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
+
+##### Hosting web
+
+- **<a href="https://www.netlify.com/" target="_blank" rel="noopener noreferrer">netlify.com<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>:** Utilizo la empresa netlify.com como proveedor de hosting para la página web www.danilucaci.com. Su política de privacidad se puede consultar en el siguiente enlace: <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">política de privacidad netlify.com<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
 
 ##### Comentarios en el Blog
-* **<a href="https://www.disqus.com/" target="_blank" rel="noopener noreferrer">disqus.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>:** Utilizo los servicios de la empresa disqus.com para poder tener comentarios en las páginas del blog. Su política de privacidad se puede consultar en el siguiente enlace: <a href="https://help.disqus.com/terms-and-policies/disqus-privacy-policy" target="_blank" rel="noopener noreferrer">política de privacidad de disqus.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
+
+- **<a href="https://www.disqus.com/" target="_blank" rel="noopener noreferrer">disqus.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>:** Utilizo los servicios de la empresa disqus.com para poder tener comentarios en las páginas del blog. Su política de privacidad se puede consultar en el siguiente enlace: <a href="https://help.disqus.com/terms-and-policies/disqus-privacy-policy" target="_blank" rel="noopener noreferrer">política de privacidad de disqus.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
 
 ##### Servicios de Mensajería y envío de boletines electrónicos
-* **<a href="https://mailchimp.com/en/" target="_blank" rel="noopener noreferrer">mailchimp.com<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>:** Utilizo el servicio de la empresa mailchimp.com para poder enviar boletínes electrónicos o newsletters a los usuarios de esta página www.danilucaci.com. Su política de privacidad se puede consultar en el siguiente enlace: <a href="https://mailchimp.com/legal/" target="_blank" rel="noopener noreferrer">política de privacidad mailchimp.com<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a> 
+
+- **<a href="https://mailchimp.com/en/" target="_blank" rel="noopener noreferrer">mailchimp.com<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>:** Utilizo el servicio de la empresa mailchimp.com para poder enviar boletínes electrónicos o newsletters a los usuarios de esta página www.danilucaci.com. Su política de privacidad se puede consultar en el siguiente enlace: <a href="https://mailchimp.com/legal/" target="_blank" rel="noopener noreferrer">política de privacidad mailchimp.com<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
 
 ##### Proveedor de correo electrónico
-* **<a href="https://www.zoho.com/" target="_blank" rel="noopener noreferrer">zoho.com<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>:** Utilizo los servicios de la empresa zoho.com como proveedor de correo electrónico personal para poder comunicarme con los posibles clientes de www.danilucaci.com o con cualquier persona interesada en ponerse en contacto conmigo. Su política de privacidad se puede consultar en el siguiente enlace: <a href="https://www.zoho.com/privacy.html" target="_blank" rel="noopener noreferrer">política de privacidad zoho.com<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a> 
+
+- **<a href="https://www.zoho.com/" target="_blank" rel="noopener noreferrer">zoho.com<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>:** Utilizo los servicios de la empresa zoho.com como proveedor de correo electrónico personal para poder comunicarme con los posibles clientes de www.danilucaci.com o con cualquier persona interesada en ponerse en contacto conmigo. Su política de privacidad se puede consultar en el siguiente enlace: <a href="https://www.zoho.com/privacy.html" target="_blank" rel="noopener noreferrer">política de privacidad zoho.com<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
 
 ##### Cliente de correo electrónico
-* **<a href="https://sparkmailapp.com/es/" target="_blank" rel="noopener noreferrer">sparkmailapp.com<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>:** Utilizo los servicios de la empresa sparkmailapp.com como cliente de gestión de correo electrónico personal para poder comunicarme con los posibles clientes de www.danilucaci.com o con cualquier persona interesada en ponerse en contacto conmigo. Su política de privacidad se puede consultar en el siguiente enlace: <a href="https://sparkmailapp.com/es/privacy" target="_blank" rel="noopener noreferrer">política de privacidad sparkmailapp.com<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a> 
+
+- **<a href="https://sparkmailapp.com/es/" target="_blank" rel="noopener noreferrer">sparkmailapp.com<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>:** Utilizo los servicios de la empresa sparkmailapp.com como cliente de gestión de correo electrónico personal para poder comunicarme con los posibles clientes de www.danilucaci.com o con cualquier persona interesada en ponerse en contacto conmigo. Su política de privacidad se puede consultar en el siguiente enlace: <a href="https://sparkmailapp.com/es/privacy" target="_blank" rel="noopener noreferrer">política de privacidad sparkmailapp.com<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
 
 ## Datos Recopilados Por Usuarios De Los Servicios
 
@@ -86,6 +92,7 @@ Marian Daniel Lucaci informa de que, como prestador de servicio de alojamiento d
 La comunicación de datos a las Fuerzas y Cuerpos del Estado se hará en virtud a lo dispuesto en la normativa sobre protección de datos personales.
 
 ## Derechos Propiedad Intelectual
+
 www.danilucaci.com
 
 Marian Daniel Lucaci es titular de todos los derechos de autor, propiedad intelectual, industrial, "know how" y cuantos otros derechos guardan relación con los contenidos del sitio web www.danilucaci.com y los servicios ofertados en el mismo, así como de los programas necesarios para su implementación y la información relacionada.
@@ -105,11 +112,12 @@ Para toda actuación que exceda del cumplimiento del contrato, el usuario necesi
 ## Propiedad Intelectual De Los Contenidos Alojados
 
 Se prohíbe el uso contrario a la legislación sobre propiedad intelectual de los servicios prestados por Marian Daniel Lucaci y, en particular de:
-* La utilización que resulte contraria a las leyes españolas o que infrinja los derechos de terceros.
-* La publicación o la transmisión de cualquier contenido que, a juicio de Marian Daniel Lucaci, resulte violento, obsceno, abusivo, ilegal, racial, xenófobo o difamatorio.
-* Los cracks, números de serie de programas o cualquier otro contenido que vulnere derechos de la propiedad intelectual de terceros.
-* La recogida y/o utilización de datos personales de otros usuarios sin su consentimiento expreso o contraviniendo lo dispuesto en el Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protección de las personas físicas en lo que respecta al tratamiento de datos personales y a la libre circulación de los mismos.
-* La utilización del servidor de correo del dominio y de las direcciones de correo electrónico para el envío de correo masivo no deseado.
+
+- La utilización que resulte contraria a las leyes españolas o que infrinja los derechos de terceros.
+- La publicación o la transmisión de cualquier contenido que, a juicio de Marian Daniel Lucaci, resulte violento, obsceno, abusivo, ilegal, racial, xenófobo o difamatorio.
+- Los cracks, números de serie de programas o cualquier otro contenido que vulnere derechos de la propiedad intelectual de terceros.
+- La recogida y/o utilización de datos personales de otros usuarios sin su consentimiento expreso o contraviniendo lo dispuesto en el Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protección de las personas físicas en lo que respecta al tratamiento de datos personales y a la libre circulación de los mismos.
+- La utilización del servidor de correo del dominio y de las direcciones de correo electrónico para el envío de correo masivo no deseado.
 
 El usuario tiene toda la responsabilidad sobre el contenido de su web, la información transmitida y almacenada, los enlaces de hipertexto, las reivindicaciones de terceros y las acciones legales en referencia a propiedad intelectual, derechos de terceros y protección de menores.
 

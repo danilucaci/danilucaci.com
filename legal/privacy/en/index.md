@@ -16,11 +16,11 @@ Marian Daniel Lucaci under current legislation regarding personal data protectio
 
 Personal data collection and processing are aimed at maintaining business relationship and performance in tasks of information, training, counseling and other activities.
 
-Data only will be transferred to those entities that are necessary for the sole purpose of complying with the purpose stated above. 
+Data only will be transferred to those entities that are necessary for the sole purpose of complying with the purpose stated above.
 
 Marian Daniel Lucaci will adopt the necessary measures to ensure the security, integrity and confidentiality for data in accordance with the provisions in the EU General Data Protection Regulation (GDPR).
 
-User may at any time exercise their rights in access, opposition, rectification, limitation, portability and cancellation recognized in Data Protection Regulation. User can exercise these rights free via email to: <a href="mailto:info@danilucaci.com">info@danilucaci.com</a> or in the address: Carrer Anastasi Pinós, 20, 2º, 2ª, C.P. 25005 - Lleida (Lleida). 
+User may at any time exercise their rights in access, opposition, rectification, limitation, portability and cancellation recognized in Data Protection Regulation. User can exercise these rights free via email to: <a href="mailto:info@danilucaci.com">info@danilucaci.com</a> or in the address: Carrer Anastasi Pinós, 20, 2º, 2ª, C.P. 25005 - Lleida (Lleida).
 
 You represent that all information provided by him are true and correct and undertake to keep them updated, communicating changes to Marian Daniel Lucaci.
 
@@ -29,6 +29,7 @@ You represent that all information provided by him are true and correct and unde
 ### What Purpose Will We Treat Your Personal Data
 
 In Marian Daniel Lucaci, we will treat your personal data collected through the Website: www.danilucaci.com, with the following purposes:
+
 1. In case of contracting the goods and services offered through: www.danilucaci.com, to maintain the contractual relationship, as well as the management, administration, information, provision and improvement of the service.
 2. Sending requested information through the forms provided at www.danilucaci.com.
 3. Send newsletters, as well as commercial communications of promotions and/or advertising of Marian Daniel Lucaci, and the sector.
@@ -44,6 +45,7 @@ Personal data provided will be kept as long as the commercial relationship is ma
 ## Legitimation
 
 Treatment for your data will be done with following legal bases that legitimize it:
+
 1. Request for information and/or the contracting of the services of Marian Daniel Lucaci, whose terms and conditions will be made available to you in any case, prior to a possible contracting.
 2. Free, specific, informed and unambiguous consent, as we inform you by making available this privacy policy, which after reading the same, if you agree, you can accept by a statement or clear action affirmative, such as the marking of a box provided for this purpose.
 
@@ -56,22 +58,28 @@ Data will not be communicated to any third party outside Marian Daniel Lucaci, e
 As treatment managers, we have hired following service providers, having committed to compliance with regulatory provisions, applicable in terms for data protection, at time for hiring:
 
 ##### Domain Hosting
-* **<a href="https://www.ionos.com/" target="_blank" rel="noopener noreferrer">ionos.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>:** I use the services provided by ionos.com as a domain name hosting provider for www.danilucaci.com. Their privacy policy can be read in the following link: <a href="https://www.ionos.com/terms-gtc/terms-privacy/" target="_blank" rel="noopener noreferrer">ionos.com privacy policy<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
 
-##### Web Hosting 
-* **<a href="https://www.netlify.com/" target="_blank" rel="noopener noreferrer">netlify.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>:** I use the services provided by netlify.com as a hosting provider for www.danilucaci.com. Their privacy policy can be read in the following link: <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">netlify.com privacy policy<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
+- **<a href="https://www.ionos.com/" target="_blank" rel="noopener noreferrer">ionos.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>:** I use the services provided by ionos.com as a domain name hosting provider for www.danilucaci.com. Their privacy policy can be read in the following link: <a href="https://www.ionos.com/terms-gtc/terms-privacy/" target="_blank" rel="noopener noreferrer">ionos.com privacy policy<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
+
+##### Web Hosting
+
+- **<a href="https://www.netlify.com/" target="_blank" rel="noopener noreferrer">netlify.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>:** I use the services provided by netlify.com as a hosting provider for www.danilucaci.com. Their privacy policy can be read in the following link: <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">netlify.com privacy policy<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
 
 ##### Comments on the Blog
-* **<a href="https://www.disqus.com/" target="_blank" rel="noopener noreferrer">disqus.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>:** I use the services provided by disqus.com so that I can use comments on the blog pages of www.danilucaci.com. Their privacy policy can be read in the following link: <a href="https://help.disqus.com/terms-and-policies/disqus-privacy-policy" target="_blank" rel="noopener noreferrer">disqus.com privacy policy<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
+
+- **<a href="https://www.disqus.com/" target="_blank" rel="noopener noreferrer">disqus.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>:** I use the services provided by disqus.com so that I can use comments on the blog pages of www.danilucaci.com. Their privacy policy can be read in the following link: <a href="https://help.disqus.com/terms-and-policies/disqus-privacy-policy" target="_blank" rel="noopener noreferrer">disqus.com privacy policy<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
 
 ##### Services Used To Send Newsletters
-* **<a href="https://mailchimp.com/en/" target="_blank" rel="noopener noreferrer">mailchimp.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>:** I use the services provided by mailchimp.com so that I can send newsletters to the subscribers of www.danilucaci.com. Their privacy policy can be read in the following link: <a href="https://mailchimp.com/legal/" target="_blank" rel="noopener noreferrer">mailchimp.com privacy policy<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> 
+
+- **<a href="https://mailchimp.com/en/" target="_blank" rel="noopener noreferrer">mailchimp.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>:** I use the services provided by mailchimp.com so that I can send newsletters to the subscribers of www.danilucaci.com. Their privacy policy can be read in the following link: <a href="https://mailchimp.com/legal/" target="_blank" rel="noopener noreferrer">mailchimp.com privacy policy<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
 
 ##### Email Service Provider
-* **<a href="https://www.zoho.com/" target="_blank" rel="noopener noreferrer">zoho.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>:** I use the services provided by zoho.com as a personal email provider so that I can communicate with the clients of www.danilucaci.com or any person interested in contacting me. Their privacy policy can be read in the following link: <a href="https://www.zoho.com/privacy.html" target="_blank" rel="noopener noreferrer">zoho.com privacy policy<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> 
+
+- **<a href="https://www.zoho.com/" target="_blank" rel="noopener noreferrer">zoho.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>:** I use the services provided by zoho.com as a personal email provider so that I can communicate with the clients of www.danilucaci.com or any person interested in contacting me. Their privacy policy can be read in the following link: <a href="https://www.zoho.com/privacy.html" target="_blank" rel="noopener noreferrer">zoho.com privacy policy<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
 
 ##### Email Client
-* **<a href="https://sparkmailapp.com/" target="_blank" rel="noopener noreferrer">sparkmailapp.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>:** I use the services provided by sparkmailapp.com as a personal email client so that I can communicate with the clients of www.danilucaci.com or any person interested in contacting me. Their privacy policy can be read in the following link: <a href="https://sparkmailapp.com/privacy" target="_blank" rel="noopener noreferrer">sparkmailapp.com privacy policy<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> 
+
+- **<a href="https://sparkmailapp.com/" target="_blank" rel="noopener noreferrer">sparkmailapp.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>:** I use the services provided by sparkmailapp.com as a personal email client so that I can communicate with the clients of www.danilucaci.com or any person interested in contacting me. Their privacy policy can be read in the following link: <a href="https://sparkmailapp.com/privacy" target="_blank" rel="noopener noreferrer">sparkmailapp.com privacy policy<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
 
 ## Data Collected By Service Users
 
@@ -104,11 +112,12 @@ Marian Daniel Lucaci, being forbidden to user for access, modify, view the confi
 ## Intellectual Property Content Hosted
 
 Use contrary to intellectual property law services provided by Marian Daniel Lucaci and in particular:
-* Use that is contrary to Spanish laws or which infringes the personal rights.
-* Publication or transmission any content that, in Marian Daniel Lucaci opinion, is violent, obscene, abusive, illegal, racist, xenophobic or defamatory.
-* Cracks, software serial numbers or any other content that violates intellectual third parties property right.
-* Collection and/or use personal data from other users without their express consent or contrary to the EU General Data Protection Regulation (GDPR) provisions.
-* Use a domain mail server and e-mail addresses for sending unsolicited bulk.
+
+- Use that is contrary to Spanish laws or which infringes the personal rights.
+- Publication or transmission any content that, in Marian Daniel Lucaci opinion, is violent, obscene, abusive, illegal, racist, xenophobic or defamatory.
+- Cracks, software serial numbers or any other content that violates intellectual third parties property right.
+- Collection and/or use personal data from other users without their express consent or contrary to the EU General Data Protection Regulation (GDPR) provisions.
+- Use a domain mail server and e-mail addresses for sending unsolicited bulk.
 
 User has full responsibility in the content from its website, the information transmitted and stored, hypertext links, third party claims and legal actions in reference to intellectual property rights and minors protection.
 
@@ -131,4 +140,3 @@ Pursuant to LSSI. Marian Daniel Lucaci will not send advertising or promotional 
 In cases where there are some prior contractual relationships, Marian Daniel Lucaci is allowed to send commercial communications relating to products or services which are similar to those initially made a contract with the customer.
 
 In any case, user can request that you do not get more commercial information through channels customer, upon proof of identity.
-
