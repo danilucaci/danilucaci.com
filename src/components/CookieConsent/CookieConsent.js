@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
 import { graphql, StaticQuery } from "gatsby";
 
@@ -70,69 +70,53 @@ const StyledGhostButton = styled(DarkGhostButton)`
   margin-top: ${rem(8)};
 `;
 
-const CookieConsent = (props) => {
-  return (
-    <StyledCookieConsent showConsent={props.askCookieConsent}>
-      <CopyContainer>
-        <FormattedMessage id="cookieMessage">
-          {(txt) => <StyledCopy>{txt} </StyledCopy>}
-        </FormattedMessage>
-        <StaticQuery
-          query={COOKIE_CONSENT_QUERY}
-          render={(data) => {
-            let localizedDocsList = data.allMarkdownRemark.edges
-              .map((edge) => ({
-                slug: edge.node.fields.slug,
-                title: edge.node.frontmatter.title,
-                locale: edge.node.frontmatter.locale,
-              }))
-              .filter((edge) => edge.locale === props.pageLocale);
+const CookieConsent = (props) => (
+  <StyledCookieConsent showConsent={props.askCookieConsent}>
+    <CopyContainer>
+      <FormattedMessage id="cookieMessage">
+        {(txt) => <StyledCopy>{txt} </StyledCopy>}
+      </FormattedMessage>
+      <StaticQuery
+        query={COOKIE_CONSENT_QUERY}
+        render={(data) => {
+          let localizedDocsList = data.allMdx.edges
+            .map((edge) => ({
+              slug: edge.node.fields.slug,
+              title: edge.node.frontmatter.title,
+              locale: edge.node.frontmatter.locale,
+            }))
+            .filter((edge) => edge.locale === props.pageLocale);
 
-            return (
-              <>
-                {localizedDocsList.map((localizedDoc) => (
-                  <FormattedMessage
-                    id="cookieLearnMore"
-                    key={localizedDoc.title}
-                  >
-                    {(txt) => (
-                      <LearnMoreLink
-                        to={localizedDoc.slug}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {txt}
-                      </LearnMoreLink>
-                    )}
-                  </FormattedMessage>
-                ))}
-              </>
-            );
-          }}
-        />
-      </CopyContainer>
+          return (
+            <React.Fragment>
+              {localizedDocsList.map((localizedDoc) => (
+                <FormattedMessage id="cookieLearnMore" key={localizedDoc.title}>
+                  {(txt) => (
+                    <LearnMoreLink to={localizedDoc.slug} target="_blank" rel="noopener noreferrer">
+                      {txt}
+                    </LearnMoreLink>
+                  )}
+                </FormattedMessage>
+              ))}
+            </React.Fragment>
+          );
+        }}
+      />
+    </CopyContainer>
 
-      <ButtonsContainer>
-        <FormattedMessage id="cookieAccept">
-          {(txt) => (
-            <StyledPrimaryButton onClick={props.acceptsCookies}>
-              {txt}
-            </StyledPrimaryButton>
-          )}
-        </FormattedMessage>
-        <FormattedMessage id="cookieDeny">
-          {(txt) => (
-            <StyledGhostButton onClick={props.deniesCookies}>
-              {txt}
-            </StyledGhostButton>
-          )}
-        </FormattedMessage>
-      </ButtonsContainer>
-    </StyledCookieConsent>
-  );
-};
+    <ButtonsContainer>
+      <FormattedMessage id="cookieAccept">
+        {(txt) => <StyledPrimaryButton onClick={props.acceptsCookies}>{txt}</StyledPrimaryButton>}
+      </FormattedMessage>
+      <FormattedMessage id="cookieDeny">
+        {(txt) => <StyledGhostButton onClick={props.deniesCookies}>{txt}</StyledGhostButton>}
+      </FormattedMessage>
+    </ButtonsContainer>
+  </StyledCookieConsent>
+);
 
 CookieConsent.propTypes = {
+  askCookieConsent: PropTypes.bool.isRequired,
   acceptsCookies: PropTypes.func.isRequired,
   deniesCookies: PropTypes.func.isRequired,
   pageLocale: PropTypes.string.isRequired,
@@ -143,12 +127,7 @@ export default CookieConsent;
 const COOKIE_CONSENT_QUERY = graphql`
   query COOKIE_CONSENT_QUERY {
     allMarkdownRemark(
-      filter: {
-        frontmatter: {
-          category: { eq: "legal" }
-          forCookieConsent: { eq: true }
-        }
-      }
+      filter: { frontmatter: { category: { eq: "legal" }, forCookieConsent: { eq: true } } }
     ) {
       edges {
         node {
