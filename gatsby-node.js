@@ -37,6 +37,15 @@ function slicePosts(array, currentPage) {
   return array.slice(0).slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage);
 }
 
+// For importing jsx components in mdx
+// exports.onCreateWebpackConfig = ({ actions }) => {
+//   actions.setWebpackConfig({
+//     resolve: {
+//       modules: [path.resolve(__dirname, "src"), "node_modules"],
+//     },
+//   });
+// };
+
 exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions;
 
@@ -94,6 +103,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
   let slug;
 
+  // if (node.internal.type === "Mdx") {
   if (node.internal.type === "MarkdownRemark") {
     const fileNode = getNode(node.parent);
     const parsedFilePath = path.parse(fileNode.relativePath);
