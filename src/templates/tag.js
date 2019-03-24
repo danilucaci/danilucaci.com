@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
 
 import SEO from "../components/SEO/SEO";
@@ -9,7 +9,7 @@ import Layout from "../components/Layout";
 import SiteHeader from "../components/SiteHeader/SiteHeader";
 import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
-import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
+import { theme, mediaMin, rem } from "../theme/globalStyles";
 import PostListing from "../components/PostListing/PostListing";
 import Tags from "../components/Tags/Tags";
 import Pagination from "../components/Pagination/Pagination";
@@ -103,7 +103,7 @@ const TagPage = (props) => {
     locale,
   } = props.pageContext;
 
-  let allTags = props.data.allMarkdownRemark.tags.map((tag) => tag.fieldValue);
+  let allTags = props.data.allMarkdownRemark.tags.map((tagItem) => tagItem.fieldValue);
 
   let twinPostURL = "";
 
@@ -118,15 +118,9 @@ const TagPage = (props) => {
   }
 
   if (locale === "es" && currentPage > 1) {
-    twinPostURL = (
-      paginationPathPrefix +
-      localePaths["en"].paginationName +
-      currentPage
-    ).slice(4);
+    twinPostURL = (paginationPathPrefix + localePaths["en"].paginationName + currentPage).slice(4);
   } else if (locale === "es" && currentPage === 1) {
-    twinPostURL = (
-      localePaths["en"].siteLocalePrefix + paginationPathPrefix
-    ).slice(4);
+    twinPostURL = (localePaths["en"].siteLocalePrefix + paginationPathPrefix).slice(4);
   }
 
   return (
@@ -137,11 +131,7 @@ const TagPage = (props) => {
         currentPage="tags"
         currentPath={props.location.pathname}
       />
-      <SiteHeader
-        locale={locale}
-        twinPostURL={twinPostURL}
-        currentPath={props.location.pathname}
-      />
+      <SiteHeader locale={locale} twinPostURL={twinPostURL} currentPath={props.location.pathname} />
       <Main role="main" id="main">
         <TagWrapper>
           <TagHeader>
@@ -188,12 +178,16 @@ TagPage.propTypes = {
     totalPagesInBlog: PropTypes.number.isRequired,
     paginationPathPrefix: PropTypes.string.isRequired,
     edges: PropTypes.arrayOf(PropTypes.object).isRequired,
-  }),
+  }).isRequired,
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
       tags: PropTypes.arrayOf(PropTypes.object).isRequired,
     }),
-  }),
+  }).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+    href: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default TagPage;
@@ -203,9 +197,7 @@ export const pageQuery = graphql`
     allMarkdownRemark(
       limit: 200
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: {
-        frontmatter: { posted: { eq: true }, category: { eq: "blog" } }
-      }
+      filter: { frontmatter: { posted: { eq: true }, category: { eq: "blog" } } }
     ) {
       tags: group(field: frontmatter___tags) {
         fieldValue
