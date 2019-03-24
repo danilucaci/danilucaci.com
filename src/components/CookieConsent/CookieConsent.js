@@ -79,7 +79,7 @@ const CookieConsent = (props) => (
       <StaticQuery
         query={COOKIE_CONSENT_QUERY}
         render={(data) => {
-          let localizedDocsList = data.allMdx.edges
+          let localizedDocsList = data.allMarkdownRemark.edges
             .map((edge) => ({
               slug: edge.node.fields.slug,
               title: edge.node.frontmatter.title,
