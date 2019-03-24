@@ -18,11 +18,7 @@ import { HR } from "../components/HR/HR";
 import SiblingPosts from "../components/SiblingPosts/SiblingPosts";
 import AuthorCard from "../components/AuthorCard/AuthorCard";
 
-import {
-  calculateScroll,
-  textPassiveEventSupport,
-  addEventListenersToCopyButtons,
-} from "../helpers/helpers";
+import { calculateScroll, textPassiveEventSupport } from "../helpers/helpers";
 
 const ArticleWrapper = styled.article`
   & footer {
@@ -570,8 +566,6 @@ const PostContent = styled.section`
 // }).Compiler;
 
 class CaseStudy extends Component {
-  state = {};
-
   componentDidMount() {
     // Test via a getter in the options object to see if the passive property is accessed
     // https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#feature-detection
@@ -687,7 +681,7 @@ class CaseStudy extends Component {
                   {(txt) => <h2>{txt}</h2>}
                 </FormattedMessage>
                 {introCopy.map((entry) => (
-                  <p key={addEventListenersToCopyButtons}>{entry}</p>
+                  <p key={entry}>{entry}</p>
                 ))}
               </OverviewIntro>
               <OverviewItems>
@@ -696,8 +690,8 @@ class CaseStudy extends Component {
                     {(txt) => <h4>{txt}</h4>}
                   </FormattedMessage>
                   <ul>
-                    {tools.map((entry) => (
-                      <li key={entry}>{entry}</li>
+                    {tools.map((tool) => (
+                      <li key={tool}>{tool}</li>
                     ))}
                   </ul>
                 </OverviewItem>
@@ -706,8 +700,8 @@ class CaseStudy extends Component {
                     {(txt) => <h4>{txt}</h4>}
                   </FormattedMessage>
                   <ul>
-                    {deliverables.map((entry) => (
-                      <li key={addEventListenersToCopyButtons}>{entry}</li>
+                    {deliverables.map((deliverable) => (
+                      <li key={deliverable}>{deliverable}</li>
                     ))}
                   </ul>
                 </OverviewItem>
@@ -716,8 +710,8 @@ class CaseStudy extends Component {
                     {(txt) => <h4>{txt}</h4>}
                   </FormattedMessage>
                   <ul>
-                    {methods.map((entry) => (
-                      <li key={addEventListenersToCopyButtons}>{entry}</li>
+                    {methods.map((method) => (
+                      <li key={method}>{method}</li>
                     ))}
                   </ul>
                 </OverviewItem>
@@ -726,15 +720,14 @@ class CaseStudy extends Component {
                     {(txt) => <h4>{txt}</h4>}
                   </FormattedMessage>
                   <ul>
-                    {links.map((entry) => (
-                      <li key={addEventListenersToCopyButtons}>
+                    {links.map((link) => (
+                      <li key={link.name}>
                         <OverviewListLink
-                          href={entry.link}
+                          href={link.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          key={addEventListenersToCopyButtons}
                         >
-                          {entry.name}
+                          {link.name}
                         </OverviewListLink>
                       </li>
                     ))}
@@ -792,12 +785,16 @@ CaseStudy.propTypes = {
       html: PropTypes.string.isRequired,
     }),
   }).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+    href: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default CaseStudy;
 
 export const pageQuery = graphql`
-  query WorkEntryBySlug($slug: String) {
+  query CaseStudyQuery($slug: String) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
