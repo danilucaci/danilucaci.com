@@ -3,11 +3,10 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import styled from "styled-components";
-import rehypeReact from "rehype-react";
 import Disqus from "disqus-react";
 import { FormattedMessage } from "react-intl";
 
-import { theme, rem, mediaMin, mediaMax } from "../theme/globalStyles";
+import { theme, rem, mediaMin } from "../theme/globalStyles";
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
 import SiteHeader from "../components/SiteHeader/SiteHeader";
@@ -441,7 +440,6 @@ class Post extends Component {
               </StyledIntroContainer>
             </StyledPageHeader>
             <PostContent dangerouslySetInnerHTML={{ __html: postNode.html }} />
-            {/* <PostContent>{renderAst(postNode.htmlAst)}</PostContent> */}
 
             <BottomHR />
 
@@ -515,15 +513,18 @@ Post.propTypes = {
       }),
       timeToRead: PropTypes.number.isRequired,
       html: PropTypes.string.isRequired,
-      // htmlAst: PropTypes.object.isRequired,
     }),
+  }).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+    href: PropTypes.string.isRequired,
   }).isRequired,
 };
 
 export default Post;
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String) {
+  query BlogPostQuery($slug: String) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       timeToRead
