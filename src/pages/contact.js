@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
 
 import SEO from "../components/SEO/SEO";
@@ -8,7 +8,7 @@ import Layout from "../components/Layout";
 import SiteHeader from "../components/SiteHeader/SiteHeader";
 import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
-import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
+import { theme, mediaMin, rem } from "../theme/globalStyles";
 import { Copy } from "../components/Copy/Copy";
 import { HR } from "../components/HR/HR";
 import ContactForm from "../components/ContactForm/ContactForm";
@@ -184,11 +184,7 @@ const ContactPage = (props) => {
         currentPage="contact"
         currentPath={props.location.pathname}
       />
-      <SiteHeader
-        locale={locale}
-        twinPostURL={twinPostURL}
-        currentPath={props.location.pathname}
-      />
+      <SiteHeader locale={locale} twinPostURL={twinPostURL} currentPath={props.location.pathname} />
       <Main role="main" id="main">
         <ContactMeWrapper>
           <FormattedMessage id="contactPageTitle">
@@ -205,9 +201,7 @@ const ContactPage = (props) => {
               {(txt) => (
                 <Copy>
                   {txt}{" "}
-                  <StyledLink href="mailto:info@danilucaci.com">
-                    info@danilucaci.com
-                  </StyledLink>
+                  <StyledLink href="mailto:info@danilucaci.com">info@danilucaci.com</StyledLink>
                 </Copy>
               )}
             </FormattedMessage>
@@ -226,13 +220,13 @@ const ContactPage = (props) => {
                 <SayHiDescription>
                   {txt}
                   <FormattedMessage id="contactPageOtherDescriptionLink">
-                    {(txt) => (
+                    {(txt2) => (
                       <StyledLink
                         target="_blank"
                         rel="noopener noreferrer"
                         href="https://twitter.com/danilucaci"
                       >
-                        {txt}
+                        {txt2}
                       </StyledLink>
                     )}
                   </FormattedMessage>
@@ -254,7 +248,11 @@ const ContactPage = (props) => {
 ContactPage.propTypes = {
   pageContext: PropTypes.shape({
     locale: PropTypes.string.isRequired,
-  }),
+  }).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+    href: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default ContactPage;

@@ -9,7 +9,7 @@ import SiteHeader from "../components/SiteHeader/SiteHeader";
 import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
 import { Copy } from "../components/Copy/Copy";
-import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
+import { theme, mediaMin, rem } from "../theme/globalStyles";
 import LocaleLink from "../components/LocaleLink/LocaleLink";
 
 const StyledThanksPage = styled.section`
@@ -86,11 +86,7 @@ const ThanksPage = (props) => {
         currentPage="thanks"
         currentPath={props.location.pathname}
       />
-      <SiteHeader
-        twinPostURL={twinPostURL}
-        locale={locale}
-        currentPath={props.location.pathname}
-      />
+      <SiteHeader twinPostURL={twinPostURL} locale={locale} currentPath={props.location.pathname} />
       <Main role="main" id="main">
         <StyledThanksPage>
           <FormattedMessage id="thanksTitle">
@@ -115,7 +111,11 @@ const ThanksPage = (props) => {
 ThanksPage.propTypes = {
   pageContext: PropTypes.shape({
     locale: PropTypes.string.isRequired,
-  }),
+  }).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+    href: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default ThanksPage;
