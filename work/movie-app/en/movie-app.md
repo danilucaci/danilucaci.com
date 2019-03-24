@@ -46,9 +46,9 @@ twinPost: "Compra de Entradas para un Cine - Estudio de Caso UX"
 
 When I began working on this project I had some initial assumptions that I wanted to validate with user research to see if other people had the same problems and if they had other problems that I haven't identified yet.
 
-* People think that ticket prices are too high if they would like to see several movies each month.
-* Current websites and apps have outdated designs.
-* People don't have a way to search, filter or sort for movies in the app/website.
+- People think that ticket prices are too high if they would like to see several movies each month.
+- Current websites and apps have outdated designs.
+- People don't have a way to search, filter or sort for movies in the app/website.
 
 To validate my initial assumptions I used a survey and I interviewed 5 users.
 
@@ -56,50 +56,50 @@ The initial research would also help me learn more about them and answer some of
 
 ## Previous Questions
 
-* How are people deciding which movie to see?
-* How are they finding out more about the movie they would like to see?
-* How many movies do they see each month?
-    * Why this many?
-* Do they prefer to see movies in a cinema or at home?
-    * Why?
-* How are they seeing the movies? Alone, with a date, in a group?
-    * Why?
-* Which difficulties are they having when:
-    * Searching for a cinema
-    * Searching for a movie to see
-    * Using the available websites to purchase movie tickets
-    * Selecting seats
-    * Buying and paying for the tickets
+- How are people deciding which movie to see?
+- How are they finding out more about the movie they would like to see?
+- How many movies do they see each month?
+  - Why this many?
+- Do they prefer to see movies in a cinema or at home?
+  - Why?
+- How are they seeing the movies? Alone, with a date, in a group?
+  - Why?
+- Which difficulties are they having when:
+  - Searching for a cinema
+  - Searching for a movie to see
+  - Using the available websites to purchase movie tickets
+  - Selecting seats
+  - Buying and paying for the tickets
 
 ## Survey Findings
 
 Based on the survey responses I found that:
 
-* 83% of people feel that prices are too high
-* 78% of people use external websites or apps to learn more about a movie
-* 62% of people decide with one or more persons which one to see
+- 83% of people feel that prices are too high
+- 78% of people use external websites or apps to learn more about a movie
+- 62% of people decide with one or more persons which one to see
 
 ## User Interview Findings
 
-From the user interviews that I did,  I had the following insights:
+From the user interviews that I did, I had the following insights:
 
-* Movie ticket prices are too high.
-* Snacks are too expensive
-* Some of people interviewed prefer to bring their own snacks
-* They would consider seeing more movies if the cinema had offers or discounts
-* They think the overall design is pretty ugly
-* They use google o services such as imdb.com to learn more about each movie
-* They miss having a tool that shows them which movies are available on a particular time of day or on a specific day
-* They feel that they will be spammed when they have to sign up before paying for tickets
-* Information about the cinema is hard to find (the seats, services, etc)
+- Movie ticket prices are too high.
+- Snacks are too expensive
+- Some of people interviewed prefer to bring their own snacks
+- They would consider seeing more movies if the cinema had offers or discounts
+- They think the overall design is pretty ugly
+- They use google o services such as imdb.com to learn more about each movie
+- They miss having a tool that shows them which movies are available on a particular time of day or on a specific day
+- They feel that they will be spammed when they have to sign up before paying for tickets
+- Information about the cinema is hard to find (the seats, services, etc)
 
 ## Affinity Diagram
 
 Based on the research findings, I created an Affinity Diagram to help me group the different takeaways I had from the research. From this I decided to work on the following:
 
-* **Searching and filtering movies**
-* **Checkout problems**
-* **Increase value to the user**
+- **Searching and filtering movies**
+- **Checkout problems**
+- **Increase value to the user**
 
 <div class="l-10col">
 
@@ -107,24 +107,23 @@ Based on the research findings, I created an Affinity Diagram to help me group t
 
 </div>
 
-
 ## Problem Statements
 
 Based on the main groups of pain points from the Affinity Diagram, I created the following problem statements for each of the main Personas.
 
->Users are currently having difficulties deciding which movie they would like to see.
+> Users are currently having difficulties deciding which movie they would like to see.
 
 #####How Might We:
 
 **Improve our app so that we can help users decide which movie they would like to see faster?**
 
->Users become frustrated when they have to create an account before they can make a purchase.
+> Users become frustrated when they have to create an account before they can make a purchase.
 
 #####How Might We:
 
 **Improve the checkout process so that users are less frustrated and they are able to make a purchase faster?**
 
->Movie enthusiasts feel that ticket prices are too high, which is preventing them from being able to see as many movies as they would like to. 
+> Movie enthusiasts feel that ticket prices are too high, which is preventing them from being able to see as many movies as they would like to.
 
 #####How Might We:
 
@@ -174,12 +173,11 @@ In order to decide which features to include in the initial MVP, I decided to us
 
 ##Selected Features for the MVP
 
->We will create **an advanced search, filter and sort feature** for **Alex** in order to **help him decide which movie he would like to see faster**.
+> We will create **an advanced search, filter and sort feature** for **Alex** in order to **help him decide which movie he would like to see faster**.
 
->We will create **a optimized guest checkout experience** for **Alex** in order to **help him buy his movie ticket without any frustration**.
+> We will create **a optimized guest checkout experience** for **Alex** in order to **help him buy his movie ticket without any frustration**.
 
->We will create **a membership plan** for **Ana** in order to **reduce the cost of seeing several movies a month for movie enthusiasts**.
-
+> We will create **a membership plan** for **Ana** in order to **reduce the cost of seeing several movies a month for movie enthusiasts**.
 
 ## Ideation
 
@@ -280,17 +278,27 @@ By using checkbox style buttons for the filters, users can easily enable and dis
 #### Movie Searching Prototype
 
 <figure>
-<span class="video-iphoneX">
-<span class="video-iphoneX--video">
-<video autoplay loop muted playsinline controls>
-<source src="./ux_case_study_movie_searching_prototype.webm" type="video/webm">
-<source src="./ux_case_study_movie_searching_prototype.mp4" type="video/mp4">
-Your browser does not support HTML5 video.
-<a href="./ux_case_study_movie_searching_prototype.gif">View the GIF version of the movie searching experience prototype.</a>
-</video>
-</span>
-</span>
-<figcaption>High fidelity prototype of the movie searching feature.</figcaption>
+  <span class="video-iphoneX">
+    <span class="video-iphoneX--video">
+      <video autoplay loop muted playsinline controls>
+        <source
+          src="./ux_case_study_movie_searching_prototype.webm"
+          type="video/webm"
+        />
+        <source
+          src="./ux_case_study_movie_searching_prototype.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support HTML5 video.
+        <a href="./ux_case_study_movie_searching_prototype.gif">
+          View the GIF version of the movie searching experience prototype.
+        </a>
+      </video>
+    </span>
+  </span>
+  <figcaption>
+    High fidelity prototype of the movie searching feature.
+  </figcaption>
 </figure>
 
 </div>
@@ -299,17 +307,27 @@ Your browser does not support HTML5 video.
 #### Movie Filtering Prototype
 
 <figure>
-<span class="video-iphoneX">
-<span class="video-iphoneX--video">
-<video autoplay loop muted playsinline controls>
-<source src="./ux_case_study_movie_filtering_prototype.webm" type="video/webm">
-<source src="./ux_case_study_movie_filtering_prototype.mp4" type="video/mp4">
-Your browser does not support HTML5 video.
-<a href="./ux_case_study_movie_filtering_prototype.gif">View the gif version of the movie filtering interaction prototype.</a>
-</video>
-</span>
-</span>
-<figcaption>High fidelity prototype of the movie filtering feature.</figcaption>
+  <span class="video-iphoneX">
+    <span class="video-iphoneX--video">
+      <video autoplay loop muted playsinline controls>
+        <source
+          src="./ux_case_study_movie_filtering_prototype.webm"
+          type="video/webm"
+        />
+        <source
+          src="./ux_case_study_movie_filtering_prototype.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support HTML5 video.
+        <a href="./ux_case_study_movie_filtering_prototype.gif">
+          View the gif version of the movie filtering interaction prototype.
+        </a>
+      </video>
+    </span>
+  </span>
+  <figcaption>
+    High fidelity prototype of the movie filtering feature.
+  </figcaption>
 </figure>
 
 </div>
@@ -318,19 +336,29 @@ Your browser does not support HTML5 video.
 #### Movie Seat Choosing Prototype
 
 <figure>
-<span class="video-iphoneX">
-<span class="video-iphoneX--video">
-<video autoplay loop muted playsinline controls>
-<source src="./ux_case_study_seat_choosing_prototype.webm" type="video/webm">
-<source src="./ux_case_study_seat_choosing_prototype.mp4" type="video/mp4">
-Your browser does not support HTML5 video.
-<a href="./ux_case_study_seat_choosing_prototype.gif">View the gif version of the movie filtering interaction prototype.</a>
-</video>
-</span>
-</span>
-<figcaption>High fidelity prototype of the seat choosing process with a mini–map and scrolling seat interface.</figcaption>
+  <span class="video-iphoneX">
+    <span class="video-iphoneX--video">
+      <video autoplay loop muted playsinline controls>
+        <source
+          src="./ux_case_study_seat_choosing_prototype.webm"
+          type="video/webm"
+        />
+        <source
+          src="./ux_case_study_seat_choosing_prototype.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support HTML5 video.
+        <a href="./ux_case_study_seat_choosing_prototype.gif">
+          View the gif version of the movie filtering interaction prototype.
+        </a>
+      </video>
+    </span>
+  </span>
+  <figcaption>
+    High fidelity prototype of the seat choosing process with a mini–map and
+    scrolling seat interface.
+  </figcaption>
 </figure>
-
 
 </div>
 </div>
@@ -397,7 +425,7 @@ According to the same research, privacy-concerned users are less reluctant to sh
 
 The different payment methods the app accepts are presented using 3 buttons placed next to each other, following the <a href="https://baymard.com/blog/payment-method-selection" target="_blank" rel="noopener noreferrer">recommendations of the research<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> made by the Baymard Institute. According to their research, payment methods should be placed together in close proximity (Gestalt principles would help here) so that users can easily compare them with a single glance and see which one is currently active.
 
-Users should also be able to compare the different costs associated to each payment method—if they apply—such as a 2% fee when using a particular payment type. 
+Users should also be able to compare the different costs associated to each payment method—if they apply—such as a 2% fee when using a particular payment type.
 
 </div>
 </div>
@@ -439,7 +467,6 @@ Form fields used for credit cards should also use input masks that auto-insert a
 
 </div>
 
-
 ### Guest Checkout Wireflow Diagram
 
 <div class="diagram">
@@ -451,24 +478,32 @@ Form fields used for credit cards should also use input masks that auto-insert a
 ### Guest Checkout High-Fidelity Prototype
 
 <figure>
-<span class="video-iphoneX">
-<span class="video-iphoneX--video">
-<video autoplay loop muted playsinline controls>
-<source src="./ux_case_study_guest_checkout_prototype.webm" type="video/webm">
-<source src="./ux_case_study_guest_checkout_prototype.mp4" type="video/mp4">
-Your browser does not support HTML5 video.
-<a href="./ux_case_study_guest_checkout_prototype.gif">View the GIF version of the guest checkout final prototype.</a>
-</video>
-</span>
-</span>
-<figcaption>The final prototype of the guest checkout process.</figcaption>
+  <span class="video-iphoneX">
+    <span class="video-iphoneX--video">
+      <video autoplay loop muted playsinline controls>
+        <source
+          src="./ux_case_study_guest_checkout_prototype.webm"
+          type="video/webm"
+        />
+        <source
+          src="./ux_case_study_guest_checkout_prototype.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support HTML5 video.
+        <a href="./ux_case_study_guest_checkout_prototype.gif">
+          View the GIF version of the guest checkout final prototype.
+        </a>
+      </video>
+    </span>
+  </span>
+  <figcaption>The final prototype of the guest checkout process.</figcaption>
 </figure>
 
 ## Membership Plan
 
-One of the main reason why I decided to design this app was that most of the cinemas that I used to go to didn’t really have any decent membership plans that would provide any decent value. 
+One of the main reason why I decided to design this app was that most of the cinemas that I used to go to didn’t really have any decent membership plans that would provide any decent value.
 
-Most of them gave a point for each euro spent, which users could collect, and when they reached a number of points (100 points, more or less) they could exchange them for a movie ticket. 
+Most of them gave a point for each euro spent, which users could collect, and when they reached a number of points (100 points, more or less) they could exchange them for a movie ticket.
 
 Considering that a normal ticket usually costs between 5 and 7 euros, people needed to spend about 100 euros before they could get a free ticket, so it’s not really worth it.
 
@@ -482,10 +517,10 @@ The sign flow for the membership plan was divided into 4 segments to avoid overw
 
 The 4 segments were:
 
-* **Contact details**
-* **Shipping information**
-* **Payment information**
-* **Finished (confirmation screen)**
+- **Contact details**
+- **Shipping information**
+- **Payment information**
+- **Finished (confirmation screen)**
 
 ### Membership Sign Up Wireflow Diagram
 
@@ -525,7 +560,7 @@ The diferent delivery methods were also designed following the recomendations of
 
 By using labels like these, users are forced to have to personally calculate the day in which the product would arrive.
 
-A label of “3-5 days” doesn’t take into consideration the processing time each order might need, the daily cut off time, such as: orders after 4pm will be sent the following day, or if the user chooses a 1 Day Premium  shipping option on a friday, which would mean that the order is shipped monday, ultimately making it a 3 day shipping method with a premium cost.
+A label of “3-5 days” doesn’t take into consideration the processing time each order might need, the daily cut off time, such as: orders after 4pm will be sent the following day, or if the user chooses a 1 Day Premium shipping option on a friday, which would mean that the order is shipped monday, ultimately making it a 3 day shipping method with a premium cost.
 
 <div class="screenshot">
 
@@ -537,7 +572,6 @@ By using labels such as “Arrives by“ or “Get it by”, users would take th
 
 However, in order for the final date to be usefull to the user, it should take into account all the necesary factors such as order cut of time, the current time and date or the delivery estimate of the shipping company.
 
-
 <div class="screenshot">
 
 ![Example of a correct implementation of delivery methods from amazon.co.uk.](./ux_case_study_amazon_shipping_example.png "Example of a correct implementation of delivery methods from amazon.co.uk.")
@@ -547,17 +581,27 @@ However, in order for the final date to be usefull to the user, it should take i
 ### Membership Sign Up High-Hidelity Prototype
 
 <figure>
-<span class="video-iphoneX">
-<span class="video-iphoneX--video">
-<video autoplay loop muted playsinline controls>
-<source src="./ux_case_study_membership_checkout_prototype.webm" type="video/webm">
-<source src="./ux_case_study_membership_checkout_prototype.mp4" type="video/mp4">
-Your browser does not support HTML5 video.
-<a href="./ux_case_study_membership_checkout_prototype.gif">View the GIF version of the seat choosing process prototype.</a>
-</video>
-</span>
-</span>
-<figcaption>Membership plan with offers and discounts final prototype.</figcaption>
+  <span class="video-iphoneX">
+    <span class="video-iphoneX--video">
+      <video autoplay loop muted playsinline controls>
+        <source
+          src="./ux_case_study_membership_checkout_prototype.webm"
+          type="video/webm"
+        />
+        <source
+          src="./ux_case_study_membership_checkout_prototype.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support HTML5 video.
+        <a href="./ux_case_study_membership_checkout_prototype.gif">
+          View the GIF version of the seat choosing process prototype.
+        </a>
+      </video>
+    </span>
+  </span>
+  <figcaption>
+    Membership plan with offers and discounts final prototype.
+  </figcaption>
 </figure>
 
 ## Next Steps
