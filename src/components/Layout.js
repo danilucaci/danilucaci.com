@@ -8,7 +8,6 @@ import Helmet from "react-helmet";
 // Locale data
 import enData from "react-intl/locale-data/en";
 import esData from "react-intl/locale-data/es";
-
 import * as Sentry from "@sentry/browser";
 
 import {
@@ -56,9 +55,11 @@ const GATSBY_SENTRY_URL = process.env.GATSBY_SENTRY_URL;
 
 // should have been called before using it here
 // ideally before even rendering your react app
-Sentry.init({
-  dsn: GATSBY_SENTRY_URL,
-});
+if (NODE_ENV !== "development") {
+  Sentry.init({
+    dsn: GATSBY_SENTRY_URL,
+  });
+}
 
 const Page = styled.div`
   /* Sticky Footer  */
@@ -167,13 +168,15 @@ class Layout extends Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    this.setState({ error });
-    Sentry.withScope((scope) => {
-      Object.keys(errorInfo).forEach((key) => {
-        scope.setExtra(key, errorInfo[key]);
+    if (NODE_ENV !== "development") {
+      this.setState({ error });
+      Sentry.withScope((scope) => {
+        Object.keys(errorInfo).forEach((key) => {
+          scope.setExtra(key, errorInfo[key]);
+        });
+        Sentry.captureException(error);
       });
-      Sentry.captureException(error);
-    });
+    }
   }
 
   // componentDidUpdate() {
