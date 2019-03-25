@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled, { css, keyframes } from "styled-components";
+import styled from "styled-components";
 
 import { theme, mediaMin, rem } from "../../theme/globalStyles";
 
@@ -44,6 +44,7 @@ const StyledLink = styled.a`
 
   &:hover {
     ${theme.shadow.hover};
+    cursor: pointer;
   }
 
   ${mediaMin.m`
