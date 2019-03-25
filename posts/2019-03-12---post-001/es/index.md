@@ -256,7 +256,7 @@ Si te gustaría leer más sobre ellos, puedes leer [este articulo de css-tricks]
 
 Usando una combinación de estos selectores CSS, puedo tener hasta validación en tiempo real del formulario mientras el usuario esta introduciendo la información.
 
-Por ejemplo, esto es una forma de comprobar si el input no esta activado o tiene focus, si se ha introducido información y si es válido.
+Por ejemplo, esto es una forma de comprobar si el _input_ no esta activado o tiene _focus_, si se ha introducido información y si es válido.
 
 ```css
 /*  Input is:
@@ -303,7 +303,7 @@ En este caso, también estoy mostrando un icono svg insertado usando un template
   </figcaption>
 </figure>
 
-Aparte de la validación de la información del formulario, también deberías asegurarte de usar los atributos correctos para cada tipo de input.
+Aparte de la validación de la información del formulario, también deberías asegurarte de usar los atributos correctos para cada tipo de _input_.
 
 En mi ejemplo, utilizo un _input_ tipo `email` para el que he desactivado las mayúsculas automáticas con `autoCapitalize` y la autocorección con `autoCorrect`.
 
