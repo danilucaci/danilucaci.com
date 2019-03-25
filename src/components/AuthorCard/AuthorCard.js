@@ -103,7 +103,7 @@ const AUTHOR_IMAGE_QUERY = graphql`
   query {
     authorImageQuery: file(relativePath: { regex: "/danilucaci_profile_image/" }) {
       childImageSharp {
-        fluid(maxWidth: 104, maxHeight: 104) {
+        fluid(maxWidth: 104, maxHeight: 104, cropFocus: NORTH, quality: 70) {
           ...GatsbyImageSharpFluid
         }
       }
