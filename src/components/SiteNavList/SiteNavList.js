@@ -65,7 +65,7 @@ const SiteNavList = ({
       {(txt) => <SiteNavListItem to={localePaths[locale].work}>{txt}</SiteNavListItem>}
     </FormattedMessage>
     <FormattedMessage id="siteNavBlog">
-      {(txt) => <SiteNavListItem to="/blog">{txt}</SiteNavListItem>}
+      {(txt) => <SiteNavListItem to={localePaths[locale].blog}>{txt}</SiteNavListItem>}
     </FormattedMessage>
     <FormattedMessage id="siteNavAbout">
       {(txt) => <SiteNavListItem to={localePaths[locale].about}>{txt}</SiteNavListItem>}
