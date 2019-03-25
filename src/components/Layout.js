@@ -9,6 +9,8 @@ import Helmet from "react-helmet";
 import enData from "react-intl/locale-data/en";
 import esData from "react-intl/locale-data/es";
 
+import * as Sentry from "@sentry/browser";
+
 import {
   RobotoMonoRegularWoff2,
   RobotoMonoRegularWoff,
@@ -50,6 +52,13 @@ const GATSBY_DL_COOKIE_SECURE =
   NODE_ENV === "development" ? false : process.env.GATSBY_DL_COOKIE_SECURE;
 const GATSBY_DL_COOKIE_DOMAIN = process.env.GATSBY_DL_COOKIE_DOMAIN;
 const GATSBY_GA_ID = process.env.GATSBY_GA_ID;
+const GATSBY_SENTRY_URL = process.env.GATSBY_SENTRY_URL;
+
+// should have been called before using it here
+// ideally before even rendering your react app
+Sentry.init({
+  dsn: GATSBY_SENTRY_URL,
+});
 
 const Page = styled.div`
   /* Sticky Footer  */
@@ -146,6 +155,7 @@ class Layout extends Component {
     acceptsCookie: { necessary: true, analytics: true, dismissed: false },
     deniesCookie: { necessary: true, analytics: false, dismissed: true },
     cookieExp: 780,
+    error: null,
   };
   // cookieExp set in days same as GA expiry date
 
@@ -154,6 +164,16 @@ class Layout extends Component {
     this.checkFontsLoaded();
     this.setInitialConsentCookie();
     this.checkGDPRStatus();
+  }
+
+  componentDidCatch(error, errorInfo) {
+    this.setState({ error });
+    Sentry.withScope((scope) => {
+      Object.keys(errorInfo).forEach((key) => {
+        scope.setExtra(key, errorInfo[key]);
+      });
+      Sentry.captureException(error);
+    });
   }
 
   // componentDidUpdate() {
@@ -433,6 +453,7 @@ class Layout extends Component {
               deniesCookies={this.deniesCookies}
               pageLocale={this.props.locale}
             />
+            {this.state.error && <a onClick={() => Sentry.showReportDialog()}>Report feedback</a>}
             {this.props.children}
           </Page>
         </IntlProvider>

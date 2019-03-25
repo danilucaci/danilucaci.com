@@ -30,6 +30,7 @@
   "dependencies": {
     "@mdx-js/mdx": "^0.20.3",
     "@mdx-js/tag": "^0.20.3",
+    "@sentry/browser": "^4.6.5",
     "axios": "^0.18.0",
     "babel-plugin-styled-components": "^1.10.0",
     "babel-polyfill": "^6.26.0",
@@ -78,8 +79,10 @@
     "react-helmet": "^5.2.0",
     "react-intl": "^2.8.0",
     "react-router-dom": "^5.0.0",
+    "sentry": "^0.1.2",
     "styled-components": "^4.2.0",
-    "url-join": "^4.0.0"
+    "url-join": "^4.0.0",
+    "@sentry/webpack-plugin": "^1.6.2"
   },
   "devDependencies": {
     "cli-glob": "^0.1.0",

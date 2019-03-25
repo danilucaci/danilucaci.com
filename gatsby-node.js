@@ -38,13 +38,13 @@ function slicePosts(array, currentPage) {
 }
 
 // For importing jsx components in mdx
-// exports.onCreateWebpackConfig = ({ actions }) => {
-//   actions.setWebpackConfig({
-//     resolve: {
-//       modules: [path.resolve(__dirname, "src"), "node_modules"],
-//     },
-//   });
-// };
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      modules: [path.resolve(__dirname, "src"), "node_modules"],
+    },
+  });
+};
 
 exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions;
