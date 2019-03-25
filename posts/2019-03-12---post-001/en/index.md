@@ -3,14 +3,12 @@ title: "How to Add a Contact Form a on Static Site"
 slug: "contact form on static site"
 date: "2019-03-12"
 category: "blog"
-intro: "
-
-Static site generators like Gatsby.js are great for building a personal blog or portfolio. You get all the performance best practices built in, plus all the modern tools that make your life as a developer easier.
+intro: "Static site generators like Gatsby.js are great for building a personal blog or portfolio. You get all the performance best practices built in, plus all the modern tools that make your life as a developer easier.
 |
 But if need to add a contact form on your site, it currently doesn’t have any plugin or way to handle form submissions, right out of the box.
 |
 In this article I will show you how I added a contact form on my Gatsby.js static site using Netlify Forms."
-snippet: "In this article I will show you how I added a contact form on my Gatsby.js static site using Netlify Forms."
+snippet: "How I added a contact form on my Gatsby.js static site using Netlify Forms."
 tags:
     - gatsby.js
     - forms
@@ -30,7 +28,7 @@ twinPost: "Formulario Contacto en Web Estatica"
 - [Handling Form Submissions](#handling-form-submissions)
 - [Showing a Loading Indicator and Status Messages](#showing-a-loading-indicator-and-status-messages)
 - [Form Validation with CSS](#form-validation-with-css)
-- [(Bonus) How to Make Your Contact Form GDPR Compliant](#bonus-how-to-make-your-contact-form-gdpr-compliant)
+- [How to Make Your Contact Form GDPR Compliant](#how-to-make-your-contact-form-gdpr-compliant)
 - [Conclusion](#conclusion)
 
 <!-- /TOC -->
@@ -51,7 +49,7 @@ So I eventually decided to use Netlify’s form feature since I am already hosti
 
 They offer a great starter plan with up to 100 form subsmissions a month, which was great for what I needed.
 
-If you wanna see other services or tools that work great on static sites, this <a href="https://github.com/agarrharr/awesome-static-website-services" target="_blank" rel="noopener noreferer">repo on github<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> has a great list of them.
+If you wanna see other services or tools that work great on static sites, this [repo on Github](https://github.com/agarrharr/awesome-static-website-services "Github repository with several resources for static sites") has a great list of them.
 
 ## What Do You Need To Get Started?
 
@@ -92,7 +90,7 @@ The first one, is to use a hidden “honeypot” input field which only bots try
 data-netlify-honeypot="botfield"
 ```
 
-The second way you can enable spam filtering, is by using reCAPTCHA 2. If you’d like to learn how to set it up on your site, you can read this <a href="https://www.netlify.com/docs/form-handling/" target="_blank" rel="noopener noreferer">blog post from Netlify<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> in which they explain how you can do it.
+The second way you can enable spam filtering, is by using reCAPTCHA 2. If you’d like to learn how to set it up on your site, you can read this [blog post from Netlify](https://www.netlify.com/docs/form-handling/) in which they explain how you can do it.
 
 So let’s start building the form.
 
@@ -231,7 +229,8 @@ The `<EmailLoading />` component simply returns a loading indicator when `isLoad
         <source src="./.mp4" type="video/mp4" />
         Your browser does not support HTML5 video.
         <a href="./.gif">
-          See the Contact Form With a Loading Indicator and Status Messages Gif.
+          See a GIF with the Contact Form With a Loading Indicator and Status
+          Messages.
         </a>
       </video>
     </span>
@@ -247,7 +246,7 @@ In order to handle the form validation, I decided to use only CSS.
 
 My solution is based on using CSS Level 3 selectors such as `&:valid`, `:not()`, `:placeholder-shown` or `:invalid`.
 
-If you’d like to learn more about them, you can read <a href="https://css-tricks.com/form-validation-ux-html-css/" target="_blank" rel="noopener noreferer">this article from css-tricks<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>.
+If you’d like to learn more about them, you can read [this article from css-tricks](https://css-tricks.com/form-validation-ux-html-css/).
 
 By using a combination of these CSS selectors, I could even get real-time validation while users are typing the information in the form fields.
 
@@ -319,11 +318,13 @@ I also set the `autoComplete` attribute to `email`, so that the user's browser c
 />
 ```
 
-The regular expression used in the `pattern` fields is used to test if the entered email is correct, particularly the part after the _@_ that contains the domain name. The value stored in the `title` attribute will be shown when the input field isn’t valid. However, each browser shows this message differently, so test it first.
+The regular expression used in the `pattern` fields is used to test if the entered email is correct, particularly the part after the _@_ that contains the domain name.
+
+The value stored in the `title` attribute will be shown when the input field isn’t valid. However, each browser shows this message differently, so test it first.
 
 The `INPUT_EMAIL_ERROR[locale]` simply stores a localized version of the title since this blog is translated into spanish and english.
 
-## (Bonus) How to Make Your Contact Form GDPR Compliant
+## How to Make Your Contact Form GDPR Compliant
 
 Since I live in Europe, I have to be GDPR compliant. Therefore, I needed some extra form fields and logic. The main input field that is missing is a consent checkbox which has to be enabled by the user before she can submit the form.
 
