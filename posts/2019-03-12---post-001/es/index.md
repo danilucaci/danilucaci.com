@@ -480,14 +480,7 @@ function ContactForm({ locale }) {
 <figure>
   <span class="video-wrapper">
     <span class="video__inner video__inner--contact-post">
-      <video
-        autoplay
-        loop
-        muted
-        playsinline
-        controls
-        poster="./formulario_contacto_con_indicador_carga_mensaje_estado.png"
-      >
+      <video autoplay loop muted playsinline controls>
         <source
           src="./formulario_contacto_con_indicador_carga_mensaje_estado.mp4"
           type="video/mp4"
@@ -499,6 +492,7 @@ function ContactForm({ locale }) {
         </a>
       </video>
     </span>
+
   </span>
   <figcaption>
     Demo del formulario de contacto con indicador de carga y mensajes estado.

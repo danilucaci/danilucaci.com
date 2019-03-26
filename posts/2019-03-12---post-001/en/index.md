@@ -473,14 +473,7 @@ function ContactForm({ locale }) {
 <figure>
   <span class="video-wrapper">
     <span class="video__inner video__inner--contact-post">
-      <video
-        autoplay
-        loop
-        muted
-        playsinline
-        controls
-        poster="./contact_form_loading_and_success_state.png"
-      >
+      <video autoplay loop muted playsinline controls>
         <source
           src="./contact_form_loading_and_success_state.mp4"
           type="video/mp4"

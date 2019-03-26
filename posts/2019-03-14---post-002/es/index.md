@@ -790,14 +790,7 @@ En la demostración de más abajo puedes ver las peticiones iniciales (de unos 2
 <figure>
   <span class="video-wrapper">
     <span class="video__inner video__inner--1920x1200">
-      <video
-        autoplay
-        loop
-        muted
-        playsinline
-        controls
-        poster="./obtener_datos_dribbble_con_react.png"
-      >
+      <video autoplay loop muted playsinline controls>
         <source
           src="./obtener_datos_dribbble_con_react.webm"
           type="video/webm"

@@ -779,14 +779,7 @@ In the demo below you can see the initial posts fetch (only 2 shots for the demo
 <figure>
   <span class="video-wrapper">
     <span class="video__inner video__inner--1920x1200">
-      <video
-        autoplay
-        loop
-        muted
-        playsinline
-        controls
-        poster="./dribbble_fetching_with_react.png"
-      >
+      <video autoplay loop muted playsinline controls>
         <source src="./dribbble_fetching_with_react.webm" type="video/webm" />
         <source src="./dribbble_fetching_with_react.mp4" type="video/mp4" />
         Your browser does not support HTML5 video.
