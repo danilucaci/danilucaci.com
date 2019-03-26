@@ -27,8 +27,8 @@ twinPost: "Formulario Contacto en Web Estatica"
 - [What Do You Need To Get Started?](#what-do-you-need-to-get-started)
 - [Handling Form Submissions](#handling-form-submissions)
 - [Showing a Loading Indicator and Status Messages](#showing-a-loading-indicator-and-status-messages)
-- [Form Validation with CSS](#form-validation-with-css)
-- [How to Make Your Contact Form GDPR Compliant](#how-to-make-your-contact-form-gdpr-compliant)
+- [Validating the Form with CSS](#validating-the-form-with-css)
+- [Making the Contact Form GDPR Compliant](#making-the-contact-form-gdpr-compliant)
 - [Conclusion](#conclusion)
 
 <!-- /TOC -->
@@ -80,7 +80,7 @@ This step is necessary, otherwise, your form won’t show up in your Netlify adm
 <input type="hidden" name="form-name" arria-hidden="true" value="contact" />
 ```
 
-### Spam Protection
+### Adding Spam Protection
 
 If you need to enable spam filtering —and you probably should, or you’ll spend your 100 form submissions a month pretty fast— Netlify gives you 2 options.
 
@@ -219,7 +219,7 @@ The `<EmailLoading />` component simply returns a loading indicator when `isLoad
 {showFormError && <EmailErrorMessage locale={locale} formErrorRes={formErrorRes} />}
 ```
 
-### Contact Form with Loading Indicator and Status Messages Demo
+### Demo of the Contact Form with Loading Indicator and Status Messages
 
 <figure>
   <span class="video-iphoneX">
@@ -240,7 +240,7 @@ The `<EmailLoading />` component simply returns a loading indicator when `isLoad
   </figcaption>
 </figure>
 
-## Form Validation with CSS
+## Validating the Form with CSS
 
 In order to handle the form validation, I decided to use only CSS.
 
@@ -324,7 +324,7 @@ The value stored in the `title` attribute will be shown when the input field isn
 
 The `INPUT_EMAIL_ERROR[locale]` simply stores a localized version of the title since this blog is translated into spanish and english.
 
-## How to Make Your Contact Form GDPR Compliant
+## Making the Contact Form GDPR Compliant
 
 Since I live in Europe, I have to be GDPR compliant. Therefore, I needed some extra form fields and logic. The main input field that is missing is a consent checkbox which has to be enabled by the user before she can submit the form.
 

@@ -5,7 +5,7 @@ date: "2019-03-12"
 category: "blog"
 intro: "Los generadores de webs estáticas como Gatsby.js son una buena opción para crear un blog personal o porfolio online. Tendrás todas las mejores prácticas de optimización integradas, además de todas las herramientas de desarrollo modernas que te hacen la vida más fácil como desarrollador.
 |
-Pero si necesitas añadir un formulario de contacto en tu web, de momento no hay ningún plugin que te permita hacerlo, sin hacer cambios adicionales.
+Pero si necesitas añadir un formulario de contacto en tu web, de momento no hay ningún plugin que te permita hacerlo.
 |
 En este artículo te enseñaré como he añadido un formulario de contacto en mi página web personal creada con Gatsby.js y Netlify Forms."
 snippet: "Cómo he añadido un formulario de contacto a mi página web estática creada con Gatsby.js y Netlify Forms."
@@ -25,12 +25,11 @@ twinPost: "contact form on static site"
 
 - [¿Qué Opciones Tenemos Actualmente?](#¿qué-opciones-tenemos-actualmente)
 - [¿Qué Necesitas Para Empezar?](#¿qué-necesitas-para-empezar)
-- [Protección Antispam](#protección-antispam)
-- [Gestionando los Envíos de los Formularios](#gestionando-los-envíos-de-los-formularios)
+- [Añadiendo Protección Antispam](#añadiendo-protección-antispam)
+- [Gestionando las Peticiones de Formularios](#gestionando-las-peticiones-de-formularios)
 - [Mostrando un Indicador y un Mensaje con el Estado de Carga](#mostrando-un-indicador-y-un-mensaje-con-el-estado-de-carga)
-- [Validación de Formularios con CSS](#validación-de-formularios-con-css)
-- [Cómo crear Formulario de Contacto que Cumple con la RGPD](#cómo-crear-formulario-de-contacto-que-cumple-con-la-rgpd)
-- [El Formulario de Contacto con Todas las Opciones Incluidas](#el-formulario-de-contacto-con-todas-las-opciones-incluidas)
+- [Validando Formularios con CSS](#validando-formularios-con-css)
+- [Creando un Formulario de Contacto que Cumple con la RGPD](#creando-un-formulario-de-contacto-que-cumple-con-la-rgpd)
 - [Conclusiones](#conclusiones)
 
 <!-- /TOC -->
@@ -74,7 +73,7 @@ Este solo es el inicio de la etiqueta del mío, el formulario entero es un poco 
 
 ### Elementos Adicionales Para los Inputs en Formularios JSX
 
-Si estás usando tu formulario en un generador de webs estáticas como Gatsby.js, tendrás que añadir un _input_ oculto con el valor `name` puesto como `form-name` y el `value` puesto como el nombre de tu formulario, en mi caso es `contact`.
+Si estás usando tu formulario en un generador de webs estáticas como Gatsby.js, tendrás que añadir un input oculto con el valor `name` puesto como `form-name` y el `value` puesto como el nombre de tu formulario, en mi caso es `contact`.
 
 Este paso es importante ya que, si no se indica, el formulario no aparecerá en el panel de usuario de Netlify.
 
@@ -82,11 +81,11 @@ Este paso es importante ya que, si no se indica, el formulario no aparecerá en 
 <input type="hidden" name="form-name" arria-hidden="true" value="contact" />
 ```
 
-## Protección Antispam
+## Añadiendo Protección Antispam
 
 Si necesitas activar el filtro de _spam_ —y yo te recomiendo hacerlo, si no es posible que llegues al limite de 100 peticiones al mes bastante rápido— Netlify te ofrece 2 opciones.
 
-La primera es usando un _input_ oculto del tipo “honeypot” el cual solo los _bots_ que intenten rellenar el formulario verán, y si Netlify detecta ese campo como completado, simplemente ignorará la presentación de ese formulario. En mi ejemplo, el mio se llama `data-netlify-honeypot="botfield"`.
+La primera es usando un input oculto del tipo “honeypot” el cual solo los _bots_ que intenten rellenar el formulario verán, y si Netlify detecta ese campo como completado, simplemente ignorará la presentación de ese formulario. En mi ejemplo, el mio se llama `data-netlify-honeypot="botfield"`.
 
 ```jsx
 data-netlify-honeypot="botfield"
@@ -96,7 +95,7 @@ La segunda forma de activar el filtro Spam es usando reCAPTCHA 2. Si necesitas a
 
 Así que vamos a empezar a crear el formulario.
 
-## Gestionando los Envíos de los Formularios
+## Gestionando las Peticiones de Formularios
 
 Por defecto, cuando un usuario te presenta un formulario, Netlify le redirige a una página genérica de agradecimiento. Si te vale esa opción, puedes seguir usando esa opción.
 
@@ -246,7 +245,7 @@ El componente `<EmailLoading ... />` simplemente devuelve un indicador del estad
   </figcaption>
 </figure>
 
-## Validación de Formularios con CSS
+## Validando Formularios con CSS
 
 Para validar la información introducida en el formulario he decido usar solo CSS.
 
@@ -256,7 +255,7 @@ Si te gustaría leer más sobre ellos, puedes leer [este articulo de css-tricks]
 
 Usando una combinación de estos selectores CSS, puedo tener hasta validación en tiempo real del formulario mientras el usuario esta introduciendo la información.
 
-Por ejemplo, esto es una forma de comprobar si el _input_ no esta activado o tiene _focus_, si se ha introducido información y si es válido.
+Por ejemplo, esto es una forma de comprobar si el input no esta activado o tiene _focus_, si se ha introducido información y si es válido.
 
 ```css
 /*  Input is:
@@ -303,9 +302,9 @@ En este caso, también estoy mostrando un icono svg insertado usando un template
   </figcaption>
 </figure>
 
-Aparte de la validación de la información del formulario, también deberías asegurarte de usar los atributos correctos para cada tipo de _input_.
+Aparte de la validación de la información del formulario, también deberías asegurarte de usar los atributos correctos para cada tipo de input.
 
-En mi ejemplo, utilizo un _input_ tipo `email` para el que he desactivado las mayúsculas automáticas con `autoCapitalize` y la autocorección con `autoCorrect`.
+En mi ejemplo, utilizo un input tipo `email` para el que he desactivado las mayúsculas automáticas con `autoCapitalize` y la autocorección con `autoCorrect`.
 
 También he añadido el atributo `autoComplete` para que el navegador autocomplete la información de contacto del usuario.
 
@@ -331,11 +330,11 @@ El valor guardado en `title` será el que es mostrado al usuario cuando el forma
 
 La variable `INPUT_EMAIL_ERROR[locale]` simplemente guarda una versión traducida del `title` ya que el blog lo he traducido al inglés y castellano.
 
-## Cómo crear Formulario de Contacto que Cumple con la RGPD
+## Creando un Formulario de Contacto que Cumple con la RGPD
 
 Ya que actualmente vivo en España, tengo que cumplir con la ley de protección de datos RGPD. Por tanto, faltan algunos campos en el formulario. El campo más importante que me falta es un _checkbox_ que tiene que ser activado por el usuario antes de que me pueda presentar un formulario con su información personal.
 
-Esto también es relativamente fácil hacer con Netlify ya que puedes enviar los valores de cada _input_ y si el usuario ha dado su consentimiento de usar su información, o no, activando el checkbox.
+Esto también es relativamente fácil hacer con Netlify ya que puedes enviar los valores de cada input y si el usuario ha dado su consentimiento de usar su información, o no, activando el checkbox.
 
 **Nota:**
 
@@ -343,7 +342,7 @@ Antes de continuar leyendo, deberías tener en cuenta de que solo siguiendo esto
 
 Para asegurarte, deberías consultar con tu propio abogado como hice yo.
 
-### Cómo Desactivar el Botón de Enviar
+### Desactivando el Botón de Enviar
 
 De acuerdo con las leyes actuales de privacidad, los usuarios no pueden enviarte su información personal si no te han dado un consentimiento expreso previamente.
 
@@ -361,7 +360,7 @@ En caso contrario, el botón está desactivado hasta que el _checkbox_ se activa
 
 Depués deberías poder ver en tu panel de usuario de Netlify todas las peticiones de formularios que se han realizado, junto con el consentimiento del usuario.
 
-## El Formulario de Contacto con Todas las Opciones Incluidas
+### El Formulario de Contacto con Todas las Opciones
 
 ```jsx
 function ContactForm({ locale }) {
