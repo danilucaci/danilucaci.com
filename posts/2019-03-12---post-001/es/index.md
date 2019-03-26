@@ -480,11 +480,14 @@ function ContactForm({ locale }) {
 <figure>
   <span class="video-wrapper">
     <span class="video__inner">
-      <video autoplay loop muted playsinline controls>
-        <source
-          src="./formulario_contacto_con_indicador_carga_mensaje_estado.webm"
-          type="video/webm"
-        />
+      <video
+        autoplay
+        loop
+        muted
+        playsinline
+        controls
+        poster="./formulario_contacto_con_indicador_carga_mensaje_estado.png"
+      >
         <source
           src="./formulario_contacto_con_indicador_carga_mensaje_estado.mp4"
           type="video/mp4"
