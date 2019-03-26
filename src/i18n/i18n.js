@@ -80,24 +80,32 @@ export const FORM_SUBMIT_STATUS = {
     es: "!Gracias por contactar conmigo¡",
   },
   successSubtitle: {
-    en: "You’ll hear back from me in about 24—48 hours.",
-    es: "Recibirás una respuesta en un plazo de 24-48 horas.",
+    en:
+      "You’ll hear back from me in about 24—48 hours. If not, please send me an email at info@danilucaci.com",
+    es:
+      "Recibirás una respuesta en un plazo de 24-48 horas. De lo contrario, por favor mandame un email a info@danilucaci.com.",
   },
-  error: {
-    en: "Sorry 😔, your message couldn't be sent, please try again later.",
-    es: "Lo siento 😔, tu mensaje no ha podido ser enviado, por favor prueba de nuevo más tarde.",
+  errorTitle: {
+    en: "Sorry 😔, your message couldn't be sent.",
+    es: "Lo siento 😔, tu mensaje no ha podido ser enviado.",
+  },
+  errorSubtitle: {
+    en:
+      "Please feel free to get in touch by sending me an email at info@danilucaci.com or at @danilucaci.",
+    es:
+      "Por favor, ponte en contacto conmigo enviandome un email a info@danilucaci.com o a @danilucaci.",
   },
   cta: {
     en: "Message Sent!",
     es: "¡Mensaje Enviado!",
   },
+  ctaError: {
+    en: "Something went wrong 😔",
+    es: "Algo ha salido mal 😔",
+  },
   subscribeCta: {
     en: "Subscribed! 🎉",
     es: "¡Suscrito! 🎉",
-  },
-  errorCta: {
-    en: "Something went wrong 😔",
-    es: "Algo ha salido mal 😔",
   },
 };
 

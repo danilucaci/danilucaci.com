@@ -97,25 +97,27 @@ function ContactForm({ locale }) {
     setShowFormLoading(true);
     setFormSubmitted(true);
 
-    const form = e.target;
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({
-        "form-name": form.getAttribute("name"),
-        email,
-        fullname: fullName,
-        message,
-        datesent: dateSent,
-        botfield: botField,
-        acceptsconsentcheckbox: acceptsConsentCheckbox,
-      }),
-    })
-      .then(() => {
+    try {
+      const form = e.target;
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({
+          "form-name": form.getAttribute("name"),
+          email,
+          fullname: fullName,
+          message,
+          datesent: dateSent,
+          botfield: botField,
+          acceptsconsentcheckbox: acceptsConsentCheckbox,
+        }),
+      }).then(() => {
         // showFormInputs();
         handleFormSent();
-      })
-      .catch((error) => handleFormError(error));
+      });
+    } catch (error) {
+      handleFormError(error);
+    }
   }
 
   function handleConsentCheckbox(e) {
@@ -137,6 +139,9 @@ function ContactForm({ locale }) {
     setShowFormLoading(false);
     setShowFormError(true);
     setFormErrorRes(error);
+    console.error("Contact form failed with: ", error.name);
+    console.error("Contact form failed with: ", error.message);
+    throw new Error(error);
   }
 
   return (

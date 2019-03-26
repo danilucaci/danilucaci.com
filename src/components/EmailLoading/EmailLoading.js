@@ -29,7 +29,7 @@ const StyledLoadingCTA = styled.div`
   font-style: normal;
   font-weight: 700;
 
-  padding: ${rem(12)} ${rem(24)};
+  padding: ${rem(10)} ${rem(24)};
   height: ${rem(48)};
   margin-top: ${rem(16)};
   width: 100%;
@@ -37,6 +37,15 @@ const StyledLoadingCTA = styled.div`
   white-space: nowrap;
 
   ${theme.shadow.buttons.main};
+`;
+
+const StyledErrorCTA = styled(StyledLoadingCTA)`
+  background-color: ${theme.colors.gray100};
+  border: ${rem(2)} solid ${theme.colors.danger600};
+  border-radius: ${theme.borderRadius.buttons};
+  color: ${theme.colors.danger600};
+
+  ${theme.shadow.subscribeErrorMessage};
 `;
 
 const StyledIcon = styled(Icon)`
@@ -54,20 +63,33 @@ function EmailLoading({
 }) {
   return (
     <StyledLoadingWrapper>
-      <StyledLoadingCTA>
-        {showFormLoading ? (
+      {showFormLoading && (
+        <StyledLoadingCTA>
           <Spinner />
-        ) : (
-          <React.Fragment>
-            {FORM_SUBMIT_STATUS.cta[locale]}
-            <StyledIcon aria-hidden="true">
-              <use xlinkHref="#correct" />
-            </StyledIcon>
-          </React.Fragment>
-        )}
-      </StyledLoadingCTA>
+        </StyledLoadingCTA>
+      )}
+
+      {!showFormLoading && showFormSuccess && (
+        <StyledLoadingCTA>
+          {FORM_SUBMIT_STATUS.cta[locale]}
+          <StyledIcon aria-hidden="true">
+            <use xlinkHref="#correct" />
+          </StyledIcon>
+        </StyledLoadingCTA>
+      )}
+
       {showFormSuccess && <EmailSuccessMessage locale={locale} />}
-      {showFormError && <EmailErrorMessage locale={locale} formErrorRes={formErrorRes} />}
+      {showFormError && (
+        <React.Fragment>
+          <StyledErrorCTA>
+            {FORM_SUBMIT_STATUS.ctaError[locale]}
+            <StyledIcon aria-hidden="true">
+              <use xlinkHref="#error" />
+            </StyledIcon>
+          </StyledErrorCTA>
+          <EmailErrorMessage locale={locale} formErrorRes={formErrorRes} />
+        </React.Fragment>
+      )}
     </StyledLoadingWrapper>
   );
 }
