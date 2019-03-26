@@ -224,27 +224,6 @@ El componente `<EmailLoading ... />` simplemente devuelve un indicador del estad
 {showFormError && <EmailErrorMessage locale={locale} formErrorRes={formErrorRes} />}
 ```
 
-### El Resultado Final del Indicador de Carga
-
-<figure>
-  <span class="video-iphoneX">
-    <span class="video-iphoneX--video">
-      <video autoplay loop muted playsinline controls>
-        <source src="./.webm" type="video/webm" />
-        <source src="./.mp4" type="video/mp4" />
-        Tu navegador no soporta el vídeo HTML5.
-        <a href="./.gif">
-          Ver un gif del formulario de contacto con indicador y mensajes con el
-          estado de carga.
-        </a>
-      </video>
-    </span>
-  </span>
-  <figcaption>
-    Formulario de contacto con indicador y mensajes con el estado de carga.
-  </figcaption>
-</figure>
-
 ## Validando Formularios con CSS
 
 Para validar la información introducida en el formulario he decido usar solo CSS.
@@ -280,27 +259,6 @@ Por ejemplo, esto es una forma de comprobar si el input no esta activado o tiene
 ```
 
 En este caso, también estoy mostrando un icono svg insertado usando un template literal de ES6 `${optimizedSuccessSVGDataURI};` como background-image que se activa con el selector css `~`.
-
-### Demo del Formulario y la Validación de los Campos
-
-<figure>
-  <span class="video-iphoneX">
-    <span class="video-iphoneX--video">
-      <video autoplay loop muted playsinline controls>
-        <source src="./.webm" type="video/webm" />
-        <source src="./.mp4" type="video/mp4" />
-        Tu navegador no soporta el vídeo HTML5.
-        <a href="./.gif">
-          Ver un GIF de interacción con el formulario y la validación de los
-          campos.
-        </a>
-      </video>
-    </span>
-  </span>
-  <figcaption>
-    Demo de la Interacción Con el Formulario y la Validación de los Campos
-  </figcaption>
-</figure>
 
 Aparte de la validación de la información del formulario, también deberías asegurarte de usar los atributos correctos para cada tipo de input.
 
@@ -519,7 +477,30 @@ function ContactForm({ locale }) {
 }
 ```
 
-![Formulario de contacto creado con Gatsby.js que cumple con la RGPD.](./formulario_contacto_gatsby_js_rgpd.png "Formulario de contacto creado con Gatsby.js que cumple con la RGPD.")
+<figure>
+  <span class="video-wrapper">
+    <span class="video__inner">
+      <video autoplay loop muted playsinline controls>
+        <source
+          src="./formulario_contacto_con_indicador_carga_mensaje_estado.webm"
+          type="video/webm"
+        />
+        <source
+          src="./formulario_contacto_con_indicador_carga_mensaje_estado.mp4"
+          type="video/mp4"
+        />
+        Tu navegador no soporta el vídeo HTML5.
+        <a href="./formulario_contacto_con_indicador_carga_mensaje_estado.gif">
+          Ver un GIF del formulario de contacto con indicador de carga y
+          mensajes estado.
+        </a>
+      </video>
+    </span>
+  </span>
+  <figcaption>
+    Demo del formulario de contacto con indicador de carga y mensajes estado.
+  </figcaption>
+</figure>
 
 ## Conclusiones
 

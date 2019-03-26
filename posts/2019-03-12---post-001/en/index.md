@@ -29,7 +29,7 @@ twinPost: "Formulario Contacto en Web Estatica"
 - [Showing a Loading Indicator and Status Messages](#showing-a-loading-indicator-and-status-messages)
 - [Validating the Form with CSS](#validating-the-form-with-css)
 - [Making the Contact Form GDPR Compliant](#making-the-contact-form-gdpr-compliant)
-- [Conclusion](#conclusion)
+- [Final Thoughts](#final-thoughts)
 
 <!-- /TOC -->
 
@@ -219,27 +219,6 @@ The `<EmailLoading />` component simply returns a loading indicator when `isLoad
 {showFormError && <EmailErrorMessage locale={locale} formErrorRes={formErrorRes} />}
 ```
 
-### Demo of the Contact Form with Loading Indicator and Status Messages
-
-<figure>
-  <span class="video-iphoneX">
-    <span class="video-iphoneX--video">
-      <video autoplay loop muted playsinline controls>
-        <source src="./.webm" type="video/webm" />
-        <source src="./.mp4" type="video/mp4" />
-        Your browser does not support HTML5 video.
-        <a href="./.gif">
-          See a GIF with the Contact Form With a Loading Indicator and Status
-          Messages.
-        </a>
-      </video>
-    </span>
-  </span>
-  <figcaption>
-    Contact Form With a Loading Indicator and Status Messages
-  </figcaption>
-</figure>
-
 ## Validating the Form with CSS
 
 In order to handle the form validation, I decided to use only CSS.
@@ -275,26 +254,6 @@ For example, this is how you could validate the data in the input field when it 
 ```
 
 In this case, I’m also showing an svg icon inserted with a ES6 template literal `${optimizedSuccessSVGDataURI};` as a background image, by using the css `~` selector.
-
-### Form Input Validation and Interaction Demo
-
-<figure>
-  <span class="video-iphoneX">
-    <span class="video-iphoneX--video">
-      <video autoplay loop muted playsinline controls>
-        <source src="./.webm" type="video/webm" />
-        <source src="./.mp4" type="video/mp4" />
-        Your browser does not support HTML5 video.
-        <a href="./.gif">
-          See the Contact Form With a Loading Indicator and Status Messages Gif.
-        </a>
-      </video>
-    </span>
-  </span>
-  <figcaption>
-    Contact Form With a Loading Indicator and Status Messages
-  </figcaption>
-</figure>
 
 Besides validating the form fields, you should also make sure that you’re using the wright attributes on each input field.
 
@@ -511,9 +470,32 @@ function ContactForm({ locale }) {
 }
 ```
 
-![GDPR compliant contact form made with Gatsby.js](./gatsby_js_gdpr_contact_form_screen.png "GDPR compliant contact form made with Gatsby.js.")
+<figure>
+  <span class="video-wrapper">
+    <span class="video__inner">
+      <video autoplay loop muted playsinline controls>
+        <source
+          src="./contact_form_loading_and_success_state.webm"
+          type="video/webm"
+        />
+        <source
+          src="./contact_form_loading_and_success_state.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support HTML5 video.
+        <a href="./contact_form_loading_and_success_state.gif">
+          See a GIF with the Contact Form With a Loading Indicator and Status
+          Messages.
+        </a>
+      </video>
+    </span>
+  </span>
+  <figcaption>
+    Contact Form With a Loading Indicator and Status Messages
+  </figcaption>
+</figure>
 
-## Conclusion
+## Final Thoughts
 
 Adding a contact form on a static site generator like Gatsby.js turned out to be easier than I thought.
 
