@@ -30,8 +30,12 @@ const StyledLanguageSelector = styled.li`
   }
 
   padding: ${rem(12)};
+  margin-top: ${rem(24)};
+
+  width: 64%;
 
   ${mediaMin.s`
+    width: auto;
     margin-top: 0;
     border: none;
     padding: ${rem(16)} ${rem(12)};
@@ -87,7 +91,7 @@ const CurrentLanguageIcon = styled(Icon)`
   display: inline-block;
   fill: ${theme.colors.main600};
   position: absolute;
-  left: ${rem(48)};
+  left: ${rem(40)};
   top: ${rem(12)};
 
   ${mediaMin.s`
