@@ -321,16 +321,29 @@ class Layout extends Component {
   // Google Analytics Log pages views
   logPageView = () => {
     // https://github.com/nfl/react-helmet/issues/189
-    // still a bug, need to set a 0 setTimeout for
-    // the title to be set in <helmet>
-    // 100ms seems to work so far
 
-    const timer = setTimeout(() => {
-      ReactGA.set({ page: window.location.pathname });
-      ReactGA.pageview(window.location.pathname);
+    /* Fixed by :
+     * https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby-plugin-google-gtag/src/gatsby-browser.js
+     * wrap inside a timeout to make sure react-helmet is done with its changes
+     * (https://github.com/gatsbyjs/gatsby/issues/11592)
+     */
+    if ("requestAnimationFrame" in window) {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(this.sendPageView);
+      });
+    } else {
+      // simulate 2 rAF calls
+      setTimeout(this.sendPageView, 32);
+    }
+  };
 
-      clearTimeout(timer);
-    }, 100);
+  sendPageView = () => {
+    const pagePath = window.location
+      ? window.location.pathname + window.location.search + window.location.hash
+      : undefined;
+
+    ReactGA.set({ page: pagePath });
+    ReactGA.pageview(window.location.pathname);
   };
 
   showGDPRStatus = () => {
