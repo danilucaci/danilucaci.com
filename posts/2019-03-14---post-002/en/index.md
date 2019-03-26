@@ -475,26 +475,6 @@ Once `isLoading` is changed to `false`, the placeholder elements are replaced wi
 }
 ```
 
-### The Final Result
-
-<figure>
-  <span class="video-iphoneX">
-    <span class="video-iphoneX--video">
-      <video autoplay loop muted playsinline controls>
-        <source src="./.webm" type="video/webm" />
-        <source src="./.mp4" type="video/mp4" />
-        Your browser does not support HTML5 video.
-        <a href="./.gif">
-          See the Contact Form With a Loading Indicator and Status Messages Gif.
-        </a>
-      </video>
-    </span>
-  </span>
-  <figcaption>
-    Contact Form With a Loading Indicator and Status Messages
-  </figcaption>
-</figure>
-
 ## Loading More Shots
 
 When I was designing the page where the component is mounted, I only wanted to show 4 or 6 shots at most.
@@ -797,20 +777,28 @@ The only check I need to keep doing is the `didCancel` one, which is used to pre
 In the demo below you can see the initial posts fetch (only 2 shots for the demo) and then the loading more shots on each click part (2 shots per requests). The UX of the component is also greatly improved by showing a loading indicator with the spinner, while also avoiding large layout shifts, by using the placeholder elements when the data is being fetched.
 
 <figure>
-  <span class="video-iphoneX">
-    <span class="video-iphoneX--video">
-      <video autoplay loop muted playsinline controls>
-        <source src="./.webm" type="video/webm" />
-        <source src="./.mp4" type="video/mp4" />
+  <span class="video-wrapper">
+    <span class="video__inner video__inner--1920x1200">
+      <video
+        autoplay
+        loop
+        muted
+        playsinline
+        controls
+        poster="./dribbble_fetching_with_react.png"
+      >
+        <source src="./dribbble_fetching_with_react.webm" type="video/webm" />
+        <source src="./dribbble_fetching_with_react.mp4" type="video/mp4" />
         Your browser does not support HTML5 video.
-        <a href="./.gif">
-          See the Contact Form With a Loading Indicator and Status Messages Gif.
+        <a href="./dribbble_fetching_with_react.gif">
+          See a Gif with the Demo of the Dribbble posts fetching component with
+          react hooks.
         </a>
       </video>
     </span>
   </span>
   <figcaption>
-    Contact Form With a Loading Indicator and Status Messages
+    Demo of the Dribbble posts fetching component with react hooks.
   </figcaption>
 </figure>
 

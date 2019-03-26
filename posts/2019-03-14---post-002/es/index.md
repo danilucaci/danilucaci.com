@@ -486,26 +486,6 @@ Una vez `isLoading` cambia a `false`, los elementos provisionales se reemplazan 
 }
 ```
 
-### El Resultado Final
-
-<figure>
-  <span class="video-iphoneX">
-    <span class="video-iphoneX--video">
-      <video autoplay loop muted playsinline controls>
-        <source src="./.webm" type="video/webm" />
-        <source src="./.mp4" type="video/mp4" />
-        Tu navegador no soporta HTML5 video.
-        <a href="./.gif">
-          Ver un Gif del formulario de contacto con indicador de carga y mensajes de estado.
-        </a>
-      </video>
-    </span>
-  </span>
-  <figcaption>
-    Formulario de contacto con indicador de carga y mensajes de estado.
-  </figcaption>
-</figure>
-
 ## Cargando Más Diseños
 
 Cuando estaba diseñando la página en la que esta montado el componente, solo quería mostrar unos 4 diseños como mucho.
@@ -808,20 +788,31 @@ La única comprobación que aún tengo que hacer es la de `didCancel`. Esta evit
 En la demostración de más abajo puedes ver las peticiones iniciales (de unos 2 posts para la demo) y las peticiones posteriores que se hacen para obtener 2 diseños más. La experiencia de usuario se ha mejorado bastante usando el indicador del estado de la carga, además de evitar que hayan grandes cambios en el diseño de la página mediante el uso de los elementos provisionales.
 
 <figure>
-  <span class="video-iphoneX">
-    <span class="video-iphoneX--video">
-      <video autoplay loop muted playsinline controls>
-        <source src="./.webm" type="video/webm" />
-        <source src="./.mp4" type="video/mp4" />
+  <span class="video-wrapper">
+    <span class="video__inner video__inner--1920x1200">
+      <video
+        autoplay
+        loop
+        muted
+        playsinline
+        controls
+        poster="./obtener_datos_dribbble_con_react.png"
+      >
+        <source
+          src="./obtener_datos_dribbble_con_react.webm"
+          type="video/webm"
+        />
+        <source src="./obtener_datos_dribbble_con_react.mp4" type="video/mp4" />
         Tu navegador no soporta HTML5 video.
-        <a href="./.gif">
-          Ver un Gif del formulario de contacto con el indicador del estado de la carga y los mensajes de estado finales.
+        <a href="./obtener_datos_dribbble_con_react.gif">
+          Ver un Gif del componente para obtener diseños de Dribbble con React
+          Hooks y axios.
         </a>
       </video>
     </span>
   </span>
   <figcaption>
-    Formulario de contacto con indicador del estado de la carga y mensajes de estado finales.
+    Componente para obtener diseños de Dribbble con React Hooks y axios.
   </figcaption>
 </figure>
 
