@@ -52,7 +52,7 @@ Now you should be able to add your own information, similar to how I did it in t
 
 ![Dribbble screen in which you can register your new app.](./register_app_with_dribbble.png "Dribbble screen in which you can register your new app.")
 
-### The most important parts here are:
+#### The most important parts here are:
 
 - The **Callback URL**. Is your sites’ URL which you should type including the `https://` part, otherwise you’ll get an error.
 - The **Client ID** and **Client Secret**. You’ll need them to be able to make a POST request, in order to get an access token.
@@ -93,7 +93,7 @@ https://dribbble.com/oauth/token?client_id=CLIENT_ID&client_secret=CLIENT_SECRET
 
 This will give you the access token you need to be able to make requests to Dribbbles’s V2 API.
 
-### The most important parts here are:
+#### The most important parts here are:
 
 - **CLIENT_ID**: is the client id from the Dribbble account page (look at the first screenshot in this tutorial).
 - **CLIENT_SECRET**: is the client secret from the Dribbble account page (look at the first screenshot).
