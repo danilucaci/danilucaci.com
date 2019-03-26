@@ -180,6 +180,7 @@ function SubscribeCard({ locale }) {
     setShowMCError(true);
     setMCError("generic");
     console.warn(error);
+    throw new Error(error);
   }
 
   return (

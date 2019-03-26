@@ -169,6 +169,9 @@ class Layout extends Component {
 
   componentDidCatch(error, errorInfo) {
     if (NODE_ENV !== "development") {
+      console.log(error);
+      console.log(errorInfo);
+
       this.setState({ error });
       Sentry.withScope((scope) => {
         Object.keys(errorInfo).forEach((key) => {
@@ -178,12 +181,6 @@ class Layout extends Component {
       });
     }
   }
-
-  // componentDidUpdate() {
-  // if (NODE_ENV === "development") {
-  //   this.showGDPRStatus();
-  // }
-  // }
 
   setInitialConsentCookie = () => {
     // Tied to GTM Cookie_Consent_Accepted variable to fire analytics
