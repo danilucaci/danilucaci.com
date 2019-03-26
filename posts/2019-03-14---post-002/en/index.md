@@ -7,15 +7,17 @@ intro: "When I was designing my portfolio site, I wanted to import all the work 
 |
 I could have manually added the designs on the website, but I wanted to have an automated solution.
 |
-So that’s exactly what you’ll learn in this article. How I used the Dribbble V2 API, Axios and React Hooks to import all my work from Dribbble into my portfolio static site made with Gatsby.js."
-snippet: "How I used the Dribbble V2 API, Axios and React Hooks to import my work published on Dribbble into my Gatsby.js portfolio static site."
+So that’s exactly what you’ll learn in this article. 
+|
+How I used the Dribbble V2 API, Axios and React Hooks to import all my work from Dribbble into my portfolio static site made with Gatsby.js."
+snippet: "How I imported my designs published on Dribbble into my Gatsby.js portfolio static site by using the Dribbble V2 API, Axios and React Hooks."
 tags:
     - gatsby.js
     - react hooks
     - dribbble
 posted: true
 locale: "en"
-twinPost: "Importar Publicaciones de Dribbble con React Hooks"
+twinPost: "Importar Diseños de Dribbble con React Hooks"
 ---
 
 <nav class="toc">
@@ -30,7 +32,7 @@ twinPost: "Importar Publicaciones de Dribbble con React Hooks"
 - [Loading More Shots](#loading-more-shots)
 - [(Update) Refactoring to useReducer](#update-refactoring-to-usereducer)
 - [Final Demo](#final-demo)
-- [Conclusion](#conclusion)
+- [Next Steps](#next-steps)
 
 <!-- /TOC -->
 
@@ -50,14 +52,14 @@ Now you should be able to add your own information, similar to how I did it in t
 
 ![Dribbble screen in which you can register your new app.](./register_app_with_dribbble.png "Dribbble screen in which you can register your new app.")
 
-#### The most important parts here are:
+### The most important parts here are:
 
 - The **Callback URL**. Is your sites’ URL which you should type including the `https://` part, otherwise you’ll get an error.
 - The **Client ID** and **Client Secret**. You’ll need them to be able to make a POST request, in order to get an access token.
 
 ### Getting a Dribbble Access Code
 
-The next thing you’ll need is a `CLIENT_ID`. To access your `CLIENT_ID`, open a new tab in your browser and enter the following URL:
+The next thing you’ll need is a `CLIENT_ID`. To get yours, open a new tab in your browser and enter the following URL:
 
 ```js
 https://dribbble.com/oauth/authorize?client_id=CLIENT_ID
@@ -73,7 +75,7 @@ https://dribbble.com/oauth/authorize?client_id=e9e05f3...
 
 Click on _Authorize_ to authorize your new app.
 
-<!-- ![Dribbble screen in which you can authorize your app.](./authorize_app_with_dribbble.png "Dribbble screen in which you can authorize your app.") -->
+![Dribbble screen in which you can authorize your app.](./authorize_app_with_dribbble.png "Dribbble screen in which you can authorize your app.")
 
 Once you’ve authorized it, you will be redirected to a page with an URL similar to this one:
 
@@ -83,19 +85,19 @@ http://callback_url?code=5asdas892aas8dh8as9d9ashd
 
 The `callback_url` is the URL you’ve entered in your Dribbble admin panel. The important part here is to copy the long code `5asdas892aas8dh8as9d9ashd`, which you’ll need for the next step.
 
-In order to get the access token, I used <a href="https://www.getpostman.com/downloads/" target="_blank" rel="noopener noreferer">Postman<span class="sr-only">Opens in a new window</span><span aria-hidden="true" class="external-link"></span></a> which you can install on your computer by following the previous link, so that you can make a POST request to the following Dribbble URL:
+In order to get the access token, I used Postman —if you need to install it you can [follow this link](https://www.getpostman.com/downloads/)— so that I can make a POST request to the following Dribbble URL:
 
 ```js
-https://dribbble.com/oauth/token?client_id=CLIENT_ID&client_secret=CLIENT_SECRET&code=CODE_FROM_PREVIOUS_URL
+https://dribbble.com/oauth/token?client_id=CLIENT_ID&client_secret=CLIENT_SECRET&code=URL_CODE
 ```
 
 This will give you the access token you need to be able to make requests to Dribbbles’s V2 API.
 
-#### The most important parts here are:
+### The most important parts here are:
 
-- **CLIENT_ID**: is the client id from the Dribbble account page (look at the first screenshot in this tutorial)
-- **CLIENT_SECRET**: is the client secret from the Dribbble account page (look at the first screenshot)
-- **CODE_FROM_PREVIOUS_URL**: is the code you get after you visit the URL with the `callback_url` of your site
+- **CLIENT_ID**: is the client id from the Dribbble account page (look at the first screenshot in this tutorial).
+- **CLIENT_SECRET**: is the client secret from the Dribbble account page (look at the first screenshot).
+- **URL_CODE**: is the code you get after you visit the URL with the `callback_url` of your site.
 
 ### Making a POST Request With Postman
 
@@ -103,7 +105,7 @@ In order to be able to make a POST request with Postman, you need to follow thes
 
 1. Open up Postman
 2. Make a new `POST` **Request**
-3. Use the URL from the previous step with your `CLIENT_ID`, `CLIENT_SECRET` and `CODE_FROM_PREVIOUS_URL`
+3. Use the URL from the previous step with your `CLIENT_ID`, `CLIENT_SECRET` and `URL_CODE`
 
 Now you should receive a JSON response similar to this one:
 
@@ -127,13 +129,13 @@ If it doesn’t work, and instead you receive this response —or any response c
 
 You should start over and get a new code.
 
-When I was trying to register mine, I wasn’t able to get the access token and I kept getting this error. After searching for a solution, I found this <a href="https://developer.dribbble.com/v1/oauth/" target="_blank" rel="noopener noreferer">help page from the Dribbble API docs<span class="sr-only">Opens in a new window</span><span aria-hidden="true" class="external-link"></span></a> in which they explain what you can do in case you get an error response from the API.
+When I was trying to register mine, I wasn’t able to get the access token and I kept getting this error. After searching for a solution, I found this [help page from the Dribbble API docs](https://developer.dribbble.com/v1/oauth/) in which they explain what you can do in case you get an error response from the API.
 
 If everything went fine, you should now have your access token which you can use to send requests to Dribbble’s V2 API 🎉.
 
 ## Making Async Requests With React Hooks
 
-In order to be able to send requests to the API, I decided to use React Hooks. If you don’t want to use hooks, you can <a href="https://matthewelsom.com/blog/display-shots-on-webpage-with-dribbble-v2-api.html" target="_blank" rel="noopener noreferer nofollow">read this article<span class="sr-only">Opens in a new window</span><span aria-hidden="true" class="external-link"></span></a> in which you can learn how to send requests to Dribbble’s API using ajax.
+In order to be able to send requests to the API, I decided to use React Hooks. If you don’t want to use hooks, you can [read this article](https://matthewelsom.com/blog/display-shots-on-webpage-with-dribbble-v2-api.html) in which you can learn how to send requests to Dribbble’s API using ajax.
 
 Using React Hooks to fetch data from an API is pretty easy. But you should learn how they work first.
 
@@ -145,11 +147,11 @@ But don’t worry, I’ll explain how you can avoid running into that later on.
 
 In order to get started you will need the following:
 
-- **React v16.8** or newer installed (so that you can use hooks)
-- **<a href="https://github.com/axios/axios" target="_blank" rel="noopener noreferer">Axios<span class="sr-only">Opens in a new window</span><span aria-hidden="true" class="external-link"></span></a>** for making requests to Dribbble’s V2 API
-- **The Dribbble access token** you got from the the previous steps in this tutorial
+- **React v16.8** or newer installed (so that you can use hooks).
+- **[Axios](https://github.com/axios/axios)** for making requests to Dribbble’s V2 API.
+- **The Dribbble access token** you got from the the previous steps in this tutorial.
 
-Before you continue, I recommend you to read the guide on <a href="https://overreacted.io/a-complete-guide-to-useeffect/" target="_blank" rel="noopener noreferer">how to use hooks<span class="sr-only">Opens in a new window</span><span aria-hidden="true" class="external-link"></span></a> from Dan Abramov, and <a href="https://www.robinwieruch.de/react-hooks-fetch-data/" target="_blank" rel="noopener noreferer">this article<span class="sr-only">Opens in a new window</span><span aria-hidden="true" class="external-link"></span></a> from Robin Wieruch in which he explains some of the techniques I used in this tutorial, among others.
+Before you continue, I recommend you to read the guide on [how to use hooks](https://overreacted.io/a-complete-guide-to-useeffect/) from Dan Abramov, and [this article](https://www.robinwieruch.de/react-hooks-fetch-data/) from Robin Wieruch in which he explains some of the techniques I used in this tutorial, among others.
 
 Although mine is based on Robin’s article, I did change it quite a bit, so that I can render placeholder elements, besides spinners as loading indicators, while the data is being fetched.
 
@@ -200,7 +202,7 @@ React.useEffect(() => {
 }, [dribbblePosts, dribbblePage, isLoading, isError]);
 ```
 
-**So let’s see what this gets us so far:**
+#### So let’s see what this gets us so far:
 
 - First, I use `async await` to fetch the data, which is stored using the `setState` hook in the `dribbblePosts` array.
 - The `isLoading` state variable is used to render a loading indicator, spinner in most cases, while the data is being fetched. It’s initially set to `true`, and then set to `false` once we get a response from `await`.
@@ -218,7 +220,7 @@ But if you try to run the code it will enter an infinite loop and the Dribbble A
 
 You’ll also get a memory leak if you navigate to another page from where the component is rendered before the state is set.
 
-Since the data is being fetched asynchronously using `async await` if you navigate to a different page before it resolves, React will try to save the data in a state variable of a component that has been unmounted and it will throw an error.
+Since the data is being fetched asynchronously using `async await` if you navigate to a different page before it resolves, React will try to save the data in a state variable of a component that has been unmounted and it will throw this error:
 
 ```js
 index.js:2177 Warning: Can’t perform a React state update on an unmounted component.
@@ -228,7 +230,7 @@ To fix, cancel all subscriptions and asynchronous tasks in a useEffect cleanup f
 
 So let’s see how to fix these issues.
 
-### How to Avoid Making Requests on Each Render
+### Avoid Making Requests on Each Render
 
 Basically, the loop happens because each time `state` is changed in React, it triggers a new render. Then on each render, a new request will be made, which changes `state` again, which causes a new render, and so on...
 
@@ -317,7 +319,7 @@ However, this time around the network request won’t be made since `postsFetche
 
 When you are making network requests using `useEffect()` hooks, each time the state is changed, React will render the component. If you don’t check if you already made a request or if the data is already fetched, it can lead to an infinite loop of renders and network requests.
 
-### How to Avoid Memory Leaks When Fetching Data Using useEffect()
+### Avoiding Memory Leaks
 
 In order to fix this issue, I used the cleanup function that the React hooks provide, which is executed when the component is unmounted.
 
@@ -368,7 +370,7 @@ React.useEffect(() => {
 
 By using a boolean `didCancel` I can avoid saving data in state if the component is unmounted. The cleanup function can be used to toggle the boolean from `false` to `true`. Then the next time it’s executed, it won’t save anything in state. This way React won’t try to save data in the state of a component that has been unmounted.
 
-Note that this doesn’t also cancel the axios data fetching part. If you’d like to learn more about cancelling axios requests, you can follow <a href="https://github.com/axios/axios#cancellation" target="_blank" rel="noopener noreferer">their instructions<span class="sr-only">Opens in a new window</span><span aria-hidden="true" class="external-link"></span></a>.
+Note that this doesn’t also cancel the axios data fetching part. If you’d like to learn more about cancelling axios requests, you can follow [their instructions](https://github.com/axios/axios#cancellation).
 
 Great, so far we have a `useEffect()` hook that:
 
@@ -644,11 +646,11 @@ A great solution to this is to use the reducer hook, which lets me combine sever
 
 Actually not much code needs to change.
 
-The components render method is practically the same.
+The components render function is practically the same.
 
 I only need to extract the data fetching logic in a separate file —so that I can have cleaner code.
 
-And I also need to destructure the variables used in the render method from the custom hook `useDribbbleReducer()`.
+And I also need to destructure the variables used in the render function from the custom hook `useDribbbleReducer()`.
 
 ```jsx
 function DribbblePosts({ locale }) {
@@ -788,11 +790,11 @@ export default function useDribbbleReducer() {
 
 As you can see, the dependency list of the `useEffect` hook is now much cleaner. It only needs to be aware of the changes made to the `dribbblePage` variable which is updated when I want to load more shots from the API, using pagination.
 
-The only check I need to keep doing is the `didCancel` one, to prevent saving data into state if the component unmonunts before the async function resolves.
+The only check I need to keep doing is the `didCancel` one, which is used to prevent saving data into state if the component unmonunts before the async function resolves.
 
 ## Final Demo
 
-In the demo below you can see the initial fetching (only 2 shots for the demo), then loading more shots on each click (2 shots per requests). The UX of the component is also greatly improved by showing a loading indicator with the spinner, and also avoiding large layout shifts, by using the placeholder elements while the data is being fetched.
+In the demo below you can see the initial posts fetch (only 2 shots for the demo) and then the loading more shots on each click part (2 shots per requests). The UX of the component is also greatly improved by showing a loading indicator with the spinner, while also avoiding large layout shifts, by using the placeholder elements when the data is being fetched.
 
 <figure>
   <span class="video-iphoneX">
@@ -812,7 +814,7 @@ In the demo below you can see the initial fetching (only 2 shots for the demo), 
   </figcaption>
 </figure>
 
-## Conclusion
+## Next Steps
 
 So far I’m quite happy with the results. I got all the features I needed by combining React Hooks with the the pagination feature of Dribbble’s V2 API.
 
