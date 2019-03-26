@@ -479,7 +479,7 @@ function ContactForm({ locale }) {
 
 <figure>
   <span class="video-wrapper">
-    <span class="video__inner">
+    <span class="video__inner video__inner--contact-post">
       <video
         autoplay
         loop
