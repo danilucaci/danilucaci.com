@@ -60,10 +60,6 @@ const HRTop = styled(HR)`
   `};
 `;
 
-const HRBottom = styled(HR)`
-  margin-bottom: ${rem(16)};
-`;
-
 const StyledH3 = styled.h3`
   margin-bottom: ${rem(16)};
 `;
@@ -90,7 +86,6 @@ const CaseStudyCard = (props) => (
     <CaseStudyCardContents>
       <HRTop />
       <StyledH3>{props.title}</StyledH3>
-      <HRBottom />
       <Copy small>{props.snippet}</Copy>
       <FormattedMessage id="articleLinkContinue">
         {(txt) => <ContinueLink to={props.slug}>{txt}</ContinueLink>}
