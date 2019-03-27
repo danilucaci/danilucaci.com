@@ -25,7 +25,7 @@ const StyledContactCard = styled.aside`
   `};
 
   ${mediaMin.xxl`
-    padding: ${rem(64)} ${rem(112)} ${rem(56)} ${rem(96)};
+    padding: ${rem(72)} ${rem(120)} ${rem(72)} ${rem(112)};
   `};
 `;
 
@@ -57,10 +57,6 @@ const Subtitle = styled(Copy)`
 
 const Info = styled(Copy)`
   display: block;
-/* 
-  ${mediaMin.s`
-    width: 100%;
-  `}; */
 `;
 
 const StyledContactButton = styled(Link)`
@@ -116,11 +112,11 @@ function ContactCard(props) {
         {(txt) => <StyledH2>{txt}</StyledH2>}
       </FormattedMessage>
 
-      <FormattedMessage id="contactCardDescription">
+      {/* <FormattedMessage id="contactCardDescription">
         {(txt) => <Subtitle>{txt} </Subtitle>}
-      </FormattedMessage>
+      </FormattedMessage> */}
 
-      <FormattedMessage id="contactCardInfo">{(txt) => <Info small>{txt} </Info>}</FormattedMessage>
+      <FormattedMessage id="contactCardInfo">{(txt) => <Info>{txt} </Info>}</FormattedMessage>
 
       <FormattedMessage id="contactCardCTA">
         {(txt) => (
