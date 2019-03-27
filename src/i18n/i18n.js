@@ -40,26 +40,26 @@ export const EXTERNAL_LINK = {
 export const COPY_URL_MESSAGES = {
   en: {
     default: "Copy page link",
-    copied: "Page link copied!",
-    error: "Couldn't copy the link",
+    copied: "Page link copied! ✅",
+    error: "Couldn't copy the link 😔",
   },
   es: {
     default: "Copiar enlace",
-    copied: "Enlace copiado!",
-    error: "No he podido copiar",
+    copied: "¡Enlace copiado! ✅",
+    error: "Algo ha salido mal 😔",
   },
 };
 
 export const COPY_CODE_MESSAGES = {
   en: {
     default: "Copy",
-    copied: "Copied!",
-    error: "Couldn't copy",
+    copied: "Copied! ✅",
+    error: "Couldn't copy the snippet 😔",
   },
   es: {
     default: "Copiar",
-    copied: "Copiado!",
-    error: "No he podido copiar",
+    copied: "¡Copiado! ✅",
+    error: "Algo ha salido mal 😔",
   },
 };
 
@@ -69,8 +69,8 @@ export const CONSENT_VALUE = {
     yes: "I have read and accept the legal notice and the privacy policy.",
   },
   es: {
-    no: "No he leído y no accepto el aviso legal y la política de privacidad.",
-    yes: "He leído y accepto el aviso legal y la política de privacidad.",
+    no: "No he leído y no acepto el aviso legal y la política de privacidad.",
+    yes: "He leído y acepto el aviso legal y la política de privacidad.",
   },
 };
 
@@ -93,7 +93,7 @@ export const FORM_SUBMIT_STATUS = {
     en:
       "Please feel free to get in touch by sending me an email at info@danilucaci.com or at @danilucaci.",
     es:
-      "Por favor, ponte en contacto conmigo enviandome un email a info@danilucaci.com o a @danilucaci.",
+      "Por favor, ponte en contacto conmigo enviándome  un email a info@danilucaci.com o a @danilucaci.",
   },
   cta: {
     en: "Message Sent!",
@@ -104,8 +104,8 @@ export const FORM_SUBMIT_STATUS = {
     es: "Algo ha salido mal 😔",
   },
   subscribeCta: {
-    en: "Subscribed! 🎉",
-    es: "¡Suscrito! 🎉",
+    en: "Message Sent! 🎉",
+    es: "¡Mensaje Enviado! 🎉",
   },
 };
 
@@ -113,19 +113,19 @@ export const INPUT_EMAIL_ERROR = {
   en:
     "The email you have written is incomplete (the part after the @). An example of a correct email is: example@example.com (.com is your emails country code)",
   es:
-    "El email que has introducido es incompleto (la parte despúes de la @). Un ejemplo de email correcto es: ejemplo@ejemplo.es (.es es el código del pais de tu email)",
+    "El email que has introducido es incompleto (la parte después de la @). Un ejemplo de email correcto es: ejemplo@ejemplo.es (.es es el código del país de tu email)",
 };
 
 export const MC_ERRORS = {
   en: {
     generic: "Sorry 😔, something went wrong, please try again later.",
     many: "Sorry 😔, you have too many subscribe attemps, please try again later.",
-    already: "It seems that you already are a member of my newsletter 👌🏻",
+    already: "You have already subscribed. Thank you for subscribing to my newsletter 🙏🏼.",
   },
   es: {
     generic: "Lo siento 😔, algo ha salido mal, por favor intentalo de nuevo más tarde.",
     many: "Lo siento 😔, has hecho demasiados intentos, por favor intentalo de nuevo más tarde.",
-    already: "Parece que ya eres miembro de mi newsletter 👌🏻",
+    already: "Ya te habías suscrito. ¡Gracias por apuntarte a mi lista de suscriptores! 🙏🏼",
   },
 };
 
@@ -133,12 +133,12 @@ export const MC_SUCCESS = {
   en: {
     title: "Thanks for joining my newsletter!",
     message:
-      "Now you just need to confirm your subscription by clicking on the link you will receive in your inbox.",
+      "Now you just need to confirm your subscription. Please click the link in the email you should receive shortly.",
   },
   es: {
     title: "¡Gracias por suscribirte a mi newsletter!",
     message:
-      "Para acabar, solo tienes que confirmar tu suscripción haciendo click en el enlace que llegará a tu buzón.",
+      "Para acabar, solo tienes que confirmar tu suscripción haciendo click en el enlace del email que llegará a tu buzón.",
   },
 };
 

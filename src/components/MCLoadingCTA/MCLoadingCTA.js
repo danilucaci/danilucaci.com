@@ -60,7 +60,7 @@ function MCLoadingCTA({ showMCError = false, showMCLoading = true, locale = "en"
     <StyledLoadingCTA error={showMCError}>
       {showMCLoading && <Spinner locale={locale} />}
       {!showMCLoading && !showMCError && <>{FORM_SUBMIT_STATUS.subscribeCta[locale]}</>}
-      {!showMCLoading && showMCError && <>{FORM_SUBMIT_STATUS.errorCta[locale]}</>}
+      {!showMCLoading && showMCError && <>{FORM_SUBMIT_STATUS.ctaError[locale]}</>}
     </StyledLoadingCTA>
   );
 }

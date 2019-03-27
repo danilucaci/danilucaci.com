@@ -2,26 +2,26 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import { theme, rem, mediaMin } from "../../theme/globalStyles";
+import { theme, rem } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
 import { MC_ERRORS } from "../../i18n/i18n";
 
 const MessageTitle = styled(Copy)`
-  color: ${theme.colors.danger600};
+  color: ${theme.colors.dark800};
   display: block;
   font-size: ${theme.fontSizes.m};
   line-height: ${theme.lineHeights.s};
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.header};
+    font-family: ${theme.fonts.bodyRegular};
   }
 `;
 
 const StatusMessageWrapper = styled.div`
   background-color: ${theme.colors.gray100};
-  border: ${rem(2)} solid ${theme.colors.danger500};
+  border: ${rem(2)} solid ${theme.colors.dark800};
   border-radius: ${theme.borderRadius.buttons};
-  color: ${theme.colors.danger600};
+  color: ${theme.colors.dark800};
 
   display: block;
 
@@ -33,7 +33,7 @@ const StatusMessageWrapper = styled.div`
   white-space: pre-line;
   width: 100%;
 
-  ${theme.shadow.subscribeErrorMessage};
+  ${theme.shadow.default};
 `;
 
 function EmailErrorMessage({ locale, MCError = "" }) {

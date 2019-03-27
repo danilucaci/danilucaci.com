@@ -42,7 +42,7 @@ const StyledSubscribeCard = styled.aside`
 
 const FormContainer = styled.div``;
 
-const StyledForm = styled.form`
+const StyledMCForm = styled.form`
   width: 100%;
 `;
 
@@ -119,7 +119,7 @@ const AltCopy = styled(Copy)`
 
 function SubscribeCard({ locale }) {
   const [email, setEmail] = useState("");
-  const [acceptsConsentCheckbox, setAcceptsConsentCheckbox] = useState(false);
+  const [acceptsConsentCheckbox, setAcceptsMCConsentCheckbox] = useState(false);
   const [checkboxValue, setCheckboxValue] = useState(CONSENT_VALUE[locale].no);
   const [MCSent, setMCSent] = useState(false);
   const [showMCLoading, setShowMCLoading] = useState(false);
@@ -127,7 +127,7 @@ function SubscribeCard({ locale }) {
   const [MCError, setMCError] = useState("");
   const [showMCSuccess, setShowMCSuccess] = useState(false);
 
-  async function handleSubmit(e) {
+  async function handleMCSubmit(e) {
     e.preventDefault();
     setShowMCLoading(true);
     setMCSent(true);
@@ -150,19 +150,22 @@ function SubscribeCard({ locale }) {
       setShowMCError(true);
       setShowMCLoading(false);
       setMCError("already");
+      throw new Error(msg);
     } else if (result.includes("error") && msg.includes("many")) {
       setShowMCError(true);
       setShowMCLoading(false);
       setMCError("many");
+      throw new Error(msg);
     } else if (result.includes("error")) {
       setShowMCError(true);
       setShowMCLoading(false);
       setMCError("generic");
+      throw new Error(msg);
     }
   }
 
-  function handleConsentCheckbox(e) {
-    setAcceptsConsentCheckbox(e.target.checked);
+  function handleMCConsentCheckbox(e) {
+    setAcceptsMCConsentCheckbox(e.target.checked);
     if (e.target.checked) {
       setCheckboxValue(CONSENT_VALUE[locale].yes);
     } else {
@@ -195,7 +198,7 @@ function SubscribeCard({ locale }) {
         {(txt) => <AltCopy>{txt}</AltCopy>}
       </FormattedMessage>
       <FormContainer>
-        <StyledForm onSubmit={handleSubmit}>
+        <StyledMCForm onSubmit={handleMCSubmit}>
           <InputsWrapper>
             <StyledLabel>
               <StyledInput
@@ -228,12 +231,12 @@ function SubscribeCard({ locale }) {
             type="checkbox"
             name="consentcheckbox"
             value={checkboxValue}
-            onChange={handleConsentCheckbox}
+            onChange={handleMCConsentCheckbox}
             checkboxValue={checkboxValue}
             locale={locale}
             required
           />
-        </StyledForm>
+        </StyledMCForm>
 
         {showMCSuccess && <MCSuccessMessage locale={locale} />}
         {showMCError && <MCErrorMessage locale={locale} MCError={MCError} />}
