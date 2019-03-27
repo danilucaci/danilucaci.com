@@ -1,6 +1,6 @@
 ---
-title: "Movie Booking App - UX Case Study"
-slug: "Movie Booking App UX Case Study"
+title: "Movie Booking App"
+slug: "Movie Booking App"
 snippet: "A case study on improving the experience of searching, finding and booking movies using a User-Centered Design process."
 intro: "This app is a personal project that I decided to create as each time I tried to see a movie using one of my local cinema's website or app, I found that they all had outdated designs limited functionalities that helped people decide which movie to see.
 |
@@ -39,7 +39,7 @@ tags:
 posted: true
 image: "./ux_case_study_movie_app_presentation@2x.png"
 locale: "en"
-twinPost: "Compra de Entradas para un Cine - Estudio de Caso UX"
+twinPost: "Aplicación compra entradas Cine"
 ---
 
 ## Initial Problem Assumptions
