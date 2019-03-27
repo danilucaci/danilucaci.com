@@ -169,8 +169,8 @@ class Layout extends Component {
 
   componentDidCatch(error, errorInfo) {
     if (NODE_ENV !== "development") {
-      console.log(error);
-      console.log(errorInfo);
+      console.error("CDC: ", error);
+      console.error("CDC: ", errorInfo);
 
       this.setState({ error });
       Sentry.withScope((scope) => {
