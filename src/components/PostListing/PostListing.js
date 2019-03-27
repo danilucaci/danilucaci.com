@@ -14,10 +14,6 @@ const Wrapper = styled.section`
 
 const StyledH2 = styled.h2`
   margin-bottom: ${rem(16)};
-
-  ${mediaMin.m`
-    margin-bottom: ${rem(24)};
-  `};
 `;
 
 const PostListing = (props) => {
@@ -34,7 +30,7 @@ const PostListing = (props) => {
   return (
     <Wrapper>
       <FormattedMessage id="blogArticleList">
-        {(txt) => <StyledH2>{txt}</StyledH2>}
+        {(txt) => <StyledH2 as="h3">{txt}</StyledH2>}
       </FormattedMessage>
       {postList.map((post) => (
         <Article
