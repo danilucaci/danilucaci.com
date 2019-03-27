@@ -31,7 +31,6 @@ const ContinueLink = styled(BoldLink)`
   display: block;
 
   padding-top: ${rem(16)};
-  padding-bottom: ${rem(16)};
 
   &:hover {
     background-color: transparent;
@@ -64,7 +63,7 @@ const Article = (props) => (
 
 Article.propTypes = {
   title: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
+  snippet: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(PropTypes.string).isRequired,
