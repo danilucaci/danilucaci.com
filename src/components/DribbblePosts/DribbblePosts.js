@@ -14,17 +14,12 @@ import useDribbbleReducer from "./DribbblePostsReducer";
 import { DRIBBBLE_STATUS } from "../../i18n/i18n";
 
 const DribbblePostsWrapper = styled.section`
-  max-width: ${theme.contain.wrapper.col10};
+  max-width: ${theme.contain.inner.col10};
   margin-left: auto;
   margin-right: auto;
   margin-bottom: ${rem(32)};
 
-  padding-left: ${theme.gutters.s};
-  padding-right: ${theme.gutters.s};
-
   ${mediaMin.s`
-    padding-left: ${theme.gutters.m};
-    padding-right: ${theme.gutters.m};
     margin-bottom: ${rem(64)};
   `};
 `;
