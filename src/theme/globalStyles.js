@@ -157,9 +157,9 @@ export const theme = {
   },
   mainMargins: {
     top: {
-      s: "1em",
-      m: "1.5em",
-      xl: "2em",
+      s: "1.5em",
+      m: "2em",
+      xl: "2.5em",
     },
   },
   spacing: {

@@ -77,7 +77,6 @@ const WorkHeader = styled.header`
   margin-bottom: ${rem(32)};
 
   ${mediaMin.s`
-    margin-top: ${rem(16)};
     margin-bottom: ${rem(48)};
   `};
 `;

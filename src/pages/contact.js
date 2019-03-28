@@ -17,7 +17,6 @@ import { localePaths } from "../i18n/i18n";
 
 const ContactMeWrapper = styled.section`
   max-width: ${theme.contain.wrapper.col10};
-  margin-top: ${rem(24)};
   margin-bottom: ${rem(64)};
   margin-left: auto;
   margin-right: auto;
@@ -28,7 +27,7 @@ const ContactMeWrapper = styled.section`
   ${mediaMin.m`
     padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
-    margin-top: ${rem(40)};
+    margin-top: ${rem(24)};
     margin-bottom: ${rem(80)};
   `};
 `;

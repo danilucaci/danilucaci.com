@@ -40,8 +40,7 @@ const HeaderInfo = styled.header`
   ${mediaMin.m`
     flex-direction: row; 
     justify-content: space-between;
-
-    margin-top: ${rem(32)};
+    margin-top: ${rem(24)};
   `};
 `;
 
@@ -104,7 +103,6 @@ const AboutMeTitle = styled.h1`
   `}
 
   line-height: ${theme.lineHeights.h2s} !important;
-  margin-top: ${rem(16)};
   margin-bottom: ${rem(16)};
 
   ${mediaMin.xs`

@@ -31,7 +31,7 @@ const IndexHeader = styled.header`
   `};
 
   ${mediaMin.xs`
-    padding-top: ${rem(32)};
+    padding-top: ${rem(24)};
   `};
 `;
 
