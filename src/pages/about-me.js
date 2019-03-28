@@ -85,7 +85,6 @@ const InfoWrapper = styled.div`
     order: 2;
     display: inline-flex;
     flex-direction: column;
-    justify-content: space-between;
     margin-left: ${rem(16)};
     width: calc(((100% / 10) * 6) - ${rem(16)});
   `};
@@ -96,13 +95,13 @@ const AboutMeTitle = styled.h1`
   font-weight: 700;
   font-style: normal;
   font-family: ${theme.fonts.header};
-  font-size: ${theme.fontSizes.h2s} !important;
+  font-size: ${theme.fontSizes.h1s} !important;
 
   ${mediaMin.xs`
     font-size: ${theme.fontSizes.h2} !important;
   `}
 
-  line-height: ${theme.lineHeights.h2s} !important;
+  line-height: ${theme.lineHeights.h1s} !important;
   margin-bottom: ${rem(16)};
 
   ${mediaMin.xs`
@@ -111,7 +110,6 @@ const AboutMeTitle = styled.h1`
 
   ${mediaMin.s`
     margin-top: ${rem(24)};
-    margin-bottom: 0;
   `}
 `;
 
