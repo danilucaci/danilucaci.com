@@ -475,6 +475,10 @@ function ContactForm({ locale }) {
     <span class="video__inner video__inner--contact-post">
       <video autoplay loop muted playsinline controls>
         <source
+          src="./contact_form_loading_and_success_state.webm"
+          type="video/mp4"
+        />
+        <source
           src="./contact_form_loading_and_success_state.mp4"
           type="video/mp4"
         />

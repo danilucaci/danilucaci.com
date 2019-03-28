@@ -482,6 +482,10 @@ function ContactForm({ locale }) {
     <span class="video__inner video__inner--contact-post">
       <video autoplay loop muted playsinline controls>
         <source
+          src="./formulario_contacto_con_indicador_carga_mensaje_estado.webm"
+          type="video/mp4"
+        />
+        <source
           src="./formulario_contacto_con_indicador_carga_mensaje_estado.mp4"
           type="video/mp4"
         />
