@@ -59,27 +59,27 @@ As treatment managers, we have hired following service providers, having committ
 
 ##### Domain Hosting
 
-- **<a href="https://www.ionos.com/" target="_blank" rel="noopener noreferrer">ionos.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>:** I use the services provided by ionos.com as a domain name hosting provider for www.danilucaci.com. Their privacy policy can be read in the following link: <a href="https://www.ionos.com/terms-gtc/terms-privacy/" target="_blank" rel="noopener noreferrer">ionos.com privacy policy<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
+- **[ionos.com](https://www.ionos.com/):** I use the services provided by ionos.com as a domain name hosting provider for www.danilucaci.com. Their privacy policy can be read in the following link: [ionos.com privacy policy](https://www.ionos.com/terms-gtc/terms-privacy/)
 
 ##### Web Hosting
 
-- **<a href="https://www.netlify.com/" target="_blank" rel="noopener noreferrer">netlify.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>:** I use the services provided by netlify.com as a hosting provider for www.danilucaci.com. Their privacy policy can be read in the following link: <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">netlify.com privacy policy<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
+- **[netlify.com](https://www.netlify.com/):** I use the services provided by netlify.com as a hosting provider for www.danilucaci.com. Their privacy policy can be read in the following link: [netlify.com privacy policy](https://www.netlify.com/privacy/)
 
 ##### Comments on the Blog
 
-- **<a href="https://www.disqus.com/" target="_blank" rel="noopener noreferrer">disqus.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>:** I use the services provided by disqus.com so that I can use comments on the blog pages of www.danilucaci.com. Their privacy policy can be read in the following link: <a href="https://help.disqus.com/terms-and-policies/disqus-privacy-policy" target="_blank" rel="noopener noreferrer">disqus.com privacy policy<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
+- **[disqus.com](https://www.disqus.com/):** I use the services provided by disqus.com so that I can use comments on the blog pages of www.danilucaci.com. Their privacy policy can be read in the following link: [disqus.com privacy policy](https://help.disqus.com/terms-and-policies/disqus-privacy-policy)
 
 ##### Services Used To Send Newsletters
 
-- **<a href="https://mailchimp.com/en/" target="_blank" rel="noopener noreferrer">mailchimp.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>:** I use the services provided by mailchimp.com so that I can send newsletters to the subscribers of www.danilucaci.com. Their privacy policy can be read in the following link: <a href="https://mailchimp.com/legal/" target="_blank" rel="noopener noreferrer">mailchimp.com privacy policy<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
+- **[mailchimp.com](https://mailchimp.com/en/):** I use the services provided by mailchimp.com so that I can send newsletters to the subscribers of www.danilucaci.com. Their privacy policy can be read in the following link: [mailchimp.com privacy policy](https://mailchimp.com/legal/)
 
 ##### Email Service Provider
 
-- **<a href="https://www.zoho.com/" target="_blank" rel="noopener noreferrer">zoho.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>:** I use the services provided by zoho.com as a personal email provider so that I can communicate with the clients of www.danilucaci.com or any person interested in contacting me. Their privacy policy can be read in the following link: <a href="https://www.zoho.com/privacy.html" target="_blank" rel="noopener noreferrer">zoho.com privacy policy<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
+- **[zoho.com](https://www.zoho.com/):** I use the services provided by zoho.com as a personal email provider so that I can communicate with the clients of www.danilucaci.com or any person interested in contacting me. Their privacy policy can be read in the following link: [zoho.com privacy policy](https://www.zoho.com/privacy.html)
 
 ##### Email Client
 
-- **<a href="https://sparkmailapp.com/" target="_blank" rel="noopener noreferrer">sparkmailapp.com<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>:** I use the services provided by sparkmailapp.com as a personal email client so that I can communicate with the clients of www.danilucaci.com or any person interested in contacting me. Their privacy policy can be read in the following link: <a href="https://sparkmailapp.com/privacy" target="_blank" rel="noopener noreferrer">sparkmailapp.com privacy policy<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>
+- **[sparkmailapp.com](https://sparkmailapp.com/):** I use the services provided by sparkmailapp.com as a personal email client so that I can communicate with the clients of www.danilucaci.com or any person interested in contacting me. Their privacy policy can be read in the following link: [sparkmailapp.com privacy policy](https://sparkmailapp.com/privacy)
 
 ## Data Collected By Service Users
 
