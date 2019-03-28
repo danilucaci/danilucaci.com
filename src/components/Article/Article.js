@@ -11,7 +11,7 @@ import { BoldLink } from "../Link/Link";
 
 const StyledArticle = styled.article`
   background-color: ${theme.colors.gray100};
-  padding: ${rem(12)} ${rem(16)} ${rem(16)} ${rem(16)};
+  padding: ${rem(12)} ${rem(16)} ${rem(24)} ${rem(16)};
   margin-bottom: ${theme.gutters.m};
 
   ${mediaMin.s`
