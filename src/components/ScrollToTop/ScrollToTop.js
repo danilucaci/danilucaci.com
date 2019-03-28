@@ -12,6 +12,14 @@ const StyledScrollToTop = styled.a`
   right: ${rem(16)};
   display: block;
 
+  /* iPhone X */
+  @supports (padding: max(0px)) {
+    & {
+      right: max(${rem(16)}, env(safe-area-inset-right));
+      bottom: max(${rem(16)}, env(safe-area-inset-bottom));
+    }
+  }
+
   ${theme.shadow.default};
 
   border-radius: ${theme.borderRadius.buttons};

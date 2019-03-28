@@ -21,12 +21,31 @@ const ContactMeWrapper = styled.section`
   margin-left: auto;
   margin-right: auto;
 
-  padding-left: ${theme.gutters.s};
   padding-right: ${theme.gutters.s};
+  padding-left: ${theme.gutters.s};
+
+  /* iPhone X */
+  @supports (padding: max(0px)) {
+    & {
+      padding-left: max(${theme.gutters.s}, env(safe-area-inset-left));
+      padding-right: max(${theme.gutters.s}, env(safe-area-inset-right));
+    }
+  }
+
+  ${mediaMin.s`
+    padding-right: ${theme.gutters.m};
+    padding-left: ${theme.gutters.m};
+
+    /* iPhone X */
+    @supports (padding: max(0px)) {
+      & {
+        padding-left: max(${theme.gutters.m}, env(safe-area-inset-left));
+        padding-right: max(${theme.gutters.m}, env(safe-area-inset-right));
+      }
+    }
+  `};
 
   ${mediaMin.m`
-    padding-left: ${theme.gutters.m};
-    padding-right: ${theme.gutters.m};
     margin-top: ${rem(24)};
     margin-bottom: ${rem(80)};
   `};

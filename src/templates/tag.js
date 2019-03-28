@@ -20,13 +20,28 @@ import { localePaths } from "../i18n/i18n";
 const TagWrapper = styled.section`
   max-width: ${theme.contain.wrapper.col8};
   margin: 0 auto;
-
-  padding-left: ${theme.gutters.s};
   padding-right: ${theme.gutters.s};
+  padding-left: ${theme.gutters.s};
+
+  /* iPhone X */
+  @supports (padding: max(0px)) {
+    & {
+      padding-left: max(${theme.gutters.s}, env(safe-area-inset-left));
+      padding-right: max(${theme.gutters.s}, env(safe-area-inset-right));
+    }
+  }
 
   ${mediaMin.s`
-    padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
+    padding-left: ${theme.gutters.m};
+
+    /* iPhone X */
+    @supports (padding: max(0px)) {
+      & {
+        padding-left: max(${theme.gutters.m}, env(safe-area-inset-left));
+        padding-right: max(${theme.gutters.m}, env(safe-area-inset-right));
+      }
+    }
   `};
 
   margin-bottom: ${theme.spacing.row.s};
@@ -36,6 +51,11 @@ const TagWrapper = styled.section`
   ${mediaMin.l`
     margin-bottom: ${theme.spacing.row.xl};
   `};
+
+  /* Mobile in ladscape */
+  @media screen and (min-device-width: ${rem(280)}) and (min-device-height: ${rem(480)}) and (orientation: landscape) {
+    margin-bottom: ${rem(64)};
+  }
 `;
 
 const TagHeader = styled.header`
@@ -48,6 +68,11 @@ const TagHeader = styled.header`
   ${mediaMin.l`
     margin-bottom: ${theme.spacing.components.xl};
   `};
+
+  /* Mobile in ladscape */
+  @media screen and (min-device-width: ${rem(280)}) and (min-device-height: ${rem(480)}) and (orientation: landscape) {
+    margin-bottom: ${rem(64)};
+  }
 `;
 
 const TagTitleWrapper = styled.div`

@@ -36,6 +36,12 @@ const StyledThanksPage = styled.section`
     margin-bottom: ${rem(144)};
   `};
 
+  /* Mobile in ladscape */
+  @media screen and (min-device-width: ${rem(280)}) and (min-device-height: ${rem(480)}) and (orientation: landscape) {
+    margin-top: ${rem(24)};
+    margin-bottom: ${rem(64)};
+  }
+
   & a {
     display: inline;
     white-space: nowrap;

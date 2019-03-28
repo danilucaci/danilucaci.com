@@ -26,6 +26,13 @@ const ArticleWrapper = styled.article`
       margin-left: ${theme.gutters.s};
       margin-right: ${theme.gutters.s};
       width: auto;
+
+      @supports (padding: max(0px)) {
+        & {
+          margin-left: max(${theme.gutters.s}, env(safe-area-inset-left));
+          margin-right: max(${theme.gutters.s}, env(safe-area-inset-right));
+        }
+      }
     }
 
     @media screen and (min-width: ${theme.breakpoints.s}) and (max-width: ${theme.breakpoints
@@ -33,6 +40,13 @@ const ArticleWrapper = styled.article`
       margin-left: ${theme.gutters.m};
       margin-right: ${theme.gutters.m};
       width: auto;
+
+      @supports (padding: max(0px)) {
+        & {
+          margin-left: max(${theme.gutters.m}, env(safe-area-inset-left));
+          margin-right: max(${theme.gutters.m}, env(safe-area-inset-right));
+        }
+      }
     }
   }
 `;
@@ -42,13 +56,29 @@ const StyledHeader = styled.header`
   margin-left: auto;
   margin-right: auto;
 
-  padding-left: ${theme.gutters.s};
   padding-right: ${theme.gutters.s};
+  padding-left: ${theme.gutters.s};
+
+  /* iPhone X */
+  @supports (padding: max(0px)) {
+    & {
+      padding-left: max(${theme.gutters.s}, env(safe-area-inset-left));
+      padding-right: max(${theme.gutters.s}, env(safe-area-inset-right));
+    }
+  }
 
   ${mediaMin.s`
-    padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
-`};
+    padding-left: ${theme.gutters.m};
+
+    /* iPhone X */
+    @supports (padding: max(0px)) {
+      & {
+        padding-left: max(${theme.gutters.m}, env(safe-area-inset-left));
+        padding-right: max(${theme.gutters.m}, env(safe-area-inset-right));
+      }
+    }
+  `};
 `;
 
 const PostH1 = styled.h1`
@@ -81,14 +111,31 @@ const OverviewContainer = styled.div`
   background-color: ${theme.colors.sectionBackground};
   width: 100%;
 
-  padding-left: ${theme.gutters.s};
-  padding-right: ${theme.gutters.s};
   padding-top: ${rem(48)};
   padding-bottom: ${rem(48)};
 
+  padding-right: ${theme.gutters.s};
+  padding-left: ${theme.gutters.s};
+
+  /* iPhone X */
+  @supports (padding: max(0px)) {
+    & {
+      padding-left: max(${theme.gutters.s}, env(safe-area-inset-left));
+      padding-right: max(${theme.gutters.s}, env(safe-area-inset-right));
+    }
+  }
+
   ${mediaMin.s`
-    padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
+    padding-left: ${theme.gutters.m};
+
+    /* iPhone X */
+    @supports (padding: max(0px)) {
+      & {
+        padding-left: max(${theme.gutters.m}, env(safe-area-inset-left));
+        padding-right: max(${theme.gutters.m}, env(safe-area-inset-right));
+      }
+    }
   `};
 
   margin: ${rem(32)} 0 ${rem(64)};
@@ -185,12 +232,28 @@ const OverviewListLink = styled.a`
 const PostContent = styled.section`
   display: block;
 
-  padding-left: ${theme.gutters.s};
   padding-right: ${theme.gutters.s};
+  padding-left: ${theme.gutters.s};
+
+  /* iPhone X */
+  @supports (padding: max(0px)) {
+    & {
+      padding-left: max(${theme.gutters.s}, env(safe-area-inset-left));
+      padding-right: max(${theme.gutters.s}, env(safe-area-inset-right));
+    }
+  }
 
   ${mediaMin.s`
-    padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
+    padding-left: ${theme.gutters.m};
+
+    /* iPhone X */
+    @supports (padding: max(0px)) {
+      & {
+        padding-left: max(${theme.gutters.m}, env(safe-area-inset-left));
+        padding-right: max(${theme.gutters.m}, env(safe-area-inset-right));
+      }
+    }
   `};
 
   max-width: ${theme.contain.inner.col6};

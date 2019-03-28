@@ -20,12 +20,31 @@ const StyledNotFound = styled.section`
   margin-top: ${rem(16)};
   margin-bottom: ${rem(64)};
 
-  padding-left: ${theme.gutters.s};
   padding-right: ${theme.gutters.s};
+  padding-left: ${theme.gutters.s};
+
+  /* iPhone X */
+  @supports (padding: max(0px)) {
+    & {
+      padding-left: max(${theme.gutters.s}, env(safe-area-inset-left));
+      padding-right: max(${theme.gutters.s}, env(safe-area-inset-right));
+    }
+  }
+
+  ${mediaMin.s`
+    padding-right: ${theme.gutters.m};
+    padding-left: ${theme.gutters.m};
+
+    /* iPhone X */
+    @supports (padding: max(0px)) {
+      & {
+        padding-left: max(${theme.gutters.m}, env(safe-area-inset-left));
+        padding-right: max(${theme.gutters.m}, env(safe-area-inset-right));
+      }
+    }
+  `};
 
   ${mediaMin.m`
-    padding-left: ${theme.gutters.m};
-    padding-right: ${theme.gutters.m};
     margin-top: ${rem(40)};
     margin-bottom: ${rem(80)};
   `};
@@ -34,6 +53,12 @@ const StyledNotFound = styled.section`
     margin-top: ${rem(80)};
     margin-bottom: ${rem(144)};
   `};
+
+  /* Mobile in ladscape */
+  @media screen and (min-device-width: ${rem(280)}) and (min-device-height: ${rem(480)}) and (orientation: landscape) {
+    margin-top: ${rem(24)};
+    margin-bottom: ${rem(64)};
+  }
 
   & a {
     display: inline;

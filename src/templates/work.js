@@ -33,25 +33,56 @@ const InnerWrapper = styled.div`
   max-width: ${theme.contain.wrapper.col10};
   margin: 0 auto;
 
-  padding-left: ${theme.gutters.s};
   padding-right: ${theme.gutters.s};
+  padding-left: ${theme.gutters.s};
+
+  /* iPhone X */
+  @supports (padding: max(0px)) {
+    & {
+      padding-left: max(${theme.gutters.s}, env(safe-area-inset-left));
+      padding-right: max(${theme.gutters.s}, env(safe-area-inset-right));
+    }
+  }
 
   ${mediaMin.s`
-    padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
+    padding-left: ${theme.gutters.m};
+
+    /* iPhone X */
+    @supports (padding: max(0px)) {
+      & {
+        padding-left: max(${theme.gutters.m}, env(safe-area-inset-left));
+        padding-right: max(${theme.gutters.m}, env(safe-area-inset-right));
+      }
+    }
   `};
 `;
 
 const ContactWrapper = styled.div`
-  padding-left: ${theme.gutters.s};
-  padding-right: ${theme.gutters.s};
-
   margin-bottom: ${theme.spacing.components.s};
+  padding-right: ${theme.gutters.s};
+  padding-left: ${theme.gutters.s};
+
+  /* iPhone X */
+  @supports (padding: max(0px)) {
+    & {
+      padding-left: max(${theme.gutters.s}, env(safe-area-inset-left));
+      padding-right: max(${theme.gutters.s}, env(safe-area-inset-right));
+    }
+  }
 
   ${mediaMin.s`
-    padding-left: ${theme.gutters.m};
-    padding-right: ${theme.gutters.m};
     margin-bottom: ${theme.spacing.components.m};
+    padding-right: ${theme.gutters.m};
+    padding-left: ${theme.gutters.m};
+
+    /* iPhone X */
+    @supports (padding: max(0px)) {
+      & {
+        padding-left: max(${theme.gutters.m}, env(safe-area-inset-left));
+        padding-right: max(${theme.gutters.m}, env(safe-area-inset-right));
+      }
+    }
   `};
 
   ${mediaMin.m`

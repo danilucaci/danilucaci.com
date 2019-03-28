@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
+import { theme, rem } from "../../theme/globalStyles";
 import SiteNav from "../SiteNav/SiteNav";
 
 const StyledSiteHeaderWrapper = styled.header`
@@ -78,7 +78,7 @@ SiteHeader.propTypes = {
   locale: PropTypes.string.isRequired,
   twinPostURL: PropTypes.string.isRequired,
   currentPath: PropTypes.string.isRequired,
-  optionalBool: PropTypes.bool,
+  showScrollIndicator: PropTypes.bool,
 };
 
 export default SiteHeader;

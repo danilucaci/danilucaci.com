@@ -20,18 +20,34 @@ import { localePaths } from "../i18n/i18n";
 const IndexHeader = styled.header`
   max-width: ${theme.contain.wrapper.col10};
   margin: 0 auto;
-
-  padding-left: ${theme.gutters.s};
-  padding-right: ${theme.gutters.s};
   padding-top: ${rem(16)};
-
-  ${mediaMin.s`
-    padding-left: ${theme.gutters.m};
-    padding-right: ${theme.gutters.m};
-  `};
 
   ${mediaMin.xs`
     padding-top: ${rem(24)};
+  `};
+
+  padding-right: ${theme.gutters.s};
+  padding-left: ${theme.gutters.s};
+
+  /* iPhone X */
+  @supports (padding: max(0px)) {
+    & {
+      padding-left: max(${theme.gutters.s}, env(safe-area-inset-left));
+      padding-right: max(${theme.gutters.s}, env(safe-area-inset-right));
+    }
+  }
+
+  ${mediaMin.s`
+    padding-right: ${theme.gutters.m};
+    padding-left: ${theme.gutters.m};
+
+    /* iPhone X */
+    @supports (padding: max(0px)) {
+      & {
+        padding-left: max(${theme.gutters.m}, env(safe-area-inset-left));
+        padding-right: max(${theme.gutters.m}, env(safe-area-inset-right));
+      }
+    }
   `};
 `;
 
@@ -90,35 +106,40 @@ const Row = styled.section`
   ${mediaMin.xl`
     margin: ${theme.spacing.row.xl} 0;
   `};
-`;
 
-const AltRow = styled.section`
-  background-color: ${theme.colors.gray100};
-
-  padding-top: ${theme.spacing.row.s};
-  padding-bottom: ${theme.spacing.row.s};
-
-  ${mediaMin.s`
-    padding-top: ${theme.spacing.row.m};
-    padding-bottom: ${theme.spacing.row.m};
-  `};
-
-  ${mediaMin.xl`
-    padding-top: ${theme.spacing.row.xl};
-    padding-bottom: ${theme.spacing.row.xl};
-  `};
+  /* Mobile in ladscape */
+  @media screen and (min-device-width: ${rem(280)}) and (min-device-height: ${rem(480)}) and (orientation: landscape) {
+    margin-top: ${rem(64)};
+    margin-bottom: ${rem(80)};
+  }
 `;
 
 const RowContents = styled.div`
   max-width: ${theme.contain.wrapper.col10};
   margin: 0 auto;
 
-  padding-left: ${theme.gutters.s};
   padding-right: ${theme.gutters.s};
+  padding-left: ${theme.gutters.s};
+
+  /* iPhone X */
+  @supports (padding: max(0px)) {
+    & {
+      padding-left: max(${theme.gutters.s}, env(safe-area-inset-left));
+      padding-right: max(${theme.gutters.s}, env(safe-area-inset-right));
+    }
+  }
 
   ${mediaMin.s`
-    padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
+    padding-left: ${theme.gutters.m};
+
+    /* iPhone X */
+    @supports (padding: max(0px)) {
+      & {
+        padding-left: max(${theme.gutters.m}, env(safe-area-inset-left));
+        padding-right: max(${theme.gutters.m}, env(safe-area-inset-right));
+      }
+    }
   `};
 `;
 
@@ -128,6 +149,11 @@ const StyledHR = styled(HR)`
   ${mediaMin.m`
     margin-bottom: ${rem(64)};
   `};
+
+  /* Mobile in ladscape */
+  @media screen and (min-device-width: ${rem(280)}) and (min-device-height: ${rem(480)}) and (orientation: landscape) {
+    margin-bottom: ${rem(32)};
+  }
 `;
 
 const ServicesTitle = styled.h2`

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
 
-import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
+import { theme, rem, mediaMin } from "../../theme/globalStyles";
 import { HR } from "../HR/HR";
 import { SectionHeader } from "../Headings/Headings";
 import { DefaultLink } from "../Link/Link";
@@ -14,12 +14,28 @@ const SiblingPostsWrapper = styled.nav`
   margin-left: auto;
   margin-right: auto;
 
-  padding-left: ${theme.gutters.s};
   padding-right: ${theme.gutters.s};
+  padding-left: ${theme.gutters.s};
+
+  /* iPhone X */
+  @supports (padding: max(0px)) {
+    & {
+      padding-left: max(${theme.gutters.s}, env(safe-area-inset-left));
+      padding-right: max(${theme.gutters.s}, env(safe-area-inset-right));
+    }
+  }
 
   ${mediaMin.s`
-    padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
+    padding-left: ${theme.gutters.m};
+
+    /* iPhone X */
+    @supports (padding: max(0px)) {
+      & {
+        padding-left: max(${theme.gutters.m}, env(safe-area-inset-left));
+        padding-right: max(${theme.gutters.m}, env(safe-area-inset-right));
+      }
+    }
   `};
 
   margin-bottom: ${theme.spacing.components.s};
@@ -29,6 +45,11 @@ const SiblingPostsWrapper = styled.nav`
   ${mediaMin.m`
     margin-bottom: ${theme.spacing.components.xl};
   `};
+
+  /* Mobile in ladscape */
+  @media screen and (min-device-width: ${rem(280)}) and (min-device-height: ${rem(480)}) and (orientation: landscape) {
+    margin-bottom: ${rem(64)};
+  }
 `;
 
 const SiblingPostsContents = styled.div`

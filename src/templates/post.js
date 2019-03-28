@@ -38,12 +38,28 @@ const PostWrapper = styled.article`
   margin-left: auto;
   margin-right: auto;
 
-  padding-left: ${theme.gutters.s};
   padding-right: ${theme.gutters.s};
+  padding-left: ${theme.gutters.s};
+
+  /* iPhone X */
+  @supports (padding: max(0px)) {
+    & {
+      padding-left: max(${theme.gutters.s}, env(safe-area-inset-left));
+      padding-right: max(${theme.gutters.s}, env(safe-area-inset-right));
+    }
+  }
 
   ${mediaMin.s`
-    padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
+    padding-left: ${theme.gutters.m};
+
+    /* iPhone X */
+    @supports (padding: max(0px)) {
+      & {
+        padding-left: max(${theme.gutters.m}, env(safe-area-inset-left));
+        padding-right: max(${theme.gutters.m}, env(safe-area-inset-right));
+      }
+    }
   `};
 `;
 
@@ -117,6 +133,11 @@ const PostContent = styled.section`
   ${mediaMin.xl`
     margin-bottom: ${theme.spacing.components.xl};
   `};
+
+  /* Mobile in ladscape */
+  @media screen and (min-device-width: ${rem(280)}) and (min-device-height: ${rem(480)}) and (orientation: landscape) {
+    margin-bottom: ${rem(64)};
+  }
 
   header h1,
   nav h3 {
@@ -350,18 +371,40 @@ const CommentsWrapper = styled.aside`
   margin-right: auto;
   margin-bottom: ${theme.spacing.components.s};
 
-  padding-left: ${theme.gutters.s};
   padding-right: ${theme.gutters.s};
+  padding-left: ${theme.gutters.s};
+
+  /* iPhone X */
+  @supports (padding: max(0px)) {
+    & {
+      padding-left: max(${theme.gutters.s}, env(safe-area-inset-left));
+      padding-right: max(${theme.gutters.s}, env(safe-area-inset-right));
+    }
+  }
 
   ${mediaMin.s`
-    padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
+    padding-left: ${theme.gutters.m};
+
+    /* iPhone X */
+    @supports (padding: max(0px)) {
+      & {
+        padding-left: max(${theme.gutters.m}, env(safe-area-inset-left));
+        padding-right: max(${theme.gutters.m}, env(safe-area-inset-right));
+      }
+    }
+
     margin-bottom: ${theme.spacing.components.m};
   `};
 
   ${mediaMin.m`
     margin-bottom: ${theme.spacing.components.xl};
   `};
+
+  /* Mobile in ladscape */
+  @media screen and (min-device-width: ${rem(280)}) and (min-device-height: ${rem(480)}) and (orientation: landscape) {
+    margin-bottom: ${rem(64)};
+  }
 `;
 
 const BottomHR = styled(HR)`
@@ -374,6 +417,11 @@ const BottomHR = styled(HR)`
   ${mediaMin.m`
   margin-bottom: ${theme.spacing.components.xl};
 `};
+
+  /* Mobile in ladscape */
+  @media screen and (min-device-width: ${rem(280)}) and (min-device-height: ${rem(480)}) and (orientation: landscape) {
+    margin-bottom: ${rem(64)};
+  }
 `;
 
 // eslint-disable

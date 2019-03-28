@@ -10,7 +10,7 @@ export default class HTML extends React.Component {
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
           <meta
             name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no viewport-fit=cover"
           />
           <script
             src="https://cdn.polyfill.io/v2/polyfill.min.js?features=eventsource,es7"
@@ -21,11 +21,7 @@ export default class HTML extends React.Component {
         </head>
         <body {...this.props.bodyAttributes}>
           {this.props.preBodyComponents}
-          <div
-            key={`body`}
-            id="___gatsby"
-            dangerouslySetInnerHTML={{ __html: this.props.body }}
-          />
+          <div key="body" id="___gatsby" dangerouslySetInnerHTML={{ __html: this.props.body }} />
           {this.props.postBodyComponents}
         </body>
       </html>
