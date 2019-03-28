@@ -88,22 +88,31 @@ function DribbblePost(props) {
   // const fourX = props.post.images.four_x;
 
   let imgSrcSet = "";
+  let imgFallbackSrc = "";
 
   if (animated) {
     if (hiDpi) {
       imgSrcSet = `${normal} 284w, ${hiDpi} 584w`;
+      imgFallbackSrc = normal;
     } else {
       imgSrcSet = `${oneX} 284w`;
+      imgFallbackSrc = oneX;
     }
   } else {
     imgSrcSet = `${oneX} 284w, ${twoX} 584w`;
+    imgFallbackSrc = oneX;
   }
 
   return (
     <StyledLink href={htmlURL} target="_blank" rel="noopener noreferrer">
       <StyledDribbblePost>
         <PostBGImg>
-          <StyledImg sizes="(max-width: 936px) 100vw" srcSet={imgSrcSet} alt={title} />
+          <StyledImg
+            sizes="(max-width: 936px) 100vw"
+            srcSet={imgSrcSet}
+            src={imgFallbackSrc}
+            alt={title}
+          />
         </PostBGImg>
       </StyledDribbblePost>
     </StyledLink>
