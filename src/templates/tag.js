@@ -53,7 +53,7 @@ const TagWrapper = styled.section`
   `};
 
   /* Mobile in ladscape */
-  @media screen and (min-device-width: ${rem(280)}) and (min-device-height: ${rem(480)}) and (orientation: landscape) {
+  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(280)}) and (max-height: ${rem(560)}) and (orientation: landscape) {
     margin-bottom: ${rem(64)};
   }
 `;
@@ -70,7 +70,7 @@ const TagHeader = styled.header`
   `};
 
   /* Mobile in ladscape */
-  @media screen and (min-device-width: ${rem(280)}) and (min-device-height: ${rem(480)}) and (orientation: landscape) {
+  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(280)}) and (max-height: ${rem(560)}) and (orientation: landscape) {
     margin-bottom: ${rem(64)};
   }
 `;
