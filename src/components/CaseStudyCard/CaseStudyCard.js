@@ -28,11 +28,17 @@ const StyledCaseStudyCard = styled.article`
 `;
 
 const CaseStudyImgWrapper = styled.div`
-  padding: ${rem(24)} 0;
+  padding-top: ${rem(16)};
+  padding-bottom: ${rem(16)};
+
+  ${mediaMin.m`
+    padding: ${rem(16)} ${rem(32)};
+  `};
 
   ${mediaMin.xl`
     max-width: calc(60% - ${rem(24)});
     margin-left: ${rem(24)};
+    padding: ${rem(16)} 0;
     flex: 1 1 60%;
     float: right;
     order: 2;
@@ -40,11 +46,15 @@ const CaseStudyImgWrapper = styled.div`
 `;
 
 const CaseStudyCardContents = styled.div`
-  padding: ${rem(24)};
+  padding: 0 ${rem(16)} ${rem(16)} ${rem(16)};
+
+  ${mediaMin.s`  
+    padding: 0 ${rem(32)} ${rem(32)} ${rem(32)};
+  `};
 
   ${mediaMin.xl`
     max-width: 40%;
-    padding: ${rem(40)} 0 ${rem(40)} ${rem(40)};
+    padding: ${rem(48)} 0 ${rem(48)} ${rem(40)};
     flex: 1 1 40%;
     display: flex;
     flex-direction: column;
@@ -54,6 +64,10 @@ const CaseStudyCardContents = styled.div`
 
 const HRTop = styled(HR)`
   margin-bottom: ${rem(16)};
+
+  ${mediaMin.s`
+    margin-bottom: ${rem(24)};
+  `};
 
   ${mediaMin.xl`
       display: none;
