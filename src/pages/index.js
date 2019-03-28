@@ -56,6 +56,7 @@ const Subhead = styled(Copy)`
   ${mediaMin.s`
     font-size: ${theme.fontSizes.subheadCompact};
     line-height: ${theme.lineHeights.subheadCompact};
+    max-width: ${rem(744)};
   `};
 `;
 
@@ -129,14 +130,13 @@ const StyledHR = styled(HR)`
   `};
 `;
 
-const ServicesTitle = styled.h3`
-  font-size: ${theme.fontSizes.h3s};
-  line-height: ${theme.lineHeights.h3s};
+const ServicesTitle = styled.h2`
+  font-size: ${theme.fontSizes.h2s};
+  line-height: ${theme.lineHeights.h2s};
 
   ${mediaMin.m`
-    margin-bottom: ${rem(24)};
-    font-size: ${theme.fontSizes.h3};
-    line-height: ${theme.lineHeights.h3};
+    font-size: ${theme.fontSizes.h2};
+    line-height: ${theme.lineHeights.h2};
   `};
 `;
 
@@ -165,7 +165,7 @@ const ServicesEntry = styled.div`
   `};
 `;
 
-const CaseStudiesH2 = styled.h2`
+const CaseStudiesTitle = styled.h2`
   margin-bottom: ${rem(16)};
   font-size: ${theme.fontSizes.h2s};
   line-height: ${theme.lineHeights.h2s};
@@ -182,6 +182,19 @@ const CaseStudiesCopy = styled(Copy)`
 
   ${mediaMin.m`
     margin-bottom: ${rem(32)};
+  `};
+`;
+
+const DribbblePostsTitle = styled.h2`
+  margin-top: ${rem(16)};
+  margin-bottom: ${rem(8)};
+`;
+
+const DribbbleSubhead = styled(Copy)`
+  margin-bottom: ${rem(32)};
+
+  ${mediaMin.s`
+      margin-bottom: ${rem(48)};
   `};
 `;
 
@@ -214,7 +227,7 @@ const Index = (props) => {
         <Row>
           <RowContents>
             <FormattedMessage id="indexServicesHeading">
-              {(txt) => <ServicesTitle as="h2">{txt}</ServicesTitle>}
+              {(txt) => <ServicesTitle>{txt}</ServicesTitle>}
             </FormattedMessage>
             <ServicesEntry>
               <FormattedMessage id="indexServices1Title">
@@ -312,7 +325,7 @@ const Index = (props) => {
           <RowContents>
             <StyledHR />
             <FormattedMessage id="caseStudiesHeader">
-              {(txt) => <CaseStudiesH2>{txt}</CaseStudiesH2>}
+              {(txt) => <CaseStudiesTitle>{txt}</CaseStudiesTitle>}
             </FormattedMessage>
             <FormattedMessage id="caseStudiesDescription">
               {(txt) => <CaseStudiesCopy>{txt}</CaseStudiesCopy>}
@@ -330,9 +343,16 @@ const Index = (props) => {
             ))}
           </RowContents>
         </Row>
+
         <Row>
           <RowContents>
             <StyledHR />
+            <FormattedMessage id="dribbbleHeader">
+              {(txt) => <DribbblePostsTitle>{txt}</DribbblePostsTitle>}
+            </FormattedMessage>
+            <FormattedMessage id="dribbbleSubhead">
+              {(txt) => <DribbbleSubhead>{txt}</DribbbleSubhead>}
+            </FormattedMessage>
             <DribbblePosts locale={locale} />
           </RowContents>
         </Row>

@@ -24,19 +24,6 @@ const DribbblePostsWrapper = styled.section`
   `};
 `;
 
-const DribbblePostH1 = styled.h1`
-  margin-top: ${rem(16)};
-  margin-bottom: ${rem(8)};
-`;
-
-const DribbbleSubhead = styled(Copy)`
-  margin-bottom: ${rem(32)};
-
-  ${mediaMin.s`
-      margin-bottom: ${rem(48)};
-  `};
-`;
-
 const ErrorMessage = styled.p`
   color: ${theme.colors.danger500};
   font-weight: 700;
@@ -107,12 +94,6 @@ function DribbblePosts({ locale }) {
 
   return (
     <DribbblePostsWrapper>
-      <FormattedMessage id="dribbbleHeader">
-        {(txt) => <DribbblePostH1>{txt}</DribbblePostH1>}
-      </FormattedMessage>
-      <FormattedMessage id="dribbbleSubhead">
-        {(txt) => <DribbbleSubhead>{txt}</DribbbleSubhead>}
-      </FormattedMessage>
       {isError && <ErrorMessage>{DRIBBBLE_STATUS[locale].error}</ErrorMessage>}
 
       {isLoading && placeholderArr.map((i) => <DribbblePostPlaceholder key={i} />)}

@@ -82,6 +82,30 @@ const WorkHeader = styled.header`
   `};
 `;
 
+const DribbblePostsTitle = styled.h2`
+  margin-top: ${rem(16)};
+  margin-bottom: ${rem(8)};
+
+  font-size: ${theme.fontSizes.h1s};
+  ${mediaMin.xs`
+    font-size: ${theme.fontSizes.h1};
+  `}
+
+  line-height: ${theme.lineHeights.h1s};
+
+  ${mediaMin.xs`
+    line-height: ${theme.lineHeights.h1};
+  `}
+`;
+
+const DribbbleSubhead = styled(Copy)`
+  margin-bottom: ${rem(32)};
+
+  ${mediaMin.s`
+      margin-bottom: ${rem(48)};
+  `};
+`;
+
 function WorkPage(props) {
   const {
     currentPage,
@@ -145,6 +169,12 @@ function WorkPage(props) {
         <OuterWrapper>
           <InnerWrapper>
             <StyledHR />
+            <FormattedMessage id="dribbbleHeader">
+              {(txt) => <DribbblePostsTitle>{txt}</DribbblePostsTitle>}
+            </FormattedMessage>
+            <FormattedMessage id="dribbbleSubhead">
+              {(txt) => <DribbbleSubhead>{txt}</DribbbleSubhead>}
+            </FormattedMessage>
             <DribbblePosts locale={locale} />
           </InnerWrapper>
         </OuterWrapper>
