@@ -32,7 +32,7 @@ const StyledLanguageSelector = styled.li`
   padding: ${rem(12)};
   margin-top: ${rem(24)};
 
-  width: 64%;
+  width: ${rem(208)};
 
   ${mediaMin.s`
     width: auto;
