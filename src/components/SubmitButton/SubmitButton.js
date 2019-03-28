@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { injectIntl, intlShape } from "react-intl";
 
-import { theme, rem, mediaMin } from "../../theme/globalStyles";
+import { theme, rem } from "../../theme/globalStyles";
 import { toUpperCamelCase } from "../../helpers/helpers";
 
 const StyledSubmitButton = styled.input`
