@@ -50,13 +50,13 @@ const BlogHeader = styled.header`
   `};
 `;
 
-const BlogTitle = styled.h2`
-  font-size: ${theme.fontSizes.h2s};
-  line-height: ${theme.lineHeights.h2s};
+const BlogTitle = styled.h3`
+  font-size: ${theme.fontSizes.h3s};
+  line-height: ${theme.lineHeights.h3s};
 
   ${mediaMin.xs`
-  font-size: ${theme.fontSizes.h2};
-  line-height: ${theme.lineHeights.h2};
+  font-size: ${theme.fontSizes.h3};
+  line-height: ${theme.lineHeights.h3};
 `}
 `;
 
