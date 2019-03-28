@@ -14,25 +14,25 @@ const StyledContactCard = styled.aside`
   background-color: ${theme.colors.gray100};
   width: 100%;
 
-  padding: ${rem(24)} ${rem(24)} ${rem(32)};
+  padding: ${rem(32)} ${rem(24)} ${rem(32)} ${rem(24)};
 
   ${mediaMin.s`
     padding: ${rem(40)} ${rem(32)} ${rem(40)} ${rem(32)};
   `};
 
   ${mediaMin.l`
-    padding: ${rem(64)} ${rem(80)} ${rem(56)} ${rem(72)};
+    padding: ${rem(56)} ${rem(80)} ${rem(48)} ${rem(80)};
   `};
 
   ${mediaMin.xxl`
-    padding: ${rem(72)} ${rem(120)} ${rem(72)} ${rem(112)};
+    padding: ${rem(72)} ${rem(104)} ${rem(72)} ${rem(112)};
   `};
 `;
 
 const StyledH2 = styled.h2`
-  margin-bottom: ${rem(16)};
   font-size: ${theme.fontSizes.h2s};
   line-height: ${theme.lineHeights.h2s};
+  margin-bottom: ${rem(16)};
 
   ${mediaMin.m`
     font-size: ${theme.fontSizes.h2};
@@ -43,15 +43,12 @@ const StyledH2 = styled.h2`
 const Subtitle = styled(Copy)`
   color: ${theme.colors.dark700};
   display: block;
-  font-size: ${theme.fontSizes.subheadS};
-  line-height: ${theme.lineHeights.subheadS};
-  margin-bottom: ${rem(16)};
+  font-size: ${theme.fontSizes.subheadSCompact};
+  line-height: ${theme.lineHeights.subheadSCompact};
 
   ${mediaMin.s`
     font-size: ${theme.fontSizes.subheadCompact};
     line-height: ${theme.lineHeights.subheadCompact};
-    margin-bottom: ${rem(12)};
-    width: 96%;
   `};
 `;
 
@@ -84,7 +81,7 @@ const StyledContactButton = styled(Link)`
     width: ${rem(288)};
   `};
 
-  margin-top: ${rem(24)};
+  margin-top: ${rem(32)};
 
   white-space: nowrap;
 
@@ -116,7 +113,9 @@ function ContactCard(props) {
         {(txt) => <Subtitle>{txt} </Subtitle>}
       </FormattedMessage> */}
 
-      <FormattedMessage id="contactCardInfo">{(txt) => <Info>{txt} </Info>}</FormattedMessage>
+      <FormattedMessage id="contactCardInfo">
+        {(txt) => <Subtitle>{txt} </Subtitle>}
+      </FormattedMessage>
 
       <FormattedMessage id="contactCardCTA">
         {(txt) => (
