@@ -38,53 +38,53 @@ Tienes la opción de permitir, bloquear o eliminar las cookies instaladas en tu 
 
 Puede usted permitir, bloquear o eliminar las cookies instaladas en su equipo mediante la configuración de las opciones del navegador instalado en su ordenador:
 
-- <a href="http://windows.microsoft.com/es-es/windows-vista/Block-or-allow-cookies" target="_blank" rel="noopener noreferrer">Microsoft Internet Explorer and Microsoft Edge<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
-- <a href="http://support.mozilla.org/es/kb/impedir-que-los-sitios-web-guarden-sus-preferencia" target="_blank" rel="noopener noreferrer">Mozilla Firefox<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
-- <a href="https://support.google.com/accounts/answer/61416?hl=es" target="_blank" rel="noopener noreferrer">Chrome<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
-- <a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer">Safari<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
-- <a href="https://help.opera.com/en/latest/web-preferences/#cookies" target="_blank" rel="noopener noreferrer">Opera<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
+- [Microsoft Internet Explorer and Microsoft Edge](https://support.microsoft.com/es-es/help/17442/windows-internet-explorer-delete-manage-cookies)
+- [Mozilla Firefox](https://support.mozilla.org/es/kb/impedir-que-los-sitios-web-guarden-sus-preferencia)
+- [Chrome](https://support.google.com/accounts/answer/61416?hl=es)
+- [Safari](https://support.apple.com/es-es/guide/safari/sfri11471/mac)
+- [Opera](https://help.opera.com/en/latest/web-preferences/#cookies)
 
 Además, también puede gestionar el almacén de cookies en su navegador a través de herramientas como las siguientes
 
-- <a href="https://www.ghostery.com" target="_blank" rel="noopener noreferrer">Ghostery<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
-- <a href="https://www.youronlinechoices.com/es" target="_blank" rel="noopener noreferrer">Your Online Choices<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>
+- [Ghostery](https://www.ghostery.com)
+- [Your Online Choices](https://www.youronlinechoices.com/es)
 
 ## Cookies Utilizadas en www.danilucaci.com
 
 A continuación se identifican las cookies que están siendo utilizadas en este portal así como su tipología y función:
 
-## \_dl\_
+## \_dl
 
 - **Duración**: 2 años
-- **Descrición**: Cookie creada por www.danilucaci.com necesaria para poder guardar los valores de preferencia de cada usuario. Guarda si un usuario decide permitir, o no, las cookies creadas por la página www.daniluci.com y los servicios utilizados por la misma, en el ordenador del usuario visitante.
+- **Descripción**: Cookie creada por www.danilucaci.com necesaria para poder guardar los valores de preferencia de cada usuario. Guarda si un usuario decide permitir, o no, las cookies creadas por la página www.daniluci.com y los servicios utilizados por la misma, en el ordenador del usuario visitante.
 - **Tipo**: Propia
 - **Finalidad**: Cookie técnica
 
-## \_dl_consent_accepted\_
+## \_dlConsentAccepted
 
 - **Duración:** 2 años
-- **Descrición:** Cookie creada por www.danilucaci.com que se necesita para poder guardar si el usuario ha cerrado, o no, el mensaje pop-up de la política de cookies, para controlar si es mostrado en cada visita del usuario en la página web www.danilucaci.com.
+- **Descripción:** Cookie creada por www.danilucaci.com que se necesita para poder guardar si el usuario ha cerrado, o no, el mensaje pop-up de la política de cookies, para controlar si es mostrado en cada visita del usuario en la página web www.danilucaci.com.
 - **Tipo:** Propia
 - **Finalidad:** Cookie técnica
 
 ## \_ga
 
 - **Duración:** 2 años
-- **Descrición:** Sirve para distinguir a los usuarios. Generada por Google Analytics. Google almacena la informacion recogida por las cookies en servidores ubicados en Estados Unidos, cumpliendo con la legislación Europea en cuanto a protección de datos personales y se compromete a no compartirla con terceros, excepto cuando la ley le obligue a ello o sea necesario para el funcionamiento del sistema. Google no asocia su direccion IP con ninguna otra informacion que tenga. Si desea obtener mas informacion acerca de las cookies usadas por Google Analytics, por favor acceda a esta direccion: <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage?hl=es&csw" target="_blank" rel="noopener noreferrer">Uso de las cookies de Google Analytics en sitios web<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>.
+- **Descripción:** Sirve para distinguir a los usuarios. Generada por Google Analytics. Google almacena la información recogida por las cookies en servidores ubicados en Estados Unidos, cumpliendo con la legislación Europea en cuanto a protección de datos personales y se compromete a no compartirla con terceros, excepto cuando la ley le obligue a ello o sea necesario para el funcionamiento del sistema. Google no asocia su dirección IP con ninguna otra información que tenga. Si desea obtener mas información acerca de las cookies usadas por Google Analytics, por favor acceda a esta dirección: [Uso de las cookies de Google Analytics en sitios web](https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage?hl=es&csw).
 - **Tipo:** Terceros
 - **Finalidad:** Cookie de análisis
 
 ## \_gid
 
 - **Duración**: 1 año
-- **Descrición**: Generada por Google Analytics. Google almacena la informacion recogida por las cookies en servidores ubicados en Estados Unidos, cumpliendo con la legislación Europea en cuanto a protección de datos personales y se compromete a no compartirla con terceros, excepto cuando la ley le obligue a ello o sea necesario para el funcionamiento del sistema. Google no asocia su direccion IP con ninguna otra informacion que tenga. Si desea obtener mas informacion acerca de las cookies usadas por Google Analytics, por favor acceda a esta direccion: <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage?hl=es&csw" target="_blank" rel="noopener noreferrer">Uso de las cookies de Google Analytics en sitios web<span class="sr-only">Abre en nueva ventana</span><span aria-hidden="true" class="external-link"></span></a>.
+- **Descripción**: Generada por Google Analytics. Google almacena la información recogida por las cookies en servidores ubicados en Estados Unidos, cumpliendo con la legislación Europea en cuanto a protección de datos personales y se compromete a no compartirla con terceros, excepto cuando la ley le obligue a ello o sea necesario para el funcionamiento del sistema. Google no asocia su dirección IP con ninguna otra información que tenga. Si desea obtener mas información acerca de las cookies usadas por Google Analytics, por favor acceda a esta dirección: [Uso de las cookies de Google Analytics en sitios web](https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage?hl=es&csw).
 - **Tipo**: Terceros
 - **Finalidad**: Cookie de análisis
 
 ## \_hjIncludedInSample
 
 - **Duración:** 1 año
-- **Descrición:** Hotjar Cookie. Cookie creada por la herramienta Hotjar para permitirle saber si el usuario esta incluido en las muestras de análisis creadas.
+- **Descripción:** Hotjar Cookie. Cookie creada por la herramienta Hotjar para permitirle saber si el usuario esta incluido en las muestras de análisis creadas.
 - **Tipo:** Terceros
 - **Finalidad:** Cookie de análisis
 
@@ -94,6 +94,6 @@ www.danilucaci.com, asume que usted acepta el uso de cookies. No obstante, muest
 
 Ante esta información es posible llevar a cabo las siguientes acciones:
 
-- **Aceptar cookies:** No se volverá a visualizar este aviso al acceder a cualquier página del portal durante la presente sesión.
-- **No accepter cookies:** Se oculta el aviso y no se crean cookies por parte de www.danilucaci.com, excepto las necesarias para guardar el estado del consentimiento.
+- **Aceptar:** No se volverá a visualizar este aviso al acceder a cualquier página del portal durante la presente sesión.
+- **No acceptar:** Se oculta el aviso y no se crean cookies por parte de www.danilucaci.com, excepto las necesarias para guardar el estado del consentimiento.
 - **Leer más:** Podrá obtener más información sobre qué son las cookies, conocer la Política de cookies de: www.danilucaci.com y modificar la configuración de su navegador.
