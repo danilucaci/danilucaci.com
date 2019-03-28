@@ -89,15 +89,7 @@ const StyledH1 = styled.h1`
 `;
 
 const Subhead = styled(Copy)`
-  font-size: ${theme.fontSizes.subheadS};
-  line-height: ${theme.lineHeights.subheadS};
   margin-bottom: ${rem(16)};
-  color: ${theme.colors.dark700};
-
-  ${mediaMin.s`
-    font-size: ${rem(24)};
-    line-height: ${rem(34)};
-  `};
 
   ${mediaMin.xxl`
     margin-bottom: ${rem(32)};
@@ -110,6 +102,10 @@ const Description = styled(Copy)`
   ${mediaMin.xxl`
     margin-bottom: ${rem(32)};
   `};
+`;
+
+const AltCopy = styled(Copy)`
+  color: ${theme.colors.dark800};
 `;
 
 const StyledLink = styled.a`
@@ -149,21 +145,8 @@ const SayHiDescription = styled(Copy)`
   display: inline;
 `;
 
-const BottomHR = styled(HR)`
-  margin-top: ${rem(24)};
-
-  ${mediaMin.m`  
-    margin-top: ${rem(32)};
-  `};
-`;
-
 const SocialNavWrapper = styled.div`
-  margin-top: ${rem(16)};
-  margin-bottom: ${rem(64)};
-
-  ${mediaMin.xxl`
-    margin-bottom: ${rem(112)};
-  `};
+  margin-top: ${rem(32)};
 `;
 
 const ContactPage = (props) => {
@@ -199,12 +182,15 @@ const ContactPage = (props) => {
             </FormattedMessage>
             <FormattedMessage id="contactPageWorkInfo">
               {(txt) => (
-                <Copy>
+                <AltCopy>
                   {txt}{" "}
                   <StyledLink href="mailto:info@danilucaci.com">info@danilucaci.com</StyledLink>
-                </Copy>
+                </AltCopy>
               )}
             </FormattedMessage>
+            <SocialNavWrapper>
+              <SocialNav />
+            </SocialNavWrapper>
           </ContactMeHeader>
           <ContactFormWrapper>
             <TopHR />
@@ -233,10 +219,6 @@ const ContactPage = (props) => {
                 </SayHiDescription>
               )}
             </FormattedMessage>
-            <BottomHR />
-            <SocialNavWrapper>
-              <SocialNav />
-            </SocialNavWrapper>
           </SayHiWrapper>
         </ContactMeWrapper>
       </Main>

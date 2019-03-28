@@ -11,12 +11,14 @@ import SiteFooter from "../components/SiteFooter/SiteFooter";
 import { Copy } from "../components/Copy/Copy";
 import { theme, mediaMin, rem } from "../theme/globalStyles";
 import LocaleLink from "../components/LocaleLink/LocaleLink";
+import { localePaths } from "../i18n/i18n";
+import { HR } from "../components/HR/HR";
 
 const StyledThanksPage = styled.section`
   max-width: ${theme.contain.wrapper.col8};
   margin-left: auto;
   margin-right: auto;
-  margin-top: ${rem(16)};
+  margin-top: ${rem(24)};
   margin-bottom: ${rem(64)};
 
   padding-left: ${theme.gutters.s};
@@ -25,37 +27,45 @@ const StyledThanksPage = styled.section`
   ${mediaMin.m`
     padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
-    margin-top: ${rem(40)};
+    margin-top: ${rem(64)};
     margin-bottom: ${rem(80)};
   `};
 
   ${mediaMin.xl`
-    margin-top: ${rem(56)};
+    margin-top: ${rem(80)};
     margin-bottom: ${rem(144)};
   `};
 
   & a {
-    text-align: center;
-    display: block;
-
-    &:hover {
-      background-color: transparent;
-    }
+    display: inline;
+    white-space: nowrap;
   }
 `;
 
 const StyledH1 = styled.h1`
   display: block;
-  text-align: center;
+
   width: 100%;
   margin-bottom: ${rem(16)};
+`;
+
+const ThanksCopy = styled(Copy)`
+  margin-bottom: ${rem(32)};
+
+  ${mediaMin.m`
+      max-width: 84%;
+  `};
+`;
+
+const ThanksAgainCopy = styled(Copy)`
+  margin-top: ${rem(32)};
+  margin-bottom: ${rem(32)};
 `;
 
 const Subhead = styled.p`
   font-size: ${theme.fontSizes.subheads};
   line-height: ${theme.lineHeights.subheads};
-  margin-bottom: ${rem(16)};
-  text-align: center;
+  margin-bottom: ${rem(32)};
 
   ${mediaMin.s`
     font-size: ${theme.fontSizes.subhead};
@@ -63,19 +73,24 @@ const Subhead = styled.p`
   `};
 `;
 
-const StyledCopy = styled(Copy)`
-  text-align: center;
+const StyledHR = styled(HR)`
+  display: block;
+  width: 100%;
   margin-bottom: ${rem(16)};
+
+  ${mediaMin.m`
+      max-width: 84%;
+  `};
 `;
 
 const ThanksPage = (props) => {
   let locale = props.pageContext.locale;
-  let twinPostURL = "";
+  let twinPostURL = localePaths[locale].thanks;
 
   if (locale === "en") {
-    twinPostURL = "/es/gracias";
+    twinPostURL = localePaths["es"].thanks;
   } else if (locale === "es") {
-    twinPostURL = "/thanks";
+    twinPostURL = localePaths["en"].thanks;
   }
 
   return (
@@ -95,8 +110,26 @@ const ThanksPage = (props) => {
           <FormattedMessage id="thanksSubTitle">
             {(txt) => <Subhead>{txt}</Subhead>}
           </FormattedMessage>
+          <StyledHR />
           <FormattedMessage id="thanksCopy">
-            {(txt) => <StyledCopy to="/">{txt}</StyledCopy>}
+            {(txt) => <ThanksCopy>{txt}</ThanksCopy>}
+          </FormattedMessage>
+
+          <FormattedMessage id="thanksSubCopy1">
+            {(txt) => (
+              <ThanksCopy>
+                {txt} <a href="mailto:info@danilucaci.com">info@danilucaci.com</a>
+                <FormattedMessage id="thanksSubCopy2">
+                  {(txt2) => <React.Fragment> {txt2}</React.Fragment>}
+                </FormattedMessage>
+                <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/danilucaci">
+                  @danilucaci
+                </a>
+              </ThanksCopy>
+            )}
+          </FormattedMessage>
+          <FormattedMessage id="thanksSubCopy3">
+            {(txt) => <ThanksAgainCopy> {txt}</ThanksAgainCopy>}
           </FormattedMessage>
           <FormattedMessage id="thanksGoHome">
             {(txt) => <LocaleLink to="/">{txt}</LocaleLink>}

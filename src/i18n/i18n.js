@@ -81,7 +81,7 @@ export const FORM_SUBMIT_STATUS = {
   },
   successSubtitle: {
     en:
-      "You’ll hear back from me in about 24—48 hours. If not, please send me an email at info@danilucaci.com",
+      "You’ll hear back from me in about 24—48 hours. If not, please send me an email at info@danilucaci.com.",
     es:
       "Recibirás una respuesta en un plazo de 24-48 horas. De lo contrario, por favor mandame un email a info@danilucaci.com.",
   },

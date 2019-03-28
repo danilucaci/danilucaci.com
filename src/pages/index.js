@@ -23,34 +23,28 @@ const IndexHeader = styled.header`
 
   padding-left: ${theme.gutters.s};
   padding-right: ${theme.gutters.s};
+  padding-top: ${rem(16)};
 
   ${mediaMin.s`
     padding-left: ${theme.gutters.m};
     padding-right: ${theme.gutters.m};
   `};
 
-  padding-bottom: ${rem(48)};
-
   ${mediaMin.xs`
-    padding-top: ${rem(24)};
-    padding-bottom: ${rem(64)};
-  `};
-
-  ${mediaMin.m`
-    padding-top: ${rem(56)};
-    padding-bottom: ${rem(144)};
-  `};
-
-  ${mediaMin.xl`
-    padding-top: ${rem(48)};
+    padding-top: ${rem(32)};
   `};
 `;
 
-const StyledH1 = styled.h1`
-  margin-bottom: ${rem(16)};
+const IndexTitle = styled.h2`
+  margin-bottom: ${rem(8)};
+  margin-bottom: ${rem(8)};
+
+  font-size: ${theme.fontSizes.h2s};
+  line-height: ${theme.lineHeights.h2s};
 
   ${mediaMin.m`
-    max-width: ${rem(648)};
+    font-size: ${theme.fontSizes.h2};
+    line-height: ${theme.lineHeights.h2};
   `};
 `;
 
@@ -58,10 +52,29 @@ const Subhead = styled(Copy)`
   font-size: ${theme.fontSizes.subheadS};
   line-height: ${theme.lineHeights.subheadS};
 
-  ${mediaMin.l`
-    font-size: ${theme.fontSizes.subhead};
-    line-height: ${theme.lineHeights.subhead};
-    max-width: ${rem(744)};
+  ${mediaMin.s`
+    font-size: ${theme.fontSizes.subheadCompact};
+    line-height: ${theme.lineHeights.subheadCompact};
+  `};
+`;
+
+const Name = styled(Copy)`
+  color: ${theme.colors.dark700};
+  text-transform: uppercase;
+  font-size: ${rem(18)};
+  line-height: ${rem(18)};
+  letter-spacing: ${theme.letterSpacing.sectionHeaderS};
+  font-weight: 700;
+
+  margin-bottom: ${rem(8)};
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.header};
+  }
+
+  ${mediaMin.s`
+    line-height: ${theme.lineHeights.sectionHeaderXL};
+    letter-spacing: ${theme.letterSpacing.sectionHeaderXL};
   `};
 `;
 
@@ -72,13 +85,13 @@ const Row = styled.section`
     margin: ${theme.spacing.row.m} 0;
   `};
 
-  ${mediaMin.m`
+  ${mediaMin.xl`
     margin: ${theme.spacing.row.xl} 0;
   `};
 `;
 
 const AltRow = styled.section`
-  background-color: ${theme.colors.sectionBackground};
+  background-color: ${theme.colors.gray100};
 
   padding-top: ${theme.spacing.row.s};
   padding-bottom: ${theme.spacing.row.s};
@@ -88,7 +101,7 @@ const AltRow = styled.section`
     padding-bottom: ${theme.spacing.row.m};
   `};
 
-  ${mediaMin.m`
+  ${mediaMin.xl`
     padding-top: ${theme.spacing.row.xl};
     padding-bottom: ${theme.spacing.row.xl};
   `};
@@ -111,23 +124,18 @@ const StyledHR = styled(HR)`
   margin-bottom: ${rem(32)};
 
   ${mediaMin.m`
-    margin-bottom: ${rem(56)};
+    margin-bottom: ${rem(64)};
   `};
 `;
 
-const ServicesH2 = styled.h2`
-  margin-bottom: ${rem(16)};
-  font-size: ${theme.fontSizes.h1s};
-  line-height: ${theme.lineHeights.h1s};
+const ServicesTitle = styled.h3`
+  font-size: ${theme.fontSizes.h3s};
+  line-height: ${theme.lineHeights.h3s};
 
   ${mediaMin.m`
     margin-bottom: ${rem(24)};
-    font-size: ${theme.fontSizes.h2};
-    line-height: ${theme.lineHeights.h2};
-  `};
-
-  ${mediaMin.l`
-    margin-bottom: ${rem(32)};
+    font-size: ${theme.fontSizes.h3};
+    line-height: ${theme.lineHeights.h3};
   `};
 `;
 
@@ -143,25 +151,17 @@ const ServicesEntry = styled.div`
 
   width: 100%;
   height: 100%;
-  margin-bottom: ${rem(56)};
+  margin-top: ${rem(32)};
 
-  @media screen and (min-width: ${theme.breakpoints.xs}) {
+  ${mediaMin.xs`  
     width: calc(50% - ${theme.gutters.m});
     margin-right: ${theme.gutters.m};
+  `};
 
-    &:last-of-type() {
-      margin-right: 0;
-    }
-  }
-
-  @media screen and (min-width: ${theme.breakpoints.l}) {
+  ${mediaMin.l`
     width: calc(33% - ${theme.gutters.m});
     margin-right: ${theme.gutters.m};
-
-    &:last-of-type() {
-      margin-right: 0;
-    }
-  }
+  `};
 `;
 
 const CaseStudiesH2 = styled.h2`
@@ -203,14 +203,17 @@ const Index = (props) => {
       <SiteHeader locale={locale} twinPostURL={twinPostURL} currentPath={props.location.pathname} />
       <Main role="main" id="main">
         <IndexHeader>
-          <FormattedMessage id="indexH1">{(txt) => <StyledH1>{txt}</StyledH1>}</FormattedMessage>
+          <FormattedMessage id="indexName">{(txt) => <Name>{txt}</Name>}</FormattedMessage>
+          <FormattedMessage id="indexH1">
+            {(txt) => <IndexTitle as="h1">{txt}</IndexTitle>}
+          </FormattedMessage>
           <FormattedMessage id="indexSubhead">{(txt) => <Subhead>{txt}</Subhead>}</FormattedMessage>
           <Subhead />
         </IndexHeader>
-        <AltRow>
+        <Row>
           <RowContents>
             <FormattedMessage id="indexServicesHeading">
-              {(txt) => <ServicesH2>{txt}</ServicesH2>}
+              {(txt) => <ServicesTitle as="h2">{txt}</ServicesTitle>}
             </FormattedMessage>
             <ServicesEntry>
               <FormattedMessage id="indexServices1Title">
@@ -269,11 +272,41 @@ const Index = (props) => {
                 </FormattedMessage>
               </ul>
             </ServicesEntry>
+            <ServicesEntry>
+              <FormattedMessage id="indexServices4Title">
+                {(txt) => <ServicesH4>{txt}</ServicesH4>}
+              </FormattedMessage>
+              <ul>
+                <FormattedMessage id="indexServices4Item1">
+                  {(txt) => <li>{txt}</li>}
+                </FormattedMessage>
+                <FormattedMessage id="indexServices4Item2">
+                  {(txt) => <li>{txt}</li>}
+                </FormattedMessage>
+              </ul>
+            </ServicesEntry>
+            <ServicesEntry>
+              <FormattedMessage id="indexServices5Title">
+                {(txt) => <ServicesH4>{txt}</ServicesH4>}
+              </FormattedMessage>
+              <ul>
+                <FormattedMessage id="indexServices5Item1">
+                  {(txt) => <li>{txt}</li>}
+                </FormattedMessage>
+                <FormattedMessage id="indexServices5Item2">
+                  {(txt) => <li>{txt}</li>}
+                </FormattedMessage>
+                <FormattedMessage id="indexServices5Item3">
+                  {(txt) => <li>{txt}</li>}
+                </FormattedMessage>
+                <FormattedMessage id="indexServices5Item4">
+                  {(txt) => <li>{txt}</li>}
+                </FormattedMessage>
+              </ul>
+            </ServicesEntry>
           </RowContents>
-        </AltRow>
-        <Row>
-          <DribbblePosts locale={locale} />
         </Row>
+
         <Row>
           <RowContents>
             <StyledHR />
@@ -294,6 +327,12 @@ const Index = (props) => {
                 image={caseStudyCard.image}
               />
             ))}
+          </RowContents>
+        </Row>
+        <Row>
+          <RowContents>
+            <StyledHR />
+            <DribbblePosts locale={locale} />
           </RowContents>
         </Row>
         <Row>

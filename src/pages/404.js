@@ -9,7 +9,9 @@ import SiteHeader from "../components/SiteHeader/SiteHeader";
 import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
 import { Copy } from "../components/Copy/Copy";
-import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
+import { theme, mediaMin, rem } from "../theme/globalStyles";
+import LocaleLink from "../components/LocaleLink/LocaleLink";
+import { HR } from "../components/HR/HR";
 
 const StyledNotFound = styled.section`
   max-width: ${theme.contain.wrapper.col8};
@@ -43,7 +45,6 @@ const StyledNotFound = styled.section`
 
 const StyledH1 = styled.h1`
   display: block;
-  text-align: center;
   width: 100%;
   margin-bottom: ${rem(16)};
 `;
@@ -52,18 +53,22 @@ const Subhead = styled.p`
   font-size: ${theme.fontSizes.subheads};
   line-height: ${theme.lineHeights.subheads};
   margin-bottom: ${rem(32)};
-  text-align: center;
 
   ${mediaMin.s`
-  font-size: ${theme.fontSizes.subhead};
-  line-height: ${theme.lineHeights.subhead};
+    font-size: ${theme.fontSizes.subhead};
+    line-height: ${theme.lineHeights.subhead};
   `};
 `;
 
 const StyledCopy = styled(Copy)`
-  text-align: center;
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};
+  margin-bottom: ${rem(16)};
+`;
+
+const StyledHR = styled(HR)`
+  display: block;
+  width: 100%;
   margin-bottom: ${rem(16)};
 `;
 
@@ -85,11 +90,7 @@ const NotFoundPage = (props) => {
         currentPage="notFound"
         currentPath={props.location.pathname}
       />
-      <SiteHeader
-        twinPostURL={twinPostURL}
-        locale={locale}
-        currentPath={props.location.pathname}
-      />
+      <SiteHeader twinPostURL={twinPostURL} locale={locale} currentPath={props.location.pathname} />
       <Main role="main" id="main">
         <StyledNotFound>
           <FormattedMessage id="noutFoundTitle">
@@ -98,26 +99,25 @@ const NotFoundPage = (props) => {
           <FormattedMessage id="noutFoundSubTitle">
             {(txt) => <Subhead>{txt}</Subhead>}
           </FormattedMessage>
+          <StyledHR />
           <FormattedMessage id="noutFoundSubCopy1">
             {(txt) => <StyledCopy>{txt}</StyledCopy>}
           </FormattedMessage>
           <FormattedMessage id="noutFoundSubCopy2">
             {(txt) => (
               <StyledCopy>
-                {txt}{" "}
-                <a href="mailto:info@danilucaci.com">info@danilucaci.com</a>
+                {txt} <a href="mailto:info@danilucaci.com">info@danilucaci.com</a>
                 <FormattedMessage id="noutFoundSubCopy3">
-                  {(txt) => <span> {txt}</span>}
+                  {(txt2) => <span> {txt2}</span>}
                 </FormattedMessage>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://twitter.com/danilucaci"
-                >
+                <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/danilucaci">
                   @danilucaci
                 </a>
               </StyledCopy>
             )}
+          </FormattedMessage>
+          <FormattedMessage id="thanksGoHome">
+            {(txt) => <LocaleLink to="/">{txt}</LocaleLink>}
           </FormattedMessage>
         </StyledNotFound>
       </Main>
@@ -129,7 +129,11 @@ const NotFoundPage = (props) => {
 NotFoundPage.propTypes = {
   pageContext: PropTypes.shape({
     locale: PropTypes.string.isRequired,
-  }),
+  }).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+    href: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default NotFoundPage;
