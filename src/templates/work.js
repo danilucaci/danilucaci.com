@@ -77,7 +77,8 @@ const WorkHeader = styled.header`
   margin-bottom: ${rem(32)};
 
   ${mediaMin.s`
-      margin-bottom: ${rem(48)};
+    margin-top: ${rem(16)};
+    margin-bottom: ${rem(48)};
   `};
 `;
 
@@ -118,8 +119,6 @@ function WorkPage(props) {
       />
       <SiteHeader locale={locale} twinPostURL={twinPostURL} currentPath={props.location.pathname} />
       <Main role="main" id="main">
-        <DribbblePosts locale={locale} />
-        <StyledHR />
         <WorkHeader>
           <InnerWrapper>
             <FormattedMessage id="caseStudiesHeader">{(txt) => <h1>{txt}</h1>}</FormattedMessage>
@@ -143,6 +142,12 @@ function WorkPage(props) {
             )}
           </InnerWrapper>
         </OuterWrapper>
+        <OuterWrapper>
+          <InnerWrapper>
+            <StyledHR />
+            <DribbblePosts locale={locale} />
+          </InnerWrapper>
+        </OuterWrapper>
         <ContactWrapper>
           <StyledHR />
           <ContactCard locale={locale} />
@@ -163,6 +168,10 @@ WorkPage.propTypes = {
     totalPagesInWork: PropTypes.number.isRequired,
     paginationPathPrefix: PropTypes.string.isRequired,
     edgesWork: PropTypes.arrayOf(PropTypes.object).isRequired,
+  }).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+    href: PropTypes.string.isRequired,
   }).isRequired,
 };
 
