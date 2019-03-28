@@ -24,16 +24,20 @@ const DribbblePostsWrapper = styled.section`
   `};
 `;
 
+const ErrorMessageWrapper = styled.div`
+  background-color: ${theme.colors.danger100};
+  display: block;
+  padding: ${rem(16)} ${rem(16)};
+  border-left: ${rem(4)} solid ${theme.colors.danger600};
+  margin-bottom: ${rem(32)};
+`;
+
 const ErrorMessage = styled.p`
-  color: ${theme.colors.danger500};
-  font-weight: 700;
+  color: ${theme.colors.danger600};
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.bodyBold};
+    font-family: ${theme.fonts.bodyRegular};
   }
-
-  margin-top: ${rem(32)};
-  margin-bottom: ${rem(32)};
 `;
 
 const StyledLoadMore = styled(LoadComments)`
@@ -43,24 +47,6 @@ const StyledLoadMore = styled(LoadComments)`
 
 const LoadMoreLabel = styled.span`
   display: inline-block;
-`;
-
-const NoMore = styled.div`
-  background-color: transparent;
-  border: 2px solid ${theme.colors.gray400};
-  border-radius: ${theme.borderRadius.buttons};
-  margin: ${rem(16)} auto;
-  display: block;
-  text-align: center;
-
-  padding: ${rem(14)} ${rem(24)} ${rem(16)};
-  height: ${rem(56)};
-
-  width: 100%;
-
-  ${mediaMin.xxs`  
-    max-width: ${rem(320)};
-  `};
 `;
 
 function DribbblePosts({ locale }) {
@@ -75,7 +61,6 @@ function DribbblePosts({ locale }) {
     isLoadingMore,
     isError,
     loadMorePosts,
-    noMoreShots,
   } = useDribbbleReducer();
 
   /**
@@ -94,14 +79,20 @@ function DribbblePosts({ locale }) {
 
   return (
     <DribbblePostsWrapper>
-      {isError && <ErrorMessage>{DRIBBBLE_STATUS[locale].error}</ErrorMessage>}
+      {isError && (
+        <ErrorMessageWrapper>
+          <ErrorMessage>{DRIBBBLE_STATUS[locale].error}</ErrorMessage>
+        </ErrorMessageWrapper>
+      )}
 
-      {isLoading && placeholderArr.map((i) => <DribbblePostPlaceholder key={i} />)}
-      {!isLoading && dribbblePosts.map((post) => <DribbblePost key={post.id} post={post} />)}
+      {isLoading && !isError && placeholderArr.map((i) => <DribbblePostPlaceholder key={i} />)}
+      {!isLoading &&
+        !isError &&
+        dribbblePosts.map((post) => <DribbblePost key={post.id} post={post} />)}
 
       {isLoadingMore && placeholderArr.map((i) => <DribbblePostPlaceholder key={i} />)}
 
-      {!noMoreShots ? (
+      {!isError && (
         <StyledLoadMore onClick={loadMorePosts}>
           {!isLoading && !isLoadingMore && (
             <FormattedMessage id="dribbbleLoadMore">
@@ -110,12 +101,6 @@ function DribbblePosts({ locale }) {
           )}
           {(isLoading || isLoadingMore) && <Spinner dark />}
         </StyledLoadMore>
-      ) : (
-        <NoMore>
-          <FormattedMessage id="dribbbleNoMore">
-            {(txt) => <LoadMoreLabel>{txt}</LoadMoreLabel>}
-          </FormattedMessage>
-        </NoMore>
       )}
     </DribbblePostsWrapper>
   );
