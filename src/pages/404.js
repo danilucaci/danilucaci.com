@@ -31,15 +31,13 @@ const StyledNotFound = styled.section`
   `};
 
   ${mediaMin.xl`
-    margin-top: ${rem(56)};
+    margin-top: ${rem(80)};
     margin-bottom: ${rem(144)};
   `};
 
   & a {
     display: inline;
     white-space: nowrap;
-    font-size: ${theme.fontSizes.s};
-    line-height: ${theme.lineHeights.s};
   }
 `;
 
@@ -50,19 +48,18 @@ const StyledH1 = styled.h1`
 `;
 
 const Subhead = styled.p`
-  font-size: ${theme.fontSizes.subheads};
-  line-height: ${theme.lineHeights.subheads};
+  font-size: ${theme.fontSizes.subheadSCompact};
+  line-height: ${theme.lineHeights.subheadSCompact};
   margin-bottom: ${rem(32)};
 
   ${mediaMin.s`
-    font-size: ${theme.fontSizes.subhead};
-    line-height: ${theme.lineHeights.subhead};
+    font-size: ${theme.fontSizes.subheadCompact};
+    line-height: ${theme.lineHeights.subheadCompact};
+    max-width: 90%;
   `};
 `;
 
 const StyledCopy = styled(Copy)`
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s};
   margin-bottom: ${rem(16)};
 `;
 

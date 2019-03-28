@@ -69,8 +69,8 @@ const GlobalCSS = createGlobalStyle`
     font-weight: 700;
     font-style: normal;
     font-family: ${theme.fonts.header};
-    font-size: ${theme.fontSizes.h1s};
 
+    font-size: ${theme.fontSizes.h1s};
     ${mediaMin.xs`
       font-size: ${theme.fontSizes.h1};
     `}
