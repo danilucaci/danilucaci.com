@@ -71,7 +71,6 @@ const ResumeWrapper = styled.div`
   display: block;
   margin-top: ${rem(16)};
   width: 100%;
-  overflow: auto;
 
   @media screen and (min-width: ${theme.breakpoints.m}) and (max-width: 55em) {
     margin-top: ${rem(8)};
