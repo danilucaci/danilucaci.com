@@ -14,6 +14,8 @@ import SiteFooter from "../components/SiteFooter/SiteFooter";
 import SocialNav from "../components/SocialNav/SocialNav";
 import ContactCard from "../components/ContactCard/ContactCard";
 import { Copy } from "../components/Copy/Copy";
+import enResume from "../../src/resume/marian_daniel_lucaci_resume.pdf";
+import esResume from "../../src/resume/marian_daniel_lucaci_curriculum.pdf";
 
 import { localePaths } from "../i18n/i18n";
 
@@ -65,10 +67,73 @@ const HeaderInfo = styled.header`
   }
 `;
 
-const StyledSocialNav = styled.div``;
+const ResumeWrapper = styled.div`
+  display: block;
+  margin-top: ${rem(16)};
+  width: 100%;
+  overflow: auto;
 
-const ImageWrapper = styled.div`
-  background: ${theme.colors.sectionBackground};
+  @media screen and (min-width: ${theme.breakpoints.m}) and (max-width: 55em) {
+    margin-top: ${rem(8)};
+  }
+`;
+
+const StyledSocialNav = styled.div`
+  margin-top: ${rem(8)};
+
+  ${mediaMin.xxs`
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: ${rem(24)};
+    float: left;
+  `};
+`;
+
+const ResumeButton = styled.a`
+  background-color: transparent;
+  border: 2px solid ${theme.colors.main600};
+  border-radius: ${theme.borderRadius.buttons};
+  color: ${theme.colors.main600};
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  font-size: ${theme.fontSizes.button};
+  line-height: ${theme.lineHeights.button};
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.bodyBold};
+  }
+
+  font-style: normal;
+  font-weight: 700;
+
+  padding: ${rem(10)} ${rem(16)};
+  height: ${rem(48)};
+  width: 100%;
+  margin-top: ${rem(16)};
+
+  white-space: nowrap;
+
+  ${mediaMin.xxs`
+    margin-top: 0;  
+    width: auto;
+    float: right;
+  `};
+
+  @media screen and (min-width: ${theme.breakpoints.m}) and (max-width: 55em) {
+    width: 100%;
+    margin-top: ${rem(16)};
+  }
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    background-color: ${theme.colors.gray100};
+    ${theme.shadow.buttons.mainGhost};
+  }
+`;
+
+const LeftHeaderWrapper = styled.div`
   display: inline-block;
   vertical-align: middle;
   width: 100%;
@@ -79,8 +144,11 @@ const ImageWrapper = styled.div`
     order: 1;
     height: 100%;
     width: calc(((100% / 10) * 4) - ${rem(16)});
-    border-radius: 50%;
   `};
+`;
+
+const ImageWrapper = styled.div`
+  background: ${theme.colors.sectionBackground};
 `;
 
 const InfoWrapper = styled.div`
@@ -158,22 +226,20 @@ const Col2 = styled.div`
 `;
 
 const MoreAboutMeWrapper = styled.section`
-  padding-top: ${theme.spacing.components.s};
-  padding-bottom: ${theme.spacing.components.s};
+  padding-top: ${theme.spacing.row.s};
 
   ${mediaMin.s`
-    padding-top: ${theme.spacing.components.m};
-    padding-bottom: ${theme.spacing.components.m};
+    padding-top: ${theme.spacing.row.m};
+
   `};
 
   ${mediaMin.m`
-    padding-top: ${theme.spacing.components.xl};
-    padding-bottom: ${theme.spacing.components.xl};
+    padding-top: ${theme.spacing.row.xl};
+
   `};
   /* Mobile in ladscape */
   @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(280)}) and (max-height: ${rem(560)}) and (orientation: landscape) {
     padding-top: ${rem(64)};
-    padding-bottom: ${rem(64)};
   }
 `;
 
@@ -229,8 +295,8 @@ const AboutMeItem = styled.div`
 `;
 
 const ContactWrapper = styled.div`
-  margin-top: ${theme.spacing.components.s};
-  margin-bottom: ${theme.spacing.components.s};
+  margin-top: ${theme.spacing.row.s};
+  margin-bottom: ${theme.spacing.row.s};
 
   padding-right: ${theme.gutters.s};
   padding-left: ${theme.gutters.s};
@@ -244,8 +310,8 @@ const ContactWrapper = styled.div`
   }
 
   ${mediaMin.s`
-    margin-top: ${theme.spacing.components.m};
-    margin-bottom: ${theme.spacing.components.m};
+    margin-top: ${theme.spacing.row.m};
+    margin-bottom: ${theme.spacing.row.m};
     padding-right: ${theme.gutters.m};
     padding-left: ${theme.gutters.m};
 
@@ -259,115 +325,14 @@ const ContactWrapper = styled.div`
   `};
 
   ${mediaMin.m`
-    margin-top: ${theme.spacing.components.xl};
-    margin-bottom: ${theme.spacing.components.xl};
+    margin-top: ${theme.spacing.row.xl};
+    margin-bottom: ${theme.spacing.row.xl};
   `};
 
   /* Mobile in ladscape */
   @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(280)}) and (max-height: ${rem(560)}) and (orientation: landscape) {
     margin-top: ${rem(64)};
     margin-bottom: ${rem(64)};
-  }
-`;
-
-const AltRow = styled.section`
-  background-color: ${theme.colors.gray100};
-
-  padding-top: ${theme.spacing.components.s};
-  padding-bottom: ${theme.spacing.components.s};
-
-  ${mediaMin.s`
-    padding-top: ${theme.spacing.components.m};
-    padding-bottom: ${theme.spacing.components.m};
-  `};
-
-  ${mediaMin.m`
-    padding-top: ${theme.spacing.components.xl};
-    padding-bottom: ${theme.spacing.components.xl};
-  `};
-
-  /* Mobile in ladscape */
-  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(280)}) and (max-height: ${rem(560)}) and (orientation: landscape) {
-    padding-top: ${rem(64)};
-    padding-bottom: ${rem(64)};
-  }
-`;
-
-const RowContents = styled.div`
-  max-width: ${theme.contain.wrapper.col10};
-  margin: 0 auto;
-
-  padding-right: ${theme.gutters.s};
-  padding-left: ${theme.gutters.s};
-
-  /* iPhone X */
-  @supports (padding: max(0px)) {
-    & {
-      padding-left: max(${theme.gutters.s}, env(safe-area-inset-left));
-      padding-right: max(${theme.gutters.s}, env(safe-area-inset-right));
-    }
-  }
-
-  ${mediaMin.s`
-    padding-right: ${theme.gutters.m};
-    padding-left: ${theme.gutters.m};
-
-    /* iPhone X */
-    @supports (padding: max(0px)) {
-      & {
-        padding-left: max(${theme.gutters.m}, env(safe-area-inset-left));
-        padding-right: max(${theme.gutters.m}, env(safe-area-inset-right));
-      }
-    }
-  `};
-`;
-
-const ServicesH2 = styled.h2`
-  margin-bottom: ${rem(16)};
-  font-size: ${theme.fontSizes.h1s};
-  line-height: ${theme.lineHeights.h1s};
-
-  ${mediaMin.m`
-    margin-bottom: ${rem(24)};
-    font-size: ${theme.fontSizes.h2};
-    line-height: ${theme.lineHeights.h2};
-  `};
-
-  ${mediaMin.l`
-    margin-bottom: ${rem(32)};
-  `};
-`;
-
-const ServicesH4 = styled.h4`
-  ${mediaMin.s`
-    margin-bottom: ${rem(8)};
-  `};
-`;
-
-const ServicesEntry = styled.div`
-  display: inline-block;
-  vertical-align: top;
-
-  width: 100%;
-  height: 100%;
-  margin-bottom: ${rem(56)};
-
-  @media screen and (min-width: ${theme.breakpoints.xs}) {
-    width: calc(50% - ${theme.gutters.m});
-    margin-right: ${theme.gutters.m};
-
-    &:last-of-type() {
-      margin-right: 0;
-    }
-  }
-
-  @media screen and (min-width: ${theme.breakpoints.l}) {
-    width: calc(33% - ${theme.gutters.m});
-    margin-right: ${theme.gutters.m};
-
-    &:last-of-type() {
-      margin-right: 0;
-    }
   }
 `;
 
@@ -393,11 +358,29 @@ const AboutPage = (props) => {
       <Main role="main" id="main">
         <AboutMeWrapper>
           <HeaderInfo>
-            <ImageWrapper>
-              <FormattedMessage id="aboutTheBlogImageTitle">
-                {(txt) => <Img alt={txt} fluid={props.data.aboutImage.childImageSharp.fluid} />}
-              </FormattedMessage>
-            </ImageWrapper>
+            <LeftHeaderWrapper>
+              <ImageWrapper>
+                <FormattedMessage id="aboutTheBlogImageTitle">
+                  {(txt) => <Img alt={txt} fluid={props.data.aboutImage.childImageSharp.fluid} />}
+                </FormattedMessage>
+              </ImageWrapper>
+              <ResumeWrapper>
+                <StyledSocialNav>
+                  <SocialNav />
+                </StyledSocialNav>
+                <FormattedMessage id="resumeButton">
+                  {(txt) => (
+                    <ResumeButton
+                      href={locale === "en" ? enResume : esResume}
+                      alt="Open Dani Lucaci’s Resume"
+                      target="_blank"
+                    >
+                      {txt}
+                    </ResumeButton>
+                  )}
+                </FormattedMessage>
+              </ResumeWrapper>
+            </LeftHeaderWrapper>
 
             <InfoWrapper>
               <FormattedMessage id="aboutMeTitle">
@@ -412,12 +395,8 @@ const AboutPage = (props) => {
               <FormattedMessage id="aboutMeCopy3">
                 {(txt) => <AboutCopy>{txt}</AboutCopy>}
               </FormattedMessage>
-              <StyledSocialNav>
-                <SocialNav />
-              </StyledSocialNav>
             </InfoWrapper>
           </HeaderInfo>
-
           <MoreAboutMeWrapper>
             <MoreAboutMeInner>
               <FormattedMessage id="aboutMeWhatNowTitle">
@@ -474,102 +453,6 @@ const AboutPage = (props) => {
               </Col2>
             </MoreAboutMeInner>
           </MoreAboutMeWrapper>
-          <AltRow>
-            <RowContents>
-              <FormattedMessage id="indexServicesHeading">
-                {(txt) => <ServicesH2>{txt}</ServicesH2>}
-              </FormattedMessage>
-              <ServicesEntry>
-                <FormattedMessage id="indexServices1Title">
-                  {(txt) => <ServicesH4>{txt}</ServicesH4>}
-                </FormattedMessage>
-                <ul>
-                  <FormattedMessage id="indexServices1Item1">
-                    {(txt) => <li>{txt}</li>}
-                  </FormattedMessage>
-                  <FormattedMessage id="indexServices1Item2">
-                    {(txt) => <li>{txt}</li>}
-                  </FormattedMessage>
-                  <FormattedMessage id="indexServices1Item3">
-                    {(txt) => <li>{txt}</li>}
-                  </FormattedMessage>
-                  <FormattedMessage id="indexServices1Item4">
-                    {(txt) => <li>{txt}</li>}
-                  </FormattedMessage>
-                </ul>
-              </ServicesEntry>
-              <ServicesEntry>
-                <FormattedMessage id="indexServices2Title">
-                  {(txt) => <ServicesH4>{txt}</ServicesH4>}
-                </FormattedMessage>
-                <ul>
-                  <FormattedMessage id="indexServices2Item1">
-                    {(txt) => <li>{txt}</li>}
-                  </FormattedMessage>
-                  <FormattedMessage id="indexServices2Item2">
-                    {(txt) => <li>{txt}</li>}
-                  </FormattedMessage>
-                  <FormattedMessage id="indexServices2Item3">
-                    {(txt) => <li>{txt}</li>}
-                  </FormattedMessage>
-                  <FormattedMessage id="indexServices2Item4">
-                    {(txt) => <li>{txt}</li>}
-                  </FormattedMessage>
-                </ul>
-              </ServicesEntry>
-              <ServicesEntry>
-                <FormattedMessage id="indexServices3Title">
-                  {(txt) => <ServicesH4>{txt}</ServicesH4>}
-                </FormattedMessage>
-                <ul>
-                  <FormattedMessage id="indexServices3Item1">
-                    {(txt) => <li>{txt}</li>}
-                  </FormattedMessage>
-                  <FormattedMessage id="indexServices3Item2">
-                    {(txt) => <li>{txt}</li>}
-                  </FormattedMessage>
-                  <FormattedMessage id="indexServices3Item3">
-                    {(txt) => <li>{txt}</li>}
-                  </FormattedMessage>
-                  <FormattedMessage id="indexServices3Item4">
-                    {(txt) => <li>{txt}</li>}
-                  </FormattedMessage>
-                </ul>
-              </ServicesEntry>
-              <ServicesEntry>
-                <FormattedMessage id="indexServices4Title">
-                  {(txt) => <ServicesH4>{txt}</ServicesH4>}
-                </FormattedMessage>
-                <ul>
-                  <FormattedMessage id="indexServices4Item1">
-                    {(txt) => <li>{txt}</li>}
-                  </FormattedMessage>
-                  <FormattedMessage id="indexServices4Item2">
-                    {(txt) => <li>{txt}</li>}
-                  </FormattedMessage>
-                </ul>
-              </ServicesEntry>
-              <ServicesEntry>
-                <FormattedMessage id="indexServices5Title">
-                  {(txt) => <ServicesH4>{txt}</ServicesH4>}
-                </FormattedMessage>
-                <ul>
-                  <FormattedMessage id="indexServices5Item1">
-                    {(txt) => <li>{txt}</li>}
-                  </FormattedMessage>
-                  <FormattedMessage id="indexServices5Item2">
-                    {(txt) => <li>{txt}</li>}
-                  </FormattedMessage>
-                  <FormattedMessage id="indexServices5Item3">
-                    {(txt) => <li>{txt}</li>}
-                  </FormattedMessage>
-                  <FormattedMessage id="indexServices5Item4">
-                    {(txt) => <li>{txt}</li>}
-                  </FormattedMessage>
-                </ul>
-              </ServicesEntry>
-            </RowContents>
-          </AltRow>
         </AboutMeWrapper>
       </Main>
       <ContactWrapper>

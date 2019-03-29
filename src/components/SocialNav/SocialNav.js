@@ -1,11 +1,13 @@
 import React from "react";
-import styled, { css } from "styled-components";
-import { theme, rem, mediaMax, mediaMin } from "../../theme/globalStyles";
+import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
 
+import { theme, rem, mediaMin } from "../../theme/globalStyles";
 import { Icon } from "../Icon/Icon";
 
-const Wrapper = styled.nav``;
+const Wrapper = styled.nav`
+  white-space: nowrap;
+`;
 
 const StyledIcon = styled(Icon)`
   fill: ${(props) => (props.light ? theme.colors.light100 : null)};
@@ -66,7 +68,11 @@ const SocialNav = (props) => (
         <use xlinkHref="#dribbble" />
       </StyledIcon>
     </StyledLink>
-    <StyledLink target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/danielmlucaci">
+    <StyledLink
+      target="_blank"
+      rel="noopener noreferrer"
+      href="https://www.linkedin.com/in/danielmlucaci"
+    >
       <FormattedMessage id="socialNavLinkedin">
         {(txt) => <span className="sr-only">{txt}</span>}
       </FormattedMessage>
