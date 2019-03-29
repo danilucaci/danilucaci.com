@@ -18,14 +18,14 @@ import { HR } from "../components/HR/HR";
 import { localePaths } from "../i18n/i18n";
 
 const OuterWrapper = styled.section`
-  margin-bottom: ${theme.spacing.components.s};
+  margin-bottom: ${theme.spacing.row.s};
 
   ${mediaMin.s`
-    margin-bottom: ${theme.spacing.components.m};
+    margin-bottom: ${theme.spacing.row.m};
   `};
 
   ${mediaMin.m`
-      margin-bottom: ${theme.spacing.components.xl};
+      margin-bottom: ${theme.spacing.row.xl};
   `};
 `;
 
@@ -59,7 +59,7 @@ const InnerWrapper = styled.div`
 `;
 
 const ContactWrapper = styled.div`
-  margin-bottom: ${theme.spacing.components.s};
+  margin-bottom: ${theme.spacing.row.s};
   padding-right: ${theme.gutters.s};
   padding-left: ${theme.gutters.s};
 
@@ -72,7 +72,7 @@ const ContactWrapper = styled.div`
   }
 
   ${mediaMin.s`
-    margin-bottom: ${theme.spacing.components.m};
+    margin-bottom: ${theme.spacing.row.m};
     padding-right: ${theme.gutters.m};
     padding-left: ${theme.gutters.m};
 
@@ -86,7 +86,7 @@ const ContactWrapper = styled.div`
   `};
 
   ${mediaMin.m`
-    margin-bottom: ${theme.spacing.components.xl};
+    margin-bottom: ${theme.spacing.row.xl};
   `};
 `;
 
