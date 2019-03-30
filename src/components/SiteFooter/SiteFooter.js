@@ -21,7 +21,7 @@ const SiteFooter = (props) => {
       </FormattedMessage>
       <SocialNav light />
       <StaticQuery
-        query={LEGAL_PAGES_QUERY}
+        query={FOOTER_LEGAL_PAGES_QUERY}
         render={(data) => {
           const localizedDocsList = data.allMarkdownRemark.edges
             .map((edge) => ({
@@ -52,8 +52,8 @@ SiteFooter.propTypes = {
 
 export default SiteFooter;
 
-const LEGAL_PAGES_QUERY = graphql`
-  query LEGAL_PAGES_QUERY {
+const FOOTER_LEGAL_PAGES_QUERY = graphql`
+  query FOOTER_LEGAL_PAGES_QUERY {
     allMarkdownRemark(filter: { frontmatter: { category: { eq: "legal" } } }) {
       edges {
         node {

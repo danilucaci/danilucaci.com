@@ -241,7 +241,7 @@ Post.propTypes = {
 export default Post;
 
 export const pageQuery = graphql`
-  query BlogPostQuery($slug: String) {
+  query BLOG_POST_QUERY($slug: String) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       timeToRead

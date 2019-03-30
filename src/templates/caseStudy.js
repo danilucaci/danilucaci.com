@@ -267,7 +267,7 @@ CaseStudy.propTypes = {
 export default CaseStudy;
 
 export const pageQuery = graphql`
-  query CaseStudyQuery($slug: String) {
+  query CASE_STUDY_QUERY($slug: String) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {

@@ -126,7 +126,7 @@ LegalDoc.propTypes = {
 export default LegalDoc;
 
 export const legalPageQuery = graphql`
-  query LegalEntryBySlug($slug: String) {
+  query LEGAL_ENTRY_BY_SLUG($slug: String) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {

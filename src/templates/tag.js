@@ -119,7 +119,7 @@ TagPage.propTypes = {
 export default TagPage;
 
 export const pageQuery = graphql`
-  query allTags {
+  query ALL_TAGS {
     allMarkdownRemark(
       limit: 200
       sort: { fields: [frontmatter___date], order: DESC }

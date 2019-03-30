@@ -180,7 +180,7 @@ AboutPage.propTypes = {
 export default AboutPage;
 
 export const query = graphql`
-  query {
+  query ABOUT_ME_IMAGE_QUERY {
     aboutImage: file(relativePath: { regex: "/danilucaci_profile_image/" }) {
       childImageSharp {
         fluid(maxWidth: 480, maxHeight: 560, cropFocus: NORTH, quality: 70) {
