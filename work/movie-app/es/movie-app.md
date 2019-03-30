@@ -258,7 +258,7 @@ Once I did the initial competitive research to see which were the currently used
 
 For the final version of the searching, filtering and sorting feature, I decided to use a combination of the different design patterns mentioned above, which allowed me to include a full-width search bar without having to hide the filter and sort buttons. This design also allowed me to clearly indicate their current state and to allow the users to easily remove any filters applied.
 
-The filtering options were designed in a way that users could apply different filters to improve their search, without having mutually exclusive options, as the <a href="https://baymard.com/blog/allow-applying-of-multiple-filter-values" target="_blank" rel="noopener noreferrer">Baymard Institute recomends<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> in their article on E-Commerce UX, where they found that 45% of the users tested, tried to apply multiple filters at some point.
+The filtering options were designed in a way that users could apply different filters to improve their search, without having mutually exclusive options, as the [Baymard Institute recomends](https://baymard.com/blog/allow-applying-of-multiple-filter-values) in their article on E-Commerce UX, where they found that 45% of the users tested, tried to apply multiple filters at some point.
 
 By using checkbox style buttons for the filters, users can easily enable and disable filtering options, which don’t have to depend on each other.
 
@@ -396,7 +396,7 @@ After some initial research for best practices when creating a guest checkout ex
 
 #### Guest checkout as an option for all users
 
-Research has found that <a href="https://baymard.com/blog/delayed-account-creation" target="_blank" rel="noopener noreferrer">up to 37% of the users tested<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a>, would abandon the checkout if they were forced to create an account. Guest checkout experiences are also helpful to registered users who might have forgotten their passwords, which according to the same research, causes up to 19% of all users to abandon the checkout process.
+Research has found that [up to 37% of the users tested](https://baymard.com/blog/delayed-account-creation), would abandon the checkout if they were forced to create an account. Guest checkout experiences are also helpful to registered users who might have forgotten their passwords, which according to the same research, causes up to 19% of all users to abandon the checkout process.
 
 #### Create an account in the checkout confirmation step
 
@@ -423,7 +423,7 @@ According to the same research, privacy-concerned users are less reluctant to sh
 
 #### Payment methods placed in close proximity
 
-The different payment methods the app accepts are presented using 3 buttons placed next to each other, following the <a href="https://baymard.com/blog/payment-method-selection" target="_blank" rel="noopener noreferrer">recommendations of the research<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> made by the Baymard Institute. According to their research, payment methods should be placed together in close proximity (Gestalt principles would help here) so that users can easily compare them with a single glance and see which one is currently active.
+The different payment methods the app accepts are presented using 3 buttons placed next to each other, following the [recommendations of the research](https://baymard.com/blog/payment-method-selection) made by the Baymard Institute. According to their research, payment methods should be placed together in close proximity (Gestalt principles would help here) so that users can easily compare them with a single glance and see which one is currently active.
 
 Users should also be able to compare the different costs associated to each payment method—if they apply—such as a 2% fee when using a particular payment type.
 
@@ -445,9 +445,9 @@ Users should also be able to compare the different costs associated to each paym
 
 #### Insert spaces every 4 digits
 
-The input field for the credit card number was designed to auto insert spaces every 4 digits (for Visa cards, others may differ), as research has found that <a href="https://baymard.com/blog/credit-card-field-auto-format-spaces" target="_blank" rel="noopener noreferrer">as many as 23% of the users tested<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> would double check the card numbers they typed in groups of 4 digits by manually inserting spaces, so that they are able to easily read and verify the number.
+The input field for the credit card number was designed to auto insert spaces every 4 digits (for Visa cards, others may differ), as research has found that [as many as 23% of the users tested](https://baymard.com/blog/credit-card-field-auto-format-spaces) would double check the card numbers they typed in groups of 4 digits by manually inserting spaces, so that they are able to easily read and verify the number.
 
-Furthermore, a simple <a href="https://gist.github.com/DiegoSalazar/4075533" target="_blank" rel="noopener noreferrer">Luhn validation script<span class="sr-only">Opens in new window</span><span aria-hidden="true" class="external-link"></span></a> could be used to check if the card number is valid.
+Furthermore, a simple [Luhn validation script](https://gist.github.com/DiegoSalazar/4075533) could be used to check if the card number is valid.
 
 #### Match the printed format of the expiration date
 
@@ -606,4 +606,4 @@ However, in order for the final date to be usefull to the user, it should take i
 
 ## Next Steps
 
-#### Algo
+#### Something
