@@ -1,43 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 
-import { theme, rem } from "../../theme/globalStyles";
 import SiteNav from "../SiteNav/SiteNav";
 
-const StyledSiteHeaderWrapper = styled.header`
-  width: 100%;
-  display: block;
-  will-change: transform;
-  z-index: 100;
-  position: fixed;
-  top: 0;
-
-  & ul {
-    margin-left: 0 !important;
-  }
-`;
-
-const StyledSiteHeader = styled.div`
-  background-color: ${theme.colors.gray100};
-  ${theme.shadow.navbar};
-  width: 100%;
-  display: block;
-`;
-
-const ScrollContainer = styled.div`
-  height: ${rem(4)};
-  background-color: transparent;
-  will-change: width;
-  width: 100%;
-`;
-
-const ScrollLine = styled.div`
-  height: ${rem(4)};
-  background-color: ${theme.colors.main600};
-  will-change: width;
-  width: 0%;
-`;
+import { StyledSiteHeaderWrapper, StyledSiteHeader, ScrollContainer, ScrollLine } from "./styles";
 
 class SiteHeader extends Component {
   state = {

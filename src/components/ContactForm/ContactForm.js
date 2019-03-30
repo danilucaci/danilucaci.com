@@ -1,65 +1,20 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
-
-import { rem } from "../../theme/globalStyles";
-import Label from "../Label/Label";
-import Input from "../Input/Input";
-import SubmitButton from "../SubmitButton/SubmitButton";
-import TextArea from "../TextArea/TextArea";
 
 import { CONSENT_VALUE, INPUT_EMAIL_ERROR, localePaths } from "../../i18n/i18n";
 import PrivacyCheckbox from "../PrivacyCheckbox/PrivacyCheckbox";
 import EmailLoading from "../EmailLoading/EmailLoading";
+import SubmitButton from "../SubmitButton/SubmitButton";
 
-const FormContainer = styled.div``;
-
-const StyledForm = styled.form`
-  width: 100%;
-`;
-
-const StyledLabel = styled(Label)`
-  display: block;
-  margin-top: ${rem(16)};
-  position: relative;
-
-  &:first-of-type {
-    margin-top: 0;
-  }
-
-  &:focus {
-    box-shadow: none;
-    outline: none;
-  }
-`;
-
-const InputStatusIcon = styled.span`
-  display: none;
-  position: absolute;
-  right: ${rem(12)};
-  top: ${rem(44)};
-  width: ${rem(24)};
-  height: ${rem(24)};
-`;
-
-const InputTextAreaStatusIcon = styled.span`
-  display: block;
-  position: absolute;
-  right: ${rem(12)};
-  top: ${rem(40)};
-  width: ${rem(24)};
-  height: ${rem(24)};
-`;
-
-const StyledInput = styled(Input)`
-  display: block;
-  margin-top: ${rem(8)};
-`;
-
-const StyledTextArea = styled(TextArea)`
-  display: block;
-  margin-top: ${rem(8)};
-`;
+import {
+  FormContainer,
+  StyledForm,
+  StyledLabel,
+  InputStatusIcon,
+  InputTextAreaStatusIcon,
+  StyledInput,
+  StyledTextArea,
+} from "./styles";
 
 function ContactForm({ locale }) {
   const [email, setEmail] = useState("");

@@ -1,53 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
 
-import DribbblePostPlaceholder from "../DribbblePostPlaceholder/DribbblePostPlaceholder";
 import DribbblePost from "../DribbblePost/DribbblePost";
-import { theme, mediaMin, rem } from "../../theme/globalStyles";
-import { Copy } from "../Copy/Copy";
-import { LoadComments } from "../Button/Button";
+import DribbblePostPlaceholder from "../DribbblePostPlaceholder/DribbblePostPlaceholder";
 import Spinner from "../Spinner/Spinner";
 import useDribbbleReducer from "./DribbblePostsReducer";
 
+import {
+  DribbblePostsWrapper,
+  ErrorMessageWrapper,
+  ErrorMessage,
+  StyledLoadMore,
+  LoadMoreLabel,
+} from "./styles";
+
 import { DRIBBBLE_STATUS } from "../../i18n/i18n";
-
-const DribbblePostsWrapper = styled.section`
-  max-width: ${theme.contain.inner.col10};
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: ${rem(32)};
-
-  ${mediaMin.s`
-    margin-bottom: ${rem(64)};
-  `};
-`;
-
-const ErrorMessageWrapper = styled.div`
-  background-color: ${theme.colors.danger100};
-  display: block;
-  padding: ${rem(16)} ${rem(16)};
-  border-left: ${rem(4)} solid ${theme.colors.danger600};
-  margin-bottom: ${rem(32)};
-`;
-
-const ErrorMessage = styled.p`
-  color: ${theme.colors.danger600};
-
-  .fonts-loaded & {
-    font-family: ${theme.fonts.bodyRegular};
-  }
-`;
-
-const StyledLoadMore = styled(LoadComments)`
-  margin: ${rem(16)} auto;
-  display: block;
-`;
-
-const LoadMoreLabel = styled.span`
-  display: inline-block;
-`;
 
 function DribbblePosts({ locale }) {
   // -------------shotsPerPage-------------

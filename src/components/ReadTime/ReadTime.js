@@ -1,45 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
 
-import { theme, rem } from "../../theme/globalStyles";
-import { Icon } from "../Icon/Icon";
-import { Copy } from "../Copy/Copy";
+import { Wrapper, Label, StyledIcon } from "./styles";
 
-const Wrapper = styled.div`
-  display: inline-block;
-  white-space: nowrap;
-  margin-left: -${rem(2)};
-`;
-
-const Label = styled(Copy)`
-  display: inline-block;
-`;
-
-const StyledIcon = styled(Icon)`
-  display: inline-block;
-  fill: ${theme.colors.dark700};
-  margin-right: ${rem(2)};
-  margin-bottom: ${rem(3)};
-`;
-
-const ReadTime = (props) => {
-  return (
-    <Wrapper>
-      <StyledIcon>
-        <use xlinkHref="#clock" />
-      </StyledIcon>
-      <FormattedMessage id="articleReadTime">
-        {(txt) => (
-          <Label as="span" small>
-            {props.timeToRead} {txt}
-          </Label>
-        )}
-      </FormattedMessage>
-    </Wrapper>
-  );
-};
+const ReadTime = (props) => (
+  <Wrapper>
+    <StyledIcon>
+      <use xlinkHref="#clock" />
+    </StyledIcon>
+    <FormattedMessage id="articleReadTime">
+      {(txt) => (
+        <Label as="span" small>
+          {props.timeToRead} {txt}
+        </Label>
+      )}
+    </FormattedMessage>
+  </Wrapper>
+);
 
 ReadTime.propTypes = {
   timeToRead: PropTypes.number.isRequired,

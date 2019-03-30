@@ -1,20 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
 
-import { theme, mediaMin, rem } from "../../theme/globalStyles";
 import Article from "../Article/Article";
-
-const Wrapper = styled.section`
-  max-width: ${theme.contain.blog};
-  margin-left: auto;
-  margin-right: auto;
-`;
-
-const StyledH2 = styled.h2`
-  margin-bottom: ${rem(16)};
-`;
+import { Wrapper, StyledH2 } from "./styles";
 
 const PostListing = (props) => {
   let postList = props.edges.map((edge) => ({

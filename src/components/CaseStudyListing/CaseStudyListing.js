@@ -1,10 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 
 import CaseStudyCard from "../CaseStudyCard/CaseStudyCard";
 
-const CaseStudyListingWrapper = styled.div``;
+import { CaseStudyListingWrapper } from "./styles";
 
 const CaseStudyListing = (props) => {
   let caseStudyList = props.edges.map((edge) => ({

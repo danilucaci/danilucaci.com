@@ -1,14 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import { injectIntl, intlShape } from "react-intl";
 
-import { theme, rem, mediaMin } from "../../theme/globalStyles";
 import { toUpperCamelCase } from "../../helpers/helpers";
-
-const StyledLabel = styled.label`
-  margin-bottom: ${rem(4)};
-`;
+import { StyledLabel } from "./styles";
 
 // High 5 to: https://stackoverflow.com/questions/39630620/react-intl-how-to-use-formattedmessage-in-input-placeholder
 function Label({

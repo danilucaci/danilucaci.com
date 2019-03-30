@@ -1,27 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
 
 import Tag from "./Tag/Tag";
-
-const TagsWrapper = styled.nav`
-  display: ${(props) => (props.inline ? "inline-block" : "block")};
-`;
+import { TagsWrapper } from "./styles";
 
 const Tags = (props) => {
   let tags = props.tags;
   return (
     <TagsWrapper>
-      {tags &&
-        tags.map((tag) => (
-          <Tag key={tag} link={`/blog/tags/${tag}`} label={tag} />
-        ))}
+      {tags && tags.map((tag) => <Tag key={tag} link={`/blog/tags/${tag}`} label={tag} />)}
     </TagsWrapper>
   );
 };
 
 Tags.propTypes = {
-  optionalBool: PropTypes.bool,
   tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 

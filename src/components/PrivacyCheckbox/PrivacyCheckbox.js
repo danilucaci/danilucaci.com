@@ -1,72 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
 import { graphql, StaticQuery } from "gatsby";
 
-import { theme, rem } from "../../theme/globalStyles";
-import { Checkbox } from "../Checkbox/Checkbox";
-
-const StyledCheckboxLabel = styled.label`
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s};
-  display: inline-block;
-  margin-top: ${rem(12)};
-  margin-bottom: ${rem(8)};
-  display: inline-block;
-`;
-
-const StyledCheckbox = styled(Checkbox)`
-  display: inline-block;
-  margin-right: ${rem(8)};
-/* 
-  &:not(:checked) {
-    & ~ input {
-      pointer-events: none !important;
-      background-color: ${theme.colors.dark700};
-      color: ${theme.colors.gray100};
-
-      &:hover,
-      &:focus {
-        background-color: ${theme.colors.dark700};
-        box-shadow: none;
-        cursor: not-allowed;
-      }
-    }
-  }
-
-  &:checked {
-    & ~ input {
-      pointer-events: auto;
-    }
-  } */
-`;
-
-const Required = styled.span`
-  display: inline-block;
-  margin-left: ${rem(6)};
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s};
-  color: ${theme.colors.dark900};
-`;
-
-const AndSpan = styled.span`
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s};
-  display: inline;
-`;
-
-const LearnMoreLink = styled.a`
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s};
-  display: inline;
-  margin-left: ${rem(5)};
-  color: ${theme.colors.dark800} !important;
-
-  &:hover {
-    background-color: ${theme.colors.gray300} !important;
-  }
-`;
+import { StyledCheckboxLabel, StyledCheckbox, Required, AndSpan, LearnMoreLink } from "./styles";
 
 function PrivacyCheckbox({ locale, ...rest }) {
   return (

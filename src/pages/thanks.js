@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
 
 import Layout from "../components/Layout";
@@ -8,86 +7,17 @@ import SEO from "../components/SEO/SEO";
 import SiteHeader from "../components/SiteHeader/SiteHeader";
 import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
-import { Copy } from "../components/Copy/Copy";
-import { theme, mediaMin, rem } from "../theme/globalStyles";
 import LocaleLink from "../components/LocaleLink/LocaleLink";
 import { localePaths } from "../i18n/i18n";
-import { HR } from "../components/HR/HR";
 
-const StyledThanksPage = styled.section`
-  max-width: ${theme.contain.wrapper.col8};
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: ${rem(24)};
-  margin-bottom: ${rem(64)};
-
-  padding-left: ${theme.gutters.s};
-  padding-right: ${theme.gutters.s};
-
-  ${mediaMin.m`
-    padding-left: ${theme.gutters.m};
-    padding-right: ${theme.gutters.m};
-    margin-top: ${rem(64)};
-    margin-bottom: ${rem(80)};
-  `};
-
-  ${mediaMin.xl`
-    margin-top: ${rem(80)};
-    margin-bottom: ${rem(144)};
-  `};
-
-  /* Mobile in ladscape */
-  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(280)}) and (max-height: ${rem(560)}) and (orientation: landscape) {
-    margin-top: ${rem(24)};
-    margin-bottom: ${rem(64)};
-  }
-
-  & a {
-    display: inline;
-    white-space: nowrap;
-  }
-`;
-
-const StyledH1 = styled.h1`
-  display: block;
-
-  width: 100%;
-  margin-bottom: ${rem(16)};
-`;
-
-const ThanksCopy = styled(Copy)`
-  margin-bottom: ${rem(32)};
-
-  ${mediaMin.m`
-      max-width: 84%;
-  `};
-`;
-
-const ThanksAgainCopy = styled(Copy)`
-  margin-top: ${rem(32)};
-  margin-bottom: ${rem(32)};
-`;
-
-const Subhead = styled.p`
-  font-size: ${theme.fontSizes.subheads};
-  line-height: ${theme.lineHeights.subheads};
-  margin-bottom: ${rem(32)};
-
-  ${mediaMin.s`
-    font-size: ${theme.fontSizes.subhead};
-    line-height: ${theme.lineHeights.subhead};
-  `};
-`;
-
-const StyledHR = styled(HR)`
-  display: block;
-  width: 100%;
-  margin-bottom: ${rem(16)};
-
-  ${mediaMin.m`
-      max-width: 84%;
-  `};
-`;
+import {
+  StyledThanksPage,
+  StyledH1,
+  ThanksCopy,
+  ThanksAgainCopy,
+  Subhead,
+  StyledHR,
+} from "./styles/thanks";
 
 const ThanksPage = (props) => {
   let locale = props.pageContext.locale;

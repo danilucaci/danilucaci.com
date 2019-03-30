@@ -1,51 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
 
-import { theme, mediaMin, rem } from "../../theme/globalStyles";
-import { Copy } from "../Copy/Copy";
 import Tags from "../Tags/Tags";
 import ArticleInfo from "../ArticleInfo/ArticleInfo";
-import { BoldLink } from "../Link/Link";
 
-const StyledArticle = styled.article`
-  background-color: ${theme.colors.gray100};
-  padding: ${rem(12)} ${rem(16)} ${rem(24)} ${rem(16)};
-  margin-bottom: ${theme.gutters.m};
-
-  ${mediaMin.s`
-    padding: ${rem(16)} ${rem(32)} ${rem(24)} ${rem(32)};
-  `};
-
-  &:hover {
-    ${theme.shadow.hover};
-
-    & h3 {
-      color: ${theme.colors.main600};
-    }
-  }
-`;
-
-const ContinueLink = styled(BoldLink)`
-  display: block;
-
-  padding-top: ${rem(16)};
-
-  &:hover {
-    background-color: transparent;
-  }
-`;
-
-const ArticleCopy = styled(Copy)`
-  margin-top: ${rem(12)};
-  margin-bottom: ${rem(16)};
-`;
-
-const StyledH3 = styled.h3`
-  margin-top: ${rem(8)};
-  margin-bottom: ${rem(12)};
-`;
+import { StyledArticle, ContinueLink, ArticleCopy, StyledH3 } from "./styles";
 
 const Article = (props) => (
   <StyledArticle>

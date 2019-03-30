@@ -1,12 +1,9 @@
 import React from "react";
-import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
 
-const StyledExternalLinkIcon = styled.span`
-  display: inline;
-`;
+import { StyledExternalLinkIcon } from "./styles";
 
-const ExternalLinkIcon = (props) => (
+const ExternalLinkIcon = () => (
   <StyledExternalLinkIcon>
     <FormattedMessage id="externalLinkSrOnly">
       {(txt) => <span className="sr-only">{txt}</span>}

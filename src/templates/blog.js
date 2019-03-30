@@ -1,11 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
 
 import SEO from "../components/SEO/SEO";
-import { theme, mediaMin, rem } from "../theme/globalStyles";
 import Layout from "../components/Layout";
 import SiteHeader from "../components/SiteHeader/SiteHeader";
 import { Main } from "../components/Main/Main";
@@ -17,79 +15,7 @@ import { SectionHeader } from "../components/Headings/Headings";
 
 import { localePaths } from "../i18n/i18n";
 
-const BlogWrapper = styled.section`
-  max-width: ${theme.contain.wrapper.col8};
-  margin-left: auto;
-  margin-right: auto;
-
-  padding-right: ${theme.gutters.s};
-  padding-left: ${theme.gutters.s};
-
-  /* iPhone X */
-  @supports (padding: max(0px)) {
-    & {
-      padding-left: max(${theme.gutters.s}, env(safe-area-inset-left));
-      padding-right: max(${theme.gutters.s}, env(safe-area-inset-right));
-    }
-  }
-
-  ${mediaMin.s`
-    padding-right: ${theme.gutters.m};
-    padding-left: ${theme.gutters.m};
-
-    /* iPhone X */
-    @supports (padding: max(0px)) {
-      & {
-        padding-left: max(${theme.gutters.m}, env(safe-area-inset-left));
-        padding-right: max(${theme.gutters.m}, env(safe-area-inset-right));
-      }
-    }
-  `};
-
-  margin-bottom: ${theme.spacing.row.s};
-  ${mediaMin.m`
-    margin-bottom: ${theme.spacing.row.m};
-  `};
-  ${mediaMin.l`
-    margin-bottom: ${theme.spacing.row.xl};
-  `};
-
-  /* Mobile in ladscape */
-  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(280)}) and (max-height: ${rem(560)}) and (orientation: landscape) {
-    margin-bottom: ${rem(64)};
-  }
-`;
-
-const BlogHeader = styled.header`
-  margin-bottom: ${theme.spacing.components.s};
-
-  ${mediaMin.m`
-    margin-bottom: ${theme.spacing.components.m};
-  `};
-
-  ${mediaMin.l`
-    margin-bottom: ${theme.spacing.components.xl};
-  `};
-
-  /* Mobile in ladscape */
-  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(280)}) and (max-height: ${rem(560)}) and (orientation: landscape) {
-    margin-bottom: ${rem(64)};
-  }
-`;
-
-const BlogTitle = styled.h3`
-  font-size: ${theme.fontSizes.h3s};
-  line-height: ${theme.lineHeights.h3s};
-
-  ${mediaMin.xs`
-  font-size: ${theme.fontSizes.h3};
-  line-height: ${theme.lineHeights.h3};
-`}
-`;
-
-const TagsWrapper = styled.div`
-  margin-top: ${rem(16)};
-`;
+import { BlogWrapper, BlogHeader, BlogTitle, TagsWrapper } from "./styles/blog";
 
 const BlogPage = (props) => {
   const {
