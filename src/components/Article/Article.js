@@ -14,7 +14,7 @@ const Article = (props) => (
       <StyledH3>{props.title}</StyledH3>
       <ArticleInfo date={props.date} timeToRead={props.timeToRead} />
     </header>
-    <ArticleCopy className="copy">{props.snippet}</ArticleCopy>
+    <ArticleCopy>{props.snippet}</ArticleCopy>
     <FormattedMessage id="articleLinkContinue">
       {(txt) => <ContinueLink to={props.slug}>{txt}</ContinueLink>}
     </FormattedMessage>
