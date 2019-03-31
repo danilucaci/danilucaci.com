@@ -5,16 +5,22 @@ module.exports = {
   env: {
     browser: 2,
     es6: 2,
+    "jest/globals": true,
   },
   extends: "airbnb",
   parser: "babel-eslint",
   parserOptions: {
     sourceType: "module",
   },
-  plugins: ["html", "import", "react", "jsx-a11y", "markdown", "react-hooks"],
+  plugins: ["html", "import", "react", "jsx-a11y", "markdown", "react-hooks", "jest"],
   rules: {
     "react-hooks/rules-of-hooks": 2,
     "react-hooks/exhaustive-deps": 1,
+    "jest/no-disabled-tests": 1,
+    "jest/no-focused-tests": 2,
+    "jest/no-identical-title": 2,
+    "jest/prefer-to-have-length": 1,
+    "jest/valid-expect": 2,
     indent: ["error", 1],
     indent: [
       "error",
