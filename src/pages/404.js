@@ -10,7 +10,7 @@ import SiteFooter from "../components/SiteFooter/SiteFooter";
 
 import LocaleLink from "../components/LocaleLink/LocaleLink";
 
-import { StyledNotFound, StyledH1, Subhead, StyledCopy, StyledHR } from "./styles/404";
+import { StyledNotFound, StyledH1, Subhead, StyledCopy, StyledHR } from "../styles/404.styles";
 
 const NotFoundPage = (props) => {
   let locale = props.pageContext.locale;

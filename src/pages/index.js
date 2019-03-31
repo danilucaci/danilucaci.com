@@ -28,7 +28,7 @@ import {
   CaseStudiesCopy,
   DribbblePostsTitle,
   DribbbleSubhead,
-} from "./styles/index";
+} from "../styles/index.styles";
 
 const Index = (props) => {
   let caseStudyList = props.data.work.edges.map((edge) => ({

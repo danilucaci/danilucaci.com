@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { theme, mediaMin, rem } from "../../theme/globalStyles";
-import { HR } from "../../components/HR/HR";
-import { Copy } from "../../components/Copy/Copy";
+import { theme, mediaMin, rem } from "../theme/globalStyles";
+import { HR } from "../../src/components/HR/HR";
+import { Copy } from "../../src/components/Copy/Copy";
 
 export const IndexHeader = styled.header`
   max-width: ${theme.contain.wrapper.col10};

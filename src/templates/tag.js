@@ -15,7 +15,13 @@ import { SectionHeader } from "../components/Headings/Headings";
 
 import { localePaths } from "../i18n/i18n";
 
-import { TagWrapper, TagHeader, TagTitleWrapper, TagTitle, OtherTagsWrapper } from "./styles/tag";
+import {
+  TagWrapper,
+  TagHeader,
+  TagTitleWrapper,
+  TagTitle,
+  OtherTagsWrapper,
+} from "../styles/tag.styles";
 
 const TagPage = (props) => {
   const {

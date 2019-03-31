@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { theme, rem, mediaMin } from "../../theme/globalStyles";
-import { Copy } from "../../components/Copy/Copy";
-import { LoadComments } from "../../components/Button/Button";
-import { Icon } from "../../components/Icon/Icon";
-import { HR } from "../../components/HR/HR";
+import { theme, rem, mediaMin } from "../theme/globalStyles";
+import { Copy } from "../../src/components/Copy/Copy";
+import { LoadComments } from "../../src/components/Button/Button";
+import { Icon } from "../../src/components/Icon/Icon";
+import { HR } from "../../src/components/HR/HR";
 
 export const PostWrapper = styled.article`
   max-width: ${theme.contain.wrapper.col10};

@@ -15,7 +15,7 @@ import { SectionHeader } from "../components/Headings/Headings";
 
 import { localePaths } from "../i18n/i18n";
 
-import { BlogWrapper, BlogHeader, BlogTitle, TagsWrapper } from "./styles/blog";
+import { BlogWrapper, BlogHeader, BlogTitle, TagsWrapper } from "../styles/blog.styles";
 
 const BlogPage = (props) => {
   const {

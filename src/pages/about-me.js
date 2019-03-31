@@ -35,7 +35,7 @@ import {
   MoreAboutMeInner,
   AboutMeItem,
   ContactWrapper,
-} from "./styles/about-me";
+} from "../styles/about-me.styles";
 
 const AboutPage = (props) => {
   let locale = props.pageContext.locale;

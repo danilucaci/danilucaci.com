@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
-import { Copy } from "../../components/Copy/Copy";
+import { theme, rem, mediaMin, mediaMax } from "../theme/globalStyles";
+import { Copy } from "../../src/components/Copy/Copy";
 
 export const ArticleWrapper = styled.article`
   & footer {

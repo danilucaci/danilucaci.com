@@ -17,7 +17,7 @@ import {
   ThanksAgainCopy,
   Subhead,
   StyledHR,
-} from "./styles/thanks";
+} from "../styles/thanks.styles";
 
 const ThanksPage = (props) => {
   let locale = props.pageContext.locale;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { theme, rem, mediaMin } from "../../theme/globalStyles";
-import { Copy } from "../../components/Copy/Copy";
+import { theme, rem, mediaMin } from "../theme/globalStyles";
+import { Copy } from "../../src/components/Copy/Copy";
 
 export const PageWrapper = styled.section`
   max-width: ${theme.contain.inner.col8};

@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { Copy } from "../../components/Copy/Copy";
-import { theme, mediaMin, rem } from "../../theme/globalStyles";
-import { HR } from "../../components/HR/HR";
+
+import { theme, mediaMin, rem } from "../theme/globalStyles";
+import { Copy } from "../../src/components/Copy/Copy";
+import { HR } from "../../src/components/HR/HR";
 
 export const StyledThanksPage = styled.section`
   max-width: ${theme.contain.wrapper.col8};

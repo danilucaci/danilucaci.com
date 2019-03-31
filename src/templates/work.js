@@ -22,7 +22,7 @@ import {
   WorkHeader,
   DribbblePostsTitle,
   DribbbleSubhead,
-} from "./styles/work";
+} from "../styles/work.styles";
 
 function WorkPage(props) {
   const {

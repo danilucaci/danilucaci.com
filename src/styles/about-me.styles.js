@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { theme, mediaMin, rem } from "../../theme/globalStyles";
+import { theme, mediaMin, rem } from "../theme/globalStyles";
 
-import { Copy } from "../../components/Copy/Copy";
+import { Copy } from "../../src/components/Copy/Copy";
 
 export const AboutMeWrapper = styled.section``;
 

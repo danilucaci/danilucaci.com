@@ -26,7 +26,7 @@ import {
   SayHiTitle,
   SayHiDescription,
   SocialNavWrapper,
-} from "./styles/contact";
+} from "../styles/contact.styles";
 
 const ContactPage = (props) => {
   let locale = props.pageContext.locale;

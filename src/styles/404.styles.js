@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-import { Copy } from "../../components/Copy/Copy";
-import { theme, mediaMin, rem } from "../../theme/globalStyles";
-import { HR } from "../../components/HR/HR";
+import { Copy } from "../../src/components/Copy/Copy";
+import { theme, mediaMin, rem } from "../theme/globalStyles";
+import { HR } from "../../src/components/HR/HR";
 
 export const StyledNotFound = styled.section`
   max-width: ${theme.contain.wrapper.col8};

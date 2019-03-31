@@ -44,7 +44,7 @@ import {
   LoadCommentsLabel,
   CommentsWrapper,
   BottomHR,
-} from "./styles/post";
+} from "../styles/post.styles";
 
 // eslint-disable
 // const renderAst = new rehypeReact({

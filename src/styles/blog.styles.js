@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme, mediaMin, rem } from "../../theme/globalStyles";
+import { theme, mediaMin, rem } from "../theme/globalStyles";
 
 export const BlogWrapper = styled.section`
   max-width: ${theme.contain.wrapper.col8};

@@ -28,7 +28,7 @@ import {
   OverviewItem,
   OverviewListLink,
   PostContent,
-} from "./styles/caseStudy";
+} from "../styles/caseStudy.styles";
 
 // const renderAst = new rehypeReact({
 //   createElement: React.createElement,

@@ -11,7 +11,7 @@ import SiteFooter from "../components/SiteFooter/SiteFooter";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import { calculateScroll, textPassiveEventSupport } from "../helpers/helpers";
 
-import { PageWrapper, PostH1, PostContent, Time } from "./styles/legal";
+import { PageWrapper, PostH1, PostContent, Time } from "../styles/legal.styles";
 
 class LegalDoc extends Component {
   componentDidMount() {
