@@ -32,11 +32,14 @@ const CaseStudyCard = (props) => (
 
 CaseStudyCard.propTypes = {
   title: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
   snippet: PropTypes.string.isRequired,
-  image: PropTypes.object.isRequired,
-  tagsInCaseStudy: PropTypes.arrayOf(PropTypes.string).isRequired,
+  image: PropTypes.shape({
+    aspectRatio: PropTypes.number.isRequired,
+    sizes: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
+    srcSet: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default CaseStudyCard;
