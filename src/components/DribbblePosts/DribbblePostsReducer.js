@@ -18,15 +18,6 @@ const reducer = (state, action) => {
         dribbblePosts: [...state.dribbblePosts, ...action.payload],
       };
     }
-    case "FETCH_SUCCESS_LAST": {
-      return {
-        ...state,
-        isLoading: false,
-        isLoadingMore: false,
-        noMoreShots: true,
-        dribbblePosts: [...state.dribbblePosts, ...action.payload],
-      };
-    }
     case "FETCH_MORE": {
       return {
         ...state,
@@ -51,7 +42,6 @@ export default function useDribbbleReducer() {
   const initialState = {
     dribbblePage: 1,
     shotsPerPage: 4,
-    noMoreShots: false,
     dribbblePosts: [],
     isLoading: true,
     isLoadingMore: false,
@@ -61,28 +51,27 @@ export default function useDribbbleReducer() {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   React.useEffect(() => {
-    let didCancel = false;
     let dribbbleRes = {};
-    // const theEnd = dribbbleRes.data.map((x) => dribbblePosts.some((post) => post.id === x.id));
-    // console.log(theEnd);
-    // dispatch({ type: "FETCH_SUCCESS_LAST", payload: dribbbleRes.data });
-    // function checkForLast(arr) {
-    //   return arr.map((x) => dribbblePosts.some((post) => post.id === x.id));
-    // }
+    let source = axios.CancelToken.source();
 
     dispatch({ type: "FETCH_INIT" });
 
     const fetchData = async () => {
       try {
-        dribbbleRes = await axios.get(`https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&page=${
-          state.dribbblePage
-        }&per_page=${state.shotsPerPage}`);
+        dribbbleRes = await axios.get(
+          `https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&page=${
+            state.dribbblePage
+          }&per_page=${state.shotsPerPage}`,
+          {
+            cancelToken: source.token,
+          },
+        );
 
-        if (!didCancel) {
-          dispatch({ type: "FETCH_SUCCESS", payload: dribbbleRes.data });
-        }
+        dispatch({ type: "FETCH_SUCCESS", payload: dribbbleRes.data });
       } catch (error) {
-        if (!didCancel) {
+        if (axios.isCancel(error)) {
+          console.warn("Cancelled axios request");
+        } else {
           console.warn(error);
           dispatch({ type: "FETCH_ERROR" });
         }
@@ -92,8 +81,8 @@ export default function useDribbbleReducer() {
     fetchData();
 
     return () => {
-      // Prevent memory leak when moving to another page
-      didCancel = true;
+      // Prevent memory leak when moving to another page and cancel axios request
+      source.cancel();
     };
   }, [state.dribbblePage, state.shotsPerPage]);
 
