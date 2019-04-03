@@ -5,7 +5,7 @@ const GlobalCSS = createGlobalStyle`
   html {
     background-color: #F5F6F7;
     color: #3A4554;
-    font-family: "Open Sans", BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     font-size: 16px;
     line-height: 24px;
     ${"" /* font-size: 100%; */}
@@ -68,7 +68,6 @@ const GlobalCSS = createGlobalStyle`
     color: ${theme.colors.dark900};
     font-weight: 700;
     font-style: normal;
-    font-family: ${theme.fonts.header};
 
     font-size: ${theme.fontSizes.h1s};
     ${mediaMin.xs`
@@ -79,13 +78,18 @@ const GlobalCSS = createGlobalStyle`
     ${mediaMin.xs`
       line-height: ${theme.lineHeights.h1};
     `}
+
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+    .fonts-loaded & {
+      font-family: ${theme.fonts.header};
+    }
   }
   
   h2 {
     color: ${theme.colors.dark900};
     font-weight: 700;
     font-style: normal;
-    font-family: ${theme.fonts.header};
     font-size: ${theme.fontSizes.h2s};
 
     ${mediaMin.xs`
@@ -97,13 +101,18 @@ const GlobalCSS = createGlobalStyle`
     ${mediaMin.xs`
       line-height: ${theme.lineHeights.h2};
     `}
+
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+    .fonts-loaded & {
+      font-family: ${theme.fonts.header};
+    }
   }
 
   h3 {
     color: ${theme.colors.dark900};
     font-weight: 700;
     font-style: normal;
-    font-family: ${theme.fonts.header};
     font-size: ${theme.fontSizes.h3s};
 
     ${mediaMin.xs`
@@ -115,6 +124,12 @@ const GlobalCSS = createGlobalStyle`
     ${mediaMin.xs`
       line-height: ${theme.lineHeights.h3};
     `}
+
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+    .fonts-loaded & {
+      font-family: ${theme.fonts.header};
+    }
   }
 
   h4 {
@@ -123,7 +138,12 @@ const GlobalCSS = createGlobalStyle`
     font-style: normal;
     font-size: ${theme.fontSizes.h4};
     line-height: ${theme.lineHeights.h4};
-    font-family: ${theme.fonts.header};
+
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+    .fonts-loaded & {
+      font-family: ${theme.fonts.header};
+    }
   }
 
   h5 {
@@ -135,7 +155,12 @@ const GlobalCSS = createGlobalStyle`
     letter-spacing: ${theme.letterSpacing.sectionHeaderS};
     font-weight: 700;
     font-style: normal;
-    font-family: ${theme.fonts.header};
+
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+    .fonts-loaded & {
+      font-family: ${theme.fonts.header};
+    }
 
     ${mediaMin.s`
       font-size: ${theme.fontSizes.sectionHeaderXL};
@@ -189,6 +214,15 @@ const GlobalCSS = createGlobalStyle`
     font-size: ${theme.fontSizes.m};
     font-family: ${theme.fonts.bodyBold};
     line-height: ${theme.lineHeights.m};
+  }
+
+  em {
+    color: ${theme.colors.dark800};
+    font-weight: 400;
+    font-style: italic;
+    font-size: ${theme.fontSizes.m};
+    line-height: ${theme.lineHeights.m};
+    font-family: ${theme.fonts.bodyItalic};
   }
 
   p,

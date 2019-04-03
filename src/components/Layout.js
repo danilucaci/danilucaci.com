@@ -100,26 +100,35 @@ class Layout extends Component {
     const RobotoMonoItalic = new FontFaceObserver("Roboto Mono Italic", {
       style: "italic",
     });
-    const OpenSansRegular = new FontFaceObserver("Open Sans Regular");
-    const OpenSansBold = new FontFaceObserver("Open Sans Bold", {
+    const LatoRegular = new FontFaceObserver("Lato", {
+      weight: 400,
+    });
+    const LatoBold = new FontFaceObserver("Lato Bold", {
       weight: 700,
     });
-    const OpenSansItalic = new FontFaceObserver("Open Sans Italic", {
+    const LatoItalic = new FontFaceObserver("Lato Italic", {
+      weight: 400,
       style: "italic",
     });
-    const MontserratBold = new FontFaceObserver("Montserrat Bold", {
+    const MerriweatherBold = new FontFaceObserver("Merriweather Bold", {
       weight: 700,
     });
-    const MontserratRegular = new FontFaceObserver("Montserrat Regular");
+    const MerriweatherRegular = new FontFaceObserver("Merriweather Regular", {
+      weight: 400,
+    });
+    const MerriweatherLight = new FontFaceObserver("Merriweather Light", {
+      weight: 300,
+    });
 
     Promise.all([
       RobotoMonoRegular.load(),
       RobotoMonoItalic.load(),
-      OpenSansRegular.load(),
-      OpenSansBold.load(),
-      OpenSansItalic.load(),
-      MontserratBold.load(),
-      MontserratRegular.load(),
+      LatoRegular.load(),
+      LatoBold.load(),
+      LatoItalic.load(),
+      MerriweatherBold.load(),
+      MerriweatherRegular.load(),
+      MerriweatherLight.load(),
     ]).then(() => {
       document.documentElement.className += " fonts-loaded";
       // Optimization for Repeat Views

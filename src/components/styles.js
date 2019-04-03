@@ -4,16 +4,18 @@ import {
   RobotoMonoRegularWoff,
   RobotoMonoItalicWoff2,
   RobotoMonoItalicWoff,
-  OpenSansRegularWoff2,
-  OpenSansRegularWoff,
-  OpenSansItalicWoff2,
-  OpenSansItalicWoff,
-  OpenSansBoldWoff2,
-  OpenSansBoldWoff,
-  MontserratRegularWoff2,
-  MontserratRegularWoff,
-  MontserratBoldWoff2,
-  MontserratBoldWoff,
+  LatoRegularWoff2,
+  LatoRegularWoff,
+  LatoItalicWoff2,
+  LatoItalicWoff,
+  LatoBoldWoff2,
+  LatoBoldWoff,
+  MerriweatherRegularWoff2,
+  MerriweatherRegularWoff,
+  MerriweatherLightWoff2,
+  MerriweatherLightWoff,
+  MerriweatherBoldWoff2,
+  MerriweatherBoldWoff,
 } from "../fonts";
 
 export const Page = styled.div`
@@ -49,57 +51,68 @@ export const Page = styled.div`
 }
 
 @font-face {
-  font-family: 'Open Sans Regular';
+  font-family: 'Lato';
   font-style: normal;
   /* displays text with fallback font and replaces when the font is ready */
   font-display: swap;
   font-weight: 400;
-  src: local('Open Sans Regular'), 
-  url('${OpenSansRegularWoff2}') format('woff2'),
-  url('${OpenSansRegularWoff}') format('woff');
+  src: local('Lato'), 
+  url('${LatoRegularWoff2}') format('woff2'),
+  url('${LatoRegularWoff}') format('woff');
 }
 
 @font-face {
-  font-family: 'Open Sans Bold';
+  font-family: 'Lato Bold';
   font-style: normal;
   /* displays text with fallback font and replaces when the font is ready */
   font-display: swap;
   font-weight: 700;
-  src: local('Open Sans Bold'), 
-  url('${OpenSansBoldWoff2}') format('woff2'),
-  url('${OpenSansBoldWoff}') format('woff');
+  src: local('Lato Bold'), 
+  url('${LatoBoldWoff2}') format('woff2'),
+  url('${LatoBoldWoff}') format('woff');
 }
 
 @font-face {
-  font-family: 'Open Sans Italic';
+  font-family: 'Lato Italic';
   font-style: italic;
   /* displays text with fallback font and replaces when the font is ready */
   font-display: swap;
   font-weight: 400;
-  src: local('Open Sans Italic'), 
-  url('${OpenSansItalicWoff2}') format('woff2'),
-  url('${OpenSansItalicWoff}') format('woff');
+  src: local('Lato Italic'), 
+  url('${LatoItalicWoff2}') format('woff2'),
+  url('${LatoItalicWoff}') format('woff');
 }
 
 @font-face {
-  font-family: 'Montserrat Regular';
+  font-family: 'Merriweather Regular';
   font-style: normal;
   /* displays text with fallback font and replaces when the font is ready */
   font-display: swap;
   font-weight: 400;
-  src: local('Montserrat Regular'), 
-  url('${MontserratRegularWoff2}') format('woff2'),
-  url('${MontserratRegularWoff}') format('woff');
+  src: local('Merriweather Regular'), 
+  url('${MerriweatherRegularWoff2}') format('woff2'),
+  url('${MerriweatherRegularWoff}') format('woff');
 }
 
 @font-face {
-  font-family: 'Montserrat Bold';
+  font-family: 'Merriweather Light';
+  font-style: normal;
+  /* displays text with fallback font and replaces when the font is ready */
+  font-display: swap;
+  font-weight: 400;
+  src: local('Merriweather Light'), 
+  url('${MerriweatherLightWoff2}') format('woff2'),
+  url('${MerriweatherLightWoff}') format('woff');
+}
+
+@font-face {
+  font-family: 'Merriweather Bold';
   font-style: normal;
   /* displays text with fallback font and replaces when the font is ready */
   font-display: swap;
   font-weight: 700;
-  src: local('Montserrat Bold'), 
-  url('${MontserratBoldWoff2}') format('woff2'),
-  url('${MontserratBoldWoff}') format('woff');
+  src: local('Merriweather Bold'), 
+  url('${MerriweatherBoldWoff2}') format('woff2'),
+  url('${MerriweatherBoldWoff}') format('woff');
 }
 `;
