@@ -30,6 +30,7 @@ export const StyledMenuButton = styled.button`
 export const StyledIcon = styled(Icon)`
   fill: ${theme.colors.dark900};
   transition: transform 0.2s ease;
+  margin-bottom: ${rem(2)};
 
   ${(props) =>
     props.animate &&
