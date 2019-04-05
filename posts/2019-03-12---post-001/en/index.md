@@ -1,5 +1,5 @@
 ---
-title: "How to Add a Contact Form a on Static Site"
+title: "How to Add a Contact Form a on a Static Site"
 slug: "contact form on static site"
 date: "2019-03-12"
 category: "blog"
