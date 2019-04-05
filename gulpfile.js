@@ -14,26 +14,24 @@ const svgSprite = require("gulp-svg-sprites");
  */
 
 // SVG Sprinting
-gulp.task("build:svg", function(done) {
+gulp.task("build:svg", (done) => {
   return gulp
     .src("./icons/*.svg")
-    .pipe(
-      svgSprite({
-        svg: {
-          symbols: "icons.svg",
-        },
-        preview: false,
-        mode: "symbols",
-        selector: "%f",
-        // selector: "icon-%f",
-      })
-    )
+    .pipe(svgSprite({
+      svg: {
+        symbols: "icons.svg",
+      },
+      preview: false,
+      mode: "symbols",
+      selector: "%f",
+      // selector: "icon-%f",
+    }))
     .pipe(gulp.dest("./icons/sprite/"));
   done();
 });
 
 // Delete previous svg sprite from public/
-gulp.task("clean:svg", function(done) {
+gulp.task("clean:svg", (done) => {
   del(["./icons/sprite/*"]);
   done();
 });
