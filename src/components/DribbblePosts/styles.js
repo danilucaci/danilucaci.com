@@ -3,15 +3,10 @@ import styled from "styled-components";
 import { theme, mediaMin, rem } from "../../theme/globalStyles";
 import { LoadComments } from "../Button/Button";
 
-export const DribbblePostsWrapper = styled.section`
+export const DribbblePostsWrapper = styled.div`
   max-width: ${theme.contain.inner.col10};
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: ${rem(32)};
-
-  ${mediaMin.s`
-    margin-bottom: ${rem(64)};
-  `};
 `;
 
 export const ErrorMessageWrapper = styled.div`
@@ -33,6 +28,10 @@ export const ErrorMessage = styled.p`
 export const StyledLoadMore = styled(LoadComments)`
   margin: ${rem(16)} auto;
   display: block;
+
+  ${mediaMin.s`
+    margin-top: ${rem(56)};
+  `};
 `;
 
 export const LoadMoreLabel = styled.span`
