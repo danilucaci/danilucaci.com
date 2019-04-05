@@ -227,7 +227,7 @@ export const PostContent = styled.section`
   }
 
   .js-codeCopy {
-    background-color: ${theme.colors.gray100};
+    background-color: ${theme.colors.grey100};
     display: none;
     white-space: nowrap;
     font-size: ${theme.fontSizes.xs};
@@ -329,7 +329,7 @@ export const StyledLoadComments = styled(LoadComments)`
 
 export const LoadCommentsIcon = styled(Icon)`
   margin-top: -${rem(3)};
-  fill: ${theme.colors.gray500};
+  fill: ${theme.colors.grey500};
 `;
 
 export const LoadCommentsLabel = styled.span`

@@ -19,7 +19,7 @@ export const StyledCheckbox = styled(Checkbox)`
     & ~ input {
       pointer-events: none !important;
       background-color: ${theme.colors.dark700};
-      color: ${theme.colors.gray100};
+      color: ${theme.colors.grey100};
 
       &:hover,
       &:focus {
@@ -59,6 +59,6 @@ export const LearnMoreLink = styled.a`
   color: ${theme.colors.dark800} !important;
 
   &:hover {
-    background-color: ${theme.colors.gray300} !important;
+    background-color: ${theme.colors.grey300} !important;
   }
 `;

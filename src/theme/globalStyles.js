@@ -8,14 +8,14 @@ export const theme = {
     pageBackground: "#F5F6F7",
     sectionBackground: "#E6E8EB",
     pageDark500: "#0F2030",
-    light200: "#99ABBF",
-    light100: "#D8E1EB",
+    light200: "#C1D0E3",
+    light100: "#EDF2F7",
     buttonLight: "#F0F8FF",
-    gray500: "#A1A8B5",
-    gray400: "#CBCED4",
-    gray300: "#E6E8EB",
-    gray200: "#F5F6F7",
-    gray100: "#FFFFFF",
+    grey500: "#A1A8B5",
+    grey400: "#CBCED4",
+    grey300: "#E6E8EB",
+    grey200: "#F5F6F7",
+    grey100: "#FFFFFF",
     main600: "#0946B0",
     main500: "#185DC4",
     main400: "#458FDE",
@@ -48,14 +48,15 @@ export const theme = {
     codeGreen: "#7DBD4B",
   },
   shadow: {
-    default: "box-shadow: 0px 2px 4px 0px hsla(0,0%,40%,0.2), 0px 6px 12px 0px hsla(0,0%,70%,0.24)",
-    hover: "box-shadow: 0px 2px 8px -4px hsla(0,0%,40%,0.4), 0px 8px 20px -2px hsla(0,0%,70%,0.4)",
+    default: "box-shadow: 0 2px 6px 0 rgba(102,102,102,0.20), 0 8px 16px 0 rgba(179,179,179,0.15)",
+    hover:
+      "box-shadow: 0 2px 8px -4px rgba(102,102,102,0.40), 0 8px 20px -4px rgba(102,102,102,0.31)",
     navbar: "box-shadow: 0px 2px 4px -2px hsla(0,0%,40%,0.3), 0px 4px 8px -2px hsla(0,0%,60%,0.24)",
     image: "box-shadow: 0px 2px 4px -2px hsla(0,0%,40%,0.3), 0px 6px 12px -2px hsla(0,0%,60%,0.24)",
     dropdown:
       "box-shadow: 0px 2px 4px 0px hsla(0,0%,40%,0.2), 0px 6px 12px 0px hsla(0,0%,70%,0.24)",
     mobileCookieConsent:
-      "box-shadow: 0 -6px 46px 0 rgba(204,219,255,0.60), 0 0 18px 0 rgba(31,66,125,0.60)",
+      "box-shadow: 0 -6px 48px 0 rgba(255,255,255,0.60), 0 -6px 18px 0 rgba(128,128,128,0.60)",
     successMessage:
       "box-shadow: 0 2px 12px -2px rgba(133,198,255,0.40), 0 2px 8px -2px rgba(0,86,214,0.30)",
     subscribeSuccessMessage:
@@ -65,13 +66,13 @@ export const theme = {
     buttons: {
       tertiary: "box-shadow: 0 2px 6px 0 rgba(8,36,82,0.13), 0 2px 12px -2px rgba(12,31,61,0.27)",
       mainGhost: "box-shadow: 0 1px 3px 0 rgba(0,77,204,0.64), 0 3px 11px -2px rgba(0,72,189,0.33)",
-      darkGhost: "box-shadow: 0 2px 6px 0 rgba(8,36,82,0.13), 0 2px 12px -2px rgba(12,31,61,0.27)",
+      darkGhost: "box-shadow: 0 2px 5px 0 rgba(82,82,82,0.13), 0 2px 13px -2px rgba(61,61,61,0.27)",
       main: "box-shadow: 0 2px 4px 0 rgba(0,77,204,0.64), 0 6px 14px -2px rgba(0,91,189,0.33)",
       success:
         "box-shadow: 0 0px 8px -2px rgba(12,97,34,0.8), 0 2px 16px -2px rgba(85,161,98,0.48)",
       error: "box-shadow: 0 4px 10px 0 rgba(204,150,96,0.80), 0 2px 5px -2px rgba(166,30,0,0.60)",
       loadComments:
-        "box-shadow: 0 2px 2px 0 rgba(8,36,82,0.13), 0 2px 8px -2px rgba(12,31,61,0.27)",
+        "box-shadow: 0 2px 5px 0 rgba(82,82,82,0.13), 0 2px 13px -2px rgba(61,61,61,0.27)",
     },
   },
   fonts: {
@@ -100,6 +101,10 @@ export const theme = {
     h3: "1.5rem",
     h3s: "1.25rem",
     h4: "1.125rem",
+    h5: "1.125rem",
+    h5s: "1rem",
+    indexName: "1.5rem",
+    indexNameS: "1.25rem",
     subheadS: "1.25rem",
     subheadSCompact: "1.125rem",
     subhead: "1.5rem",
@@ -123,6 +128,10 @@ export const theme = {
     h3: "2rem",
     h3s: "1.5rem",
     h4: "2rem",
+    h5: "2rem",
+    h5s: "1.5rem",
+    indexName: "2rem",
+    indexNameS: "2rem",
     subheadS: "2rem",
     subheadSCompact: "1.75rem",
     subhead: "2rem",

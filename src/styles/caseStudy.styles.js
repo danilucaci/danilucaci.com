@@ -354,7 +354,7 @@ export const PostContent = styled.section`
   }
 
   blockquote {
-    background-color: ${theme.colors.gray100};
+    background-color: ${theme.colors.grey100};
 
     & > p {
       color: ${theme.colors.main600};

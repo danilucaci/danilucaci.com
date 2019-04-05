@@ -46,9 +46,9 @@ export const StyledPlaceholderInner = styled.span`
   padding-bottom: 75%;
   background: linear-gradient(
     90deg,
-    ${theme.colors.gray100},
-    ${theme.colors.gray400},
-    ${theme.colors.gray100}
+    ${theme.colors.grey100},
+    ${theme.colors.grey400},
+    ${theme.colors.grey100}
   );
 
   background-size: 200% 200%;

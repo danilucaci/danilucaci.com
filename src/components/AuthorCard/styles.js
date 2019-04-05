@@ -5,7 +5,7 @@ import { theme, rem, mediaMin } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
 
 export const StyledAuthorCard = styled.footer`
-  background-color: ${theme.colors.gray100};
+  background-color: ${theme.colors.grey100};
   width: 100%;
   max-width: ${theme.contain.inner.col10};
   margin-left: auto;

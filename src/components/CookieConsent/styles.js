@@ -6,7 +6,7 @@ import { DarkGhostButton, PrimaryButton } from "../Button/Button";
 import { DefaultLink } from "../Link/Link";
 
 export const StyledCookieConsent = styled.aside`
-  background-color: ${theme.colors.gray100};
+  background-color: ${theme.colors.grey100};
   border-top: ${rem(8)} solid ${theme.colors.main600};
   display: ${(props) => (props.showConsent ? "block" : "none")};
 
@@ -22,7 +22,7 @@ export const StyledCookieConsent = styled.aside`
   ${theme.shadow.mobileCookieConsent};
 
   ${mediaMin.s`
-    border: 2px solid ${theme.colors.gray400};
+    border: 2px solid ${theme.colors.grey400};
     border-radius: 4px;
     bottom: ${rem(16)};
     left: ${rem(16)};

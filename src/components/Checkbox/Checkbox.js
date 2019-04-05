@@ -25,8 +25,8 @@ export const Checkbox = styled.input`
     vertical-align: middle;
     width: ${rem(20)};
     height: ${rem(20)};
-    background: ${theme.colors.gray100};
-    border: 2px solid ${theme.colors.gray500};
+    background: ${theme.colors.grey100};
+    border: 2px solid ${theme.colors.grey500};
     border-radius: ${theme.borderRadius.buttons};
   }
 

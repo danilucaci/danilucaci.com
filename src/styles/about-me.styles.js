@@ -111,7 +111,7 @@ export const ResumeButton = styled.a`
   &:hover,
   &:focus {
     cursor: pointer;
-    background-color: ${theme.colors.gray100};
+    background-color: ${theme.colors.grey100};
     ${theme.shadow.buttons.mainGhost};
   }
 `;

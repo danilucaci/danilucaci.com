@@ -62,7 +62,7 @@ export const StyledSiteNavListItem = styled.li`
   `};
 
     &.current-nav-item {
-      background-color: ${theme.colors.gray300};
+      background-color: ${theme.colors.grey300};
       color: ${theme.colors.dark900};
       font-weight: 700;
 

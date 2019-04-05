@@ -14,8 +14,8 @@ let errorSVG =
 let optimizedErrorSVGDataURI = `background: url("${svgToMiniDataURI(errorSVG)}")`;
 
 export const StyledTextArea = styled.textarea`
-  background-color: ${theme.colors.gray100};
-  border: 2px solid ${theme.colors.gray400};
+  background-color: ${theme.colors.grey100};
+  border: 2px solid ${theme.colors.grey400};
   border-radius: ${theme.borderRadius.buttons};
   color: ${theme.colors.dark700};
 

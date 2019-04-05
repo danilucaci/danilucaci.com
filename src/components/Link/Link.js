@@ -17,7 +17,7 @@ export const DefaultLink = styled(Link)`
   }
 
   &:hover {
-    background-color: ${theme.colors.gray300};
+    background-color: ${theme.colors.grey300};
     cursor: pointer;
   }
 `;

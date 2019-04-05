@@ -3,7 +3,7 @@ import { Icon } from "../Icon/Icon";
 import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
 
 export const StyledLanguageSelector = styled.li`
-  border: 2px solid ${theme.colors.gray400};
+  border: 2px solid ${theme.colors.grey400};
   border-radius: ${theme.borderRadius.buttons};
   display: inline-block;
   list-style-type: none;
@@ -38,8 +38,8 @@ export const StyledLanguageSelector = styled.li`
 `;
 
 export const StyledLanguageDropdown = styled.ul`
-  background-color: ${theme.colors.gray100};
-  border: 1px solid ${theme.colors.gray400};
+  background-color: ${theme.colors.grey100};
+  border: 1px solid ${theme.colors.grey400};
   border-radius: ${theme.borderRadius.buttons};
   ${theme.shadow.dropdown};
 
@@ -104,7 +104,7 @@ export const DropdownIcon = styled(Icon)`
 `;
 
 export const CurrentLanguageSelector = styled.li`
-  background-color: ${theme.colors.gray300};
+  background-color: ${theme.colors.grey300};
   display: block;
   white-space: nowrap;
   position: relative;
@@ -138,7 +138,7 @@ export const LanguageSelectorItem = styled.li`
   white-space: nowrap;
 
   &:hover {
-    background-color: ${theme.colors.gray200};
+    background-color: ${theme.colors.grey200};
   }
 
   .fonts-loaded & {

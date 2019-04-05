@@ -54,7 +54,6 @@ const Index = (props) => {
             {(txt) => <IndexTitle as="h1">{txt}</IndexTitle>}
           </FormattedMessage>
           <FormattedMessage id="indexSubhead">{(txt) => <Subhead>{txt}</Subhead>}</FormattedMessage>
-          <Subhead />
         </IndexHeader>
         <Row>
           <RowContents>

@@ -4,7 +4,7 @@ import { theme, rem } from "../../../theme/globalStyles";
 import LocaleLink from "../../LocaleLink/LocaleLink";
 
 export const StyledTag = styled(LocaleLink)`
-  background-color: ${theme.colors.gray300};
+  background-color: ${theme.colors.grey300};
   border-radius: ${theme.borderRadius.buttons};
   display: inline-block;
 
@@ -24,7 +24,7 @@ export const StyledTag = styled(LocaleLink)`
   }
 
   &:hover {
-    background-color: ${theme.colors.gray400};
+    background-color: ${theme.colors.grey400};
     color: ${theme.colors.dark900};
     text-decoration: underline;
   }

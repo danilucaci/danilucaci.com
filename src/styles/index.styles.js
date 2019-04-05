@@ -6,11 +6,8 @@ import { Copy } from "../../src/components/Copy/Copy";
 export const IndexHeader = styled.header`
   max-width: ${theme.contain.wrapper.col10};
   margin: 0 auto;
-  padding-top: ${rem(16)};
-
-  ${mediaMin.xs`
-    padding-top: ${rem(24)};
-  `};
+  padding-top: ${rem(24)};
+  padding-bottom: ${theme.spacing.row.s};
 
   padding-right: ${theme.gutters.s};
   padding-left: ${theme.gutters.s};
@@ -26,6 +23,9 @@ export const IndexHeader = styled.header`
   ${mediaMin.s`
     padding-right: ${theme.gutters.m};
     padding-left: ${theme.gutters.m};
+    
+    padding-top: ${rem(64)};
+    padding-bottom: ${theme.spacing.row.m};
 
     /* iPhone X */
     @supports (padding: max(0px)) {
@@ -35,18 +35,41 @@ export const IndexHeader = styled.header`
       }
     }
   `};
+
+  ${mediaMin.xl`
+    padding-top: ${rem(88)};
+    padding-bottom: ${theme.spacing.row.xl};
+  `};
+`;
+
+export const Name = styled(Copy)`
+  color: ${theme.colors.main600};
+  text-transform: uppercase;
+  font-size: ${theme.fontSizes.indexNameS};
+  line-height: ${theme.lineHeights.indexNameS};
+  letter-spacing: ${rem(0.4)};
+  font-weight: 700;
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.header};
+  }
+
+  ${mediaMin.s`
+    font-size: ${theme.fontSizes.indexName};
+    line-height: ${theme.lineHeights.indexName};
+  `};
 `;
 
 export const IndexTitle = styled.h2`
-  margin-bottom: ${rem(8)};
-  margin-bottom: ${rem(8)};
+  margin-top: ${rem(16)};
+  margin-bottom: ${rem(16)};
 
-  font-size: ${theme.fontSizes.h2s};
-  line-height: ${theme.lineHeights.h2s};
+  font-size: ${theme.fontSizes.h1s};
+  line-height: ${theme.lineHeights.h1s};
 
   ${mediaMin.m`
-    font-size: ${theme.fontSizes.h2};
-    line-height: ${theme.lineHeights.h2};
+    font-size: ${theme.fontSizes.h1};
+    line-height: ${theme.lineHeights.h1};
   `};
 `;
 
@@ -59,26 +82,6 @@ export const Subhead = styled(Copy)`
     font-size: ${theme.fontSizes.subheadCompact};
     line-height: ${theme.lineHeights.subheadCompact};
     max-width: ${rem(744)};
-  `};
-`;
-
-export const Name = styled(Copy)`
-  color: ${theme.colors.dark700};
-  text-transform: uppercase;
-  font-size: ${rem(18)};
-  line-height: ${rem(18)};
-  letter-spacing: ${theme.letterSpacing.sectionHeaderS};
-  font-weight: 700;
-
-  margin-bottom: ${rem(8)};
-
-  .fonts-loaded & {
-    font-family: ${theme.fonts.header};
-  }
-
-  ${mediaMin.s`
-    line-height: ${theme.lineHeights.sectionHeaderXL};
-    letter-spacing: ${theme.letterSpacing.sectionHeaderXL};
   `};
 `;
 

@@ -28,7 +28,7 @@ export const StyledSubmitButton = styled.input`
 
   &:disabled {
     background-color: ${theme.colors.dark700};
-    color: ${theme.colors.gray100};
+    color: ${theme.colors.grey100};
 
     &:hover,
     &:focus {

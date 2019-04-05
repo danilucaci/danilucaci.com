@@ -5,7 +5,7 @@ import { theme, rem, mediaMin } from "../../theme/globalStyles";
 export const StyledMenuButton = styled.button`
   border: 2px solid ${theme.colors.dark900};
   border-radius: ${theme.borderRadius.buttons};
-  background-color: ${theme.colors.gray100};
+  background-color: ${theme.colors.grey100};
   color: ${theme.colors.dark900};
 
   font-weight: 700;

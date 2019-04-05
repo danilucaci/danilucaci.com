@@ -49,8 +49,8 @@ export const CopyIcon = styled(Icon)`
 `;
 
 export const CopyTooltip = styled.span`
-  background-color: ${theme.colors.gray100};
-  border: 1px solid ${theme.colors.gray400};
+  background-color: ${theme.colors.grey100};
+  border: 1px solid ${theme.colors.grey400};
   border-radius: ${theme.borderRadius.buttons};
   ${theme.shadow.dropdown};
 

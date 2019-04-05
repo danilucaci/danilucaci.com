@@ -3,7 +3,7 @@ import { theme, mediaMin, rem } from "../theme/globalStyles";
 
 const GlobalCSS = createGlobalStyle`
   html {
-    background-color: #F5F6F7;
+    background-color: #FFFFFF;
     color: #3A4554;
     font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     font-size: 16px;
@@ -34,13 +34,13 @@ const GlobalCSS = createGlobalStyle`
 
   body::-webkit-scrollbar {
     width: ${rem(10)};
-    background-color: ${theme.colors.gray400};
+    background-color: ${theme.colors.grey400};
   }
 
   body::-webkit-scrollbar-thumb {
     border-radius: ${rem(12)};
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    background-color: ${theme.colors.gray400};
+    background-color: ${theme.colors.grey400};
   }
 
   svg {

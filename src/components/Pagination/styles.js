@@ -28,7 +28,7 @@ export const StyledIcon = styled(Icon)`
   ${(props) =>
     props.disabled &&
     css`
-      fill: ${theme.colors.gray500};
+      fill: ${theme.colors.grey500};
     `};
 `;
 
@@ -44,13 +44,13 @@ export const StyledLink = styled(BoldLink)`
 
   &:hover {
     color: ${theme.colors.dark800};
-    background-color: ${theme.colors.gray300};
+    background-color: ${theme.colors.grey300};
     cursor: pointer;
   }
 `;
 
 export const DisabledPrev = styled(CopyBold)`
-  color: ${theme.colors.gray500};
+  color: ${theme.colors.grey500};
   display: flex;
   text-align: left;
   height: ${rem(48)};
@@ -90,7 +90,7 @@ export const Next = styled(StyledLink)`
 `;
 
 export const DisabledNext = styled(CopyBold)`
-  color: ${theme.colors.gray500};
+  color: ${theme.colors.grey500};
   display: flex;
   text-align: right;
   text-decoration: none;
@@ -154,7 +154,7 @@ export const PaginationNumber = styled(StyledLink)`
 
 export const CurrentPaginationNumber = styled(PaginationNumber)`
   background-color: ${theme.colors.dark800};
-  color: ${theme.colors.gray100} !important;
+  color: ${theme.colors.grey100} !important;
 
   &:hover {
     background-color: ${theme.colors.dark800};

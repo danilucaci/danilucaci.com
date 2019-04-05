@@ -12,7 +12,7 @@ export const StyledSkipToMainContent = styled.a`
 
   &:focus,
   &:active {
-    color: ${theme.colors.gray100};
+    color: ${theme.colors.grey100};
     background-color: ${theme.colors.main600};
     left: auto;
     top: auto;

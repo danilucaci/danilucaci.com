@@ -3,7 +3,7 @@ import { Icon } from "../Icon/Icon";
 import { theme, rem, mediaMin } from "../../theme/globalStyles";
 
 export const StyledScrollToTop = styled.a`
-  background-color: ${theme.colors.gray300};
+  background-color: ${theme.colors.grey300};
   opacity: 0.92;
   text-decoration: none;
   position: fixed;
@@ -25,7 +25,7 @@ export const StyledScrollToTop = styled.a`
   will-change: transform;
 
   &:hover {
-    background-color: ${theme.colors.gray400};
+    background-color: ${theme.colors.grey400};
     transform: scale(1.1);
     transition: transform ease 150ms;
   }
