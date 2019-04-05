@@ -8,7 +8,7 @@ export const StyledContactCard = styled.aside`
   max-width: ${theme.contain.inner.col10};
   margin: 0 auto;
   border-top: ${rem(8)} solid ${theme.colors.main600};
-  background-color: ${theme.colors.grey100};
+  background-color: ${theme.colors.pageBackground};
   width: 100%;
 
   padding: ${rem(32)} ${rem(24)} ${rem(32)} ${rem(24)};

@@ -5,7 +5,7 @@ import { BoldLink } from "../Link/Link";
 import { HR } from "../HR/HR";
 
 export const StyledCaseStudyCard = styled.article`
-  background-color: ${theme.colors.grey100};
+  background-color: ${theme.colors.pageBackground};
   margin-bottom: ${rem(32)};
 
   ${mediaMin.s`
