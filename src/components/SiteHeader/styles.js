@@ -16,7 +16,7 @@ export const StyledSiteHeaderWrapper = styled.header`
 
 export const StyledSiteHeader = styled.div`
   background-color: ${theme.colors.grey100};
-  ${theme.shadow.navbar};
+  border-bottom: 2px solid ${theme.colors.grey300};
   width: 100%;
   display: block;
 `;
