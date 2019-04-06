@@ -4,12 +4,12 @@ import { Copy } from "../Copy/Copy";
 import { BoldLink } from "../Link/Link";
 
 export const StyledArticle = styled.article`
-  background-color: ${theme.colors.grey100};
-  padding: ${rem(12)} ${rem(16)} ${rem(24)} ${rem(16)};
+  background-color: ${theme.colors.bgLight100};
+  padding: ${rem(16)} ${rem(16)} ${rem(24)} ${rem(16)};
   margin-bottom: ${theme.gutters.m};
 
   ${mediaMin.s`
-    padding: ${rem(16)} ${rem(32)} ${rem(24)} ${rem(32)};
+    padding: ${rem(24)} ${rem(32)} ${rem(32)} ${rem(32)};
   `};
 
   &:hover {
@@ -24,8 +24,6 @@ export const StyledArticle = styled.article`
 export const ContinueLink = styled(BoldLink)`
   display: block;
 
-  padding-top: ${rem(16)};
-
   &:hover {
     background-color: transparent;
   }
@@ -33,10 +31,10 @@ export const ContinueLink = styled(BoldLink)`
 
 export const ArticleCopy = styled(Copy)`
   margin-top: ${rem(12)};
-  margin-bottom: ${rem(16)};
+  margin-bottom: ${rem(24)};
 `;
 
 export const StyledH3 = styled.h3`
-  margin-top: ${rem(8)};
+  margin-top: ${rem(12)};
   margin-bottom: ${rem(12)};
 `;
