@@ -8,7 +8,7 @@ export const PostBGImg = styled.span`
   display: block;
   width: 100%;
   padding-bottom: 75%;
-  background-color: ${theme.colors.sectionBackground};
+  background-color: ${theme.colors.bgLight200};
 `;
 
 export const StyledImg = styled.img`

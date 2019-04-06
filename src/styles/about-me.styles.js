@@ -131,7 +131,7 @@ export const LeftHeaderWrapper = styled.div`
 `;
 
 export const ImageWrapper = styled.div`
-  background: ${theme.colors.sectionBackground};
+  background: ${theme.colors.bgLight200};
 `;
 
 export const InfoWrapper = styled.div`

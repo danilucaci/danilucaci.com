@@ -90,7 +90,7 @@ export const CaseStudyImgWrapper = styled.div`
 `;
 
 export const OverviewContainer = styled.div`
-  background-color: ${theme.colors.sectionBackground};
+  background-color: ${theme.colors.bgLight200};
   width: 100%;
 
   padding-top: ${rem(48)};
@@ -283,7 +283,7 @@ export const PostContent = styled.section`
   }
 
   .toc {
-    background-color: ${theme.colors.sectionBackground};
+    background-color: ${theme.colors.bgLight200};
     margin: ${rem(32)} -${theme.gutters.s};
     padding: ${rem(24)} ${theme.gutters.s};
 
@@ -589,12 +589,12 @@ export const PostContent = styled.section`
     position: relative;
     bottom: 0;
     left: 0;
-    background-color: ${theme.colors.sectionBackground};
+    background-color: ${theme.colors.bgLight200};
     display: block;
   }
 
   .fig__16-9 {
-    background-color: ${theme.colors.sectionBackground};
+    background-color: ${theme.colors.bgLight200};
     position: relative;
     display: block;
     max-width: 744px;

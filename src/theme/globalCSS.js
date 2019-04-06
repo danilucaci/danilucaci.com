@@ -29,7 +29,7 @@ const GlobalCSS = createGlobalStyle`
   body::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     border-radius: ${rem(8)};
-    background-color: ${theme.colors.pageBackground};
+    background-color: ${theme.colors.bgLight100};
   }
 
   body::-webkit-scrollbar {

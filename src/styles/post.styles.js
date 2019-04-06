@@ -214,7 +214,7 @@ export const PostContent = styled.section`
     position: relative;
     bottom: 0;
     left: 0;
-    background-color: ${theme.colors.sectionBackground};
+    background-color: ${theme.colors.bgLight200};
     display: block;
   }
 
@@ -250,7 +250,7 @@ export const PostContent = styled.section`
   }
 
   & .toc {
-    background-color: ${theme.colors.sectionBackground};
+    background-color: ${theme.colors.bgLight200};
     padding: ${rem(24)} ${rem(16)};
 
     margin-top: ${rem(64)};

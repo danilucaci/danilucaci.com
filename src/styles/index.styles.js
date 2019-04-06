@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { theme, mediaMin, rem } from "../theme/globalStyles";
+import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
 import { HR } from "../../src/components/HR/HR";
 import { Copy } from "../../src/components/Copy/Copy";
 
 export const IndexHeader = styled.header`
   max-width: ${theme.contain.wrapper.col10};
   margin: 0 auto;
-  padding-top: ${rem(24)};
+  padding-top: ${rem(16)};
   padding-bottom: ${theme.spacing.row.s};
 
   padding-right: ${theme.gutters.s};
@@ -24,7 +24,7 @@ export const IndexHeader = styled.header`
     padding-right: ${theme.gutters.m};
     padding-left: ${theme.gutters.m};
     
-    padding-top: ${rem(64)};
+    padding-top: ${rem(56)};
     padding-bottom: ${theme.spacing.row.m};
 
     /* iPhone X */
@@ -47,7 +47,7 @@ export const Name = styled(Copy)`
   text-transform: uppercase;
   font-size: ${theme.fontSizes.indexNameS};
   line-height: ${theme.lineHeights.indexNameS};
-  letter-spacing: ${rem(0.4)};
+  letter-spacing: ${theme.letterSpacing.indexNameS};
   font-weight: 700;
 
   .fonts-loaded & {
@@ -57,6 +57,7 @@ export const Name = styled(Copy)`
   ${mediaMin.s`
     font-size: ${theme.fontSizes.indexName};
     line-height: ${theme.lineHeights.indexName};
+    letter-spacing: ${theme.letterSpacing.indexName};
   `};
 `;
 
@@ -79,10 +80,118 @@ export const Subhead = styled(Copy)`
   line-height: ${theme.lineHeights.subheadS};
 
   ${mediaMin.s`
-    font-size: ${theme.fontSizes.subheadCompact};
-    line-height: ${theme.lineHeights.subheadCompact};
-    max-width: ${rem(744)};
+    font-size: ${theme.fontSizes.subhead};
+    line-height: ${theme.lineHeights.subhead};
+    max-width: ${rem(840)};
   `};
+`;
+
+export const ServicesWrapper = styled.section`
+  background-color: ${theme.colors.bgLight100};
+
+  padding: ${theme.spacing.row.s} 0;
+
+  ${mediaMin.s`
+    padding: ${theme.spacing.row.m} 0;
+  `};
+
+  ${mediaMin.xl`
+    padding: ${theme.spacing.row.xl} 0;
+  `};
+
+  /* Mobile in ladscape */
+  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(280)}) and (max-height: ${rem(560)}) and (orientation: landscape) {
+    margin-top: ${rem(64)};
+    margin-bottom: ${rem(80)};
+  }
+`;
+
+export const ServicesTitle = styled.h2`
+  font-size: ${theme.fontSizes.h1s};
+  line-height: ${theme.lineHeights.h1s};
+  margin-bottom: ${rem(32)};
+
+  ${mediaMin.m`
+    margin-bottom: ${rem(56)};
+    font-size: ${theme.fontSizes.h1};
+    line-height: ${theme.lineHeights.h1};
+  `};
+
+  ${mediaMin.xl`
+    margin-bottom: ${rem(72)};
+  `};
+`;
+
+export const ServicesEntry = styled.div`
+  border-top: 2px solid ${theme.colors.grey300};
+  display: block;
+
+  padding-top: ${rem(32)};
+  padding-bottom: ${rem(32)};
+
+  ${mediaMin.m`  
+    padding-top: ${rem(56)};
+    padding-bottom: ${rem(56)};
+    display: flex;
+  `};
+
+  ${mediaMin.xl`
+    padding-left: ${rem(40)};
+    padding-right: ${rem(144)};
+    padding-top: ${rem(72)};
+    padding-bottom: ${rem(72)};
+  `};
+
+  &:last-of-type {
+    padding-bottom: 0;
+  }
+`;
+
+export const ServiceTitle = styled.h3`
+  margin-bottom: ${rem(16)};
+`;
+
+export const ServiceCopy = styled(Copy)`
+  margin-bottom: ${rem(16)};
+`;
+
+export const ServiceImage = styled.picture`
+  width: ${rem(132)};
+  height: ${rem(132)};
+
+  ${mediaMax.m`
+    margin-left: -${rem(8)};
+    margin-bottom: ${rem(32)};
+  `};
+
+  ${mediaMin.m`
+    margin-top: -${rem(4)};
+    flex: 1 0 auto;
+    margin-right: ${rem(32)};
+  `};
+
+  ${mediaMin.xl`
+    margin-right: ${rem(64)};
+  `};
+`;
+
+export const ServiceContent = styled.div`
+  ${mediaMin.m`
+    flex: 4 1 auto;
+  `};
+`;
+
+export const StyledHR = styled(HR)`
+  margin-bottom: ${rem(32)};
+
+  ${mediaMin.m`
+    margin-bottom: ${rem(88)};
+  `};
+
+  /* Mobile in ladscape */
+  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(280)}) and (max-height: ${rem(560)}) and (orientation: landscape) {
+    margin-bottom: ${rem(32)};
+  }
 `;
 
 export const Row = styled.section`
@@ -132,83 +241,51 @@ export const RowContents = styled.div`
   `};
 `;
 
-export const StyledHR = styled(HR)`
-  margin-bottom: ${rem(32)};
-
-  ${mediaMin.m`
-    margin-bottom: ${rem(64)};
-  `};
-
-  /* Mobile in ladscape */
-  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(280)}) and (max-height: ${rem(560)}) and (orientation: landscape) {
-    margin-bottom: ${rem(32)};
-  }
-`;
-
-export const ServicesTitle = styled.h2`
-  font-size: ${theme.fontSizes.h2s};
-  line-height: ${theme.lineHeights.h2s};
-
-  ${mediaMin.m`
-    font-size: ${theme.fontSizes.h2};
-    line-height: ${theme.lineHeights.h2};
-  `};
-`;
-
-export const ServicesH4 = styled.h4`
-  ${mediaMin.s`
-    margin-bottom: ${rem(8)};
-  `};
-`;
-
-export const ServicesEntry = styled.div`
-  display: inline-block;
-  vertical-align: top;
-
-  width: 100%;
-  height: 100%;
-  margin-top: ${rem(32)};
-
-  ${mediaMin.xs`  
-    width: calc(50% - ${theme.gutters.m});
-    margin-right: ${theme.gutters.m};
-  `};
-
-  ${mediaMin.l`
-    width: calc(33% - ${theme.gutters.m});
-    margin-right: ${theme.gutters.m};
-  `};
-`;
-
 export const CaseStudiesTitle = styled.h2`
-  margin-bottom: ${rem(16)};
-  font-size: ${theme.fontSizes.h2s};
-  line-height: ${theme.lineHeights.h2s};
+  font-size: ${theme.fontSizes.h1s};
+  line-height: ${theme.lineHeights.h1s};
 
   ${mediaMin.m`
-    margin-bottom: 0;
-    font-size: ${theme.fontSizes.h2};
-    line-height: ${theme.lineHeights.h2};
+    font-size: ${theme.fontSizes.h1};
+    line-height: ${theme.lineHeights.h1};
   `};
 `;
 
-export const CaseStudiesCopy = styled(Copy)`
-  margin-bottom: ${rem(24)};
+export const CaseStudiesSubhead = styled(Copy)`
+  color: ${theme.colors.dark700};
+  font-size: ${theme.fontSizes.subheadS};
+  line-height: ${theme.lineHeights.subheadS};
 
-  ${mediaMin.m`
-    margin-bottom: ${rem(32)};
+  margin-bottom: ${rem(16)};
+
+  ${mediaMin.s`
+    font-size: ${theme.fontSizes.subhead};
+    line-height: ${theme.lineHeights.subhead};
+    margin-bottom: ${rem(64)};
   `};
 `;
 
 export const DribbblePostsTitle = styled.h2`
-  margin-top: ${rem(16)};
-  margin-bottom: ${rem(8)};
+  margin-bottom: ${rem(16)};
+  font-size: ${theme.fontSizes.h1s};
+  line-height: ${theme.lineHeights.h1s};
+
+  ${mediaMin.m`
+    font-size: ${theme.fontSizes.h1};
+    line-height: ${theme.lineHeights.h1};
+  `};
 `;
 
 export const DribbbleSubhead = styled(Copy)`
-  margin-bottom: ${rem(32)};
+  color: ${theme.colors.dark700};
+  font-size: ${theme.fontSizes.subheadS};
+  line-height: ${theme.lineHeights.subheadS};
+
+  margin-bottom: ${rem(16)};
 
   ${mediaMin.s`
-      margin-bottom: ${rem(48)};
+    font-size: ${theme.fontSizes.subhead};
+    line-height: ${theme.lineHeights.subhead};
+    margin-bottom: ${rem(64)};
   `};
 `;
