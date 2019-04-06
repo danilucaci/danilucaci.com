@@ -6,7 +6,6 @@ import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
 import SiteHeader from "../components/SiteHeader/SiteHeader";
 import { Main } from "../components/Main/Main";
-import { Copy } from "../components/Copy/Copy";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
 import CaseStudyListing from "../components/CaseStudyListing/CaseStudyListing";
 import Pagination from "../components/Pagination/Pagination";
@@ -19,6 +18,7 @@ import {
   InnerWrapper,
   ContactWrapper,
   StyledHR,
+  Subhead,
   WorkHeader,
   DribbblePostsTitle,
   DribbbleSubhead,
@@ -65,7 +65,7 @@ function WorkPage(props) {
           <InnerWrapper>
             <FormattedMessage id="caseStudiesHeader">{(txt) => <h1>{txt}</h1>}</FormattedMessage>
             <FormattedMessage id="caseStudiesDescription">
-              {(txt) => <Copy>{txt}</Copy>}
+              {(txt) => <Subhead>{txt}</Subhead>}
             </FormattedMessage>
           </InnerWrapper>
         </WorkHeader>

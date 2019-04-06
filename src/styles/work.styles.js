@@ -76,6 +76,17 @@ export const ContactWrapper = styled.div`
   `};
 `;
 
+export const Subhead = styled(Copy)`
+  color: ${theme.colors.dark700};
+  font-size: ${theme.fontSizes.subheadS};
+  line-height: ${theme.lineHeights.subheadS};
+
+  ${mediaMin.s`
+    font-size: ${theme.fontSizes.subhead};
+    line-height: ${theme.lineHeights.subhead};
+  `};
+`;
+
 export const StyledHR = styled(HR)`
   max-width: ${theme.contain.inner.col10};
   margin-left: auto;
@@ -96,11 +107,14 @@ export const WorkHeader = styled.header`
   ${mediaMin.s`
     margin-bottom: ${rem(48)};
   `};
+
+  & h1 {
+    margin-bottom: ${rem(16)};
+  }
 `;
 
 export const DribbblePostsTitle = styled.h2`
-  margin-top: ${rem(16)};
-  margin-bottom: ${rem(8)};
+  margin-bottom: ${rem(16)};
 
   font-size: ${theme.fontSizes.h1s};
   ${mediaMin.xs`
@@ -119,5 +133,14 @@ export const DribbbleSubhead = styled(Copy)`
 
   ${mediaMin.s`
       margin-bottom: ${rem(48)};
+  `};
+
+  color: ${theme.colors.dark700};
+  font-size: ${theme.fontSizes.subheadS};
+  line-height: ${theme.lineHeights.subheadS};
+
+  ${mediaMin.s`
+    font-size: ${theme.fontSizes.subhead};
+    line-height: ${theme.lineHeights.subhead};
   `};
 `;
