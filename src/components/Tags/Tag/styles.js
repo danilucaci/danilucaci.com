@@ -4,29 +4,27 @@ import { theme, rem } from "../../../theme/globalStyles";
 import LocaleLink from "../../LocaleLink/LocaleLink";
 
 export const StyledTag = styled(LocaleLink)`
-  background-color: ${theme.colors.grey300};
-  border-radius: ${theme.borderRadius.buttons};
   display: inline-block;
+  color: ${theme.colors.dark700};
 
-  text-decoration: none;
+  text-decoration: underline;
 
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.fontSizes.s};
 
-  margin-right: ${rem(16)};
+  margin-right: ${rem(24)};
   margin-top: ${rem(8)};
   margin-bottom: ${rem(8)};
-  padding: ${rem(6)} ${rem(8)};
 
   &:visited,
   &:link {
-    color: ${theme.colors.dark800};
+    color: ${theme.colors.dark700};
   }
 
   &:hover {
-    background-color: ${theme.colors.grey400};
     color: ${theme.colors.dark900};
-    text-decoration: underline;
+    background-color: transparent;
+    cursor: pointer;
   }
 
   &:before {
