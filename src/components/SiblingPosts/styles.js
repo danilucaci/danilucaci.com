@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { theme, rem, mediaMin } from "../../theme/globalStyles";
-import { SectionHeader } from "../Headings/Headings";
+import { Copy } from "../Copy/Copy";
 import { DefaultLink } from "../Link/Link";
 
 export const SiblingPostsWrapper = styled.nav`
@@ -64,7 +64,7 @@ export const PreviousItemsContainer = styled.div`
   flex: 0 1 50%;
 `;
 
-export const PrevSectionHeader = styled(SectionHeader)`
+export const PrevSectionHeader = styled(Copy)`
   margin-bottom: ${rem(12)};
 
   /* Breaks line if a \n character is inside the text */
@@ -74,6 +74,28 @@ export const PrevSectionHeader = styled(SectionHeader)`
     white-space: normal;
     margin-bottom: ${rem(8)};
   `};
+
+  color: ${theme.colors.dark700};
+  display: block;
+  text-transform: uppercase;
+  font-size: ${theme.fontSizes.sectionHeaderS};
+  line-height: ${theme.lineHeights.sectionHeaderS};
+  letter-spacing: ${theme.letterSpacing.sectionHeaderS};
+
+  font-weight: 700;
+  font-style: normal;
+
+  font-family: ${theme.fonts.bodyFallback};
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.bodyRegular};
+  }
+
+  ${mediaMin.s`
+    font-size: ${theme.fontSizes.sectionHeaderXL};
+    line-height: ${theme.lineHeights.sectionHeaderXL};
+    letter-spacing: ${theme.letterSpacing.sectionHeaderXL};
+  `}
 `;
 
 export const PrevArticleLink = styled(DefaultLink)`
@@ -112,7 +134,7 @@ export const NextItemsContainer = styled.div`
   }
 `;
 
-export const NextSectionHeader = styled(SectionHeader)`
+export const NextSectionHeader = styled(Copy)`
   text-align: right;
   margin-bottom: ${rem(12)};
   display: block;
@@ -126,6 +148,28 @@ export const NextSectionHeader = styled(SectionHeader)`
     white-space: normal;
     margin-bottom: ${rem(8)};
   `};
+
+  color: ${theme.colors.dark700};
+  display: block;
+  text-transform: uppercase;
+  font-size: ${theme.fontSizes.sectionHeaderS};
+  line-height: ${theme.lineHeights.sectionHeaderS};
+  letter-spacing: ${theme.letterSpacing.sectionHeaderS};
+
+  font-weight: 700;
+  font-style: normal;
+
+  font-family: ${theme.fonts.bodyFallback};
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.bodyRegular};
+  }
+
+  ${mediaMin.s`
+    font-size: ${theme.fontSizes.sectionHeaderXL};
+    line-height: ${theme.lineHeights.sectionHeaderXL};
+    letter-spacing: ${theme.letterSpacing.sectionHeaderXL};
+  `}
 `;
 
 export const NextArticleLink = styled(DefaultLink)`
