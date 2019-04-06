@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
 
-import { StyledContactCard, StyledH2, Subtitle, Info, StyledContactButton } from "./styles";
+import { StyledContactCard, ContactCardTitle, Subtitle, StyledContactButton } from "./styles";
 
 function ContactCard(props) {
   let locale = props.locale;
@@ -17,15 +17,11 @@ function ContactCard(props) {
   return (
     <StyledContactCard>
       <FormattedMessage id="contactCardTitle">
-        {(txt) => <StyledH2>{txt}</StyledH2>}
+        {(txt) => <ContactCardTitle>{txt}</ContactCardTitle>}
       </FormattedMessage>
 
-      {/* <FormattedMessage id="contactCardDescription">
-        {(txt) => <Subtitle>{txt} </Subtitle>}
-      </FormattedMessage> */}
-
       <FormattedMessage id="contactCardInfo">
-        {(txt) => <Subtitle>{txt} </Subtitle>}
+        {(txt) => <Subtitle>{txt}</Subtitle>}
       </FormattedMessage>
 
       <FormattedMessage id="contactCardCTA">

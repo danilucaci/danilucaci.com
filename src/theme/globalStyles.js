@@ -123,7 +123,7 @@ export const theme = {
     sectionHeaderS: "0.8125rem",
     siblingPostsXL: "1.5rem",
     siblingPostsS: "1rem",
-    button: "1rem",
+    button: "1.125rem",
     xl: "1.5rem",
     l: "1.25rem",
     m: "1.125rem",
@@ -150,7 +150,7 @@ export const theme = {
     sectionHeaderS: "1.25rem",
     siblingPostsXL: "2rem",
     siblingPostsS: "1.5rem",
-    button: "1.5rem",
+    button: "2rem",
     m: "2rem",
     s: "1.5rem",
     xs: "1.25rem",
@@ -163,6 +163,9 @@ export const theme = {
   },
   borderRadius: {
     buttons: "3px",
+  },
+  buttonHeight: {
+    xl: "3.5rem",
   },
   gutters: {
     s: "1em",
