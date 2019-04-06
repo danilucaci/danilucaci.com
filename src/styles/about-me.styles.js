@@ -62,7 +62,7 @@ export const ResumeWrapper = styled.div`
 `;
 
 export const StyledSocialNav = styled.div`
-  margin-top: ${rem(8)};
+  margin-top: ${rem(2)};
 
   ${mediaMin.xxs`
     display: inline-block;
@@ -74,14 +74,14 @@ export const StyledSocialNav = styled.div`
 
 export const ResumeButton = styled.a`
   background-color: transparent;
-  border: 2px solid ${theme.colors.main600};
+  border: 2px solid ${theme.colors.grey400};
   border-radius: ${theme.borderRadius.buttons};
-  color: ${theme.colors.main600};
+  color: ${theme.colors.dark800} !important;
   display: inline-block;
   text-align: center;
   text-decoration: none;
-  font-size: ${theme.fontSizes.button};
-  line-height: ${theme.lineHeights.button};
+  font-size: ${theme.fontSizes.buttonS};
+  line-height: ${theme.lineHeights.buttonS};
 
   .fonts-loaded & {
     font-family: ${theme.fonts.bodyBold};
@@ -90,8 +90,8 @@ export const ResumeButton = styled.a`
   font-style: normal;
   font-weight: 700;
 
-  padding: ${rem(10)} ${rem(16)};
-  height: ${rem(48)};
+  padding: ${rem(6)} ${rem(32)} ${rem(4)};
+  height: ${theme.buttonHeight.s};
   width: 100%;
   margin-top: ${rem(16)};
 
@@ -112,7 +112,7 @@ export const ResumeButton = styled.a`
   &:focus {
     cursor: pointer;
     background-color: ${theme.colors.grey100};
-    ${theme.shadow.buttons.mainGhost};
+    ${theme.shadow.buttons.darkGhost};
   }
 `;
 

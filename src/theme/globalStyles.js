@@ -127,6 +127,7 @@ export const theme = {
     siblingPostsXL: "1.5rem",
     siblingPostsS: "1rem",
     button: "1.125rem",
+    buttonS: "1rem",
     xl: "1.5rem",
     l: "1.25rem",
     m: "1.125rem",
@@ -154,6 +155,7 @@ export const theme = {
     siblingPostsXL: "2rem",
     siblingPostsS: "1.5rem",
     button: "2rem",
+    buttonS: "1.5rem",
     m: "2rem",
     s: "1.5rem",
     xs: "1.25rem",
@@ -169,6 +171,7 @@ export const theme = {
   },
   buttonHeight: {
     xl: "3.5rem",
+    s: "2.5rem",
   },
   gutters: {
     s: "1em",

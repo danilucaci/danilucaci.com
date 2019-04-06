@@ -75,7 +75,7 @@ export const InputStatusIcon = styled.span`
   display: none;
   position: absolute;
   right: ${rem(16)};
-  top: ${rem(12)};
+  top: ${rem(16)};
   width: ${rem(24)};
   height: ${rem(24)};
 `;

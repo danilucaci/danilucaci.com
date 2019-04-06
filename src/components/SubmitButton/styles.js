@@ -20,7 +20,7 @@ export const StyledSubmitButton = styled.input`
   font-weight: 700;
 
   padding: ${rem(12)} ${rem(24)};
-  height: ${rem(48)};
+  height: ${theme.buttonHeight.xl};
   margin-top: ${rem(16)};
   width: 100%;
 

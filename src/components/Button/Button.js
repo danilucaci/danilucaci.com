@@ -19,8 +19,8 @@ export const PrimaryButton = styled.button`
   font-style: normal;
   font-weight: 700;
 
-  padding: ${rem(10)} ${rem(40)};
-  height: ${rem(48)};
+  padding: ${rem(8)} ${rem(40)};
+  height: ${theme.buttonHeight.xl};
   width: 100%;
 
   white-space: nowrap;
@@ -51,8 +51,8 @@ export const MainGhostButton = styled.button`
   font-style: normal;
   font-weight: 700;
 
-  padding: ${rem(10)} ${rem(40)};
-  height: ${rem(48)};
+  padding: ${rem(8)} ${rem(40)};
+  height: ${theme.buttonHeight.xl};
   width: 100%;
 
   white-space: nowrap;
@@ -83,8 +83,8 @@ export const DarkGhostButton = styled.button`
   font-style: normal;
   font-weight: 700;
 
-  padding: ${rem(10)} ${rem(40)};
-  height: ${rem(48)};
+  padding: ${rem(8)} ${rem(40)};
+  height: ${theme.buttonHeight.xl};
   width: 100%;
 
   white-space: nowrap;
@@ -105,8 +105,8 @@ export const PrimaryButtonSmall = styled.button`
 
   text-align: center;
   text-decoration: none;
-  font-size: ${theme.fontSizes.button};
-  line-height: ${theme.lineHeights.button};
+  font-size: ${theme.fontSizes.buttonS};
+  line-height: ${theme.lineHeights.buttonS};
 
   .fonts-loaded & {
     font-family: ${theme.fonts.bodyRegular};
@@ -117,8 +117,8 @@ export const PrimaryButtonSmall = styled.button`
 
   white-space: nowrap;
 
-  padding: ${rem(10)} ${rem(16)};
-  height: ${rem(48)};
+  padding: ${rem(8)} ${rem(32)};
+  height: ${theme.buttonHeight.s};
 
   &:hover,
   &:focus {
@@ -135,8 +135,8 @@ export const TertiaryButton = styled.button`
   color: ${theme.colors.dark800};
 
   text-align: center;
-  font-size: ${theme.fontSizes.button};
-  line-height: ${theme.lineHeights.button};
+  font-size: ${theme.fontSizes.buttonS};
+  line-height: ${theme.lineHeights.buttonS};
 
   .fonts-loaded & {
     font-family: ${theme.fonts.bodyRegular};
@@ -149,8 +149,8 @@ export const TertiaryButton = styled.button`
 
   white-space: nowrap;
 
-  height: ${rem(48)};
-  padding: ${rem(10)} ${rem(16)};
+  height: ${theme.buttonHeight.s};
+  padding: ${rem(8)} ${rem(32)};
 
   &:hover,
   &:focus {
@@ -181,7 +181,7 @@ export const LoadComments = styled.button`
   font-style: normal;
   font-weight: 400;
 
-  padding: ${rem(14)} ${rem(24)} ${rem(16)};
+  padding: ${rem(8)} ${rem(24)};
   height: ${rem(56)};
 
   width: 100%;

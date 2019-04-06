@@ -30,7 +30,7 @@ export const InputStatusIcon = styled.span`
   display: none;
   position: absolute;
   right: ${rem(12)};
-  top: ${rem(44)};
+  top: ${rem(48)};
   width: ${rem(24)};
   height: ${rem(24)};
 `;
@@ -39,7 +39,7 @@ export const InputTextAreaStatusIcon = styled.span`
   display: block;
   position: absolute;
   right: ${rem(12)};
-  top: ${rem(40)};
+  top: ${rem(44)};
   width: ${rem(24)};
   height: ${rem(24)};
 `;
