@@ -34,8 +34,9 @@ links:
 date: "2019-02-02"
 category: "work"
 tags:
-    - Rediseño de Producto
-    - Proceso de Compra
+    - UX/UI
+    - IxD
+    - Personal Project
 posted: true
 image: "./ux_case_study_movie_app_presentation@2x.png"
 locale: "es"

@@ -159,8 +159,8 @@ export const theme = {
     xs: "1.25rem",
   },
   letterSpacing: {
-    sectionHeaderXL: "1px",
-    sectionHeaderS: "1px",
+    sectionHeaderXL: "0.05rem",
+    sectionHeaderS: "0.05rem",
     indexName: "0.4px",
     indexNameS: "0.4px",
   },

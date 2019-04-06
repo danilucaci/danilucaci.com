@@ -24,7 +24,10 @@ export const DefaultLink = styled(Link)`
 
 export const BoldLink = styled(DefaultLink)`
   font-weight: 700;
-  font-family: ${theme.fonts.bodyBold};
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.bodyBold};
+  }
 `;
 
 export const GreyLink = styled(DefaultLink)`

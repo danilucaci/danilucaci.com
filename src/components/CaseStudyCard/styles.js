@@ -1,8 +1,7 @@
 import styled from "styled-components";
+import { Link } from "gatsby";
 
 import { theme, mediaMin, rem } from "../../theme/globalStyles";
-import { BoldLink } from "../Link/Link";
-import { HR } from "../HR/HR";
 
 export const StyledCaseStudyCard = styled.article`
   background-color: ${theme.colors.bgLight100};
@@ -41,7 +40,7 @@ export const CaseStudyImgWrapper = styled.div`
 `;
 
 export const CaseStudyCardContents = styled.div`
-  padding: 0 ${rem(16)} ${rem(16)} ${rem(16)};
+  padding: 0 ${rem(16)} ${rem(32)} ${rem(16)};
 
   ${mediaMin.s`  
     padding: 0 ${rem(32)} ${rem(32)} ${rem(32)};
@@ -49,7 +48,7 @@ export const CaseStudyCardContents = styled.div`
 
   ${mediaMin.xl`
     max-width: 40%;
-    padding: ${rem(48)} 0 ${rem(48)} ${rem(40)};
+    padding: ${rem(40)} 0 ${rem(40)} ${rem(40)};
     flex: 1 1 40%;
     display: flex;
     flex-direction: column;
@@ -57,25 +56,51 @@ export const CaseStudyCardContents = styled.div`
   `};
 `;
 
-export const HRTop = styled(HR)`
-  margin-bottom: ${rem(16)};
+export const Tag = styled.p`
+  color: ${theme.colors.dark600};
+  font-size: ${theme.fontSizes.s};
+  line-height: ${theme.lineHeights.s};
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: ${theme.fonts.headerFallback};
+  letter-spacing: ${theme.letterSpacing.sectionHeaderS};
 
-  ${mediaMin.s`
-    margin-bottom: ${rem(24)};
-  `};
+  .fonts-loaded & {
+    font-family: ${theme.fonts.headerRegular};
+    letter-spacing: ${theme.letterSpacing.sectionHeaderXL};
+  }
 
-  ${mediaMin.xl`
-      display: none;
+  display: inline-block;
+  margin-right: ${rem(16)};
+`;
+
+export const TagsWrapper = styled.div`
+  margin-top: ${rem(12)};
+  margin-bottom: ${rem(12)};
+
+  ${mediaMin.s`  
+    margin-top: 0;
   `};
 `;
 
 export const StyledH3 = styled.h3`
-  margin-bottom: ${rem(16)};
+  margin-bottom: ${rem(8)};
+  font-size: ${rem(24)};
+  line-height: ${rem(32)};
 `;
 
-export const ContinueLink = styled(BoldLink)`
+export const ContinueLink = styled(Link)`
+  color: ${theme.colors.main600};
+  text-decoration: underline;
+  font-style: normal;
+  font-weight: 400;
+  font-family: ${theme.fonts.headerFallback};
   display: inline-block;
   margin-top: ${rem(32)};
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.header};
+  }
 
   ${mediaMin.xl`
     margin-top: auto;
@@ -84,5 +109,6 @@ export const ContinueLink = styled(BoldLink)`
 
   &:hover {
     background-color: transparent;
+    cursor: pointer;
   }
 `;
