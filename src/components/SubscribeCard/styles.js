@@ -5,7 +5,7 @@ import Input from "../Input/Input";
 import SubmitButton from "../SubmitButton/SubmitButton";
 
 export const StyledSubscribeCard = styled.aside`
-  background-color: ${theme.colors.grey100};
+  background-color: ${theme.colors.bgLight100};
   border-top: ${rem(8)} solid ${theme.colors.main600};
   width: 100%;
   max-width: ${theme.contain.wrapper.col10};
