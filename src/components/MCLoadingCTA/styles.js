@@ -11,7 +11,7 @@ export const StyledLoadingCTA = styled.div`
         `
       : css`
           background-color: ${theme.colors.main500};
-          color: ${theme.colors.buttonLight};
+          color: ${theme.colors.main100};
           ${theme.shadow.buttons.main};
           border: none;
         `)}
@@ -31,7 +31,7 @@ export const StyledLoadingCTA = styled.div`
   font-weight: 700;
 
   padding: ${rem(12)} ${rem(24)};
-  height: ${rem(48)};
+  height: ${theme.buttonHeight.xl};
   margin-top: ${rem(16)};
   margin-bottom: ${rem(8)};
 
