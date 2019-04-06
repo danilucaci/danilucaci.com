@@ -57,7 +57,7 @@ export const CaseStudyCardContents = styled.div`
 `;
 
 export const Tag = styled.p`
-  color: ${theme.colors.dark600};
+  color: ${theme.colors.dark700};
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};
   font-weight: 700;
@@ -76,7 +76,7 @@ export const Tag = styled.p`
 
 export const TagsWrapper = styled.div`
   margin-top: ${rem(12)};
-  margin-bottom: ${rem(12)};
+  margin-bottom: ${rem(16)};
 
   ${mediaMin.s`  
     margin-top: 0;
