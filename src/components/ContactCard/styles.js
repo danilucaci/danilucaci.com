@@ -50,7 +50,7 @@ export const Subtitle = styled(Copy)`
 `;
 
 export const StyledContactButton = styled(Link)`
-  background-color: ${theme.colors.secondary100};
+  background-color: ${theme.colors.secondary200};
   border-radius: ${theme.borderRadius.buttons};
   color: ${theme.colors.secondary600} !important;
   display: block;
@@ -81,6 +81,6 @@ export const StyledContactButton = styled(Link)`
   &:hover,
   &:focus {
     cursor: pointer;
-    background-color: ${theme.colors.secondary200};
+    background-color: ${theme.colors.secondary100};
   }
 `;
