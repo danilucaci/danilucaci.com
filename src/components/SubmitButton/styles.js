@@ -5,7 +5,7 @@ export const StyledSubmitButton = styled.input`
   background-color: ${theme.colors.main600};
   border: none;
   border-radius: ${theme.borderRadius.buttons};
-  color: ${theme.colors.buttonLight};
+  color: ${theme.colors.light100};
 
   text-align: center;
   text-decoration: none;
@@ -19,7 +19,7 @@ export const StyledSubmitButton = styled.input`
   font-style: normal;
   font-weight: 700;
 
-  padding: ${rem(12)} ${rem(24)};
+  padding: ${rem(8)} ${rem(24)};
   height: ${theme.buttonHeight.xl};
   margin-top: ${rem(16)};
   width: 100%;
