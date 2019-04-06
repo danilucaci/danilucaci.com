@@ -5,7 +5,7 @@ const GlobalCSS = createGlobalStyle`
   html {
     background-color: #FFFFFF;
     color: #3A4554;
-    font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-family: ${theme.fonts.bodyFallback};
     font-size: 16px;
     line-height: 24px;
     ${"" /* font-size: 100%; */}
@@ -79,7 +79,7 @@ const GlobalCSS = createGlobalStyle`
       line-height: ${theme.lineHeights.h1};
     `}
 
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: ${theme.fonts.headerFallback};
 
     .fonts-loaded & {
       font-family: ${theme.fonts.header};
@@ -102,7 +102,7 @@ const GlobalCSS = createGlobalStyle`
       line-height: ${theme.lineHeights.h2};
     `}
 
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: ${theme.fonts.headerFallback};
 
     .fonts-loaded & {
       font-family: ${theme.fonts.header};
@@ -125,7 +125,7 @@ const GlobalCSS = createGlobalStyle`
       line-height: ${theme.lineHeights.h3};
     `}
 
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: ${theme.fonts.headerFallback};
 
     .fonts-loaded & {
       font-family: ${theme.fonts.header};
@@ -139,7 +139,7 @@ const GlobalCSS = createGlobalStyle`
     font-size: ${theme.fontSizes.h4};
     line-height: ${theme.lineHeights.h4};
 
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: ${theme.fonts.headerFallback};
 
     .fonts-loaded & {
       font-family: ${theme.fonts.header};
@@ -156,7 +156,7 @@ const GlobalCSS = createGlobalStyle`
     font-weight: 700;
     font-style: normal;
 
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: ${theme.fonts.headerFallback};
 
     .fonts-loaded & {
       font-family: ${theme.fonts.header};
