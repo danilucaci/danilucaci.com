@@ -23,7 +23,7 @@ const AuthorCard = () => (
     />
 
     <AuthorInfo>
-      <FormattedMessage id="authorCardName">{(name) => <h4>{name}</h4>}</FormattedMessage>
+      <FormattedMessage id="authorCardName">{(name) => <h3>{name}</h3>}</FormattedMessage>
       <FormattedMessage id="authorCardDescription">
         {(description) => <AuthorDescription>{description}</AuthorDescription>}
       </FormattedMessage>

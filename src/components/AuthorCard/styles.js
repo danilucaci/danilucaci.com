@@ -5,7 +5,7 @@ import { theme, rem, mediaMin } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
 
 export const StyledAuthorCard = styled.footer`
-  background-color: ${theme.colors.grey100};
+  background-color: ${theme.colors.bgLight100};
   width: 100%;
   max-width: ${theme.contain.inner.col10};
   margin-left: auto;
@@ -34,9 +34,9 @@ export const StyledAuthorCard = styled.footer`
 export const AuthorImage = styled(Img)`
   display: block;
   border-radius: 50%;
+  width: ${rem(128)};
+  height: ${rem(128)};
   margin-bottom: ${rem(16)};
-  width: ${rem(144)};
-  height: ${rem(144)};
 
   ${mediaMin.l`
     margin-left: auto;
@@ -55,13 +55,12 @@ export const AuthorInfo = styled.div`
   `};
 
   ${mediaMin.xl`
-    margin-top: -${rem(8)};
     padding-right: ${rem(80)};
   `};
 `;
 
 export const AuthorDescription = styled(Copy)`
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s};
-  margin-bottom: ${rem(12)};
+  font-size: ${theme.fontSizes.m};
+  line-height: ${theme.lineHeights.m};
+  margin-bottom: ${rem(8)};
 `;
