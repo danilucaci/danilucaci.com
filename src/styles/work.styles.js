@@ -77,9 +77,18 @@ export const ContactWrapper = styled.div`
 `;
 
 export const Subhead = styled(Copy)`
-  color: ${theme.colors.dark700};
+  color: ${theme.colors.dark800};
   font-size: ${theme.fontSizes.subheadS};
   line-height: ${theme.lineHeights.subheadS};
+
+  margin-bottom: ${rem(32)};
+
+  font-family: ${theme.fonts.headerFallback};
+  font-weight: 300;
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.headerLight};
+  }
 
   ${mediaMin.s`
     font-size: ${theme.fontSizes.subhead};
@@ -100,44 +109,38 @@ export const StyledHR = styled(HR)`
 `;
 
 export const WorkHeader = styled.header`
-  color: ${theme.colors.dark900};
-
-  margin-bottom: ${rem(32)};
-
-  ${mediaMin.s`
-    margin-bottom: ${rem(48)};
-  `};
-
   & h1 {
-    margin-bottom: ${rem(16)};
+    margin-bottom: ${rem(8)};
   }
 `;
 
 export const DribbblePostsTitle = styled.h2`
-  margin-bottom: ${rem(16)};
+  margin-bottom: ${rem(8)};
 
-  font-size: ${theme.fontSizes.h1s};
+  font-size: ${theme.fontSizes.h2s};
   ${mediaMin.xs`
-    font-size: ${theme.fontSizes.h1};
+    font-size: ${theme.fontSizes.h2};
   `}
 
-  line-height: ${theme.lineHeights.h1s};
-
+  line-height: ${theme.lineHeights.h2s};
   ${mediaMin.xs`
-    line-height: ${theme.lineHeights.h1};
+    line-height: ${theme.lineHeights.h2};
   `}
 `;
 
 export const DribbbleSubhead = styled(Copy)`
-  margin-bottom: ${rem(32)};
-
-  ${mediaMin.s`
-      margin-bottom: ${rem(48)};
-  `};
-
-  color: ${theme.colors.dark700};
+  color: ${theme.colors.dark800};
   font-size: ${theme.fontSizes.subheadS};
   line-height: ${theme.lineHeights.subheadS};
+
+  margin-bottom: ${rem(32)};
+
+  font-family: ${theme.fonts.headerFallback};
+  font-weight: 300;
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.headerLight};
+  }
 
   ${mediaMin.s`
     font-size: ${theme.fontSizes.subhead};

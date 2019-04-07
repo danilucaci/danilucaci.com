@@ -97,7 +97,6 @@ function WorkPage(props) {
           </InnerWrapper>
         </OuterWrapper>
         <ContactWrapper>
-          <StyledHR />
           <ContactCard locale={locale} />
         </ContactWrapper>
       </Main>
