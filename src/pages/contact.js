@@ -12,6 +12,7 @@ import ContactForm from "../components/ContactForm/ContactForm";
 import SocialNav from "../components/SocialNav/SocialNav";
 import { localePaths } from "../i18n/i18n";
 
+import { Copy } from "../components/Copy/Copy";
 import {
   ContactMeWrapper,
   ContactMeHeader,
@@ -19,8 +20,6 @@ import {
   TopHR,
   StyledH1,
   Subhead,
-  Description,
-  AltCopy,
   StyledLink,
   SayHiWrapper,
   SayHiTitle,
@@ -56,20 +55,16 @@ const ContactPage = (props) => {
             <FormattedMessage id="contactPageSubhead">
               {(txt) => <Subhead>{txt}</Subhead>}
             </FormattedMessage>
-            <FormattedMessage id="contactPageDescription">
-              {(txt) => <Description>{txt}</Description>}
-            </FormattedMessage>
             <FormattedMessage id="contactPageWorkInfo">
               {(txt) => (
-                <AltCopy>
+                <Copy>
                   {txt}{" "}
-                  <StyledLink href="mailto:info@danilucaci.com">info@danilucaci.com</StyledLink>
-                </AltCopy>
+                  <StyledLink href={`mailto:${localePaths[locale].email}`}>
+                    {localePaths[locale].email}
+                  </StyledLink>
+                </Copy>
               )}
             </FormattedMessage>
-            <SocialNavWrapper>
-              <SocialNav />
-            </SocialNavWrapper>
           </ContactMeHeader>
           <ContactFormWrapper>
             <TopHR />
@@ -98,6 +93,9 @@ const ContactPage = (props) => {
                 </SayHiDescription>
               )}
             </FormattedMessage>
+            <SocialNavWrapper>
+              <SocialNav />
+            </SocialNavWrapper>
           </SayHiWrapper>
         </ContactMeWrapper>
       </Main>

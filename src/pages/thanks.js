@@ -54,7 +54,8 @@ const ThanksPage = (props) => {
           <FormattedMessage id="thanksSubCopy1">
             {(txt) => (
               <ThanksCopy>
-                {txt} <a href="mailto:info@danilucaci.com">info@danilucaci.com</a>
+                {txt}{" "}
+                <a href={`mailto:${localePaths[locale].email}`}>{localePaths[locale].email}</a>
                 <FormattedMessage id="thanksSubCopy2">
                   {(txt2) => <React.Fragment> {txt2}</React.Fragment>}
                 </FormattedMessage>

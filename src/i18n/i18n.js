@@ -15,6 +15,7 @@ export const localePaths = {
     thanks: "/thanks",
     paginationName: "/page/",
     blog: "/blog",
+    email: "hello@danilucaci.com",
   },
   es: {
     siteLocalePrefix: "/es",
@@ -25,6 +26,7 @@ export const localePaths = {
     thanks: "/es/gracias",
     paginationName: "/pagina/",
     blog: "/es/blog",
+    email: "hola@danilucaci.com",
   },
 };
 
@@ -81,9 +83,9 @@ export const FORM_SUBMIT_STATUS = {
   },
   successSubtitle: {
     en:
-      "You’ll hear back from me in about 24—48 hours. If not, please send me an email at info@danilucaci.com.",
+      "You’ll hear back from me in about 24—48 hours. If not, please send me an email at hello@danilucaci.com.",
     es:
-      "Recibirás una respuesta en un plazo de 24-48 horas. De lo contrario, por favor mandame un email a info@danilucaci.com.",
+      "Recibirás una respuesta en un plazo de 24-48 horas. De lo contrario, por favor mandame un email a hola@danilucaci.com.",
   },
   errorTitle: {
     en: "Sorry 😔, your message couldn't be sent.",
