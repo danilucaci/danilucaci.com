@@ -6,7 +6,7 @@ import { Copy, CopyBold } from "../Copy/Copy";
 export const StyledFooter = styled.footer`
   display: block;
   text-align: center;
-  background-color: ${theme.colors.pageDark500};
+  background-color: ${theme.colors.bgDark500};
   width: 100%;
   padding: ${rem(64)} ${rem(16)} ${rem(40)};
 
@@ -27,6 +27,8 @@ export const StyledCopy = styled(Copy)`
 `;
 
 export const LegalDocsContainer = styled.nav`
+  color: ${theme.colors.light300} !important;
+
   margin-top: ${rem(56)};
   ${mediaMin.s`
       margin-top: ${rem(24)};
