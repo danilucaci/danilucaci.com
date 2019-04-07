@@ -61,13 +61,13 @@ export const BlogHeader = styled.header`
   }
 `;
 
-export const BlogTitle = styled.h3`
-  font-size: ${theme.fontSizes.h3s};
-  line-height: ${theme.lineHeights.h3s};
+export const BlogTitle = styled.h1`
+  font-size: ${theme.fontSizes.h2s};
+  line-height: ${theme.lineHeights.h2s};
 
   ${mediaMin.xs`
-  font-size: ${theme.fontSizes.h3};
-  line-height: ${theme.lineHeights.h3};
+  font-size: ${theme.fontSizes.h2};
+  line-height: ${theme.lineHeights.h2};
 `}
 `;
 
