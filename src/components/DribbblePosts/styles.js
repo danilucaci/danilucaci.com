@@ -30,7 +30,7 @@ export const StyledLoadMore = styled(LoadComments)`
   display: block;
 
   ${mediaMin.s`
-    margin-top: ${rem(56)};
+    margin-top: ${rem(32)};
   `};
 `;
 
