@@ -31,15 +31,15 @@ export const BoldLink = styled(DefaultLink)`
 `;
 
 export const GreyLink = styled(DefaultLink)`
-  color: ${theme.colors.dark900};
+  color: ${theme.colors.dark800};
 `;
 
 export const LightSecondaryLink = styled(DefaultLink)`
-  color: ${theme.colors.light200};
+  color: ${theme.colors.light300};
 
   &:visited,
   &:link {
-    color: ${theme.colors.light200};
+    color: ${theme.colors.light300};
   }
 
   &:hover {
