@@ -56,6 +56,12 @@ export const ResumeWrapper = styled.div`
   margin-top: ${rem(16)};
   width: 100%;
 
+  &::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
   @media screen and (min-width: ${theme.breakpoints.m}) and (max-width: 55em) {
     margin-top: ${rem(8)};
   }
@@ -67,7 +73,7 @@ export const StyledSocialNav = styled.div`
   ${mediaMin.xxs`
     display: inline-block;
     vertical-align: middle;
-    margin-right: ${rem(24)};
+    margin-right: ${rem(16)};
     float: left;
   `};
 `;
@@ -90,7 +96,7 @@ export const ResumeButton = styled.a`
   font-style: normal;
   font-weight: 700;
 
-  padding: ${rem(6)} ${rem(32)} ${rem(4)};
+  padding: ${rem(6)} ${rem(24)} ${rem(4)};
   height: ${theme.buttonHeight.s};
   width: 100%;
   margin-top: ${rem(16)};
@@ -153,21 +159,21 @@ export const AboutMeTitle = styled.h1`
   font-weight: 700;
   font-style: normal;
   font-family: ${theme.fonts.header};
-  font-size: ${theme.fontSizes.h1s} !important;
+  font-size: ${theme.fontSizes.h1s};
 
   ${mediaMin.xs`
-    font-size: ${theme.fontSizes.h2} !important;
+    font-size: ${theme.fontSizes.h1};
   `}
 
-  line-height: ${theme.lineHeights.h1s} !important;
+  line-height: ${theme.lineHeights.h1s};
   margin-bottom: ${rem(16)};
 
   ${mediaMin.xs`
-    line-height: ${theme.lineHeights.h2} !important;
+    line-height: ${theme.lineHeights.h1};
   `}
 
   ${mediaMin.s`
-    margin-top: ${rem(24)};
+    margin-top: ${rem(32)};
   `}
 `;
 
