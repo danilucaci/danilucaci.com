@@ -5,9 +5,16 @@ import { HR } from "../../src/components/HR/HR";
 
 export const ContactMeWrapper = styled.section`
   max-width: ${theme.contain.wrapper.col10};
+  margin-top: ${rem(8)};
   margin-bottom: ${rem(64)};
   margin-left: auto;
   margin-right: auto;
+
+  &::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
 
   padding-right: ${theme.gutters.s};
   padding-left: ${theme.gutters.s};
@@ -21,6 +28,7 @@ export const ContactMeWrapper = styled.section`
   }
 
   ${mediaMin.s`
+    margin-top: 0;
     padding-right: ${theme.gutters.m};
     padding-left: ${theme.gutters.m};
 
@@ -36,45 +44,6 @@ export const ContactMeWrapper = styled.section`
   ${mediaMin.m`
     margin-top: ${rem(24)};
     margin-bottom: ${rem(80)};
-  `};
-`;
-
-export const ContactMeHeader = styled.header`
-  ${mediaMin.m`
-    max-width: ${rem(640)};
-    margin-left: auto;
-    margin-right: auto;
-  `};
-
-  ${mediaMin.xxl`
-    display: inline-block;
-    vertical-align: top;
-    width: calc(45% - ${rem(24)});
-  `};
-`;
-
-export const ContactFormWrapper = styled.div`
-  ${mediaMin.m`
-    max-width: ${rem(640)};
-    margin-left: auto;
-    margin-right: auto;
-  `};
-
-  ${mediaMin.xxl`
-    display: inline-block;
-    vertical-align: top;
-    width: 55%;
-    margin-top: -${rem(24)};
-    margin-left: ${rem(24)};
-  `};
-`;
-
-export const TopHR = styled(HR)`
-  margin-top: ${rem(32)};
-  margin-bottom: ${rem(24)};
-
-  ${mediaMin.xxl`
-      display: none;
   `};
 `;
 
@@ -110,35 +79,30 @@ export const Description = styled(Copy)`
   `};
 `;
 
-export const AltCopy = styled(Copy)`
-  color: ${theme.colors.dark800};
-`;
-
 export const StyledLink = styled.a`
   display: inline;
   white-space: nowrap;
 `;
 
 export const SayHiWrapper = styled.div`
-  margin-top: ${rem(48)};
   width: 100%;
-  margin-top: ${rem(32)};
+  margin-top: ${rem(64)};
+  margin-left: auto;
+  margin-right: auto;
 
-  ${mediaMin.m`
-    max-width: ${rem(640)};
-    margin-left: auto;
-    margin-right: auto;
-  `};
+  max-width: ${rem(640)};
 
   ${mediaMin.xxl`
-    max-width: 100%;
-    margin-top: ${rem(64)};
+    float: left;
+    width: calc(45% - ${rem(24)});
+    margin-top: ${rem(32)};
+    max-width: auto;
     margin-left: 0;
     margin-right: 0;
   `};
 `;
 
-export const SayHiTitle = styled.h3`
+export const SayHiTitle = styled.h5`
   margin-top: ${rem(24)};
   margin-bottom: ${rem(8)};
 
@@ -152,5 +116,42 @@ export const SayHiDescription = styled(Copy)`
 `;
 
 export const SocialNavWrapper = styled.div`
+  margin-top: ${rem(16)};
+`;
+
+export const ContactMeHeader = styled.header`
+  ${mediaMin.m`
+    max-width: ${rem(640)};
+    margin-left: auto;
+    margin-right: auto;
+  `};
+
+  ${mediaMin.xxl`
+    float: left;
+    width: calc(45% - ${rem(24)});
+  `};
+`;
+
+export const ContactFormWrapper = styled.div`
+  ${mediaMin.m`
+    max-width: ${rem(640)};
+    margin-left: auto;
+    margin-right: auto;
+  `};
+
+  ${mediaMin.xxl`
+    width: 55%;
+    margin-top: -${rem(24)};
+    margin-left: ${rem(24)};
+    float: right;
+  `};
+`;
+
+export const TopHR = styled(HR)`
   margin-top: ${rem(32)};
+  margin-bottom: ${rem(24)};
+
+  ${mediaMin.xxl`
+      display: none;
+  `};
 `;
