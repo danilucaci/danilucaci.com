@@ -53,11 +53,11 @@ export const PostInfo = styled.div`
   justify-content: space-between;
   align-items: baseline;
 
-  padding: ${rem(8)} 0 ${rem(4)};
+  padding: ${rem(12)} 0;
 
   ${mediaMin.xs`
     flex-direction: row;
-    padding: ${rem(8)} 0 ${rem(8)};
+    padding: ${rem(8)} 0;
   `};
 `;
 
@@ -250,8 +250,8 @@ export const PostContent = styled.section`
   }
 
   & .toc {
-    background-color: ${theme.colors.bgLight200};
-    padding: ${rem(24)} ${rem(16)};
+    background-color: ${theme.colors.bgLight100};
+    padding: ${rem(32)} ${rem(16)};
 
     margin-top: ${rem(64)};
     margin-bottom: ${rem(64)};
@@ -282,12 +282,10 @@ export const PostContent = styled.section`
     `};
 
     ${mediaMin.l`
-      margin-left: -${rem(64)};
-      margin-right: -${rem(64)};
-      padding-left: ${rem(64)};
-      padding-right: ${rem(64)};
-      padding-top: ${rem(48)};
-      padding-bottom: ${rem(48)};
+      margin-left: -${rem(32)};
+      margin-right: -${rem(32)};
+      padding-left: ${rem(32)};
+      padding-right: ${rem(32)};
     `};
 
     & a {
