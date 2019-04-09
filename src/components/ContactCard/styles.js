@@ -82,5 +82,7 @@ export const StyledContactButton = styled(Link)`
   &:focus {
     cursor: pointer;
     background-color: ${theme.colors.secondary100};
+    box-shadow: 0 0px 1px 4px #c9b473, 0 1px 2px 4px #c9b473;
+    outline: none;
   }
 `;

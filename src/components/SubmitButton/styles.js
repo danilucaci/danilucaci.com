@@ -43,5 +43,6 @@ export const StyledSubmitButton = styled.input`
     cursor: pointer;
     background-color: ${theme.colors.main500};
     ${theme.shadow.buttons.main};
+    outline: none;
   }
 `;

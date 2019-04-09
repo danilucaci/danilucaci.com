@@ -24,7 +24,7 @@ export const IndexHeader = styled.header`
     padding-right: ${theme.gutters.m};
     padding-left: ${theme.gutters.m};
     
-    padding-top: ${rem(56)};
+    padding-top: ${rem(24)};
     padding-bottom: ${theme.spacing.row.m};
 
     /* iPhone X */
@@ -37,7 +37,7 @@ export const IndexHeader = styled.header`
   `};
 
   ${mediaMin.xl`
-    padding-top: ${rem(88)};
+    padding-top: ${rem(48)};
     padding-bottom: ${theme.spacing.row.xl};
   `};
 `;
@@ -63,7 +63,7 @@ export const Name = styled(Copy)`
 
 export const IndexTitle = styled.h2`
   margin-top: ${rem(16)};
-  margin-bottom: ${rem(16)};
+  margin-bottom: ${rem(8)};
 
   font-size: ${theme.fontSizes.h1s};
   line-height: ${theme.lineHeights.h1s};
@@ -71,17 +71,27 @@ export const IndexTitle = styled.h2`
   ${mediaMin.m`
     font-size: ${theme.fontSizes.h1};
     line-height: ${theme.lineHeights.h1};
+    max-width: ${rem(840)};
   `};
 `;
 
-export const Subhead = styled(Copy)`
-  color: ${theme.colors.dark700};
-  font-size: ${theme.fontSizes.subheadS};
-  line-height: ${theme.lineHeights.subheadS};
+export const Subhead = styled.p`
+  color: ${theme.colors.dark800};
+  font-size: ${theme.fontSizes.indexBio};
+  line-height: ${theme.lineHeights.indexBio};
+  letter-spacing: -${theme.letterSpacing.indexBioS};
+
+  font-family: ${theme.fonts.headerFallback};
+  font-weight: 300;
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.headerLight};
+  }
 
   ${mediaMin.s`
-    font-size: ${theme.fontSizes.subhead};
-    line-height: ${theme.lineHeights.subhead};
+    font-size: ${theme.fontSizes.indexBio};
+    line-height: ${theme.lineHeights.indexBio};
+    letter-spacing: -${theme.letterSpacing.indexBio}
     max-width: ${rem(840)};
   `};
 `;
@@ -89,14 +99,17 @@ export const Subhead = styled(Copy)`
 export const ServicesWrapper = styled.section`
   background-color: ${theme.colors.bgLight100};
 
-  padding: ${theme.spacing.row.s} 0;
+  padding-top: ${theme.spacing.rowTop.s};
+  padding-bottom: ${theme.spacing.row.s};
 
   ${mediaMin.s`
-    padding: ${theme.spacing.row.m} 0;
+    padding-top: ${theme.spacing.rowTop.m};
+    padding-bottom: ${theme.spacing.row.m};
   `};
 
   ${mediaMin.xl`
-    padding: ${theme.spacing.row.xl} 0;
+    padding-top: ${theme.spacing.rowTop.xl};
+    padding-bottom: ${theme.spacing.row.xl};
   `};
 
   /* Mobile in ladscape */
@@ -107,18 +120,13 @@ export const ServicesWrapper = styled.section`
 `;
 
 export const ServicesTitle = styled.h2`
-  font-size: ${theme.fontSizes.h1s};
-  line-height: ${theme.lineHeights.h1s};
+  font-size: ${theme.fontSizes.h2s};
+  line-height: ${theme.lineHeights.h2s};
   margin-bottom: ${rem(32)};
 
   ${mediaMin.m`
-    margin-bottom: ${rem(56)};
-    font-size: ${theme.fontSizes.h1};
-    line-height: ${theme.lineHeights.h1};
-  `};
-
-  ${mediaMin.xl`
-    margin-bottom: ${rem(72)};
+    font-size: ${theme.fontSizes.h2};
+    line-height: ${theme.lineHeights.h2};
   `};
 `;
 
@@ -130,16 +138,16 @@ export const ServicesEntry = styled.div`
   padding-bottom: ${rem(32)};
 
   ${mediaMin.m`  
-    padding-top: ${rem(56)};
-    padding-bottom: ${rem(56)};
+    padding-top: ${rem(48)};
+    padding-bottom: ${rem(48)};
     display: flex;
   `};
 
   ${mediaMin.xl`
     padding-left: ${rem(40)};
     padding-right: ${rem(144)};
-    padding-top: ${rem(72)};
-    padding-bottom: ${rem(72)};
+    padding-top: ${rem(64)};
+    padding-bottom: ${rem(64)};
   `};
 
   &:last-of-type {
@@ -148,11 +156,11 @@ export const ServicesEntry = styled.div`
 `;
 
 export const ServiceTitle = styled.h3`
-  margin-bottom: ${rem(16)};
+  margin-bottom: ${rem(8)};
 `;
 
 export const ServiceCopy = styled(Copy)`
-  margin-bottom: ${rem(16)};
+  margin-bottom: ${rem(32)};
 `;
 
 export const ServiceImage = styled.picture`
@@ -195,14 +203,17 @@ export const StyledHR = styled(HR)`
 `;
 
 export const Row = styled.section`
-  margin: ${theme.spacing.row.s} 0;
+  margin-top: ${theme.spacing.rowTop.s};
+  margin-bottom: ${theme.spacing.row.s};
 
   ${mediaMin.s`
-    margin: ${theme.spacing.row.m} 0;
+    margin-top: ${theme.spacing.rowTop.m};
+    margin-bottom: ${theme.spacing.row.m};
   `};
 
   ${mediaMin.xl`
-    margin: ${theme.spacing.row.xl} 0;
+    margin-top: ${theme.spacing.rowTop.xl};
+    margin-bottom: ${theme.spacing.row.xl};
   `};
 
   /* Mobile in ladscape */
@@ -242,50 +253,63 @@ export const RowContents = styled.div`
 `;
 
 export const CaseStudiesTitle = styled.h2`
-  font-size: ${theme.fontSizes.h1s};
-  line-height: ${theme.lineHeights.h1s};
+  margin-bottom: ${rem(8)};
+  font-size: ${theme.fontSizes.h2s};
+  line-height: ${theme.lineHeights.h2s};
 
   ${mediaMin.m`
-    font-size: ${theme.fontSizes.h1};
-    line-height: ${theme.lineHeights.h1};
+    font-size: ${theme.fontSizes.h2};
+    line-height: ${theme.lineHeights.h2};
   `};
 `;
 
 export const CaseStudiesSubhead = styled(Copy)`
-  color: ${theme.colors.dark700};
+  color: ${theme.colors.dark800};
   font-size: ${theme.fontSizes.subheadS};
   line-height: ${theme.lineHeights.subheadS};
 
-  margin-bottom: ${rem(16)};
+  margin-bottom: ${rem(32)};
+
+  font-family: ${theme.fonts.headerFallback};
+  font-weight: 300;
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.headerLight};
+  }
 
   ${mediaMin.s`
     font-size: ${theme.fontSizes.subhead};
     line-height: ${theme.lineHeights.subhead};
-    margin-bottom: ${rem(64)};
   `};
 `;
 
 export const DribbblePostsTitle = styled.h2`
-  margin-bottom: ${rem(16)};
-  font-size: ${theme.fontSizes.h1s};
-  line-height: ${theme.lineHeights.h1s};
+  margin-bottom: ${rem(8)};
+  font-size: ${theme.fontSizes.h2s};
+  line-height: ${theme.lineHeights.h2s};
 
   ${mediaMin.m`
-    font-size: ${theme.fontSizes.h1};
-    line-height: ${theme.lineHeights.h1};
+    font-size: ${theme.fontSizes.h2};
+    line-height: ${theme.lineHeights.h2};
   `};
 `;
 
 export const DribbbleSubhead = styled(Copy)`
-  color: ${theme.colors.dark700};
+  color: ${theme.colors.dark800};
   font-size: ${theme.fontSizes.subheadS};
   line-height: ${theme.lineHeights.subheadS};
 
-  margin-bottom: ${rem(16)};
+  margin-bottom: ${rem(32)};
+
+  font-family: ${theme.fonts.headerFallback};
+  font-weight: 300;
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.headerLight};
+  }
 
   ${mediaMin.s`
     font-size: ${theme.fontSizes.subhead};
     line-height: ${theme.lineHeights.subhead};
-    margin-bottom: ${rem(64)};
   `};
 `;

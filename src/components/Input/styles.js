@@ -43,10 +43,12 @@ export const StyledInput = styled.input`
     transition: background-color 5000s ease-in-out 0s;
   }
 
-  &:focus {
+  &:focus,
+  &:active {
     background: white;
     color: ${theme.colors.dark900};
     border: 2px solid ${theme.colors.dark900};
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px rgba(0, 0, 0, 0.1);
     outline: none;
   }
 
@@ -119,7 +121,9 @@ export const StyledInput = styled.input`
   /*  3. NOT Valid */
   &:invalid:focus:not(:placeholder-shown) {
     /* Remove the red box-shadow for firefox */
-    box-shadow: none;
+    /* box-shadow: none; */
+
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px rgba(0, 0, 0, 0.1);
   }
 
   /*  When input is... */
@@ -128,6 +132,10 @@ export const StyledInput = styled.input`
   /*  2. Empty */
   /* Remove the red box-shadow for firefox */
   &:placeholder-shown:required {
-    box-shadow: none !important;
+    box-shadow: none;
+  }
+
+  &:placeholder-shown:required:focus {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px rgba(0, 0, 0, 0.1);
   }
 `;

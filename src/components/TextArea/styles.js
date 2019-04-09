@@ -36,10 +36,12 @@ export const StyledTextArea = styled.textarea`
     transition: background-color 5000s ease-in-out 0s;
   }
 
-  &:focus {
+  &:focus,
+  &:active {
     background: white;
     color: ${theme.colors.dark900};
     border: 2px solid ${theme.colors.dark900};
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px rgba(0, 0, 0, 0.1);
     outline: none;
   }
 
@@ -89,6 +91,18 @@ export const StyledTextArea = styled.textarea`
     box-shadow: none;
   }
 
+  /*  When input is... */
+  /*  1. Default State */
+  /*  2. Required */
+  /*  2. Empty */
+  /* Remove the red box-shadow for firefox */
+  &:placeholder-shown:required:focus {
+    color: ${theme.colors.dark900};
+    border: 2px solid ${theme.colors.dark900};
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px rgba(0, 0, 0, 0.1);
+    outline: none;
+  }
+
   /* https://css-tricks.com/form-validation-ux-html-css/ */
   /*  When input is... */
   /*  1. NOT Empty */
@@ -99,7 +113,7 @@ export const StyledTextArea = styled.textarea`
     background: ${theme.colors.danger100};
     border: 2px solid ${theme.colors.danger500};
     /* Remove the red box-shadow for firefox */
-    box-shadow: none;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px rgba(0, 0, 0, 0.1);
     padding-right: ${rem(40)};
 
     & ~ span {

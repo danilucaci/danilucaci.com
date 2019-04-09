@@ -44,6 +44,7 @@ export const Checkbox = styled.input`
   /* Box focus */
   &:focus + label:before {
     border: 2px solid ${theme.colors.dark900};
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px rgba(0, 0, 0, 0.1);
     transform: scale(1.1);
   }
 
