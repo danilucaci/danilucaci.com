@@ -270,11 +270,6 @@ const GlobalCSS = createGlobalStyle`
       background-color: ${theme.colors.main100};
     }
 
-    &:focus,
-    &:active {
-      box-shadow: 0 0px 2px 4px rgba(0,0,0,0.2), 0 1px 2px 0px rgba(0,0,0,0.1);
-      outline: 2px solid ${theme.colors.dark800};
-    }
   }
 
   pre,
