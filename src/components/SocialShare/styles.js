@@ -50,8 +50,8 @@ export const StyledCopyButton = styled.button`
 `;
 
 export const CopyIcon = styled(Icon)`
-  width: ${rem(32)};
-  height: ${rem(32)};
+  width: ${rem(24)};
+  height: ${rem(24)};
   fill: ${theme.colors.dark800};
   will-change: transform;
   transition: transform ease 0.15s;
@@ -94,8 +94,8 @@ export const CopyTooltip = styled.span`
 `;
 
 export const StyledIcon = styled(Icon)`
-  width: ${rem(32)};
-  height: ${rem(32)};
+  width: ${rem(24)};
+  height: ${rem(24)};
   will-change: transform;
   transition: transform ease 0.15s;
 

@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
 export const StyledIcon = styled(Icon)`
   display: inline-block;
   fill: ${theme.colors.dark700};
-  margin-right: ${rem(3)};
+  margin-right: ${rem(4)};
   margin-bottom: ${rem(4)};
 `;
 

@@ -12,8 +12,8 @@ export const StyledIcon = styled(Icon)`
   height: ${rem(40)};
 
   ${mediaMin.m`
-    width: ${rem(32)};
-    height: ${rem(32)};  
+    width: ${rem(24)};
+    height: ${rem(24)};  
   `};
 `;
 
