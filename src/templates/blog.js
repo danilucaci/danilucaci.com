@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { shape, string, number, object, arrayOf } from "prop-types";
 import { graphql } from "gatsby";
 import { FormattedMessage } from "react-intl";
 
@@ -17,7 +17,7 @@ import { localePaths } from "../i18n/i18n";
 
 import { BlogWrapper, BlogHeader, BlogTitle, TagsWrapper } from "../styles/blog.styles";
 
-const BlogPage = (props) => {
+function BlogPage(props) {
   const {
     currentPage,
     totalPagesInBlog,
@@ -83,27 +83,27 @@ const BlogPage = (props) => {
       <SiteFooter locale={locale} />
     </Layout>
   );
-};
+}
 
 BlogPage.propTypes = {
-  pageContext: PropTypes.shape({
-    locale: PropTypes.string.isRequired,
-    nextPath: PropTypes.string,
-    prevPath: PropTypes.string,
-    currentPage: PropTypes.number.isRequired,
-    totalCountBlog: PropTypes.number.isRequired,
-    totalPagesInBlog: PropTypes.number.isRequired,
-    paginationPathPrefix: PropTypes.string.isRequired,
-    edges: PropTypes.arrayOf(PropTypes.object).isRequired,
+  pageContext: shape({
+    locale: string.isRequired,
+    nextPath: string,
+    prevPath: string,
+    currentPage: number.isRequired,
+    totalCountBlog: number.isRequired,
+    totalPagesInBlog: number.isRequired,
+    paginationPathPrefix: string.isRequired,
+    edges: arrayOf(object).isRequired,
   }).isRequired,
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      tags: PropTypes.arrayOf(PropTypes.object).isRequired,
+  data: shape({
+    allMarkdownRemark: shape({
+      tags: arrayOf(object).isRequired,
     }),
   }).isRequired,
-  location: PropTypes.shape({
-    pathname: PropTypes.string.isRequired,
-    href: PropTypes.string.isRequired,
+  location: shape({
+    pathname: string.isRequired,
+    href: string.isRequired,
   }).isRequired,
 };
 
