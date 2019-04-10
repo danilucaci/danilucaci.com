@@ -34,3 +34,20 @@ export const StatusMessageWrapper = styled.div`
   ${theme.shadow.default};
   white-space: pre-line;
 `;
+
+export const InlineStatusMessageWrapper = styled.div`
+  background-color: ${theme.colors.danger100};
+  border-radius: ${theme.borderRadius.buttons};
+  display: block;
+
+  padding: ${rem(8)};
+  margin-top: ${rem(8)};
+  white-space: pre-line;
+`;
+
+export const InlineMessageCopy = styled(Copy)`
+  color: ${theme.colors.danger600};
+  display: block;
+  font-size: ${theme.fontSizes.s};
+  line-height: ${theme.lineHeights.s};
+`;

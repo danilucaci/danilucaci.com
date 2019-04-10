@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import addToMailchimp from "gatsby-plugin-mailchimp";
 import { FormattedMessage } from "react-intl";
+import * as Yup from "yup";
+import { Formik, ErrorMessage } from "formik";
 
+import { CONSENT_VALUE, MC_ERRORS } from "../../i18n/i18n";
 import PrivacyCheckbox from "../PrivacyCheckbox/PrivacyCheckbox";
-import { CONSENT_VALUE, INPUT_EMAIL_ERROR } from "../../i18n/i18n";
 import MCLoadingCTA from "../MCLoadingCTA/MCLoadingCTA";
 import MCSuccessMessage from "../MCSuccessMessage/MCSuccessMessage";
 import MCErrorMessage from "../MCErrorMessage/MCErrorMessage";
+import { InlineStatusMessageWrapper, InlineMessageCopy } from "../EmailErrorMessage/styles";
 
 import {
   StyledSubscribeCard,
@@ -24,23 +27,21 @@ import {
 } from "./styles";
 
 function SubscribeCard({ locale }) {
-  const [email, setEmail] = useState("");
-  const [acceptsConsentCheckbox, setAcceptsMCConsentCheckbox] = useState(false);
-  const [checkboxValue, setCheckboxValue] = useState(CONSENT_VALUE[locale].no);
   const [MCSent, setMCSent] = useState(false);
   const [showMCLoading, setShowMCLoading] = useState(false);
   const [showMCError, setShowMCError] = useState(false);
   const [MCError, setMCError] = useState("");
+  const [MCAPIErrorMSG, setMCAPIErrorMSG] = useState("");
   const [showMCSuccess, setShowMCSuccess] = useState(false);
 
-  async function handleMCSubmit(e) {
-    e.preventDefault();
+  async function handleMCSubmit({ email, acceptsconsentcheckbox }) {
     setShowMCLoading(true);
     setMCSent(true);
 
     try {
       const MCResponse = await addToMailchimp(email, {
-        DLPO: checkboxValue,
+        DLPO:
+          acceptsconsentcheckbox === true ? CONSENT_VALUE[locale].yes : CONSENT_VALUE[locale].no,
       });
 
       handleFormSent(MCResponse.result, MCResponse.msg);
@@ -56,26 +57,18 @@ function SubscribeCard({ locale }) {
       setShowMCError(true);
       setShowMCLoading(false);
       setMCError("already");
-      throw new Error(msg);
+      // throw new Error(msg);
     } else if (result.includes("error") && msg.includes("many")) {
       setShowMCError(true);
       setShowMCLoading(false);
       setMCError("many");
-      throw new Error(msg);
+      // throw new Error(msg);
     } else if (result.includes("error")) {
       setShowMCError(true);
       setShowMCLoading(false);
       setMCError("generic");
-      throw new Error(msg);
-    }
-  }
-
-  function handleMCConsentCheckbox(e) {
-    setAcceptsMCConsentCheckbox(e.target.checked);
-    if (e.target.checked) {
-      setCheckboxValue(CONSENT_VALUE[locale].yes);
-    } else {
-      setCheckboxValue(CONSENT_VALUE[locale].no);
+      setMCAPIErrorMSG(msg);
+      // throw new Error(msg);
     }
   }
 
@@ -89,8 +82,18 @@ function SubscribeCard({ locale }) {
     setShowMCError(true);
     setMCError("generic");
     console.warn(error);
-    throw new Error(error);
+    // throw new Error(error);
   }
+
+  const MCSchema = Yup.object().shape({
+    email: Yup.string()
+      .email(MC_ERRORS.formValidation[locale].email)
+      .required(MC_ERRORS.formValidation[locale].emailRequired),
+    acceptsconsentcheckbox: Yup.boolean().oneOf(
+      [true],
+      MC_ERRORS.formValidation[locale].privacyRequired,
+    ),
+  });
 
   return (
     <StyledSubscribeCard>
@@ -104,48 +107,74 @@ function SubscribeCard({ locale }) {
         {(txt) => <AltCopy>{txt}</AltCopy>}
       </FormattedMessage>
       <FormContainer>
-        <StyledMCForm onSubmit={handleMCSubmit}>
-          <InputsWrapper>
-            <StyledLabel>
-              <StyledInput
-                type="email"
-                value={email}
-                name="email"
-                autoCapitalize="off"
-                autoCorrect="off"
-                autoComplete="email"
-                placeholderType="email"
-                title={INPUT_EMAIL_ERROR[locale]}
-                pattern="^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*(\.\w{2,})+$"
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-              <InputStatusIcon arriaHidden="true" />
-            </StyledLabel>
-            {MCSent && (
-              <MCLoadingCTA
-                showMCLoading={showMCLoading}
-                showMCSuccess={showMCSuccess}
-                showMCError={showMCError}
-                MCError={MCError}
+        <Formik
+          initialValues={{
+            email: "",
+            acceptsconsentcheckbox: false,
+          }}
+          validationSchema={MCSchema}
+          onSubmit={(values, { setSubmitting }) => {
+            // setTimeout(() => {
+            handleMCSubmit(values);
+            setSubmitting(false);
+            // }, 400);
+          }}
+        >
+          {({ isValid }) => (
+            <StyledMCForm method="post">
+              <InputsWrapper>
+                <StyledLabel>
+                  <StyledInput
+                    type="email"
+                    name="email"
+                    autoCapitalize="off"
+                    autoCorrect="off"
+                    autoComplete="email"
+                    placeholderType="email"
+                  />
+                  <InputStatusIcon arriaHidden="true" />
+                </StyledLabel>
+
+                {MCSent && (
+                  <MCLoadingCTA
+                    showMCLoading={showMCLoading}
+                    showMCSuccess={showMCSuccess}
+                    showMCError={showMCError}
+                    MCError={MCError}
+                    locale={locale}
+                  />
+                )}
+
+                {!MCSent && <StyledSubmitButton buttonType="subscribe" disabled={!isValid} />}
+              </InputsWrapper>
+              <ErrorMessage name="email">
+                {(errorMessage) => (
+                  <InlineStatusMessageWrapper>
+                    <InlineMessageCopy>{errorMessage}</InlineMessageCopy>
+                  </InlineStatusMessageWrapper>
+                )}
+              </ErrorMessage>
+              <PrivacyCheckbox
+                type="checkbox"
+                name="acceptsconsentcheckbox"
+                value={isValid === true ? CONSENT_VALUE[locale].yes : CONSENT_VALUE[locale].no}
                 locale={locale}
               />
-            )}
-            {!MCSent && <StyledSubmitButton type="submit" disabled={!acceptsConsentCheckbox} />}
-          </InputsWrapper>
-          <PrivacyCheckbox
-            type="checkbox"
-            name="consentcheckbox"
-            value={checkboxValue}
-            onChange={handleMCConsentCheckbox}
-            checkboxValue={checkboxValue}
-            locale={locale}
-            required
-          />
-        </StyledMCForm>
+              <ErrorMessage name="acceptsconsentcheckbox">
+                {(errorMessage) => (
+                  <InlineStatusMessageWrapper>
+                    <InlineMessageCopy>{errorMessage}</InlineMessageCopy>
+                  </InlineStatusMessageWrapper>
+                )}
+              </ErrorMessage>
+            </StyledMCForm>
+          )}
+        </Formik>
 
         {showMCSuccess && <MCSuccessMessage locale={locale} />}
-        {showMCError && <MCErrorMessage locale={locale} MCError={MCError} />}
+        {showMCError && (
+          <MCErrorMessage locale={locale} MCError={MCError} apiMessage={MCAPIErrorMSG} />
+        )}
       </FormContainer>
     </StyledSubscribeCard>
   );

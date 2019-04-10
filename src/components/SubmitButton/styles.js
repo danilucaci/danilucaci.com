@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { theme, rem } from "../../theme/globalStyles";
 
-export const StyledSubmitButton = styled.input`
+export const StyledSubmitButton = styled.button`
   background-color: ${theme.colors.main600};
   border: none;
   border-radius: ${theme.borderRadius.buttons};

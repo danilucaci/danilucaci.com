@@ -45,6 +45,7 @@
     "eslint-plugin-react-hooks": "^1.6.0",
     "event-source-polyfill": "^1.0.5",
     "fontfaceobserver": "^2.1.0",
+    "formik": "^1.5.2",
     "fs": "0.0.1-security",
     "gatsby": "^2.3.14",
     "gatsby-image": "^2.0.37",
@@ -84,7 +85,8 @@
     "react-router-dom": "^5.0.0",
     "sentry": "^0.1.2",
     "styled-components": "^4.2.0",
-    "url-join": "^4.0.0"
+    "url-join": "^4.0.0",
+    "yup": "^0.27.0"
   },
   "devDependencies": {
     "babel-jest": "^24.7.1",

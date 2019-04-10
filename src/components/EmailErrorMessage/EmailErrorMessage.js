@@ -6,8 +6,6 @@ import { FORM_SUBMIT_STATUS } from "../../i18n/i18n";
 import { MessageTitle, MessageSubtitle, StatusMessageWrapper } from "./styles";
 
 function EmailErrorMessage({ locale, formErrorRes = {} }) {
-  console.log(formErrorRes);
-
   return (
     <StatusMessageWrapper>
       <MessageTitle>{FORM_SUBMIT_STATUS.errorTitle[locale]}</MessageTitle>

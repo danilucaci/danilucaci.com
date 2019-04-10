@@ -91,11 +91,40 @@ export const FORM_SUBMIT_STATUS = {
     en: "Sorry 😔, your message couldn't be sent.",
     es: "Lo siento 😔, tu mensaje no ha podido ser enviado.",
   },
+  formValidation: {
+    en: {
+      email: "Please enter a valid email",
+      nameRequired: "Please enter your name. I don’t really want to call you ‘user182’ 😄",
+      nameShort: "Your name is too short. I’m sure it’s longer than that...",
+      nameLong: "Your name is too long. Are you sure it’s correct?",
+      emailRequired: "Please enter your email so that I can get back to you.",
+      messageRequired: "Please enter a message explaining what you would like to ask me.",
+      messageShort:
+        "Your message is too short. Please include some more details about what you`d like to ask me so that I can get back to you.",
+      messageLong:
+        "Your message is too long. Please include a short description of what you’d like to ask me and I’ll get back to you to go over the details.",
+      privacyRequired: "To continue you need to accept the legal notice and privacy policy.",
+    },
+    es: {
+      email: "El correo electrónico que has introducido no es válido.",
+      nameRequired: "Por favor introduce tu nombre. No me gustaría llamarte ‘usuario371’ 😄",
+      nameShort: "Tu nombre parece muy corto, ¿seguro te llamas así?",
+      nameLong: "Tu nombre es un poco largo, ¿seguro te llamas así?",
+      emailRequired: "Por favor introduce tu email para que pueda enviarte una respuesta.",
+      messageRequired: "Por favor escribe un mensaje explicando lo que te gustaría preguntarme.",
+      messageShort:
+        "Tu mensaje es muy corto. Por favor describe un poco lo que te gustaría preguntarme, para que pueda darte una respuesta cuanto antes.",
+      messageLong:
+        "Tu mensaje es muy largo. Por favor coméntame un poco por encima lo que te gustaría preguntarme y me pondré en contacto contigo para concretar todos los detalles.",
+      privacyRequired:
+        "Para poder continuar tienes que aceptar el aviso legal y la política de privacidad.",
+    },
+  },
   errorSubtitle: {
     en:
-      "Please feel free to get in touch by sending me an email at info@danilucaci.com or at @danilucaci.",
+      "Please feel free to get in touch by sending me an email at hello@danilucaci.com or a tweet at: @danilucaci.",
     es:
-      "Por favor, ponte en contacto conmigo enviándome  un email a info@danilucaci.com o a @danilucaci.",
+      "Por favor, ponte en contacto conmigo enviándome un email a hola@danilucaci.com o un mensaje privado en twitter a: @danilucaci.",
   },
   cta: {
     en: "Message Sent!",
@@ -111,13 +140,6 @@ export const FORM_SUBMIT_STATUS = {
   },
 };
 
-export const INPUT_EMAIL_ERROR = {
-  en:
-    "The email you have written is incomplete (the part after the @). An example of a correct email is: example@example.com (.com is your emails country code)",
-  es:
-    "El email que has introducido es incompleto (la parte después de la @). Un ejemplo de email correcto es: ejemplo@ejemplo.es (.es es el código del país de tu email)",
-};
-
 export const MC_ERRORS = {
   en: {
     generic: "Sorry 😔, something went wrong, please try again later.",
@@ -126,8 +148,22 @@ export const MC_ERRORS = {
   },
   es: {
     generic: "Lo siento 😔, algo ha salido mal, por favor intentalo de nuevo más tarde.",
-    many: "Lo siento 😔, has hecho demasiados intentos, por favor intentalo de nuevo más tarde.",
+    many:
+      "Lo siento 😔, has hecho demasiados intentos de suscribirte, por favor intentalo de nuevo más tarde.",
     already: "Ya te habías suscrito. ¡Gracias por apuntarte a mi lista de suscriptores! 🙏🏼",
+  },
+  formValidation: {
+    en: {
+      email: "Please enter a valid email",
+      emailRequired: "Please enter your email so that I can get back to you.",
+      privacyRequired: "To continue you need to accept the legal notice and privacy policy.",
+    },
+    es: {
+      email: "El correo electrónico que has introducido no es válido.",
+      emailRequired: "Por favor introduce tu email para que pueda enviarte una respuesta.",
+      privacyRequired:
+        "Para poder continuar tienes que aceptar el aviso legal y la política de privacidad.",
+    },
   },
 };
 
@@ -146,10 +182,10 @@ export const MC_SUCCESS = {
 
 export const DRIBBBLE_STATUS = {
   en: {
-    error: "Something went wrong... The projects from Dribbble couldn‘t be loaded 😔.",
+    error: "Something went wrong... The projects from Dribbble couldn‘t be loaded 😔",
   },
   es: {
-    error: "Algo ha salido mal... Los proyectos de Dribbble no se han podido cargar 😔.",
+    error: "Algo ha salido mal... Los proyectos de Dribbble no se han podido cargar 😔",
   },
 };
 

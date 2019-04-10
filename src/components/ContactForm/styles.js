@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Form } from "formik";
 
 import { rem } from "../../theme/globalStyles";
 import Label from "../Label/Label";
@@ -7,7 +8,7 @@ import TextArea from "../TextArea/TextArea";
 
 export const FormContainer = styled.div``;
 
-export const StyledForm = styled.form`
+export const StyledForm = styled(Form)`
   width: 100%;
 `;
 

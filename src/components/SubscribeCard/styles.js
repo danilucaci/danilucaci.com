@@ -3,6 +3,7 @@ import { theme, mediaMin, rem } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
 import Input from "../Input/Input";
 import SubmitButton from "../SubmitButton/SubmitButton";
+import { Form } from "formik";
 
 export const StyledSubscribeCard = styled.aside`
   background-color: ${theme.colors.bgLight100};
@@ -32,7 +33,7 @@ export const StyledSubscribeCard = styled.aside`
 
 export const FormContainer = styled.div``;
 
-export const StyledMCForm = styled.form`
+export const StyledMCForm = styled(Form)`
   width: 100%;
 `;
 
@@ -47,7 +48,7 @@ export const StyledLabel = styled.label`
   position: relative;
 
   ${mediaMin.xl`
-    max-width: calc(60% - ${rem(8)});
+    width: calc(55% - ${rem(8)});
     margin-top: 0;
     margin-right: ${rem(8)};
     display: inline-block;

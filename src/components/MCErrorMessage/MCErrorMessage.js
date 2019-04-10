@@ -1,13 +1,14 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { string } from "prop-types";
 
 import { MC_ERRORS } from "../../i18n/i18n";
-import { MessageTitle, StatusMessageWrapper } from "./styles";
+import { MessageTitle, StatusMessageWrapper, APIMessageTitle } from "./styles";
 
-function EmailErrorMessage({ locale, MCError = "" }) {
+function EmailErrorMessage({ locale, MCError = "", apiMessage = "" }) {
   return (
     <StatusMessageWrapper>
       <MessageTitle>{MC_ERRORS[locale][MCError]}</MessageTitle>
+      {apiMessage && <APIMessageTitle>{apiMessage}</APIMessageTitle>}
     </StatusMessageWrapper>
   );
 }
@@ -15,6 +16,12 @@ function EmailErrorMessage({ locale, MCError = "" }) {
 export default EmailErrorMessage;
 
 EmailErrorMessage.propTypes = {
-  locale: PropTypes.string.isRequired,
-  MCError: PropTypes.string,
+  locale: string.isRequired,
+  MCError: string,
+  apiMessage: string,
+};
+
+EmailErrorMessage.defaultProps = {
+  MCError: "Something went wrong",
+  apiMessage: "",
 };

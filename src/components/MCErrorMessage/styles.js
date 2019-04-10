@@ -13,6 +13,18 @@ export const MessageTitle = styled(Copy)`
   }
 `;
 
+export const APIMessageTitle = styled(Copy)`
+  color: ${theme.colors.dark800};
+  display: block;
+  font-size: ${theme.fontSizes.m};
+  line-height: ${theme.lineHeights.m};
+  margin-top: ${rem(8)};
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.bodyRegular};
+  }
+`;
+
 export const StatusMessageWrapper = styled.div`
   background-color: ${theme.colors.grey100};
   border: ${rem(2)} solid ${theme.colors.dark800};

@@ -1,9 +1,15 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
+import { string } from "prop-types";
+import { Formik, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import { navigate } from "gatsby";
 
-import { CONSENT_VALUE, INPUT_EMAIL_ERROR, localePaths } from "../../i18n/i18n";
+import { CONSENT_VALUE, FORM_SUBMIT_STATUS, localePaths } from "../../i18n/i18n";
 import PrivacyCheckbox from "../PrivacyCheckbox/PrivacyCheckbox";
-import EmailLoading from "../EmailLoading/EmailLoading";
+import { StyledErrorCTA, StyledIcon } from "../EmailLoading/styles";
+import EmailErrorMessage from "../EmailErrorMessage/EmailErrorMessage";
+import { InlineStatusMessageWrapper, InlineMessageCopy } from "../EmailErrorMessage/styles";
+
 import SubmitButton from "../SubmitButton/SubmitButton";
 
 import {
@@ -17,28 +23,21 @@ import {
 } from "./styles";
 
 function ContactForm({ locale }) {
-  const [email, setEmail] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [message, setMessage] = useState("");
   const [dateSent, setDateSent] = useState(() => new Date());
-  const [botField, setBotField] = useState("");
-  const [acceptsConsentCheckbox, setAcceptsConsentCheckbox] = useState(false);
-  const [checkboxValue, setCheckboxValue] = useState(CONSENT_VALUE[locale].no);
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [showFormLoading, setShowFormLoading] = useState(false);
-  const [showFormSuccess, setShowFormSuccess] = useState(false);
   const [showFormError, setShowFormError] = useState(false);
   const [formErrorRes, setFormErrorRes] = useState({});
 
-  // function showFormInputs() {
-  //   console.log(`fullname: ${fullName}`);
-  //   console.log(`email: ${email}`);
-  //   console.log(`message: ${message}`);
-  //   console.log(`dateSent: ${dateSent}`);
-  //   console.log(`botfield: ${botField}`);
-  //   console.log(`checkboxValue: ${checkboxValue}`);
-  //   console.log(`acceptsConsentCheckbox: ${acceptsConsentCheckbox}`);
-  // }
+  function showFormInputs({
+    fullname, email, message, acceptsconsentcheckbox, botfield,
+  }) {
+    console.log(`fullname: ${fullname}`);
+    console.log(`email: ${email}`);
+    console.log(`message: ${message}`);
+    console.log(`dateSent: ${dateSent}`);
+    console.log(`botfield: ${botfield}`);
+    console.log(`checkboxValue: ${acceptsconsentcheckbox}`);
+    console.log(`acceptsConsentCheckbox: ${acceptsconsentcheckbox}`);
+  }
 
   function encode(data) {
     return Object.keys(data)
@@ -46,52 +45,7 @@ function ContactForm({ locale }) {
       .join("&");
   }
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-
-    setShowFormLoading(true);
-    setFormSubmitted(true);
-
-    try {
-      const form = e.target;
-      fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({
-          "form-name": form.getAttribute("name"),
-          email,
-          fullname: fullName,
-          message,
-          datesent: dateSent,
-          botfield: botField,
-          acceptsconsentcheckbox: acceptsConsentCheckbox,
-        }),
-      }).then(() => {
-        // showFormInputs();
-        handleFormSent();
-      });
-    } catch (error) {
-      handleFormError(error);
-    }
-  }
-
-  function handleConsentCheckbox(e) {
-    setAcceptsConsentCheckbox(e.target.checked);
-    setDateSent(() => new Date());
-    if (e.target.checked) {
-      setCheckboxValue(CONSENT_VALUE[locale].yes);
-    } else {
-      setCheckboxValue(CONSENT_VALUE[locale].no);
-    }
-  }
-
-  function handleFormSent() {
-    setShowFormLoading(false);
-    setShowFormSuccess(true);
-  }
-
   function handleFormError(error) {
-    setShowFormLoading(false);
     setShowFormError(true);
     setFormErrorRes(error);
     console.error("Contact form failed with: ", error.name);
@@ -99,101 +53,167 @@ function ContactForm({ locale }) {
     throw new Error(error);
   }
 
+  const ContactSchema = Yup.object().shape({
+    fullname: Yup.string()
+      .min(3, FORM_SUBMIT_STATUS.formValidation[locale].nameShort)
+      .max(100, FORM_SUBMIT_STATUS.formValidation[locale].nameLong)
+      .required(FORM_SUBMIT_STATUS.formValidation[locale].nameRequired),
+    email: Yup.string()
+      .email(FORM_SUBMIT_STATUS.formValidation[locale].email)
+      .required(FORM_SUBMIT_STATUS.formValidation[locale].emailRequired),
+    message: Yup.string()
+      .min(2, FORM_SUBMIT_STATUS.formValidation[locale].messageShort)
+      .max(800, FORM_SUBMIT_STATUS.formValidation[locale].messageLong)
+      .required(FORM_SUBMIT_STATUS.formValidation[locale].messageRequired),
+    botfield: Yup.string().max(
+      0,
+      "01001010 01100001 01101011 00100000 01110011 01101001 11000100 10011001 00100000 01101101 01100001 01110011 01111010 00111111 00100000 01101101 01111001 00100000 01101110 01100001 01101101 01100101 00100000 01101001 01110011 00100000 01100100 01100001 01101110 01101001",
+    ),
+    acceptsconsentcheckbox: Yup.boolean().oneOf(
+      [true],
+      FORM_SUBMIT_STATUS.formValidation[locale].privacyRequired,
+    ),
+  });
+
   return (
     <FormContainer>
-      <StyledForm
-        name="contact"
-        method="post"
-        action={localePaths[locale].thanks}
-        data-netlify="true"
-        data-netlify-honeypot="botfield"
-        onSubmit={handleSubmit}
+      <Formik
+        initialValues={{
+          email: "",
+          fullname: "",
+          message: "",
+          botfield: "",
+          acceptsconsentcheckbox: false,
+        }}
+        validationSchema={ContactSchema}
+        onSubmit={(values, { setSubmitting }) => {
+          // setTimeout(() => {
+          try {
+            fetch("/", {
+              method: "POST",
+              headers: { "Content-Type": "application/x-www-form-urlencoded" },
+              body: encode({
+                "form-name": "contact",
+                email: values.email,
+                fullname: values.fullName,
+                message: values.message,
+                datesent: dateSent,
+                botfield: values.botfield,
+                acceptsconsentcheckbox: values.acceptsconsentcheckbox,
+              }),
+            }).then(() => {
+              // showFormInputs(values);
+              setSubmitting(false);
+              navigate(localePaths[locale].thanks);
+            });
+          } catch (error) {
+            handleFormError(error);
+          }
+          // }, 400);
+        }}
       >
-        {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
-        {/* These have to be input types, otherwise they don't show in the form atributes */}
-        <input type="hidden" name="form-name" arria-hidden="true" value="contact" />
-        <input
-          style={{ display: "none" }}
-          arria-hidden="true"
-          name="botfield"
-          value={botField}
-          onChange={(e) => setBotField(e.target.value)}
-        />
-        <input
-          style={{ display: "none" }}
-          arria-hidden="true"
-          type="text"
-          value={dateSent}
-          onChange={() => setDateSent(() => new Date())}
-          name="datesent"
-        />
-        <StyledLabel labelType="full name">
-          <StyledInput
-            type="text"
-            value={fullName}
-            name="fullname"
-            placeholderType="full name"
-            autoCorrect="off"
-            autoComplete="name"
-            onChange={(e) => setFullName(e.target.value)}
-            required
-          />
-          <InputStatusIcon arriaHidden="true" />
-        </StyledLabel>
-        <StyledLabel labelType="email">
-          {/* https://css-tricks.com/form-validation-part-1-constraint-validation-html/ */}
-          <StyledInput
-            type="email"
-            value={email}
-            name="email"
-            placeholderType="email"
-            title={INPUT_EMAIL_ERROR[locale]}
-            pattern="^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*(\.\w{2,})+$"
-            autoCapitalize="off"
-            autoCorrect="off"
-            autoComplete="email"
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <InputStatusIcon arriaHidden="true" />
-        </StyledLabel>
-        <StyledLabel labelType="message">
-          <StyledTextArea
-            rows="8"
-            value={message}
-            name="message"
-            onChange={(e) => setMessage(e.target.value)}
-            required
-          />
-          <InputTextAreaStatusIcon arriaHidden="true" />
-        </StyledLabel>
-        <PrivacyCheckbox
-          type="checkbox"
-          name="acceptsconsentcheckbox"
-          value={checkboxValue}
-          onChange={handleConsentCheckbox}
-          locale={locale}
-          required
-        />
+        {({ isSubmitting, isValid }) => (
+          <StyledForm
+            name="contact"
+            method="post"
+            action={localePaths[locale].thanks}
+            data-netlify="true"
+            data-netlify-honeypot="botfield"
+          >
+            {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
+            {/* These have to be input types, otherwise they don't show in the form atributes */}
+            <input type="hidden" name="form-name" arria-hidden="true" value="contact" />
+            <Field style={{ display: "none" }} arria-hidden="true" name="botfield" />
+            <input
+              style={{ display: "none" }}
+              arria-hidden="true"
+              type="text"
+              value={dateSent}
+              onChange={() => setDateSent(() => new Date())}
+              name="datesent"
+            />
+            <StyledLabel labelType="full name">
+              <StyledInput
+                type="fullname"
+                name="fullname"
+                autoCorrect="off"
+                autoComplete="name"
+                placeholderType="full name"
+              />
+              <InputStatusIcon arriaHidden="true" />
+            </StyledLabel>
+            <ErrorMessage name="fullname">
+              {(errorMessage) => (
+                <InlineStatusMessageWrapper>
+                  <InlineMessageCopy>{errorMessage}</InlineMessageCopy>
+                </InlineStatusMessageWrapper>
+              )}
+            </ErrorMessage>
+            <StyledLabel labelType="email">
+              <StyledInput
+                type="email"
+                name="email"
+                autoCapitalize="off"
+                autoCorrect="off"
+                autoComplete="email"
+                placeholderType="email"
+              />
+              <InputStatusIcon arriaHidden="true" />
+            </StyledLabel>
+            <ErrorMessage name="email">
+              {(errorMessage) => (
+                <InlineStatusMessageWrapper>
+                  <InlineMessageCopy>{errorMessage}</InlineMessageCopy>
+                </InlineStatusMessageWrapper>
+              )}
+            </ErrorMessage>
+            <StyledLabel labelType="message">
+              <StyledTextArea name="message" component="textarea" rows="6" />
+              <InputTextAreaStatusIcon arriaHidden="true" />
+            </StyledLabel>
+            <ErrorMessage name="message">
+              {(errorMessage) => (
+                <InlineStatusMessageWrapper>
+                  <InlineMessageCopy>{errorMessage}</InlineMessageCopy>
+                </InlineStatusMessageWrapper>
+              )}
+            </ErrorMessage>
+            <PrivacyCheckbox
+              type="checkbox"
+              name="acceptsconsentcheckbox"
+              value={isValid === true ? CONSENT_VALUE[locale].yes : CONSENT_VALUE[locale].no}
+              locale={locale}
+            />
+            <ErrorMessage name="acceptsconsentcheckbox">
+              {(errorMessage) => (
+                <InlineStatusMessageWrapper>
+                  <InlineMessageCopy>{errorMessage}</InlineMessageCopy>
+                </InlineStatusMessageWrapper>
+              )}
+            </ErrorMessage>
 
-        {formSubmitted && (
-          <EmailLoading
-            showFormLoading={showFormLoading}
-            showFormSuccess={showFormSuccess}
-            showFormError={showFormError}
-            formErrorRes={formErrorRes}
-            locale={locale}
-          />
+            {showFormError && (
+              <React.Fragment>
+                <StyledErrorCTA>
+                  {FORM_SUBMIT_STATUS.ctaError[locale]}
+                  <StyledIcon aria-hidden="true">
+                    <use xlinkHref="#error" />
+                  </StyledIcon>
+                </StyledErrorCTA>
+                <EmailErrorMessage locale={locale} formErrorRes={formErrorRes} />
+              </React.Fragment>
+            )}
+
+            {!showFormError && <SubmitButton disabled={!isValid} showSpinner={isSubmitting} />}
+          </StyledForm>
         )}
-
-        {!formSubmitted && <SubmitButton disabled={!acceptsConsentCheckbox} />}
-      </StyledForm>
+      </Formik>
     </FormContainer>
   );
 }
 
 ContactForm.propTypes = {
-  locale: PropTypes.string.isRequired,
+  locale: string.isRequired,
 };
 
 export default ContactForm;

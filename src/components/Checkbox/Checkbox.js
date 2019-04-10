@@ -1,7 +1,9 @@
 import styled from "styled-components";
+import { Field } from "formik";
+
 import { theme, rem } from "../../theme/globalStyles";
 
-export const Checkbox = styled.input`
+export const Checkbox = styled(Field)`
   will-change: transform;
 
   /* take it out of document flow */
@@ -26,7 +28,7 @@ export const Checkbox = styled.input`
     width: ${rem(20)};
     height: ${rem(20)};
     background: ${theme.colors.grey100};
-    border: 2px solid ${theme.colors.grey500};
+    border: 2px solid ${theme.colors.grey400};
     border-radius: ${theme.borderRadius.buttons};
   }
 
