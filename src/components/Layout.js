@@ -53,6 +53,7 @@ class Layout extends Component {
     deniesCookie: { necessary: true, analytics: false, dismissed: true },
     cookieExp: 780,
     error: null,
+    isTransitioning: false,
   };
   // cookieExp set in days same as GA expiry date
 
@@ -311,6 +312,8 @@ class Layout extends Component {
           secure: GATSBY_DL_COOKIE_SECURE,
         });
 
+        this.handleTransitionState();
+
         // Check to see if the cookie was set
         this.checkGDPRStatus();
       } else if (NODE_ENV === "development") {
@@ -329,6 +332,20 @@ class Layout extends Component {
       window._DL_GA_INITIALIZED = true;
     }
     this.logPageView();
+  };
+
+  handleTransitionState = () => {
+    this.setState((prevState) => ({
+      isTransitioning: !prevState.isTransitioning,
+    }));
+
+    let timeOut = setTimeout(() => {
+      this.setState((prevState) => ({
+        isTransitioning: !prevState.isTransitioning,
+      }));
+
+      clearTimeout(timeOut);
+    }, 400);
   };
 
   render() {
@@ -370,6 +387,7 @@ class Layout extends Component {
               acceptsCookies={this.acceptsCookies}
               deniesCookies={this.deniesCookies}
               pageLocale={this.props.locale}
+              isTransitioning={this.state.isTransitioning}
             />
             {this.state.error && <a onClick={() => Sentry.showReportDialog()}>Report feedback</a>}
             {this.props.children}

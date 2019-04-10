@@ -1,32 +1,50 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import { theme, rem, mediaMin } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
-import { DarkGhostButton, PrimaryButton } from "../Button/Button";
+import { TertiaryButton, PrimaryButtonSmall } from "../Button/Button";
 import { DefaultLink } from "../Link/Link";
 
 export const StyledCookieConsent = styled.aside`
   background-color: ${theme.colors.grey100};
   border-top: ${rem(8)} solid ${theme.colors.main600};
-  display: ${(props) => (props.showConsent ? "block" : "none")};
+  display: none;
 
-  padding: ${rem(16)} ${rem(24)} ${rem(24)};
+  padding: ${rem(16)} ${rem(16)} ${rem(24)} ${rem(16)};
+  ${theme.shadow.mobileCookieConsent};
+
   position: fixed;
-  z-index: 10;
+  z-index: 1000;
   will-change: transform;
   bottom: 0;
   left: 0;
-  right: 0;
   width: 100%;
+  transform: translateY(120%);
+  pointer-events: none;
 
-  ${theme.shadow.mobileCookieConsent};
+  transition: transform ease-out 0.3s;
 
-  ${mediaMin.s`
-    border: 2px solid ${theme.colors.grey400};
+  ${(props) =>
+    props.showConsent &&
+    `
+      display: block;
+      transform: translateY(0);
+      pointer-events: auto;
+    `};
+
+  ${(props) =>
+    props.isTransitioning &&
+    `
+      display: block !important;
+    `};
+
+  ${mediaMin.xxs`
+    border: 2px solid ${theme.colors.grey300};
     border-radius: 4px;
     bottom: ${rem(16)};
     left: ${rem(16)};
     max-width: ${rem(340)};
+    padding: ${rem(24)};
     ${theme.shadow.dropdown};
   `};
 `;
@@ -52,16 +70,20 @@ export const ButtonsContainer = styled.div`
   margin-top: ${rem(24)};
 
   ${mediaMin.m`
-    margin-top: ${rem(40)};  
+    margin-top: ${rem(32)};  
   `};
 `;
 
-export const StyledPrimaryButton = styled(PrimaryButton)`
+export const StyledPrimaryButton = styled(PrimaryButtonSmall)`
   display: block;
+  width: calc(50% - ${rem(8)});
+  margin-left: ${rem(8)};
+  float: right;
 `;
 
-export const StyledGhostButton = styled(DarkGhostButton)`
+export const StyledGhostButton = styled(TertiaryButton)`
   display: block;
-  width: 100%;
-  margin-top: ${rem(8)};
+  width: calc(50% - ${rem(8)});
+  margin-right: ${rem(8)};
+  float: left;
 `;

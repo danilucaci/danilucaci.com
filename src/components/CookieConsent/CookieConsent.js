@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { bool, func, string } from "prop-types";
 import { FormattedMessage } from "react-intl";
 import { graphql, StaticQuery } from "gatsby";
 
@@ -14,7 +14,7 @@ import {
 } from "./styles";
 
 const CookieConsent = (props) => (
-  <StyledCookieConsent showConsent={props.askCookieConsent}>
+  <StyledCookieConsent isTransitioning={props.isTransitioning} showConsent={props.askCookieConsent}>
     <CopyContainer>
       <FormattedMessage id="cookieMessage">
         {(txt) => <StyledCopy>{txt} </StyledCopy>}
@@ -48,21 +48,22 @@ const CookieConsent = (props) => (
     </CopyContainer>
 
     <ButtonsContainer>
-      <FormattedMessage id="cookieAccept">
-        {(txt) => <StyledPrimaryButton onClick={props.acceptsCookies}>{txt}</StyledPrimaryButton>}
-      </FormattedMessage>
       <FormattedMessage id="cookieDeny">
         {(txt) => <StyledGhostButton onClick={props.deniesCookies}>{txt}</StyledGhostButton>}
+      </FormattedMessage>
+      <FormattedMessage id="cookieAccept">
+        {(txt) => <StyledPrimaryButton onClick={props.acceptsCookies}>{txt}</StyledPrimaryButton>}
       </FormattedMessage>
     </ButtonsContainer>
   </StyledCookieConsent>
 );
 
 CookieConsent.propTypes = {
-  askCookieConsent: PropTypes.bool.isRequired,
-  acceptsCookies: PropTypes.func.isRequired,
-  deniesCookies: PropTypes.func.isRequired,
-  pageLocale: PropTypes.string.isRequired,
+  askCookieConsent: bool.isRequired,
+  isTransitioning: bool.isRequired,
+  acceptsCookies: func.isRequired,
+  deniesCookies: func.isRequired,
+  pageLocale: string.isRequired,
 };
 
 export default CookieConsent;

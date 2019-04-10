@@ -109,15 +109,15 @@ export const PrimaryButtonSmall = styled.button`
   line-height: ${theme.lineHeights.buttonS};
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.bodyRegular};
+    font-family: ${theme.fonts.bodyBold};
   }
 
   font-style: normal;
-  font-weight: 400;
+  font-weight: 700;
 
   white-space: nowrap;
 
-  padding: ${rem(8)} ${rem(32)};
+  padding: ${rem(4)} ${rem(16)};
   height: ${theme.buttonHeight.s};
 
   &:hover,
@@ -129,8 +129,8 @@ export const PrimaryButtonSmall = styled.button`
 `;
 
 export const TertiaryButton = styled.button`
-  border: none;
   background-color: transparent;
+  border: 2px solid ${theme.colors.grey400};
   border-radius: ${theme.borderRadius.buttons};
   color: ${theme.colors.dark800};
 
@@ -139,22 +139,22 @@ export const TertiaryButton = styled.button`
   line-height: ${theme.lineHeights.buttonS};
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.bodyRegular};
+    font-family: ${theme.fonts.bodyBold};
   }
 
   font-style: normal;
-  font-weight: 400;
-  text-decoration: underline;
-  text-align: center;
+  font-weight: 700;
 
   white-space: nowrap;
 
   height: ${theme.buttonHeight.s};
-  padding: ${rem(8)} ${rem(32)};
+  padding: ${rem(4)} ${rem(16)};
 
   &:hover,
   &:focus {
     cursor: pointer;
+    background-color: ${theme.colors.grey100};
+    ${theme.shadow.buttons.darkGhost};
   }
 `;
 
