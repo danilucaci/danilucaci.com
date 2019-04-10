@@ -715,10 +715,13 @@ The reducer is pretty simple. I can have an initial state with `isLoading`, `dri
 
 In order to still be able to add new shots to the existing ones, I needed to merge the previous state with the new fetched shots.
 
-```jsx
+Besides that, I also used the axios cancel token (instead of the `didCancel` variable) so that I can cancel the network request if the component is unmounted before the async function resolves.
+
+```jsx{15,26,32,45}
 export default function useDribbbleReducer() {
   const initialState = {
     dribbblePage: 1,
+    shotsPerPage: 4,
     dribbblePosts: [],
     isLoading: true,
     isLoadingMore: false,
@@ -728,8 +731,8 @@ export default function useDribbbleReducer() {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   React.useEffect(() => {
-    let didCancel = false;
     let dribbbleRes = {};
+    let source = axios.CancelToken.source();
 
     dispatch({ type: "FETCH_INIT" });
 
@@ -738,14 +741,17 @@ export default function useDribbbleReducer() {
         dribbbleRes = await axios.get(
           `https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&page=${
             state.dribbblePage
-          }&per_page=4`
+          }&per_page=${state.shotsPerPage}`,
+          {
+            cancelToken: source.token,
+          }
         );
 
-        if (!didCancel) {
-          dispatch({ type: "FETCH_SUCCESS", payload: dribbbleRes.data });
-        }
+        dispatch({ type: "FETCH_SUCCESS", payload: dribbbleRes.data });
       } catch (error) {
-        if (!didCancel) {
+        if (axios.isCancel(error)) {
+          console.warn("Cancelled axios request");
+        } else {
           console.warn(error);
           dispatch({ type: "FETCH_ERROR" });
         }
@@ -755,12 +761,13 @@ export default function useDribbbleReducer() {
     fetchData();
 
     return () => {
-      // Prevent memory leak when navigating to another page
-      didCancel = true;
+      // Prevent memory leak when moving to another page and cancel axios request
+      source.cancel();
     };
-  }, [state.dribbblePage]);
+  }, [state.dribbblePage, state.shotsPerPage]);
 
   function loadMorePosts() {
+    // Load posts with pagination, shotsPerPage on each page
     dispatch({ type: "FETCH_MORE" });
   }
 
@@ -803,4 +810,4 @@ As an improvement, I’m looking into how I can cache the results.
 
 Currently, each time the component mounts, the shots are fetched from Dribbble. Therefore, each time a user loads the page that has the component, a network request is made.
 
-By caching the shots fetched from Dribbble, on each session, I can avoid making a network request each time the component is rendered. This way I can help my site’s user’s save some of their mobile bandwidth.
+By caching the shots fetched from Dribbble, I can avoid making a network request each time the component is rendered. This way I can help the visitors of my site to save some of their mobile bandwidth.

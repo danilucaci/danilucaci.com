@@ -726,10 +726,13 @@ El _reducer_ es bastante sencillo. Puedo tener un estado local inicial con los v
 
 Para seguir poder añadir nuevas imágenes a las que ya tenía, he tenido que combinar los valores del estado local antiguo con los nuevos.
 
-```jsx
+Además, también he usado el token de cancelación de axios (en lugar de la variable `didCancel`) para poder cancelar la solicitud de red si el componente ya no está montado cuando se resuelva la función asíncrona.
+
+```jsx{15,26,32,45}
 export default function useDribbbleReducer() {
   const initialState = {
     dribbblePage: 1,
+    shotsPerPage: 4,
     dribbblePosts: [],
     isLoading: true,
     isLoadingMore: false,
@@ -739,8 +742,8 @@ export default function useDribbbleReducer() {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   React.useEffect(() => {
-    let didCancel = false;
     let dribbbleRes = {};
+    let source = axios.CancelToken.source();
 
     dispatch({ type: "FETCH_INIT" });
 
@@ -749,14 +752,17 @@ export default function useDribbbleReducer() {
         dribbbleRes = await axios.get(
           `https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&page=${
             state.dribbblePage
-          }&per_page=4`
+          }&per_page=${state.shotsPerPage}`,
+          {
+            cancelToken: source.token,
+          }
         );
 
-        if (!didCancel) {
-          dispatch({ type: "FETCH_SUCCESS", payload: dribbbleRes.data });
-        }
+        dispatch({ type: "FETCH_SUCCESS", payload: dribbbleRes.data });
       } catch (error) {
-        if (!didCancel) {
+        if (axios.isCancel(error)) {
+          console.warn("Cancelled axios request");
+        } else {
           console.warn(error);
           dispatch({ type: "FETCH_ERROR" });
         }
@@ -766,12 +772,13 @@ export default function useDribbbleReducer() {
     fetchData();
 
     return () => {
-      // Prevent memory leak when navigating to another page
-      didCancel = true;
+      // Prevent memory leak when moving to another page and cancel axios request
+      source.cancel();
     };
-  }, [state.dribbblePage]);
+  }, [state.dribbblePage, state.shotsPerPage]);
 
   function loadMorePosts() {
+    // Load posts with pagination, shotsPerPage on each page
     dispatch({ type: "FETCH_MORE" });
   }
 

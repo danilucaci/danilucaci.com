@@ -38,7 +38,7 @@ const reducer = (state, action) => {
   }
 };
 
-export default function useDribbbleReducer() {
+function useDribbbleReducer() {
   const initialState = {
     dribbblePage: 1,
     shotsPerPage: 4,
@@ -93,3 +93,5 @@ export default function useDribbbleReducer() {
 
   return { ...state, loadMorePosts };
 }
+
+export default useDribbbleReducer;
