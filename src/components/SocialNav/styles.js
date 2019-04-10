@@ -8,13 +8,9 @@ export const Wrapper = styled.nav`
 
 export const StyledIcon = styled(Icon)`
   fill: ${(props) => (props.light ? theme.colors.light100 : null)};
-  width: ${rem(40)};
-  height: ${rem(40)};
 
-  ${mediaMin.m`
-    width: ${rem(24)};
-    height: ${rem(24)};  
-  `};
+  width: ${rem(24)};
+  height: ${rem(24)};
 `;
 
 export const StyledLink = styled.a`
