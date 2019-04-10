@@ -69,13 +69,8 @@ export const ResumeWrapper = styled.div`
 
 export const StyledSocialNav = styled.div`
   margin-top: ${rem(2)};
-
-  ${mediaMin.xxs`
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: ${rem(16)};
-    float: left;
-  `};
+  margin-right: ${rem(16)};
+  float: left;
 `;
 
 export const ResumeButton = styled.a`
@@ -83,7 +78,6 @@ export const ResumeButton = styled.a`
   border: 2px solid ${theme.colors.grey400};
   border-radius: ${theme.borderRadius.buttons};
   color: ${theme.colors.dark800} !important;
-  display: inline-block;
   text-align: center;
   text-decoration: none;
   font-size: ${theme.fontSizes.buttonS};
@@ -96,20 +90,19 @@ export const ResumeButton = styled.a`
   font-style: normal;
   font-weight: 700;
 
-  padding: ${rem(6)} ${rem(24)} ${rem(4)};
+  padding: ${rem(6)} ${rem(16)} ${rem(4)};
   height: ${theme.buttonHeight.s};
-  width: 100%;
-  margin-top: ${rem(16)};
+  width: auto;
 
   white-space: nowrap;
 
+  float: right;
+
   ${mediaMin.xxs`
-    margin-top: 0;  
-    width: auto;
-    float: right;
+    margin-top: 0;
   `};
 
-  @media screen and (min-width: ${theme.breakpoints.m}) and (max-width: 55em) {
+  @media screen and (min-width: ${theme.breakpoints.m}) and (max-width: 48em) {
     width: 100%;
     margin-top: ${rem(16)};
   }
