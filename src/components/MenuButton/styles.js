@@ -20,7 +20,7 @@ export const StyledMenuButton = styled.button`
   margin-top: ${rem(8)};
 
   height: ${rem(40)};
-  padding: ${rem(6)} ${rem(12)} ${rem(10)} ${rem(12)};
+  padding: ${rem(6)} ${rem(10)} ${rem(10)} ${rem(12)};
 
   ${mediaMin.s`
     display: none;
@@ -31,6 +31,9 @@ export const StyledIcon = styled(Icon)`
   fill: ${theme.colors.dark900};
   transition: transform 0.2s ease;
   margin-bottom: ${rem(2)};
+  margin-left: ${rem(4)};
+  width: ${rem(18)};
+  height: ${rem(18)};
 
   ${(props) =>
     props.animate &&
