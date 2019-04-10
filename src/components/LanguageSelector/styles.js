@@ -16,7 +16,8 @@ export const StyledLanguageSelector = styled.li`
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};
 
-  &:hover {
+  &:hover,
+  &:active {
     & ul {
       /* visibility: visible; */
       opacity: 1;

@@ -3,17 +3,20 @@ import { theme, rem, mediaMin } from "../../theme/globalStyles";
 
 export const StyledSiteNavList = styled.ul`
   background-color: ${theme.colors.grey100};
-  display: inline-block;
+  display: block;
   text-align: center;
 
-  position: absolute;
-  z-index: 10;
+  position: fixed;
+  z-index: 1000;
 
   height: 100%;
-  height: 100vh;
   width: 100%;
+  height: 100vh;
+  width: 100vw;
   left: 0;
   top: calc(${theme.navBarHeight} - ${rem(8)});
+  overflow-y: scroll;
+  overflow-x: hidden;
 
   padding-left: ${rem(16)};
   padding-right: ${rem(16)};
@@ -40,6 +43,8 @@ export const StyledSiteNavList = styled.ul`
     background-color: transparent;
     padding-left: 0;
     padding-right: 0;
+    display: inline-block;
+    overflow: visible;
     height: auto;
     width: auto;
     position: static;

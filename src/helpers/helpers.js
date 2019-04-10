@@ -12,6 +12,23 @@ export function calculateScroll() {
   return scrolled;
 }
 
+export function calculatePageWidth() {
+  let pageWidth = 0;
+
+  if (typeof window.innerWidth === "number") {
+    //Non-IE
+    pageWidth = window.innerWidth;
+  } else if (document.documentElement && document.documentElement.clientWidth) {
+    //IE 6+ in 'standards compliant mode'
+    pageWidth = document.documentElement.clientWidth;
+  } else if (document.body && document.body.clientWidth) {
+    //IE 4 compatible
+    pageWidth = document.body.clientWidth;
+  }
+
+  return pageWidth;
+}
+
 export function handleScrollLine() {
   const scrollLine = document.querySelector(".js-scrollLine");
   const scrolled = calculateScroll();
