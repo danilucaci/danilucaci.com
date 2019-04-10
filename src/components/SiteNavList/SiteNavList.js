@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { bool, string } from "prop-types";
 import { FormattedMessage } from "react-intl";
 
 import LanguageSelector from "../LanguageSelector/LanguageSelector";
@@ -9,9 +9,9 @@ import { localePaths } from "../../i18n/i18n";
 import { StyledSiteNavList } from "./styles";
 
 const SiteNavList = ({
-  locale, currentPath, twinPostURL, showNav,
+  locale, currentPath, twinPostURL, showNav, isTransitioning,
 }) => (
-  <StyledSiteNavList showNav={showNav} role="menu">
+  <StyledSiteNavList showNav={showNav} isTransitioning={isTransitioning} role="menu">
     <FormattedMessage id="siteNavWork">
       {(txt) => <SiteNavListItem to={localePaths[locale].work}>{txt}</SiteNavListItem>}
     </FormattedMessage>
@@ -29,10 +29,15 @@ const SiteNavList = ({
 );
 
 SiteNavList.propTypes = {
-  locale: PropTypes.string.isRequired,
-  twinPostURL: PropTypes.string.isRequired,
-  currentPath: PropTypes.string.isRequired,
-  showNav: PropTypes.bool.isRequired,
+  locale: string.isRequired,
+  twinPostURL: string.isRequired,
+  currentPath: string.isRequired,
+  showNav: bool.isRequired,
+  isTransitioning: bool,
+};
+
+SiteNavList.defaultProps = {
+  isTransitioning: false,
 };
 
 export default SiteNavList;

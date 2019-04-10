@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { bool, string, func } from "prop-types";
 
 import SiteNavList from "../SiteNavList/SiteNavList";
 import MenuButton from "../MenuButton/MenuButton";
@@ -13,6 +13,7 @@ const SiteNav = (props) => (
     <MenuButton showNav={props.showNav} onClick={props.onClick} />
     <SiteNavList
       showNav={props.showNav}
+      isTransitioning={props.isTransitioning}
       locale={props.locale}
       twinPostURL={props.twinPostURL}
       currentPath={props.currentPath}
@@ -21,11 +22,16 @@ const SiteNav = (props) => (
 );
 
 SiteNav.propTypes = {
-  locale: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-  twinPostURL: PropTypes.string.isRequired,
-  currentPath: PropTypes.string.isRequired,
-  showNav: PropTypes.bool.isRequired,
+  locale: string.isRequired,
+  onClick: func.isRequired,
+  twinPostURL: string.isRequired,
+  currentPath: string.isRequired,
+  showNav: bool.isRequired,
+  isTransitioning: bool,
+};
+
+SiteNav.defaultProps = {
+  isTransitioning: false,
 };
 
 export default SiteNav;

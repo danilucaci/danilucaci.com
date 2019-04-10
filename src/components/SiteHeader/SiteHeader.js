@@ -8,6 +8,7 @@ import { StyledSiteHeaderWrapper, StyledSiteHeader, ScrollContainer, ScrollLine 
 class SiteHeader extends Component {
   state = {
     showNav: false,
+    isTransitioning: false,
   };
 
   componentDidMount = () => {
@@ -32,14 +33,30 @@ class SiteHeader extends Component {
     }
   };
 
+  handleTransitionState = () => {
+    this.setState((prevState) => ({
+      isTransitioning: !prevState.isTransitioning,
+    }));
+
+    let timeOut = setTimeout(() => {
+      this.setState((prevState) => ({
+        isTransitioning: !prevState.isTransitioning,
+      }));
+
+      clearTimeout(timeOut);
+    }, 300);
+  };
+
   openNav = () => {
+    this.handleTransitionState();
+
     this.setState((prevState) => ({
       showNav: !prevState.showNav,
     }));
 
     if (this.state.showNav === true) {
       document.body.style.overflow = "visible";
-    } else {
+    } else if (this.state.showNav === false) {
       document.body.style.overflow = "hidden";
     }
   };
@@ -52,6 +69,7 @@ class SiteHeader extends Component {
           <SiteNav
             onClick={this.openNav}
             showNav={this.state.showNav}
+            isTransitioning={this.state.isTransitioning}
             locale={this.props.locale}
             twinPostURL={this.props.twinPostURL}
             currentPath={this.props.currentPath}
