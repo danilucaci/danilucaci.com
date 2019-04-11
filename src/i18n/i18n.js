@@ -103,7 +103,7 @@ export const FORM_SUBMIT_STATUS = {
         "Your message is too short. Please include some more details about what you`d like to ask me so that I can get back to you.",
       messageLong:
         "Your message is too long. Please include a short description of what you’d like to ask me and I’ll get back to you to go over the details.",
-      privacyRequired: "To continue you need to accept the legal notice and privacy policy.",
+      privacyRequired: "Please accept the legal notice and privacy policy before you can continue.",
     },
     es: {
       email: "El correo electrónico que has introducido no es válido.",
@@ -117,7 +117,7 @@ export const FORM_SUBMIT_STATUS = {
       messageLong:
         "Tu mensaje es muy largo. Por favor coméntame un poco por encima lo que te gustaría preguntarme y me pondré en contacto contigo para concretar todos los detalles.",
       privacyRequired:
-        "Para poder continuar tienes que aceptar el aviso legal y la política de privacidad.",
+        "Lo siento, para poder continuar es necesario que aceptes el aviso legal y la política de privacidad.",
     },
   },
   errorSubtitle: {
