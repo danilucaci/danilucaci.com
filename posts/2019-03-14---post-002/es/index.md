@@ -377,8 +377,6 @@ Usando un _boolean_ `didCancel` puedo evitar que se almacenen datos en el estado
 
 La función de saneamiento se puede usar para cambiar el valor de `didCancel` de `false` a `true`. Entonces, la próxima vez que se ejecuta, no se guarda nada en el estado local. De esta manera React no intentará guardar datos en el estado local de un componente que ya no esta renderizado.
 
-Ten en cuenta que esto no cancela también la petición de red de axios. Si quieres aprender como hacerlo puedes seguir [sus intrucciones](https://github.com/axios/axios#cancellation).
-
 Genial, hasta ahora tenemos un hook `useEffect()` que:
 
 - Solo obtiene datos de la API de Dribbble una sola vez.

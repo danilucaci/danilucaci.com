@@ -370,8 +370,6 @@ React.useEffect(() => {
 
 By using a boolean `didCancel` I can avoid saving data in state if the component is unmounted. The cleanup function can be used to toggle the boolean from `false` to `true`. Then the next time it’s executed, it won’t save anything in state. This way React won’t try to save data in the state of a component that has been unmounted.
 
-Note that this doesn’t also cancel the axios data fetching part. If you’d like to learn more about cancelling axios requests, you can follow [their instructions](https://github.com/axios/axios#cancellation).
-
 Great, so far we have a `useEffect()` hook that:
 
 - Only fetches data from the Dribbble API once
