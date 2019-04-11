@@ -22,7 +22,7 @@ export const StyledMenuButton = styled.button`
   height: ${rem(40)};
   padding: ${rem(6)} ${rem(10)} ${rem(10)} ${rem(12)};
 
-  ${mediaMin.s`
+  ${mediaMin.xs`
     display: none;
   `};
 `;

@@ -14,9 +14,16 @@ export const StyledSiteNavListItem = styled.li`
   font-weight: 400;
   width: 100%;
 
-  margin: ${rem(16)} 0;
+  @media screen and (min-height: 34em) and (max-width: 27em) {
+    margin-bottom: ${rem(8)};
+  }
 
-  ${mediaMin.s`
+  @media screen and (min-height: 42em) and (max-width: 27em) {
+    margin-top: ${rem(32)};
+    margin-bottom: ${rem(32)};
+  }
+
+  ${mediaMin.xs`
     margin: 0;
     display: inline-block;
     width: auto;
@@ -50,14 +57,14 @@ export const StyledSiteNavListItem = styled.li`
       cursor: pointer;
     }
 
-    ${mediaMin.s`
+    ${mediaMin.xs`
       background-color: transparent;
       font-size: ${theme.fontSizes.s};
       line-height: ${theme.lineHeights.s};
-      padding: ${rem(16)} ${rem(12)};
+      padding: ${rem(16)} ${rem(10)};
   `};
 
-    ${mediaMin.l`
+    ${mediaMin.s`
       padding: ${rem(16)};
   `};
 
@@ -75,7 +82,7 @@ export const StyledSiteNavListItem = styled.li`
         color: ${theme.colors.main600};
       }
 
-      ${mediaMin.s`
+      ${mediaMin.xs`
         background-color: transparent;
       `};
     }

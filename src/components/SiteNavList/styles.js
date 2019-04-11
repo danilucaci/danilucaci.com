@@ -8,12 +8,11 @@ export const StyledSiteNavList = styled.ul`
   display: none;
   padding-left: ${rem(16)};
   padding-right: ${rem(16)};
+
   height: 100%;
-  width: 100%;
   height: 100vh;
+  width: 100%;
   width: 100vw;
-  overflow-y: scroll;
-  overflow-x: hidden;
 
   position: fixed;
   z-index: 1000;
@@ -39,7 +38,7 @@ export const StyledSiteNavList = styled.ul`
       display: block !important;
     `};
 
-  ${mediaMin.s`
+  ${mediaMin.xs`
     background-color: transparent;
     padding-left: 0;
     padding-right: 0;

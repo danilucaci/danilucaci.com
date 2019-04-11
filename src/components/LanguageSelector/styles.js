@@ -26,15 +26,15 @@ export const StyledLanguageSelector = styled.li`
   }
 
   padding: ${rem(12)};
-  margin-top: ${rem(24)};
+  margin-top: ${rem(16)};
 
   width: ${rem(208)};
 
-  ${mediaMin.s`
+  ${mediaMin.xs`
     width: auto;
     margin-top: 0;
     border: none;
-    padding: ${rem(16)} ${rem(12)};
+    padding: ${rem(14)} 0 ${rem(14)} ${rem(8)};
   `};
 `;
 
@@ -55,13 +55,11 @@ export const StyledLanguageDropdown = styled.ul`
   position: absolute;
   top: 100%;
   right: 0;
+  left: 0;
 
-  ${mediaMax.s`
-    left: 0;
-  `};
-
-  ${mediaMin.s`
+  ${mediaMin.xs`
     top: 85%;
+    left: initial;
   `};
 
   padding: ${rem(8)} 0;
@@ -71,7 +69,7 @@ export const LanguageDropdownLabel = styled.span`
   display: inline-block;
   vertical-align: middle;
 
-  ${mediaMin.s`
+  ${mediaMin.xs`
     position: absolute;
     width: 1px;
     height: 1px;
@@ -90,7 +88,7 @@ export const CurrentLanguageIcon = styled(Icon)`
   left: ${rem(40)};
   top: ${rem(12)};
 
-  ${mediaMin.s`
+  ${mediaMin.xs`
     left: ${rem(12)};
     top: ${rem(6)};
   `};
@@ -128,7 +126,7 @@ export const CurrentLanguageSelector = styled.li`
       background-color: transparent;
     }
 
-    ${mediaMin.s`
+    ${mediaMin.xs`
       padding: ${rem(6)} ${rem(40)};
     `};
   }
@@ -160,7 +158,7 @@ export const LanguageSelectorItem = styled.li`
       background-color: transparent;
     }
 
-    ${mediaMin.s`
+    ${mediaMin.xs`
       padding: ${rem(6)} ${rem(40)};
     `};
   }

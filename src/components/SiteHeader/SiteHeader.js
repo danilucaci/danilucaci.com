@@ -13,7 +13,7 @@ class SiteHeader extends Component {
 
   componentDidMount = () => {
     // breakpoint where nav bar hides away and menu button shows up
-    let mql = window.matchMedia("(min-width: 38em)");
+    let mql = window.matchMedia("(min-width: 32em)");
     mql.addListener(this.screenTest);
   };
 
@@ -21,7 +21,7 @@ class SiteHeader extends Component {
     // Restore overflow to visible when navigating to a screen from the top nav menu
     // If not, it will land on the new page with overflow set to hidden, not good.
     document.body.style.overflow = "visible";
-    let mql = window.matchMedia("(min-width: 38em)");
+    let mql = window.matchMedia("(min-width: 32em)");
     mql.removeListener(this.screenTest);
   };
 
@@ -30,6 +30,7 @@ class SiteHeader extends Component {
       if (document.body.style.overflow === "hidden") {
         document.body.style.overflow = "visible";
       }
+      console.log("Bingo");
     }
   };
 
