@@ -51,11 +51,11 @@ export const PostInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: baseline;
 
   padding: ${rem(12)} 0;
 
   ${mediaMin.xs`
+    align-items: center;
     flex-direction: row;
     padding: ${rem(8)} 0;
   `};

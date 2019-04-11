@@ -42,12 +42,12 @@ export const EXTERNAL_LINK = {
 export const COPY_URL_MESSAGES = {
   en: {
     default: "Copy page link",
-    copied: "Page link copied! ✅",
+    copied: "Page link copied!",
     error: "Couldn't copy the link 😔",
   },
   es: {
     default: "Copiar enlace",
-    copied: "¡Enlace copiado! ✅",
+    copied: "¡Enlace copiado!",
     error: "Algo ha salido mal 😔",
   },
 };

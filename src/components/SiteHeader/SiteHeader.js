@@ -30,7 +30,6 @@ class SiteHeader extends Component {
       if (document.body.style.overflow === "hidden") {
         document.body.style.overflow = "visible";
       }
-      console.log("Bingo");
     }
   };
 

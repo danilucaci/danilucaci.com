@@ -1,5 +1,4 @@
-import React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { theme, rem } from "../../theme/globalStyles";
 
 export const Icon = styled.svg`
@@ -9,6 +8,6 @@ export const Icon = styled.svg`
   height: ${(props) => (props.size ? rem(props.size) : rem(24))};
 
   display: inline-block;
-  vertical-align: middle;
+  vertical-align: top;
   position: static;
 `;

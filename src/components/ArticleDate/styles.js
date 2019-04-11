@@ -15,7 +15,6 @@ export const StyledIcon = styled(Icon)`
   display: inline-block;
   fill: ${theme.colors.dark600};
   margin-right: ${rem(4)};
-  margin-bottom: ${rem(4)};
 `;
 
 export const Time = styled(Copy)`

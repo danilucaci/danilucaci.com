@@ -4,18 +4,17 @@ import { Icon } from "../Icon/Icon";
 
 export const SocialShareWrapper = styled.div`
   white-space: nowrap;
+  margin-bottom: ${rem(2)};
 
   ${mediaMin.s`
     margin-left: ${rem(24)};
   `};
-
-  & .SocialMediaShareButton {
-    display: inline-block;
-    margin-right: ${rem(8)};
-  }
 `;
 
 export const SocialShareButton = styled.a`
+  margin-right: ${rem(8)};
+  display: inline-block;
+  vertical-align: baseline;
   margin-right: ${rem(8)};
 
   &:hover {
@@ -27,12 +26,17 @@ export const SocialShareButton = styled.a`
     box-shadow: none;
     outline: 2px solid ${theme.colors.dark800};
   }
+
+  & svg {
+    vertical-align: middle;
+  }
 `;
 
 export const StyledCopyButton = styled.button`
   border: none;
   background-color: transparent;
   display: inline-block;
+  vertical-align: baseline;
   position: relative;
 
   &:hover {
@@ -50,8 +54,6 @@ export const StyledCopyButton = styled.button`
 `;
 
 export const CopyIcon = styled(Icon)`
-  width: ${rem(24)};
-  height: ${rem(24)};
   fill: ${theme.colors.dark800};
   will-change: transform;
   transition: transform ease 0.15s;
@@ -74,8 +76,8 @@ export const CopyTooltip = styled.span`
 
   position: absolute;
 
-  top: -${rem(44)};
-  left: -${rem(64)};
+  top: -${rem(48)};
+  left: -${rem(80)};
 
   &:after {
     content: "";
@@ -87,7 +89,7 @@ export const CopyTooltip = styled.span`
     transform: rotate(45deg);
     position: absolute;
     top: ${rem(24)};
-    left: ${rem(68)};
+    left: ${rem(80)};
   }
 
   padding: ${rem(8)};
