@@ -12,6 +12,7 @@ import ContactCard from "../components/ContactCard/ContactCard";
 import CaseStudyCard from "../components/CaseStudyCard/CaseStudyCard";
 import DribbblePosts from "../components/DribbblePosts/DribbblePosts";
 import { localePaths } from "../i18n/i18n";
+import { GridCol } from "../components/Grid/Grid";
 
 import {
   IndexHeader,
@@ -19,7 +20,6 @@ import {
   Subhead,
   Name,
   Row,
-  RowContents,
   StyledHR,
   ServicesWrapper,
   ServicesTitle,
@@ -57,105 +57,111 @@ const Index = (props) => {
       <SEO locale={locale} currentPath={props.location.pathname} twinPostURL={twinPostURL} />
       <SiteHeader locale={locale} twinPostURL={twinPostURL} currentPath={props.location.pathname} />
       <Main role="main" id="main">
-        <IndexHeader>
-          <FormattedMessage id="indexName">{(txt) => <Name>{txt}</Name>}</FormattedMessage>
-          <FormattedMessage id="indexH1">
-            {(txt) => <IndexTitle as="h1">{txt}</IndexTitle>}
-          </FormattedMessage>
-          <FormattedMessage id="indexSubhead">{(txt) => <Subhead>{txt}</Subhead>}</FormattedMessage>
+        <IndexHeader as="header">
+          <GridCol>
+            <FormattedMessage id="indexName">{(txt) => <Name>{txt}</Name>}</FormattedMessage>
+            <FormattedMessage id="indexH1">
+              {(txt) => <IndexTitle as="h1">{txt}</IndexTitle>}
+            </FormattedMessage>
+            <FormattedMessage id="indexSubhead">
+              {(txt) => <Subhead>{txt}</Subhead>}
+            </FormattedMessage>
+          </GridCol>
         </IndexHeader>
         <ServicesWrapper>
-          <RowContents>
-            <FormattedMessage id="indexServicesHeading">
-              {(txt) => <ServicesTitle>{txt}</ServicesTitle>}
-            </FormattedMessage>
+          <Row padded as="div">
+            <GridCol>
+              <FormattedMessage id="indexServicesHeading">
+                {(txt) => <ServicesTitle>{txt}</ServicesTitle>}
+              </FormattedMessage>
 
-            <ServicesEntry>
-              <ServiceImage>
-                <img src={illustrationUX} alt="illustration" />
-              </ServiceImage>
-              <ServiceContent>
-                <FormattedMessage id="indexServices1Title">
-                  {(txt) => <ServiceTitle>{txt}</ServiceTitle>}
-                </FormattedMessage>
-                <FormattedMessage id="indexServices1Copy">
-                  {(txt) => <ServiceCopy>{txt}</ServiceCopy>}
-                </FormattedMessage>
-                <ul>
-                  <li>User Interviews</li>
-                  <li>Personas</li>
-                  <li>Wireframes</li>
-                  <li>User Flows</li>
-                  <li>User Journey Maps</li>
-                  <li>Usability Testing</li>
-                  <li>Competitive Analysis</li>
-                </ul>
-              </ServiceContent>
-            </ServicesEntry>
+              <ServicesEntry>
+                <ServiceImage>
+                  <img src={illustrationUX} alt="illustration" />
+                </ServiceImage>
+                <ServiceContent>
+                  <FormattedMessage id="indexServices1Title">
+                    {(txt) => <ServiceTitle>{txt}</ServiceTitle>}
+                  </FormattedMessage>
+                  <FormattedMessage id="indexServices1Copy">
+                    {(txt) => <ServiceCopy>{txt}</ServiceCopy>}
+                  </FormattedMessage>
+                  <ul>
+                    <li>User Interviews</li>
+                    <li>Personas</li>
+                    <li>Wireframes</li>
+                    <li>User Flows</li>
+                    <li>User Journey Maps</li>
+                    <li>Usability Testing</li>
+                    <li>Competitive Analysis</li>
+                  </ul>
+                </ServiceContent>
+              </ServicesEntry>
 
-            <ServicesEntry>
-              <ServiceImage>
-                <img src={illustrationUI} alt="illustration" />
-              </ServiceImage>
-              <ServiceContent>
-                <FormattedMessage id="indexServices2Title">
-                  {(txt) => <ServiceTitle>{txt}</ServiceTitle>}
-                </FormattedMessage>
-                <FormattedMessage id="indexServices2Copy">
-                  {(txt) => <ServiceCopy>{txt}</ServiceCopy>}
-                </FormattedMessage>
-                <ul>
-                  <li>Design Systems</li>
-                  <li>Sketch</li>
-                  <li>Figma</li>
-                  <li>Abstract</li>
-                  <li>Zeplin</li>
-                </ul>
-              </ServiceContent>
-            </ServicesEntry>
+              <ServicesEntry>
+                <ServiceImage>
+                  <img src={illustrationUI} alt="illustration" />
+                </ServiceImage>
+                <ServiceContent>
+                  <FormattedMessage id="indexServices2Title">
+                    {(txt) => <ServiceTitle>{txt}</ServiceTitle>}
+                  </FormattedMessage>
+                  <FormattedMessage id="indexServices2Copy">
+                    {(txt) => <ServiceCopy>{txt}</ServiceCopy>}
+                  </FormattedMessage>
+                  <ul>
+                    <li>Design Systems</li>
+                    <li>Sketch</li>
+                    <li>Figma</li>
+                    <li>Abstract</li>
+                    <li>Zeplin</li>
+                  </ul>
+                </ServiceContent>
+              </ServicesEntry>
 
-            <ServicesEntry>
-              <ServiceImage>
-                <img src={illustrationInteraction} alt="illustration" />
-              </ServiceImage>
-              <ServiceContent>
-                <FormattedMessage id="indexServices3Title">
-                  {(txt) => <ServiceTitle>{txt}</ServiceTitle>}
-                </FormattedMessage>
-                <FormattedMessage id="indexServices3Copy">
-                  {(txt) => <ServiceCopy>{txt}</ServiceCopy>}
-                </FormattedMessage>
-                <ul>
-                  <li>InVision</li>
-                  <li>Principle</li>
-                  <li>Figma</li>
-                </ul>
-              </ServiceContent>
-            </ServicesEntry>
+              <ServicesEntry>
+                <ServiceImage>
+                  <img src={illustrationInteraction} alt="illustration" />
+                </ServiceImage>
+                <ServiceContent>
+                  <FormattedMessage id="indexServices3Title">
+                    {(txt) => <ServiceTitle>{txt}</ServiceTitle>}
+                  </FormattedMessage>
+                  <FormattedMessage id="indexServices3Copy">
+                    {(txt) => <ServiceCopy>{txt}</ServiceCopy>}
+                  </FormattedMessage>
+                  <ul>
+                    <li>InVision</li>
+                    <li>Principle</li>
+                    <li>Figma</li>
+                  </ul>
+                </ServiceContent>
+              </ServicesEntry>
 
-            <ServicesEntry>
-              <ServiceImage>
-                <img src={illustrationCode} alt="illustration" />
-              </ServiceImage>
-              <ServiceContent>
-                <FormattedMessage id="indexServices4Title">
-                  {(txt) => <ServiceTitle>{txt}</ServiceTitle>}
-                </FormattedMessage>
-                <FormattedMessage id="indexServices4Copy">
-                  {(txt) => <ServiceCopy>{txt}</ServiceCopy>}
-                </FormattedMessage>
-                <ul>
-                  <li>HTML & CSS</li>
-                  <li>React.js</li>
-                  <li>Gatsby.js</li>
-                </ul>
-              </ServiceContent>
-            </ServicesEntry>
-          </RowContents>
+              <ServicesEntry>
+                <ServiceImage>
+                  <img src={illustrationCode} alt="illustration" />
+                </ServiceImage>
+                <ServiceContent>
+                  <FormattedMessage id="indexServices4Title">
+                    {(txt) => <ServiceTitle>{txt}</ServiceTitle>}
+                  </FormattedMessage>
+                  <FormattedMessage id="indexServices4Copy">
+                    {(txt) => <ServiceCopy>{txt}</ServiceCopy>}
+                  </FormattedMessage>
+                  <ul>
+                    <li>HTML & CSS</li>
+                    <li>React.js</li>
+                    <li>Gatsby.js</li>
+                  </ul>
+                </ServiceContent>
+              </ServicesEntry>
+            </GridCol>
+          </Row>
         </ServicesWrapper>
 
-        <Row>
-          <RowContents>
+        <Row spaced>
+          <GridCol>
             <FormattedMessage id="caseStudiesHeader">
               {(txt) => <CaseStudiesTitle>{txt}</CaseStudiesTitle>}
             </FormattedMessage>
@@ -173,11 +179,11 @@ const Index = (props) => {
                 image={caseStudyCard.image}
               />
             ))}
-          </RowContents>
+          </GridCol>
         </Row>
 
-        <Row>
-          <RowContents>
+        <Row spaced>
+          <GridCol>
             <StyledHR />
             <FormattedMessage id="dribbbleHeader">
               {(txt) => <DribbblePostsTitle>{txt}</DribbblePostsTitle>}
@@ -186,12 +192,13 @@ const Index = (props) => {
               {(txt) => <DribbbleSubhead>{txt}</DribbbleSubhead>}
             </FormattedMessage>
             <DribbblePosts locale={locale} />
-          </RowContents>
+          </GridCol>
         </Row>
-        <Row>
-          <RowContents>
+
+        <Row spaced>
+          <GridCol>
             <ContactCard locale={locale} />
-          </RowContents>
+          </GridCol>
         </Row>
       </Main>
       <SiteFooter locale={locale} />

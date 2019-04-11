@@ -2,42 +2,21 @@ import styled from "styled-components";
 import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
 import { HR } from "../../src/components/HR/HR";
 import { Copy } from "../../src/components/Copy/Copy";
+import { GridRow, GridCol } from "../components/Grid/Grid";
 
-export const IndexHeader = styled.header`
+export const IndexHeader = styled(GridRow)`
   max-width: ${theme.contain.wrapper.col10};
   margin: 0 auto;
   padding-top: ${rem(16)};
   padding-bottom: ${theme.spacing.row.s};
 
-  padding-right: ${theme.gutters.s};
-  padding-left: ${theme.gutters.s};
-
-  /* iPhone X */
-  @supports (padding: max(0px)) {
-    & {
-      padding-left: max(${theme.gutters.s}, env(safe-area-inset-left));
-      padding-right: max(${theme.gutters.s}, env(safe-area-inset-right));
-    }
-  }
-
   ${mediaMin.s`
-    padding-right: ${theme.gutters.m};
-    padding-left: ${theme.gutters.m};
-    
     padding-top: ${rem(24)};
     padding-bottom: ${theme.spacing.row.m};
-
-    /* iPhone X */
-    @supports (padding: max(0px)) {
-      & {
-        padding-left: max(${theme.gutters.m}, env(safe-area-inset-left));
-        padding-right: max(${theme.gutters.m}, env(safe-area-inset-right));
-      }
-    }
   `};
 
   ${mediaMin.xl`
-    padding-top: ${rem(48)};
+    padding-top: ${rem(40)};
     padding-bottom: ${theme.spacing.row.xl};
   `};
 `;
@@ -77,8 +56,8 @@ export const IndexTitle = styled.h2`
 
 export const Subhead = styled.p`
   color: ${theme.colors.dark800};
-  font-size: ${theme.fontSizes.indexBio};
-  line-height: ${theme.lineHeights.indexBio};
+  font-size: ${theme.fontSizes.indexBioS};
+  line-height: ${theme.lineHeights.indexBioS};
   letter-spacing: -${theme.letterSpacing.indexBioS};
 
   font-family: ${theme.fonts.headerFallback};
@@ -98,36 +77,6 @@ export const Subhead = styled.p`
 
 export const ServicesWrapper = styled.section`
   background-color: ${theme.colors.bgLight100};
-
-  padding-top: ${theme.spacing.rowTop.s};
-  padding-bottom: ${theme.spacing.row.s};
-
-  ${mediaMin.s`
-    padding-top: ${theme.spacing.rowTop.m};
-    padding-bottom: ${theme.spacing.row.m};
-  `};
-
-  ${mediaMin.xl`
-    padding-top: ${theme.spacing.rowTop.xl};
-    padding-bottom: ${theme.spacing.row.xl};
-  `};
-
-  /* Mobile in ladscape */
-  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(280)}) and (max-height: ${rem(560)}) and (orientation: landscape) {
-    margin-top: ${rem(64)};
-    margin-bottom: ${rem(80)};
-  }
-`;
-
-export const ServicesTitle = styled.h2`
-  font-size: ${theme.fontSizes.h2s};
-  line-height: ${theme.lineHeights.h2s};
-  margin-bottom: ${rem(32)};
-
-  ${mediaMin.m`
-    font-size: ${theme.fontSizes.h2};
-    line-height: ${theme.lineHeights.h2};
-  `};
 `;
 
 export const ServicesEntry = styled.div`
@@ -153,6 +102,17 @@ export const ServicesEntry = styled.div`
   &:last-of-type {
     padding-bottom: 0;
   }
+`;
+
+export const ServicesTitle = styled.h2`
+  font-size: ${theme.fontSizes.h2s};
+  line-height: ${theme.lineHeights.h2s};
+  margin-bottom: ${rem(32)};
+
+  ${mediaMin.m`
+    font-size: ${theme.fontSizes.h2};
+    line-height: ${theme.lineHeights.h2};
+  `};
 `;
 
 export const ServiceTitle = styled.h3`
@@ -202,54 +162,8 @@ export const StyledHR = styled(HR)`
   }
 `;
 
-export const Row = styled.section`
-  margin-top: ${theme.spacing.rowTop.s};
-  margin-bottom: ${theme.spacing.row.s};
-
-  ${mediaMin.s`
-    margin-top: ${theme.spacing.rowTop.m};
-    margin-bottom: ${theme.spacing.row.m};
-  `};
-
-  ${mediaMin.xl`
-    margin-top: ${theme.spacing.rowTop.xl};
-    margin-bottom: ${theme.spacing.row.xl};
-  `};
-
-  /* Mobile in ladscape */
-  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(280)}) and (max-height: ${rem(560)}) and (orientation: landscape) {
-    margin-top: ${rem(64)};
-    margin-bottom: ${rem(80)};
-  }
-`;
-
-export const RowContents = styled.div`
+export const Row = styled(GridRow)`
   max-width: ${theme.contain.wrapper.col10};
-  margin: 0 auto;
-
-  padding-right: ${theme.gutters.s};
-  padding-left: ${theme.gutters.s};
-
-  /* iPhone X */
-  @supports (padding: max(0px)) {
-    & {
-      padding-left: max(${theme.gutters.s}, env(safe-area-inset-left));
-      padding-right: max(${theme.gutters.s}, env(safe-area-inset-right));
-    }
-  }
-
-  ${mediaMin.s`
-    padding-right: ${theme.gutters.m};
-    padding-left: ${theme.gutters.m};
-
-    /* iPhone X */
-    @supports (padding: max(0px)) {
-      & {
-        padding-left: max(${theme.gutters.m}, env(safe-area-inset-left));
-        padding-right: max(${theme.gutters.m}, env(safe-area-inset-right));
-      }
-    }
-  `};
 `;
 
 export const CaseStudiesTitle = styled.h2`

@@ -118,6 +118,7 @@ export const theme = {
     h5s: "1rem",
     indexName: "1.5rem",
     indexNameS: "1.25rem",
+    indexBioS: "1.25rem",
     indexBio: "1.5rem",
     subheadS: "1.25rem",
     subhead: "1.25rem",
@@ -146,6 +147,7 @@ export const theme = {
     h5s: "1.5rem",
     indexName: "2rem",
     indexNameS: "2rem",
+    indexBioS: "2rem",
     indexBio: "2.5rem",
     subheadS: "2rem",
     subhead: "2rem",
@@ -165,8 +167,8 @@ export const theme = {
     sectionHeaderS: "0.05rem",
     indexName: "0.025rem",
     indexNameS: "0.025rem",
-    indexBio: "0.025rem",
     indexBioS: "0.0125rem",
+    indexBio: "0.025rem",
   },
   borderRadius: {
     buttons: "3px",
@@ -178,6 +180,24 @@ export const theme = {
   gutters: {
     s: "1em",
     m: "1.5em",
+  },
+  gridSpacing: {
+    s: "0.5em",
+    m: "0.75em",
+  },
+  contain: {
+    wrapper: {
+      col12: "73.5em",
+      col10: "61.5em",
+      col8: "49.5em",
+      col6: "37.5em",
+    },
+    inner: {
+      col12: "70.5em",
+      col10: "58.5em",
+      col8: "46.5em",
+      col6: "34.5em",
+    },
   },
   headingSpacing: {
     before: {
@@ -211,20 +231,6 @@ export const theme = {
       s: "4em",
       m: "5em",
       xl: "7em",
-    },
-  },
-  contain: {
-    wrapper: {
-      col12: "73.5em",
-      col10: "61.5em",
-      col8: "49.5em",
-      col6: "37.5em",
-    },
-    inner: {
-      col12: "70.5em",
-      col10: "58.5em",
-      col8: "46.5em",
-      col6: "34.5em",
     },
   },
   iconsScale: "1.2",
