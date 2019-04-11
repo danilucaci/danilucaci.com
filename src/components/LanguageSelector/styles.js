@@ -83,6 +83,7 @@ export const LanguageDropdownLabel = styled.span`
 
 export const CurrentLanguageIcon = styled(Icon)`
   display: inline-block;
+  vertical-align: middle;
   fill: ${theme.colors.main600};
   position: absolute;
   left: ${rem(40)};
@@ -96,10 +97,12 @@ export const CurrentLanguageIcon = styled(Icon)`
 
 export const WorldIcon = styled(Icon)`
   display: inline-block;
+  vertical-align: middle;
 `;
 
 export const DropdownIcon = styled(Icon)`
   display: inline-block;
+  vertical-align: middle;
 `;
 
 export const CurrentLanguageSelector = styled.li`

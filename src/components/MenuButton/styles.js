@@ -34,7 +34,7 @@ export const StyledIcon = styled(Icon)`
   margin-left: ${rem(4)};
   width: ${rem(18)};
   height: ${rem(18)};
-
+  vertical-align: middle;
   ${(props) =>
     props.animate &&
     css`

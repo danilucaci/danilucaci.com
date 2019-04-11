@@ -5,7 +5,6 @@ export const StyledSiteNavList = styled.ul`
   background-color: ${theme.colors.grey100};
   text-align: center;
 
-  display: none;
   padding-left: ${rem(16)};
   padding-right: ${rem(16)};
 
@@ -21,14 +20,14 @@ export const StyledSiteNavList = styled.ul`
   left: 0;
   top: calc(${theme.navBarHeight} - ${rem(8)});
   transform: translateX(120%);
-  pointer-events: none;
-  transition: transform ease 0.3s;
+  transition: transform ease 0.35s;
 
   ${(props) =>
     props.showNav &&
     css`
       transform: translateX(0);
-      display: block;
+      visibility: visible;
+      opacity: 1;
       pointer-events: auto;
     `};
 
