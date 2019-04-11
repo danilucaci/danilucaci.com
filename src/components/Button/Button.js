@@ -181,7 +181,7 @@ export const LoadComments = styled.button`
   font-style: normal;
   font-weight: 400;
 
-  padding: ${rem(8)} ${rem(24)};
+  padding: ${rem(6)} ${rem(24)} ${rem(8)} ${rem(24)};
   height: ${rem(56)};
 
   width: 100%;

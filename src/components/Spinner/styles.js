@@ -20,4 +20,5 @@ export const StyledSpinner = styled(Icon)`
   height: ${rem(24)};
   margin-left: auto;
   margin-right: auto;
+  vertical-align: middle;
 `;

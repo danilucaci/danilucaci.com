@@ -326,6 +326,7 @@ export const StyledLoadComments = styled(LoadComments)`
 `;
 
 export const LoadCommentsIcon = styled(Icon)`
+  vertical-align: middle;
   margin-top: -${rem(3)};
   margin-right: ${rem(4)};
   fill: ${theme.colors.grey500};
