@@ -202,7 +202,8 @@ exports.createPages = async ({ graphql, actions }) => {
             totalPagesInBlog,
             paginationPathPrefix: localePaths[enLocale].blog,
             prevPath: null,
-            nextPath: localePaths[enLocale].blog + paginationName + "2",
+            nextPath:
+              totalPagesInBlog > 1 ? localePaths[enLocale].blog + paginationName + "2" : null,
             totalCountBlog,
             // necessary for react-intl
             locale: enLocale,
@@ -406,7 +407,8 @@ exports.createPages = async ({ graphql, actions }) => {
             totalPagesInWork,
             paginationPathPrefix: localePaths[enLocale].work,
             prevPath: null,
-            nextPath: localePaths[enLocale].work + paginationName + "2",
+            nextPath:
+              totalPagesInWork > 1 ? localePaths[enLocale].work + paginationName + "2" : null,
             totalCountWork,
             // necessary for react-intl
             locale: enLocale,
@@ -537,7 +539,8 @@ exports.createPages = async ({ graphql, actions }) => {
             totalPagesInBlog,
             paginationPathPrefix: localePaths[esLocale].blog,
             prevPath: null,
-            nextPath: localePaths[esLocale].blog + paginationName + "2",
+            nextPath:
+              totalPagesInBlog > 1 ? localePaths[esLocale].blog + paginationName + "2" : null,
             totalCountBlog,
             // necessary for react-intl
             locale: esLocale,
@@ -741,7 +744,8 @@ exports.createPages = async ({ graphql, actions }) => {
             totalPagesInWork,
             paginationPathPrefix: localePaths[esLocale].work,
             prevPath: null,
-            nextPath: localePaths[esLocale].work + paginationName + "2",
+            nextPath:
+              totalPagesInWork > 1 ? localePaths[esLocale].work + paginationName + "2" : null,
             totalCountWork,
             // necessary for react-intl
             locale: esLocale,

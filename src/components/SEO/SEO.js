@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { string, bool, object } from "prop-types";
 import Helmet from "react-helmet";
 import urljoin from "url-join";
 import config from "../../../data/SiteConfig";
@@ -22,7 +22,6 @@ const SEO = (props) => {
   let description;
   let postURL;
   let imageUrl;
-  let pageURL;
   let postDate;
   let prevRelURL;
   let nextRelURL;
@@ -35,9 +34,9 @@ const SEO = (props) => {
   let siteUrl = config.siteUrl;
 
   // for rel alternate
-  let alternateLocale =
-    locale === "en" ? localeCountryCode["es"] : localeCountryCode["en"];
-  let alternateUrl = (pageURL = urljoin(siteUrl, twinPostURL));
+  let alternateLocale = locale === "en" ? localeCountryCode["es"] : localeCountryCode["en"];
+  let pageURL = urljoin(siteUrl, twinPostURL);
+  let alternateUrl = urljoin(siteUrl, twinPostURL);
 
   if (currentPage === "site" && locale === "en") {
     pageURL = siteUrl;
@@ -106,11 +105,7 @@ const SEO = (props) => {
       },
       url: "www.danilucaci.com",
       // image: "",
-      sameAs: [
-        config.socialLinks.twitter,
-        config.socialLinks.linkedin,
-        config.socialLinks.github,
-      ],
+      sameAs: [config.socialLinks.twitter, config.socialLinks.linkedin, config.socialLinks.github],
       jobTitle: config[locale].websiteSchema.jobTitle,
       worksFor: {
         "@type": "Organization",
@@ -187,20 +182,12 @@ const SEO = (props) => {
       {(postSEO || legalDocs) && <link rel="canonical" href={postURL} />}
       {!postSEO && !legalDocs && <link rel="canonical" href={pageURL} />}
       {(postSEO || legalDocs) && (
-        <link
-          rel="alternate"
-          href={postURL}
-          hreflang={localeCountryCode[locale]}
-        />
+        <link rel="alternate" href={postURL} hrefLang={localeCountryCode[locale]} />
       )}
       {!postSEO && !legalDocs && (
-        <link
-          rel="alternate"
-          href={pageURL}
-          hreflang={localeCountryCode[locale]}
-        />
+        <link rel="alternate" href={pageURL} hrefLang={localeCountryCode[locale]} />
       )}
-      <link rel="alternate" href={alternateUrl} hreflang={alternateLocale} />
+      <link rel="alternate" href={alternateUrl} hrefLang={alternateLocale} />
       <title>{title}</title>
       <meta name="theme-color" content={config.themeColor} />
       <meta name="description" content={description} />
@@ -210,11 +197,7 @@ const SEO = (props) => {
       {prevRelURL && <link rel="prev" href={prevRelURL} />}
       {nextRelURL && <link rel="next" href={nextRelURL} />}
 
-      <link
-        rel="apple-touch-icon"
-        sizes="180x180"
-        href="/apple-touch-icon.png"
-      />
+      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
       {/* OpenGraph tags */}
       <meta property="og:title" content={title} />
@@ -225,8 +208,13 @@ const SEO = (props) => {
       {imageUrl && <meta property="og:image" content={imageUrl} />}
       {/* <meta property="fb:app_id" content={process.env.FACEBOOK_APP_ID} /> */}
 
-      {/* Twitter Card tags */}
-      {/* You may choose whether Twitter widgets on your site help to tailor content and suggestions for Twitter users. You can opt out of having information from your website used for personalization by following the instructions below. Include the following snippet within the <meta> and <link> elements on your pages that include Twitter for Websites widgets: */}
+      {/* Twitter Card tags
+       * You may choose whether Twitter widgets on your site help to tailor content
+       * and suggestions for Twitter users. You can opt out of having information
+       * from your website used for personalization by following the instructions below.
+       * Include the following snippet within the <meta> and <link> elements on your
+       * pages that include Twitter for Websites widgets:
+       */}
       <meta name="twitter:dnt" content="on" />
       <meta name="twitter:site" content="@danilucaci" />
       <meta name="twitter:creator" content="@danilucaci" />
@@ -237,21 +225,22 @@ const SEO = (props) => {
       {!imageUrl && <meta name="twitter:card" content="summary" />}
 
       {/* Schema.org tags */}
-      <script type="application/ld+json">
-        {JSON.stringify(schemaOrgJSONLD)}
-      </script>
+      <script type="application/ld+json">{JSON.stringify(schemaOrgJSONLD)}</script>
     </Helmet>
   );
 };
 
 SEO.propTypes = {
-  locale: PropTypes.string.isRequired,
-  twinPostURL: PropTypes.string.isRequired,
-  currentPath: PropTypes.string.isRequired,
-  currentPage: PropTypes.string,
-  postSEO: PropTypes.bool,
-  postImage: PropTypes.string,
-  postNode: PropTypes.object,
+  locale: string.isRequired,
+  twinPostURL: string.isRequired,
+  currentPath: string.isRequired,
+  currentPage: string,
+  prevPath: string,
+  nextPath: string,
+  postSEO: bool,
+  postImage: string,
+  postNode: object,
+  legalDocs: object,
 };
 
 export default SEO;
