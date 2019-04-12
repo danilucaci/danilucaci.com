@@ -32,7 +32,7 @@ const SocialNav = (props) => (
     <StyledLink
       target="_blank"
       rel="noopener noreferrer"
-      href="https://www.linkedin.com/in/danielmlucaci"
+      href="https://www.linkedin.com/in/danilucaci/"
     >
       <FormattedMessage id="socialNavLinkedin">
         {(txt) => <span className="sr-only">{txt}</span>}
