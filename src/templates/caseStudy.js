@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-// import rehypeReact from "rehype-react";
-import { FormattedMessage } from "react-intl";
 import Img from "gatsby-image";
 
 import SEO from "../components/SEO/SEO";
@@ -20,23 +18,12 @@ import {
   ArticleWrapper,
   StyledHeader,
   PostH1,
+  TagsWrapper,
+  Tag,
   CaseStudyDescription,
   CaseStudyImgWrapper,
-  OverviewContainer,
-  OverviewIntro,
-  OverviewItems,
-  OverviewItem,
-  OverviewListLink,
   PostContent,
 } from "../styles/caseStudy.styles";
-
-// const renderAst = new rehypeReact({
-//   createElement: React.createElement,
-//   components: {
-//     "item-1": Item,
-//     p: Copy,
-//   },
-// }).Compiler;
 
 class CaseStudy extends Component {
   componentDidMount() {
@@ -90,11 +77,7 @@ class CaseStudy extends Component {
   render() {
     const postNode = this.props.data.markdownRemark;
     const postInfo = postNode.frontmatter;
-    const introCopy = postInfo.intro.split("|");
-    const tools = postInfo.tools;
-    const deliverables = postInfo.deliverables;
-    const methods = postInfo.methods;
-    const links = postInfo.links;
+    // const introCopy = postInfo.intro.split("|");
     const image = postInfo.image.childImageSharp.fluid;
     const locale = this.props.pageContext.locale;
     const twinPost = this.props.pageContext.twinPost;
@@ -130,12 +113,12 @@ class CaseStudy extends Component {
         <Main role="main" id="main">
           <ArticleWrapper>
             <StyledHeader>
-              {/* <TagsWrapper>
-                {postInfo.tags &&
-                  postInfo.tags.map((tag) => <Tag key={tag}>{tag}</Tag>)}
-              </TagsWrapper> */}
+              <TagsWrapper>
+                {postInfo.tags.map((tag) => (
+                  <Tag key={tag}>{tag}</Tag>
+                ))}
+              </TagsWrapper>
               <PostH1>{postInfo.title}</PostH1>
-              {/* <HR /> */}
               <CaseStudyDescription>{postInfo.snippet}</CaseStudyDescription>
             </StyledHeader>
             <CaseStudyImgWrapper>
@@ -148,68 +131,7 @@ class CaseStudy extends Component {
                 // https://www.gatsbyjs.org/packages/gatsby-image/
               />
             </CaseStudyImgWrapper>
-            <OverviewContainer>
-              <OverviewIntro>
-                <FormattedMessage id="caseStudyOverview">
-                  {(txt) => <h2>{txt}</h2>}
-                </FormattedMessage>
-                {introCopy.map((entry) => (
-                  <p key={entry}>{entry}</p>
-                ))}
-              </OverviewIntro>
-              <OverviewItems>
-                <OverviewItem>
-                  <FormattedMessage id="caseStudyOverviewTools">
-                    {(txt) => <h4>{txt}</h4>}
-                  </FormattedMessage>
-                  <ul>
-                    {tools.map((tool) => (
-                      <li key={tool}>{tool}</li>
-                    ))}
-                  </ul>
-                </OverviewItem>
-                <OverviewItem>
-                  <FormattedMessage id="caseStudyOverviewDeliverables">
-                    {(txt) => <h4>{txt}</h4>}
-                  </FormattedMessage>
-                  <ul>
-                    {deliverables.map((deliverable) => (
-                      <li key={deliverable}>{deliverable}</li>
-                    ))}
-                  </ul>
-                </OverviewItem>
-                <OverviewItem>
-                  <FormattedMessage id="caseStudyOverviewMethods">
-                    {(txt) => <h4>{txt}</h4>}
-                  </FormattedMessage>
-                  <ul>
-                    {methods.map((method) => (
-                      <li key={method}>{method}</li>
-                    ))}
-                  </ul>
-                </OverviewItem>
-                <OverviewItem>
-                  <FormattedMessage id="caseStudyOverviewLinks">
-                    {(txt) => <h4>{txt}</h4>}
-                  </FormattedMessage>
-                  <ul>
-                    {links.map((link) => (
-                      <li key={link.name}>
-                        <OverviewListLink
-                          href={link.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {link.name}
-                        </OverviewListLink>
-                      </li>
-                    ))}
-                  </ul>
-                </OverviewItem>
-              </OverviewItems>
-            </OverviewContainer>
             <PostContent dangerouslySetInnerHTML={{ __html: postNode.html }} />
-            {/* <PostContent>{renderAst(postNode.htmlAst)}</PostContent> */}
             <AuthorCard />
           </ArticleWrapper>
           <ScrollToTop />
@@ -250,10 +172,6 @@ CaseStudy.propTypes = {
         snippet: PropTypes.string.isRequired,
         intro: PropTypes.string.isRequired,
         tags: PropTypes.arrayOf(PropTypes.string).isRequired,
-        tools: PropTypes.arrayOf(PropTypes.string).isRequired,
-        deliverables: PropTypes.arrayOf(PropTypes.string).isRequired,
-        methods: PropTypes.arrayOf(PropTypes.string).isRequired,
-        links: PropTypes.array.isRequired,
       }),
       html: PropTypes.string.isRequired,
     }),
@@ -275,14 +193,11 @@ export const pageQuery = graphql`
         date(formatString: "YYYY-MM-DD")
         snippet
         intro
-        tools
-        deliverables
-        methods
-        links {
-          name
-          link
-        }
         tags
+        # links {
+        #   name
+        #   link
+        # }
         image {
           childImageSharp {
             fluid(maxWidth: 1128) {

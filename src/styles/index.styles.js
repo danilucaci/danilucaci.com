@@ -29,6 +29,8 @@ export const Name = styled(Copy)`
   letter-spacing: ${theme.letterSpacing.indexNameS};
   font-weight: 700;
 
+  font-family: ${theme.fonts.headerFallback};
+
   .fonts-loaded & {
     font-family: ${theme.fonts.header};
   }

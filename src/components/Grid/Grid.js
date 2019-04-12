@@ -93,10 +93,13 @@ export const GridCol = styled.div`
   max-width: 100%;
   flex-basis: 100%;
 
-  max-width: calc(${(props) => props.col && `${(100 / 12) * props.col}%`} - ${theme.gridSpacing.s});
-  flex-basis: calc(
-    ${(props) => props.col && `${(100 / 12) * props.col}%`} - ${theme.gridSpacing.s}
-  );
+  /* ${mediaMin.xxxs`  
+    margin: ${theme.gridSpacing.m};
+    max-width: calc(${(props) => props.col && `${(100 / 12) * props.col}%`} - ${theme.gutters.m});
+    flex-basis: calc(
+      ${(props) => props.col && `${(100 / 12) * props.col}%`} - ${theme.gutters.m}
+    );
+  `}; */
 
   ${mediaMin.s`  
     margin: ${theme.gridSpacing.m};

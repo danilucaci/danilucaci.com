@@ -5,32 +5,16 @@ snippet: "Estudio de caso sobre como mejorar la experiencia de busqueda y compra
 intro: "Esta aplicación es un proyecto personal que decidí crear, ya que cada vez que intentaba ver una película o comprar una entrada usando las páginas web o aplicaciones de los cines de mi ciudad, me encontré con diseños antiguos, con muchos fallos de usabilidad.
 |
 Por ello, decidí diseñar este proyecto para ver como podría mejorar la experiencia de busqueda y compra de entradas en un cine, usando una aplicación para iOS."
-tools: 
-    - Lápiz y papel
-    - Sketch
-    - InVision
-    - Principle
-deliverables: 
-    - Personas
-    - Prototipos en papel
-    - Wireframes
-    - Diagramas de Wireflow
-    - Prototipos de Baja Fidelidad
-    - Prototipos de Alta Fidelidad
-methods: 
-    - Encuestas
-    - Entrevistas con usuarios
-    - Affinity Diagram
-    - Problem Statements
-    - HMW's
-    - Feature Prioritization
-    - MOSCOW
-    - Crazy 8's
-links:
-    - name: "Prototipo de Baja Fidelidad"
-      link: "https://invis.io/N5OJ253T2PF"
-    - name: "Prototipo de Alta Fidelidad"
-      link: "https://invis.io/2DQQCS4PAYS"
+# methods: 
+#     - Surveys
+#     - User Interviews
+#     - Affinity Diagram
+#     - Problem Statements
+# links:
+#     - name: "Low-Fidelity Prototype"
+#       link: "https://invis.io/N5OJ253T2PF"
+#     - name: "High-Fidelity Prototype"
+#       link: "https://invis.io/2DQQCS4PAYS"
 date: "2019-02-02"
 category: "work"
 tags:

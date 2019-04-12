@@ -2,35 +2,19 @@
 title: "Movie Booking App"
 slug: "Movie Booking App"
 snippet: "A case study on improving the experience of searching, finding and booking movies using a User-Centered Design process."
-intro: "This app is a personal project that I decided to create as each time I tried to see a movie using one of my local cinema's website or app, I found that they all had outdated designs limited functionalities that helped people decide which movie to see.
+intro: "Like most people, I love seeing movies. Especially in a cinema. However, each time I used one of my local cinema’s app or website, I found that they all had outdated designs that were an exact mirror of their database. Furthermore, if I didn’t know which movie I’d like to see, I always had to use Google or other websites to find out more about the movie.
 |
-Therefore, I decided to see how I could improve the experience of searching, finding and booking a movie using an iOS App."
-tools: 
-    - Pen and paper
-    - Sketch
-    - InVision
-    - Principle
-deliverables: 
-    - Personas
-    - Paper Prototypes
-    - Wireframes
-    - Wireflow diagrams
-    - Low-Fidelity prototype
-    - High-fidelity prototype
-methods: 
-    - Surveys
-    - User Interviews
-    - Affinity Diagram
-    - Problem Statements
-    - HMW's
-    - Feature Prioritization
-    - MOSCOW
-    - Crazy 8's
-links:
-    - name: "Low-Fidelity Prototype"
-      link: "https://invis.io/N5OJ253T2PF"
-    - name: "High-Fidelity Prototype"
-      link: "https://invis.io/2DQQCS4PAYS"
+That’s why I decided to see how I could improve the experience of searching for a movie and then buying the movie ticket."
+# methods: 
+#     - Surveys
+#     - User Interviews
+#     - Affinity Diagram
+#     - Problem Statements
+# links:
+#     - name: "Low-Fidelity Prototype"
+#       link: "https://invis.io/N5OJ253T2PF"
+#     - name: "High-Fidelity Prototype"
+#       link: "https://invis.io/2DQQCS4PAYS"
 date: "2019-02-02"
 category: "work"
 tags:
@@ -42,6 +26,56 @@ image: "./ux_case_study_movie_app_presentation@2x.png"
 locale: "en"
 twinPost: "Aplicación compra entradas Cine"
 ---
+
+<div class="overview">
+<div class="row">
+<div class="col col--5 overview__copy">
+
+## Overview
+
+Like most people, I love seeing movies. Especially in a cinema. However, each time I used one of my local cinema’s app or website, I found that they all had outdated designs that were an exact mirror of their database. Furthermore, if I didn’t know which movie I’d like to see, I always had to use Google or other websites to find out more about the movie.
+
+That’s why I decided to see how I could improve the experience of searching for a movie and then buying the movie ticket.
+
+</div>
+<div class="col col--6 overview__sideinfo">
+<div class="overview__sideinfo__item">
+
+##### my role
+
+- UX Research
+- UI Design
+- Interaction Design
+
+</div>
+<div class="overview__sideinfo__item">
+
+##### tools used
+
+- Pen and paper
+- Sketch
+- InVision
+- Principle
+
+</div>
+<div class="overview__sideinfo__item">
+
+##### project type
+
+- Personal Project
+
+</div>
+<div class="overview__sideinfo__item">
+
+##### Assets
+
+- [InVision Prototype](https://invis.io/2DQQCS4PAYS)
+- [Moderator Guide](https://invis.io/2DQQCS4PAYS)
+
+</div>
+</div>
+</div>
+</div>
 
 ## Initial Problem Assumptions
 

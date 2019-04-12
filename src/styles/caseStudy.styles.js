@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { theme, rem, mediaMin, mediaMax } from "../theme/globalStyles";
 import { Copy } from "../../src/components/Copy/Copy";
+import { GridRow, GridCol } from "../../src/components/Grid/Grid";
 
 export const ArticleWrapper = styled.article`
   & footer {
@@ -33,34 +34,8 @@ export const ArticleWrapper = styled.article`
   }
 `;
 
-export const StyledHeader = styled.header`
+export const StyledHeader = styled(GridRow)`
   max-width: ${theme.contain.wrapper.col8};
-  margin-left: auto;
-  margin-right: auto;
-
-  padding-right: ${theme.gutters.s};
-  padding-left: ${theme.gutters.s};
-
-  /* iPhone X */
-  @supports (padding: max(0px)) {
-    & {
-      padding-left: max(${theme.gutters.s}, env(safe-area-inset-left));
-      padding-right: max(${theme.gutters.s}, env(safe-area-inset-right));
-    }
-  }
-
-  ${mediaMin.s`
-    padding-right: ${theme.gutters.m};
-    padding-left: ${theme.gutters.m};
-
-    /* iPhone X */
-    @supports (padding: max(0px)) {
-      & {
-        padding-left: max(${theme.gutters.m}, env(safe-area-inset-left));
-        padding-right: max(${theme.gutters.m}, env(safe-area-inset-right));
-      }
-    }
-  `};
 `;
 
 export const PostH1 = styled.h1`
@@ -69,9 +44,45 @@ export const PostH1 = styled.h1`
 `;
 
 export const CaseStudyDescription = styled(Copy)`
-  font-size: ${rem(24)};
-  line-height: ${rem(40)};
-  margin-top: ${rem(16)};
+  color: ${theme.colors.dark800};
+  font-size: ${theme.fontSizes.indexBioS};
+  line-height: ${theme.lineHeights.indexBioS};
+  letter-spacing: ${theme.letterSpacing.indexBioS};
+
+  font-family: ${theme.fonts.headerFallback};
+  font-weight: 300;
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.headerLight};
+  }
+
+  ${mediaMin.s`
+    font-size: ${theme.fontSizes.indexBioS};
+    line-height: ${theme.lineHeights.indexBioS};
+    letter-spacing: ${theme.letterSpacing.indexBioS};    
+  `};
+`;
+
+export const TagsWrapper = styled.div`
+  width: 100%;
+`;
+
+export const Tag = styled.p`
+  color: ${theme.colors.dark700};
+  font-size: ${theme.fontSizes.s};
+  line-height: ${theme.lineHeights.s};
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: ${theme.fonts.headerFallback};
+  letter-spacing: ${theme.letterSpacing.sectionHeaderS};
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.headerRegular};
+    letter-spacing: ${theme.letterSpacing.sectionHeaderXL};
+  }
+
+  display: inline-block;
+  margin-right: ${rem(16)};
 `;
 
 export const CaseStudyImgWrapper = styled.div`
@@ -89,160 +100,10 @@ export const CaseStudyImgWrapper = styled.div`
   `};
 `;
 
-export const OverviewContainer = styled.div`
-  background-color: ${theme.colors.bgLight200};
-  width: 100%;
-
-  padding-top: ${rem(48)};
-  padding-bottom: ${rem(48)};
-
-  padding-right: ${theme.gutters.s};
-  padding-left: ${theme.gutters.s};
-
-  /* iPhone X */
-  @supports (padding: max(0px)) {
-    & {
-      padding-left: max(${theme.gutters.s}, env(safe-area-inset-left));
-      padding-right: max(${theme.gutters.s}, env(safe-area-inset-right));
-    }
-  }
-
-  ${mediaMin.s`
-    padding-right: ${theme.gutters.m};
-    padding-left: ${theme.gutters.m};
-
-    /* iPhone X */
-    @supports (padding: max(0px)) {
-      & {
-        padding-left: max(${theme.gutters.m}, env(safe-area-inset-left));
-        padding-right: max(${theme.gutters.m}, env(safe-area-inset-right));
-      }
-    }
-  `};
-
-  margin: ${rem(32)} 0 ${rem(64)};
-
-  ${mediaMin.m`    
-    padding-top: ${rem(88)};
-    padding-bottom: ${rem(88)};
-    margin: ${rem(64)} 0 ${rem(112)};
-  `};
-`;
-
-export const OverviewIntro = styled.div`
-  display: block;
-  max-width: ${theme.contain.inner.col6};
-  margin-left: auto;
-  margin-right: auto;
-
-  margin-bottom: ${rem(32)};
-
-  ${mediaMin.m`    
-    margin-bottom: ${rem(64)};
-  `};
-
-  p:first-of-type {
-    margin-bottom: ${rem(32)};
-  }
-
-  h2 {
-    display: block;
-    margin-bottom: ${rem(16)};
-
-    ${mediaMin.xs`
-      margin-bottom: ${rem(32)};
-    `};
-  }
-`;
-
-export const OverviewItems = styled.div`
-  display: block;
-  max-width: ${theme.contain.inner.col6};
-  margin-left: auto;
-  margin-right: auto;
-
-  ${mediaMin.xl`
-    max-width: ${theme.contain.inner.col10};
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  `};
-`;
-
-export const OverviewItem = styled.div`
-  display: block;
-
-  ${mediaMax.xxs`
-      margin-left: ${rem(4)};
-  `};
-
-  ${mediaMax.xl`
-      margin-bottom: ${rem(32)};
-  `};
-
-  h4 {
-    margin-bottom: ${rem(16)};
-  }
-
-  ${mediaMin.xxs`
-    display: inline-block;
-    vertical-align: top;
-    flex: 1 1 auto;
-    width: calc((100% / 2) - ${rem(24)});
-  `};
-
-  ${mediaMin.xl`
-    flex: 1 1 auto;
-    width: calc((100% / 4) - ${rem(32)});
-  `};
-
-  & + & {
-    ${mediaMin.xxs`
-      margin-right: ${rem(24)};
-    `};
-
-    ${mediaMin.xl`
-      margin-right: ${rem(32)};
-    `};
-  }
-`;
-
-export const OverviewListLink = styled.a`
-  display: block;
-`;
-
 export const PostContent = styled.section`
   display: block;
 
-  padding-right: ${theme.gutters.s};
-  padding-left: ${theme.gutters.s};
-
-  /* iPhone X */
-  @supports (padding: max(0px)) {
-    & {
-      padding-left: max(${theme.gutters.s}, env(safe-area-inset-left));
-      padding-right: max(${theme.gutters.s}, env(safe-area-inset-right));
-    }
-  }
-
-  ${mediaMin.s`
-    padding-right: ${theme.gutters.m};
-    padding-left: ${theme.gutters.m};
-
-    /* iPhone X */
-    @supports (padding: max(0px)) {
-      & {
-        padding-left: max(${theme.gutters.m}, env(safe-area-inset-left));
-        padding-right: max(${theme.gutters.m}, env(safe-area-inset-right));
-      }
-    }
-  `};
-
-  max-width: ${theme.contain.inner.col6};
-  margin-left: auto;
-  margin-right: auto;
   margin-top: ${rem(16)};
-
   margin-bottom: ${theme.spacing.components.s};
 
   ${mediaMin.m`
@@ -282,48 +143,6 @@ export const PostContent = styled.section`
     margin-bottom: ${rem(16)};
   }
 
-  .toc {
-    background-color: ${theme.colors.bgLight200};
-    margin: ${rem(32)} -${theme.gutters.s};
-    padding: ${rem(24)} ${theme.gutters.s};
-
-    ${mediaMin.s`
-      margin: ${rem(32)} -${theme.gutters.m};
-      padding: ${rem(32)} ${theme.gutters.m};
-    `};
-
-    ${mediaMin.l`
-      margin-right: -${rem(96)};
-      margin-left: -${rem(96)};
-      padding: ${rem(32)} ${rem(96)};
-    `};
-
-    p + ul {
-      margin-top: -${rem(32)};
-    }
-
-    ul {
-      list-style-type: none;
-
-      & li {
-        margin: ${rem(8)} 0;
-
-        &:last-of-type {
-          margin-bottom: 0;
-        }
-      }
-    }
-
-    a {
-      text-decoration: none;
-      color: ${theme.colors.dark900};
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-
   p {
     margin-bottom: ${rem(32)};
   }
@@ -354,7 +173,11 @@ export const PostContent = styled.section`
   }
 
   blockquote {
-    background-color: ${theme.colors.grey100};
+    font-family: ${theme.fonts.headerFallback};
+
+    .fonts-loaded & {
+      font-family: ${theme.fonts.headerRegular};
+    }
 
     & > p {
       color: ${theme.colors.main600};
@@ -389,6 +212,85 @@ export const PostContent = styled.section`
   figure img,
   figure video {
     ${theme.shadow.image} !important;
+  }
+
+  .overview {
+    background-color: ${theme.colors.bgLight100};
+
+    padding-top: ${theme.spacing.row.s};
+    padding-bottom: ${theme.spacing.row.s};
+    margin-bottom: ${theme.spacing.components.s};
+
+    ${mediaMin.s`
+      padding-top: ${theme.spacing.row.m};
+      padding-bottom: ${theme.spacing.row.m};
+      margin-bottom: ${theme.spacing.components.m};
+    `};
+
+    ${mediaMin.xl`
+      padding-top: ${theme.spacing.row.xl};
+      padding-bottom: ${theme.spacing.row.xl};
+      margin-bottom: ${theme.spacing.components.xl};
+    `};
+
+    /* Mobile in ladscape */
+    @media screen and (min-width: 30em) and (min-height: 17em) and (max-height: 35em) and (orientation: landscape) {
+      padding-top: ${rem(32)};
+      padding-bottom: ${rem(64)};
+    }
+
+    & h2 {
+      color: ${theme.colors.dark700};
+      margin-bottom: ${rem(16)};
+      font-size: ${theme.fontSizes.sectionHeaderXL};
+      line-height: ${theme.lineHeights.sectionHeaderXL};
+      letter-spacing: ${theme.letterSpacing.sectionHeaderXL};
+      text-transform: uppercase;
+    }
+  }
+
+  .overview__copy {
+  }
+
+  .overview__sideinfo {
+    display: flex;
+    flex-wrap: wrap;
+
+    ${mediaMin.l`
+      margin-left: auto;
+    `};
+  }
+
+  .overview__sideinfo__item {
+    width: 100%;
+    padding-bottom: ${rem(32)};
+
+    & h5 {
+      margin-top: ${rem(8)};
+    }
+
+    &:last-of-type {
+      padding-bottom: 0;
+    }
+
+    ${mediaMin.xxs`    
+      float: right;
+      width: calc(50% - ${rem(32)});
+      flex: 1 0 calc(50% - ${rem(32)});
+      padding-right: ${rem(32)};
+      padding-bottom: 0;
+    `};
+
+    ${mediaMin.xxl`    
+      width: calc(50% - ${rem(64)});
+      flex: 1 0 calc(50% - ${rem(64)});
+      padding-right: 0;
+      padding-left: ${rem(64)};
+    `};
+
+    &:last-of-type {
+      padding-bottom: 0;
+    }
   }
 
   .container-8col {
