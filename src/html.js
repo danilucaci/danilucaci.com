@@ -13,7 +13,7 @@ export default class HTML extends React.Component {
             content="width=device-width, initial-scale=1, shrink-to-fit=no viewport-fit=cover"
           />
           <script
-            src="https://cdn.polyfill.io/v2/polyfill.min.js?features=eventsource,es7"
+            src="https://cdn.polyfill.io/v2/polyfill.min.js?features=eventsource,es7,fetch"
             defer
             async
           />
