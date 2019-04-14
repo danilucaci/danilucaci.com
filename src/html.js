@@ -13,9 +13,10 @@ export default class HTML extends React.Component {
             content="width=device-width, initial-scale=1, shrink-to-fit=no viewport-fit=cover"
           />
           <script
-            src="https://cdn.polyfill.io/v2/polyfill.min.js?features=eventsource,es7,fetch"
+            src="https://polyfill.io/v3/polyfill.min.js?flags=gated&features=es7%2CEventSource%2Cfetch"
             defer
             async
+            crossOrigin="anonymous"
           />
           {this.props.headComponents}
         </head>
