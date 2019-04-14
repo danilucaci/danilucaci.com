@@ -78,7 +78,11 @@ export const StyledContactButton = styled(Link)`
 
   white-space: nowrap;
 
-  &:hover,
+  &:hover {
+    cursor: pointer;
+    background-color: ${theme.colors.secondary100};
+  }
+
   &:focus {
     cursor: pointer;
     background-color: ${theme.colors.secondary100};
