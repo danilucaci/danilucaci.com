@@ -59,7 +59,7 @@ export const StyledLanguageDropdown = styled.ul`
 
   ${mediaMin.xs`
     top: 85%;
-    left: initial;
+    left: auto;
   `};
 
   padding: ${rem(8)} 0;
