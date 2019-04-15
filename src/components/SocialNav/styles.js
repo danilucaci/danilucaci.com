@@ -8,6 +8,7 @@ export const Wrapper = styled.nav`
 
 export const StyledIcon = styled(Icon)`
   fill: ${(props) => (props.light ? theme.colors.light100 : null)};
+  vertical-align: middle;
 
   width: ${rem(24)};
   height: ${rem(24)};
@@ -15,7 +16,6 @@ export const StyledIcon = styled(Icon)`
 
 export const StyledLink = styled.a`
   display: inline-block;
-  vertical-align: top;
   margin-right: ${rem(16)};
   will-change: transform;
   transition: transform ease 0.15s;
