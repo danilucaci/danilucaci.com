@@ -77,7 +77,6 @@ class CaseStudy extends Component {
   render() {
     const postNode = this.props.data.markdownRemark;
     const postInfo = postNode.frontmatter;
-    // const introCopy = postInfo.intro.split("|");
     const image = postInfo.image.childImageSharp.fluid;
     const locale = this.props.pageContext.locale;
     const twinPost = this.props.pageContext.twinPost;
@@ -170,7 +169,6 @@ CaseStudy.propTypes = {
         date: PropTypes.string.isRequired,
         image: PropTypes.object.isRequired,
         snippet: PropTypes.string.isRequired,
-        intro: PropTypes.string.isRequired,
         tags: PropTypes.arrayOf(PropTypes.string).isRequired,
       }),
       html: PropTypes.string.isRequired,
@@ -192,7 +190,6 @@ export const pageQuery = graphql`
         title
         date(formatString: "YYYY-MM-DD")
         snippet
-        intro
         tags
         # links {
         #   name
@@ -200,7 +197,7 @@ export const pageQuery = graphql`
         # }
         image {
           childImageSharp {
-            fluid(maxWidth: 1128) {
+            fluid(maxWidth: 1128, quality: 100) {
               ...GatsbyImageSharpFluid_noBase64
             }
           }

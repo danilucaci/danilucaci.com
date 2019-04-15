@@ -62,7 +62,7 @@ export const theme = {
     hover:
       "box-shadow: 0 2px 8px -4px rgba(102,102,102,0.40), 0 8px 20px -4px rgba(102,102,102,0.31)",
     navbar: "box-shadow: 0px 2px 4px -2px hsla(0,0%,40%,0.3), 0px 4px 8px -2px hsla(0,0%,60%,0.24)",
-    image: "box-shadow: 0px 2px 4px -2px hsla(0,0%,40%,0.3), 0px 6px 12px -2px hsla(0,0%,60%,0.24)",
+    image: "box-shadow: 0 1px 4px 0 rgba(0,0,0,0.20), 0 1px 2px 0 rgba(0,0,0,0.08)",
     dropdown:
       "box-shadow: 0px 2px 4px 0px hsla(0,0%,40%,0.2), 0px 6px 12px 0px hsla(0,0%,70%,0.24)",
     mobileCookieConsent:

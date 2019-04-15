@@ -4,7 +4,7 @@ import { theme, mediaMin, rem } from "../theme/globalStyles";
 const GlobalCSS = createGlobalStyle`
   html {
     background-color: #FFFFFF;
-    color: #3A4554;
+    color: ${theme.colors.dark800};
     font-family: ${theme.fonts.bodyFallback};
     font-size: 16px;
     line-height: 24px;
@@ -25,15 +25,16 @@ const GlobalCSS = createGlobalStyle`
     ${"" /* annoying */}
     ${"" /* scroll-behavior: smooth; */}
   }
-
+${
+  "" /*
   body::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
     border-radius: ${rem(8)};
     background-color: ${theme.colors.bgLight100};
   }
 
   body::-webkit-scrollbar {
-    width: ${rem(10)};
+    width: ${rem(12)};
     background-color: ${theme.colors.grey400};
   }
 
@@ -41,7 +42,8 @@ const GlobalCSS = createGlobalStyle`
     border-radius: ${rem(12)};
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     background-color: ${theme.colors.grey400};
-  }
+  } */
+}
 
   svg {
     position: absolute;
@@ -189,6 +191,7 @@ const GlobalCSS = createGlobalStyle`
     margin-left: -${rem(24)};
     padding-right: ${rem(4)};
     margin-top: 0;
+
     & > svg {
       fill: ${theme.colors.main600};
     }
@@ -207,32 +210,18 @@ const GlobalCSS = createGlobalStyle`
     }
   }
 
-  strong, b {
-    color: ${theme.colors.dark800};
-    font-weight: 700 !important;
-    font-style: normal;
-    font-size: ${theme.fontSizes.m};
-    font-family: ${theme.fonts.bodyBold};
-    line-height: ${theme.lineHeights.m};
-  }
-
-  em {
-    color: ${theme.colors.dark800};
-    font-weight: 400;
-    font-style: italic;
-    font-size: ${theme.fontSizes.m};
-    line-height: ${theme.lineHeights.m};
-    font-family: ${theme.fonts.bodyItalic};
-  }
-
   p,
-  ul,ol {
+  ul,
+  ol {
     color: ${theme.colors.dark800};
     font-weight: 400;
     font-style: normal;
     font-size: ${theme.fontSizes.m};
-    font-family: ${theme.fonts.bodyRegular};
     line-height: ${theme.lineHeights.m};
+    
+    .fonts-loaded & {
+      font-family: ${theme.fonts.bodyRegular};
+    }
   }
 
   ul {
@@ -246,10 +235,70 @@ const GlobalCSS = createGlobalStyle`
   }
 
   p:empty {
-      display:none;
-      margin:0;
-      padding:0;
-      border:0;
+    display:none;
+    margin:0;
+    padding:0;
+    border:0;
+  }
+
+  strong, b {
+    color: ${theme.colors.dark800};
+    font-weight: 700;
+    font-style: normal;
+    font-size: ${theme.fontSizes.m};
+    line-height: ${theme.lineHeights.m};
+    
+    .fonts-loaded & {
+      font-family: ${theme.fonts.bodyBold};
+    }
+  }
+
+  em {
+    color: ${theme.colors.dark800};
+    font-weight: 400;
+    font-style: italic;
+    font-size: ${theme.fontSizes.m};
+    line-height: ${theme.lineHeights.m};
+
+    .fonts-loaded & {
+      font-family: ${theme.fonts.bodyItalic};
+    }
+  }
+
+  blockquote, 
+  blockquote * {
+    font-family: ${theme.fonts.headerFallback};
+    color: ${theme.colors.main600};
+
+    .fonts-loaded & {
+      font-family: ${theme.fonts.headerRegular};
+    }
+  }
+
+  blockquote strong {
+    font-weight: 700;
+
+    .fonts-loaded & {
+      font-family: ${theme.fonts.header};
+    }
+  }
+
+  blockquote {
+    margin-bottom: ${rem(32)};
+
+    ${mediaMin.m`
+      margin-right: -${theme.gutters.s};
+      margin-left: -${theme.gutters.s};
+      padding: ${rem(16)} ${theme.gutters.s};
+      border-left: 4px solid ${theme.colors.main600};
+      margin-right: -${theme.gutters.m};
+      margin-left: -${theme.gutters.m};
+      padding: ${rem(16)} ${theme.gutters.m};
+    `};
+  }
+
+  blockquote > p {
+    margin-bottom: 0 !important;
   }
 
   a {

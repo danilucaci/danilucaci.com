@@ -101,10 +101,10 @@ const GlobalGrid = createGlobalStyle`
   .col {
     float: left;
     flex: 0 1 auto;
-    margin: ${theme.gridSpacing.s};
+    margin: 0 ${theme.gridSpacing.s};
 
     ${mediaMin.l`
-      margin: ${theme.gridSpacing.m};
+      margin: 0 ${theme.gridSpacing.m};
     `};
   }
 
@@ -136,7 +136,6 @@ const GlobalGrid = createGlobalStyle`
   .col--3 {
     max-width: 100%;
     flex-basis: 100%;
-
 
     ${mediaMin.l`  
       max-width: calc(50% - ${theme.gutters.m});

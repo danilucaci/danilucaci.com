@@ -1,270 +1,398 @@
 ---
 title: "Aplicación de Compra de Entradas en un Cine"
 slug: "Aplicación compra entradas Cine"
-snippet: "Estudio de caso sobre como mejorar la experiencia de busqueda y compra de entradas para una película, basado en proceso de diseño User-Centered Design."
-intro: "Esta aplicación es un proyecto personal que decidí crear, ya que cada vez que intentaba ver una película o comprar una entrada usando las páginas web o aplicaciones de los cines de mi ciudad, me encontré con diseños antiguos, con muchos fallos de usabilidad.
-|
-Por ello, decidí diseñar este proyecto para ver como podría mejorar la experiencia de busqueda y compra de entradas en un cine, usando una aplicación para iOS."
-# methods: 
+snippet: "Estudio de caso sobre como mejorar la experiencia de busqueda y compra de entradas en un cine, creada con un proceso de diseño User-Centered Design."
+# methods:
 #     - Surveys
 #     - User Interviews
-#     - Affinity Diagram
+#     - Diagrama de Afinidad
 #     - Problem Statements
 # links:
 #     - name: "Low-Fidelity Prototype"
 #       link: "https://invis.io/N5OJ253T2PF"
 #     - name: "High-Fidelity Prototype"
 #       link: "https://invis.io/2DQQCS4PAYS"
-date: "2019-02-02"
+date: "2019-04-22"
 category: "work"
 tags:
-    - UX/UI
-    - IxD
-    - Personal Project
+  - UX/UI
+  - IxD
+  - Personal Project
 posted: true
 image: "./ux_case_study_movie_app_presentation@2x.png"
 locale: "es"
 twinPost: "Movie Booking App"
 ---
 
-## Suposiciones iniciales
+<div class="overview">
+<div class="row">
+<div class="col col--5 overview__copy">
 
-When I began working on this project I had some initial assumptions that I wanted to validate with user research to see if other people had the same problems and if they had other problems that I haven't identified yet.
+## Introducción
 
-- People think that ticket prices are too high if they would like to see several movies each month.
-- Current websites and apps have outdated designs.
-- People don't have a way to search, filter or sort for movies in the app/website.
+Como la mayoría de la gente, me encanta ver películas. Sobretodo en un cine. Sin embargo, cada vez que usaba una de las aplicaciones o sitios web de uno de los cines de mi ciudad para intentar comprar una entrada para una película, me encontraba con que todos tenían diseños obsoletos y confusos. Además, si no sabía qué película me gustaría ver, siempre tenía que usar Google u otras páginas web para obtener más información sobre la película.
 
-To validate my initial assumptions I used a survey and I interviewed 5 users.
+Por eso decidí ver cómo podría mejorar la experiencia de buscar una película y luego comprar una entrada para ella usando una aplicación iOS.
 
-The initial research would also help me learn more about them and answer some of the questions that I had:
+</div>
+<div class="col col--6 overview__sideinfo">
+<div class="overview__sideinfo__item">
 
-## Preguntas Previas
+##### Mi Rol
 
-- How are people deciding which movie to see?
-- How are they finding out more about the movie they would like to see?
-- How many movies do they see each month?
-  - Why this many?
-- Do they prefer to see movies in a cinema or at home?
-  - Why?
-- How are they seeing the movies? Alone, with a date, in a group?
-  - Why?
-- Which difficulties are they having when:
-  - Searching for a cinema
-  - Searching for a movie to see
-  - Using the available websites to purchase movie tickets
-  - Selecting seats
-  - Buying and paying for the tickets
+- Recerca UX
+- Diseño UI
+- Diseño de Interacción
 
-## Resultados de las Encuentas
+</div>
+<div class="overview__sideinfo__item">
 
-Based on the survey responses I found that:
+##### Herramientas Utilizadas
 
-- 83% of people feel that prices are too high
-- 78% of people use external websites or apps to learn more about a movie
-- 62% of people decide with one or more persons which one to see
+- papel y bolígrafo
+- Sketch
+- InVision
+- Principle
 
-## Resultados de las Entrevistas
+</div>
+<div class="overview__sideinfo__item">
 
-From the user interviews that I did, I had the following insights:
+##### Tipo De Proyecto
 
-- Movie ticket prices are too high.
-- Snacks are too expensive
-- Some of people interviewed prefer to bring their own snacks
-- They would consider seeing more movies if the cinema had offers or discounts
-- They think the overall design is pretty ugly
-- They use google o services such as imdb.com to learn more about each movie
-- They miss having a tool that shows them which movies are available on a particular time of day or on a specific day
-- They feel that they will be spammed when they have to sign up before paying for tickets
-- Information about the cinema is hard to find (the seats, services, etc)
+- Proyecto Personal
 
-## Affinity Diagram
+</div>
+<div class="overview__sideinfo__item">
 
-Based on the research findings, I created an Affinity Diagram to help me group the different takeaways I had from the research. From this I decided to work on the following:
+##### Entregables
 
-- **Searching and filtering movies**
-- **Checkout problems**
-- **Increase value to the user**
+- [Prototipo InVision](https://invis.io/2DQQCS4PAYS)
+- [Guia del Moderador](https://invis.io/2DQQCS4PAYS)
 
-<div class="l-10col">
+</div>
+</div>
+</div>
+</div>
 
-![Affinity Diagram used to group the findings from the user research.](wireframe.png "Affinity Diagram used to group the findings from the user research.")
+<div class="row process">
+<div class="col col--12">
+
+## Proceso
+
+<div class="process__item">
+
+#### Descubrimiento
+
+- User Interviews
+
+</div>
+<div class="process__item">
+
+#### Análisis
+
+- Diagrama de Afinidad
+- Problem Statement
+- HMW’s
+- Personas
+- MOSCOW
+
+</div>
+<div class="process__item">
+
+#### Ideación
+
+- Crazy 8’s
+- Prototipo en papel
+
+</div>
+<div class="process__item">
+
+#### Prototipo
+
+- Prototipo de alta fidelidad
+
+</div>
+<div class="process__item">
+
+#### Test
+
+- Entrevista de usuarios 5 de fases
 
 </div>
 
-## Problem Statements
+</div>
+</div>
 
-Based on the main groups of pain points from the Affinity Diagram, I created the following problem statements for each of the main Personas.
+<div class="row row-contain--6">
+<div class="col">
 
-> Users are currently having difficulties deciding which movie they would like to see.
+## Descubrimiento
 
-#####How Might We:
+Antes de empezar a trabajar en este proyecto, tenía una suposición inicial:
 
-**Improve our app so that we can help users decide which movie they would like to see faster?**
+> Las personas tienen dificultades para buscar una película que les gustaría ver cuando usan la aplicación o página web de uno de los cines de mi ciudad.
 
-> Users become frustrated when they have to create an account before they can make a purchase.
+Para validar mi suposición y diseñar una solución, decidí seguir un proceso de diseño centrado en el usuario con una combinación de métodos de Lean UX y Google Sprint.
 
-#####How Might We:
+Para la primera parte de la fase de descubrimiento, entrevisté a 4 usuarios. Esto me ayudó a entender mejor las dificultades que tenían y cómo estaban usando los productos que estaban disponibles en el momento.
 
-**Improve the checkout process so that users are less frustrated and they are able to make a purchase faster?**
+Pero antes de comenzar a hacer las entrevistas, hice una lista de las diferentes preguntas a las que quería que responder con la investigación inicial.
 
-> Movie enthusiasts feel that ticket prices are too high, which is preventing them from being able to see as many movies as they would like to.
+### Preguntas Previas
 
-#####How Might We:
+- ¿Cómo deciden las personas qué película les gustaría ver?
+- ¿Cómo aprenden más sobre la película?
+- ¿Cuántas películas ven cada mes?
+  - ¿Por qué tantas?
+- ¿Con quién están viendo la película? ¿Solos, con una cita, en grupo?
+- ¿Están teniendo problemas cuando:
+  - Están buscando un cine
+  - Están buscando una película para ver
+  - Utilizan las páginas web disponibles para comprar entradas de cine
+  - Están eligiendo los asientos
+  - Comprando y pagando las entradas
 
-**Improve the checkout process so that users are less frustrated and they are able to make a purchase faster?**
+### Conclusiones de las Entrevistas
 
-##Personas
+Una vez hice las entrevistas, encontré que las personas:
 
-My next step was to create the user personas, based on the research findings, to help me design the different features of the app. These feature were based on the different pain points each persona had, and the outcomes they were trying to achieve.
+- Piensan que las entradas de cine y los precios del bar del cine son demasiado altos.
+- Considerarían ver más películas si el cine tuviera ofertas o descuentos.
+- Piensan que el diseño visual no es tan bueno.
+- Usan páginas web externas como Google o imdb.com, para aprender más sobre cada película.
+- Échan de menos tener una herramienta que les muestra qué películas están disponibles en un momento determinado del día o en un día específico.
+- Piensan que la empresa solo quiere que se registren para que puedan enviarles correos electrónicos de marketing.
+- Piensan que la información sobre el cine es difícil de encontrar (los tipos de asientos disponibles, servicios, etc.).
 
-###Alex
+## Análisis
 
-He is trying to find a movie that he and his date might like to watch tonight. They are not movie experts and just want to watch a movie. In order to decide which one, they read movie reviews, watch movie trailers and compare several ones before making a final decision.
+### Diagrama de Afinidad
 
-<div class="l-10col">
+Una vez que tuve una lista de todas las conclusiones de las entrevistas, use un Diagrama de Afinidad para ayudarme a agrupar e identificar los problemas comunes.
 
-![The first Persona created based on the reseach findings, Alex](ux_case_study_personas_alex.png "The first Persona created based on the reseach findings, Alex")
+<div class="expand-10">
+
+![Diagrama de Afinidad usado para agrupar e identificar los problemas comunes.](ux_case_study_affinity_diagram.jpg "Diagrama de Afinidad usado para agrupar e identificar los problemas comunes.")
 
 </div>
 
-###Ana
+Así que decidí empezar a trabajar en los siguientes problemas principales que tenían las personas:
 
-She is a movie enthusiast that likes to watch several movies each month, however she feels current prices are too high and that cinemas aren’t valuing their most loyal customers.
+- **Las personas necesitan una manera de ayudarles a decidir qué película ver.**
+- **Las personas tienen problemas con el proceso de pago.**
+- **Las personas sienten que los precios son demasiado altos.**
 
-<div class="l-10col">
+### Declaración de Problemas
 
-![The second Persona created based on the reseach findings, Ana.](ux_case_study_personas_ana.png "The second Persona created based on the reseach findings, Ana")
+El próximo paso fue usar la técnica de declaración de problemas de la metodología Lean UX. Después use la técnica de _Cómo Podríamos_ para ayudarme a encontrar soluciones para cada uno de ellos.
+
+##### Problema
+
+> Las personas tiene dificultades para decidir qué película les gustaría ver.
+
+##### ¿Cómo Podríamos?
+
+> ¿Mejorar nuestra aplicación para que podamos ayudar a las personas a decidir qué película les gustaría ver más rápido?
+
+##### Problema
+
+> Las personas se sienten frustradas cuando tienen que crear una cuenta antes de poder hacer una compra.
+
+##### ¿Cómo Podríamos?
+
+> ¿Mejorar el proceso de compra para que las personas puedan realizar compras sin frustración?
+
+##### Problema
+
+> Los entusiastas del cine sienten que los precios de las entradas son demasiado altos, lo que les impide ver tantas películas como les gustaría.
+
+##### ¿Cómo Podríamos?
+
+> ¿Reducir el coste de ver una película en un cine para clientes habituales?
+
+### Personas
+
+Basándome en estas declaraciones de problemas y los resultados de la investigación, creé 2 personas. Los utilicé para ayudarme a diseñar las características de la aplicación, que estaban basadas en los problemas que las personas tenían con los productos actuales y en los resultados que querían conseguir.
+
+### Alex
+
+Está intentando encontrar una película que les gustaría ver esta noche, tanto a él como a su pareja. No son expertos en el cine y quieren ver una película. Para decidir cuál ver, leen críticas de películas, ven avances de películas y comparan varios antes de tomar una decisión.
+
+<div class="expand-10">
+
+![La primera persona creada basada en los descubrimientos de la recerca, Alex](ux_case_study_personas_alex.png "La primera persona creada basada en los descubrimientos de la recerca, Alex.")
 
 </div>
 
-## Feature Prioritization
+### Ana
 
-In order to decide which features to include in the initial MVP, I decided to use a Prioritizacion Matrix based on the value it would provide to the end-user and by how difficult it would be to create and then the MOSCOW method.
+Es una entusiasta del cine a la que le gusta ver varias películas cada mes, pero siente que los precios actuales son demasiado altos y que los cines no están valorando a sus clientes más leales.
 
-<div class="l-10col">
+<div class="expand-10">
 
-![Feature Prioritization Matrix based on the value to the user and difficulty to implement.](wireframe.png "Feature Prioritization Matrix based on the value to the user and difficulty to implement.")
-
-</div>
-
-## MOSCOW Method
-
-<div class="l-10col">
-
-![MOSCOW method used to identify the main features to include in the MVP.](wireframe.png "MOSCOW method used to identify the main features to include in the MVP.")
+![La segunda persona creada basada en los descubrimientos de la recerca, Ana.](ux_case_study_personas_ana.png "La segunda persona creada basada en los descubrimientos de la recerca, Ana.")
 
 </div>
 
-##Selected Features for the MVP
+### Priorización de características
 
-> We will create **an advanced search, filter and sort feature** for **Alex** in order to **help him decide which movie he would like to see faster**.
+Para decidir qué características incluir en el MVP inicial, decidí usar una Matriz de Priorización que se basa en el valor que proporcionaría al usuario final y por lo difícil que sería crearla.
 
-> We will create **a optimized guest checkout experience** for **Alex** in order to **help him buy his movie ticket without any frustration**.
+<div class="expand-10">
 
-> We will create **a membership plan** for **Ana** in order to **reduce the cost of seeing several movies a month for movie enthusiasts**.
-
-## Ideation
-
-I used the Crazy 8’s ideation method to help me find different solutions for each of the main features of the initial MVP.
-
-<div class="l-10col">
-
-![Crazy 8’s method used to sketch-out different solutions to the design problem.](wireframe.png "Crazy 8’s method used to sketch-out different solutions to the design problem.")
+![Matriz de priorización de características basada en el valor para el usuario y la dificultad de implementación.](ux_case_study_feature_prioritization.jpg "Matriz de priorización de características basada en el valor para el usuario y la dificultad de implementación.")
 
 </div>
 
-## Movie Searching and Filtering
+### Método MOSCOW
 
-The first feature I started working on was on the ability to search, filter and sort movies, which was designed to help users find a movie easier, using different filtering options, while also beeing able to sort the results based on several category specific criteria.
+Luego utilicé el método MOSCOW para encontrar cuáles son las características más importantes que se incluirán en el MVP.
 
-Most users had difficulties deciding which movie they would like to see, so I designed this feature to allow them to easily find a movie based on the movie’s genre, showtime, user reviews or length. This ways they didn’t have to use other products or services to learn more about the movies and compare them.
+<div class="expand-10">
 
-Before I started sketching the nav bar with the searching, filtering and sorting buttons, I decided to see which patterns were being used by other apps or websites that needed a similar feature.
+![Método MOSCOW utilizado para identificar las características principales para incluir en el MVP.](ux_case_study_moscow.jpg "Método MOSCOW utilizado para identificar las características principales para incluir en el MVP.")
 
+</div>
+
+#### Mi MVP incluiría estas 3 características principales:
+
+- Posibilidad de buscar, filtrar y ordenar películas.
+- Experiencia de pago optimizada para usuarios no registrados.
+- Club de socios con ofertas y descuentos.
+
+### Declaración de Hipótesis de Características
+
+Luego, utilicé las declaraciones de hipótesis de las características de Lean UX para identificar las características que servirán a cada persona y ayudarlas a lograr su resultado individual.
+
+> Crearemos una **características de búsqueda avanzada, con filtros y clasificaciónes** para **Alex** con el fin de **ayudarlo a decidir qué película le gustaría ver más rápido**.
+
+> Crearemos una **experiencia de pago de invitado optimizada** para **Alex** con el fin de **ayudarle a comprar sus entradas para el cine sin ninguna frustración**.
+
+> Crearemos un **plan de membresía** para **Ana** con el fin de **reducir el coste de ver varias películas al mes para los entusiastas del cine**.
+
+### Ideación
+
+Para ayudarme a idear soluciones rápidamente para cada una de las características, utilicé el método de Crazy 8, ya que es una manera excelente de mantenerte en un modo de pensamiento creativo constante para generar muchas formas diferentes de diseñar una característica.
+
+<div class="expand-10">
+
+![El método de Crazy 8 utilizado para esbozar diferentes soluciones al problema de diseño.](ux_case_study_crazy_8s.jpeg "El método de Crazy 8 utilizado para esbozar diferentes soluciones al problema de diseño.")
+
+</div>
+
+## Busqueda y Filtrado de Peliculas
+
+La primera característica en la que empecé a trabajar fue en la de buscar, filtrar y ordenar películas.
+
+Diseñé esta característica para ayudar a las personas a encontrar una película más rápido, usando diferentes opciones de filtrado, y a la vez poder ordenar los resultados según varios criterios específicos de cada categoría.
+
+La mayoría de las personas entrevistadas tuvieron dificultades para decidir qué película les gustaría ver, por lo que la función está destinada a ayudarles a encontrar una película basada en su género, programación, reseñas de usuarios o duración. De esta manera, no tenían que usar otros productos o servicios para aprender más sobre la película.
+
+Antes de comenzar a esbozar la barra de navegación de la aplicación, decidí ver qué patrones de diseño estaban utilizando otras aplicaciones o sitios web que también necesitaban una característica similar.
+
+<div class="expand-12 spaced">
 <div class="screenshot">
 
-![Airbnb shows their filtering options even when search is not active.](./ux_case_study_airbnb_nav_bar@2x.png "Airbnb shows their filtering options even when search is not active.")
+![Airbnb muestra sus opciones de filtrado incluso cuando la búsqueda no está activa.](./ux_case_study_airbnb_nav_bar@2x.png "Airbnb muestra sus opciones de filtrado incluso cuando la búsqueda no está activa.")
 
 </div>
+<div class="info">
+<div class="info__item">
 
-The first product I used for the comparison was Airbnb’s iOS app. One of the reasons for which I considered Airbnb’s design patterns for the searching feature was because their buttons for “Dates” and “Guests” are always visible bellow the search bar, therefore, their users can always see them and know where to find them.
+El primer producto que comparé fue la aplicación iOS de Airbnb. Una de las razones por las que comencé con la suya fue porque el patrón de diseño que estaban usando les permitía tener siempre visibles sus botones para "Fechas" e "Invitados", debajo de la barra de búsqueda. De esta manera, sus usuarios siempre pueden verlos y saber dónde ir si necesitan filtrar sus resultados de búsqueda.
 
+</div>
+</div>
+</div>
+
+<div class="expand-12 spaced">
 <div class="screenshot">
 
-![Asos.com was using a similar aproach to Airbnb but without the search bar.](./ux_case_study_asos_ios_nav_bar@2x.png "Asos.com was using a similar aproach to Airbnb but without the search bar.")
+![Asos.com utilizaba un diseño similar a Airbnb pero sin la barra de búsqueda.](./ux_case_study_asos_ios_nav_bar@2x.png "Asos.com utilizaba un diseño similar a Airbnb pero sin la barra de búsqueda.")
 
 </div>
+<div class="info">
+<div class="info__item">
 
-Asos.com’s sort and filter buttons have more visual weight that Airbnb’s ones, however, they were showing the search bar on a different screen. One of the benefits of the way Asos.com implements their sorting and filtering options is that it allows them to easily indicate which sorting or filtering options are applied to remind the user that the search results are being affected by them.
+La siguiente aplicación que comparé fue la de Asos para iOS. Sus botones de clasificación y filtrado tienen más peso visual que la de Airbnb, pero no ellos no incluyen una barra de búsqueda ya que esta en una pantalla diferente.
 
+Uno de los beneficios de la forma en que Asos.com implementa sus opciones de clasificación y filtrado es que les permite mostrar qué opciones están aplicadas en el momento. De esta manera, pueden recordar al usuario que los resultados de la búsqueda están limitados por los filtros aplicados.
+
+</div>
+</div>
+</div>
+
+<div class="expand-12 spaced">
 <div class="screenshot">
 
-![Crutchfield.com shows the search bar and sort and filter buttons at the same time.](./ux_case_study_crutchfield_example.png "Crutchfield.com shows the search bar and sort and filter buttons at the same time.")
+![Crutchfield.com muestra la barra de búsqueda y los botones de orden y filtro al mismo tiempo.](./ux_case_study_crutchfield_example.png "Crutchfield.com muestra la barra de búsqueda y los botones de orden y filtro al mismo tiempo.")
 
 </div>
+<div class="info">
+<div class="info__item">
 
-Crutchfield.com’s website shows the search bar and sorting and filtering options at the same time, even though their sort and filter buttons are more separated from the search bar and don’t have the same visual weight as the Asos.com example, which could cause their users to overlook them.
+En el caso de la página web de Crutchfield.com, tienen la barra de búsqueda y las opciones de clasificación y filtrado visibles en todo momento. Sin embargo, sus botones de clasificación y filtrado están más separados de la barra de búsqueda y no tienen el mismo peso visual que el ejemplo de Asos.com. Esto podría significar que sus usuarios podrían pasar por alto las opciones porque no destacan tanto visualmente.
 
+</div>
+</div>
+</div>
+
+<div class="expand-12 spaced">
 <div class="screenshot">
 
-![zalando.es offered the most complete filtering and searching experience.](./ux_case_study_zalando_example.png "zalando.es offered the most complete filtering and searching experience.")
+![zalando.es ofrece la más completa experiencia de filtrado y búsqueda.](./ux_case_study_zalando_example.png "zalando.es ofrece la más completa experiencia de filtrado y búsqueda.")
 
 </div>
+<div class="info">
+<div class="info__item">
 
-zalando.es had a more complete searching and filtering experience for their users. Besides always showing the filtering button, they also indicate which filtering options have been activated. Furthermore, users are also able to remove individual filters without having to open the filtering menu again.
+zalando.es tenía una de las experiencias de búsqueda y filtrado más completas para sus usuarios. Además de mostrar siempre el botón de filtrado, también indican qué opciones de filtrado están activas. Además, sus usuarios pueden eliminar los filtros individuales sin tener que abrir el menú de filtros.
 
-A “clear all filters” button is also used to allow their users to easily clear all the current filters applied.
-
-## Low-Fidelity Prototype
-
-Once I did the initial competitive research to see which were the currently used design patterns, I began working on the low-fidelity prototype of the movie searching, filtering and sorting feature for the MVP.
-
-<div class="l-10col">
-
-![Low-Fidelity prototype of the movie searching, filtering and sorting feature.](wireframe.png "Low-Fidelity prototype of the movie searching, filtering and sorting feature.")
+También se usa un botón "Borrar todos los filtros" para permitir que sus usuarios eliminen todos los que están aplicados si desean comenzar de nuevo con una nueva búsqueda.
 
 </div>
+</div>
+</div>
 
-### Movie Searching and Filtering Final Version
+### Caracteristica De Busqueda Y Filtrado De Peliculas
 
-<div class="screeshot-container">
+<div class="expand-12">
 <div class="screenshot">
 
-![Final version of the nav bar in with sorting applied, showing both buttons and search bar.](./ux_case_study_nav_bar_sort_applied@2x.png "Final version of the nav bar in with sorting applied, showing both buttons and search bar.")
+![Versión final de la barra de navegación con clasificación aplicada, que muestra los botones y la barra de búsqueda.](./ux_case_study_nav_bar_sort_applied@2x.png "Versión final de la barra de navegación con clasificación aplicada, que muestra los botones y la barra de búsqueda.")
 
 </div>
 <div class="screenshot">
 
-![Final version of the nav bar with active filter and sort buttons.](./ux_case_study_nav_bar_filter_and_sort_applied@2x.png "Final version of the nav bar with active filter and sort buttons.")
+![Versión final de la barra de navegación con filtro activo y botones de ordenación.](./ux_case_study_nav_bar_filter_and_sort_applied@2x.png "Versión final de la barra de navegación con filtro activo y botones de ordenación.")
 
 </div>
 </div>
 
-For the final version of the searching, filtering and sorting feature, I decided to use a combination of the different design patterns mentioned above, which allowed me to include a full-width search bar without having to hide the filter and sort buttons. This design also allowed me to clearly indicate their current state and to allow the users to easily remove any filters applied.
+Para la versión final de la característica, decidí usar una combinación de los diferentes patrones de diseño mencionados anteriormente. Esto me permitió incluir una barra de búsqueda que ocupa todo el ancho de la pantalla sin tener que ocultar las opciones de filtrado o el boton de clasificación. De esta manera también podría mostrar si hay filtros u opciones de clasificación activos.
 
-The filtering options were designed in a way that users could apply different filters to improve their search, without having mutually exclusive options, as the [Baymard Institute recomends](https://baymard.com/blog/allow-applying-of-multiple-filter-values) in their article on E-Commerce UX, where they found that 45% of the users tested, tried to apply multiple filters at some point.
+Otro beneficio es que los usuarios también pueden eliminar cualquiera de los filtros, uno por uno, o todos a la vez, usando el botón "Borrar filtros".
 
-By using checkbox style buttons for the filters, users can easily enable and disable filtering options, which don’t have to depend on each other.
+Las opciones de filtrado también están diseñadas de manera que los usuarios puedan combinarlas para mejorar su búsqueda, sin tener opciones mutuamente exclusivas, siguiendo las recomendaciones del [artículo sobre E-Commerce UX](https://baymard.com/blog/allow-applying-of-multiple-filter-values) realizado por el Instituto Baymard, donde encontraron que hasta el 45% de los usuarios que participaron en su estudio, intentaron aplicar varios filtros en algún momento durante su búsqueda.
 
-### Movie Searching and Filtering Wireflow Diagram
+### Diagrama de Flujo de las Opciones de Búsqueda y Filtrado de Peliculas
 
-<div class="diagram">
+<div class="expand-10">
 
-![Wireflow diagram of the movie searching and filtering experience.](./ux_case_study_wire_flow_alex_search_and_filter.png "Wireflow diagram of the movie searching and filtering experience.")
+![Diagrama de Flujo de las Características de Búsqueda y Filtrado de Peliculas.](./ux_case_study_wire_flow_alex_search_and_filter.png "Diagrama de Flujo de las Características de Búsqueda y Filtrado de Peliculas.")
 
 </div>
 
-## Movie Searching and Filtering High-Fidelity Prototypes
+### Prototipo de Alta Fidelidad de las Opciones de Búsqueda y Filtrado de Peliculas
 
-<div class="screenshot-container">
+<div class="expand-12">
 <div class="screenshot">
 
-#### Movie Searching Prototype
+#### Prototipo de la Busqueda de Películas
 
 <figure>
   <span class="video-iphoneX">
-    <span class="video-iphoneX--video">
+    <span class="video-iphoneX__video">
       <video autoplay loop muted playsinline controls>
         <source
           src="./ux_case_study_movie_searching_prototype.webm"
@@ -274,26 +402,26 @@ By using checkbox style buttons for the filters, users can easily enable and dis
           src="./ux_case_study_movie_searching_prototype.mp4"
           type="video/mp4"
         />
-        Your browser does not support HTML5 video.
+        Su navegador no soporta video HTML5.
         <a href="./ux_case_study_movie_searching_prototype.gif">
-          View the GIF version of the movie searching experience prototype.
+          Ver el GIF del prototipo de alta fidelidad de la opciones de búsqueda de peliculas.
         </a>
       </video>
     </span>
   </span>
   <figcaption>
-    High fidelity prototype of the movie searching feature.
+    Prototipo de alta fidelidad de la opciones de búsqueda de peliculas.
   </figcaption>
 </figure>
 
 </div>
 <div class="screenshot">
 
-#### Movie Filtering Prototype
+#### Prototipo del Filtrado de Películas
 
 <figure>
   <span class="video-iphoneX">
-    <span class="video-iphoneX--video">
+    <span class="video-iphoneX__video">
       <video autoplay loop muted playsinline controls>
         <source
           src="./ux_case_study_movie_filtering_prototype.webm"
@@ -303,26 +431,26 @@ By using checkbox style buttons for the filters, users can easily enable and dis
           src="./ux_case_study_movie_filtering_prototype.mp4"
           type="video/mp4"
         />
-        Your browser does not support HTML5 video.
+        Su navegador no soporta video HTML5.
         <a href="./ux_case_study_movie_filtering_prototype.gif">
-          View the gif version of the movie filtering interaction prototype.
+          Ver el GIF del prototipo de la opciones de filtrado de peliculas.
         </a>
       </video>
     </span>
   </span>
   <figcaption>
-    High fidelity prototype of the movie filtering feature.
+    Prototipo de alta fidelidad de la opciones de filtrado de peliculas.
   </figcaption>
 </figure>
 
 </div>
 <div class="screenshot">
 
-#### Movie Seat Choosing Prototype
+#### Prototipo de las Opciones de Selección de Asientos
 
 <figure>
   <span class="video-iphoneX">
-    <span class="video-iphoneX--video">
+    <span class="video-iphoneX__video">
       <video autoplay loop muted playsinline controls>
         <source
           src="./ux_case_study_seat_choosing_prototype.webm"
@@ -332,139 +460,147 @@ By using checkbox style buttons for the filters, users can easily enable and dis
           src="./ux_case_study_seat_choosing_prototype.mp4"
           type="video/mp4"
         />
-        Your browser does not support HTML5 video.
+        Su navegador no soporta video HTML5.
         <a href="./ux_case_study_seat_choosing_prototype.gif">
-          View the gif version of the movie filtering interaction prototype.
+          Ver el GIF del prototipo de las opciones de selección de asientos.
         </a>
       </video>
     </span>
   </span>
   <figcaption>
-    High fidelity prototype of the seat choosing process with a mini–map and
-    scrolling seat interface.
+    Prototipo de alta fidelidad del proceso de elección de asientos con un mini mapa e interfaz de desplazamiento del asiento.
   </figcaption>
 </figure>
 
 </div>
 </div>
 
-## Movie Booking Guest Checkout
+## Proceso de Compra como Invitado
 
-The second most important feature of this app was the guest checkout user flow.
+La segunda característica de esta aplicación fue el proceso de compra de entradas como invitado.
 
-One of the most important issues people had in the interviews was that they didn’t like the fact that they have to register before beying able to pay for a movie ticket. Most of them felt that they would receive allot of spam, especially if the overall design of the website/app wasn’t really up-to-date.
+Uno de los principales problemas que las personas tuvieron en las entrevistas fue que no les gustó el hecho de que tienen que registrarse antes de poder pagar sus entradas para ver una película. La mayoría de ellos consideraron que recibirían una gran cantidad de spam, sobretodo si el diseño general de la página web o aplicación no estaban tan actualizados.
 
-Even though guest checkout flow’s are usually designed for users which don’t have an account, they are also particularly useful for users that might have forgotten their password and just don’t want to go through the password-reset-process at that moment.
+A pesar de que los procesos de compra de entradas como invitado normalmente están diseñados para usuarios que todavía no tienen una cuenta, también son útiles para los usuarios que han olvidado su contraseña y no desean pasar por el proceso de restablecimiento de contraseña en este momento.
 
-## Low-Fidelity Prototype
+Después de investigar previamente para ver cuáles son las mejores prácticas utilizadas para diseñar un proceso de pago, empecé a trabajar en el prototipo de la característica.
 
-After some initial research for best practices when creating a guest checkout experience, I started working on the low-fidelity wireframes for the prototype.
+### Creación de Cuenta Aplazada
 
-<div class="l-10col">
-
-![Low-Fidelity prototype of the guest checkout feature.](wireframe.png "Low-Fidelity prototype of the guest checkout feature.")
-
-</div>
-
-## Guest Checkout Flow Improvements
-
-### Delayed Account Creation
-
-<div class="screenshot-container">
+<div class="expand-12">
 <div class="screenshot">
 
-![Users can sign in to use their saved personal information or as a guest, when booking a movie.](./ux_case_study_choose_guest_checkout_screen@2x.png "Users can sign in to use their saved personal information or as a guest, when booking a movie.")
+![Los usuarios pueden iniciar sesión para utilizar su información personal guardada o pueden continuar como invitado, al reservar una película.](./ux_case_study_choose_guest_checkout_screen@2x.png "Los usuarios pueden iniciar sesión para utilizar su información personal guardada o como invitado, al reservar una película.")
 
 </div>
 <div class="info">
 <div class="info__item">
 
-#### Guest checkout as an option for all users
+#### Checkout de invitados como opción para todos los usuarios.
 
-Research has found that [up to 37% of the users tested](https://baymard.com/blog/delayed-account-creation), would abandon the checkout if they were forced to create an account. Guest checkout experiences are also helpful to registered users who might have forgotten their passwords, which according to the same research, causes up to 19% of all users to abandon the checkout process.
+Según el [estudio realizado](https://baymard.com/blog/delayed-account-creation) por el Instituto Baymard, hasta el 37% de los usuarios que participaron en el, abandonarían el proceso de compra si se ven obligados a crear una cuenta. Por lo tanto, decidí permitir que los usuarios de la aplicación puedan realizar un pago sin tener que crear una cuenta primero, creando una experiencia de pago como invitado para todos, sin importar si tienen una cuenta o no.
 
-#### Create an account in the checkout confirmation step
+#### Crear una cuenta en el paso de confirmación de pago
 
-Designers should let their users know that they can still create an account at the end of the checkout flow if they would like to do so.
+Como no estaba pidiendo a cada usuario que creara una cuenta primero, decidí informarles que ahora pueden realizar una compra, y si desean registrarse para guardar su información de pago o envío para futuras compras, podrán crear una cuenta al final del proceso de pago si lo desean.
 
-#### Explain why information is needed
+#### Explicar por qué se necesita su información
 
-According to the same research, privacy-concerned users are less reluctant to share their personal information, such as their phone number or email address, if we explain why we are asking for it.
+Además, de acuerdo con el mismo estudio, si los usuarios están preocupados por su privacidad, el producto puede explicar por qué se necesita su información personal, lo que ayudará a reducir su miedo de que sea solo para enviarles correos electrónicos de marketing.
 
 </div>
 </div>
 </div>
 
-### Guest Checkout Payment Methods
+### Métodos de Pago para las Compras como Invitado
 
-<div class="screenshot-container">
+<div class="expand-12">
 <div class="screenshot">
 
-![Guest checkout with the order summary and available payment methods.](./ux_case_study_guest_checkout_payment_methods@2x.png "Guest checkout with the order summary and available payment methods.")
+![Proceso de pago como invitado con el resumen del pedido y los métodos de pago disponibles.](./ux_case_study_guest_checkout_payment_methods@2x.png "Proceso de pago como invitado con el resumen del pedido y los métodos de pago disponibles.")
 
 </div>
 <div class="info">
 <div class="info__item">
 
-#### Payment methods placed in close proximity
+#### Métodos de pago disponibles ubicados uno al lado del otro
 
-The different payment methods the app accepts are presented using 3 buttons placed next to each other, following the [recommendations of the research](https://baymard.com/blog/payment-method-selection) made by the Baymard Institute. According to their research, payment methods should be placed together in close proximity (Gestalt principles would help here) so that users can easily compare them with a single glance and see which one is currently active.
+Los diferentes métodos de pago que acepta la aplicación se muestran usando 3 botones ubicados uno al lado del otro, siguiendo las [recomendaciones de la investigación](https://baymard.com/blog/payment-method-selection) realizada por el Instituto Baymard.
 
-Users should also be able to compare the different costs associated to each payment method—if they apply—such as a 2% fee when using a particular payment type.
+Según ellos, los métodos de pago deben colocarse juntos muy cerca (los principios de Gestalt ayudarían aquí) para que los usuarios puedan compararlos fácilmente con una sola mirada y ver cuál está activo actualmente.
+
+Los usuarios también deben poder comparar los diferentes costes asociados con cada método de pago, si corresponde, como una tarifa del 2% cuando se utiliza un tipo de pago en particular.
 
 </div>
 </div>
 </div>
 
-### Optimizing The Payment Form
+### Optimizando el Formulario de Pago
 
-<div class="screenshot-container">
+<div class="expand-12">
 
 <div class="screenshot">
 
-![Guest checkout with credit card form interaction.](./ux_case_study_guest_checkout_optimized_credit_card_form@2x.png "Guest checkout with credit card form interaction.")
+![La interacción con el formulario para introducir la tarjeta de crédito del proceso de pago como invitado.](./ux_case_study_guest_checkout_optimized_credit_card_form@2x.png "La interacción con el formulario para introducir la tarjeta de crédito del proceso de pago como invitado.")
 
 </div>
 <div class="info">
 <div class="info__item">
 
-#### Insert spaces every 4 digits
+#### Insertar espacios cada 4 dígitos
 
-The input field for the credit card number was designed to auto insert spaces every 4 digits (for Visa cards, others may differ), as research has found that [as many as 23% of the users tested](https://baymard.com/blog/credit-card-field-auto-format-spaces) would double check the card numbers they typed in groups of 4 digits by manually inserting spaces, so that they are able to easily read and verify the number.
+Diseñé el campo de entrada del número de tarjeta de crédito para que este inserte automáticamente espacios cada 4 dígitos (en el caso de las tarjetas Visa, otras pueden ser diferentes). Según un estudio, la mayoría de los usuarios [comprueban dos veces los números de tarjeta](https://baymard.com/blog/credit-card-field-auto-format-spaces) que escribieron en grupos de 4 dígitos insertando espacios manualmente, lo cuál hacen para que puedan leer y comprobar fácilmente el número que escribieron.
 
-Furthermore, a simple [Luhn validation script](https://gist.github.com/DiegoSalazar/4075533) could be used to check if the card number is valid.
+Además, se podría usar un [script de validación de Luhn](https://gist.github.com/DiegoSalazar/4075533) para comprobar si el número de tarjeta escrito es válido.
 
-#### Match the printed format of the expiration date
+#### Hacer coincidir el formato de la fecha de vencimiento con el impreso
 
-The expiration date input field was designed to match the physical layout and format of “MM/YY” found on most credit cards. Research has shown that most users will try to follow the same format printed on the card when typing the number. Therefore, forms should be designed in a way that they respect the physical format found on credit cards.
+El campo de entrada de la fecha de vencimiento fue diseñado para coincidir con el diseño físico y el formato de "MM / YY" que se encuentra en la mayoría de las tarjetas de crédito. [Un estudio ha demostrado](https://baymard.com/blog/how-to-format-expiration-date-fields) que la mayoría de los usuarios intentarán seguir el mismo formato impreso en la tarjeta al escribir el número. Por tanto, los formularios deben diseñarse de manera que respeten el formato físico que se encuentra en las tarjetas de crédito.
 
-Form fields used for credit cards should also use input masks that auto-insert a forwards slash character after the MM in the expiration date and of course, use the appropiate keyboard type for each input field.
+Los campos de formulario utilizados para las tarjetas de crédito también deben usar máscaras de entrada que insertan automáticamente un carácter de barra diagonal después del MM en la fecha de vencimiento y el tipo de teclado apropiado para cada campo de entrada del formulario.
 
 </div>
 </div>
 </div>
 
-### Order Confirmation With Option To Sign Up
+### Confirmación del Pedido con Opción que Permite Registrarse
 
+<div class="expand-12">
 <div class="screenshot">
 
-![Users can sign in to use their saved personal information or as a guest, when booking a movie.](./ux_case_study_guest_checkout_delayed_account_creation@2x.png "Users can sign in to use their saved personal information or as a guest, when booking a movie.")
+![Los usuarios pueden iniciar sesión para utilizar su información personal guardada o continuar como invitados.](./ux_case_study_guest_checkout_delayed_account_creation@2x.png "Los usuarios pueden iniciar sesión para utilizar su información personal guardada o continuar como invitados.")
+
+</div>
+<div class="info">
+<div class="info__item">
+
+#### Darse de Alta en el Último Paso del Proceso de Pago
+
+La pantalla de confirmación de pedido fue diseñada para permitir a los usuarios guardar sus datos personales, como su correo electrónico o información de pago para futuras compras.
+
+En lugar de ser obligados a tener que crear una cuenta antes de que puedan realizar una compra, una mejor opción es permitirles crear una cuenta en el último paso del proceso de pago.
+
+De esta manera, los usuarios aún pueden registrarse para guardar sus datos para pagos futuros, pero en lugar de ser algo molesto, pasa a es una característica útil que les permite hacer futuras compras más rápido si vuelven a usar la aplicación ya que no tendrán que volver a introducir los datos.
+
+A pesar de que sigue siendo la misma cantidad de campos de entrada, los usuarios no pensarán que solo se tienen que registrar para que la empresa pueda enviarles correos electrónicos de marketing.
+
+</div>
+</div>
+</div>
+
+### Diagrama de Flujo de la Experiencia de Pago como Invitados
+
+<div class="expand-10">
+
+![Diagrama de Flujo de la Experiencia de Pago como Invitados.](./ux_case_study_wire_flow_alex_checkout.png "Diagrama de Flujo de la Experiencia de Pago como Invitados.")
 
 </div>
 
-### Guest Checkout Wireflow Diagram
-
-<div class="diagram">
-
-![Wireflow diagram of the guest checkout experience.](./ux_case_study_wire_flow_alex_checkout.png "Wireflow diagram of the guest checkout experience.")
-
-</div>
-
-### Guest Checkout High-Fidelity Prototype
+### Prototipo de Alta Fidelidad de la Experiencia de Pago como Invitados
 
 <figure>
   <span class="video-iphoneX">
-    <span class="video-iphoneX--video">
+    <span class="video-iphoneX__video">
       <video autoplay loop muted playsinline controls>
         <source
           src="./ux_case_study_guest_checkout_prototype.webm"
@@ -474,100 +610,112 @@ Form fields used for credit cards should also use input masks that auto-insert a
           src="./ux_case_study_guest_checkout_prototype.mp4"
           type="video/mp4"
         />
-        Your browser does not support HTML5 video.
+        Su navegador no soporta video HTML5.
         <a href="./ux_case_study_guest_checkout_prototype.gif">
-          View the GIF version of the guest checkout final prototype.
+          Ver el GIF del prototipo de alta fidelidad de la experiencia de pago como invitados.
         </a>
       </video>
     </span>
   </span>
-  <figcaption>The final prototype of the guest checkout process.</figcaption>
+  <figcaption>El prototipo final de alta fidelidad de la experiencia de pago como invitados.</figcaption>
 </figure>
 
-## Membership Plan
+## Club de Socios
 
-One of the main reason why I decided to design this app was that most of the cinemas that I used to go to didn’t really have any decent membership plans that would provide any decent value.
+La tercera característica de la aplicación fue el club de socios con ofertas y descuentos.
 
-Most of them gave a point for each euro spent, which users could collect, and when they reached a number of points (100 points, more or less) they could exchange them for a movie ticket.
+En las entrevistas, la mayoría de los usuarios se quejaron de que la mayoría de los clubs de socios que ofrecen los cines actualmente no valen la pena ya que no aportan suficiente valor como para darse de alta.
 
-Considering that a normal ticket usually costs between 5 and 7 euros, people needed to spend about 100 euros before they could get a free ticket, so it’s not really worth it.
+La mayoría de ellos dan un punto por cada euro gastado. Luego, estos puntos pueden usarse para obtener una entrada para una película o para comprar en el bar del cine. Sin embargo, para poder cambiarlos por una entrada, hacen falta unos 100 puntos, lo que significa que hay que gastar 100 euros antes de poder obtener una entrada gratis, por lo que no vale tanto la pena.
 
-This feature of the app was my atempt to see how the experience could be improved in a way that users would actually feel that it actually provides any real value.
+Esta característica de la aplicación fue mi intento de ver cómo podría mejorar la experiencia de manera que los usuarios sientan que vale la pena y consideren que les proporciona suficiente valor como para darse de alta.
 
-Furthermore, based on the findings in the user interviews, my assumptions that most users found the prices to be expensive were validated, so I began working on a solution.
+### Diseñando el Proceso de Alta del Club de Socios
 
-### Designing The Membership Plan Sign Up Process
+El proceso de alta para el club de socios se dividió en 4 segmentos para evitar sobrecargar a los usuarios con demasiados campos de formulario a la vez.
 
-The sign flow for the membership plan was divided into 4 segments to avoid overwhelming the users with too many form fields at once.
+Los 4 segmentos fueron:
 
-The 4 segments were:
+- **Datos de contacto**
+- **Información de envío**
+- **Datos de pago**
+- **Finalizado (pantalla de confirmación)**
 
-- **Contact details**
-- **Shipping information**
-- **Payment information**
-- **Finished (confirmation screen)**
+### Diagrama de Flujo del Proceso de Alta del Club de Socios
 
-### Membership Sign Up Wireflow Diagram
+<div class="expand-10">
 
-<div class="diagram">
-
-![Wireflow diagram of the membership sign up process.](./ux_case_study_wire_flow_ana_membership_sign_up.png "Wireflow diagram of the membership sign up process.")
+![Diagrama de flujo del proceso de alta del club de socios.](./ux_case_study_wire_flow_ana_membership_sign_up.png "Diagrama de flujo del proceso de alta del club de socios.")
 
 </div>
 
-### Shipping Information Optimizations
+### Optimizaciones para la Fase de la Información de Envío
 
-The shipping information step was needed so that users could receive a copy of their membership card.
-
-In order to design this checkout step I decided to do some research to find which are the UX best practices of designing a Shipping Information checkout step.
+La fase de recogida de la información de envío es necesaria para que los usuarios puedan recibir una copia de su tarjeta del club de socios. Para diseñar esta fase, decidí realizar una investigación previa para ver cuáles son las mejores prácticas de UX para diseñar la fase del proceso de pago en la que se recogen los datos de envío.
 
 <div class="screenshot">
 
-![Shipping information screen with optimized copy to avoid confusing users with the different shipping options.](./ux_case_study_shipping_methods_selection@2x.png "Shipping information screen with optimized copy to avoid confusing users with the different shipping options.")
+Pantalla de la fase de recogida de la información de envío con textos optimizados para evitar confundir a los usuarios con las diferentes opciones de envío.
+
+![Pantalla de la fase de recogida de la información de envío con textos optimizados para evitar confundir a los usuarios con las diferentes opciones de envío.](./ux_case_study_shipping_methods_selection@2x.png "Pantalla de la fase de recogida de la información de envío con textos optimizados para evitar confundir a los usuarios con las diferentes opciones de envío.")
 
 </div>
 
-#### No hidden fees
+#### Sin costes escondidos
 
-Hidden charges and delivery costs were found to be one of the main reasons why customers decide to abandon a checkout, so I decided to clearly indicate all the delivery costs the users might have to pay.
+Los cargos ocultos y los costes de entrega son una de las razones principales por las que los clientes deciden abandonar un proceso de pago, por lo que decidí indicar claramente todos los costes de entrega que los usuarios tendrían que pagar.
 
-#### Store pick-up and delivery methods
+#### Opción de recoger en tienda y métodos de envío
 
-Reseach has found that when the store pick-up option isn’t listed next to the other delivery methods, users will miss it and won’t be able to compare if the extra cost of paying the extra 2 or 3 euros for a faster delivery method, would be worth it.
+[Un estudio reciente](https://baymard.com/blog/store-pickup-as-shipping-option) ha demostrado que cuando la opción de recoger en la tienda no aparece junto a los otros métodos de entrega, los usuarios no se darán cuenta de que esta existe, y no podrán comparar si el coste adicional de pagar los 2 o 3 euros más para una opción de entrega más rápida vale la pena.
 
-The diferent delivery methods were also designed following the recomendations of another study which found that when using labels such as 2 Days Express or 1 Day Premium users would be confused of the exact date they would receive the product.
+Además, los diferentes métodos de entrega también están diseñados siguiendo las recomendaciones de un [estudio](https://baymard.com/blog/shipping-speed-vs-delivery-date) que encontró que al usar etiquetas como 2 Days Express o 1 Day Premium, los usuarios se confundirían con la fecha exacta en que recibirían el producto.
+
+<div class="expand-12 spaced">
+<div class="screenshot">
+
+![Ejemplo de cómo no etiquetar los métodos de entrega. No queda claro para el usuario cuál es el día exacto en que llegaría el producto.](./ux_case_study_confusing_shipping_example.png "Ejemplo de cómo no etiquetar los métodos de entrega. No queda claro para el usuario cuál es el día exacto en que llegaría el producto.")
+
+</div>
+<div class="info">
+<div class="info__item">
+
+Al usar etiquetas como estas, los usuarios se ven obligados a tener que calcular personalmente el día en que llegaría el producto.
+
+Una etiqueta de "3-5 días" no tiene en cuenta el tiempo de procesamiento que cada orden podría necesitar, la hora de corte diaria (las órdenes después de las 16h se enviarán al día siguiente), o si el usuario elige un envío _Express de 1 Día_ en un viernes, lo que significa que el pedido se envía el lunes, lo que lo convierte en un método de envío de 3 días con un coste superior.
+
+</div>
+</div>
+</div>
+
+<div class="expand-12">
+<div class="screenshot">
+
+![Ejemplo de una forma correcta de etiquetar los métodos de entrega.](./ux_case_study_correct_shipping_implementation_example.png "Ejemplo de una forma correcta de etiquetar los métodos de entrega.")
+
+</div>
+<div class="info">
+<div class="info__item">
+
+Al usar etiquetas como "Llegará el:" o "Recíbelo el:", los usuarios tomarán la fecha de entrega como una promesa que aumentaría su confianza a la hora de decidir si el coste adicional de una opción de envio _Express_ vale la pena o no.
+
+Sin embargo, para que la fecha final sea útil para el usuario, esta debe tener en cuenta todos los factores necesarios, como el la hora de corte de los envíos, la hora y fecha actual o el tiempo estimado de entrega de la compañía de envío.
+
+</div>
+</div>
+</div>
 
 <div class="screenshot">
 
-![Example of how not to label delivery methods. It’s not clear to the user which is the exact day the product would arrive.](./ux_case_study_confusing_shipping_example.png "Example of how not to label delivery methods. It’s not clear to the user which is the exact day the product would arrive.")
+![Ejemplo de una correcta implementación de los métodos de entrega de amazon.co.uk.](./ux_case_study_amazon_shipping_example.png "Ejemplo de una correcta implementación de los métodos de entrega de amazon.co.uk.")
 
 </div>
 
-By using labels like these, users are forced to have to personally calculate the day in which the product would arrive.
-
-A label of “3-5 days” doesn’t take into consideration the processing time each order might need, the daily cut off time, such as: orders after 4pm will be sent the following day, or if the user chooses a 1 Day Premium shipping option on a friday, which would mean that the order is shipped monday, ultimately making it a 3 day shipping method with a premium cost.
-
-<div class="screenshot">
-
-![Example of a correct way to label delivery methods.](./ux_case_study_correct_shipping_implementation_example.png "Example of a correct way to label delivery methods.")
-
-</div>
-
-By using labels such as “Arrives by“ or “Get it by”, users would take the delivery date as a promise which would increase their confidence when they have have to decide if the extra cost of a premium delivery is worth it.
-
-However, in order for the final date to be usefull to the user, it should take into account all the necesary factors such as order cut of time, the current time and date or the delivery estimate of the shipping company.
-
-<div class="screenshot">
-
-![Example of a correct implementation of delivery methods from amazon.co.uk.](./ux_case_study_amazon_shipping_example.png "Example of a correct implementation of delivery methods from amazon.co.uk.")
-
-</div>
-
-### Membership Sign Up High-Hidelity Prototype
+### Prototipo de Alta Fidelidad del Proceso de Alta del Club de Socios
 
 <figure>
   <span class="video-iphoneX">
-    <span class="video-iphoneX--video">
+    <span class="video-iphoneX__video">
       <video autoplay loop muted playsinline controls>
         <source
           src="./ux_case_study_membership_checkout_prototype.webm"
@@ -577,18 +725,38 @@ However, in order for the final date to be usefull to the user, it should take i
           src="./ux_case_study_membership_checkout_prototype.mp4"
           type="video/mp4"
         />
-        Your browser does not support HTML5 video.
+        Su navegador no soporta video HTML5.
         <a href="./ux_case_study_membership_checkout_prototype.gif">
-          View the GIF version of the seat choosing process prototype.
+          Ver el GIF del prototipo de alta fidelidad del proceso de alta del club de socios
         </a>
       </video>
     </span>
   </span>
   <figcaption>
-    Membership plan with offers and discounts final prototype.
+    Prototipo de alta fidelidad del proceso de alta del club de socios.
   </figcaption>
 </figure>
 
-## Next Steps
+## Pruebas de Usabilidad
 
-#### Something
+El último paso de mi proceso de diseño fue probar la aplicación. Para las pruebas de usabilidad utilicé el método de Entrevistas de 5 Actos de Google Ventures, en el que entrevisté a 5 personas y les di a cada una de ellas tareas que tendrían que intentar completar usando la aplicación.
+
+Las preguntas que quería responder con las entrevistas fueron:
+
+- ¿Ayuda la aplicación a los usuarios a decidir qué película les gustaría ver más rápido?
+- ¿Ayuda la aplicación a los usuarios a aprender más sobre cada película?
+- ¿Se apuntarán los usuarios al club de socios?
+- ¿Pueden los completar el proceso de compra sin ningún problema?
+- ¿Es útil el proceso de pago como invitado para los usuarios?
+
+### Los Resultados:
+
+- 4 de cada 5 usuarios se dieron de alta en el club de socios
+- 5 de cada 5 usuarios usaron la barra de búsqueda y los filtros para ayudarles a encontrar una película
+- 5 de cada 5 usuarios dijeron que es mucho más fácil aprender todo lo que necesitan sobre una película dentro de la aplicación
+- 4 de cada 5 usuarios usaron el proceso de pago como invitados y 3 de ellos se registraron al final
+
+## Conclusión
+
+</div>
+</div>
