@@ -19,7 +19,7 @@ export const StyledSiteNav = styled.nav`
     }
   }
 
-  ${mediaMin.xs`
+  ${mediaMin.s`
     padding-right: ${theme.gutters.m};
     padding-left: ${theme.gutters.m};
 

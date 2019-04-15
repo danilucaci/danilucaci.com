@@ -61,7 +61,7 @@ export const StyledSiteNavListItem = styled.li`
       background-color: transparent;
       font-size: ${theme.fontSizes.s};
       line-height: ${theme.lineHeights.s};
-      padding: ${rem(16)} ${rem(10)};
+      padding: ${rem(16)} ${rem(8)};
   `};
 
     ${mediaMin.s`
