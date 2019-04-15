@@ -11,7 +11,7 @@ snippet: "A case study on improving the experience of searching, finding and boo
 #     - name: "Low-Fidelity Prototype"
 #       link: "https://invis.io/N5OJ253T2PF"
 #     - name: "High-Fidelity Prototype"
-#       link: "https://invis.io/2DQQCS4PAYS"
+#       link: "https://invis.io/AERJX7Y8J4F"
 date: "2019-04-22"
 category: "work"
 tags:
@@ -66,8 +66,8 @@ That’s why I decided to see how I could improve the experience of searching fo
 
 ##### Deliverables
 
-- [InVision Prototype](https://invis.io/2DQQCS4PAYS)
-- [Moderator Guide](https://invis.io/2DQQCS4PAYS)
+- [InVision Prototype](https://invis.io/AERJX7Y8J4F)
+- [Moderator Guide](something)
 
 </div>
 </div>

@@ -11,7 +11,7 @@ snippet: "Estudio de caso sobre como mejorar la experiencia de busqueda y compra
 #     - name: "Low-Fidelity Prototype"
 #       link: "https://invis.io/N5OJ253T2PF"
 #     - name: "High-Fidelity Prototype"
-#       link: "https://invis.io/2DQQCS4PAYS"
+#       link: "https://invis.io/AERJX7Y8J4F"
 date: "2019-04-22"
 category: "work"
 tags:
@@ -30,7 +30,7 @@ twinPost: "Movie Booking App"
 
 ## Introducción
 
-Como la mayoría de la gente, me encanta ver películas. Sobretodo en un cine. Sin embargo, cada vez que usaba una de las aplicaciones o sitios web de uno de los cines de mi ciudad para intentar comprar una entrada para una película, me encontraba con que todos tenían diseños obsoletos y confusos. Además, si no sabía qué película me gustaría ver, siempre tenía que usar Google u otras páginas web para obtener más información sobre la película.
+Como la mayoría de la gente, me encanta ver películas. Sobretodo en un cine. Sin embargo, cada vez que usaba una de las aplicaciones o sitios web de uno de los cines de mi ciudad para intentar comprar una entrada para una película, me encontraba con que todos tenían diseños anticuados y confusos. Además, si no sabía qué película me gustaría ver, siempre tenía que usar Google u otras páginas web para obtener más información sobre la película.
 
 Por eso decidí ver cómo podría mejorar la experiencia de buscar una película y luego comprar una entrada para ella usando una aplicación iOS.
 
@@ -66,8 +66,8 @@ Por eso decidí ver cómo podría mejorar la experiencia de buscar una película
 
 ##### Entregables
 
-- [Prototipo InVision](https://invis.io/2DQQCS4PAYS)
-- [Guia del Moderador](https://invis.io/2DQQCS4PAYS)
+- [Prototipo InVision](https://invis.io/AERJX7Y8J4F)
+- [Guia del Moderador](something)
 
 </div>
 </div>
