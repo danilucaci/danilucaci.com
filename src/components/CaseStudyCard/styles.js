@@ -66,9 +66,12 @@ export const Tag = styled.p`
   letter-spacing: ${theme.letterSpacing.sectionHeaderS};
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.headerRegular};
-    letter-spacing: ${theme.letterSpacing.sectionHeaderXL};
+    font-family: ${theme.fonts.header};
   }
+
+  ${mediaMin.s`  
+    letter-spacing: ${theme.letterSpacing.sectionHeaderXL};
+  `};
 
   display: inline-block;
   margin-right: ${rem(16)};
