@@ -67,7 +67,7 @@ Por eso decidí ver cómo podría mejorar la experiencia de buscar una película
 ##### Entregables
 
 - [Prototipo InVision](https://invis.io/AERJX7Y8J4F)
-- [Guia del Moderador](something)
+- [Guia del Moderador](movie_booking_app_moderator_guide.pdf)
 
 </div>
 </div>
