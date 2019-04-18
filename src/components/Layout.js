@@ -384,6 +384,8 @@ class Layout extends Component {
             <GlobalCSS />
             <GlobalGrid />
             <SVGSprite />
+            {this.state.error && <a onClick={() => Sentry.showReportDialog()}>Report feedback</a>}
+            {this.props.children}
             <CookieConsent
               askCookieConsent={this.state.askCookieConsent}
               acceptsCookies={this.acceptsCookies}
@@ -391,8 +393,6 @@ class Layout extends Component {
               pageLocale={this.props.locale}
               isTransitioning={this.state.isTransitioning}
             />
-            {this.state.error && <a onClick={() => Sentry.showReportDialog()}>Report feedback</a>}
-            {this.props.children}
           </Page>
         </IntlProvider>
       </ThemeProvider>
