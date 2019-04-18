@@ -11,11 +11,20 @@ export const StyledSiteNav = styled.nav`
   padding-right: ${theme.gutters.s};
   padding-left: ${theme.gutters.s};
 
-  /* iPhone X */
+  /* iPhone X 
+   * Add the extra gridSpacing used in the Grid
+   * calc(env(safe-area-inset-left) + ${theme.gridSpacing.s})
+   */
   @supports (padding: max(0px)) {
     & {
-      padding-left: max(${theme.gutters.s}, env(safe-area-inset-left));
-      padding-right: max(${theme.gutters.s}, env(safe-area-inset-right));
+      padding-left: max(
+        ${theme.gutters.s},
+        calc(env(safe-area-inset-left) + ${theme.gridSpacing.s})
+      );
+      padding-right: max(
+        ${theme.gutters.s},
+        calc(env(safe-area-inset-left) + ${theme.gridSpacing.s})
+      );
     }
   }
 
@@ -26,8 +35,12 @@ export const StyledSiteNav = styled.nav`
     /* iPhone X */
     @supports (padding: max(0px)) {
       & {
-        padding-left: max(${theme.gutters.m}, env(safe-area-inset-left));
-        padding-right: max(${theme.gutters.m}, env(safe-area-inset-right));
+        padding-left: max(${theme.gutters.m}, calc(env(safe-area-inset-left) + ${
+  theme.gridSpacing.m
+}));
+        padding-right: max(${theme.gutters.m}, calc(env(safe-area-inset-left) + ${
+  theme.gridSpacing.m
+}));
       }
     }
   `};
