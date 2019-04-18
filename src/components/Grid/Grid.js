@@ -69,14 +69,14 @@ export const GridRow = styled.section`
       margin-bottom: ${theme.spacing.row.s};
 
       ${mediaMin.s`
-      margin-top: ${theme.spacing.rowTop.m};
-      margin-bottom: ${theme.spacing.row.m};
-    `};
+        margin-top: ${theme.spacing.rowTop.m};
+        margin-bottom: ${theme.spacing.row.m};
+      `};
 
       ${mediaMin.xl`
-      margin-top: ${theme.spacing.rowTop.xl};
-      margin-bottom: ${theme.spacing.row.xl};
-    `};
+        margin-top: ${theme.spacing.rowTop.xl};
+        margin-bottom: ${theme.spacing.row.xl};
+      `};
 
       /* Mobile in ladscape */
       @media screen and (min-width: 30em) and (min-height: 17em) and (max-height: 35em) and (orientation: landscape) {
@@ -93,19 +93,14 @@ export const GridCol = styled.div`
   max-width: 100%;
   flex-basis: 100%;
 
-  /* ${mediaMin.xxxs`  
-    margin: ${theme.gridSpacing.m};
-    max-width: calc(${(props) => props.col && `${(100 / 12) * props.col}%`} - ${theme.gutters.m});
-    flex-basis: calc(
-      ${(props) => props.col && `${(100 / 12) * props.col}%`} - ${theme.gutters.m}
-    );
-  `}; */
-
   ${mediaMin.s`  
     margin: ${theme.gridSpacing.m};
-    max-width: calc(${(props) => props.col && `${(100 / 12) * props.col}%`} - ${theme.gutters.m});
-    flex-basis: calc(
-      ${(props) => props.col && `${(100 / 12) * props.col}%`} - ${theme.gutters.m}
-    );
+
+    ${(props) =>
+    props.col &&
+      css`
+        max-width: calc(${(100 / 12) * props.col}% - ${theme.gutters.m});
+        flex-basis: calc(${(100 / 12) * props.col}% - ${theme.gutters.m});
+      `};
   `};
 `;
