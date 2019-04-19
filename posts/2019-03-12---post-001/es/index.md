@@ -477,32 +477,6 @@ function ContactForm({ locale }) {
 }
 ```
 
-<figure>
-  <span class="video-wrapper">
-    <span class="video__inner video__inner--contact-post">
-      <video autoplay loop muted playsinline controls>
-        <source
-          src="./formulario_contacto_con_indicador_carga_mensaje_estado.webm"
-          type="video/mp4"
-        />
-        <source
-          src="./formulario_contacto_con_indicador_carga_mensaje_estado.mp4"
-          type="video/mp4"
-        />
-        Tu navegador no soporta el vídeo HTML5.
-        <a href="./formulario_contacto_con_indicador_carga_mensaje_estado.gif">
-          Ver un GIF del formulario de contacto con indicador de carga y
-          mensajes estado.
-        </a>
-      </video>
-    </span>
-
-  </span>
-  <figcaption>
-    Demo del formulario de contacto con indicador de carga y mensajes estado.
-  </figcaption>
-</figure>
-
 ## Conclusiones
 
 Añadir un formulario de contacto a una página web estática creada con Gatsby.js fue bastante más fácil de lo que pensé.

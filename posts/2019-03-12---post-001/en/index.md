@@ -470,31 +470,6 @@ function ContactForm({ locale }) {
 }
 ```
 
-<figure>
-  <span class="video-wrapper">
-    <span class="video__inner video__inner--contact-post">
-      <video autoplay loop muted playsinline controls>
-        <source
-          src="./contact_form_loading_and_success_state.webm"
-          type="video/mp4"
-        />
-        <source
-          src="./contact_form_loading_and_success_state.mp4"
-          type="video/mp4"
-        />
-        Your browser does not support HTML5 video.
-        <a href="./contact_form_loading_and_success_state.gif">
-          See a GIF with the Contact Form With a Loading Indicator and Status
-          Messages.
-        </a>
-      </video>
-    </span>
-  </span>
-  <figcaption>
-    Contact Form With a Loading Indicator and Status Messages
-  </figcaption>
-</figure>
-
 ## Final Thoughts
 
 Adding a contact form on a static site generator like Gatsby.js turned out to be easier than I thought.
