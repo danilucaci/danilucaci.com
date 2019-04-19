@@ -1,37 +1,16 @@
 import styled from "styled-components";
 import { theme, mediaMin, rem } from "../theme/globalStyles";
+import { GridRow } from "../../src/components/Grid/Grid";
 
-export const TagWrapper = styled.section`
+export const TagWrapper = styled(GridRow)`
   max-width: ${theme.contain.wrapper.col8};
-  margin: 0 auto;
-  padding-right: ${theme.gutters.s};
-  padding-left: ${theme.gutters.s};
-
-  /* iPhone X */
-  @supports (padding: max(0px)) {
-    & {
-      padding-left: max(${theme.gutters.s}, env(safe-area-inset-left));
-      padding-right: max(${theme.gutters.s}, env(safe-area-inset-right));
-    }
-  }
-
-  ${mediaMin.s`
-    padding-right: ${theme.gutters.m};
-    padding-left: ${theme.gutters.m};
-
-    /* iPhone X */
-    @supports (padding: max(0px)) {
-      & {
-        padding-left: max(${theme.gutters.m}, env(safe-area-inset-left));
-        padding-right: max(${theme.gutters.m}, env(safe-area-inset-right));
-      }
-    }
-  `};
 
   margin-bottom: ${theme.spacing.row.s};
+
   ${mediaMin.m`
     margin-bottom: ${theme.spacing.row.m};
   `};
+
   ${mediaMin.l`
     margin-bottom: ${theme.spacing.row.xl};
   `};

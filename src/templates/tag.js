@@ -12,6 +12,7 @@ import PostListing from "../components/PostListing/PostListing";
 import Tags from "../components/Tags/Tags";
 import Pagination from "../components/Pagination/Pagination";
 import { SectionHeader } from "../components/Headings/Headings";
+import { GridCol } from "../components/Grid/Grid";
 
 import { localePaths } from "../i18n/i18n";
 
@@ -66,33 +67,35 @@ const TagPage = (props) => {
       <SiteHeader locale={locale} twinPostURL={twinPostURL} currentPath={props.location.pathname} />
       <Main role="main" id="main">
         <TagWrapper>
-          <TagHeader>
-            <TagTitleWrapper>
-              <h1>
-                <FormattedMessage id="tagListingHeader">
+          <GridCol>
+            <TagHeader>
+              <TagTitleWrapper>
+                <h1>
+                  <FormattedMessage id="tagListingHeader">
+                    {(txt) => <SectionHeader>{txt}</SectionHeader>}
+                  </FormattedMessage>
+                  <TagTitle>#{tag}</TagTitle>
+                </h1>
+              </TagTitleWrapper>
+              <OtherTagsWrapper>
+                <FormattedMessage id="tagListingOther">
                   {(txt) => <SectionHeader>{txt}</SectionHeader>}
                 </FormattedMessage>
-                <TagTitle>#{tag}</TagTitle>
-              </h1>
-            </TagTitleWrapper>
-            <OtherTagsWrapper>
-              <FormattedMessage id="tagListingOther">
-                {(txt) => <SectionHeader>{txt}</SectionHeader>}
-              </FormattedMessage>
-              <Tags tags={allTags} />
-            </OtherTagsWrapper>
-          </TagHeader>
-          <PostListing edges={edges} />
-          {totalPagesInBlog > 1 && (
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPagesInBlog}
-              paginationPathPrefix={paginationPathPrefix}
-              prevPath={prevPath}
-              nextPath={nextPath}
-              locale={locale}
-            />
-          )}
+                <Tags tags={allTags} />
+              </OtherTagsWrapper>
+            </TagHeader>
+            <PostListing edges={edges} />
+            {totalPagesInBlog > 1 && (
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPagesInBlog}
+                paginationPathPrefix={paginationPathPrefix}
+                prevPath={prevPath}
+                nextPath={nextPath}
+                locale={locale}
+              />
+            )}
+          </GridCol>
         </TagWrapper>
       </Main>
       <SiteFooter locale={locale} />
