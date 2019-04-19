@@ -179,6 +179,17 @@ const SEO = (props) => {
   return (
     <Helmet>
       <html lang={localeCountryCode[locale]} />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
+      />
+      <script
+        src="https://polyfill.io/v3/polyfill.min.js?flags=gated&features=es7%2CEventSource%2CIntl%2Cfetch"
+        // src="https://polyfill.io/v3/polyfill.js?flags=gated&features=es7%2CEventSource%2CIntl%2CIntl.~locale.en-EN%2CIntl.~locale.es-ES%2Cfetch"
+        defer
+        async
+        crossOrigin="anonymous"
+      />
       {(postSEO || legalDocs) && <link rel="canonical" href={postURL} />}
       {!postSEO && !legalDocs && <link rel="canonical" href={pageURL} />}
       {(postSEO || legalDocs) && (
