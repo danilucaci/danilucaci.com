@@ -402,7 +402,7 @@ exports.createPages = async ({ graphql, actions }) => {
           path: localePaths[enLocale].work,
           component: workTemplate,
           context: {
-            edgesWork: slicePosts(edgesWork, currentPage).map(({ node }) => node),
+            edgesWork: slicePosts(edgesWork, currentPage).map((edge) => edge),
             currentPage,
             totalPagesInWork,
             paginationPathPrefix: localePaths[enLocale].work,
@@ -419,7 +419,7 @@ exports.createPages = async ({ graphql, actions }) => {
           path: localePaths[enLocale].work + paginationName + currentPage,
           component: workTemplate,
           context: {
-            edgesWork: slicePosts(edgesWork, currentPage).map(({ node }) => node),
+            edgesWork: slicePosts(edgesWork, currentPage).map((edge) => edge),
             currentPage,
             totalPagesInWork,
             paginationPathPrefix: localePaths[enLocale].work,
@@ -739,7 +739,7 @@ exports.createPages = async ({ graphql, actions }) => {
           path: localePaths[esLocale].work,
           component: workTemplate,
           context: {
-            edgesWork: slicePosts(edgesWork, currentPage).map(({ node }) => node),
+            edgesWork: slicePosts(edgesWork, currentPage).map((edge) => edge),
             currentPage,
             totalPagesInWork,
             paginationPathPrefix: localePaths[esLocale].work,
@@ -756,7 +756,7 @@ exports.createPages = async ({ graphql, actions }) => {
           path: localePaths[esLocale].work + paginationName + currentPage,
           component: workTemplate,
           context: {
-            edgesWork: slicePosts(edgesWork, currentPage).map(({ node }) => node),
+            edgesWork: slicePosts(edgesWork, currentPage).map((edge) => edge),
             currentPage,
             totalPagesInWork,
             paginationPathPrefix: localePaths[esLocale].work,

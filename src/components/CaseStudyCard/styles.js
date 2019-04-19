@@ -19,6 +19,10 @@ export const StyledCaseStudyCard = styled.article`
   &:hover {
     ${theme.shadow.hover};
   }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 `;
 
 export const CaseStudyImgWrapper = styled.div`

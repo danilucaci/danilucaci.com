@@ -9,7 +9,7 @@ import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
 import SEO from "../components/SEO/SEO";
 import ContactCard from "../components/ContactCard/ContactCard";
-import CaseStudyCard from "../components/CaseStudyCard/CaseStudyCard";
+import CaseStudies from "../components/CaseStudies/CaseStudies";
 import DribbblePosts from "../components/DribbblePosts/DribbblePosts";
 import { localePaths } from "../i18n/i18n";
 import { GridCol } from "../components/Grid/Grid";
@@ -20,7 +20,6 @@ import {
   Subhead,
   Name,
   Row,
-  StyledHR,
   ServicesWrapper,
   ServicesTitle,
   ServiceTitle,
@@ -28,10 +27,6 @@ import {
   ServicesEntry,
   ServiceContent,
   ServiceImage,
-  CaseStudiesTitle,
-  CaseStudiesSubhead,
-  DribbblePostsTitle,
-  DribbbleSubhead,
 } from "../styles/index.styles";
 
 import illustrationCode from "../images/illustrations/danilucaci_services_code.svg";
@@ -40,17 +35,9 @@ import illustrationUI from "../images/illustrations/danilucaci_services_ui.svg";
 import illustrationInteraction from "../images/illustrations/danilucaci_services_interaction.svg";
 
 const Index = (props) => {
-  let caseStudyList = props.data.work.edges.map((edge) => ({
-    slug: edge.node.fields.slug,
-    tagsInCaseStudy: edge.node.frontmatter.tags,
-    title: edge.node.frontmatter.title,
-    date: edge.node.frontmatter.date,
-    snippet: edge.node.frontmatter.snippet,
-    image: edge.node.frontmatter.image.childImageSharp.fluid,
-  }));
-
-  let locale = props.pageContext.locale;
-  let twinPostURL = locale === "en" ? localePaths["es"].index : localePaths["en"].index;
+  const edges = props.data.work.edges;
+  const locale = props.pageContext.locale;
+  const twinPostURL = locale === "en" ? localePaths["es"].index : localePaths["en"].index;
 
   return (
     <Layout location={props.location} locale={locale}>
@@ -160,46 +147,11 @@ const Index = (props) => {
           </Row>
         </ServicesWrapper>
 
-        <Row spaced>
-          <GridCol>
-            <FormattedMessage id="caseStudiesHeader">
-              {(txt) => <CaseStudiesTitle>{txt}</CaseStudiesTitle>}
-            </FormattedMessage>
-            <FormattedMessage id="caseStudiesDescription">
-              {(txt) => <CaseStudiesSubhead>{txt}</CaseStudiesSubhead>}
-            </FormattedMessage>
-            {caseStudyList.map((caseStudyCard) => (
-              <CaseStudyCard
-                key={caseStudyCard.title}
-                slug={caseStudyCard.slug}
-                tagsInCaseStudy={caseStudyCard.tagsInCaseStudy}
-                title={caseStudyCard.title}
-                date={caseStudyCard.date}
-                snippet={caseStudyCard.snippet}
-                image={caseStudyCard.image}
-              />
-            ))}
-          </GridCol>
-        </Row>
+        <CaseStudies edges={edges} header="h2" />
 
-        <Row spaced>
-          <GridCol>
-            <StyledHR />
-            <FormattedMessage id="dribbbleHeader">
-              {(txt) => <DribbblePostsTitle>{txt}</DribbblePostsTitle>}
-            </FormattedMessage>
-            <FormattedMessage id="dribbbleSubhead">
-              {(txt) => <DribbbleSubhead>{txt}</DribbbleSubhead>}
-            </FormattedMessage>
-            <DribbblePosts locale={locale} />
-          </GridCol>
-        </Row>
+        <DribbblePosts locale={locale} />
 
-        <Row spaced>
-          <GridCol>
-            <ContactCard locale={locale} />
-          </GridCol>
-        </Row>
+        <ContactCard locale={locale} />
       </Main>
       <SiteFooter locale={locale} />
     </Layout>

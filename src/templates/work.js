@@ -1,28 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { FormattedMessage } from "react-intl";
 
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
 import SiteHeader from "../components/SiteHeader/SiteHeader";
 import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
-import CaseStudyListing from "../components/CaseStudyListing/CaseStudyListing";
+import CaseStudies from "../components/CaseStudies/CaseStudies";
 import Pagination from "../components/Pagination/Pagination";
 import ContactCard from "../components/ContactCard/ContactCard";
 import DribbblePosts from "../components/DribbblePosts/DribbblePosts";
 import { localePaths } from "../i18n/i18n";
-
-import {
-  OuterWrapper,
-  InnerWrapper,
-  ContactWrapper,
-  StyledHR,
-  Subhead,
-  WorkHeader,
-  DribbblePostsTitle,
-  DribbbleSubhead,
-} from "../styles/work.styles";
 
 function WorkPage(props) {
   const {
@@ -61,44 +49,22 @@ function WorkPage(props) {
       />
       <SiteHeader locale={locale} twinPostURL={twinPostURL} currentPath={props.location.pathname} />
       <Main role="main" id="main">
-        <WorkHeader>
-          <InnerWrapper>
-            <FormattedMessage id="caseStudiesHeader">{(txt) => <h1>{txt}</h1>}</FormattedMessage>
-            <FormattedMessage id="caseStudiesDescription">
-              {(txt) => <Subhead>{txt}</Subhead>}
-            </FormattedMessage>
-          </InnerWrapper>
-        </WorkHeader>
-        <OuterWrapper>
-          <InnerWrapper>
-            <CaseStudyListing edges={edgesWork} />
-            {totalPagesInWork > 1 && (
-              <Pagination
-                currentPage={currentPage}
-                totalPages={totalPagesInWork}
-                paginationPathPrefix={paginationPathPrefix}
-                prevPath={prevPath}
-                nextPath={nextPath}
-                locale={locale}
-              />
-            )}
-          </InnerWrapper>
-        </OuterWrapper>
-        <OuterWrapper>
-          <InnerWrapper>
-            <StyledHR />
-            <FormattedMessage id="dribbbleHeader">
-              {(txt) => <DribbblePostsTitle>{txt}</DribbblePostsTitle>}
-            </FormattedMessage>
-            <FormattedMessage id="dribbbleSubhead">
-              {(txt) => <DribbbleSubhead>{txt}</DribbbleSubhead>}
-            </FormattedMessage>
-            <DribbblePosts locale={locale} />
-          </InnerWrapper>
-        </OuterWrapper>
-        <ContactWrapper>
-          <ContactCard locale={locale} />
-        </ContactWrapper>
+        <CaseStudies edges={edgesWork} />
+
+        {totalPagesInWork > 1 && (
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPagesInWork}
+            paginationPathPrefix={paginationPathPrefix}
+            prevPath={prevPath}
+            nextPath={nextPath}
+            locale={locale}
+          />
+        )}
+
+        <DribbblePosts locale={locale} />
+
+        <ContactCard locale={locale} />
       </Main>
       <SiteFooter locale={locale} />
     </Layout>

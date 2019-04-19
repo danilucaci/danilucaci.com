@@ -2,11 +2,63 @@ import styled from "styled-components";
 
 import { theme, mediaMin, rem } from "../../theme/globalStyles";
 import { LoadComments } from "../Button/Button";
+import { GridRow } from "../../../src/components/Grid/Grid";
+import { Copy } from "../../src/../components/Copy/Copy";
+import { HR } from "../../../src/components/HR/HR";
 
-export const DribbblePostsWrapper = styled.div`
-  max-width: ${theme.contain.inner.col10};
-  margin-left: auto;
-  margin-right: auto;
+export const Row = styled(GridRow)`
+  max-width: ${theme.contain.wrapper.col10};
+  margin-top: ${theme.spacing.row.s};
+
+  ${mediaMin.s`
+    margin-top: ${theme.spacing.row.m};
+  `};
+
+  ${mediaMin.xl`
+    margin-top: ${theme.spacing.row.xl};
+  `};
+
+  /* Mobile in ladscape */
+  @media screen and (min-width: 30em) and (min-height: 17em) and (max-height: 35em) and (orientation: landscape) {
+    margin-top: ${rem(32)};
+  }
+
+  & h2 {
+    margin-bottom: ${rem(8)};
+  }
+`;
+
+export const Subhead = styled(Copy)`
+  color: ${theme.colors.dark800};
+  font-size: ${theme.fontSizes.subheadS};
+  line-height: ${theme.lineHeights.subheadS};
+
+  margin-bottom: ${rem(32)};
+
+  font-family: ${theme.fonts.headerFallback};
+  font-weight: 300;
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.headerLight};
+  }
+
+  ${mediaMin.s`
+    font-size: ${theme.fontSizes.subhead};
+    line-height: ${theme.lineHeights.subhead};
+  `};
+`;
+
+export const StyledHR = styled(HR)`
+  margin-bottom: ${rem(32)};
+
+  ${mediaMin.m`
+    margin-bottom: ${rem(88)};
+  `};
+
+  /* Mobile in ladscape */
+  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(280)}) and (max-height: ${rem(560)}) and (orientation: landscape) {
+    margin-bottom: ${rem(32)};
+  }
 `;
 
 export const ErrorMessageWrapper = styled.div`
@@ -26,7 +78,8 @@ export const ErrorMessage = styled.p`
 `;
 
 export const StyledLoadMore = styled(LoadComments)`
-  margin: ${rem(16)} auto;
+  margin-left: auto;
+  margin-right: auto;
   display: block;
 
   ${mediaMin.s`

@@ -6,9 +6,12 @@ import DribbblePost from "../DribbblePost/DribbblePost";
 import DribbblePostPlaceholder from "../DribbblePostPlaceholder/DribbblePostPlaceholder";
 import Spinner from "../Spinner/Spinner";
 import useDribbbleReducer from "./DribbblePostsReducer";
+import { GridCol } from "../../../src/components/Grid/Grid";
 
 import {
-  DribbblePostsWrapper,
+  Row,
+  Subhead,
+  StyledHR,
   ErrorMessageWrapper,
   ErrorMessage,
   StyledLoadMore,
@@ -46,31 +49,39 @@ function DribbblePosts({ locale }) {
   const placeholderArr = Array.from({ length: shotsPerPage }, (v, i) => i);
 
   return (
-    <DribbblePostsWrapper>
-      {isError && (
-        <ErrorMessageWrapper>
-          <ErrorMessage>{DRIBBBLE_STATUS[locale].error}</ErrorMessage>
-        </ErrorMessageWrapper>
-      )}
+    <Row spaced>
+      <GridCol>
+        <StyledHR />
+        <FormattedMessage id="dribbbleHeader">{(txt) => <h2>{txt}</h2>}</FormattedMessage>
+        <FormattedMessage id="dribbbleSubhead">
+          {(txt) => <Subhead>{txt}</Subhead>}
+        </FormattedMessage>
 
-      {isLoading && !isError && placeholderArr.map((i) => <DribbblePostPlaceholder key={i} />)}
-      {!isLoading &&
-        !isError &&
-        dribbblePosts.map((post) => <DribbblePost key={post.id} post={post} />)}
+        {isError && (
+          <ErrorMessageWrapper>
+            <ErrorMessage>{DRIBBBLE_STATUS[locale].error}</ErrorMessage>
+          </ErrorMessageWrapper>
+        )}
 
-      {isLoadingMore && placeholderArr.map((i) => <DribbblePostPlaceholder key={i} />)}
+        {isLoading && !isError && placeholderArr.map((i) => <DribbblePostPlaceholder key={i} />)}
+        {!isLoading &&
+          !isError &&
+          dribbblePosts.map((post) => <DribbblePost key={post.id} post={post} />)}
 
-      {!isError && (
-        <StyledLoadMore onClick={loadMorePosts}>
-          {!isLoading && !isLoadingMore && (
-            <FormattedMessage id="dribbbleLoadMore">
-              {(txt) => <LoadMoreLabel>{txt}</LoadMoreLabel>}
-            </FormattedMessage>
-          )}
-          {(isLoading || isLoadingMore) && <Spinner dark />}
-        </StyledLoadMore>
-      )}
-    </DribbblePostsWrapper>
+        {isLoadingMore && placeholderArr.map((i) => <DribbblePostPlaceholder key={i} />)}
+
+        {!isError && (
+          <StyledLoadMore onClick={loadMorePosts}>
+            {!isLoading && !isLoadingMore && (
+              <FormattedMessage id="dribbbleLoadMore">
+                {(txt) => <LoadMoreLabel>{txt}</LoadMoreLabel>}
+              </FormattedMessage>
+            )}
+            {(isLoading || isLoadingMore) && <Spinner dark />}
+          </StyledLoadMore>
+        )}
+      </GridCol>
+    </Row>
   );
 }
 

@@ -8,7 +8,7 @@ export const StyledPlaceholder = styled.div`
 
   position: relative;
   overflow: hidden;
-  height: 100%;
+  height: auto;
   width: 100%;
   margin-bottom: ${rem(24)};
 

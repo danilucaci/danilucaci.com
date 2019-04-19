@@ -3,13 +3,14 @@ import { Link } from "gatsby";
 
 import { theme, mediaMin, rem } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
+import { GridRow, GridCol } from "../Grid/Grid";
 
-export const StyledContactCard = styled.aside`
-  max-width: ${theme.contain.inner.col10};
-  margin: 0 auto;
+export const ContactCardWrapper = styled(GridRow)`
+  max-width: ${theme.contain.wrapper.col10};
+`;
+
+export const ContactCardInner = styled(GridCol)`
   background-color: ${theme.colors.bgDark500};
-  width: 100%;
-
   padding: ${rem(24)} ${rem(16)} ${rem(32)} ${rem(16)};
 
   ${mediaMin.s`

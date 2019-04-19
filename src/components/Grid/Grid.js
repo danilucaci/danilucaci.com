@@ -10,8 +10,7 @@ export const GridRow = styled.section`
 
   display: block;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
 
   max-width: ${theme.contain.wrapper.col12};
 
@@ -37,6 +36,8 @@ export const GridRow = styled.section`
   }
 
   ${mediaMin.s`
+    flex-direction: row;
+    flex-wrap: wrap;
     padding: ${theme.gridSpacing.m};
 
     /* iPhone X 

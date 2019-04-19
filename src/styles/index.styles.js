@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { theme, mediaMin, mediaMax, rem } from "../theme/globalStyles";
 import { HR } from "../../src/components/HR/HR";
 import { Copy } from "../../src/components/Copy/Copy";
-import { GridRow, GridCol } from "../components/Grid/Grid";
+import { GridRow } from "../components/Grid/Grid";
 
 export const IndexHeader = styled(GridRow)`
   max-width: ${theme.contain.wrapper.col10};
@@ -79,6 +79,20 @@ export const Subhead = styled.p`
 
 export const ServicesWrapper = styled.section`
   background-color: ${theme.colors.bgLight100};
+  margin-bottom: ${theme.spacing.rowTop.s};
+
+  ${mediaMin.s`
+    margin-bottom: ${theme.spacing.rowTop.m};
+  `};
+
+  ${mediaMin.xl`
+    margin-bottom: ${theme.spacing.rowTop.xl};
+  `};
+
+  /* Mobile in ladscape */
+  @media screen and (min-width: 30em) and (min-height: 17em) and (max-height: 35em) and (orientation: landscape) {
+    margin-bottom: ${rem(64)};
+  }
 `;
 
 export const ServicesEntry = styled.div`
@@ -151,81 +165,6 @@ export const ServiceContent = styled.div`
   `};
 `;
 
-export const StyledHR = styled(HR)`
-  margin-bottom: ${rem(32)};
-
-  ${mediaMin.m`
-    margin-bottom: ${rem(88)};
-  `};
-
-  /* Mobile in ladscape */
-  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(280)}) and (max-height: ${rem(560)}) and (orientation: landscape) {
-    margin-bottom: ${rem(32)};
-  }
-`;
-
 export const Row = styled(GridRow)`
   max-width: ${theme.contain.wrapper.col10};
-`;
-
-export const CaseStudiesTitle = styled.h2`
-  margin-bottom: ${rem(8)};
-  font-size: ${theme.fontSizes.h2s};
-  line-height: ${theme.lineHeights.h2s};
-
-  ${mediaMin.m`
-    font-size: ${theme.fontSizes.h2};
-    line-height: ${theme.lineHeights.h2};
-  `};
-`;
-
-export const CaseStudiesSubhead = styled(Copy)`
-  color: ${theme.colors.dark800};
-  font-size: ${theme.fontSizes.subheadS};
-  line-height: ${theme.lineHeights.subheadS};
-
-  margin-bottom: ${rem(32)};
-
-  font-family: ${theme.fonts.headerFallback};
-  font-weight: 300;
-
-  .fonts-loaded & {
-    font-family: ${theme.fonts.headerLight};
-  }
-
-  ${mediaMin.s`
-    font-size: ${theme.fontSizes.subhead};
-    line-height: ${theme.lineHeights.subhead};
-  `};
-`;
-
-export const DribbblePostsTitle = styled.h2`
-  margin-bottom: ${rem(8)};
-  font-size: ${theme.fontSizes.h2s};
-  line-height: ${theme.lineHeights.h2s};
-
-  ${mediaMin.m`
-    font-size: ${theme.fontSizes.h2};
-    line-height: ${theme.lineHeights.h2};
-  `};
-`;
-
-export const DribbbleSubhead = styled(Copy)`
-  color: ${theme.colors.dark800};
-  font-size: ${theme.fontSizes.subheadS};
-  line-height: ${theme.lineHeights.subheadS};
-
-  margin-bottom: ${rem(32)};
-
-  font-family: ${theme.fonts.headerFallback};
-  font-weight: 300;
-
-  .fonts-loaded & {
-    font-family: ${theme.fonts.headerLight};
-  }
-
-  ${mediaMin.s`
-    font-size: ${theme.fontSizes.subhead};
-    line-height: ${theme.lineHeights.subhead};
-  `};
 `;
