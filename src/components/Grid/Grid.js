@@ -19,22 +19,38 @@ export const GridRow = styled.section`
   margin-right: auto;
   padding: ${theme.gridSpacing.s};
 
-  /* iPhone X */
+  /* iPhone X 
+  * Add the extra gridSpacing used in the Grid
+  * calc(env(safe-area-inset-left) + ${theme.gridSpacing.s})
+  */
   @supports (padding: max(0px)) {
     & {
-      padding-left: max(${theme.gridSpacing.s}, env(safe-area-inset-left));
-      padding-right: max(${theme.gridSpacing.s}, env(safe-area-inset-right));
+      padding-left: max(
+        ${theme.gridSpacing.s},
+        calc(env(safe-area-inset-left) - ${theme.gridSpacing.s})
+      );
+      padding-right: max(
+        ${theme.gridSpacing.s},
+        calc(env(safe-area-inset-right) - ${theme.gridSpacing.s})
+      );
     }
   }
 
   ${mediaMin.s`
     padding: ${theme.gridSpacing.m};
 
-    /* iPhone X */
+    /* iPhone X 
+    * Add the extra gridSpacing used in the Grid
+    * calc(env(safe-area-inset-left) + ${theme.gridSpacing.s})
+    */
     @supports (padding: max(0px)) {
       & {
-        padding-left: max(${theme.gridSpacing.m}, env(safe-area-inset-left));
-        padding-right: max(${theme.gridSpacing.m}, env(safe-area-inset-right));
+        padding-left: max(${theme.gridSpacing.m}, calc(env(safe-area-inset-left) - ${
+  theme.gridSpacing.m
+}));
+        padding-right: max(${theme.gridSpacing.m}, calc(env(safe-area-inset-right) - ${
+  theme.gridSpacing.m
+}));
       }
     }
   `};
