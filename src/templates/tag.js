@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { string, number, arrayOf, object, shape } from "prop-types";
 import { graphql } from "gatsby";
 import { FormattedMessage } from "react-intl";
 
@@ -104,24 +104,24 @@ const TagPage = (props) => {
 };
 
 TagPage.propTypes = {
-  pageContext: PropTypes.shape({
-    locale: PropTypes.string.isRequired,
-    nextPath: PropTypes.string,
-    prevPath: PropTypes.string,
-    currentPage: PropTypes.number.isRequired,
-    totalCount: PropTypes.number.isRequired,
-    totalPagesInBlog: PropTypes.number.isRequired,
-    paginationPathPrefix: PropTypes.string.isRequired,
-    edges: PropTypes.arrayOf(PropTypes.object).isRequired,
+  pageContext: shape({
+    locale: string.isRequired,
+    nextPath: string,
+    prevPath: string,
+    currentPage: number.isRequired,
+    totalCount: number.isRequired,
+    totalPagesInBlog: number.isRequired,
+    paginationPathPrefix: string.isRequired,
+    edges: arrayOf(object).isRequired,
   }).isRequired,
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      tags: PropTypes.arrayOf(PropTypes.object).isRequired,
+  data: shape({
+    allMarkdownRemark: shape({
+      tags: arrayOf(object).isRequired,
     }),
   }).isRequired,
-  location: PropTypes.shape({
-    pathname: PropTypes.string.isRequired,
-    href: PropTypes.string.isRequired,
+  location: shape({
+    pathname: string.isRequired,
+    href: string.isRequired,
   }).isRequired,
 };
 
