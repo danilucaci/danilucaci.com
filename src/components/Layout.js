@@ -3,14 +3,15 @@ import PropTypes from "prop-types";
 import { ThemeProvider } from "styled-components";
 import Cookies from "js-cookie";
 import ReactGA from "react-ga";
-import { IntlProvider, addLocaleData } from "react-intl";
 import Helmet from "react-helmet";
+import * as Sentry from "@sentry/browser";
+
+import { IntlProvider, addLocaleData } from "react-intl";
 // Locale data
 import enData from "react-intl/locale-data/en";
 import esData from "react-intl/locale-data/es";
-import * as Sentry from "@sentry/browser";
-import { Page } from "./styles";
 
+import { Page } from "./styles";
 import { theme } from "../theme/globalStyles";
 import GlobalReset from "../theme/globalReset";
 import GlobalAria from "../theme/globalAria";
@@ -23,11 +24,11 @@ import { detectDataSaverMode, detectSlowConnectionType } from "../helpers/helper
 
 import intlMessages from "../i18n/i18n";
 
+addLocaleData([...enData, ...esData]);
+
 const FontFaceObserver = require("fontfaceobserver");
 
 require("../theme/prism.css");
-
-addLocaleData([...enData, ...esData]);
 
 const NODE_ENV = process.env.NODE_ENV;
 const GATSBY_DL_CONSENT_COOKIE_NAME = process.env.GATSBY_DL_CONSENT_COOKIE_NAME;
@@ -375,7 +376,11 @@ class Layout extends Component {
 
     return (
       <ThemeProvider theme={theme}>
-        <IntlProvider locale={this.props.locale} messages={intlMessages[this.props.locale]}>
+        <IntlProvider
+          locale={this.props.locale}
+          defaultLocale="en"
+          messages={intlMessages[this.props.locale]}
+        >
           <Page>
             {GTMScript}
             <SkipToMainContent />
