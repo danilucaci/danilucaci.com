@@ -3,34 +3,12 @@ import styled from "styled-components";
 import { theme, mediaMin, rem } from "../theme/globalStyles";
 import { Copy } from "../../src/components/Copy/Copy";
 import { HR } from "../../src/components/HR/HR";
+import { GridRow } from "../../src/components/Grid/Grid";
 
-export const StyledThanksPage = styled.section`
+export const StyledThanksPage = styled(GridRow)`
   max-width: ${theme.contain.wrapper.col8};
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: ${rem(24)};
-  margin-bottom: ${rem(64)};
-
-  padding-left: ${theme.gutters.s};
-  padding-right: ${theme.gutters.s};
-
-  ${mediaMin.m`
-    padding-left: ${theme.gutters.m};
-    padding-right: ${theme.gutters.m};
-    margin-top: ${rem(64)};
-    margin-bottom: ${rem(80)};
-  `};
-
-  ${mediaMin.xl`
-    margin-top: ${rem(80)};
-    margin-bottom: ${rem(144)};
-  `};
-
-  /* Mobile in ladscape */
-  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(280)}) and (max-height: ${rem(560)}) and (orientation: landscape) {
-    margin-top: ${rem(24)};
-    margin-bottom: ${rem(64)};
-  }
+  padding-top: ${rem(24)};
+  padding-bottom: ${rem(24)};
 
   & a {
     display: inline;

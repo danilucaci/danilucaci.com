@@ -19,6 +19,8 @@ import {
   StyledHR,
 } from "../styles/thanks.styles";
 
+import { GridCol } from "../../src/components/Grid/Grid";
+
 const ThanksPage = (props) => {
   let locale = props.pageContext.locale;
   let twinPostURL = localePaths[locale].thanks;
@@ -39,38 +41,44 @@ const ThanksPage = (props) => {
       />
       <SiteHeader twinPostURL={twinPostURL} locale={locale} currentPath={props.location.pathname} />
       <Main role="main" id="main">
-        <StyledThanksPage>
-          <FormattedMessage id="thanksTitle">
-            {(txt) => <StyledH1>{txt}</StyledH1>}
-          </FormattedMessage>
-          <FormattedMessage id="thanksSubTitle">
-            {(txt) => <Subhead>{txt}</Subhead>}
-          </FormattedMessage>
-          <StyledHR />
-          <FormattedMessage id="thanksCopy">
-            {(txt) => <ThanksCopy>{txt}</ThanksCopy>}
-          </FormattedMessage>
+        <StyledThanksPage padded>
+          <GridCol>
+            <FormattedMessage id="thanksTitle">
+              {(txt) => <StyledH1>{txt}</StyledH1>}
+            </FormattedMessage>
+            <FormattedMessage id="thanksSubTitle">
+              {(txt) => <Subhead>{txt}</Subhead>}
+            </FormattedMessage>
+            <StyledHR />
+            <FormattedMessage id="thanksCopy">
+              {(txt) => <ThanksCopy>{txt}</ThanksCopy>}
+            </FormattedMessage>
 
-          <FormattedMessage id="thanksSubCopy1">
-            {(txt) => (
-              <ThanksCopy>
-                {txt}{" "}
-                <a href={`mailto:${localePaths[locale].email}`}>{localePaths[locale].email}</a>
-                <FormattedMessage id="thanksSubCopy2">
-                  {(txt2) => <React.Fragment> {txt2}</React.Fragment>}
-                </FormattedMessage>
-                <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/danilucaci">
-                  @danilucaci
-                </a>
-              </ThanksCopy>
-            )}
-          </FormattedMessage>
-          <FormattedMessage id="thanksSubCopy3">
-            {(txt) => <ThanksAgainCopy> {txt}</ThanksAgainCopy>}
-          </FormattedMessage>
-          <FormattedMessage id="thanksGoHome">
-            {(txt) => <LocaleLink to="/">{txt}</LocaleLink>}
-          </FormattedMessage>
+            <FormattedMessage id="thanksSubCopy1">
+              {(txt) => (
+                <ThanksCopy>
+                  {txt}{" "}
+                  <a href={`mailto:${localePaths[locale].email}`}>{localePaths[locale].email}</a>
+                  <FormattedMessage id="thanksSubCopy2">
+                    {(txt2) => <React.Fragment> {txt2}</React.Fragment>}
+                  </FormattedMessage>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://twitter.com/danilucaci"
+                  >
+                    @danilucaci
+                  </a>
+                </ThanksCopy>
+              )}
+            </FormattedMessage>
+            <FormattedMessage id="thanksSubCopy3">
+              {(txt) => <ThanksAgainCopy> {txt}</ThanksAgainCopy>}
+            </FormattedMessage>
+            <FormattedMessage id="thanksGoHome">
+              {(txt) => <LocaleLink to="/">{txt}</LocaleLink>}
+            </FormattedMessage>
+          </GridCol>
         </StyledThanksPage>
       </Main>
       <SiteFooter locale={locale} />
