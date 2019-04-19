@@ -31,8 +31,7 @@ twinPost: "Importar Diseños de Dribbble con React Hooks"
 - [Rendering Placeholder Elements](#rendering-placeholder-elements)
 - [Loading More Shots](#loading-more-shots)
 - [(Update) Refactoring to useReducer](#update-refactoring-to-usereducer)
-- [Final Demo](#final-demo)
-- [Next Steps](#next-steps)
+- [Final Thoughts](#final-thoughts)
 
 <!-- /TOC -->
 
@@ -777,30 +776,7 @@ As you can see, the dependency list of the `useEffect` hook is now much cleaner.
 
 The only check I need to keep doing is the `didCancel` one, which is used to prevent saving data into state if the component unmonunts before the async function resolves.
 
-## Final Demo
-
-In the demo below you can see the initial posts fetch (only 2 shots for the demo) and then the loading more shots on each click part (2 shots per requests). The UX of the component is also greatly improved by showing a loading indicator with the spinner, while also avoiding large layout shifts, by using the placeholder elements when the data is being fetched.
-
-<figure>
-  <span class="video-wrapper">
-    <span class="video__inner video__inner--1920x1200">
-      <video autoplay loop muted playsinline controls>
-        <source src="./dribbble_fetching_with_react.webm" type="video/webm" />
-        <source src="./dribbble_fetching_with_react.mp4" type="video/mp4" />
-        Your browser does not support HTML5 video.
-        <a href="./dribbble_fetching_with_react.gif">
-          See a Gif with the Demo of the Dribbble posts fetching component with
-          react hooks.
-        </a>
-      </video>
-    </span>
-  </span>
-  <figcaption>
-    Demo of the Dribbble posts fetching component with react hooks.
-  </figcaption>
-</figure>
-
-## Next Steps
+## Final Thoughts
 
 So far I’m quite happy with the results. I got all the features I needed by combining React Hooks with the the pagination feature of Dribbble’s V2 API.
 

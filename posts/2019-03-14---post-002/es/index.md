@@ -31,8 +31,7 @@ twinPost: "Fetch Dribbble Shots Using React Hooks"
 - [Mostrando Elementos Provisionales](#mostrando-elementos-provisionales)
 - [Cargando Más Diseños](#cargando-más-diseños)
 - [(Actualización) Refactoring Para Implementar useReducer](#actualización-refactoring-para-implementar-usereducer)
-- [Demostración Final](#demostración-final)
-- [Próximos pasos](#próximos-pasos)
+- [Conclusiones](#conclusiones)
 
 <!-- /TOC -->
 
@@ -788,33 +787,7 @@ Como puedes ver, la lista de los argumentos del _hook_ `useEffect` ahora es much
 
 La única comprobación que aún tengo que hacer es la de `didCancel`. Esta evita que se guarden datos en el estado local del componente, si la función asíncrona devuelve una respuesta despúes de que este ya no este renderizado.
 
-## Demostración Final
-
-En la demostración de más abajo puedes ver las peticiones iniciales (de unos 2 posts para la demo) y las peticiones posteriores que se hacen para obtener 2 diseños más. La experiencia de usuario se ha mejorado bastante usando el indicador del estado de la carga, además de evitar que hayan grandes cambios en el diseño de la página mediante el uso de los elementos provisionales.
-
-<figure>
-  <span class="video-wrapper">
-    <span class="video__inner video__inner--1920x1200">
-      <video autoplay loop muted playsinline controls>
-        <source
-          src="./obtener_datos_dribbble_con_react.webm"
-          type="video/webm"
-        />
-        <source src="./obtener_datos_dribbble_con_react.mp4" type="video/mp4" />
-        Tu navegador no soporta HTML5 video.
-        <a href="./obtener_datos_dribbble_con_react.gif">
-          Ver un Gif del componente para obtener diseños de Dribbble con React
-          Hooks y axios.
-        </a>
-      </video>
-    </span>
-  </span>
-  <figcaption>
-    Componente para obtener diseños de Dribbble con React Hooks y axios.
-  </figcaption>
-</figure>
-
-## Próximos pasos
+## Conclusiones
 
 De momento estoy bastante contento con los resultados. Tengo todas las características que necesitaba gracias a los React _Hooks_ y la paginación de la API V2 de Dribbble.
 
