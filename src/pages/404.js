@@ -11,6 +11,7 @@ import SiteFooter from "../components/SiteFooter/SiteFooter";
 import LocaleLink from "../components/LocaleLink/LocaleLink";
 
 import { StyledNotFound, StyledH1, Subhead, StyledCopy, StyledHR } from "../styles/404.styles";
+import { GridCol } from "../../src/components/Grid/Grid";
 
 const NotFoundPage = (props) => {
   let locale = props.pageContext.locale;
@@ -32,33 +33,39 @@ const NotFoundPage = (props) => {
       />
       <SiteHeader twinPostURL={twinPostURL} locale={locale} currentPath={props.location.pathname} />
       <Main role="main" id="main">
-        <StyledNotFound>
-          <FormattedMessage id="noutFoundTitle">
-            {(txt) => <StyledH1>{txt}</StyledH1>}
-          </FormattedMessage>
-          <FormattedMessage id="noutFoundSubTitle">
-            {(txt) => <Subhead>{txt}</Subhead>}
-          </FormattedMessage>
-          <StyledHR />
-          <FormattedMessage id="noutFoundSubCopy1">
-            {(txt) => <StyledCopy>{txt}</StyledCopy>}
-          </FormattedMessage>
-          <FormattedMessage id="noutFoundSubCopy2">
-            {(txt) => (
-              <StyledCopy>
-                {txt} <a href="mailto:info@danilucaci.com">info@danilucaci.com</a>
-                <FormattedMessage id="noutFoundSubCopy3">
-                  {(txt2) => <span> {txt2}</span>}
-                </FormattedMessage>
-                <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/danilucaci">
-                  @danilucaci
-                </a>
-              </StyledCopy>
-            )}
-          </FormattedMessage>
-          <FormattedMessage id="thanksGoHome">
-            {(txt) => <LocaleLink to="/">{txt}</LocaleLink>}
-          </FormattedMessage>
+        <StyledNotFound padded>
+          <GridCol>
+            <FormattedMessage id="noutFoundTitle">
+              {(txt) => <StyledH1>{txt}</StyledH1>}
+            </FormattedMessage>
+            <FormattedMessage id="noutFoundSubTitle">
+              {(txt) => <Subhead>{txt}</Subhead>}
+            </FormattedMessage>
+            <StyledHR />
+            <FormattedMessage id="noutFoundSubCopy1">
+              {(txt) => <StyledCopy>{txt}</StyledCopy>}
+            </FormattedMessage>
+            <FormattedMessage id="noutFoundSubCopy2">
+              {(txt) => (
+                <StyledCopy>
+                  {txt} <a href="mailto:info@danilucaci.com">info@danilucaci.com</a>
+                  <FormattedMessage id="noutFoundSubCopy3">
+                    {(txt2) => <span> {txt2}</span>}
+                  </FormattedMessage>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://twitter.com/danilucaci"
+                  >
+                    @danilucaci
+                  </a>
+                </StyledCopy>
+              )}
+            </FormattedMessage>
+            <FormattedMessage id="thanksGoHome">
+              {(txt) => <LocaleLink to="/">{txt}</LocaleLink>}
+            </FormattedMessage>
+          </GridCol>
         </StyledNotFound>
       </Main>
       <SiteFooter locale={locale} />
