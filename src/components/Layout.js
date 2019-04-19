@@ -384,7 +384,9 @@ class Layout extends Component {
             <GlobalCSS />
             <GlobalGrid />
             <SVGSprite />
-            {this.state.error && <a onClick={() => Sentry.showReportDialog()}>Report feedback</a>}
+            {this.state.error && (
+              <button onClick={() => Sentry.showReportDialog()}>Report feedback</button>
+            )}
             {this.props.children}
             <CookieConsent
               askCookieConsent={this.state.askCookieConsent}
