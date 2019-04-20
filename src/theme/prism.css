@@ -87,7 +87,7 @@ pre[class*="language-"]::-webkit-scrollbar-thumb {
   border-left: .25em solid #00BCF5;
 }
 
-@media screen and (min-width: 39em) {
+@media screen and (min-width: 40em) {
   .gatsby-highlight {
     margin-left: -2rem;
     margin-right: -2rem;
