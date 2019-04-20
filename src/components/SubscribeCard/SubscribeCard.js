@@ -99,13 +99,13 @@ function SubscribeCard({ locale }) {
   return (
     <SubscribeCardWrapper>
       <SubscribeCardInner>
-        <FormattedMessage id="subscribeCardTitle">
+        <FormattedMessage id="subscribe.card.title">
           {(txt) => <StyledH2>{txt}</StyledH2>}
         </FormattedMessage>
-        <FormattedMessage id="subscribeCardSubTitle">
+        <FormattedMessage id="subscribe.card.subtitle">
           {(txt) => <Subtitle>{txt}</Subtitle>}
         </FormattedMessage>
-        <FormattedMessage id="subscribeCardSpam">
+        <FormattedMessage id="subscribe.card.spam">
           {(txt) => <AltCopy>{txt}</AltCopy>}
         </FormattedMessage>
         <FormContainer>
