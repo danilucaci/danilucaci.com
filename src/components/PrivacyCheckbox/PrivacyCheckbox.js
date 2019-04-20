@@ -30,8 +30,8 @@ function PrivacyCheckbox({ locale, ...rest }) {
           <React.Fragment>
             <StyledCheckbox id="privacycheckbox" {...rest} />
             <StyledCheckboxLabel htmlFor="privacycheckbox">
-              <FormattedMessage id="formPrivacyMore1">{(txt) => <>{txt}</>}</FormattedMessage>
-              <FormattedMessage id="formPrivacyCheckboxHiddenLabel">
+              <FormattedMessage id="form.privacy.more.1">{(txt) => <>{txt}</>}</FormattedMessage>
+              <FormattedMessage id="form.privacy.checkbox.hidden.label">
                 {(txt) => (
                   <span className="aria-hidden" aria-hidden="true">
                     {txt}
@@ -39,7 +39,7 @@ function PrivacyCheckbox({ locale, ...rest }) {
                 )}
               </FormattedMessage>
             </StyledCheckboxLabel>
-            <FormattedMessage id="formPrivacyMore2">
+            <FormattedMessage id="form.privacy.more.2">
               {(txt) => (
                 <LearnMoreLink
                   href={legalNoticeLink[0].slug}
@@ -50,17 +50,17 @@ function PrivacyCheckbox({ locale, ...rest }) {
                 </LearnMoreLink>
               )}
             </FormattedMessage>
-            <FormattedMessage id="formPrivacyMore3">
+            <FormattedMessage id="form.privacy.more.3">
               {(txt) => <AndSpan>{txt}</AndSpan>}
             </FormattedMessage>
-            <FormattedMessage id="formPrivacyMore4">
+            <FormattedMessage id="form.privacy.more.4">
               {(txt) => (
                 <LearnMoreLink href={privacyLink[0].slug} target="_blank" rel="noopener noreferrer">
                   {txt}
                 </LearnMoreLink>
               )}
             </FormattedMessage>
-            <FormattedMessage id="formPrivacyRequired">
+            <FormattedMessage id="form.privacy.required">
               {(txt) => <Required>{txt}</Required>}
             </FormattedMessage>
           </React.Fragment>

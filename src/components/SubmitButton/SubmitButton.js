@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { injectIntl, intlShape } from "react-intl";
 
-import { toUpperCamelCase } from "../../helpers/helpers";
 import Spinner from "../Spinner/Spinner";
 
 import { StyledSubmitButton } from "./styles";
@@ -11,9 +10,9 @@ import { StyledSubmitButton } from "./styles";
 function SubmitButton({
   intl, buttonType = "submit", showSpinner = false, ...rest
 }) {
-  let str = toUpperCamelCase(buttonType);
+  let str = buttonType.toLowerCase();
 
-  const placeholder = intl.formatMessage({ id: `formSubmit${str}` });
+  const placeholder = intl.formatMessage({ id: `form.submit.${str}` });
 
   return (
     <StyledSubmitButton type="submit" {...rest}>

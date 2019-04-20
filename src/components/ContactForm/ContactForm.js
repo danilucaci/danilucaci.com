@@ -132,13 +132,13 @@ function ContactForm({ locale }) {
               onChange={() => setDateSent(() => new Date())}
               name="datesent"
             />
-            <StyledLabel labelType="full name">
+            <StyledLabel labelType="fullname">
               <StyledInput
                 type="fullname"
                 name="fullname"
                 autoCorrect="off"
                 autoComplete="name"
-                placeholderType="full name"
+                placeholderType="fullname"
               />
               <InputStatusIcon arriaHidden="true" />
             </StyledLabel>
