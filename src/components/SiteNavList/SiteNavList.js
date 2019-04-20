@@ -12,16 +12,16 @@ const SiteNavList = ({
   locale, currentPath, twinPostURL, showNav, isTransitioning,
 }) => (
   <StyledSiteNavList showNav={showNav} isTransitioning={isTransitioning} role="menu">
-    <FormattedMessage id="siteNavWork">
+    <FormattedMessage id="site.nav.work">
       {(txt) => <SiteNavListItem to={localePaths[locale].work}>{txt}</SiteNavListItem>}
     </FormattedMessage>
-    <FormattedMessage id="siteNavBlog">
+    <FormattedMessage id="site.nav.blog">
       {(txt) => <SiteNavListItem to={localePaths[locale].blog}>{txt}</SiteNavListItem>}
     </FormattedMessage>
-    <FormattedMessage id="siteNavAbout">
+    <FormattedMessage id="site.nav.about">
       {(txt) => <SiteNavListItem to={localePaths[locale].about}>{txt}</SiteNavListItem>}
     </FormattedMessage>
-    <FormattedMessage id="siteNavContact">
+    <FormattedMessage id="site.nav.contact">
       {(txt) => <SiteNavListItem to={localePaths[locale].contact}>{txt}</SiteNavListItem>}
     </FormattedMessage>
     <LanguageSelector currentPath={currentPath} locale={locale} twinPostURL={twinPostURL} />
