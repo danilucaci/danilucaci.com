@@ -35,21 +35,21 @@ const NotFoundPage = (props) => {
       <Main role="main" id="main">
         <StyledNotFound padded>
           <GridCol>
-            <FormattedMessage id="noutFoundTitle">
+            <FormattedMessage id="not.found.title">
               {(txt) => <StyledH1>{txt}</StyledH1>}
             </FormattedMessage>
-            <FormattedMessage id="noutFoundSubTitle">
+            <FormattedMessage id="not.found.subtitle">
               {(txt) => <Subhead>{txt}</Subhead>}
             </FormattedMessage>
             <StyledHR />
-            <FormattedMessage id="noutFoundSubCopy1">
+            <FormattedMessage id="not.found.copy.1">
               {(txt) => <StyledCopy>{txt}</StyledCopy>}
             </FormattedMessage>
-            <FormattedMessage id="noutFoundSubCopy2">
+            <FormattedMessage id="not.found.copy.2">
               {(txt) => (
                 <StyledCopy>
                   {txt} <a href="mailto:info@danilucaci.com">info@danilucaci.com</a>
-                  <FormattedMessage id="noutFoundSubCopy3">
+                  <FormattedMessage id="not.found.copy.3">
                     {(txt2) => <span> {txt2}</span>}
                   </FormattedMessage>
                   <a
