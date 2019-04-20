@@ -77,20 +77,45 @@ export const CopyTooltip = styled.span`
   position: absolute;
 
   top: -${rem(48)};
-  left: -${rem(80)};
+  left: -${rem(56)};
 
   &:after {
     content: "";
     display: block;
-    width: ${rem(16)};
-    height: ${rem(16)};
+    width: ${rem(14)};
+    height: ${rem(14)};
     border-bottom: ${rem(8)} solid #ffffff;
     border-right: ${rem(8)} solid #ffffff;
     transform: rotate(45deg);
     position: absolute;
-    top: ${rem(24)};
-    left: ${rem(80)};
+    top: ${rem(28)};
+    left: ${rem(56)};
+    ${theme.shadow.copyUrl};
   }
+
+  ${mediaMin.xs`
+    left: -${rem(88)};  
+    
+    &:after {
+      left: ${rem(88)};
+    }
+  `};
+
+  ${mediaMin.s`
+    left: -${rem(80)};  
+    
+    &:after {
+      left: ${rem(80)};
+    }
+  `};
+
+  ${mediaMin.xxl`
+    left: -${rem(56)};  
+    
+    &:after {
+      left: ${rem(56)};
+    }
+  `};
 
   padding: ${rem(8)};
 `;
