@@ -78,7 +78,7 @@ class LegalDoc extends Component {
           <PageWrapper>
             <GridCol>
               <PostH1>{postInfo.title}</PostH1>
-              <FormattedMessage id="legalUpdated">
+              <FormattedMessage id="legal.updated">
                 {(txt) => (
                   <Copy>
                     {txt}&nbsp;
