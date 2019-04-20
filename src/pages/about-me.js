@@ -54,22 +54,22 @@ const AboutPage = (props) => {
       <Main role="main" id="main">
         <Row as="header">
           <HeaderInfoWrapper col="7">
-            <FormattedMessage id="aboutMeTitle">
+            <FormattedMessage id="about.me.title">
               {(txt) => <AboutMeTitle>{txt}</AboutMeTitle>}
             </FormattedMessage>
-            <FormattedMessage id="aboutMeCopy1">
+            <FormattedMessage id="about.me.copy.1">
               {(txt) => <AboutCopy>{txt}</AboutCopy>}
             </FormattedMessage>
-            <FormattedMessage id="aboutMeCopy2">
+            <FormattedMessage id="about.me.copy.2">
               {(txt) => <AboutCopy>{txt}</AboutCopy>}
             </FormattedMessage>
-            <FormattedMessage id="aboutMeCopy3">
+            <FormattedMessage id="about.me.copy.3">
               {(txt) => <AboutCopy>{txt}</AboutCopy>}
             </FormattedMessage>
           </HeaderInfoWrapper>
           <HeaderImageWrapper col="5">
             <ImageWrapper>
-              <FormattedMessage id="aboutTheBlogImageTitle">
+              <FormattedMessage id="about.the.blog.image.title">
                 {(txt) => <Img alt={txt} fluid={props.data.aboutImage.childImageSharp.fluid} />}
               </FormattedMessage>
             </ImageWrapper>
@@ -77,7 +77,7 @@ const AboutPage = (props) => {
               <StyledSocialNav>
                 <SocialNav />
               </StyledSocialNav>
-              <FormattedMessage id="resumeButton">
+              <FormattedMessage id="resume.button">
                 {(txt) => (
                   <ResumeButton
                     href={locale === "en" ? enResume : esResume}
@@ -93,52 +93,54 @@ const AboutPage = (props) => {
         </Row>
         <DoingNowRow spaced>
           <GridCol>
-            <FormattedMessage id="aboutMeWhatNowTitle">{(txt) => <h2>{txt}</h2>}</FormattedMessage>
+            <FormattedMessage id="about.me.what.now.title">
+              {(txt) => <h2>{txt}</h2>}
+            </FormattedMessage>
           </GridCol>
           <GridCol col="5">
-            <FormattedMessage id="aboutMeWhatNowCopy1">
+            <FormattedMessage id="about.me.what.now.copy.1">
               {(txt) => <StyledCopy>{txt}</StyledCopy>}
             </FormattedMessage>
-            <FormattedMessage id="aboutMeWhatNowCopy2">
+            <FormattedMessage id="about.me.what.now.copy.2">
               {(txt) => <StyledCopy>{txt}</StyledCopy>}
             </FormattedMessage>
           </GridCol>
           <GridCol col="7">
             <DoingNowItem>
-              <FormattedMessage id="aboutMeWhatNowSkills">
+              <FormattedMessage id="about.me.what.now.skills">
                 {(txt) => <h4>{txt}</h4>}
               </FormattedMessage>
               <ul>
-                <FormattedMessage id="aboutMeWhatNowSkills1">
+                <FormattedMessage id="about.me.what.now.skills.1">
                   {(txt) => <li>{txt}</li>}
                 </FormattedMessage>
-                <FormattedMessage id="aboutMeWhatNowSkills2">
+                <FormattedMessage id="about.me.what.now.skills.2">
                   {(txt) => <li>{txt}</li>}
                 </FormattedMessage>
-                <FormattedMessage id="aboutMeWhatNowSkills3">
+                <FormattedMessage id="about.me.what.now.skills.3">
                   {(txt) => <li>{txt}</li>}
                 </FormattedMessage>
               </ul>
             </DoingNowItem>
             <DoingNowItem>
-              <FormattedMessage id="aboutMeWhatNowProjects">
+              <FormattedMessage id="about.me.what.now.projects">
                 {(txt) => <h4>{txt}</h4>}
               </FormattedMessage>
               <ul>
-                <FormattedMessage id="aboutMeWhatNowProjects1">
+                <FormattedMessage id="about.me.what.now.projects.1">
                   {(txt) => <li>{txt}</li>}
                 </FormattedMessage>
               </ul>
             </DoingNowItem>
             <DoingNowItem>
-              <FormattedMessage id="aboutMeWhatNowBooks">
+              <FormattedMessage id="about.me.what.now.books">
                 {(txt) => <h4>{txt}</h4>}
               </FormattedMessage>
               <ul>
-                <FormattedMessage id="aboutMeWhatNowBooks1">
+                <FormattedMessage id="about.me.what.now.books.1">
                   {(txt) => <li>{txt}</li>}
                 </FormattedMessage>
-                <FormattedMessage id="aboutMeWhatNowBooks2">
+                <FormattedMessage id="about.me.what.now.books.2">
                   {(txt) => <li>{txt}</li>}
                 </FormattedMessage>
               </ul>
