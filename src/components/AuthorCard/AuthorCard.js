@@ -23,18 +23,16 @@ const AuthorCard = () => (
           let image = data.authorImageQuery.childImageSharp.fluid;
 
           return (
-            <FormattedMessage id="authorCardImageTitle">
-              {(imageTitle) => (
-                <AuthorImage title={imageTitle} alt="Dani Lucaci portrait image" fluid={image} />
-              )}
+            <FormattedMessage id="author.card.image.alt">
+              {(msg) => <AuthorImage alt={msg} fluid={image} />}
             </FormattedMessage>
           );
         }}
       />
 
       <AuthorInfo>
-        <FormattedMessage id="authorCardName">{(name) => <h3>{name}</h3>}</FormattedMessage>
-        <FormattedMessage id="authorCardDescription">
+        <FormattedMessage id="author.card.name">{(name) => <h3>{name}</h3>}</FormattedMessage>
+        <FormattedMessage id="author.card.description">
           {(description) => <AuthorDescription>{description}</AuthorDescription>}
         </FormattedMessage>
         <SocialNav />
