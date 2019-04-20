@@ -28,7 +28,7 @@ const CaseStudyCard = (props) => (
       </TagsWrapper>
       <StyledH3>{props.title}</StyledH3>
       <Copy>{props.snippet}</Copy>
-      <FormattedMessage id="articleLinkContinue">
+      <FormattedMessage id="article.link.continue">
         {(txt) => <ContinueLink to={props.slug}>{txt}</ContinueLink>}
       </FormattedMessage>
     </CaseStudyCardContents>

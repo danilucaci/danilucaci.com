@@ -23,7 +23,7 @@
   "articleReadTime": "min read",
   "article.next": "Next\n article",
   "article.prev": "Previous\n article",
-  "articleLinkContinue": "Continue Reading →",
+  "article.link.continue": "Continue Reading →",
   "blogTitle": "Blog posts on Design and Development.",
   "blogExplore": "Explore by tags",
   "blogArticleList": "Latest Articles",
