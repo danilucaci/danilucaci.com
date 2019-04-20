@@ -43,23 +43,23 @@ const ThanksPage = (props) => {
       <Main role="main" id="main">
         <StyledThanksPage padded>
           <GridCol>
-            <FormattedMessage id="thanksTitle">
+            <FormattedMessage id="thanks.title">
               {(txt) => <StyledH1>{txt}</StyledH1>}
             </FormattedMessage>
-            <FormattedMessage id="thanksSubTitle">
+            <FormattedMessage id="thanks.subtitle">
               {(txt) => <Subhead>{txt}</Subhead>}
             </FormattedMessage>
             <StyledHR />
-            <FormattedMessage id="thanksCopy">
+            <FormattedMessage id="thanks.copy">
               {(txt) => <ThanksCopy>{txt}</ThanksCopy>}
             </FormattedMessage>
 
-            <FormattedMessage id="thanksSubCopy1">
+            <FormattedMessage id="thanks.subcopy.1">
               {(txt) => (
                 <ThanksCopy>
                   {txt}{" "}
                   <a href={`mailto:${localePaths[locale].email}`}>{localePaths[locale].email}</a>
-                  <FormattedMessage id="thanksSubCopy2">
+                  <FormattedMessage id="thanks.subcopy.2">
                     {(txt2) => <React.Fragment> {txt2}</React.Fragment>}
                   </FormattedMessage>
                   <a
@@ -72,10 +72,10 @@ const ThanksPage = (props) => {
                 </ThanksCopy>
               )}
             </FormattedMessage>
-            <FormattedMessage id="thanksSubCopy3">
+            <FormattedMessage id="thanks.subcopy.3">
               {(txt) => <ThanksAgainCopy> {txt}</ThanksAgainCopy>}
             </FormattedMessage>
-            <FormattedMessage id="thanksGoHome">
+            <FormattedMessage id="thanks.go.home">
               {(txt) => <LocaleLink to="/">{txt}</LocaleLink>}
             </FormattedMessage>
           </GridCol>

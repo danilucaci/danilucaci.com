@@ -62,7 +62,7 @@ const NotFoundPage = (props) => {
                 </StyledCopy>
               )}
             </FormattedMessage>
-            <FormattedMessage id="thanksGoHome">
+            <FormattedMessage id="thanks.go.home">
               {(txt) => <LocaleLink to="/">{txt}</LocaleLink>}
             </FormattedMessage>
           </GridCol>
