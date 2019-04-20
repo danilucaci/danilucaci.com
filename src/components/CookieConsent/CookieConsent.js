@@ -16,7 +16,7 @@ import {
 const CookieConsent = (props) => (
   <StyledCookieConsent isTransitioning={props.isTransitioning} showConsent={props.askCookieConsent}>
     <CopyContainer>
-      <FormattedMessage id="cookieMessage">
+      <FormattedMessage id="cookie.message">
         {(txt) => <StyledCopy>{txt} </StyledCopy>}
       </FormattedMessage>
       <StaticQuery
@@ -33,7 +33,7 @@ const CookieConsent = (props) => (
           return (
             <React.Fragment>
               {localizedDocsList.map((localizedDoc) => (
-                <FormattedMessage id="cookieLearnMore" key={localizedDoc.title}>
+                <FormattedMessage id="cookie.learn.more" key={localizedDoc.title}>
                   {(txt) => (
                     <LearnMoreLink to={localizedDoc.slug} target="_blank" rel="noopener noreferrer">
                       {txt}
@@ -48,10 +48,10 @@ const CookieConsent = (props) => (
     </CopyContainer>
 
     <ButtonsContainer>
-      <FormattedMessage id="cookieDeny">
+      <FormattedMessage id="cookie.deny">
         {(txt) => <StyledGhostButton onClick={props.deniesCookies}>{txt}</StyledGhostButton>}
       </FormattedMessage>
-      <FormattedMessage id="cookieAccept">
+      <FormattedMessage id="cookie.accept">
         {(txt) => <StyledPrimaryButton onClick={props.acceptsCookies}>{txt}</StyledPrimaryButton>}
       </FormattedMessage>
     </ButtonsContainer>
