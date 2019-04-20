@@ -10,8 +10,9 @@ import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import { calculateScroll, textPassiveEventSupport } from "../helpers/helpers";
+import { GridCol } from "../components/Grid/Grid";
 
-import { PageWrapper, PostH1, PostContent, Time } from "../styles/legal.styles";
+import { PageWrapper, PostH1, PostWrapper, Time } from "../styles/legal.styles";
 
 class LegalDoc extends Component {
   componentDidMount() {
@@ -75,22 +76,24 @@ class LegalDoc extends Component {
         />
         <Main role="main" id="main">
           <PageWrapper>
-            <PostH1>{postInfo.title}</PostH1>
-            <FormattedMessage id="legalUpdated">
-              {(txt) => (
-                <Copy>
-                  {txt}&nbsp;
-                  <FormattedDate value={lastUpdated} year="numeric" month="long" day="numeric">
-                    {(txt2) => (
-                      <Time as="time" dateTime={txt2}>
-                        {txt2}
-                      </Time>
-                    )}
-                  </FormattedDate>
-                </Copy>
-              )}
-            </FormattedMessage>
-            <PostContent dangerouslySetInnerHTML={{ __html: postNode.html }} />
+            <GridCol>
+              <PostH1>{postInfo.title}</PostH1>
+              <FormattedMessage id="legalUpdated">
+                {(txt) => (
+                  <Copy>
+                    {txt}&nbsp;
+                    <FormattedDate value={lastUpdated} year="numeric" month="long" day="numeric">
+                      {(txt2) => (
+                        <Time as="time" dateTime={txt2}>
+                          {txt2}
+                        </Time>
+                      )}
+                    </FormattedDate>
+                  </Copy>
+                )}
+              </FormattedMessage>
+              <PostWrapper dangerouslySetInnerHTML={{ __html: postNode.html }} />
+            </GridCol>
           </PageWrapper>
         </Main>
         <ScrollToTop />

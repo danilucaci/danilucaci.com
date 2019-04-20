@@ -1,35 +1,10 @@
 import styled from "styled-components";
 import { theme, rem, mediaMin } from "../theme/globalStyles";
 import { Copy } from "../../src/components/Copy/Copy";
+import { GridRow } from "../../src/components/Grid/Grid";
 
-export const PageWrapper = styled.section`
+export const PageWrapper = styled(GridRow)`
   max-width: ${theme.contain.inner.col8};
-  margin-left: auto;
-  margin-right: auto;
-
-  padding-right: ${theme.gutters.s};
-  padding-left: ${theme.gutters.s};
-
-  /* iPhone X */
-  @supports (padding: max(0px)) {
-    & {
-      padding-left: max(${theme.gutters.s}, env(safe-area-inset-left));
-      padding-right: max(${theme.gutters.s}, env(safe-area-inset-right));
-    }
-  }
-
-  ${mediaMin.s`
-    padding-right: ${theme.gutters.m};
-    padding-left: ${theme.gutters.m};
-
-    /* iPhone X */
-    @supports (padding: max(0px)) {
-      & {
-        padding-left: max(${theme.gutters.m}, env(safe-area-inset-left));
-        padding-right: max(${theme.gutters.m}, env(safe-area-inset-right));
-      }
-    }
-  `};
 
   p {
     font-feature-settings: "onum";
@@ -41,12 +16,7 @@ export const PostH1 = styled.h1`
   margin-bottom: ${rem(16)};
 `;
 
-export const PostContent = styled.div`
-  display: block;
-  max-width: ${theme.contain.inner.col8};
-  margin-left: auto;
-  margin-right: auto;
-
+export const PostWrapper = styled.div`
   margin-top: ${rem(16)};
   margin-bottom: ${theme.spacing.components.s};
 
