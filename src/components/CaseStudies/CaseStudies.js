@@ -20,12 +20,12 @@ const CaseStudies = (props) => {
     <Row>
       <GridCol>
         {props.header === "h2" ? (
-          <FormattedMessage id="caseStudiesHeader">{(txt) => <h2>{txt}</h2>}</FormattedMessage>
+          <FormattedMessage id="case.studies.header">{(txt) => <h2>{txt}</h2>}</FormattedMessage>
         ) : (
-          <FormattedMessage id="caseStudiesHeader">{(txt) => <h1>{txt}</h1>}</FormattedMessage>
+          <FormattedMessage id="case.studies.header">{(txt) => <h1>{txt}</h1>}</FormattedMessage>
         )}
 
-        <FormattedMessage id="caseStudiesDescription">
+        <FormattedMessage id="case.studies.description">
           {(txt) => <Subhead>{txt}</Subhead>}
         </FormattedMessage>
       </GridCol>
