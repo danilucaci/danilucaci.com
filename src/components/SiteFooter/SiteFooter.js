@@ -12,7 +12,7 @@ const SiteFooter = (props) => {
   return (
     <StyledFooter role="contentinfo">
       <StyledCopyright small>&copy; {new Date().getFullYear()} Dani Lucaci.</StyledCopyright>
-      <FormattedMessage id="footerBuiltWith">
+      <FormattedMessage id="footer.built.with">
         {(txt) => (
           <StyledCopy small light>
             {txt}
