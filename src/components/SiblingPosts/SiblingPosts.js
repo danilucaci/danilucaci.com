@@ -23,7 +23,7 @@ const SiblingPosts = ({
     <SiblingPostsContents>
       {prevSlug && (
         <PreviousItemsContainer>
-          <FormattedMessage id="articlePrev">
+          <FormattedMessage id="article.prev">
             {(txt) => <PrevSectionHeader>{txt}</PrevSectionHeader>}
           </FormattedMessage>
           <PrevArticleLink to={prevSlug}>{prevTitle}</PrevArticleLink>
@@ -31,7 +31,7 @@ const SiblingPosts = ({
       )}
       {nextSlug && (
         <NextItemsContainer>
-          <FormattedMessage id="articleNext">
+          <FormattedMessage id="article.next">
             {(txt) => <NextSectionHeader>{txt}</NextSectionHeader>}
           </FormattedMessage>
           <NextArticleLink to={nextSlug}>{nextTitle}</NextArticleLink>
