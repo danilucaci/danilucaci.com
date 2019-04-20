@@ -52,7 +52,7 @@
   "contact.page.other.description": "For any non-work related questions or just saying hi, feel free to ",
   "contact.page.other.description.link": "send me a tweet.",
   "change.language.toggle": "en",
-  "externalLinkSrOnly": "Opens in new window",
+  "external.link.sr.only": "Opens in new window",
   "formLabelEmail": "Email address (*)",
   "formLabelFullName": "Full name (*)",
   "formLabelMessage": "Message (*)",

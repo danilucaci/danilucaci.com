@@ -52,7 +52,7 @@
   "dribbble.subhead": "Estos son algunos de los últimos proyectos que he compartido en Dribbble. La mayoría de ellos son creados como exploración de diseño para ver cúales son los límites de la tipografía, la composición y el color en el diseño de interfaces de usuario.",
   "dribbble.load.more": "Cargar más...",
   "dribbble.no.more": "No hay más trabajos disponibles",
-  "externalLinkSrOnly": "Abre en nueva ventana",
+  "external.link.sr.only": "Abre en nueva ventana",
   "formLabelEmail": "Dirección de email (*)",
   "formLabelFullName": "Nombre completo (*)",
   "formLabelMessage": "Mensaje (*)",

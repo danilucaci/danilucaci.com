@@ -5,7 +5,7 @@ import { StyledExternalLinkIcon } from "./styles";
 
 const ExternalLinkIcon = () => (
   <StyledExternalLinkIcon>
-    <FormattedMessage id="externalLinkSrOnly">
+    <FormattedMessage id="external.link.sr.only">
       {(txt) => <span className="sr-only">{txt}</span>}
     </FormattedMessage>
     <span aria-hidden="true" className="external-link" />
