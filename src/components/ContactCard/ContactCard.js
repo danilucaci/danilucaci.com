@@ -23,15 +23,15 @@ function ContactCard(props) {
   return (
     <ContactCardWrapper spaced as="aside">
       <ContactCardInner>
-        <FormattedMessage id="contactCardTitle">
+        <FormattedMessage id="contact.card.title">
           {(txt) => <ContactCardTitle>{txt}</ContactCardTitle>}
         </FormattedMessage>
 
-        <FormattedMessage id="contactCardInfo">
+        <FormattedMessage id="contact.card.info">
           {(txt) => <Subtitle>{txt}</Subtitle>}
         </FormattedMessage>
 
-        <FormattedMessage id="contactCardCTA">
+        <FormattedMessage id="contact.card.cta">
           {(txt) => (
             <StyledContactButton role="button" to={twinPostURL}>
               {txt}
