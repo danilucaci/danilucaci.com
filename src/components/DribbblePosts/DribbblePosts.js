@@ -18,8 +18,6 @@ import {
   LoadMoreLabel,
 } from "./styles";
 
-import { DRIBBBLE_STATUS } from "../../i18n/i18n";
-
 function DribbblePosts({ locale }) {
   // -------------shotsPerPage-------------
   // How many posts per page and placeholder elements
@@ -59,7 +57,9 @@ function DribbblePosts({ locale }) {
 
         {isError && (
           <ErrorMessageWrapper>
-            <ErrorMessage>{DRIBBBLE_STATUS[locale].error}</ErrorMessage>
+            <FormattedMessage id="dribbble.status.error">
+              {(txt) => <ErrorMessage>{txt}</ErrorMessage>}
+            </FormattedMessage>
           </ErrorMessageWrapper>
         )}
 

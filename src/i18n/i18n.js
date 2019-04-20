@@ -180,13 +180,4 @@ export const MC_SUCCESS = {
   },
 };
 
-export const DRIBBBLE_STATUS = {
-  en: {
-    error: "Something went wrong... The projects from Dribbble couldn‘t be loaded 😔",
-  },
-  es: {
-    error: "Algo ha salido mal... Los proyectos de Dribbble no se han podido cargar 😔",
-  },
-};
-
 export default intlMessages;
