@@ -4,7 +4,7 @@ import { FormattedMessage } from "react-intl";
 import { StyledSkipToMainContent } from "./styles";
 
 const SkipToMainContent = () => (
-  <FormattedMessage id="skipToMainContent">
+  <FormattedMessage id="skip.to.main.content">
     {(txt) => <StyledSkipToMainContent href="#main">{txt}</StyledSkipToMainContent>}
   </FormattedMessage>
 );
