@@ -44,7 +44,7 @@
   "contact.page.subhead": "Si tienes algún proyecto en mente que podría necesitar mis servicios de diseño UX/UI o de desarrollo Front-End, no dudes en ponerte en contacto conmigo.",
   "contact.page.description": "Siempre estoy abierto a hablar sobre nuevos proyectos, ideas creativas u oportunidades para crear experiencias significativas y llevar ideas innovadoras a la realidad.",
   "contact.page.work.info": "Para cualquier consulta sobre trabajos o colaboraciones, puedes ponerte en contacto conmigo usando este formulario o enviándome un email a:",
-  "contactPageCTA": "Enviarme un email",
+  "contact.page.cta": "Enviarme un email",
   "contact.page.other.title": "Para Preguntas Rápidas o Saludar",
   "contact.page.other.description": "Para cualquier pregunta no relacionada con trabajos o para saludar, puedes ",
   "contact.page.other.description.link": "enviarme un tweet.",
