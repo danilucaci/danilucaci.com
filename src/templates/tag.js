@@ -71,14 +71,14 @@ const TagPage = (props) => {
             <TagHeader>
               <TagTitleWrapper>
                 <h1>
-                  <FormattedMessage id="tagListingHeader">
+                  <FormattedMessage id="tag.listing.header">
                     {(txt) => <SectionHeader>{txt}</SectionHeader>}
                   </FormattedMessage>
                   <TagTitle>#{tag}</TagTitle>
                 </h1>
               </TagTitleWrapper>
               <OtherTagsWrapper>
-                <FormattedMessage id="tagListingOther">
+                <FormattedMessage id="tag.listing.other">
                   {(txt) => <SectionHeader>{txt}</SectionHeader>}
                 </FormattedMessage>
                 <Tags tags={allTags} />
