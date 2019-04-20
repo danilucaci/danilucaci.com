@@ -8,7 +8,7 @@ const MenuButton = (props) => {
   const showNav = props.showNav;
 
   return (
-    <FormattedMessage id="buttonMenu">
+    <FormattedMessage id="button.menu">
       {(txt) => (
         <StyledMenuButton aria-haspopup="true" aria-expanded="false" onClick={props.onClick}>
           {txt}
