@@ -65,6 +65,7 @@ export const theme = {
     image: "box-shadow: 0 1px 4px 0 rgba(0,0,0,0.20), 0 1px 2px 0 rgba(0,0,0,0.08)",
     dropdown:
       "box-shadow: 0px 2px 4px 0px hsla(0,0%,40%,0.2), 0px 6px 12px 0px hsla(0,0%,70%,0.24)",
+    copyUrl: "box-shadow: 2px 2px 2px 0px hsla(0,0%,40%,0.2), 6px 6px 4px 0px hsla(0,0%,70%,0.24)",
     mobileCookieConsent:
       "box-shadow: 0 -6px 48px 0 rgba(255,255,255,0.60), 0 -6px 18px 0 rgba(128,128,128,0.60)",
     successMessage:
@@ -258,6 +259,7 @@ export const theme = {
     xxxs: "22.5em", //360
     xxs: "26.5em", //424
     xs: "32em", //512
+    nav: "35em", //560
     s: "38em", //608
     m: "40em", //640
     l: "45em", //720
@@ -271,6 +273,7 @@ const breakpoints = {
   xxxs: 360,
   xxs: 424,
   xs: 512,
+  nav: 560,
   s: 608,
   m: 640,
   l: 720,

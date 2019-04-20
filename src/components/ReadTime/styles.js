@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { theme, rem } from "../../theme/globalStyles";
+import { theme, rem, mediaMin } from "../../theme/globalStyles";
 import { Icon } from "../Icon/Icon";
 import { Copy } from "../Copy/Copy";
 
@@ -8,6 +8,11 @@ export const Wrapper = styled.div`
   display: inline-block;
   white-space: nowrap;
   margin-left: -${rem(2)};
+  margin-bottom: ${rem(8)};
+
+  ${mediaMin.s`
+    margin-bottom: 0;
+  `};
 `;
 
 export const Label = styled(Copy)`

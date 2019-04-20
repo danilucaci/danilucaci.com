@@ -16,6 +16,7 @@ import Tags from "../components/Tags/Tags";
 import ReadTime from "../components/ReadTime/ReadTime";
 import ArticleDate from "../components/ArticleDate/ArticleDate";
 import { HR } from "../components/HR/HR";
+import { GridCol } from "../components/Grid/Grid";
 import SiblingPosts from "../components/SiblingPosts/SiblingPosts";
 
 import AuthorCard from "../components/AuthorCard/AuthorCard";
@@ -39,20 +40,12 @@ import {
   IntroCopy,
   PostContent,
   DummyInput,
+  CommentsWrapper,
   StyledLoadComments,
   LoadCommentsIcon,
   LoadCommentsLabel,
-  CommentsWrapper,
   BottomHR,
 } from "../styles/post.styles";
-
-// eslint-disable
-// const renderAst = new rehypeReact({
-//   createElement: React.createElement,
-//   components: {
-//     "item-1": Copy,
-//   },
-// }).Compiler;
 
 class Post extends Component {
   state = {
@@ -152,34 +145,36 @@ class Post extends Component {
         />
         <Main role="main" id="main">
           <PostWrapper>
-            <StyledPageHeader>
-              <Tags tags={postInfo.tags} inline />
-              <PostH1>{postInfo.title}</PostH1>
-              <HR />
-              <PostInfo>
-                <PostDateReadTimeWrapper>
-                  <ArticleDate date={postInfo.date} />
-                  <ReadTime timeToRead={postNode.timeToRead} />
-                </PostDateReadTimeWrapper>
-                <SocialShareWrapper>
-                  <SocialShare
-                    slug={this.props.location.pathname}
-                    title={postInfo.title}
-                    snippet={postInfo.snippet}
-                    onClick={copyURL}
-                  />
-                </SocialShareWrapper>
-              </PostInfo>
-              <HR />
-              <StyledIntroContainer>
-                {introCopy.map((paragraph) => (
-                  <IntroCopy key={paragraph}>{paragraph}</IntroCopy>
-                ))}
-              </StyledIntroContainer>
+            <StyledPageHeader as="header">
+              <GridCol>
+                <Tags tags={postInfo.tags} inline />
+                <PostH1>{postInfo.title}</PostH1>
+                <HR />
+                <PostInfo>
+                  <PostDateReadTimeWrapper>
+                    <ArticleDate date={postInfo.date} />
+                    <ReadTime timeToRead={postNode.timeToRead} />
+                  </PostDateReadTimeWrapper>
+                  <SocialShareWrapper>
+                    <SocialShare
+                      slug={this.props.location.pathname}
+                      title={postInfo.title}
+                      snippet={postInfo.snippet}
+                      onClick={copyURL}
+                    />
+                  </SocialShareWrapper>
+                </PostInfo>
+                <HR />
+                <StyledIntroContainer>
+                  {introCopy.map((paragraph) => (
+                    <IntroCopy key={paragraph}>{paragraph}</IntroCopy>
+                  ))}
+                </StyledIntroContainer>
+              </GridCol>
             </StyledPageHeader>
-            <PostContent dangerouslySetInnerHTML={{ __html: postNode.html }} />
-
-            <BottomHR />
+            <PostContent>
+              <GridCol dangerouslySetInnerHTML={{ __html: postNode.html }} />
+            </PostContent>
 
             <AuthorCard />
             <SubscribeCard locale={locale} />

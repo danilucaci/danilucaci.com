@@ -3,19 +3,13 @@ import Img from "gatsby-image";
 
 import { theme, rem, mediaMin } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
+import { HR } from "../HR/HR";
 
-export const StyledAuthorCard = styled.footer`
-  background-color: ${theme.colors.bgLight100};
+export const AuthorCardWrapper = styled.footer`
   width: 100%;
-  max-width: ${theme.contain.inner.col10};
+  max-width: ${theme.contain.wrapper.col10};
   margin-left: auto;
   margin-right: auto;
-
-  padding: ${rem(40)};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
 
   margin-bottom: ${theme.spacing.components.s};
 
@@ -23,8 +17,50 @@ export const StyledAuthorCard = styled.footer`
     margin-bottom: ${theme.spacing.components.m};
   `};
 
-  ${mediaMin.l`
+  ${mediaMin.m`
     margin-bottom: ${theme.spacing.components.xl};
+  `};
+
+  /* Mobile in ladscape */
+  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(280)}) and (max-height: ${rem(560)}) and (orientation: landscape) {
+    margin-bottom: ${rem(64)};
+  }
+`;
+
+export const AuthorCardInner = styled.div`
+  background-color: ${theme.colors.bgLight100};
+
+  padding: ${rem(40)};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  margin-right: ${theme.gutters.s};
+  margin-left: ${theme.gutters.s};
+
+  /* iPhone X */
+  @supports (padding: max(0px)) {
+    & {
+      margin-left: max(${theme.gutters.s}, env(safe-area-inset-left));
+      margin-right: max(${theme.gutters.s}, env(safe-area-inset-right));
+    }
+  }
+
+  ${mediaMin.s`
+    margin-right: ${theme.gutters.m};
+    margin-left: ${theme.gutters.m};
+
+    /* iPhone X */
+    @supports (padding: max(0px)) {
+    & {
+      margin-left: max(${theme.gutters.m}, env(safe-area-inset-left));
+      margin-right: max(${theme.gutters.m}, env(safe-area-inset-right));
+      }
+    }
+  `};
+
+  ${mediaMin.l`
     text-align: left;
     flex-direction: row;
     padding: ${rem(64)} ${rem(48)};
@@ -63,4 +99,43 @@ export const AuthorDescription = styled(Copy)`
   font-size: ${theme.fontSizes.m};
   line-height: ${theme.lineHeights.m};
   margin-bottom: ${rem(8)};
+`;
+
+export const StyledHR = styled(HR)`
+  margin-right: ${theme.gutters.s};
+  margin-left: ${theme.gutters.s};
+
+  margin-bottom: ${theme.spacing.components.s};
+
+  /* iPhone X */
+  @supports (padding: max(0px)) {
+    & {
+      margin-left: max(${theme.gutters.s}, env(safe-area-inset-left));
+      margin-right: max(${theme.gutters.s}, env(safe-area-inset-right));
+    }
+  }
+
+  ${mediaMin.s`
+    margin-right: ${theme.gutters.m};
+    margin-left: ${theme.gutters.m};
+
+    /* iPhone X */
+    @supports (padding: max(0px)) {
+      & {
+        margin-left: max(${theme.gutters.m}, env(safe-area-inset-left));
+        margin-right: max(${theme.gutters.m}, env(safe-area-inset-right));
+      }
+    }
+
+    margin-bottom: ${theme.spacing.components.m};
+  `};
+
+  ${mediaMin.m`
+    margin-bottom: ${theme.spacing.components.xl};
+  `};
+
+  /* Mobile in ladscape */
+  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(280)}) and (max-height: ${rem(560)}) and (orientation: landscape) {
+    margin-bottom: ${rem(64)};
+  }
 `;

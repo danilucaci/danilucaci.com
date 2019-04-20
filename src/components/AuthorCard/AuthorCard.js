@@ -3,33 +3,44 @@ import { graphql, StaticQuery } from "gatsby";
 import { FormattedMessage } from "react-intl";
 
 import SocialNav from "../SocialNav/SocialNav";
-import { StyledAuthorCard, AuthorImage, AuthorInfo, AuthorDescription } from "./styles";
+import {
+  AuthorCardWrapper,
+  AuthorCardInner,
+  AuthorImage,
+  AuthorInfo,
+  AuthorDescription,
+  StyledHR,
+} from "./styles";
 
 const AuthorCard = () => (
-  <StyledAuthorCard>
-    <StaticQuery
-      query={AUTHOR_IMAGE_QUERY}
-      render={(data) => {
-        let image = data.authorImageQuery.childImageSharp.fluid;
+  <AuthorCardWrapper>
+    <StyledHR />
 
-        return (
-          <FormattedMessage id="authorCardImageTitle">
-            {(imageTitle) => (
-              <AuthorImage title={imageTitle} alt="Dani Lucaci portrait image" fluid={image} />
-            )}
-          </FormattedMessage>
-        );
-      }}
-    />
+    <AuthorCardInner>
+      <StaticQuery
+        query={AUTHOR_IMAGE_QUERY}
+        render={(data) => {
+          let image = data.authorImageQuery.childImageSharp.fluid;
 
-    <AuthorInfo>
-      <FormattedMessage id="authorCardName">{(name) => <h3>{name}</h3>}</FormattedMessage>
-      <FormattedMessage id="authorCardDescription">
-        {(description) => <AuthorDescription>{description}</AuthorDescription>}
-      </FormattedMessage>
-      <SocialNav />
-    </AuthorInfo>
-  </StyledAuthorCard>
+          return (
+            <FormattedMessage id="authorCardImageTitle">
+              {(imageTitle) => (
+                <AuthorImage title={imageTitle} alt="Dani Lucaci portrait image" fluid={image} />
+              )}
+            </FormattedMessage>
+          );
+        }}
+      />
+
+      <AuthorInfo>
+        <FormattedMessage id="authorCardName">{(name) => <h3>{name}</h3>}</FormattedMessage>
+        <FormattedMessage id="authorCardDescription">
+          {(description) => <AuthorDescription>{description}</AuthorDescription>}
+        </FormattedMessage>
+        <SocialNav />
+      </AuthorInfo>
+    </AuthorCardInner>
+  </AuthorCardWrapper>
 );
 
 export default AuthorCard;

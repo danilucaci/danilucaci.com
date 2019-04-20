@@ -3,42 +3,14 @@ import { theme, rem, mediaMin } from "../theme/globalStyles";
 import { Copy } from "../../src/components/Copy/Copy";
 import { LoadComments } from "../../src/components/Button/Button";
 import { Icon } from "../../src/components/Icon/Icon";
-import { HR } from "../../src/components/HR/HR";
+import { GridRow } from "../../src/components/Grid/Grid";
 
 export const PostWrapper = styled.article`
-  max-width: ${theme.contain.wrapper.col10};
-  margin-left: auto;
-  margin-right: auto;
-
-  padding-right: ${theme.gutters.s};
-  padding-left: ${theme.gutters.s};
-
-  /* iPhone X */
-  @supports (padding: max(0px)) {
-    & {
-      padding-left: max(${theme.gutters.s}, env(safe-area-inset-left));
-      padding-right: max(${theme.gutters.s}, env(safe-area-inset-right));
-    }
-  }
-
-  ${mediaMin.s`
-    padding-right: ${theme.gutters.m};
-    padding-left: ${theme.gutters.m};
-
-    /* iPhone X */
-    @supports (padding: max(0px)) {
-      & {
-        padding-left: max(${theme.gutters.m}, env(safe-area-inset-left));
-        padding-right: max(${theme.gutters.m}, env(safe-area-inset-right));
-      }
-    }
-  `};
+  width: 100%;
 `;
 
-export const StyledPageHeader = styled.header`
-  max-width: ${theme.contain.inner.col8};
-  margin-left: auto;
-  margin-right: auto;
+export const StyledPageHeader = styled(GridRow)`
+  max-width: ${theme.contain.wrapper.col8};
 `;
 
 export const PostH1 = styled.h1`
@@ -54,7 +26,7 @@ export const PostInfo = styled.div`
 
   padding: ${rem(12)} 0;
 
-  ${mediaMin.xs`
+  ${mediaMin.s`
     align-items: center;
     flex-direction: row;
     padding: ${rem(8)} 0;
@@ -63,12 +35,7 @@ export const PostInfo = styled.div`
 
 export const PostDateReadTimeWrapper = styled.div`
   display: inline-block;
-  margin-bottom: ${rem(8)};
   margin-right: ${rem(16)};
-
-  ${mediaMin.xs`
-    margin-bottom: 0;
-  `};
 `;
 
 export const SocialShareWrapper = styled.div`
@@ -80,7 +47,7 @@ export const StyledIntroContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
   margin-top: ${rem(32)};
-  margin-bottom: ${rem(32)};
+  margin-bottom: ${rem(16)};
 `;
 
 export const IntroCopy = styled(Copy)`
@@ -91,11 +58,11 @@ export const IntroCopy = styled(Copy)`
   }
 `;
 
-export const PostContent = styled.section`
-  display: block;
-  max-width: ${theme.contain.inner.col6};
-  margin-left: auto;
-  margin-right: auto;
+export const PostContent = styled(GridRow)`
+  flex-direction: column !important;
+  flex-wrap: nowrap !important;
+
+  max-width: ${theme.contain.wrapper.col6};
   margin-bottom: ${theme.spacing.components.s};
 
   ${mediaMin.m`
@@ -253,7 +220,6 @@ export const PostContent = styled.section`
     background-color: ${theme.colors.bgLight100};
     padding: ${rem(32)} ${rem(16)};
 
-    margin-top: ${rem(64)};
     margin-bottom: ${rem(64)};
 
     & p {
@@ -338,7 +304,7 @@ export const LoadCommentsLabel = styled.span`
 
 export const CommentsWrapper = styled.aside`
   width: 100%;
-  max-width: ${theme.contain.inner.col10};
+  max-width: ${theme.contain.wrapper.col10};
   margin-left: auto;
   margin-right: auto;
   margin-bottom: ${theme.spacing.components.s};
@@ -372,23 +338,6 @@ export const CommentsWrapper = styled.aside`
   ${mediaMin.m`
     margin-bottom: ${theme.spacing.components.xl};
   `};
-
-  /* Mobile in ladscape */
-  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(280)}) and (max-height: ${rem(560)}) and (orientation: landscape) {
-    margin-bottom: ${rem(64)};
-  }
-`;
-
-export const BottomHR = styled(HR)`
-  margin-bottom: ${theme.spacing.components.s};
-
-  ${mediaMin.s`
-  margin-bottom: ${theme.spacing.components.m};
-`};
-
-  ${mediaMin.m`
-  margin-bottom: ${theme.spacing.components.xl};
-`};
 
   /* Mobile in ladscape */
   @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(280)}) and (max-height: ${rem(560)}) and (orientation: landscape) {

@@ -1,13 +1,12 @@
 import styled from "styled-components";
+import { Form } from "formik";
+
 import { theme, mediaMin, rem } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
 import Input from "../Input/Input";
 import SubmitButton from "../SubmitButton/SubmitButton";
-import { Form } from "formik";
 
-export const StyledSubscribeCard = styled.aside`
-  background-color: ${theme.colors.bgLight100};
-  border-top: ${rem(8)} solid ${theme.colors.main600};
+export const SubscribeCardWrapper = styled.aside`
   width: 100%;
   max-width: ${theme.contain.wrapper.col10};
   margin-left: auto;
@@ -16,18 +15,53 @@ export const StyledSubscribeCard = styled.aside`
   margin-top: ${theme.spacing.components.s};
   margin-bottom: ${theme.spacing.components.s};
 
-  padding: ${rem(32)} ${rem(24)};
-
   ${mediaMin.m`
-    padding: ${rem(64)} ${rem(56)} ${rem(40)} ${rem(64)};
     margin-top: ${theme.spacing.components.m};
     margin-bottom: ${theme.spacing.components.m};
   `};
 
   ${mediaMin.xxxl`
-    padding: ${rem(64)} ${rem(120)} ${rem(56)} ${rem(144)};
     margin-top: ${theme.spacing.components.xl};
     margin-bottom: ${theme.spacing.components.xl};
+  `};
+`;
+
+export const SubscribeCardInner = styled.aside`
+  background-color: ${theme.colors.bgLight100};
+  border-top: ${rem(8)} solid ${theme.colors.main600};
+
+  padding: ${rem(32)} ${rem(24)};
+
+  margin-right: ${theme.gutters.s};
+  margin-left: ${theme.gutters.s};
+
+  /* iPhone X */
+  @supports (padding: max(0px)) {
+    & {
+      margin-left: max(${theme.gutters.s}, env(safe-area-inset-left));
+      margin-right: max(${theme.gutters.s}, env(safe-area-inset-right));
+    }
+  }
+
+  ${mediaMin.s`
+    margin-right: ${theme.gutters.m};
+    margin-left: ${theme.gutters.m};
+
+    /* iPhone X */
+    @supports (padding: max(0px)) {
+    & {
+      margin-left: max(${theme.gutters.m}, env(safe-area-inset-left));
+      margin-right: max(${theme.gutters.m}, env(safe-area-inset-right));
+      }
+    }
+  `};
+
+  ${mediaMin.m`
+    padding: ${rem(64)} ${rem(56)} ${rem(40)} ${rem(64)};
+  `};
+
+  ${mediaMin.xxxl`
+    padding: ${rem(64)} ${rem(120)} ${rem(56)} ${rem(144)};
   `};
 `;
 

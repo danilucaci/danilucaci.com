@@ -13,7 +13,8 @@ import MCErrorMessage from "../MCErrorMessage/MCErrorMessage";
 import { InlineStatusMessageWrapper, InlineMessageCopy } from "../EmailErrorMessage/styles";
 
 import {
-  StyledSubscribeCard,
+  SubscribeCardWrapper,
+  SubscribeCardInner,
   FormContainer,
   StyledMCForm,
   InputsWrapper,
@@ -96,87 +97,89 @@ function SubscribeCard({ locale }) {
   });
 
   return (
-    <StyledSubscribeCard>
-      <FormattedMessage id="subscribeCardTitle">
-        {(txt) => <StyledH2>{txt}</StyledH2>}
-      </FormattedMessage>
-      <FormattedMessage id="subscribeCardSubTitle">
-        {(txt) => <Subtitle>{txt}</Subtitle>}
-      </FormattedMessage>
-      <FormattedMessage id="subscribeCardSpam">
-        {(txt) => <AltCopy>{txt}</AltCopy>}
-      </FormattedMessage>
-      <FormContainer>
-        <Formik
-          initialValues={{
-            email: "",
-            acceptsconsentcheckbox: false,
-          }}
-          validationSchema={MCSchema}
-          onSubmit={(values, { setSubmitting }) => {
-            // setTimeout(() => {
-            handleMCSubmit(values);
-            setSubmitting(false);
-            // }, 400);
-          }}
-        >
-          {({ isValid }) => (
-            <StyledMCForm method="post">
-              <InputsWrapper>
-                <StyledLabel>
-                  <StyledInput
-                    type="email"
-                    name="email"
-                    autoCapitalize="off"
-                    autoCorrect="off"
-                    autoComplete="email"
-                    placeholderType="email"
-                  />
-                  <InputStatusIcon arriaHidden="true" />
-                </StyledLabel>
+    <SubscribeCardWrapper>
+      <SubscribeCardInner>
+        <FormattedMessage id="subscribeCardTitle">
+          {(txt) => <StyledH2>{txt}</StyledH2>}
+        </FormattedMessage>
+        <FormattedMessage id="subscribeCardSubTitle">
+          {(txt) => <Subtitle>{txt}</Subtitle>}
+        </FormattedMessage>
+        <FormattedMessage id="subscribeCardSpam">
+          {(txt) => <AltCopy>{txt}</AltCopy>}
+        </FormattedMessage>
+        <FormContainer>
+          <Formik
+            initialValues={{
+              email: "",
+              acceptsconsentcheckbox: false,
+            }}
+            validationSchema={MCSchema}
+            onSubmit={(values, { setSubmitting }) => {
+              // setTimeout(() => {
+              handleMCSubmit(values);
+              setSubmitting(false);
+              // }, 400);
+            }}
+          >
+            {({ isValid }) => (
+              <StyledMCForm method="post">
+                <InputsWrapper>
+                  <StyledLabel>
+                    <StyledInput
+                      type="email"
+                      name="email"
+                      autoCapitalize="off"
+                      autoCorrect="off"
+                      autoComplete="email"
+                      placeholderType="email"
+                    />
+                    <InputStatusIcon arriaHidden="true" />
+                  </StyledLabel>
 
-                {MCSent && (
-                  <MCLoadingCTA
-                    showMCLoading={showMCLoading}
-                    showMCSuccess={showMCSuccess}
-                    showMCError={showMCError}
-                    MCError={MCError}
-                    locale={locale}
-                  />
-                )}
+                  {MCSent && (
+                    <MCLoadingCTA
+                      showMCLoading={showMCLoading}
+                      showMCSuccess={showMCSuccess}
+                      showMCError={showMCError}
+                      MCError={MCError}
+                      locale={locale}
+                    />
+                  )}
 
-                {!MCSent && <StyledSubmitButton buttonType="subscribe" disabled={!isValid} />}
-              </InputsWrapper>
-              <ErrorMessage name="email">
-                {(errorMessage) => (
-                  <InlineStatusMessageWrapper>
-                    <InlineMessageCopy>{errorMessage}</InlineMessageCopy>
-                  </InlineStatusMessageWrapper>
-                )}
-              </ErrorMessage>
-              <PrivacyCheckbox
-                type="checkbox"
-                name="acceptsconsentcheckbox"
-                value={isValid === true ? CONSENT_VALUE[locale].yes : CONSENT_VALUE[locale].no}
-                locale={locale}
-              />
-              <ErrorMessage name="acceptsconsentcheckbox">
-                {(errorMessage) => (
-                  <InlineStatusMessageWrapper>
-                    <InlineMessageCopy>{errorMessage}</InlineMessageCopy>
-                  </InlineStatusMessageWrapper>
-                )}
-              </ErrorMessage>
-            </StyledMCForm>
+                  {!MCSent && <StyledSubmitButton buttonType="subscribe" disabled={!isValid} />}
+                </InputsWrapper>
+                <ErrorMessage name="email">
+                  {(errorMessage) => (
+                    <InlineStatusMessageWrapper>
+                      <InlineMessageCopy>{errorMessage}</InlineMessageCopy>
+                    </InlineStatusMessageWrapper>
+                  )}
+                </ErrorMessage>
+                <PrivacyCheckbox
+                  type="checkbox"
+                  name="acceptsconsentcheckbox"
+                  value={isValid === true ? CONSENT_VALUE[locale].yes : CONSENT_VALUE[locale].no}
+                  locale={locale}
+                />
+                <ErrorMessage name="acceptsconsentcheckbox">
+                  {(errorMessage) => (
+                    <InlineStatusMessageWrapper>
+                      <InlineMessageCopy>{errorMessage}</InlineMessageCopy>
+                    </InlineStatusMessageWrapper>
+                  )}
+                </ErrorMessage>
+              </StyledMCForm>
+            )}
+          </Formik>
+
+          {showMCSuccess && <MCSuccessMessage locale={locale} />}
+          {showMCError && (
+            <MCErrorMessage locale={locale} MCError={MCError} apiMessage={MCAPIErrorMSG} />
           )}
-        </Formik>
-
-        {showMCSuccess && <MCSuccessMessage locale={locale} />}
-        {showMCError && (
-          <MCErrorMessage locale={locale} MCError={MCError} apiMessage={MCAPIErrorMSG} />
-        )}
-      </FormContainer>
-    </StyledSubscribeCard>
+        </FormContainer>
+      </SubscribeCardInner>
+    </SubscribeCardWrapper>
   );
 }
 
