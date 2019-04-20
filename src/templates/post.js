@@ -205,7 +205,7 @@ class Post extends Component {
               <LoadCommentsIcon aria-hidden="true">
                 <use xlinkHref="#comments" />
               </LoadCommentsIcon>
-              <FormattedMessage id="loadComments">
+              <FormattedMessage id="load.comments">
                 {(txt) => <LoadCommentsLabel>{txt}</LoadCommentsLabel>}
               </FormattedMessage>
             </StyledLoadComments>
