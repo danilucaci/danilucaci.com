@@ -9,7 +9,7 @@ const ReadTime = (props) => (
     <StyledIcon>
       <use xlinkHref="#clock" />
     </StyledIcon>
-    <FormattedMessage id="articleReadTime">
+    <FormattedMessage id="article.read.time">
       {(txt) => (
         <Label as="span" small>
           {props.timeToRead} {txt}
