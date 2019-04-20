@@ -251,7 +251,7 @@ SEO.propTypes = {
   postSEO: bool,
   postImage: string,
   postNode: object,
-  legalDocs: object,
+  legalDocs: bool,
 };
 
 export default SEO;
