@@ -51,7 +51,7 @@
   "contactPageOtherTitle": "Quick Questions or Saying Hi",
   "contactPageOtherDescription": "For any non-work related questions or just saying hi, feel free to ",
   "contactPageOtherDescriptionLink": "send me a tweet.",
-  "changeLanguageToggle": "en",
+  "change.language.toggle": "en",
   "externalLinkSrOnly": "Opens in new window",
   "formLabelEmail": "Email address (*)",
   "formLabelFullName": "Full name (*)",

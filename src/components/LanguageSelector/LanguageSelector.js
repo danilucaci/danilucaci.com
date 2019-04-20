@@ -64,7 +64,7 @@ const LanguageSelector = (props) => {
       <WorldIcon arriaHidden="true">
         {props.locale === "en" ? <use xlinkHref="#en" /> : <use xlinkHref="#es" />}
       </WorldIcon>
-      <FormattedMessage id="changeLanguageToggle">
+      <FormattedMessage id="change.language.toggle">
         {(txt) => <LanguageDropdownLabel>{txt}</LanguageDropdownLabel>}
       </FormattedMessage>
       <DropdownIcon arriaHidden="true">
