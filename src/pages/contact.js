@@ -48,14 +48,14 @@ const ContactPage = (props) => {
       <SiteHeader locale={locale} twinPostURL={twinPostURL} currentPath={props.location.pathname} />
       <Main role="main" id="main">
         <ContactMeWrapper>
-          <FormattedMessage id="contactPageTitle">
+          <FormattedMessage id="contact.page.title">
             {(txt) => <StyledH1>{txt}</StyledH1>}
           </FormattedMessage>
           <ContactMeHeader>
-            <FormattedMessage id="contactPageSubhead">
+            <FormattedMessage id="contact.page.subhead">
               {(txt) => <Subhead>{txt}</Subhead>}
             </FormattedMessage>
-            <FormattedMessage id="contactPageWorkInfo">
+            <FormattedMessage id="contact.page.work.info">
               {(txt) => (
                 <Copy>
                   {txt}{" "}
@@ -72,14 +72,14 @@ const ContactPage = (props) => {
           </ContactFormWrapper>
           <SayHiWrapper>
             <HR />
-            <FormattedMessage id="contactPageOtherTitle">
+            <FormattedMessage id="contact.page.other.title">
               {(txt) => <SayHiTitle>{txt}</SayHiTitle>}
             </FormattedMessage>
-            <FormattedMessage id="contactPageOtherDescription">
+            <FormattedMessage id="contact.page.other.description">
               {(txt) => (
                 <SayHiDescription>
                   {txt}
-                  <FormattedMessage id="contactPageOtherDescriptionLink">
+                  <FormattedMessage id="contact.page.other.description.link">
                     {(txt2) => (
                       <StyledLink
                         target="_blank"
