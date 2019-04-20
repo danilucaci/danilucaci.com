@@ -46,11 +46,11 @@ const Index = (props) => {
       <Main role="main" id="main">
         <IndexHeader as="header">
           <GridCol>
-            <FormattedMessage id="indexName">{(txt) => <Name>{txt}</Name>}</FormattedMessage>
-            <FormattedMessage id="indexH1">
+            <FormattedMessage id="index.name">{(txt) => <Name>{txt}</Name>}</FormattedMessage>
+            <FormattedMessage id="index.h1">
               {(txt) => <IndexTitle as="h1">{txt}</IndexTitle>}
             </FormattedMessage>
-            <FormattedMessage id="indexSubhead">
+            <FormattedMessage id="index.subhead">
               {(txt) => <Subhead>{txt}</Subhead>}
             </FormattedMessage>
           </GridCol>
@@ -58,7 +58,7 @@ const Index = (props) => {
         <ServicesWrapper>
           <Row padded as="div">
             <GridCol>
-              <FormattedMessage id="indexServicesHeading">
+              <FormattedMessage id="index.services.heading">
                 {(txt) => <ServicesTitle>{txt}</ServicesTitle>}
               </FormattedMessage>
 
@@ -67,10 +67,10 @@ const Index = (props) => {
                   <img src={illustrationUX} alt="illustration" />
                 </ServiceImage>
                 <ServiceContent>
-                  <FormattedMessage id="indexServices1Title">
+                  <FormattedMessage id="index.services.1.title">
                     {(txt) => <ServiceTitle>{txt}</ServiceTitle>}
                   </FormattedMessage>
-                  <FormattedMessage id="indexServices1Copy">
+                  <FormattedMessage id="index.services.1.copy">
                     {(txt) => <ServiceCopy>{txt}</ServiceCopy>}
                   </FormattedMessage>
                   <ul>
@@ -90,10 +90,10 @@ const Index = (props) => {
                   <img src={illustrationUI} alt="illustration" />
                 </ServiceImage>
                 <ServiceContent>
-                  <FormattedMessage id="indexServices2Title">
+                  <FormattedMessage id="index.services.2.title">
                     {(txt) => <ServiceTitle>{txt}</ServiceTitle>}
                   </FormattedMessage>
-                  <FormattedMessage id="indexServices2Copy">
+                  <FormattedMessage id="index.services.2.copy">
                     {(txt) => <ServiceCopy>{txt}</ServiceCopy>}
                   </FormattedMessage>
                   <ul>
@@ -111,10 +111,10 @@ const Index = (props) => {
                   <img src={illustrationInteraction} alt="illustration" />
                 </ServiceImage>
                 <ServiceContent>
-                  <FormattedMessage id="indexServices3Title">
+                  <FormattedMessage id="index.services.3.title">
                     {(txt) => <ServiceTitle>{txt}</ServiceTitle>}
                   </FormattedMessage>
-                  <FormattedMessage id="indexServices3Copy">
+                  <FormattedMessage id="index.services.3.copy">
                     {(txt) => <ServiceCopy>{txt}</ServiceCopy>}
                   </FormattedMessage>
                   <ul>
@@ -130,10 +130,10 @@ const Index = (props) => {
                   <img src={illustrationCode} alt="illustration" />
                 </ServiceImage>
                 <ServiceContent>
-                  <FormattedMessage id="indexServices4Title">
+                  <FormattedMessage id="index.services.4.title">
                     {(txt) => <ServiceTitle>{txt}</ServiceTitle>}
                   </FormattedMessage>
-                  <FormattedMessage id="indexServices4Copy">
+                  <FormattedMessage id="index.services.4.copy">
                     {(txt) => <ServiceCopy>{txt}</ServiceCopy>}
                   </FormattedMessage>
                   <ul>
