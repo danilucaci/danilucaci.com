@@ -28,9 +28,18 @@ export const StyledLanguageSelector = styled.li`
   padding: ${rem(12)};
   margin-top: ${rem(16)};
 
+  @media screen and (max-height: 30em) {
+    margin-top: 0;
+    padding: ${rem(4)} ${rem(32)};
+  }
+
+  @media screen and (min-height: 25em) and (max-width: 25em) {
+    padding: ${rem(8)} ${rem(32)};
+  }
+
   width: ${rem(208)};
 
-  ${mediaMin.xs`
+  ${mediaMin.nav`
     width: auto;
     margin-top: 0;
     border: none;
@@ -57,10 +66,18 @@ export const StyledLanguageDropdown = styled.ul`
   right: 0;
   left: 0;
 
-  ${mediaMin.xs`
+  ${mediaMin.nav`
     top: 85%;
     left: auto;
   `};
+
+  @media screen and (max-height: 30em) {
+    padding: 0;
+  }
+
+  @media screen and (min-height: 25em) and (max-width: 25em) {
+    padding: ${rem(8)} 0;
+  }
 
   padding: ${rem(8)} 0;
 `;
@@ -78,10 +95,18 @@ export const CurrentLanguageIcon = styled(Icon)`
   left: ${rem(40)};
   top: ${rem(12)};
 
-  ${mediaMin.xs`
+  ${mediaMin.nav`
     left: ${rem(12)};
     top: ${rem(6)};
   `};
+
+  @media screen and (max-height: 30em) {
+    top: ${rem(4)};
+  }
+
+  @media screen and (min-height: 25em) and (max-width: 25em) {
+    top: ${rem(4)};
+  }
 `;
 
 export const WorldIcon = styled(Icon)`
@@ -118,7 +143,11 @@ export const CurrentLanguageSelector = styled.li`
       background-color: transparent;
     }
 
-    ${mediaMin.xs`
+    @media screen and (max-height: 30em) {
+      padding: ${rem(4)} ${rem(32)};
+    }
+
+    ${mediaMin.nav`
       padding: ${rem(6)} ${rem(40)};
     `};
   }
@@ -150,7 +179,11 @@ export const LanguageSelectorItem = styled.li`
       background-color: transparent;
     }
 
-    ${mediaMin.xs`
+    @media screen and (max-height: 30em) {
+      padding: ${rem(4)} ${rem(32)};
+    }
+
+    ${mediaMin.nav`
       padding: ${rem(6)} ${rem(40)};
     `};
   }

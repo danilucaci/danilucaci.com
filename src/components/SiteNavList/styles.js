@@ -27,14 +27,15 @@ export const StyledSiteNavList = styled.ul`
     css`
       transform: translateX(0);
     `};
-/* 
-  ${(props) =>
-    props.isTransitioning &&
-    `
-      display: block !important;
-    `}; */
 
-  ${mediaMin.xs`
+ /*${(props) =>
+    props.isTransitioning &&
+   `
+      display: block !important;
+    `}; 
+    */
+
+  ${mediaMin.nav`
     background-color: transparent;
     padding-left: 0;
     padding-right: 0;

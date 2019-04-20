@@ -14,6 +14,10 @@ export const StyledSiteNavListItem = styled.li`
   font-weight: 400;
   width: 100%;
 
+  @media screen and (min-height: 25em) and (max-width: 25em) {
+    margin-bottom: ${rem(8)};
+  }
+
   @media screen and (min-height: 34em) and (max-width: 27em) {
     margin-bottom: ${rem(8)};
   }
@@ -23,7 +27,7 @@ export const StyledSiteNavListItem = styled.li`
     margin-bottom: ${rem(32)};
   }
 
-  ${mediaMin.xs`
+  ${mediaMin.nav`
     margin: 0;
     display: inline-block;
     width: auto;
@@ -44,7 +48,7 @@ export const StyledSiteNavListItem = styled.li`
     line-height: ${rem(32)};
     text-decoration: none;
     width: 100%;
-    padding: ${rem(16)} 0;
+    padding: ${rem(16)} ${rem(8)};
 
     &:visited,
     &:link {
@@ -57,16 +61,31 @@ export const StyledSiteNavListItem = styled.li`
       cursor: pointer;
     }
 
-    ${mediaMin.xs`
+    ${mediaMin.nav`
       background-color: transparent;
       font-size: ${theme.fontSizes.s};
       line-height: ${theme.lineHeights.s};
-      padding: ${rem(16)} ${rem(8)};
-  `};
+    `};
 
-    ${mediaMin.s`
+    @media screen and (max-height: 30em) {
+      padding: ${rem(8)};
+      font-size: ${rem(16)};
+      line-height: ${rem(24)};
+    }
+
+    @media screen and (max-height: 30em) and (min-width: 35em) {
+      padding: ${rem(16)} ${rem(8)};
+      font-size: ${theme.fontSizes.s};
+      line-height: ${theme.lineHeights.s};
+    }
+
+    @media screen and (min-height: 25em) and (max-width: 25em) {
+      padding: ${rem(12)} ${rem(16)};
+    }
+
+    ${mediaMin.m`
       padding: ${rem(16)};
-  `};
+    `};
 
     &.current-nav-item {
       background-color: ${theme.colors.grey300};
@@ -82,7 +101,7 @@ export const StyledSiteNavListItem = styled.li`
         color: ${theme.colors.main600};
       }
 
-      ${mediaMin.xs`
+      ${mediaMin.nav`
         background-color: transparent;
       `};
     }
