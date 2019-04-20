@@ -52,8 +52,8 @@ function DribbblePosts({ locale }) {
     <Row spaced>
       <GridCol>
         <StyledHR />
-        <FormattedMessage id="dribbbleHeader">{(txt) => <h2>{txt}</h2>}</FormattedMessage>
-        <FormattedMessage id="dribbbleSubhead">
+        <FormattedMessage id="dribbble.header">{(txt) => <h2>{txt}</h2>}</FormattedMessage>
+        <FormattedMessage id="dribbble.subhead">
           {(txt) => <Subhead>{txt}</Subhead>}
         </FormattedMessage>
 
@@ -73,7 +73,7 @@ function DribbblePosts({ locale }) {
         {!isError && (
           <StyledLoadMore onClick={loadMorePosts}>
             {!isLoading && !isLoadingMore && (
-              <FormattedMessage id="dribbbleLoadMore">
+              <FormattedMessage id="dribbble.load.more">
                 {(txt) => <LoadMoreLabel>{txt}</LoadMoreLabel>}
               </FormattedMessage>
             )}
