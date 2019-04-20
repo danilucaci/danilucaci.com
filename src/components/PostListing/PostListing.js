@@ -18,7 +18,7 @@ const PostListing = (props) => {
 
   return (
     <Wrapper>
-      <FormattedMessage id="blogArticleList">
+      <FormattedMessage id="blog.article.list">
         {(txt) => <StyledH2>{txt}</StyledH2>}
       </FormattedMessage>
       {postList.map((post) => (

@@ -57,11 +57,11 @@ function BlogPage(props) {
       <Main role="main" id="main">
         <BlogWrapper>
           <BlogHeader>
-            <FormattedMessage id="blogTitle">
+            <FormattedMessage id="blog.title">
               {(txt) => <BlogTitle as="h1">{txt}</BlogTitle>}
             </FormattedMessage>
             <TagsWrapper>
-              <FormattedMessage id="blogExplore">
+              <FormattedMessage id="blog.explore">
                 {(txt) => <SectionHeader>{txt}</SectionHeader>}
               </FormattedMessage>
               <Tags tags={allTags} />
