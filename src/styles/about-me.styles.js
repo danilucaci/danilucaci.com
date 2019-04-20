@@ -75,7 +75,11 @@ export const ResumeWrapper = styled.div`
     display: table;
   }
 
-  @media screen and (min-width: ${theme.breakpoints.s}) and (max-width: 55.5em) {
+  @media screen and (min-width: ${theme.breakpoints.s}) and (max-width: 47em) {
+    margin-top: ${rem(8)};
+  }
+
+  @media screen and (min-width: 10em) and (max-width: 21.25em) {
     margin-top: ${rem(8)};
   }
 `;
@@ -109,7 +113,12 @@ export const ResumeButton = styled.a`
     margin-top: 0;
   `};
 
-  @media screen and (min-width: ${theme.breakpoints.s}) and (max-width: 55.5em) {
+  @media screen and (min-width: ${theme.breakpoints.s}) and (max-width: 47em) {
+    width: 100%;
+    margin-top: ${rem(16)};
+  }
+
+  @media screen and (min-width: 10em) and (max-width: 21.25em) {
     width: 100%;
     margin-top: ${rem(16)};
   }
