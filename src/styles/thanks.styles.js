@@ -25,10 +25,6 @@ export const StyledH1 = styled.h1`
 
 export const ThanksCopy = styled(Copy)`
   margin-bottom: ${rem(32)};
-
-  ${mediaMin.m`
-      max-width: 84%;
-  `};
 `;
 
 export const ThanksAgainCopy = styled(Copy)`
@@ -51,8 +47,4 @@ export const StyledHR = styled(HR)`
   display: block;
   width: 100%;
   margin-bottom: ${rem(16)};
-
-  ${mediaMin.m`
-      max-width: 84%;
-  `};
 `;
