@@ -18,6 +18,7 @@ import { GridCol } from "../../src/components/Grid/Grid";
 import { localePaths } from "../i18n/i18n";
 
 import {
+  Header,
   Row,
   ResumeWrapper,
   StyledSocialNav,
@@ -52,7 +53,7 @@ const AboutPage = (props) => {
       />
       <SiteHeader twinPostURL={twinPostURL} locale={locale} currentPath={props.location.pathname} />
       <Main role="main" id="main">
-        <Row as="header">
+        <Header>
           <HeaderInfoWrapper col="7">
             <FormattedMessage id="about.me.title">
               {(txt) => <AboutMeTitle>{txt}</AboutMeTitle>}
@@ -90,7 +91,7 @@ const AboutPage = (props) => {
               </FormattedMessage>
             </ResumeWrapper>
           </HeaderImageWrapper>
-        </Row>
+        </Header>
         <DoingNowRow spaced>
           <GridCol>
             <FormattedMessage id="about.me.what.now.title">

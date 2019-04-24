@@ -19,6 +19,7 @@ const GlobalGrid = createGlobalStyle`
 
   display: block;
   display: flex;
+  flex: 0 1 auto;
   flex-direction: row;
   flex-wrap: wrap;
 
@@ -58,6 +59,7 @@ const GlobalGrid = createGlobalStyle`
 
   display: block;
   display: flex;
+  flex: 0 1 auto;
   flex-direction: row;
   flex-wrap: wrap;
 
@@ -99,9 +101,13 @@ const GlobalGrid = createGlobalStyle`
   }
 
   .col {
-    float: left;
-    flex: 0 1 auto;
+    flex: 1 1 100%;
+    max-width: 100%;
     margin: 0 ${theme.gridSpacing.s};
+
+    ${mediaMin.s`
+      float: left;
+    `};
 
     ${mediaMin.l`
       margin: 0 ${theme.gridSpacing.m};

@@ -4,16 +4,66 @@ import { theme, mediaMin, rem } from "../theme/globalStyles";
 import { Copy } from "../../src/components/Copy/Copy";
 import { GridRow, GridCol } from "../../src/components/Grid/Grid";
 
+export const Header = styled.header`
+  max-width: ${theme.contain.wrapper.col10};
+
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  display: block;
+  
+  margin-left: auto;
+  margin-right: auto;
+  padding: ${theme.gridSpacing.s};
+
+  /* iPhone X 
+  * Add the extra gridSpacing used in the Grid
+  * calc(env(safe-area-inset-left) + ${theme.gridSpacing.s})
+  */
+  @supports (padding: max(0px)) {
+    & {
+      padding-left: max(
+        ${theme.gridSpacing.s},
+        calc(env(safe-area-inset-left) - ${theme.gridSpacing.s})
+      );
+      padding-right: max(
+        ${theme.gridSpacing.s},
+        calc(env(safe-area-inset-right) - ${theme.gridSpacing.s})
+      );
+    }
+  }
+
+  ${mediaMin.s`
+    padding: ${theme.gridSpacing.m};
+
+    /* iPhone X 
+    * Add the extra gridSpacing used in the Grid
+    * calc(env(safe-area-inset-left) + ${theme.gridSpacing.s})
+    */
+    @supports (padding: max(0px)) {
+      & {
+        padding-left: max(${theme.gridSpacing.m}, calc(env(safe-area-inset-left) - ${
+  theme.gridSpacing.m
+}));
+        padding-right: max(${theme.gridSpacing.m}, calc(env(safe-area-inset-right) - ${
+  theme.gridSpacing.m
+}));
+      }
+    }
+  `};
+`;
+
 export const Row = styled(GridRow)`
   max-width: ${theme.contain.wrapper.col10};
-  flex-wrap: nowrap !important;
 `;
 
 export const HeaderImageWrapper = styled(GridCol)`
-  order: 2;
-
   ${mediaMin.s`
-    order: 1;
+      float: left;
+      width: 100%;
   `};
 `;
 
@@ -22,10 +72,9 @@ export const ImageWrapper = styled.div`
 `;
 
 export const HeaderInfoWrapper = styled(GridCol)`
-  order: 1;
-
   ${mediaMin.s`
-    order: 2;
+      float: right;
+      width: 100%;
   `};
 `;
 

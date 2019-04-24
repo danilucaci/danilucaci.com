@@ -242,7 +242,7 @@ export const PostContent = styled(GridRow)`
 
     ${mediaMin.m`
       margin-left: -${rem(24)};
-      margin-right: -${rem(24)};
+
       padding-left: ${rem(24)};
       padding-right: ${rem(24)};
     `};

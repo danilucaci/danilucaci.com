@@ -10,7 +10,9 @@ export const GridRow = styled.section`
 
   display: block;
   display: flex;
-  flex-direction: column;
+  flex: 0 1 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
 
   max-width: ${theme.contain.wrapper.col12};
 
@@ -36,8 +38,6 @@ export const GridRow = styled.section`
   }
 
   ${mediaMin.s`
-    flex-direction: row;
-    flex-wrap: wrap;
     padding: ${theme.gridSpacing.m};
 
     /* iPhone X 
@@ -104,13 +104,12 @@ export const GridRow = styled.section`
 `;
 
 export const GridCol = styled.div`
-  float: left;
   margin: ${theme.gridSpacing.s};
-  flex: 0 1 auto;
+  flex: 1 1 100%;
   max-width: 100%;
-  flex-basis: 100%;
 
   ${mediaMin.s`  
+    float: left;
     margin: ${theme.gridSpacing.m};
 
     ${(props) =>
