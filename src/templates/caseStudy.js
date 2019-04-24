@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
+import { MDXRenderer } from "gatsby-mdx";
 
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
@@ -75,7 +76,7 @@ class CaseStudy extends Component {
   };
 
   render() {
-    const postNode = this.props.data.markdownRemark;
+    const postNode = this.props.data.mdx;
     const postInfo = postNode.frontmatter;
     const image = postInfo.image.childImageSharp.fluid;
     const locale = this.props.pageContext.locale;
@@ -130,7 +131,9 @@ class CaseStudy extends Component {
                 // https://www.gatsbyjs.org/packages/gatsby-image/
               />
             </CaseStudyImgWrapper>
-            <PostContent dangerouslySetInnerHTML={{ __html: postNode.html }} />
+            <PostContent>
+              <MDXRenderer>{postNode.code.body}</MDXRenderer>
+            </PostContent>
             <AuthorCard />
           </ArticleWrapper>
           <ScrollToTop />
@@ -160,9 +163,12 @@ CaseStudy.propTypes = {
     prevTitle: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.object.isRequired]),
   }).isRequired,
   data: PropTypes.shape({
-    markdownRemark: PropTypes.shape({
+    mdx: PropTypes.shape({
       fields: PropTypes.shape({
         slug: PropTypes.string.isRequired,
+      }),
+      cody: PropTypes.shape({
+        body: PropTypes.string.isRequired,
       }),
       frontmatter: PropTypes.shape({
         title: PropTypes.string.isRequired,
@@ -171,7 +177,6 @@ CaseStudy.propTypes = {
         snippet: PropTypes.string.isRequired,
         tags: PropTypes.arrayOf(PropTypes.string).isRequired,
       }),
-      html: PropTypes.string.isRequired,
     }),
   }).isRequired,
   location: PropTypes.shape({
@@ -184,8 +189,7 @@ export default CaseStudy;
 
 export const pageQuery = graphql`
   query CASE_STUDY_QUERY($slug: String) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
+    mdx(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title
         date(formatString: "YYYY-MM-DD")
@@ -205,6 +209,9 @@ export const pageQuery = graphql`
       }
       fields {
         slug
+      }
+      code {
+        body
       }
     }
   }

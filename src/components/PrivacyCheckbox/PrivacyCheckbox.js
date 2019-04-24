@@ -10,7 +10,7 @@ function PrivacyCheckbox({ locale, ...rest }) {
     <StaticQuery
       query={PRIVACY_CHECKBOX_QUERY}
       render={(data) => {
-        let legalNoticeLink = data.allMarkdownRemark.edges
+        let legalNoticeLink = data.allMdx.edges
           .map((edge) => ({
             slug: edge.node.fields.slug,
             locale: edge.node.frontmatter.locale,
@@ -18,7 +18,7 @@ function PrivacyCheckbox({ locale, ...rest }) {
           }))
           .filter((edge) => edge.locale === locale && edge.legalNotice === true);
 
-        let privacyLink = data.allMarkdownRemark.edges
+        let privacyLink = data.allMdx.edges
           .map((edge) => ({
             slug: edge.node.fields.slug,
             locale: edge.node.frontmatter.locale,
@@ -78,7 +78,7 @@ export default PrivacyCheckbox;
 
 const PRIVACY_CHECKBOX_QUERY = graphql`
   query PRIVACY_CHECKBOX_QUERY {
-    allMarkdownRemark(filter: { frontmatter: { category: { eq: "legal" } } }) {
+    allMdx(filter: { frontmatter: { category: { eq: "legal" } } }) {
       edges {
         node {
           fields {

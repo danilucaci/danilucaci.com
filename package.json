@@ -29,8 +29,8 @@
     "ie 11"
   ],
   "dependencies": {
-    "@mdx-js/mdx": "^0.20.3",
-    "@mdx-js/tag": "^0.20.3",
+    "@mdx-js/mdx": "^1.0.14",
+    "@mdx-js/react": "^1.0.6",
     "@sentry/browser": "^4.6.6",
     "@sentry/webpack-plugin": "^1.6.2",
     "axios": "^0.18.0",
@@ -40,7 +40,7 @@
     "disqus-react": "^1.0.5",
     "dotenv": "^6.2.0",
     "eslint-plugin-html": "^5.0.3",
-    "eslint-plugin-jest": "^22.4.1",
+    "eslint-plugin-jest": "^22.5.0",
     "eslint-plugin-markdown": "^1.0.0",
     "eslint-plugin-react-hooks": "^1.6.0",
     "event-source-polyfill": "^1.0.5",
@@ -49,7 +49,7 @@
     "fs": "0.0.1-security",
     "gatsby": "^2.3.25",
     "gatsby-image": "^2.0.39",
-    "gatsby-mdx": "^0.4.4",
+    "gatsby-mdx": "^0.6.2",
     "gatsby-plugin-catch-links": "^2.0.13",
     "gatsby-plugin-feed": "^2.1.1",
     "gatsby-plugin-lodash": "^3.0.5",

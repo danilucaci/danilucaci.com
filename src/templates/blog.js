@@ -28,7 +28,7 @@ function BlogPage(props) {
     locale,
   } = props.pageContext;
 
-  const allTags = props.data.allMarkdownRemark.tags.map((tag) => tag.fieldValue);
+  const allTags = props.data.allMdx.tags.map((tag) => tag.fieldValue);
   let twinPostURL = "";
 
   if (locale === "en" && currentPage > 1) {
@@ -97,7 +97,7 @@ BlogPage.propTypes = {
     edges: arrayOf(object).isRequired,
   }).isRequired,
   data: shape({
-    allMarkdownRemark: shape({
+    allMdx: shape({
       tags: arrayOf(object).isRequired,
     }),
   }).isRequired,
@@ -111,7 +111,7 @@ export default BlogPage;
 
 export const pageQuery = graphql`
   query ALL_TAGS_IN_BLOG {
-    allMarkdownRemark(
+    allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { posted: { eq: true }, category: { eq: "blog" } } }
     ) {

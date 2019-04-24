@@ -23,7 +23,7 @@ const SiteFooter = (props) => {
       <StaticQuery
         query={FOOTER_LEGAL_PAGES_QUERY}
         render={(data) => {
-          const localizedDocsList = data.allMarkdownRemark.edges
+          const localizedDocsList = data.allMdx.edges
             .map((edge) => ({
               slug: edge.node.fields.slug,
               title: edge.node.frontmatter.title,
@@ -54,7 +54,7 @@ export default SiteFooter;
 
 const FOOTER_LEGAL_PAGES_QUERY = graphql`
   query FOOTER_LEGAL_PAGES_QUERY {
-    allMarkdownRemark(filter: { frontmatter: { category: { eq: "legal" } } }) {
+    allMdx(filter: { frontmatter: { category: { eq: "legal" } } }) {
       edges {
         node {
           fields {

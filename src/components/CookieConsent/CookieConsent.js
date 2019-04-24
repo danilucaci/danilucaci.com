@@ -22,7 +22,7 @@ const CookieConsent = (props) => (
       <StaticQuery
         query={COOKIE_CONSENT_QUERY}
         render={(data) => {
-          let localizedDocsList = data.allMarkdownRemark.edges
+          let localizedDocsList = data.allMdx.edges
             .map((edge) => ({
               slug: edge.node.fields.slug,
               title: edge.node.frontmatter.title,
@@ -70,9 +70,7 @@ export default CookieConsent;
 
 const COOKIE_CONSENT_QUERY = graphql`
   query COOKIE_CONSENT_QUERY {
-    allMarkdownRemark(
-      filter: { frontmatter: { category: { eq: "legal" }, forCookieConsent: { eq: true } } }
-    ) {
+    allMdx(filter: { frontmatter: { category: { eq: "legal" }, forCookieConsent: { eq: true } } }) {
       edges {
         node {
           fields {

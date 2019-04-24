@@ -1,5 +1,5 @@
 const gatsbyNodeQuery = (locale) =>
-  `blog: allMarkdownRemark(
+  `blog: allMdx(
     limit: 2000
     sort: { fields: [frontmatter___date], order: DESC }
     filter: {
@@ -52,7 +52,7 @@ const gatsbyNodeQuery = (locale) =>
       }
     }
   }
-  work: allMarkdownRemark(
+  work: allMdx(
     limit: 2000
     sort: { fields: [frontmatter___date], order: DESC }
     filter: {
@@ -92,7 +92,7 @@ const gatsbyNodeQuery = (locale) =>
       }
     }
   }
-  legal: allMarkdownRemark(
+  legal: allMdx(
     limit: 100
     filter: {
       frontmatter: {

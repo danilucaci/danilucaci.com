@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { FormattedDate, FormattedMessage } from "react-intl";
+import { MDXRenderer } from "gatsby-mdx";
+
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
 import { Copy } from "../components/Copy/Copy";
@@ -44,8 +46,8 @@ class LegalDoc extends Component {
   };
 
   render() {
-    const slug = this.props.data.markdownRemark.fields.slug;
-    const postNode = this.props.data.markdownRemark;
+    // const slug = this.props.data.mdx.fields.slug;
+    const postNode = this.props.data.mdx;
     const postInfo = postNode.frontmatter;
     const locale = this.props.pageContext.locale;
     const twinPost = this.props.pageContext.twinPost;
@@ -92,7 +94,9 @@ class LegalDoc extends Component {
                   </Copy>
                 )}
               </FormattedMessage>
-              <PostWrapper dangerouslySetInnerHTML={{ __html: postNode.html }} />
+              <PostWrapper>
+                <MDXRenderer>{postNode.code.body}</MDXRenderer>
+              </PostWrapper>
             </GridCol>
           </PageWrapper>
         </Main>
@@ -110,7 +114,7 @@ LegalDoc.propTypes = {
     twinPost: PropTypes.string.isRequired,
   }).isRequired,
   data: PropTypes.shape({
-    markdownRemark: PropTypes.shape({
+    mdx: PropTypes.shape({
       fields: PropTypes.shape({
         slug: PropTypes.string.isRequired,
       }),
@@ -118,7 +122,9 @@ LegalDoc.propTypes = {
         title: PropTypes.string.isRequired,
         date: PropTypes.string.isRequired,
       }),
-      html: PropTypes.string.isRequired,
+      code: PropTypes.shape({
+        body: PropTypes.string.isRequired,
+      }),
     }),
   }).isRequired,
   location: PropTypes.shape({
@@ -130,14 +136,16 @@ export default LegalDoc;
 
 export const legalPageQuery = graphql`
   query LEGAL_ENTRY_BY_SLUG($slug: String) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
+    mdx(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title
         date
       }
       fields {
         slug
+      }
+      code {
+        body
       }
     }
   }

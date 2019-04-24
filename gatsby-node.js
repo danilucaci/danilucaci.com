@@ -104,7 +104,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   let slug;
 
   // if (node.internal.type === "Mdx") {
-  if (node.internal.type === "MarkdownRemark") {
+  if (node.internal.type === "Mdx") {
     const fileNode = getNode(node.parent);
     const parsedFilePath = path.parse(fileNode.relativePath);
 

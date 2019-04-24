@@ -24,9 +24,9 @@ locale: "es"
 twinPost: "Movie Booking App"
 ---
 
-<div class="overview">
-<div class="row">
-<div class="col col--5 overview__copy">
+<div className="overview">
+<div className="row">
+<div className="col col--5 overview__copy">
 
 ## Introducción
 
@@ -35,8 +35,8 @@ Como la mayoría de la gente, me encanta ver películas. Sobretodo en un cine. S
 Por eso decidí ver cómo podría mejorar la experiencia de buscar una película y luego comprar una entrada para ella usando una aplicación iOS.
 
 </div>
-<div class="col col--6 overview__sideinfo">
-<div class="overview__sideinfo__item">
+<div className="col col--6 overview__sideinfo">
+<div className="overview__sideinfo__item">
 
 ##### Mi Rol
 
@@ -45,7 +45,7 @@ Por eso decidí ver cómo podría mejorar la experiencia de buscar una película
 - Diseño de Interacción
 
 </div>
-<div class="overview__sideinfo__item">
+<div className="overview__sideinfo__item">
 
 ##### Herramientas Utilizadas
 
@@ -55,14 +55,14 @@ Por eso decidí ver cómo podría mejorar la experiencia de buscar una película
 - Principle
 
 </div>
-<div class="overview__sideinfo__item">
+<div className="overview__sideinfo__item">
 
 ##### Tipo De Proyecto
 
 - Proyecto Personal
 
 </div>
-<div class="overview__sideinfo__item">
+<div className="overview__sideinfo__item">
 
 ##### Entregables
 
@@ -74,19 +74,19 @@ Por eso decidí ver cómo podría mejorar la experiencia de buscar una película
 </div>
 </div>
 
-<div class="row process">
-<div class="col col--12">
+<div className="row process">
+<div className="col col--12">
 
 ## Proceso
 
-<div class="process__item">
+<div className="process__item">
 
 #### Descubrimiento
 
 - User Interviews
 
 </div>
-<div class="process__item">
+<div className="process__item">
 
 #### Análisis
 
@@ -97,7 +97,7 @@ Por eso decidí ver cómo podría mejorar la experiencia de buscar una película
 - MOSCOW
 
 </div>
-<div class="process__item">
+<div className="process__item">
 
 #### Ideación
 
@@ -105,14 +105,14 @@ Por eso decidí ver cómo podría mejorar la experiencia de buscar una película
 - Prototipo en papel
 
 </div>
-<div class="process__item">
+<div className="process__item">
 
 #### Prototipo
 
 - Prototipo de alta fidelidad
 
 </div>
-<div class="process__item">
+<div className="process__item">
 
 #### Test
 
@@ -123,8 +123,8 @@ Por eso decidí ver cómo podría mejorar la experiencia de buscar una película
 </div>
 </div>
 
-<div class="row row-contain--6">
-<div class="col">
+<div className="row row-contain--6">
+<div className="col">
 
 ## Descubrimiento
 
@@ -170,7 +170,7 @@ Una vez hice las entrevistas, encontré que las personas:
 
 Una vez que tuve una lista de todas las conclusiones de las entrevistas, use un Diagrama de Afinidad para ayudarme a agrupar e identificar los problemas comunes.
 
-<div class="expand-10">
+<div className="expand-10">
 
 ![Diagrama de Afinidad usado para agrupar e identificar los problemas comunes.](ux_case_study_affinity_diagram.jpg "Diagrama de Afinidad usado para agrupar e identificar los problemas comunes.")
 
@@ -218,7 +218,7 @@ Basándome en estas declaraciones de problemas y los resultados de la investigac
 
 Está intentando encontrar una película que les gustaría ver esta noche, tanto a él como a su pareja. No son expertos en el cine y quieren ver una película. Para decidir cuál ver, leen críticas de películas, ven avances de películas y comparan varios antes de tomar una decisión.
 
-<div class="expand-10">
+<div className="expand-10">
 
 ![La primera persona creada basada en los descubrimientos de la recerca, Alex](ux_case_study_personas_alex.png "La primera persona creada basada en los descubrimientos de la recerca, Alex.")
 
@@ -228,7 +228,7 @@ Está intentando encontrar una película que les gustaría ver esta noche, tanto
 
 Es una entusiasta del cine a la que le gusta ver varias películas cada mes, pero siente que los precios actuales son demasiado altos y que los cines no están valorando a sus clientes más leales.
 
-<div class="expand-10">
+<div className="expand-10">
 
 ![La segunda persona creada basada en los descubrimientos de la recerca, Ana.](ux_case_study_personas_ana.png "La segunda persona creada basada en los descubrimientos de la recerca, Ana.")
 
@@ -238,7 +238,7 @@ Es una entusiasta del cine a la que le gusta ver varias películas cada mes, per
 
 Para decidir qué características incluir en el MVP inicial, decidí usar una Matriz de Priorización que se basa en el valor que proporcionaría al usuario final y por lo difícil que sería crearla.
 
-<div class="expand-10">
+<div className="expand-10">
 
 ![Matriz de priorización de características basada en el valor para el usuario y la dificultad de implementación.](ux_case_study_feature_prioritization.jpg "Matriz de priorización de características basada en el valor para el usuario y la dificultad de implementación.")
 
@@ -248,7 +248,7 @@ Para decidir qué características incluir en el MVP inicial, decidí usar una M
 
 Luego utilicé el método MOSCOW para encontrar cuáles son las características más importantes que se incluirán en el MVP.
 
-<div class="expand-10">
+<div className="expand-10">
 
 ![Método MOSCOW utilizado para identificar las características principales para incluir en el MVP.](ux_case_study_moscow.jpg "Método MOSCOW utilizado para identificar las características principales para incluir en el MVP.")
 
@@ -274,7 +274,7 @@ Luego, utilicé las declaraciones de hipótesis de las características de Lean 
 
 Para ayudarme a idear soluciones rápidamente para cada una de las características, utilicé el método de Crazy 8, ya que es una manera excelente de mantenerte en un modo de pensamiento creativo constante para generar muchas formas diferentes de diseñar una característica.
 
-<div class="expand-10">
+<div className="expand-10">
 
 ![El método de Crazy 8 utilizado para esbozar diferentes soluciones al problema de diseño.](ux_case_study_crazy_8s.jpeg "El método de Crazy 8 utilizado para esbozar diferentes soluciones al problema de diseño.")
 
@@ -290,14 +290,14 @@ La mayoría de las personas entrevistadas tuvieron dificultades para decidir qu�
 
 Antes de comenzar a esbozar la barra de navegación de la aplicación, decidí ver qué patrones de diseño estaban utilizando otras aplicaciones o sitios web que también necesitaban una característica similar.
 
-<div class="expand-12 spaced">
-<div class="screenshot">
+<div className="expand-12 spaced">
+<div className="screenshot">
 
 ![Airbnb muestra sus opciones de filtrado incluso cuando la búsqueda no está activa.](./ux_case_study_airbnb_nav_bar@2x.png "Airbnb muestra sus opciones de filtrado incluso cuando la búsqueda no está activa.")
 
 </div>
-<div class="info">
-<div class="info__item">
+<div className="info">
+<div className="info__item">
 
 El primer producto que comparé fue la aplicación iOS de Airbnb. Una de las razones por las que comencé con la suya fue porque el patrón de diseño que estaban usando les permitía tener siempre visibles sus botones para "Fechas" e "Invitados", debajo de la barra de búsqueda. De esta manera, sus usuarios siempre pueden verlos y saber dónde ir si necesitan filtrar sus resultados de búsqueda.
 
@@ -305,14 +305,14 @@ El primer producto que comparé fue la aplicación iOS de Airbnb. Una de las raz
 </div>
 </div>
 
-<div class="expand-12 spaced">
-<div class="screenshot">
+<div className="expand-12 spaced">
+<div className="screenshot">
 
 ![Asos.com utilizaba un diseño similar a Airbnb pero sin la barra de búsqueda.](./ux_case_study_asos_ios_nav_bar@2x.png "Asos.com utilizaba un diseño similar a Airbnb pero sin la barra de búsqueda.")
 
 </div>
-<div class="info">
-<div class="info__item">
+<div className="info">
+<div className="info__item">
 
 La siguiente aplicación que comparé fue la de Asos para iOS. Sus botones de clasificación y filtrado tienen más peso visual que la de Airbnb, pero no ellos no incluyen una barra de búsqueda ya que esta en una pantalla diferente.
 
@@ -322,14 +322,14 @@ Uno de los beneficios de la forma en que Asos.com implementa sus opciones de cla
 </div>
 </div>
 
-<div class="expand-12 spaced">
-<div class="screenshot">
+<div className="expand-12 spaced">
+<div className="screenshot">
 
 ![Crutchfield.com muestra la barra de búsqueda y los botones de orden y filtro al mismo tiempo.](./ux_case_study_crutchfield_example.png "Crutchfield.com muestra la barra de búsqueda y los botones de orden y filtro al mismo tiempo.")
 
 </div>
-<div class="info">
-<div class="info__item">
+<div className="info">
+<div className="info__item">
 
 En el caso de la página web de Crutchfield.com, tienen la barra de búsqueda y las opciones de clasificación y filtrado visibles en todo momento. Sin embargo, sus botones de clasificación y filtrado están más separados de la barra de búsqueda y no tienen el mismo peso visual que el ejemplo de Asos.com. Esto podría significar que sus usuarios podrían pasar por alto las opciones porque no destacan tanto visualmente.
 
@@ -337,14 +337,14 @@ En el caso de la página web de Crutchfield.com, tienen la barra de búsqueda y 
 </div>
 </div>
 
-<div class="expand-12 spaced">
-<div class="screenshot">
+<div className="expand-12 spaced">
+<div className="screenshot">
 
 ![zalando.es ofrece la más completa experiencia de filtrado y búsqueda.](./ux_case_study_zalando_example.png "zalando.es ofrece la más completa experiencia de filtrado y búsqueda.")
 
 </div>
-<div class="info">
-<div class="info__item">
+<div className="info">
+<div className="info__item">
 
 zalando.es tenía una de las experiencias de búsqueda y filtrado más completas para sus usuarios. Además de mostrar siempre el botón de filtrado, también indican qué opciones de filtrado están activas. Además, sus usuarios pueden eliminar los filtros individuales sin tener que abrir el menú de filtros.
 
@@ -356,13 +356,13 @@ También se usa un botón "Borrar todos los filtros" para permitir que sus usuar
 
 ### Caracteristica De Busqueda Y Filtrado De Peliculas
 
-<div class="expand-12">
-<div class="screenshot">
+<div className="expand-12">
+<div className="screenshot">
 
 ![Versión final de la barra de navegación con clasificación aplicada, que muestra los botones y la barra de búsqueda.](./ux_case_study_nav_bar_sort_applied@2x.png "Versión final de la barra de navegación con clasificación aplicada, que muestra los botones y la barra de búsqueda.")
 
 </div>
-<div class="screenshot">
+<div className="screenshot">
 
 ![Versión final de la barra de navegación con filtro activo y botones de ordenación.](./ux_case_study_nav_bar_filter_and_sort_applied@2x.png "Versión final de la barra de navegación con filtro activo y botones de ordenación.")
 
@@ -377,7 +377,7 @@ Las opciones de filtrado también están diseñadas de manera que los usuarios p
 
 ### Diagrama de Flujo de las Opciones de Búsqueda y Filtrado de Peliculas
 
-<div class="expand-10">
+<div className="expand-10">
 
 ![Diagrama de Flujo de las Características de Búsqueda y Filtrado de Peliculas.](./ux_case_study_wire_flow_alex_search_and_filter.png "Diagrama de Flujo de las Características de Búsqueda y Filtrado de Peliculas.")
 
@@ -385,15 +385,15 @@ Las opciones de filtrado también están diseñadas de manera que los usuarios p
 
 ### Prototipo de Alta Fidelidad de las Opciones de Búsqueda y Filtrado de Peliculas
 
-<div class="expand-12">
-<div class="screenshot">
+<div className="expand-12">
+<div className="screenshot">
 
 #### Prototipo de la Busqueda de Películas
 
 <figure>
-  <span class="video-iphoneX">
-    <span class="video-iphoneX__video">
-      <video autoplay loop muted playsinline controls>
+  <span className="video-iphoneX">
+    <span className="video-iphoneX__video">
+      <video autoPlay loop muted playsInline controls>
         <source
           src="./ux_case_study_movie_searching_prototype.webm"
           type="video/webm"
@@ -404,7 +404,8 @@ Las opciones de filtrado también están diseñadas de manera que los usuarios p
         />
         Su navegador no soporta video HTML5.
         <a href="./ux_case_study_movie_searching_prototype.gif">
-          Ver el GIF del prototipo de alta fidelidad de la opciones de búsqueda de peliculas.
+          Ver el GIF del prototipo de alta fidelidad de la opciones de búsqueda
+          de peliculas.
         </a>
       </video>
     </span>
@@ -415,14 +416,14 @@ Las opciones de filtrado también están diseñadas de manera que los usuarios p
 </figure>
 
 </div>
-<div class="screenshot">
+<div className="screenshot">
 
 #### Prototipo del Filtrado de Películas
 
 <figure>
-  <span class="video-iphoneX">
-    <span class="video-iphoneX__video">
-      <video autoplay loop muted playsinline controls>
+  <span className="video-iphoneX">
+    <span className="video-iphoneX__video">
+      <video autoPlay loop muted playsInline controls>
         <source
           src="./ux_case_study_movie_filtering_prototype.webm"
           type="video/webm"
@@ -444,14 +445,14 @@ Las opciones de filtrado también están diseñadas de manera que los usuarios p
 </figure>
 
 </div>
-<div class="screenshot">
+<div className="screenshot">
 
 #### Prototipo de las Opciones de Selección de Asientos
 
 <figure>
-  <span class="video-iphoneX">
-    <span class="video-iphoneX__video">
-      <video autoplay loop muted playsinline controls>
+  <span className="video-iphoneX">
+    <span className="video-iphoneX__video">
+      <video autoPlay loop muted playsInline controls>
         <source
           src="./ux_case_study_seat_choosing_prototype.webm"
           type="video/webm"
@@ -468,7 +469,8 @@ Las opciones de filtrado también están diseñadas de manera que los usuarios p
     </span>
   </span>
   <figcaption>
-    Prototipo de alta fidelidad del proceso de elección de asientos con un mini mapa e interfaz de desplazamiento del asiento.
+    Prototipo de alta fidelidad del proceso de elección de asientos con un mini
+    mapa e interfaz de desplazamiento del asiento.
   </figcaption>
 </figure>
 
@@ -487,14 +489,14 @@ Después de investigar previamente para ver cuáles son las mejores prácticas u
 
 ### Creación de Cuenta Aplazada
 
-<div class="expand-12">
-<div class="screenshot">
+<div className="expand-12">
+<div className="screenshot">
 
 ![Los usuarios pueden iniciar sesión para utilizar su información personal guardada o pueden continuar como invitado, al reservar una película.](./ux_case_study_choose_guest_checkout_screen@2x.png "Los usuarios pueden iniciar sesión para utilizar su información personal guardada o como invitado, al reservar una película.")
 
 </div>
-<div class="info">
-<div class="info__item">
+<div className="info">
+<div className="info__item">
 
 #### Checkout de invitados como opción para todos los usuarios.
 
@@ -514,14 +516,14 @@ Además, de acuerdo con el mismo estudio, si los usuarios están preocupados por
 
 ### Métodos de Pago para las Compras como Invitado
 
-<div class="expand-12">
-<div class="screenshot">
+<div className="expand-12">
+<div className="screenshot">
 
 ![Proceso de pago como invitado con el resumen del pedido y los métodos de pago disponibles.](./ux_case_study_guest_checkout_payment_methods@2x.png "Proceso de pago como invitado con el resumen del pedido y los métodos de pago disponibles.")
 
 </div>
-<div class="info">
-<div class="info__item">
+<div className="info">
+<div className="info__item">
 
 #### Métodos de pago disponibles ubicados uno al lado del otro
 
@@ -537,15 +539,15 @@ Los usuarios también deben poder comparar los diferentes costes asociados con c
 
 ### Optimizando el Formulario de Pago
 
-<div class="expand-12">
+<div className="expand-12">
 
-<div class="screenshot">
+<div className="screenshot">
 
 ![La interacción con el formulario para introducir la tarjeta de crédito del proceso de pago como invitado.](./ux_case_study_guest_checkout_optimized_credit_card_form@2x.png "La interacción con el formulario para introducir la tarjeta de crédito del proceso de pago como invitado.")
 
 </div>
-<div class="info">
-<div class="info__item">
+<div className="info">
+<div className="info__item">
 
 #### Insertar espacios cada 4 dígitos
 
@@ -565,14 +567,14 @@ Los campos de formulario utilizados para las tarjetas de crédito también deben
 
 ### Confirmación del Pedido con Opción que Permite Registrarse
 
-<div class="expand-12">
-<div class="screenshot">
+<div className="expand-12">
+<div className="screenshot">
 
 ![Los usuarios pueden iniciar sesión para utilizar su información personal guardada o continuar como invitados.](./ux_case_study_guest_checkout_delayed_account_creation@2x.png "Los usuarios pueden iniciar sesión para utilizar su información personal guardada o continuar como invitados.")
 
 </div>
-<div class="info">
-<div class="info__item">
+<div className="info">
+<div className="info__item">
 
 #### Darse de Alta en el Último Paso del Proceso de Pago
 
@@ -590,7 +592,7 @@ A pesar de que sigue siendo la misma cantidad de campos de entrada, los usuarios
 
 ### Diagrama de Flujo de la Experiencia de Pago como Invitados
 
-<div class="expand-10">
+<div className="expand-10">
 
 ![Diagrama de Flujo de la Experiencia de Pago como Invitados.](./ux_case_study_wire_flow_alex_checkout.png "Diagrama de Flujo de la Experiencia de Pago como Invitados.")
 
@@ -599,9 +601,9 @@ A pesar de que sigue siendo la misma cantidad de campos de entrada, los usuarios
 ### Prototipo de Alta Fidelidad de la Experiencia de Pago como Invitados
 
 <figure>
-  <span class="video-iphoneX">
-    <span class="video-iphoneX__video">
-      <video autoplay loop muted playsinline controls>
+  <span className="video-iphoneX">
+    <span className="video-iphoneX__video">
+      <video autoPlay loop muted playsInline controls>
         <source
           src="./ux_case_study_guest_checkout_prototype.webm"
           type="video/webm"
@@ -612,12 +614,16 @@ A pesar de que sigue siendo la misma cantidad de campos de entrada, los usuarios
         />
         Su navegador no soporta video HTML5.
         <a href="./ux_case_study_guest_checkout_prototype.gif">
-          Ver el GIF del prototipo de alta fidelidad de la experiencia de pago como invitados.
+          Ver el GIF del prototipo de alta fidelidad de la experiencia de pago
+          como invitados.
         </a>
       </video>
     </span>
   </span>
-  <figcaption>El prototipo final de alta fidelidad de la experiencia de pago como invitados.</figcaption>
+  <figcaption>
+    El prototipo final de alta fidelidad de la experiencia de pago como
+    invitados.
+  </figcaption>
 </figure>
 
 ## Club de Socios
@@ -643,7 +649,7 @@ Los 4 segmentos fueron:
 
 ### Diagrama de Flujo del Proceso de Alta del Club de Socios
 
-<div class="expand-10">
+<div className="expand-10">
 
 ![Diagrama de flujo del proceso de alta del club de socios.](./ux_case_study_wire_flow_ana_membership_sign_up.png "Diagrama de flujo del proceso de alta del club de socios.")
 
@@ -653,7 +659,7 @@ Los 4 segmentos fueron:
 
 La fase de recogida de la información de envío es necesaria para que los usuarios puedan recibir una copia de su tarjeta del club de socios. Para diseñar esta fase, decidí realizar una investigación previa para ver cuáles son las mejores prácticas de UX para diseñar la fase del proceso de pago en la que se recogen los datos de envío.
 
-<div class="screenshot">
+<div className="screenshot">
 
 Pantalla de la fase de recogida de la información de envío con textos optimizados para evitar confundir a los usuarios con las diferentes opciones de envío.
 
@@ -671,14 +677,14 @@ Los cargos ocultos y los costes de entrega son una de las razones principales po
 
 Además, los diferentes métodos de entrega también están diseñados siguiendo las recomendaciones de un [estudio](https://baymard.com/blog/shipping-speed-vs-delivery-date) que encontró que al usar etiquetas como 2 Days Express o 1 Day Premium, los usuarios se confundirían con la fecha exacta en que recibirían el producto.
 
-<div class="expand-12 spaced">
-<div class="screenshot">
+<div className="expand-12 spaced">
+<div className="screenshot">
 
 ![Ejemplo de cómo no etiquetar los métodos de entrega. No queda claro para el usuario cuál es el día exacto en que llegaría el producto.](./ux_case_study_confusing_shipping_example.png "Ejemplo de cómo no etiquetar los métodos de entrega. No queda claro para el usuario cuál es el día exacto en que llegaría el producto.")
 
 </div>
-<div class="info">
-<div class="info__item">
+<div className="info">
+<div className="info__item">
 
 Al usar etiquetas como estas, los usuarios se ven obligados a tener que calcular personalmente el día en que llegaría el producto.
 
@@ -688,14 +694,14 @@ Una etiqueta de "3-5 días" no tiene en cuenta el tiempo de procesamiento que ca
 </div>
 </div>
 
-<div class="expand-12">
-<div class="screenshot">
+<div className="expand-12">
+<div className="screenshot">
 
 ![Ejemplo de una forma correcta de etiquetar los métodos de entrega.](./ux_case_study_correct_shipping_implementation_example.png "Ejemplo de una forma correcta de etiquetar los métodos de entrega.")
 
 </div>
-<div class="info">
-<div class="info__item">
+<div className="info">
+<div className="info__item">
 
 Al usar etiquetas como "Llegará el:" o "Recíbelo el:", los usuarios tomarán la fecha de entrega como una promesa que aumentaría su confianza a la hora de decidir si el coste adicional de una opción de envio _Express_ vale la pena o no.
 
@@ -705,7 +711,7 @@ Sin embargo, para que la fecha final sea útil para el usuario, esta debe tener 
 </div>
 </div>
 
-<div class="screenshot">
+<div className="screenshot">
 
 ![Ejemplo de una correcta implementación de los métodos de entrega de amazon.co.uk.](./ux_case_study_amazon_shipping_example.png "Ejemplo de una correcta implementación de los métodos de entrega de amazon.co.uk.")
 
@@ -714,9 +720,9 @@ Sin embargo, para que la fecha final sea útil para el usuario, esta debe tener 
 ### Prototipo de Alta Fidelidad del Proceso de Alta del Club de Socios
 
 <figure>
-  <span class="video-iphoneX">
-    <span class="video-iphoneX__video">
-      <video autoplay loop muted playsinline controls>
+  <span className="video-iphoneX">
+    <span className="video-iphoneX__video">
+      <video autoPlay loop muted playsInline controls>
         <source
           src="./ux_case_study_membership_checkout_prototype.webm"
           type="video/webm"
@@ -727,7 +733,8 @@ Sin embargo, para que la fecha final sea útil para el usuario, esta debe tener 
         />
         Su navegador no soporta video HTML5.
         <a href="./ux_case_study_membership_checkout_prototype.gif">
-          Ver el GIF del prototipo de alta fidelidad del proceso de alta del club de socios
+          Ver el GIF del prototipo de alta fidelidad del proceso de alta del
+          club de socios
         </a>
       </video>
     </span>

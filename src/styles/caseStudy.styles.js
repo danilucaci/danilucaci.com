@@ -3,6 +3,8 @@ import { theme, rem, mediaMin, mediaMax } from "../theme/globalStyles";
 import { Copy } from "../../src/components/Copy/Copy";
 import { GridRow, GridCol } from "../../src/components/Grid/Grid";
 
+export const Div = styled.div``;
+
 export const ArticleWrapper = styled.article`
   & footer {
     @media screen and (max-width: ${theme.breakpoints.s}) {
@@ -249,7 +251,7 @@ export const PostContent = styled.section`
   .process {
     display: block;
     display: flex;
-    
+
     max-width: ${theme.contain.wrapper.col6};
 
     & h2 {
@@ -285,7 +287,7 @@ export const PostContent = styled.section`
   .process__item {
     display: inline-block;
     flex: 1 1 33%;
-    
+
     vertical-align: top;
     margin-bottom: ${rem(48)};
     width: 100%;

@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Disqus from "disqus-react";
 import { FormattedMessage } from "react-intl";
+import { MDXRenderer } from "gatsby-mdx";
 
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
@@ -103,7 +104,7 @@ class Post extends Component {
   };
 
   render() {
-    const postNode = this.props.data.markdownRemark;
+    const postNode = this.props.data.mdx;
     const postInfo = postNode.frontmatter;
     const twinPost = this.props.pageContext.twinPost;
     const introCopy = postInfo.intro.split("|");
@@ -173,7 +174,9 @@ class Post extends Component {
               </GridCol>
             </StyledPageHeader>
             <PostContent>
-              <GridCol dangerouslySetInnerHTML={{ __html: postNode.html }} />
+              <GridCol>
+                <MDXRenderer>{postNode.code.body}</MDXRenderer>
+              </GridCol>
             </PostContent>
 
             <AuthorCard />
@@ -231,9 +234,12 @@ Post.propTypes = {
     prevTitle: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.object.isRequired]),
   }).isRequired,
   data: PropTypes.shape({
-    markdownRemark: PropTypes.shape({
+    mdx: PropTypes.shape({
       fields: PropTypes.shape({
         slug: PropTypes.string.isRequired,
+      }),
+      code: PropTypes.shape({
+        body: PropTypes.string.isRequired,
       }),
       frontmatter: PropTypes.shape({
         category: PropTypes.string.isRequired,
@@ -245,7 +251,6 @@ Post.propTypes = {
         title: PropTypes.string.isRequired,
       }),
       timeToRead: PropTypes.number.isRequired,
-      html: PropTypes.string.isRequired,
     }),
   }).isRequired,
   location: PropTypes.shape({
@@ -258,8 +263,7 @@ export default Post;
 
 export const pageQuery = graphql`
   query BLOG_POST_QUERY($slug: String) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
+    mdx(fields: { slug: { eq: $slug } }) {
       timeToRead
       frontmatter {
         title
@@ -278,6 +282,9 @@ export const pageQuery = graphql`
       }
       fields {
         slug
+      }
+      code {
+        body
       }
     }
   }

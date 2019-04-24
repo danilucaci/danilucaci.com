@@ -36,7 +36,7 @@ const TagPage = (props) => {
     locale,
   } = props.pageContext;
 
-  let allTags = props.data.allMarkdownRemark.tags.map((tagItem) => tagItem.fieldValue);
+  let allTags = props.data.allMdx.tags.map((tagItem) => tagItem.fieldValue);
 
   let twinPostURL = "";
 
@@ -115,7 +115,7 @@ TagPage.propTypes = {
     edges: arrayOf(object).isRequired,
   }).isRequired,
   data: shape({
-    allMarkdownRemark: shape({
+    allMdx: shape({
       tags: arrayOf(object).isRequired,
     }),
   }).isRequired,
@@ -129,7 +129,7 @@ export default TagPage;
 
 export const pageQuery = graphql`
   query ALL_TAGS {
-    allMarkdownRemark(
+    allMdx(
       limit: 200
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { posted: { eq: true }, category: { eq: "blog" } } }
