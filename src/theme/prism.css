@@ -29,7 +29,7 @@ pre[class*="language-"] ::-moz-selection,
 code[class*="language-"]::-moz-selection,
 code[class*="language-"] ::-moz-selection {
   text-shadow: none;
-  background: #F5F6F7;
+  background: #f5f6f7;
 }
 
 pre[class*="language-"]::selection,
@@ -37,11 +37,10 @@ pre[class*="language-"] ::selection,
 code[class*="language-"]::selection,
 code[class*="language-"] ::selection {
   text-shadow: none;
-  background: #F5F6F7;
+  background: #f5f6f7;
 }
 
 @media print {
-
   code[class*="language-"],
   pre[class*="language-"] {
     text-shadow: none;
@@ -57,18 +56,18 @@ pre[class*="language-"] {
 pre[class*="language-"]::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
   border-radius: 0.5rem;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 pre[class*="language-"]::-webkit-scrollbar {
   height: 0.5rem;
-  background-color: #CBCED4;
+  background-color: #cbced4;
 }
 
 pre[class*="language-"]::-webkit-scrollbar-thumb {
   border-radius: 0.5rem;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
-  background-color: #CBCED4;
+  background-color: #cbced4;
 }
 
 .gatsby-highlight {
@@ -84,7 +83,7 @@ pre[class*="language-"]::-webkit-scrollbar-thumb {
   margin-right: -1em;
   padding-right: 1em;
   padding-left: 0.7em;
-  border-left: .25em solid #00BCF5;
+  border-left: 0.25em solid #00bcf5;
 }
 
 @media screen and (min-width: 40em) {
@@ -100,7 +99,7 @@ pre[class*="language-"]::-webkit-scrollbar-thumb {
     margin-right: -2em;
     padding-right: 2em;
     padding-left: 1.7em;
-    border-left: .25em solid #00BCF5;
+    border-left: 0.25em solid #00bcf5;
   }
 
   pre[class*="language-"] {
@@ -122,7 +121,7 @@ pre[class*="language-"]::-webkit-scrollbar-thumb {
     margin-right: -4em;
     padding-right: 2em;
     padding-left: 3.7em;
-    border-left: .25em solid #00BCF5;
+    border-left: 0.25em solid #00bcf5;
   }
 
   pre[class*="language-"] {
@@ -131,16 +130,16 @@ pre[class*="language-"]::-webkit-scrollbar-thumb {
   }
 }
 
-:not(pre)>code[class*="language-"],
+:not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  background: #0F2030;
+  background: #0f2030;
 }
 
 /* Inline code */
 
-:not(pre)>code[class*="language-"] {
-  background: #CBCED4;
-  color: #121C26;
+:not(pre) > code[class*="language-"] {
+  background: #cbced4;
+  color: #121c26;
   padding: 0.1em 0.25em;
   border-radius: 0.1875em;
   white-space: normal;
@@ -151,16 +150,16 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #8693A6;
+  color: #8693a6;
 }
 
 .token.punctuation {
-  color: #BEC5D1;
+  color: #bec5d1;
 }
 
 .token.selector,
 .token.tag {
-  color: #FF738A;
+  color: #ff738a;
 }
 
 .token.property,
@@ -170,7 +169,7 @@ pre[class*="language-"] {
 .token.symbol,
 .token.attr-name,
 .token.deleted {
-  color: #DBA92A;
+  color: #dba92a;
 }
 
 .token.string,
@@ -178,7 +177,7 @@ pre[class*="language-"] {
 .token.attr-value,
 .token.builtin,
 .token.inserted {
-  color: #7DBD4B;
+  color: #7dbd4b;
 }
 
 .token.operator,
@@ -186,27 +185,27 @@ pre[class*="language-"] {
 .token.url,
 .language-css .token.string,
 .style .token.string {
-  color: #73BBFF;
+  color: #73bbff;
 }
 
 .token.atrule,
 .token.keyword {
-  color: #FF73FF;
+  color: #ff73ff;
 }
 
 .token.function {
-  color: #73BBFF;
+  color: #73bbff;
 }
 
 .token.regex,
 .token.important,
 .token.variable {
-  color: #FF73FF;
+  color: #ff73ff;
 }
 
 .token.important,
 .token.bold {
-  font-weight: normal
+  font-weight: normal;
 }
 
 .token.italic {
@@ -223,7 +222,7 @@ pre.line-numbers {
   counter-reset: linenumber;
 }
 
-pre.line-numbers>code {
+pre.line-numbers > code {
   position: relative;
 }
 
@@ -242,18 +241,17 @@ pre.line-numbers>code {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-
 }
 
-.line-numbers-rows>span {
+.line-numbers-rows > span {
   pointer-events: none;
   display: block;
   counter-increment: linenumber;
 }
 
-.line-numbers-rows>span:before {
+.line-numbers-rows > span:before {
   content: counter(linenumber);
-  color: #BEC5D1;
+  color: #bec5d1;
   display: block;
   padding-right: 0.8em;
   text-align: right;
