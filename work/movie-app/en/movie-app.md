@@ -264,9 +264,15 @@ Then I used the MOSCOW method to find which are the most important features to b
 
 Next I used the Lean UX Feature Hypothesis Statements to identify the features that will serve each persona and help them achieve their individual outcome.
 
+##### Searching, filtering and sorting feature
+
 > We will create **an advanced search, filter and sort feature** for **Alex** in order to **help him decide which movie he would like to see faster**.
 
+##### Guest checkout experience
+
 > We will create **an optimized guest checkout experience** for **Alex** in order to **help him buy his movie tickets without any frustration**.
+
+##### Membership plan with offers and discounts
 
 > We will create **a membership plan** for **Ana** in order to **reduce the cost of seeing several movies a month for movie enthusiasts**.
 

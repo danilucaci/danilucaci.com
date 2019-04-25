@@ -264,9 +264,15 @@ Luego utilicé el método MOSCOW para encontrar cuáles son las características
 
 Luego, utilicé las declaraciones de hipótesis de las características de Lean UX para identificar las características que servirán a cada persona y ayudarlas a lograr su resultado individual.
 
+##### característica de búsqueda de películas con filtros y clasificaciónes
+
 > Crearemos una **características de búsqueda avanzada, con filtros y clasificaciónes** para **Alex** con el fin de **ayudarlo a decidir qué película le gustaría ver más rápido**.
 
-> Crearemos una **experiencia de pago de invitado optimizada** para **Alex** con el fin de **ayudarle a comprar sus entradas para el cine sin ninguna frustración**.
+##### experiencia de pago como invitado
+
+> Crearemos una **experiencia de pago como invitado optimizada** para **Alex** con el fin de **ayudarle a comprar sus entradas para el cine sin ninguna frustración**.
+
+##### Plan de membresía
 
 > Crearemos un **plan de membresía** para **Ana** con el fin de **reducir el coste de ver varias películas al mes para los entusiastas del cine**.
 
@@ -354,7 +360,7 @@ También se usa un botón "Borrar todos los filtros" para permitir que sus usuar
 </div>
 </div>
 
-### Caracteristica De Busqueda Y Filtrado De Peliculas
+### Característica de Búsqueda y Filtrado de Películas
 
 <div className="expand-12">
 <div className="screenshot">
