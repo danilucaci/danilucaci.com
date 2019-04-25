@@ -17,24 +17,7 @@ locale: "es"
 twinPost: "contact form on static site"
 ---
 
-<nav class="toc">
-
-### Índice
-
-<!-- TOC -->
-
-- [¿Qué Opciones Tenemos Actualmente?](#¿qué-opciones-tenemos-actualmente)
-- [¿Qué Necesitas Para Empezar?](#¿qué-necesitas-para-empezar)
-- [Añadiendo Protección Antispam](#añadiendo-protección-antispam)
-- [Gestionando las Peticiones de Formularios](#gestionando-las-peticiones-de-formularios)
-- [Mostrando un Indicador y un Mensaje con el Estado de Carga](#mostrando-un-indicador-y-un-mensaje-con-el-estado-de-carga)
-- [Validando Formularios con CSS](#validando-formularios-con-css)
-- [Creando un Formulario de Contacto que Cumple con la RGPD](#creando-un-formulario-de-contacto-que-cumple-con-la-rgpd)
-- [Conclusiones](#conclusiones)
-
-<!-- /TOC -->
-
-</nav>
+import Image from "components/Image/Image";
 
 ## ¿Qué Opciones Tenemos Actualmente?
 
@@ -118,7 +101,11 @@ En mi caso he decidido implementar ambos casos.
 
 Cuando el usuario tiene javascript deshabilitado en su navegador, será redirigido a una página hecha por mi usando el atributo `action={thanksURL}` del formulario. De esta manera, puedo usar mi propia página de agradecimiento creada con mis estílos de marca.
 
-![Página de confirmación personalizada para los usuarios que tienen javascript deshabilitado](./pagina_confirmacion_formulario_contacto_javascript_deshabilitado.png "Página de confirmación personalizada para los usuarios que tienen javascript deshabilitado.")
+<Image
+  src="2019-03-12---post-001/es/pagina_confirmacion_formulario_contacto_javascript_deshabilitado.png"
+  caption="Página de confirmación personalizada para los usuarios que tienen javascript deshabilitado"
+  expand
+/>
 
 ### 2. El Usuario Tiene Activado Javascript en su Navegador
 

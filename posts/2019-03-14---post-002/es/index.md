@@ -20,22 +20,7 @@ locale: "es"
 twinPost: "Fetch Dribbble Shots Using React Hooks"
 ---
 
-<nav class="toc">
-
-### Índice
-
-<!-- TOC -->
-
-- [Dando de Alta una Nueva Aplicación en Dribbble](#dando-de-alta-una-nueva-aplicación-en-dribbble)
-- [Haciendo Peticiones Asíncronas Con React Hooks](#haciendo-peticiones-asíncronas-con-react-hooks)
-- [Mostrando Elementos Provisionales](#mostrando-elementos-provisionales)
-- [Cargando Más Diseños](#cargando-más-diseños)
-- [(Actualización) Refactoring Para Implementar useReducer](#actualización-refactoring-para-implementar-usereducer)
-- [Conclusiones](#conclusiones)
-
-<!-- /TOC -->
-
-</nav>
+import Image from "components/Image/Image";
 
 ## Dando de Alta una Nueva Aplicación en Dribbble
 
@@ -50,7 +35,11 @@ Para ello, tendrás que seguir estos pasos —estoy asumiendo que ya tienes una 
 
 Ahora deberías poder añadir tus datos, igual que lo hice yo en este ejemplo:
 
-![Página en Dribbble en la que puedes dar de alta tu nueva aplicación.](./dar_de_alta_una_aplicacion_en_dribbble.png "Página en Dribbble en la que puedes dar de alta tu nueva aplicación.")
+<Image
+  src="2019-03-14---post-002/es/dar_de_alta_una_aplicacion_en_dribbble.png"
+  caption="Página en Dribbble en la que puedes dar de alta tu nueva aplicación."
+  expand
+/>
 
 #### Lo importante aquí es:
 
@@ -77,7 +66,11 @@ https://dribbble.com/oauth/authorize?client_id=e9e05f3...
 
 Haz click en _Authorize_ para autorizar tu nueva aplicación.
 
-![Página en Dribbble en la que puedes autorizar tu aplicación.](./autorizar_aplicacion_con_dribbble.png "Página en Dribbble en la que puedes autorizar tu aplicación.")
+<Image
+  src="2019-03-14---post-002/es/autorizar_aplicacion_con_dribbble.png"
+  caption="Página en Dribbble en la que puedes autorizar tu aplicación."
+  expand
+/>
 
 Una vez lo tienes, serás redirigido a una página con la URL similar a esta:
 

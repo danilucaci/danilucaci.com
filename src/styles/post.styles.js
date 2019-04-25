@@ -59,6 +59,10 @@ export const IntroCopy = styled(Copy)`
 `;
 
 export const PostContent = styled(GridRow)`
+  & h2:first-of-type {
+    margin-top: ${rem(24)};
+  }
+
   flex-direction: column !important;
   flex-wrap: nowrap !important;
 
@@ -85,22 +89,20 @@ export const PostContent = styled(GridRow)`
 
   h2 {
     display: block;
-    margin-top: ${rem(32)};
+    margin-top: ${rem(64)};
     margin-bottom: ${rem(16)};
 
     ${mediaMin.xs`
-      margin-top: ${rem(64)};
       margin-bottom: ${rem(32)};
     `};
   }
 
   h3 {
     display: block;
-    margin-top: ${rem(32)};
+    margin-top: ${rem(64)};
     margin-bottom: ${rem(16)};
 
     ${mediaMin.xs`
-      margin-top: ${rem(64)};
       margin-bottom: ${rem(32)};
     `};
   }
@@ -120,92 +122,6 @@ export const PostContent = styled(GridRow)`
   ul,
   ol {
     margin-bottom: ${rem(32)};
-  }
-
-  .gatsby-resp-image-figure {
-    margin-top: ${rem(32)};
-    margin-bottom: ${rem(32)};
-
-    ${mediaMin.xxl`
-      max-width: ${rem(936)};
-      margin-right: -${rem(192)};
-      margin-left: -${rem(192)};
-    `};
-  }
-
-  /* .gatsby-resp-image-wrapper {
-    margin-top: ${rem(32)} !important;
-    margin-bottom: ${rem(32)} !important;
-
-    ${mediaMin.xxl`
-      max-width: ${rem(936)};
-      margin-right: -${rem(192)} !important;
-      margin-left: -${rem(192)} !important;
-    `};
-  } */
-
-  .gatsby-resp-image-image {
-    ${theme.shadow.image} !important;
-  }
-
-  figure {
-    /* width: 100%; */
-    margin-top: ${rem(32)};
-    margin-bottom: ${rem(32)};
-  }
-
-  figure img,
-  figure video {
-    ${theme.shadow.image} !important;
-  }
-
-  figcaption {
-    font-size: ${theme.fontSizes.s};
-    line-height: ${theme.lineHeights.s};
-    color: ${theme.colors.dark700};
-    margin-top: ${rem(12)};
-
-    font-weight: 400;
-    font-style: normal;
-  }
-
-  video {
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-    vertical-align: middle;
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-  }
-
-  .video-wrapper {
-    position: relative;
-    display: block;
-
-    ${mediaMin.xxl`
-      max-width: ${rem(936)};
-      margin-right: -${rem(192)};
-      margin-left: -${rem(192)};
-    `};
-  }
-
-  .video__inner {
-    padding-bottom: 65.94594595%;
-    position: relative;
-    bottom: 0;
-    left: 0;
-    background-color: ${theme.colors.bgLight200};
-    display: block;
-  }
-
-  .video__inner--1920x1200 {
-    padding-bottom: 62.5%;
-  }
-
-  .video__inner--contact-post {
-    padding-bottom: 65.97186034%;
   }
 
   .js-codeCopy {

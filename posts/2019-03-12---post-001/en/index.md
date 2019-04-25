@@ -17,23 +17,7 @@ locale: "en"
 twinPost: "Formulario Contacto en Web Estatica"
 ---
 
-<nav class="toc">
-
-### Table of Contents
-
-<!-- TOC -->
-
-- [What Options Do We Currently Have?](#what-options-do-we-currently-have)
-- [What Do You Need To Get Started?](#what-do-you-need-to-get-started)
-- [Handling Form Submissions](#handling-form-submissions)
-- [Showing a Loading Indicator and Status Messages](#showing-a-loading-indicator-and-status-messages)
-- [Validating the Form with CSS](#validating-the-form-with-css)
-- [Making the Contact Form GDPR Compliant](#making-the-contact-form-gdpr-compliant)
-- [Final Thoughts](#final-thoughts)
-
-<!-- /TOC -->
-
-</nav>
+import Image from "components/Image/Image";
 
 ## What Options Do We Currently Have?
 
@@ -117,7 +101,11 @@ In my case I decided to handle both cases.
 
 When javascript is disabled in the user's browser, she will be redirected to my custom `action={thanksURL}` page. This way I can use a custom "Thank You" page that is with my own styling.
 
-![Custom confirmation page shown when users have javascript disabled](./contact_form_confirmation_screen_with_javascript_disabled.png "Custom confirmation page shown when users have javascript disabled.")
+<Image
+  src="2019-03-12---post-001/en/contact_form_confirmation_screen_with_javascript_disabled.png"
+  caption="Custom confirmation page shown when users have javascript disabled"
+  expand
+/>
 
 ### 2. The User Has Enabled Javascript in Her Browser
 

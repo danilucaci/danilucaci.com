@@ -20,22 +20,7 @@ locale: "en"
 twinPost: "Importar Diseños de Dribbble con React Hooks"
 ---
 
-<nav class="toc">
-
-### Table of Contents
-
-<!-- TOC -->
-
-- [Registering a New Dribbble App](#registering-a-new-dribbble-app)
-- [Making Async Requests With React Hooks](#making-async-requests-with-react-hooks)
-- [Rendering Placeholder Elements](#rendering-placeholder-elements)
-- [Loading More Shots](#loading-more-shots)
-- [(Update) Refactoring to useReducer](#update-refactoring-to-usereducer)
-- [Final Thoughts](#final-thoughts)
-
-<!-- /TOC -->
-
-</nav>
+import Image from "components/Image/Image";
 
 ## Registering a New Dribbble App
 
@@ -49,7 +34,11 @@ For that, you will need to follow these steps —I’m assuming you already have
 
 Now you should be able to add your own information, similar to how I did it in this example:
 
-![Dribbble screen in which you can register your new app.](./register_app_with_dribbble.png "Dribbble screen in which you can register your new app.")
+<Image
+  src="2019-03-14---post-002/en/register_app_with_dribbble.png"
+  caption="Dribbble screen in which you can register your new app."
+  expand
+/>
 
 #### The most important parts here are:
 
@@ -74,7 +63,11 @@ https://dribbble.com/oauth/authorize?client_id=e9e05f3...
 
 Click on _Authorize_ to authorize your new app.
 
-![Dribbble screen in which you can authorize your app.](./authorize_app_with_dribbble.png "Dribbble screen in which you can authorize your app.")
+<Image
+  src="2019-03-14---post-002/en/authorize_app_with_dribbble.png"
+  caption="Dribbble screen in which you can authorize your app."
+  expand
+/>
 
 Once you’ve authorized it, you will be redirected to a page with an URL similar to this one:
 

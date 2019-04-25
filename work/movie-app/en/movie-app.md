@@ -24,6 +24,9 @@ locale: "en"
 twinPost: "Aplicación compra entradas Cine"
 ---
 
+import Image from "components/Image/Image";
+import Video from "components/Video/Video";
+
 <div className="overview">
 <div className="row">
 <div className="col col--5 overview__copy">
@@ -170,11 +173,11 @@ From the user interviews I found that people:
 
 Once I had a list of all the insights from the research, I made an Affinity Diagram to help me group and identify the common paint points.
 
-<div className="expand-10">
-
-![Affinity Diagram used to group the findings from the user research.](ux_case_study_affinity_diagram.jpg "Affinity Diagram used to group the findings from the user research.")
-
-</div>
+<Image
+  expand
+  src="movie-app/en/ux_case_study_affinity_diagram.jpg"
+  caption="Affinity Diagram used to group the findings from the user research."
+/>
 
 So I decided to start working on the following pain points:
 
@@ -218,41 +221,41 @@ Based on these problem statements and the research findings, I created 2 user pe
 
 He is trying to find a movie that he and his date would like to watch tonight. They are not movie experts and want to watch a movie. To decide which one, they read movie reviews, watch movie trailers and compare several ones before making a decision.
 
-<div className="expand-10">
-
-![The first Persona created based on the reseach findings, Alex](ux_case_study_personas_alex.png "The first Persona created based on the reseach findings, Alex")
-
-</div>
+<Image
+  expand
+  src="movie-app/en/ux_case_study_personas_alex.png"
+  caption="The first Persona created based on the research findings, Alex."
+/>
 
 ### Ana
 
 She is a movie enthusiast that likes to watch several movies each month, but she feels that current prices are too high and that cinemas are not valuing their most loyal customers.
 
-<div className="expand-10">
-
-![The second Persona created based on the reseach findings, Ana.](ux_case_study_personas_ana.png "The second Persona created based on the reseach findings, Ana")
-
-</div>
+<Image
+  expand
+  src="movie-app/en/ux_case_study_personas_ana.png"
+  caption="The second Persona created based on the research findings, Ana."
+/>
 
 ### Feature Prioritization
 
 To decide which features to include in the initial MVP, I decided to use a Prioritisation Matrix which is based on the value it would provide to the end-user and by how difficult it would be to create.
 
-<div className="expand-10">
-
-![Feature Prioritization Matrix based on the value to the user and difficulty to implement.](ux_case_study_feature_prioritization.jpg "Feature Prioritization Matrix based on the value to the user and difficulty to implement.")
-
-</div>
+<Image
+  expand
+  src="movie-app/en/ux_case_study_feature_prioritization.jpg"
+  caption="Feature Prioritization Matrix based on the value to the user and difficulty to implement."
+/>
 
 ### MOSCOW Method
 
 Then I used the MOSCOW method to find which are the most important features to be included in the MVP.
 
-<div className="expand-10">
-
-![MOSCOW method used to identify the main features to include in the MVP.](ux_case_study_moscow.jpg "MOSCOW method used to identify the main features to include in the MVP.")
-
-</div>
+<Image
+  expand
+  src="movie-app/en/ux_case_study_moscow.jpg"
+  caption="MOSCOW method used to identify the main features to include in the MVP."
+/>
 
 #### My MVP would include these 3 main features:
 
@@ -280,11 +283,11 @@ Next I used the Lean UX Feature Hypothesis Statements to identify the features t
 
 To help me ideate quick solutions to each of the features, I used the Crazy 8’s method since it’s a great way to keep you in a constant creative thinking mode and generate many different ways to design a particular feature.
 
-<div className="expand-10">
-
-![Crazy 8’s method used to sketch-out different solutions to the design problem.](ux_case_study_crazy_8s.jpeg "Crazy 8’s method used to sketch-out different solutions to the design problem.")
-
-</div>
+<Image
+  expand
+  src="movie-app/en/ux_case_study_crazy_8s.jpeg"
+  caption="Crazy 8’s method used to sketch-out different solutions to the design problem."
+/>
 
 ## Movie Searching and Filtering
 
@@ -299,7 +302,10 @@ Before I started sketching the app’s nav bar, I decided to see which patterns 
 <div className="expand-12 spaced">
 <div className="screenshot">
 
-![Airbnb shows their filtering options even when search is not active.](./ux_case_study_airbnb_nav_bar@2x.png "Airbnb shows their filtering options even when search is not active.")
+<Image
+  src="movie-app/en/ux_case_study_airbnb_nav_bar@2x.png"
+  caption="Airbnb shows their filtering options even when search is not active."
+/>
 
 </div>
 <div className="info">
@@ -314,7 +320,10 @@ The first product I compared was Airbnb’s iOS app. One of the reasons for whic
 <div className="expand-12 spaced">
 <div className="screenshot">
 
-![Asos.com was using a similar aproach to Airbnb but without the search bar.](./ux_case_study_asos_ios_nav_bar@2x.png "Asos.com was using a similar aproach to Airbnb but without the search bar.")
+<Image
+  src="movie-app/en/ux_case_study_asos_ios_nav_bar@2x.png"
+  caption="Asos.com was using a similar aproach to Airbnb but without the search bar."
+/>
 
 </div>
 <div className="info">
@@ -331,7 +340,10 @@ One of the benefits of the way Asos.com implements their sorting and filtering o
 <div className="expand-12 spaced">
 <div className="screenshot">
 
-![Crutchfield.com shows the search bar and sort and filter buttons at the same time.](./ux_case_study_crutchfield_example.png "Crutchfield.com shows the search bar and sort and filter buttons at the same time.")
+<Image
+  src="movie-app/en/ux_case_study_crutchfield_example.png"
+  caption="Crutchfield.com shows the search bar and sort and filter buttons at the same time."
+/>
 
 </div>
 <div className="info">
@@ -346,7 +358,10 @@ Crutchfield.com’s website has the search bar and sorting and filtering options
 <div className="expand-12 spaced">
 <div className="screenshot">
 
-![zalando.es offered the most complete filtering and searching experience.](./ux_case_study_zalando_example.png "zalando.es offered the most complete filtering and searching experience.")
+<Image
+  src="movie-app/en/ux_case_study_zalando_example.png"
+  caption="zalando.es offered the most complete filtering and searching experience."
+/>
 
 </div>
 <div className="info">
@@ -365,12 +380,18 @@ A “clear all filters” button is also used to allow their users to remove all
 <div className="expand-12">
 <div className="screenshot">
 
-![Final version of the nav bar in with sorting applied, showing both buttons and search bar.](./ux_case_study_nav_bar_sort_applied@2x.png "Final version of the nav bar in with sorting applied, showing both buttons and search bar.")
+<Image
+  src="movie-app/en/ux_case_study_nav_bar_sort_applied@2x.png"
+  caption="Final version of the nav bar in with sorting applied, showing both buttons and search bar."
+/>
 
 </div>
 <div className="screenshot">
 
-![Final version of the nav bar with active filter and sort buttons.](./ux_case_study_nav_bar_filter_and_sort_applied@2x.png "Final version of the nav bar with active filter and sort buttons.")
+<Image
+  src="movie-app/en/ux_case_study_nav_bar_filter_and_sort_applied@2x.png"
+  caption="Final version of the nav bar with active filter and sort buttons."
+/>
 
 </div>
 </div>
@@ -383,101 +404,70 @@ The filtering options are also designed in a way that users can combine them to 
 
 ### Movie Searching and Filtering Wireflow Diagram
 
-<div className="expand-10">
-
-![Wireflow diagram of the movie searching and filtering features.](./ux_case_study_wire_flow_alex_search_and_filter.png "Wireflow diagram of the movie searching and filtering features.")
-
-</div>
+<Image
+  expand
+  src="movie-app/en/ux_case_study_wire_flow_alex_search_and_filter.png"
+  caption="Wireflow diagram of the movie searching and filtering features."
+/>
 
 ## Movie Searching and Filtering High-Fidelity Prototypes
 
 <div className="expand-12">
 <div className="screenshot">
 
-#### Movie Searching Prototype
+#### Movie Searching
 
-<figure>
-  <span className="video-iphoneX">
-    <span className="video-iphoneX__video">
-      <video autoPlay loop muted playsInline controls>
-        <source
-          src="./ux_case_study_movie_searching_prototype.webm"
-          type="video/webm"
-        />
-        <source
-          src="./ux_case_study_movie_searching_prototype.mp4"
-          type="video/mp4"
-        />
-        Your browser does not support HTML5 video.
-        <a href="./ux_case_study_movie_searching_prototype.gif">
-          View the GIF version of the movie searching feature prototype.
-        </a>
-      </video>
-    </span>
-  </span>
-  <figcaption>
-    High fidelity prototype of the movie searching feature.
-  </figcaption>
-</figure>
+<Video caption="High fidelity prototype of the movie searching feature.">
+  <source
+    src="./ux_case_study_movie_searching_prototype.webm"
+    type="video/webm"
+  />
+  <source
+    src="./ux_case_study_movie_searching_prototype.mp4"
+    type="video/mp4"
+  />
+  Your browser does not support HTML5 video.
+  <a href="./ux_case_study_movie_searching_prototype.gif">
+    View the GIF version of the movie searching feature prototype.
+  </a>
+</Video>
 
 </div>
 <div className="screenshot">
 
-#### Movie Filtering Prototype
+#### Movie Filtering
 
-<figure>
-  <span className="video-iphoneX">
-    <span className="video-iphoneX__video">
-      <video autoPlay loop muted playsInline controls>
-        <source
-          src="./ux_case_study_movie_filtering_prototype.webm"
-          type="video/webm"
-        />
-        <source
-          src="./ux_case_study_movie_filtering_prototype.mp4"
-          type="video/mp4"
-        />
-        Your browser does not support HTML5 video.
-        <a href="./ux_case_study_movie_filtering_prototype.gif">
-          View the gif version of the movie filtering interaction prototype.
-        </a>
-      </video>
-    </span>
-  </span>
-  <figcaption>
-    High fidelity prototype of the movie filtering feature.
-  </figcaption>
-</figure>
+<Video caption="High fidelity prototype of the movie filtering feature.">
+  <source
+    src="./ux_case_study_movie_filtering_prototype.webm"
+    type="video/webm"
+  />
+  <source
+    src="./ux_case_study_movie_filtering_prototype.mp4"
+    type="video/mp4"
+  />
+  Your browser does not support HTML5 video.
+  <a href="./ux_case_study_movie_filtering_prototype.gif">
+    View the gif version of the movie filtering interaction prototype.
+  </a>
+</Video>
 
 </div>
 <div className="screenshot">
 
-#### Movie Seat Choosing Prototype
+#### Movie Seat Choosing
 
-<figure>
-  <span className="video-iphoneX">
-    <span className="video-iphoneX__video">
-      <video autoPlay loop muted playsInline controls>
-        <source
-          src="./ux_case_study_seat_choosing_prototype.webm"
-          type="video/webm"
-        />
-        <source
-          src="./ux_case_study_seat_choosing_prototype.mp4"
-          type="video/mp4"
-        />
-        Your browser does not support HTML5 video.
-        <a href="./ux_case_study_seat_choosing_prototype.gif">
-          View the gif version of the movie filtering interaction prototype.
-        </a>
-      </video>
-    </span>
-  </span>
-  <figcaption>
-    High fidelity prototype of the seat choosing process with a mini–map and
-    scrolling seat interface.
-  </figcaption>
-</figure>
+<Video caption="High fidelity prototype of the seat choosing process with a mini–map and scrolling seat interface.">
+  <source
+    src="./ux_case_study_seat_choosing_prototype.webm"
+    type="video/webm"
+  />
+  <source src="./ux_case_study_seat_choosing_prototype.mp4" type="video/mp4" />
+  Your browser does not support HTML5 video.
+  <a href="./ux_case_study_seat_choosing_prototype.gif">
+    View the gif version of the movie filtering interaction prototype.
+  </a>
+</Video>
 
 </div>
 </div>
@@ -497,7 +487,10 @@ After some initial research to see which are the design patterns and best practi
 <div className="expand-12">
 <div className="screenshot">
 
-![Users can sign in to use their saved personal information or as a guest, when booking a movie.](./ux_case_study_choose_guest_checkout_screen@2x.png "Users can sign in to use their saved personal information or as a guest, when booking a movie.")
+<Image
+  src="movie-app/en/ux_case_study_choose_guest_checkout_screen@2x.png"
+  caption="Users can sign in to use their saved personal information or as a guest, when booking a movie."
+/>
 
 </div>
 <div className="info">
@@ -513,7 +506,7 @@ Since I wasn’t asking for every user to create an account first, I decided to 
 
 #### Explain why information is needed
 
-Furthermore —according to the same reseach—, if users are concerned about their privacy, the product can explain why their personal information is needed, which will help reduce their fear that it’s just for sending them marketing emails.
+Furthermore —according to the same research—, if users are concerned about their privacy, the product can explain why their personal information is needed, which will help reduce their fear that it’s just for sending them marketing emails.
 
 </div>
 </div>
@@ -524,7 +517,10 @@ Furthermore —according to the same reseach—, if users are concerned about th
 <div className="expand-12">
 <div className="screenshot">
 
-![Guest checkout with the order summary and available payment methods.](./ux_case_study_guest_checkout_payment_methods@2x.png "Guest checkout with the order summary and available payment methods.")
+<Image
+  src="movie-app/en/ux_case_study_guest_checkout_payment_methods@2x.png"
+  caption="Guest checkout with the order summary and available payment methods."
+/>
 
 </div>
 <div className="info">
@@ -548,7 +544,10 @@ Users should also be able to compare the different costs associated with each pa
 
 <div className="screenshot">
 
-![Guest checkout with credit card form interaction.](./ux_case_study_guest_checkout_optimized_credit_card_form@2x.png "Guest checkout with credit card form interaction.")
+<Image
+  src="movie-app/en/ux_case_study_guest_checkout_optimized_credit_card_form@2x.png"
+  caption="Guest checkout with credit card form interaction."
+/>
 
 </div>
 <div className="info">
@@ -575,7 +574,10 @@ Form fields used for credit cards should also use input masks that auto-insert a
 <div className="expand-12">
 <div className="screenshot">
 
-![Users can sign in to use their saved personal information or as a guest, when booking a movie.](./ux_case_study_guest_checkout_delayed_account_creation@2x.png "Users can sign in to use their saved personal information or as a guest, when booking a movie.")
+<Image
+  src="movie-app/en/ux_case_study_guest_checkout_delayed_account_creation@2x.png"
+  caption="Users can sign in to use their saved personal information or as a guest, when booking a movie."
+/>
 
 </div>
 <div className="info">
@@ -597,35 +599,25 @@ Even though it’s still the same amount of input fields, users will not think i
 
 ### Guest Checkout Wireflow Diagram
 
-<div className="expand-10">
-
-![Wireflow diagram of the guest checkout experience.](./ux_case_study_wire_flow_alex_checkout.png "Wireflow diagram of the guest checkout experience.")
-
-</div>
+<Image
+  expand
+  src="movie-app/en/ux_case_study_wire_flow_alex_checkout.png"
+  caption="Wireflow diagram of the guest checkout experience."
+/>
 
 ### Guest Checkout High-Fidelity Prototype
 
-<figure>
-  <span className="video-iphoneX">
-    <span className="video-iphoneX__video">
-      <video autoPlay loop muted playsInline controls>
-        <source
-          src="./ux_case_study_guest_checkout_prototype.webm"
-          type="video/webm"
-        />
-        <source
-          src="./ux_case_study_guest_checkout_prototype.mp4"
-          type="video/mp4"
-        />
-        Your browser does not support HTML5 video.
-        <a href="./ux_case_study_guest_checkout_prototype.gif">
-          View the GIF version of the guest checkout final prototype.
-        </a>
-      </video>
-    </span>
-  </span>
-  <figcaption>The final prototype of the guest checkout process.</figcaption>
-</figure>
+<Video caption="The final prototype of the guest checkout process.">
+  <source
+    src="./ux_case_study_guest_checkout_prototype.webm"
+    type="video/webm"
+  />
+  <source src="./ux_case_study_guest_checkout_prototype.mp4" type="video/mp4" />
+  Your browser does not support HTML5 video.
+  <a href="./ux_case_study_membership_checkout_prototype.gif">
+    View the GIF version of the guest checkout final prototype.
+  </a>
+</Video>
 
 ## Membership Plan
 
@@ -650,11 +642,11 @@ The 4 segments were:
 
 ### Membership Sign Up Wireflow Diagram
 
-<div className="expand-10">
-
-![Wireflow diagram of the membership sign up process.](./ux_case_study_wire_flow_ana_membership_sign_up.png "Wireflow diagram of the membership sign up process.")
-
-</div>
+<Image
+  expand
+  src="movie-app/en/ux_case_study_wire_flow_ana_membership_sign_up.png"
+  caption="Wireflow diagram of the membership sign up process."
+/>
 
 ### Shipping Information Optimizations
 
@@ -662,7 +654,10 @@ The shipping information step is needed so that users can receive a copy of thei
 
 <div className="screenshot">
 
-![Shipping information screen with optimized copy to avoid confusing users with the different shipping options.](./ux_case_study_shipping_methods_selection@2x.png "Shipping information screen with optimized copy to avoid confusing users with the different shipping options.")
+<Image
+  src="movie-app/en/ux_case_study_shipping_methods_selection@2x.png"
+  caption="Shipping information screen with optimized copy to avoid confusing users with the different shipping options."
+/>
 
 </div>
 
@@ -679,7 +674,10 @@ The different delivery methods are also designed following the recommendations o
 <div className="expand-12 spaced">
 <div className="screenshot">
 
-![Example of how not to label delivery methods. It’s not clear to the user which is the exact day the product would arrive.](./ux_case_study_confusing_shipping_example.png "Example of how not to label delivery methods. It’s not clear to the user which is the exact day the product would arrive.")
+<Image
+  src="movie-app/en/ux_case_study_confusing_shipping_example.png"
+  caption="Example of how not to label delivery methods. It’s not clear to the user which is the exact day the product would arrive."
+/>
 
 </div>
 <div className="info">
@@ -696,7 +694,10 @@ A label of “3-5 days” doesn’t take into consideration the processing time 
 <div className="expand-12">
 <div className="screenshot">
 
-![Example of a correct way to label delivery methods.](./ux_case_study_correct_shipping_implementation_example.png "Example of a correct way to label delivery methods.")
+<Image
+  src="movie-app/en/ux_case_study_correct_shipping_implementation_example.png"
+  caption="Example of a correct way to label delivery methods."
+/>
 
 </div>
 <div className="info">
@@ -712,35 +713,29 @@ However, in order for the final date to be useful to the user, it should take in
 
 <div className="screenshot">
 
-![Example of a correct implementation of delivery methods from amazon.co.uk.](./ux_case_study_amazon_shipping_example.png "Example of a correct implementation of delivery methods from amazon.co.uk.")
+<Image
+  src="movie-app/en/ux_case_study_amazon_shipping_example.png"
+  caption="Example of a correct implementation of delivery methods from amazon.co.uk."
+/>
 
 </div>
 
 ### Membership Sign Up High-Hidelity Prototype
 
-<figure>
-  <span className="video-iphoneX">
-    <span className="video-iphoneX__video">
-      <video autoPlay loop muted playsInline controls>
-        <source
-          src="./ux_case_study_membership_checkout_prototype.webm"
-          type="video/webm"
-        />
-        <source
-          src="./ux_case_study_membership_checkout_prototype.mp4"
-          type="video/mp4"
-        />
-        Your browser does not support HTML5 video.
-        <a href="./ux_case_study_membership_checkout_prototype.gif">
-          View the GIF version of the seat choosing process prototype.
-        </a>
-      </video>
-    </span>
-  </span>
-  <figcaption>
-    Membership plan with offers and discounts final prototype.
-  </figcaption>
-</figure>
+<Video caption="Membership plan with offers and discounts final prototype.">
+  <source
+    src="./ux_case_study_membership_checkout_prototype.webm"
+    type="video/webm"
+  />
+  <source
+    src="./ux_case_study_membership_checkout_prototype.mp4"
+    type="video/mp4"
+  />
+  Your browser does not support HTML5 video.
+  <a href="./ux_case_study_membership_checkout_prototype.gif">
+    View the GIF version of the seat choosing process prototype.
+  </a>
+</Video>
 
 ## Usability Testing
 
