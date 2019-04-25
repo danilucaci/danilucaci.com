@@ -81,7 +81,7 @@ module.exports = {
               withWebp: true,
               backgroundColor: "transparent",
               // showCaptions wraps the image in a figure
-              // showCaptions: true,
+              showCaptions: true,
             },
           },
           "gatsby-remark-copy-linked-files",

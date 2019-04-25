@@ -133,7 +133,7 @@ export const PostContent = styled(GridRow)`
     `};
   }
 
-  .gatsby-resp-image-wrapper {
+  /* .gatsby-resp-image-wrapper {
     margin-top: ${rem(32)} !important;
     margin-bottom: ${rem(32)} !important;
 
@@ -142,7 +142,7 @@ export const PostContent = styled(GridRow)`
       margin-right: -${rem(192)} !important;
       margin-left: -${rem(192)} !important;
     `};
-  }
+  } */
 
   .gatsby-resp-image-image {
     ${theme.shadow.image} !important;
