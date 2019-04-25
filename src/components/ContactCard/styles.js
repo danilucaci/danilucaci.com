@@ -22,7 +22,7 @@ export const ContactCardInner = styled(GridCol)`
   `};
 
   ${mediaMin.xxl`
-    padding: ${rem(80)} ${rem(104)} ${rem(88)} ${rem(104)};
+    padding: ${rem(80)} ${rem(128)} ${rem(88)} ${rem(128)};
   `};
 `;
 
