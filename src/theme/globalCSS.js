@@ -172,9 +172,9 @@ ${
   }
   
   h2,
-  h3,
-  h4 {
+  h3 {
     &:target {
+      background-color: red;
       animation: animateAnchor 1.5s ease;
       &::before {
         content: "";
@@ -183,9 +183,16 @@ ${
         margin-top: -${rem(80)};
       }
     }
+
+    &:hover {
+      & > .headings-anchor {
+        display: block;
+      }
+    }
   }
 
   .headings-anchor {
+    display: none;
     position: relative;
     float: left;
     margin-left: -${rem(24)};

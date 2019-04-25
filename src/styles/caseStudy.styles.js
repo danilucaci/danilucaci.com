@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { theme, rem, mediaMin, mediaMax } from "../theme/globalStyles";
+import { theme, rem, mediaMin } from "../theme/globalStyles";
 import { Copy } from "../../src/components/Copy/Copy";
-import { GridRow, GridCol } from "../../src/components/Grid/Grid";
+import { GridRow } from "../../src/components/Grid/Grid";
 
 export const Div = styled.div``;
 
@@ -322,6 +322,10 @@ export const PostContent = styled.section`
     margin-top: ${rem(32)};
     margin-bottom: ${rem(32)};
 
+    & > p {
+      width: 100%;
+    }
+
     ${mediaMin.xxl`
       padding-top: ${rem(16)};
     `};
@@ -352,6 +356,10 @@ export const PostContent = styled.section`
   .expand-12 {
     margin-top: ${rem(32)};
     margin-bottom: ${rem(32)};
+
+    & > p {
+      width: 100%;
+    }
 
     ${mediaMin.xxl`
       padding-top: ${rem(16)};
@@ -420,7 +428,8 @@ export const PostContent = styled.section`
     }
 
     & > p {
-      display: none;
+      /* display: none; */
+      width: 100%;
     }
 
     & + h3 {
@@ -462,6 +471,10 @@ export const PostContent = styled.section`
 
   figure img,
   figure video {
+    ${theme.shadow.image} !important;
+  }
+
+  .gatsby-resp-image-image {
     ${theme.shadow.image} !important;
   }
 

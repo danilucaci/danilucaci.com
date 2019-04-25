@@ -133,6 +133,21 @@ export const PostContent = styled(GridRow)`
     `};
   }
 
+  .gatsby-resp-image-wrapper {
+    margin-top: ${rem(32)} !important;
+    margin-bottom: ${rem(32)} !important;
+
+    ${mediaMin.xxl`
+      max-width: ${rem(936)};
+      margin-right: -${rem(192)} !important;
+      margin-left: -${rem(192)} !important;
+    `};
+  }
+
+  .gatsby-resp-image-image {
+    ${theme.shadow.image} !important;
+  }
+
   figure {
     /* width: 100%; */
     margin-top: ${rem(32)};
@@ -254,7 +269,7 @@ export const PostContent = styled(GridRow)`
       padding-right: ${rem(32)};
     `};
 
-    & a {
+    & ul a {
       display: block;
       color: ${theme.colors.dark900};
       text-decoration: none;
