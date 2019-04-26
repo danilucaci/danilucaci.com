@@ -39,7 +39,7 @@ class CaseStudy extends Component {
     );
 
     this.handlePageScroll();
-    this.removeAnchorsFromTabIndex();
+    // this.removeAnchorsFromTabIndex();
   }
 
   componentWillUnmount() {
@@ -50,11 +50,11 @@ class CaseStudy extends Component {
     this.handleScrollLine();
   };
 
-  removeHeaderTabIndex = (arr) => {
-    arr.forEach((header) => {
-      header.tabIndex = -1;
-    });
-  };
+  // removeHeaderTabIndex = (arr) => {
+  //   arr.forEach((header) => {
+  //     header.tabIndex = -1;
+  //   });
+  // };
 
   removeAnchorsFromTabIndex = () => {
     const h2s = Array.from(document.querySelectorAll("h2 a"));
