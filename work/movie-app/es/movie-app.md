@@ -19,7 +19,7 @@ tags:
   - IxD
   - Proyecto Personal
 posted: true
-image: "./ux_case_study_movie_app_presentation@2x.png"
+image: "./estudio_de_caso_ux_app_compra_entradas_presentacion.png"
 locale: "es"
 twinPost: "Movie Booking App"
 ---
@@ -70,7 +70,7 @@ Por eso decidí ver cómo podría mejorar la experiencia de buscar una película
 ##### Entregables
 
 - [Prototipo InVision](https://invis.io/AERJX7Y8J4F)
-- [Guia del Moderador](movie_booking_app_moderator_guide.pdf)
+- [Guia del Moderador](https://docs.google.com/document/d/1NQyFE4AwHWetJqEYY7kWAAt2aqGuwsnxDTH2yERKo2o/edit?usp=sharing)
 
 </div>
 </div>

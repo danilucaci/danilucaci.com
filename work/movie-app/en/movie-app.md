@@ -70,7 +70,7 @@ That’s why I decided to see how I could improve the experience of searching fo
 ##### Deliverables
 
 - [InVision Prototype](https://invis.io/AERJX7Y8J4F)
-- [Moderator Guide](movie_booking_app_moderator_guide.pdf)
+- [Moderator Guide](https://docs.google.com/document/d/1NQyFE4AwHWetJqEYY7kWAAt2aqGuwsnxDTH2yERKo2o/edit?usp=sharing)
 
 </div>
 </div>
