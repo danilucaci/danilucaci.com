@@ -119,7 +119,7 @@ Por eso decidí ver cómo podría mejorar la experiencia de buscar una película
 
 #### Test
 
-- Entrevista de usuarios 5 de fases
+- Entrevistas de usuarios de 5 fases
 
 </div>
 
@@ -148,7 +148,7 @@ Pero antes de comenzar a hacer las entrevistas, hice una lista de las diferentes
 - ¿Cuántas películas ven cada mes?
   - ¿Por qué tantas?
 - ¿Con quién están viendo la película? ¿Solos, con una cita, en grupo?
-- ¿Están teniendo problemas cuando:
+- ¿Tienen problemas cuando?:
   - Están buscando un cine
   - Están buscando una película para ver
   - Utilizan las páginas web disponibles para comprar entradas de cine
@@ -175,7 +175,7 @@ Una vez que tuve una lista de todas las conclusiones de las entrevistas, use un 
 
 <Image
   expand
-  src="movie-app/en/ux_case_study_affinity_diagram.jpg"
+  src="movie-app/es/estudio_de_caso_ux_diagrama_afinidad.jpg"
   caption="Diagrama de Afinidad usado para agrupar e identificar los problemas comunes."
 />
 
@@ -215,25 +215,25 @@ El próximo paso fue usar la técnica de declaración de problemas de la metodol
 
 ### Personas
 
-Basándome en estas declaraciones de problemas y los resultados de la investigación, creé 2 personas. Los utilicé para ayudarme a diseñar las características de la aplicación, que estaban basadas en los problemas que las personas tenían con los productos actuales y en los resultados que querían conseguir.
+Basándome en estas declaraciones de problemas y los resultados de la investigación, creé 2 personas. Las utilicé para ayudarme a diseñar las características de la aplicación, que estaban basadas en los problemas que las personas tenían con los productos actuales y en los resultados que querían conseguir.
 
 ### Alex
 
-Está intentando encontrar una película que les gustaría ver esta noche, tanto a él como a su pareja. No son expertos en el cine y quieren ver una película. Para decidir cuál ver, leen críticas de películas, ven avances de películas y comparan varios antes de tomar una decisión.
+Está intentando encontrar una película que les gustaría ver esta noche, tanto a él como a su pareja. No son expertos en el cine y solo quieren ver una película. Para decidir cuál ver, leen críticas, ven avances de películas y comparan varios antes de tomar una decisión.
 
 <Image
   expand
-  src="movie-app/en/ux_case_study_personas_alex.png"
+  src="movie-app/es/estudio_de_caso_ux_personas_alex.png"
   caption="La primera persona creada basada en los descubrimientos de la recerca, Alex."
 />
 
 ### Ana
 
-Es una entusiasta del cine a la que le gusta ver varias películas cada mes, pero siente que los precios actuales son demasiado altos y que los cines no están valorando a sus clientes más leales.
+Es una entusiasta del cine a la que le gusta ver varias películas cada mes, pero siente que los precios actuales son demasiado altos y que los cines no están valorando a sus clientes más fieles.
 
 <Image
   expand
-  src="movie-app/en/ux_case_study_personas_ana.png"
+  src="movie-app/es/estudio_de_caso_ux_personas_ana.png"
   caption="La segunda persona creada basada en los descubrimientos de la recerca, Ana."
 />
 
@@ -243,7 +243,7 @@ Para decidir qué características incluir en el MVP inicial, decidí usar una M
 
 <Image
   expand
-  src="movie-app/en/ux_case_study_feature_prioritization.jpg"
+  src="movie-app/es/estudio_de_caso_ux_priorizacion_caracteristicas.jpg"
   caption="Matriz de priorización de características basada en el valor para el usuario y la dificultad de implementación."
 />
 
@@ -253,31 +253,31 @@ Luego utilicé el método MOSCOW para encontrar cuáles son las características
 
 <Image
   expand
-  src="movie-app/en/ux_case_study_moscow.jpg"
+  src="movie-app/es/estudio_de_caso_ux_moscow.jpg"
   caption="Método MOSCOW utilizado para identificar las características principales para incluir en el MVP."
 />
 
-#### Mi MVP incluiría estas 3 características principales:
+#### Por tanto, mi MVP incluiría estas 3 características principales:
 
 - Posibilidad de buscar, filtrar y ordenar películas.
-- Experiencia de pago optimizada para usuarios no registrados.
+- Experiencia de pago como invitado.
 - Club de socios con ofertas y descuentos.
 
 ### Declaración de Hipótesis de Características
 
-Luego, utilicé las declaraciones de hipótesis de las características de Lean UX para identificar las características que servirán a cada persona y ayudarlas a lograr su resultado individual.
+Luego, utilicé las declaraciones de hipótesis de las características de Lean UX para identificar las características que servirán a cada persona y ayudarlas a lograr su objetivo personal.
 
-##### característica de búsqueda de películas con filtros y clasificaciónes
+##### búsqueda de películas con filtros y clasificaciónes
 
 > Crearemos una **características de búsqueda avanzada, con filtros y clasificaciónes** para **Alex** con el fin de **ayudarlo a decidir qué película le gustaría ver más rápido**.
 
 ##### experiencia de pago como invitado
 
-> Crearemos una **experiencia de pago como invitado optimizada** para **Alex** con el fin de **ayudarle a comprar sus entradas para el cine sin ninguna frustración**.
+> Crearemos una **experiencia de pago como invitado** para **Alex** con el fin de **ayudarle a comprar sus entradas para el cine sin ninguna frustración**.
 
-##### Plan de membresía
+##### Club de Socios
 
-> Crearemos un **plan de membresía** para **Ana** con el fin de **reducir el coste de ver varias películas al mes para los entusiastas del cine**.
+> Crearemos un **club de socios** para **Ana** con el fin de **reducir el coste de ver varias películas al mes para los entusiastas del cine**.
 
 ### Ideación
 
@@ -285,7 +285,7 @@ Para ayudarme a idear soluciones rápidamente para cada una de las característi
 
 <Image
   expand
-  src="movie-app/en/ux_case_study_crazy_8s.jpeg"
+  src="movie-app/es/estudio_de_caso_ux_crazy_8s.jpeg"
   caption="El método de Crazy 8 utilizado para esbozar diferentes soluciones al problema de diseño."
 />
 
@@ -303,7 +303,7 @@ Antes de comenzar a esbozar la barra de navegación de la aplicación, decidí v
 <div className="screenshot">
 
 <Image
-  src="movie-app/en/ux_case_study_airbnb_nav_bar@2x.png"
+  src="movie-app/es/estudio_de_caso_ux_airbnb_nav_bar.png"
   caption="Airbnb muestra sus opciones de filtrado incluso cuando la búsqueda no está activa."
 />
 
@@ -321,7 +321,7 @@ El primer producto que comparé fue la aplicación iOS de Airbnb. Una de las raz
 <div className="screenshot">
 
 <Image
-  src="movie-app/en/ux_case_study_asos_ios_nav_bar@2x.png"
+  src="movie-app/es/estudio_de_caso_ux_asos_ios_nav_bar.png"
   caption="Asos.com utilizaba un diseño similar a Airbnb pero sin la barra de búsqueda."
 />
 
@@ -341,7 +341,7 @@ Uno de los beneficios de la forma en que Asos.com implementa sus opciones de cla
 <div className="screenshot">
 
 <Image
-  src="movie-app/en/ux_case_study_crutchfield_example.png"
+  src="movie-app/es/estudio_de_caso_ux_ejemplo_crutchfield.png"
   caption="Crutchfield.com muestra la barra de búsqueda y los botones de orden y filtro al mismo tiempo."
 />
 
@@ -359,7 +359,7 @@ En el caso de la página web de Crutchfield.com, tienen la barra de búsqueda y 
 <div className="screenshot">
 
 <Image
-  src="movie-app/en/ux_case_study_zalando_example.png"
+  src="movie-app/es/estudio_de_caso_ux_ejemplo_zalando.png"
   caption="zalando.es ofrece la más completa experiencia de filtrado y búsqueda."
 />
 
@@ -381,7 +381,7 @@ También se usa un botón "Borrar todos los filtros" para permitir que sus usuar
 <div className="screenshot">
 
 <Image
-  src="movie-app/en/ux_case_study_nav_bar_sort_applied@2x.png"
+  src="movie-app/es/estudio_de_caso_ux_nav_bar_clasificacion_aplicada.png"
   caption="Versión final de la barra de navegación con clasificación aplicada, que muestra los botones y la barra de búsqueda."
 />
 
@@ -389,8 +389,8 @@ También se usa un botón "Borrar todos los filtros" para permitir que sus usuar
 <div className="screenshot">
 
 <Image
-  src="movie-app/en/ux_case_study_nav_bar_filter_and_sort_applied@2x.png"
-  caption="Versión final de la barra de navegación con filtro activo y botones de ordenación."
+  src="movie-app/es/estudio_de_caso_ux_nav_bar_filtro_y_clasificación_aplicados.png"
+  caption="Versión final de la barra de navegación con filtro activo y botones de clasificación."
 />
 
 </div>
@@ -406,7 +406,7 @@ Las opciones de filtrado también están diseñadas de manera que los usuarios p
 
 <Image
   expand
-  src="movie-app/en/ux_case_study_wire_flow_alex_search_and_filter.png"
+  src="movie-app/es/estudio_de_caso_ux_wire_flow_alex_busqueda_y_filtrado.png"
   caption="Diagrama de Flujo de las Características de Búsqueda y Filtrado de Películas."
 />
 
@@ -419,15 +419,15 @@ Las opciones de filtrado también están diseñadas de manera que los usuarios p
 
 <Video caption="Prototipo de alta fidelidad de la opciones de búsqueda de películas.">
   <source
-    src="./ux_case_study_movie_searching_prototype.webm"
+    src="./estudio_de_caso_ux_prototipo_busqueda_peliculas.webm"
     type="video/webm"
   />
   <source
-    src="./ux_case_study_movie_searching_prototype.mp4"
+    src="./estudio_de_caso_ux_prototipo_busqueda_peliculas.mp4"
     type="video/mp4"
   />
   Su navegador no soporta video HTML5.
-  <a href="./ux_case_study_movie_searching_prototype.gif">
+  <a href="./estudio_de_caso_ux_prototipo_busqueda_peliculas.gif">
     Ver el GIF del prototipo de alta fidelidad de la opciones de búsqueda de
     películas.
   </a>
@@ -440,15 +440,15 @@ Las opciones de filtrado también están diseñadas de manera que los usuarios p
 
 <Video caption="Prototipo de alta fidelidad de la opciones de filtrado de películas.">
   <source
-    src="./ux_case_study_movie_filtering_prototype.webm"
+    src="./estudio_de_caso_ux_prototipo_filtrado_peliculas.webm"
     type="video/webm"
   />
   <source
-    src="./ux_case_study_movie_filtering_prototype.mp4"
+    src="./estudio_de_caso_ux_prototipo_filtrado_peliculas.mp4"
     type="video/mp4"
   />
   Su navegador no soporta video HTML5.
-  <a href="./ux_case_study_movie_filtering_prototype.gif">
+  <a href="./estudio_de_caso_ux_prototipo_filtrado_peliculas.gif">
     Ver el GIF del prototipo de la opciones de filtrado de películas.
   </a>
 </Video>
@@ -459,16 +459,19 @@ Las opciones de filtrado también están diseñadas de manera que los usuarios p
 #### Opciones de Selección de Asientos
 
 <Video
-  caption="Prototipo de alta fidelidad del proceso de elección de asientos con un mini
+  caption="Prototipo de alta fidelidad del proceso de selección de asientos con un mini
     mapa e interfaz de desplazamiento del asiento."
 >
   <source
-    src="./ux_case_study_seat_choosing_prototype.webm"
+    src="./estudio_de_caso_ux_prototipo_seleccion_asientos.webm"
     type="video/webm"
   />
-  <source src="./ux_case_study_seat_choosing_prototype.mp4" type="video/mp4" />
+  <source
+    src="./estudio_de_caso_ux_prototipo_seleccion_asientos.mp4"
+    type="video/mp4"
+  />
   Su navegador no soporta video HTML5.
-  <a href="./ux_case_study_seat_choosing_prototype.gif">
+  <a href="./estudio_de_caso_ux_prototipo_seleccion_asientos.gif">
     Ver el GIF del prototipo de las opciones de selección de asientos.
   </a>
 </Video>
@@ -492,7 +495,7 @@ Después de investigar previamente para ver cuáles son las mejores prácticas u
 <div className="screenshot">
 
 <Image
-  src="movie-app/en/ux_case_study_choose_guest_checkout_screen@2x.png"
+  src="movie-app/es/estudio_de_caso_ux_elegir_pago_como_invitado.png"
   caption="Los usuarios pueden iniciar sesión para utilizar su información personal guardada o pueden continuar como invitado, al reservar una película."
 />
 
@@ -522,7 +525,7 @@ Además, de acuerdo con el mismo estudio, si los usuarios están preocupados por
 <div className="screenshot">
 
 <Image
-  src="movie-app/en/ux_case_study_guest_checkout_payment_methods@2x.png"
+  src="movie-app/es/estudio_de_caso_ux_pago_como_invitado_metodos_pago.png"
   caption="Proceso de pago como invitado con el resumen del pedido y los métodos de pago disponibles."
 />
 
@@ -549,7 +552,7 @@ Los usuarios también deben poder comparar los diferentes costes asociados con c
 <div className="screenshot">
 
 <Image
-  src="movie-app/en/ux_case_study_guest_checkout_optimized_credit_card_form@2x.png"
+  src="movie-app/es/estudio_de_caso_ux_pago_como_invitado_formulario_tarjeta_credito_optimizado.png"
   caption="La interacción con el formulario para introducir la tarjeta de crédito del proceso de pago como invitado."
 />
 
@@ -580,7 +583,7 @@ Los campos de formulario utilizados para las tarjetas de crédito también deben
 
 <Image
   expand
-  src="movie-app/en/ux_case_study_guest_checkout_delayed_account_creation@2x.png"
+  src="movie-app/es/estudio_de_caso_ux_pago_como_invitado_creacion_cuenta_aplazada.png"
   caption="Los usuarios pueden iniciar sesión para utilizar su información personal guardada o continuar como invitados."
 />
 
@@ -606,7 +609,7 @@ A pesar de que sigue siendo la misma cantidad de campos de entrada, los usuarios
 
 <Image
   expand
-  src="movie-app/en/ux_case_study_wire_flow_alex_checkout.png"
+  src="movie-app/es/estudio_de_caso_ux_wire_flow_alex_checkout.png"
   caption="Diagrama de Flujo de la Experiencia de Pago como Invitados."
 />
 
@@ -617,12 +620,15 @@ A pesar de que sigue siendo la misma cantidad de campos de entrada, los usuarios
     invitados."
 >
   <source
-    src="./ux_case_study_guest_checkout_prototype.webm"
+    src="./estudio_de_caso_ux_prototipo_pago_como_invitado.webm"
     type="video/webm"
   />
-  <source src="./ux_case_study_guest_checkout_prototype.mp4" type="video/mp4" />
+  <source
+    src="./estudio_de_caso_ux_prototipo_pago_como_invitado.mp4"
+    type="video/mp4"
+  />
   Su navegador no soporta video HTML5.
-  <a href="./ux_case_study_guest_checkout_prototype.gif">
+  <a href="./estudio_de_caso_ux_prototipo_pago_como_invitado.gif">
     Ver el GIF del prototipo de alta fidelidad de la experiencia de pago como
     invitados.
   </a>
@@ -653,7 +659,7 @@ Los 4 segmentos fueron:
 
 <Image
   expand
-  src="movie-app/en/ux_case_study_wire_flow_ana_membership_sign_up.png"
+  src="movie-app/es/estudio_de_caso_ux_wire_flow_ana_club_socios_alta.png"
   caption="Diagrama de flujo del proceso de alta del club de socios."
 />
 
@@ -666,7 +672,7 @@ La fase de recogida de la información de envío es necesaria para que los usuar
 Pantalla de la fase de recogida de la información de envío con textos optimizados para evitar confundir a los usuarios con las diferentes opciones de envío.
 
 <Image
-  src="movie-app/en/ux_case_study_shipping_methods_selection@2x.png"
+  src="movie-app/es/estudio_de_caso_ux_elegir_metodo_envio.png"
   caption="Pantalla de la fase de recogida de la información de envío con textos optimizados para evitar confundir a los usuarios con las diferentes opciones de envío."
 />
 
@@ -686,7 +692,7 @@ Además, los diferentes métodos de entrega también están diseñados siguiendo
 <div className="screenshot">
 
 <Image
-  src="movie-app/en/ux_case_study_confusing_shipping_example.png"
+  src="movie-app/es/estudio_de_caso_ux_metodos_envio_confusos.png"
   caption="Ejemplo de cómo no etiquetar los métodos de entrega. No queda claro para el usuario cuál es el día exacto en que llegaría el producto."
 />
 
@@ -706,7 +712,7 @@ Una etiqueta de "3-5 días" no tiene en cuenta el tiempo de procesamiento que ca
 <div className="screenshot">
 
 <Image
-  src="movie-app/en/ux_case_study_correct_shipping_implementation_example.png"
+  src="movie-app/es/estudio_de_caso_ux_ejemplo_correcto_metodos_envio.png"
   caption="Ejemplo de una forma correcta de etiquetar los métodos de entrega."
 />
 
@@ -725,7 +731,7 @@ Sin embargo, para que la fecha final sea útil para el usuario, esta debe tener 
 <div className="screenshot">
 
 <Image
-  src="movie-app/en/ux_case_study_amazon_shipping_example.png"
+  src="movie-app/es/estudio_de_caso_ux_ejemplo_metodo_envio_amazon.png"
   caption="Ejemplo de una correcta implementación de los métodos de entrega de amazon.co.uk."
 />
 
@@ -735,15 +741,15 @@ Sin embargo, para que la fecha final sea útil para el usuario, esta debe tener 
 
 <Video caption="Prototipo de alta fidelidad del proceso de alta del club de socios.">
   <source
-    src="./ux_case_study_membership_checkout_prototype.webm"
+    src="./estudio_de_caso_ux_prototipo_pago_club_socios.webm"
     type="video/webm"
   />
   <source
-    src="./ux_case_study_membership_checkout_prototype.mp4"
+    src="./estudio_de_caso_ux_prototipo_pago_club_socios.mp4"
     type="video/mp4"
   />
   Su navegador no soporta video HTML5.
-  <a href="./ux_case_study_membership_checkout_prototype.gif">
+  <a href="./estudio_de_caso_ux_prototipo_pago_club_socios.gif">
     Ver el GIF del prototipo de alta fidelidad del proceso de alta del club de
     socios
   </a>
