@@ -56,7 +56,7 @@ function ContactForm({ locale }) {
 
   const ContactSchema = Yup.object().shape({
     fullname: Yup.string()
-      .min(3, FORM_SUBMIT_STATUS.formValidation[locale].nameShort)
+      .min(2, FORM_SUBMIT_STATUS.formValidation[locale].nameShort)
       .max(100, FORM_SUBMIT_STATUS.formValidation[locale].nameLong)
       .required(FORM_SUBMIT_STATUS.formValidation[locale].nameRequired),
     email: Yup.string()
@@ -141,6 +141,7 @@ function ContactForm({ locale }) {
                 autoCorrect="off"
                 autoComplete="name"
                 placeholderType="fullname"
+                minlength="2"
               />
               <InputStatusIcon arriaHidden="true" />
             </StyledLabel>
@@ -170,7 +171,7 @@ function ContactForm({ locale }) {
               )}
             </ErrorMessage>
             <StyledLabel labelType="message">
-              <StyledTextArea name="message" component="textarea" rows="6" />
+              <StyledTextArea name="message" component="textarea" rows="6" minlength="2" />
               <InputTextAreaStatusIcon arriaHidden="true" />
             </StyledLabel>
             <ErrorMessage name="message">
