@@ -135,6 +135,14 @@ export const PostContent = styled.section`
     margin-bottom: ${rem(32)};
   }
 
+  figure + h2 {
+    margin-top: ${rem(64)};
+
+    ${mediaMin.xxl`
+      margin-top: ${rem(112)};
+    `};
+  }
+
   h2 + h3 {
     margin-top: ${rem(32)};
   }
@@ -354,7 +362,7 @@ export const PostContent = styled.section`
     margin-top: ${rem(32)};
     margin-bottom: ${rem(32)};
 
-    ${mediaMin.l`
+    ${mediaMin.xxl`
       margin-top: ${rem(112)};
       margin-bottom: ${rem(112)};
     `};
