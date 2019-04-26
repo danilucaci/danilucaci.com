@@ -24,20 +24,21 @@ import {
 
 function ContactForm({ locale }) {
   const [dateSent, setDateSent] = useState(() => new Date());
+  const [showSpinner, setShowSpinner] = useState(false);
   const [showFormError, setShowFormError] = useState(false);
   const [formErrorRes, setFormErrorRes] = useState({});
 
-  function showFormInputs({
-    fullname, email, message, acceptsconsentcheckbox, botfield,
-  }) {
-    console.log(`fullname: ${fullname}`);
-    console.log(`email: ${email}`);
-    console.log(`message: ${message}`);
-    console.log(`dateSent: ${dateSent}`);
-    console.log(`botfield: ${botfield}`);
-    console.log(`checkboxValue: ${acceptsconsentcheckbox}`);
-    console.log(`acceptsConsentCheckbox: ${acceptsconsentcheckbox}`);
-  }
+  // function showFormInputs({
+  //   fullname, email, message, acceptsconsentcheckbox, botfield,
+  // }) {
+  //   console.log(`fullname: ${fullname}`);
+  //   console.log(`email: ${email}`);
+  //   console.log(`message: ${message}`);
+  //   console.log(`dateSent: ${dateSent}`);
+  //   console.log(`botfield: ${botfield}`);
+  //   console.log(`checkboxValue: ${acceptsconsentcheckbox}`);
+  //   console.log(`acceptsConsentCheckbox: ${acceptsconsentcheckbox}`);
+  // }
 
   function encode(data) {
     return Object.keys(data)
@@ -104,6 +105,7 @@ function ContactForm({ locale }) {
             }).then(() => {
               // showFormInputs(values);
               setSubmitting(false);
+              setShowSpinner(true);
               navigate(localePaths[locale].thanks);
             });
           } catch (error) {
@@ -112,7 +114,7 @@ function ContactForm({ locale }) {
           // }, 400);
         }}
       >
-        {({ isSubmitting, isValid }) => (
+        {({ isValid }) => (
           <StyledForm
             name="contact"
             method="post"
@@ -204,7 +206,7 @@ function ContactForm({ locale }) {
               </React.Fragment>
             )}
 
-            {!showFormError && <SubmitButton disabled={!isValid} showSpinner={isSubmitting} />}
+            {!showFormError && <SubmitButton disabled={!isValid} showSpinner={showSpinner} />}
           </StyledForm>
         )}
       </Formik>
