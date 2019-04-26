@@ -12,6 +12,7 @@ import SiteFooter from "../components/SiteFooter/SiteFooter";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import SiblingPosts from "../components/SiblingPosts/SiblingPosts";
 import AuthorCard from "../components/AuthorCard/AuthorCard";
+import ContactCard from "../components/ContactCard/ContactCard";
 
 import { calculateScroll, textPassiveEventSupport } from "../helpers/helpers";
 
@@ -138,6 +139,7 @@ class CaseStudy extends Component {
           </ArticleWrapper>
           <ScrollToTop />
         </Main>
+        <ContactCard />
         {(prevSlug || nextSlug) && (
           <SiblingPosts
             nextSlug={nextSlug}
