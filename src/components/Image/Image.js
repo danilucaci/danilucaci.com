@@ -12,7 +12,7 @@ const Image = ({ src, caption, expand }) => (
     render={({ images }) => {
       const foundImage = images.edges.find((image) => image.node.relativePath === src);
       if (!foundImage) {
-        console.warn("Image not found!");
+        console.warn("Image not found: ", src);
         return null;
       }
       return (
