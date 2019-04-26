@@ -59,9 +59,9 @@ export const CaseStudyDescription = styled(Copy)`
   }
 
   ${mediaMin.s`
-    font-size: ${theme.fontSizes.indexBioS};
-    line-height: ${theme.lineHeights.indexBioS};
-    letter-spacing: ${theme.letterSpacing.indexBioS};    
+    font-size: ${theme.fontSizes.indexBio};
+    line-height: ${theme.lineHeights.indexBio};
+    letter-spacing: ${theme.letterSpacing.indexBio};    
   `};
 `;
 
@@ -80,8 +80,13 @@ export const Tag = styled.p`
 
   .fonts-loaded & {
     font-family: ${theme.fonts.headerRegular};
-    letter-spacing: ${theme.letterSpacing.sectionHeaderXL};
   }
+
+  ${mediaMin.s`
+    font-size: ${theme.fontSizes.m};
+    line-height: ${theme.lineHeights.m};
+    letter-spacing: ${theme.letterSpacing.sectionHeader};
+  `};
 
   display: inline-block;
   margin-right: ${rem(16)};
