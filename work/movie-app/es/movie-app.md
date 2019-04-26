@@ -119,7 +119,7 @@ Por eso decidí ver cómo podría mejorar la experiencia de buscar una película
 
 #### Test
 
-- Entrevistas de usuarios de 5 fases
+- Entrevistas de usuarios de 5 Actos
 
 </div>
 
@@ -267,9 +267,9 @@ Luego utilicé el método MOSCOW para encontrar cuáles son las características
 
 Luego, utilicé las declaraciones de hipótesis de las características de Lean UX para identificar las características que servirán a cada persona y ayudarlas a lograr su objetivo personal.
 
-##### búsqueda de películas con filtros y clasificaciónes
+##### búsqueda de películas con filtros y clasificaciones
 
-> Crearemos una **características de búsqueda avanzada, con filtros y clasificaciónes** para **Alex** con el fin de **ayudarlo a decidir qué película le gustaría ver más rápido**.
+> Crearemos una **características de búsqueda avanzada, con filtros y clasificaciones** para **Alex** con el fin de **ayudarle a decidir más rápido qué película le gustaría ver**.
 
 ##### experiencia de pago como invitado
 
@@ -281,7 +281,7 @@ Luego, utilicé las declaraciones de hipótesis de las características de Lean 
 
 ### Ideación
 
-Para ayudarme a idear soluciones rápidamente para cada una de las características, utilicé el método de Crazy 8, ya que es una manera excelente de mantenerte en un modo de pensamiento creativo constante para generar muchas formas diferentes de diseñar una característica.
+Para ayudarme a idear soluciones rápidamente para cada una de las características, utilicé el método de Crazy 8, ya que es una manera excelente de mantenerte en un modo de pensamiento creativo constante para generar muchos diseños alternativos de una característica.
 
 <Image
   expand
@@ -297,7 +297,7 @@ Diseñé esta característica para ayudar a las personas a encontrar una pelícu
 
 La mayoría de las personas entrevistadas tuvieron dificultades para decidir qué película les gustaría ver, por lo que la función está destinada a ayudarles a encontrar una película basada en su género, programación, reseñas de usuarios o duración. De esta manera, no tenían que usar otros productos o servicios para aprender más sobre la película.
 
-Antes de comenzar a esbozar la barra de navegación de la aplicación, decidí ver qué patrones de diseño estaban utilizando otras aplicaciones o sitios web que también necesitaban una característica similar.
+Antes de comenzar a diseñar la barra de navegación de la aplicación, decidí ver qué patrones de diseño estaban utilizando otras aplicaciones o sitios web que también necesitaban una característica similar.
 
 <div className="expand-12 spaced">
 <div className="screenshot">
@@ -329,9 +329,9 @@ El primer producto que comparé fue la aplicación iOS de Airbnb. Una de las raz
 <div className="info">
 <div className="info__item">
 
-La siguiente aplicación que comparé fue la de Asos para iOS. Sus botones de clasificación y filtrado tienen más peso visual que la de Airbnb, pero no ellos no incluyen una barra de búsqueda ya que esta en una pantalla diferente.
+La siguiente aplicación que comparé fue la de Asos para iOS. Sus botones de clasificación y filtrado tienen más peso visual que la de Airbnb, pero ellos no incluyen una barra de búsqueda ya que la muestran en una pantalla diferente.
 
-Uno de los beneficios de la forma en que Asos.com implementa sus opciones de clasificación y filtrado es que les permite mostrar qué opciones están aplicadas en el momento. De esta manera, pueden recordar al usuario que los resultados de la búsqueda están limitados por los filtros aplicados.
+Uno de los beneficios de la forma en que Asos.com implementa sus opciones de clasificación y filtrado es que les permite mostrar qué opciones están aplicadas en cada momento. De esta manera, pueden recordar al usuario que los resultados de la búsqueda están limitados por los filtros aplicados.
 
 </div>
 </div>
@@ -342,14 +342,14 @@ Uno de los beneficios de la forma en que Asos.com implementa sus opciones de cla
 
 <Image
   src="movie-app/es/estudio_de_caso_ux_ejemplo_crutchfield.png"
-  caption="Crutchfield.com muestra la barra de búsqueda y los botones de orden y filtro al mismo tiempo."
+  caption="Crutchfield.com muestra la barra de búsqueda y los botones para clasificar y filtrar al mismo tiempo."
 />
 
 </div>
 <div className="info">
 <div className="info__item">
 
-En el caso de la página web de Crutchfield.com, tienen la barra de búsqueda y las opciones de clasificación y filtrado visibles en todo momento. Sin embargo, sus botones de clasificación y filtrado están más separados de la barra de búsqueda y no tienen el mismo peso visual que el ejemplo de Asos.com. Esto podría significar que sus usuarios podrían pasar por alto las opciones porque no destacan tanto visualmente.
+En el caso de la página web de Crutchfield.com, ellos tienen su barra de búsqueda y las opciones de clasificación y filtrado visibles en todo momento. Sin embargo, sus botones de clasificación y filtrado están más separados de la barra de búsqueda y no tienen el mismo peso visual que el ejemplo de Asos.com. Esto podría significar que sus usuarios podrían pasar por alto las opciones porque no destacan tanto visualmente.
 
 </div>
 </div>
@@ -360,14 +360,14 @@ En el caso de la página web de Crutchfield.com, tienen la barra de búsqueda y 
 
 <Image
   src="movie-app/es/estudio_de_caso_ux_ejemplo_zalando.png"
-  caption="zalando.es ofrece la más completa experiencia de filtrado y búsqueda."
+  caption="zalando.es ofrece la experiencia de filtrado y búsqueda más completa."
 />
 
 </div>
 <div className="info">
 <div className="info__item">
 
-zalando.es tenía una de las experiencias de búsqueda y filtrado más completas para sus usuarios. Además de mostrar siempre el botón de filtrado, también indican qué opciones de filtrado están activas. Además, sus usuarios pueden eliminar los filtros individuales sin tener que abrir el menú de filtros.
+zalando.es tenía una de las experiencias de búsqueda y filtrado más completas para sus usuarios. Además de mostrar siempre el botón para filtrar los resultados, también indican qué opciones de los filtros están activas. Además, sus usuarios pueden eliminar los filtros individuales sin tener que abrir el menú de filtros.
 
 También se usa un botón "Borrar todos los filtros" para permitir que sus usuarios eliminen todos los que están aplicados si desean comenzar de nuevo con una nueva búsqueda.
 
@@ -396,9 +396,9 @@ También se usa un botón "Borrar todos los filtros" para permitir que sus usuar
 </div>
 </div>
 
-Para la versión final de la característica, decidí usar una combinación de los diferentes patrones de diseño mencionados anteriormente. Esto me permitió incluir una barra de búsqueda que ocupa todo el ancho de la pantalla sin tener que ocultar las opciones de filtrado o el boton de clasificación. De esta manera también podría mostrar si hay filtros u opciones de clasificación activos.
+Para la versión final de la característica, decidí usar una combinación de los diferentes patrones de diseño mencionados anteriormente. Esto me permitió incluir una barra de búsqueda que ocupa todo el ancho de la pantalla sin tener que ocultar las opciones de filtrado o el botón de clasificación. De esta manera también podría mostrar si hay filtros u opciones de clasificación activos.
 
-Otro beneficio es que los usuarios también pueden eliminar cualquiera de los filtros, uno por uno, o todos a la vez, usando el botón "Borrar filtros".
+Otro beneficio es que los usuarios pueden eliminar cualquiera de los filtros, sea uno por uno, o todos a la vez, usando el botón "Borrar filtros".
 
 Las opciones de filtrado también están diseñadas de manera que los usuarios puedan combinarlas para mejorar su búsqueda, sin tener opciones mutuamente exclusivas, siguiendo las recomendaciones del [artículo sobre E-Commerce UX](https://baymard.com/blog/allow-applying-of-multiple-filter-values) realizado por el Instituto Baymard, donde encontraron que hasta el 45% de los usuarios que participaron en su estudio, intentaron aplicar varios filtros en algún momento durante su búsqueda.
 
@@ -417,7 +417,7 @@ Las opciones de filtrado también están diseñadas de manera que los usuarios p
 
 #### Búsqueda de Películas
 
-<Video caption="Prototipo de alta fidelidad de la opciones de búsqueda de películas.">
+<Video caption="Prototipo de alta fidelidad de las opciones de búsqueda de películas.">
   <source
     src="./estudio_de_caso_ux_prototipo_busqueda_peliculas.webm"
     type="video/webm"
@@ -428,7 +428,7 @@ Las opciones de filtrado también están diseñadas de manera que los usuarios p
   />
   Su navegador no soporta video HTML5.
   <a href="./estudio_de_caso_ux_prototipo_busqueda_peliculas.gif">
-    Ver el GIF del prototipo de alta fidelidad de la opciones de búsqueda de
+    Ver el GIF del prototipo de alta fidelidad de las opciones de búsqueda de
     películas.
   </a>
 </Video>
@@ -438,7 +438,7 @@ Las opciones de filtrado también están diseñadas de manera que los usuarios p
 
 #### Filtrado de Películas
 
-<Video caption="Prototipo de alta fidelidad de la opciones de filtrado de películas.">
+<Video caption="Prototipo de alta fidelidad de las opciones de filtrado de películas.">
   <source
     src="./estudio_de_caso_ux_prototipo_filtrado_peliculas.webm"
     type="video/webm"
@@ -449,7 +449,7 @@ Las opciones de filtrado también están diseñadas de manera que los usuarios p
   />
   Su navegador no soporta video HTML5.
   <a href="./estudio_de_caso_ux_prototipo_filtrado_peliculas.gif">
-    Ver el GIF del prototipo de la opciones de filtrado de películas.
+    Ver el GIF del prototipo de las opciones de filtrado de películas.
   </a>
 </Video>
 
@@ -483,11 +483,11 @@ Las opciones de filtrado también están diseñadas de manera que los usuarios p
 
 La segunda característica de esta aplicación fue el proceso de compra de entradas como invitado.
 
-Uno de los principales problemas que las personas tuvieron en las entrevistas fue que no les gustó el hecho de que tienen que registrarse antes de poder pagar sus entradas para ver una película. La mayoría de ellos consideraron que recibirían una gran cantidad de spam, sobretodo si el diseño general de la página web o aplicación no estaban tan actualizados.
+Uno de los principales problemas que las personas tuvieron en las entrevistas fue que no les gustó el hecho de que tienen que registrarse antes de poder pagar sus entradas para ver una película. La mayoría de ellos pensaron que recibirían muchos mensajes de marketing, sobretodo si el diseño general de la página web o aplicación no eran tan actualizados.
 
-A pesar de que los procesos de compra de entradas como invitado normalmente están diseñados para usuarios que todavía no tienen una cuenta, también son útiles para los usuarios que han olvidado su contraseña y no desean pasar por el proceso de restablecimiento de contraseña en este momento.
+A pesar de que los procesos de compra de entradas como invitado normalmente están diseñados para usuarios que todavía no tienen una cuenta, también son útiles para los usuarios que han olvidado su contraseña y no quieren pasar por el proceso de restablecimiento de contraseña en ese momento.
 
-Después de investigar previamente para ver cuáles son las mejores prácticas utilizadas para diseñar un proceso de pago, empecé a trabajar en el prototipo de la característica.
+Después de investigar un poco antes para ver cuáles son las mejores prácticas utilizadas para diseñar un proceso de pago, empecé a trabajar en el prototipo de la característica.
 
 ### Creación de Cuenta Aplazada
 
@@ -496,24 +496,24 @@ Después de investigar previamente para ver cuáles son las mejores prácticas u
 
 <Image
   src="movie-app/es/estudio_de_caso_ux_elegir_pago_como_invitado.png"
-  caption="Los usuarios pueden iniciar sesión para utilizar su información personal guardada o pueden continuar como invitado, al reservar una película."
+  caption="Los usuarios pueden iniciar sesión para usar su información personal guardada o pueden continuar como invitado, en el momento de reservar una película."
 />
 
 </div>
 <div className="info">
 <div className="info__item">
 
-#### Checkout de invitados como opción para todos los usuarios.
+#### Opción de pagar como invitado para todos los usuarios.
 
 Según el [estudio realizado](https://baymard.com/blog/delayed-account-creation) por el Instituto Baymard, hasta el 37% de los usuarios que participaron en el, abandonarían el proceso de compra si se ven obligados a crear una cuenta. Por lo tanto, decidí permitir que los usuarios de la aplicación puedan realizar un pago sin tener que crear una cuenta primero, creando una experiencia de pago como invitado para todos, sin importar si tienen una cuenta o no.
 
 #### Crear una cuenta en el paso de confirmación de pago
 
-Como no estaba pidiendo a cada usuario que creara una cuenta primero, decidí informarles que ahora pueden realizar una compra, y si desean registrarse para guardar su información de pago o envío para futuras compras, podrán crear una cuenta al final del proceso de pago si lo desean.
+Como no estaba pidiendo a cada usuario que cree una cuenta primero, decidí informarles que pueden continuar con el pago, y si desean registrarse para guardar su información de pago o envío para compras futuras, podrán darse de alta al final del proceso de pago si lo desean.
 
 #### Explicar por qué se necesita su información
 
-Además, de acuerdo con el mismo estudio, si los usuarios están preocupados por su privacidad, el producto puede explicar por qué se necesita su información personal, lo que ayudará a reducir su miedo de que sea solo para enviarles correos electrónicos de marketing.
+Además, según el mismo estudio, si los usuarios están preocupados por su privacidad, el producto puede explicar por qué se necesita su información personal, lo que ayudará a reducir su miedo de que solo sea para enviarles correos electrónicos de marketing.
 
 </div>
 </div>
@@ -562,21 +562,21 @@ Los usuarios también deben poder comparar los diferentes costes asociados con c
 
 #### Insertar espacios cada 4 dígitos
 
-Diseñé el campo de entrada del número de tarjeta de crédito para que este inserte automáticamente espacios cada 4 dígitos (en el caso de las tarjetas Visa, otras pueden ser diferentes). Según un estudio, la mayoría de los usuarios [comprueban dos veces los números de tarjeta](https://baymard.com/blog/credit-card-field-auto-format-spaces) que escribieron en grupos de 4 dígitos insertando espacios manualmente, lo cuál hacen para que puedan leer y comprobar fácilmente el número que escribieron.
+Diseñé el campo de entrada del número de tarjeta de crédito para que este inserte automáticamente espacios cada 4 dígitos (en el caso de las tarjetas Visa, otras pueden ser diferentes). Según un estudio, la mayoría de los usuarios [comprueban dos veces los números de tarjeta](https://baymard.com/blog/credit-card-field-auto-format-spaces) que escribieron en grupos de 4 dígitos insertando espacios manualmente, lo cuál hacen para que puedan leer y comprobar fácilmente el número que han escrito.
 
-Además, se podría usar un [script de validación de Luhn](https://gist.github.com/DiegoSalazar/4075533) para comprobar si el número de tarjeta escrito es válido.
+Además, se puede usar un [script de validación de Luhn](https://gist.github.com/DiegoSalazar/4075533) para comprobar si el número de tarjeta escrito es válido.
 
-#### Hacer coincidir el formato de la fecha de vencimiento con el impreso
+#### Hacer coincidir el formato de la fecha de vencimiento con el formato físico de la tarjeta
 
-El campo de entrada de la fecha de vencimiento fue diseñado para coincidir con el diseño físico y el formato de "MM / YY" que se encuentra en la mayoría de las tarjetas de crédito. [Un estudio ha demostrado](https://baymard.com/blog/how-to-format-expiration-date-fields) que la mayoría de los usuarios intentarán seguir el mismo formato impreso en la tarjeta al escribir el número. Por tanto, los formularios deben diseñarse de manera que respeten el formato físico que se encuentra en las tarjetas de crédito.
+El campo de entrada de la fecha de vencimiento fue diseñado para coincidir con el formato físico de "MM / YY" que se encuentra en la mayoría de las tarjetas de crédito. [Un estudio ha demostrado](https://baymard.com/blog/how-to-format-expiration-date-fields) que la mayoría de los usuarios intentarán seguir el mismo formato impreso en la tarjeta al escribir el número. Por tanto, los formularios deben diseñarse de manera que respeten el formato físico que se encuentra en las tarjetas de crédito.
 
-Los campos de formulario utilizados para las tarjetas de crédito también deben usar máscaras de entrada que insertan automáticamente un carácter de barra diagonal después del MM en la fecha de vencimiento y el tipo de teclado apropiado para cada campo de entrada del formulario.
+Los campos de formulario utilizados para las tarjetas de crédito también deben usar máscaras de entrada que insertan automáticamente un carácter de barra diagonal después del MM en la fecha de vencimiento y usar el tipo de teclado apropiado para cada campo de entrada del formulario.
 
 </div>
 </div>
 </div>
 
-### Confirmación del Pedido con Opción que Permite Registrarse
+### Confirmación del Pedido con Opción Para Darse de Alta
 
 <div className="expand-12">
 <div className="screenshot">
@@ -584,7 +584,7 @@ Los campos de formulario utilizados para las tarjetas de crédito también deben
 <Image
   expand
   src="movie-app/es/estudio_de_caso_ux_pago_como_invitado_creacion_cuenta_aplazada.png"
-  caption="Los usuarios pueden iniciar sesión para utilizar su información personal guardada o continuar como invitados."
+  caption="Los usuarios pueden iniciar sesión para usar su información personal guardada o continuar como invitados."
 />
 
 </div>
@@ -593,13 +593,13 @@ Los campos de formulario utilizados para las tarjetas de crédito también deben
 
 #### Darse de Alta en el Último Paso del Proceso de Pago
 
-La pantalla de confirmación de pedido fue diseñada para permitir a los usuarios guardar sus datos personales, como su correo electrónico o información de pago para futuras compras.
+La pantalla de confirmación de pedido fue diseñada para permitir a los usuarios que guarden sus datos personales, como su correo electrónico o información de pago para compras futuras.
 
-En lugar de ser obligados a tener que crear una cuenta antes de que puedan realizar una compra, una mejor opción es permitirles crear una cuenta en el último paso del proceso de pago.
+En lugar de ser obligados a crear una cuenta antes de poder hacer una compra, una mejor opción es permitirles crear una cuenta en el último paso del proceso de pago.
 
-De esta manera, los usuarios aún pueden registrarse para guardar sus datos para pagos futuros, pero en lugar de ser algo molesto, pasa a es una característica útil que les permite hacer futuras compras más rápido si vuelven a usar la aplicación ya que no tendrán que volver a introducir los datos.
+De esta manera, los usuarios aún pueden registrarse para guardar sus datos para pagos futuros, pero en lugar de ser algo molesto, pasa a ser una característica útil que les permite comprar más rápido si vuelven a usar la aplicación, ya que no tendrán que volver a introducir los mismos datos.
 
-A pesar de que sigue siendo la misma cantidad de campos de entrada, los usuarios no pensarán que solo se tienen que registrar para que la empresa pueda enviarles correos electrónicos de marketing.
+A pesar de que sigue siendo la misma cantidad de campos de entrada, los usuarios no pensarán que solo se tienen que dar de alta para que la empresa les envíe correos electrónicos de marketing.
 
 </div>
 </div>
@@ -646,14 +646,14 @@ Esta característica de la aplicación fue mi intento de ver cómo podría mejor
 
 ### Diseñando el Proceso de Alta del Club de Socios
 
-El proceso de alta para el club de socios se dividió en 4 segmentos para evitar sobrecargar a los usuarios con demasiados campos de formulario a la vez.
+El proceso de alta para el club de socios ha sido dividido en 4 segmentos para evitar sobrecargar a los usuarios con demasiados campos de formulario a la vez.
 
-Los 4 segmentos fueron:
+Los 4 segmentos son:
 
 - **Datos de contacto**
 - **Información de envío**
 - **Datos de pago**
-- **Finalizado (pantalla de confirmación)**
+- **Final (pantalla de confirmación)**
 
 ### Diagrama de Flujo del Proceso de Alta del Club de Socios
 
@@ -663,13 +663,13 @@ Los 4 segmentos fueron:
   caption="Diagrama de flujo del proceso de alta del club de socios."
 />
 
-### Optimizaciones para la Fase de la Información de Envío
+### Optimizaciones de la Fase de Información del Envío
 
 La fase de recogida de la información de envío es necesaria para que los usuarios puedan recibir una copia de su tarjeta del club de socios. Para diseñar esta fase, decidí realizar una investigación previa para ver cuáles son las mejores prácticas de UX para diseñar la fase del proceso de pago en la que se recogen los datos de envío.
 
-<div className="screenshot">
-
 Pantalla de la fase de recogida de la información de envío con textos optimizados para evitar confundir a los usuarios con las diferentes opciones de envío.
+
+<div className="screenshot">
 
 <Image
   src="movie-app/es/estudio_de_caso_ux_elegir_metodo_envio.png"
@@ -686,21 +686,21 @@ Los cargos ocultos y los costes de entrega son una de las razones principales po
 
 [Un estudio reciente](https://baymard.com/blog/store-pickup-as-shipping-option) ha demostrado que cuando la opción de recoger en la tienda no aparece junto a los otros métodos de entrega, los usuarios no se darán cuenta de que esta existe, y no podrán comparar si el coste adicional de pagar los 2 o 3 euros más para una opción de entrega más rápida vale la pena.
 
-Además, los diferentes métodos de entrega también están diseñados siguiendo las recomendaciones de un [estudio](https://baymard.com/blog/shipping-speed-vs-delivery-date) que encontró que al usar etiquetas como 2 Days Express o 1 Day Premium, los usuarios se confundirían con la fecha exacta en que recibirían el producto.
+Además, los diferentes métodos de entrega también están diseñados siguiendo las recomendaciones de un [estudio](https://baymard.com/blog/shipping-speed-vs-delivery-date) que encontró que al usar etiquetas como Envío Urgente 2 Días o Envío Premium 1 Día, los usuarios se confundirán con la fecha exacta en que recibirán el producto.
 
 <div className="expand-12 spaced">
 <div className="screenshot">
 
 <Image
   src="movie-app/es/estudio_de_caso_ux_metodos_envio_confusos.png"
-  caption="Ejemplo de cómo no etiquetar los métodos de entrega. No queda claro para el usuario cuál es el día exacto en que llegaría el producto."
+  caption="Ejemplo de cómo no etiquetar los métodos de entrega. No queda claro para el usuario cuál es el día exacto en que llegará el envío."
 />
 
 </div>
 <div className="info">
 <div className="info__item">
 
-Al usar etiquetas como estas, los usuarios se ven obligados a tener que calcular personalmente el día en que llegaría el producto.
+Al usar etiquetas como estas, los usuarios se ven obligados a tener que calcular personalmente el día en que llegará el producto.
 
 Una etiqueta de "3-5 días" no tiene en cuenta el tiempo de procesamiento que cada orden podría necesitar, la hora de corte diaria (las órdenes después de las 16h se enviarán al día siguiente), o si el usuario elige un envío _Express de 1 Día_ en un viernes, lo que significa que el pedido se envía el lunes, lo que lo convierte en un método de envío de 3 días con un coste superior.
 
@@ -720,9 +720,9 @@ Una etiqueta de "3-5 días" no tiene en cuenta el tiempo de procesamiento que ca
 <div className="info">
 <div className="info__item">
 
-Al usar etiquetas como "Llegará el:" o "Recíbelo el:", los usuarios tomarán la fecha de entrega como una promesa que aumentaría su confianza a la hora de decidir si el coste adicional de una opción de envio _Express_ vale la pena o no.
+Al usar etiquetas como "Llegará el:" o "Recíbelo el:", los usuarios tomarán la fecha de entrega como una promesa que aumentaría su confianza a la hora de decidir si el coste adicional de una opción de envio _Urgente_ vale la pena o no.
 
-Sin embargo, para que la fecha final sea útil para el usuario, esta debe tener en cuenta todos los factores necesarios, como el la hora de corte de los envíos, la hora y fecha actual o el tiempo estimado de entrega de la compañía de envío.
+Sin embargo, para que la fecha final sea correcta, se deben tener en cuenta todos los factores que le afecten, como la hora de corte de los envíos, la hora y fecha actual o el tiempo estimado de entrega de la compañía de envío.
 
 </div>
 </div>
@@ -732,7 +732,7 @@ Sin embargo, para que la fecha final sea útil para el usuario, esta debe tener 
 
 <Image
   src="movie-app/es/estudio_de_caso_ux_ejemplo_metodo_envio_amazon.png"
-  caption="Ejemplo de una correcta implementación de los métodos de entrega de amazon.co.uk."
+  caption="Ejemplo de una correcta implementación de los métodos de envío de amazon.co.uk."
 />
 
 </div>
@@ -757,14 +757,14 @@ Sin embargo, para que la fecha final sea útil para el usuario, esta debe tener 
 
 ## Pruebas de Usabilidad
 
-El último paso de mi proceso de diseño fue probar la aplicación. Para las pruebas de usabilidad utilicé el método de Entrevistas de 5 Actos de Google Ventures, en el que entrevisté a 5 personas y les di a cada una de ellas tareas que tendrían que intentar completar usando la aplicación.
+El último paso de mi proceso de diseño fue hacer unas pruebas de usabilidad para comprobar la aplicación. Para hacer las pruebas utilicé el método de Entrevistas de 5 Actos de Google Ventures, en el que entrevisté a 5 personas. A cada una de ellas les di distintas tareas que tendrían que intentar completar usando la aplicación.
 
 Las preguntas que quería responder con las entrevistas fueron:
 
 - ¿Ayuda la aplicación a los usuarios a decidir qué película les gustaría ver más rápido?
 - ¿Ayuda la aplicación a los usuarios a aprender más sobre cada película?
 - ¿Se apuntarán los usuarios al club de socios?
-- ¿Pueden los completar el proceso de compra sin ningún problema?
+- ¿Pueden completar el proceso de compra sin ningún problema?
 - ¿Es útil el proceso de pago como invitado para los usuarios?
 
 ### Los Resultados:
