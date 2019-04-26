@@ -115,6 +115,10 @@ export const PostContent = styled.section`
     margin-bottom: ${theme.spacing.components.xl};
   `};
 
+  h5 + blockquote {
+    margin-bottom: ${rem(64)};
+  }
+
   header h1,
   nav h3 {
     margin-top: 0 !important;
