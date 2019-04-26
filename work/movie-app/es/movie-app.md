@@ -17,7 +17,7 @@ category: "work"
 tags:
   - UX/UI
   - IxD
-  - Personal Project
+  - Proyecto Personal
 posted: true
 image: "./ux_case_study_movie_app_presentation@2x.png"
 locale: "es"
