@@ -139,7 +139,7 @@ class CaseStudy extends Component {
           </ArticleWrapper>
           <ScrollToTop />
         </Main>
-        <ContactCard />
+        <ContactCard locale={locale} />
         {(prevSlug || nextSlug) && (
           <SiblingPosts
             nextSlug={nextSlug}
