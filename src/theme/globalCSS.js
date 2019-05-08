@@ -174,7 +174,6 @@ ${
   h2,
   h3 {
     &:target {
-      background-color: red;
       animation: animateAnchor 1.5s ease;
       &::before {
         content: "";
