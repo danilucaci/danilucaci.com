@@ -27,7 +27,8 @@ const GlobalGrid = createGlobalStyle`
 
   margin-left: auto;
   margin-right: auto;
-  padding: ${theme.gridSpacing.s};
+  padding-left: ${theme.gridSpacing.s};
+  padding-right: ${theme.gridSpacing.s};
 
   /* iPhone X */
   @supports (padding: max(0px)) {
@@ -38,7 +39,8 @@ const GlobalGrid = createGlobalStyle`
   }
 
   ${mediaMin.l`
-    padding: ${theme.gridSpacing.m};
+    padding-left: ${theme.gridSpacing.m};
+    padding-right: ${theme.gridSpacing.m};
 
     /* iPhone X */
     @supports (padding: max(0px)) {
@@ -49,13 +51,31 @@ const GlobalGrid = createGlobalStyle`
     }
   `};
   }
+  
+  .row--nested {
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    display: block;
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
   .row-full {
     &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
+      content: "";
+      display: table;
+      clear: both;
+    }
 
   display: block;
   display: flex;
@@ -65,7 +85,8 @@ const GlobalGrid = createGlobalStyle`
 
   margin-left: auto;
   margin-right: auto;
-  padding: ${theme.gridSpacing.s};
+  padding-left: ${theme.gridSpacing.s};
+  padding-right: ${theme.gridSpacing.s};
 
   /* iPhone X */
   @supports (padding: max(0px)) {
@@ -76,7 +97,8 @@ const GlobalGrid = createGlobalStyle`
   }
 
   ${mediaMin.l`
-    padding: ${theme.gridSpacing.m};
+    padding-left: ${theme.gridSpacing.m};
+    padding-right: ${theme.gridSpacing.m};
 
     /* iPhone X */
     @supports (padding: max(0px)) {
@@ -103,14 +125,27 @@ const GlobalGrid = createGlobalStyle`
   .col {
     flex: 1 1 100%;
     max-width: 100%;
-    margin: 0 ${theme.gridSpacing.s};
+    margin-left: ${theme.gridSpacing.s};
+    margin-right: ${theme.gridSpacing.s};
+    margin-bottom: ${theme.gutters.s};
 
     ${mediaMin.s`
       float: left;
     `};
 
     ${mediaMin.l`
-      margin: 0 ${theme.gridSpacing.m};
+      margin-left: ${theme.gridSpacing.m};
+      margin-right: ${theme.gridSpacing.m};
+      margin-bottom: ${theme.gutters.m};
+    `};
+  }
+
+  .col--nested {
+    flex: 0 1 100%;
+    max-width: 100%;
+
+    ${mediaMin.s`
+      float: left;
     `};
   }
 

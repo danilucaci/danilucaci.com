@@ -18,7 +18,8 @@ export const GridRow = styled.section`
 
   margin-left: auto;
   margin-right: auto;
-  padding: ${theme.gridSpacing.s};
+  padding-left: ${theme.gridSpacing.s};
+  padding-right: ${theme.gridSpacing.s};
 
   /* iPhone X 
   * Add the extra gridSpacing used in the Grid
@@ -38,7 +39,8 @@ export const GridRow = styled.section`
   }
 
   ${mediaMin.s`
-    padding: ${theme.gridSpacing.m};
+    padding-left: ${theme.gridSpacing.m};
+    padding-right: ${theme.gridSpacing.m};
 
     /* iPhone X 
     * Add the extra gridSpacing used in the Grid
@@ -103,14 +105,37 @@ export const GridRow = styled.section`
     `};
 `;
 
+export const GridRowNested = styled.div`
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  display: block;
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
 export const GridCol = styled.div`
-  margin: ${theme.gridSpacing.s};
+  margin-left: ${theme.gridSpacing.s};
+  margin-right: ${theme.gridSpacing.s};
+  margin-bottom: ${theme.gutters.s};
+
   flex: 1 1 100%;
   max-width: 100%;
 
   ${mediaMin.s`  
     float: left;
-    margin: ${theme.gridSpacing.m};
+    margin-left: ${theme.gridSpacing.m};
+    margin-right: ${theme.gridSpacing.m};
+    margin-bottom: ${theme.gutters.m};
 
     ${(props) =>
     props.col &&
@@ -118,5 +143,18 @@ export const GridCol = styled.div`
         max-width: calc(${(100 / 12) * props.col}% - ${theme.gutters.m});
         flex-basis: calc(${(100 / 12) * props.col}% - ${theme.gutters.m});
       `};
+  `};
+
+  &:only-of-type {
+    margin-bottom: 0;
+  }
+`;
+
+export const GridColNested = styled.div`
+  flex: 0 1 100%;
+  max-width: 100%;
+
+  ${mediaMin.s`
+    float: left;
   `};
 `;
