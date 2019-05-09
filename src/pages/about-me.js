@@ -54,7 +54,7 @@ const AboutPage = (props) => {
       <SiteHeader twinPostURL={twinPostURL} locale={locale} currentPath={props.location.pathname} />
       <Main role="main" id="main">
         <Header>
-          <HeaderInfoWrapper col="7">
+          <HeaderInfoWrapper s="7">
             <FormattedMessage id="about.me.title">
               {(txt) => <AboutMeTitle>{txt}</AboutMeTitle>}
             </FormattedMessage>
@@ -68,7 +68,7 @@ const AboutPage = (props) => {
               {(txt) => <AboutCopy>{txt}</AboutCopy>}
             </FormattedMessage>
           </HeaderInfoWrapper>
-          <HeaderImageWrapper col="5">
+          <HeaderImageWrapper s="5">
             <ImageWrapper>
               <FormattedMessage id="about.the.blog.image.title">
                 {(txt) => <Img alt={txt} fluid={props.data.aboutImage.childImageSharp.fluid} />}
@@ -98,7 +98,7 @@ const AboutPage = (props) => {
               {(txt) => <h2>{txt}</h2>}
             </FormattedMessage>
           </GridCol>
-          <GridCol col="5">
+          <GridCol s="5">
             <FormattedMessage id="about.me.what.now.copy.1">
               {(txt) => <StyledCopy>{txt}</StyledCopy>}
             </FormattedMessage>
@@ -106,7 +106,7 @@ const AboutPage = (props) => {
               {(txt) => <StyledCopy>{txt}</StyledCopy>}
             </FormattedMessage>
           </GridCol>
-          <GridCol col="7">
+          <GridCol s="7">
             <DoingNowItem>
               <FormattedMessage id="about.me.what.now.skills">
                 {(txt) => <h4>{txt}</h4>}

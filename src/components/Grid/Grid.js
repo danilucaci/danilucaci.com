@@ -58,8 +58,8 @@ export const GridRow = styled.section`
     }
   `};
 
-  ${(props) =>
-    props.padded &&
+  ${({ padded }) =>
+    padded &&
     css`
       padding-top: ${theme.spacing.rowTop.s};
       padding-bottom: ${theme.spacing.row.s};
@@ -81,8 +81,8 @@ export const GridRow = styled.section`
       }
     `};
 
-  ${(props) =>
-    props.spaced &&
+  ${({ spaced }) =>
+    spaced &&
     css`
       margin-top: ${theme.spacing.rowTop.s};
       margin-bottom: ${theme.spacing.row.s};
@@ -136,18 +136,74 @@ export const GridCol = styled.div`
     margin-left: ${theme.gridSpacing.m};
     margin-right: ${theme.gridSpacing.m};
     margin-bottom: ${theme.gutters.m};
-
-    ${(props) =>
-    props.col &&
-      css`
-        max-width: calc(${(100 / 12) * props.col}% - ${theme.gutters.m});
-        flex-basis: calc(${(100 / 12) * props.col}% - ${theme.gutters.m});
-      `};
   `};
 
   &:only-of-type {
     margin-bottom: 0;
   }
+
+  ${({ xs }) =>
+    xs &&
+    `
+      @media screen and (min-width: ${theme.breakpoints.xs}) {
+        max-width: calc(${(100 / 12) * xs}% - ${theme.gutters.s});
+        flex-basis: calc(${(100 / 12) * xs}% - ${theme.gutters.s});
+      }
+    `};
+
+  ${({ s }) =>
+    s &&
+    `
+      @media screen and (min-width: ${theme.breakpoints.s}) {
+        max-width: calc(${(100 / 12) * s}% - ${theme.gutters.m});
+        flex-basis: calc(${(100 / 12) * s}% - ${theme.gutters.m});
+      }
+    `};
+
+  ${({ m }) =>
+    m &&
+    `
+      @media screen and (min-width: ${theme.breakpoints.m}) {
+        max-width: calc(${(100 / 12) * m}% - ${theme.gutters.m});
+        flex-basis: calc(${(100 / 12) * m}% - ${theme.gutters.m});
+      }
+    `};
+
+  ${({ l }) =>
+    l &&
+    `
+      @media screen and (min-width: ${theme.breakpoints.l}) {
+        max-width: calc(${(100 / 12) * l}% - ${theme.gutters.m});
+        flex-basis: calc(${(100 / 12) * l}% - ${theme.gutters.m});
+      }
+    `};
+
+  ${({ xl }) =>
+    xl &&
+    `
+      @media screen and (min-width: ${theme.breakpoints.xl}) {
+        max-width: calc(${(100 / 12) * xl}% - ${theme.gutters.m});
+        flex-basis: calc(${(100 / 12) * xl}% - ${theme.gutters.m});
+      }
+    `};
+
+  ${({ xxl }) =>
+    xxl &&
+    `
+      @media screen and (min-width: ${theme.breakpoints.xxl}) {
+        max-width: calc(${(100 / 12) * xxl}% - ${theme.gutters.m});
+        flex-basis: calc(${(100 / 12) * xxl}% - ${theme.gutters.m});
+      }
+    `};
+
+  ${({ xxxl }) =>
+    xxxl &&
+    `
+      @media screen and (min-width: ${theme.breakpoints.xxxl}) {
+        max-width: calc(${(100 / 12) * xxxl}% - ${theme.gutters.m});
+        flex-basis: calc(${(100 / 12) * xxxl}% - ${theme.gutters.m});
+      }
+    `};
 `;
 
 export const GridColNested = styled.div`
