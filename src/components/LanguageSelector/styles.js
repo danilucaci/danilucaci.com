@@ -71,14 +71,6 @@ export const StyledLanguageDropdown = styled.ul`
     left: auto;
   `};
 
-  @media screen and (max-height: 30em) {
-    padding: 0;
-  }
-
-  @media screen and (min-height: 25em) and (max-width: 25em) {
-    padding: ${rem(8)} 0;
-  }
-
   padding: ${rem(8)} 0;
 `;
 
@@ -95,18 +87,18 @@ export const CurrentLanguageIcon = styled(Icon)`
   left: ${rem(40)};
   top: ${rem(12)};
 
-  ${mediaMin.nav`
-    left: ${rem(12)};
-    top: ${rem(6)};
-  `};
-
   @media screen and (max-height: 30em) {
     top: ${rem(4)};
   }
 
-  @media screen and (min-height: 25em) and (max-width: 25em) {
+  @media screen and (max-height: 25em) and (max-width: 25em) {
     top: ${rem(4)};
   }
+
+  ${mediaMin.nav`
+    left: ${rem(12)};
+    top: ${rem(6)};
+  `};
 `;
 
 export const WorldIcon = styled(Icon)`

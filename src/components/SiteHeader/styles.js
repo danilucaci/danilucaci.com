@@ -4,7 +4,6 @@ import { theme, rem } from "../../theme/globalStyles";
 export const StyledSiteHeaderWrapper = styled.header`
   width: 100%;
   display: block;
-  will-change: transform;
   z-index: 100;
   position: fixed;
   top: 0;
