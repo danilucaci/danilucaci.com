@@ -57,18 +57,18 @@ class CaseStudy extends Component {
   //   });
   // };
 
-  removeAnchorsFromTabIndex = () => {
-    const h2s = Array.from(document.querySelectorAll("h2 a"));
-    const h3s = Array.from(document.querySelectorAll("h3 a"));
-    const h4s = Array.from(document.querySelectorAll("h4 a"));
-    const h5s = Array.from(document.querySelectorAll("h5 a"));
+  // removeAnchorsFromTabIndex = () => {
+  //   const h2s = Array.from(document.querySelectorAll("h2 a"));
+  //   const h3s = Array.from(document.querySelectorAll("h3 a"));
+  //   const h4s = Array.from(document.querySelectorAll("h4 a"));
+  //   const h5s = Array.from(document.querySelectorAll("h5 a"));
 
-    // Remove the headers from tab index
-    this.removeHeaderTabIndex(h2s);
-    this.removeHeaderTabIndex(h3s);
-    this.removeHeaderTabIndex(h4s);
-    this.removeHeaderTabIndex(h5s);
-  };
+  //   // Remove the headers from tab index
+  //   this.removeHeaderTabIndex(h2s);
+  //   this.removeHeaderTabIndex(h3s);
+  //   this.removeHeaderTabIndex(h4s);
+  //   this.removeHeaderTabIndex(h5s);
+  // };
 
   handleScrollLine = () => {
     const scrollLine = document.querySelector(".js-scrollLine");

@@ -417,57 +417,45 @@ The filtering options are also designed in a way that users can combine them to 
 
 #### Movie Searching
 
-<Video caption="High fidelity prototype of the movie searching feature.">
-  <source
-    src="./ux_case_study_movie_searching_prototype.webm"
-    type="video/webm"
-  />
-  <source
-    src="./ux_case_study_movie_searching_prototype.mp4"
-    type="video/mp4"
-  />
-  Your browser does not support HTML5 video.
-  <a href="./ux_case_study_movie_searching_prototype.gif">
-    View the GIF version of the movie searching feature prototype.
-  </a>
-</Video>
+<Video
+  caption="High fidelity prototype of the movie searching feature."
+  posterSrc="movie-app/en/iphoneX_poster_dev.png"
+  webmSrc="movie-app/en/ux_case_study_movie_searching_prototype.webm"
+  mp4Src="movie-app/en/ux_case_study_movie_searching_prototype.mp4"
+  gifSrc="movie-app/en/ux_case_study_movie_searching_prototype.gif"
+  gifBrowserSupport="Your browser does not support HTML5 video."
+  gifAlt="View the GIF version of the movie searching feature prototype."
+/>
 
 </div>
 <div className="screenshot">
 
 #### Movie Filtering
 
-<Video caption="High fidelity prototype of the movie filtering feature.">
-  <source
-    src="./ux_case_study_movie_filtering_prototype.webm"
-    type="video/webm"
-  />
-  <source
-    src="./ux_case_study_movie_filtering_prototype.mp4"
-    type="video/mp4"
-  />
-  Your browser does not support HTML5 video.
-  <a href="./ux_case_study_movie_filtering_prototype.gif">
-    View the gif version of the movie filtering interaction prototype.
-  </a>
-</Video>
+<Video
+  caption="High fidelity prototype of the movie filtering feature."
+  posterSrc="movie-app/en/iphoneX_poster_dev.png"
+  webmSrc="movie-app/en/ux_case_study_movie_filtering_prototype.webm"
+  mp4Src="movie-app/en/ux_case_study_movie_filtering_prototype.mp4"
+  gifSrc="movie-app/en/ux_case_study_movie_filtering_prototype.gif"
+  gifBrowserSupport="Your browser does not support HTML5 video."
+  gifAlt="View the gif version of the movie filtering interaction prototype."
+/>
 
 </div>
 <div className="screenshot">
 
 #### Movie Seat Choosing
 
-<Video caption="High fidelity prototype of the seat choosing process with a mini–map and scrolling seat interface.">
-  <source
-    src="./ux_case_study_seat_choosing_prototype.webm"
-    type="video/webm"
-  />
-  <source src="./ux_case_study_seat_choosing_prototype.mp4" type="video/mp4" />
-  Your browser does not support HTML5 video.
-  <a href="./ux_case_study_seat_choosing_prototype.gif">
-    View the gif version of the movie filtering interaction prototype.
-  </a>
-</Video>
+<Video
+  caption="High fidelity prototype of the seat choosing process with a mini–map and scrolling seat interface."
+  posterSrc="movie-app/en/iphoneX_poster_dev.png"
+  webmSrc="movie-app/en/ux_case_study_seat_choosing_prototype.webm"
+  mp4Src="movie-app/en/ux_case_study_seat_choosing_prototype.mp4"
+  gifSrc="movie-app/en/ux_case_study_seat_choosing_prototype.gif"
+  gifBrowserSupport="Your browser does not support HTML5 video."
+  gifAlt="View the gif version of the movie filtering interaction prototype."
+/>
 
 </div>
 </div>
@@ -607,17 +595,15 @@ Even though it’s still the same amount of input fields, users will not think i
 
 ### Guest Checkout High-Fidelity Prototype
 
-<Video caption="The final prototype of the guest checkout process.">
-  <source
-    src="./ux_case_study_guest_checkout_prototype.webm"
-    type="video/webm"
-  />
-  <source src="./ux_case_study_guest_checkout_prototype.mp4" type="video/mp4" />
-  Your browser does not support HTML5 video.
-  <a href="./ux_case_study_membership_checkout_prototype.gif">
-    View the GIF version of the guest checkout final prototype.
-  </a>
-</Video>
+<Video
+  caption="The final prototype of the guest checkout process."
+  posterSrc="movie-app/en/iphoneX_poster_dev.png"
+  webmSrc="movie-app/en/ux_case_study_guest_checkout_prototype.webm"
+  mp4Src="movie-app/en/ux_case_study_guest_checkout_prototype.mp4"
+  gifSrc="movie-app/en/ux_case_study_guest_checkout_prototype.gif"
+  gifBrowserSupport="Your browser does not support HTML5 video."
+  gifAlt="View the GIF version of the guest checkout final prototype."
+/>
 
 ## Membership Plan
 
@@ -722,20 +708,15 @@ However, in order for the final date to be useful to the user, it should take in
 
 ### Membership Sign Up High-Hidelity Prototype
 
-<Video caption="Membership plan with offers and discounts final prototype.">
-  <source
-    src="./ux_case_study_membership_checkout_prototype.webm"
-    type="video/webm"
-  />
-  <source
-    src="./ux_case_study_membership_checkout_prototype.mp4"
-    type="video/mp4"
-  />
-  Your browser does not support HTML5 video.
-  <a href="./ux_case_study_membership_checkout_prototype.gif">
-    View the GIF version of the seat choosing process prototype.
-  </a>
-</Video>
+<Video
+  caption="Membership plan with offers and discounts final prototype."
+  posterSrc="movie-app/en/iphoneX_poster_dev.png"
+  webmSrc="movie-app/en/ux_case_study_membership_checkout_prototype.webm"
+  mp4Src="movie-app/en/ux_case_study_membership_checkout_prototype.mp4"
+  gifSrc="movie-app/en/ux_case_study_membership_checkout_prototype.gif"
+  gifBrowserSupport="Your browser does not support HTML5 video."
+  gifAlt="View the GIF version of the seat choosing process prototype."
+/>
 
 ## Usability Testing
 

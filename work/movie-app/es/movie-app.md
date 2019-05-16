@@ -417,41 +417,30 @@ Las opciones de filtrado también están diseñadas de manera que los usuarios p
 
 #### Búsqueda de Películas
 
-<Video caption="Prototipo de alta fidelidad de las opciones de búsqueda de películas.">
-  <source
-    src="./estudio_de_caso_ux_prototipo_busqueda_peliculas.webm"
-    type="video/webm"
-  />
-  <source
-    src="./estudio_de_caso_ux_prototipo_busqueda_peliculas.mp4"
-    type="video/mp4"
-  />
-  Su navegador no soporta video HTML5.
-  <a href="./estudio_de_caso_ux_prototipo_busqueda_peliculas.gif">
-    Ver el GIF del prototipo de alta fidelidad de las opciones de búsqueda de
-    películas.
-  </a>
-</Video>
+<Video
+  caption="Prototipo de alta fidelidad de las opciones de búsqueda de películas."
+  posterSrc="movie-app/es/iphoneX_poster_dev.png"
+  webmSrc="movie-app/es/estudio_de_caso_ux_prototipo_busqueda_peliculas.webm"
+  mp4Src="movie-app/es/estudio_de_caso_ux_prototipo_busqueda_peliculas.mp4"
+  gifSrc="movie-app/es/estudio_de_caso_ux_prototipo_busqueda_peliculas.gif"
+  gifBrowserSupport="Su navegador no soporta video HTML5."
+  gifAlt="Ver el GIF del prototipo de alta fidelidad de las opciones de búsqueda de películas."
+/>
 
 </div>
 <div className="screenshot">
 
 #### Filtrado de Películas
 
-<Video caption="Prototipo de alta fidelidad de las opciones de filtrado de películas.">
-  <source
-    src="./estudio_de_caso_ux_prototipo_filtrado_peliculas.webm"
-    type="video/webm"
-  />
-  <source
-    src="./estudio_de_caso_ux_prototipo_filtrado_peliculas.mp4"
-    type="video/mp4"
-  />
-  Su navegador no soporta video HTML5.
-  <a href="./estudio_de_caso_ux_prototipo_filtrado_peliculas.gif">
-    Ver el GIF del prototipo de las opciones de filtrado de películas.
-  </a>
-</Video>
+<Video
+  caption="Prototipo de alta fidelidad de las opciones de filtrado de películas."
+  posterSrc="movie-app/es/iphoneX_poster_dev.png"
+  webmSrc="movie-app/es/estudio_de_caso_ux_prototipo_filtrado_peliculas.webm"
+  mp4Src="movie-app/es/estudio_de_caso_ux_prototipo_filtrado_peliculas.mp4"
+  gifSrc="movie-app/es/estudio_de_caso_ux_prototipo_filtrado_peliculas.gif"
+  gifBrowserSupport="Su navegador no soporta video HTML5."
+  gifAlt="Ver el GIF del prototipo de las opciones de filtrado de películas."
+/>
 
 </div>
 <div className="screenshot">
@@ -459,22 +448,14 @@ Las opciones de filtrado también están diseñadas de manera que los usuarios p
 #### Opciones de Selección de Asientos
 
 <Video
-  caption="Prototipo de alta fidelidad del proceso de selección de asientos con un mini
-    mapa e interfaz de desplazamiento del asiento."
->
-  <source
-    src="./estudio_de_caso_ux_prototipo_seleccion_asientos.webm"
-    type="video/webm"
-  />
-  <source
-    src="./estudio_de_caso_ux_prototipo_seleccion_asientos.mp4"
-    type="video/mp4"
-  />
-  Su navegador no soporta video HTML5.
-  <a href="./estudio_de_caso_ux_prototipo_seleccion_asientos.gif">
-    Ver el GIF del prototipo de las opciones de selección de asientos.
-  </a>
-</Video>
+  caption="Prototipo de alta fidelidad del proceso de selección de asientos con un mini mapa e interfaz de desplazamiento del asiento."
+  posterSrc="movie-app/es/iphoneX_poster_dev.png"
+  webmSrc="movie-app/es/estudio_de_caso_ux_prototipo_seleccion_asientos.webm"
+  mp4Src="movie-app/es/estudio_de_caso_ux_prototipo_seleccion_asientos.mp4"
+  gifSrc="movie-app/es/estudio_de_caso_ux_prototipo_seleccion_asientos.gif"
+  gifBrowserSupport="Su navegador no soporta video HTML5."
+  gifAlt="Ver el GIF del prototipo de las opciones de selección de asientos."
+/>
 
 </div>
 </div>
@@ -616,23 +597,14 @@ A pesar de que sigue siendo la misma cantidad de campos de entrada, los usuarios
 ### Prototipo de Alta Fidelidad de la Experiencia de Pago como Invitados
 
 <Video
-  caption="El prototipo final de alta fidelidad de la experiencia de pago como
-    invitados."
->
-  <source
-    src="./estudio_de_caso_ux_prototipo_pago_como_invitado.webm"
-    type="video/webm"
-  />
-  <source
-    src="./estudio_de_caso_ux_prototipo_pago_como_invitado.mp4"
-    type="video/mp4"
-  />
-  Su navegador no soporta video HTML5.
-  <a href="./estudio_de_caso_ux_prototipo_pago_como_invitado.gif">
-    Ver el GIF del prototipo de alta fidelidad de la experiencia de pago como
-    invitados.
-  </a>
-</Video>
+  caption="El prototipo final de alta fidelidad de la experiencia de pago como invitados."
+  posterSrc="movie-app/es/iphoneX_poster_dev.png"
+  webmSrc="movie-app/es/estudio_de_caso_ux_prototipo_pago_como_invitado.webm"
+  mp4Src="movie-app/es/estudio_de_caso_ux_prototipo_pago_como_invitado.mp4"
+  gifSrc="movie-app/es/estudio_de_caso_ux_prototipo_pago_como_invitado.gif"
+  gifBrowserSupport="Su navegador no soporta video HTML5."
+  gifAlt="Ver el GIF del prototipo de alta fidelidad de la experiencia de pago como invitados."
+/>
 
 ## Club de Socios
 
@@ -739,21 +711,15 @@ Sin embargo, para que la fecha final sea correcta, se deben tener en cuenta todo
 
 ### Prototipo de Alta Fidelidad del Proceso de Alta del Club de Socios
 
-<Video caption="Prototipo de alta fidelidad del proceso de alta del club de socios.">
-  <source
-    src="./estudio_de_caso_ux_prototipo_pago_club_socios.webm"
-    type="video/webm"
-  />
-  <source
-    src="./estudio_de_caso_ux_prototipo_pago_club_socios.mp4"
-    type="video/mp4"
-  />
-  Su navegador no soporta video HTML5.
-  <a href="./estudio_de_caso_ux_prototipo_pago_club_socios.gif">
-    Ver el GIF del prototipo de alta fidelidad del proceso de alta del club de
-    socios
-  </a>
-</Video>
+<Video
+  caption="Prototipo de alta fidelidad del proceso de alta del club de socios."
+  posterSrc="movie-app/es/iphoneX_poster_dev.png"
+  webmSrc="movie-app/es/estudio_de_caso_ux_prototipo_pago_club_socios.webm"
+  mp4Src="movie-app/es/estudio_de_caso_ux_prototipo_pago_club_socios.mp4"
+  gifSrc="movie-app/es/estudio_de_caso_ux_prototipo_pago_club_socios.gif"
+  gifBrowserSupport="Su navegador no soporta video HTML5."
+  gifAlt="Ver el GIF del prototipo de alta fidelidad del proceso de alta del club de socios."
+/>
 
 ## Pruebas de Usabilidad
 

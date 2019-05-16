@@ -41,6 +41,16 @@ export const StyledVideo = styled.video`
   top: 0px;
   bottom: 0px;
   left: 0px;
+
+  opacity: 0;
+  transition: opacity 600ms ease 0s;
+
+  ${({ inView }) =>
+    inView &&
+    `
+    opacity: 1;
+  `}
+
   ${theme.shadow.image} !important;
 `;
 
