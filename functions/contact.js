@@ -88,7 +88,7 @@ exports.handler = async (event) => {
   const sendFrom = locale === "en" ? process.env.EMAIL_FROM_EN : process.env.EMAIL_FROM_ES;
 
   const origin = new URL(event.headers.origin);
-  const letMeIn = origin.hostname === "localhost" || origin.hostname === "danilucaci.com";
+  const letMeIn = origin.hostname === "localhost" || origin.hostname === "www.danilucaci.com";
 
   if (!letMeIn) {
     return {
