@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import * as Sentry from "@sentry/browser";
 
 const GATSBY_DRIBBBLE_TOKEN = process.env.GATSBY_DRIBBBLE_TOKEN;
 
@@ -72,7 +73,7 @@ function useDribbbleReducer() {
         if (axios.isCancel(error)) {
           console.warn("Cancelled axios request");
         } else {
-          console.warn(error);
+          Sentry.captureException(error);
           dispatch({ type: "FETCH_ERROR" });
         }
       }
