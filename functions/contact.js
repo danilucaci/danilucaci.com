@@ -89,10 +89,11 @@ exports.handler = async (event) => {
 
   const origin = new URL(event.headers.origin);
   const letMeIn = origin.hostname === "localhost" || origin.hostname === "danilucaci.com";
+
   if (!letMeIn) {
     return {
       statusCode: 403,
-      body: "You can’t do that.",
+      body: `Hostname Validation Error in Contact Function. ${letMeIn}`,
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Headers": "Content-Type",
