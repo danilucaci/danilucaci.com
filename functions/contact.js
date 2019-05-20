@@ -7,11 +7,9 @@ const esLocale = require("date-fns/locale/es");
 const { notifyContact } = require("./mail/notify");
 const { notifyContactText } = require("./mail/notifyText");
 
-// if (process.env.NODE_ENV === "development") {
 require("dotenv").config({
   path: ".env.development",
 });
-// }
 
 const validEmail = ow.string.is((e) => /^.+@.+\..+$/.test(e));
 
@@ -57,6 +55,11 @@ const STATUS_MESSAGES = {
   },
 };
 
+const headers = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "Content-Type",
+};
+
 exports.handler = async (event) => {
   let body = "";
 
@@ -67,10 +70,7 @@ exports.handler = async (event) => {
     return {
       statusCode: 400,
       body: error.message,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Content-Type",
-      },
+      headers,
     };
   }
 
@@ -94,10 +94,7 @@ exports.handler = async (event) => {
     return {
       statusCode: 403,
       body: `Hostname Validation Error in Contact Function. ${origin.hostname}`,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Content-Type",
-      },
+      headers,
     };
   }
 
@@ -109,10 +106,7 @@ exports.handler = async (event) => {
     return {
       statusCode: 403,
       body: "Nope.",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Content-Type",
-      },
+      headers,
     };
   }
 
@@ -125,10 +119,7 @@ exports.handler = async (event) => {
     return {
       statusCode: 451,
       body: error.message,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Content-Type",
-      },
+      headers,
     };
   }
 
@@ -144,10 +135,7 @@ exports.handler = async (event) => {
     return {
       statusCode: 500,
       body: error.message,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Content-Type",
-      },
+      headers,
     };
   }
 
@@ -158,10 +146,7 @@ exports.handler = async (event) => {
     return {
       statusCode: 500,
       body: STATUS_MESSAGES[locale].invalidDateSent,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Content-Type",
-      },
+      headers,
     };
   }
 
@@ -183,10 +168,7 @@ exports.handler = async (event) => {
     return {
       statusCode: 500,
       body: `Error Templating the Email: ${error}`,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Content-Type",
-      },
+      headers,
     };
   }
 
@@ -203,10 +185,7 @@ exports.handler = async (event) => {
     return {
       statusCode: 500,
       body: `Error Templating the Text for the Email: ${error}`,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Content-Type",
-      },
+      headers,
     };
   }
 
@@ -229,19 +208,13 @@ exports.handler = async (event) => {
     return Promise.reject({
       statusCode: 500,
       body: error.message,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Content-Type",
-      },
+      headers,
     });
   }
 
   return {
     statusCode: 200,
     body: JSON.stringify({ success: true }),
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Headers": "Content-Type",
-    },
+    headers,
   };
 };
