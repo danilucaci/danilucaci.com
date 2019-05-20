@@ -4,6 +4,7 @@ import addToMailchimp from "gatsby-plugin-mailchimp";
 import { FormattedMessage } from "react-intl";
 import * as Yup from "yup";
 import { Formik, ErrorMessage } from "formik";
+import * as Sentry from "@sentry/browser";
 
 import { CONSENT_VALUE, MC_ERRORS } from "../../i18n/i18n";
 import PrivacyCheckbox from "../PrivacyCheckbox/PrivacyCheckbox";
@@ -47,6 +48,7 @@ function SubscribeCard({ locale }) {
 
       handleFormSent(MCResponse.result, MCResponse.msg);
     } catch (error) {
+      Sentry.captureException(error);
       handleFormError(error);
     }
   }
@@ -58,18 +60,21 @@ function SubscribeCard({ locale }) {
       setShowMCError(true);
       setShowMCLoading(false);
       setMCError("already");
+      Sentry.captureException(new Error(msg));
       // throw new Error(msg);
     } else if (result.includes("error") && msg.includes("many")) {
       setShowMCError(true);
       setShowMCLoading(false);
       setMCError("many");
       // throw new Error(msg);
+      Sentry.captureException(new Error(msg));
     } else if (result.includes("error")) {
       setShowMCError(true);
       setShowMCLoading(false);
       setMCError("generic");
       setMCAPIErrorMSG(msg);
       // throw new Error(msg);
+      Sentry.captureException(new Error(msg));
     }
   }
 
@@ -82,7 +87,7 @@ function SubscribeCard({ locale }) {
     setShowMCLoading(false);
     setShowMCError(true);
     setMCError("generic");
-    console.warn(error);
+    Sentry.captureException(error);
     // throw new Error(error);
   }
 
