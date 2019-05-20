@@ -6,11 +6,11 @@ const GATSBY_SENTRY_URL = process.env.GATSBY_SENTRY_URL;
 
 // should have been called before using it here
 // ideally before even rendering your react app
-if (NODE_ENV !== "development") {
-  Sentry.init({
-    dsn: GATSBY_SENTRY_URL,
-  });
-}
+// if (NODE_ENV !== "development") {
+Sentry.init({
+  dsn: GATSBY_SENTRY_URL,
+});
+// }
 
 class ErrorBoundary extends React.Component {
   constructor(props) {

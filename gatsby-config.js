@@ -1,7 +1,26 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 // const urljoin = require("url-join");
 const config = require("./data/SiteConfig");
 
+let proxy = require("http-proxy-middleware");
+
 module.exports = {
+  // for avoiding CORS while developing Netlify Functions locally
+  // read more: https://www.gatsbyjs.org/docs/api-proxy/#advanced-proxying
+  developMiddleware: (app) => {
+    app.use(
+      "/.netlify/functions/",
+      proxy({
+        target: "http://localhost:9000",
+        pathRewrite: {
+          "/.netlify/functions/": "",
+        },
+      }),
+    );
+  },
   siteMetadata: {
     siteUrl: `${config.siteUrl}`,
     // rssMetadata: {
@@ -22,8 +41,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-mailchimp",
       options: {
-        endpoint:
-          "https://danilucaci.us18.list-manage.com/subscribe/post?u=2173ab7ebb6627103bae34cba&amp;id=17f5614ea6", // see instructions section below
+        endpoint: process.env.MAILCHIMP_ENDPOINT,
       },
     },
     {

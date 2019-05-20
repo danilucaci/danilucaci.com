@@ -3,6 +3,7 @@ import { string } from "prop-types";
 import { Formik, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { navigate } from "gatsby";
+import * as Sentry from "@sentry/browser";
 
 import { CONSENT_VALUE, FORM_SUBMIT_STATUS, localePaths } from "../../i18n/i18n";
 import PrivacyCheckbox from "../PrivacyCheckbox/PrivacyCheckbox";
@@ -23,7 +24,6 @@ import {
 } from "./styles";
 
 function ContactForm({ locale }) {
-  const [dateSent, setDateSent] = useState(() => new Date());
   const [showSpinner, setShowSpinner] = useState(false);
   const [showFormError, setShowFormError] = useState(false);
   const [formErrorRes, setFormErrorRes] = useState({});
@@ -34,24 +34,17 @@ function ContactForm({ locale }) {
   //   console.log(`fullname: ${fullname}`);
   //   console.log(`email: ${email}`);
   //   console.log(`message: ${message}`);
-  //   console.log(`dateSent: ${dateSent}`);
   //   console.log(`botfield: ${botfield}`);
   //   console.log(`checkboxValue: ${acceptsconsentcheckbox}`);
   //   console.log(`acceptsConsentCheckbox: ${acceptsconsentcheckbox}`);
   // }
-
-  function encode(data) {
-    return Object.keys(data)
-      .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&");
-  }
 
   function handleFormError(error) {
     setShowFormError(true);
     setFormErrorRes(error);
     console.error("Contact form failed with: ", error.name);
     console.error("Contact form failed with: ", error.message);
-    throw new Error(error);
+    Sentry.captureException(error);
   }
 
   const ContactSchema = Yup.object().shape({
@@ -66,15 +59,61 @@ function ContactForm({ locale }) {
       .min(2, FORM_SUBMIT_STATUS.formValidation[locale].messageShort)
       .max(800, FORM_SUBMIT_STATUS.formValidation[locale].messageLong)
       .required(FORM_SUBMIT_STATUS.formValidation[locale].messageRequired),
-    botfield: Yup.string().max(
-      0,
-      "01001010 01100001 01101011 00100000 01110011 01101001 11000100 10011001 00100000 01101101 01100001 01110011 01111010 00111111 00100000 01101101 01111001 00100000 01101110 01100001 01101101 01100101 00100000 01101001 01110011 00100000 01100100 01100001 01101110 01101001",
-    ),
+    botfield: Yup.string().max(0, "Great Success"),
     acceptsconsentcheckbox: Yup.boolean().oneOf(
       [true],
       FORM_SUBMIT_STATUS.formValidation[locale].privacyRequired,
     ),
   });
+
+  function handleSubmit(values, setSubmitting) {
+    setShowSpinner(true);
+    try {
+      const data = JSON.stringify({
+        formname: "contact",
+        email: values.email,
+        fullname: values.fullname,
+        message: values.message,
+        datesent: new Date(),
+        locale,
+        botfield: values.botfield,
+        acceptsconsentcheckbox: values.acceptsconsentcheckbox,
+        consentcheckboxvalue: CONSENT_VALUE[locale].yes,
+      });
+
+      fetch("/.netlify/functions/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: data,
+      }).then((res) => {
+        if (res.status === 200) {
+          if (process.env.NODE_ENV === "development") {
+            console.log(`%c Status: ${res.status}: ${res.ok}`, "color: #79E36B");
+            console.log("%c Great Success!", "color: #79E36B");
+          }
+          // showFormInputs(values);
+          setSubmitting(false);
+          navigate(localePaths[locale].thanks);
+        }
+        if (res.status === 400) {
+          handleFormError(new Error(`Contact Form Error. No data was sent to the server. Received code: ${res.status}`));
+        }
+        if (res.status === 403) {
+          handleFormError(new Error(`Contact Form Error. The form request is not allowed. Received code: ${res.status}`));
+        }
+        if (res.status === 451) {
+          handleFormError(new Error(`Contact Form Error. The form could not be sent for legal reasons. Received code: ${
+            res.status
+          }`));
+        }
+        if (res.status === 500) {
+          handleFormError(new Error(`Contact Form Error. The form could not be sent. Received code: ${res.status}`));
+        }
+      });
+    } catch (error) {
+      handleFormError(error);
+    }
+  }
 
   return (
     <FormContainer>
@@ -87,32 +126,7 @@ function ContactForm({ locale }) {
           acceptsconsentcheckbox: false,
         }}
         validationSchema={ContactSchema}
-        onSubmit={(values, { setSubmitting }) => {
-          // setTimeout(() => {
-          try {
-            fetch("/", {
-              method: "POST",
-              headers: { "Content-Type": "application/x-www-form-urlencoded" },
-              body: encode({
-                "form-name": "contact",
-                email: values.email,
-                fullname: values.fullName,
-                message: values.message,
-                datesent: dateSent,
-                botfield: values.botfield,
-                acceptsconsentcheckbox: values.acceptsconsentcheckbox,
-              }),
-            }).then(() => {
-              // showFormInputs(values);
-              setSubmitting(false);
-              setShowSpinner(true);
-              navigate(localePaths[locale].thanks);
-            });
-          } catch (error) {
-            handleFormError(error);
-          }
-          // }, 400);
-        }}
+        onSubmit={(values, { setSubmitting }) => handleSubmit(values, setSubmitting)}
       >
         {({ isValid }) => (
           <StyledForm
@@ -126,14 +140,6 @@ function ContactForm({ locale }) {
             {/* These have to be input types, otherwise they don't show in the form atributes */}
             <input type="hidden" name="form-name" arria-hidden="true" value="contact" />
             <Field style={{ display: "none" }} arria-hidden="true" name="botfield" />
-            <input
-              style={{ display: "none" }}
-              arria-hidden="true"
-              type="text"
-              value={dateSent}
-              onChange={() => setDateSent(() => new Date())}
-              name="datesent"
-            />
             <StyledLabel labelType="fullname">
               <StyledInput
                 type="fullname"
@@ -207,7 +213,9 @@ function ContactForm({ locale }) {
               </React.Fragment>
             )}
 
-            {!showFormError && <SubmitButton disabled={!isValid} showSpinner={showSpinner} />}
+            {!showFormError && (
+              <SubmitButton disabled={!isValid || showSpinner} showSpinner={showSpinner} />
+            )}
           </StyledForm>
         )}
       </Formik>

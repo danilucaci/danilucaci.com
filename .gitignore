@@ -46,5 +46,8 @@ public/
 bundle-stats.json
 
 .env.*
+.env
 
 icons/
+
+.netlify/

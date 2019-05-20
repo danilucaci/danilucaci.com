@@ -1,0 +1,88 @@
+<mjml>
+  <mj-body background-color="#ffffff">
+    <!-- Notification Header -->
+    <mj-section background-color="#F5F6F7" padding-top="24px">
+      <mj-column>
+        <mj-text font-size="32px" font-weight="bold" color="#3F4854" align="center" font-family="sans-serif">
+          New Message
+        </mj-text>
+        <mj-text font-size="16px" color="#3F4854" align="center" font-family="sans-serif">
+          danilucaci.com Contact Form Notification
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Info about the message received -->
+    <mj-section background-color="#ffffff">
+      <mj-column>
+        <mj-text font-size="24px" color="#3F4854" align="left" font-family="sans-serif" font-weight="bold">
+          From
+        </mj-text>
+        <mj-text font-size="16px" line-height="24px" color="#3F4854" align="left" font-family="sans-serif" font-weight="bold">
+          Email:
+        </mj-text>
+        <mj-text font-size="18px" line-height="24px" color="#3F4854" align="left" font-family="sans-serif">
+          ${email}
+        </mj-text>
+        <mj-text font-size="16px" line-height="24px" color="#3F4854" align="left" font-family="sans-serif" font-weight="bold">
+          Full Name:
+        </mj-text>
+        <mj-text font-size="18px" line-height="24px" color="#3F4854" align="left" font-family="sans-serif">
+          ${fullname}
+        </mj-text>
+        <mj-text font-size="16px" line-height="24px" color="#3F4854" align="left" font-family="sans-serif" font-weight="bold">
+          Date Sent:
+        </mj-text>
+        <mj-text font-size="18px" line-height="24px" color="#3F4854" align="left" font-family="sans-serif">
+          ${formattedDate}
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Divider before message -->
+    <mj-section>
+      <mj-column>
+        <mj-divider border-width="1px" border-style="solid" border-color="lightgrey" />
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#ffffff">
+      <mj-column>
+        <mj-text font-size="24px" color="#3F4854" align="left" font-family="sans-serif" font-weight="bold">
+          Message
+        </mj-text>
+        <mj-text font-size="18px" line-height="32px" color="#3F4854" align="left" font-family="sans-serif">
+          ${message}
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Divider before legal info -->
+    <mj-section>
+      <mj-column>
+        <mj-divider border-width="1px" border-style="solid" border-color="lightgrey" />
+      </mj-column>
+    </mj-section>
+
+    <!-- Legal Info -->
+    <mj-section background-color="#F5F6F7">
+      <mj-column>
+        <mj-text font-size="24px" color="#3F4854" align="left" font-family="sans-serif" font-weight="bold">
+          Legal Info
+        </mj-text>
+        <mj-text font-size="16px" font-weight="bold" font-family="sans-serif" color="#5A616B">
+          Accepted Legal Notice and Privacy Policy?
+        </mj-text>
+        <mj-text font-size="16px" font-family="sans-serif" color="#121C26">
+          ${acceptsconsentcheckbox}
+        </mj-text>
+        <mj-text font-size="16px" font-weight="bold" font-family="sans-serif" color="#5A616B">
+          Legal Notice and Privacy Policy Message Accepted:
+        </mj-text>
+        <mj-text font-size="16px" font-family="sans-serif" color="#121C26">
+          ${consentcheckboxvalue}
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
