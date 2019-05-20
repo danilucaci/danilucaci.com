@@ -208,10 +208,9 @@ exports.handler = async (event) => {
     };
   }
 
-  // to: process.env.EMAIL_NOTIFY_ME,
   const emailData = {
     from: sendFrom,
-    to: "hola@danilucaci.com",
+    to: process.env.EMAIL_NOTIFY_ME,
     subject: "danilucaci.com: New Contact Submission.",
     text: textTemplate,
     html: mailTemplate,
