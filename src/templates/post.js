@@ -19,6 +19,7 @@ import ArticleDate from "../components/ArticleDate/ArticleDate";
 import { HR } from "../components/HR/HR";
 import { GridCol } from "../components/Grid/Grid";
 import SiblingPosts from "../components/SiblingPosts/SiblingPosts";
+import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 
 import AuthorCard from "../components/AuthorCard/AuthorCard";
 import SubscribeCard from "../components/SubscribeCard/SubscribeCard";
@@ -130,95 +131,97 @@ class Post extends Component {
     };
 
     return (
-      <Layout location={this.props.location} locale={locale}>
-        <SEO
-          locale={locale}
-          twinPostURL={twinPostURL}
-          postNode={postNode}
-          postSEO
-          currentPath={this.props.location.pathname}
-        />
-        <SiteHeader
-          showScrollIndicator
-          locale={locale}
-          twinPostURL={twinPostURL}
-          currentPath={this.props.location.pathname}
-        />
-        <Main role="main" id="main">
-          <PostWrapper>
-            <StyledPageHeader as="header">
-              <GridCol>
-                <Tags tags={postInfo.tags} inline />
-                <PostH1>{postInfo.title}</PostH1>
-                <HR />
-                <PostInfo>
-                  <PostDateReadTimeWrapper>
-                    <ArticleDate date={postInfo.date} />
-                    <ReadTime timeToRead={postNode.timeToRead} />
-                  </PostDateReadTimeWrapper>
-                  <SocialShareWrapper>
-                    <SocialShare
-                      slug={this.props.location.pathname}
-                      title={postInfo.title}
-                      snippet={postInfo.snippet}
-                      onClick={copyURL}
-                    />
-                  </SocialShareWrapper>
-                </PostInfo>
-                <HR />
-                <StyledIntroContainer>
-                  {introCopy.map((paragraph) => (
-                    <IntroCopy key={paragraph}>{paragraph}</IntroCopy>
-                  ))}
-                </StyledIntroContainer>
-              </GridCol>
-            </StyledPageHeader>
-            <PostContent>
-              <GridCol>
-                <MDXRenderer>{postNode.code.body}</MDXRenderer>
-              </GridCol>
-            </PostContent>
-
-            <AuthorCard />
-            <SubscribeCard locale={locale} />
-          </PostWrapper>
-
-          <DummyInput
-            className="js-dummyInput"
-            contentEditable="true"
-            readOnly={true}
-            aria-hidden="true"
-            suppressContentEditableWarning="true"
+      <ErrorBoundary>
+        <Layout location={this.props.location} locale={locale}>
+          <SEO
+            locale={locale}
+            twinPostURL={twinPostURL}
+            postNode={postNode}
+            postSEO
+            currentPath={this.props.location.pathname}
           />
-          <ScrollToTop />
-        </Main>
-
-        {(prevSlug || nextSlug) && (
-          <SiblingPosts
-            nextSlug={nextSlug}
-            nextTitle={nextTitle}
-            prevSlug={prevSlug}
-            prevTitle={prevTitle}
+          <SiteHeader
+            showScrollIndicator
+            locale={locale}
+            twinPostURL={twinPostURL}
+            currentPath={this.props.location.pathname}
           />
-        )}
+          <Main role="main" id="main">
+            <PostWrapper>
+              <StyledPageHeader as="header">
+                <GridCol>
+                  <Tags tags={postInfo.tags} inline />
+                  <PostH1>{postInfo.title}</PostH1>
+                  <HR />
+                  <PostInfo>
+                    <PostDateReadTimeWrapper>
+                      <ArticleDate date={postInfo.date} />
+                      <ReadTime timeToRead={postNode.timeToRead} />
+                    </PostDateReadTimeWrapper>
+                    <SocialShareWrapper>
+                      <SocialShare
+                        slug={this.props.location.pathname}
+                        title={postInfo.title}
+                        snippet={postInfo.snippet}
+                        onClick={copyURL}
+                      />
+                    </SocialShareWrapper>
+                  </PostInfo>
+                  <HR />
+                  <StyledIntroContainer>
+                    {introCopy.map((paragraph) => (
+                      <IntroCopy key={paragraph}>{paragraph}</IntroCopy>
+                    ))}
+                  </StyledIntroContainer>
+                </GridCol>
+              </StyledPageHeader>
+              <PostContent>
+                <GridCol>
+                  <MDXRenderer>{postNode.code.body}</MDXRenderer>
+                </GridCol>
+              </PostContent>
 
-        <CommentsWrapper>
-          {!this.state.loadComments && (
-            <StyledLoadComments onClick={this.loadComments}>
-              <LoadCommentsIcon aria-hidden="true">
-                <use xlinkHref="#comments" />
-              </LoadCommentsIcon>
-              <FormattedMessage id="load.comments">
-                {(txt) => <LoadCommentsLabel>{txt}</LoadCommentsLabel>}
-              </FormattedMessage>
-            </StyledLoadComments>
+              <AuthorCard />
+              <SubscribeCard locale={locale} />
+            </PostWrapper>
+
+            <DummyInput
+              className="js-dummyInput"
+              contentEditable="true"
+              readOnly={true}
+              aria-hidden="true"
+              suppressContentEditableWarning="true"
+            />
+            <ScrollToTop />
+          </Main>
+
+          {(prevSlug || nextSlug) && (
+            <SiblingPosts
+              nextSlug={nextSlug}
+              nextTitle={nextTitle}
+              prevSlug={prevSlug}
+              prevTitle={prevTitle}
+            />
           )}
-          {this.state.loadComments && (
-            <Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
-          )}
-        </CommentsWrapper>
-        <SiteFooter locale={locale} />
-      </Layout>
+
+          <CommentsWrapper>
+            {!this.state.loadComments && (
+              <StyledLoadComments onClick={this.loadComments}>
+                <LoadCommentsIcon aria-hidden="true">
+                  <use xlinkHref="#comments" />
+                </LoadCommentsIcon>
+                <FormattedMessage id="load.comments">
+                  {(txt) => <LoadCommentsLabel>{txt}</LoadCommentsLabel>}
+                </FormattedMessage>
+              </StyledLoadComments>
+            )}
+            {this.state.loadComments && (
+              <Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+            )}
+          </CommentsWrapper>
+          <SiteFooter locale={locale} />
+        </Layout>
+      </ErrorBoundary>
     );
   }
 }

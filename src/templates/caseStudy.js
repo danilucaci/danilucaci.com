@@ -13,6 +13,7 @@ import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import SiblingPosts from "../components/SiblingPosts/SiblingPosts";
 import AuthorCard from "../components/AuthorCard/AuthorCard";
 import ContactCard from "../components/ContactCard/ContactCard";
+import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 
 import { calculateScroll, textPassiveEventSupport } from "../helpers/helpers";
 
@@ -96,60 +97,62 @@ class CaseStudy extends Component {
     }
 
     return (
-      <Layout location={this.props.location} locale={locale}>
-        <SEO
-          locale={locale}
-          twinPostURL={twinPostURL}
-          postNode={postNode}
-          postSEO
-          postImage={image.src}
-          currentPath={this.props.location.pathname}
-        />
-        <SiteHeader
-          twinPostURL={twinPostURL}
-          showScrollIndicator
-          locale={locale}
-          currentPath={this.props.location.pathname}
-        />
-        <Main role="main" id="main">
-          <ArticleWrapper>
-            <StyledHeader>
-              <TagsWrapper>
-                {postInfo.tags.map((tag) => (
-                  <Tag key={tag}>{tag}</Tag>
-                ))}
-              </TagsWrapper>
-              <PostH1>{postInfo.title}</PostH1>
-              <CaseStudyDescription>{postInfo.snippet}</CaseStudyDescription>
-            </StyledHeader>
-            <CaseStudyImgWrapper>
-              <Img
-                title={postInfo.title}
-                alt={postInfo.snippet}
-                fluid={image}
-                // fadeIn={true}
-                // add gatsby-image props here
-                // https://www.gatsbyjs.org/packages/gatsby-image/
-              />
-            </CaseStudyImgWrapper>
-            <PostContent>
-              <MDXRenderer>{postNode.code.body}</MDXRenderer>
-            </PostContent>
-            <AuthorCard />
-          </ArticleWrapper>
-          <ScrollToTop />
-        </Main>
-        <ContactCard locale={locale} />
-        {(prevSlug || nextSlug) && (
-          <SiblingPosts
-            nextSlug={nextSlug}
-            nextTitle={nextTitle}
-            prevSlug={prevSlug}
-            prevTitle={prevTitle}
+      <ErrorBoundary>
+        <Layout location={this.props.location} locale={locale}>
+          <SEO
+            locale={locale}
+            twinPostURL={twinPostURL}
+            postNode={postNode}
+            postSEO
+            postImage={image.src}
+            currentPath={this.props.location.pathname}
           />
-        )}
-        <SiteFooter locale={locale} />
-      </Layout>
+          <SiteHeader
+            twinPostURL={twinPostURL}
+            showScrollIndicator
+            locale={locale}
+            currentPath={this.props.location.pathname}
+          />
+          <Main role="main" id="main">
+            <ArticleWrapper>
+              <StyledHeader>
+                <TagsWrapper>
+                  {postInfo.tags.map((tag) => (
+                    <Tag key={tag}>{tag}</Tag>
+                  ))}
+                </TagsWrapper>
+                <PostH1>{postInfo.title}</PostH1>
+                <CaseStudyDescription>{postInfo.snippet}</CaseStudyDescription>
+              </StyledHeader>
+              <CaseStudyImgWrapper>
+                <Img
+                  title={postInfo.title}
+                  alt={postInfo.snippet}
+                  fluid={image}
+                  // fadeIn={true}
+                  // add gatsby-image props here
+                  // https://www.gatsbyjs.org/packages/gatsby-image/
+                />
+              </CaseStudyImgWrapper>
+              <PostContent>
+                <MDXRenderer>{postNode.code.body}</MDXRenderer>
+              </PostContent>
+              <AuthorCard />
+            </ArticleWrapper>
+            <ScrollToTop />
+          </Main>
+          <ContactCard locale={locale} />
+          {(prevSlug || nextSlug) && (
+            <SiblingPosts
+              nextSlug={nextSlug}
+              nextTitle={nextTitle}
+              prevSlug={prevSlug}
+              prevTitle={prevTitle}
+            />
+          )}
+          <SiteFooter locale={locale} />
+        </Layout>
+      </ErrorBoundary>
     );
   }
 }

@@ -12,6 +12,7 @@ import PostListing from "../components/PostListing/PostListing";
 import Tags from "../components/Tags/Tags";
 import Pagination from "../components/Pagination/Pagination";
 import { SectionHeader } from "../components/Headings/Headings";
+import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 
 import { localePaths } from "../i18n/i18n";
 
@@ -44,44 +45,50 @@ function BlogPage(props) {
   }
 
   return (
-    <Layout location={props.location} locale={locale}>
-      <SEO
-        locale={locale}
-        twinPostURL={twinPostURL}
-        currentPage="blog"
-        currentPath={props.location.pathname}
-        prevPath={prevPath}
-        nextPath={nextPath}
-      />
-      <SiteHeader twinPostURL={twinPostURL} locale={locale} currentPath={props.location.pathname} />
-      <Main role="main" id="main">
-        <BlogWrapper>
-          <BlogHeader>
-            <FormattedMessage id="blog.title">
-              {(txt) => <BlogTitle as="h1">{txt}</BlogTitle>}
-            </FormattedMessage>
-            <TagsWrapper>
-              <FormattedMessage id="blog.explore">
-                {(txt) => <SectionHeader>{txt}</SectionHeader>}
+    <ErrorBoundary>
+      <Layout location={props.location} locale={locale}>
+        <SEO
+          locale={locale}
+          twinPostURL={twinPostURL}
+          currentPage="blog"
+          currentPath={props.location.pathname}
+          prevPath={prevPath}
+          nextPath={nextPath}
+        />
+        <SiteHeader
+          twinPostURL={twinPostURL}
+          locale={locale}
+          currentPath={props.location.pathname}
+        />
+        <Main role="main" id="main">
+          <BlogWrapper>
+            <BlogHeader>
+              <FormattedMessage id="blog.title">
+                {(txt) => <BlogTitle as="h1">{txt}</BlogTitle>}
               </FormattedMessage>
-              <Tags tags={allTags} />
-            </TagsWrapper>
-          </BlogHeader>
-          <PostListing edges={edges} />
-          {totalPagesInBlog > 1 && (
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPagesInBlog}
-              paginationPathPrefix={paginationPathPrefix}
-              prevPath={prevPath}
-              nextPath={nextPath}
-              locale={locale}
-            />
-          )}
-        </BlogWrapper>
-      </Main>
-      <SiteFooter locale={locale} />
-    </Layout>
+              <TagsWrapper>
+                <FormattedMessage id="blog.explore">
+                  {(txt) => <SectionHeader>{txt}</SectionHeader>}
+                </FormattedMessage>
+                <Tags tags={allTags} />
+              </TagsWrapper>
+            </BlogHeader>
+            <PostListing edges={edges} />
+            {totalPagesInBlog > 1 && (
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPagesInBlog}
+                paginationPathPrefix={paginationPathPrefix}
+                prevPath={prevPath}
+                nextPath={nextPath}
+                locale={locale}
+              />
+            )}
+          </BlogWrapper>
+        </Main>
+        <SiteFooter locale={locale} />
+      </Layout>
+    </ErrorBoundary>
   );
 }
 

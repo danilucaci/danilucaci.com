@@ -14,6 +14,7 @@ import ContactCard from "../components/ContactCard/ContactCard";
 import enResume from "../../src/resume/marian_daniel_lucaci_resume.pdf";
 import esResume from "../../src/resume/marian_daniel_lucaci_curriculum.pdf";
 import { GridCol } from "../../src/components/Grid/Grid";
+import ErrorBoundary from "../../src/components/ErrorBoundary/ErrorBoundary";
 
 import { localePaths } from "../i18n/i18n";
 
@@ -44,114 +45,120 @@ const AboutPage = (props) => {
   }
 
   return (
-    <Layout location={props.location} locale={locale}>
-      <SEO
-        locale={locale}
-        twinPostURL={twinPostURL}
-        currentPage="about"
-        currentPath={props.location.pathname}
-      />
-      <SiteHeader twinPostURL={twinPostURL} locale={locale} currentPath={props.location.pathname} />
-      <Main role="main" id="main">
-        <Header>
-          <HeaderInfoWrapper s="7">
-            <FormattedMessage id="about.me.title">
-              {(txt) => <AboutMeTitle>{txt}</AboutMeTitle>}
-            </FormattedMessage>
-            <FormattedMessage id="about.me.copy.1">
-              {(txt) => <AboutCopy>{txt}</AboutCopy>}
-            </FormattedMessage>
-            <FormattedMessage id="about.me.copy.2">
-              {(txt) => <AboutCopy>{txt}</AboutCopy>}
-            </FormattedMessage>
-            <FormattedMessage id="about.me.copy.3">
-              {(txt) => <AboutCopy>{txt}</AboutCopy>}
-            </FormattedMessage>
-          </HeaderInfoWrapper>
-          <HeaderImageWrapper s="5">
-            <ImageWrapper>
-              <FormattedMessage id="about.the.blog.image.title">
-                {(txt) => <Img alt={txt} fluid={props.data.aboutImage.childImageSharp.fluid} />}
+    <ErrorBoundary>
+      <Layout location={props.location} locale={locale}>
+        <SEO
+          locale={locale}
+          twinPostURL={twinPostURL}
+          currentPage="about"
+          currentPath={props.location.pathname}
+        />
+        <SiteHeader
+          twinPostURL={twinPostURL}
+          locale={locale}
+          currentPath={props.location.pathname}
+        />
+        <Main role="main" id="main">
+          <Header>
+            <HeaderInfoWrapper s="7">
+              <FormattedMessage id="about.me.title">
+                {(txt) => <AboutMeTitle>{txt}</AboutMeTitle>}
               </FormattedMessage>
-            </ImageWrapper>
-            <ResumeWrapper>
-              <StyledSocialNav>
-                <SocialNav />
-              </StyledSocialNav>
-              <FormattedMessage id="resume.button">
-                {(txt) => (
-                  <ResumeButton
-                    href={locale === "en" ? enResume : esResume}
-                    alt="Open Dani Lucaci’s Resume"
-                    target="_blank"
-                  >
-                    {txt}
-                  </ResumeButton>
-                )}
+              <FormattedMessage id="about.me.copy.1">
+                {(txt) => <AboutCopy>{txt}</AboutCopy>}
               </FormattedMessage>
-            </ResumeWrapper>
-          </HeaderImageWrapper>
-        </Header>
-        <DoingNowRow spaced>
-          <GridCol>
-            <FormattedMessage id="about.me.what.now.title">
-              {(txt) => <h2>{txt}</h2>}
-            </FormattedMessage>
-          </GridCol>
-          <GridCol s="5">
-            <FormattedMessage id="about.me.what.now.copy.1">
-              {(txt) => <StyledCopy>{txt}</StyledCopy>}
-            </FormattedMessage>
-            <FormattedMessage id="about.me.what.now.copy.2">
-              {(txt) => <StyledCopy>{txt}</StyledCopy>}
-            </FormattedMessage>
-          </GridCol>
-          <GridCol s="7">
-            <DoingNowItem>
-              <FormattedMessage id="about.me.what.now.skills">
-                {(txt) => <h4>{txt}</h4>}
+              <FormattedMessage id="about.me.copy.2">
+                {(txt) => <AboutCopy>{txt}</AboutCopy>}
               </FormattedMessage>
-              <ul>
-                <FormattedMessage id="about.me.what.now.skills.1">
-                  {(txt) => <li>{txt}</li>}
-                </FormattedMessage>
-                <FormattedMessage id="about.me.what.now.skills.2">
-                  {(txt) => <li>{txt}</li>}
-                </FormattedMessage>
-                <FormattedMessage id="about.me.what.now.skills.3">
-                  {(txt) => <li>{txt}</li>}
-                </FormattedMessage>
-              </ul>
-            </DoingNowItem>
-            <DoingNowItem>
-              <FormattedMessage id="about.me.what.now.projects">
-                {(txt) => <h4>{txt}</h4>}
+              <FormattedMessage id="about.me.copy.3">
+                {(txt) => <AboutCopy>{txt}</AboutCopy>}
               </FormattedMessage>
-              <ul>
-                <FormattedMessage id="about.me.what.now.projects.1">
-                  {(txt) => <li>{txt}</li>}
+            </HeaderInfoWrapper>
+            <HeaderImageWrapper s="5">
+              <ImageWrapper>
+                <FormattedMessage id="about.the.blog.image.title">
+                  {(txt) => <Img alt={txt} fluid={props.data.aboutImage.childImageSharp.fluid} />}
                 </FormattedMessage>
-              </ul>
-            </DoingNowItem>
-            <DoingNowItem>
-              <FormattedMessage id="about.me.what.now.books">
-                {(txt) => <h4>{txt}</h4>}
+              </ImageWrapper>
+              <ResumeWrapper>
+                <StyledSocialNav>
+                  <SocialNav />
+                </StyledSocialNav>
+                <FormattedMessage id="resume.button">
+                  {(txt) => (
+                    <ResumeButton
+                      href={locale === "en" ? enResume : esResume}
+                      alt="Open Dani Lucaci’s Resume"
+                      target="_blank"
+                    >
+                      {txt}
+                    </ResumeButton>
+                  )}
+                </FormattedMessage>
+              </ResumeWrapper>
+            </HeaderImageWrapper>
+          </Header>
+          <DoingNowRow spaced>
+            <GridCol>
+              <FormattedMessage id="about.me.what.now.title">
+                {(txt) => <h2>{txt}</h2>}
               </FormattedMessage>
-              <ul>
-                <FormattedMessage id="about.me.what.now.books.1">
-                  {(txt) => <li>{txt}</li>}
+            </GridCol>
+            <GridCol s="5">
+              <FormattedMessage id="about.me.what.now.copy.1">
+                {(txt) => <StyledCopy>{txt}</StyledCopy>}
+              </FormattedMessage>
+              <FormattedMessage id="about.me.what.now.copy.2">
+                {(txt) => <StyledCopy>{txt}</StyledCopy>}
+              </FormattedMessage>
+            </GridCol>
+            <GridCol s="7">
+              <DoingNowItem>
+                <FormattedMessage id="about.me.what.now.skills">
+                  {(txt) => <h4>{txt}</h4>}
                 </FormattedMessage>
-                <FormattedMessage id="about.me.what.now.books.2">
-                  {(txt) => <li>{txt}</li>}
+                <ul>
+                  <FormattedMessage id="about.me.what.now.skills.1">
+                    {(txt) => <li>{txt}</li>}
+                  </FormattedMessage>
+                  <FormattedMessage id="about.me.what.now.skills.2">
+                    {(txt) => <li>{txt}</li>}
+                  </FormattedMessage>
+                  <FormattedMessage id="about.me.what.now.skills.3">
+                    {(txt) => <li>{txt}</li>}
+                  </FormattedMessage>
+                </ul>
+              </DoingNowItem>
+              <DoingNowItem>
+                <FormattedMessage id="about.me.what.now.projects">
+                  {(txt) => <h4>{txt}</h4>}
                 </FormattedMessage>
-              </ul>
-            </DoingNowItem>
-          </GridCol>
-        </DoingNowRow>
-        <ContactCard locale={locale} />
-      </Main>
-      <SiteFooter locale={locale} />
-    </Layout>
+                <ul>
+                  <FormattedMessage id="about.me.what.now.projects.1">
+                    {(txt) => <li>{txt}</li>}
+                  </FormattedMessage>
+                </ul>
+              </DoingNowItem>
+              <DoingNowItem>
+                <FormattedMessage id="about.me.what.now.books">
+                  {(txt) => <h4>{txt}</h4>}
+                </FormattedMessage>
+                <ul>
+                  <FormattedMessage id="about.me.what.now.books.1">
+                    {(txt) => <li>{txt}</li>}
+                  </FormattedMessage>
+                  <FormattedMessage id="about.me.what.now.books.2">
+                    {(txt) => <li>{txt}</li>}
+                  </FormattedMessage>
+                </ul>
+              </DoingNowItem>
+            </GridCol>
+          </DoingNowRow>
+          <ContactCard locale={locale} />
+        </Main>
+        <SiteFooter locale={locale} />
+      </Layout>
+    </ErrorBoundary>
   );
 };
 

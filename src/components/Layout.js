@@ -4,7 +4,6 @@ import { ThemeProvider } from "styled-components";
 import Cookies from "js-cookie";
 import ReactGA from "react-ga";
 import Helmet from "react-helmet";
-import * as Sentry from "@sentry/browser";
 
 import { IntlProvider, addLocaleData } from "react-intl";
 // Locale data
@@ -20,6 +19,7 @@ import GlobalGrid from "../theme/globalGrid";
 import { SVGSprite } from "./SVGSprite/SVGSprite";
 import SkipToMainContent from "./SkipToMainContent/SkipToMainContent";
 import CookieConsent from "./CookieConsent/CookieConsent";
+import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 import { detectDataSaverMode, detectSlowConnectionType } from "../helpers/helpers";
 
 import intlMessages from "../i18n/i18n";
@@ -37,15 +37,6 @@ const GATSBY_DL_COOKIE_SECURE =
   NODE_ENV === "development" ? false : process.env.GATSBY_DL_COOKIE_SECURE;
 const GATSBY_DL_COOKIE_DOMAIN = process.env.GATSBY_DL_COOKIE_DOMAIN;
 const GATSBY_GA_ID = process.env.GATSBY_GA_ID;
-const GATSBY_SENTRY_URL = process.env.GATSBY_SENTRY_URL;
-
-// should have been called before using it here
-// ideally before even rendering your react app
-if (NODE_ENV !== "development") {
-  Sentry.init({
-    dsn: GATSBY_SENTRY_URL,
-  });
-}
 
 class Layout extends Component {
   state = {
@@ -54,7 +45,6 @@ class Layout extends Component {
     acceptsCookie: { necessary: true, analytics: true, dismissed: false },
     deniesCookie: { necessary: true, analytics: false, dismissed: true },
     cookieExp: 780,
-    error: null,
     isTransitioning: false,
   };
   // cookieExp set in days same as GA expiry date
@@ -64,21 +54,6 @@ class Layout extends Component {
     this.checkFontsLoaded();
     this.setInitialConsentCookie();
     this.checkGDPRStatus();
-  }
-
-  componentDidCatch(error, errorInfo) {
-    if (NODE_ENV !== "development") {
-      console.error("CDC: ", error);
-      console.error("CDC: ", errorInfo);
-
-      this.setState({ error });
-      Sentry.withScope((scope) => {
-        Object.keys(errorInfo).forEach((key) => {
-          scope.setExtra(key, errorInfo[key]);
-        });
-        Sentry.captureException(error);
-      });
-    }
   }
 
   setInitialConsentCookie = () => {
@@ -132,14 +107,18 @@ class Layout extends Component {
       MerriweatherBold.load(),
       MerriweatherRegular.load(),
       MerriweatherLight.load(),
-    ]).then(() => {
-      document.documentElement.className += " fonts-loaded";
-      // Optimization for Repeat Views
-      sessionStorage.fontsLoadedPolyfill = true;
-      if (NODE_ENV === "development") {
-        console.log("%c Fonts loaded.", "color: #79E36B");
-      }
-    });
+    ])
+      .then(() => {
+        document.documentElement.className += " fonts-loaded";
+        // Optimization for Repeat Views
+        sessionStorage.fontsLoadedPolyfill = true;
+        if (NODE_ENV === "development") {
+          console.log("%c Fonts loaded.", "color: #79E36B");
+        }
+      })
+      .catch((error) => {
+        throw new Error("Error loading the fonts: ", error.message);
+      });
   };
 
   checkFontsLoaded = () => {
@@ -375,34 +354,33 @@ class Layout extends Component {
     }
 
     return (
-      <ThemeProvider theme={theme}>
-        <IntlProvider
-          locale={this.props.locale}
-          defaultLocale="en"
-          messages={intlMessages[this.props.locale]}
-        >
-          <Page>
-            {GTMScript}
-            <SkipToMainContent />
-            <GlobalReset />
-            <GlobalAria />
-            <GlobalCSS />
-            <GlobalGrid />
-            <SVGSprite />
-            {this.state.error && (
-              <button onClick={() => Sentry.showReportDialog()}>Report feedback</button>
-            )}
-            {this.props.children}
-            <CookieConsent
-              askCookieConsent={this.state.askCookieConsent}
-              acceptsCookies={this.acceptsCookies}
-              deniesCookies={this.deniesCookies}
-              pageLocale={this.props.locale}
-              isTransitioning={this.state.isTransitioning}
-            />
-          </Page>
-        </IntlProvider>
-      </ThemeProvider>
+      <ErrorBoundary>
+        <ThemeProvider theme={theme}>
+          <IntlProvider
+            locale={this.props.locale}
+            defaultLocale="en"
+            messages={intlMessages[this.props.locale]}
+          >
+            <Page>
+              {GTMScript}
+              <SkipToMainContent />
+              <GlobalReset />
+              <GlobalAria />
+              <GlobalCSS />
+              <GlobalGrid />
+              <SVGSprite />
+              {this.props.children}
+              <CookieConsent
+                askCookieConsent={this.state.askCookieConsent}
+                acceptsCookies={this.acceptsCookies}
+                deniesCookies={this.deniesCookies}
+                pageLocale={this.props.locale}
+                isTransitioning={this.state.isTransitioning}
+              />
+            </Page>
+          </IntlProvider>
+        </ThemeProvider>
+      </ErrorBoundary>
     );
   }
 }

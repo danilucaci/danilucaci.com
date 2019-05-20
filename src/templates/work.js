@@ -11,6 +11,7 @@ import Pagination from "../components/Pagination/Pagination";
 import ContactCard from "../components/ContactCard/ContactCard";
 import DribbblePosts from "../components/DribbblePosts/DribbblePosts";
 import { localePaths } from "../i18n/i18n";
+import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 
 function WorkPage(props) {
   const {
@@ -38,36 +39,42 @@ function WorkPage(props) {
   }
 
   return (
-    <Layout location={props.location} locale={locale}>
-      <SEO
-        locale={locale}
-        twinPostURL={twinPostURL}
-        currentPage="work"
-        currentPath={props.location.pathname}
-        prevPath={prevPath}
-        nextPath={nextPath}
-      />
-      <SiteHeader locale={locale} twinPostURL={twinPostURL} currentPath={props.location.pathname} />
-      <Main role="main" id="main">
-        <CaseStudies edges={edgesWork} />
+    <ErrorBoundary>
+      <Layout location={props.location} locale={locale}>
+        <SEO
+          locale={locale}
+          twinPostURL={twinPostURL}
+          currentPage="work"
+          currentPath={props.location.pathname}
+          prevPath={prevPath}
+          nextPath={nextPath}
+        />
+        <SiteHeader
+          locale={locale}
+          twinPostURL={twinPostURL}
+          currentPath={props.location.pathname}
+        />
+        <Main role="main" id="main">
+          <CaseStudies edges={edgesWork} />
 
-        {totalPagesInWork > 1 && (
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPagesInWork}
-            paginationPathPrefix={paginationPathPrefix}
-            prevPath={prevPath}
-            nextPath={nextPath}
-            locale={locale}
-          />
-        )}
+          {totalPagesInWork > 1 && (
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPagesInWork}
+              paginationPathPrefix={paginationPathPrefix}
+              prevPath={prevPath}
+              nextPath={nextPath}
+              locale={locale}
+            />
+          )}
 
-        <DribbblePosts locale={locale} />
+          <DribbblePosts locale={locale} />
 
-        <ContactCard locale={locale} />
-      </Main>
-      <SiteFooter locale={locale} />
-    </Layout>
+          <ContactCard locale={locale} />
+        </Main>
+        <SiteFooter locale={locale} />
+      </Layout>
+    </ErrorBoundary>
   );
 }
 

@@ -10,6 +10,7 @@ import SiteFooter from "../components/SiteFooter/SiteFooter";
 import { HR } from "../components/HR/HR";
 import ContactForm from "../components/ContactForm/ContactForm";
 import SocialNav from "../components/SocialNav/SocialNav";
+import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 import { localePaths } from "../i18n/i18n";
 
 import { Copy } from "../components/Copy/Copy";
@@ -38,69 +39,75 @@ const ContactPage = (props) => {
   }
 
   return (
-    <Layout location={props.location} locale={locale}>
-      <SEO
-        locale={locale}
-        twinPostURL={twinPostURL}
-        currentPage="contact"
-        currentPath={props.location.pathname}
-      />
-      <SiteHeader locale={locale} twinPostURL={twinPostURL} currentPath={props.location.pathname} />
-      <Main role="main" id="main">
-        <ContactMeWrapper>
-          <FormattedMessage id="contact.page.title">
-            {(txt) => <StyledH1>{txt}</StyledH1>}
-          </FormattedMessage>
-          <ContactMeHeader>
-            <FormattedMessage id="contact.page.subhead">
-              {(txt) => <Subhead>{txt}</Subhead>}
+    <ErrorBoundary>
+      <Layout location={props.location} locale={locale}>
+        <SEO
+          locale={locale}
+          twinPostURL={twinPostURL}
+          currentPage="contact"
+          currentPath={props.location.pathname}
+        />
+        <SiteHeader
+          locale={locale}
+          twinPostURL={twinPostURL}
+          currentPath={props.location.pathname}
+        />
+        <Main role="main" id="main">
+          <ContactMeWrapper>
+            <FormattedMessage id="contact.page.title">
+              {(txt) => <StyledH1>{txt}</StyledH1>}
             </FormattedMessage>
-            <FormattedMessage id="contact.page.work.info">
-              {(txt) => (
-                <Copy>
-                  {txt}{" "}
-                  <StyledLink href={`mailto:${localePaths[locale].email}`}>
-                    {localePaths[locale].email}
-                  </StyledLink>
-                </Copy>
-              )}
-            </FormattedMessage>
-          </ContactMeHeader>
-          <ContactFormWrapper>
-            <TopHR />
-            <ContactForm locale={locale} />
-          </ContactFormWrapper>
-          <SayHiWrapper>
-            <HR />
-            <FormattedMessage id="contact.page.other.title">
-              {(txt) => <SayHiTitle>{txt}</SayHiTitle>}
-            </FormattedMessage>
-            <FormattedMessage id="contact.page.other.description">
-              {(txt) => (
-                <SayHiDescription>
-                  {txt}
-                  <FormattedMessage id="contact.page.other.description.link">
-                    {(txt2) => (
-                      <StyledLink
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href="https://twitter.com/danilucaci"
-                      >
-                        {txt2}
-                      </StyledLink>
-                    )}
-                  </FormattedMessage>
-                </SayHiDescription>
-              )}
-            </FormattedMessage>
-            <SocialNavWrapper>
-              <SocialNav />
-            </SocialNavWrapper>
-          </SayHiWrapper>
-        </ContactMeWrapper>
-      </Main>
-      <SiteFooter locale={locale} />
-    </Layout>
+            <ContactMeHeader>
+              <FormattedMessage id="contact.page.subhead">
+                {(txt) => <Subhead>{txt}</Subhead>}
+              </FormattedMessage>
+              <FormattedMessage id="contact.page.work.info">
+                {(txt) => (
+                  <Copy>
+                    {txt}{" "}
+                    <StyledLink href={`mailto:${localePaths[locale].email}`}>
+                      {localePaths[locale].email}
+                    </StyledLink>
+                  </Copy>
+                )}
+              </FormattedMessage>
+            </ContactMeHeader>
+            <ContactFormWrapper>
+              <TopHR />
+              <ContactForm locale={locale} />
+            </ContactFormWrapper>
+            <SayHiWrapper>
+              <HR />
+              <FormattedMessage id="contact.page.other.title">
+                {(txt) => <SayHiTitle>{txt}</SayHiTitle>}
+              </FormattedMessage>
+              <FormattedMessage id="contact.page.other.description">
+                {(txt) => (
+                  <SayHiDescription>
+                    {txt}
+                    <FormattedMessage id="contact.page.other.description.link">
+                      {(txt2) => (
+                        <StyledLink
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://twitter.com/danilucaci"
+                        >
+                          {txt2}
+                        </StyledLink>
+                      )}
+                    </FormattedMessage>
+                  </SayHiDescription>
+                )}
+              </FormattedMessage>
+              <SocialNavWrapper>
+                <SocialNav />
+              </SocialNavWrapper>
+            </SayHiWrapper>
+          </ContactMeWrapper>
+        </Main>
+        <SiteFooter locale={locale} />
+      </Layout>
+    </ErrorBoundary>
   );
 };
 

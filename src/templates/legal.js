@@ -13,6 +13,7 @@ import SiteFooter from "../components/SiteFooter/SiteFooter";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import { calculateScroll, textPassiveEventSupport } from "../helpers/helpers";
 import { GridCol } from "../components/Grid/Grid";
+import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 
 import { PageWrapper, PostH1, PostWrapper, Time } from "../styles/legal.styles";
 
@@ -62,47 +63,49 @@ class LegalDoc extends Component {
     }
 
     return (
-      <Layout location={this.props.location} locale={locale}>
-        <SEO
-          locale={locale}
-          twinPostURL={twinPostURL}
-          postNode={postNode}
-          legalDocs
-          currentPath={this.props.location.pathname}
-        />
-        <SiteHeader
-          showScrollIndicator
-          locale={locale}
-          twinPostURL={twinPostURL}
-          currentPath={this.props.location.pathname}
-        />
-        <Main role="main" id="main">
-          <PageWrapper>
-            <GridCol>
-              <PostH1>{postInfo.title}</PostH1>
-              <FormattedMessage id="legal.updated">
-                {(txt) => (
-                  <Copy>
-                    {txt}&nbsp;
-                    <FormattedDate value={lastUpdated} year="numeric" month="long" day="numeric">
-                      {(txt2) => (
-                        <Time as="time" dateTime={txt2}>
-                          {txt2}
-                        </Time>
-                      )}
-                    </FormattedDate>
-                  </Copy>
-                )}
-              </FormattedMessage>
-              <PostWrapper>
-                <MDXRenderer>{postNode.code.body}</MDXRenderer>
-              </PostWrapper>
-            </GridCol>
-          </PageWrapper>
-        </Main>
-        <ScrollToTop />
-        <SiteFooter locale={locale} />
-      </Layout>
+      <ErrorBoundary>
+        <Layout location={this.props.location} locale={locale}>
+          <SEO
+            locale={locale}
+            twinPostURL={twinPostURL}
+            postNode={postNode}
+            legalDocs
+            currentPath={this.props.location.pathname}
+          />
+          <SiteHeader
+            showScrollIndicator
+            locale={locale}
+            twinPostURL={twinPostURL}
+            currentPath={this.props.location.pathname}
+          />
+          <Main role="main" id="main">
+            <PageWrapper>
+              <GridCol>
+                <PostH1>{postInfo.title}</PostH1>
+                <FormattedMessage id="legal.updated">
+                  {(txt) => (
+                    <Copy>
+                      {txt}&nbsp;
+                      <FormattedDate value={lastUpdated} year="numeric" month="long" day="numeric">
+                        {(txt2) => (
+                          <Time as="time" dateTime={txt2}>
+                            {txt2}
+                          </Time>
+                        )}
+                      </FormattedDate>
+                    </Copy>
+                  )}
+                </FormattedMessage>
+                <PostWrapper>
+                  <MDXRenderer>{postNode.code.body}</MDXRenderer>
+                </PostWrapper>
+              </GridCol>
+            </PageWrapper>
+          </Main>
+          <ScrollToTop />
+          <SiteFooter locale={locale} />
+        </Layout>
+      </ErrorBoundary>
     );
   }
 }

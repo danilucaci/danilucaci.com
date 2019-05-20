@@ -9,6 +9,7 @@ import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
 import LocaleLink from "../components/LocaleLink/LocaleLink";
 import { localePaths } from "../i18n/i18n";
+import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 
 import {
   StyledThanksPage,
@@ -32,57 +33,63 @@ const ThanksPage = (props) => {
   }
 
   return (
-    <Layout location={props.location} locale={locale}>
-      <SEO
-        locale={locale}
-        twinPostURL={twinPostURL}
-        currentPage="thanks"
-        currentPath={props.location.pathname}
-      />
-      <SiteHeader twinPostURL={twinPostURL} locale={locale} currentPath={props.location.pathname} />
-      <Main role="main" id="main">
-        <StyledThanksPage padded>
-          <GridCol>
-            <FormattedMessage id="thanks.title">
-              {(txt) => <StyledH1>{txt}</StyledH1>}
-            </FormattedMessage>
-            <FormattedMessage id="thanks.subtitle">
-              {(txt) => <Subhead>{txt}</Subhead>}
-            </FormattedMessage>
-            <StyledHR />
-            <FormattedMessage id="thanks.copy">
-              {(txt) => <ThanksCopy>{txt}</ThanksCopy>}
-            </FormattedMessage>
+    <ErrorBoundary>
+      <Layout location={props.location} locale={locale}>
+        <SEO
+          locale={locale}
+          twinPostURL={twinPostURL}
+          currentPage="thanks"
+          currentPath={props.location.pathname}
+        />
+        <SiteHeader
+          twinPostURL={twinPostURL}
+          locale={locale}
+          currentPath={props.location.pathname}
+        />
+        <Main role="main" id="main">
+          <StyledThanksPage padded>
+            <GridCol>
+              <FormattedMessage id="thanks.title">
+                {(txt) => <StyledH1>{txt}</StyledH1>}
+              </FormattedMessage>
+              <FormattedMessage id="thanks.subtitle">
+                {(txt) => <Subhead>{txt}</Subhead>}
+              </FormattedMessage>
+              <StyledHR />
+              <FormattedMessage id="thanks.copy">
+                {(txt) => <ThanksCopy>{txt}</ThanksCopy>}
+              </FormattedMessage>
 
-            <FormattedMessage id="thanks.subcopy.1">
-              {(txt) => (
-                <ThanksCopy>
-                  {txt}{" "}
-                  <a href={`mailto:${localePaths[locale].email}`}>{localePaths[locale].email}</a>
-                  <FormattedMessage id="thanks.subcopy.2">
-                    {(txt2) => <React.Fragment> {txt2}</React.Fragment>}
-                  </FormattedMessage>
-                  <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://twitter.com/danilucaci"
-                  >
-                    @danilucaci
-                  </a>
-                </ThanksCopy>
-              )}
-            </FormattedMessage>
-            <FormattedMessage id="thanks.subcopy.3">
-              {(txt) => <ThanksAgainCopy> {txt}</ThanksAgainCopy>}
-            </FormattedMessage>
-            <FormattedMessage id="thanks.go.home">
-              {(txt) => <LocaleLink to="/">{txt}</LocaleLink>}
-            </FormattedMessage>
-          </GridCol>
-        </StyledThanksPage>
-      </Main>
-      <SiteFooter locale={locale} />
-    </Layout>
+              <FormattedMessage id="thanks.subcopy.1">
+                {(txt) => (
+                  <ThanksCopy>
+                    {txt}{" "}
+                    <a href={`mailto:${localePaths[locale].email}`}>{localePaths[locale].email}</a>
+                    <FormattedMessage id="thanks.subcopy.2">
+                      {(txt2) => <React.Fragment> {txt2}</React.Fragment>}
+                    </FormattedMessage>
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="https://twitter.com/danilucaci"
+                    >
+                      @danilucaci
+                    </a>
+                  </ThanksCopy>
+                )}
+              </FormattedMessage>
+              <FormattedMessage id="thanks.subcopy.3">
+                {(txt) => <ThanksAgainCopy> {txt}</ThanksAgainCopy>}
+              </FormattedMessage>
+              <FormattedMessage id="thanks.go.home">
+                {(txt) => <LocaleLink to="/">{txt}</LocaleLink>}
+              </FormattedMessage>
+            </GridCol>
+          </StyledThanksPage>
+        </Main>
+        <SiteFooter locale={locale} />
+      </Layout>
+    </ErrorBoundary>
   );
 };
 
