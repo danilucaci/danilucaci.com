@@ -742,5 +742,15 @@ Las preguntas que quería responder con las entrevistas fueron:
 
 ## Conclusión
 
+En general, este fue un gran proyecto personal para mí. Aprendí lo importante que es enfocar cada decisión de diseño en el resultado que las personas intentan lograr en lugar de obligarlas a darse de alta para crear una cuenta. Al incluir a los usuarios en el proceso de diseño desde el principio, podemos crear mejores productos que las personas querrán usar más.
+
+A pesar de que este proyecto comenzó con una suposición inicial personal, al validarla con pruebas de usuarios reales, supe que podría ayudarles si creaba una mejor experiencia.
+
+Además, la investigación inicial también me ayudó a conocer los problemas tenían las personas con el diseño actual. De esta manera, pude entender mejor en qué tenía que trabajar primero y qué funcionalidades debería diseñar para tratar de resolverlas.
+
+Este proyecto también fue divertido para mi ya que aprendí mucho sobre los pequeños detalles involucrados en el diseño de una experiencia de búsqueda de productos y la de un proceso de pago. Pero, lamentablemente los cines de mi ciudad seguirán teniendo la misma experiencia de usuario en sus aplicaciones y sitios web.
+
+Espero que hayas disfrutado leyendo este estudio de caso, y si tienes alguna pregunta al respecto, no dudes en ponerte en contacto conmigo.
+
 </div>
 </div>

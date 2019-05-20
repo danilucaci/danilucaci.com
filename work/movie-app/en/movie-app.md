@@ -733,11 +733,21 @@ The questions I wanted to answer with the interviews were:
 ### The results:
 
 - 4 out of 5 users signed up for the membership plan
-- 5 out 5 users used the search bar and filters to help them find a movie
-- 5 out of 5 users said that it’s much easier to learn all they need about a movie inside the app
+- 5 out 5 users used the search bar and filters to search for a movie
+- 5 out of 5 users said that it’s much easier to learn more about a movie without having to leave the app
 - 4 out of 5 users used the guest checkout flow and 3 of them signed up at the end
 
 ## Conclusion
+
+Overall, this was a great personal project for me. I learned how important it is to focus every design decision on the outcome people are trying to achieve rather than forcing them to sign up for an account. By including users in the design process early on, we can create better products that people will be more likely to use.
+
+Even though this project started out with an initial assumption, by validating it with real users I knew that I could help them if I created a better experience.
+
+Furthermore, the initial research also helped me learn which pain points people were having so that I could have a better understanding of what I needed to work on and which features I should design to try to solve them.
+
+I had a lot of fun working on this project as I learned about the small details involved in designing a searching experience and a checkout flow, but sadly my local cinemas will continue to have the same user experience on their apps and websites.
+
+I hope you enjoyed reading this case study, and if you have any questions about it feel free to get in touch.
 
 </div>
 </div>
