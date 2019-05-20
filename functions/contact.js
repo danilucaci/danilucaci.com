@@ -4,8 +4,8 @@ const ow = require("ow");
 const differenceInHours = require("date-fns/difference_in_hours");
 const format = require("date-fns/format");
 const esLocale = require("date-fns/locale/es");
-const { notifyContact } = require("../src/mail/notify");
-const { notifyContactText } = require("../src/mail/notifyText");
+const { notifyContact } = require("./mail/notify");
+const { notifyContactText } = require("./mail/notifyText");
 
 // if (process.env.NODE_ENV === "development") {
 require("dotenv").config({
