@@ -13,6 +13,8 @@ import MCSuccessMessage from "../MCSuccessMessage/MCSuccessMessage";
 import MCErrorMessage from "../MCErrorMessage/MCErrorMessage";
 import { InlineStatusMessageWrapper, InlineMessageCopy } from "../EmailErrorMessage/styles";
 
+import sendGAEvent from "../../helpers/sendGAEvent";
+
 import {
   SubscribeCardWrapper,
   SubscribeCardInner,
@@ -56,6 +58,7 @@ function SubscribeCard({ locale }) {
   function handleFormSent(result, msg) {
     if (result.includes("success")) {
       handleMCSuccess();
+      sendGAEvent("Subscribers", "New Subscriber");
     } else if (result.includes("error") && msg.includes("is already subscribed to")) {
       setShowMCError(true);
       setShowMCLoading(false);
