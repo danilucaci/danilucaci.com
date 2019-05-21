@@ -70,12 +70,9 @@ const Index = (props) => {
 
                 <ServicesEntry>
                   <ServiceImage>
-                    <img
-                      src={illustrationUX}
-                      alt="Illustration of a service offered by Dani lucaci."
-                      width="8.25rem"
-                      height="8.25rem"
-                    />
+                    <FormattedMessage id="index.services.1.svg.alt">
+                      {(txt) => <img src={illustrationUX} alt={txt} />}
+                    </FormattedMessage>
                   </ServiceImage>
                   <ServiceContent>
                     <FormattedMessage id="index.services.1.title">
@@ -98,12 +95,9 @@ const Index = (props) => {
 
                 <ServicesEntry>
                   <ServiceImage>
-                    <img
-                      src={illustrationUI}
-                      alt="Illustration of a service offered by Dani lucaci."
-                      width="8.25rem"
-                      height="8.25rem"
-                    />
+                    <FormattedMessage id="index.services.2.svg.alt">
+                      {(txt) => <img src={illustrationUI} alt={txt} />}
+                    </FormattedMessage>
                   </ServiceImage>
                   <ServiceContent>
                     <FormattedMessage id="index.services.2.title">
@@ -124,12 +118,9 @@ const Index = (props) => {
 
                 <ServicesEntry>
                   <ServiceImage>
-                    <img
-                      src={illustrationInteraction}
-                      alt="Illustration of a service offered by Dani lucaci."
-                      width="8.25rem"
-                      height="8.25rem"
-                    />
+                    <FormattedMessage id="index.services.3.svg.alt">
+                      {(txt) => <img src={illustrationInteraction} alt={txt} />}
+                    </FormattedMessage>
                   </ServiceImage>
                   <ServiceContent>
                     <FormattedMessage id="index.services.3.title">
@@ -148,12 +139,9 @@ const Index = (props) => {
 
                 <ServicesEntry>
                   <ServiceImage>
-                    <img
-                      src={illustrationCode}
-                      alt="Illustration of a service offered by Dani lucaci."
-                      width="8.25rem"
-                      height="8.25rem"
-                    />
+                    <FormattedMessage id="index.services.4.svg.alt">
+                      {(txt) => <img src={illustrationCode} alt={txt} />}
+                    </FormattedMessage>
                   </ServiceImage>
                   <ServiceContent>
                     <FormattedMessage id="index.services.4.title">
