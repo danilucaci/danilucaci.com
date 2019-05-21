@@ -9,9 +9,12 @@ function sendGAEvent(category, action, label, value) {
     console.log({ label });
     console.log({ value });
   }
+
+  const globalWindow = typeof window !== "undefined";
+
   // Only send if it’s initialized
   try {
-    if (window._DL_GA_INITIALIZED) {
+    if (!globalWindow._DL_GA_INITIALIZED) {
       ReactGA.event({
         category,
         action,
