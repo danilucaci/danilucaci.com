@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
 
+import sendGAEvent from "../../helpers/sendGAEvent";
+
 import {
   ContactCardWrapper,
   ContactCardInner,
@@ -33,7 +35,11 @@ function ContactCard(props) {
 
         <FormattedMessage id="contact.card.cta">
           {(txt) => (
-            <StyledContactButton role="button" to={twinPostURL}>
+            <StyledContactButton
+              role="button"
+              to={twinPostURL}
+              onClick={sendGAEvent("Contact Card", "Clicked CTA")}
+            >
               {txt}
             </StyledContactButton>
           )}

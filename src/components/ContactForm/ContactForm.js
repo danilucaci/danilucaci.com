@@ -5,6 +5,8 @@ import * as Yup from "yup";
 import { navigate } from "gatsby";
 import * as Sentry from "@sentry/browser";
 
+import sendGAEvent from "../../helpers/sendGAEvent";
+
 import { CONSENT_VALUE, FORM_SUBMIT_STATUS, localePaths } from "../../i18n/i18n";
 import PrivacyCheckbox from "../PrivacyCheckbox/PrivacyCheckbox";
 import { StyledErrorCTA, StyledIcon } from "../EmailLoading/styles";
@@ -93,6 +95,7 @@ function ContactForm({ locale }) {
           }
           // showFormInputs(values);
           setSubmitting(false);
+          sendGAEvent("Contact Form", "Submitted Form");
           navigate(localePaths[locale].thanks);
         }
         if (res.status === 400) {
