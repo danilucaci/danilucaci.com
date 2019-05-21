@@ -21,12 +21,6 @@ export const SocialShareButton = styled.a`
     background-color: transparent;
   }
 
-  &:focus,
-  &:active {
-    box-shadow: none;
-    outline: 2px solid ${theme.colors.dark800};
-  }
-
   & svg {
     vertical-align: middle;
   }
@@ -43,13 +37,6 @@ export const StyledCopyButton = styled.button`
     & span {
       display: block;
     }
-  }
-
-  &:focus,
-  &:active {
-    outline: none;
-    box-shadow: 0 0px 2px 4px rgba(0, 0, 0, 0.2), 0 1px 2px 0px rgba(0, 0, 0, 0.1);
-    outline: 2px solid ${theme.colors.dark800};
   }
 `;
 

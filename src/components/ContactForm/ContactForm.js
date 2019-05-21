@@ -29,6 +29,7 @@ function ContactForm({ locale }) {
   const [showSpinner, setShowSpinner] = useState(false);
   const [showFormError, setShowFormError] = useState(false);
   const [formErrorRes, setFormErrorRes] = useState({});
+  const logGAEvent = sendGAEvent("Contact Form", "Submitted Form");
 
   // function showFormInputs({
   //   fullname, email, message, acceptsconsentcheckbox, botfield,
@@ -95,21 +96,20 @@ function ContactForm({ locale }) {
           }
           // showFormInputs(values);
           setSubmitting(false);
-          sendGAEvent("Contact Form", "Submitted Form");
+
+          logGAEvent();
           navigate(localePaths[locale].thanks);
-        }
-        if (res.status === 400) {
+        } else if (res.status === 400) {
           handleFormError(new Error(`Contact Form Error. No data was sent to the server. Received code: ${res.status}`));
-        }
-        if (res.status === 403) {
+        } else if (res.status === 403) {
           handleFormError(new Error(`Contact Form Error. The form request is not allowed. Received code: ${res.status}`));
-        }
-        if (res.status === 451) {
+        } else if (res.status === 451) {
           handleFormError(new Error(`Contact Form Error. The form could not be sent for legal reasons. Received code: ${
             res.status
           }`));
-        }
-        if (res.status === 500) {
+        } else if (res.status === 504) {
+          handleFormError(new Error(`Contact Form Error. The server did not respond. Received code: ${res.status}`));
+        } else {
           handleFormError(new Error(`Contact Form Error. The form could not be sent. Received code: ${res.status}`));
         }
       });

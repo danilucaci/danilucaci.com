@@ -37,6 +37,7 @@ function SubscribeCard({ locale }) {
   const [MCError, setMCError] = useState("");
   const [MCAPIErrorMSG, setMCAPIErrorMSG] = useState("");
   const [showMCSuccess, setShowMCSuccess] = useState(false);
+  const logGAEvent = sendGAEvent("Subscribers", "New Subscriber");
 
   async function handleMCSubmit({ email, acceptsconsentcheckbox }) {
     setShowMCLoading(true);
@@ -58,30 +59,30 @@ function SubscribeCard({ locale }) {
   function handleFormSent(result, msg) {
     if (result.includes("success")) {
       handleMCSuccess();
-      sendGAEvent("Subscribers", "New Subscriber");
     } else if (result.includes("error") && msg.includes("is already subscribed to")) {
       setShowMCError(true);
       setShowMCLoading(false);
       setMCError("already");
       Sentry.captureException(new Error(msg));
-      // throw new Error(msg);
     } else if (result.includes("error") && msg.includes("many")) {
       setShowMCError(true);
       setShowMCLoading(false);
       setMCError("many");
-      // throw new Error(msg);
+
       Sentry.captureException(new Error(msg));
     } else if (result.includes("error")) {
       setShowMCError(true);
       setShowMCLoading(false);
       setMCError("generic");
       setMCAPIErrorMSG(msg);
-      // throw new Error(msg);
+
       Sentry.captureException(new Error(msg));
     }
   }
 
   function handleMCSuccess() {
+    logGAEvent();
+
     setShowMCLoading(false);
     setShowMCSuccess(true);
   }
@@ -91,7 +92,6 @@ function SubscribeCard({ locale }) {
     setShowMCError(true);
     setMCError("generic");
     Sentry.captureException(error);
-    // throw new Error(error);
   }
 
   const MCSchema = Yup.object().shape({
@@ -124,10 +124,8 @@ function SubscribeCard({ locale }) {
             }}
             validationSchema={MCSchema}
             onSubmit={(values, { setSubmitting }) => {
-              // setTimeout(() => {
               handleMCSubmit(values);
               setSubmitting(false);
-              // }, 400);
             }}
           >
             {({ isValid }) => (

@@ -21,6 +21,14 @@ export const MessageSubtitle = styled(Copy)`
   line-height: ${theme.lineHeights.s};
 `;
 
+export const MessageError = styled(Copy)`
+  color: ${theme.colors.dark800};
+  display: block;
+  font-size: ${theme.fontSizes.s};
+  line-height: ${theme.lineHeights.s};
+  margin-top: ${rem(12)};
+`;
+
 export const StatusMessageWrapper = styled.div`
   border: ${rem(2)} solid ${theme.colors.dark900};
   border-radius: ${theme.borderRadius.buttons};

@@ -4,6 +4,8 @@ import urljoin from "url-join";
 
 import config from "../../../data/SiteConfig";
 
+import sendGAEvent from "../../helpers/sendGAEvent";
+
 import {
   SocialShareWrapper,
   SocialShareButton,
@@ -25,6 +27,7 @@ const SocialShare = (props) => {
           props.title
         }&summary=${props.snippet}`}
         aria-label="Share on Linkedin"
+        onClick={sendGAEvent("Shared Article", "On Linkedin")}
       >
         <StyledIcon aria-hidden="true">
           <use xlinkHref="#linkedin" />
@@ -36,6 +39,7 @@ const SocialShare = (props) => {
         rel="noopener noreferrer"
         href={`https://twitter.com/intent/tweet?text=${props.title}&url=${url}`}
         aria-label="Share on Twitter"
+        onClick={sendGAEvent("Shared Article", "On Twitter")}
       >
         <StyledIcon aria-hidden="true">
           <use xlinkHref="#twitter" />
