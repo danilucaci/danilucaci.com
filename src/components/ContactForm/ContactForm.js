@@ -29,7 +29,7 @@ function ContactForm({ locale }) {
   const [showSpinner, setShowSpinner] = useState(false);
   const [showFormError, setShowFormError] = useState(false);
   const [formErrorRes, setFormErrorRes] = useState({});
-  const logGAEvent = sendGAEvent("Contact Form", "Submitted Form");
+  const logGAEvent = sendGAEvent("Contact Page", "Submitted Form");
 
   // function showFormInputs({
   //   fullname, email, message, acceptsconsentcheckbox, botfield,
