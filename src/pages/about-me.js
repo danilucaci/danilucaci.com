@@ -11,8 +11,8 @@ import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
 import SocialNav from "../components/SocialNav/SocialNav";
 import ContactCard from "../components/ContactCard/ContactCard";
-import enResume from "../../src/resume/marian_daniel_lucaci_resume.pdf";
-import esResume from "../../src/resume/marian_daniel_lucaci_curriculum.pdf";
+// import enResume from "../../src/resume/marian_daniel_lucaci_resume.pdf";
+// import esResume from "../../src/resume/marian_daniel_lucaci_curriculum.pdf";
 import { GridCol } from "../../src/components/Grid/Grid";
 import ErrorBoundary from "../../src/components/ErrorBoundary/ErrorBoundary";
 
@@ -20,10 +20,9 @@ import { localePaths } from "../i18n/i18n";
 
 import {
   Header,
-  Row,
   ResumeWrapper,
   StyledSocialNav,
-  ResumeButton,
+  // ResumeButton,
   HeaderImageWrapper,
   ImageWrapper,
   HeaderInfoWrapper,
@@ -81,20 +80,7 @@ const AboutPage = (props) => {
                 </FormattedMessage>
               </ImageWrapper>
               <ResumeWrapper>
-                <StyledSocialNav>
                   <SocialNav />
-                </StyledSocialNav>
-                <FormattedMessage id="resume.button">
-                  {(txt) => (
-                    <ResumeButton
-                      href={locale === "en" ? enResume : esResume}
-                      alt="Open Dani Lucaci’s Resume"
-                      target="_blank"
-                    >
-                      {txt}
-                    </ResumeButton>
-                  )}
-                </FormattedMessage>
               </ResumeWrapper>
             </HeaderImageWrapper>
           </Header>

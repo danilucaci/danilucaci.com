@@ -181,9 +181,9 @@ export const ResumeButton = styled.a`
 `;
 
 export const StyledSocialNav = styled.div`
-  margin-top: ${rem(2)};
-  margin-right: ${rem(16)};
-  float: left;
+  /* margin-top: ${rem(2)}; */
+  /* margin-right: ${rem(16)}; */
+  /* float: left; */
 `;
 
 export const DoingNowRow = styled(GridRow)`
