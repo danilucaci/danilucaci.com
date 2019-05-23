@@ -43,9 +43,8 @@ export const StyledVideo = styled.video`
   left: 0px;
   opacity: 1;
 
-  ${({ hide }) => hide && "opacity: 0;"}
+  ${({ hasLoaded }) => hasLoaded && "opacity: 0;"}
 
-  opacity: 0;
   transition: opacity 600ms ease 0s;
 
   ${({ inView }) =>

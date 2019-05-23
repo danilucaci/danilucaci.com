@@ -17,6 +17,12 @@ function Video(props) {
     triggerOnce: true,
   });
 
+  const [hasLoaded, setHasLoaded] = React.useState(false);
+
+  React.useEffect(() => {
+    setHasLoaded(true);
+  }, [hasLoaded]);
+
   const { videos } = useStaticQuery(ALL_VIDEOS_QUERY);
   if (!videos) {
     throw new Error("Video not found");
@@ -47,7 +53,7 @@ function Video(props) {
             controls
             poster={foundPosterSrc.node.publicURL || ""}
             inView={inView}
-            hide
+            hasLoaded={hasLoaded}
           >
             {inView && (
               <React.Fragment>
