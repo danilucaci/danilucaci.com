@@ -14,7 +14,7 @@ const Image = ({ src, caption, expand }) => {
 
   return (
     <Figure expand={expand}>
-      <Img fluid={foundImage.node.childImageSharp.fluid} alt={caption} />
+      <Img fluid={foundImage.node.childImageSharp.fluid} alt={caption} fadeIn />
       <FigCaption>{caption}</FigCaption>
     </Figure>
   );
