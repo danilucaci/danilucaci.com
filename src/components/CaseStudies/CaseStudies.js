@@ -13,7 +13,7 @@ const CaseStudies = (props) => {
     title: edge.node.frontmatter.title,
     date: edge.node.frontmatter.date,
     snippet: edge.node.frontmatter.snippet,
-    image: edge.node.frontmatter.image.childImageSharp.fluid,
+    cardimage: edge.node.frontmatter.cardimage.childImageSharp.fluid,
   }));
 
   return (
@@ -38,7 +38,7 @@ const CaseStudies = (props) => {
             title={caseStudyCard.title}
             date={caseStudyCard.date}
             snippet={caseStudyCard.snippet}
-            image={caseStudyCard.image}
+            cardimage={caseStudyCard.cardimage}
           />
         ))}
       </GridCol>

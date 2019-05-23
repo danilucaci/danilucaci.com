@@ -19,7 +19,8 @@ tags:
   - IxD
   - Personal Project
 posted: true
-image: "./ux_case_study_movie_app_presentation@2x.png"
+image: "./ux_case_study_movie_app_presentation_w_bg.png"
+cardimage: "./ux_case_study_movie_app_presentation_no_bg.png"
 locale: "en"
 twinPost: "Aplicación compra entradas Cine"
 ---

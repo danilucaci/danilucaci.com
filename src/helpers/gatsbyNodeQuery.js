@@ -80,9 +80,23 @@ const gatsbyNodeQuery = (locale) =>
           locale
           image {
             childImageSharp {
-              fluid(maxWidth: 1128) {
+              fluid(maxWidth: 744) {
                 src
                 srcSet
+                srcWebp
+                srcSetWebp
+                aspectRatio
+                sizes
+              }
+            }
+          }
+          cardimage {
+            childImageSharp {
+              fluid(maxWidth: 672) {
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
                 aspectRatio
                 sizes
               }

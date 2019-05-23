@@ -24,7 +24,7 @@ function CaseStudyCard(props) {
         <Img
           title={props.title}
           alt={props.snippet}
-          fluid={props.image}
+          fluid={props.cardimage}
           fadeIn
           onLoad={() => setDidLoad(true)}
         />
@@ -50,7 +50,7 @@ CaseStudyCard.propTypes = {
   slug: string.isRequired,
   snippet: string.isRequired,
   tagsInCaseStudy: arrayOf(string).isRequired,
-  image: shape({
+  cardimage: shape({
     aspectRatio: number.isRequired,
     sizes: string.isRequired,
     src: string.isRequired,
