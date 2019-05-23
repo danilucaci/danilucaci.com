@@ -29,6 +29,10 @@ import {
 } from "../styles/caseStudy.styles";
 
 class CaseStudy extends Component {
+  state = {
+    didLoad: false,
+  };
+
   componentDidMount() {
     // Test via a getter in the options object to see if the passive property is accessed
     // https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#feature-detection
@@ -124,14 +128,17 @@ class CaseStudy extends Component {
                 <PostH1>{postInfo.title}</PostH1>
                 <CaseStudyDescription>{postInfo.snippet}</CaseStudyDescription>
               </StyledHeader>
-              <CaseStudyImgWrapper>
+              <CaseStudyImgWrapper didLoad={this.state.didLoad}>
                 <Img
                   title={postInfo.title}
                   alt={postInfo.snippet}
                   fluid={image}
-                  // fadeIn={true}
-                  // add gatsby-image props here
-                  // https://www.gatsbyjs.org/packages/gatsby-image/
+                  fadeIn
+                  onLoad={() =>
+                    this.setState({
+                      didLoad: true,
+                    })
+                  }
                 />
               </CaseStudyImgWrapper>
               <PostContent>
@@ -206,8 +213,8 @@ export const pageQuery = graphql`
         # }
         image {
           childImageSharp {
-            fluid(maxWidth: 1128, quality: 100) {
-              ...GatsbyImageSharpFluid_noBase64
+            fluid(maxWidth: 720, quality: 50) {
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }

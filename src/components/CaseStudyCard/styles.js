@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Link } from "gatsby";
 
 import { theme, mediaMin, rem } from "../../theme/globalStyles";
@@ -25,9 +25,44 @@ export const StyledCaseStudyCard = styled.article`
   }
 `;
 
+export const placeholderAnimation = keyframes`
+0% {
+  background-position: 0% 50%;
+ }
+ 50% {
+  background-position: 100% 50%;
+ }
+ 100% {
+  background-position: 0% 50%;
+ }
+ `;
+
 export const CaseStudyImgWrapper = styled.div`
   padding-top: ${rem(16)};
   padding-bottom: ${rem(16)};
+
+  .gatsby-image-wrapper {
+    background-color: ${theme.colors.grey300};
+    background: linear-gradient(
+      90deg,
+      ${theme.colors.grey200},
+      ${theme.colors.grey500},
+      ${theme.colors.grey200}
+    );
+
+    background-size: 200% 200%;
+
+    animation: ${placeholderAnimation} 3s ease infinite;
+  }
+
+  ${({ didLoad }) =>
+    didLoad &&
+    `
+    .gatsby-image-wrapper {
+      background: transparent;
+      animation: none;
+    }
+ `}
 
   ${mediaMin.m`
     padding: ${rem(16)} ${rem(32)};

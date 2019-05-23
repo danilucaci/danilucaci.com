@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 import { theme, rem, mediaMin } from "../theme/globalStyles";
 import { Copy } from "../../src/components/Copy/Copy";
 import { GridRow } from "../../src/components/Grid/Grid";
@@ -92,11 +92,46 @@ export const Tag = styled.p`
   margin-right: ${rem(16)};
 `;
 
+export const placeholderAnimation = keyframes`
+0% {
+  background-position: 0% 50%;
+ }
+ 50% {
+  background-position: 100% 50%;
+ }
+ 100% {
+  background-position: 0% 50%;
+ }
+ `;
+
 export const CaseStudyImgWrapper = styled.div`
   display: block;
   max-width: ${theme.contain.inner.col8};
   margin-left: auto;
   margin-right: auto;
+  
+  .gatsby-image-wrapper {
+    background-color: ${theme.colors.grey300};
+    background: linear-gradient(
+      90deg,
+      ${theme.colors.grey200},
+      ${theme.colors.grey500},
+      ${theme.colors.grey200}
+    );
+
+    background-size: 200% 200%;
+
+    animation: ${placeholderAnimation} 3s ease infinite;
+  }
+
+  ${({ didLoad }) =>
+    didLoad &&
+    `
+    .gatsby-image-wrapper {
+      background: transparent;
+      animation: none;
+    }
+ `}
 
   margin-top: ${rem(64)};
   margin-bottom: ${rem(64)};

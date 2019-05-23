@@ -1,5 +1,17 @@
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { theme, rem, mediaMin } from "../../theme/globalStyles";
+
+export const placeholderAnimation = keyframes`
+0% {
+  background-position: 0% 50%;
+ }
+ 50% {
+  background-position: 100% 50%;
+ }
+ 100% {
+  background-position: 0% 50%;
+ }
+ `;
 
 export const Figure = styled.figure`
   margin-top: ${rem(32)};
@@ -12,6 +24,19 @@ export const Figure = styled.figure`
   & img,
   & .gatsby-image-wrapper {
     ${theme.shadow.image} !important;
+  }
+
+  .gatsby-image-wrapper {
+    background: linear-gradient(
+      90deg,
+      ${theme.colors.grey200},
+      ${theme.colors.grey500},
+      ${theme.colors.grey200}
+    );
+
+    background-size: 200% 200%;
+
+    animation: ${placeholderAnimation} 3s ease infinite;
   }
 
   ${(props) =>

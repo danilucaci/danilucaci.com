@@ -15,25 +15,35 @@ import {
 
 import { Copy } from "../Copy/Copy";
 
-const CaseStudyCard = (props) => (
-  <StyledCaseStudyCard>
-    <CaseStudyImgWrapper>
-      <Img title={props.title} alt={props.snippet} fluid={props.image} />
-    </CaseStudyImgWrapper>
-    <CaseStudyCardContents>
-      <TagsWrapper>
-        {props.tagsInCaseStudy.map((tag) => (
-          <Tag key={tag}>{tag}</Tag>
-        ))}
-      </TagsWrapper>
-      <StyledH3>{props.title}</StyledH3>
-      <Copy>{props.snippet}</Copy>
-      <FormattedMessage id="article.link.continue">
-        {(txt) => <ContinueLink to={props.slug}>{txt}</ContinueLink>}
-      </FormattedMessage>
-    </CaseStudyCardContents>
-  </StyledCaseStudyCard>
-);
+function CaseStudyCard(props) {
+  const [didLoad, setDidLoad] = React.useState(false);
+
+  return (
+    <StyledCaseStudyCard>
+      <CaseStudyImgWrapper didLoad={didLoad}>
+        <Img
+          title={props.title}
+          alt={props.snippet}
+          fluid={props.image}
+          fadeIn
+          onLoad={() => setDidLoad(true)}
+        />
+      </CaseStudyImgWrapper>
+      <CaseStudyCardContents>
+        <TagsWrapper>
+          {props.tagsInCaseStudy.map((tag) => (
+            <Tag key={tag}>{tag}</Tag>
+          ))}
+        </TagsWrapper>
+        <StyledH3>{props.title}</StyledH3>
+        <Copy>{props.snippet}</Copy>
+        <FormattedMessage id="article.link.continue">
+          {(txt) => <ContinueLink to={props.slug}>{txt}</ContinueLink>}
+        </FormattedMessage>
+      </CaseStudyCardContents>
+    </StyledCaseStudyCard>
+  );
+}
 
 CaseStudyCard.propTypes = {
   title: string.isRequired,
