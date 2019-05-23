@@ -61,6 +61,20 @@ function Video(props) {
                 )}
               </React.Fragment>
             )}
+            <noscript>
+              <React.Fragment>
+                {foundWebMSrc && <source src={foundWebMSrc.node.publicURL} type="video/webm" />}
+                {foundMp4Src && <source src={foundMp4Src.node.publicURL} type="video/mp4" />}
+                {foundGifSrc && (
+                  <React.Fragment>
+                    <p>{gifBrowserSupport}</p>
+                    <a href={foundGifSrc.node.publicURL} alt={gifAlt}>
+                      {gifAlt}
+                    </a>
+                  </React.Fragment>
+                )}
+              </React.Fragment>
+            </noscript>
           </StyledVideo>
         </VideoIphoneXInner>
       </VideoIphoneXWrapper>
