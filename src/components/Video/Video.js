@@ -2,6 +2,7 @@ import React from "react";
 import { useInView } from "react-intersection-observer";
 import { string, bool } from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
+import { FormattedMessage } from "react-intl";
 
 import { Figure, FigCaption, StyledVideo, VideoIphoneXWrapper, VideoIphoneXInner } from "./styles";
 
@@ -46,6 +47,7 @@ function Video(props) {
             controls
             poster={foundPosterSrc.node.publicURL || ""}
             inView={inView}
+            hide
           >
             {inView && (
               <React.Fragment>
@@ -62,28 +64,19 @@ function Video(props) {
               </React.Fragment>
             )}
             <noscript>
-              <StyledVideo
-                autoPlay
-                loop
-                muted
-                playsInline
-                controls
-                poster={foundPosterSrc.node.publicURL || ""}
-                inView={inView}
-              >
-                <React.Fragment>
-                  {foundWebMSrc && <source src={foundWebMSrc.node.publicURL} type="video/webm" />}
-                  {foundMp4Src && <source src={foundMp4Src.node.publicURL} type="video/mp4" />}
-                  {foundGifSrc && (
-                    <React.Fragment>
-                      <p>{gifBrowserSupport}</p>
-                      <a href={foundGifSrc.node.publicURL} alt={gifAlt}>
-                        {gifAlt}
-                      </a>
-                    </React.Fragment>
-                  )}
-                </React.Fragment>
-              </StyledVideo>
+              <React.Fragment>
+                {foundWebMSrc && <source src={foundWebMSrc.node.publicURL} type="video/webm" />}
+                {foundMp4Src && <source src={foundMp4Src.node.publicURL} type="video/mp4" />}
+                {foundGifSrc && (
+                  <React.Fragment>
+                    <p>{gifBrowserSupport}</p>
+                    <a href={foundGifSrc.node.publicURL} alt={gifAlt}>
+                      {gifAlt}
+                    </a>
+                  </React.Fragment>
+                )}
+                <FormattedMessage id="js.disabled">{(txt) => <p>{txt}</p>}</FormattedMessage>
+              </React.Fragment>
             </noscript>
           </StyledVideo>
         </VideoIphoneXInner>

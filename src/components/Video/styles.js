@@ -41,6 +41,9 @@ export const StyledVideo = styled.video`
   top: 0px;
   bottom: 0px;
   left: 0px;
+  opacity: 1;
+
+  ${({ hide }) => hide && "opacity: 0;"}
 
   opacity: 0;
   transition: opacity 600ms ease 0s;
