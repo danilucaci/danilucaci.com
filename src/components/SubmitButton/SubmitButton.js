@@ -13,10 +13,18 @@ function SubmitButton({
   let str = buttonType.toLowerCase();
 
   const placeholder = intl.formatMessage({ id: `form.submit.${str}` });
+  const sending = intl.formatMessage({ id: "form.submit.sending" });
 
   return (
     <StyledSubmitButton type="submit" {...rest}>
-      {showSpinner === true ? <Spinner /> : placeholder}
+      {showSpinner === true ? (
+        <React.Fragment>
+          {sending}
+          <Spinner />
+        </React.Fragment>
+      ) : (
+        placeholder
+      )}
     </StyledSubmitButton>
   );
 }
