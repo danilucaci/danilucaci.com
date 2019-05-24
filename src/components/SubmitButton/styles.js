@@ -45,4 +45,13 @@ export const StyledSubmitButton = styled.button`
     ${theme.shadow.buttons.main};
     outline: none;
   }
+
+  ${({ showSpinner }) =>
+    showSpinner &&
+    `
+      &:hover,
+      &:focus {
+        cursor: not-allowed;
+      }
+    `}
 `;

@@ -129,7 +129,11 @@ function ContactForm({ locale }) {
           acceptsconsentcheckbox: false,
         }}
         validationSchema={ContactSchema}
-        onSubmit={(values, { setSubmitting }) => handleSubmit(values, setSubmitting)}
+        onSubmit={(values, { setSubmitting }) => {
+          if (showSpinner === false) {
+            handleSubmit(values, setSubmitting);
+          }
+        }}
       >
         {({ isValid }) => (
           <StyledForm
@@ -216,9 +220,7 @@ function ContactForm({ locale }) {
               </React.Fragment>
             )}
 
-            {!showFormError && (
-              <SubmitButton disabled={!isValid || showSpinner} showSpinner={showSpinner} />
-            )}
+            {!showFormError && <SubmitButton disabled={!isValid} showSpinner={showSpinner} />}
           </StyledForm>
         )}
       </Formik>

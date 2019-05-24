@@ -16,7 +16,7 @@ function SubmitButton({
   const sending = intl.formatMessage({ id: "form.submit.sending" });
 
   return (
-    <StyledSubmitButton type="submit" {...rest}>
+    <StyledSubmitButton type="submit" showSpinner={showSpinner} {...rest}>
       {showSpinner === true ? (
         <React.Fragment>
           {sending}
