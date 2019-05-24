@@ -44,7 +44,7 @@ function DribbblePost(props) {
   }
 
   return (
-    <StyledLink href={htmlURL} target="_blank" rel="noopener noreferrer" alt={title}>
+    <StyledLink href={htmlURL} target="_blank" rel="noopener noreferrer" aria-label={title}>
       <StyledDribbblePost>
         <PostBGImg>
           <StyledImg
