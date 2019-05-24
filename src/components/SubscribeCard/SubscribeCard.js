@@ -124,8 +124,11 @@ function SubscribeCard({ locale }) {
             }}
             validationSchema={MCSchema}
             onSubmit={(values, { setSubmitting }) => {
-              handleMCSubmit(values);
-              setSubmitting(false);
+              // don’t let people submit again
+              if (MCSent === false) {
+                handleMCSubmit(values);
+                setSubmitting(false);
+              }
             }}
           >
             {({ isValid }) => (
