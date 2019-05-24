@@ -422,7 +422,7 @@ Las opciones de filtrado también están diseñadas de manera que los usuarios p
 
 <Video
   caption="Prototipo de alta fidelidad de las opciones de búsqueda de películas."
-  posterSrc="movie-app/es/estudio_de_caso_ux_prototipo_busqueda_peliculas_poster.png"
+  posterSrc="movie-app/es/estudio_de_caso_ux_app_peliculas_pantalla_inicio_poster.png"
   webmSrc="movie-app/es/estudio_de_caso_ux_prototipo_busqueda_peliculas.webm"
   mp4Src="movie-app/es/estudio_de_caso_ux_prototipo_busqueda_peliculas.mp4"
   gifSrc="movie-app/es/estudio_de_caso_ux_prototipo_busqueda_peliculas.gif"
@@ -437,7 +437,7 @@ Las opciones de filtrado también están diseñadas de manera que los usuarios p
 
 <Video
   caption="Prototipo de alta fidelidad de las opciones de filtrado de películas."
-  posterSrc="movie-app/es/estudio_de_caso_ux_prototipo_filtrado_peliculas_poster.png"
+  posterSrc="movie-app/es/estudio_de_caso_ux_app_peliculas_pantalla_inicio_poster.png"
   webmSrc="movie-app/es/estudio_de_caso_ux_prototipo_filtrado_peliculas.webm"
   mp4Src="movie-app/es/estudio_de_caso_ux_prototipo_filtrado_peliculas.mp4"
   gifSrc="movie-app/es/estudio_de_caso_ux_prototipo_filtrado_peliculas.gif"
@@ -452,7 +452,7 @@ Las opciones de filtrado también están diseñadas de manera que los usuarios p
 
 <Video
   caption="Prototipo de alta fidelidad del proceso de selección de asientos con un mini mapa e interfaz de desplazamiento del asiento."
-  posterSrc="movie-app/es/estudio_de_caso_ux_prototipo_seleccion_asientos_poster.png"
+  posterSrc="movie-app/es/estudio_de_caso_ux_app_peliculas_pantalla_inicio_poster.png"
   webmSrc="movie-app/es/estudio_de_caso_ux_prototipo_seleccion_asientos.webm"
   mp4Src="movie-app/es/estudio_de_caso_ux_prototipo_seleccion_asientos.mp4"
   gifSrc="movie-app/es/estudio_de_caso_ux_prototipo_seleccion_asientos.gif"
@@ -716,7 +716,7 @@ Sin embargo, para que la fecha final sea correcta, se deben tener en cuenta todo
 
 <Video
   caption="Prototipo de alta fidelidad del proceso de alta del club de socios."
-  posterSrc="movie-app/es/estudio_de_caso_ux_prototipo_pago_club_socios_poster.png"
+  posterSrc="movie-app/es/estudio_de_caso_ux_app_peliculas_pantalla_inicio_poster.png"
   webmSrc="movie-app/es/estudio_de_caso_ux_prototipo_pago_club_socios.webm"
   mp4Src="movie-app/es/estudio_de_caso_ux_prototipo_pago_club_socios.mp4"
   gifSrc="movie-app/es/estudio_de_caso_ux_prototipo_pago_club_socios.gif"

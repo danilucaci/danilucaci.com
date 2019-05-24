@@ -422,7 +422,7 @@ The filtering options are also designed in a way that users can combine them to 
 
 <Video
   caption="High fidelity prototype of the movie searching feature."
-  posterSrc="movie-app/en/ux_case_study_movie_searching_prototype_poster.png"
+  posterSrc="movie-app/en/ux_case_study_movie_app_home_screen_poster.png"
   webmSrc="movie-app/en/ux_case_study_movie_searching_prototype.webm"
   mp4Src="movie-app/en/ux_case_study_movie_searching_prototype.mp4"
   gifSrc="movie-app/en/ux_case_study_movie_searching_prototype.gif"
@@ -437,7 +437,7 @@ The filtering options are also designed in a way that users can combine them to 
 
 <Video
   caption="High fidelity prototype of the movie filtering feature."
-  posterSrc="movie-app/en/ux_case_study_movie_filtering_prototype_poster.png"
+  posterSrc="movie-app/en/ux_case_study_movie_app_home_screen_poster.png"
   webmSrc="movie-app/en/ux_case_study_movie_filtering_prototype.webm"
   mp4Src="movie-app/en/ux_case_study_movie_filtering_prototype.mp4"
   gifSrc="movie-app/en/ux_case_study_movie_filtering_prototype.gif"
@@ -452,7 +452,7 @@ The filtering options are also designed in a way that users can combine them to 
 
 <Video
   caption="High fidelity prototype of the seat choosing process with a mini–map and scrolling seat interface."
-  posterSrc="movie-app/en/ux_case_study_seat_choosing_prototype_poster.png"
+  posterSrc="movie-app/en/ux_case_study_movie_app_home_screen_poster.png"
   webmSrc="movie-app/en/ux_case_study_seat_choosing_prototype.webm"
   mp4Src="movie-app/en/ux_case_study_seat_choosing_prototype.mp4"
   gifSrc="movie-app/en/ux_case_study_seat_choosing_prototype.gif"
@@ -713,7 +713,7 @@ However, in order for the final date to be useful to the user, it should take in
 
 <Video
   caption="Membership plan with offers and discounts final prototype."
-  posterSrc="movie-app/en/ux_case_study_membership_checkout_prototype_poster.png"
+  posterSrc="movie-app/en/ux_case_study_movie_app_home_screen_poster.png"
   webmSrc="movie-app/en/ux_case_study_membership_checkout_prototype.webm"
   mp4Src="movie-app/en/ux_case_study_membership_checkout_prototype.mp4"
   gifSrc="movie-app/en/ux_case_study_membership_checkout_prototype.gif"
