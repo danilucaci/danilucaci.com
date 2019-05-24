@@ -275,13 +275,6 @@ export const pageQuery = graphql`
         intro
         category
         tags
-        image {
-          childImageSharp {
-            fluid(maxWidth: 744) {
-              ...GatsbyImageSharpFluid_noBase64
-            }
-          }
-        }
       }
       fields {
         slug

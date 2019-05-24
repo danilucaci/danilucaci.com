@@ -13,7 +13,7 @@ const CaseStudies = (props) => {
     title: edge.node.frontmatter.title,
     date: edge.node.frontmatter.date,
     snippet: edge.node.frontmatter.snippet,
-    cardimage: edge.node.frontmatter.cardimage.childImageSharp.fluid,
+    cardimage: edge.node.frontmatter.images[1].childImageSharp.fluid,
   }));
 
   return (

@@ -19,8 +19,10 @@ tags:
   - IxD
   - Proyecto Personal
 posted: true
-image: "./estudio_de_caso_ux_app_compra_entradas_presentacion_fondo.png"
-cardimage: "./estudio_de_caso_ux_app_compra_entradas_presentacion_sin_fondo.png"
+images: [
+  "./estudio_de_caso_ux_app_compra_entradas_presentacion_fondo.png",
+  "./estudio_de_caso_ux_app_compra_entradas_presentacion_sin_fondo.png"
+]
 locale: "es"
 twinPost: "Movie Booking App"
 ---

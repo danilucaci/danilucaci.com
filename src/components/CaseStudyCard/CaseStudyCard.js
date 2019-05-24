@@ -54,7 +54,9 @@ CaseStudyCard.propTypes = {
     aspectRatio: number.isRequired,
     sizes: string.isRequired,
     src: string.isRequired,
+    srcWebp: string.isRequired,
     srcSet: string.isRequired,
+    srcSetWebp: string.isRequired,
   }).isRequired,
 };
 

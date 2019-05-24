@@ -212,11 +212,13 @@ export const pageQuery = graphql`
             category
             tags
             posted
-            image {
+            images {
               childImageSharp {
                 fluid(maxWidth: 744) {
                   src
                   srcSet
+                  srcWebp
+                  srcSetWebp
                   aspectRatio
                   sizes
                 }

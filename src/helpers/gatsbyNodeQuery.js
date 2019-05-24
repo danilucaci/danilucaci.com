@@ -78,21 +78,9 @@ const gatsbyNodeQuery = (locale) =>
           snippet
           twinPost
           locale
-          image {
+          images {
             childImageSharp {
               fluid(maxWidth: 744) {
-                src
-                srcSet
-                srcWebp
-                srcSetWebp
-                aspectRatio
-                sizes
-              }
-            }
-          }
-          cardimage {
-            childImageSharp {
-              fluid(maxWidth: 672) {
                 src
                 srcSet
                 srcWebp

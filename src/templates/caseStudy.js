@@ -84,7 +84,7 @@ class CaseStudy extends Component {
   render() {
     const postNode = this.props.data.mdx;
     const postInfo = postNode.frontmatter;
-    const image = postInfo.image.childImageSharp.fluid;
+    const image = postInfo.images[0].childImageSharp.fluid;
     const locale = this.props.pageContext.locale;
     const twinPost = this.props.pageContext.twinPost;
     const nextTitle = this.props.pageContext.nextTitle;
@@ -185,7 +185,7 @@ CaseStudy.propTypes = {
       frontmatter: PropTypes.shape({
         title: PropTypes.string.isRequired,
         date: PropTypes.string.isRequired,
-        image: PropTypes.object.isRequired,
+        images: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
         snippet: PropTypes.string.isRequired,
         tags: PropTypes.arrayOf(PropTypes.string).isRequired,
       }),
@@ -211,7 +211,7 @@ export const pageQuery = graphql`
         #   name
         #   link
         # }
-        image {
+        images {
           childImageSharp {
             fluid(maxWidth: 744, quality: 50) {
               ...GatsbyImageSharpFluid_withWebp
