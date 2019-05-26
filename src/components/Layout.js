@@ -186,6 +186,12 @@ const Layout = (props) => {
         secure: GATSBY_DL_COOKIE_SECURE,
       });
 
+      Cookies.set(GATSBY_DL_CONSENT_COOKIE_NAME, true, {
+        expires: Number(GATSBY_DL_COOKIE_EXP),
+        domain: GATSBY_DL_COOKIE_DOMAIN,
+        secure: GATSBY_DL_COOKIE_SECURE,
+      });
+
       dispatch({ type: "DISABLE_COOKIE_CONSENT" });
       handleTransitionState();
     } catch (error) {
