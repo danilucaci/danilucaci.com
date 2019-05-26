@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import PropTypes from "prop-types";
+import React, { useContext, useState } from "react";
 import { FormattedMessage } from "react-intl";
+import { useInView } from "react-intersection-observer";
 
 import DribbblePost from "../DribbblePost/DribbblePost";
 import DribbblePostPlaceholder from "../DribbblePostPlaceholder/DribbblePostPlaceholder";
@@ -26,11 +26,27 @@ function DribbblePosts() {
     dispatch,
   } = useContext(DribbblePostsContext);
 
+  const [ref, inView] = useInView({
+    threshold: 0,
+    rootMargin: "0px",
+    triggerOnce: true,
+  });
+
+  const [waitingForInView, setWaitingForInView] = useState(true);
+
   const placeholderArr = Array.from({ length: shotsPerPage }, (v, i) => i);
+
+  if (inView) {
+    if (waitingForInView) {
+      setWaitingForInView(false);
+      dispatch({ type: "FETCH_INIT" });
+      console.log("visible");
+    }
+  }
 
   return (
     <Row spaced>
-      <GridCol>
+      <GridCol ref={ref}>
         <StyledHR />
         <FormattedMessage id="dribbble.header">{(txt) => <h2>{txt}</h2>}</FormattedMessage>
         <FormattedMessage id="dribbble.subhead">

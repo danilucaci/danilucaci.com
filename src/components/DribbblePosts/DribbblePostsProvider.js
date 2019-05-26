@@ -13,6 +13,7 @@ const reducer = (state, action) => {
     case "FETCH_INIT": {
       return {
         ...state,
+        inView: true,
       };
     }
     case "FETCH_SUCCESS": {
@@ -51,45 +52,45 @@ function DribbblePostsProvider(props) {
     isLoading: true,
     isLoadingMore: false,
     isError: false,
+    inView: false,
   };
 
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   React.useEffect(() => {
-    let dribbbleRes = {};
     let source = axios.CancelToken.source();
 
-    dispatch({ type: "FETCH_INIT" });
+    if (state.inView) {
+      const fetchData = async () => {
+        try {
+          const dribbbleRes = await axios.get(
+            `https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&page=${
+              state.dribbblePage
+            }&per_page=${state.shotsPerPage}`,
+            {
+              cancelToken: source.token,
+            },
+          );
 
-    const fetchData = async () => {
-      try {
-        dribbbleRes = await axios.get(
-          `https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&page=${
-            state.dribbblePage
-          }&per_page=${state.shotsPerPage}`,
-          {
-            cancelToken: source.token,
-          },
-        );
-
-        dispatch({ type: "FETCH_SUCCESS", payload: dribbbleRes.data });
-      } catch (error) {
-        if (axios.isCancel(error)) {
-          console.warn("Cancelled axios request");
-        } else {
-          Sentry.captureException(error);
-          dispatch({ type: "FETCH_ERROR" });
+          dispatch({ type: "FETCH_SUCCESS", payload: dribbbleRes.data });
+        } catch (error) {
+          if (axios.isCancel(error)) {
+            console.warn("Cancelled axios request");
+          } else {
+            Sentry.captureException(error);
+            dispatch({ type: "FETCH_ERROR" });
+          }
         }
-      }
-    };
+      };
 
-    fetchData();
+      fetchData();
+    }
 
     return () => {
       // Prevent memory leak when moving to another page and cancel axios request
       source.cancel();
     };
-  }, [state.dribbblePage, state.shotsPerPage]);
+  }, [state.dribbblePage, state.inView, state.shotsPerPage]);
 
   return (
     <DribbblePostsContext.Provider value={{ state, dispatch }}>
