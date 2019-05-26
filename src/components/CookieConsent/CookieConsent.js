@@ -14,7 +14,10 @@ import {
 } from "./styles";
 
 const CookieConsent = (props) => (
-  <StyledCookieConsent isTransitioning={props.isTransitioning} showConsent={props.askCookieConsent}>
+  <StyledCookieConsent
+    isTransitioning={props.isTransitioning}
+    showConsent={props.openCookieConsent}
+  >
     <CopyContainer>
       <FormattedMessage id="cookie.message">
         {(txt) => <StyledCopy>{txt} </StyledCopy>}
@@ -49,20 +52,20 @@ const CookieConsent = (props) => (
 
     <ButtonsContainer>
       <FormattedMessage id="cookie.deny">
-        {(txt) => <StyledGhostButton onClick={props.deniesCookies}>{txt}</StyledGhostButton>}
+        {(txt) => <StyledGhostButton onClick={props.deniedCookies}>{txt}</StyledGhostButton>}
       </FormattedMessage>
       <FormattedMessage id="cookie.accept">
-        {(txt) => <StyledPrimaryButton onClick={props.acceptsCookies}>{txt}</StyledPrimaryButton>}
+        {(txt) => <StyledPrimaryButton onClick={props.acceptedCookies}>{txt}</StyledPrimaryButton>}
       </FormattedMessage>
     </ButtonsContainer>
   </StyledCookieConsent>
 );
 
 CookieConsent.propTypes = {
-  askCookieConsent: bool.isRequired,
+  openCookieConsent: bool.isRequired,
   isTransitioning: bool.isRequired,
-  acceptsCookies: func.isRequired,
-  deniesCookies: func.isRequired,
+  acceptedCookies: func.isRequired,
+  deniedCookies: func.isRequired,
   pageLocale: string.isRequired,
 };
 
