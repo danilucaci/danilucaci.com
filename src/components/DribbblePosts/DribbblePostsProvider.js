@@ -2,6 +2,10 @@ import React from "react";
 import axios from "axios";
 import * as Sentry from "@sentry/browser";
 
+import PropTypes from "prop-types";
+
+export const DribbblePostsContext = React.createContext();
+
 const GATSBY_DRIBBBLE_TOKEN = process.env.GATSBY_DRIBBBLE_TOKEN;
 
 const reducer = (state, action) => {
@@ -35,11 +39,11 @@ const reducer = (state, action) => {
       };
     }
     default:
-      return state;
+      throw new Error(`Unhandled action type received: ${action.type}`);
   }
 };
 
-function useDribbbleReducer() {
+function DribbblePostsProvider(props) {
   const initialState = {
     dribbblePage: 1,
     shotsPerPage: 4,
@@ -87,12 +91,15 @@ function useDribbbleReducer() {
     };
   }, [state.dribbblePage, state.shotsPerPage]);
 
-  function loadMorePosts() {
-    // Load posts with pagination, shotsPerPage on each page
-    dispatch({ type: "FETCH_MORE" });
-  }
-
-  return { ...state, loadMorePosts };
+  return (
+    <DribbblePostsContext.Provider value={{ state, dispatch }}>
+      {props.children}
+    </DribbblePostsContext.Provider>
+  );
 }
 
-export default useDribbbleReducer;
+DribbblePostsProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+export default DribbblePostsProvider;

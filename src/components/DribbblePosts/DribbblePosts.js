@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
 
 import DribbblePost from "../DribbblePost/DribbblePost";
 import DribbblePostPlaceholder from "../DribbblePostPlaceholder/DribbblePostPlaceholder";
 import Spinner from "../Spinner/Spinner";
-import useDribbbleReducer from "./DribbblePostsReducer";
+import { DribbblePostsContext } from "./DribbblePostsProvider";
 import { GridCol } from "../../../src/components/Grid/Grid";
 
 import {
@@ -18,32 +18,14 @@ import {
   LoadMoreLabel,
 } from "./styles";
 
-function DribbblePosts({ locale }) {
-  // -------------shotsPerPage-------------
-  // How many posts per page and placeholder elements
-  // Also handles how many more shots to load
-  // when the "Load More..." button is pressed
+function DribbblePosts() {
   const {
-    dribbblePosts,
-    shotsPerPage,
-    isLoading,
-    isLoadingMore,
-    isError,
-    loadMorePosts,
-  } = useDribbbleReducer();
+    state: {
+      dribbblePosts, shotsPerPage, isLoading, isLoadingMore, isError,
+    },
+    dispatch,
+  } = useContext(DribbblePostsContext);
 
-  /**
-  /* --------------------------------------------------
-   * Create index's in the placeholder array to use as a key in the render method with .map()
-   * Show as many placeholder items as posts I want on the page
-   * This way I don't get reflow
-   * --------------------------------------------------
-   * Steps:
-   * 1 - Create a new Array with a length = to shotsPerPage (shotsPerPage = 4, 4 elements)
-   * 2 - The second argument for Array.from() is a map function that runs on each element
-   * The array is initialized with `undefined` on each position.
-   * The value of `v` below will be `undefined`.
-   */
   const placeholderArr = Array.from({ length: shotsPerPage }, (v, i) => i);
 
   return (
@@ -71,7 +53,7 @@ function DribbblePosts({ locale }) {
         {isLoadingMore && placeholderArr.map((i) => <DribbblePostPlaceholder key={i} />)}
 
         {!isError && (
-          <StyledLoadMore onClick={loadMorePosts}>
+          <StyledLoadMore onClick={() => dispatch({ type: "FETCH_MORE" })}>
             {!isLoading && !isLoadingMore && (
               <FormattedMessage id="dribbble.load.more">
                 {(txt) => <LoadMoreLabel>{txt}</LoadMoreLabel>}
@@ -87,6 +69,4 @@ function DribbblePosts({ locale }) {
 
 export default DribbblePosts;
 
-DribbblePosts.propTypes = {
-  locale: PropTypes.string.isRequired,
-};
+DribbblePosts.propTypes = {};

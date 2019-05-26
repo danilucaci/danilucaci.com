@@ -24,6 +24,8 @@ import { detectDataSaverMode, detectSlowConnectionType } from "../helpers/helper
 
 import intlMessages from "../i18n/i18n";
 
+import DribbblePostsProvider from "./DribbblePosts/DribbblePostsProvider";
+
 addLocaleData([...enData, ...esData]);
 
 const FontFaceObserver = require("fontfaceobserver");
@@ -361,23 +363,25 @@ class Layout extends Component {
             defaultLocale="en"
             messages={intlMessages[this.props.locale]}
           >
-            <Page>
-              {GTMScript}
-              <SkipToMainContent />
-              <GlobalReset />
-              <GlobalAria />
-              <GlobalCSS />
-              <GlobalGrid />
-              <SVGSprite />
-              {this.props.children}
-              <CookieConsent
-                askCookieConsent={this.state.askCookieConsent}
-                acceptsCookies={this.acceptsCookies}
-                deniesCookies={this.deniesCookies}
-                pageLocale={this.props.locale}
-                isTransitioning={this.state.isTransitioning}
-              />
-            </Page>
+            <DribbblePostsProvider>
+              <Page>
+                {GTMScript}
+                <SkipToMainContent />
+                <GlobalReset />
+                <GlobalAria />
+                <GlobalCSS />
+                <GlobalGrid />
+                <SVGSprite />
+                {this.props.children}
+                <CookieConsent
+                  askCookieConsent={this.state.askCookieConsent}
+                  acceptsCookies={this.acceptsCookies}
+                  deniesCookies={this.deniesCookies}
+                  pageLocale={this.props.locale}
+                  isTransitioning={this.state.isTransitioning}
+                />
+              </Page>
+            </DribbblePostsProvider>
           </IntlProvider>
         </ThemeProvider>
       </ErrorBoundary>
