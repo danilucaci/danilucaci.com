@@ -40,7 +40,6 @@ function DribbblePosts() {
     if (waitingForInView) {
       setWaitingForInView(false);
       dispatch({ type: "FETCH_INIT" });
-      console.log("visible");
     }
   }
 
