@@ -16,13 +16,13 @@ export const StyledFooter = styled.footer`
 `;
 
 export const StyledCopyright = styled(CopyBold)`
-  color: ${theme.colors.light100};
+  color: ${theme.colors.light300};
   margin-bottom: ${rem(8)};
   white-space: nowrap;
 `;
 
 export const StyledCopy = styled(Copy)`
-  color: ${theme.colors.light100};
+  color: ${theme.colors.light300};
   margin-bottom: ${rem(16)};
 `;
 
