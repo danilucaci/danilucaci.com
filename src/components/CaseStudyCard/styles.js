@@ -45,9 +45,9 @@ export const CaseStudyImgWrapper = styled.div`
     background-color: ${theme.colors.grey300};
     background: linear-gradient(
       90deg,
-      ${theme.colors.grey200},
-      ${theme.colors.grey500},
-      ${theme.colors.grey200}
+      ${theme.colors.grey100},
+      ${theme.colors.grey400},
+      ${theme.colors.grey100}
     );
 
     background-size: 200% 200%;
