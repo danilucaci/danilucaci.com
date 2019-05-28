@@ -154,6 +154,7 @@ const Index = (props) => {
                       <li>HTML & CSS</li>
                       <li>React.js</li>
                       <li>Gatsby.js</li>
+                      <li>GraphQL</li>
                     </ul>
                   </ServiceContent>
                 </ServicesEntry>
