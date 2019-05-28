@@ -167,7 +167,7 @@ export const query = graphql`
   query ABOUT_ME_IMAGE_QUERY {
     aboutImage: file(relativePath: { regex: "/danilucaci_profile_image/" }) {
       childImageSharp {
-        fluid(maxWidth: 560, maxHeight: 560, cropFocus: NORTH, quality: 70) {
+        fluid(maxWidth: 560, maxHeight: 640, cropFocus: NORTH, quality: 70) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
