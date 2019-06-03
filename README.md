@@ -19,37 +19,30 @@
   </a>
 </p>
 
-<p align="center">
-  My personal portfolio & blog. Built with <a href="https://www.gatsbyjs.org">Gatsby.js</a>.
-</p>
+# Dani Lucaci personal website
 
-<p align="center">
-  <strong>
-    Available in Spanish & English at <a href="https://www.danilucaci.com">www.danilucaci.com</a>.
-  </strong>
-</p>
-
----
+Built with [Gatsby.js](https://www.gatsbyjs.org) • Available in [english](https://www.danilucaci.com) and [spanish](https://www.danilucaci.com/es)
 
 ## Features
 
+- Based on [gatsby-advanced-starter](https://github.com/Vagr9K/gatsby-advanced-starter)
 - i18n (Spanish & English)
-- Gatsby-Image (Responsive images)
-- Tags & Categories
+- Netlify Forms
+- Netlify Functions
+- Responsive & lazy-loaded videos made with ffmpeg
+- MDX
+- Sentry.io reporting
+- Google Analytics and GTM
+- Custom Cookie Consent for GDPR
 - SEO (sitemap, schema.org data, OpenGraph & Twitter tags)
 
-## Tech Stack
+## Built with
 
+- Gatsby V2
 - Hosted on Netlify
 - styled-components for styling
 - ESLint & Prettier for linting
 
 ## License
 
-MIT License
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+[MIT](https://choosealicense.com/licenses/mit/)
