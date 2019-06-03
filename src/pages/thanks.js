@@ -46,7 +46,7 @@ const ThanksPage = (props) => {
           locale={locale}
           currentPath={props.location.pathname}
         />
-        <Main role="main" id="main">
+        <Main role="main">
           <StyledThanksPage padded>
             <GridCol>
               <FormattedMessage id="thanks.title">

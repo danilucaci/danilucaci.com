@@ -49,7 +49,7 @@ const Index = (props) => {
           twinPostURL={twinPostURL}
           currentPath={props.location.pathname}
         />
-        <Main role="main" id="main">
+        <Main role="main">
           <IndexHeader as="header">
             <GridCol>
               <FormattedMessage id="index.name">{(txt) => <Name>{txt}</Name>}</FormattedMessage>

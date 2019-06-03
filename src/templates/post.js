@@ -146,7 +146,7 @@ class Post extends Component {
             twinPostURL={twinPostURL}
             currentPath={this.props.location.pathname}
           />
-          <Main role="main" id="main">
+          <Main role="main">
             <PostWrapper>
               <StyledPageHeader as="header">
                 <GridCol>

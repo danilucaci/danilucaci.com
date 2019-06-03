@@ -12,7 +12,7 @@ import ContactForm from "../components/ContactForm/ContactForm";
 import SocialNav from "../components/SocialNav/SocialNav";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 import { localePaths } from "../i18n/i18n";
-import sendGAEvent from "../helpers/sendGAEvent"
+import sendGAEvent from "../helpers/sendGAEvent";
 
 import { Copy } from "../components/Copy/Copy";
 import {
@@ -53,7 +53,7 @@ const ContactPage = (props) => {
           twinPostURL={twinPostURL}
           currentPath={props.location.pathname}
         />
-        <Main role="main" id="main">
+        <Main role="main">
           <ContactMeWrapper>
             <FormattedMessage id="contact.page.title">
               {(txt) => <StyledH1>{txt}</StyledH1>}
@@ -66,7 +66,10 @@ const ContactPage = (props) => {
                 {(txt) => (
                   <Copy>
                     {txt}{" "}
-                    <StyledLink href={`mailto:${localePaths[locale].email}`} onClick={sendGAEvent("Contact Page","Clicked Email Link")}>
+                    <StyledLink
+                      href={`mailto:${localePaths[locale].email}`}
+                      onClick={sendGAEvent("Contact Page", "Clicked Email Link")}
+                    >
                       {localePaths[locale].email}
                     </StyledLink>
                   </Copy>
@@ -92,7 +95,7 @@ const ContactPage = (props) => {
                           target="_blank"
                           rel="noopener noreferrer"
                           href="https://twitter.com/danilucaci"
-                          onClick={sendGAEvent("Contact Page","Clicked Send a Tweet Link")}
+                          onClick={sendGAEvent("Contact Page", "Clicked Send a Tweet Link")}
                         >
                           {txt2}
                         </StyledLink>

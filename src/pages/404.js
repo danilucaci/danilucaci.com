@@ -38,7 +38,7 @@ const NotFoundPage = (props) => {
           locale={locale}
           currentPath={props.location.pathname}
         />
-        <Main role="main" id="main">
+        <Main role="main">
           <StyledNotFound padded>
             <GridCol>
               <FormattedMessage id="not.found.title">

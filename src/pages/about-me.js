@@ -57,7 +57,7 @@ const AboutPage = (props) => {
           locale={locale}
           currentPath={props.location.pathname}
         />
-        <Main role="main" id="main">
+        <Main role="main">
           <Header>
             <HeaderInfoWrapper s="7">
               <FormattedMessage id="about.me.title">

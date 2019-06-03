@@ -117,7 +117,7 @@ class CaseStudy extends Component {
             locale={locale}
             currentPath={this.props.location.pathname}
           />
-          <Main role="main" id="main">
+          <Main role="main">
             <ArticleWrapper>
               <StyledHeader>
                 <TagsWrapper>

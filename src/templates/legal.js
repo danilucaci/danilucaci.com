@@ -78,7 +78,7 @@ class LegalDoc extends Component {
             twinPostURL={twinPostURL}
             currentPath={this.props.location.pathname}
           />
-          <Main role="main" id="main">
+          <Main role="main">
             <PageWrapper>
               <GridCol>
                 <PostH1>{postInfo.title}</PostH1>
