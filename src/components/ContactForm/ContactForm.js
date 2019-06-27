@@ -77,7 +77,7 @@ function ContactForm({ locale }) {
         email: values.email,
         fullname: values.fullname,
         message: values.message,
-        datesent: new Date(),
+        datesent: new Date().toISOString(),
         locale,
         botfield: values.botfield,
         acceptsconsentcheckbox: values.acceptsconsentcheckbox,
@@ -104,9 +104,7 @@ function ContactForm({ locale }) {
         } else if (res.status === 403) {
           handleFormError(new Error(`Contact Form Error. The form request is not allowed. Received code: ${res.status}`));
         } else if (res.status === 451) {
-          handleFormError(new Error(`Contact Form Error. The form could not be sent for legal reasons. Received code: ${
-            res.status
-          }`));
+          handleFormError(new Error(`Contact Form Error. The form could not be sent for legal reasons. Received code: ${res.status}`));
         } else if (res.status === 504) {
           handleFormError(new Error(`Contact Form Error. The server did not respond. Received code: ${res.status}`));
         } else {

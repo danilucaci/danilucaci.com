@@ -1,45 +1,36 @@
+const nodemailer = require("nodemailer");
 const { URL } = require("url");
 const ow = require("ow");
 const differenceInHours = require("date-fns/difference_in_hours");
 const format = require("date-fns/format");
 const esLocale = require("date-fns/locale/es");
+const { notifyContact } = require("./mail/notify");
+const { notifyContactText } = require("./mail/notifyText");
 
 require("dotenv").config({
   path: ".env.development",
 });
 
-const {
-  GATSBY_SENTRY_URL,
-  MJ_APIKEY_PUBLIC,
-  MJ_APIKEY_PRIVATE,
-  EMAIL_NOTIFY_ME,
-  EMAIL_FROM_EN,
-  EMAIL_FROM_ES,
-  EMAIL_MY_NAME,
-  MJ_TEMPLATE_ID,
-  MJ_TEMPLATE_ID_FAKE,
-} = process.env;
+const validEmail = ow.string.is((e) => /^.+@.+\..+$/.test(e));
 
-// const Sentry = require("@sentry/node");
-
-// let sentryInitialized = false;
-
-// export function initSentry() {
-//   if (GATSBY_SENTRY_URL) {
-//     Sentry.init({ dsn: GATSBY_SENTRY_URL });
-//     sentryInitialized = true;
-//   }
-// }
-
-// Import & call this from your function handlers:
-// initSentry();
-
-const mailjet = require("node-mailjet").connect(MJ_APIKEY_PUBLIC, MJ_APIKEY_PRIVATE, {
-  url: "api.mailjet.com",
-  version: "v3.1",
+const transporter = nodemailer.createTransport({
+  host: process.env.SENDGRID_SERVER,
+  port: process.env.MAIL_PORT,
+  secure: false,
+  auth: {
+    user: process.env.SENDGRID_USER,
+    pass: process.env.SENDGRID_API_KEY,
+  },
 });
 
-const validEmail = ow.string.is((e) => /^.+@.+\..+$/.test(e));
+// const transporter = nodemailer.createTransport({
+//   host: process.env.MAILTRAP_HOST,
+//   port: process.env.MAIL_PORT,
+//   auth: {
+//     user: process.env.MAILTRAP_USER,
+//     pass: process.env.MAILTRAP_PASSWORD,
+//   },
+// });
 
 const STATUS_MESSAGES = {
   en: {
@@ -69,33 +60,6 @@ const headers = {
   "Access-Control-Allow-Headers": "Content-Type",
 };
 
-// async function reportError(error) {
-//   console.warn(error);
-//   if (!sentryInitialized) return;
-
-//   if (typeof error === "string") {
-//     Sentry.captureMessage(error);
-//   } else {
-//     Sentry.captureException(error);
-//   }
-
-//   await Sentry.flush();
-// }
-
-// function catchErrors(handler) {
-//   return async function(event, context) {
-//     context.callbackWaitsForEmptyEventLoop = false;
-//     try {
-//       return await handler.call(this, ...arguments);
-//     } catch (e) {
-//       // This catches both sync errors & promise
-//       // rejections, because we 'await' on the handler
-//       await reportError(e);
-//       throw e;
-//     }
-//   };
-// }
-
 exports.handler = async (event) => {
   let body = "";
 
@@ -121,7 +85,7 @@ exports.handler = async (event) => {
     locale = "en",
   } = body;
 
-  const sendFrom = locale === "en" ? EMAIL_FROM_EN : EMAIL_FROM_ES;
+  const sendFrom = locale === "en" ? process.env.EMAIL_FROM_EN : process.env.EMAIL_FROM_ES;
 
   const origin = new URL(event.headers.origin);
   const letMeIn = origin.hostname === "localhost" || origin.hostname === "www.danilucaci.com";
@@ -179,7 +143,6 @@ exports.handler = async (event) => {
   // datesent is comming in as a ISOString also, UTC timezone 0
   const newDate = new Date().toISOString();
   const hoursDiff = differenceInHours(datesent, newDate);
-
   if (hoursDiff > 1) {
     console.error("Date sent hour validation error: ", hoursDiff);
     return {
@@ -192,62 +155,69 @@ exports.handler = async (event) => {
   // Send it to me in a spanish local time
   const formattedDate = format(datesent, "dddd, DD MMMM YYYY, HH:mm", { locale: esLocale });
 
-  const msg = {
-    Messages: [
-      {
-        From: {
-          Email: sendFrom,
-          Name: EMAIL_MY_NAME,
-        },
-        To: [
-          {
-            Email: EMAIL_NOTIFY_ME,
-            Name: EMAIL_MY_NAME,
-          },
-        ],
-        TemplateID: 890910,
-        TemplateLanguage: true,
-        TemplateErrorDeliver: true,
-        Subject: "Got Mail! danilucaci.com Contact Form Notification",
-        Variables: {
-          email,
-          fullname,
-          formattedDate,
-          message,
-          acceptsconsentcheckbox,
-          consentcheckboxvalue,
-        },
-      },
-    ],
-  };
+  let mailTemplate = "";
+  let textTemplate = "";
 
-  let resStatusCode;
+  try {
+    mailTemplate = await notifyContact(
+      fullname,
+      email,
+      message,
+      acceptsconsentcheckbox,
+      consentcheckboxvalue,
+      formattedDate,
+    );
+  } catch (error) {
+    return {
+      statusCode: 500,
+      body: `Error Templating the Email: ${error}`,
+      headers,
+    };
+  }
 
-  let resBody = {
-    success: false,
-    message: "",
+  try {
+    textTemplate = await notifyContactText(
+      fullname,
+      email,
+      message,
+      acceptsconsentcheckbox,
+      consentcheckboxvalue,
+      formattedDate,
+    );
+  } catch (error) {
+    return {
+      statusCode: 500,
+      body: `Error Templating the Text for the Email: ${error}`,
+      headers,
+    };
+  }
+
+  const emailData = {
+    from: sendFrom,
+    to: process.env.EMAIL_NOTIFY_ME,
+    subject: "danilucaci.com: New Contact Submission.",
+    text: textTemplate,
+    html: mailTemplate,
   };
 
   try {
-    const res = await mailjet
-      .post("send", { version: "v3.1", url: "api.mailjet.com" })
-      .request(msg);
-
-    resBody = {
-      success: true,
-      message: "Message sent",
-    };
-
-    resStatusCode = res.statusCode;
+    console.log("Sending email...");
+    await transporter.verify();
+    await transporter.sendMail(emailData);
+    console.log("Email Sent!");
   } catch (error) {
-    resBody.success = false;
-    resBody.message = error.message;
-    resStatusCode = error.statusCode;
+    console.error("Email Not Sent!", error.message);
+
+    return Promise.reject({
+      statusCode: 500,
+      body: error.message,
+      headers,
+    });
   }
 
   return {
-    statusCode: resStatusCode || 200,
-    body: JSON.stringify(resBody),
+    statusCode: 200,
+    body: JSON.stringify({ success: true }),
     headers,
   };
 };
