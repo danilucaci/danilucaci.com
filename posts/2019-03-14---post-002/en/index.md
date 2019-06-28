@@ -167,7 +167,7 @@ https://api.dribbble.com/v2/user/shots?access_token=ACCESS_TOKEN&page=1&per_page
 
 For this tutorial I used axios, which you can install with `npm install axios`.
 
-```jsx{9,11,13}
+```jsx{9,10,13}
 const [isLoading, setIsLoading] = React.useState(true);
 const [isError, setIsError] = React.useState(false);
 const [dribbblePage, setDribbblePage] = React.useState(1);
@@ -232,7 +232,7 @@ One solution would be to simply add an empty array as a dependency of the `useEf
 if (isLoading) setIsLoading(false);
 ```
 
-```jsx{11,13,22}
+```jsx{9,13,15,18}
 const [isLoading, setIsLoading] = React.useState(true);
 const [isError, setIsError] = React.useState(false);
 const [dribbblePage, setDribbblePage] = React.useState(1);
@@ -271,7 +271,7 @@ And you’ve probably noticed that this is the perfect recipe for an infinite lo
 
 In my case the solution was pretty simple, I just wrapped `axios.get()` with an if statement.
 
-```jsx{3,10,13,26,27}
+```jsx{3,10,15,22,29}
 const [isLoading, setIsLoading] = React.useState(true);
 const [isError, setIsError] = React.useState(false);
 const [postsFetched, setPostsFetched] = React.useState(false);
@@ -315,7 +315,7 @@ When you are making network requests using `useEffect()` hooks, each time the st
 
 In order to fix this issue, I used the cleanup function that the React hooks provide, which is executed when the component is unmounted.
 
-```jsx{8,18,19,25,33,34,37,38}
+```jsx{8,19,27,35,40}
 const [isLoading, setIsLoading] = React.useState(true);
 const [isError, setIsError] = React.useState(false);
 const [postsFetched, setPostsFetched] = React.useState(false);
@@ -707,7 +707,7 @@ In order to still be able to add new shots to the existing ones, I needed to mer
 
 Besides that, I also used the axios cancel token (instead of the `didCancel` variable) so that I can cancel the network request if the component is unmounted before the async function resolves.
 
-```jsx{15,26,32,45}
+```jsx{15,24,30,43}
 export default function useDribbbleReducer() {
   const initialState = {
     dribbblePage: 1,
@@ -729,9 +729,7 @@ export default function useDribbbleReducer() {
     const fetchData = async () => {
       try {
         dribbbleRes = await axios.get(
-          `https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&page=${
-            state.dribbblePage
-          }&per_page=${state.shotsPerPage}`,
+          `https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&page=${state.dribbblePage}&per_page=${state.shotsPerPage}`,
           {
             cancelToken: source.token,
           }
