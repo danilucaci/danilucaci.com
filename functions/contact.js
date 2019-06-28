@@ -190,8 +190,8 @@ exports.handler = async (event) => {
   const dateOptions = {
     weekday: "long",
     year: "numeric",
-    month: "long",
-    day: "2-digit",
+    month: "numeric",
+    day: "numeric",
     hour: "numeric",
     minute: "numeric",
     hour12: false,
