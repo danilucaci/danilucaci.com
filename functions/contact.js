@@ -1,24 +1,21 @@
 const { URL } = require("url");
 const ow = require("ow");
 const differenceInHours = require("date-fns/difference_in_hours");
-const format = require("date-fns/format");
-const esLocale = require("date-fns/locale/es");
 
 require("dotenv").config({
   path: ".env.development",
 });
 
 const {
-  GATSBY_SENTRY_URL,
   MJ_APIKEY_PUBLIC,
   MJ_APIKEY_PRIVATE,
   EMAIL_NOTIFY_ME,
   EMAIL_FROM_EN,
   EMAIL_FROM_ES,
   EMAIL_MY_NAME,
-  MJ_TEMPLATE_ID,
-  MJ_TEMPLATE_ID_FAKE,
 } = process.env;
+
+// const { GATSBY_SENTRY_URL } = process.env;
 
 // const Sentry = require("@sentry/node");
 
@@ -177,8 +174,9 @@ exports.handler = async (event) => {
 
   // Check for an invalid date sent value
   // datesent is comming in as a ISOString also, UTC timezone 0
-  const newDate = new Date().toISOString();
-  const hoursDiff = differenceInHours(datesent, newDate);
+  const newDateToCompare = new Date().toISOString();
+  const newDateFromDateSent = new Date(datesent);
+  const hoursDiff = differenceInHours(newDateFromDateSent, newDateToCompare);
 
   if (hoursDiff > 1) {
     console.error("Date sent hour validation error: ", hoursDiff);
@@ -189,8 +187,26 @@ exports.handler = async (event) => {
     };
   }
 
+  const dateOptions = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "2-digit",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: false,
+    timeZone: "Europe/Madrid",
+  };
+
+  /*
+   * Steps
+   * 1- Send from the frontend a new Date().toISOString()
+   * 2- Create a new Date() out of the previous one
+   * 3- Convert it to toLocaleString
+   */
+
   // Send it to me in a spanish local time
-  const formattedDate = format(datesent, "dddd, DD MMMM YYYY, HH:mm", { locale: esLocale });
+  const formattedDate = newDateFromDateSent.toLocaleString("es-ES", dateOptions);
 
   const msg = {
     Messages: [

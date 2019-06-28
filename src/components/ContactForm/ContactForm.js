@@ -100,15 +100,35 @@ function ContactForm({ locale }) {
           logGAEvent();
           navigate(localePaths[locale].thanks);
         } else if (res.status === 400) {
-          handleFormError(new Error(`Contact Form Error. No data was sent to the server. Received code: ${res.status}`));
+          handleFormError(
+            new Error(
+              `Contact Form Error. No data was sent to the server. Received code: ${res.status}`,
+            ),
+          );
         } else if (res.status === 403) {
-          handleFormError(new Error(`Contact Form Error. The form request is not allowed. Received code: ${res.status}`));
+          handleFormError(
+            new Error(
+              `Contact Form Error. The form request is not allowed. Received code: ${res.status}`,
+            ),
+          );
         } else if (res.status === 451) {
-          handleFormError(new Error(`Contact Form Error. The form could not be sent for legal reasons. Received code: ${res.status}`));
+          handleFormError(
+            new Error(
+              `Contact Form Error. The form could not be sent for legal reasons. Received code: ${res.status}`,
+            ),
+          );
         } else if (res.status === 504) {
-          handleFormError(new Error(`Contact Form Error. The server did not respond. Received code: ${res.status}`));
+          handleFormError(
+            new Error(
+              `Contact Form Error. The server did not respond. Received code: ${res.status}`,
+            ),
+          );
         } else {
-          handleFormError(new Error(`Contact Form Error. The form could not be sent. Received code: ${res.status}`));
+          handleFormError(
+            new Error(
+              `Contact Form Error. The form could not be sent. Received code: ${res.status}`,
+            ),
+          );
         }
       });
     } catch (error) {
