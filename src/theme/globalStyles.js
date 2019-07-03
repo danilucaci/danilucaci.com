@@ -58,14 +58,18 @@ export const theme = {
     codeGreen: "#7DBD4B",
   },
   shadow: {
-    default: "box-shadow: 0 2px 6px 0 rgba(102,102,102,0.20), 0 8px 16px 0 rgba(179,179,179,0.15)",
+    default:
+      "box-shadow: 0 2px 6px 0 rgba(102,102,102,0.20), 0 8px 16px 0 rgba(179,179,179,0.15)",
     hover:
       "box-shadow: 0 2px 8px -4px rgba(102,102,102,0.40), 0 8px 20px -4px rgba(102,102,102,0.31)",
-    navbar: "box-shadow: 0px 2px 4px -2px hsla(0,0%,40%,0.3), 0px 4px 8px -2px hsla(0,0%,60%,0.24)",
-    image: "box-shadow: 0 1px 4px 0 rgba(0,0,0,0.20), 0 1px 2px 0 rgba(0,0,0,0.08)",
+    navbar:
+      "box-shadow: 0px 2px 4px -2px hsla(0,0%,40%,0.3), 0px 4px 8px -2px hsla(0,0%,60%,0.24)",
+    image:
+      "box-shadow: 0 1px 4px 0 rgba(0,0,0,0.20), 0 1px 2px 0 rgba(0,0,0,0.08)",
     dropdown:
       "box-shadow: 0px 2px 4px 0px hsla(0,0%,40%,0.2), 0px 6px 12px 0px hsla(0,0%,70%,0.24)",
-    copyUrl: "box-shadow: 2px 2px 2px 0px hsla(0,0%,40%,0.2), 6px 6px 4px 0px hsla(0,0%,70%,0.24)",
+    copyUrl:
+      "box-shadow: 2px 2px 2px 0px hsla(0,0%,40%,0.2), 6px 6px 4px 0px hsla(0,0%,70%,0.24)",
     mobileCookieConsent:
       "box-shadow: 0 -6px 48px 0 rgba(255,255,255,0.60), 0 -6px 18px 0 rgba(128,128,128,0.60)",
     successMessage:
@@ -75,15 +79,26 @@ export const theme = {
     subscribeErrorMessage:
       "box-shadow: 0 2px 12px -2px rgba(247,230,213,0.50), 0 2px 8px -2px rgba(166,68,27,0.50)",
     buttons: {
-      tertiary: "box-shadow: 0 2px 6px 0 rgba(8,36,82,0.13), 0 2px 12px -2px rgba(12,31,61,0.27)",
-      mainGhost: "box-shadow: 0 1px 3px 0 rgba(0,77,204,0.64), 0 3px 11px -2px rgba(0,72,189,0.33)",
-      darkGhost: "box-shadow: 0 2px 5px 0 rgba(82,82,82,0.13), 0 2px 13px -2px rgba(61,61,61,0.27)",
-      main: "box-shadow: 0 2px 4px 0 rgba(0,77,204,0.64), 0 6px 14px -2px rgba(0,91,189,0.33)",
+      tertiary:
+        "box-shadow: 0 2px 6px 0 rgba(8,36,82,0.13), 0 2px 12px -2px rgba(12,31,61,0.27)",
+      mainGhost:
+        "box-shadow: 0 1px 3px 0 rgba(0,77,204,0.64), 0 3px 11px -2px rgba(0,72,189,0.33)",
+      darkGhost:
+        "box-shadow: 0 2px 5px 0 rgba(82,82,82,0.13), 0 2px 13px -2px rgba(61,61,61,0.27)",
+      main:
+        "box-shadow: 0 2px 4px 0 rgba(0,77,204,0.64), 0 6px 14px -2px rgba(0,91,189,0.33)",
       success:
         "box-shadow: 0 0px 8px -2px rgba(12,97,34,0.8), 0 2px 16px -2px rgba(85,161,98,0.48)",
-      error: "box-shadow: 0 4px 10px 0 rgba(204,150,96,0.80), 0 2px 5px -2px rgba(166,30,0,0.60)",
+      error:
+        "box-shadow: 0 4px 10px 0 rgba(204,150,96,0.80), 0 2px 5px -2px rgba(166,30,0,0.60)",
       loadComments:
         "box-shadow: 0 2px 5px 0 rgba(82,82,82,0.13), 0 2px 13px -2px rgba(61,61,61,0.27)",
+    },
+    input: {
+      focus: "box-shadow: 0 0 1px 1px #A1A8B5, 0 0 2px 2px #CBCED4",
+    },
+    link: {
+      link: "box-shadow: 0 0 1px 1px #185DC4, 0 0 2px 2px #458FDE",
     },
   },
   fonts: {
@@ -283,43 +298,52 @@ const breakpoints = {
 };
 
 // iterate through the sizes and create a media template
-export const breakpoint = Object.keys(breakpoints).reduce((accumulator, label) => {
-  // use em in breakpoints to work properly cross-browser and support users
-  // changing their browsers font-size: https://zellwk.com/blog/media-query-units/
-  const emSize = breakpoints[label] / 16;
-  accumulator[label] = (...args) => css`
-    @media screen and (min-width: ${emSize}em) {
-      ${css(...args)};
-    }
-  `;
-  return accumulator;
-}, {});
+export const breakpoint = Object.keys(breakpoints).reduce(
+  (accumulator, label) => {
+    // use em in breakpoints to work properly cross-browser and support users
+    // changing their browsers font-size: https://zellwk.com/blog/media-query-units/
+    const emSize = breakpoints[label] / 16;
+    accumulator[label] = (...args) => css`
+      @media screen and (min-width: ${emSize}em) {
+        ${css(...args)};
+      }
+    `;
+    return accumulator;
+  },
+  {}
+);
 
 // iterate through the sizes and create a media template
-export const mediaMin = Object.keys(breakpoints).reduce((accumulator, label) => {
-  // use em in breakpoints to work properly cross-browser and support users
-  // changing their browsers font-size: https://zellwk.com/blog/media-query-units/
-  const emSize = breakpoints[label] / 16;
-  accumulator[label] = (...args) => css`
-    @media screen and (min-width: ${emSize}em) {
-      ${css(...args)};
-    }
-  `;
-  return accumulator;
-}, {});
+export const mediaMin = Object.keys(breakpoints).reduce(
+  (accumulator, label) => {
+    // use em in breakpoints to work properly cross-browser and support users
+    // changing their browsers font-size: https://zellwk.com/blog/media-query-units/
+    const emSize = breakpoints[label] / 16;
+    accumulator[label] = (...args) => css`
+      @media screen and (min-width: ${emSize}em) {
+        ${css(...args)};
+      }
+    `;
+    return accumulator;
+  },
+  {}
+);
 
 // iterate through the sizes and create a media template
-export const mediaMax = Object.keys(breakpoints).reduce((accumulator, label) => {
-  // use em in breakpoints to work properly cross-browser and support users
-  // changing their browsers font-size: https://zellwk.com/blog/media-query-units/
-  const emSize = breakpoints[label] / 16;
-  accumulator[label] = (...args) => css`
-    @media screen and (max-width: ${emSize}em) {
-      ${css(...args)};
-    }
-  `;
-  return accumulator;
-}, {});
+export const mediaMax = Object.keys(breakpoints).reduce(
+  (accumulator, label) => {
+    // use em in breakpoints to work properly cross-browser and support users
+    // changing their browsers font-size: https://zellwk.com/blog/media-query-units/
+    const emSize = breakpoints[label] / 16;
+    accumulator[label] = (...args) => css`
+      @media screen and (max-width: ${emSize}em) {
+        ${css(...args)};
+      }
+    `;
+    return accumulator;
+  },
+  {}
+);
 
 // Convert to rem a unitless value passed in
 // ${rem`24`}; => 24/16 = 1.5rem
