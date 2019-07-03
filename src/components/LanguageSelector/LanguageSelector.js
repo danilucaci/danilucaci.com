@@ -14,33 +14,40 @@ import {
   LanguageSelectorItem,
 } from "./styles";
 
-const LanguageSelector = (props) => {
-  function handleLocales() {
-    if (props.locale === "en") {
-      return (
-        <React.Fragment>
+const LanguageSelector = ({ locale = "en", twinPostURL, currentPath }) => (
+  <StyledLanguageSelector>
+    <WorldIcon arriaHidden="true">
+      {locale === "en" ? <use xlinkHref="#en" /> : <use xlinkHref="#es" />}
+    </WorldIcon>
+    <FormattedMessage id="change.language.toggle">
+      {(txt) => <LanguageDropdownLabel>{txt}</LanguageDropdownLabel>}
+    </FormattedMessage>
+    <DropdownIcon arriaHidden="true">
+      <use xlinkHref="#dropdown" />
+    </DropdownIcon>
+    <StyledLanguageDropdown>
+      {locale === "en" ? (
+        <>
           <CurrentLanguageSelector>
             <CurrentLanguageIcon arriaHidden="true">
               <use xlinkHref="#check" />
             </CurrentLanguageIcon>
-            <Link to={props.currentPath}>
+            <Link to={currentPath}>
               <span className="sr-only">change the page language to</span>
               English
             </Link>
           </CurrentLanguageSelector>
           <LanguageSelectorItem>
-            <Link to={props.twinPostURL}>
+            <Link to={twinPostURL}>
               <span className="sr-only">cambiar el idioma de la página al</span>
               Español
             </Link>
           </LanguageSelectorItem>
-        </React.Fragment>
-      );
-    } else if (props.locale === "es") {
-      return (
-        <React.Fragment>
+        </>
+      ) : (
+        <>
           <LanguageSelectorItem>
-            <Link to={props.twinPostURL}>
+            <Link to={twinPostURL}>
               <span className="sr-only">change the page language to</span>
               English
             </Link>
@@ -49,31 +56,16 @@ const LanguageSelector = (props) => {
             <CurrentLanguageIcon arriaHidden="true">
               <use xlinkHref="#check" />
             </CurrentLanguageIcon>
-            <Link to={props.currentPath}>
+            <Link to={currentPath}>
               <span className="sr-only">cambiar el idioma de la página al</span>
               Español
             </Link>
           </CurrentLanguageSelector>
-        </React.Fragment>
-      );
-    }
-  }
-
-  return (
-    <StyledLanguageSelector>
-      <WorldIcon arriaHidden="true">
-        {props.locale === "en" ? <use xlinkHref="#en" /> : <use xlinkHref="#es" />}
-      </WorldIcon>
-      <FormattedMessage id="change.language.toggle">
-        {(txt) => <LanguageDropdownLabel>{txt}</LanguageDropdownLabel>}
-      </FormattedMessage>
-      <DropdownIcon arriaHidden="true">
-        <use xlinkHref="#dropdown" />
-      </DropdownIcon>
-      <StyledLanguageDropdown>{handleLocales()}</StyledLanguageDropdown>
-    </StyledLanguageSelector>
-  );
-};
+        </>
+      )}
+    </StyledLanguageDropdown>
+  </StyledLanguageSelector>
+);
 
 LanguageSelector.propTypes = {
   locale: PropTypes.string.isRequired,

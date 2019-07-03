@@ -135,6 +135,13 @@ export const CurrentLanguageSelector = styled.li`
       background-color: transparent;
     }
 
+    &:focus,
+    &:active {
+      background-color: ${theme.colors.grey300};
+      box-shadow: none !important;
+      outline: none !important;
+    }
+
     @media screen and (max-height: 30em) {
       padding: ${rem(4)} ${rem(32)};
     }
@@ -169,6 +176,14 @@ export const LanguageSelectorItem = styled.li`
 
     &:hover {
       background-color: transparent;
+    }
+
+    /* For the global aria outline added */
+    &:focus,
+    &:active {
+      background-color: ${theme.colors.grey300};
+      box-shadow: none !important;
+      outline: none !important;
     }
 
     @media screen and (max-height: 30em) {
