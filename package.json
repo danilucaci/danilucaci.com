@@ -17,7 +17,7 @@
   "scripts": {
     "clean": "rm -rf public && rm -rf .cache",
     "dev": "gatsby develop",
-    "dev:p": "gatsby develop -H 192.168.1.10",
+    "dev:p": "gatsby develop -H 192.168.1.14",
     "dev:all": "npm-run-all --parallel dev start:lambda",
     "netlify": "npm-run-all --parallel build build:lambda",
     "start:lambda": "netlify-lambda serve functions -c webpack.functions.js",
