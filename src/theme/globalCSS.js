@@ -45,6 +45,10 @@ ${
   } */
 }
 
+.grey-background {
+  background-color: ${theme.colors.bgLight100} !important;
+}
+
   svg {
     position: absolute;
   }

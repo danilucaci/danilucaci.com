@@ -13,10 +13,16 @@ import Tags from "../components/Tags/Tags";
 import Pagination from "../components/Pagination/Pagination";
 import { SectionHeader } from "../components/Headings/Headings";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
+import useLightBackground from "../hooks/useLightBackground";
 
 import { localePaths } from "../i18n/i18n";
 
-import { BlogWrapper, BlogHeader, BlogTitle, TagsWrapper } from "../styles/blog.styles";
+import {
+  BlogWrapper,
+  BlogHeader,
+  BlogTitle,
+  TagsWrapper,
+} from "../styles/blog.styles";
 
 function BlogPage(props) {
   const {
@@ -33,16 +39,20 @@ function BlogPage(props) {
   let twinPostURL = "";
 
   if (locale === "en" && currentPage > 1) {
-    twinPostURL = localePaths["es"].blog + localePaths["es"].paginationName + currentPage;
+    twinPostURL =
+      localePaths["es"].blog + localePaths["es"].paginationName + currentPage;
   } else if (locale === "en" && currentPage === 1) {
     twinPostURL = localePaths["es"].blog;
   }
 
   if (locale === "es" && currentPage > 1) {
-    twinPostURL = localePaths["en"].blog + localePaths["en"].paginationName + currentPage;
+    twinPostURL =
+      localePaths["en"].blog + localePaths["en"].paginationName + currentPage;
   } else if (locale === "es" && currentPage === 1) {
     twinPostURL = localePaths["en"].blog;
   }
+
+  useLightBackground();
 
   return (
     <ErrorBoundary>
@@ -120,7 +130,9 @@ export const pageQuery = graphql`
   query ALL_TAGS_IN_BLOG {
     allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { posted: { eq: true }, category: { eq: "blog" } } }
+      filter: {
+        frontmatter: { posted: { eq: true }, category: { eq: "blog" } }
+      }
     ) {
       tags: group(field: frontmatter___tags) {
         fieldValue

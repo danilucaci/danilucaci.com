@@ -27,13 +27,15 @@ function WorkPage(props) {
   let twinPostURL = "";
 
   if (locale === "en" && currentPage > 1) {
-    twinPostURL = localePaths["es"].work + localePaths["es"].paginationName + currentPage;
+    twinPostURL =
+      localePaths["es"].work + localePaths["es"].paginationName + currentPage;
   } else if (locale === "en" && currentPage === 1) {
     twinPostURL = localePaths["es"].work;
   }
 
   if (locale === "es" && currentPage > 1) {
-    twinPostURL = localePaths["en"].work + localePaths["en"].paginationName + currentPage;
+    twinPostURL =
+      localePaths["en"].work + localePaths["en"].paginationName + currentPage;
   } else if (locale === "es" && currentPage === 1) {
     twinPostURL = localePaths["en"].work;
   }

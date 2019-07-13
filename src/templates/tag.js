@@ -14,6 +14,7 @@ import Pagination from "../components/Pagination/Pagination";
 import { SectionHeader } from "../components/Headings/Headings";
 import { GridCol } from "../components/Grid/Grid";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
+import useLightBackground from "../hooks/useLightBackground";
 
 import { localePaths } from "../i18n/i18n";
 
@@ -52,10 +53,18 @@ const TagPage = (props) => {
   }
 
   if (locale === "es" && currentPage > 1) {
-    twinPostURL = (paginationPathPrefix + localePaths["en"].paginationName + currentPage).slice(4);
+    twinPostURL = (
+      paginationPathPrefix +
+      localePaths["en"].paginationName +
+      currentPage
+    ).slice(4);
   } else if (locale === "es" && currentPage === 1) {
-    twinPostURL = (localePaths["en"].siteLocalePrefix + paginationPathPrefix).slice(4);
+    twinPostURL = (
+      localePaths["en"].siteLocalePrefix + paginationPathPrefix
+    ).slice(4);
   }
+
+  useLightBackground();
 
   return (
     <ErrorBoundary>
@@ -139,7 +148,9 @@ export const pageQuery = graphql`
     allMdx(
       limit: 200
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { posted: { eq: true }, category: { eq: "blog" } } }
+      filter: {
+        frontmatter: { posted: { eq: true }, category: { eq: "blog" } }
+      }
     ) {
       tags: group(field: frontmatter___tags) {
         fieldValue
