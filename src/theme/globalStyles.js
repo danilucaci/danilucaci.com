@@ -95,10 +95,10 @@ export const theme = {
         "box-shadow: 0 2px 5px 0 rgba(82,82,82,0.13), 0 2px 13px -2px rgba(61,61,61,0.27)",
     },
     input: {
-      focus: "box-shadow: 0 0 1px 1px #A1A8B5, 0 0 2px 2px #CBCED4",
+      focus: "box-shadow: 0 0 2px 1px #A1A8B5, 0 0 0 3px #CBCED4",
     },
     link: {
-      link: "box-shadow: 0 0 1px 1px #185DC4, 0 0 2px 2px #458FDE",
+      link: "box-shadow: 0 0 2px 1px #A1A8B5, 0 0 0 3px #CBCED4",
     },
   },
   fonts: {

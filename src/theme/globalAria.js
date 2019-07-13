@@ -2,7 +2,8 @@ import { createGlobalStyle } from "styled-components";
 import { theme } from "./globalStyles";
 
 const GlobalAria = createGlobalStyle`
-  button,
+  ${
+    "" /* button,
   a,
   input {
     &:active,
@@ -10,6 +11,7 @@ const GlobalAria = createGlobalStyle`
       outline: 2px solid ${theme.colors.dark800};
       ${theme.shadow.input.focus};
     }
+  } */
   }
 
   /* Browser fallback for non-supporting hidden attribute
