@@ -1,0 +1,19 @@
+type Person {
+  email: String! @unique(index: "unique_email")
+  fullName: String
+  messages: [Message!] @relation(name: "person_messages")
+}
+
+type Message {
+  person: Person!
+  date: String!
+  acceptsConsent: Boolean!
+  consentValue: String!
+  body: String!
+}
+
+type Query {
+  allPersons: [Person!]
+  allMessages: [Message!]
+  findPersonByEmail(email: String!): Person
+}

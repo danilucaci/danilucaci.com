@@ -31,40 +31,26 @@ const {
 // Import & call this from your function handlers:
 // initSentry();
 
-const mailjet = require("node-mailjet").connect(MJ_APIKEY_PUBLIC, MJ_APIKEY_PRIVATE, {
-  url: "api.mailjet.com",
-  version: "v3.1",
-});
+const mailjet = require("node-mailjet").connect(
+  MJ_APIKEY_PUBLIC,
+  MJ_APIKEY_PRIVATE,
+  {
+    url: "api.mailjet.com",
+    version: "v3.1",
+  },
+);
+
+const handleFaunaSync = require("../src/functions/contact/handleFaunaSync");
+const STATUS_MESSAGES = require("../src/functions/contact/statusMessages");
 
 const validEmail = ow.string.is((e) => /^.+@.+\..+$/.test(e));
-
-const STATUS_MESSAGES = {
-  en: {
-    botFound: "Got a bot in here.",
-    checkboxAccepted: "Please accept the privacy policy and legal notice to continue.",
-    checkboxValue: "The consent value was not provided.",
-    invalidDateSent: "The date sent is invalid.",
-    nameShort: "The name is too short.",
-    invalidEmail: "The email received is invalid.",
-    messageTooShort: "The message is too short.",
-    messageTooLong: "The message is too long.",
-  },
-  es: {
-    botFound: "Got a bot in here.",
-    checkboxAccepted: "Please accept the privacy policy and legal notice to continue.",
-    checkboxValue: "The consent value was not provided.",
-    invalidDateSent: "The date sent is invalid.",
-    nameShort: "The name is too short.",
-    invalidEmail: "The email received is invalid.",
-    messageTooShort: "The message is too short.",
-    messageTooLong: "The message is too long.",
-  },
-};
 
 const headers = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "Content-Type",
 };
+
+const templateID = 890910;
 
 // async function reportError(error) {
 //   console.warn(error);
@@ -121,7 +107,8 @@ exports.handler = async (event) => {
   const sendFrom = locale === "en" ? EMAIL_FROM_EN : EMAIL_FROM_ES;
 
   const origin = new URL(event.headers.origin);
-  const letMeIn = origin.hostname === "localhost" || origin.hostname === "www.danilucaci.com";
+  const letMeIn =
+    origin.hostname === "localhost" || origin.hostname === "www.danilucaci.com";
 
   if (!letMeIn) {
     return {
@@ -145,8 +132,16 @@ exports.handler = async (event) => {
 
   // Filter out legal issues
   try {
-    ow(consentcheckboxvalue, STATUS_MESSAGES[locale].checkboxValue, ow.string.minLength(10));
-    ow(acceptsconsentcheckbox, STATUS_MESSAGES[locale].checkboxAccepted, ow.boolean.true);
+    ow(
+      consentcheckboxvalue,
+      STATUS_MESSAGES[locale].checkboxValue,
+      ow.string.minLength(10),
+    );
+    ow(
+      acceptsconsentcheckbox,
+      STATUS_MESSAGES[locale].checkboxAccepted,
+      ow.boolean.true,
+    );
   } catch (error) {
     console.error("Legal Stuff Happened: ", error.message);
     return {
@@ -161,8 +156,16 @@ exports.handler = async (event) => {
     ow(email, STATUS_MESSAGES[locale].invalidEmail, validEmail);
     ow(fullname, STATUS_MESSAGES[locale].nameShort, ow.string.minLength(2));
     ow(datesent, STATUS_MESSAGES[locale].invalidDateSent, ow.string.date);
-    ow(message, STATUS_MESSAGES[locale].messageTooShort, ow.string.minLength(2));
-    ow(message, STATUS_MESSAGES[locale].messageTooLong, ow.string.maxLength(800));
+    ow(
+      message,
+      STATUS_MESSAGES[locale].messageTooShort,
+      ow.string.minLength(2),
+    );
+    ow(
+      message,
+      STATUS_MESSAGES[locale].messageTooLong,
+      ow.string.maxLength(800),
+    );
   } catch (error) {
     console.error("Validation error: ", error.message);
     return {
@@ -206,7 +209,37 @@ exports.handler = async (event) => {
    */
 
   // Send it to me in a spanish local time
-  const formattedDate = newDateFromDateSent.toLocaleString("es-ES", dateOptions);
+  const formattedDate = newDateFromDateSent.toLocaleString(
+    "es-ES",
+    dateOptions,
+  );
+
+  const contactData = {
+    email,
+    fullname,
+    formattedDate,
+    message,
+    acceptsconsentcheckbox,
+    consentcheckboxvalue,
+  };
+
+  let resBody = {
+    db_message: "initial",
+    db_success: false,
+    mail_message: "initial",
+    mail_success: false,
+  };
+
+  const dbResponse = await handleFaunaSync(contactData).catch((err) => {
+    resBody.db_message = err.message;
+  });
+
+  if (dbResponse && dbResponse.startsWith("message.id")) {
+    resBody.db_message = dbResponse;
+    resBody.db_success = true;
+  }
+
+  const mailDBResponse = JSON.stringify(resBody.db_message, null, 2);
 
   const msg = {
     Messages: [
@@ -221,7 +254,7 @@ exports.handler = async (event) => {
             Name: EMAIL_MY_NAME,
           },
         ],
-        TemplateID: 890910,
+        TemplateID: templateID,
         TemplateLanguage: true,
         TemplateErrorDeliver: true,
         Subject: "Got Mail! danilucaci.com Contact Form Notification",
@@ -232,37 +265,30 @@ exports.handler = async (event) => {
           message,
           acceptsconsentcheckbox,
           consentcheckboxvalue,
+          faunaRes: mailDBResponse,
         },
       },
     ],
   };
 
-  let resStatusCode;
-
-  let resBody = {
-    success: false,
-    message: "",
-  };
+  let statusCode;
 
   try {
     const res = await mailjet
       .post("send", { version: "v3.1", url: "api.mailjet.com" })
       .request(msg);
 
-    resBody = {
-      success: true,
-      message: "Message sent",
-    };
-
-    resStatusCode = res.statusCode;
+    resBody.mail_message = "Mail sent";
+    resBody.mail_success = true;
+    statusCode = res.statusCode;
   } catch (error) {
-    resBody.success = false;
-    resBody.message = error.message;
-    resStatusCode = error.statusCode;
+    resBody.mail_success = false;
+    resBody.mail_message = error.message;
+    statusCode = error.statusCode;
   }
 
   return {
-    statusCode: resStatusCode || 200,
+    statusCode: statusCode || 200,
     body: JSON.stringify(resBody),
     headers,
   };

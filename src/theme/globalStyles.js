@@ -310,7 +310,7 @@ export const breakpoint = Object.keys(breakpoints).reduce(
     `;
     return accumulator;
   },
-  {}
+  {},
 );
 
 // iterate through the sizes and create a media template
@@ -326,7 +326,7 @@ export const mediaMin = Object.keys(breakpoints).reduce(
     `;
     return accumulator;
   },
-  {}
+  {},
 );
 
 // iterate through the sizes and create a media template
@@ -342,7 +342,7 @@ export const mediaMax = Object.keys(breakpoints).reduce(
     `;
     return accumulator;
   },
-  {}
+  {},
 );
 
 // Convert to rem a unitless value passed in

@@ -59,3 +59,22 @@ export const InlineMessageCopy = styled(Copy)`
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};
 `;
+
+export const ShowErrorLink = styled.button`
+  border: none;
+  background-color: transparent;
+  color: ${theme.colors.main600};
+  display: block;
+  font-size: ${theme.fontSizes.s};
+  line-height: ${theme.lineHeights.s};
+  font-weight: 700;
+  margin-top: ${rem(16)};
+
+  .fonts-loaded & {
+    font-family: ${theme.fonts.bodyBold};
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+`;

@@ -12,7 +12,15 @@ module.exports = {
   parserOptions: {
     sourceType: "module",
   },
-  plugins: ["html", "import", "react", "jsx-a11y", "markdown", "react-hooks", "jest"],
+  plugins: [
+    "html",
+    "import",
+    "react",
+    "jsx-a11y",
+    "markdown",
+    "react-hooks",
+    "jest",
+  ],
   rules: {
     "react-hooks/rules-of-hooks": 2,
     "react-hooks/exhaustive-deps": 1,
@@ -73,7 +81,14 @@ module.exports = {
     "jsx-a11y/no-noninteractive-element-interactions": [
       "error",
       {
-        handlers: ["onClick", "onMouseDown", "onMouseUp", "onKeyPress", "onKeyDown", "onKeyUp"],
+        handlers: [
+          "onClick",
+          "onMouseDown",
+          "onMouseUp",
+          "onKeyPress",
+          "onKeyDown",
+          "onKeyUp",
+        ],
       },
     ],
     "lines-around-comment": [
@@ -118,5 +133,6 @@ module.exports = {
     "prefer-const": 0,
     "no-lonely-if": 0,
     "import/prefer-default-export": 0,
+    "object-shorthand": 0,
   },
 };

@@ -75,9 +75,9 @@ class ErrorBoundary extends React.Component {
               color: "#5A616B",
             }}
           >
-            I apologize for any inconvenience this may have caused. If you would like to send me a
-            report of the error that happened, feel free to send me an email or a tweet with the
-            details.
+            I apologize for any inconvenience this may have caused. If you would
+            like to send me a report of the error that happened, feel free to
+            send me an email or a tweet with the details.
           </p>
           <ul>
             <li
@@ -88,7 +88,9 @@ class ErrorBoundary extends React.Component {
                 color: "#0946B0",
               }}
             >
-              <a href="mailto:info@danilucaci.com?subject=Error%20Report">info@danilucaci.com</a>
+              <a href="mailto:info@danilucaci.com?subject=Error%20Report">
+                info@danilucaci.com
+              </a>
             </li>
             <li
               style={{
@@ -98,7 +100,11 @@ class ErrorBoundary extends React.Component {
                 color: "#0946B0",
               }}
             >
-              <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/danilucaci">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://twitter.com/danilucaci"
+              >
                 @danilucaci
               </a>
             </li>

@@ -67,7 +67,8 @@ export const COPY_CODE_MESSAGES = {
 
 export const CONSENT_VALUE = {
   en: {
-    no: "I have not read and I do not accept the legal notice and the privacy policy.",
+    no:
+      "I have not read and I do not accept the legal notice and the privacy policy.",
     yes: "I have read and accept the legal notice and the privacy policy.",
   },
   es: {
@@ -91,27 +92,41 @@ export const FORM_SUBMIT_STATUS = {
     en: "Sorry 😔, your message couldn't be sent.",
     es: "Lo siento 😔, tu mensaje no ha podido ser enviado.",
   },
+  showError: {
+    en: "Show error details",
+    es: "Mostrar detalles del error",
+  },
+  hideError: {
+    en: "Hide error details",
+    es: "Ocultar detalles del error",
+  },
   formValidation: {
     en: {
       email: "Please enter a valid email",
-      nameRequired: "Please enter your name. I don’t really want to call you ‘user182’ 😄",
+      nameRequired:
+        "Please enter your name. I don’t really want to call you ‘user182’ 😄",
       nameShort: "Your name is too short. I’m sure it’s longer than that...",
       nameLong: "Your name is too long. Are you sure it’s correct?",
       emailRequired: "Please enter your email so that I can get back to you.",
-      messageRequired: "Please enter a message explaining what you would like to ask me.",
+      messageRequired:
+        "Please enter a message explaining what you would like to ask me.",
       messageShort:
         "Your message is too short. Please include some more details about what you`d like to ask me so that I can get back to you.",
       messageLong:
         "Your message is too long. Please include a short description of what you’d like to ask me and I’ll get back to you to go over the details.",
-      privacyRequired: "Please accept the legal notice and privacy policy before you can continue.",
+      privacyRequired:
+        "Please accept the legal notice and privacy policy before you can continue.",
     },
     es: {
       email: "El correo electrónico que has introducido no es válido.",
-      nameRequired: "Por favor introduce tu nombre. No me gustaría llamarte ‘usuario371’ 😄",
+      nameRequired:
+        "Por favor introduce tu nombre. No me gustaría llamarte ‘usuario371’ 😄",
       nameShort: "Tu nombre parece muy corto, ¿seguro te llamas así?",
       nameLong: "Tu nombre es un poco largo, ¿seguro te llamas así?",
-      emailRequired: "Por favor introduce tu email para que pueda enviarte una respuesta.",
-      messageRequired: "Por favor escribe un mensaje explicando lo que te gustaría preguntarme.",
+      emailRequired:
+        "Por favor introduce tu email para que pueda enviarte una respuesta.",
+      messageRequired:
+        "Por favor escribe un mensaje explicando lo que te gustaría preguntarme.",
       messageShort:
         "Tu mensaje es muy corto. Por favor describe un poco lo que te gustaría preguntarme, para que pueda darte una respuesta cuanto antes.",
       messageLong:
@@ -143,24 +158,30 @@ export const FORM_SUBMIT_STATUS = {
 export const MC_ERRORS = {
   en: {
     generic: "Sorry 😔, something went wrong, please try again later.",
-    many: "Sorry 😔, you have too many subscribe attemps, please try again later.",
-    already: "You have already subscribed. Thank you for subscribing to my newsletter 🙏🏼.",
+    many:
+      "Sorry 😔, you have too many subscribe attemps, please try again later.",
+    already:
+      "You have already subscribed. Thank you for subscribing to my newsletter 🙏🏼.",
   },
   es: {
-    generic: "Lo siento 😔, algo ha salido mal, por favor intentalo de nuevo más tarde.",
+    generic:
+      "Lo siento 😔, algo ha salido mal, por favor intentalo de nuevo más tarde.",
     many:
       "Lo siento 😔, has hecho demasiados intentos de suscribirte, por favor intentalo de nuevo más tarde.",
-    already: "Ya te habías suscrito. ¡Gracias por apuntarte a mi lista de suscriptores! 🙏🏼",
+    already:
+      "Ya te habías suscrito. ¡Gracias por apuntarte a mi lista de suscriptores! 🙏🏼",
   },
   formValidation: {
     en: {
       email: "Please enter a valid email",
       emailRequired: "Please enter your email so that I can get back to you.",
-      privacyRequired: "To continue you need to accept the legal notice and privacy policy.",
+      privacyRequired:
+        "To continue you need to accept the legal notice and privacy policy.",
     },
     es: {
       email: "El correo electrónico que has introducido no es válido.",
-      emailRequired: "Por favor introduce tu email para que pueda enviarte una respuesta.",
+      emailRequired:
+        "Por favor introduce tu email para que pueda enviarte una respuesta.",
       privacyRequired:
         "Para poder continuar tienes que aceptar el aviso legal y la política de privacidad.",
     },

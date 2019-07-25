@@ -7,11 +7,18 @@ import * as Sentry from "@sentry/browser";
 
 import sendGAEvent from "../../helpers/sendGAEvent";
 
-import { CONSENT_VALUE, FORM_SUBMIT_STATUS, localePaths } from "../../i18n/i18n";
+import {
+  CONSENT_VALUE,
+  FORM_SUBMIT_STATUS,
+  localePaths,
+} from "../../i18n/i18n";
 import PrivacyCheckbox from "../PrivacyCheckbox/PrivacyCheckbox";
 import { StyledErrorCTA, StyledIcon } from "../EmailLoading/styles";
 import EmailErrorMessage from "../EmailErrorMessage/EmailErrorMessage";
-import { InlineStatusMessageWrapper, InlineMessageCopy } from "../EmailErrorMessage/styles";
+import {
+  InlineStatusMessageWrapper,
+  InlineMessageCopy,
+} from "../EmailErrorMessage/styles";
 
 import SubmitButton from "../SubmitButton/SubmitButton";
 
@@ -30,17 +37,6 @@ function ContactForm({ locale }) {
   const [showFormError, setShowFormError] = useState(false);
   const [formErrorRes, setFormErrorRes] = useState({});
   const logGAEvent = sendGAEvent("Contact Page", "Submitted Form");
-
-  // function showFormInputs({
-  //   fullname, email, message, acceptsconsentcheckbox, botfield,
-  // }) {
-  //   console.log(`fullname: ${fullname}`);
-  //   console.log(`email: ${email}`);
-  //   console.log(`message: ${message}`);
-  //   console.log(`botfield: ${botfield}`);
-  //   console.log(`checkboxValue: ${acceptsconsentcheckbox}`);
-  //   console.log(`acceptsConsentCheckbox: ${acceptsconsentcheckbox}`);
-  // }
 
   function handleFormError(error) {
     setShowFormError(true);
@@ -88,49 +84,53 @@ function ContactForm({ locale }) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: data,
-      }).then((res) => {
-        if (res.status === 200) {
-          if (process.env.NODE_ENV === "development") {
-            console.log(`%c Status: ${res.status}: ${res.ok}`, "color: #79E36B");
-            console.log("%c Great Success!", "color: #79E36B");
+      })
+        .then((res) => {
+          if (res.status === 200) {
+            setSubmitting(false);
+            logGAEvent();
+          } else if (res.status === 400) {
+            handleFormError(
+              new Error(
+                `Contact Form Error. No data was sent to the server. Received code: ${res.status}`,
+              ),
+            );
+          } else if (res.status === 403) {
+            handleFormError(
+              new Error(
+                `Contact Form Error. The form request is not allowed. Received code: ${res.status}`,
+              ),
+            );
+          } else if (res.status === 451) {
+            handleFormError(
+              new Error(
+                `Contact Form Error. The form could not be sent for legal reasons. Received code: ${res.status}`,
+              ),
+            );
+          } else if (res.status === 504) {
+            handleFormError(
+              new Error(
+                `Contact Form Error. The server did not respond. Received code: ${res.status}`,
+              ),
+            );
+          } else {
+            handleFormError(
+              new Error(
+                `Contact Form Error. The form could not be sent. Received code: ${res.status}`,
+              ),
+            );
           }
-          // showFormInputs(values);
-          setSubmitting(false);
 
-          logGAEvent();
-          navigate(localePaths[locale].thanks);
-        } else if (res.status === 400) {
-          handleFormError(
-            new Error(
-              `Contact Form Error. No data was sent to the server. Received code: ${res.status}`,
-            ),
-          );
-        } else if (res.status === 403) {
-          handleFormError(
-            new Error(
-              `Contact Form Error. The form request is not allowed. Received code: ${res.status}`,
-            ),
-          );
-        } else if (res.status === 451) {
-          handleFormError(
-            new Error(
-              `Contact Form Error. The form could not be sent for legal reasons. Received code: ${res.status}`,
-            ),
-          );
-        } else if (res.status === 504) {
-          handleFormError(
-            new Error(
-              `Contact Form Error. The server did not respond. Received code: ${res.status}`,
-            ),
-          );
-        } else {
-          handleFormError(
-            new Error(
-              `Contact Form Error. The form could not be sent. Received code: ${res.status}`,
-            ),
-          );
-        }
-      });
+          return res.json();
+        })
+        .then((res) => {
+          if (!res.db_message.startsWith("message.id")) {
+            handleFormError(new Error(res.db_message));
+          }
+          if (res.mail_success) {
+            navigate(localePaths[locale].thanks);
+          }
+        });
     } catch (error) {
       handleFormError(error);
     }
@@ -163,8 +163,17 @@ function ContactForm({ locale }) {
           >
             {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
             {/* These have to be input types, otherwise they don't show in the form atributes */}
-            <input type="hidden" name="form-name" arria-hidden="true" value="contact" />
-            <Field style={{ display: "none" }} arria-hidden="true" name="botfield" />
+            <input
+              type="hidden"
+              name="form-name"
+              arria-hidden="true"
+              value="contact"
+            />
+            <Field
+              style={{ display: "none" }}
+              arria-hidden="true"
+              name="botfield"
+            />
             <StyledLabel labelType="fullname">
               <StyledInput
                 type="fullname"
@@ -202,7 +211,12 @@ function ContactForm({ locale }) {
               )}
             </ErrorMessage>
             <StyledLabel labelType="message">
-              <StyledTextArea name="message" component="textarea" rows="6" minLength="2" />
+              <StyledTextArea
+                name="message"
+                component="textarea"
+                rows="6"
+                minLength="2"
+              />
               <InputTextAreaStatusIcon arriaHidden="true" />
             </StyledLabel>
             <ErrorMessage name="message">
@@ -215,7 +229,11 @@ function ContactForm({ locale }) {
             <PrivacyCheckbox
               type="checkbox"
               name="acceptsconsentcheckbox"
-              value={isValid === true ? CONSENT_VALUE[locale].yes : CONSENT_VALUE[locale].no}
+              value={
+                isValid === true
+                  ? CONSENT_VALUE[locale].yes
+                  : CONSENT_VALUE[locale].no
+              }
               locale={locale}
             />
             <ErrorMessage name="acceptsconsentcheckbox">
@@ -234,11 +252,16 @@ function ContactForm({ locale }) {
                     <use xlinkHref="#error" />
                   </StyledIcon>
                 </StyledErrorCTA>
-                <EmailErrorMessage locale={locale} formErrorRes={formErrorRes} />
+                <EmailErrorMessage
+                  locale={locale}
+                  formErrorRes={formErrorRes}
+                />
               </React.Fragment>
             )}
 
-            {!showFormError && <SubmitButton disabled={!isValid} showSpinner={showSpinner} />}
+            {!showFormError && (
+              <SubmitButton disabled={!isValid} showSpinner={showSpinner} />
+            )}
           </StyledForm>
         )}
       </Formik>
