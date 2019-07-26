@@ -61,7 +61,7 @@
   "form.placeholder.fullname": "Full name",
   "form.placeholder.message": "Your message",
   "form.submit.submit": "Send message",
-  "form.submit.sending": "Sending... ",
+  "form.submit.sending": "Sending ",
   "form.submit.sent": "Message Sent!",
   "form.submit.subscribe": "Subscribe",
   "form.submit.success": "Subscribed! 🎉",
