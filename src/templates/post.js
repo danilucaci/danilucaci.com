@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Disqus from "disqus-react";
 import { FormattedMessage } from "react-intl";
-import { MDXRenderer } from "gatsby-mdx";
+import { MDXRenderer } from "gatsby-plugin-mdx";
 
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
@@ -177,7 +177,7 @@ class Post extends Component {
               </StyledPageHeader>
               <PostContent>
                 <GridCol>
-                  <MDXRenderer>{postNode.code.body}</MDXRenderer>
+                  <MDXRenderer>{postNode.body}</MDXRenderer>
                 </GridCol>
               </PostContent>
 
@@ -216,7 +216,10 @@ class Post extends Component {
               </StyledLoadComments>
             )}
             {this.state.loadComments && (
-              <Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+              <Disqus.DiscussionEmbed
+                shortname={disqusShortname}
+                config={disqusConfig}
+              />
             )}
           </CommentsWrapper>
           <SiteFooter locale={locale} />
@@ -231,19 +234,29 @@ Post.propTypes = {
     locale: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     twinPost: PropTypes.string.isRequired,
-    nextTitle: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.object.isRequired]),
-    nextSlug: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.object.isRequired]),
-    prevSlug: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.object.isRequired]),
-    prevTitle: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.object.isRequired]),
+    nextTitle: PropTypes.oneOfType([
+      PropTypes.string.isRequired,
+      PropTypes.object.isRequired,
+    ]),
+    nextSlug: PropTypes.oneOfType([
+      PropTypes.string.isRequired,
+      PropTypes.object.isRequired,
+    ]),
+    prevSlug: PropTypes.oneOfType([
+      PropTypes.string.isRequired,
+      PropTypes.object.isRequired,
+    ]),
+    prevTitle: PropTypes.oneOfType([
+      PropTypes.string.isRequired,
+      PropTypes.object.isRequired,
+    ]),
   }).isRequired,
   data: PropTypes.shape({
     mdx: PropTypes.shape({
       fields: PropTypes.shape({
         slug: PropTypes.string.isRequired,
       }),
-      code: PropTypes.shape({
-        body: PropTypes.string.isRequired,
-      }),
+      body: PropTypes.string.isRequired,
       frontmatter: PropTypes.shape({
         category: PropTypes.string.isRequired,
         date: PropTypes.string.isRequired,
@@ -279,9 +292,7 @@ export const pageQuery = graphql`
       fields {
         slug
       }
-      code {
-        body
-      }
+      body
     }
   }
 `;

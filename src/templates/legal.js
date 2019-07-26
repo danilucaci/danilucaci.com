@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { FormattedDate, FormattedMessage } from "react-intl";
-import { MDXRenderer } from "gatsby-mdx";
+import { MDXRenderer } from "gatsby-plugin-mdx";
 
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
@@ -86,7 +86,12 @@ class LegalDoc extends Component {
                   {(txt) => (
                     <Copy>
                       {txt}&nbsp;
-                      <FormattedDate value={lastUpdated} year="numeric" month="long" day="numeric">
+                      <FormattedDate
+                        value={lastUpdated}
+                        year="numeric"
+                        month="long"
+                        day="numeric"
+                      >
                         {(txt2) => (
                           <Time as="time" dateTime={txt2}>
                             {txt2}
@@ -97,7 +102,7 @@ class LegalDoc extends Component {
                   )}
                 </FormattedMessage>
                 <PostWrapper>
-                  <MDXRenderer>{postNode.code.body}</MDXRenderer>
+                  <MDXRenderer>{postNode.body}</MDXRenderer>
                 </PostWrapper>
               </GridCol>
             </PageWrapper>
@@ -125,9 +130,7 @@ LegalDoc.propTypes = {
         title: PropTypes.string.isRequired,
         date: PropTypes.string.isRequired,
       }),
-      code: PropTypes.shape({
-        body: PropTypes.string.isRequired,
-      }),
+      body: PropTypes.string.isRequired,
     }),
   }).isRequired,
   location: PropTypes.shape({
@@ -147,9 +150,7 @@ export const legalPageQuery = graphql`
       fields {
         slug
       }
-      code {
-        body
-      }
+      body
     }
   }
 `;

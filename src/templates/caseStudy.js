@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
-import { MDXRenderer } from "gatsby-mdx";
+import { MDXRenderer } from "gatsby-plugin-mdx";
 
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
@@ -142,7 +142,7 @@ class CaseStudy extends Component {
                 />
               </CaseStudyImgWrapper>
               <PostContent>
-                <MDXRenderer>{postNode.code.body}</MDXRenderer>
+                <MDXRenderer>{postNode.body}</MDXRenderer>
               </PostContent>
               <AuthorCard />
             </ArticleWrapper>
@@ -169,19 +169,29 @@ CaseStudy.propTypes = {
     locale: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     twinPost: PropTypes.string.isRequired,
-    nextTitle: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.object.isRequired]),
-    nextSlug: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.object.isRequired]),
-    prevSlug: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.object.isRequired]),
-    prevTitle: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.object.isRequired]),
+    nextTitle: PropTypes.oneOfType([
+      PropTypes.string.isRequired,
+      PropTypes.object.isRequired,
+    ]),
+    nextSlug: PropTypes.oneOfType([
+      PropTypes.string.isRequired,
+      PropTypes.object.isRequired,
+    ]),
+    prevSlug: PropTypes.oneOfType([
+      PropTypes.string.isRequired,
+      PropTypes.object.isRequired,
+    ]),
+    prevTitle: PropTypes.oneOfType([
+      PropTypes.string.isRequired,
+      PropTypes.object.isRequired,
+    ]),
   }).isRequired,
   data: PropTypes.shape({
     mdx: PropTypes.shape({
       fields: PropTypes.shape({
         slug: PropTypes.string.isRequired,
       }),
-      cody: PropTypes.shape({
-        body: PropTypes.string.isRequired,
-      }),
+      body: PropTypes.string.isRequired,
       frontmatter: PropTypes.shape({
         title: PropTypes.string.isRequired,
         date: PropTypes.string.isRequired,
@@ -222,9 +232,7 @@ export const pageQuery = graphql`
       fields {
         slug
       }
-      code {
-        body
-      }
+      body
     }
   }
 `;
