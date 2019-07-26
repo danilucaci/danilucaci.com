@@ -1,0 +1,82 @@
+mutation createPerson {
+  createPerson(
+    data: { fullName: "Dani Lucaci", email: "danilucaci@gmail.com" }
+  ) {
+    _id
+    fullName
+    email
+  }
+}
+
+mutation deletePerson {
+  deletePerson(id: "238880201222652423") {
+    _id
+  }
+}
+
+mutation createMessage1 {
+  createMessage(
+    data: {
+      person: { create: { email: "alex@mail.com", fullName: "Alex Marin" } }
+      date: "friday"
+      acceptsConsent: true
+      consentValue: "I accept"
+      body: "Sup"
+    }
+  ) {
+    _id
+    consentValue
+    acceptsConsent
+    date
+    body
+    person {
+      email
+      fullName
+    }
+  }
+}
+
+mutation createMessage2 {
+  createMessage(
+    data: {
+      person: { create: { email: "ana@gmail.com", fullName: "Ana Lucaci" } }
+      date: "friday"
+      acceptsConsent: true
+      consentValue: "I accept"
+      body: "Hola que tal tio"
+    }
+  ) {
+    _id
+    consentValue
+    acceptsConsent
+    date
+    body
+    person {
+      email
+      fullName
+    }
+  }
+}
+
+# 238869625114198531
+mutation connectMessage {
+  createMessage(
+    data: {
+      person: { connect: "238869625114198531" }
+      date: "friday"
+      acceptsConsent: true
+      consentValue: "I accept"
+      body: "Sup"
+    }
+  ) {
+    _id
+    consentValue
+    acceptsConsent
+    date
+    body
+    person {
+      email
+      fullName
+    }
+  }
+}

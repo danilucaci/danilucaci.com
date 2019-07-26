@@ -1,0 +1,58 @@
+query allMessages {
+  allMessages {
+    data {
+      body
+      date
+      person {
+        _id
+        fullName
+      }
+    }
+  }
+}
+
+query findPersonByEmail {
+  findPersonByEmail(email: "danis@mail.com") {
+    _id
+    email
+    fullName
+    messages {
+      data {
+        _id
+        body
+        consentValue
+        acceptsConsent
+        date
+      }
+    }
+  }
+}
+
+query allPersons {
+  allPersons {
+    data {
+      _id
+      email
+      fullName
+      messages {
+        data {
+          _id
+          body
+          consentValue
+          acceptsConsent
+          date
+        }
+      }
+    }
+  }
+}
+
+query allPersonsWithoutMessages {
+  allPersons {
+    data {
+      _id
+      email
+      fullName
+    }
+  }
+}
