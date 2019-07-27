@@ -134,5 +134,6 @@ module.exports = {
     "no-lonely-if": 0,
     "import/prefer-default-export": 0,
     "object-shorthand": 0,
+    "react/destructuring-assignment": 0,
   },
 };
