@@ -109,7 +109,9 @@ const Layout = (props) => {
 
             const sendPageView = () => {
               const pagePath = window.location
-                ? window.location.pathname + window.location.search + window.location.hash
+                ? window.location.pathname +
+                  window.location.search +
+                  window.location.hash
                 : undefined;
 
               ReactGA.set({ page: pagePath });
@@ -279,13 +281,15 @@ const Layout = (props) => {
               <GlobalGrid />
               <SVGSprite />
               {props.children}
-              <CookieConsent
-                openCookieConsent={state.openCookieConsent}
-                acceptedCookies={acceptedCookies}
-                deniedCookies={deniedCookies}
-                pageLocale={props.locale}
-                isTransitioning={state.isTransitioning}
-              />
+              {NODE_ENV !== "development" && (
+                <CookieConsent
+                  openCookieConsent={state.openCookieConsent}
+                  acceptedCookies={acceptedCookies}
+                  deniedCookies={deniedCookies}
+                  pageLocale={props.locale}
+                  isTransitioning={state.isTransitioning}
+                />
+              )}
             </Page>
           </DribbblePostsProvider>
         </IntlProvider>
