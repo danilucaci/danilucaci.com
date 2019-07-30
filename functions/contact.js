@@ -15,6 +15,22 @@ const {
   EMAIL_MY_NAME,
 } = process.env;
 
+// const { GATSBY_SENTRY_URL } = process.env;
+
+// const Sentry = require("@sentry/node");
+
+// let sentryInitialized = false;
+
+// export function initSentry() {
+//   if (GATSBY_SENTRY_URL) {
+//     Sentry.init({ dsn: GATSBY_SENTRY_URL });
+//     sentryInitialized = true;
+//   }
+// }
+
+// Import & call this from your function handlers:
+// initSentry();
+
 const mailjet = require("node-mailjet").connect(
   MJ_APIKEY_PUBLIC,
   MJ_APIKEY_PRIVATE,
@@ -24,11 +40,39 @@ const mailjet = require("node-mailjet").connect(
   },
 );
 
+const handleFaunaSync = require("../src/functions/contact/handleFaunaSync");
 const STATUS_MESSAGES = require("../src/functions/contact/statusMessages");
 
-const isValidEmail = ow.string.is((e) => /^.+@.+\..+$/.test(e));
+const validEmail = ow.string.is((e) => /^.+@.+\..+$/.test(e));
 
 const templateID = 890910;
+
+// async function reportError(error) {
+//   console.warn(error);
+//   if (!sentryInitialized) return;
+
+//   if (typeof error === "string") {
+//     Sentry.captureMessage(error);
+//   } else {
+//     Sentry.captureException(error);
+//   }
+
+//   await Sentry.flush();
+// }
+
+// function catchErrors(handler) {
+//   return async function(event, context) {
+//     context.callbackWaitsForEmptyEventLoop = false;
+//     try {
+//       return await handler.call(this, ...arguments);
+//     } catch (e) {
+//       // This catches both sync errors & promise
+//       // rejections, because we 'await' on the handler
+//       await reportError(e);
+//       throw e;
+//     }
+//   };
+// }
 
 exports.handler = async (event) => {
   let body = "";
@@ -58,12 +102,9 @@ exports.handler = async (event) => {
   const sendFrom = locale === "en" ? EMAIL_FROM_EN : EMAIL_FROM_ES;
 
   const origin = new URL(event.headers.origin);
-  const isValidHostname =
+  const letMeIn =
     origin.hostname === "localhost" || origin.hostname === "www.danilucaci.com";
 
-<<<<<<< HEAD
-  if (!isValidHostname) {
-=======
   let allowOrigin = "*";
 
   if (origin.hostname === "www.danilucaci.com") {
@@ -77,7 +118,6 @@ exports.handler = async (event) => {
   };
 
   if (!letMeIn) {
->>>>>>> Refactor contact form error handling when only fauna fails
     return {
       statusCode: 403,
       body: `Hostname Validation Error in Contact Function. ${origin.hostname}`,
@@ -120,7 +160,7 @@ exports.handler = async (event) => {
 
   // Validate inputs
   try {
-    ow(email, STATUS_MESSAGES[locale].invalidEmail, isValidEmail);
+    ow(email, STATUS_MESSAGES[locale].invalidEmail, validEmail);
     ow(fullname, STATUS_MESSAGES[locale].nameShort, ow.string.minLength(2));
     ow(datesent, STATUS_MESSAGES[locale].invalidDateSent, ow.string.date);
     ow(
@@ -181,10 +221,32 @@ exports.handler = async (event) => {
     dateOptions,
   );
 
+  const contactData = {
+    email,
+    fullname,
+    formattedDate,
+    message,
+    acceptsconsentcheckbox,
+    consentcheckboxvalue,
+  };
+
   let resBody = {
+    db_message: "initial",
+    db_success: false,
     mail_message: "initial",
     mail_success: false,
   };
+
+  const dbResponse = await handleFaunaSync(contactData).catch((err) => {
+    resBody.db_message = err.message;
+  });
+
+  if (dbResponse && dbResponse.startsWith("message.id")) {
+    resBody.db_message = dbResponse;
+    resBody.db_success = true;
+  }
+
+  const mailDBResponse = JSON.stringify(resBody.db_message, null, 2);
 
   const msg = {
     Messages: [
@@ -210,7 +272,7 @@ exports.handler = async (event) => {
           message,
           acceptsconsentcheckbox,
           consentcheckboxvalue,
-          faunaRes: "null",
+          faunaRes: mailDBResponse,
         },
       },
     ],

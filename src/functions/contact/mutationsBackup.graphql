@@ -14,6 +14,12 @@ mutation deletePerson {
   }
 }
 
+mutation deleteMessage {
+  deleteMessage(id: "239255269249384973") {
+    _id
+  }
+}
+
 mutation createMessage1 {
   createMessage(
     data: {
