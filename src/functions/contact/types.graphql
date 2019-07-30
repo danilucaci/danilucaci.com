@@ -1,7 +1,9 @@
 type Person {
-  email: String! @unique(index: "unique_email")
+  email: String! @unique
   fullName: String
-  messages: [Message!] @relation(name: "person_messages")
+  firstName: String
+  lastName: String
+  messages: [Message!] @relation
 }
 
 type Message {
