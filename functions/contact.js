@@ -45,11 +45,6 @@ const STATUS_MESSAGES = require("../src/functions/contact/statusMessages");
 
 const validEmail = ow.string.is((e) => /^.+@.+\..+$/.test(e));
 
-const headers = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "Content-Type",
-};
-
 const templateID = 890910;
 
 // async function reportError(error) {
@@ -109,6 +104,18 @@ exports.handler = async (event) => {
   const origin = new URL(event.headers.origin);
   const letMeIn =
     origin.hostname === "localhost" || origin.hostname === "www.danilucaci.com";
+
+  let allowOrigin = "*";
+
+  if (origin.hostname === "www.danilucaci.com") {
+    allowOrigin = "https://www.danilucaci.com";
+  }
+
+  const headers = {
+    "Access-Control-Allow-Origin": allowOrigin,
+    "Access-Control-Allow-Methods": "GET, POST",
+    "Access-Control-Allow-Headers": "Content-Type",
+  };
 
   if (!letMeIn) {
     return {
