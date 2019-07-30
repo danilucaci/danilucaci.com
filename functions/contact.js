@@ -28,11 +28,6 @@ const STATUS_MESSAGES = require("../src/functions/contact/statusMessages");
 
 const isValidEmail = ow.string.is((e) => /^.+@.+\..+$/.test(e));
 
-const headers = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "Content-Type",
-};
-
 const templateID = 890910;
 
 exports.handler = async (event) => {
@@ -66,7 +61,23 @@ exports.handler = async (event) => {
   const isValidHostname =
     origin.hostname === "localhost" || origin.hostname === "www.danilucaci.com";
 
+<<<<<<< HEAD
   if (!isValidHostname) {
+=======
+  let allowOrigin = "*";
+
+  if (origin.hostname === "www.danilucaci.com") {
+    allowOrigin = "https://www.danilucaci.com";
+  }
+
+  const headers = {
+    "Access-Control-Allow-Origin": allowOrigin,
+    "Access-Control-Allow-Methods": "GET, POST",
+    "Access-Control-Allow-Headers": "Content-Type",
+  };
+
+  if (!letMeIn) {
+>>>>>>> Refactor contact form error handling when only fauna fails
     return {
       statusCode: 403,
       body: `Hostname Validation Error in Contact Function. ${origin.hostname}`,
