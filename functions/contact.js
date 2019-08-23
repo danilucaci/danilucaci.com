@@ -15,22 +15,6 @@ const {
   EMAIL_MY_NAME,
 } = process.env;
 
-// const { GATSBY_SENTRY_URL } = process.env;
-
-// const Sentry = require("@sentry/node");
-
-// let sentryInitialized = false;
-
-// export function initSentry() {
-//   if (GATSBY_SENTRY_URL) {
-//     Sentry.init({ dsn: GATSBY_SENTRY_URL });
-//     sentryInitialized = true;
-//   }
-// }
-
-// Import & call this from your function handlers:
-// initSentry();
-
 const mailjet = require("node-mailjet").connect(
   MJ_APIKEY_PUBLIC,
   MJ_APIKEY_PRIVATE,
@@ -46,33 +30,6 @@ const STATUS_MESSAGES = require("../src/functions/contact/statusMessages");
 const validEmail = ow.string.is((e) => /^.+@.+\..+$/.test(e));
 
 const templateID = 890910;
-
-// async function reportError(error) {
-//   console.warn(error);
-//   if (!sentryInitialized) return;
-
-//   if (typeof error === "string") {
-//     Sentry.captureMessage(error);
-//   } else {
-//     Sentry.captureException(error);
-//   }
-
-//   await Sentry.flush();
-// }
-
-// function catchErrors(handler) {
-//   return async function(event, context) {
-//     context.callbackWaitsForEmptyEventLoop = false;
-//     try {
-//       return await handler.call(this, ...arguments);
-//     } catch (e) {
-//       // This catches both sync errors & promise
-//       // rejections, because we 'await' on the handler
-//       await reportError(e);
-//       throw e;
-//     }
-//   };
-// }
 
 exports.handler = async (event) => {
   let body = "";
