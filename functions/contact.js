@@ -24,7 +24,6 @@ const mailjet = require("node-mailjet").connect(
   },
 );
 
-const handleFaunaSync = require("../src/functions/contact/handleFaunaSync");
 const STATUS_MESSAGES = require("../src/functions/contact/statusMessages");
 
 const isValidEmail = ow.string.is((e) => /^.+@.+\..+$/.test(e));
@@ -178,32 +177,12 @@ exports.handler = async (event) => {
     dateOptions,
   );
 
-  const contactData = {
-    email,
-    fullname,
-    formattedDate,
-    message,
-    acceptsconsentcheckbox,
-    consentcheckboxvalue,
-  };
-
   let resBody = {
-    db_message: "initial",
-    db_success: false,
     mail_message: "initial",
     mail_success: false,
   };
 
-  const dbResponse = await handleFaunaSync(contactData).catch((err) => {
-    resBody.db_message = err.message;
-  });
-
-  if (dbResponse && dbResponse.startsWith("message.id")) {
-    resBody.db_message = dbResponse;
-    resBody.db_success = true;
-  }
-
-  const mailDBResponse = JSON.stringify(resBody.db_message, null, 2);
+  let statusCode;
 
   const msg = {
     Messages: [
@@ -229,13 +208,10 @@ exports.handler = async (event) => {
           message,
           acceptsconsentcheckbox,
           consentcheckboxvalue,
-          faunaRes: mailDBResponse,
         },
       },
     ],
   };
-
-  let statusCode;
 
   try {
     const res = await mailjet

@@ -117,10 +117,6 @@ function ContactForm({ locale }) {
           return res.json();
         })
         .then((res) => {
-          // If the mutation doesn’t return a message id, it failed.
-          if (!res.db_message.startsWith("message.id")) {
-            handleFaunaError(new Error(res.db_message));
-          }
           // If the email was sent successfully
           if (res.mail_success) {
             navigate(localePaths[locale].thanks);
