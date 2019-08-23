@@ -124,9 +124,6 @@ function ContactForm({ locale }) {
           return res.json();
         })
         .then((res) => {
-          if (!res.db_message.startsWith("message.id")) {
-            handleFormError(new Error(res.db_message));
-          }
           if (res.mail_success) {
             navigate(localePaths[locale].thanks);
           }
