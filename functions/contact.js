@@ -27,7 +27,7 @@ const mailjet = require("node-mailjet").connect(
 const handleFaunaSync = require("../src/functions/contact/handleFaunaSync");
 const STATUS_MESSAGES = require("../src/functions/contact/statusMessages");
 
-const validEmail = ow.string.is((e) => /^.+@.+\..+$/.test(e));
+const isValidEmail = ow.string.is((e) => /^.+@.+\..+$/.test(e));
 
 const templateID = 890910;
 
@@ -117,7 +117,7 @@ exports.handler = async (event) => {
 
   // Validate inputs
   try {
-    ow(email, STATUS_MESSAGES[locale].invalidEmail, validEmail);
+    ow(email, STATUS_MESSAGES[locale].invalidEmail, isValidEmail);
     ow(fullname, STATUS_MESSAGES[locale].nameShort, ow.string.minLength(2));
     ow(datesent, STATUS_MESSAGES[locale].invalidDateSent, ow.string.date);
     ow(
