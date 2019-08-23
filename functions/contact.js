@@ -59,7 +59,7 @@ exports.handler = async (event) => {
   const sendFrom = locale === "en" ? EMAIL_FROM_EN : EMAIL_FROM_ES;
 
   const origin = new URL(event.headers.origin);
-  const letMeIn =
+  const isValidHostname =
     origin.hostname === "localhost" || origin.hostname === "www.danilucaci.com";
 
   let allowOrigin = "*";
@@ -74,7 +74,7 @@ exports.handler = async (event) => {
     "Access-Control-Allow-Headers": "Content-Type",
   };
 
-  if (!letMeIn) {
+  if (!isValidHostname) {
     return {
       statusCode: 403,
       body: `Hostname Validation Error in Contact Function. ${origin.hostname}`,
