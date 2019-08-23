@@ -1,12 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useInView } from "react-intersection-observer";
 
 import DribbblePost from "../DribbblePost/DribbblePost";
 import DribbblePostPlaceholder from "../DribbblePostPlaceholder/DribbblePostPlaceholder";
 import Spinner from "../Spinner/Spinner";
-import { DribbblePostsContext } from "./DribbblePostsProvider";
-import { GridCol } from "../../../src/components/Grid/Grid";
+import useDribbblePosts from "./useDribbblePosts";
+import { GridCol } from "../Grid/Grid";
 
 import {
   Row,
@@ -19,12 +19,10 @@ import {
 } from "./styles";
 
 function DribbblePosts() {
-  const {
-    state: {
-      dribbblePosts, shotsPerPage, isLoading, isLoadingMore, isError,
-    },
+  const [
+    { dribbblePosts, shotsPerPage, isLoading, isLoadingMore, isError },
     dispatch,
-  } = useContext(DribbblePostsContext);
+  ] = useDribbblePosts();
 
   const [ref, inView] = useInView({
     threshold: 0,
@@ -47,7 +45,9 @@ function DribbblePosts() {
     <Row spaced>
       <GridCol ref={ref}>
         <StyledHR />
-        <FormattedMessage id="dribbble.header">{(txt) => <h2>{txt}</h2>}</FormattedMessage>
+        <FormattedMessage id="dribbble.header">
+          {(txt) => <h2>{txt}</h2>}
+        </FormattedMessage>
         <FormattedMessage id="dribbble.subhead">
           {(txt) => <Subhead>{txt}</Subhead>}
         </FormattedMessage>
@@ -60,12 +60,17 @@ function DribbblePosts() {
           </ErrorMessageWrapper>
         )}
 
-        {isLoading && !isError && placeholderArr.map((i) => <DribbblePostPlaceholder key={i} />)}
+        {isLoading &&
+          !isError &&
+          placeholderArr.map((i) => <DribbblePostPlaceholder key={i} />)}
         {!isLoading &&
           !isError &&
-          dribbblePosts.map((post) => <DribbblePost key={post.id} post={post} />)}
+          dribbblePosts.map((post) => (
+            <DribbblePost key={post.id} post={post} />
+          ))}
 
-        {isLoadingMore && placeholderArr.map((i) => <DribbblePostPlaceholder key={i} />)}
+        {isLoadingMore &&
+          placeholderArr.map((i) => <DribbblePostPlaceholder key={i} />)}
 
         {!isError && (
           <StyledLoadMore onClick={() => dispatch({ type: "FETCH_MORE" })}>

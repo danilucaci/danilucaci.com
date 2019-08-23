@@ -24,8 +24,6 @@ import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 
 import intlMessages from "../i18n/i18n";
 
-import DribbblePostsProvider from "./DribbblePosts/DribbblePostsProvider";
-
 import { checkFontsLoaded } from "../helpers/loadFonts";
 
 addLocaleData([...enData, ...esData]);
@@ -257,41 +255,39 @@ const Layout = (props) => {
           defaultLocale="en"
           messages={intlMessages[props.locale]}
         >
-          <DribbblePostsProvider>
-            <Page>
-              <div
-                id="top"
-                style={{
-                  backgroundColor: "transparent",
-                  position: "absolute",
-                  width: "1px",
-                  height: "1px",
-                  padding: "0",
-                  margin: "-1px",
-                  overflow: "hidden",
-                  clip: "rect(0, 0, 0, 0)",
-                  border: "0",
-                }}
+          <Page>
+            <div
+              id="top"
+              style={{
+                backgroundColor: "transparent",
+                position: "absolute",
+                width: "1px",
+                height: "1px",
+                padding: "0",
+                margin: "-1px",
+                overflow: "hidden",
+                clip: "rect(0, 0, 0, 0)",
+                border: "0",
+              }}
+            />
+            {GTMScript}
+            <SkipToMainContent />
+            <GlobalReset />
+            <GlobalAria />
+            <GlobalCSS />
+            <GlobalGrid />
+            <SVGSprite />
+            {props.children}
+            {NODE_ENV !== "development" && (
+              <CookieConsent
+                openCookieConsent={state.openCookieConsent}
+                acceptedCookies={acceptedCookies}
+                deniedCookies={deniedCookies}
+                pageLocale={props.locale}
+                isTransitioning={state.isTransitioning}
               />
-              {GTMScript}
-              <SkipToMainContent />
-              <GlobalReset />
-              <GlobalAria />
-              <GlobalCSS />
-              <GlobalGrid />
-              <SVGSprite />
-              {props.children}
-              {NODE_ENV !== "development" && (
-                <CookieConsent
-                  openCookieConsent={state.openCookieConsent}
-                  acceptedCookies={acceptedCookies}
-                  deniedCookies={deniedCookies}
-                  pageLocale={props.locale}
-                  isTransitioning={state.isTransitioning}
-                />
-              )}
-            </Page>
-          </DribbblePostsProvider>
+            )}
+          </Page>
         </IntlProvider>
       </ThemeProvider>
     </ErrorBoundary>
