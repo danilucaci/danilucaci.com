@@ -72,6 +72,6 @@ export const VideoIphoneXInner = styled.span`
   position: relative;
   bottom: 0;
   left: 0;
-  background-color: ${theme.colors.bgLight200};
+  background-color: ${theme.colors.grey50};
   display: block;
 `;

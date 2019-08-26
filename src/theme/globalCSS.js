@@ -30,7 +30,7 @@ ${
   body::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
     border-radius: ${rem(8)};
-    background-color: ${theme.colors.bgLight100};
+    background-color: ${theme.colors.grey50};
   }
 
   body::-webkit-scrollbar {
@@ -46,7 +46,7 @@ ${
 }
 
 .grey-background {
-  background-color: ${theme.colors.bgLight100} !important;
+  background-color: ${theme.colors.grey50} !important;
 }
 
   svg {
@@ -56,7 +56,7 @@ ${
   ::selection {
     color: ${theme.colors.grey900} !important;
     text-shadow: none;
-    background: ${theme.colors.light100};
+    background: ${theme.colors.grey00};
   }
 
   @media screen and (min-device-width: 45em) {

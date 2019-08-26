@@ -28,7 +28,7 @@ export const AuthorCardWrapper = styled.footer`
 `;
 
 export const AuthorCardInner = styled.div`
-  background-color: ${theme.colors.bgLight100};
+  background-color: ${theme.colors.grey50};
 
   padding: ${rem(40)};
   display: flex;

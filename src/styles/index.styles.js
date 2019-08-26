@@ -78,7 +78,7 @@ export const Subhead = styled.p`
 `;
 
 export const ServicesWrapper = styled.section`
-  background-color: ${theme.colors.bgLight100};
+  background-color: ${theme.colors.grey50};
   margin-bottom: ${theme.spacing.rowTop.s};
 
   ${mediaMin.s`

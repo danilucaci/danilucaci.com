@@ -7,7 +7,7 @@ export const Wrapper = styled.nav`
 `;
 
 export const StyledIcon = styled(Icon)`
-  fill: ${(props) => (props.light ? theme.colors.light300 : null)};
+  fill: ${(props) => (props.light ? theme.colors.grey00 : null)};
   vertical-align: middle;
 
   width: ${rem(24)};

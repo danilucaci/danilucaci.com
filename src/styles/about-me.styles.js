@@ -45,12 +45,8 @@ export const Header = styled.header`
     */
     @supports (padding: max(0px)) {
       & {
-        padding-left: max(${theme.gridSpacing.m}, calc(env(safe-area-inset-left) - ${
-  theme.gridSpacing.m
-}));
-        padding-right: max(${theme.gridSpacing.m}, calc(env(safe-area-inset-right) - ${
-  theme.gridSpacing.m
-}));
+        padding-left: max(${theme.gridSpacing.m}, calc(env(safe-area-inset-left) - ${theme.gridSpacing.m}));
+        padding-right: max(${theme.gridSpacing.m}, calc(env(safe-area-inset-right) - ${theme.gridSpacing.m}));
       }
     }
   `};
@@ -68,7 +64,7 @@ export const HeaderImageWrapper = styled(GridCol)`
 `;
 
 export const ImageWrapper = styled.div`
-  background: ${theme.colors.bgLight200};
+  background: ${theme.colors.grey50};
 `;
 
 export const HeaderInfoWrapper = styled(GridCol)`

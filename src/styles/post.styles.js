@@ -148,7 +148,7 @@ export const PostContent = styled(GridRow)`
   }
 
   & .toc {
-    background-color: ${theme.colors.bgLight100};
+    background-color: ${theme.colors.grey50};
     padding: ${rem(32)} ${rem(16)};
 
     margin-bottom: ${rem(64)};

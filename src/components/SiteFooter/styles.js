@@ -6,7 +6,7 @@ import { Copy, CopyBold } from "../Copy/Copy";
 export const StyledFooter = styled.footer`
   display: block;
   text-align: center;
-  background-color: ${theme.colors.bgDark500};
+  background-color: ${theme.colors.grey900};
   width: 100%;
   padding: ${rem(64)} ${rem(16)} ${rem(40)};
 
@@ -16,18 +16,18 @@ export const StyledFooter = styled.footer`
 `;
 
 export const StyledCopyright = styled(CopyBold)`
-  color: ${theme.colors.light300};
+  color: ${theme.colors.grey00};
   margin-bottom: ${rem(8)};
   white-space: nowrap;
 `;
 
 export const StyledCopy = styled(Copy)`
-  color: ${theme.colors.light300};
+  color: ${theme.colors.grey00};
   margin-bottom: ${rem(16)};
 `;
 
 export const LegalDocsContainer = styled.nav`
-  color: ${theme.colors.light300} !important;
+  color: ${theme.colors.grey00} !important;
 
   margin-top: ${rem(56)};
   ${mediaMin.s`

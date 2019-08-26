@@ -5,7 +5,7 @@ export const StyledSubmitButton = styled.button`
   background-color: ${theme.colors.primary600};
   border: none;
   border-radius: ${theme.borderRadius.buttons};
-  color: ${theme.colors.light100};
+  color: ${theme.colors.grey00};
 
   text-align: center;
   text-decoration: none;

@@ -3,11 +3,11 @@ import { theme, mediaMin, rem } from "./globalStyles";
 
 const GlobalGrid = createGlobalStyle`
   .row-bg-100 {
-    background-color: ${theme.colors.bgLight100};
+    background-color: ${theme.colors.grey50};
   }
   
   .row-bg-200 {
-    background-color: ${theme.colors.bgLight200};
+    background-color: ${theme.colors.grey50};
   }
 
   .row {

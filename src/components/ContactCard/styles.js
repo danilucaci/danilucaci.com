@@ -10,7 +10,7 @@ export const ContactCardWrapper = styled(GridRow)`
 `;
 
 export const ContactCardInner = styled(GridCol)`
-  background-color: ${theme.colors.bgDark500};
+  background-color: ${theme.colors.grey900};
   padding: ${rem(24)} ${rem(16)} ${rem(32)} ${rem(16)};
 
   ${mediaMin.s`
@@ -27,7 +27,7 @@ export const ContactCardInner = styled(GridCol)`
 `;
 
 export const ContactCardTitle = styled.h2`
-  color: ${theme.colors.light100};
+  color: ${theme.colors.grey00};
   font-size: ${theme.fontSizes.h2s};
   line-height: ${theme.lineHeights.h2s};
   margin-bottom: ${rem(16)};
@@ -39,7 +39,7 @@ export const ContactCardTitle = styled.h2`
 `;
 
 export const Subtitle = styled(Copy)`
-  color: ${theme.colors.light300};
+  color: ${theme.colors.grey00};
   display: block;
   font-size: ${theme.fontSizes.subheadSCompact};
   line-height: ${theme.lineHeights.subheadSCompact};

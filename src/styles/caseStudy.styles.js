@@ -223,7 +223,7 @@ export const PostContent = styled.section`
   }
 
   .overview {
-    background-color: ${theme.colors.bgLight100};
+    background-color: ${theme.colors.grey50};
 
     padding-top: ${theme.spacing.row.s};
     padding-bottom: ${theme.spacing.row.s};
@@ -359,7 +359,7 @@ export const PostContent = styled.section`
     `};
 
     & h4 {
-      background-color: ${theme.colors.bgLight100};
+      background-color: ${theme.colors.grey50};
       display: inline-block;
       padding: ${rem(4)} ${rem(16)};
       margin-top: 0;

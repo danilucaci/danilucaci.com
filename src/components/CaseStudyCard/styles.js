@@ -4,7 +4,7 @@ import { Link } from "gatsby";
 import { theme, mediaMin, rem } from "../../theme/globalStyles";
 
 export const StyledCaseStudyCard = styled.article`
-  background-color: ${theme.colors.bgLight100};
+  background-color: ${theme.colors.grey50};
   margin-bottom: ${rem(32)};
 
   ${mediaMin.s`

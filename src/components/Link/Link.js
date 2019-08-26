@@ -35,11 +35,11 @@ export const GreyLink = styled(DefaultLink)`
 `;
 
 export const LightSecondaryLink = styled(DefaultLink)`
-  color: ${theme.colors.light300};
+  color: ${theme.colors.grey00};
 
   &:visited,
   &:link {
-    color: ${theme.colors.light300};
+    color: ${theme.colors.grey00};
   }
 
   &:hover {
