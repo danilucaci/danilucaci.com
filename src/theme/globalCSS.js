@@ -5,7 +5,7 @@ const GlobalCSS = createGlobalStyle`
   html {
     background-color: #FFFFFF;
     color: ${theme.colors.grey800};
-    font-family: ${theme.fonts.bodyFallback};
+    font-family: ${theme.font.family.body.fallback};
     font-size: 16px;
     line-height: 24px;
     ${"" /* font-size: 100%; */}
@@ -75,20 +75,20 @@ ${
     font-weight: 700;
     font-style: normal;
 
-    font-size: ${theme.fontSizes.h1s};
+    font-size: ${theme.font.size.display.mobile.h1};
     ${mediaMin.xs`
-      font-size: ${theme.fontSizes.h1};
+      font-size: ${theme.font.size.display.desktop.h1};
     `}
 
-    line-height: ${theme.lineHeights.h1s};
+    line-height: ${theme.font.lineHeight.display.mobile.h1};
     ${mediaMin.xs`
-      line-height: ${theme.lineHeights.h1};
+      line-height: ${theme.font.lineHeight.display.desktop.h1};
     `}
 
-    font-family: ${theme.fonts.headerFallback};
+    font-family: ${theme.font.family.display.fallback};
 
     .fonts-loaded & {
-      font-family: ${theme.fonts.header};
+      font-family: ${theme.font.family.display.bold};
     }
   }
   
@@ -96,22 +96,22 @@ ${
     color: ${theme.colors.grey900};
     font-weight: 700;
     font-style: normal;
-    font-size: ${theme.fontSizes.h2s};
+    font-size: ${theme.font.size.display.mobile.h2};
 
     ${mediaMin.xs`
-      font-size: ${theme.fontSizes.h2};
+      font-size: ${theme.font.size.display.desktop.h2};
     `}
 
-    line-height: ${theme.lineHeights.h2s};
+    line-height: ${theme.font.lineHeight.display.mobile.h2};
 
     ${mediaMin.xs`
-      line-height: ${theme.lineHeights.h2};
+      line-height: ${theme.font.lineHeight.display.desktop.h2};
     `}
 
-    font-family: ${theme.fonts.headerFallback};
+    font-family: ${theme.font.family.display.fallback};
 
     .fonts-loaded & {
-      font-family: ${theme.fonts.header};
+      font-family: ${theme.font.family.display.bold};
     }
   }
 
@@ -119,22 +119,22 @@ ${
     color: ${theme.colors.grey900};
     font-weight: 700;
     font-style: normal;
-    font-size: ${theme.fontSizes.h3s};
+    font-size: ${theme.font.size.display.mobile.h3};
 
     ${mediaMin.xs`
-      font-size: ${theme.fontSizes.h3};
+      font-size: ${theme.font.size.display.desktop.h3};
     `}
 
-    line-height: ${theme.lineHeights.h3s};
+    line-height: ${theme.font.lineHeight.display.mobile.h3};
 
     ${mediaMin.xs`
-      line-height: ${theme.lineHeights.h3};
+      line-height: ${theme.font.lineHeight.display.desktop.h3};
     `}
 
-    font-family: ${theme.fonts.headerFallback};
+    font-family: ${theme.font.family.display.fallback};
 
     .fonts-loaded & {
-      font-family: ${theme.fonts.header};
+      font-family: ${theme.font.family.display.bold};
     }
   }
 
@@ -142,13 +142,13 @@ ${
     color: ${theme.colors.grey900};
     font-weight: 700;
     font-style: normal;
-    font-size: ${theme.fontSizes.h4};
-    line-height: ${theme.lineHeights.h4};
+    font-size: ${theme.font.size.display.desktop.h4};
+    line-height: ${theme.font.lineHeight.display.desktop.h4};
 
-    font-family: ${theme.fonts.headerFallback};
+    font-family: ${theme.font.family.display.fallback};
 
     .fonts-loaded & {
-      font-family: ${theme.fonts.header};
+      font-family: ${theme.font.family.display.bold};
     }
   }
 
@@ -156,22 +156,22 @@ ${
     color: ${theme.colors.grey700};
     display: block;
     text-transform: uppercase;
-    font-size: ${theme.fontSizes.sectionHeaderS};
-    line-height: ${theme.lineHeights.sectionHeaderS};
-    letter-spacing: ${theme.letterSpacing.sectionHeaderS};
+    font-size: ${theme.font.size.body.subhead};
+    line-height: ${theme.font.lineHeight.body.subhead};
+    letter-spacing: ${theme.font.letterSpacing.body.subhead};
     font-weight: 700;
     font-style: normal;
 
-    font-family: ${theme.fonts.headerFallback};
+    font-family: ${theme.font.family.display.fallback};
 
     .fonts-loaded & {
-      font-family: ${theme.fonts.header};
+      font-family: ${theme.font.family.display.bold};
     }
 
     ${mediaMin.s`
-      font-size: ${theme.fontSizes.sectionHeaderXL};
-      line-height: ${theme.lineHeights.sectionHeaderXL};
-      letter-spacing: ${theme.letterSpacing.sectionHeaderXL};
+      font-size: ${theme.font.size.body.subhead};
+      line-height: ${theme.font.lineHeight.body.subhead};
+      letter-spacing: ${theme.font.letterSpacing.body.subhead};
     `}
   }
   
@@ -226,11 +226,11 @@ ${
     color: ${theme.colors.grey800};
     font-weight: 400;
     font-style: normal;
-    font-size: ${theme.fontSizes.m};
-    line-height: ${theme.lineHeights.m};
+    font-size: ${theme.font.size.body.m};
+    line-height: ${theme.font.lineHeight.body.m};
     
     .fonts-loaded & {
-      font-family: ${theme.fonts.bodyRegular};
+      font-family: ${theme.font.family.body.regular};
     }
   }
 
@@ -255,11 +255,11 @@ ${
     color: ${theme.colors.grey800};
     font-weight: 700;
     font-style: normal;
-    font-size: ${theme.fontSizes.m};
-    line-height: ${theme.lineHeights.m};
+    font-size: ${theme.font.size.body.m};
+    line-height: ${theme.font.lineHeight.body.m};
     
     .fonts-loaded & {
-      font-family: ${theme.fonts.bodyBold};
+      font-family: ${theme.font.family.body.bold};
     }
   }
 
@@ -267,21 +267,21 @@ ${
     color: ${theme.colors.grey800};
     font-weight: 400;
     font-style: italic;
-    font-size: ${theme.fontSizes.m};
-    line-height: ${theme.lineHeights.m};
+    font-size: ${theme.font.size.body.m};
+    line-height: ${theme.font.lineHeight.body.m};
 
     .fonts-loaded & {
-      font-family: ${theme.fonts.bodyItalic};
+      font-family: ${theme.font.family.body.italic};
     }
   }
 
   blockquote, 
   blockquote * {
-    font-family: ${theme.fonts.headerFallback};
+    font-family: ${theme.font.family.display.fallback};
     color: ${theme.colors.primary600};
 
     .fonts-loaded & {
-      font-family: ${theme.fonts.headerRegular};
+      font-family: ${theme.font.family.display.boldRegular};
     }
   }
 
@@ -289,7 +289,7 @@ ${
     font-weight: 700;
 
     .fonts-loaded & {
-      font-family: ${theme.fonts.header};
+      font-family: ${theme.font.family.display.bold};
     }
   }
 
@@ -314,8 +314,8 @@ ${
   a {
     color: ${theme.colors.primary600};
     text-decoration: underline;
-    font-size: ${theme.fontSizes.m};
-    line-height: ${theme.lineHeights.m};
+    font-size: ${theme.font.size.body.m};
+    line-height: ${theme.font.lineHeight.body.m};
     
     a,
     &:visited,
@@ -333,10 +333,10 @@ ${
 
   pre,
   code {
-    font-family: ${theme.fonts.code};
-    font-size: ${theme.fontSizes.m};
-    line-height: ${theme.lineHeights.m};
-    font-family: ${theme.fonts.code};
+    font-family: ${theme.font.family.code.regular};
+    font-size: ${theme.font.size.body.m};
+    line-height: ${theme.font.lineHeight.body.m};
+    font-family: ${theme.font.family.code.regular};
   }
 
   .sr-only {

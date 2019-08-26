@@ -117,12 +117,12 @@ export const InputStatusIcon = styled.span`
 
 export const StyledH2 = styled.h2`
   margin-bottom: ${rem(16)};
-  font-size: ${theme.fontSizes.h2s};
-  line-height: ${theme.lineHeights.h2s};
+  font-size: ${theme.font.size.display.mobile.h2};
+  line-height: ${theme.font.lineHeight.display.mobile.h2};
 
   ${mediaMin.m`
-    font-size: ${theme.fontSizes.h2};
-    line-height: ${theme.lineHeights.h2};
+    font-size: ${theme.font.size.display.desktop.h2};
+    line-height: ${theme.font.lineHeight.display.desktop.h2};
   `};
 `;
 
@@ -131,8 +131,8 @@ export const Subtitle = styled(Copy)`
 `;
 
 export const AltCopy = styled(Copy)`
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s};
+  font-size: ${theme.font.size.body.s};
+  line-height: ${theme.font.lineHeight.body.s};
   color: ${theme.colors.grey700};
 
   margin-bottom: ${rem(32)};

@@ -30,21 +30,21 @@ export const Row = styled(GridRow)`
 
 export const Subhead = styled(Copy)`
   color: ${theme.colors.grey800};
-  font-size: ${theme.fontSizes.subheadS};
-  line-height: ${theme.lineHeights.subheadS};
+  font-size: ${theme.font.size.body.subhead};
+  line-height: ${theme.font.lineHeight.body.subhead};
 
   margin-bottom: ${rem(32)};
 
-  font-family: ${theme.fonts.headerFallback};
+  font-family: ${theme.font.family.display.fallback};
   font-weight: 300;
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.headerLight};
+    font-family: ${theme.font.family.display.boldLight};
   }
 
   ${mediaMin.s`
-    font-size: ${theme.fontSizes.subhead};
-    line-height: ${theme.lineHeights.subhead};
+    font-size: ${theme.font.size.body.subhead};
+    line-height: ${theme.font.lineHeight.body.subhead};
   `};
 `;
 
@@ -56,7 +56,9 @@ export const StyledHR = styled(HR)`
   `};
 
   /* Mobile in ladscape */
-  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(280)}) and (max-height: ${rem(560)}) and (orientation: landscape) {
+  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(
+      280,
+    )}) and (max-height: ${rem(560)}) and (orientation: landscape) {
     margin-bottom: ${rem(32)};
   }
 `;
@@ -73,7 +75,7 @@ export const ErrorMessage = styled.p`
   color: ${theme.colors.danger600};
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.bodyRegular};
+    font-family: ${theme.font.family.body.regular};
   }
 `;
 

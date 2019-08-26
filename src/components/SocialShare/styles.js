@@ -58,8 +58,8 @@ export const CopyTooltip = styled.span`
 
   display: none;
   white-space: nowrap;
-  font-size: ${theme.fontSizes.xs};
-  line-height: ${theme.lineHeights.xs};
+  font-size: ${theme.font.size.body.s};
+  line-height: ${theme.font.lineHeight.body.s};
 
   position: absolute;
 

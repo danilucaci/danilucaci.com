@@ -9,11 +9,11 @@ export const PrimaryButton = styled.button`
 
   text-align: center;
   text-decoration: none;
-  font-size: ${theme.fontSizes.button};
-  line-height: ${theme.lineHeights.button};
+  font-size: ${theme.font.size.button.default};
+  line-height: ${theme.font.lineHeight.button.default};
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.bodyBold};
+    font-family: ${theme.font.family.body.bold};
   }
 
   font-style: normal;
@@ -41,11 +41,11 @@ export const MainGhostButton = styled.button`
 
   text-align: center;
   text-decoration: none;
-  font-size: ${theme.fontSizes.button};
-  line-height: ${theme.lineHeights.button};
+  font-size: ${theme.font.size.button.default};
+  line-height: ${theme.font.lineHeight.button.default};
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.bodyBold};
+    font-family: ${theme.font.family.body.bold};
   }
 
   font-style: normal;
@@ -73,11 +73,11 @@ export const DarkGhostButton = styled.button`
 
   text-align: center;
   text-decoration: none;
-  font-size: ${theme.fontSizes.button};
-  line-height: ${theme.lineHeights.button};
+  font-size: ${theme.font.size.button.default};
+  line-height: ${theme.font.lineHeight.button.default};
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.bodyBold};
+    font-family: ${theme.font.family.body.bold};
   }
 
   font-style: normal;
@@ -105,11 +105,11 @@ export const PrimaryButtonSmall = styled.button`
 
   text-align: center;
   text-decoration: none;
-  font-size: ${theme.fontSizes.buttonS};
-  line-height: ${theme.lineHeights.buttonS};
+  font-size: ${theme.font.size.button.default};
+  line-height: ${theme.font.lineHeight.button.default};
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.bodyBold};
+    font-family: ${theme.font.family.body.bold};
   }
 
   font-style: normal;
@@ -135,11 +135,11 @@ export const TertiaryButton = styled.button`
   color: ${theme.colors.grey800};
 
   text-align: center;
-  font-size: ${theme.fontSizes.buttonS};
-  line-height: ${theme.lineHeights.buttonS};
+  font-size: ${theme.font.size.button.default};
+  line-height: ${theme.font.lineHeight.button.default};
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.bodyBold};
+    font-family: ${theme.font.family.body.bold};
   }
 
   font-style: normal;
@@ -166,16 +166,16 @@ export const LoadComments = styled.button`
 
   text-align: center;
   text-decoration: none;
-  font-size: ${theme.fontSizes.button};
-  line-height: ${theme.lineHeights.button};
+  font-size: ${theme.font.size.button.default};
+  line-height: ${theme.font.lineHeight.button.default};
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.bodyRegular};
+    font-family: ${theme.font.family.body.regular};
   }
 
   & * {
-    font-size: ${theme.fontSizes.button};
-    line-height: ${theme.lineHeights.button};
+    font-size: ${theme.font.size.button.default};
+    line-height: ${theme.font.lineHeight.button.default};
   }
 
   font-style: normal;

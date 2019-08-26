@@ -28,25 +28,25 @@ export const ContactCardInner = styled(GridCol)`
 
 export const ContactCardTitle = styled.h2`
   color: ${theme.colors.grey00};
-  font-size: ${theme.fontSizes.h2s};
-  line-height: ${theme.lineHeights.h2s};
+  font-size: ${theme.font.size.display.mobile.h2};
+  line-height: ${theme.font.lineHeight.display.mobile.h2};
   margin-bottom: ${rem(16)};
 
   ${mediaMin.m`
-    font-size: ${theme.fontSizes.h1};
-    line-height: ${theme.lineHeights.h1};
+    font-size: ${theme.font.size.display.desktop.h1};
+    line-height: ${theme.font.lineHeight.display.desktop.h1};
   `};
 `;
 
 export const Subtitle = styled(Copy)`
   color: ${theme.colors.grey00};
   display: block;
-  font-size: ${theme.fontSizes.subheadSCompact};
-  line-height: ${theme.lineHeights.subheadSCompact};
+  font-size: ${theme.font.size.body.subhead};
+  line-height: ${theme.font.lineHeight.body.subheadsubheadSCompact};
 
   ${mediaMin.s`
-    font-size: ${theme.fontSizes.subheadCompact};
-    line-height: ${theme.lineHeights.subheadCompact};
+    font-size: ${theme.font.size.body.m};
+    line-height: ${theme.font.lineHeight.body.subhead};
   `};
 `;
 
@@ -58,13 +58,13 @@ export const StyledContactButton = styled(Link)`
 
   text-align: center;
   text-decoration: none;
-  font-size: ${theme.fontSizes.button};
-  line-height: ${theme.lineHeights.button};
+  font-size: ${theme.font.size.button.default};
+  line-height: ${theme.font.lineHeight.button.default};
   font-style: normal;
   font-weight: 700;
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.bodyBold};
+    font-family: ${theme.font.family.body.bold};
   }
 
   padding: ${rem(12)} ${rem(40)};

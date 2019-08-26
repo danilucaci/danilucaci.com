@@ -100,90 +100,93 @@ export const theme = {
       link: "box-shadow: 0 0 2px 1px #A1A8B5, 0 0 0 3px #CBCED4",
     },
   },
-  fonts: {
-    code:
-      "'Roboto Mono Regular', 'Ubuntu Mono', Consolas, Menlo, 'Liberation Mono', Courier, monospace",
-    codeItalic:
-      "'Roboto Mono Italic', 'Ubuntu Mono', Consolas, Menlo, 'Liberation Mono', Courier, monospace",
-    bodyFallback:
-      "BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
-    bodyRegular:
-      "'Lato', BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
-    bodyBold:
-      "'Lato Bold', BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
-    bodyItalic:
-      "'Lato Italic', BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
-    headerFallback: "Georgia, 'Times New Roman', Times, serif",
-    header:
-      "'Merriweather Bold', BlinkMacSystemFont, -apple-system, 'Segoe UI', Georgia, 'Times New Roman', Times, serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
-    headerRegular:
-      "'Merriweather Regular', BlinkMacSystemFont, -apple-system, 'Segoe UI', Georgia, 'Times New Roman', Times, serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
-    headerLight:
-      "'Merriweather Light', BlinkMacSystemFont, -apple-system, 'Segoe UI', Georgia, 'Times New Roman', Times, serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
-  },
-  fontSizes: {
-    h1: "2.5rem",
-    h1s: "2rem",
-    h2: "2rem",
-    h2s: "1.5rem",
-    h3: "1.5rem",
-    h3s: "1.25rem",
-    h4: "1.125rem",
-    h5: "1.125rem",
-    h5s: "1rem",
-    indexName: "1.5rem",
-    indexNameS: "1.25rem",
-    indexBioS: "1.25rem",
-    indexBio: "1.5rem",
-    subheadS: "1.25rem",
-    subhead: "1.25rem",
-    subheadCompact: "1.25rem",
-    sectionHeaderXL: "1rem",
-    sectionHeaderS: "0.8125rem",
-    siblingPostsXL: "1.5rem",
-    siblingPostsS: "1rem",
-    button: "1.125rem",
-    buttonS: "1rem",
-    xl: "1.5rem",
-    l: "1.25rem",
-    m: "1.125rem",
-    s: "1rem",
-    xs: "0.875rem",
-  },
-  lineHeights: {
-    h1: "3rem",
-    h1s: "2.5rem",
-    h2: "2.5rem",
-    h2s: "2rem",
-    h3: "2rem",
-    h3s: "1.5rem",
-    h4: "2rem",
-    h5: "2rem",
-    h5s: "1.5rem",
-    indexName: "2rem",
-    indexNameS: "2rem",
-    indexBioS: "2rem",
-    indexBio: "2.5rem",
-    subheadS: "2rem",
-    subhead: "2rem",
-    subheadCompact: "2rem",
-    sectionHeaderXL: "1.5rem",
-    sectionHeaderS: "1.25rem",
-    siblingPostsXL: "2rem",
-    siblingPostsS: "1.5rem",
-    button: "2rem",
-    buttonS: "1.5rem",
-    m: "2rem",
-    s: "1.5rem",
-    xs: "1.25rem",
-  },
-  letterSpacing: {
-    sectionHeaderXL: "0.05rem",
-    sectionHeaderS: "0.05rem",
-    indexName: "0.025rem",
-    indexNameS: "0.025rem",
-    indexBioS: "0.0125rem",
-    indexBio: "0.025rem",
+  font: {
+    family: {
+      display: {
+        fallback: "Georgia, 'Times New Roman', Times, serif",
+        regular:
+          "'Merriweather Regular', BlinkMacSystemFont, -apple-system, 'Segoe UI', Georgia, 'Times New Roman', Times, serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+        bold:
+          "'Merriweather Bold', BlinkMacSystemFont, -apple-system, 'Segoe UI', Georgia, 'Times New Roman', Times, serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+        light:
+          "'Merriweather Light', BlinkMacSystemFont, -apple-system, 'Segoe UI', Georgia, 'Times New Roman', Times, serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+      },
+      body: {
+        fallback:
+          "BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+        regular:
+          "'Lato', BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+        bold:
+          "'Lato Bold', BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+        italic:
+          "'Lato Italic', BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+      },
+      code: {
+        fallback:
+          "'Ubuntu Mono', Consolas, Menlo, 'Liberation Mono', Courier, monospace",
+        regular:
+          "'Roboto Mono Regular', 'Ubuntu Mono', Consolas, Menlo, 'Liberation Mono', Courier, monospace",
+        italic:
+          "'Roboto Mono Italic', 'Ubuntu Mono', Consolas, Menlo, 'Liberation Mono', Courier, monospace",
+      },
+    },
+    size: {
+      display: {
+        desktop: {
+          h1: "2.5rem",
+          h2: "2rem",
+          h3: "1.5rem",
+          h4: "1.125rem",
+          h5: "1.125rem",
+        },
+        mobile: {
+          h1: "2rem",
+          h2: "1.5rem",
+          h3: "1.25rem",
+          h4: "1.125rem",
+          h5: "1.125rem",
+        },
+      },
+      body: {
+        m: "1.125rem",
+        s: "1rem",
+        subhead: "0.875rem",
+      },
+      button: {
+        default: "1.125rem",
+      },
+    },
+    lineHeight: {
+      display: {
+        desktop: {
+          h1: "3rem",
+          h2: "2.5rem",
+          h3: "2rem",
+          h4: "2rem",
+          h5: "2rem",
+        },
+        mobile: {
+          h1: "2.5rem",
+          h2: "2rem",
+          h3: "1.5rem",
+          h4: "2rem",
+          h5: "2rem",
+        },
+      },
+      body: {
+        m: "2rem",
+        s: "1.5rem",
+        subhead: "1.25rem",
+      },
+      button: {
+        default: "2rem",
+      },
+    },
+    letterSpacing: {
+      body: {
+        subhead: "0.05rem",
+      },
+    },
   },
   borderRadius: {
     buttons: "3px",

@@ -23,8 +23,8 @@ export const Figure = styled.figure`
 `;
 
 export const FigCaption = styled.figcaption`
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s};
+  font-size: ${theme.font.size.body.s};
+  line-height: ${theme.font.lineHeight.body.s};
   color: ${theme.colors.grey700};
   margin-top: ${rem(16)};
 

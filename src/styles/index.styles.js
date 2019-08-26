@@ -24,21 +24,21 @@ export const IndexHeader = styled(GridRow)`
 export const Name = styled(Copy)`
   color: ${theme.colors.primary600};
   text-transform: uppercase;
-  font-size: ${theme.fontSizes.indexNameS};
-  line-height: ${theme.lineHeights.indexNameS};
-  letter-spacing: ${theme.letterSpacing.indexNameS};
+  font-size: ${theme.font.size.body.subhead};
+  line-height: ${theme.font.lineHeight.body.subhead};
+  letter-spacing: ${theme.font.letterSpacing.body.subhead};
   font-weight: 700;
 
-  font-family: ${theme.fonts.headerFallback};
+  font-family: ${theme.font.family.display.fallback};
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.header};
+    font-family: ${theme.font.family.display.bold};
   }
 
   ${mediaMin.s`
-    font-size: ${theme.fontSizes.indexName};
-    line-height: ${theme.lineHeights.indexName};
-    letter-spacing: ${theme.letterSpacing.indexName};
+    font-size: ${theme.font.size.body.subhead};
+    line-height: ${theme.font.lineHeight.body.subhead};
+    letter-spacing: ${theme.font.letterSpacing.body.subhead};
   `};
 `;
 
@@ -46,33 +46,33 @@ export const IndexTitle = styled.h2`
   margin-top: ${rem(16)};
   margin-bottom: ${rem(8)};
 
-  font-size: ${theme.fontSizes.h1s};
-  line-height: ${theme.lineHeights.h1s};
+  font-size: ${theme.font.size.display.mobile.h1};
+  line-height: ${theme.font.lineHeight.display.mobile.h1};
 
   ${mediaMin.m`
-    font-size: ${theme.fontSizes.h1};
-    line-height: ${theme.lineHeights.h1};
+    font-size: ${theme.font.size.display.desktop.h1};
+    line-height: ${theme.font.lineHeight.display.desktop.h1};
     max-width: ${rem(840)};
   `};
 `;
 
 export const Subhead = styled.p`
   color: ${theme.colors.grey800};
-  font-size: ${theme.fontSizes.indexBioS};
-  line-height: ${theme.lineHeights.indexBioS};
-  letter-spacing: -${theme.letterSpacing.indexBioS};
+  font-size: ${theme.font.size.body.subhead};
+  line-height: ${theme.font.lineHeight.body.m};
+  letter-spacing: -${theme.font.letterSpacing.body.subhead};
 
-  font-family: ${theme.fonts.headerFallback};
+  font-family: ${theme.font.family.display.fallback};
   font-weight: 300;
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.headerLight};
+    font-family: ${theme.font.family.display.boldLight};
   }
 
   ${mediaMin.s`
-    font-size: ${theme.fontSizes.indexBio};
-    line-height: ${theme.lineHeights.indexBio};
-    letter-spacing: -${theme.letterSpacing.indexBio}
+    font-size: ${theme.font.size.body.subhead};
+    line-height: ${theme.font.lineHeight.body.m};
+    letter-spacing: -${theme.font.letterSpacing.body.subhead}
     max-width: ${rem(840)};
   `};
 `;
@@ -121,13 +121,13 @@ export const ServicesEntry = styled.div`
 `;
 
 export const ServicesTitle = styled.h2`
-  font-size: ${theme.fontSizes.h2s};
-  line-height: ${theme.lineHeights.h2s};
+  font-size: ${theme.font.size.display.mobile.h2};
+  line-height: ${theme.font.lineHeight.display.mobile.h2};
   margin-bottom: ${rem(32)};
 
   ${mediaMin.m`
-    font-size: ${theme.fontSizes.h2};
-    line-height: ${theme.lineHeights.h2};
+    font-size: ${theme.font.size.display.desktop.h2};
+    line-height: ${theme.font.lineHeight.display.desktop.h2};
   `};
 `;
 

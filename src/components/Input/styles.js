@@ -13,7 +13,7 @@ let svgToMiniDataURI = require("mini-svg-data-uri");
 let errorSVG =
   '<svg xmlns="http://www.w3.org/2000/svg" fill="#A6441B" width="24" height="24" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 11a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0v-4a1 1 0 0 0-1-1zm.38-3.92a1 1 0 0 0-.76 0 1 1 0 0 0-.33.21 1.15 1.15 0 0 0-.21.33 1 1 0 0 0 .21 1.09c.097.088.209.16.33.21A1 1 0 0 0 13 8a1.05 1.05 0 0 0-.29-.71 1 1 0 0 0-.33-.21zM12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z"/></svg>';
 let optimizedErrorSVGDataURI = `background: url("${svgToMiniDataURI(
-  errorSVG
+  errorSVG,
 )}")`;
 
 export const StyledInput = styled(Field)`
@@ -22,13 +22,13 @@ export const StyledInput = styled(Field)`
   border-radius: ${theme.borderRadius.buttons};
   color: ${theme.colors.grey700};
 
-  font-size: ${theme.fontSizes.button};
-  line-height: ${theme.lineHeights.button};
+  font-size: ${theme.font.size.button.default};
+  line-height: ${theme.font.lineHeight.button.default};
   font-style: normal;
   font-weight: 400;
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.bodyRegular};
+    font-family: ${theme.font.family.body.regular};
   }
 
   padding: ${rem(12)} ${rem(16)};

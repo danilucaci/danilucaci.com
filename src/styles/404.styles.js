@@ -23,13 +23,13 @@ export const StyledH1 = styled.h1`
 `;
 
 export const Subhead = styled.p`
-  font-size: ${theme.fontSizes.subheadSCompact};
-  line-height: ${theme.lineHeights.subheadSCompact};
+  font-size: ${theme.font.size.body.subhead};
+  line-height: ${theme.font.lineHeight.body.subheadsubheadSCompact};
   margin-bottom: ${rem(32)};
 
   ${mediaMin.s`
-    font-size: ${theme.fontSizes.subheadCompact};
-    line-height: ${theme.lineHeights.subheadCompact};
+    font-size: ${theme.font.size.body.m};
+    line-height: ${theme.font.lineHeight.body.subhead};
     max-width: 90%;
   `};
 `;

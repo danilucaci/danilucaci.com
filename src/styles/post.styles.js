@@ -78,7 +78,9 @@ export const PostContent = styled(GridRow)`
   `};
 
   /* Mobile in ladscape */
-  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(280)}) and (max-height: ${rem(560)}) and (orientation: landscape) {
+  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(
+      280,
+    )}) and (max-height: ${rem(560)}) and (orientation: landscape) {
     margin-bottom: ${rem(64)};
   }
 
@@ -128,10 +130,10 @@ export const PostContent = styled(GridRow)`
     background-color: ${theme.colors.grey00};
     display: none;
     white-space: nowrap;
-    font-size: ${theme.fontSizes.xs};
-    line-height: ${theme.lineHeights.xs};
+    font-size: ${theme.font.size.body.s};
+    line-height: ${theme.font.lineHeight.body.s};
 
-    font-family: ${theme.fonts.bodyRegular};
+    font-family: ${theme.font.family.body.regular};
 
     position: absolute;
     top: ${rem(12)};
@@ -193,7 +195,7 @@ export const PostContent = styled(GridRow)`
       font-weight: 400;
       padding: ${rem(8)} 0;
 
-      font-family: ${theme.fonts.bodyRegular};
+      font-family: ${theme.font.family.body.regular};
 
       &:visited,
       &:link {
@@ -271,7 +273,9 @@ export const CommentsWrapper = styled.aside`
   `};
 
   /* Mobile in ladscape */
-  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(280)}) and (max-height: ${rem(560)}) and (orientation: landscape) {
+  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(
+      280,
+    )}) and (max-height: ${rem(560)}) and (orientation: landscape) {
     margin-bottom: ${rem(64)};
   }
 `;

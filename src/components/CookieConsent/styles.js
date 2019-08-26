@@ -50,16 +50,16 @@ export const StyledCookieConsent = styled.aside`
 `;
 
 export const LearnMoreLink = styled(DefaultLink)`
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s} !important;
+  font-size: ${theme.font.size.body.s};
+  line-height: ${theme.font.lineHeight.body.s} !important;
   display: inline;
   white-space: nowrap;
 `;
 
 export const StyledCopy = styled(Copy)`
   display: inline;
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s} !important;
+  font-size: ${theme.font.size.body.s};
+  line-height: ${theme.font.lineHeight.body.s} !important;
 `;
 
 export const CopyContainer = styled.div``;

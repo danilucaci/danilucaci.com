@@ -8,7 +8,7 @@ export const StyledSiteNavListItem = styled.li`
   text-align: center;
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.headerRegular};
+    font-family: ${theme.font.family.display.boldRegular};
   }
 
   font-weight: 400;
@@ -31,8 +31,8 @@ export const StyledSiteNavListItem = styled.li`
     margin: 0;
     display: inline-block;
     width: auto;
-    font-size: ${theme.fontSizes.m};
-    line-height: ${theme.fontSizes.m};
+    font-size: ${theme.font.size.body.m};
+    line-height: ${theme.font.size.body.m};
   `};
 
   & > a {
@@ -40,7 +40,7 @@ export const StyledSiteNavListItem = styled.li`
     display: block;
 
     .fonts-loaded & {
-      font-family: ${theme.fonts.headerRegular};
+      font-family: ${theme.font.family.display.boldRegular};
     }
 
     font-weight: 400;
@@ -63,8 +63,8 @@ export const StyledSiteNavListItem = styled.li`
 
     ${mediaMin.nav`
       background-color: transparent;
-      font-size: ${theme.fontSizes.s};
-      line-height: ${theme.lineHeights.s};
+      font-size: ${theme.font.size.body.s};
+      line-height: ${theme.font.lineHeight.body.s};
     `};
 
     @media screen and (max-height: 30em) {
@@ -75,8 +75,8 @@ export const StyledSiteNavListItem = styled.li`
 
     @media screen and (max-height: 30em) and (min-width: 35em) {
       padding: ${rem(16)} ${rem(8)};
-      font-size: ${theme.fontSizes.s};
-      line-height: ${theme.lineHeights.s};
+      font-size: ${theme.font.size.body.s};
+      line-height: ${theme.font.lineHeight.body.s};
     }
 
     @media screen and (min-height: 25em) and (max-width: 25em) {
@@ -93,7 +93,7 @@ export const StyledSiteNavListItem = styled.li`
       font-weight: 700;
 
       .fonts-loaded & {
-        font-family: ${theme.fonts.header};
+        font-family: ${theme.font.family.display.bold};
       }
 
       &:hover {

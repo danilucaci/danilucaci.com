@@ -6,15 +6,15 @@ export const StyledLogo = styled(LocaleLink)`
   color: ${theme.colors.grey900};
   display: inline-block;
 
-  font-family: ${theme.fonts.headerFallback};
+  font-family: ${theme.font.family.display.fallback};
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.header};
+    font-family: ${theme.font.family.display.bold};
   }
 
   font-weight: 700;
-  font-size: ${theme.fontSizes.m};
-  line-height: ${theme.lineHeights.m};
+  font-size: ${theme.font.size.body.m};
+  line-height: ${theme.font.lineHeight.body.m};
   text-decoration: none;
   padding: ${rem(12)} 0;
 

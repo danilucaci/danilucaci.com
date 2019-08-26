@@ -42,7 +42,9 @@ export const SiblingPostsWrapper = styled.nav`
   `};
 
   /* Mobile in ladscape */
-  @media screen and (min-device-width: ${rem(280)}) and (min-device-height: ${rem(480)}) and (orientation: landscape) {
+  @media screen and (min-device-width: ${rem(
+      280,
+    )}) and (min-device-height: ${rem(480)}) and (orientation: landscape) {
     margin-bottom: ${rem(64)};
   }
 `;
@@ -78,43 +80,43 @@ export const PrevSectionHeader = styled(Copy)`
   color: ${theme.colors.grey700};
   display: block;
   text-transform: uppercase;
-  font-size: ${theme.fontSizes.sectionHeaderS};
-  line-height: ${theme.lineHeights.sectionHeaderS};
-  letter-spacing: ${theme.letterSpacing.sectionHeaderS};
+  font-size: ${theme.font.size.body.subhead};
+  line-height: ${theme.font.lineHeight.body.subhead};
+  letter-spacing: ${theme.font.letterSpacing.body.subhead};
 
   font-weight: 700;
   font-style: normal;
 
-  font-family: ${theme.fonts.bodyFallback};
+  font-family: ${theme.font.family.body.fallback};
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.bodyRegular};
+    font-family: ${theme.font.family.body.regular};
   }
 
   ${mediaMin.s`
-    font-size: ${theme.fontSizes.sectionHeaderXL};
-    line-height: ${theme.lineHeights.sectionHeaderXL};
-    letter-spacing: ${theme.letterSpacing.sectionHeaderXL};
+    font-size: ${theme.font.size.body.subhead};
+    line-height: ${theme.font.lineHeight.body.subhead};
+    letter-spacing: ${theme.font.letterSpacing.body.subhead};
   `}
 `;
 
 export const PrevArticleLink = styled(DefaultLink)`
   color: ${theme.colors.grey900} !important;
   text-decoration: none;
-  font-size: ${theme.fontSizes.siblingPostsS};
-  line-height: ${theme.lineHeights.siblingPostsS};
+  font-size: ${rem(16)};
+  line-height: ${rem(16)};
 
   display: block;
   margin-right: 0;
   margin-left: auto;
 
   ${mediaMin.s`
-  font-size: ${theme.fontSizes.siblingPostsXL};
-  line-height: ${theme.lineHeights.siblingPostsXL};
+  font-size: ${rem(24)};
+  line-height: ${rem(24)};
 `};
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.headerRegular};
+    font-family: ${theme.font.family.display.boldRegular};
   }
   font-weight: 400;
 
@@ -152,23 +154,23 @@ export const NextSectionHeader = styled(Copy)`
   color: ${theme.colors.grey700};
   display: block;
   text-transform: uppercase;
-  font-size: ${theme.fontSizes.sectionHeaderS};
-  line-height: ${theme.lineHeights.sectionHeaderS};
-  letter-spacing: ${theme.letterSpacing.sectionHeaderS};
+  font-size: ${theme.font.size.body.subhead};
+  line-height: ${theme.font.lineHeight.body.subhead};
+  letter-spacing: ${theme.font.letterSpacing.body.subhead};
 
   font-weight: 700;
   font-style: normal;
 
-  font-family: ${theme.fonts.bodyFallback};
+  font-family: ${theme.font.family.body.fallback};
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.bodyRegular};
+    font-family: ${theme.font.family.body.regular};
   }
 
   ${mediaMin.s`
-    font-size: ${theme.fontSizes.sectionHeaderXL};
-    line-height: ${theme.lineHeights.sectionHeaderXL};
-    letter-spacing: ${theme.letterSpacing.sectionHeaderXL};
+    font-size: ${theme.font.size.body.subhead};
+    line-height: ${theme.font.lineHeight.body.subhead};
+    letter-spacing: ${theme.font.letterSpacing.body.subhead};
   `}
 `;
 
@@ -178,8 +180,8 @@ export const NextArticleLink = styled(DefaultLink)`
 
   text-align: right;
   text-decoration: none;
-  font-size: ${theme.fontSizes.siblingPostsS};
-  line-height: ${theme.lineHeights.siblingPostsS};
+  font-size: ${rem(16)};
+  line-height: ${rem(16)};
 
   margin-right: 0;
   margin-left: auto;
@@ -187,12 +189,12 @@ export const NextArticleLink = styled(DefaultLink)`
   font-weight: 400;
 
   ${mediaMin.s`
-    font-size: ${theme.fontSizes.siblingPostsXL};
-    line-height: ${theme.lineHeights.siblingPostsXL};
+    font-size: ${rem(24)};
+    line-height: ${rem(24)};
   `};
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.headerRegular};
+    font-family: ${theme.font.family.display.boldRegular};
   }
 
   &:hover {

@@ -9,8 +9,8 @@ export const StyledTag = styled(LocaleLink)`
 
   text-decoration: underline;
 
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.fontSizes.s};
+  font-size: ${theme.font.size.body.s};
+  line-height: ${theme.font.size.body.s};
 
   margin-right: ${rem(24)};
   margin-top: ${rem(8)};

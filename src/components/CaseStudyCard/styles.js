@@ -97,19 +97,19 @@ export const CaseStudyCardContents = styled.div`
 
 export const Tag = styled.p`
   color: ${theme.colors.grey700};
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s};
+  font-size: ${theme.font.size.body.s};
+  line-height: ${theme.font.lineHeight.body.s};
   font-weight: 700;
   text-transform: uppercase;
-  font-family: ${theme.fonts.headerFallback};
-  letter-spacing: ${theme.letterSpacing.sectionHeaderS};
+  font-family: ${theme.font.family.display.fallback};
+  letter-spacing: ${theme.font.letterSpacing.body.subhead};
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.header};
+    font-family: ${theme.font.family.display.bold};
   }
 
   ${mediaMin.s`  
-    letter-spacing: ${theme.letterSpacing.sectionHeaderXL};
+    letter-spacing: ${theme.font.letterSpacing.body.subhead};
   `};
 
   display: inline-block;
@@ -136,12 +136,12 @@ export const ContinueLink = styled(Link)`
   text-decoration: underline;
   font-style: normal;
   font-weight: 400;
-  font-family: ${theme.fonts.headerFallback};
+  font-family: ${theme.font.family.display.fallback};
   display: inline-block;
   margin-top: ${rem(32)};
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.header};
+    font-family: ${theme.font.family.display.bold};
   }
 
   ${mediaMin.xl`

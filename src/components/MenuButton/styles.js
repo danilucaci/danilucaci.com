@@ -9,8 +9,8 @@ export const StyledMenuButton = styled.button`
   color: ${theme.colors.grey900};
 
   font-weight: 700;
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s};
+  font-size: ${theme.font.size.body.s};
+  line-height: ${theme.font.lineHeight.body.s};
 
   display: block;
   float: right;

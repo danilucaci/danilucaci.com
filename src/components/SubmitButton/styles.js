@@ -9,11 +9,11 @@ export const StyledSubmitButton = styled.button`
 
   text-align: center;
   text-decoration: none;
-  font-size: ${theme.fontSizes.button};
-  line-height: ${theme.lineHeights.button};
+  font-size: ${theme.font.size.button.default};
+  line-height: ${theme.font.lineHeight.button.default};
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.bodyBold};
+    font-family: ${theme.font.family.body.bold};
   }
 
   font-style: normal;

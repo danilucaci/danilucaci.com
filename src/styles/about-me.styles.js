@@ -78,18 +78,18 @@ export const AboutMeTitle = styled.h1`
   color: ${theme.colors.grey900};
   font-weight: 700;
   font-style: normal;
-  font-family: ${theme.fonts.header};
-  font-size: ${theme.fontSizes.h1s};
+  font-family: ${theme.font.family.display.bold};
+  font-size: ${theme.font.size.display.mobile.h1};
 
   ${mediaMin.xs`
-    font-size: ${theme.fontSizes.h1};
+    font-size: ${theme.font.size.display.desktop.h1};
   `}
 
-  line-height: ${theme.lineHeights.h1s};
+  line-height: ${theme.font.lineHeight.display.mobile.h1};
   margin-bottom: ${rem(16)};
 
   ${mediaMin.xs`
-    line-height: ${theme.lineHeights.h1};
+    line-height: ${theme.font.lineHeight.display.desktop.h1};
   `}
   
   ${mediaMin.xxl`
@@ -136,11 +136,11 @@ export const ResumeButton = styled.a`
   color: ${theme.colors.grey800} !important;
   text-align: center;
   text-decoration: none;
-  font-size: ${theme.fontSizes.buttonS};
-  line-height: ${theme.lineHeights.buttonS};
+  font-size: ${theme.font.size.button.default};
+  line-height: ${theme.font.lineHeight.button.default};
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.bodyBold};
+    font-family: ${theme.font.family.body.bold};
   }
 
   font-style: normal;

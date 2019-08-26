@@ -39,8 +39,8 @@ export const LegalDoc = styled(LightSecondaryLink)`
   display: inline-block;
   margin-right: ${rem(16)};
   white-space: nowrap;
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s};
+  font-size: ${theme.font.size.body.s};
+  line-height: ${theme.font.lineHeight.body.s};
   margin-top: ${rem(12)};
 
   ${mediaMin.l`

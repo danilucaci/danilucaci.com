@@ -13,22 +13,22 @@ export const SectionHeader = styled.span`
   color: ${theme.colors.grey700};
   display: block;
   text-transform: uppercase;
-  font-size: ${theme.fontSizes.sectionHeaderS};
-  line-height: ${theme.lineHeights.sectionHeaderS};
-  letter-spacing: ${theme.letterSpacing.sectionHeaderS};
+  font-size: ${theme.font.size.body.subhead};
+  line-height: ${theme.font.lineHeight.body.subhead};
+  letter-spacing: ${theme.font.letterSpacing.body.subhead};
 
   font-weight: 700;
   font-style: normal;
 
-  font-family: ${theme.fonts.headerFallback};
+  font-family: ${theme.font.family.display.fallback};
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.header};
+    font-family: ${theme.font.family.display.bold};
   }
 
   ${mediaMin.s`
-    font-size: ${theme.fontSizes.sectionHeaderXL};
-    line-height: ${theme.lineHeights.sectionHeaderXL};
-    letter-spacing: ${theme.letterSpacing.sectionHeaderXL};
+    font-size: ${theme.font.size.body.subhead};
+    line-height: ${theme.font.lineHeight.body.subhead};
+    letter-spacing: ${theme.font.letterSpacing.body.subhead};
   `}
 `;

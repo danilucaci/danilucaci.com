@@ -26,7 +26,7 @@ export const BoldLink = styled(DefaultLink)`
   font-weight: 700;
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.bodyBold};
+    font-family: ${theme.font.family.body.bold};
   }
 `;
 

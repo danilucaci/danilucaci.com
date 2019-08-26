@@ -3,8 +3,8 @@ import { theme, rem } from "../../theme/globalStyles";
 import { Checkbox } from "../Checkbox/Checkbox";
 
 export const StyledCheckboxLabel = styled.label`
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s};
+  font-size: ${theme.font.size.body.s};
+  line-height: ${theme.font.lineHeight.body.s};
   display: inline-block;
   margin-top: ${rem(12)};
   margin-bottom: ${rem(8)};
@@ -40,20 +40,20 @@ export const StyledCheckbox = styled(Checkbox)`
 export const Required = styled.span`
   display: inline-block;
   margin-left: ${rem(6)};
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s};
+  font-size: ${theme.font.size.body.s};
+  line-height: ${theme.font.lineHeight.body.s};
   color: ${theme.colors.grey900};
 `;
 
 export const AndSpan = styled.span`
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s};
+  font-size: ${theme.font.size.body.s};
+  line-height: ${theme.font.lineHeight.body.s};
   display: inline;
 `;
 
 export const LearnMoreLink = styled.a`
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s};
+  font-size: ${theme.font.size.body.s};
+  line-height: ${theme.font.lineHeight.body.s};
   display: inline;
   margin-left: ${rem(5)};
   color: ${theme.colors.grey800} !important;

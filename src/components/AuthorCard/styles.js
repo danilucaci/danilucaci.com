@@ -22,7 +22,9 @@ export const AuthorCardWrapper = styled.footer`
   `};
 
   /* Mobile in ladscape */
-  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(280)}) and (max-height: ${rem(560)}) and (orientation: landscape) {
+  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(
+      280,
+    )}) and (max-height: ${rem(560)}) and (orientation: landscape) {
     margin-bottom: ${rem(64)};
   }
 `;
@@ -96,8 +98,8 @@ export const AuthorInfo = styled.div`
 `;
 
 export const AuthorDescription = styled(Copy)`
-  font-size: ${theme.fontSizes.m};
-  line-height: ${theme.lineHeights.m};
+  font-size: ${theme.font.size.body.m};
+  line-height: ${theme.font.lineHeight.body.m};
   margin-bottom: ${rem(8)};
 `;
 
@@ -135,7 +137,9 @@ export const StyledHR = styled(HR)`
   `};
 
   /* Mobile in ladscape */
-  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(280)}) and (max-height: ${rem(560)}) and (orientation: landscape) {
+  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(
+      280,
+    )}) and (max-height: ${rem(560)}) and (orientation: landscape) {
     margin-bottom: ${rem(64)};
   }
 `;

@@ -5,23 +5,23 @@ import { Copy } from "../Copy/Copy";
 export const MessageTitle = styled(Copy)`
   color: ${theme.colors.grey800};
   display: block;
-  font-size: ${theme.fontSizes.m};
-  line-height: ${theme.lineHeights.s};
+  font-size: ${theme.font.size.body.m};
+  line-height: ${theme.font.lineHeight.body.s};
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.bodyRegular};
+    font-family: ${theme.font.family.body.regular};
   }
 `;
 
 export const APIMessageTitle = styled(Copy)`
   color: ${theme.colors.grey800};
   display: block;
-  font-size: ${theme.fontSizes.m};
-  line-height: ${theme.lineHeights.m};
+  font-size: ${theme.font.size.body.m};
+  line-height: ${theme.font.lineHeight.body.m};
   margin-top: ${rem(8)};
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.bodyRegular};
+    font-family: ${theme.font.family.body.regular};
   }
 `;
 
@@ -33,8 +33,8 @@ export const StatusMessageWrapper = styled.div`
 
   display: block;
 
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s};
+  font-size: ${theme.font.size.body.s};
+  line-height: ${theme.font.lineHeight.body.s};
 
   padding: ${rem(16)};
   margin-top: ${rem(24)};

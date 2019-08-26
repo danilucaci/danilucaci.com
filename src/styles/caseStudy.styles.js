@@ -20,8 +20,8 @@ export const ArticleWrapper = styled.article`
       }
     }
 
-    @media screen and (min-width: ${theme.breakpoints.s}) and (max-width: ${theme.breakpoints
-  .xxl}) {
+    @media screen and (min-width: ${theme.breakpoints
+        .s}) and (max-width: ${theme.breakpoints.xxl}) {
       margin-left: ${theme.gutters.m};
       margin-right: ${theme.gutters.m};
       width: auto;
@@ -47,21 +47,21 @@ export const PostH1 = styled.h1`
 
 export const CaseStudyDescription = styled(Copy)`
   color: ${theme.colors.grey800};
-  font-size: ${theme.fontSizes.indexBioS};
-  line-height: ${theme.lineHeights.indexBioS};
-  letter-spacing: ${theme.letterSpacing.indexBioS};
+  font-size: ${theme.font.size.body.subhead};
+  line-height: ${theme.font.lineHeight.body.m};
+  letter-spacing: ${theme.font.letterSpacing.body.subhead};
 
-  font-family: ${theme.fonts.headerFallback};
+  font-family: ${theme.font.family.display.fallback};
   font-weight: 300;
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.headerLight};
+    font-family: ${theme.font.family.display.boldLight};
   }
 
   ${mediaMin.s`
-    font-size: ${theme.fontSizes.indexBio};
-    line-height: ${theme.lineHeights.indexBio};
-    letter-spacing: ${theme.letterSpacing.indexBio};    
+    font-size: ${theme.font.size.body.subhead};
+    line-height: ${theme.font.lineHeight.body.m};
+    letter-spacing: ${theme.font.letterSpacing.body.subhead};    
   `};
 `;
 
@@ -71,21 +71,21 @@ export const TagsWrapper = styled.div`
 
 export const Tag = styled.p`
   color: ${theme.colors.grey700};
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s};
+  font-size: ${theme.font.size.body.s};
+  line-height: ${theme.font.lineHeight.body.s};
   font-weight: 700;
   text-transform: uppercase;
-  font-family: ${theme.fonts.headerFallback};
-  letter-spacing: ${theme.letterSpacing.sectionHeaderS};
+  font-family: ${theme.font.family.display.fallback};
+  letter-spacing: ${theme.font.letterSpacing.body.subhead};
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.headerRegular};
+    font-family: ${theme.font.family.display.boldRegular};
   }
 
   ${mediaMin.s`
-    font-size: ${theme.fontSizes.m};
-    line-height: ${theme.lineHeights.m};
-    letter-spacing: ${theme.letterSpacing.sectionHeader};
+    font-size: ${theme.font.size.body.m};
+    line-height: ${theme.font.lineHeight.body.m};
+    letter-spacing: ${theme.font.letterSpacing.body.subhead};
   `};
 
   display: inline-block;
@@ -250,9 +250,9 @@ export const PostContent = styled.section`
     & h2 {
       color: ${theme.colors.grey700};
       margin-bottom: ${rem(16)};
-      font-size: ${theme.fontSizes.sectionHeaderXL};
-      line-height: ${theme.lineHeights.sectionHeaderXL};
-      letter-spacing: ${theme.letterSpacing.sectionHeaderXL};
+      font-size: ${theme.font.size.body.subhead};
+      line-height: ${theme.font.lineHeight.body.subhead};
+      letter-spacing: ${theme.font.letterSpacing.body.subhead};
       text-transform: uppercase;
     }
   }

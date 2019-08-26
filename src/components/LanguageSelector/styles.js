@@ -10,11 +10,11 @@ export const StyledLanguageSelector = styled.li`
   position: relative;
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.headerRegular};
+    font-family: ${theme.font.family.display.boldRegular};
   }
 
-  font-size: ${theme.fontSizes.s};
-  line-height: ${theme.lineHeights.s};
+  font-size: ${theme.font.size.body.s};
+  line-height: ${theme.font.lineHeight.body.s};
 
   &:hover,
   &:active {
@@ -118,7 +118,7 @@ export const CurrentLanguageSelector = styled.li`
   position: relative;
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.headerRegular};
+    font-family: ${theme.font.family.display.boldRegular};
   }
 
   & a {
@@ -128,8 +128,8 @@ export const CurrentLanguageSelector = styled.li`
     text-decoration: none;
     display: inline-block;
     text-align: center;
-    font-size: ${theme.fontSizes.s};
-    line-height: ${theme.lineHeights.s};
+    font-size: ${theme.font.size.body.s};
+    line-height: ${theme.font.lineHeight.body.s};
 
     &:hover {
       background-color: transparent;
@@ -161,7 +161,7 @@ export const LanguageSelectorItem = styled.li`
   }
 
   .fonts-loaded & {
-    font-family: ${theme.fonts.headerRegular};
+    font-family: ${theme.font.family.display.boldRegular};
   }
 
   & a {
@@ -171,8 +171,8 @@ export const LanguageSelectorItem = styled.li`
     text-decoration: none;
     text-align: center;
     display: inline-block;
-    font-size: ${theme.fontSizes.s};
-    line-height: ${theme.lineHeights.s};
+    font-size: ${theme.font.size.body.s};
+    line-height: ${theme.font.lineHeight.body.s};
 
     &:hover {
       background-color: transparent;

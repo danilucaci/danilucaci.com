@@ -33,13 +33,13 @@ export const ThanksAgainCopy = styled(Copy)`
 `;
 
 export const Subhead = styled.p`
-  font-size: ${theme.fontSizes.subheads};
-  line-height: ${theme.lineHeights.subheads};
+  font-size: ${theme.font.size.body.subhead};
+  line-height: ${theme.font.lineHeight.body.subhead};
   margin-bottom: ${rem(32)};
 
   ${mediaMin.s`
-    font-size: ${theme.fontSizes.subhead};
-    line-height: ${theme.lineHeights.subhead};
+    font-size: ${theme.font.size.body.subhead};
+    line-height: ${theme.font.lineHeight.body.subhead};
   `};
 `;
 

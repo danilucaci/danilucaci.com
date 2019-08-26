@@ -16,7 +16,9 @@ export const TagWrapper = styled(GridRow)`
   `};
 
   /* Mobile in ladscape */
-  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(280)}) and (max-height: ${rem(560)}) and (orientation: landscape) {
+  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(
+      280,
+    )}) and (max-height: ${rem(560)}) and (orientation: landscape) {
     margin-bottom: ${rem(64)};
   }
 `;
@@ -33,7 +35,9 @@ export const TagHeader = styled.header`
   `};
 
   /* Mobile in ladscape */
-  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(280)}) and (max-height: ${rem(560)}) and (orientation: landscape) {
+  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(
+      280,
+    )}) and (max-height: ${rem(560)}) and (orientation: landscape) {
     margin-bottom: ${rem(64)};
   }
 `;
@@ -56,14 +60,14 @@ export const TagTitle = styled.span`
   font-weight: 700;
   font-style: normal;
 
-  font-family: ${theme.fonts.header};
+  font-family: ${theme.font.family.display.bold};
 
-  font-size: ${theme.fontSizes.h2s};
-  line-height: ${theme.lineHeights.h2s};
+  font-size: ${theme.font.size.display.mobile.h2};
+  line-height: ${theme.font.lineHeight.display.mobile.h2};
 
   ${mediaMin.xs`
-    font-size: ${theme.fontSizes.h2};
-    line-height: ${theme.lineHeights.h2};
+    font-size: ${theme.font.size.display.desktop.h2};
+    line-height: ${theme.font.lineHeight.display.desktop.h2};
   `}
 `;
 
