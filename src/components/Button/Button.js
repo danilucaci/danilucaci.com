@@ -60,7 +60,7 @@ export const MainGhostButton = styled.button`
   &:hover,
   &:focus {
     cursor: pointer;
-    background-color: ${theme.colors.grey100};
+    background-color: ${theme.colors.grey00};
     ${theme.shadow.buttons.mainGhost};
   }
 `;
@@ -69,7 +69,7 @@ export const DarkGhostButton = styled.button`
   background-color: transparent;
   border: 2px solid ${theme.colors.grey400};
   border-radius: ${theme.borderRadius.buttons};
-  color: ${theme.colors.dark800};
+  color: ${theme.colors.grey800};
 
   text-align: center;
   text-decoration: none;
@@ -92,7 +92,7 @@ export const DarkGhostButton = styled.button`
   &:hover,
   &:focus {
     cursor: pointer;
-    background-color: ${theme.colors.grey100};
+    background-color: ${theme.colors.grey00};
     ${theme.shadow.buttons.darkGhost};
   }
 `;
@@ -132,7 +132,7 @@ export const TertiaryButton = styled.button`
   background-color: transparent;
   border: 2px solid ${theme.colors.grey400};
   border-radius: ${theme.borderRadius.buttons};
-  color: ${theme.colors.dark800};
+  color: ${theme.colors.grey800};
 
   text-align: center;
   font-size: ${theme.fontSizes.buttonS};
@@ -153,16 +153,16 @@ export const TertiaryButton = styled.button`
   &:hover,
   &:focus {
     cursor: pointer;
-    background-color: ${theme.colors.grey100};
+    background-color: ${theme.colors.grey00};
     ${theme.shadow.buttons.darkGhost};
   }
 `;
 
 export const LoadComments = styled.button`
-  background-color: ${theme.colors.grey100};
+  background-color: ${theme.colors.grey00};
   border: 2px solid ${theme.colors.grey400};
   border-radius: ${theme.borderRadius.buttons};
-  color: ${theme.colors.dark700};
+  color: ${theme.colors.grey700};
 
   text-align: center;
   text-decoration: none;
@@ -194,14 +194,14 @@ export const LoadComments = styled.button`
 
   &:hover,
   &:focus {
-    color: ${theme.colors.dark900};
+    color: ${theme.colors.grey900};
     cursor: pointer;
-    border: 2px solid ${theme.colors.dark900};
-    background-color: ${theme.colors.grey100};
+    border: 2px solid ${theme.colors.grey900};
+    background-color: ${theme.colors.grey00};
     outline: none;
 
     & svg {
-      fill: ${theme.colors.dark700};
+      fill: ${theme.colors.grey700};
     }
   }
 `;

@@ -33,7 +33,7 @@ export const StyledLoadingCTA = styled.div`
 `;
 
 export const StyledErrorCTA = styled(StyledLoadingCTA)`
-  background-color: ${theme.colors.grey100};
+  background-color: ${theme.colors.grey00};
   border: ${rem(2)} solid ${theme.colors.danger600};
   border-radius: ${theme.borderRadius.buttons};
   color: ${theme.colors.danger600};

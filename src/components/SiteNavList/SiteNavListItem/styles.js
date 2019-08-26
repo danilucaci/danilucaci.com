@@ -36,7 +36,7 @@ export const StyledSiteNavListItem = styled.li`
   `};
 
   & > a {
-    color: ${theme.colors.dark700};
+    color: ${theme.colors.grey700};
     display: block;
 
     .fonts-loaded & {
@@ -52,7 +52,7 @@ export const StyledSiteNavListItem = styled.li`
 
     &:visited,
     &:link {
-      color: ${theme.colors.dark700};
+      color: ${theme.colors.grey700};
     }
 
     &:hover {
@@ -89,7 +89,7 @@ export const StyledSiteNavListItem = styled.li`
 
     &.current-nav-item {
       background-color: ${theme.colors.grey300};
-      color: ${theme.colors.dark900};
+      color: ${theme.colors.grey900};
       font-weight: 700;
 
       .fonts-loaded & {

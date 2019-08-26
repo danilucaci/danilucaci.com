@@ -31,7 +31,7 @@ export const BoldLink = styled(DefaultLink)`
 `;
 
 export const GreyLink = styled(DefaultLink)`
-  color: ${theme.colors.dark800};
+  color: ${theme.colors.grey800};
 `;
 
 export const LightSecondaryLink = styled(DefaultLink)`

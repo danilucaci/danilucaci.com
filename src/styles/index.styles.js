@@ -57,7 +57,7 @@ export const IndexTitle = styled.h2`
 `;
 
 export const Subhead = styled.p`
-  color: ${theme.colors.dark800};
+  color: ${theme.colors.grey800};
   font-size: ${theme.fontSizes.indexBioS};
   line-height: ${theme.lineHeights.indexBioS};
   letter-spacing: -${theme.letterSpacing.indexBioS};

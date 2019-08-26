@@ -133,7 +133,7 @@ export const Subtitle = styled(Copy)`
 export const AltCopy = styled(Copy)`
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};
-  color: ${theme.colors.dark700};
+  color: ${theme.colors.grey700};
 
   margin-bottom: ${rem(32)};
 

@@ -79,7 +79,7 @@ export const HeaderInfoWrapper = styled(GridCol)`
 `;
 
 export const AboutMeTitle = styled.h1`
-  color: ${theme.colors.dark900};
+  color: ${theme.colors.grey900};
   font-weight: 700;
   font-style: normal;
   font-family: ${theme.fonts.header};
@@ -137,7 +137,7 @@ export const ResumeButton = styled.a`
   background-color: transparent;
   border: 2px solid ${theme.colors.grey400};
   border-radius: ${theme.borderRadius.buttons};
-  color: ${theme.colors.dark800} !important;
+  color: ${theme.colors.grey800} !important;
   text-align: center;
   text-decoration: none;
   font-size: ${theme.fontSizes.buttonS};
@@ -175,7 +175,7 @@ export const ResumeButton = styled.a`
   &:hover,
   &:focus {
     cursor: pointer;
-    background-color: ${theme.colors.grey100};
+    background-color: ${theme.colors.grey00};
     ${theme.shadow.buttons.darkGhost};
   }
 `;

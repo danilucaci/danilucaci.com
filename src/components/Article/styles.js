@@ -4,7 +4,7 @@ import { Copy } from "../Copy/Copy";
 import { BoldLink } from "../Link/Link";
 
 export const StyledArticle = styled.article`
-  background-color: ${theme.colors.grey100};
+  background-color: ${theme.colors.grey00};
   border: 1px solid ${theme.colors.grey300};
   padding: ${rem(16)} ${rem(16)} ${rem(24)} ${rem(16)};
   margin-bottom: ${theme.gutters.m};

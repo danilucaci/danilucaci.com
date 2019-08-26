@@ -41,7 +41,7 @@ export const StyledCopyButton = styled.button`
 `;
 
 export const CopyIcon = styled(Icon)`
-  fill: ${theme.colors.dark800};
+  fill: ${theme.colors.grey800};
   will-change: transform;
   transition: transform ease 0.15s;
 
@@ -51,7 +51,7 @@ export const CopyIcon = styled(Icon)`
 `;
 
 export const CopyTooltip = styled.span`
-  background-color: ${theme.colors.grey100};
+  background-color: ${theme.colors.grey00};
   border: 1px solid ${theme.colors.grey400};
   border-radius: ${theme.borderRadius.buttons};
   ${theme.shadow.dropdown};

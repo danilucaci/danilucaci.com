@@ -48,7 +48,7 @@ export const StyledLanguageSelector = styled.li`
 `;
 
 export const StyledLanguageDropdown = styled.ul`
-  background-color: ${theme.colors.grey100};
+  background-color: ${theme.colors.grey00};
   border: 1px solid ${theme.colors.grey400};
   border-radius: ${theme.borderRadius.buttons};
   ${theme.shadow.dropdown};
@@ -167,7 +167,7 @@ export const LanguageSelectorItem = styled.li`
   & a {
     padding: ${rem(12)} ${rem(32)};
     width: 100%;
-    color: ${theme.colors.dark700};
+    color: ${theme.colors.grey700};
     text-decoration: none;
     text-align: center;
     display: inline-block;

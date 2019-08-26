@@ -46,7 +46,7 @@ export const PostH1 = styled.h1`
 `;
 
 export const CaseStudyDescription = styled(Copy)`
-  color: ${theme.colors.dark800};
+  color: ${theme.colors.grey800};
   font-size: ${theme.fontSizes.indexBioS};
   line-height: ${theme.lineHeights.indexBioS};
   letter-spacing: ${theme.letterSpacing.indexBioS};
@@ -70,7 +70,7 @@ export const TagsWrapper = styled.div`
 `;
 
 export const Tag = styled.p`
-  color: ${theme.colors.dark700};
+  color: ${theme.colors.grey700};
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};
   font-weight: 700;
@@ -248,7 +248,7 @@ export const PostContent = styled.section`
     }
 
     & h2 {
-      color: ${theme.colors.dark700};
+      color: ${theme.colors.grey700};
       margin-bottom: ${rem(16)};
       font-size: ${theme.fontSizes.sectionHeaderXL};
       line-height: ${theme.lineHeights.sectionHeaderXL};

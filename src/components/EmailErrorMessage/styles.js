@@ -3,7 +3,7 @@ import { theme, rem } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
 
 export const MessageTitle = styled(Copy)`
-  color: ${theme.colors.dark800};
+  color: ${theme.colors.grey800};
   display: block;
   font-size: ${theme.fontSizes.m};
   line-height: ${theme.lineHeights.s};
@@ -15,14 +15,14 @@ export const MessageTitle = styled(Copy)`
 `;
 
 export const MessageSubtitle = styled(Copy)`
-  color: ${theme.colors.dark800};
+  color: ${theme.colors.grey800};
   display: block;
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};
 `;
 
 export const MessageError = styled(Copy)`
-  color: ${theme.colors.dark800};
+  color: ${theme.colors.grey800};
   display: block;
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};
@@ -30,13 +30,13 @@ export const MessageError = styled(Copy)`
 `;
 
 export const StatusMessageWrapper = styled.div`
-  border: ${rem(2)} solid ${theme.colors.dark900};
+  border: ${rem(2)} solid ${theme.colors.grey900};
   border-radius: ${theme.borderRadius.buttons};
   display: block;
-  background-color: ${theme.colors.grey100};
+  background-color: ${theme.colors.grey00};
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};
-  color: ${theme.colors.dark900};
+  color: ${theme.colors.grey900};
   padding: ${rem(16)};
   margin-top: ${rem(24)};
   ${theme.shadow.default};

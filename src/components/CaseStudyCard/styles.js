@@ -96,7 +96,7 @@ export const CaseStudyCardContents = styled.div`
 `;
 
 export const Tag = styled.p`
-  color: ${theme.colors.dark700};
+  color: ${theme.colors.grey700};
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};
   font-weight: 700;

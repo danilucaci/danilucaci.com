@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { theme, rem, mediaMin } from "../../theme/globalStyles";
 
 export const StyledSiteNavList = styled.ul`
-  background-color: ${theme.colors.grey100};
+  background-color: ${theme.colors.grey00};
   text-align: center;
   display: block;
   padding-left: ${rem(16)};

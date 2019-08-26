@@ -125,7 +125,7 @@ export const PostContent = styled(GridRow)`
   }
 
   .js-codeCopy {
-    background-color: ${theme.colors.grey100};
+    background-color: ${theme.colors.grey00};
     display: none;
     white-space: nowrap;
     font-size: ${theme.fontSizes.xs};
@@ -187,7 +187,7 @@ export const PostContent = styled(GridRow)`
 
     & ul a {
       display: block;
-      color: ${theme.colors.dark900};
+      color: ${theme.colors.grey900};
       text-decoration: none;
       font-style: normal;
       font-weight: 400;
@@ -197,7 +197,7 @@ export const PostContent = styled(GridRow)`
 
       &:visited,
       &:link {
-        color: ${theme.colors.dark900};
+        color: ${theme.colors.grey900};
       }
 
       &:hover {

@@ -6,7 +6,7 @@ import { TertiaryButton, PrimaryButtonSmall } from "../Button/Button";
 import { DefaultLink } from "../Link/Link";
 
 export const StyledCookieConsent = styled.aside`
-  background-color: ${theme.colors.grey100};
+  background-color: ${theme.colors.grey00};
   border-top: ${rem(8)} solid ${theme.colors.main600};
   display: none;
 

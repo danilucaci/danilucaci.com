@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
 
 export const StyledIcon = styled(Icon)`
   display: inline-block;
-  fill: ${theme.colors.dark600};
+  fill: ${theme.colors.grey600};
   margin-right: ${rem(4)};
 `;
 

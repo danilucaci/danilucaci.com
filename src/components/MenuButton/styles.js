@@ -3,10 +3,10 @@ import { Icon } from "../Icon/Icon";
 import { theme, rem, mediaMin } from "../../theme/globalStyles";
 
 export const StyledMenuButton = styled.button`
-  border: 2px solid ${theme.colors.dark900};
+  border: 2px solid ${theme.colors.grey900};
   border-radius: ${theme.borderRadius.buttons};
-  background-color: ${theme.colors.grey100};
-  color: ${theme.colors.dark900};
+  background-color: ${theme.colors.grey00};
+  color: ${theme.colors.grey900};
 
   font-weight: 700;
   font-size: ${theme.fontSizes.s};
@@ -28,7 +28,7 @@ export const StyledMenuButton = styled.button`
 `;
 
 export const StyledIcon = styled(Icon)`
-  fill: ${theme.colors.dark900};
+  fill: ${theme.colors.grey900};
   transition: transform 0.2s ease;
   margin-bottom: ${rem(2)};
   margin-left: ${rem(4)};

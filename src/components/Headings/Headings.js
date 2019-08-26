@@ -10,7 +10,7 @@ export const H3 = styled.h3``;
 export const H4 = styled.h4``;
 
 export const SectionHeader = styled.span`
-  color: ${theme.colors.dark700};
+  color: ${theme.colors.grey700};
   display: block;
   text-transform: uppercase;
   font-size: ${theme.fontSizes.sectionHeaderS};

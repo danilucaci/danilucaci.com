@@ -5,7 +5,7 @@ import LocaleLink from "../../LocaleLink/LocaleLink";
 
 export const StyledTag = styled(LocaleLink)`
   display: inline-block;
-  color: ${theme.colors.dark700};
+  color: ${theme.colors.grey700};
 
   text-decoration: underline;
 
@@ -18,11 +18,11 @@ export const StyledTag = styled(LocaleLink)`
 
   &:visited,
   &:link {
-    color: ${theme.colors.dark700};
+    color: ${theme.colors.grey700};
   }
 
   &:hover {
-    color: ${theme.colors.dark900};
+    color: ${theme.colors.grey900};
     background-color: transparent;
     cursor: pointer;
   }

@@ -14,7 +14,7 @@ export const Row = styled(GridRow)`
 `;
 
 export const Subhead = styled(Copy)`
-  color: ${theme.colors.dark800};
+  color: ${theme.colors.grey800};
   font-size: ${theme.fontSizes.subheadS};
   line-height: ${theme.lineHeights.subheadS};
 

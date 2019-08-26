@@ -3,7 +3,7 @@ import { theme, rem } from "../../theme/globalStyles";
 import { Copy } from "../Copy/Copy";
 
 export const MessageTitle = styled(Copy)`
-  color: ${theme.colors.dark800};
+  color: ${theme.colors.grey800};
   display: block;
   font-size: ${theme.fontSizes.m};
   line-height: ${theme.lineHeights.s};
@@ -14,7 +14,7 @@ export const MessageTitle = styled(Copy)`
 `;
 
 export const APIMessageTitle = styled(Copy)`
-  color: ${theme.colors.dark800};
+  color: ${theme.colors.grey800};
   display: block;
   font-size: ${theme.fontSizes.m};
   line-height: ${theme.lineHeights.m};
@@ -26,10 +26,10 @@ export const APIMessageTitle = styled(Copy)`
 `;
 
 export const StatusMessageWrapper = styled.div`
-  background-color: ${theme.colors.grey100};
-  border: ${rem(2)} solid ${theme.colors.dark800};
+  background-color: ${theme.colors.grey00};
+  border: ${rem(2)} solid ${theme.colors.grey800};
   border-radius: ${theme.borderRadius.buttons};
-  color: ${theme.colors.dark800};
+  color: ${theme.colors.grey800};
 
   display: block;
 

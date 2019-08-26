@@ -25,7 +25,7 @@ export const Figure = styled.figure`
 export const FigCaption = styled.figcaption`
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};
-  color: ${theme.colors.dark700};
+  color: ${theme.colors.grey700};
   margin-top: ${rem(16)};
 
   font-weight: 400;

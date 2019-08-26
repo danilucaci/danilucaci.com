@@ -26,7 +26,7 @@ export const StatusMessageWrapper = styled.div`
   border: ${rem(2)} solid ${theme.colors.main600};
   border-radius: ${theme.borderRadius.buttons};
   display: block;
-  background-color: ${theme.colors.grey100};
+  background-color: ${theme.colors.grey00};
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};
   color: ${theme.colors.main600};

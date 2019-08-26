@@ -27,12 +27,12 @@ export const StyledSubmitButton = styled.button`
   white-space: nowrap;
 
   &:disabled {
-    background-color: ${theme.colors.dark700};
+    background-color: ${theme.colors.grey700};
     color: ${theme.colors.grey100};
 
     &:hover,
     &:focus {
-      background-color: ${theme.colors.dark700};
+      background-color: ${theme.colors.grey700};
       box-shadow: none;
       cursor: not-allowed;
     }

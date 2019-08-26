@@ -24,7 +24,7 @@ export const StyledImg = styled.img`
 `;
 
 export const StyledLink = styled.a`
-  color: ${theme.colors.dark700} !important;
+  color: ${theme.colors.grey700} !important;
   text-decoration: none !important;
 
   display: inline-block;

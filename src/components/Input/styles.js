@@ -17,10 +17,10 @@ let optimizedErrorSVGDataURI = `background: url("${svgToMiniDataURI(
 )}")`;
 
 export const StyledInput = styled(Field)`
-  background-color: ${theme.colors.grey100};
+  background-color: ${theme.colors.grey00};
   border: 2px solid ${theme.colors.grey400};
   border-radius: ${theme.borderRadius.buttons};
-  color: ${theme.colors.dark700};
+  color: ${theme.colors.grey700};
 
   font-size: ${theme.fontSizes.button};
   line-height: ${theme.lineHeights.button};
@@ -39,20 +39,20 @@ export const StyledInput = styled(Field)`
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus {
-    background-color: ${theme.colors.grey100};
+    background-color: ${theme.colors.grey00};
     border: 2px solid ${theme.colors.grey400};
     border-radius: ${theme.borderRadius.buttons};
     box-shadow: 0 0 0px 1000px #fff inset;
     -webkit-box-shadow: 0 0 0px 1000px #fff inset;
     transition: background-color 5000s ease-in-out 0s;
-    -webkit-text-fill-color: ${theme.colors.dark800};
+    -webkit-text-fill-color: ${theme.colors.grey800};
   }
 
   &:focus,
   &:active {
     background: white;
-    color: ${theme.colors.dark900};
-    border: 2px solid ${theme.colors.dark900};
+    color: ${theme.colors.grey900};
+    border: 2px solid ${theme.colors.grey900};
     ${theme.shadow.input.focus};
     outline: none;
   }
@@ -61,7 +61,7 @@ export const StyledInput = styled(Field)`
   /*  1. NOT Empty */
   /*  2. NOT In Focus */
   &:not(:focus):not(:placeholder-shown) {
-    color: ${theme.colors.dark800};
+    color: ${theme.colors.grey800};
   }
 
   /* https://css-tricks.com/form-validation-ux-html-css/ */

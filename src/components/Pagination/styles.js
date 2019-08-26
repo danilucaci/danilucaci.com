@@ -39,11 +39,11 @@ export const StyledLink = styled(BoldLink)`
 
   &:visited,
   &:link {
-    color: ${theme.colors.dark800};
+    color: ${theme.colors.grey800};
   }
 
   &:hover {
-    color: ${theme.colors.dark800};
+    color: ${theme.colors.grey800};
     background-color: ${theme.colors.grey300};
     cursor: pointer;
   }
@@ -62,7 +62,7 @@ export const DisabledPrev = styled(CopyBold)`
 `;
 
 export const Prev = styled(StyledLink)`
-  color: ${theme.colors.dark800};
+  color: ${theme.colors.grey800};
   display: flex;
   text-align: left;
 
@@ -76,7 +76,7 @@ export const Prev = styled(StyledLink)`
 `;
 
 export const Next = styled(StyledLink)`
-  color: ${theme.colors.dark800};
+  color: ${theme.colors.grey800};
   display: flex;
   text-align: right;
 
@@ -153,10 +153,10 @@ export const PaginationNumber = styled(StyledLink)`
 `;
 
 export const CurrentPaginationNumber = styled(PaginationNumber)`
-  background-color: ${theme.colors.dark800};
+  background-color: ${theme.colors.grey800};
   color: ${theme.colors.grey100} !important;
 
   &:hover {
-    background-color: ${theme.colors.dark800};
+    background-color: ${theme.colors.grey800};
   }
 `;

@@ -8,7 +8,7 @@ const GlobalAria = createGlobalStyle`
   input {
     &:active,
     &:focus {
-      outline: 2px solid ${theme.colors.dark800};
+      outline: 2px solid ${theme.colors.grey800};
       ${theme.shadow.input.focus};
     }
   } */

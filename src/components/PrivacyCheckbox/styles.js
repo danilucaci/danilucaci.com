@@ -18,12 +18,12 @@ export const StyledCheckbox = styled(Checkbox)`
   &:not(:checked) {
     & ~ input {
       pointer-events: none !important;
-      background-color: ${theme.colors.dark700};
+      background-color: ${theme.colors.grey700};
       color: ${theme.colors.grey100};
 
       &:hover,
       &:focus {
-        background-color: ${theme.colors.dark700};
+        background-color: ${theme.colors.grey700};
         box-shadow: none;
         cursor: not-allowed;
       }
@@ -42,7 +42,7 @@ export const Required = styled.span`
   margin-left: ${rem(6)};
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};
-  color: ${theme.colors.dark900};
+  color: ${theme.colors.grey900};
 `;
 
 export const AndSpan = styled.span`
@@ -56,7 +56,7 @@ export const LearnMoreLink = styled.a`
   line-height: ${theme.lineHeights.s};
   display: inline;
   margin-left: ${rem(5)};
-  color: ${theme.colors.dark800} !important;
+  color: ${theme.colors.grey800} !important;
 
   &:hover {
     background-color: ${theme.colors.grey300} !important;

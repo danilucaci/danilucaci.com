@@ -34,7 +34,7 @@ export const Checkbox = styled(Field)`
 
   /* Box hover */
   &:hover + label:before {
-    border: 2px solid ${theme.colors.dark900};
+    border: 2px solid ${theme.colors.grey900};
     transform: scale(1.1);
   }
 
@@ -45,7 +45,7 @@ export const Checkbox = styled(Field)`
 
   /* Box focus */
   &:focus + label:before {
-    border: 2px solid ${theme.colors.dark900};
+    border: 2px solid ${theme.colors.grey900};
     ${theme.shadow.input.focus};
     transform: scale(1.1);
   }

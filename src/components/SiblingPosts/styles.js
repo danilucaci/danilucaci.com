@@ -75,7 +75,7 @@ export const PrevSectionHeader = styled(Copy)`
     margin-bottom: ${rem(8)};
   `};
 
-  color: ${theme.colors.dark700};
+  color: ${theme.colors.grey700};
   display: block;
   text-transform: uppercase;
   font-size: ${theme.fontSizes.sectionHeaderS};
@@ -99,7 +99,7 @@ export const PrevSectionHeader = styled(Copy)`
 `;
 
 export const PrevArticleLink = styled(DefaultLink)`
-  color: ${theme.colors.dark900} !important;
+  color: ${theme.colors.grey900} !important;
   text-decoration: none;
   font-size: ${theme.fontSizes.siblingPostsS};
   line-height: ${theme.lineHeights.siblingPostsS};
@@ -149,7 +149,7 @@ export const NextSectionHeader = styled(Copy)`
     margin-bottom: ${rem(8)};
   `};
 
-  color: ${theme.colors.dark700};
+  color: ${theme.colors.grey700};
   display: block;
   text-transform: uppercase;
   font-size: ${theme.fontSizes.sectionHeaderS};
@@ -173,7 +173,7 @@ export const NextSectionHeader = styled(Copy)`
 `;
 
 export const NextArticleLink = styled(DefaultLink)`
-  color: ${theme.colors.dark900} !important;
+  color: ${theme.colors.grey900} !important;
   display: block;
 
   text-align: right;

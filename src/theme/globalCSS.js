@@ -4,7 +4,7 @@ import { theme, mediaMin, rem } from "../theme/globalStyles";
 const GlobalCSS = createGlobalStyle`
   html {
     background-color: #FFFFFF;
-    color: ${theme.colors.dark800};
+    color: ${theme.colors.grey800};
     font-family: ${theme.fonts.bodyFallback};
     font-size: 16px;
     line-height: 24px;
@@ -54,7 +54,7 @@ ${
   }
 
   ::selection {
-    color: ${theme.colors.dark900} !important;
+    color: ${theme.colors.grey900} !important;
     text-shadow: none;
     background: ${theme.colors.light100};
   }
@@ -71,7 +71,7 @@ ${
   }
 
   h1 {
-    color: ${theme.colors.dark900};
+    color: ${theme.colors.grey900};
     font-weight: 700;
     font-style: normal;
 
@@ -93,7 +93,7 @@ ${
   }
   
   h2 {
-    color: ${theme.colors.dark900};
+    color: ${theme.colors.grey900};
     font-weight: 700;
     font-style: normal;
     font-size: ${theme.fontSizes.h2s};
@@ -116,7 +116,7 @@ ${
   }
 
   h3 {
-    color: ${theme.colors.dark900};
+    color: ${theme.colors.grey900};
     font-weight: 700;
     font-style: normal;
     font-size: ${theme.fontSizes.h3s};
@@ -139,7 +139,7 @@ ${
   }
 
   h4 {
-    color: ${theme.colors.dark900};
+    color: ${theme.colors.grey900};
     font-weight: 700;
     font-style: normal;
     font-size: ${theme.fontSizes.h4};
@@ -153,7 +153,7 @@ ${
   }
 
   h5 {
-    color: ${theme.colors.dark700};
+    color: ${theme.colors.grey700};
     display: block;
     text-transform: uppercase;
     font-size: ${theme.fontSizes.sectionHeaderS};
@@ -209,21 +209,21 @@ ${
 
   @keyframes animateAnchor {
     0% {
-      color: ${theme.colors.dark900};
+      color: ${theme.colors.grey900};
     }
     1%,
     80% {
       color: ${theme.colors.main600};
     }
     0% {
-      color: ${theme.colors.dark900};
+      color: ${theme.colors.grey900};
     }
   }
 
   p,
   ul,
   ol {
-    color: ${theme.colors.dark800};
+    color: ${theme.colors.grey800};
     font-weight: 400;
     font-style: normal;
     font-size: ${theme.fontSizes.m};
@@ -252,7 +252,7 @@ ${
   }
 
   strong, b {
-    color: ${theme.colors.dark800};
+    color: ${theme.colors.grey800};
     font-weight: 700;
     font-style: normal;
     font-size: ${theme.fontSizes.m};
@@ -264,7 +264,7 @@ ${
   }
 
   em {
-    color: ${theme.colors.dark800};
+    color: ${theme.colors.grey800};
     font-weight: 400;
     font-style: italic;
     font-size: ${theme.fontSizes.m};

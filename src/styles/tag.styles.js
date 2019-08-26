@@ -50,7 +50,7 @@ export const TagTitleWrapper = styled.div`
 `;
 
 export const TagTitle = styled.span`
-  color: ${theme.colors.dark900};
+  color: ${theme.colors.grey900};
   display: block;
 
   font-weight: 700;

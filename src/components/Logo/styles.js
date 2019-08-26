@@ -3,7 +3,7 @@ import LocaleLink from "../LocaleLink/LocaleLink";
 import { theme, rem } from "../../theme/globalStyles";
 
 export const StyledLogo = styled(LocaleLink)`
-  color: ${theme.colors.dark900};
+  color: ${theme.colors.grey900};
   display: inline-block;
 
   font-family: ${theme.fonts.headerFallback};
@@ -20,7 +20,7 @@ export const StyledLogo = styled(LocaleLink)`
 
   &:visited,
   &:link {
-    color: ${theme.colors.dark900};
+    color: ${theme.colors.grey900};
   }
 
   &:hover {
