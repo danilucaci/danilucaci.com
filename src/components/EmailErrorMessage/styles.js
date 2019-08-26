@@ -63,7 +63,7 @@ export const InlineMessageCopy = styled(Copy)`
 export const ShowErrorLink = styled.button`
   border: none;
   background-color: transparent;
-  color: ${theme.colors.main600};
+  color: ${theme.colors.primary600};
   display: block;
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};

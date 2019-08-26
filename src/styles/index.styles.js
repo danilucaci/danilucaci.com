@@ -22,7 +22,7 @@ export const IndexHeader = styled(GridRow)`
 `;
 
 export const Name = styled(Copy)`
-  color: ${theme.colors.main600};
+  color: ${theme.colors.primary600};
   text-transform: uppercase;
   font-size: ${theme.fontSizes.indexNameS};
   line-height: ${theme.lineHeights.indexNameS};

@@ -4,9 +4,9 @@ import { Copy } from "../Copy/Copy";
 
 export const StatusMessageWrapper = styled.div`
   background-color: ${theme.colors.grey00};
-  border: ${rem(2)} solid ${theme.colors.main600};
+  border: ${rem(2)} solid ${theme.colors.primary600};
   border-radius: ${theme.borderRadius.buttons};
-  color: ${theme.colors.main600};
+  color: ${theme.colors.primary600};
 
   display: block;
 
@@ -25,7 +25,7 @@ export const StatusMessageWrapper = styled.div`
 `;
 
 export const MessageTitle = styled(Copy)`
-  color: ${theme.colors.main600};
+  color: ${theme.colors.primary600};
   display: block;
   font-size: ${theme.fontSizes.m};
   line-height: ${theme.lineHeights.s};
@@ -37,7 +37,7 @@ export const MessageTitle = styled(Copy)`
 `;
 
 export const MessageSubtitle = styled(Copy)`
-  color: ${theme.colors.main600};
+  color: ${theme.colors.primary600};
   display: block;
   font-size: ${theme.fontSizes.s};
   line-height: ${theme.lineHeights.s};

@@ -29,7 +29,7 @@ export const ScrollContainer = styled.div`
 
 export const ScrollLine = styled.div`
   height: ${rem(4)};
-  background-color: ${theme.colors.main600};
+  background-color: ${theme.colors.primary600};
   will-change: width;
   width: 0%;
 `;

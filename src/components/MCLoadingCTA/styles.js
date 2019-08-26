@@ -3,18 +3,18 @@ import { theme, rem, mediaMin } from "../../theme/globalStyles";
 
 export const StyledLoadingCTA = styled.div`
   ${(props) =>
-    (props.error
+    props.error
       ? css`
           background-color: ${theme.colors.danger500};
           color: ${theme.colors.danger100};
           ${theme.shadow.buttons.error};
         `
       : css`
-          background-color: ${theme.colors.main500};
-          color: ${theme.colors.main100};
+          background-color: ${theme.colors.primary500};
+          color: ${theme.colors.primary100};
           ${theme.shadow.buttons.main};
           border: none;
-        `)}
+        `}
 
   border-radius: ${theme.borderRadius.buttons};
 

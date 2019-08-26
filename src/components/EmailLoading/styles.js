@@ -5,7 +5,7 @@ import { Icon } from "../Icon/Icon";
 export const StyledLoadingWrapper = styled.div``;
 
 export const StyledLoadingCTA = styled.div`
-  background-color: ${theme.colors.main500};
+  background-color: ${theme.colors.primary500};
   border: none;
   border-radius: ${theme.borderRadius.buttons};
   color: ${theme.colors.buttonLight};

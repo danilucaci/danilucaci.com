@@ -7,7 +7,7 @@ import { DefaultLink } from "../Link/Link";
 
 export const StyledCookieConsent = styled.aside`
   background-color: ${theme.colors.grey00};
-  border-top: ${rem(8)} solid ${theme.colors.main600};
+  border-top: ${rem(8)} solid ${theme.colors.primary600};
   display: none;
 
   padding: ${rem(16)} ${rem(16)} ${rem(24)} ${rem(16)};

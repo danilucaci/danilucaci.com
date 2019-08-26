@@ -203,7 +203,7 @@ ${
     margin-top: 0;
 
     & > svg {
-      fill: ${theme.colors.main600};
+      fill: ${theme.colors.primary600};
     }
   }
 
@@ -213,7 +213,7 @@ ${
     }
     1%,
     80% {
-      color: ${theme.colors.main600};
+      color: ${theme.colors.primary600};
     }
     0% {
       color: ${theme.colors.grey900};
@@ -278,7 +278,7 @@ ${
   blockquote, 
   blockquote * {
     font-family: ${theme.fonts.headerFallback};
-    color: ${theme.colors.main600};
+    color: ${theme.colors.primary600};
 
     .fonts-loaded & {
       font-family: ${theme.fonts.headerRegular};
@@ -300,7 +300,7 @@ ${
       margin-right: -${theme.gutters.s};
       margin-left: -${theme.gutters.s};
       padding: ${rem(16)} ${theme.gutters.s};
-      border-left: 4px solid ${theme.colors.main600};
+      border-left: 4px solid ${theme.colors.primary600};
       margin-right: -${theme.gutters.m};
       margin-left: -${theme.gutters.m};
       padding: ${rem(16)} ${theme.gutters.m};
@@ -312,7 +312,7 @@ ${
   }
 
   a {
-    color: ${theme.colors.main600};
+    color: ${theme.colors.primary600};
     text-decoration: underline;
     font-size: ${theme.fontSizes.m};
     line-height: ${theme.lineHeights.m};
@@ -320,13 +320,13 @@ ${
     a,
     &:visited,
     &:link {
-      color: ${theme.colors.main600};
+      color: ${theme.colors.primary600};
     }
 
 
     &:hover {
       cursor: pointer;
-      background-color: ${theme.colors.main100};
+      background-color: ${theme.colors.primary100};
     }
 
   }

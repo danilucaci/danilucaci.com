@@ -82,7 +82,7 @@ export const LanguageDropdownLabel = styled.span`
 export const CurrentLanguageIcon = styled(Icon)`
   display: inline-block;
   vertical-align: middle;
-  fill: ${theme.colors.main600};
+  fill: ${theme.colors.primary600};
   position: absolute;
   left: ${rem(40)};
   top: ${rem(12)};
@@ -124,7 +124,7 @@ export const CurrentLanguageSelector = styled.li`
   & a {
     padding: ${rem(12)} ${rem(32)};
     width: 100%;
-    color: ${theme.colors.main600};
+    color: ${theme.colors.primary600};
     text-decoration: none;
     display: inline-block;
     text-align: center;

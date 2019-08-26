@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { theme, rem, mediaMin } from "../../theme/globalStyles";
 
 export const PrimaryButton = styled.button`
-  background-color: ${theme.colors.main600};
+  background-color: ${theme.colors.primary600};
   border: none;
   border-radius: ${theme.borderRadius.buttons};
   color: ${theme.colors.buttonLight};
@@ -28,16 +28,16 @@ export const PrimaryButton = styled.button`
   &:hover,
   &:focus {
     cursor: pointer;
-    background-color: ${theme.colors.main500};
+    background-color: ${theme.colors.primary500};
     ${theme.shadow.buttons.main};
   }
 `;
 
 export const MainGhostButton = styled.button`
   background-color: transparent;
-  border: 2px solid ${theme.colors.main600};
+  border: 2px solid ${theme.colors.primary600};
   border-radius: ${theme.borderRadius.buttons};
-  color: ${theme.colors.main600};
+  color: ${theme.colors.primary600};
 
   text-align: center;
   text-decoration: none;
@@ -98,7 +98,7 @@ export const DarkGhostButton = styled.button`
 `;
 
 export const PrimaryButtonSmall = styled.button`
-  background-color: ${theme.colors.main600};
+  background-color: ${theme.colors.primary600};
   border: none;
   border-radius: ${theme.borderRadius.buttons};
   color: ${theme.colors.buttonLight};
@@ -122,7 +122,7 @@ export const PrimaryButtonSmall = styled.button`
 
   &:hover,
   &:focus {
-    background-color: ${theme.colors.main500};
+    background-color: ${theme.colors.primary500};
     cursor: pointer;
     ${theme.shadow.buttons.main};
   }

@@ -17,7 +17,7 @@ export const StyledArticle = styled.article`
     ${theme.shadow.hover};
 
     & h3 {
-      color: ${theme.colors.main600};
+      color: ${theme.colors.primary600};
     }
   }
 `;

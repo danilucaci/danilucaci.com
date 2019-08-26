@@ -132,7 +132,7 @@ export const StyledH3 = styled.h3`
 `;
 
 export const ContinueLink = styled(Link)`
-  color: ${theme.colors.main600};
+  color: ${theme.colors.primary600};
   text-decoration: underline;
   font-style: normal;
   font-weight: 400;

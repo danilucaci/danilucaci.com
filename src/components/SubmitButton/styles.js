@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { theme, rem } from "../../theme/globalStyles";
 
 export const StyledSubmitButton = styled.button`
-  background-color: ${theme.colors.main600};
+  background-color: ${theme.colors.primary600};
   border: none;
   border-radius: ${theme.borderRadius.buttons};
   color: ${theme.colors.light100};
@@ -41,7 +41,7 @@ export const StyledSubmitButton = styled.button`
   &:hover,
   &:focus {
     cursor: pointer;
-    background-color: ${theme.colors.main500};
+    background-color: ${theme.colors.primary500};
     ${theme.shadow.buttons.main};
     outline: none;
   }

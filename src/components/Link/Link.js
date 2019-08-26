@@ -6,14 +6,14 @@ import { theme } from "../../theme/globalStyles";
 
 // export const DefaultLink = styled(LocaleLink)`
 export const DefaultLink = styled(Link)`
-  color: ${theme.colors.main600};
+  color: ${theme.colors.primary600};
   text-decoration: underline;
   font-style: normal;
   font-weight: 400;
 
   &:visited,
   &:link {
-    color: ${theme.colors.main600};
+    color: ${theme.colors.primary600};
   }
 
   &:hover {

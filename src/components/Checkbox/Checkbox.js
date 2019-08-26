@@ -39,7 +39,7 @@ export const Checkbox = styled(Field)`
   }
 
   &:checked:hover + label:before {
-    background: ${theme.colors.main500};
+    background: ${theme.colors.primary500};
     transform: scale(1.1);
   }
 
@@ -52,14 +52,14 @@ export const Checkbox = styled(Field)`
 
   /* Box checked */
   &:checked:focus + label:before {
-    background: ${theme.colors.main500};
+    background: ${theme.colors.primary500};
     transform: scale(1.1);
   }
 
   /* Remove border from :before when checked */
   &:checked + label:before {
     border: none;
-    background: ${theme.colors.main600};
+    background: ${theme.colors.primary600};
   }
 
   /* Box checked */

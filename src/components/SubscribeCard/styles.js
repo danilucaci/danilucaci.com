@@ -28,7 +28,7 @@ export const SubscribeCardWrapper = styled.aside`
 
 export const SubscribeCardInner = styled.aside`
   background-color: ${theme.colors.bgLight100};
-  border-top: ${rem(8)} solid ${theme.colors.main600};
+  border-top: ${rem(8)} solid ${theme.colors.primary600};
 
   padding: ${rem(32)} ${rem(24)};
 

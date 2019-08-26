@@ -25,7 +25,7 @@ export const StyledLogo = styled(LocaleLink)`
 
   &:hover {
     background-color: transparent;
-    color: ${theme.colors.main600};
+    color: ${theme.colors.primary600};
     cursor: pointer;
   }
 `;
