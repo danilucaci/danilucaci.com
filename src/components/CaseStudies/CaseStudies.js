@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
 
 import CaseStudyCard from "../CaseStudyCard/CaseStudyCard";
-import { GridCol } from "../../../src/components/Grid/Grid";
+import { GridCol } from "../Grid/Grid";
 import { Row, Subhead } from "./styles";
 
 const CaseStudies = (props) => {
@@ -20,9 +20,13 @@ const CaseStudies = (props) => {
     <Row>
       <GridCol>
         {props.header === "h2" ? (
-          <FormattedMessage id="case.studies.header">{(txt) => <h2>{txt}</h2>}</FormattedMessage>
+          <FormattedMessage id="case.studies.header">
+            {(txt) => <h2>{txt}</h2>}
+          </FormattedMessage>
         ) : (
-          <FormattedMessage id="case.studies.header">{(txt) => <h1>{txt}</h1>}</FormattedMessage>
+          <FormattedMessage id="case.studies.header">
+            {(txt) => <h1>{txt}</h1>}
+          </FormattedMessage>
         )}
 
         <FormattedMessage id="case.studies.description">

@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-import { Copy } from "../../src/components/Copy/Copy";
+import { Copy } from "../components/Copy/Copy";
 import { theme, mediaMin, rem } from "../theme/theme";
-import { HR } from "../../src/components/HR/HR";
-import { GridRow } from "../../src/components/Grid/Grid";
+import { HR } from "../components/HR/HR";
+import { GridRow } from "../components/Grid/Grid";
 
 export const StyledNotFound = styled(GridRow)`
   max-width: ${theme.layout.col8.wrapper};

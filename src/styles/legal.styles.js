@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { theme, rem, mediaMin } from "../theme/theme";
-import { Copy } from "../../src/components/Copy/Copy";
-import { GridRow } from "../../src/components/Grid/Grid";
+import { Copy } from "../components/Copy/Copy";
+import { GridRow } from "../components/Grid/Grid";
 
 export const PageWrapper = styled(GridRow)`
   max-width: ${theme.layout.col8.inner};

@@ -11,18 +11,14 @@ import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
 import SocialNav from "../components/SocialNav/SocialNav";
 import ContactCard from "../components/ContactCard/ContactCard";
-// import enResume from "../../src/resume/marian_daniel_lucaci_resume.pdf";
-// import esResume from "../../src/resume/marian_daniel_lucaci_curriculum.pdf";
-import { GridCol } from "../../src/components/Grid/Grid";
-import ErrorBoundary from "../../src/components/ErrorBoundary/ErrorBoundary";
+import { GridCol } from "../components/Grid/Grid";
+import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 
 import { localePaths } from "../i18n/i18n";
 
 import {
   Header,
   ResumeWrapper,
-  StyledSocialNav,
-  // ResumeButton,
   HeaderImageWrapper,
   ImageWrapper,
   HeaderInfoWrapper,
@@ -76,7 +72,12 @@ const AboutPage = (props) => {
             <HeaderImageWrapper s="5">
               <ImageWrapper>
                 <FormattedMessage id="about.the.blog.image.title">
-                  {(txt) => <Img alt={txt} fluid={props.data.aboutImage.childImageSharp.fluid} />}
+                  {(txt) => (
+                    <Img
+                      alt={txt}
+                      fluid={props.data.aboutImage.childImageSharp.fluid}
+                    />
+                  )}
                 </FormattedMessage>
               </ImageWrapper>
               <ResumeWrapper>

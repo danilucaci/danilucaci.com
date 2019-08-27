@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { theme, mediaMin, rem } from "../theme/theme";
-import { Copy } from "../../src/components/Copy/Copy";
-import { HR } from "../../src/components/HR/HR";
+import { Copy } from "../components/Copy/Copy";
+import { HR } from "../components/HR/HR";
 
 export const ContactMeWrapper = styled.section`
   max-width: ${theme.layout.col10.wrapper};

@@ -20,7 +20,7 @@ import {
   StyledHR,
 } from "../styles/thanks.styles";
 
-import { GridCol } from "../../src/components/Grid/Grid";
+import { GridCol } from "../components/Grid/Grid";
 
 const ThanksPage = (props) => {
   let locale = props.pageContext.locale;
@@ -64,7 +64,9 @@ const ThanksPage = (props) => {
                 {(txt) => (
                   <ThanksCopy>
                     {txt}{" "}
-                    <a href={`mailto:${localePaths[locale].email}`}>{localePaths[locale].email}</a>
+                    <a href={`mailto:${localePaths[locale].email}`}>
+                      {localePaths[locale].email}
+                    </a>
                     <FormattedMessage id="thanks.subcopy.2">
                       {(txt2) => <React.Fragment> {txt2}</React.Fragment>}
                     </FormattedMessage>

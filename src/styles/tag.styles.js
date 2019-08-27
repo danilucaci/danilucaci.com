@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { theme, mediaMin, rem } from "../theme/theme";
-import { GridRow } from "../../src/components/Grid/Grid";
+import { GridRow } from "../components/Grid/Grid";
 
 export const TagWrapper = styled(GridRow)`
   max-width: ${theme.layout.col8.wrapper};

@@ -11,8 +11,14 @@ import SiteFooter from "../components/SiteFooter/SiteFooter";
 import LocaleLink from "../components/LocaleLink/LocaleLink";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 
-import { StyledNotFound, StyledH1, Subhead, StyledCopy, StyledHR } from "../styles/404.styles";
-import { GridCol } from "../../src/components/Grid/Grid";
+import {
+  StyledNotFound,
+  StyledH1,
+  Subhead,
+  StyledCopy,
+  StyledHR,
+} from "../styles/404.styles";
+import { GridCol } from "../components/Grid/Grid";
 
 const NotFoundPage = (props) => {
   let locale = props.pageContext.locale;
@@ -54,7 +60,8 @@ const NotFoundPage = (props) => {
               <FormattedMessage id="not.found.copy.2">
                 {(txt) => (
                   <StyledCopy>
-                    {txt} <a href="mailto:info@danilucaci.com">info@danilucaci.com</a>
+                    {txt}{" "}
+                    <a href="mailto:info@danilucaci.com">info@danilucaci.com</a>
                     <FormattedMessage id="not.found.copy.3">
                       {(txt2) => <span> {txt2}</span>}
                     </FormattedMessage>

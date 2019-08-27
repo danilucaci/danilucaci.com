@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { theme, rem, mediaMin } from "../theme/theme";
-import { Copy } from "../../src/components/Copy/Copy";
-import { LoadComments } from "../../src/components/Button/Button";
-import { Icon } from "../../src/components/Icon/Icon";
-import { GridRow } from "../../src/components/Grid/Grid";
+import { Copy } from "../components/Copy/Copy";
+import { LoadComments } from "../components/Button/Button";
+import { Icon } from "../components/Icon/Icon";
+import { GridRow } from "../components/Grid/Grid";
 
 export const PostWrapper = styled.article`
   width: 100%;

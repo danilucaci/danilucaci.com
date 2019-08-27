@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 import { theme, mediaMin, rem } from "../../theme/theme";
 import { LoadComments } from "../Button/Button";
-import { GridRow } from "../../../src/components/Grid/Grid";
-import { Copy } from "../../src/../components/Copy/Copy";
-import { HR } from "../../../src/components/HR/HR";
+import { GridRow } from "../Grid/Grid";
+import { Copy } from "../Copy/Copy";
+import { HR } from "../HR/HR";
 
 export const Row = styled(GridRow)`
   max-width: ${theme.layout.col10.wrapper};
