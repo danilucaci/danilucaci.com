@@ -56,6 +56,101 @@ const COLORS = {
 
 export const theme = {
   colors: COLORS,
+  color: {
+    text: {
+      default: COLORS.grey900,
+      subdued: COLORS.grey700,
+      input: {
+        label: COLORS.grey900,
+        placeholder: COLORS.grey700,
+        value: COLORS.grey900,
+        validationErrorMessage: COLORS.danger800,
+      },
+      button: {
+        primary: {
+          enabled: COLORS.primary50,
+          disabled: COLORS.grey00,
+        },
+        secondary: {
+          enabled: COLORS.secondary900,
+          disabled: COLORS.grey00,
+        },
+        outlined: {
+          enabled: COLORS.grey00,
+          disabled: COLORS.grey500,
+        },
+      },
+      link: {
+        enabled: COLORS.primary600,
+        hover: COLORS.primary600,
+        active: COLORS.primary700,
+      },
+    },
+    background: {
+      page: COLORS.grey00,
+      section: {
+        lightest: COLORS.grey50,
+        lighter: COLORS.grey100,
+        light: COLORS.grey200,
+      },
+      primary: {
+        enabled: COLORS.primary600,
+        hover: COLORS.primary500,
+        active: COLORS.primary700,
+        focus: COLORS.primary700,
+        disabled: COLORS.grey500,
+      },
+      secondary: {
+        enabled: COLORS.secondary600,
+        hover: COLORS.secondary500,
+        active: COLORS.secondary700,
+        focus: COLORS.secondary700,
+        disabled: COLORS.grey500,
+      },
+      outlined: {
+        enabled: COLORS.grey00,
+        hover: COLORS.grey00,
+        active: COLORS.grey50,
+        focus: COLORS.grey50,
+        disabled: COLORS.grey500,
+      },
+      link: COLORS.primary50,
+      error: COLORS.danger50,
+      success: COLORS.success50,
+      footer: COLORS.grey50,
+    },
+    border: {
+      primary: {
+        focus: COLORS.primary700,
+      },
+      secondary: {
+        focus: COLORS.primary700,
+      },
+      outlined: {
+        focus: COLORS.primary400,
+        disabled: COLORS.primary300,
+      },
+      input: {
+        enabled: COLORS.grey400,
+        focus: COLORS.grey900,
+        disabled: COLORS.grey300,
+        valid: COLORS.success600,
+        error: COLORS.danger600,
+      },
+      checkbox: {
+        enabled: COLORS.grey400,
+        focus: COLORS.primary600,
+        disabled: COLORS.grey300,
+      },
+    },
+    icon: {
+      default: COLORS.grey900,
+      subdued: COLORS.grey700,
+      disabled: COLORS.grey500,
+      error: COLORS.danger800,
+      success: COLORS.success600,
+    },
+  },
   shadow: {
     default:
       "box-shadow: 0 2px 6px 0 rgba(102,102,102,0.20), 0 8px 16px 0 rgba(179,179,179,0.15)",
@@ -78,6 +173,17 @@ export const theme = {
     subscribeErrorMessage:
       "box-shadow: 0 2px 12px -2px rgba(247,230,213,0.50), 0 2px 8px -2px rgba(166,68,27,0.50)",
     button: {
+      primary: {
+        focus:
+          "0 1px 2px 0 rgba(17,30,82,0.42), 0 1px 6px 1px rgba(0,47,158,0.25)",
+      },
+      secondary: {
+        focus:
+          "0 1px 2px 0 rgba(179,153,5,0.40), 0 1px 6px 0 rgba(128,109,1,0.22)",
+      },
+      outlined: {
+        focus: "0 1px 2px 0 rgba(0,0,0,0.16), 0 2px 8px 1px rgba(0,0,0,0.12)",
+      },
       tertiary:
         "box-shadow: 0 2px 6px 0 rgba(8,36,82,0.13), 0 2px 12px -2px rgba(12,31,61,0.27)",
       mainGhost:
@@ -94,7 +200,14 @@ export const theme = {
         "box-shadow: 0 2px 5px 0 rgba(82,82,82,0.13), 0 2px 13px -2px rgba(61,61,61,0.27)",
     },
     input: {
-      focus: "box-shadow: 0 0 2px 1px #A1A8B5, 0 0 0 3px #CBCED4",
+      focus: `0 0 2px 1px ${COLORS.grey300}, 0 0 0 3px ${COLORS.grey200}`,
+      error: `0 0 2px 1px ${COLORS.danger300}, 0 0 0 3px ${COLORS.danger200}`,
+      valid: `0 0 2px 1px ${COLORS.success300}, 0 0 0 3px ${COLORS.success200}`,
+    },
+    checkbox: {
+      focus: `0 0 2px 1px ${COLORS.grey300}, 0 0 0 3px ${COLORS.grey200}`,
+      error: `0 0 2px 1px ${COLORS.danger300}, 0 0 0 3px ${COLORS.danger200}`,
+      valid: `0 0 2px 1px ${COLORS.success300}, 0 0 0 3px ${COLORS.success200}`,
     },
     link: {
       link: "box-shadow: 0 0 2px 1px #A1A8B5, 0 0 0 3px #CBCED4",
