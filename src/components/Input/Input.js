@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { injectIntl, intlShape } from "react-intl";
+import { injectIntl } from "react-intl";
 
 import { StyledInput } from "./styles";
 
@@ -16,7 +16,6 @@ function Input({ intl, placeholderType = "", ...rest }) {
 }
 
 Input.propTypes = {
-  intl: intlShape.isRequired,
   placeholderType: PropTypes.string.isRequired,
 };
 

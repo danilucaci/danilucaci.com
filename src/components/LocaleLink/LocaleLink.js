@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import PropTypes from "prop-types";
-import { injectIntl, intlShape } from "react-intl";
+import { injectIntl } from "react-intl";
 
 import locales from "../../locales/locales";
 
@@ -18,7 +18,6 @@ const LocaleLink = ({ to, intl: { locale }, ...props }) => {
 
 LocaleLink.propTypes = {
   to: PropTypes.string.isRequired,
-  intl: intlShape.isRequired,
 };
 
 export default injectIntl(LocaleLink);

@@ -1,6 +1,6 @@
 const { URL } = require("url");
 const ow = require("ow");
-const differenceInHours = require("date-fns/difference_in_hours");
+const differenceInHours = require("date-fns/differenceInHours");
 
 require("dotenv").config({
   path: ".env.development",

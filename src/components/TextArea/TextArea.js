@@ -1,5 +1,5 @@
 import React from "react";
-import { injectIntl, intlShape } from "react-intl";
+import { injectIntl } from "react-intl";
 
 import { StyledTextArea } from "./styles";
 
@@ -12,8 +12,6 @@ function TextArea({ intl, ...rest }) {
   return <StyledTextArea placeholder={placeholder} {...rest} />;
 }
 
-TextArea.propTypes = {
-  intl: intlShape.isRequired,
-};
+TextArea.propTypes = {};
 
 export default injectIntl(TextArea);

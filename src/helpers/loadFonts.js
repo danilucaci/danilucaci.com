@@ -1,5 +1,5 @@
-import { detectDataSaverMode, detectSlowConnectionType } from "./helpers";
 import * as Sentry from "@sentry/browser";
+import { detectDataSaverMode, detectSlowConnectionType } from "./helpers";
 
 const FontFaceObserver = require("fontfaceobserver");
 
@@ -55,7 +55,9 @@ export const loadFonts = () => {
 
 export const checkFontsLoaded = () => {
   if (sessionStorage.fontsLoadedPolyfill) {
-    const isLoaded = document.documentElement.className.includes("fonts-loaded");
+    const isLoaded = document.documentElement.className.includes(
+      "fonts-loaded",
+    );
     // Only add the class when it is not already added
     if (!isLoaded) {
       document.documentElement.className += " fonts-loaded";

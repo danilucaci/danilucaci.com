@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { injectIntl, intlShape } from "react-intl";
+import { injectIntl } from "react-intl";
 
 import Spinner from "../Spinner/Spinner";
 
@@ -8,7 +8,10 @@ import { StyledSubmitButton } from "./styles";
 
 // High 5 to: https://stackoverflow.com/questions/39630620/react-intl-how-to-use-formattedmessage-in-input-placeholder
 function SubmitButton({
-  intl, buttonType = "submit", showSpinner = false, ...rest
+  intl,
+  buttonType = "submit",
+  showSpinner = false,
+  ...rest
 }) {
   let str = buttonType.toLowerCase();
 
@@ -30,7 +33,6 @@ function SubmitButton({
 }
 
 SubmitButton.propTypes = {
-  intl: intlShape.isRequired,
   buttonType: PropTypes.string,
   showSpinner: PropTypes.bool,
 };

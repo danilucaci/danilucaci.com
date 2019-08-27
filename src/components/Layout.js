@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect, useLayoutEffect } from "react";
+import React, { useLayoutEffect } from "react";
 import PropTypes from "prop-types";
 import { ThemeProvider } from "styled-components";
 import Cookies from "js-cookie";
@@ -6,10 +6,7 @@ import ReactGA from "react-ga";
 import Helmet from "react-helmet";
 import * as Sentry from "@sentry/browser";
 
-import { IntlProvider, addLocaleData } from "react-intl";
-// Locale data
-import enData from "react-intl/locale-data/en";
-import esData from "react-intl/locale-data/es";
+import { IntlProvider } from "react-intl";
 
 import { Page } from "./styles";
 import { theme } from "../theme/globalStyles";
@@ -25,8 +22,6 @@ import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 import intlMessages from "../i18n/i18n";
 
 import { checkFontsLoaded } from "../helpers/loadFonts";
-
-addLocaleData([...enData, ...esData]);
 
 require("../theme/prism.css");
 
