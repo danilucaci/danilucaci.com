@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme, mediaMin, rem } from "../../theme/globalStyles";
+import { theme, mediaMin, rem } from "../../theme/theme";
 import { Copy } from "../Copy/Copy";
 import { BoldLink } from "../Link/Link";
 

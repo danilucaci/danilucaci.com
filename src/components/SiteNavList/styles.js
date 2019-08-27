@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { mediaMin, rem } from "../../theme/globalStyles";
+import { mediaMin, rem } from "../../theme/theme";
 
 export const StyledSiteNavList = styled.ul`
   display: block;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "../../theme/globalStyles";
+import { theme } from "../../theme/theme";
 
 export const Copy = styled.p`
   font-weight: 400;

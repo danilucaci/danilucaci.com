@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Field } from "formik";
 
-import { theme, rem } from "../../theme/globalStyles";
+import { theme, rem } from "../../theme/theme";
 
 // https://github.com/tigt/mini-svg-data-uri
 let svgToMiniDataURI = require("mini-svg-data-uri");

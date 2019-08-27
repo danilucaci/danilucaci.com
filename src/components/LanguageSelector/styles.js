@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Icon } from "../Icon/Icon";
-import { theme, rem, mediaMin } from "../../theme/globalStyles";
+import { theme, rem, mediaMin } from "../../theme/theme";
 
 export const StyledLanguageSelector = styled.div`
   display: inline-block;

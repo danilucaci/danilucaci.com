@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { theme, rem } from "../../../theme/globalStyles";
+import { theme, rem } from "../../../theme/theme";
 import LocaleLink from "../../LocaleLink/LocaleLink";
 
 export const StyledTag = styled(LocaleLink)`

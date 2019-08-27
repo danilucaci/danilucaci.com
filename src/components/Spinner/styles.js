@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import { Icon } from "../Icon/Icon";
 
-import { theme, rem } from "../../theme/globalStyles";
+import { theme, rem } from "../../theme/theme";
 
 const spin = keyframes`
   from {

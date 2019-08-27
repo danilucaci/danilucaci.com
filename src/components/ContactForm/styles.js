@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Form } from "formik";
 
-import { rem } from "../../theme/globalStyles";
+import { rem } from "../../theme/theme";
 import Label from "../Label/Label";
 import Input from "../Input/Input";
 import TextArea from "../TextArea/TextArea";

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { theme, mediaMin, rem } from "../theme/globalStyles";
+import { theme, mediaMin, rem } from "../theme/theme";
 import { Copy } from "../../src/components/Copy/Copy";
 import { HR } from "../../src/components/HR/HR";
 import { GridRow } from "../../src/components/Grid/Grid";

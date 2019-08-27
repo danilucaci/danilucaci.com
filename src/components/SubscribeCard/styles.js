@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Form } from "formik";
 
-import { theme, mediaMin, rem } from "../../theme/globalStyles";
+import { theme, mediaMin, rem } from "../../theme/theme";
 import { Copy } from "../Copy/Copy";
 import Input from "../Input/Input";
 import SubmitButton from "../SubmitButton/SubmitButton";

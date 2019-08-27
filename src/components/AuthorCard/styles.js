@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Img from "gatsby-image";
 
-import { theme, rem, mediaMin } from "../../theme/globalStyles";
+import { theme, rem, mediaMin } from "../../theme/theme";
 import { Copy } from "../Copy/Copy";
 import { HR } from "../HR/HR";
 

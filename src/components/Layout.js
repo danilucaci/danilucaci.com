@@ -9,7 +9,7 @@ import * as Sentry from "@sentry/browser";
 import { IntlProvider } from "react-intl";
 
 import { Page } from "./styles";
-import { theme } from "../theme/globalStyles";
+import { theme } from "../theme/theme";
 import GlobalReset from "../theme/globalReset";
 import GlobalAria from "../theme/globalAria";
 import GlobalCSS from "../theme/globalCSS";

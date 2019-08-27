@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme, rem, mediaMin } from "../../theme/globalStyles";
+import { theme, rem, mediaMin } from "../../theme/theme";
 import { LightSecondaryLink } from "../Link/Link";
 import { Copy, CopyBold } from "../Copy/Copy";
 

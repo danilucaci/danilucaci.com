@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { theme, mediaMin, rem } from "./globalStyles";
+import { theme, mediaMin, rem } from "./theme";
 
 const GlobalGrid = createGlobalStyle`
   .row-bg-100 {

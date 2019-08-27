@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-import { theme, rem, mediaMin } from "../../theme/globalStyles";
+import { theme, rem, mediaMin } from "../../theme/theme";
 import { Copy } from "../Copy/Copy";
 import { TertiaryButton, PrimaryButtonSmall } from "../Button/Button";
 import { DefaultLink } from "../Link/Link";

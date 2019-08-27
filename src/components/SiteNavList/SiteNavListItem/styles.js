@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { theme, rem, mediaMin } from "../../../theme/globalStyles";
+import { theme, rem, mediaMin } from "../../../theme/theme";
 
 export const StyledSiteNavListItem = styled.li`
   display: inline-block;

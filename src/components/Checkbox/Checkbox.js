@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Field } from "formik";
 
-import { theme, rem } from "../../theme/globalStyles";
+import { theme, rem } from "../../theme/theme";
 
 export const Checkbox = styled(Field)`
   will-change: transform;

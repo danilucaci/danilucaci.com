@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme, rem, mediaMin } from "../../theme/globalStyles";
+import { theme, rem, mediaMin } from "../../theme/theme";
 
 export const PrimaryButton = styled.button`
   background-color: ${theme.colors.primary600};

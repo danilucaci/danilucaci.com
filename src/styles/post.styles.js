@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme, rem, mediaMin } from "../theme/globalStyles";
+import { theme, rem, mediaMin } from "../theme/theme";
 import { Copy } from "../../src/components/Copy/Copy";
 import { LoadComments } from "../../src/components/Button/Button";
 import { Icon } from "../../src/components/Icon/Icon";

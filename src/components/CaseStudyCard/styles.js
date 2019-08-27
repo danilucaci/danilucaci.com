@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import { Link } from "gatsby";
 
-import { theme, mediaMin, rem } from "../../theme/globalStyles";
+import { theme, mediaMin, rem } from "../../theme/theme";
 
 export const StyledCaseStudyCard = styled.article`
   background-color: ${theme.colors.grey50};

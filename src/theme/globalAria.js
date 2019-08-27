@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { theme } from "./globalStyles";
+import { theme } from "./theme";
 
 const GlobalAria = createGlobalStyle`
   ${

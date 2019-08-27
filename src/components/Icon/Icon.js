@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme, rem } from "../../theme/globalStyles";
+import { theme, rem } from "../../theme/theme";
 
 export const Icon = styled.svg`
   fill: ${(props) => (props.main ? theme.colors.primary600 : theme.colors.grey800)};

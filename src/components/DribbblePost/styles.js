@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { theme, mediaMin, rem } from "../../theme/globalStyles";
+import { theme, mediaMin, rem } from "../../theme/theme";
 
 export const StyledDribbblePost = styled.figure``;
 
