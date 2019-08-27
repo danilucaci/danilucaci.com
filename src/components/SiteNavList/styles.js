@@ -1,45 +1,16 @@
-import styled, { css } from "styled-components";
-import { theme, rem, mediaMin } from "../../theme/globalStyles";
+import styled from "styled-components";
+import { mediaMin, rem } from "../../theme/globalStyles";
 
 export const StyledSiteNavList = styled.ul`
-  background-color: ${theme.colors.grey00};
-  text-align: center;
   display: block;
-  padding-left: ${rem(16)};
-  padding-right: ${rem(16)};
-  padding-bottom: ${rem(104)};
+  white-space: nowrap;
 
-  position: fixed;
-  z-index: 100;
+  margin-top: ${rem(12)};
+  margin-left: 0;
 
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: calc(${theme.navBarHeight} - ${rem(8)});
-
-  will-change: transform;
-
-  transform: translateX(120%);
-  transition: transform ease 0.3s;
-
-  overflow-y: auto;
-
-  ${({ showNav }) =>
-    showNav &&
-    css`
-      transform: translateX(0);
-    `};
-
-  ${mediaMin.nav`
-    background-color: transparent;
-    padding-left: 0;
-    padding-right: 0;
-    padding-bottom: 0;
-    display: inline-block;
-    overflow: visible;
-    height: auto;
-    width: auto;
-    position: static;
-    transform: none;
+  ${mediaMin.s`
+      display: inline-block;
+      margin-top: 0;
+      margin-left: auto;
   `};
 `;

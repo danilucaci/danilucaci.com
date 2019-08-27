@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { Icon } from "../Icon/Icon";
-import { theme, rem, mediaMin, mediaMax } from "../../theme/globalStyles";
+import { theme, rem, mediaMin } from "../../theme/globalStyles";
 
-export const StyledLanguageSelector = styled.li`
-  border: 2px solid ${theme.colors.grey400};
-  border-radius: ${theme.borderRadius.buttons};
+export const StyledLanguageSelector = styled.div`
   display: inline-block;
-  list-style-type: none;
-  position: relative;
+  position: absolute;
+
+  top: ${rem(20)};
+  right: ${rem(16)};
 
   .fonts-loaded & {
     font-family: ${theme.font.family.display.boldRegular};
@@ -16,34 +16,15 @@ export const StyledLanguageSelector = styled.li`
   font-size: ${theme.font.size.body.s};
   line-height: ${theme.font.lineHeight.body.s};
 
-  &:hover,
-  &:active {
-    & ul {
-      /* visibility: visible; */
-      opacity: 1;
-      transform: scale(1);
-    }
+  &:hover > ul,
+  &:active > ul {
+    opacity: 1;
+    transform: scale(1);
   }
 
-  padding: ${rem(12)};
-  margin-top: ${rem(16)};
-
-  @media screen and (max-height: 30em) {
-    margin-top: 0;
-    padding: ${rem(4)} ${rem(32)};
-  }
-
-  @media screen and (min-height: 25em) and (max-width: 25em) {
-    padding: ${rem(8)} ${rem(32)};
-  }
-
-  width: ${rem(208)};
-
-  ${mediaMin.nav`
-    width: auto;
-    margin-top: 0;
-    border: none;
-    padding: ${rem(14)} 0 ${rem(14)} ${rem(8)};
+  ${mediaMin.s`
+    display: inline-block;
+    position: static;
   `};
 `;
 
@@ -55,23 +36,22 @@ export const StyledLanguageDropdown = styled.ul`
 
   display: block;
 
-  /* visibility: hidden; */
   opacity: 0;
   transform: scale(0);
   transition: transform, visibility, opacity 0.2s ease;
   will-change: transform;
 
   position: absolute;
-  top: 100%;
+  top: ${rem(24)};
   right: 0;
-  left: 0;
-
-  ${mediaMin.nav`
-    top: 85%;
-    left: auto;
-  `};
+  width: ${rem(164)};
 
   padding: ${rem(8)} 0;
+
+  ${mediaMin.s`
+    top: ${rem(44)};
+    right: ${rem(24)};
+  `};
 `;
 
 export const LanguageDropdownLabel = styled.span`
@@ -84,21 +64,8 @@ export const CurrentLanguageIcon = styled(Icon)`
   vertical-align: middle;
   fill: ${theme.colors.primary600};
   position: absolute;
-  left: ${rem(40)};
-  top: ${rem(12)};
-
-  @media screen and (max-height: 30em) {
-    top: ${rem(4)};
-  }
-
-  @media screen and (max-height: 25em) and (max-width: 25em) {
-    top: ${rem(4)};
-  }
-
-  ${mediaMin.nav`
-    left: ${rem(12)};
-    top: ${rem(6)};
-  `};
+  left: ${rem(28)};
+  top: ${rem(8)};
 `;
 
 export const WorldIcon = styled(Icon)`
@@ -112,17 +79,21 @@ export const DropdownIcon = styled(Icon)`
 `;
 
 export const CurrentLanguageSelector = styled.li`
-  background-color: ${theme.colors.grey300};
+  background-color: ${theme.colors.grey200};
   display: block;
   white-space: nowrap;
   position: relative;
+
+  &:hover {
+    background-color: ${theme.colors.grey100};
+  }
 
   .fonts-loaded & {
     font-family: ${theme.font.family.display.boldRegular};
   }
 
   & a {
-    padding: ${rem(12)} ${rem(32)};
+    padding: ${rem(8)} ${rem(4)};
     width: 100%;
     color: ${theme.colors.primary600};
     text-decoration: none;
@@ -137,18 +108,10 @@ export const CurrentLanguageSelector = styled.li`
 
     &:focus,
     &:active {
-      background-color: ${theme.colors.grey300};
+      background-color: ${theme.colors.grey100};
       box-shadow: none !important;
       outline: none !important;
     }
-
-    @media screen and (max-height: 30em) {
-      padding: ${rem(4)} ${rem(32)};
-    }
-
-    ${mediaMin.nav`
-      padding: ${rem(6)} ${rem(40)};
-    `};
   }
 `;
 
@@ -157,7 +120,7 @@ export const LanguageSelectorItem = styled.li`
   white-space: nowrap;
 
   &:hover {
-    background-color: ${theme.colors.grey200};
+    background-color: ${theme.colors.grey100};
   }
 
   .fonts-loaded & {
@@ -165,7 +128,7 @@ export const LanguageSelectorItem = styled.li`
   }
 
   & a {
-    padding: ${rem(12)} ${rem(32)};
+    padding: ${rem(8)} ${rem(4)};
     width: 100%;
     color: ${theme.colors.grey700};
     text-decoration: none;
@@ -178,20 +141,11 @@ export const LanguageSelectorItem = styled.li`
       background-color: transparent;
     }
 
-    /* For the global aria outline added */
     &:focus,
     &:active {
-      background-color: ${theme.colors.grey300};
+      background-color: ${theme.colors.grey100};
       box-shadow: none !important;
       outline: none !important;
     }
-
-    @media screen and (max-height: 30em) {
-      padding: ${rem(4)} ${rem(32)};
-    }
-
-    ${mediaMin.nav`
-      padding: ${rem(6)} ${rem(40)};
-    `};
   }
 `;

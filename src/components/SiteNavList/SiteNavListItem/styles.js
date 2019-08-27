@@ -3,56 +3,40 @@ import styled from "styled-components";
 import { theme, rem, mediaMin } from "../../../theme/globalStyles";
 
 export const StyledSiteNavListItem = styled.li`
+  display: inline-block;
+
   text-decoration: none;
   list-style-type: none;
   text-align: center;
+  font-weight: 400;
+  font-size: ${theme.font.size.body.s};
+  line-height: ${theme.font.size.body.s};
 
   .fonts-loaded & {
-    font-family: ${theme.font.family.display.boldRegular};
+    font-family: ${theme.font.family.body.regular};
   }
 
-  font-weight: 400;
-  width: 100%;
+  margin-right: ${rem(24)};
 
-  @media screen and (min-height: 25em) and (max-width: 25em) {
-    margin-bottom: ${rem(8)};
-  }
-
-  @media screen and (min-height: 34em) and (max-width: 27em) {
-    margin-bottom: ${rem(8)};
-  }
-
-  @media screen and (min-height: 42em) and (max-width: 27em) {
-    margin-top: ${rem(32)};
-    margin-bottom: ${rem(32)};
-  }
-
-  ${mediaMin.nav`
-    margin: 0;
-    display: inline-block;
-    width: auto;
-    font-size: ${theme.font.size.body.m};
-    line-height: ${theme.font.size.body.m};
+  ${mediaMin.s`
+    margin-right: ${rem(32)};
   `};
 
   & > a {
-    color: ${theme.colors.grey700};
-    display: block;
-
-    .fonts-loaded & {
-      font-family: ${theme.font.family.display.boldRegular};
-    }
+    color: ${theme.colors.grey900};
 
     font-weight: 400;
-    font-size: ${rem(24)};
-    line-height: ${rem(32)};
+    font-size: ${theme.font.size.body.s};
+    line-height: ${theme.font.size.body.s};
     text-decoration: none;
-    width: 100%;
-    padding: ${rem(16)} ${rem(8)};
+
+    .fonts-loaded & {
+      font-family: ${theme.font.family.body.regular};
+    }
 
     &:visited,
     &:link {
-      color: ${theme.colors.grey700};
+      color: ${theme.colors.grey900};
     }
 
     &:hover {
@@ -61,49 +45,18 @@ export const StyledSiteNavListItem = styled.li`
       cursor: pointer;
     }
 
-    ${mediaMin.nav`
-      background-color: transparent;
-      font-size: ${theme.font.size.body.s};
-      line-height: ${theme.font.lineHeight.body.s};
-    `};
-
-    @media screen and (max-height: 30em) {
-      padding: ${rem(8)};
-      font-size: ${rem(16)};
-      line-height: ${rem(24)};
-    }
-
-    @media screen and (max-height: 30em) and (min-width: 35em) {
-      padding: ${rem(16)} ${rem(8)};
-      font-size: ${theme.font.size.body.s};
-      line-height: ${theme.font.lineHeight.body.s};
-    }
-
-    @media screen and (min-height: 25em) and (max-width: 25em) {
-      padding: ${rem(12)} ${rem(16)};
-    }
-
-    ${mediaMin.m`
-      padding: ${rem(16)};
-    `};
-
     &.current-nav-item {
-      background-color: ${theme.colors.grey300};
       color: ${theme.colors.grey900};
       font-weight: 700;
 
       .fonts-loaded & {
-        font-family: ${theme.font.family.display.bold};
+        font-family: ${theme.font.family.body.bold};
       }
 
       &:hover {
         background-color: transparent;
         color: ${theme.colors.primary600};
       }
-
-      ${mediaMin.nav`
-        background-color: transparent;
-      `};
     }
   }
 `;

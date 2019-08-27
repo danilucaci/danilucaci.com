@@ -1,37 +1,32 @@
 import React from "react";
-import { bool, string, func } from "prop-types";
+import { string } from "prop-types";
 
 import SiteNavList from "../SiteNavList/SiteNavList";
-import MenuButton from "../MenuButton/MenuButton";
+import LanguageSelector from "../LanguageSelector/LanguageSelector";
 import { Logo } from "../Logo/Logo";
 
 import { StyledSiteNav } from "./styles";
 
-const SiteNav = (props) => (
+const SiteNav = ({ locale, currentPath, twinPostURL }) => (
   <StyledSiteNav aria-label="Page Menu" role="navigation">
-    <Logo locale={props.locale} />
-    <MenuButton showNav={props.showNav} onClick={props.onClick} />
+    <Logo locale={locale} />
     <SiteNavList
-      showNav={props.showNav}
-      isTransitioning={props.isTransitioning}
-      locale={props.locale}
-      twinPostURL={props.twinPostURL}
-      currentPath={props.currentPath}
+      locale={locale}
+      twinPostURL={twinPostURL}
+      currentPath={currentPath}
+    />
+    <LanguageSelector
+      currentPath={currentPath}
+      locale={locale}
+      twinPostURL={twinPostURL}
     />
   </StyledSiteNav>
 );
 
 SiteNav.propTypes = {
   locale: string.isRequired,
-  onClick: func.isRequired,
   twinPostURL: string.isRequired,
   currentPath: string.isRequired,
-  showNav: bool.isRequired,
-  isTransitioning: bool,
-};
-
-SiteNav.defaultProps = {
-  isTransitioning: false,
 };
 
 export default SiteNav;
