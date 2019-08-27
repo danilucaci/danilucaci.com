@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { FormattedMessage } from "react-intl";
 import { useInView } from "react-intersection-observer";
 
@@ -6,12 +6,10 @@ import DribbblePost from "../DribbblePost/DribbblePost";
 import DribbblePostPlaceholder from "../DribbblePostPlaceholder/DribbblePostPlaceholder";
 import Spinner from "../Spinner/Spinner";
 import useDribbblePosts from "./useDribbblePosts";
-import { GridCol } from "../Grid/Grid";
+import { GridCol, GridRow } from "../Grid/Grid";
 
 import {
-  Row,
-  Subhead,
-  StyledHR,
+  Title,
   ErrorMessageWrapper,
   ErrorMessage,
   StyledLoadMore,
@@ -30,6 +28,8 @@ function DribbblePosts() {
     triggerOnce: true,
   });
 
+  const buttonRef = useRef();
+
   const [waitingForInView, setWaitingForInView] = useState(true);
 
   const placeholderArr = Array.from({ length: shotsPerPage }, (v, i) => i);
@@ -42,14 +42,10 @@ function DribbblePosts() {
   }
 
   return (
-    <Row spaced>
+    <GridRow spaced>
       <GridCol ref={ref}>
-        <StyledHR />
         <FormattedMessage id="dribbble.header">
-          {(txt) => <h2>{txt}</h2>}
-        </FormattedMessage>
-        <FormattedMessage id="dribbble.subhead">
-          {(txt) => <Subhead>{txt}</Subhead>}
+          {(txt) => <Title>{txt}</Title>}
         </FormattedMessage>
 
         {isError && (
@@ -59,21 +55,44 @@ function DribbblePosts() {
             </FormattedMessage>
           </ErrorMessageWrapper>
         )}
+      </GridCol>
 
-        {isLoading &&
-          !isError &&
-          placeholderArr.map((i) => <DribbblePostPlaceholder key={i} />)}
-        {!isLoading &&
-          !isError &&
-          dribbblePosts.map((post) => (
+      {isLoading &&
+        !isError &&
+        placeholderArr.map((i) => (
+          <GridCol m={6} xxl={4} key={i}>
+            <DribbblePostPlaceholder />
+          </GridCol>
+        ))}
+
+      {!isLoading &&
+        !isError &&
+        dribbblePosts.map((post) => (
+          <GridCol m={6} xxl={4} key={post.id}>
             <DribbblePost key={post.id} post={post} />
-          ))}
+          </GridCol>
+        ))}
 
-        {isLoadingMore &&
-          placeholderArr.map((i) => <DribbblePostPlaceholder key={i} />)}
+      {isLoadingMore &&
+        placeholderArr.map((i) => (
+          <GridCol m={6} xxl={4} key={i}>
+            <DribbblePostPlaceholder />
+          </GridCol>
+        ))}
 
+      <GridCol>
         {!isError && (
-          <StyledLoadMore onClick={() => dispatch({ type: "FETCH_MORE" })}>
+          <StyledLoadMore
+            ref={buttonRef}
+            onClick={() => {
+              // remove focus after click
+              if (buttonRef.current) {
+                buttonRef.current.blur();
+              }
+
+              dispatch({ type: "FETCH_MORE" });
+            }}
+          >
             {!isLoading && !isLoadingMore && (
               <FormattedMessage id="dribbble.load.more">
                 {(txt) => <LoadMoreLabel>{txt}</LoadMoreLabel>}
@@ -83,7 +102,7 @@ function DribbblePosts() {
           </StyledLoadMore>
         )}
       </GridCol>
-    </Row>
+    </GridRow>
   );
 }
 

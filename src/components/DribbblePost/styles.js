@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { theme, mediaMin, rem } from "../../theme/theme";
+import { theme } from "../../theme/theme";
 
 export const StyledDribbblePost = styled.figure``;
 
@@ -38,25 +38,9 @@ export const StyledLink = styled.a`
   overflow: hidden;
   height: auto;
   width: 100%;
-  margin-bottom: ${rem(24)};
 
   &:hover {
     ${theme.shadow.hover};
     cursor: pointer;
   }
-
-  ${mediaMin.m`
-    width: calc(50% - ${rem(12)});
-    margin-bottom: ${rem(32)};
-  
-    &:nth-of-type(1n) {
-      margin-right: ${rem(12)};
-      margin-left: 0;
-    }
-  
-    &:nth-of-type(2n) {
-      margin-left: ${rem(12)};
-      margin-right: 0;
-    } 
-  `};
 `;

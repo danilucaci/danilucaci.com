@@ -9,7 +9,7 @@ const GATSBY_DRIBBBLE_TOKEN = process.env.GATSBY_DRIBBBLE_TOKEN;
 function useDribbblePosts() {
   const initialState = {
     dribbblePage: 1,
-    shotsPerPage: 4,
+    shotsPerPage: 6,
     dribbblePosts: [],
     isLoading: true,
     isLoadingMore: false,
