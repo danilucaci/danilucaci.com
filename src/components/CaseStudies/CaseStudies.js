@@ -4,10 +4,10 @@ import { FormattedMessage } from "react-intl";
 
 import CaseStudyCard from "../CaseStudyCard/CaseStudyCard";
 import { GridCol } from "../Grid/Grid";
-import { Row, Subhead } from "./styles";
+import { Row, Title } from "./styles";
 
-const CaseStudies = (props) => {
-  let caseStudies = props.edges.map((edge) => ({
+const CaseStudies = ({ edges }) => {
+  let caseStudies = edges.map((edge) => ({
     slug: edge.node.fields.slug,
     tagsInCaseStudy: edge.node.frontmatter.tags,
     title: edge.node.frontmatter.title,
@@ -19,18 +19,8 @@ const CaseStudies = (props) => {
   return (
     <Row>
       <GridCol>
-        {props.header === "h2" ? (
-          <FormattedMessage id="case.studies.header">
-            {(txt) => <h2>{txt}</h2>}
-          </FormattedMessage>
-        ) : (
-          <FormattedMessage id="case.studies.header">
-            {(txt) => <h1>{txt}</h1>}
-          </FormattedMessage>
-        )}
-
-        <FormattedMessage id="case.studies.description">
-          {(txt) => <Subhead>{txt}</Subhead>}
+        <FormattedMessage id="case.studies.header">
+          {(txt) => <Title>{txt}</Title>}
         </FormattedMessage>
       </GridCol>
       <GridCol>
@@ -52,11 +42,6 @@ const CaseStudies = (props) => {
 
 CaseStudies.propTypes = {
   edges: PropTypes.arrayOf(PropTypes.object).isRequired,
-  header: PropTypes.string,
-};
-
-CaseStudies.defaultProps = {
-  header: "h1",
 };
 
 export default CaseStudies;

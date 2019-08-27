@@ -4,21 +4,21 @@ import { Link } from "gatsby";
 import { theme, mediaMin, rem } from "../../theme/theme";
 
 export const StyledCaseStudyCard = styled.article`
-  background-color: ${theme.colors.grey50};
   margin-bottom: ${rem(32)};
 
   ${mediaMin.s`
+    background-color: ${theme.colors.grey50};
     margin-bottom: ${rem(40)};
+
+    &:hover {
+      ${theme.shadow.hover};
+    }
   `};
 
   ${mediaMin.xl`
     margin-bottom: ${rem(64)};
     display: flex;
   `};
-
-  &:hover {
-    ${theme.shadow.hover};
-  }
 
   &:last-of-type {
     margin-bottom: 0;
@@ -38,9 +38,6 @@ export const placeholderAnimation = keyframes`
  `;
 
 export const CaseStudyImgWrapper = styled.div`
-  padding-top: ${rem(16)};
-  padding-bottom: ${rem(16)};
-
   .gatsby-image-wrapper {
     background-color: ${theme.colors.grey300};
     background: linear-gradient(
@@ -65,7 +62,7 @@ export const CaseStudyImgWrapper = styled.div`
  `}
 
   ${mediaMin.m`
-    padding: ${rem(16)} ${rem(32)};
+    padding: ${rem(16)} ${rem(24)};
   `};
 
   ${mediaMin.xl`
@@ -79,19 +76,21 @@ export const CaseStudyImgWrapper = styled.div`
 `;
 
 export const CaseStudyCardContents = styled.div`
-  padding: 0 ${rem(16)} ${rem(32)} ${rem(16)};
-
   ${mediaMin.s`  
     padding: 0 ${rem(32)} ${rem(32)} ${rem(32)};
   `};
 
   ${mediaMin.xl`
     max-width: 40%;
-    padding: ${rem(40)} 0 ${rem(40)} ${rem(40)};
+    padding: ${rem(24)} 0 ${rem(24)} ${rem(24)};
     flex: 1 1 40%;
     display: flex;
     flex-direction: column;
     order: 1;
+  `};
+
+  ${mediaMin.xxl`
+    padding: ${rem(40)} 0 ${rem(40)} ${rem(40)};
   `};
 `;
 
@@ -99,25 +98,20 @@ export const Tag = styled.p`
   color: ${theme.colors.grey700};
   font-size: ${theme.font.size.body.s};
   line-height: ${theme.font.lineHeight.body.s};
+  letter-spacing: ${theme.font.letterSpacing.body.subhead};
   font-weight: 700;
   text-transform: uppercase;
-  font-family: ${theme.font.family.display.fallback};
-  letter-spacing: ${theme.font.letterSpacing.body.subhead};
 
   .fonts-loaded & {
-    font-family: ${theme.font.family.display.bold};
+    font-family: ${theme.font.family.body.bold};
   }
-
-  ${mediaMin.s`  
-    letter-spacing: ${theme.font.letterSpacing.body.subhead};
-  `};
 
   display: inline-block;
   margin-right: ${rem(16)};
 `;
 
 export const TagsWrapper = styled.div`
-  margin-top: ${rem(12)};
+  margin-top: ${rem(16)};
   margin-bottom: ${rem(16)};
 
   ${mediaMin.s`  
@@ -127,8 +121,11 @@ export const TagsWrapper = styled.div`
 
 export const StyledH3 = styled.h3`
   margin-bottom: ${rem(8)};
-  font-size: ${rem(24)};
-  line-height: ${rem(32)};
+
+  ${mediaMin.xxl`
+    font-size: ${theme.font.size.display.desktop.h2};
+    line-height: ${theme.font.lineHeight.display.desktop.h2};
+  `};
 `;
 
 export const ContinueLink = styled(Link)`

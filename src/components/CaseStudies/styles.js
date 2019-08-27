@@ -2,33 +2,20 @@ import styled from "styled-components";
 
 import { theme, mediaMin, rem } from "../../theme/theme";
 import { GridRow } from "../Grid/Grid";
-import { Copy } from "../Copy/Copy";
 
 export const Row = styled(GridRow)`
-  max-width: ${theme.layout.col10.wrapper};
-
-  & h1,
-  & h2 {
-    margin-bottom: ${rem(8)};
-  }
+  max-width: ${theme.layout.col12.wrapper};
 `;
 
-export const Subhead = styled(Copy)`
-  color: ${theme.colors.grey800};
-  font-size: ${theme.font.size.body.subhead};
-  line-height: ${theme.font.lineHeight.body.subhead};
+export const Title = styled.h1`
+  font-size: ${theme.font.size.display.mobile.h1};
+  line-height: ${theme.font.lineHeight.display.mobile.h1};
 
-  margin-bottom: ${rem(16)};
-
-  font-family: ${theme.font.family.display.fallback};
-  font-weight: 300;
-
-  .fonts-loaded & {
-    font-family: ${theme.font.family.display.boldLight};
-  }
+  margin-bottom: ${rem(8)};
 
   ${mediaMin.s`
-    font-size: ${theme.font.size.body.subhead};
-    line-height: ${theme.font.lineHeight.body.subhead};
+    margin-bottom: ${rem(16)};
+    font-size: ${theme.font.size.display.desktop.h2};
+    line-height: ${theme.font.lineHeight.display.desktop.h2};
   `};
 `;
