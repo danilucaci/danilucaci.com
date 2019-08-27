@@ -5,7 +5,7 @@ import { Copy } from "../../src/components/Copy/Copy";
 import { GridRow } from "../../src/components/Grid/Grid";
 
 export const Row = styled(GridRow)`
-  max-width: ${theme.contain.wrapper.col10};
+  max-width: ${theme.layout.col10.wrapper};
 
   & h1 {
     margin-bottom: ${rem(8)};
@@ -31,7 +31,7 @@ export const Subhead = styled(Copy)`
 `;
 
 export const StyledHR = styled(HR)`
-  max-width: ${theme.contain.inner.col10};
+  max-width: ${theme.layout.col10.inner};
   margin-left: auto;
   margin-right: auto;
 

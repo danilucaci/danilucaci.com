@@ -6,7 +6,7 @@ import { Copy } from "../Copy/Copy";
 import { GridRow, GridCol } from "../Grid/Grid";
 
 export const ContactCardWrapper = styled(GridRow)`
-  max-width: ${theme.contain.wrapper.col10};
+  max-width: ${theme.layout.col10.wrapper};
 `;
 
 export const ContactCardInner = styled(GridCol)`

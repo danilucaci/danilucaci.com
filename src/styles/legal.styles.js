@@ -4,7 +4,7 @@ import { Copy } from "../../src/components/Copy/Copy";
 import { GridRow } from "../../src/components/Grid/Grid";
 
 export const PageWrapper = styled(GridRow)`
-  max-width: ${theme.contain.inner.col8};
+  max-width: ${theme.layout.col8.inner};
 
   p {
     font-feature-settings: "onum";

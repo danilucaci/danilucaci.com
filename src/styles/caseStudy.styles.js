@@ -8,28 +8,34 @@ export const Div = styled.div``;
 export const ArticleWrapper = styled.article`
   & footer {
     @media screen and (max-width: ${theme.breakpoints.s}) {
-      margin-left: ${theme.gutters.s};
-      margin-right: ${theme.gutters.s};
+      margin-left: ${theme.layout.gutter.s};
+      margin-right: ${theme.layout.gutter.s};
       width: auto;
 
       @supports (padding: max(0px)) {
         & {
-          margin-left: max(${theme.gutters.s}, env(safe-area-inset-left));
-          margin-right: max(${theme.gutters.s}, env(safe-area-inset-right));
+          margin-left: max(${theme.layout.gutter.s}, env(safe-area-inset-left));
+          margin-right: max(
+            ${theme.layout.gutter.s},
+            env(safe-area-inset-right)
+          );
         }
       }
     }
 
     @media screen and (min-width: ${theme.breakpoints
         .s}) and (max-width: ${theme.breakpoints.xxl}) {
-      margin-left: ${theme.gutters.m};
-      margin-right: ${theme.gutters.m};
+      margin-left: ${theme.layout.gutter.m};
+      margin-right: ${theme.layout.gutter.m};
       width: auto;
 
       @supports (padding: max(0px)) {
         & {
-          margin-left: max(${theme.gutters.m}, env(safe-area-inset-left));
-          margin-right: max(${theme.gutters.m}, env(safe-area-inset-right));
+          margin-left: max(${theme.layout.gutter.m}, env(safe-area-inset-left));
+          margin-right: max(
+            ${theme.layout.gutter.m},
+            env(safe-area-inset-right)
+          );
         }
       }
     }
@@ -37,7 +43,7 @@ export const ArticleWrapper = styled.article`
 `;
 
 export const StyledHeader = styled(GridRow)`
-  max-width: ${theme.contain.wrapper.col8};
+  max-width: ${theme.layout.col8.wrapper};
 `;
 
 export const PostH1 = styled.h1`
@@ -106,7 +112,7 @@ export const placeholderAnimation = keyframes`
 
 export const CaseStudyImgWrapper = styled.div`
   display: block;
-  max-width: ${theme.contain.inner.col8};
+  max-width: ${theme.layout.col8.inner};
   margin-left: auto;
   margin-right: auto;
   
@@ -301,7 +307,7 @@ export const PostContent = styled.section`
     display: block;
     display: flex;
 
-    max-width: ${theme.contain.wrapper.col6};
+    max-width: ${theme.layout.col6.wrapper};
 
     & h2 {
       max-width: 34.5rem;
@@ -323,7 +329,7 @@ export const PostContent = styled.section`
     `};
 
     ${mediaMin.xxxl`
-      max-width: ${theme.contain.wrapper.col12};
+      max-width: ${theme.layout.col12.wrapper};
     `};
 
     /* Mobile in ladscape */

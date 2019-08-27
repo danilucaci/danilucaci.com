@@ -29,7 +29,7 @@ export const StyledLoadingCTA = styled.div`
 
   white-space: nowrap;
 
-  ${theme.shadow.buttons.main};
+  ${theme.shadow.button.main};
 `;
 
 export const StyledErrorCTA = styled(StyledLoadingCTA)`

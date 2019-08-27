@@ -42,7 +42,7 @@ export const StyledSubmitButton = styled.button`
   &:focus {
     cursor: pointer;
     background-color: ${theme.colors.primary500};
-    ${theme.shadow.buttons.main};
+    ${theme.shadow.button.main};
     outline: none;
   }
 

@@ -297,13 +297,13 @@ ${
     margin-bottom: ${rem(32)};
 
     ${mediaMin.m`
-      margin-right: -${theme.gutters.s};
-      margin-left: -${theme.gutters.s};
-      padding: ${rem(16)} ${theme.gutters.s};
+      margin-right: -${theme.layout.gutter.s};
+      margin-left: -${theme.layout.gutter.s};
+      padding: ${rem(16)} ${theme.layout.gutter.s};
       border-left: 4px solid ${theme.colors.primary600};
-      margin-right: -${theme.gutters.m};
-      margin-left: -${theme.gutters.m};
-      padding: ${rem(16)} ${theme.gutters.m};
+      margin-right: -${theme.layout.gutter.m};
+      margin-left: -${theme.layout.gutter.m};
+      padding: ${rem(16)} ${theme.layout.gutter.m};
     `};
   }
 

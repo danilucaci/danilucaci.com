@@ -5,7 +5,7 @@ import { GridRow } from "../../../src/components/Grid/Grid";
 import { Copy } from "../../src/../components/Copy/Copy";
 
 export const Row = styled(GridRow)`
-  max-width: ${theme.contain.wrapper.col10};
+  max-width: ${theme.layout.col10.wrapper};
 
   & h1,
   & h2 {

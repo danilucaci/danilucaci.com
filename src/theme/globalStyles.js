@@ -77,7 +77,7 @@ export const theme = {
       "box-shadow: 0 2px 12px -2px rgba(133,198,255,0.40), 0 2px 8px -2px rgba(0,86,214,0.30)",
     subscribeErrorMessage:
       "box-shadow: 0 2px 12px -2px rgba(247,230,213,0.50), 0 2px 8px -2px rgba(166,68,27,0.50)",
-    buttons: {
+    button: {
       tertiary:
         "box-shadow: 0 2px 6px 0 rgba(8,36,82,0.13), 0 2px 12px -2px rgba(12,31,61,0.27)",
       mainGhost:
@@ -195,46 +195,53 @@ export const theme = {
     xl: "3.5rem",
     s: "2.5rem",
   },
-  gutters: {
-    s: "1em",
-    m: "1.5em",
-  },
-  gridSpacing: {
-    s: "0.5em",
-    m: "0.75em",
-  },
-  contain: {
-    wrapper: {
-      col12: "73.5em",
-      col10: "61.5em",
-      col8: "49.5em",
-      col6: "37.5em",
+  layout: {
+    gutter: {
+      s: "1em",
+      m: "1.5em",
     },
-    inner: {
-      col12: "70.5em",
-      col10: "58.5em",
-      col8: "46.5em",
-      col6: "34.5em",
+    gridSpacing: {
+      s: "0.5em",
+      m: "0.75em",
     },
-  },
-  headingSpacing: {
-    before: {
-      s: "1.75rem",
-      m: "3.5rem",
+    col12: {
+      wrapper: "73.5em",
+      inner: "70.5em",
     },
-    after: {
-      s: "1.75rem",
-      m: "1.75rem",
+    col10: {
+      wrapper: "61.5em",
+      inner: "58.5em",
     },
-  },
-  mainMargins: {
-    top: {
-      s: "1.5em",
-      m: "2em",
-      xl: "2.5em",
+    col8: {
+      wrapper: "49.5em",
+      inner: "46.5em",
+    },
+    col6: {
+      wrapper: "37.5em",
+      inner: "34.5em",
     },
   },
   spacing: {
+    main: {
+      top: {
+        s: "1.5em",
+        m: "2em",
+        xl: "2.5em",
+      },
+    },
+    text: {
+      display: {
+        before: {
+          s: "1.75rem",
+          m: "3.5rem",
+        },
+        after: {
+          s: "1.75rem",
+          m: "1.75rem",
+        },
+      },
+      body: "2rem",
+    },
     row: {
       s: "4em",
       m: "7em",

@@ -14,46 +14,42 @@ export const GridRow = styled.section`
   flex-direction: row;
   flex-wrap: wrap;
 
-  max-width: ${theme.contain.wrapper.col12};
+  max-width: ${theme.layout.col12.wrapper};
 
   margin-left: auto;
   margin-right: auto;
-  padding-left: ${theme.gridSpacing.s};
-  padding-right: ${theme.gridSpacing.s};
+  padding-left: ${theme.layout.gridSpacing.s};
+  padding-right: ${theme.layout.gridSpacing.s};
 
   /* iPhone X 
-  * Add the extra gridSpacing used in the Grid
-  * calc(env(safe-area-inset-left) + ${theme.gridSpacing.s})
+  * Add the extra layout.gridSpacing used in the Grid
+  * calc(env(safe-area-inset-left) + ${theme.layout.gridSpacing.s})
   */
   @supports (padding: max(0px)) {
     & {
       padding-left: max(
-        ${theme.gridSpacing.s},
-        calc(env(safe-area-inset-left) - ${theme.gridSpacing.s})
+        ${theme.layout.gridSpacing.s},
+        calc(env(safe-area-inset-left) - ${theme.layout.gridSpacing.s})
       );
       padding-right: max(
-        ${theme.gridSpacing.s},
-        calc(env(safe-area-inset-right) - ${theme.gridSpacing.s})
+        ${theme.layout.gridSpacing.s},
+        calc(env(safe-area-inset-right) - ${theme.layout.gridSpacing.s})
       );
     }
   }
 
   ${mediaMin.s`
-    padding-left: ${theme.gridSpacing.m};
-    padding-right: ${theme.gridSpacing.m};
+    padding-left: ${theme.layout.gridSpacing.m};
+    padding-right: ${theme.layout.gridSpacing.m};
 
     /* iPhone X 
-    * Add the extra gridSpacing used in the Grid
-    * calc(env(safe-area-inset-left) + ${theme.gridSpacing.s})
+    * Add the extra layout.gridSpacing used in the Grid
+    * calc(env(safe-area-inset-left) + ${theme.layout.gridSpacing.s})
     */
     @supports (padding: max(0px)) {
       & {
-        padding-left: max(${theme.gridSpacing.m}, calc(env(safe-area-inset-left) - ${
-  theme.gridSpacing.m
-}));
-        padding-right: max(${theme.gridSpacing.m}, calc(env(safe-area-inset-right) - ${
-  theme.gridSpacing.m
-}));
+        padding-left: max(${theme.layout.gridSpacing.m}, calc(env(safe-area-inset-left) - ${theme.layout.gridSpacing.m}));
+        padding-right: max(${theme.layout.gridSpacing.m}, calc(env(safe-area-inset-right) - ${theme.layout.gridSpacing.m}));
       }
     }
   `};
@@ -124,18 +120,18 @@ export const GridRowNested = styled.div`
 `;
 
 export const GridCol = styled.div`
-  margin-left: ${theme.gridSpacing.s};
-  margin-right: ${theme.gridSpacing.s};
-  margin-bottom: ${theme.gutters.s};
+  margin-left: ${theme.layout.gridSpacing.s};
+  margin-right: ${theme.layout.gridSpacing.s};
+  margin-bottom: ${theme.layout.gutter.s};
 
   flex: 1 1 100%;
   max-width: 100%;
 
   ${mediaMin.s`  
     float: left;
-    margin-left: ${theme.gridSpacing.m};
-    margin-right: ${theme.gridSpacing.m};
-    margin-bottom: ${theme.gutters.m};
+    margin-left: ${theme.layout.gridSpacing.m};
+    margin-right: ${theme.layout.gridSpacing.m};
+    margin-bottom: ${theme.layout.gutter.m};
   `};
 
   &:only-of-type {
@@ -146,8 +142,8 @@ export const GridCol = styled.div`
     xs &&
     `
       @media screen and (min-width: ${theme.breakpoints.xs}) {
-        max-width: calc(${(100 / 12) * xs}% - ${theme.gutters.s});
-        flex-basis: calc(${(100 / 12) * xs}% - ${theme.gutters.s});
+        max-width: calc(${(100 / 12) * xs}% - ${theme.layout.gutter.s});
+        flex-basis: calc(${(100 / 12) * xs}% - ${theme.layout.gutter.s});
       }
     `};
 
@@ -155,8 +151,8 @@ export const GridCol = styled.div`
     s &&
     `
       @media screen and (min-width: ${theme.breakpoints.s}) {
-        max-width: calc(${(100 / 12) * s}% - ${theme.gutters.m});
-        flex-basis: calc(${(100 / 12) * s}% - ${theme.gutters.m});
+        max-width: calc(${(100 / 12) * s}% - ${theme.layout.gutter.m});
+        flex-basis: calc(${(100 / 12) * s}% - ${theme.layout.gutter.m});
       }
     `};
 
@@ -164,8 +160,8 @@ export const GridCol = styled.div`
     m &&
     `
       @media screen and (min-width: ${theme.breakpoints.m}) {
-        max-width: calc(${(100 / 12) * m}% - ${theme.gutters.m});
-        flex-basis: calc(${(100 / 12) * m}% - ${theme.gutters.m});
+        max-width: calc(${(100 / 12) * m}% - ${theme.layout.gutter.m});
+        flex-basis: calc(${(100 / 12) * m}% - ${theme.layout.gutter.m});
       }
     `};
 
@@ -173,8 +169,8 @@ export const GridCol = styled.div`
     l &&
     `
       @media screen and (min-width: ${theme.breakpoints.l}) {
-        max-width: calc(${(100 / 12) * l}% - ${theme.gutters.m});
-        flex-basis: calc(${(100 / 12) * l}% - ${theme.gutters.m});
+        max-width: calc(${(100 / 12) * l}% - ${theme.layout.gutter.m});
+        flex-basis: calc(${(100 / 12) * l}% - ${theme.layout.gutter.m});
       }
     `};
 
@@ -182,8 +178,8 @@ export const GridCol = styled.div`
     xl &&
     `
       @media screen and (min-width: ${theme.breakpoints.xl}) {
-        max-width: calc(${(100 / 12) * xl}% - ${theme.gutters.m});
-        flex-basis: calc(${(100 / 12) * xl}% - ${theme.gutters.m});
+        max-width: calc(${(100 / 12) * xl}% - ${theme.layout.gutter.m});
+        flex-basis: calc(${(100 / 12) * xl}% - ${theme.layout.gutter.m});
       }
     `};
 
@@ -191,8 +187,8 @@ export const GridCol = styled.div`
     xxl &&
     `
       @media screen and (min-width: ${theme.breakpoints.xxl}) {
-        max-width: calc(${(100 / 12) * xxl}% - ${theme.gutters.m});
-        flex-basis: calc(${(100 / 12) * xxl}% - ${theme.gutters.m});
+        max-width: calc(${(100 / 12) * xxl}% - ${theme.layout.gutter.m});
+        flex-basis: calc(${(100 / 12) * xxl}% - ${theme.layout.gutter.m});
       }
     `};
 
@@ -200,8 +196,8 @@ export const GridCol = styled.div`
     xxxl &&
     `
       @media screen and (min-width: ${theme.breakpoints.xxxl}) {
-        max-width: calc(${(100 / 12) * xxxl}% - ${theme.gutters.m});
-        flex-basis: calc(${(100 / 12) * xxxl}% - ${theme.gutters.m});
+        max-width: calc(${(100 / 12) * xxxl}% - ${theme.layout.gutter.m});
+        flex-basis: calc(${(100 / 12) * xxxl}% - ${theme.layout.gutter.m});
       }
     `};
 `;

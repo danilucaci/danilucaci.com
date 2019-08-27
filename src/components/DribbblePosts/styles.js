@@ -7,7 +7,7 @@ import { Copy } from "../../src/../components/Copy/Copy";
 import { HR } from "../../../src/components/HR/HR";
 
 export const Row = styled(GridRow)`
-  max-width: ${theme.contain.wrapper.col10};
+  max-width: ${theme.layout.col10.wrapper};
   margin-top: ${theme.spacing.row.s};
 
   ${mediaMin.s`

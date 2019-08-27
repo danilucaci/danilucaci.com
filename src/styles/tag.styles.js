@@ -3,7 +3,7 @@ import { theme, mediaMin, rem } from "../theme/globalStyles";
 import { GridRow } from "../../src/components/Grid/Grid";
 
 export const TagWrapper = styled(GridRow)`
-  max-width: ${theme.contain.wrapper.col8};
+  max-width: ${theme.layout.col8.wrapper};
 
   margin-bottom: ${theme.spacing.row.s};
 

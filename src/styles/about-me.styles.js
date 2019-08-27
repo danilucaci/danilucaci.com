@@ -5,7 +5,7 @@ import { Copy } from "../../src/components/Copy/Copy";
 import { GridRow, GridCol } from "../../src/components/Grid/Grid";
 
 export const Header = styled.header`
-  max-width: ${theme.contain.wrapper.col10};
+  max-width: ${theme.layout.col10.wrapper};
 
   &:after {
     content: "";
@@ -17,43 +17,43 @@ export const Header = styled.header`
   
   margin-left: auto;
   margin-right: auto;
-  padding: ${theme.gridSpacing.s};
+  padding: ${theme.layout.gridSpacing.s};
 
   /* iPhone X 
-  * Add the extra gridSpacing used in the Grid
-  * calc(env(safe-area-inset-left) + ${theme.gridSpacing.s})
+  * Add the extra layout.gridSpacing used in the Grid
+  * calc(env(safe-area-inset-left) + ${theme.layout.gridSpacing.s})
   */
   @supports (padding: max(0px)) {
     & {
       padding-left: max(
-        ${theme.gridSpacing.s},
-        calc(env(safe-area-inset-left) - ${theme.gridSpacing.s})
+        ${theme.layout.gridSpacing.s},
+        calc(env(safe-area-inset-left) - ${theme.layout.gridSpacing.s})
       );
       padding-right: max(
-        ${theme.gridSpacing.s},
-        calc(env(safe-area-inset-right) - ${theme.gridSpacing.s})
+        ${theme.layout.gridSpacing.s},
+        calc(env(safe-area-inset-right) - ${theme.layout.gridSpacing.s})
       );
     }
   }
 
   ${mediaMin.s`
-    padding: ${theme.gridSpacing.m};
+    padding: ${theme.layout.gridSpacing.m};
 
     /* iPhone X 
-    * Add the extra gridSpacing used in the Grid
-    * calc(env(safe-area-inset-left) + ${theme.gridSpacing.s})
+    * Add the extra layout.gridSpacing used in the Grid
+    * calc(env(safe-area-inset-left) + ${theme.layout.gridSpacing.s})
     */
     @supports (padding: max(0px)) {
       & {
-        padding-left: max(${theme.gridSpacing.m}, calc(env(safe-area-inset-left) - ${theme.gridSpacing.m}));
-        padding-right: max(${theme.gridSpacing.m}, calc(env(safe-area-inset-right) - ${theme.gridSpacing.m}));
+        padding-left: max(${theme.layout.gridSpacing.m}, calc(env(safe-area-inset-left) - ${theme.layout.gridSpacing.m}));
+        padding-right: max(${theme.layout.gridSpacing.m}, calc(env(safe-area-inset-right) - ${theme.layout.gridSpacing.m}));
       }
     }
   `};
 `;
 
 export const Row = styled(GridRow)`
-  max-width: ${theme.contain.wrapper.col10};
+  max-width: ${theme.layout.col10.wrapper};
 `;
 
 export const HeaderImageWrapper = styled(GridCol)`
@@ -172,7 +172,7 @@ export const ResumeButton = styled.a`
   &:focus {
     cursor: pointer;
     background-color: ${theme.colors.grey00};
-    ${theme.shadow.buttons.darkGhost};
+    ${theme.shadow.button.darkGhost};
   }
 `;
 
@@ -183,7 +183,7 @@ export const StyledSocialNav = styled.div`
 `;
 
 export const DoingNowRow = styled(GridRow)`
-  max-width: ${theme.contain.wrapper.col10};
+  max-width: ${theme.layout.col10.wrapper};
   margin-bottom: ${theme.spacing.rowTop.s};
 
   ${mediaMin.s`

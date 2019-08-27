@@ -7,12 +7,12 @@ export const StyledLoadingCTA = styled.div`
       ? css`
           background-color: ${theme.colors.danger500};
           color: ${theme.colors.danger100};
-          ${theme.shadow.buttons.error};
+          ${theme.shadow.button.error};
         `
       : css`
           background-color: ${theme.colors.primary500};
           color: ${theme.colors.primary100};
-          ${theme.shadow.buttons.main};
+          ${theme.shadow.button.main};
           border: none;
         `}
 

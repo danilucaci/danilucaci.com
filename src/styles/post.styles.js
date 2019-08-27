@@ -10,7 +10,7 @@ export const PostWrapper = styled.article`
 `;
 
 export const StyledPageHeader = styled(GridRow)`
-  max-width: ${theme.contain.wrapper.col8};
+  max-width: ${theme.layout.col8.wrapper};
 `;
 
 export const PostH1 = styled.h1`
@@ -43,7 +43,7 @@ export const SocialShareWrapper = styled.div`
 `;
 
 export const StyledIntroContainer = styled.div`
-  max-width: ${theme.contain.inner.col6};
+  max-width: ${theme.layout.col6.inner};
   margin-left: auto;
   margin-right: auto;
   margin-top: ${rem(32)};
@@ -66,7 +66,7 @@ export const PostContent = styled(GridRow)`
   flex-direction: column !important;
   flex-wrap: nowrap !important;
 
-  max-width: ${theme.contain.wrapper.col6};
+  max-width: ${theme.layout.col6.wrapper};
   margin-bottom: ${theme.spacing.components.s};
 
   ${mediaMin.m`
@@ -237,31 +237,31 @@ export const LoadCommentsLabel = styled.span`
 
 export const CommentsWrapper = styled.aside`
   width: 100%;
-  max-width: ${theme.contain.wrapper.col10};
+  max-width: ${theme.layout.col10.wrapper};
   margin-left: auto;
   margin-right: auto;
   margin-bottom: ${theme.spacing.components.s};
 
-  padding-right: ${theme.gutters.s};
-  padding-left: ${theme.gutters.s};
+  padding-right: ${theme.layout.gutter.s};
+  padding-left: ${theme.layout.gutter.s};
 
   /* iPhone X */
   @supports (padding: max(0px)) {
     & {
-      padding-left: max(${theme.gutters.s}, env(safe-area-inset-left));
-      padding-right: max(${theme.gutters.s}, env(safe-area-inset-right));
+      padding-left: max(${theme.layout.gutter.s}, env(safe-area-inset-left));
+      padding-right: max(${theme.layout.gutter.s}, env(safe-area-inset-right));
     }
   }
 
   ${mediaMin.s`
-    padding-right: ${theme.gutters.m};
-    padding-left: ${theme.gutters.m};
+    padding-right: ${theme.layout.gutter.m};
+    padding-left: ${theme.layout.gutter.m};
 
     /* iPhone X */
     @supports (padding: max(0px)) {
       & {
-        padding-left: max(${theme.gutters.m}, env(safe-area-inset-left));
-        padding-right: max(${theme.gutters.m}, env(safe-area-inset-right));
+        padding-left: max(${theme.layout.gutter.m}, env(safe-area-inset-left));
+        padding-right: max(${theme.layout.gutter.m}, env(safe-area-inset-right));
       }
     }
 

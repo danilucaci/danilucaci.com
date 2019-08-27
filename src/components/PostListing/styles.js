@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { theme, rem } from "../../theme/globalStyles";
 
 export const Wrapper = styled.section`
-  max-width: ${theme.contain.blog};
+  max-width: ${theme.layout.col8.inner};
   margin-left: auto;
   margin-right: auto;
 `;

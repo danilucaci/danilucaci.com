@@ -6,7 +6,7 @@ import { HR } from "../../src/components/HR/HR";
 import { GridRow } from "../../src/components/Grid/Grid";
 
 export const StyledNotFound = styled(GridRow)`
-  max-width: ${theme.contain.wrapper.col8};
+  max-width: ${theme.layout.col8.wrapper};
   padding-top: ${rem(24)};
   padding-bottom: ${rem(24)};
 

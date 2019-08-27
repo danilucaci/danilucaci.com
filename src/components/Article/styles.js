@@ -7,7 +7,7 @@ export const StyledArticle = styled.article`
   background-color: ${theme.colors.grey00};
   border: 1px solid ${theme.colors.grey300};
   padding: ${rem(16)} ${rem(16)} ${rem(24)} ${rem(16)};
-  margin-bottom: ${theme.gutters.m};
+  margin-bottom: ${theme.layout.gutter.m};
 
   ${mediaMin.s`
     padding: ${rem(24)} ${rem(32)} ${rem(32)} ${rem(32)};

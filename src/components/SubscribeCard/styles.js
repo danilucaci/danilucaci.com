@@ -8,7 +8,7 @@ import SubmitButton from "../SubmitButton/SubmitButton";
 
 export const SubscribeCardWrapper = styled.aside`
   width: 100%;
-  max-width: ${theme.contain.wrapper.col10};
+  max-width: ${theme.layout.col10.wrapper};
   margin-left: auto;
   margin-right: auto;
 
@@ -32,26 +32,26 @@ export const SubscribeCardInner = styled.aside`
 
   padding: ${rem(32)} ${rem(24)};
 
-  margin-right: ${theme.gutters.s};
-  margin-left: ${theme.gutters.s};
+  margin-right: ${theme.layout.gutter.s};
+  margin-left: ${theme.layout.gutter.s};
 
   /* iPhone X */
   @supports (padding: max(0px)) {
     & {
-      margin-left: max(${theme.gutters.s}, env(safe-area-inset-left));
-      margin-right: max(${theme.gutters.s}, env(safe-area-inset-right));
+      margin-left: max(${theme.layout.gutter.s}, env(safe-area-inset-left));
+      margin-right: max(${theme.layout.gutter.s}, env(safe-area-inset-right));
     }
   }
 
   ${mediaMin.s`
-    margin-right: ${theme.gutters.m};
-    margin-left: ${theme.gutters.m};
+    margin-right: ${theme.layout.gutter.m};
+    margin-left: ${theme.layout.gutter.m};
 
     /* iPhone X */
     @supports (padding: max(0px)) {
     & {
-      margin-left: max(${theme.gutters.m}, env(safe-area-inset-left));
-      margin-right: max(${theme.gutters.m}, env(safe-area-inset-right));
+      margin-left: max(${theme.layout.gutter.m}, env(safe-area-inset-left));
+      margin-right: max(${theme.layout.gutter.m}, env(safe-area-inset-right));
       }
     }
   `};

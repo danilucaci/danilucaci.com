@@ -5,7 +5,7 @@ import { Copy } from "../../src/components/Copy/Copy";
 import { GridRow } from "../components/Grid/Grid";
 
 export const IndexHeader = styled(GridRow)`
-  max-width: ${theme.contain.wrapper.col10};
+  max-width: ${theme.layout.col10.wrapper};
   margin: 0 auto;
   padding-top: ${rem(16)};
   padding-bottom: ${theme.spacing.row.s};
@@ -166,5 +166,5 @@ export const ServiceContent = styled.div`
 `;
 
 export const Row = styled(GridRow)`
-  max-width: ${theme.contain.wrapper.col10};
+  max-width: ${theme.layout.col10.wrapper};
 `;

@@ -29,7 +29,7 @@ export const PrimaryButton = styled.button`
   &:focus {
     cursor: pointer;
     background-color: ${theme.colors.primary500};
-    ${theme.shadow.buttons.main};
+    ${theme.shadow.button.main};
   }
 `;
 
@@ -61,7 +61,7 @@ export const MainGhostButton = styled.button`
   &:focus {
     cursor: pointer;
     background-color: ${theme.colors.grey00};
-    ${theme.shadow.buttons.mainGhost};
+    ${theme.shadow.button.mainGhost};
   }
 `;
 
@@ -93,7 +93,7 @@ export const DarkGhostButton = styled.button`
   &:focus {
     cursor: pointer;
     background-color: ${theme.colors.grey00};
-    ${theme.shadow.buttons.darkGhost};
+    ${theme.shadow.button.darkGhost};
   }
 `;
 
@@ -124,7 +124,7 @@ export const PrimaryButtonSmall = styled.button`
   &:focus {
     background-color: ${theme.colors.primary500};
     cursor: pointer;
-    ${theme.shadow.buttons.main};
+    ${theme.shadow.button.main};
   }
 `;
 
@@ -154,7 +154,7 @@ export const TertiaryButton = styled.button`
   &:focus {
     cursor: pointer;
     background-color: ${theme.colors.grey00};
-    ${theme.shadow.buttons.darkGhost};
+    ${theme.shadow.button.darkGhost};
   }
 `;
 
