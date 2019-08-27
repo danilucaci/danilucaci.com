@@ -336,11 +336,7 @@ export const theme = {
   },
   spacing: {
     main: {
-      top: {
-        s: "1.5em",
-        m: "2em",
-        xl: "2.5em",
-      },
+      top: "2.5em",
     },
     text: {
       display: {
@@ -372,9 +368,6 @@ export const theme = {
     },
   },
   iconsScale: "1.2",
-  logoWidth: "6em",
-  logoHeight: "3em",
-  navBarHeight: "3.5em",
   showScrollBars: `/* Show the scrollbar and scroll */
                   /* On webkit */
                   &::-webkit-scrollbar {
