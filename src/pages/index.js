@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import { FormattedMessage } from "react-intl";
 
 import Layout from "../components/Layout";
@@ -20,8 +20,9 @@ import {
   IndexTitle,
   Subhead,
   Name,
-  Row,
-  ServicesWrapper,
+  FindOutMore,
+  ServicesSection,
+  ServicesRow,
   ServicesTitle,
   ServiceTitle,
   ServiceCopy,
@@ -38,12 +39,17 @@ import illustrationInteraction from "../images/illustrations/danilucaci_services
 const Index = (props) => {
   const edges = props.data.work.edges;
   const locale = props.pageContext.locale;
-  const twinPostURL = locale === "en" ? localePaths["es"].index : localePaths["en"].index;
+  const twinPostURL =
+    locale === "en" ? localePaths["es"].index : localePaths["en"].index;
 
   return (
     <ErrorBoundary>
       <Layout location={props.location} locale={locale}>
-        <SEO locale={locale} currentPath={props.location.pathname} twinPostURL={twinPostURL} />
+        <SEO
+          locale={locale}
+          currentPath={props.location.pathname}
+          twinPostURL={twinPostURL}
+        />
         <SiteHeader
           locale={locale}
           twinPostURL={twinPostURL}
@@ -52,17 +58,34 @@ const Index = (props) => {
         <Main role="main">
           <IndexHeader as="header">
             <GridCol>
-              <FormattedMessage id="index.name">{(txt) => <Name>{txt}</Name>}</FormattedMessage>
+              <FormattedMessage id="index.name">
+                {(txt) => <Name>{txt}</Name>}
+              </FormattedMessage>
               <FormattedMessage id="index.h1">
                 {(txt) => <IndexTitle as="h1">{txt}</IndexTitle>}
               </FormattedMessage>
               <FormattedMessage id="index.subhead">
                 {(txt) => <Subhead>{txt}</Subhead>}
               </FormattedMessage>
+              <FindOutMore>
+                <FormattedMessage id="index.findOut.1">
+                  {(txt) => <>{txt}</>}
+                </FormattedMessage>
+                <FormattedMessage id="index.findOut.2">
+                  {(txt) => <Link to={localePaths[locale].work}>{txt}</Link>}
+                </FormattedMessage>
+                <FormattedMessage id="index.findOut.3">
+                  {(txt) => <>{txt}</>}
+                </FormattedMessage>
+                <FormattedMessage id="index.findOut.4">
+                  {(txt) => <Link to={localePaths[locale].contact}>{txt}</Link>}
+                </FormattedMessage>
+                .
+              </FindOutMore>
             </GridCol>
           </IndexHeader>
-          <ServicesWrapper>
-            <Row padded as="div">
+          <ServicesSection>
+            <ServicesRow as="div">
               <GridCol>
                 <FormattedMessage id="index.services.heading">
                   {(txt) => <ServicesTitle>{txt}</ServicesTitle>}
@@ -86,9 +109,7 @@ const Index = (props) => {
                       <li>Personas</li>
                       <li>Wireframes</li>
                       <li>User Flows</li>
-                      <li>User Journey Maps</li>
-                      <li>Usability Testing</li>
-                      <li>Competitive Analysis</li>
+                      <li>Heuristic Evaluation</li>
                     </ul>
                   </ServiceContent>
                 </ServicesEntry>
@@ -108,10 +129,9 @@ const Index = (props) => {
                     </FormattedMessage>
                     <ul>
                       <li>Design Systems</li>
-                      <li>Sketch</li>
-                      <li>Figma</li>
-                      <li>Abstract</li>
-                      <li>Zeplin</li>
+                      <li>Website design</li>
+                      <li>iOS App Design</li>
+                      <li>Android App Design</li>
                     </ul>
                   </ServiceContent>
                 </ServicesEntry>
@@ -151,7 +171,8 @@ const Index = (props) => {
                       {(txt) => <ServiceCopy>{txt}</ServiceCopy>}
                     </FormattedMessage>
                     <ul>
-                      <li>HTML & CSS</li>
+                      <li>Styled-Components</li>
+                      <li>Sass</li>
                       <li>React.js</li>
                       <li>Gatsby.js</li>
                       <li>GraphQL</li>
@@ -159,8 +180,8 @@ const Index = (props) => {
                   </ServiceContent>
                 </ServicesEntry>
               </GridCol>
-            </Row>
-          </ServicesWrapper>
+            </ServicesRow>
+          </ServicesSection>
 
           <CaseStudies edges={edges} header="h2" />
 
@@ -197,7 +218,11 @@ export const pageQuery = graphql`
       limit: 5
       sort: { fields: [frontmatter___date], order: DESC }
       filter: {
-        frontmatter: { posted: { eq: true }, category: { eq: "work" }, locale: { eq: $locale } }
+        frontmatter: {
+          posted: { eq: true }
+          category: { eq: "work" }
+          locale: { eq: $locale }
+        }
       }
     ) {
       totalCount

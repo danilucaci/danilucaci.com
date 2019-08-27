@@ -57,16 +57,16 @@ export const GridRow = styled.section`
   ${({ padded }) =>
     padded &&
     css`
-      padding-top: ${theme.spacing.rowTop.s};
+      padding-top: ${theme.spacing.row.s};
       padding-bottom: ${theme.spacing.row.s};
 
       ${mediaMin.s`
-        padding-top: ${theme.spacing.rowTop.m};
+        padding-top: ${theme.spacing.row.m};
         padding-bottom: ${theme.spacing.row.m};
       `};
 
       ${mediaMin.xl`
-        padding-top: ${theme.spacing.rowTop.xl};
+        padding-top: ${theme.spacing.row.xl};
         padding-bottom: ${theme.spacing.row.xl};
       `};
 
@@ -80,16 +80,16 @@ export const GridRow = styled.section`
   ${({ spaced }) =>
     spaced &&
     css`
-      margin-top: ${theme.spacing.rowTop.s};
+      margin-top: ${theme.spacing.row.s};
       margin-bottom: ${theme.spacing.row.s};
 
       ${mediaMin.s`
-        margin-top: ${theme.spacing.rowTop.m};
+        margin-top: ${theme.spacing.row.m};
         margin-bottom: ${theme.spacing.row.m};
       `};
 
       ${mediaMin.xl`
-        margin-top: ${theme.spacing.rowTop.xl};
+        margin-top: ${theme.spacing.row.xl};
         margin-bottom: ${theme.spacing.row.xl};
       `};
 

@@ -1,92 +1,108 @@
 import styled from "styled-components";
 import { theme, mediaMin, mediaMax, rem } from "../theme/theme";
-import { HR } from "../components/HR/HR";
 import { Copy } from "../components/Copy/Copy";
 import { GridRow } from "../components/Grid/Grid";
 
 export const IndexHeader = styled(GridRow)`
   max-width: ${theme.layout.col10.wrapper};
   margin: 0 auto;
-  padding-top: ${rem(16)};
-  padding-bottom: ${theme.spacing.row.s};
+  padding-bottom: ${rem(56)};
 
   ${mediaMin.s`
-    padding-top: ${rem(24)};
+    padding-top: ${rem(16)};
     padding-bottom: ${theme.spacing.row.m};
   `};
 
   ${mediaMin.xl`
-    padding-top: ${rem(40)};
+    padding-top: ${rem(56)};
     padding-bottom: ${theme.spacing.row.xl};
   `};
 `;
 
 export const Name = styled(Copy)`
-  color: ${theme.colors.primary600};
-  text-transform: uppercase;
-  font-size: ${theme.font.size.body.subhead};
-  line-height: ${theme.font.lineHeight.body.subhead};
-  letter-spacing: ${theme.font.letterSpacing.body.subhead};
+  font-size: ${rem(18)};
+  line-height: ${rem(32)};
   font-weight: 700;
 
-  font-family: ${theme.font.family.display.fallback};
-
   .fonts-loaded & {
-    font-family: ${theme.font.family.display.bold};
+    font-family: ${theme.font.family.body.bold};
   }
 
   ${mediaMin.s`
-    font-size: ${theme.font.size.body.subhead};
-    line-height: ${theme.font.lineHeight.body.subhead};
-    letter-spacing: ${theme.font.letterSpacing.body.subhead};
+    font-size: ${rem(20)};
+    line-height: ${rem(32)};
   `};
 `;
 
-export const IndexTitle = styled.h2`
+export const IndexTitle = styled.h1`
   margin-top: ${rem(16)};
-  margin-bottom: ${rem(8)};
+  margin-bottom: ${rem(16)};
 
-  font-size: ${theme.font.size.display.mobile.h1};
-  line-height: ${theme.font.lineHeight.display.mobile.h1};
+  font-size: ${theme.font.size.display.mobile.h2};
+  line-height: ${theme.font.lineHeight.display.mobile.h2};
+
+  /* Breaks line if a \n character is inside the text */
+  white-space: pre-line;
 
   ${mediaMin.m`
     font-size: ${theme.font.size.display.desktop.h1};
     line-height: ${theme.font.lineHeight.display.desktop.h1};
-    max-width: ${rem(840)};
   `};
 `;
 
 export const Subhead = styled.p`
-  color: ${theme.colors.grey800};
-  font-size: ${theme.font.size.body.subhead};
-  line-height: ${theme.font.lineHeight.body.m};
-  letter-spacing: -${theme.font.letterSpacing.body.subhead};
+  color: ${theme.color.text.subdued};
+  font-size: ${theme.font.size.display.subtitle};
+  line-height: ${theme.font.lineHeight.display.subtitle};
+
+  margin-bottom: ${rem(16)};
 
   font-family: ${theme.font.family.display.fallback};
   font-weight: 300;
 
   .fonts-loaded & {
-    font-family: ${theme.font.family.display.boldLight};
+    font-family: ${theme.font.family.display.regular};
   }
 
   ${mediaMin.s`
-    font-size: ${theme.font.size.body.subhead};
-    line-height: ${theme.font.lineHeight.body.m};
-    letter-spacing: -${theme.font.letterSpacing.body.subhead}
-    max-width: ${rem(840)};
+    font-size: ${theme.font.size.display.subtitle};
+    line-height: ${theme.font.lineHeight.display.subtitle};
   `};
 `;
 
-export const ServicesWrapper = styled.section`
-  background-color: ${theme.colors.grey50};
-  margin-bottom: ${theme.spacing.rowTop.s};
+export const FindOutMore = styled.p`
+  color: ${theme.color.text.subdued};
+`;
 
-  ${mediaMin.s`
-    margin-bottom: ${theme.spacing.rowTop.m};
+export const ServicesSection = styled.section`
+  background-color: ${theme.color.background.section.lightest};
+  padding-top: ${rem(40)};
+  padding-bottom: ${rem(40)};
+
+  ${mediaMin.m`
+    padding-top: ${theme.spacing.row.m};
+    padding-bottom: ${theme.spacing.row.m};
   `};
 
   ${mediaMin.xl`
-    margin-bottom: ${theme.spacing.rowTop.xl};
+    padding-top: ${theme.spacing.row.xl};
+    padding-bottom: ${theme.spacing.row.xl};
+  `};
+
+  /* Mobile in ladscape */
+  @media screen and (min-width: 30em) and (min-height: 17em) and (max-height: 35em) and (orientation: landscape) {
+    padding-top: ${rem(32)};
+    padding-bottom: ${rem(64)};
+  }
+
+  margin-bottom: ${theme.spacing.row.s};
+
+  ${mediaMin.s`
+    margin-bottom: ${theme.spacing.row.m};
+  `};
+
+  ${mediaMin.xl`
+    margin-bottom: ${theme.spacing.row.xl};
   `};
 
   /* Mobile in ladscape */
@@ -96,23 +112,18 @@ export const ServicesWrapper = styled.section`
 `;
 
 export const ServicesEntry = styled.div`
-  border-top: 2px solid ${theme.colors.grey300};
+  border-top: 1px solid ${theme.colors.grey300};
   display: block;
 
-  padding-top: ${rem(32)};
-  padding-bottom: ${rem(32)};
+  padding-top: ${rem(40)};
+  padding-bottom: ${rem(40)};
 
   ${mediaMin.m`  
-    padding-top: ${rem(48)};
-    padding-bottom: ${rem(48)};
     display: flex;
   `};
 
   ${mediaMin.xl`
-    padding-left: ${rem(40)};
-    padding-right: ${rem(144)};
-    padding-top: ${rem(64)};
-    padding-bottom: ${rem(64)};
+    padding: ${rem(48)} ${rem(64)} ${rem(64)} ${rem(24)};
   `};
 
   &:last-of-type {
@@ -136,7 +147,7 @@ export const ServiceTitle = styled.h3`
 `;
 
 export const ServiceCopy = styled(Copy)`
-  margin-bottom: ${rem(32)};
+  margin-bottom: ${rem(16)};
 `;
 
 export const ServiceImage = styled.picture`
@@ -151,10 +162,6 @@ export const ServiceImage = styled.picture`
   ${mediaMin.m`
     margin-top: -${rem(4)};
     flex: 1 0 auto;
-    margin-right: ${rem(32)};
-  `};
-
-  ${mediaMin.xl`
     margin-right: ${rem(64)};
   `};
 `;
@@ -165,6 +172,6 @@ export const ServiceContent = styled.div`
   `};
 `;
 
-export const Row = styled(GridRow)`
+export const ServicesRow = styled(GridRow)`
   max-width: ${theme.layout.col10.wrapper};
 `;

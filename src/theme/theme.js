@@ -216,7 +216,7 @@ export const theme = {
   font: {
     family: {
       display: {
-        fallback: "Georgia, 'Times New Roman', Times, serif",
+        fallback: "system-ui, Georgia, 'Times New Roman', Times, serif",
         regular:
           "'Merriweather Regular', BlinkMacSystemFont, -apple-system, 'Segoe UI', Georgia, 'Times New Roman', Times, serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
         bold:
@@ -226,7 +226,7 @@ export const theme = {
       },
       body: {
         fallback:
-          "BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+          "system-ui, BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
         regular:
           "'Lato', BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
         bold:
@@ -251,6 +251,7 @@ export const theme = {
           h3: "1.5rem",
           h4: "1.125rem",
           h5: "1.125rem",
+          subtitle: "1.25rem",
         },
         mobile: {
           h1: "2rem",
@@ -258,6 +259,7 @@ export const theme = {
           h3: "1.25rem",
           h4: "1.125rem",
           h5: "1.125rem",
+          subtitle: "1.125rem",
         },
       },
       body: {
@@ -277,6 +279,7 @@ export const theme = {
           h3: "2rem",
           h4: "2rem",
           h5: "2rem",
+          subtitle: "2rem",
         },
         mobile: {
           h1: "2.5rem",
@@ -284,6 +287,7 @@ export const theme = {
           h3: "1.5rem",
           h4: "2rem",
           h5: "2rem",
+          subtitle: "2rem",
         },
       },
       body: {
@@ -353,8 +357,8 @@ export const theme = {
     },
     row: {
       s: "4em",
-      m: "7em",
-      xl: "9em",
+      m: "5em",
+      xl: "8em",
     },
     rowTop: {
       s: "4em",

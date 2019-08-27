@@ -20,7 +20,12 @@ import {
 
 const Pagination = (props) => {
   const {
-    currentPage, totalPages, locale, prevPath, nextPath, paginationPathPrefix,
+    currentPage,
+    totalPages,
+    locale,
+    prevPath,
+    nextPath,
+    paginationPathPrefix,
   } = props;
 
   let pagination = [];
@@ -28,29 +33,41 @@ const Pagination = (props) => {
   for (let page = 1; page <= totalPages; page += 1) {
     if (page === currentPage) {
       if (page === 1) {
-        pagination.push(<CurrentPaginationNumber key={page} to={paginationPathPrefix}>
-          {page}
-        </CurrentPaginationNumber>);
+        pagination.push(
+          <CurrentPaginationNumber key={page} to={paginationPathPrefix}>
+            {page}
+          </CurrentPaginationNumber>,
+        );
       } else {
-        pagination.push(<CurrentPaginationNumber
-          key={page}
-          to={paginationPathPrefix + localePaths[locale].paginationName + page}
-        >
-          {page}
-                        </CurrentPaginationNumber>);
+        pagination.push(
+          <CurrentPaginationNumber
+            key={page}
+            to={
+              paginationPathPrefix + localePaths[locale].paginationName + page
+            }
+          >
+            {page}
+          </CurrentPaginationNumber>,
+        );
       }
     } else {
       if (page === 1) {
-        pagination.push(<PaginationNumber key={page} to={paginationPathPrefix}>
-          {page}
-        </PaginationNumber>);
+        pagination.push(
+          <PaginationNumber key={page} to={paginationPathPrefix}>
+            {page}
+          </PaginationNumber>,
+        );
       } else {
-        pagination.push(<PaginationNumber
-          key={page}
-          to={paginationPathPrefix + localePaths[locale].paginationName + page}
-        >
-          {page}
-        </PaginationNumber>);
+        pagination.push(
+          <PaginationNumber
+            key={page}
+            to={
+              paginationPathPrefix + localePaths[locale].paginationName + page
+            }
+          >
+            {page}
+          </PaginationNumber>,
+        );
       }
     }
   }
