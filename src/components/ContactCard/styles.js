@@ -1,35 +1,41 @@
 import styled from "styled-components";
-import { Link } from "gatsby";
 
 import { theme, mediaMin, rem } from "../../theme/theme";
 import { Copy } from "../Copy/Copy";
-import { GridRow, GridCol } from "../Grid/Grid";
+import { GridCol, GridRow } from "../Grid/Grid";
+import SecondaryLinkButton from "../SecondaryLinkButton/SecondaryLinkButton";
+// import mobileBackground from "../../images/illustrations/contact_card_circles.svg";
 
-export const ContactCardWrapper = styled(GridRow)`
-  max-width: ${theme.layout.col10.wrapper};
+export const StyledContactCard = styled.aside`
+  background-color: ${theme.color.background.section.contactCard};
+  /* background-image: url(${mobileBackground});
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center center; */
+`;
+
+export const Row = styled(GridRow)`
+  max-width: ${theme.layout.col8.wrapper};
 `;
 
 export const ContactCardInner = styled(GridCol)`
-  background-color: ${theme.colors.grey900};
-  padding: ${rem(24)} ${rem(16)} ${rem(32)} ${rem(16)};
+  padding-top: ${theme.spacing.row.s};
+  padding-bottom: ${theme.spacing.row.s};
 
   ${mediaMin.s`
-    padding: ${rem(32)} ${rem(24)} ${rem(40)} ${rem(24)};
-  `};
-
-  ${mediaMin.l`
-    padding: ${rem(56)} ${rem(72)} ${rem(64)} ${rem(72)};
+    padding-top: ${theme.spacing.row.m};
+    padding-bottom: ${theme.spacing.row.m};
   `};
 
   ${mediaMin.xxl`
-    padding: ${rem(80)} ${rem(128)} ${rem(88)} ${rem(128)};
+    padding-top: ${theme.spacing.row.xl};
+    padding-bottom: ${theme.spacing.row.xl};
   `};
 `;
 
 export const ContactCardTitle = styled.h2`
-  color: ${theme.colors.grey00};
-  font-size: ${theme.font.size.display.mobile.h2};
-  line-height: ${theme.font.lineHeight.display.mobile.h2};
+  color: ${theme.color.text.light.white};
+
   margin-bottom: ${rem(16)};
 
   ${mediaMin.m`
@@ -39,55 +45,24 @@ export const ContactCardTitle = styled.h2`
 `;
 
 export const Subtitle = styled(Copy)`
-  color: ${theme.colors.grey00};
+  color: ${theme.color.text.light.primary};
   display: block;
-  font-size: ${theme.font.size.body.subhead};
-  line-height: ${theme.font.lineHeight.body.subheadsubheadSCompact};
+  font-size: ${theme.font.size.display.mobile.subtitle};
+  line-height: ${theme.font.lineHeight.display.mobile.subtitle};
+
+  margin-bottom: ${rem(24)};
 
   ${mediaMin.s`
-    font-size: ${theme.font.size.body.m};
-    line-height: ${theme.font.lineHeight.body.subhead};
+    margin-bottom: ${rem(48)};
+    font-size: ${theme.font.size.display.desktop.subtitle};
+    line-height: ${theme.font.lineHeight.display.desktop.subtitle};
   `};
 `;
 
-export const StyledContactButton = styled(Link)`
-  background-color: ${theme.colors.secondary200};
-  border-radius: ${theme.borderRadius.buttons};
-  color: ${theme.colors.secondary600} !important;
-  display: block;
+export const StyleButton = styled(SecondaryLinkButton)`
+  /* width: ${rem(200)}; */
 
-  text-align: center;
-  text-decoration: none;
-  font-size: ${theme.font.size.button.default};
-  line-height: ${theme.font.lineHeight.button.default};
-  font-style: normal;
-  font-weight: 700;
-
-  .fonts-loaded & {
-    font-family: ${theme.font.family.body.bold};
-  }
-
-  padding: ${rem(12)} ${rem(40)};
-  height: ${theme.buttonHeight.xl};
-  width: 100%;
-
-  ${mediaMin.l`  
-    width: ${rem(288)};
+  ${mediaMin.xs`
+    width: ${rem(240)};  
   `};
-
-  margin-top: ${rem(32)};
-
-  white-space: nowrap;
-
-  &:hover {
-    cursor: pointer;
-    background-color: ${theme.colors.secondary100};
-  }
-
-  &:focus {
-    cursor: pointer;
-    background-color: ${theme.colors.secondary100};
-    box-shadow: 0 0px 1px 4px #c9b473, 0 1px 2px 4px #c9b473;
-    outline: none;
-  }
 `;

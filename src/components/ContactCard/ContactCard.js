@@ -5,11 +5,12 @@ import { FormattedMessage } from "react-intl";
 import sendGAEvent from "../../helpers/sendGAEvent";
 
 import {
-  ContactCardWrapper,
+  StyledContactCard,
+  Row,
   ContactCardInner,
   ContactCardTitle,
   Subtitle,
-  StyledContactButton,
+  StyleButton,
 } from "./styles";
 
 function ContactCard(props) {
@@ -23,29 +24,30 @@ function ContactCard(props) {
   }
 
   return (
-    <ContactCardWrapper spaced as="aside">
-      <ContactCardInner>
-        <FormattedMessage id="contact.card.title">
-          {(txt) => <ContactCardTitle>{txt}</ContactCardTitle>}
-        </FormattedMessage>
+    <StyledContactCard>
+      <Row as="div">
+        <ContactCardInner>
+          <FormattedMessage id="contact.card.title">
+            {(txt) => <ContactCardTitle>{txt}</ContactCardTitle>}
+          </FormattedMessage>
 
-        <FormattedMessage id="contact.card.info">
-          {(txt) => <Subtitle>{txt}</Subtitle>}
-        </FormattedMessage>
+          <FormattedMessage id="contact.card.info">
+            {(txt) => <Subtitle>{txt}</Subtitle>}
+          </FormattedMessage>
 
-        <FormattedMessage id="contact.card.cta">
-          {(txt) => (
-            <StyledContactButton
-              role="button"
-              to={twinPostURL}
-              onClick={sendGAEvent("Contact Card", "Clicked CTA")}
-            >
-              {txt}
-            </StyledContactButton>
-          )}
-        </FormattedMessage>
-      </ContactCardInner>
-    </ContactCardWrapper>
+          <FormattedMessage id="contact.card.cta">
+            {(txt) => (
+              <StyleButton
+                to={twinPostURL}
+                onClick={sendGAEvent("Contact Card", "Clicked CTA")}
+              >
+                {txt}
+              </StyleButton>
+            )}
+          </FormattedMessage>
+        </ContactCardInner>
+      </Row>
+    </StyledContactCard>
   );
 }
 

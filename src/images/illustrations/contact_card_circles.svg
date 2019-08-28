@@ -1,0 +1,7 @@
+<!-- <svg xmlns="http://www.w3.org/2000/svg" width="375" height="380" viewBox="0 0 375 380"> -->
+<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" viewBox="0 0 375 380">
+  <g fill="none">
+    <rect width="375" height="380" fill="#123D8C"/>
+    <path fill="#2E6FD5" d="M0 252C70.692448 252 128 309.307552 128 380L128 380 104 380C104 322.562386 57.437614 276 0 276L0 276zM375 0L375 132C302.098413 132 243 72.901587 243 0L243 0 375 0z"/>
+  </g>
+</svg>

@@ -22,9 +22,9 @@ const COLORS = {
   primary200: "#B1D3FD",
   primary100: "#CDE3FE",
   primary50: "#E8F3FF",
-  secondary900: "#2E2809",
-  secondary800: "#605413",
-  secondary700: "#A89422",
+  secondary900: "#4D3B06",
+  secondary800: "#91770C",
+  secondary700: "#CCA508",
   secondary600: "#F0D330",
   secondary500: "#F2DA4F",
   secondary400: "#F5E06E",
@@ -60,6 +60,10 @@ export const theme = {
     text: {
       default: COLORS.grey900,
       subdued: COLORS.grey700,
+      light: {
+        white: COLORS.grey00,
+        primary: COLORS.primary200,
+      },
       input: {
         label: COLORS.grey900,
         placeholder: COLORS.grey700,
@@ -92,6 +96,7 @@ export const theme = {
         lightest: COLORS.grey50,
         lighter: COLORS.grey100,
         light: COLORS.grey200,
+        contactCard: COLORS.primary700,
       },
       primary: {
         enabled: COLORS.primary600,
@@ -121,14 +126,25 @@ export const theme = {
     },
     border: {
       primary: {
-        focus: COLORS.primary700,
+        enabled: COLORS.primary600,
+        focus: COLORS.primary500,
+        hover: COLORS.primary500,
+        active: COLORS.primary700,
+        disabled: COLORS.grey500,
       },
       secondary: {
-        focus: COLORS.primary700,
+        enabled: COLORS.secondary600,
+        focus: COLORS.secondary900,
+        hover: COLORS.secondary500,
+        active: COLORS.secondary700,
+        disabled: COLORS.grey500,
       },
       outlined: {
-        focus: COLORS.primary400,
-        disabled: COLORS.primary300,
+        enabled: COLORS.grey400,
+        focus: COLORS.grey900,
+        hover: COLORS.grey400,
+        active: COLORS.grey400,
+        disabled: COLORS.grey300,
       },
       input: {
         enabled: COLORS.grey400,
@@ -174,15 +190,18 @@ export const theme = {
       "box-shadow: 0 2px 12px -2px rgba(247,230,213,0.50), 0 2px 8px -2px rgba(166,68,27,0.50)",
     button: {
       primary: {
-        focus:
-          "0 1px 2px 0 rgba(17,30,82,0.42), 0 1px 6px 1px rgba(0,47,158,0.25)",
+        hover:
+          "0 1px 4px 0 rgba(17,30,82,0.47), 0 1px 16px 2px rgba(0,47,158,0.27)",
+        focus: "0 0 1px 1px #4F8FE9, 0 0 0 3px #7CB1F6",
       },
       secondary: {
-        focus:
-          "0 1px 2px 0 rgba(179,153,5,0.40), 0 1px 6px 0 rgba(128,109,1,0.22)",
+        hover:
+          "0 1px 2px 0 rgba(230,195,0,0.60), 0 2px 6px 1px rgba(153,130,0,0.40)",
+        focus: "0 0 1px 1px #FFE359, 0 0 0 3px #FFEA82",
       },
       outlined: {
-        focus: "0 1px 2px 0 rgba(0,0,0,0.16), 0 2px 8px 1px rgba(0,0,0,0.12)",
+        hover: "0 1px 2px 0 rgba(0,0,0,0.16), 0 2px 8px 1px rgba(0,0,0,0.12)",
+        focus: "0 0 1px 1px #D2D5D9, 0 0 0 3px #E3E6E8",
       },
       tertiary:
         "box-shadow: 0 2px 6px 0 rgba(8,36,82,0.13), 0 2px 12px -2px rgba(12,31,61,0.27)",
@@ -268,7 +287,7 @@ export const theme = {
         subhead: "0.875rem",
       },
       button: {
-        default: "1.125rem",
+        default: "1rem",
       },
     },
     lineHeight: {
@@ -296,7 +315,7 @@ export const theme = {
         subhead: "1.25rem",
       },
       button: {
-        default: "2rem",
+        default: "1.5rem",
       },
     },
     letterSpacing: {
@@ -385,6 +404,12 @@ export const theme = {
       s: "4em",
       m: "5em",
       xl: "7em",
+    },
+    button: {
+      default: {
+        vertical: "0.5rem",
+        horizontal: "1rem",
+      },
     },
   },
   iconsScale: "1.2",

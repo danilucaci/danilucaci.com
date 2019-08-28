@@ -186,7 +186,6 @@ const Index = (props) => {
           <CaseStudies edges={edges} header="h2" />
 
           <DribbblePosts locale={locale} />
-
           <ContactCard locale={locale} />
         </Main>
         <SiteFooter locale={locale} />
