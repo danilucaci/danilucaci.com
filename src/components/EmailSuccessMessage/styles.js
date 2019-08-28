@@ -24,7 +24,7 @@ export const MessageSubtitle = styled(Copy)`
 
 export const StatusMessageWrapper = styled.div`
   border: ${rem(2)} solid ${theme.colors.primary600};
-  border-radius: ${theme.borderRadius.buttons};
+  border-radius: ${theme.borderRadius.default};
   display: block;
   background-color: ${theme.colors.grey00};
   font-size: ${theme.font.size.body.s};

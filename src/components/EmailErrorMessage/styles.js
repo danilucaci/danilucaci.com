@@ -31,7 +31,7 @@ export const MessageError = styled(Copy)`
 
 export const StatusMessageWrapper = styled.div`
   border: ${rem(2)} solid ${theme.colors.grey900};
-  border-radius: ${theme.borderRadius.buttons};
+  border-radius: ${theme.borderRadius.default};
   display: block;
   background-color: ${theme.colors.grey00};
   font-size: ${theme.font.size.body.s};
@@ -45,7 +45,7 @@ export const StatusMessageWrapper = styled.div`
 
 export const InlineStatusMessageWrapper = styled.div`
   background-color: ${theme.colors.danger100};
-  border-radius: ${theme.borderRadius.buttons};
+  border-radius: ${theme.borderRadius.default};
   display: block;
 
   padding: ${rem(8)};

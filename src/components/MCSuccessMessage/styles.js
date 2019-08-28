@@ -5,7 +5,7 @@ import { Copy } from "../Copy/Copy";
 export const StatusMessageWrapper = styled.div`
   background-color: ${theme.colors.grey00};
   border: ${rem(2)} solid ${theme.colors.primary600};
-  border-radius: ${theme.borderRadius.buttons};
+  border-radius: ${theme.borderRadius.default};
   color: ${theme.colors.primary600};
 
   display: block;

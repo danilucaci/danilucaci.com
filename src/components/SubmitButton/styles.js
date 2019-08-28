@@ -4,7 +4,7 @@ import { theme, rem } from "../../theme/theme";
 export const StyledSubmitButton = styled.button`
   background-color: ${theme.colors.primary600};
   border: none;
-  border-radius: ${theme.borderRadius.buttons};
+  border-radius: ${theme.borderRadius.default};
   color: ${theme.colors.grey00};
 
   text-align: center;

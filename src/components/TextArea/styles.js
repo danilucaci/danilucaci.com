@@ -19,7 +19,7 @@ let optimizedErrorSVGDataURI = `background: url("${svgToMiniDataURI(
 export const StyledTextArea = styled(Field)`
   background-color: ${theme.colors.grey00};
   border: 2px solid ${theme.colors.grey400};
-  border-radius: ${theme.borderRadius.buttons};
+  border-radius: ${theme.borderRadius.default};
   color: ${theme.colors.grey700};
 
   font-size: ${theme.font.size.button.default};
@@ -36,7 +36,7 @@ export const StyledTextArea = styled(Field)`
   &:-webkit-autofill:focus {
     background-color: ${theme.colors.grey00};
     border: 2px solid ${theme.colors.grey400};
-    border-radius: ${theme.borderRadius.buttons};
+    border-radius: ${theme.borderRadius.default};
     box-shadow: 0 0 0px 1000px #fff inset;
     -webkit-box-shadow: 0 0 0px 1000px #fff inset;
     transition: background-color 5000s ease-in-out 0s;

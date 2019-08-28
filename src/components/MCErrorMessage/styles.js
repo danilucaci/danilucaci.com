@@ -28,7 +28,7 @@ export const APIMessageTitle = styled(Copy)`
 export const StatusMessageWrapper = styled.div`
   background-color: ${theme.colors.grey00};
   border: ${rem(2)} solid ${theme.colors.grey800};
-  border-radius: ${theme.borderRadius.buttons};
+  border-radius: ${theme.borderRadius.default};
   color: ${theme.colors.grey800};
 
   display: block;

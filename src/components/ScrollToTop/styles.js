@@ -21,7 +21,7 @@ export const StyledScrollToTop = styled.a`
 
   ${theme.shadow.default};
 
-  border-radius: ${theme.borderRadius.buttons};
+  border-radius: ${theme.borderRadius.button};
   will-change: transform;
 
   &:hover {

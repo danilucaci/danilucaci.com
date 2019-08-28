@@ -53,7 +53,7 @@ export const CopyIcon = styled(Icon)`
 export const CopyTooltip = styled.span`
   background-color: ${theme.colors.grey00};
   border: 1px solid ${theme.colors.grey400};
-  border-radius: ${theme.borderRadius.buttons};
+  border-radius: ${theme.borderRadius.default};
   ${theme.shadow.dropdown};
 
   display: none;

@@ -132,7 +132,7 @@ export const ResumeWrapper = styled.div`
 export const ResumeButton = styled.a`
   background-color: transparent;
   border: 2px solid ${theme.colors.grey400};
-  border-radius: ${theme.borderRadius.buttons};
+  border-radius: ${theme.borderRadius.button};
   color: ${theme.colors.grey800} !important;
   text-align: center;
   text-decoration: none;

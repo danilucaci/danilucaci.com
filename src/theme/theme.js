@@ -306,7 +306,8 @@ export const theme = {
     },
   },
   borderRadius: {
-    buttons: "3px",
+    button: "3px",
+    default: "3px",
   },
   buttonHeight: {
     xl: "3.5rem",

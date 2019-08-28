@@ -16,7 +16,7 @@ export const StyledLoadingCTA = styled.div`
           border: none;
         `}
 
-  border-radius: ${theme.borderRadius.buttons};
+  border-radius: ${theme.borderRadius.default};
 
   text-align: center;
   text-decoration: none;

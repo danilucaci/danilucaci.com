@@ -29,7 +29,7 @@ export const Checkbox = styled(Field)`
     height: ${rem(20)};
     background: ${theme.colors.grey100};
     border: 2px solid ${theme.colors.grey400};
-    border-radius: ${theme.borderRadius.buttons};
+    border-radius: ${theme.borderRadius.default};
   }
 
   /* Box hover */

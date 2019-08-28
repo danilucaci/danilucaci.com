@@ -7,7 +7,7 @@ export const StyledLoadingWrapper = styled.div``;
 export const StyledLoadingCTA = styled.div`
   background-color: ${theme.colors.primary500};
   border: none;
-  border-radius: ${theme.borderRadius.buttons};
+  border-radius: ${theme.borderRadius.default};
   color: ${theme.colors.buttonLight};
 
   text-align: center;
@@ -35,7 +35,7 @@ export const StyledLoadingCTA = styled.div`
 export const StyledErrorCTA = styled(StyledLoadingCTA)`
   background-color: ${theme.colors.grey00};
   border: ${rem(2)} solid ${theme.colors.danger600};
-  border-radius: ${theme.borderRadius.buttons};
+  border-radius: ${theme.borderRadius.default};
   color: ${theme.colors.danger600};
 
   ${theme.shadow.subscribeErrorMessage};

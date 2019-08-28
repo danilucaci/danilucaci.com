@@ -31,7 +31,7 @@ export const StyledLanguageSelector = styled.div`
 export const StyledLanguageDropdown = styled.ul`
   background-color: ${theme.colors.grey00};
   border: 1px solid ${theme.colors.grey400};
-  border-radius: ${theme.borderRadius.buttons};
+  border-radius: ${theme.borderRadius.default};
   ${theme.shadow.dropdown};
 
   display: block;

@@ -4,7 +4,7 @@ import { theme, rem, mediaMin } from "../../theme/theme";
 export const PrimaryButton = styled.button`
   background-color: ${theme.colors.primary600};
   border: none;
-  border-radius: ${theme.borderRadius.buttons};
+  border-radius: ${theme.borderRadius.button};
   color: ${theme.colors.buttonLight};
 
   text-align: center;
@@ -36,7 +36,7 @@ export const PrimaryButton = styled.button`
 export const MainGhostButton = styled.button`
   background-color: transparent;
   border: 2px solid ${theme.colors.primary600};
-  border-radius: ${theme.borderRadius.buttons};
+  border-radius: ${theme.borderRadius.button};
   color: ${theme.colors.primary600};
 
   text-align: center;
@@ -68,7 +68,7 @@ export const MainGhostButton = styled.button`
 export const DarkGhostButton = styled.button`
   background-color: transparent;
   border: 2px solid ${theme.colors.grey400};
-  border-radius: ${theme.borderRadius.buttons};
+  border-radius: ${theme.borderRadius.button};
   color: ${theme.colors.grey800};
 
   text-align: center;
@@ -100,7 +100,7 @@ export const DarkGhostButton = styled.button`
 export const PrimaryButtonSmall = styled.button`
   background-color: ${theme.colors.primary600};
   border: none;
-  border-radius: ${theme.borderRadius.buttons};
+  border-radius: ${theme.borderRadius.button};
   color: ${theme.colors.buttonLight};
 
   text-align: center;
@@ -131,7 +131,7 @@ export const PrimaryButtonSmall = styled.button`
 export const TertiaryButton = styled.button`
   background-color: transparent;
   border: 2px solid ${theme.colors.grey400};
-  border-radius: ${theme.borderRadius.buttons};
+  border-radius: ${theme.borderRadius.button};
   color: ${theme.colors.grey800};
 
   text-align: center;
@@ -161,7 +161,7 @@ export const TertiaryButton = styled.button`
 export const LoadComments = styled.button`
   background-color: ${theme.colors.grey00};
   border: 2px solid ${theme.colors.grey400};
-  border-radius: ${theme.borderRadius.buttons};
+  border-radius: ${theme.borderRadius.button};
   color: ${theme.colors.grey700};
 
   text-align: center;
