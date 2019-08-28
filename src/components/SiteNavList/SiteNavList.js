@@ -7,7 +7,7 @@ import { localePaths } from "../../i18n/i18n";
 
 import { StyledSiteNavList } from "./styles";
 
-const SiteNavList = ({ locale }) => (
+const SiteNavList = ({ locale = "en" }) => (
   <StyledSiteNavList role="menu">
     <FormattedMessage id="site.nav.work">
       {(txt) => (
