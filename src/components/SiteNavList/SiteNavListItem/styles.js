@@ -16,7 +16,7 @@ export const StyledSiteNavListItem = styled.li`
     font-family: ${theme.font.family.body.regular};
   }
 
-  margin-right: ${rem(24)};
+  margin-right: ${rem(16)};
 
   ${mediaMin.s`
     margin-right: ${rem(32)};
