@@ -309,9 +309,24 @@ export const theme = {
     button: "3px",
     default: "3px",
   },
-  buttonHeight: {
-    xl: "3.5rem",
-    s: "2.5rem",
+  size: {
+    button: {
+      height: {
+        default: "3rem",
+      },
+      width: {
+        default: "15rem",
+      },
+    },
+    border: {
+      button: {
+        default: "2px",
+        focus: "2px",
+      },
+      input: "1px",
+      checkbox: "1px",
+      components: "1px",
+    },
   },
   layout: {
     gutter: {

@@ -23,7 +23,7 @@ export const StyledLoadingCTA = styled.div`
   font-weight: 700;
 
   padding: ${rem(10)} ${rem(24)};
-  height: ${theme.buttonHeight.xl};
+  height: ${theme.size.button.height.default};
   margin-top: ${rem(16)};
   width: 100%;
 

@@ -32,7 +32,7 @@ export const StyledInput = styled(Field)`
   }
 
   padding: ${rem(12)} ${rem(16)};
-  height: ${theme.buttonHeight.xl};
+  height: ${theme.size.button.height.default};
   width: 100%;
 
   /* Change Autocomplete styles in Chrome*/

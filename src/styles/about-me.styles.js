@@ -147,7 +147,7 @@ export const ResumeButton = styled.a`
   font-weight: 700;
 
   padding: ${rem(6)} ${rem(16)} ${rem(4)};
-  height: ${theme.buttonHeight.s};
+  height: ${theme.size.button.height.default};
   width: auto;
 
   white-space: nowrap;

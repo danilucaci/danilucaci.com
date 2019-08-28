@@ -24,7 +24,7 @@ export const StyledH1 = styled.h1`
 
 export const Subhead = styled.p`
   font-size: ${theme.font.size.body.subhead};
-  line-height: ${theme.font.lineHeight.body.subheadsubheadSCompact};
+  line-height: ${theme.font.lineHeight.body.subhead};
   margin-bottom: ${rem(32)};
 
   ${mediaMin.s`

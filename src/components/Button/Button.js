@@ -20,7 +20,7 @@ export const PrimaryButton = styled.button`
   font-weight: 700;
 
   padding: ${rem(8)} ${rem(40)};
-  height: ${theme.buttonHeight.xl};
+  height: ${theme.size.button.height.default};
   width: 100%;
 
   white-space: nowrap;
@@ -52,7 +52,7 @@ export const MainGhostButton = styled.button`
   font-weight: 700;
 
   padding: ${rem(8)} ${rem(40)};
-  height: ${theme.buttonHeight.xl};
+  height: ${theme.size.button.height.default};
   width: 100%;
 
   white-space: nowrap;
@@ -84,7 +84,7 @@ export const DarkGhostButton = styled.button`
   font-weight: 700;
 
   padding: ${rem(8)} ${rem(40)};
-  height: ${theme.buttonHeight.xl};
+  height: ${theme.size.button.height.default};
   width: 100%;
 
   white-space: nowrap;
@@ -118,7 +118,7 @@ export const PrimaryButtonSmall = styled.button`
   white-space: nowrap;
 
   padding: ${rem(4)} ${rem(16)};
-  height: ${theme.buttonHeight.s};
+  height: ${theme.size.button.height.default};
 
   &:hover,
   &:focus {
@@ -147,7 +147,7 @@ export const TertiaryButton = styled.button`
 
   white-space: nowrap;
 
-  height: ${theme.buttonHeight.s};
+  height: ${theme.size.button.height.default};
   padding: ${rem(4)} ${rem(16)};
 
   &:hover,
