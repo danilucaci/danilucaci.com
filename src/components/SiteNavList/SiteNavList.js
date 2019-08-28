@@ -36,8 +36,6 @@ const SiteNavList = ({ locale }) => (
 
 SiteNavList.propTypes = {
   locale: string.isRequired,
-  twinPostURL: string.isRequired,
-  currentPath: string.isRequired,
 };
 
 export default SiteNavList;
