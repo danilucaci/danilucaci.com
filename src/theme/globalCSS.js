@@ -54,9 +54,9 @@ ${
   }
 
   ::selection {
-    color: ${theme.colors.grey900} !important;
+    color: ${theme.color.text.default} !important;
     text-shadow: none;
-    background: ${theme.colors.grey00};
+    background: ${theme.color.background.selection.default};
   }
 
   @media screen and (min-device-width: 45em) {
