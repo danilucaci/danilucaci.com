@@ -50,10 +50,10 @@ export const IndexTitle = styled.h1`
   `};
 `;
 
-export const Subhead = styled.p`
+export const Subtitle = styled.p`
   color: ${theme.color.text.subdued};
-  font-size: ${theme.font.size.display.subtitle};
-  line-height: ${theme.font.lineHeight.display.subtitle};
+  font-size: ${theme.font.size.display.mobile.subtitle};
+  line-height: ${theme.font.lineHeight.display.mobile.subtitle};
 
   margin-bottom: ${rem(16)};
 
@@ -65,8 +65,8 @@ export const Subhead = styled.p`
   }
 
   ${mediaMin.s`
-    font-size: ${theme.font.size.display.subtitle};
-    line-height: ${theme.font.lineHeight.display.subtitle};
+    font-size: ${theme.font.size.display.desktop.subtitle};
+    line-height: ${theme.font.lineHeight.display.desktop.subtitle};
   `};
 `;
 

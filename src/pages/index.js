@@ -18,7 +18,7 @@ import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 import {
   IndexHeader,
   IndexTitle,
-  Subhead,
+  Subtitle,
   Name,
   FindOutMore,
   ServicesSection,
@@ -64,8 +64,8 @@ const Index = (props) => {
               <FormattedMessage id="index.h1">
                 {(txt) => <IndexTitle as="h1">{txt}</IndexTitle>}
               </FormattedMessage>
-              <FormattedMessage id="index.subhead">
-                {(txt) => <Subhead>{txt}</Subhead>}
+              <FormattedMessage id="index.subtitle">
+                {(txt) => <Subtitle>{txt}</Subtitle>}
               </FormattedMessage>
               <FindOutMore>
                 <FormattedMessage id="index.findOut.1">
