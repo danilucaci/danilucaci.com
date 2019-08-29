@@ -493,7 +493,7 @@ Para poder hacerlo, añadí un botón, el cual, cuando se hacía click, ejecutar
 ```jsx
 <LoadMore onClick={loadMorePosts}>
   {!isLoadingMore && <LoadMoreLabel>Cargar más...</LoadMoreLabel>}
-  {isLoadingMore && <Spinner dark />}
+  {isLoadingMore && <Spinner />}
 </LoadMore>
 ```
 
@@ -600,7 +600,7 @@ function DribbblePosts() {
         placeholderArr.map((i) => <DribbblePostPlaceholder key={i} />)}
       <LoadMore onClick={loadMorePosts}>
         {!isLoadingMore && <LoadMoreLabel>Cargar más...</LoadMoreLabel>}
-        {isLoadingMore && <Spinner dark />}
+        {isLoadingMore && <Spinner />}
       </LoadMore>
     </DribbblePostsWrapper>
   );
@@ -666,7 +666,7 @@ function DribbblePosts({ locale }) {
         {!isLoading && !isLoadingMore && (
           <LoadMoreLabel>Cargar más...</LoadMoreLabel>
         )}
-        {(isLoading || isLoadingMore) && <Spinner dark />}
+        {(isLoading || isLoadingMore) && <Spinner />}
       </StyledLoadMore>
     </DribbblePostsWrapper>
   );

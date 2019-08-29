@@ -197,7 +197,7 @@ El componente `<EmailLoading ... />` simplemente devuelve un indicador del estad
 
 ```jsx
 {showFormLoading ? (
-    <Spinner locale={locale} />
+    <Spinner />
   ) : (
     <React.Fragment>
       {FORM_SUBMIT_STATUS.cta[locale]}
@@ -324,7 +324,7 @@ function ContactForm({ locale }) {
   function encode(data) {
     return Object.keys(data)
       .map(
-        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]),
       )
       .join("&");
   }

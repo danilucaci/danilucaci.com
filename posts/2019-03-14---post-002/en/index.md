@@ -482,7 +482,7 @@ In order to load more shots, I added a button that, when clicked, would trigger 
 ```jsx
 <LoadMore onClick={loadMorePosts}>
   {!isLoadingMore && <LoadMoreLabel>Load More...</LoadMoreLabel>}
-  {isLoadingMore && <Spinner dark />}
+  {isLoadingMore && <Spinner />}
 </LoadMore>
 ```
 
@@ -589,7 +589,7 @@ function DribbblePosts() {
         placeholderArr.map((i) => <DribbblePostPlaceholder key={i} />)}
       <LoadMore onClick={loadMorePosts}>
         {!isLoadingMore && <LoadMoreLabel>Load More...</LoadMoreLabel>}
-        {isLoadingMore && <Spinner dark />}
+        {isLoadingMore && <Spinner />}
       </LoadMore>
     </DribbblePostsWrapper>
   );
@@ -655,7 +655,7 @@ function DribbblePosts({ locale }) {
         {!isLoading && !isLoadingMore && (
           <LoadMoreLabel>Load More...</LoadMoreLabel>
         )}
-        {(isLoading || isLoadingMore) && <Spinner dark />}
+        {(isLoading || isLoadingMore) && <Spinner />}
       </StyledLoadMore>
     </DribbblePostsWrapper>
   );
