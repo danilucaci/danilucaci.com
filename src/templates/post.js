@@ -23,12 +23,7 @@ import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 
 import AuthorCard from "../components/AuthorCard/AuthorCard";
 import SubscribeCard from "../components/SubscribeCard/SubscribeCard";
-import {
-  handleScrollLine,
-  textPassiveEventSupport,
-  copyURL,
-  addCopyButtonsToCodeNodes,
-} from "../helpers/helpers";
+import { copyURL, addCopyButtonsToCodeNodes } from "../helpers/helpers";
 
 import { localePaths, COPY_URL_MESSAGES } from "../i18n/i18n";
 import {
@@ -46,7 +41,6 @@ import {
   StyledLoadComments,
   LoadCommentsIcon,
   LoadCommentsLabel,
-  BottomHR,
 } from "../styles/post.styles";
 
 class Post extends Component {
@@ -59,24 +53,9 @@ class Post extends Component {
     copyURLButton.addEventListener("click", copyURL);
     copyURLButton.textContent = `${COPY_URL_MESSAGES[this.props.pageContext.locale].default}`;
 
-    // Test via a getter in the options object to see if the passive property is accessed
-    // https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#feature-detection
-    const supportsPassive = textPassiveEventSupport();
-    // Use our detect's results. passive applied if supported, capture will be false either way.
-    window.addEventListener(
-      "scroll",
-      handleScrollLine,
-      supportsPassive ? { passive: true } : false,
-    );
-
     addCopyButtonsToCodeNodes(this.props.pageContext.locale);
-    handleScrollLine();
 
     this.removeAnchorsFromTabIndex();
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("scroll", handleScrollLine);
   }
 
   removeHeaderTabIndex = (arr) => {
@@ -141,7 +120,6 @@ class Post extends Component {
             currentPath={this.props.location.pathname}
           />
           <SiteHeader
-            showScrollIndicator
             locale={locale}
             twinPostURL={twinPostURL}
             currentPath={this.props.location.pathname}

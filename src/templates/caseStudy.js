@@ -15,8 +15,6 @@ import AuthorCard from "../components/AuthorCard/AuthorCard";
 import ContactCard from "../components/ContactCard/ContactCard";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 
-import { calculateScroll, textPassiveEventSupport } from "../helpers/helpers";
-
 import {
   ArticleWrapper,
   StyledHeader,
@@ -31,29 +29,6 @@ import {
 class CaseStudy extends Component {
   state = {
     didLoad: false,
-  };
-
-  componentDidMount() {
-    // Test via a getter in the options object to see if the passive property is accessed
-    // https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#feature-detection
-    const supportsPassive = textPassiveEventSupport();
-    // Use our detect's results. passive applied if supported, capture will be false either way.
-    window.addEventListener(
-      "scroll",
-      this.handlePageScroll,
-      supportsPassive ? { passive: true } : false,
-    );
-
-    this.handlePageScroll();
-    // this.removeAnchorsFromTabIndex();
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this.handlePageScroll);
-  }
-
-  handlePageScroll = () => {
-    this.handleScrollLine();
   };
 
   // removeHeaderTabIndex = (arr) => {
@@ -74,12 +49,6 @@ class CaseStudy extends Component {
   //   this.removeHeaderTabIndex(h4s);
   //   this.removeHeaderTabIndex(h5s);
   // };
-
-  handleScrollLine = () => {
-    const scrollLine = document.querySelector(".js-scrollLine");
-    const scrolled = calculateScroll();
-    scrollLine.style.width = scrolled + "%";
-  };
 
   render() {
     const postNode = this.props.data.mdx;
@@ -113,7 +82,6 @@ class CaseStudy extends Component {
           />
           <SiteHeader
             twinPostURL={twinPostURL}
-            showScrollIndicator
             locale={locale}
             currentPath={this.props.location.pathname}
           />
@@ -160,7 +128,7 @@ class CaseStudy extends Component {
           <SiteFooter
             locale={locale}
             twinPostURL={twinPostURL}
-            currentPath={props.location.pathname}
+            currentPath={this.props.location.pathname}
           />
         </Layout>
       </ErrorBoundary>

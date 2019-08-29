@@ -3,16 +3,9 @@ import { string, bool } from "prop-types";
 
 import SiteNav from "../SiteNav/SiteNav";
 
-import { StyledSiteHeaderWrapper, ScrollContainer, ScrollLine } from "./styles";
+import { StyledSiteHeaderWrapper } from "./styles";
 
-function SiteHeader({
-  showScrollIndicator,
-  locale,
-  twinPostURL,
-  currentPath,
-  expand,
-}) {
-  let shouldRenderScroll = showScrollIndicator;
+function SiteHeader({ locale, twinPostURL, currentPath, expand }) {
   return (
     <StyledSiteHeaderWrapper role="banner">
       <SiteNav
@@ -21,11 +14,6 @@ function SiteHeader({
         currentPath={currentPath}
         expand={expand}
       />
-      {shouldRenderScroll && (
-        <ScrollContainer showScrollIndicator={showScrollIndicator}>
-          <ScrollLine className="js-scrollLine" />
-        </ScrollContainer>
-      )}
     </StyledSiteHeaderWrapper>
   );
 }
@@ -34,12 +22,10 @@ SiteHeader.propTypes = {
   locale: string.isRequired,
   twinPostURL: string.isRequired,
   currentPath: string.isRequired,
-  showScrollIndicator: bool,
   expand: bool,
 };
 
 SiteHeader.defaultProps = {
-  showScrollIndicator: false,
   expand: false,
 };
 
