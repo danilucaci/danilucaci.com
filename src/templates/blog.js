@@ -8,20 +8,21 @@ import Layout from "../components/Layout";
 import SiteHeader from "../components/SiteHeader/SiteHeader";
 import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
-import PostListing from "../components/PostListing/PostListing";
 import Tags from "../components/Tags/Tags";
 import Pagination from "../components/Pagination/Pagination";
-import { SectionHeader } from "../components/Headings/Headings";
+import Article from "../components/Article/Article";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
-import useLightBackground from "../hooks/useLightBackground";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
-
+import { GridCol } from "../components/Grid/Grid";
 import { localePaths } from "../i18n/i18n";
 
 import {
-  BlogWrapper,
   BlogHeader,
+  PageBackground,
   BlogTitle,
+  PostsBackground,
+  PostsRow,
+  TagsTitle,
   TagsWrapper,
 } from "../styles/blog.styles";
 
@@ -53,7 +54,13 @@ function BlogPage(props) {
     twinPostURL = localePaths["en"].blog;
   }
 
-  useLightBackground();
+  const postsList = edges.map((edge) => ({
+    slug: edge.fields.slug,
+    tags: edge.frontmatter.tags,
+    title: edge.frontmatter.title,
+    date: edge.frontmatter.date,
+    timeToRead: edge.timeToRead,
+  }));
 
   return (
     <ErrorBoundary>
@@ -66,37 +73,55 @@ function BlogPage(props) {
           prevPath={prevPath}
           nextPath={nextPath}
         />
-        <SiteHeader
-          twinPostURL={twinPostURL}
-          locale={locale}
-          currentPath={props.location.pathname}
-        />
-        <Main role="main">
-          <BlogWrapper>
-            <BlogHeader>
-              <FormattedMessage id="blog.title">
-                {(txt) => <BlogTitle as="h1">{txt}</BlogTitle>}
-              </FormattedMessage>
-              <TagsWrapper>
-                <FormattedMessage id="blog.explore">
-                  {(txt) => <SectionHeader>{txt}</SectionHeader>}
+        <PageBackground>
+          <SiteHeader
+            twinPostURL={twinPostURL}
+            locale={locale}
+            currentPath={props.location.pathname}
+          />
+          <Main role="main">
+            <BlogHeader as="header">
+              <GridCol>
+                <FormattedMessage id="blog.title">
+                  {(txt) => <BlogTitle as="h1">{txt}</BlogTitle>}
                 </FormattedMessage>
-                <Tags tags={allTags} />
-              </TagsWrapper>
+                <TagsWrapper>
+                  <FormattedMessage id="blog.explore">
+                    {(txt) => <TagsTitle>{txt}</TagsTitle>}
+                  </FormattedMessage>
+                  <Tags tags={allTags} />
+                </TagsWrapper>
+              </GridCol>
             </BlogHeader>
-            <PostListing edges={edges} />
-            {totalPagesInBlog > 1 && (
-              <Pagination
-                currentPage={currentPage}
-                totalPages={totalPagesInBlog}
-                paginationPathPrefix={paginationPathPrefix}
-                prevPath={prevPath}
-                nextPath={nextPath}
-                locale={locale}
-              />
-            )}
-          </BlogWrapper>
-        </Main>
+            <PostsBackground>
+              <PostsRow as="div">
+                <GridCol>
+                  {postsList.map((post) => (
+                    <Article
+                      key={post.title}
+                      slug={post.slug}
+                      tags={post.tags}
+                      title={post.title}
+                      date={post.date}
+                      timeToRead={post.timeToRead}
+                    />
+                  ))}
+                  {totalPagesInBlog > 1 && (
+                    <Pagination
+                      currentPage={currentPage}
+                      totalPages={totalPagesInBlog}
+                      paginationPathPrefix={paginationPathPrefix}
+                      prevPath={prevPath}
+                      nextPath={nextPath}
+                      locale={locale}
+                    />
+                  )}
+                </GridCol>
+              </PostsRow>
+            </PostsBackground>
+          </Main>
+        </PageBackground>
+
         <SiteFooter
           locale={locale}
           twinPostURL={twinPostURL}

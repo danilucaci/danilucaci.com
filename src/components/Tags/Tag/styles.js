@@ -5,29 +5,41 @@ import LocaleLink from "../../LocaleLink/LocaleLink";
 
 export const StyledTag = styled(LocaleLink)`
   display: inline-block;
-  color: ${theme.colors.grey700};
+  color: ${theme.color.text.subdued};
+  text-transform: uppercase;
+  font-size: ${theme.font.size.body.subhead};
+  line-height: ${theme.font.lineHeight.body.subhead};
+  letter-spacing: ${theme.font.letterSpacing.body.subhead};
 
-  text-decoration: underline;
+  font-weight: 700;
+  font-style: normal;
 
-  font-size: ${theme.font.size.body.s};
-  line-height: ${theme.font.size.body.s};
-
-  margin-right: ${rem(24)};
-  margin-top: ${rem(8)};
-  margin-bottom: ${rem(8)};
-
-  &:visited,
-  &:link {
-    color: ${theme.colors.grey700};
+  .fonts-loaded & {
+    font-family: ${theme.font.family.body.bold};
   }
 
-  &:hover {
-    color: ${theme.colors.grey900};
-    background-color: transparent;
-    cursor: pointer;
-  }
+  margin-right: ${rem(16)};
+  margin-top: ${rem(4)};
+  margin-bottom: ${rem(4)};
 
   &:before {
     content: "#";
+  }
+
+  &:visited,
+  &:link {
+    color: ${theme.color.text.subdued};
+  }
+
+  &:hover {
+    background-color: ${theme.color.background.link.grey};
+    color: ${theme.color.text.link.grey.hover};
+    cursor: pointer;
+  }
+
+  &:active {
+    background-color: ${theme.color.background.link.grey};
+    color: ${theme.color.text.link.grey.active};
+    cursor: pointer;
   }
 `;

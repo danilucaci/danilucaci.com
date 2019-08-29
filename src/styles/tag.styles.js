@@ -1,48 +1,62 @@
 import styled from "styled-components";
 import { theme, mediaMin, rem } from "../theme/theme";
 import { GridRow } from "../components/Grid/Grid";
+import { Subhead } from "../components/Headings/Headings";
 
-export const TagWrapper = styled(GridRow)`
+export const PageBackground = styled.div`
+  background-color: ${theme.color.background.section.lightest};
+`;
+
+export const TagHeader = styled(GridRow)`
   max-width: ${theme.layout.col8.wrapper};
 
-  margin-bottom: ${theme.spacing.row.s};
+  padding-bottom: ${theme.spacing.row.s};
 
   ${mediaMin.m`
-    margin-bottom: ${theme.spacing.row.m};
+    padding-bottom: ${theme.spacing.row.m};
   `};
 
   ${mediaMin.l`
-    margin-bottom: ${theme.spacing.row.xl};
+    padding-bottom: ${theme.spacing.row.xl};
   `};
 
   /* Mobile in ladscape */
   @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(
       280,
     )}) and (max-height: ${rem(560)}) and (orientation: landscape) {
-    margin-bottom: ${rem(64)};
+    padding-bottom: ${rem(64)};
   }
 `;
 
-export const TagHeader = styled.header`
-  margin-bottom: ${theme.spacing.components.s};
+export const PostsBackground = styled.section`
+  background-color: white;
+`;
+
+export const PostsRow = styled(GridRow)`
+  max-width: ${theme.layout.col8.wrapper};
+  margin-left: auto;
+  margin-right: auto;
+
+  padding-top: ${rem(24)};
+  padding-bottom: ${theme.spacing.row.s};
 
   ${mediaMin.m`
-    margin-bottom: ${theme.spacing.components.m};
+    padding-top: ${rem(40)};
+    padding-bottom: ${theme.spacing.row.m};
   `};
-
   ${mediaMin.l`
-    margin-bottom: ${theme.spacing.components.xl};
+    padding-bottom: ${theme.spacing.row.xl};
   `};
 
   /* Mobile in ladscape */
   @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(
       280,
     )}) and (max-height: ${rem(560)}) and (orientation: landscape) {
-    margin-bottom: ${rem(64)};
+    padding-bottom: ${rem(64)};
   }
 `;
 
-export const TagTitleWrapper = styled.div`
+export const TagFoundWrapper = styled.div`
   display: inline-block;
   vertical-align: top;
   width: 100%;
@@ -53,7 +67,7 @@ export const TagTitleWrapper = styled.div`
   `};
 `;
 
-export const TagTitle = styled.span`
+export const TagFoundTitle = styled.span`
   color: ${theme.colors.grey900};
   display: block;
 
@@ -81,4 +95,8 @@ export const OtherTagsWrapper = styled.div`
     margin-left: ${rem(12)};
     width: calc(58% - ${rem(12)});
   `};
+`;
+
+export const TagsSubhead = styled(Subhead)`
+  margin-bottom: ${rem(8)};
 `;

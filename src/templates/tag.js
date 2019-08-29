@@ -8,22 +8,22 @@ import Layout from "../components/Layout";
 import SiteHeader from "../components/SiteHeader/SiteHeader";
 import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
-import PostListing from "../components/PostListing/PostListing";
 import Tags from "../components/Tags/Tags";
+import Article from "../components/Article/Article";
 import Pagination from "../components/Pagination/Pagination";
-import { SectionHeader } from "../components/Headings/Headings";
 import { GridCol } from "../components/Grid/Grid";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
-import useLightBackground from "../hooks/useLightBackground";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
-
 import { localePaths } from "../i18n/i18n";
 
 import {
-  TagWrapper,
   TagHeader,
-  TagTitleWrapper,
-  TagTitle,
+  PageBackground,
+  PostsBackground,
+  PostsRow,
+  TagFoundWrapper,
+  TagFoundTitle,
+  TagsSubhead,
   OtherTagsWrapper,
 } from "../styles/tag.styles";
 
@@ -65,7 +65,13 @@ const TagPage = (props) => {
     ).slice(4);
   }
 
-  useLightBackground();
+  const postsList = edges.map((edge) => ({
+    slug: edge.fields.slug,
+    tags: edge.frontmatter.tags,
+    title: edge.frontmatter.title,
+    date: edge.frontmatter.date,
+    timeToRead: edge.timeToRead,
+  }));
 
   return (
     <ErrorBoundary>
@@ -76,44 +82,59 @@ const TagPage = (props) => {
           currentPage="tags"
           currentPath={props.location.pathname}
         />
-        <SiteHeader
-          locale={locale}
-          twinPostURL={twinPostURL}
-          currentPath={props.location.pathname}
-        />
-        <Main role="main">
-          <TagWrapper>
-            <GridCol>
-              <TagHeader>
-                <TagTitleWrapper>
+        <PageBackground>
+          <SiteHeader
+            locale={locale}
+            twinPostURL={twinPostURL}
+            currentPath={props.location.pathname}
+          />
+          <Main role="main">
+            <TagHeader as="header">
+              <GridCol>
+                <TagFoundWrapper>
                   <h1>
                     <FormattedMessage id="tag.listing.header">
-                      {(txt) => <SectionHeader>{txt}</SectionHeader>}
+                      {(txt) => <TagsSubhead as="span">{txt}</TagsSubhead>}
                     </FormattedMessage>
-                    <TagTitle>#{tag}</TagTitle>
+                    <TagFoundTitle>#{tag}</TagFoundTitle>
                   </h1>
-                </TagTitleWrapper>
+                </TagFoundWrapper>
                 <OtherTagsWrapper>
                   <FormattedMessage id="tag.listing.other">
-                    {(txt) => <SectionHeader>{txt}</SectionHeader>}
+                    {(txt) => <TagsSubhead>{txt}</TagsSubhead>}
                   </FormattedMessage>
                   <Tags tags={allTags} />
                 </OtherTagsWrapper>
-              </TagHeader>
-              <PostListing edges={edges} />
-              {totalPagesInBlog > 1 && (
-                <Pagination
-                  currentPage={currentPage}
-                  totalPages={totalPagesInBlog}
-                  paginationPathPrefix={paginationPathPrefix}
-                  prevPath={prevPath}
-                  nextPath={nextPath}
-                  locale={locale}
-                />
-              )}
-            </GridCol>
-          </TagWrapper>
-        </Main>
+              </GridCol>
+            </TagHeader>
+            <PostsBackground>
+              <PostsRow as="div">
+                <GridCol>
+                  {postsList.map((post) => (
+                    <Article
+                      key={post.title}
+                      slug={post.slug}
+                      tags={post.tags}
+                      title={post.title}
+                      date={post.date}
+                      timeToRead={post.timeToRead}
+                    />
+                  ))}
+                  {totalPagesInBlog > 1 && (
+                    <Pagination
+                      currentPage={currentPage}
+                      totalPages={totalPagesInBlog}
+                      paginationPathPrefix={paginationPathPrefix}
+                      prevPath={prevPath}
+                      nextPath={nextPath}
+                      locale={locale}
+                    />
+                  )}
+                </GridCol>
+              </PostsRow>
+            </PostsBackground>
+          </Main>
+        </PageBackground>
         <SiteFooter
           locale={locale}
           twinPostURL={twinPostURL}

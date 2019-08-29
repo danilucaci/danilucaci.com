@@ -1,13 +1,13 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { string } from "prop-types";
 
 import { StyledTag } from "./styles";
 
-const Tag = (props) => <StyledTag to={props.link}>{props.label}</StyledTag>;
+const Tag = ({ link, label }) => <StyledTag to={link}>{label}</StyledTag>;
 
 Tag.propTypes = {
-  link: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
+  link: string.isRequired,
+  label: string.isRequired,
 };
 
 export default Tag;

@@ -1,20 +1,22 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { arrayOf, string } from "prop-types";
 
 import Tag from "./Tag/Tag";
 import { TagsWrapper } from "./styles";
 
-const Tags = (props) => {
-  let tags = props.tags;
+const Tags = ({ tags }) => {
   return (
     <TagsWrapper>
-      {tags && tags.map((tag) => <Tag key={tag} link={`/blog/tags/${tag}`} label={tag} />)}
+      {tags &&
+        tags.map((tag) => (
+          <Tag key={tag} link={`/blog/tags/${tag}`} label={tag} />
+        ))}
     </TagsWrapper>
   );
 };
 
 Tags.propTypes = {
-  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+  tags: arrayOf(string).isRequired,
 };
 
 export default Tags;

@@ -292,6 +292,7 @@ export const theme = {
           h4: "1.125rem",
           h5: "1.125rem",
           subtitle: "1.25rem",
+          articleTitle: "2rem",
         },
         mobile: {
           h1: "2rem",
@@ -300,6 +301,7 @@ export const theme = {
           h4: "1.125rem",
           h5: "1.125rem",
           subtitle: "1.125rem",
+          articleTitle: "1.5rem",
         },
       },
       body: {
@@ -320,6 +322,7 @@ export const theme = {
           h4: "2rem",
           h5: "2rem",
           subtitle: "2rem",
+          articleTitle: "2.5rem",
         },
         mobile: {
           h1: "2.5rem",
@@ -328,6 +331,7 @@ export const theme = {
           h4: "2rem",
           h5: "2rem",
           subtitle: "2rem",
+          articleTitle: "2rem",
         },
       },
       body: {

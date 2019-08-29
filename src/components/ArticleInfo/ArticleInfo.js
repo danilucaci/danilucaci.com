@@ -1,21 +1,34 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { number, string } from "prop-types";
+import { FormattedMessage, FormattedDate } from "react-intl";
 
-import ReadTime from "../ReadTime/ReadTime";
-import ArticleDate from "../ArticleDate/ArticleDate";
+import { ArticleDate, ArticleReadtime, Dot } from "./styles";
 
-const ArticleInfo = (props) => {
+const ArticleInfo = ({ date, timeToRead }) => {
   return (
-    <div>
-      <ArticleDate date={props.date} />
-      <ReadTime timeToRead={props.timeToRead} />
-    </div>
+    <>
+      <FormattedDate value={date} year="numeric" month="short" day="numeric">
+        {(txt) => (
+          <ArticleDate as="time" dateTime={txt} small>
+            {txt}
+          </ArticleDate>
+        )}
+      </FormattedDate>
+      <Dot small>•</Dot>
+      <FormattedMessage id="article.read.time">
+        {(txt) => (
+          <ArticleReadtime as="span" small>
+            {timeToRead} {txt}
+          </ArticleReadtime>
+        )}
+      </FormattedMessage>
+    </>
   );
 };
 
 ArticleInfo.propTypes = {
-  date: PropTypes.string.isRequired,
-  timeToRead: PropTypes.number.isRequired,
+  date: string.isRequired,
+  timeToRead: number.isRequired,
 };
 
 export default ArticleInfo;
