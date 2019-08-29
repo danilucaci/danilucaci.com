@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { theme } from "../../theme/theme";
 
-export const HR = styled.span`
+export const HR = styled.hr`
   display: block;
-  border: 1px solid ${theme.colors.grey200};
+  border: none;
+  border-top: 1px solid ${theme.color.divider.onWhite};
 `;
