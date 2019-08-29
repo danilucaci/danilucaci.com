@@ -4,7 +4,7 @@ import { theme, mediaMin, rem } from "./theme";
 const GlobalCSS = createGlobalStyle`
   html {
     background-color: #FFFFFF;
-    color: ${theme.colors.grey800};
+    color: ${theme.color.text.default};
     font-family: ${theme.font.family.body.fallback};
     font-size: 16px;
     line-height: 24px;
