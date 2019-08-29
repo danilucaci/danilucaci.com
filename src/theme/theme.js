@@ -85,9 +85,16 @@ export const theme = {
         },
       },
       link: {
-        enabled: COLORS.primary600,
-        hover: COLORS.primary600,
-        active: COLORS.primary700,
+        primary: {
+          enabled: COLORS.primary600,
+          hover: COLORS.primary500,
+          active: COLORS.primary700,
+        },
+        grey: {
+          enabled: COLORS.grey900,
+          hover: COLORS.grey800,
+          active: COLORS.grey900,
+        },
       },
     },
     background: {
@@ -119,7 +126,13 @@ export const theme = {
         focus: COLORS.grey50,
         disabled: COLORS.grey500,
       },
-      link: COLORS.primary50,
+      link: {
+        primary: COLORS.primary50,
+        grey: COLORS.grey100,
+      },
+      selection: {
+        default: COLORS.grey200,
+      },
       error: COLORS.danger50,
       success: COLORS.success50,
       footer: COLORS.grey50,

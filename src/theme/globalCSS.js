@@ -307,23 +307,27 @@ ${
   }
 
   a {
-    color: ${theme.colors.primary600};
+    color: ${theme.color.text.link.primary.enabled};
     text-decoration: underline;
-    font-size: ${theme.font.size.body.m};
-    line-height: ${theme.font.lineHeight.body.m};
-    
-    a,
+    font-style: normal;
+    font-weight: 400;
+
     &:visited,
     &:link {
-      color: ${theme.colors.primary600};
+      color: ${theme.color.text.link.primary.enabled};
     }
-
 
     &:hover {
+      background-color: ${theme.color.background.link.primary};
+      color: ${theme.color.text.link.primary.hover};
       cursor: pointer;
-      background-color: ${theme.colors.primary100};
     }
 
+    &:active {
+      background-color: ${theme.color.background.link.primary};
+      color: ${theme.color.text.link.primary.active};
+      cursor: pointer;
+    }
   }
 
   pre,

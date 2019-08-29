@@ -1,24 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { StyledExternalLink } from "./styles";
+import { StyledExternalGreyLink } from "./styles";
 
-function ExternalLink({ href, children, ...props }) {
+function ExternalGreyLink({ href, children, ...props }) {
   return (
-    <StyledExternalLink
+    <StyledExternalGreyLink
       href={href}
       target="_blank"
       rel="noopener noreferrer"
       {...props}
     >
       {children}
-    </StyledExternalLink>
+    </StyledExternalGreyLink>
   );
 }
 
-ExternalLink.propTypes = {
+ExternalGreyLink.propTypes = {
   href: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
 };
 
-export default ExternalLink;
+export default ExternalGreyLink;
