@@ -1,11 +1,13 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { node } from "prop-types";
 
 import { StyledSecondaryButton } from "./styles";
 
-function SecondaryButton({ children, ...props }) {
-  return <StyledSecondaryButton {...props}>{children}</StyledSecondaryButton>;
-}
+const SecondaryButton = forwardRef(({ children, ...props }, ref) => (
+  <StyledSecondaryButton ref={ref} {...props}>
+    {children}
+  </StyledSecondaryButton>
+));
 
 SecondaryButton.propTypes = {
   children: node.isRequired,
