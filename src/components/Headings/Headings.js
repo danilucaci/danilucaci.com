@@ -32,3 +32,19 @@ export const SectionHeader = styled.span`
     letter-spacing: ${theme.font.letterSpacing.body.subhead};
   `}
 `;
+
+export const Subhead = styled.h4`
+  color: ${theme.color.text.subdued};
+  display: block;
+  text-transform: uppercase;
+  font-size: ${theme.font.size.body.subhead};
+  line-height: ${theme.font.lineHeight.body.subhead};
+  letter-spacing: ${theme.font.letterSpacing.body.subhead};
+
+  font-weight: 700;
+  font-style: normal;
+
+  .fonts-loaded & {
+    font-family: ${theme.font.family.body.bold};
+  }
+`;
