@@ -55,6 +55,7 @@ function WorkPage(props) {
           locale={locale}
           twinPostURL={twinPostURL}
           currentPath={props.location.pathname}
+          expand
         />
         <Main role="main">
           <CaseStudies edges={edgesWork} />

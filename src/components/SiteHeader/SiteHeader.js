@@ -5,7 +5,13 @@ import SiteNav from "../SiteNav/SiteNav";
 
 import { StyledSiteHeaderWrapper, ScrollContainer, ScrollLine } from "./styles";
 
-function SiteHeader({ showScrollIndicator, locale, twinPostURL, currentPath }) {
+function SiteHeader({
+  showScrollIndicator,
+  locale,
+  twinPostURL,
+  currentPath,
+  expand,
+}) {
   let shouldRenderScroll = showScrollIndicator;
   return (
     <StyledSiteHeaderWrapper role="banner">
@@ -13,6 +19,7 @@ function SiteHeader({ showScrollIndicator, locale, twinPostURL, currentPath }) {
         locale={locale}
         twinPostURL={twinPostURL}
         currentPath={currentPath}
+        expand={expand}
       />
       {shouldRenderScroll && (
         <ScrollContainer showScrollIndicator={showScrollIndicator}>
@@ -28,10 +35,12 @@ SiteHeader.propTypes = {
   twinPostURL: string.isRequired,
   currentPath: string.isRequired,
   showScrollIndicator: bool,
+  expand: bool,
 };
 
 SiteHeader.defaultProps = {
   showScrollIndicator: false,
+  expand: false,
 };
 
 export default SiteHeader;

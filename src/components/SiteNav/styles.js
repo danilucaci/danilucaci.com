@@ -14,11 +14,18 @@ export const StyledSiteNav = styled.nav`
     }
   }
 
+  max-width: ${theme.layout.col10.wrapper};
+
+  ${(props) =>
+    props.expand &&
+    `
+    max-width: ${theme.layout.col12.wrapper};
+  `}
+
   ${mediaMin.s`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: ${theme.layout.col10.wrapper};
     margin-left: auto;
     margin-right: auto;
     padding: ${rem(16)} ${theme.layout.gutter.m} ${rem(16)} ${
