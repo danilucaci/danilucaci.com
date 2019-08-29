@@ -166,6 +166,10 @@ export const theme = {
       error: COLORS.danger800,
       success: COLORS.success600,
     },
+    divider: {
+      onWhite: COLORS.grey200,
+      onGrey: COLORS.grey400,
+    },
   },
   shadow: {
     default:

@@ -218,7 +218,7 @@ ${
   p,
   ul,
   ol {
-    color: ${theme.colors.grey800};
+    color: ${theme.color.text.default};
     font-weight: 400;
     font-style: normal;
     font-size: ${theme.font.size.body.m};
@@ -247,7 +247,7 @@ ${
   }
 
   strong, b {
-    color: ${theme.colors.grey800};
+    color: ${theme.color.text.default};
     font-weight: 700;
     font-style: normal;
     font-size: ${theme.font.size.body.m};
@@ -259,7 +259,7 @@ ${
   }
 
   em {
-    color: ${theme.colors.grey800};
+    color: ${theme.color.text.default};
     font-weight: 400;
     font-style: italic;
     font-size: ${theme.font.size.body.m};
