@@ -71,7 +71,6 @@ ${
   }
 
   h1 {
-    color: ${theme.colors.grey900};
     font-weight: 700;
     font-style: normal;
 
@@ -93,7 +92,6 @@ ${
   }
   
   h2 {
-    color: ${theme.colors.grey900};
     font-weight: 700;
     font-style: normal;
     font-size: ${theme.font.size.display.mobile.h2};
@@ -116,7 +114,6 @@ ${
   }
 
   h3 {
-    color: ${theme.colors.grey900};
     font-weight: 700;
     font-style: normal;
     font-size: ${theme.font.size.display.mobile.h3};
@@ -139,7 +136,6 @@ ${
   }
 
   h4 {
-    color: ${theme.colors.grey900};
     font-weight: 700;
     font-style: normal;
     font-size: ${theme.font.size.display.desktop.h4};
@@ -153,26 +149,25 @@ ${
   }
 
   h5 {
-    color: ${theme.colors.grey700};
-    display: block;
-    text-transform: uppercase;
-    font-size: ${theme.font.size.body.subhead};
-    line-height: ${theme.font.lineHeight.body.subhead};
-    letter-spacing: ${theme.font.letterSpacing.body.subhead};
     font-weight: 700;
     font-style: normal;
+    font-size: ${theme.font.size.display.mobile.h5};
+
+    ${mediaMin.xs`
+      font-size: ${theme.font.size.display.desktop.h5};
+    `}
+
+    line-height: ${theme.font.lineHeight.display.mobile.h5};
+
+    ${mediaMin.xs`
+      line-height: ${theme.font.lineHeight.display.desktop.h5};
+    `}
 
     font-family: ${theme.font.family.display.fallback};
 
     .fonts-loaded & {
       font-family: ${theme.font.family.display.bold};
     }
-
-    ${mediaMin.s`
-      font-size: ${theme.font.size.body.subhead};
-      line-height: ${theme.font.lineHeight.body.subhead};
-      letter-spacing: ${theme.font.letterSpacing.body.subhead};
-    `}
   }
   
   h2,
