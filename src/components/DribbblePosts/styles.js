@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { theme, mediaMin, rem } from "../../theme/theme";
-import { LoadComments } from "../Button/Button";
+import OutlinedButton from "../OutlinedButton/OutlinedButton";
 
 export const Title = styled.h1`
   font-size: ${theme.font.size.display.mobile.h1};
@@ -31,16 +31,16 @@ export const ErrorMessage = styled.p`
   }
 `;
 
-export const StyledLoadMore = styled(LoadComments)`
+export const StyledLoadMore = styled(OutlinedButton)`
   margin-left: auto;
   margin-right: auto;
   display: block;
 
+  width: 100%;
+  margin-top: ${rem(40)};
+
   ${mediaMin.s`
+    width: ${rem(288)};
     margin-top: ${rem(64)};
   `};
-`;
-
-export const LoadMoreLabel = styled.span`
-  display: inline-block;
 `;

@@ -156,7 +156,7 @@ export const theme = {
         disabled: COLORS.grey500,
       },
       outlined: {
-        enabled: COLORS.grey400,
+        enabled: COLORS.grey300,
         focus: COLORS.grey900,
         hover: COLORS.grey400,
         active: COLORS.grey400,
@@ -181,6 +181,7 @@ export const theme = {
       disabled: COLORS.grey500,
       error: COLORS.danger800,
       success: COLORS.success600,
+      light: COLORS.grey00,
     },
     divider: {
       onWhite: COLORS.grey200,
@@ -365,6 +366,9 @@ export const theme = {
       input: "1px",
       checkbox: "1px",
       components: "1px",
+    },
+    icon: {
+      default: "1.5rem",
     },
   },
   layout: {

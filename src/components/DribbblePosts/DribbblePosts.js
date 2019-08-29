@@ -13,7 +13,6 @@ import {
   ErrorMessageWrapper,
   ErrorMessage,
   StyledLoadMore,
-  LoadMoreLabel,
 } from "./styles";
 
 function DribbblePosts() {
@@ -95,10 +94,10 @@ function DribbblePosts() {
           >
             {!isLoading && !isLoadingMore && (
               <FormattedMessage id="dribbble.load.more">
-                {(txt) => <LoadMoreLabel>{txt}</LoadMoreLabel>}
+                {(txt) => <>{txt}</>}
               </FormattedMessage>
             )}
-            {(isLoading || isLoadingMore) && <Spinner dark />}
+            {(isLoading || isLoadingMore) && <Spinner />}
           </StyledLoadMore>
         )}
       </GridCol>

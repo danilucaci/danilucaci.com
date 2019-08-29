@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import { Icon } from "../Icon/Icon";
 
-import { theme, rem } from "../../theme/theme";
+import { theme } from "../../theme/theme";
 
 const spin = keyframes`
   from {
@@ -15,9 +15,12 @@ const spin = keyframes`
 
 export const StyledSpinner = styled(Icon)`
   animation: ${spin} 1s infinite linear;
-  fill: ${(props) => (props.dark ? theme.colors.grey500 : theme.colors.grey100)};
-  width: ${rem(24)};
-  height: ${rem(24)};
+
+  fill: ${(props) =>
+    props.light ? theme.color.icon.light : theme.color.icon.default};
+
+  width: ${theme.size.icon.default};
+  height: ${theme.size.icon.default};
   margin-left: auto;
   margin-right: auto;
   vertical-align: middle;
