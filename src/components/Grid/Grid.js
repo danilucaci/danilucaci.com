@@ -138,6 +138,31 @@ export const GridCol = styled.div`
     margin-bottom: 0;
   }
 
+  ${({ col }) =>
+    col &&
+    `
+      max-width: calc(${(100 / 12) * col}% - ${theme.layout.gutter.s});
+      flex-basis: calc(${(100 / 12) * col}% - ${theme.layout.gutter.s});
+    `};
+
+  ${({ xxxs }) =>
+    xxxs &&
+    `
+      @media screen and (min-width: ${theme.breakpoints.xxxs}) {
+        max-width: calc(${(100 / 12) * xxxs}% - ${theme.layout.gutter.s});
+        flex-basis: calc(${(100 / 12) * xxxs}% - ${theme.layout.gutter.s});
+      }
+    `};
+
+  ${({ xxs }) =>
+    xxs &&
+    `
+      @media screen and (min-width: ${theme.breakpoints.xxs}) {
+        max-width: calc(${(100 / 12) * xxs}% - ${theme.layout.gutter.s});
+        flex-basis: calc(${(100 / 12) * xxs}% - ${theme.layout.gutter.s});
+      }
+    `};
+
   ${({ xs }) =>
     xs &&
     `
