@@ -2,12 +2,19 @@ import styled from "styled-components";
 import { Icon } from "../Icon/Icon";
 import { theme, rem, mediaMin } from "../../theme/theme";
 
-export const StyledLanguageSelector = styled.div`
+export const StyledFooterLanguageSelector = styled.div`
   display: inline-block;
-  position: absolute;
 
-  top: ${rem(20)};
-  right: ${rem(16)};
+  border: ${theme.size.border.button.default} solid
+    ${theme.color.border.outlined.enabled};
+
+  position: relative;
+  border-radius: ${theme.borderRadius.button};
+  background-color: white;
+
+  padding: ${theme.spacing.button.default.vertical};
+
+  width: 100%;
 
   .fonts-loaded & {
     font-family: ${theme.font.family.display.boldRegular};
@@ -21,11 +28,6 @@ export const StyledLanguageSelector = styled.div`
     opacity: 1;
     transform: scale(1);
   }
-
-  ${mediaMin.s`
-    display: inline-block;
-    position: static;
-  `};
 `;
 
 export const StyledLanguageDropdown = styled.ul`
@@ -36,28 +38,29 @@ export const StyledLanguageDropdown = styled.ul`
 
   display: block;
 
+  width: ${rem(220)};
+
+  ${mediaMin.s`
+    width: ${rem(172)};  
+  `};
+
   opacity: 0;
   transform: scale(0);
   transition: transform, visibility, opacity 0.2s ease;
   will-change: transform;
 
   position: absolute;
-  top: ${rem(24)};
-  right: 0;
-  width: ${rem(164)};
+  bottom: ${rem(32)};
+  right: -2px;
 
   padding: ${rem(8)} 0;
-
-  ${mediaMin.s`
-    top: ${rem(44)};
-    right: ${rem(24)};
-  `};
 `;
 
 export const LanguageDropdownLabel = styled.span`
   display: inline-block;
   vertical-align: bottom;
-  margin-left: ${rem(4)};
+  margin-left: ${rem(8)};
+  margin-right: ${rem(24)};
 `;
 
 export const CurrentLanguageIcon = styled(Icon)`
@@ -65,8 +68,12 @@ export const CurrentLanguageIcon = styled(Icon)`
   vertical-align: middle;
   fill: ${theme.colors.primary600};
   position: absolute;
-  left: ${rem(28)};
+  left: ${rem(56)};
   top: ${rem(8)};
+
+  ${mediaMin.s`
+    left: ${rem(32)};
+  `};
 `;
 
 export const WorldIcon = styled(Icon)`
@@ -77,6 +84,9 @@ export const WorldIcon = styled(Icon)`
 export const DropdownIcon = styled(Icon)`
   display: inline-block;
   vertical-align: bottom;
+  position: absolute;
+  right: ${rem(12)};
+  top: ${rem(8)};
 `;
 
 export const CurrentLanguageSelector = styled.li`

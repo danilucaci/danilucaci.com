@@ -108,7 +108,11 @@ class LegalDoc extends Component {
             </PageWrapper>
           </Main>
           <ScrollToTop />
-          <SiteFooter locale={locale} />
+          <SiteFooter
+            locale={locale}
+            twinPostURL={twinPostURL}
+            currentPath={this.props.location.pathname}
+          />
         </Layout>
       </ErrorBoundary>
     );

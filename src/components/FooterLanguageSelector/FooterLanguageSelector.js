@@ -4,7 +4,7 @@ import { FormattedMessage } from "react-intl";
 import { Link } from "gatsby";
 
 import {
-  StyledLanguageSelector,
+  StyledFooterLanguageSelector,
   StyledLanguageDropdown,
   LanguageDropdownLabel,
   CurrentLanguageIcon,
@@ -14,7 +14,11 @@ import {
   LanguageSelectorItem,
 } from "./styles";
 
-const LanguageSelector = ({ locale = "en", twinPostURL, currentPath }) => {
+const FooterLanguageSelector = ({
+  locale = "en",
+  twinPostURL,
+  currentPath,
+}) => {
   const englishLanguagePicker = () => (
     <>
       <CurrentLanguageSelector>
@@ -54,12 +58,13 @@ const LanguageSelector = ({ locale = "en", twinPostURL, currentPath }) => {
       </CurrentLanguageSelector>
     </>
   );
+
   return (
-    <StyledLanguageSelector>
+    <StyledFooterLanguageSelector>
       <WorldIcon arriaHidden="true">
         {locale === "en" ? <use xlinkHref="#en" /> : <use xlinkHref="#es" />}
       </WorldIcon>
-      <FormattedMessage id="change.language.toggle">
+      <FormattedMessage id="change.language.toggle.footer">
         {(txt) => <LanguageDropdownLabel>{txt}</LanguageDropdownLabel>}
       </FormattedMessage>
       <DropdownIcon arriaHidden="true">
@@ -68,14 +73,14 @@ const LanguageSelector = ({ locale = "en", twinPostURL, currentPath }) => {
       <StyledLanguageDropdown>
         {locale === "en" ? englishLanguagePicker() : spanishLanguagePicker()}
       </StyledLanguageDropdown>
-    </StyledLanguageSelector>
+    </StyledFooterLanguageSelector>
   );
 };
 
-LanguageSelector.propTypes = {
+FooterLanguageSelector.propTypes = {
   locale: PropTypes.string.isRequired,
   twinPostURL: PropTypes.string.isRequired,
   currentPath: PropTypes.string.isRequired,
 };
 
-export default LanguageSelector;
+export default FooterLanguageSelector;

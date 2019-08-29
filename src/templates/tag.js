@@ -113,7 +113,11 @@ const TagPage = (props) => {
             </GridCol>
           </TagWrapper>
         </Main>
-        <SiteFooter locale={locale} />
+        <SiteFooter
+          locale={locale}
+          twinPostURL={twinPostURL}
+          currentPath={props.location.pathname}
+        />
       </Layout>
     </ErrorBoundary>
   );

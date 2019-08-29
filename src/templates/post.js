@@ -222,7 +222,11 @@ class Post extends Component {
               />
             )}
           </CommentsWrapper>
-          <SiteFooter locale={locale} />
+          <SiteFooter
+            locale={locale}
+            twinPostURL={twinPostURL}
+            currentPath={this.props.location.pathname}
+          />
         </Layout>
       </ErrorBoundary>
     );

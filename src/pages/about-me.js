@@ -143,7 +143,11 @@ const AboutPage = (props) => {
           </DoingNowRow>
           <ContactCard locale={locale} />
         </Main>
-        <SiteFooter locale={locale} />
+        <SiteFooter
+          locale={locale}
+          twinPostURL={twinPostURL}
+          currentPath={props.location.pathname}
+        />
       </Layout>
     </ErrorBoundary>
   );

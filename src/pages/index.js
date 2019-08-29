@@ -188,7 +188,11 @@ const Index = (props) => {
           <DribbblePosts locale={locale} />
           <ContactCard locale={locale} />
         </Main>
-        <SiteFooter locale={locale} />
+        <SiteFooter
+          locale={locale}
+          twinPostURL={twinPostURL}
+          currentPath={props.location.pathname}
+        />
       </Layout>
     </ErrorBoundary>
   );

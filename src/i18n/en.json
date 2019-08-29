@@ -51,6 +51,7 @@
   "contact.page.other.description": "For any non-work related questions or just saying hi, feel free to ",
   "contact.page.other.description.link": "send me a tweet.",
   "change.language.toggle": "en",
+  "change.language.toggle.footer": "English",
   "external.link.sr.only": "Opens in new window",
   "form.label.email": "Email address *",
   "form.label.fullname": "Full name *",

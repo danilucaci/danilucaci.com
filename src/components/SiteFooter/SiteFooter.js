@@ -1,53 +1,88 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { graphql, StaticQuery } from "gatsby";
-import { FormattedMessage } from "react-intl";
+import { graphql, useStaticQuery } from "gatsby";
 
-import SocialNav from "../SocialNav/SocialNav";
-import { StyledFooter, StyledCopyright, StyledCopy, LegalDocsContainer, LegalDoc } from "./styles";
+import FooterNavList from "../FooterNavList/FooterNavList";
+import FooterSocialNav from "../FooterSocialNav/FooterSocialNav";
+import FooterLanguageSelector from "../FooterLanguageSelector/FooterLanguageSelector";
+import { GridCol } from "../Grid/Grid";
 
-const SiteFooter = (props) => {
-  const pageLocale = props.locale;
+import {
+  StyledFooter,
+  Copyright,
+  Row,
+  NavCol,
+  LegalDocsList,
+  LegalDocsListItem,
+  SocialCol,
+  LanguageCol,
+  LegalDocLink,
+  Divider,
+  FooterBottom,
+  StyledSubhead,
+  LanguageWrapper,
+} from "./styles";
+
+const SiteFooter = ({ locale = "en", twinPostURL, currentPath }) => {
+  const pageLocale = locale;
+  const data = useStaticQuery(FOOTER_LEGAL_PAGES_QUERY);
+
+  const localizedDocsList = data.allMdx.edges
+    .map((edge) => ({
+      slug: edge.node.fields.slug,
+      title: edge.node.frontmatter.title,
+      locale: edge.node.frontmatter.locale,
+    }))
+    .filter((edge) => edge.locale === pageLocale);
 
   return (
     <StyledFooter role="contentinfo">
-      <StyledCopyright small>&copy; {new Date().getFullYear()} Dani Lucaci.</StyledCopyright>
-      <FormattedMessage id="footer.built.with">
-        {(txt) => (
-          <StyledCopy small light>
-            {txt}
-          </StyledCopy>
-        )}
-      </FormattedMessage>
-      <SocialNav light />
-      <StaticQuery
-        query={FOOTER_LEGAL_PAGES_QUERY}
-        render={(data) => {
-          const localizedDocsList = data.allMdx.edges
-            .map((edge) => ({
-              slug: edge.node.fields.slug,
-              title: edge.node.frontmatter.title,
-              locale: edge.node.frontmatter.locale,
-            }))
-            .filter((edge) => edge.locale === pageLocale);
+      <Row as="div">
+        <NavCol col={6} s={4} xxl={7}>
+          <StyledSubhead>danilucaci.com</StyledSubhead>
+          <FooterNavList locale={locale} />
+        </NavCol>
 
-          return (
-            <LegalDocsContainer>
+        <SocialCol col={6} s={4} xxl={2}>
+          <StyledSubhead>connect</StyledSubhead>
+          <FooterSocialNav />
+        </SocialCol>
+
+        <LanguageCol col={12} s={4} xxl={3}>
+          <StyledSubhead>Language</StyledSubhead>
+          <LanguageWrapper>
+            <FooterLanguageSelector
+              locale={locale}
+              twinPostURL={twinPostURL}
+              currentPath={currentPath}
+            />
+          </LanguageWrapper>
+        </LanguageCol>
+
+        <GridCol>
+          <Divider />
+          <FooterBottom>
+            <LegalDocsList>
               {localizedDocsList.map((localizedDoc) => (
-                <LegalDoc to={localizedDoc.slug} key={localizedDoc.title}>
-                  {localizedDoc.title}
-                </LegalDoc>
+                <LegalDocsListItem key={localizedDoc.title}>
+                  <LegalDocLink to={localizedDoc.slug}>
+                    {localizedDoc.title}
+                  </LegalDocLink>
+                </LegalDocsListItem>
               ))}
-            </LegalDocsContainer>
-          );
-        }}
-      />
+            </LegalDocsList>
+            <Copyright>&copy; {new Date().getFullYear()} Dani Lucaci</Copyright>
+          </FooterBottom>
+        </GridCol>
+      </Row>
     </StyledFooter>
   );
 };
 
 SiteFooter.propTypes = {
   locale: PropTypes.string.isRequired,
+  twinPostURL: PropTypes.string.isRequired,
+  currentPath: PropTypes.string.isRequired,
 };
 
 export default SiteFooter;

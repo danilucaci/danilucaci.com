@@ -68,7 +68,10 @@ const ContactPage = (props) => {
                     {txt}{" "}
                     <StyledLink
                       href={`mailto:${localePaths[locale].email}`}
-                      onClick={sendGAEvent("Contact Page", "Clicked Email Link")}
+                      onClick={sendGAEvent(
+                        "Contact Page",
+                        "Clicked Email Link",
+                      )}
                     >
                       {localePaths[locale].email}
                     </StyledLink>
@@ -95,7 +98,10 @@ const ContactPage = (props) => {
                           target="_blank"
                           rel="noopener noreferrer"
                           href="https://twitter.com/danilucaci"
-                          onClick={sendGAEvent("Contact Page", "Clicked Send a Tweet Link")}
+                          onClick={sendGAEvent(
+                            "Contact Page",
+                            "Clicked Send a Tweet Link",
+                          )}
                         >
                           {txt2}
                         </StyledLink>
@@ -110,7 +116,11 @@ const ContactPage = (props) => {
             </SayHiWrapper>
           </ContactMeWrapper>
         </Main>
-        <SiteFooter locale={locale} />
+        <SiteFooter
+          locale={locale}
+          twinPostURL={twinPostURL}
+          currentPath={props.location.pathname}
+        />
       </Layout>
     </ErrorBoundary>
   );
