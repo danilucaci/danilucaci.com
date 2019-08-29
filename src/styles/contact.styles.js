@@ -2,112 +2,72 @@ import styled from "styled-components";
 import { theme, mediaMin, rem } from "../theme/theme";
 import { Copy } from "../components/Copy/Copy";
 import { HR } from "../components/HR/HR";
+import { GridRow } from "../components/Grid/Grid";
+import ExternalLink from "../components/ExternalLink/ExternalLink";
 
-export const ContactMeWrapper = styled.section`
-  max-width: ${theme.layout.col10.wrapper};
-  margin-top: ${rem(8)};
-  margin-bottom: ${rem(64)};
-  margin-left: auto;
-  margin-right: auto;
+export const ContactPageWrapper = styled(GridRow)`
+  max-width: ${theme.layout.col6.wrapper};
 
-  &::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
-
-  padding-right: ${theme.layout.gutter.s};
-  padding-left: ${theme.layout.gutter.s};
-
-  /* iPhone X */
-  @supports (padding: max(0px)) {
-    & {
-      padding-left: max(${theme.layout.gutter.s}, env(safe-area-inset-left));
-      padding-right: max(${theme.layout.gutter.s}, env(safe-area-inset-right));
-    }
-  }
+  margin-bottom: ${theme.spacing.row.s};
 
   ${mediaMin.s`
-    margin-top: 0;
-    padding-right: ${theme.layout.gutter.m};
-    padding-left: ${theme.layout.gutter.m};
-
-    /* iPhone X */
-    @supports (padding: max(0px)) {
-      & {
-        padding-left: max(${theme.layout.gutter.m}, env(safe-area-inset-left));
-        padding-right: max(${theme.layout.gutter.m}, env(safe-area-inset-right));
-      }
-    }
+    margin-bottom: ${theme.spacing.row.m};
   `};
 
-  ${mediaMin.m`
+  ${mediaMin.xl`
+    margin-bottom: ${theme.spacing.row.xl};
+    max-width: ${theme.layout.col12.wrapper};
     margin-top: ${rem(24)};
-    margin-bottom: ${rem(80)};
   `};
 `;
 
-export const StyledH1 = styled.h1`
+export const H1 = styled.h1`
   display: block;
-  width: 100%;
-  margin-bottom: ${rem(8)};
-  margin-left: auto;
-  margin-right: auto;
-
-  max-width: ${rem(640)};
-
-  ${mediaMin.xxl`
-    max-width: auto;
-    margin-left: 0;
-    margin-right: 0;
-  `};
-`;
-
-export const Subhead = styled(Copy)`
   margin-bottom: ${rem(16)};
 
-  ${mediaMin.xxl`
+  font-size: ${theme.font.size.display.mobile.h2};
+  line-height: ${theme.font.lineHeight.display.mobile.h2};
+
+  ${mediaMin.xs`
+    font-size: ${theme.font.size.display.desktop.h2};
+  `}
+
+  ${mediaMin.xs`
+    line-height: ${theme.font.lineHeight.display.desktop.h2};
+  `}
+`;
+
+export const Info = styled(Copy)`
+  margin-bottom: ${rem(16)};
+
+  ${mediaMin.xl`
     margin-bottom: ${rem(32)};
   `};
 `;
 
-export const Description = styled(Copy)`
-  margin-bottom: ${rem(16)};
+export const FormHr = styled(HR)`
+  margin-top: ${rem(16)};
+  margin-bottom: ${rem(24)};
 
-  ${mediaMin.xxl`
-    margin-bottom: ${rem(32)};
+  ${mediaMin.xl`
+      display: none;
   `};
-`;
-
-export const StyledLink = styled.a`
-  display: inline;
-  white-space: nowrap;
 `;
 
 export const SayHiWrapper = styled.div`
-  width: 100%;
-  margin-top: ${rem(64)};
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: ${rem(24)};
 
-  max-width: ${rem(640)};
-
-  ${mediaMin.xxl`
-    float: left;
-    width: calc(45% - ${rem(24)});
-    margin-top: ${rem(32)};
-    max-width: auto;
-    margin-left: 0;
-    margin-right: 0;
+  ${mediaMin.xl`  
+    margin-top: ${rem(40)};
   `};
 `;
 
-export const SayHiTitle = styled.h5`
+export const SayHiTitle = styled.h4`
   margin-top: ${rem(24)};
-  margin-bottom: ${rem(8)};
+  margin-bottom: ${rem(16)};
 
-  ${mediaMin.m`  
-    margin-top: ${rem(32)};
+  ${mediaMin.l`  
+    margin-top: ${rem(16)};
   `};
 `;
 
@@ -115,43 +75,11 @@ export const SayHiDescription = styled(Copy)`
   display: inline;
 `;
 
+export const StyledLink = styled(ExternalLink)`
+  display: inline;
+  white-space: nowrap;
+`;
+
 export const SocialNavWrapper = styled.div`
   margin-top: ${rem(16)};
-`;
-
-export const ContactMeHeader = styled.header`
-  ${mediaMin.m`
-    max-width: ${rem(640)};
-    margin-left: auto;
-    margin-right: auto;
-  `};
-
-  ${mediaMin.xxl`
-    float: left;
-    width: calc(45% - ${rem(24)});
-  `};
-`;
-
-export const ContactFormWrapper = styled.div`
-  ${mediaMin.m`
-    max-width: ${rem(640)};
-    margin-left: auto;
-    margin-right: auto;
-  `};
-
-  ${mediaMin.xxl`
-    width: 55%;
-    margin-top: -${rem(24)};
-    margin-left: ${rem(24)};
-    float: right;
-  `};
-`;
-
-export const TopHR = styled(HR)`
-  margin-top: ${rem(32)};
-  margin-bottom: ${rem(24)};
-
-  ${mediaMin.xxl`
-      display: none;
-  `};
 `;

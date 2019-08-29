@@ -1,12 +1,16 @@
 import styled from "styled-components";
 import { Form } from "formik";
 
-import { rem } from "../../theme/theme";
+import { rem, mediaMin } from "../../theme/theme";
 import Label from "../Label/Label";
 import Input from "../Input/Input";
 import TextArea from "../TextArea/TextArea";
 
-export const FormContainer = styled.div``;
+export const FormContainer = styled.div`
+  ${mediaMin.xl`
+    margin-top: ${rem(32)};
+  `};
+`;
 
 export const StyledForm = styled(Form)`
   width: 100%;
