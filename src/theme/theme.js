@@ -80,7 +80,7 @@ export const theme = {
           disabled: COLORS.grey00,
         },
         outlined: {
-          enabled: COLORS.grey00,
+          enabled: COLORS.grey900,
           disabled: COLORS.grey500,
         },
       },
@@ -126,6 +126,9 @@ export const theme = {
         focus: COLORS.grey50,
         disabled: COLORS.grey500,
       },
+      disabled: {
+        default: COLORS.grey500,
+      },
       link: {
         primary: COLORS.primary50,
         grey: COLORS.grey100,
@@ -140,7 +143,7 @@ export const theme = {
     border: {
       primary: {
         enabled: COLORS.primary600,
-        focus: COLORS.primary500,
+        focus: COLORS.primary900,
         hover: COLORS.primary500,
         active: COLORS.primary700,
         disabled: COLORS.grey500,
@@ -208,12 +211,12 @@ export const theme = {
     button: {
       primary: {
         hover:
-          "0 1px 4px 0 rgba(17,30,82,0.47), 0 1px 16px 2px rgba(0,47,158,0.27)",
-        focus: "0 0 1px 1px #4F8FE9, 0 0 0 3px #7CB1F6",
+          "0 1px 4px 0 rgba(17,30,82,0.40), 0 2px 12px 1px rgba(0,47,158,0.22)",
+        focus: "0 0 1px 1px #7CB1F6, 0 0 0 3px #B1D3FD",
       },
       secondary: {
         hover:
-          "0 1px 2px 0 rgba(230,195,0,0.60), 0 2px 6px 1px rgba(153,130,0,0.40)",
+          "0 1px 4px 0 rgba(179,165,89,0.50), 0 2px 12px 0 rgba(179,162,71,0.50)",
         focus: "0 0 1px 1px #FFE359, 0 0 0 3px #FFEA82",
       },
       outlined: {
