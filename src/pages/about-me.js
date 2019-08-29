@@ -13,6 +13,7 @@ import SocialNav from "../components/SocialNav/SocialNav";
 import ContactCard from "../components/ContactCard/ContactCard";
 import { GridCol } from "../components/Grid/Grid";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
+import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 
 import { localePaths } from "../i18n/i18n";
 
@@ -149,6 +150,7 @@ const AboutPage = (props) => {
           currentPath={props.location.pathname}
         />
       </Layout>
+      <ScrollToTop />
     </ErrorBoundary>
   );
 };

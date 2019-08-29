@@ -11,6 +11,7 @@ import { HR } from "../components/HR/HR";
 import ContactForm from "../components/ContactForm/ContactForm";
 import SocialNav from "../components/SocialNav/SocialNav";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
+import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import { localePaths } from "../i18n/i18n";
 import sendGAEvent from "../helpers/sendGAEvent";
 
@@ -122,6 +123,7 @@ const ContactPage = (props) => {
           currentPath={props.location.pathname}
         />
       </Layout>
+      <ScrollToTop />
     </ErrorBoundary>
   );
 };

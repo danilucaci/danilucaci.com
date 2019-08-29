@@ -3,11 +3,12 @@ import { Icon } from "../Icon/Icon";
 import { theme, rem, mediaMin } from "../../theme/theme";
 
 export const StyledScrollToTop = styled.a`
-  background-color: ${theme.colors.grey300};
-  opacity: 0.92;
+  background-color: ${theme.color.background.outlined.enabled};
+  border: ${theme.size.border.button.default}
+    ${theme.color.border.outlined.enabled} solid;
   text-decoration: none;
   position: fixed;
-  bottom: ${rem(16)};
+  bottom: ${rem(24)};
   right: ${rem(16)};
   display: block;
 
@@ -15,29 +16,72 @@ export const StyledScrollToTop = styled.a`
   @supports (padding: max(0px)) {
     & {
       right: max(${rem(16)}, env(safe-area-inset-right));
-      bottom: max(${rem(16)}, env(safe-area-inset-bottom));
+      bottom: max(${rem(24)}, env(safe-area-inset-bottom));
     }
   }
 
-  ${theme.shadow.default};
-
-  border-radius: ${theme.borderRadius.button};
+  border-radius: 50%;
   will-change: transform;
 
+  padding: ${theme.spacing.button.default.scrollToTop.mobile};
+
+  ${mediaMin.s`
+    padding: ${theme.spacing.button.default.scrollToTop.desktop};
+      
+  `};
+
   &:hover {
-    background-color: ${theme.colors.grey400};
     transform: scale(1.1);
     transition: transform ease 150ms;
+
+    cursor: pointer;
+    background-color: ${theme.color.background.outlined.hover};
+    border: ${theme.size.border.button.default}
+      ${theme.color.border.outlined.hover} solid;
+    box-shadow: ${theme.shadow.button.outlined.hover};
+  }
+
+  &:focus {
+    transform: scale(1.1);
+    transition: transform ease 150ms;
+
+    cursor: pointer;
+    background-color: ${theme.color.background.outlined.focus};
+    box-shadow: ${theme.shadow.button.outlined.focus};
+    border: ${theme.size.border.button.focus}
+      ${theme.color.border.outlined.focus} solid;
+    outline: none;
+  }
+
+  &:active {
+    transform: scale(1.1);
+    transition: transform ease 150ms;
+
+    cursor: pointer;
+    background-color: ${theme.color.background.outlined.active};
+    border: ${theme.size.border.button.default}
+      ${theme.color.border.outlined.active} solid;
+    outline: none;
+    box-shadow: none;
+  }
+
+  &:disabled {
+    color: ${theme.color.text.button.outlined.disabled} !important;
+    cursor: pointer;
+    background-color: ${theme.color.background.disabled.default};
+    border: ${theme.size.border.button.default}
+      ${theme.color.border.outlined.disabled} solid;
+    outline: none;
+    box-shadow: none;
   }
 `;
 
 export const ScrollToTopIcon = styled(Icon)`
-  width: ${rem(48)};
-  height: ${rem(48)};
-  padding: ${rem(8)};
+  width: ${theme.size.icon.scrollToTop.mobile};
+  height: ${theme.size.icon.scrollToTop.mobile};
 
   ${mediaMin.s`
-    width: ${rem(40)};
-    height: ${rem(40)};
+    width: ${theme.size.icon.scrollToTop.desktop};
+    height: ${theme.size.icon.scrollToTop.desktop};
   `};
 `;

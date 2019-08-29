@@ -76,12 +76,12 @@ function LegalDoc({ data, pageContext, location }) {
             </GridCol>
           </PageWrapper>
         </Main>
-        <ScrollToTop />
         <SiteFooter
           locale={locale}
           twinPostURL={twinPostURL}
           currentPath={location.pathname}
         />
+        <ScrollToTop />
       </Layout>
     </ErrorBoundary>
   );

@@ -14,6 +14,7 @@ import DribbblePosts from "../components/DribbblePosts/DribbblePosts";
 import { localePaths } from "../i18n/i18n";
 import { GridCol } from "../components/Grid/Grid";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
+import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 
 import {
   IndexHeader,
@@ -193,6 +194,7 @@ const Index = (props) => {
           twinPostURL={twinPostURL}
           currentPath={props.location.pathname}
         />
+        <ScrollToTop />
       </Layout>
     </ErrorBoundary>
   );

@@ -369,6 +369,10 @@ export const theme = {
     },
     icon: {
       default: "1.5rem",
+      scrollToTop: {
+        mobile: "1.5rem",
+        desktop: "1.5rem",
+      },
     },
   },
   layout: {
@@ -433,6 +437,10 @@ export const theme = {
       default: {
         vertical: "0.5rem",
         horizontal: "1rem",
+        scrollToTop: {
+          mobile: "0.5rem",
+          desktop: "0.5rem",
+        },
       },
     },
   },

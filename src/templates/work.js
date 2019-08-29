@@ -11,6 +11,7 @@ import Pagination from "../components/Pagination/Pagination";
 import ContactCard from "../components/ContactCard/ContactCard";
 import DribbblePosts from "../components/DribbblePosts/DribbblePosts";
 import { localePaths } from "../i18n/i18n";
+import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 
 function WorkPage(props) {
@@ -80,6 +81,7 @@ function WorkPage(props) {
           twinPostURL={twinPostURL}
           currentPath={props.location.pathname}
         />
+        <ScrollToTop />
       </Layout>
     </ErrorBoundary>
   );

@@ -14,6 +14,7 @@ import Pagination from "../components/Pagination/Pagination";
 import { SectionHeader } from "../components/Headings/Headings";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 import useLightBackground from "../hooks/useLightBackground";
+import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 
 import { localePaths } from "../i18n/i18n";
 
@@ -101,6 +102,7 @@ function BlogPage(props) {
           twinPostURL={twinPostURL}
           currentPath={props.location.pathname}
         />
+        <ScrollToTop />
       </Layout>
     </ErrorBoundary>
   );

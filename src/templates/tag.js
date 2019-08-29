@@ -15,6 +15,7 @@ import { SectionHeader } from "../components/Headings/Headings";
 import { GridCol } from "../components/Grid/Grid";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 import useLightBackground from "../hooks/useLightBackground";
+import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 
 import { localePaths } from "../i18n/i18n";
 
@@ -119,6 +120,7 @@ const TagPage = (props) => {
           currentPath={props.location.pathname}
         />
       </Layout>
+      <ScrollToTop />
     </ErrorBoundary>
   );
 };
