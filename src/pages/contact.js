@@ -121,6 +121,7 @@ const ContactPage = (props) => {
           locale={locale}
           twinPostURL={twinPostURL}
           currentPath={props.location.pathname}
+          expand
         />
       </Layout>
       <ScrollToTop />

@@ -20,6 +20,12 @@ export const StyledFooter = styled.footer`
 
 export const Row = styled(GridRow)`
   max-width: ${theme.layout.col10.wrapper};
+
+  ${(props) =>
+    props.expand &&
+    `
+    max-width: ${theme.layout.col12.wrapper};
+  `}
 `;
 
 export const NavCol = styled(GridCol)`

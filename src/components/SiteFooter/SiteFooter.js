@@ -24,7 +24,7 @@ import {
   LanguageWrapper,
 } from "./styles";
 
-const SiteFooter = ({ locale = "en", twinPostURL, currentPath }) => {
+const SiteFooter = ({ locale = "en", twinPostURL, currentPath, expand }) => {
   const pageLocale = locale;
   const data = useStaticQuery(FOOTER_LEGAL_PAGES_QUERY);
 
@@ -38,7 +38,7 @@ const SiteFooter = ({ locale = "en", twinPostURL, currentPath }) => {
 
   return (
     <StyledFooter role="contentinfo">
-      <Row as="div">
+      <Row as="div" expand={expand}>
         <NavCol col={6} s={4} xxl={7}>
           <StyledSubhead>danilucaci.com</StyledSubhead>
           <FooterNavList locale={locale} />
