@@ -158,8 +158,7 @@ class Post extends Component {
                 </GridCol>
               </PostContent>
 
-              <AuthorCard />
-              <SubscribeCard locale={locale} />
+              {/* <AuthorCard /> */}
             </PostWrapper>
 
             <DummyInput
@@ -199,6 +198,9 @@ class Post extends Component {
               />
             )}
           </CommentsWrapper>
+
+          <SubscribeCard locale={locale} />
+
           <SiteFooter
             locale={locale}
             twinPostURL={twinPostURL}

@@ -6,15 +6,8 @@ import Spinner from "../Spinner/Spinner";
 
 import { StyledSubmitButton } from "./styles";
 
-function SubmitButton({
-  intl,
-  buttonType = "submit",
-  showSpinner = false,
-  ...rest
-}) {
-  let str = buttonType.toLowerCase();
-
-  const placeholder = intl.formatMessage({ id: `form.submit.${str}` });
+function SubmitButton({ intl, showSpinner = false, ...rest }) {
+  const submit = intl.formatMessage({ id: "form.submit.submit" });
   const sending = intl.formatMessage({ id: "form.submit.sending" });
 
   return (
@@ -25,19 +18,17 @@ function SubmitButton({
           <Spinner light />
         </>
       ) : (
-        placeholder
+        submit
       )}
     </StyledSubmitButton>
   );
 }
 
 SubmitButton.propTypes = {
-  buttonType: PropTypes.string,
   showSpinner: PropTypes.bool,
 };
 
 SubmitButton.defaultProps = {
-  buttonType: "submit",
   showSpinner: false,
 };
 

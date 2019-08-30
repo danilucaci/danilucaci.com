@@ -1,74 +1,44 @@
-import styled from "styled-components";
-import { Form } from "formik";
-
+import styled, { keyframes } from "styled-components";
 import { theme, mediaMin, rem } from "../../theme/theme";
 import { Copy } from "../Copy/Copy";
-import Input from "../Input/Input";
-import SubmitButton from "../SubmitButton/SubmitButton";
+import { GridRow } from "../Grid/Grid";
+import MCSubmitButton from "../MCSubmitButton/MCSubmitButton";
 
 export const SubscribeCardWrapper = styled.aside`
   width: 100%;
+  background-color: ${theme.color.background.section.subscribeCard};
+`;
+
+export const StyledSubscribeCard = styled(GridRow)`
   max-width: ${theme.layout.col10.wrapper};
-  margin-left: auto;
-  margin-right: auto;
+`;
 
-  margin-top: ${theme.spacing.components.s};
-  margin-bottom: ${theme.spacing.components.s};
+export const H2 = styled.h2`
+  margin-bottom: ${rem(16)};
 
   ${mediaMin.m`
-    margin-top: ${theme.spacing.components.m};
-    margin-bottom: ${theme.spacing.components.m};
-  `};
-
-  ${mediaMin.xxxl`
-    margin-top: ${theme.spacing.components.xl};
-    margin-bottom: ${theme.spacing.components.xl};
+    text-align: center;
   `};
 `;
 
-export const SubscribeCardInner = styled.aside`
-  background-color: ${theme.colors.grey50};
-  border-top: ${rem(8)} solid ${theme.colors.primary600};
-
-  padding: ${rem(32)} ${rem(24)};
-
-  margin-right: ${theme.layout.gutter.s};
-  margin-left: ${theme.layout.gutter.s};
-
-  /* iPhone X */
-  @supports (padding: max(0px)) {
-    & {
-      margin-left: max(${theme.layout.gutter.s}, env(safe-area-inset-left));
-      margin-right: max(${theme.layout.gutter.s}, env(safe-area-inset-right));
-    }
-  }
-
-  ${mediaMin.s`
-    margin-right: ${theme.layout.gutter.m};
-    margin-left: ${theme.layout.gutter.m};
-
-    /* iPhone X */
-    @supports (padding: max(0px)) {
-    & {
-      margin-left: max(${theme.layout.gutter.m}, env(safe-area-inset-left));
-      margin-right: max(${theme.layout.gutter.m}, env(safe-area-inset-right));
-      }
-    }
-  `};
-
+export const CardCopy = styled(Copy)`
   ${mediaMin.m`
-    padding: ${rem(64)} ${rem(56)} ${rem(40)} ${rem(64)};
-  `};
-
-  ${mediaMin.xxxl`
-    padding: ${rem(64)} ${rem(120)} ${rem(56)} ${rem(144)};
+    text-align: center;
+    max-width: ${rem(620)};
+    margin-left: auto;
+    margin-right: auto;
   `};
 `;
 
-export const FormContainer = styled.div``;
+export const FormContainer = styled.div`
+  margin-top: ${rem(48)};
 
-export const StyledMCForm = styled(Form)`
-  width: 100%;
+  ${mediaMin.m`
+    max-width: ${rem(648)};
+    margin-top: ${rem(40)};
+    margin-left: auto;
+    margin-right: auto;
+  `};
 `;
 
 export const InputsWrapper = styled.div`
@@ -79,65 +49,70 @@ export const InputsWrapper = styled.div`
 export const StyledLabel = styled.label`
   display: inline-block;
   width: 100%;
+
   position: relative;
 
-  ${mediaMin.xl`
-    width: calc(55% - ${rem(8)});
-    margin-top: 0;
-    margin-right: ${rem(8)};
+  ${mediaMin.m`
+    width: calc(70% - ${rem(8)});
+    margin-right: ${rem(16)};
     display: inline-block;
     vertical-align: middle;
   `};
 `;
 
-export const StyledInput = styled(Input)`
-  display: inline-block;
-`;
-
-export const StyledSubmitButton = styled(SubmitButton)`
+export const StyledMCSubmitButton = styled(MCSubmitButton)`
   margin-top: ${rem(16)};
 
-  ${mediaMin.xl`
-    width: auto;
+  ${mediaMin.m`
     margin-top: 0;
-    margin-right: ${rem(8)};
+    width: calc(30% - ${rem(8)});
     display: inline-block;
     vertical-align: middle;
   `};
 `;
 
-export const InputStatusIcon = styled.span`
-  display: none;
-  position: absolute;
-  right: ${rem(16)};
-  top: ${rem(16)};
-  width: ${rem(24)};
-  height: ${rem(24)};
-`;
+export const FadeIn = keyframes`
+  from, 0% {
+      opacity: 0;
+  }
+  to, 100% {
+      opacity: 1;
+  }
+ `;
 
-export const StyledH2 = styled.h2`
-  margin-bottom: ${rem(16)};
-  font-size: ${theme.font.size.display.mobile.h2};
-  line-height: ${theme.font.lineHeight.display.mobile.h2};
+export const StatusMessageWrapper = styled.div`
+  white-space: pre-line;
+  will-change: opacity;
+  animation: ${FadeIn} 500ms ease forwards;
 
-  ${mediaMin.m`
-    font-size: ${theme.font.size.display.desktop.h2};
-    line-height: ${theme.font.lineHeight.display.desktop.h2};
+  ${mediaMin.m`  
+    padding-bottom: ${rem(24)};
   `};
 `;
 
-export const Subtitle = styled(Copy)`
-  margin-bottom: ${rem(8)};
-`;
+export const StatusMessageSubtitle = styled.p`
+  color: ${theme.color.text.subdued};
+  font-size: ${theme.font.size.display.mobile.subtitle};
+  line-height: ${theme.font.lineHeight.display.mobile.subtitle};
 
-export const AltCopy = styled(Copy)`
-  font-size: ${theme.font.size.body.s};
-  line-height: ${theme.font.lineHeight.body.s};
-  color: ${theme.colors.grey700};
+  margin-top: ${rem(24)};
 
-  margin-bottom: ${rem(32)};
+  font-family: ${theme.font.family.display.fallback};
+  font-weight: 300;
+
+  .fonts-loaded & {
+    font-family: ${theme.font.family.display.regular};
+  }
+
+  ${mediaMin.s`
+    font-size: ${theme.font.size.display.desktop.subtitle};
+    line-height: ${theme.font.lineHeight.display.desktop.subtitle};
+  `};
 
   ${mediaMin.m`
-    margin-bottom: ${rem(24)};
+    text-align: center;
+    max-width: ${rem(744)};
+    margin-left: auto;
+    margin-right: auto;
   `};
 `;

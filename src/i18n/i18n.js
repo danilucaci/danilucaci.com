@@ -113,36 +113,9 @@ export const FORM_SUBMIT_STATUS = {
         "Lo siento, para poder continuar es necesario que aceptes el aviso legal y la política de privacidad.",
     },
   },
-  cta: {
-    en: "Message Sent!",
-    es: "¡Mensaje Enviado!",
-  },
-  ctaError: {
-    en: "Something went wrong 😔",
-    es: "Algo ha salido mal 😔",
-  },
-  subscribeCta: {
-    en: "Message Sent! 🎉",
-    es: "¡Mensaje Enviado! 🎉",
-  },
 };
 
 export const MC_ERRORS = {
-  en: {
-    generic: "Sorry 😔, something went wrong, please try again later.",
-    many:
-      "Sorry 😔, you have too many subscribe attemps, please try again later.",
-    already:
-      "You have already subscribed. Thank you for subscribing to my newsletter 🙏🏼.",
-  },
-  es: {
-    generic:
-      "Lo siento 😔, algo ha salido mal, por favor intentalo de nuevo más tarde.",
-    many:
-      "Lo siento 😔, has hecho demasiados intentos de suscribirte, por favor intentalo de nuevo más tarde.",
-    already:
-      "Ya te habías suscrito. ¡Gracias por apuntarte a mi lista de suscriptores! 🙏🏼",
-  },
   formValidation: {
     en: {
       email: "Please enter a valid email",
@@ -157,19 +130,6 @@ export const MC_ERRORS = {
       privacyRequired:
         "Para poder continuar tienes que aceptar el aviso legal y la política de privacidad.",
     },
-  },
-};
-
-export const MC_SUCCESS = {
-  en: {
-    title: "Thanks for joining my newsletter!",
-    message:
-      "Now you just need to confirm your subscription. Please click the link in the email you should receive shortly.",
-  },
-  es: {
-    title: "¡Gracias por suscribirte a mi newsletter!",
-    message:
-      "Para acabar, solo tienes que confirmar tu suscripción haciendo click en el enlace del email que llegará a tu buzón.",
   },
 };
 

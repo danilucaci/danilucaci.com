@@ -111,6 +111,7 @@ export const theme = {
         lighter: COLORS.grey100,
         light: COLORS.grey200,
         contactCard: COLORS.primary700,
+        subscribeCard: COLORS.grey100,
       },
       primary: {
         enabled: COLORS.primary600,
@@ -152,6 +153,8 @@ export const theme = {
     },
     border: {
       default: COLORS.grey300,
+      error: COLORS.danger600,
+      dark: COLORS.grey900,
       primary: {
         enabled: COLORS.primary600,
         focus: COLORS.primary900,
