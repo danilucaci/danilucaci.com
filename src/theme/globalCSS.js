@@ -45,10 +45,6 @@ ${
   } */
 }
 
-.grey-background {
-  background-color: ${theme.colors.grey50} !important;
-}
-
   svg {
     position: absolute;
   }
@@ -69,6 +65,19 @@ ${
       text-size-adjust: auto;
     }
   }
+
+  p {
+    font-weight: 400;
+    font-style: normal;
+
+    font-size: ${theme.font.size.body.m};
+    line-height: ${theme.font.lineHeight.body.m};
+    
+    .fonts-loaded & {
+      font-family: ${theme.font.family.body.regular};
+    }
+  }
+  
 
   h1 {
     font-weight: 700;
