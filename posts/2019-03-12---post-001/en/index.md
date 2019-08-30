@@ -192,19 +192,18 @@ Then, when `formSubmitted` is set to `true`, the `<EmailLoading />` component wi
 The `<EmailLoading />` component simply returns a loading indicator when `isLoading` is `true` and a success/error message when the response is returned.
 
 ```jsx
-{showFormLoading ? (
+{
+  showFormLoading ? (
     <Spinner />
   ) : (
-    <React.Fragment>
+    <>
       {FORM_SUBMIT_STATUS.cta[locale]}
       <StyledIcon aria-hidden="true">
         <use xlinkHref="#correct" />
       </StyledIcon>
-    </React.Fragment>
-  )}
-</StyledLoadingCTA>
-{showFormSuccess && <EmailSuccessMessage locale={locale} />}
-{showFormError && <EmailErrorMessage locale={locale} formErrorRes={formErrorRes} />}
+    </>
+  );
+}
 ```
 
 ## Validating the Form with CSS
@@ -318,7 +317,7 @@ function ContactForm({ locale }) {
   function encode(data) {
     return Object.keys(data)
       .map(
-        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]),
       )
       .join("&");
   }

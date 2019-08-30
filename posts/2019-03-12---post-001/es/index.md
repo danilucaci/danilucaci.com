@@ -196,7 +196,8 @@ Entonces, cuando `formSubmitted` cambia a `true`, el componente `<EmailLoading /
 El componente `<EmailLoading ... />` simplemente devuelve un indicador del estado de carga de la información cuando `isLoading` es equivalente a `true`, y un mensaje de error o éxito cuando recibe la respuesta del servidor.
 
 ```jsx
-{showFormLoading ? (
+{
+  showFormLoading ? (
     <Spinner />
   ) : (
     <React.Fragment>
@@ -205,10 +206,8 @@ El componente `<EmailLoading ... />` simplemente devuelve un indicador del estad
         <use xlinkHref="#correct" />
       </StyledIcon>
     </React.Fragment>
-  )}
-</StyledLoadingCTA>
-{showFormSuccess && <EmailSuccessMessage locale={locale} />}
-{showFormError && <EmailErrorMessage locale={locale} formErrorRes={formErrorRes} />}
+  );
+}
 ```
 
 ## Validando Formularios con CSS
