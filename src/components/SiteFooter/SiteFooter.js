@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql, useStaticQuery } from "gatsby";
+import { FormattedMessage } from "react-intl";
 
 import FooterNavList from "../FooterNavList/FooterNavList";
 import FooterSocialNav from "../FooterSocialNav/FooterSocialNav";
@@ -44,12 +45,17 @@ const SiteFooter = ({ locale = "en", twinPostURL, currentPath }) => {
         </NavCol>
 
         <SocialCol col={6} s={4} xxl={2}>
-          <StyledSubhead>connect</StyledSubhead>
+          <FormattedMessage id="footer.connect.title">
+            {(txt) => <StyledSubhead>{txt}</StyledSubhead>}
+          </FormattedMessage>
+
           <FooterSocialNav />
         </SocialCol>
 
         <LanguageCol col={12} s={4} xxl={3}>
-          <StyledSubhead>Language</StyledSubhead>
+          <FormattedMessage id="footer.language.title">
+            {(txt) => <StyledSubhead>{txt}</StyledSubhead>}
+          </FormattedMessage>
           <LanguageWrapper>
             <FooterLanguageSelector
               locale={locale}
