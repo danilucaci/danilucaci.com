@@ -14,8 +14,6 @@ import SiteFooter from "../components/SiteFooter/SiteFooter";
 import SocialShare from "../components/SocialShare/SocialShare";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import Tags from "../components/Tags/Tags";
-import ReadTime from "../components/ReadTime/ReadTime";
-import ArticleDate from "../components/ArticleDate/ArticleDate";
 import { HR } from "../components/HR/HR";
 import { GridCol } from "../components/Grid/Grid";
 import SiblingPosts from "../components/SiblingPosts/SiblingPosts";
@@ -132,10 +130,11 @@ class Post extends Component {
                   <PostH1>{postInfo.title}</PostH1>
                   <HR />
                   <PostInfo>
-                    <PostDateReadTimeWrapper>
+                    {/* TODO Update this */}
+                    {/* <PostDateReadTimeWrapper>
                       <ArticleDate date={postInfo.date} />
                       <ReadTime timeToRead={postNode.timeToRead} />
-                    </PostDateReadTimeWrapper>
+                    </PostDateReadTimeWrapper> */}
                     <SocialShareWrapper>
                       <SocialShare
                         slug={this.props.location.pathname}

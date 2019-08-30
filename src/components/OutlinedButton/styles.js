@@ -59,5 +59,10 @@ export const StyledOutlinedButton = styled.button`
       ${theme.color.border.outlined.disabled} solid;
     outline: none;
     box-shadow: none;
+
+    &:hover,
+    &:focus {
+      cursor: not-allowed;
+    }
   }
 `;

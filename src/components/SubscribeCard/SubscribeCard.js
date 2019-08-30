@@ -11,7 +11,7 @@ import PrivacyCheckbox from "../PrivacyCheckbox/PrivacyCheckbox";
 import MCLoadingCTA from "../MCLoadingCTA/MCLoadingCTA";
 import MCSuccessMessage from "../MCSuccessMessage/MCSuccessMessage";
 import MCErrorMessage from "../MCErrorMessage/MCErrorMessage";
-import { InlineStatusMessageWrapper, InlineMessageCopy } from "../EmailErrorMessage/styles";
+import InlineErrorMessage from "../InlineErrorMessage/InlineErrorMessage";
 
 import sendGAEvent from "../../helpers/sendGAEvent";
 
@@ -46,7 +46,9 @@ function SubscribeCard({ locale }) {
     try {
       const MCResponse = await addToMailchimp(email, {
         DLPO:
-          acceptsconsentcheckbox === true ? CONSENT_VALUE[locale].yes : CONSENT_VALUE[locale].no,
+          acceptsconsentcheckbox === true
+            ? CONSENT_VALUE[locale].yes
+            : CONSENT_VALUE[locale].no,
       });
 
       handleFormSent(MCResponse.result, MCResponse.msg);
@@ -59,7 +61,10 @@ function SubscribeCard({ locale }) {
   function handleFormSent(result, msg) {
     if (result.includes("success")) {
       handleMCSuccess();
-    } else if (result.includes("error") && msg.includes("is already subscribed to")) {
+    } else if (
+      result.includes("error") &&
+      msg.includes("is already subscribed to")
+    ) {
       setShowMCError(true);
       setShowMCLoading(false);
       setMCError("already");
@@ -156,26 +161,31 @@ function SubscribeCard({ locale }) {
                     />
                   )}
 
-                  {!MCSent && <StyledSubmitButton buttonType="subscribe" disabled={!isValid} />}
+                  {!MCSent && (
+                    <StyledSubmitButton
+                      buttonType="subscribe"
+                      disabled={!isValid}
+                    />
+                  )}
                 </InputsWrapper>
                 <ErrorMessage name="email">
                   {(errorMessage) => (
-                    <InlineStatusMessageWrapper>
-                      <InlineMessageCopy>{errorMessage}</InlineMessageCopy>
-                    </InlineStatusMessageWrapper>
+                    <InlineErrorMessage>{errorMessage}</InlineErrorMessage>
                   )}
                 </ErrorMessage>
                 <PrivacyCheckbox
                   type="checkbox"
                   name="acceptsconsentcheckbox"
-                  value={isValid === true ? CONSENT_VALUE[locale].yes : CONSENT_VALUE[locale].no}
+                  value={
+                    isValid === true
+                      ? CONSENT_VALUE[locale].yes
+                      : CONSENT_VALUE[locale].no
+                  }
                   locale={locale}
                 />
                 <ErrorMessage name="acceptsconsentcheckbox">
                   {(errorMessage) => (
-                    <InlineStatusMessageWrapper>
-                      <InlineMessageCopy>{errorMessage}</InlineMessageCopy>
-                    </InlineStatusMessageWrapper>
+                    <InlineErrorMessage>{errorMessage}</InlineErrorMessage>
                   )}
                 </ErrorMessage>
               </StyledMCForm>
@@ -184,7 +194,11 @@ function SubscribeCard({ locale }) {
 
           {showMCSuccess && <MCSuccessMessage locale={locale} />}
           {showMCError && (
-            <MCErrorMessage locale={locale} MCError={MCError} apiMessage={MCAPIErrorMSG} />
+            <MCErrorMessage
+              locale={locale}
+              MCError={MCError}
+              apiMessage={MCAPIErrorMSG}
+            />
           )}
         </FormContainer>
       </SubscribeCardInner>

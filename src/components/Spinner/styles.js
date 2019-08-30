@@ -16,8 +16,8 @@ const spin = keyframes`
 export const StyledSpinner = styled(Icon)`
   animation: ${spin} 1s infinite linear;
 
-  fill: ${(props) =>
-    props.light ? theme.color.icon.light : theme.color.icon.default};
+  fill: ${({ light }) =>
+    light ? theme.color.icon.light : theme.color.icon.default};
 
   width: ${theme.size.icon.default};
   height: ${theme.size.icon.default};

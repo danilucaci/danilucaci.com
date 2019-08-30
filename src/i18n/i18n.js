@@ -78,28 +78,6 @@ export const CONSENT_VALUE = {
 };
 
 export const FORM_SUBMIT_STATUS = {
-  successTitle: {
-    en: "Thank you for contacting me!",
-    es: "!Gracias por contactar conmigo¡",
-  },
-  successSubtitle: {
-    en:
-      "You’ll hear back from me in about 24—48 hours. If not, please send me an email at hello@danilucaci.com.",
-    es:
-      "Recibirás una respuesta en un plazo de 24-48 horas. De lo contrario, por favor mandame un email a hola@danilucaci.com.",
-  },
-  errorTitle: {
-    en: "Sorry 😔, your message couldn't be sent.",
-    es: "Lo siento 😔, tu mensaje no ha podido ser enviado.",
-  },
-  showError: {
-    en: "Show error details",
-    es: "Mostrar detalles del error",
-  },
-  hideError: {
-    en: "Hide error details",
-    es: "Ocultar detalles del error",
-  },
   formValidation: {
     en: {
       email: "Please enter a valid email",
@@ -134,12 +112,6 @@ export const FORM_SUBMIT_STATUS = {
       privacyRequired:
         "Lo siento, para poder continuar es necesario que aceptes el aviso legal y la política de privacidad.",
     },
-  },
-  errorSubtitle: {
-    en:
-      "Please feel free to get in touch by sending me an email at hello@danilucaci.com or a tweet at: @danilucaci.",
-    es:
-      "Por favor, ponte en contacto conmigo enviándome un email a hola@danilucaci.com o un mensaje privado en twitter a: @danilucaci.",
   },
   cta: {
     en: "Message Sent!",

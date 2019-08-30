@@ -18,10 +18,10 @@ function MCLoadingCTA({
   return (
     <StyledLoadingCTA error={showMCError}>
       {showMCLoading && (
-        <React.Fragment>
+        <>
           {sending}
           <Spinner />
-        </React.Fragment>
+        </>
       )}
       {!showMCLoading && !showMCError && (
         <>{FORM_SUBMIT_STATUS.subscribeCta[locale]}</>

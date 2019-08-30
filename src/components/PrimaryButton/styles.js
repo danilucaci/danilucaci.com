@@ -59,5 +59,10 @@ export const StyledPrimaryButton = styled.button`
       ${theme.color.border.primary.disabled} solid;
     outline: none;
     box-shadow: none;
+
+    &:hover,
+    &:focus {
+      cursor: not-allowed;
+    }
   }
 `;

@@ -59,5 +59,10 @@ export const StyledSecondaryButton = styled.button`
       ${theme.color.border.secondary.disabled} solid;
     outline: none;
     box-shadow: none;
+
+    &:hover,
+    &:focus {
+      cursor: not-allowed;
+    }
   }
 `;

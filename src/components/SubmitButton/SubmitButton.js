@@ -6,7 +6,6 @@ import Spinner from "../Spinner/Spinner";
 
 import { StyledSubmitButton } from "./styles";
 
-// High 5 to: https://stackoverflow.com/questions/39630620/react-intl-how-to-use-formattedmessage-in-input-placeholder
 function SubmitButton({
   intl,
   buttonType = "submit",
@@ -20,11 +19,11 @@ function SubmitButton({
 
   return (
     <StyledSubmitButton type="submit" showSpinner={showSpinner} {...rest}>
-      {showSpinner === true ? (
-        <React.Fragment>
+      {showSpinner ? (
+        <>
           {sending}
-          <Spinner />
-        </React.Fragment>
+          <Spinner light />
+        </>
       ) : (
         placeholder
       )}

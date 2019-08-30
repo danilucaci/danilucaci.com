@@ -60,6 +60,9 @@ export const theme = {
     text: {
       default: COLORS.grey900,
       subdued: COLORS.grey700,
+      validation: {
+        error: COLORS.danger800,
+      },
       light: {
         white: COLORS.grey00,
         primary: COLORS.primary200,
@@ -81,6 +84,10 @@ export const theme = {
         },
         outlined: {
           enabled: COLORS.grey900,
+          disabled: COLORS.grey500,
+        },
+        text: {
+          enabled: COLORS.primary600,
           disabled: COLORS.grey500,
         },
       },
@@ -136,11 +143,15 @@ export const theme = {
       selection: {
         default: COLORS.grey200,
       },
+      input: {
+        enabled: COLORS.grey00,
+      },
       error: COLORS.danger50,
       success: COLORS.success50,
       footer: COLORS.grey50,
     },
     border: {
+      default: COLORS.grey300,
       primary: {
         enabled: COLORS.primary600,
         focus: COLORS.primary900,
@@ -171,7 +182,10 @@ export const theme = {
       },
       checkbox: {
         enabled: COLORS.grey400,
-        focus: COLORS.primary600,
+        hover: COLORS.grey900,
+        hoverActive: COLORS.primary600,
+        focus: COLORS.grey900,
+        focusActive: COLORS.primary600,
         disabled: COLORS.grey300,
       },
     },
@@ -246,6 +260,7 @@ export const theme = {
     },
     checkbox: {
       focus: `0 0 2px 1px ${COLORS.grey300}, 0 0 0 3px ${COLORS.grey200}`,
+      activeFocus: `0 0 2px 1px ${COLORS.primary300}, 0 0 0 3px ${COLORS.primary200}`,
       error: `0 0 2px 1px ${COLORS.danger300}, 0 0 0 3px ${COLORS.danger200}`,
       valid: `0 0 2px 1px ${COLORS.success300}, 0 0 0 3px ${COLORS.success200}`,
     },
@@ -312,6 +327,9 @@ export const theme = {
       button: {
         default: "1rem",
       },
+      input: {
+        default: "1rem",
+      },
     },
     lineHeight: {
       display: {
@@ -342,6 +360,9 @@ export const theme = {
       button: {
         default: "1.5rem",
       },
+      input: {
+        default: "1.5rem",
+      },
     },
     letterSpacing: {
       body: {
@@ -368,7 +389,7 @@ export const theme = {
         focus: "2px",
       },
       input: "1px",
-      checkbox: "1px",
+      checkbox: "2px",
       components: "1px",
     },
     icon: {
@@ -445,6 +466,12 @@ export const theme = {
           mobile: "0.5rem",
           desktop: "0.5rem",
         },
+      },
+    },
+    input: {
+      default: {
+        vertical: "0.75rem",
+        horizontal: "0.75rem",
       },
     },
   },

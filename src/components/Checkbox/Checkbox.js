@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Field } from "formik";
-
 import { theme, rem } from "../../theme/theme";
 
 export const Checkbox = styled(Field)`
@@ -21,45 +20,61 @@ export const Checkbox = styled(Field)`
   /* Box */
   & + label:before {
     content: "";
-    margin-right: ${rem(4)};
+    margin-right: ${rem(8)};
     margin-bottom: ${rem(2)};
     display: inline-block;
     vertical-align: middle;
     width: ${rem(20)};
     height: ${rem(20)};
-    background: ${theme.colors.grey100};
-    border: 2px solid ${theme.colors.grey400};
+    background: ${theme.colors.grey00};
+    border: ${theme.size.border.checkbox} solid
+      ${theme.color.border.checkbox.enabled};
     border-radius: ${theme.borderRadius.default};
   }
 
   /* Box hover */
   &:hover + label:before {
-    border: 2px solid ${theme.colors.grey900};
+    border: ${theme.size.border.checkbox} solid
+      ${theme.color.border.checkbox.hover};
+    transform: scale(1.1);
+  }
+
+  /* Disabled */
+  &:disabled + label:before {
+    border: ${theme.size.border.checkbox} solid
+      ${theme.color.border.checkbox.disabled};
+    background: ${theme.colors.grey00};
     transform: scale(1.1);
   }
 
   &:checked:hover + label:before {
-    background: ${theme.colors.primary500};
+    border: ${theme.size.border.checkbox} solid
+      ${theme.color.border.checkbox.hoverActive};
+    background: ${theme.color.background.primary.enabled};
     transform: scale(1.1);
   }
 
   /* Box focus */
   &:focus + label:before {
-    border: 2px solid ${theme.colors.grey900};
-    ${theme.shadow.input.focus};
+    border: ${theme.size.border.checkbox} solid
+      ${theme.color.border.checkbox.focus};
+    box-shadow: ${theme.shadow.checkbox.focus};
     transform: scale(1.1);
   }
 
-  /* Box checked */
+  /* Box checked focus */
   &:checked:focus + label:before {
-    background: ${theme.colors.primary500};
+    border: ${theme.size.border.checkbox} solid
+      ${theme.color.border.checkbox.focusActive};
+    background: ${theme.color.background.primary.enabled};
+    box-shadow: ${theme.shadow.checkbox.activeFocus};
     transform: scale(1.1);
   }
 
   /* Remove border from :before when checked */
   &:checked + label:before {
     border: none;
-    background: ${theme.colors.primary600};
+    background: ${theme.color.background.primary.enabled};
   }
 
   /* Box checked */

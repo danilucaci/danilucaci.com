@@ -1,22 +1,41 @@
 import React from "react";
-import { string } from "prop-types";
+import { oneOfType, string, bool } from "prop-types";
 import { injectIntl } from "react-intl";
 
 import { StyledInput } from "./styles";
+import ValidInputStatusIcon from "../ValidInputStatusIcon/ValidInputStatusIcon";
+import ErrorInputStatusIcon from "../ErrorInputStatusIcon/ErrorInputStatusIcon";
 
-// High 5 to: https://stackoverflow.com/questions/39630620/react-intl-how-to-use-formattedmessage-in-input-placeholder
-function Input({ intl, placeholderType = "", ...rest }) {
+function Input({ intl, valid, error, placeholderType = "fullname", ...props }) {
   let str = placeholderType.toLowerCase();
 
   const placeholder = intl.formatMessage({
     id: `form.placeholder.${str}`,
   });
 
-  return <StyledInput placeholder={placeholder} {...rest} />;
+  return (
+    <>
+      <StyledInput
+        placeholder={placeholder}
+        valid={valid}
+        error={error}
+        {...props}
+      />
+      {valid && <ValidInputStatusIcon arriaHidden="true" />}
+      {error && <ErrorInputStatusIcon arriaHidden="true" />}
+    </>
+  );
 }
 
 Input.propTypes = {
   placeholderType: string.isRequired,
+  valid: oneOfType([bool, string]),
+  error: oneOfType([bool, string]),
+};
+
+Input.defaultProps = {
+  valid: undefined,
+  error: undefined,
 };
 
 export default injectIntl(Input);

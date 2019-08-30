@@ -2,9 +2,9 @@ import React from "react";
 
 import { StyledSpinner } from "./styles";
 
-function Spinner({ dark }) {
+function Spinner({ light }) {
   return (
-    <StyledSpinner aria-label="Loading..." dark={dark}>
+    <StyledSpinner aria-label="Loading..." light={light}>
       <use xlinkHref="#loading" />
     </StyledSpinner>
   );
