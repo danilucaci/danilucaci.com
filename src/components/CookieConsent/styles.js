@@ -2,16 +2,16 @@ import styled, { css } from "styled-components";
 
 import { theme, rem, mediaMin } from "../../theme/theme";
 import { Copy } from "../Copy/Copy";
-import { TertiaryButton, PrimaryButtonSmall } from "../Button/Button";
+import PrimaryButton from "../PrimaryButton/PrimaryButton";
+import OutlinedButton from "../OutlinedButton/OutlinedButton";
 import { DefaultLink } from "../Link/Link";
 
 export const StyledCookieConsent = styled.aside`
-  background-color: ${theme.colors.grey00};
-  border-top: ${rem(8)} solid ${theme.colors.primary600};
+  background-color: ${theme.color.background.section.lightest};
+  border-top: ${rem(8)} solid ${theme.color.border.primary.enabled};
   display: none;
 
   padding: ${rem(16)} ${rem(16)} ${rem(24)} ${rem(16)};
-  ${theme.shadow.mobileCookieConsent};
 
   position: fixed;
   z-index: 1000;
@@ -68,23 +68,30 @@ export const CopyContainer = styled.div``;
 export const ButtonsContainer = styled.div`
   display: block;
   width: 100%;
-  margin-top: ${rem(24)};
+  margin-top: ${rem(32)};
+`;
 
-  ${mediaMin.m`
-    margin-top: ${rem(32)};  
+export const StyledPrimaryButton = styled(PrimaryButton)`
+  display: block;
+  width: 100%;
+
+  margin-bottom: ${rem(8)};
+
+  ${mediaMin.xxxs`
+    margin-bottom: 0;
+    width: calc(50% - ${rem(8)});
+    margin-left: ${rem(8)};
+    float: right;
   `};
 `;
 
-export const StyledPrimaryButton = styled(PrimaryButtonSmall)`
+export const StyledOutlinedButton = styled(OutlinedButton)`
   display: block;
-  width: calc(50% - ${rem(8)});
-  margin-left: ${rem(8)};
-  float: right;
-`;
+  width: 100%;
 
-export const StyledGhostButton = styled(TertiaryButton)`
-  display: block;
-  width: calc(50% - ${rem(8)});
-  margin-right: ${rem(8)};
-  float: left;
+  ${mediaMin.xxxs`    
+    width: calc(50% - ${rem(8)});
+    margin-right: ${rem(8)};
+    float: left;
+  `};
 `;
