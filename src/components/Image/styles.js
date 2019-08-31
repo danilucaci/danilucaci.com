@@ -23,7 +23,7 @@ export const Figure = styled.figure`
 
   & img,
   & .gatsby-image-wrapper {
-    ${theme.shadow.image} !important;
+    box-shadow: ${theme.shadow.image} !important;
   }
 
   .gatsby-image-wrapper {

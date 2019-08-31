@@ -7,11 +7,11 @@ export const StyledCaseStudyCard = styled.article`
   margin-bottom: ${rem(32)};
 
   ${mediaMin.s`
-    background-color: ${theme.colors.grey50};
+    background-color: ${theme.color.bckground.caseStudyCard};
     margin-bottom: ${rem(40)};
 
     &:hover {
-      ${theme.shadow.hover};
+      box-shadow: ${theme.shadow.dropdown};
     }
   `};
 

@@ -54,7 +54,7 @@ export const CopyTooltip = styled.span`
   background-color: ${theme.colors.grey00};
   border: 1px solid ${theme.colors.grey400};
   border-radius: ${theme.borderRadius.default};
-  ${theme.shadow.dropdown};
+  box-shadow: ${theme.shadow.dropdown};
 
   display: none;
   white-space: nowrap;
@@ -77,7 +77,7 @@ export const CopyTooltip = styled.span`
     position: absolute;
     top: ${rem(32)};
     left: ${rem(56)};
-    ${theme.shadow.copyUrl};
+    box-shadow: ${theme.shadow.copyUrl};
   }
 
   ${mediaMin.xs`

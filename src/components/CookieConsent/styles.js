@@ -22,30 +22,31 @@ export const StyledCookieConsent = styled.aside`
   transform: translateY(120%);
   pointer-events: none;
 
-  transition: transform ease-out 0.3s;
+  transition: transform ease-out 0.25s;
 
-  ${(props) =>
-    props.showConsent &&
-    `
+  ${({ showConsent }) =>
+    showConsent &&
+    css`
       display: block;
       transform: translateY(0);
       pointer-events: auto;
     `};
 
-  ${(props) =>
-    props.isTransitioning &&
-    `
+  ${({ isTransitioning }) =>
+    isTransitioning &&
+    css`
       display: block !important;
     `};
 
   ${mediaMin.xxs`
-    border: 2px solid ${theme.colors.grey300};
+    background-color: white;
+    border: 2px solid ${theme.color.border.default};
     border-radius: 4px;
     bottom: ${rem(16)};
     left: ${rem(16)};
     max-width: ${rem(340)};
     padding: ${rem(24)};
-    ${theme.shadow.dropdown};
+    box-shadow: ${theme.shadow.cookieConsent};
   `};
 `;
 

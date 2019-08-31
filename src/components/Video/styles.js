@@ -53,7 +53,7 @@ export const StyledVideo = styled.video`
     opacity: 1;
   `}
 
-  ${theme.shadow.image} !important;
+  box-shadow: ${theme.shadow.image} !important;
 `;
 
 export const VideoIphoneXWrapper = styled.span`

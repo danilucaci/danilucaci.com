@@ -39,8 +39,8 @@ export const StyledLink = styled.a`
   height: auto;
   width: 100%;
 
+  /* TODO: Fix the dropshadow on hover if any */
   &:hover {
-    ${theme.shadow.hover};
     cursor: pointer;
   }
 `;

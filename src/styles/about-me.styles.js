@@ -172,7 +172,6 @@ export const ResumeButton = styled.a`
   &:focus {
     cursor: pointer;
     background-color: ${theme.colors.grey00};
-    ${theme.shadow.button.darkGhost};
   }
 `;
 
