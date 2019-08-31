@@ -430,16 +430,6 @@ export const theme = {
       m: "5em",
       xl: "8em",
     },
-    rowTop: {
-      s: "4em",
-      m: "4em",
-      xl: "5.5em",
-    },
-    components: {
-      s: "4em",
-      m: "5em",
-      xl: "7em",
-    },
     button: {
       default: {
         vertical: "0.5rem",

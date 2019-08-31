@@ -183,14 +183,14 @@ export const StyledSocialNav = styled.div`
 
 export const DoingNowRow = styled(GridRow)`
   max-width: ${theme.layout.col10.wrapper};
-  margin-bottom: ${theme.spacing.rowTop.s};
+  margin-bottom: ${theme.spacing.row.s};
 
   ${mediaMin.s`
-    margin-bottom: ${theme.spacing.rowTop.m};
+    margin-bottom: ${theme.spacing.row.m};
   `};
 
   ${mediaMin.xl`
-    margin-bottom: ${theme.spacing.rowTop.xl};
+    margin-bottom: ${theme.spacing.row.xl};
   `};
 
   /* Mobile in ladscape */

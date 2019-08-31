@@ -11,14 +11,14 @@ export const AuthorCardWrapper = styled.footer`
   margin-left: auto;
   margin-right: auto;
 
-  margin-bottom: ${theme.spacing.components.s};
+  margin-bottom: ${theme.spacing.row.s};
 
   ${mediaMin.s`
-    margin-bottom: ${theme.spacing.components.m};
+    margin-bottom: ${theme.spacing.row.m};
   `};
 
   ${mediaMin.m`
-    margin-bottom: ${theme.spacing.components.xl};
+    margin-bottom: ${theme.spacing.row.xl};
   `};
 
   /* Mobile in ladscape */
@@ -107,7 +107,7 @@ export const StyledHR = styled(HR)`
   margin-right: ${theme.layout.gutter.s};
   margin-left: ${theme.layout.gutter.s};
 
-  margin-bottom: ${theme.spacing.components.s};
+  margin-bottom: ${theme.spacing.row.s};
 
   /* iPhone X */
   @supports (padding: max(0px)) {
@@ -129,11 +129,11 @@ export const StyledHR = styled(HR)`
       }
     }
 
-    margin-bottom: ${theme.spacing.components.m};
+    margin-bottom: ${theme.spacing.row.m};
   `};
 
   ${mediaMin.m`
-    margin-bottom: ${theme.spacing.components.xl};
+    margin-bottom: ${theme.spacing.row.xl};
   `};
 
   /* Mobile in ladscape */

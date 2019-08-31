@@ -151,14 +151,14 @@ export const CaseStudyImgWrapper = styled.div`
 export const PostContent = styled.section`
   display: block;
 
-  margin-bottom: ${theme.spacing.components.s};
+  margin-bottom: ${theme.spacing.row.s};
 
   ${mediaMin.m`
-    margin-bottom: ${theme.spacing.components.m};
+    margin-bottom: ${theme.spacing.row.m};
   `};
 
   ${mediaMin.xl`
-    margin-bottom: ${theme.spacing.components.xl};
+    margin-bottom: ${theme.spacing.row.xl};
   `};
 
   h5 + blockquote {
@@ -233,18 +233,18 @@ export const PostContent = styled.section`
 
     padding-top: ${theme.spacing.row.s};
     padding-bottom: ${theme.spacing.row.s};
-    margin-bottom: ${theme.spacing.components.s};
+    margin-bottom: ${theme.spacing.row.s};
 
     ${mediaMin.s`
       padding-top: ${theme.spacing.row.m};
       padding-bottom: ${theme.spacing.row.m};
-      margin-bottom: ${theme.spacing.components.m};
+      margin-bottom: ${theme.spacing.row.m};
     `};
 
     ${mediaMin.xl`
       padding-top: ${theme.spacing.row.xl};
       padding-bottom: ${theme.spacing.row.xl};
-      margin-bottom: ${theme.spacing.components.xl};
+      margin-bottom: ${theme.spacing.row.xl};
     `};
 
     /* Mobile in ladscape */
@@ -315,17 +315,17 @@ export const PostContent = styled.section`
       margin-left: auto;
     }
 
-    margin-top: ${theme.spacing.components.s};
-    margin-bottom: calc(${theme.spacing.components.s} - ${rem(48)});
+    margin-top: ${theme.spacing.row.s};
+    margin-bottom: calc(${theme.spacing.row.s} - ${rem(48)});
 
     ${mediaMin.s`
-      margin-top: ${theme.spacing.components.m};
-      margin-bottom: calc(${theme.spacing.components.m} - ${rem(32)});
+      margin-top: ${theme.spacing.row.m};
+      margin-bottom: calc(${theme.spacing.row.m} - ${rem(32)});
     `};
 
     ${mediaMin.xl`
-      margin-top: ${theme.spacing.components.xl};
-      margin-bottom: calc(${theme.spacing.components.xl} - ${rem(32)});
+      margin-top: ${theme.spacing.row.xl};
+      margin-bottom: calc(${theme.spacing.row.xl} - ${rem(32)});
     `};
 
     ${mediaMin.xxxl`
