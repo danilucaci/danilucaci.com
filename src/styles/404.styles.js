@@ -7,8 +7,6 @@ import { GridRow } from "../components/Grid/Grid";
 
 export const StyledNotFound = styled(GridRow)`
   max-width: ${theme.layout.col8.wrapper};
-  padding-top: ${rem(24)};
-  padding-bottom: ${rem(24)};
 
   & a {
     display: inline;
@@ -19,18 +17,18 @@ export const StyledNotFound = styled(GridRow)`
 export const StyledH1 = styled.h1`
   display: block;
   width: 100%;
-  margin-bottom: ${rem(16)};
+  margin-bottom: ${rem(24)};
 `;
 
-export const Subhead = styled.p`
-  font-size: ${theme.font.size.body.subhead};
-  line-height: ${theme.font.lineHeight.body.subhead};
+export const Subtitle = styled.p`
   margin-bottom: ${rem(32)};
 
+  font-size: ${theme.font.size.display.mobile.subtitle};
+  line-height: ${theme.font.lineHeight.display.mobile.subtitle};
+
   ${mediaMin.s`
-    font-size: ${theme.font.size.body.m};
-    line-height: ${theme.font.lineHeight.body.subhead};
-    max-width: 90%;
+    font-size: ${theme.font.size.display.desktop.subtitle};
+    line-height: ${theme.font.lineHeight.display.desktop.subtitle};
   `};
 `;
 

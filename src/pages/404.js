@@ -14,7 +14,7 @@ import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 import {
   StyledNotFound,
   StyledH1,
-  Subhead,
+  Subtitle,
   StyledCopy,
   StyledHR,
 } from "../styles/404.styles";
@@ -51,7 +51,7 @@ const NotFoundPage = (props) => {
                 {(txt) => <StyledH1>{txt}</StyledH1>}
               </FormattedMessage>
               <FormattedMessage id="not.found.subtitle">
-                {(txt) => <Subhead>{txt}</Subhead>}
+                {(txt) => <Subtitle>{txt}</Subtitle>}
               </FormattedMessage>
               <StyledHR />
               <FormattedMessage id="not.found.copy.1">

@@ -16,7 +16,7 @@ import {
   StyledH1,
   ThanksCopy,
   ThanksAgainCopy,
-  Subhead,
+  Subtitle,
   StyledHR,
 } from "../styles/thanks.styles";
 
@@ -53,7 +53,7 @@ const ThanksPage = (props) => {
                 {(txt) => <StyledH1>{txt}</StyledH1>}
               </FormattedMessage>
               <FormattedMessage id="thanks.subtitle">
-                {(txt) => <Subhead>{txt}</Subhead>}
+                {(txt) => <Subtitle>{txt}</Subtitle>}
               </FormattedMessage>
               <StyledHR />
               <FormattedMessage id="thanks.copy">
@@ -68,7 +68,7 @@ const ThanksPage = (props) => {
                       {localePaths[locale].email}
                     </a>
                     <FormattedMessage id="thanks.subcopy.2">
-                      {(txt2) => <React.Fragment> {txt2}</React.Fragment>}
+                      {(txt2) => <> {txt2}</>}
                     </FormattedMessage>
                     <a
                       target="_blank"
