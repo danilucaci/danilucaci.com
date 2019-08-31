@@ -15,7 +15,7 @@
   },
   "main": "n/a",
   "scripts": {
-    "dev:ip": "npm run gatsby:ip",
+    "dev:ip": "npm-run-all --parallel gatsby:ip start:lambda",
     "dev:local": "npm-run-all --parallel gatsby:local start:lambda",
     "test:ip": "start-server-and-test dev:ip http://192.168.1.11:8000 cy:open",
     "test:local": "start-server-and-test dev:local http://localhost:8000 cy:open",
