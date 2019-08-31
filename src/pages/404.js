@@ -4,10 +4,7 @@ import { FormattedMessage } from "react-intl";
 
 import Layout from "../components/Layout";
 import SEO from "../components/SEO/SEO";
-import SiteHeader from "../components/SiteHeader/SiteHeader";
-import { Main } from "../components/Main/Main";
-import SiteFooter from "../components/SiteFooter/SiteFooter";
-
+import Main from "../components/Main/Main";
 import LocaleLink from "../components/LocaleLink/LocaleLink";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 
@@ -20,8 +17,8 @@ import {
 } from "../styles/404.styles";
 import { GridCol } from "../components/Grid/Grid";
 
-const NotFoundPage = (props) => {
-  let locale = props.pageContext.locale;
+const NotFoundPage = ({ pageContext, location }) => {
+  let locale = pageContext.locale;
   let twinPostURL = "";
 
   if (locale === "en") {
@@ -32,19 +29,15 @@ const NotFoundPage = (props) => {
 
   return (
     <ErrorBoundary>
-      <Layout location={props.location} locale={locale}>
+      <Layout location={location} locale={locale} twinPostURL={twinPostURL}>
         <SEO
           locale={locale}
           twinPostURL={twinPostURL}
           currentPage="notFound"
-          currentPath={props.location.pathname}
+          currentPath={location.pathname}
         />
-        <SiteHeader
-          twinPostURL={twinPostURL}
-          locale={locale}
-          currentPath={props.location.pathname}
-        />
-        <Main role="main">
+
+        <Main>
           <NotFoundRow padded col8>
             <GridCol>
               <FormattedMessage id="not.found.title">
@@ -81,11 +74,6 @@ const NotFoundPage = (props) => {
             </GridCol>
           </NotFoundRow>
         </Main>
-        <SiteFooter
-          locale={locale}
-          twinPostURL={twinPostURL}
-          currentPath={props.location.pathname}
-        />
       </Layout>
     </ErrorBoundary>
   );

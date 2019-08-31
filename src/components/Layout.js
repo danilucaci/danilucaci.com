@@ -1,5 +1,5 @@
 import React, { useLayoutEffect } from "react";
-import PropTypes from "prop-types";
+import { node, string, shape, bool } from "prop-types";
 import { ThemeProvider } from "styled-components";
 import Cookies from "js-cookie";
 import ReactGA from "react-ga";
@@ -18,7 +18,9 @@ import { SVGSprite } from "./SVGSprite/SVGSprite";
 import SkipToMainContent from "./SkipToMainContent/SkipToMainContent";
 import CookieConsent from "./CookieConsent/CookieConsent";
 import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
-
+import SiteHeader from "./SiteHeader/SiteHeader";
+import SiteFooter from "./SiteFooter/SiteFooter";
+import ScrollToTop from "./ScrollToTop/ScrollToTop";
 import intlMessages from "../i18n/i18n";
 
 import { checkFontsLoaded } from "../helpers/loadFonts";
@@ -75,7 +77,15 @@ const reducer = (state, action) => {
   }
 };
 
-const Layout = (props) => {
+const Layout = ({
+  location,
+  twinPostURL,
+  locale,
+  children,
+  expandHeaderAndFooter,
+  postNode,
+  legalDocs,
+}) => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   useLayoutEffect(() => {
@@ -246,9 +256,9 @@ const Layout = (props) => {
     <ErrorBoundary>
       <ThemeProvider theme={theme}>
         <IntlProvider
-          locale={props.locale}
+          locale={locale}
           defaultLocale="en"
-          messages={intlMessages[props.locale]}
+          messages={intlMessages[locale]}
         >
           <Page>
             <div
@@ -272,13 +282,26 @@ const Layout = (props) => {
             <GlobalCSS />
             <GlobalGrid />
             <SVGSprite />
-            {props.children}
+            <SiteHeader
+              twinPostURL={twinPostURL}
+              locale={locale}
+              currentPath={location.pathname}
+              expand={expandHeaderAndFooter}
+            />
+            {children}
+            <ScrollToTop />
+            <SiteFooter
+              locale={locale}
+              twinPostURL={twinPostURL}
+              currentPath={location.pathname}
+              expand={expandHeaderAndFooter}
+            />
             {NODE_ENV !== "development" && (
               <CookieConsent
                 openCookieConsent={state.openCookieConsent}
                 acceptedCookies={acceptedCookies}
                 deniedCookies={deniedCookies}
-                pageLocale={props.locale}
+                pageLocale={locale}
                 isTransitioning={state.isTransitioning}
               />
             )}
@@ -290,8 +313,17 @@ const Layout = (props) => {
 };
 
 Layout.propTypes = {
-  locale: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
+  locale: string.isRequired,
+  children: node.isRequired,
+  twinPostURL: string.isRequired,
+  expandHeaderAndFooter: bool,
+  location: shape({
+    pathname: string.isRequired,
+  }).isRequired,
+};
+
+Layout.defaultProps = {
+  expandHeaderAndFooter: false,
 };
 
 export default Layout;

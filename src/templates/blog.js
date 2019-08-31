@@ -5,9 +5,7 @@ import { FormattedMessage } from "react-intl";
 
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
-import SiteHeader from "../components/SiteHeader/SiteHeader";
-import { Main } from "../components/Main/Main";
-import SiteFooter from "../components/SiteFooter/SiteFooter";
+import Main from "../components/Main/Main";
 import Tags from "../components/Tags/Tags";
 import Pagination from "../components/Pagination/Pagination";
 import Article from "../components/Article/Article";
@@ -25,7 +23,7 @@ import {
   TagsWrapper,
 } from "../styles/blog.styles";
 
-function BlogPage(props) {
+function BlogPage({ pageContext, location, data }) {
   const {
     currentPage,
     totalPagesInBlog,
@@ -34,9 +32,9 @@ function BlogPage(props) {
     nextPath,
     edges,
     locale,
-  } = props.pageContext;
+  } = pageContext;
 
-  const allTags = props.data.allMdx.tags.map((tag) => tag.fieldValue);
+  const allTags = data.allMdx.tags.map((tag) => tag.fieldValue);
   let twinPostURL = "";
 
   if (locale === "en" && currentPage > 1) {
@@ -63,22 +61,17 @@ function BlogPage(props) {
 
   return (
     <ErrorBoundary>
-      <Layout location={props.location} locale={locale}>
+      <Layout location={location} locale={locale} twinPostURL={twinPostURL}>
         <SEO
           locale={locale}
           twinPostURL={twinPostURL}
           currentPage="blog"
-          currentPath={props.location.pathname}
+          currentPath={location.pathname}
           prevPath={prevPath}
           nextPath={nextPath}
         />
         <PageBackground>
-          <SiteHeader
-            twinPostURL={twinPostURL}
-            locale={locale}
-            currentPath={props.location.pathname}
-          />
-          <Main role="main">
+          <Main>
             <GridRow as="header" col8 bottomPad>
               <GridCol>
                 <FormattedMessage id="blog.title">
@@ -120,12 +113,6 @@ function BlogPage(props) {
             </PostsBackground>
           </Main>
         </PageBackground>
-
-        <SiteFooter
-          locale={locale}
-          twinPostURL={twinPostURL}
-          currentPath={props.location.pathname}
-        />
         <ScrollToTop />
       </Layout>
     </ErrorBoundary>

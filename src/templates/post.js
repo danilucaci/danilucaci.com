@@ -7,11 +7,8 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
-import SiteHeader from "../components/SiteHeader/SiteHeader";
-import { Main } from "../components/Main/Main";
-import SiteFooter from "../components/SiteFooter/SiteFooter";
+import Main from "../components/Main/Main";
 import SocialShare from "../components/SocialShare/SocialShare";
-import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import Tags from "../components/Tags/Tags";
 import { HR } from "../components/HR/HR";
 import { GridCol, GridRow } from "../components/Grid/Grid";
@@ -97,7 +94,7 @@ function Post({ pageContext, data, location }) {
 
   return (
     <ErrorBoundary>
-      <Layout location={location} locale={locale}>
+      <Layout location={location} locale={locale} twinPostURL={twinPostURL}>
         <SEO
           locale={locale}
           twinPostURL={twinPostURL}
@@ -105,12 +102,7 @@ function Post({ pageContext, data, location }) {
           postSEO
           currentPath={location.pathname}
         />
-        <SiteHeader
-          locale={locale}
-          twinPostURL={twinPostURL}
-          currentPath={location.pathname}
-        />
-        <Main role="main">
+        <Main>
           <PostWrapper>
             <GridRow as="header" col10>
               <GridCol>
@@ -181,13 +173,6 @@ function Post({ pageContext, data, location }) {
         </CommentsRow>
 
         <SubscribeCard locale={locale} />
-
-        <SiteFooter
-          locale={locale}
-          twinPostURL={twinPostURL}
-          currentPath={location.pathname}
-        />
-        <ScrollToTop />
       </Layout>
     </ErrorBoundary>
   );

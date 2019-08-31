@@ -4,9 +4,7 @@ import { graphql, Link } from "gatsby";
 import { FormattedMessage } from "react-intl";
 
 import Layout from "../components/Layout";
-import SiteHeader from "../components/SiteHeader/SiteHeader";
-import { Main } from "../components/Main/Main";
-import SiteFooter from "../components/SiteFooter/SiteFooter";
+import Main from "../components/Main/Main";
 import SEO from "../components/SEO/SEO";
 import ContactCard from "../components/ContactCard/ContactCard";
 import CaseStudies from "../components/CaseStudies/CaseStudies";
@@ -14,7 +12,6 @@ import DribbblePosts from "../components/DribbblePosts/DribbblePosts";
 import { localePaths } from "../i18n/i18n";
 import { GridCol } from "../components/Grid/Grid";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
-import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 
 import {
   IndexHeader,
@@ -37,26 +34,21 @@ import illustrationUX from "../images/illustrations/danilucaci_services_ux.svg";
 import illustrationUI from "../images/illustrations/danilucaci_services_ui.svg";
 import illustrationInteraction from "../images/illustrations/danilucaci_services_interaction.svg";
 
-const Index = (props) => {
-  const edges = props.data.work.edges;
-  const locale = props.pageContext.locale;
+const Index = ({ data, pageContext, location }) => {
+  const edges = data.work.edges;
+  const locale = pageContext.locale;
   const twinPostURL =
     locale === "en" ? localePaths["es"].index : localePaths["en"].index;
 
   return (
     <ErrorBoundary>
-      <Layout location={props.location} locale={locale}>
+      <Layout location={location} locale={locale} twinPostURL={twinPostURL}>
         <SEO
           locale={locale}
-          currentPath={props.location.pathname}
+          currentPath={location.pathname}
           twinPostURL={twinPostURL}
         />
-        <SiteHeader
-          locale={locale}
-          twinPostURL={twinPostURL}
-          currentPath={props.location.pathname}
-        />
-        <Main role="main">
+        <Main>
           <IndexHeader as="header" col10 bottomPad>
             <GridCol>
               <FormattedMessage id="index.name">
@@ -189,12 +181,6 @@ const Index = (props) => {
           <DribbblePosts locale={locale} />
           <ContactCard locale={locale} />
         </Main>
-        <SiteFooter
-          locale={locale}
-          twinPostURL={twinPostURL}
-          currentPath={props.location.pathname}
-        />
-        <ScrollToTop />
       </Layout>
     </ErrorBoundary>
   );

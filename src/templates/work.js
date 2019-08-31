@@ -3,18 +3,15 @@ import PropTypes from "prop-types";
 
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
-import SiteHeader from "../components/SiteHeader/SiteHeader";
-import { Main } from "../components/Main/Main";
-import SiteFooter from "../components/SiteFooter/SiteFooter";
+import Main from "../components/Main/Main";
 import CaseStudies from "../components/CaseStudies/CaseStudies";
 import Pagination from "../components/Pagination/Pagination";
 import ContactCard from "../components/ContactCard/ContactCard";
 import DribbblePosts from "../components/DribbblePosts/DribbblePosts";
 import { localePaths } from "../i18n/i18n";
-import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 
-function WorkPage(props) {
+function WorkPage({ pageContext, location }) {
   const {
     currentPage,
     totalPagesInWork,
@@ -23,7 +20,7 @@ function WorkPage(props) {
     nextPath,
     edgesWork,
     locale,
-  } = props.pageContext;
+  } = pageContext;
 
   let twinPostURL = "";
 
@@ -43,22 +40,22 @@ function WorkPage(props) {
 
   return (
     <ErrorBoundary>
-      <Layout location={props.location} locale={locale}>
+      <Layout
+        location={location}
+        locale={locale}
+        twinPostURL={twinPostURL}
+        expandHeaderAndFooter
+      >
         <SEO
           locale={locale}
           twinPostURL={twinPostURL}
           currentPage="work"
-          currentPath={props.location.pathname}
+          currentPath={location.pathname}
           prevPath={prevPath}
           nextPath={nextPath}
         />
-        <SiteHeader
-          locale={locale}
-          twinPostURL={twinPostURL}
-          currentPath={props.location.pathname}
-          expand
-        />
-        <Main role="main">
+
+        <Main>
           <CaseStudies edges={edgesWork} />
 
           {totalPagesInWork > 1 && (
@@ -76,13 +73,6 @@ function WorkPage(props) {
 
           <ContactCard locale={locale} />
         </Main>
-        <SiteFooter
-          locale={locale}
-          twinPostURL={twinPostURL}
-          currentPath={props.location.pathname}
-          expand
-        />
-        <ScrollToTop />
       </Layout>
     </ErrorBoundary>
   );

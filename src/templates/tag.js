@@ -6,7 +6,7 @@ import { FormattedMessage } from "react-intl";
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
 import SiteHeader from "../components/SiteHeader/SiteHeader";
-import { Main } from "../components/Main/Main";
+import Main from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
 import Tags from "../components/Tags/Tags";
 import Article from "../components/Article/Article";
@@ -26,7 +26,7 @@ import {
   OtherTagsWrapper,
 } from "../styles/tag.styles";
 
-const TagPage = (props) => {
+const TagPage = ({ pageContext, location, data }) => {
   const {
     currentPage,
     totalPagesInBlog,
@@ -36,9 +36,9 @@ const TagPage = (props) => {
     edges,
     tag,
     locale,
-  } = props.pageContext;
+  } = pageContext;
 
-  let allTags = props.data.allMdx.tags.map((tagItem) => tagItem.fieldValue);
+  let allTags = data.allMdx.tags.map((tagItem) => tagItem.fieldValue);
 
   let twinPostURL = "";
 
@@ -74,20 +74,15 @@ const TagPage = (props) => {
 
   return (
     <ErrorBoundary>
-      <Layout location={props.location} locale={locale}>
+      <Layout location={location} locale={locale} twinPostURL={twinPostURL}>
         <SEO
           locale={locale}
           twinPostURL={twinPostURL}
           currentPage="tags"
-          currentPath={props.location.pathname}
+          currentPath={location.pathname}
         />
         <PageBackground>
-          <SiteHeader
-            locale={locale}
-            twinPostURL={twinPostURL}
-            currentPath={props.location.pathname}
-          />
-          <Main role="main">
+          <Main>
             <GridRow as="header" col8 bottomPad>
               <GridCol>
                 <TagFoundWrapper>
@@ -134,11 +129,6 @@ const TagPage = (props) => {
             </PostsBackground>
           </Main>
         </PageBackground>
-        <SiteFooter
-          locale={locale}
-          twinPostURL={twinPostURL}
-          currentPath={props.location.pathname}
-        />
       </Layout>
       <ScrollToTop />
     </ErrorBoundary>

@@ -1,12 +1,10 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { shape, string } from "prop-types";
 import { FormattedMessage } from "react-intl";
 
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
-import SiteHeader from "../components/SiteHeader/SiteHeader";
-import { Main } from "../components/Main/Main";
-import SiteFooter from "../components/SiteFooter/SiteFooter";
+import Main from "../components/Main/Main";
 import { HR } from "../components/HR/HR";
 import ContactForm from "../components/ContactForm/ContactForm";
 import SocialNav from "../components/SocialNav/SocialNav";
@@ -29,8 +27,8 @@ import {
   SocialNavWrapper,
 } from "../styles/contact.styles";
 
-const ContactPage = (props) => {
-  let locale = props.pageContext.locale;
+const ContactPage = ({ pageContext, location }) => {
+  let locale = pageContext.locale;
   let twinPostURL = "";
 
   if (locale === "en") {
@@ -41,20 +39,20 @@ const ContactPage = (props) => {
 
   return (
     <ErrorBoundary>
-      <Layout location={props.location} locale={locale}>
+      <Layout
+        location={location}
+        locale={locale}
+        twinPostURL={twinPostURL}
+        expandHeaderAndFooter
+      >
         <SEO
           locale={locale}
           twinPostURL={twinPostURL}
           currentPage="contact"
-          currentPath={props.location.pathname}
+          currentPath={location.pathname}
         />
-        <SiteHeader
-          locale={locale}
-          twinPostURL={twinPostURL}
-          currentPath={props.location.pathname}
-          expand
-        />
-        <Main role="main">
+
+        <Main>
           <ContactPageRow bottomPad>
             <GridCol xl={6}>
               <FormattedMessage id="contact.page.title">
@@ -117,12 +115,6 @@ const ContactPage = (props) => {
             </GridCol>
           </ContactPageRow>
         </Main>
-        <SiteFooter
-          locale={locale}
-          twinPostURL={twinPostURL}
-          currentPath={props.location.pathname}
-          expand
-        />
       </Layout>
       <ScrollToTop />
     </ErrorBoundary>
@@ -130,12 +122,12 @@ const ContactPage = (props) => {
 };
 
 ContactPage.propTypes = {
-  pageContext: PropTypes.shape({
-    locale: PropTypes.string.isRequired,
+  pageContext: shape({
+    locale: string.isRequired,
   }).isRequired,
-  location: PropTypes.shape({
-    pathname: PropTypes.string.isRequired,
-    href: PropTypes.string.isRequired,
+  location: shape({
+    pathname: string.isRequired,
+    href: string.isRequired,
   }).isRequired,
 };
 

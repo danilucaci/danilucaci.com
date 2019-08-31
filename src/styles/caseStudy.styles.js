@@ -3,10 +3,10 @@ import { theme, rem, mediaMin } from "../theme/theme";
 import { Copy } from "../components/Copy/Copy";
 import { GridRow } from "../components/Grid/Grid";
 
-export const ArticleWrapper = styled(GridRow)``;
+export const ArticleWrapper = styled.article``;
 
-export const StyledHeader = styled(GridRow)`
-  max-width: ${theme.layout.col8.wrapper};
+export const HeaderBackground = styled.header`
+  background-color: ${theme.color.background.section.lightest};
 `;
 
 export const PostH1 = styled.h1`

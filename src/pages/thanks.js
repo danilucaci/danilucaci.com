@@ -4,9 +4,7 @@ import { FormattedMessage } from "react-intl";
 
 import Layout from "../components/Layout";
 import SEO from "../components/SEO/SEO";
-import SiteHeader from "../components/SiteHeader/SiteHeader";
-import { Main } from "../components/Main/Main";
-import SiteFooter from "../components/SiteFooter/SiteFooter";
+import Main from "../components/Main/Main";
 import LocaleLink from "../components/LocaleLink/LocaleLink";
 import { localePaths } from "../i18n/i18n";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
@@ -22,8 +20,8 @@ import {
 
 import { GridCol } from "../components/Grid/Grid";
 
-const ThanksPage = (props) => {
-  let locale = props.pageContext.locale;
+const ThanksPage = ({ pageContext, location }) => {
+  let locale = pageContext.locale;
   let twinPostURL = localePaths[locale].thanks;
 
   if (locale === "en") {
@@ -34,19 +32,15 @@ const ThanksPage = (props) => {
 
   return (
     <ErrorBoundary>
-      <Layout location={props.location} locale={locale}>
+      <Layout location={location} locale={locale} twinPostURL={twinPostURL}>
         <SEO
           locale={locale}
           twinPostURL={twinPostURL}
           currentPage="thanks"
-          currentPath={props.location.pathname}
+          currentPath={location.pathname}
         />
-        <SiteHeader
-          twinPostURL={twinPostURL}
-          locale={locale}
-          currentPath={props.location.pathname}
-        />
-        <Main role="main">
+
+        <Main>
           <ThanksPageRow padded col8>
             <GridCol>
               <FormattedMessage id="thanks.title">
@@ -89,11 +83,6 @@ const ThanksPage = (props) => {
             </GridCol>
           </ThanksPageRow>
         </Main>
-        <SiteFooter
-          locale={locale}
-          twinPostURL={twinPostURL}
-          currentPath={props.location.pathname}
-        />
       </Layout>
     </ErrorBoundary>
   );

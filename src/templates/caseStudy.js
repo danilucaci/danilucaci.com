@@ -6,18 +6,14 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
-import SiteHeader from "../components/SiteHeader/SiteHeader";
-import { Main } from "../components/Main/Main";
-import SiteFooter from "../components/SiteFooter/SiteFooter";
-import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import SiblingPosts from "../components/SiblingPosts/SiblingPosts";
 import ContactCard from "../components/ContactCard/ContactCard";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
-import { GridCol } from "../components/Grid/Grid";
+import { GridCol, GridRow } from "../components/Grid/Grid";
 
 import {
   ArticleWrapper,
-  StyledHeader,
+  HeaderBackground,
   PostH1,
   CaseStudyDescription,
   CaseStudyImgWrapper,
@@ -47,7 +43,7 @@ function CaseStudy({ data, pageContext, location }) {
 
   return (
     <ErrorBoundary>
-      <Layout location={location} locale={locale}>
+      <Layout location={location} locale={locale} twinPostURL={twinPostURL}>
         <SEO
           locale={locale}
           twinPostURL={twinPostURL}
@@ -56,34 +52,28 @@ function CaseStudy({ data, pageContext, location }) {
           postImage={image.src}
           currentPath={location.pathname}
         />
-        <SiteHeader
-          twinPostURL={twinPostURL}
-          locale={locale}
-          currentPath={location.pathname}
-        />
-        <Main role="main">
-          <ArticleWrapper as="article">
-            <GridCol>
-              <StyledHeader>
+        <ArticleWrapper>
+          <HeaderBackground>
+            <GridRow>
+              <GridCol>
                 <PostH1>{postInfo.title}</PostH1>
                 <CaseStudyDescription>{postInfo.snippet}</CaseStudyDescription>
-              </StyledHeader>
-              <CaseStudyImgWrapper didLoad={didLoad}>
-                <Img
-                  title={postInfo.title}
-                  alt={postInfo.snippet}
-                  fluid={image}
-                  fadeIn
-                  onLoad={() => setDidLoad(true)}
-                />
-              </CaseStudyImgWrapper>
-              <PostContent>
-                <MDXRenderer>{postNode.body}</MDXRenderer>
-              </PostContent>
-            </GridCol>
-          </ArticleWrapper>
-          <ScrollToTop />
-        </Main>
+                <CaseStudyImgWrapper didLoad={didLoad}>
+                  <Img
+                    title={postInfo.title}
+                    alt={postInfo.snippet}
+                    fluid={image}
+                    fadeIn
+                    onLoad={() => setDidLoad(true)}
+                  />
+                </CaseStudyImgWrapper>
+              </GridCol>
+            </GridRow>
+          </HeaderBackground>
+          <PostContent>
+            <MDXRenderer>{postNode.body}</MDXRenderer>
+          </PostContent>
+        </ArticleWrapper>
         <ContactCard locale={locale} />
         {(prevSlug || nextSlug) && (
           <SiblingPosts
@@ -93,11 +83,6 @@ function CaseStudy({ data, pageContext, location }) {
             prevTitle={prevTitle}
           />
         )}
-        <SiteFooter
-          locale={locale}
-          twinPostURL={twinPostURL}
-          currentPath={location.pathname}
-        />
       </Layout>
     </ErrorBoundary>
   );

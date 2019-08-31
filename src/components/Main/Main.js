@@ -1,6 +1,9 @@
-import styled from "styled-components";
-import { theme } from "../../theme/theme";
+import React from "react";
 
-export const Main = styled.main`
-  margin-top: ${theme.spacing.main.top};
-`;
+import { StyledMain } from "./styles";
+
+function Main({ children }) {
+  return <StyledMain role="main">{children}</StyledMain>;
+}
+
+export default Main;

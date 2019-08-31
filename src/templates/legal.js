@@ -7,10 +7,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
 import { Copy } from "../components/Copy/Copy";
-import SiteHeader from "../components/SiteHeader/SiteHeader";
-import { Main } from "../components/Main/Main";
-import SiteFooter from "../components/SiteFooter/SiteFooter";
-import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
+import Main from "../components/Main/Main";
 import { GridCol } from "../components/Grid/Grid";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 
@@ -38,7 +35,7 @@ function LegalDoc({ data, pageContext, location }) {
 
   return (
     <ErrorBoundary>
-      <Layout location={location} locale={locale}>
+      <Layout location={location} locale={locale} twinPostURL={twinPostURL}>
         <SEO
           locale={locale}
           twinPostURL={twinPostURL}
@@ -46,12 +43,7 @@ function LegalDoc({ data, pageContext, location }) {
           legalDocs
           currentPath={location.pathname}
         />
-        <SiteHeader
-          locale={locale}
-          twinPostURL={twinPostURL}
-          currentPath={location.pathname}
-        />
-        <Main role="main">
+        <Main>
           <LegalPageRow bottomSpaced col8>
             <GridCol>
               <PostH1>{postInfo.title}</PostH1>
@@ -80,12 +72,6 @@ function LegalDoc({ data, pageContext, location }) {
             </GridCol>
           </LegalPageRow>
         </Main>
-        <SiteFooter
-          locale={locale}
-          twinPostURL={twinPostURL}
-          currentPath={location.pathname}
-        />
-        <ScrollToTop />
       </Layout>
     </ErrorBoundary>
   );

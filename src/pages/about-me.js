@@ -6,9 +6,7 @@ import { FormattedMessage } from "react-intl";
 
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
-import SiteHeader from "../components/SiteHeader/SiteHeader";
-import { Main } from "../components/Main/Main";
-import SiteFooter from "../components/SiteFooter/SiteFooter";
+import Main from "../components/Main/Main";
 import SocialNav from "../components/SocialNav/SocialNav";
 import ContactCard from "../components/ContactCard/ContactCard";
 import { GridCol, GridRow } from "../components/Grid/Grid";
@@ -27,8 +25,8 @@ import {
   DoingNowItem,
 } from "../styles/about-me.styles";
 
-const AboutPage = (props) => {
-  let locale = props.pageContext.locale;
+const AboutPage = ({ pageContext, location, data }) => {
+  let locale = pageContext.locale;
   let twinPostURL = "";
 
   if (locale === "en") {
@@ -39,19 +37,15 @@ const AboutPage = (props) => {
 
   return (
     <ErrorBoundary>
-      <Layout location={props.location} locale={locale}>
+      <Layout location={location} locale={locale} twinPostURL={twinPostURL}>
         <SEO
           locale={locale}
           twinPostURL={twinPostURL}
           currentPage="about"
-          currentPath={props.location.pathname}
+          currentPath={location.pathname}
         />
-        <SiteHeader
-          twinPostURL={twinPostURL}
-          locale={locale}
-          currentPath={props.location.pathname}
-        />
-        <Main role="main">
+
+        <Main>
           <GridRow as="header" col10>
             <HeaderInfoWrapper s="7">
               <FormattedMessage id="about.me.title">
@@ -73,7 +67,7 @@ const AboutPage = (props) => {
                   {(txt) => (
                     <Img
                       alt={txt}
-                      fluid={props.data.aboutImage.childImageSharp.fluid}
+                      fluid={data.aboutImage.childImageSharp.fluid}
                     />
                   )}
                 </FormattedMessage>
@@ -141,11 +135,6 @@ const AboutPage = (props) => {
           </GridRow>
           <ContactCard locale={locale} />
         </Main>
-        <SiteFooter
-          locale={locale}
-          twinPostURL={twinPostURL}
-          currentPath={props.location.pathname}
-        />
       </Layout>
       <ScrollToTop />
     </ErrorBoundary>
