@@ -59,6 +59,7 @@ export const theme = {
   color: {
     text: {
       default: COLORS.grey900,
+      primary: COLORS.primary600,
       subdued: COLORS.grey700,
       validation: {
         error: COLORS.danger800,
@@ -311,6 +312,7 @@ export const theme = {
           h5: "1.125rem",
           subtitle: "1.25rem",
           articleTitle: "2rem",
+          siblingArticleTitle: "1.25rem",
         },
         mobile: {
           h1: "2rem",
@@ -320,6 +322,7 @@ export const theme = {
           h5: "1.125rem",
           subtitle: "1.125rem",
           articleTitle: "1.5rem",
+          siblingArticleTitle: "1rem",
         },
       },
       body: {
@@ -344,6 +347,7 @@ export const theme = {
           h5: "2rem",
           subtitle: "2rem",
           articleTitle: "2.5rem",
+          siblingArticleTitle: "2rem",
         },
         mobile: {
           h1: "2.5rem",
@@ -353,6 +357,7 @@ export const theme = {
           h5: "2rem",
           subtitle: "2rem",
           articleTitle: "2rem",
+          siblingArticleTitle: "1.5rem",
         },
       },
       body: {

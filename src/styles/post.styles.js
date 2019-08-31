@@ -1,21 +1,25 @@
 import styled from "styled-components";
 import { theme, rem, mediaMin } from "../theme/theme";
 import { Copy } from "../components/Copy/Copy";
-import { LoadComments } from "../components/Button/Button";
-import { Icon } from "../components/Icon/Icon";
+import LoadComments from "../components/LoadComments/LoadComments";
 import { GridRow } from "../components/Grid/Grid";
 
 export const PostWrapper = styled.article`
   width: 100%;
 `;
 
-export const StyledPageHeader = styled(GridRow)`
-  max-width: ${theme.layout.col8.wrapper};
+export const PageHeaderRow = styled(GridRow)`
+  max-width: ${theme.layout.col10.wrapper};
 `;
 
 export const PostH1 = styled.h1`
-  margin-top: ${rem(8)};
+  margin-top: ${rem(24)};
   margin-bottom: ${rem(16)};
+
+  ${mediaMin.s`
+    margin-top: ${rem(16)};
+    margin-bottom: ${rem(24)};
+  `};
 `;
 
 export const PostInfo = styled.div`
@@ -29,7 +33,6 @@ export const PostInfo = styled.div`
   ${mediaMin.s`
     align-items: center;
     flex-direction: row;
-    padding: ${rem(8)} 0;
   `};
 `;
 
@@ -40,9 +43,14 @@ export const PostDateReadTimeWrapper = styled.div`
 
 export const SocialShareWrapper = styled.div`
   display: inline-block;
+  margin-top: ${rem(12)};
+
+  ${mediaMin.s`
+    margin-top: 0;
+  `};
 `;
 
-export const StyledIntroContainer = styled.div`
+export const IntroContainer = styled.div`
   max-width: ${theme.layout.col6.inner};
   margin-left: auto;
   margin-right: auto;
@@ -58,7 +66,7 @@ export const IntroCopy = styled(Copy)`
   }
 `;
 
-export const PostContent = styled(GridRow)`
+export const PostContentRow = styled(GridRow)`
   & h2:first-of-type {
     margin-top: ${rem(24)};
   }
@@ -67,22 +75,6 @@ export const PostContent = styled(GridRow)`
   flex-wrap: nowrap !important;
 
   max-width: ${theme.layout.col6.wrapper};
-  margin-bottom: ${theme.spacing.components.s};
-
-  ${mediaMin.m`
-    margin-bottom: ${theme.spacing.components.m};
-  `};
-
-  ${mediaMin.xl`
-    margin-bottom: ${theme.spacing.components.xl};
-  `};
-
-  /* Mobile in ladscape */
-  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(
-      280,
-    )}) and (max-height: ${rem(560)}) and (orientation: landscape) {
-    margin-bottom: ${rem(64)};
-  }
 
   header h1,
   nav h3 {
@@ -127,7 +119,7 @@ export const PostContent = styled(GridRow)`
   }
 
   .js-codeCopy {
-    background-color: ${theme.colors.grey00};
+    background-color: white;
     display: none;
     white-space: nowrap;
     font-size: ${theme.font.size.body.s};
@@ -220,62 +212,18 @@ export const DummyInput = styled.textarea`
 `;
 
 export const StyledLoadComments = styled(LoadComments)`
-  margin: ${rem(32)} auto;
-  display: block;
-`;
-
-export const LoadCommentsIcon = styled(Icon)`
-  vertical-align: middle;
-  margin-top: -${rem(3)};
-  margin-right: ${rem(4)};
-  fill: ${theme.colors.grey500};
-`;
-
-export const LoadCommentsLabel = styled.span`
-  display: inline-block;
-`;
-
-export const CommentsWrapper = styled.aside`
   width: 100%;
-  max-width: ${theme.layout.col10.wrapper};
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: ${theme.spacing.components.s};
-
-  padding-right: ${theme.layout.gutter.s};
-  padding-left: ${theme.layout.gutter.s};
-
-  /* iPhone X */
-  @supports (padding: max(0px)) {
-    & {
-      padding-left: max(${theme.layout.gutter.s}, env(safe-area-inset-left));
-      padding-right: max(${theme.layout.gutter.s}, env(safe-area-inset-right));
-    }
-  }
 
   ${mediaMin.s`
-    padding-right: ${theme.layout.gutter.m};
-    padding-left: ${theme.layout.gutter.m};
-
-    /* iPhone X */
-    @supports (padding: max(0px)) {
-      & {
-        padding-left: max(${theme.layout.gutter.m}, env(safe-area-inset-left));
-        padding-right: max(${theme.layout.gutter.m}, env(safe-area-inset-right));
-      }
-    }
-
-    margin-bottom: ${theme.spacing.components.m};
+    width: ${rem(280)};
+    margin-left: auto;
+    margin-right: auto;
   `};
+`;
 
-  ${mediaMin.m`
-    margin-bottom: ${theme.spacing.components.xl};
-  `};
+export const CommentsRow = styled(GridRow)`
+  max-width: ${theme.layout.col10.wrapper};
 
-  /* Mobile in ladscape */
-  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(
-      280,
-    )}) and (max-height: ${rem(560)}) and (orientation: landscape) {
-    margin-bottom: ${rem(64)};
-  }
+  /* Layout breaks without setting the width to 100% */
+  width: 100%;
 `;

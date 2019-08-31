@@ -1,10 +1,8 @@
 import styled from "styled-components";
 import { Link } from "gatsby";
-// import LocaleLink from "../LocaleLink/LocaleLink";
 
 import { theme } from "../../theme/theme";
 
-// export const DefaultLink = styled(LocaleLink)`
 export const DefaultLink = styled(Link)`
   color: ${theme.color.text.link.primary.enabled};
   text-decoration: underline;

@@ -63,7 +63,7 @@ export const CopyTooltip = styled.span`
 
   position: absolute;
 
-  top: -${rem(48)};
+  top: -${rem(56)};
   left: -${rem(56)};
 
   &:after {
@@ -75,7 +75,7 @@ export const CopyTooltip = styled.span`
     border-right: ${rem(8)} solid #ffffff;
     transform: rotate(45deg);
     position: absolute;
-    top: ${rem(28)};
+    top: ${rem(32)};
     left: ${rem(56)};
     ${theme.shadow.copyUrl};
   }

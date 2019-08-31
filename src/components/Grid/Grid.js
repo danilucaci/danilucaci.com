@@ -77,6 +77,25 @@ export const GridRow = styled.section`
       }
     `};
 
+  ${({ bottomPad }) =>
+    bottomPad &&
+    css`
+      padding-bottom: ${theme.spacing.row.s};
+
+      ${mediaMin.s`
+        padding-bottom: ${theme.spacing.row.m};
+      `};
+
+      ${mediaMin.xl`
+        padding-bottom: ${theme.spacing.row.xl};
+      `};
+
+      /* Mobile in ladscape */
+      @media screen and (min-width: 30em) and (min-height: 17em) and (max-height: 35em) and (orientation: landscape) {
+        padding-bottom: ${rem(64)};
+      }
+    `};
+
   ${({ spaced }) =>
     spaced &&
     css`
@@ -99,6 +118,25 @@ export const GridRow = styled.section`
         margin-bottom: ${rem(64)};
       }
     `};
+  
+    ${({ bottomSpaced }) =>
+      bottomSpaced &&
+      css`
+        margin-bottom: ${theme.spacing.row.s};
+
+        ${mediaMin.s`
+        margin-bottom: ${theme.spacing.row.m};
+      `};
+
+        ${mediaMin.xl`
+        margin-bottom: ${theme.spacing.row.xl};
+      `};
+
+        /* Mobile in ladscape */
+        @media screen and (min-width: 30em) and (min-height: 17em) and (max-height: 35em) and (orientation: landscape) {
+          margin-bottom: ${rem(64)};
+        }
+      `};
 `;
 
 export const GridRowNested = styled.div`

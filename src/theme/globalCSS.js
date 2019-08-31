@@ -25,25 +25,6 @@ const GlobalCSS = createGlobalStyle`
     ${"" /* annoying */}
     ${"" /* scroll-behavior: smooth; */}
   }
-${
-  "" /*
-  body::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
-    border-radius: ${rem(8)};
-    background-color: ${theme.colors.grey50};
-  }
-
-  body::-webkit-scrollbar {
-    width: ${rem(12)};
-    background-color: ${theme.colors.grey400};
-  }
-
-  body::-webkit-scrollbar-thumb {
-    border-radius: ${rem(12)};
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    background-color: ${theme.colors.grey400};
-  } */
-}
 
   svg {
     position: absolute;
@@ -183,11 +164,18 @@ ${
   h3 {
     &:target {
       animation: animateAnchor 1.5s ease;
+
       &::before {
         content: "";
         display: block;
-        height: ${rem(80)};
-        margin-top: -${rem(80)};
+        height: ${rem(24)};
+        margin-top: -${rem(24)};
+      }
+
+      &:hover {
+        & > .headings-anchor {
+          display: block;
+        }
       }
     }
 
@@ -213,14 +201,14 @@ ${
 
   @keyframes animateAnchor {
     0% {
-      color: ${theme.colors.grey900};
+      color: ${theme.color.text.default};
     }
     1%,
     80% {
-      color: ${theme.colors.primary600};
+      color: ${theme.color.text.primary};
     }
     0% {
-      color: ${theme.colors.grey900};
+      color: ${theme.color.text.default};
     }
   }
 
@@ -370,8 +358,6 @@ ${
     border: 0;
   }
   
-  ${"" /* a[href*="http://"]:not([href*="danilucaci.com"]):after { */}
-  ${"" /* a[href*="//"]:not([href*="http://192.168.1.5:8000"]):after { */}
   .external-link {
     display: inline-block;
     position: relative;
