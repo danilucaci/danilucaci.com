@@ -7,7 +7,7 @@ export const StyledCaseStudyCard = styled.article`
   margin-bottom: ${rem(32)};
 
   ${mediaMin.s`
-    background-color: ${theme.color.bckground.caseStudyCard};
+    background-color: ${theme.color.background.caseStudyCard};
     margin-bottom: ${rem(40)};
 
     &:hover {
