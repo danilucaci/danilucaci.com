@@ -15,9 +15,8 @@ import { GridCol, GridRow } from "../components/Grid/Grid";
 import { localePaths } from "../i18n/i18n";
 
 import {
-  PageBackground,
+  HeaderBackground,
   BlogTitle,
-  PostsBackground,
   PostsRow,
   TagsTitle,
   TagsWrapper,
@@ -61,7 +60,12 @@ function BlogPage({ pageContext, location, data }) {
 
   return (
     <ErrorBoundary>
-      <Layout location={location} locale={locale} twinPostURL={twinPostURL}>
+      <Layout
+        location={location}
+        locale={locale}
+        twinPostURL={twinPostURL}
+        colorHeader
+      >
         <SEO
           locale={locale}
           twinPostURL={twinPostURL}
@@ -70,9 +74,10 @@ function BlogPage({ pageContext, location, data }) {
           prevPath={prevPath}
           nextPath={nextPath}
         />
-        <PageBackground>
-          <Main>
-            <GridRow as="header" col8 bottomPad>
+
+        <Main>
+          <HeaderBackground>
+            <GridRow as="div" col8 bottomPad>
               <GridCol>
                 <FormattedMessage id="blog.title">
                   {(txt) => <BlogTitle as="h1">{txt}</BlogTitle>}
@@ -85,34 +90,33 @@ function BlogPage({ pageContext, location, data }) {
                 </TagsWrapper>
               </GridCol>
             </GridRow>
-            <PostsBackground>
-              <PostsRow as="div" padded col8>
-                <GridCol>
-                  {postsList.map((post) => (
-                    <Article
-                      key={post.title}
-                      slug={post.slug}
-                      tags={post.tags}
-                      title={post.title}
-                      date={post.date}
-                      timeToRead={post.timeToRead}
-                    />
-                  ))}
-                  {totalPagesInBlog > 1 && (
-                    <Pagination
-                      currentPage={currentPage}
-                      totalPages={totalPagesInBlog}
-                      paginationPathPrefix={paginationPathPrefix}
-                      prevPath={prevPath}
-                      nextPath={nextPath}
-                      locale={locale}
-                    />
-                  )}
-                </GridCol>
-              </PostsRow>
-            </PostsBackground>
-          </Main>
-        </PageBackground>
+          </HeaderBackground>
+          <PostsRow padded col8>
+            <GridCol>
+              {postsList.map((post) => (
+                <Article
+                  key={post.title}
+                  slug={post.slug}
+                  tags={post.tags}
+                  title={post.title}
+                  date={post.date}
+                  timeToRead={post.timeToRead}
+                />
+              ))}
+              {totalPagesInBlog > 1 && (
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPagesInBlog}
+                  paginationPathPrefix={paginationPathPrefix}
+                  prevPath={prevPath}
+                  nextPath={nextPath}
+                  locale={locale}
+                />
+              )}
+            </GridCol>
+          </PostsRow>
+        </Main>
+
         <ScrollToTop />
       </Layout>
     </ErrorBoundary>

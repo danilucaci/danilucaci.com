@@ -3,12 +3,8 @@ import { theme, mediaMin, rem } from "../theme/theme";
 import { GridRow } from "../components/Grid/Grid";
 import { Subhead } from "../components/Headings/Headings";
 
-export const PageBackground = styled.div`
+export const HeaderBackground = styled.header`
   background-color: ${theme.color.background.section.lightest};
-`;
-
-export const PostsBackground = styled.section`
-  background-color: white;
 `;
 
 export const PostsRow = styled(GridRow)`

@@ -83,8 +83,7 @@ const Layout = ({
   locale,
   children,
   expandHeaderAndFooter,
-  postNode,
-  legalDocs,
+  colorHeader,
 }) => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
@@ -287,6 +286,7 @@ const Layout = ({
               locale={locale}
               currentPath={location.pathname}
               expand={expandHeaderAndFooter}
+              colorHeader={colorHeader}
             />
             {children}
             <ScrollToTop />
@@ -317,6 +317,7 @@ Layout.propTypes = {
   children: node.isRequired,
   twinPostURL: string.isRequired,
   expandHeaderAndFooter: bool,
+  colorHeader: bool,
   location: shape({
     pathname: string.isRequired,
   }).isRequired,
@@ -324,6 +325,7 @@ Layout.propTypes = {
 
 Layout.defaultProps = {
   expandHeaderAndFooter: false,
+  colorHeader: false,
 };
 
 export default Layout;

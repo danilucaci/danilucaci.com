@@ -5,6 +5,7 @@ import Img from "gatsby-image";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
 import SEO from "../components/SEO/SEO";
+import Main from "../components/Main/Main";
 import Layout from "../components/Layout";
 import SiblingPosts from "../components/SiblingPosts/SiblingPosts";
 import ContactCard from "../components/ContactCard/ContactCard";
@@ -43,7 +44,12 @@ function CaseStudy({ data, pageContext, location }) {
 
   return (
     <ErrorBoundary>
-      <Layout location={location} locale={locale} twinPostURL={twinPostURL}>
+      <Layout
+        location={location}
+        locale={locale}
+        twinPostURL={twinPostURL}
+        colorHeader
+      >
         <SEO
           locale={locale}
           twinPostURL={twinPostURL}
@@ -52,28 +58,32 @@ function CaseStudy({ data, pageContext, location }) {
           postImage={image.src}
           currentPath={location.pathname}
         />
-        <ArticleWrapper>
-          <HeaderBackground>
-            <GridRow>
-              <GridCol>
-                <PostH1>{postInfo.title}</PostH1>
-                <CaseStudyDescription>{postInfo.snippet}</CaseStudyDescription>
-                <CaseStudyImgWrapper didLoad={didLoad}>
-                  <Img
-                    title={postInfo.title}
-                    alt={postInfo.snippet}
-                    fluid={image}
-                    fadeIn
-                    onLoad={() => setDidLoad(true)}
-                  />
-                </CaseStudyImgWrapper>
-              </GridCol>
-            </GridRow>
-          </HeaderBackground>
-          <PostContent>
-            <MDXRenderer>{postNode.body}</MDXRenderer>
-          </PostContent>
-        </ArticleWrapper>
+        <Main>
+          <ArticleWrapper>
+            <HeaderBackground>
+              <GridRow>
+                <GridCol>
+                  <PostH1>{postInfo.title}</PostH1>
+                  <CaseStudyDescription>
+                    {postInfo.snippet}
+                  </CaseStudyDescription>
+                  <CaseStudyImgWrapper didLoad={didLoad}>
+                    <Img
+                      title={postInfo.title}
+                      alt={postInfo.snippet}
+                      fluid={image}
+                      fadeIn
+                      onLoad={() => setDidLoad(true)}
+                    />
+                  </CaseStudyImgWrapper>
+                </GridCol>
+              </GridRow>
+            </HeaderBackground>
+            <PostContent>
+              <MDXRenderer>{postNode.body}</MDXRenderer>
+            </PostContent>
+          </ArticleWrapper>
+        </Main>
         <ContactCard locale={locale} />
         {(prevSlug || nextSlug) && (
           <SiblingPosts

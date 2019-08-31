@@ -5,9 +5,7 @@ import { FormattedMessage } from "react-intl";
 
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
-import SiteHeader from "../components/SiteHeader/SiteHeader";
 import Main from "../components/Main/Main";
-import SiteFooter from "../components/SiteFooter/SiteFooter";
 import Tags from "../components/Tags/Tags";
 import Article from "../components/Article/Article";
 import Pagination from "../components/Pagination/Pagination";
@@ -17,8 +15,7 @@ import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import { localePaths } from "../i18n/i18n";
 
 import {
-  PageBackground,
-  PostsBackground,
+  HeaderBackground,
   PostsRow,
   TagFoundWrapper,
   TagFoundTitle,
@@ -74,16 +71,22 @@ const TagPage = ({ pageContext, location, data }) => {
 
   return (
     <ErrorBoundary>
-      <Layout location={location} locale={locale} twinPostURL={twinPostURL}>
+      <Layout
+        location={location}
+        locale={locale}
+        twinPostURL={twinPostURL}
+        colorHeader
+      >
         <SEO
           locale={locale}
           twinPostURL={twinPostURL}
           currentPage="tags"
           currentPath={location.pathname}
         />
-        <PageBackground>
-          <Main>
-            <GridRow as="header" col8 bottomPad>
+
+        <Main>
+          <HeaderBackground>
+            <GridRow as="div" col8 bottomPad>
               <GridCol>
                 <TagFoundWrapper>
                   <h1>
@@ -101,34 +104,32 @@ const TagPage = ({ pageContext, location, data }) => {
                 </OtherTagsWrapper>
               </GridCol>
             </GridRow>
-            <PostsBackground>
-              <PostsRow as="div" padded col8>
-                <GridCol>
-                  {postsList.map((post) => (
-                    <Article
-                      key={post.title}
-                      slug={post.slug}
-                      tags={post.tags}
-                      title={post.title}
-                      date={post.date}
-                      timeToRead={post.timeToRead}
-                    />
-                  ))}
-                  {totalPagesInBlog > 1 && (
-                    <Pagination
-                      currentPage={currentPage}
-                      totalPages={totalPagesInBlog}
-                      paginationPathPrefix={paginationPathPrefix}
-                      prevPath={prevPath}
-                      nextPath={nextPath}
-                      locale={locale}
-                    />
-                  )}
-                </GridCol>
-              </PostsRow>
-            </PostsBackground>
-          </Main>
-        </PageBackground>
+          </HeaderBackground>
+          <PostsRow padded col8>
+            <GridCol>
+              {postsList.map((post) => (
+                <Article
+                  key={post.title}
+                  slug={post.slug}
+                  tags={post.tags}
+                  title={post.title}
+                  date={post.date}
+                  timeToRead={post.timeToRead}
+                />
+              ))}
+              {totalPagesInBlog > 1 && (
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPagesInBlog}
+                  paginationPathPrefix={paginationPathPrefix}
+                  prevPath={prevPath}
+                  nextPath={nextPath}
+                  locale={locale}
+                />
+              )}
+            </GridCol>
+          </PostsRow>
+        </Main>
       </Layout>
       <ScrollToTop />
     </ErrorBoundary>
