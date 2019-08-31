@@ -5,9 +5,7 @@ import { theme, mediaMin, rem } from "../theme/theme";
 import { HR } from "../components/HR/HR";
 import { GridRow } from "../components/Grid/Grid";
 
-export const StyledNotFound = styled(GridRow)`
-  max-width: ${theme.layout.col8.wrapper};
-
+export const NotFoundRow = styled(GridRow)`
   & a {
     display: inline;
     white-space: nowrap;

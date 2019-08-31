@@ -12,7 +12,7 @@ import { localePaths } from "../i18n/i18n";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 
 import {
-  StyledThanksPage,
+  ThanksPageRow,
   StyledH1,
   ThanksCopy,
   ThanksAgainCopy,
@@ -47,7 +47,7 @@ const ThanksPage = (props) => {
           currentPath={props.location.pathname}
         />
         <Main role="main">
-          <StyledThanksPage padded>
+          <ThanksPageRow padded col8>
             <GridCol>
               <FormattedMessage id="thanks.title">
                 {(txt) => <StyledH1>{txt}</StyledH1>}
@@ -87,7 +87,7 @@ const ThanksPage = (props) => {
                 {(txt) => <LocaleLink to="/">{txt}</LocaleLink>}
               </FormattedMessage>
             </GridCol>
-          </StyledThanksPage>
+          </ThanksPageRow>
         </Main>
         <SiteFooter
           locale={locale}

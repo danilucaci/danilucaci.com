@@ -5,7 +5,7 @@ export const StyledSiteNavList = styled.ul`
   display: block;
   white-space: nowrap;
 
-  margin-top: ${rem(12)};
+  margin-top: ${rem(8)};
   margin-left: 0;
 
   ${mediaMin.s`

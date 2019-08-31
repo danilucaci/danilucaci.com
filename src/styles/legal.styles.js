@@ -3,9 +3,7 @@ import { theme, rem, mediaMin } from "../theme/theme";
 import { Copy } from "../components/Copy/Copy";
 import { GridRow } from "../components/Grid/Grid";
 
-export const PageWrapper = styled(GridRow)`
-  max-width: ${theme.layout.col8.inner};
-
+export const LegalPageRow = styled(GridRow)`
   p {
     font-feature-settings: "onum";
   }

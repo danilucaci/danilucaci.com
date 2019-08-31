@@ -18,7 +18,7 @@ import sendGAEvent from "../helpers/sendGAEvent";
 
 import { Copy } from "../components/Copy/Copy";
 import {
-  ContactPageWrapper,
+  ContactPageRow,
   FormHr,
   H1,
   Info,
@@ -55,7 +55,7 @@ const ContactPage = (props) => {
           expand
         />
         <Main role="main">
-          <ContactPageWrapper>
+          <ContactPageRow bottomPad>
             <GridCol xl={6}>
               <FormattedMessage id="contact.page.title">
                 {(txt) => <H1>{txt}</H1>}
@@ -115,7 +115,7 @@ const ContactPage = (props) => {
               <FormHr />
               <ContactForm locale={locale} />
             </GridCol>
-          </ContactPageWrapper>
+          </ContactPageRow>
         </Main>
         <SiteFooter
           locale={locale}

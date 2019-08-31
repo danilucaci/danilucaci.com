@@ -11,13 +11,12 @@ import SiteFooter from "../components/SiteFooter/SiteFooter";
 import Tags from "../components/Tags/Tags";
 import Article from "../components/Article/Article";
 import Pagination from "../components/Pagination/Pagination";
-import { GridCol } from "../components/Grid/Grid";
+import { GridCol, GridRow } from "../components/Grid/Grid";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import { localePaths } from "../i18n/i18n";
 
 import {
-  TagHeader,
   PageBackground,
   PostsBackground,
   PostsRow,
@@ -89,7 +88,7 @@ const TagPage = (props) => {
             currentPath={props.location.pathname}
           />
           <Main role="main">
-            <TagHeader as="header">
+            <GridRow as="header" col8 bottomPad>
               <GridCol>
                 <TagFoundWrapper>
                   <h1>
@@ -106,9 +105,9 @@ const TagPage = (props) => {
                   <Tags tags={allTags} />
                 </OtherTagsWrapper>
               </GridCol>
-            </TagHeader>
+            </GridRow>
             <PostsBackground>
-              <PostsRow as="div">
+              <PostsRow as="div" padded col8>
                 <GridCol>
                   {postsList.map((post) => (
                     <Article

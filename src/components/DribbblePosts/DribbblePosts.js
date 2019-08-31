@@ -41,7 +41,7 @@ function DribbblePosts() {
   }
 
   return (
-    <GridRow spaced>
+    <GridRow spaced col12>
       <GridCol ref={ref}>
         <FormattedMessage id="dribbble.header">
           {(txt) => <Title>{txt}</Title>}

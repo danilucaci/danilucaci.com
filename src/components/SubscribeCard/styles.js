@@ -1,16 +1,11 @@
 import styled, { keyframes } from "styled-components";
 import { theme, mediaMin, rem } from "../../theme/theme";
 import { Copy } from "../Copy/Copy";
-import { GridRow } from "../Grid/Grid";
 import MCSubmitButton from "../MCSubmitButton/MCSubmitButton";
 
 export const SubscribeCardWrapper = styled.aside`
   width: 100%;
   background-color: ${theme.color.background.section.subscribeCard};
-`;
-
-export const StyledSubscribeCard = styled(GridRow)`
-  max-width: ${theme.layout.col10.wrapper};
 `;
 
 export const H2 = styled.h2`

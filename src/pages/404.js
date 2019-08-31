@@ -12,7 +12,7 @@ import LocaleLink from "../components/LocaleLink/LocaleLink";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 
 import {
-  StyledNotFound,
+  NotFoundRow,
   StyledH1,
   Subtitle,
   StyledCopy,
@@ -45,7 +45,7 @@ const NotFoundPage = (props) => {
           currentPath={props.location.pathname}
         />
         <Main role="main">
-          <StyledNotFound padded>
+          <NotFoundRow padded col8>
             <GridCol>
               <FormattedMessage id="not.found.title">
                 {(txt) => <StyledH1>{txt}</StyledH1>}
@@ -79,7 +79,7 @@ const NotFoundPage = (props) => {
                 {(txt) => <LocaleLink to="/">{txt}</LocaleLink>}
               </FormattedMessage>
             </GridCol>
-          </StyledNotFound>
+          </NotFoundRow>
         </Main>
         <SiteFooter
           locale={locale}

@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { theme, mediaMin, rem } from "./theme";
+import { theme, mediaMin } from "./theme";
 
 const GlobalGrid = createGlobalStyle`
   .row-bg-100 {
@@ -12,48 +12,48 @@ const GlobalGrid = createGlobalStyle`
 
   .row {
     &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
-  display: block;
-  display: flex;
-  flex: 0 1 auto;
-  flex-direction: row;
-  flex-wrap: wrap;
-
-  max-width: ${theme.layout.col12.wrapper};
-
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: ${theme.layout.gridSpacing.s};
-  padding-right: ${theme.layout.gridSpacing.s};
-
-  /* iPhone X */
-  @supports (padding: max(0px)) {
-    & {
-      padding-left: max(${
-        theme.layout.gridSpacing.s
-      }, env(safe-area-inset-left));
-      padding-right: max(${
-        theme.layout.gridSpacing.s
-      }, env(safe-area-inset-right));
+      content: "";
+      display: table;
+      clear: both;
     }
-  }
 
-  ${mediaMin.l`
-    padding-left: ${theme.layout.gridSpacing.m};
-    padding-right: ${theme.layout.gridSpacing.m};
+    display: block;
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    max-width: ${theme.layout.col12.wrapper};
+
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: ${theme.layout.gridSpacing.s};
+    padding-right: ${theme.layout.gridSpacing.s};
 
     /* iPhone X */
     @supports (padding: max(0px)) {
       & {
-        padding-left: max(${theme.layout.gridSpacing.m}, env(safe-area-inset-left));
-        padding-right: max(${theme.layout.gridSpacing.m}, env(safe-area-inset-right));
+        padding-left: max(${
+          theme.layout.gridSpacing.s
+        }, env(safe-area-inset-left));
+        padding-right: max(${
+          theme.layout.gridSpacing.s
+        }, env(safe-area-inset-right));
       }
     }
-  `};
+
+    ${mediaMin.l`
+      padding-left: ${theme.layout.gridSpacing.m};
+      padding-right: ${theme.layout.gridSpacing.m};
+
+      /* iPhone X */
+      @supports (padding: max(0px)) {
+        & {
+          padding-left: max(${theme.layout.gridSpacing.m}, env(safe-area-inset-left));
+          padding-right: max(${theme.layout.gridSpacing.m}, env(safe-area-inset-right));
+        }
+      }
+    `};
   }
   
   .row--nested {
@@ -81,41 +81,41 @@ const GlobalGrid = createGlobalStyle`
       clear: both;
     }
 
-  display: block;
-  display: flex;
-  flex: 0 1 auto;
-  flex-direction: row;
-  flex-wrap: wrap;
+    display: block;
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
 
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: ${theme.layout.gridSpacing.s};
-  padding-right: ${theme.layout.gridSpacing.s};
-
-  /* iPhone X */
-  @supports (padding: max(0px)) {
-    & {
-      padding-left: max(${
-        theme.layout.gridSpacing.s
-      }, env(safe-area-inset-left));
-      padding-right: max(${
-        theme.layout.gridSpacing.s
-      }, env(safe-area-inset-right));
-    }
-  }
-
-  ${mediaMin.l`
-    padding-left: ${theme.layout.gridSpacing.m};
-    padding-right: ${theme.layout.gridSpacing.m};
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: ${theme.layout.gridSpacing.s};
+    padding-right: ${theme.layout.gridSpacing.s};
 
     /* iPhone X */
     @supports (padding: max(0px)) {
       & {
-        padding-left: max(${theme.layout.gridSpacing.m}, env(safe-area-inset-left));
-        padding-right: max(${theme.layout.gridSpacing.m}, env(safe-area-inset-right));
+        padding-left: max(${
+          theme.layout.gridSpacing.s
+        }, env(safe-area-inset-left));
+        padding-right: max(${
+          theme.layout.gridSpacing.s
+        }, env(safe-area-inset-right));
       }
     }
-  `};
+
+    ${mediaMin.l`
+      padding-left: ${theme.layout.gridSpacing.m};
+      padding-right: ${theme.layout.gridSpacing.m};
+
+      /* iPhone X */
+      @supports (padding: max(0px)) {
+        & {
+          padding-left: max(${theme.layout.gridSpacing.m}, env(safe-area-inset-left));
+          padding-right: max(${theme.layout.gridSpacing.m}, env(safe-area-inset-right));
+        }
+      }
+    `};
   }
 
   .row-contain--10 {

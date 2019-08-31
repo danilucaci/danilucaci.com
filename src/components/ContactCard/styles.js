@@ -2,35 +2,16 @@ import styled from "styled-components";
 
 import { theme, mediaMin, rem } from "../../theme/theme";
 import { Copy } from "../Copy/Copy";
-import { GridCol, GridRow } from "../Grid/Grid";
+import { GridRowSpacer } from "../Grid/Grid";
 import SecondaryLinkButton from "../SecondaryLinkButton/SecondaryLinkButton";
 // import mobileBackground from "../../images/illustrations/contact_card_circles.svg";
 
-export const StyledContactCard = styled.aside`
+export const ContactCardRowBackground = styled(GridRowSpacer)`
   background-color: ${theme.color.background.section.contactCard};
   /* background-image: url(${mobileBackground});
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center center; */
-`;
-
-export const Row = styled(GridRow)`
-  max-width: ${theme.layout.col8.wrapper};
-`;
-
-export const ContactCardInner = styled(GridCol)`
-  padding-top: ${theme.spacing.row.s};
-  padding-bottom: ${theme.spacing.row.s};
-
-  ${mediaMin.s`
-    padding-top: ${theme.spacing.row.m};
-    padding-bottom: ${theme.spacing.row.m};
-  `};
-
-  ${mediaMin.xxl`
-    padding-top: ${theme.spacing.row.xl};
-    padding-bottom: ${theme.spacing.row.xl};
-  `};
 `;
 
 export const ContactCardTitle = styled.h2`

@@ -4,9 +4,7 @@ import { Copy } from "../components/Copy/Copy";
 import { HR } from "../components/HR/HR";
 import { GridRow } from "../components/Grid/Grid";
 
-export const StyledThanksPage = styled(GridRow)`
-  max-width: ${theme.layout.col8.wrapper};
-
+export const ThanksPageRow = styled(GridRow)`
   & a {
     display: inline;
     white-space: nowrap;

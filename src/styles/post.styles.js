@@ -8,10 +8,6 @@ export const PostWrapper = styled.article`
   width: 100%;
 `;
 
-export const PageHeaderRow = styled(GridRow)`
-  max-width: ${theme.layout.col10.wrapper};
-`;
-
 export const PostH1 = styled.h1`
   margin-top: ${rem(24)};
   margin-bottom: ${rem(16)};
@@ -73,8 +69,6 @@ export const PostContentRow = styled(GridRow)`
 
   flex-direction: column !important;
   flex-wrap: nowrap !important;
-
-  max-width: ${theme.layout.col6.wrapper};
 
   header h1,
   nav h3 {
@@ -222,8 +216,6 @@ export const StyledLoadComments = styled(LoadComments)`
 `;
 
 export const CommentsRow = styled(GridRow)`
-  max-width: ${theme.layout.col10.wrapper};
-
   /* Layout breaks without setting the width to 100% */
   width: 100%;
 `;

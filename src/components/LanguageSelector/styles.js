@@ -6,7 +6,7 @@ export const StyledLanguageSelector = styled.div`
   display: inline-block;
   position: absolute;
 
-  top: ${rem(20)};
+  top: ${rem(16)};
   right: ${rem(16)};
 
   .fonts-loaded & {
@@ -50,7 +50,6 @@ export const StyledLanguageDropdown = styled.ul`
 
   ${mediaMin.s`
     top: ${rem(44)};
-    right: ${rem(24)};
   `};
 `;
 

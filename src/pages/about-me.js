@@ -11,14 +11,12 @@ import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
 import SocialNav from "../components/SocialNav/SocialNav";
 import ContactCard from "../components/ContactCard/ContactCard";
-import { GridCol } from "../components/Grid/Grid";
+import { GridCol, GridRow } from "../components/Grid/Grid";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
-
 import { localePaths } from "../i18n/i18n";
 
 import {
-  Header,
   ResumeWrapper,
   HeaderImageWrapper,
   ImageWrapper,
@@ -26,7 +24,6 @@ import {
   AboutMeTitle,
   AboutCopy,
   StyledCopy,
-  DoingNowRow,
   DoingNowItem,
 } from "../styles/about-me.styles";
 
@@ -55,7 +52,7 @@ const AboutPage = (props) => {
           currentPath={props.location.pathname}
         />
         <Main role="main">
-          <Header>
+          <GridRow as="header" col10>
             <HeaderInfoWrapper s="7">
               <FormattedMessage id="about.me.title">
                 {(txt) => <AboutMeTitle>{txt}</AboutMeTitle>}
@@ -85,8 +82,8 @@ const AboutPage = (props) => {
                 <SocialNav />
               </ResumeWrapper>
             </HeaderImageWrapper>
-          </Header>
-          <DoingNowRow spaced>
+          </GridRow>
+          <GridRow spaced col10>
             <GridCol>
               <FormattedMessage id="about.me.what.now.title">
                 {(txt) => <h2>{txt}</h2>}
@@ -141,7 +138,7 @@ const AboutPage = (props) => {
                 </ul>
               </DoingNowItem>
             </GridCol>
-          </DoingNowRow>
+          </GridRow>
           <ContactCard locale={locale} />
         </Main>
         <SiteFooter

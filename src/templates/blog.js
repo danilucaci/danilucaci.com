@@ -13,11 +13,10 @@ import Pagination from "../components/Pagination/Pagination";
 import Article from "../components/Article/Article";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
-import { GridCol } from "../components/Grid/Grid";
+import { GridCol, GridRow } from "../components/Grid/Grid";
 import { localePaths } from "../i18n/i18n";
 
 import {
-  BlogHeader,
   PageBackground,
   BlogTitle,
   PostsBackground,
@@ -80,7 +79,7 @@ function BlogPage(props) {
             currentPath={props.location.pathname}
           />
           <Main role="main">
-            <BlogHeader as="header">
+            <GridRow as="header" col8 bottomPad>
               <GridCol>
                 <FormattedMessage id="blog.title">
                   {(txt) => <BlogTitle as="h1">{txt}</BlogTitle>}
@@ -92,9 +91,9 @@ function BlogPage(props) {
                   <Tags tags={allTags} />
                 </TagsWrapper>
               </GridCol>
-            </BlogHeader>
+            </GridRow>
             <PostsBackground>
-              <PostsRow as="div">
+              <PostsRow as="div" padded col8>
                 <GridCol>
                   {postsList.map((post) => (
                     <Article

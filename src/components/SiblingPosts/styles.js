@@ -2,12 +2,6 @@ import styled from "styled-components";
 import { theme, rem, mediaMin } from "../../theme/theme";
 import { Subhead } from "../Headings/Headings";
 import { GreyLink } from "../Link/Link";
-import { GridRow } from "../Grid/Grid";
-
-export const SiblingPostsRow = styled(GridRow)`
-  width: 100%;
-  max-width: ${theme.layout.col10.wrapper};
-`;
 
 export const SiblingPostsContents = styled.div`
   display: flex;

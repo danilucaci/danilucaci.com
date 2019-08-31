@@ -14,7 +14,7 @@ import SocialShare from "../components/SocialShare/SocialShare";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import Tags from "../components/Tags/Tags";
 import { HR } from "../components/HR/HR";
-import { GridCol } from "../components/Grid/Grid";
+import { GridCol, GridRow } from "../components/Grid/Grid";
 import SiblingPosts from "../components/SiblingPosts/SiblingPosts";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 import ArticleInfo from "../components/ArticleInfo/ArticleInfo";
@@ -24,7 +24,6 @@ import { copyURL, addCopyButtonsToCodeNodes } from "../helpers/helpers";
 import { localePaths, COPY_URL_MESSAGES } from "../i18n/i18n";
 import {
   PostWrapper,
-  PageHeaderRow,
   PostH1,
   PostInfo,
   PostDateReadTimeWrapper,
@@ -113,7 +112,7 @@ function Post({ pageContext, data, location }) {
         />
         <Main role="main">
           <PostWrapper>
-            <PageHeaderRow as="header">
+            <GridRow as="header" col10>
               <GridCol>
                 <Tags tags={postInfo.tags} inline />
                 <PostH1>{postInfo.title}</PostH1>
@@ -141,8 +140,8 @@ function Post({ pageContext, data, location }) {
                   ))}
                 </IntroContainer>
               </GridCol>
-            </PageHeaderRow>
-            <PostContentRow bottomPad>
+            </GridRow>
+            <PostContentRow bottomPad col6>
               <GridCol>
                 <MDXRenderer>{postNode.body}</MDXRenderer>
               </GridCol>
@@ -167,7 +166,7 @@ function Post({ pageContext, data, location }) {
           />
         )}
 
-        <CommentsRow as="aside" bottomPad>
+        <CommentsRow as="aside" col10 bottomPad>
           <GridCol>
             {!loadComments && (
               <StyledLoadComments onClick={() => setLoadComments(true)} />

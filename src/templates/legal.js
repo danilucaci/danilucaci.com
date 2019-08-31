@@ -14,10 +14,14 @@ import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import { GridCol } from "../components/Grid/Grid";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 
-import { PageWrapper, PostH1, PostWrapper, Time } from "../styles/legal.styles";
+import {
+  LegalPageRow,
+  PostH1,
+  PostWrapper,
+  Time,
+} from "../styles/legal.styles";
 
 function LegalDoc({ data, pageContext, location }) {
-  // const slug = data.mdx.fields.slug;
   const postNode = data.mdx;
   const postInfo = postNode.frontmatter;
   const locale = pageContext.locale;
@@ -48,7 +52,7 @@ function LegalDoc({ data, pageContext, location }) {
           currentPath={location.pathname}
         />
         <Main role="main">
-          <PageWrapper>
+          <LegalPageRow bottomSpaced col8>
             <GridCol>
               <PostH1>{postInfo.title}</PostH1>
               <FormattedMessage id="legal.updated">
@@ -74,7 +78,7 @@ function LegalDoc({ data, pageContext, location }) {
                 <MDXRenderer>{postNode.body}</MDXRenderer>
               </PostWrapper>
             </GridCol>
-          </PageWrapper>
+          </LegalPageRow>
         </Main>
         <SiteFooter
           locale={locale}
@@ -90,14 +94,10 @@ function LegalDoc({ data, pageContext, location }) {
 LegalDoc.propTypes = {
   pageContext: shape({
     locale: string.isRequired,
-    slug: string.isRequired,
     twinPost: string.isRequired,
   }).isRequired,
   data: shape({
     mdx: shape({
-      fields: shape({
-        slug: string.isRequired,
-      }),
       frontmatter: shape({
         title: string.isRequired,
         date: string.isRequired,
@@ -118,9 +118,6 @@ export const legalPageQuery = graphql`
       frontmatter {
         title
         date
-      }
-      fields {
-        slug
       }
       body
     }

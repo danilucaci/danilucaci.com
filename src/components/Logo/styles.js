@@ -3,7 +3,7 @@ import LocaleLink from "../LocaleLink/LocaleLink";
 import { theme } from "../../theme/theme";
 
 export const StyledLogo = styled(LocaleLink)`
-  color: ${theme.colors.grey900};
+  color: ${theme.color.text.default};
   display: inline-block;
   white-space: nowrap;
 
@@ -19,12 +19,12 @@ export const StyledLogo = styled(LocaleLink)`
 
   &:visited,
   &:link {
-    color: ${theme.colors.grey900};
+    color: ${theme.color.text.default};
   }
 
   &:hover {
     background-color: transparent;
-    color: ${theme.colors.primary600};
+    color: ${theme.color.text.primary};
     cursor: pointer;
   }
 `;

@@ -5,13 +5,13 @@ import { FormattedMessage } from "react-intl";
 import sendGAEvent from "../../helpers/sendGAEvent";
 
 import {
-  StyledContactCard,
-  Row,
-  ContactCardInner,
+  ContactCardRowBackground,
   ContactCardTitle,
   Subtitle,
   StyleButton,
 } from "./styles";
+
+import { GridCol, GridRow } from "../Grid/Grid";
 
 function ContactCard(props) {
   let locale = props.locale;
@@ -24,9 +24,9 @@ function ContactCard(props) {
   }
 
   return (
-    <StyledContactCard>
-      <Row as="div">
-        <ContactCardInner>
+    <ContactCardRowBackground as="aside">
+      <GridRow as="div" col8 padded>
+        <GridCol>
           <FormattedMessage id="contact.card.title">
             {(txt) => <ContactCardTitle>{txt}</ContactCardTitle>}
           </FormattedMessage>
@@ -45,9 +45,9 @@ function ContactCard(props) {
               </StyleButton>
             )}
           </FormattedMessage>
-        </ContactCardInner>
-      </Row>
-    </StyledContactCard>
+        </GridCol>
+      </GridRow>
+    </ContactCardRowBackground>
   );
 }
 

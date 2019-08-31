@@ -22,8 +22,8 @@ import {
   Subtitle,
   Name,
   FindOutMore,
-  ServicesSection,
   ServicesRow,
+  ServicesRowBackground,
   ServicesTitle,
   ServiceTitle,
   ServiceCopy,
@@ -57,7 +57,7 @@ const Index = (props) => {
           currentPath={props.location.pathname}
         />
         <Main role="main">
-          <IndexHeader as="header">
+          <IndexHeader as="header" col10 bottomPad>
             <GridCol>
               <FormattedMessage id="index.name">
                 {(txt) => <Name>{txt}</Name>}
@@ -85,8 +85,8 @@ const Index = (props) => {
               </FindOutMore>
             </GridCol>
           </IndexHeader>
-          <ServicesSection>
-            <ServicesRow as="div">
+          <ServicesRowBackground bottomSpaced as="section">
+            <ServicesRow col10 padded as="div">
               <GridCol>
                 <FormattedMessage id="index.services.heading">
                   {(txt) => <ServicesTitle>{txt}</ServicesTitle>}
@@ -182,9 +182,9 @@ const Index = (props) => {
                 </ServicesEntry>
               </GridCol>
             </ServicesRow>
-          </ServicesSection>
+          </ServicesRowBackground>
 
-          <CaseStudies edges={edges} header="h2" />
+          <CaseStudies edges={edges} header="h2" spaced />
 
           <DribbblePosts locale={locale} />
           <ContactCard locale={locale} />

@@ -80,6 +80,7 @@ function WorkPage(props) {
           locale={locale}
           twinPostURL={twinPostURL}
           currentPath={props.location.pathname}
+          expand
         />
         <ScrollToTop />
       </Layout>

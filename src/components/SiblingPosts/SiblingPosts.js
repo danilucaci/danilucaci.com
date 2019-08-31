@@ -2,10 +2,9 @@ import React from "react";
 import { string } from "prop-types";
 import { FormattedMessage } from "react-intl";
 import { HR } from "../HR/HR";
-import { GridCol } from "../Grid/Grid";
+import { GridCol, GridRow } from "../Grid/Grid";
 
 import {
-  SiblingPostsRow,
   SiblingPostsContents,
   PreviousItemsContainer,
   PrevSectionHeader,
@@ -16,7 +15,7 @@ import {
 } from "./styles";
 
 const SiblingPosts = ({ prevSlug, prevTitle, nextSlug, nextTitle }) => (
-  <SiblingPostsRow bottomPad>
+  <GridRow bottomPad col10>
     <GridCol>
       <HR />
       <SiblingPostsContents>
@@ -39,7 +38,7 @@ const SiblingPosts = ({ prevSlug, prevTitle, nextSlug, nextTitle }) => (
       </SiblingPostsContents>
       <HR />
     </GridCol>
-  </SiblingPostsRow>
+  </GridRow>
 );
 
 SiblingPosts.propTypes = {

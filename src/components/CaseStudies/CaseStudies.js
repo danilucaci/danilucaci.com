@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
 
 import CaseStudyCard from "../CaseStudyCard/CaseStudyCard";
-import { GridCol } from "../Grid/Grid";
-import { Row, Title } from "./styles";
+import { GridCol, GridRow } from "../Grid/Grid";
+import { Title } from "./styles";
 
-const CaseStudies = ({ edges }) => {
+const CaseStudies = ({ edges, spaced }) => {
   let caseStudies = edges.map((edge) => ({
     slug: edge.node.fields.slug,
     tagsInCaseStudy: edge.node.frontmatter.tags,
@@ -17,7 +17,7 @@ const CaseStudies = ({ edges }) => {
   }));
 
   return (
-    <Row>
+    <GridRow col12 spaced={spaced}>
       <GridCol>
         <FormattedMessage id="case.studies.header">
           {(txt) => <Title>{txt}</Title>}
@@ -36,7 +36,7 @@ const CaseStudies = ({ edges }) => {
           />
         ))}
       </GridCol>
-    </Row>
+    </GridRow>
   );
 };
 

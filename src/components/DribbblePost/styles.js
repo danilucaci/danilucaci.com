@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { theme } from "../../theme/theme";
+import { theme, mediaMin } from "../../theme/theme";
 
 export const StyledDribbblePost = styled.figure``;
 
@@ -29,10 +29,18 @@ export const StyledLink = styled.a`
 
   display: inline-block;
   vertical-align: middle;
+  transition: transform 200ms ease-out;
 
   &:hover {
     background-color: transparent !important;
+    box-shadow: ${theme.shadow.dropdown};
   }
+
+  ${mediaMin.m` 
+    &:hover {
+      transform: scale(1.01);
+    }
+  `};
 
   position: relative;
   overflow: hidden;

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
@@ -11,129 +11,96 @@ import { Main } from "../components/Main/Main";
 import SiteFooter from "../components/SiteFooter/SiteFooter";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import SiblingPosts from "../components/SiblingPosts/SiblingPosts";
-import AuthorCard from "../components/AuthorCard/AuthorCard";
 import ContactCard from "../components/ContactCard/ContactCard";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
+import { GridCol } from "../components/Grid/Grid";
 
 import {
   ArticleWrapper,
   StyledHeader,
   PostH1,
-  TagsWrapper,
-  Tag,
   CaseStudyDescription,
   CaseStudyImgWrapper,
   PostContent,
 } from "../styles/caseStudy.styles";
 
-class CaseStudy extends Component {
-  state = {
-    didLoad: false,
-  };
+function CaseStudy({ data, pageContext, location }) {
+  const [didLoad, setDidLoad] = useState(false);
 
-  // removeHeaderTabIndex = (arr) => {
-  //   arr.forEach((header) => {
-  //     header.tabIndex = -1;
-  //   });
-  // };
+  const postNode = data.mdx;
+  const postInfo = postNode.frontmatter;
+  const image = postInfo.images[0].childImageSharp.fluid;
+  const locale = pageContext.locale;
+  const twinPost = pageContext.twinPost;
+  const nextTitle = pageContext.nextTitle;
+  const nextSlug = pageContext.nextSlug;
+  const prevSlug = pageContext.prevSlug;
+  const prevTitle = pageContext.prevTitle;
 
-  // removeAnchorsFromTabIndex = () => {
-  //   const h2s = Array.from(document.querySelectorAll("h2 a"));
-  //   const h3s = Array.from(document.querySelectorAll("h3 a"));
-  //   const h4s = Array.from(document.querySelectorAll("h4 a"));
-  //   const h5s = Array.from(document.querySelectorAll("h5 a"));
+  let twinPostURL = "";
 
-  //   // Remove the headers from tab index
-  //   this.removeHeaderTabIndex(h2s);
-  //   this.removeHeaderTabIndex(h3s);
-  //   this.removeHeaderTabIndex(h4s);
-  //   this.removeHeaderTabIndex(h5s);
-  // };
+  if (locale === "en") {
+    twinPostURL = "/es/trabajos/" + twinPost;
+  } else if (locale === "es") {
+    twinPostURL = "/work/" + twinPost;
+  }
 
-  render() {
-    const postNode = this.props.data.mdx;
-    const postInfo = postNode.frontmatter;
-    const image = postInfo.images[0].childImageSharp.fluid;
-    const locale = this.props.pageContext.locale;
-    const twinPost = this.props.pageContext.twinPost;
-    const nextTitle = this.props.pageContext.nextTitle;
-    const nextSlug = this.props.pageContext.nextSlug;
-    const prevSlug = this.props.pageContext.prevSlug;
-    const prevTitle = this.props.pageContext.prevTitle;
-
-    let twinPostURL = "";
-
-    if (locale === "en") {
-      twinPostURL = "/es/trabajos/" + twinPost;
-    } else if (locale === "es") {
-      twinPostURL = "/work/" + twinPost;
-    }
-
-    return (
-      <ErrorBoundary>
-        <Layout location={this.props.location} locale={locale}>
-          <SEO
-            locale={locale}
-            twinPostURL={twinPostURL}
-            postNode={postNode}
-            postSEO
-            postImage={image.src}
-            currentPath={this.props.location.pathname}
-          />
-          <SiteHeader
-            twinPostURL={twinPostURL}
-            locale={locale}
-            currentPath={this.props.location.pathname}
-          />
-          <Main role="main">
-            <ArticleWrapper>
+  return (
+    <ErrorBoundary>
+      <Layout location={location} locale={locale}>
+        <SEO
+          locale={locale}
+          twinPostURL={twinPostURL}
+          postNode={postNode}
+          postSEO
+          postImage={image.src}
+          currentPath={location.pathname}
+        />
+        <SiteHeader
+          twinPostURL={twinPostURL}
+          locale={locale}
+          currentPath={location.pathname}
+        />
+        <Main role="main">
+          <ArticleWrapper as="article">
+            <GridCol>
               <StyledHeader>
-                <TagsWrapper>
-                  {postInfo.tags.map((tag) => (
-                    <Tag key={tag}>{tag}</Tag>
-                  ))}
-                </TagsWrapper>
                 <PostH1>{postInfo.title}</PostH1>
                 <CaseStudyDescription>{postInfo.snippet}</CaseStudyDescription>
               </StyledHeader>
-              <CaseStudyImgWrapper didLoad={this.state.didLoad}>
+              <CaseStudyImgWrapper didLoad={didLoad}>
                 <Img
                   title={postInfo.title}
                   alt={postInfo.snippet}
                   fluid={image}
                   fadeIn
-                  onLoad={() =>
-                    this.setState({
-                      didLoad: true,
-                    })
-                  }
+                  onLoad={() => setDidLoad(true)}
                 />
               </CaseStudyImgWrapper>
               <PostContent>
                 <MDXRenderer>{postNode.body}</MDXRenderer>
               </PostContent>
-              <AuthorCard />
-            </ArticleWrapper>
-            <ScrollToTop />
-          </Main>
-          <ContactCard locale={locale} />
-          {(prevSlug || nextSlug) && (
-            <SiblingPosts
-              nextSlug={nextSlug}
-              nextTitle={nextTitle}
-              prevSlug={prevSlug}
-              prevTitle={prevTitle}
-            />
-          )}
-          <SiteFooter
-            locale={locale}
-            twinPostURL={twinPostURL}
-            currentPath={this.props.location.pathname}
+            </GridCol>
+          </ArticleWrapper>
+          <ScrollToTop />
+        </Main>
+        <ContactCard locale={locale} />
+        {(prevSlug || nextSlug) && (
+          <SiblingPosts
+            nextSlug={nextSlug}
+            nextTitle={nextTitle}
+            prevSlug={prevSlug}
+            prevTitle={prevTitle}
           />
-        </Layout>
-      </ErrorBoundary>
-    );
-  }
+        )}
+        <SiteFooter
+          locale={locale}
+          twinPostURL={twinPostURL}
+          currentPath={location.pathname}
+        />
+      </Layout>
+    </ErrorBoundary>
+  );
 }
 
 CaseStudy.propTypes = {
@@ -169,7 +136,6 @@ CaseStudy.propTypes = {
         date: PropTypes.string.isRequired,
         images: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
         snippet: PropTypes.string.isRequired,
-        tags: PropTypes.arrayOf(PropTypes.string).isRequired,
       }),
     }),
   }).isRequired,
@@ -188,7 +154,6 @@ export const pageQuery = graphql`
         title
         date(formatString: "YYYY-MM-DD")
         snippet
-        tags
         # links {
         #   name
         #   link

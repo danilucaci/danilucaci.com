@@ -3,10 +3,10 @@ import { theme, rem, mediaMin } from "../../theme/theme";
 import { GreyLink } from "../Link/Link";
 import { Copy } from "../Copy/Copy";
 import { Subhead } from "../Headings/Headings";
-import { GridCol, GridRow } from "../Grid/Grid";
+import { GridCol, GridRow, GridRowSpacer } from "../Grid/Grid";
 import { HR } from "../HR/HR";
 
-export const StyledFooter = styled.footer`
+export const FooterRowBackground = styled(GridRowSpacer)`
   display: block;
   background-color: ${theme.color.background.footer};
   width: 100%;
@@ -18,9 +18,7 @@ export const StyledFooter = styled.footer`
   `};
 `;
 
-export const Row = styled(GridRow)`
-  max-width: ${theme.layout.col10.wrapper};
-
+export const FooterInnerRow = styled(GridRow)`
   ${(props) =>
     props.expand &&
     `

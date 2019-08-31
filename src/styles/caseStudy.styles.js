@@ -3,44 +3,7 @@ import { theme, rem, mediaMin } from "../theme/theme";
 import { Copy } from "../components/Copy/Copy";
 import { GridRow } from "../components/Grid/Grid";
 
-export const Div = styled.div``;
-
-export const ArticleWrapper = styled.article`
-  & footer {
-    @media screen and (max-width: ${theme.breakpoints.s}) {
-      margin-left: ${theme.layout.gutter.s};
-      margin-right: ${theme.layout.gutter.s};
-      width: auto;
-
-      @supports (padding: max(0px)) {
-        & {
-          margin-left: max(${theme.layout.gutter.s}, env(safe-area-inset-left));
-          margin-right: max(
-            ${theme.layout.gutter.s},
-            env(safe-area-inset-right)
-          );
-        }
-      }
-    }
-
-    @media screen and (min-width: ${theme.breakpoints
-        .s}) and (max-width: ${theme.breakpoints.xxl}) {
-      margin-left: ${theme.layout.gutter.m};
-      margin-right: ${theme.layout.gutter.m};
-      width: auto;
-
-      @supports (padding: max(0px)) {
-        & {
-          margin-left: max(${theme.layout.gutter.m}, env(safe-area-inset-left));
-          margin-right: max(
-            ${theme.layout.gutter.m},
-            env(safe-area-inset-right)
-          );
-        }
-      }
-    }
-  }
-`;
+export const ArticleWrapper = styled(GridRow)``;
 
 export const StyledHeader = styled(GridRow)`
   max-width: ${theme.layout.col8.wrapper};
@@ -69,33 +32,6 @@ export const CaseStudyDescription = styled(Copy)`
     line-height: ${theme.font.lineHeight.body.m};
     letter-spacing: ${theme.font.letterSpacing.body.subhead};    
   `};
-`;
-
-export const TagsWrapper = styled.div`
-  width: 100%;
-`;
-
-export const Tag = styled.p`
-  color: ${theme.colors.grey700};
-  font-size: ${theme.font.size.body.s};
-  line-height: ${theme.font.lineHeight.body.s};
-  font-weight: 700;
-  text-transform: uppercase;
-  font-family: ${theme.font.family.display.fallback};
-  letter-spacing: ${theme.font.letterSpacing.body.subhead};
-
-  .fonts-loaded & {
-    font-family: ${theme.font.family.display.boldRegular};
-  }
-
-  ${mediaMin.s`
-    font-size: ${theme.font.size.body.m};
-    line-height: ${theme.font.lineHeight.body.m};
-    letter-spacing: ${theme.font.letterSpacing.body.subhead};
-  `};
-
-  display: inline-block;
-  margin-right: ${rem(16)};
 `;
 
 export const placeholderAnimation = keyframes`

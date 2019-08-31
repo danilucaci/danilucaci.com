@@ -7,53 +7,12 @@ export const PageBackground = styled.div`
   background-color: ${theme.color.background.section.lightest};
 `;
 
-export const TagHeader = styled(GridRow)`
-  max-width: ${theme.layout.col8.wrapper};
-
-  padding-bottom: ${theme.spacing.row.s};
-
-  ${mediaMin.m`
-    padding-bottom: ${theme.spacing.row.m};
-  `};
-
-  ${mediaMin.l`
-    padding-bottom: ${theme.spacing.row.xl};
-  `};
-
-  /* Mobile in ladscape */
-  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(
-      280,
-    )}) and (max-height: ${rem(560)}) and (orientation: landscape) {
-    padding-bottom: ${rem(64)};
-  }
-`;
-
 export const PostsBackground = styled.section`
   background-color: white;
 `;
 
 export const PostsRow = styled(GridRow)`
-  max-width: ${theme.layout.col8.wrapper};
-  margin-left: auto;
-  margin-right: auto;
-
-  padding-top: ${rem(24)};
-  padding-bottom: ${theme.spacing.row.s};
-
-  ${mediaMin.m`
-    padding-top: ${rem(40)};
-    padding-bottom: ${theme.spacing.row.m};
-  `};
-  ${mediaMin.l`
-    padding-bottom: ${theme.spacing.row.xl};
-  `};
-
-  /* Mobile in ladscape */
-  @media screen and (min-width: ${rem(480)}) and (min-height: ${rem(
-      280,
-    )}) and (max-height: ${rem(560)}) and (orientation: landscape) {
-    padding-bottom: ${rem(64)};
-  }
+  padding-top: ${rem(24)} !important;
 `;
 
 export const TagFoundWrapper = styled.div`
@@ -74,7 +33,11 @@ export const TagFoundTitle = styled.span`
   font-weight: 700;
   font-style: normal;
 
-  font-family: ${theme.font.family.display.bold};
+  font-family: ${theme.font.family.display.fallback};
+
+  .fonts-loaded & {
+    font-family: ${theme.font.family.display.bold};
+  }
 
   font-size: ${theme.font.size.display.mobile.h2};
   line-height: ${theme.font.lineHeight.display.mobile.h2};

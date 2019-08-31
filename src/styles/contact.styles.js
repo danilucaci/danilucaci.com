@@ -5,19 +5,13 @@ import { HR } from "../components/HR/HR";
 import { GridRow } from "../components/Grid/Grid";
 import ExternalLink from "../components/ExternalLink/ExternalLink";
 
-export const ContactPageWrapper = styled(GridRow)`
+export const ContactPageRow = styled(GridRow)`
   max-width: ${theme.layout.col6.wrapper};
-
-  margin-bottom: ${theme.spacing.row.s};
-
-  ${mediaMin.s`
-    margin-bottom: ${theme.spacing.row.m};
-  `};
+  margin-left: auto;
+  margin-right: auto;
 
   ${mediaMin.xl`
-    margin-bottom: ${theme.spacing.row.xl};
     max-width: ${theme.layout.col12.wrapper};
-    margin-top: ${rem(24)};
   `};
 `;
 

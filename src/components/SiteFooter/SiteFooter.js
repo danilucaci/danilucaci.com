@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { string, bool } from "prop-types";
 import { graphql, useStaticQuery } from "gatsby";
 import { FormattedMessage } from "react-intl";
 
@@ -9,9 +9,9 @@ import FooterLanguageSelector from "../FooterLanguageSelector/FooterLanguageSele
 import { GridCol } from "../Grid/Grid";
 
 import {
-  StyledFooter,
+  FooterRowBackground,
   Copyright,
-  Row,
+  FooterInnerRow,
   NavCol,
   LegalDocsList,
   LegalDocsListItem,
@@ -37,8 +37,8 @@ const SiteFooter = ({ locale = "en", twinPostURL, currentPath, expand }) => {
     .filter((edge) => edge.locale === pageLocale);
 
   return (
-    <StyledFooter role="contentinfo">
-      <Row as="div" expand={expand}>
+    <FooterRowBackground role="contentinfo" as="footer">
+      <FooterInnerRow as="div" col10 expand={expand}>
         <NavCol col={6} s={4} xxl={7}>
           <StyledSubhead>danilucaci.com</StyledSubhead>
           <FooterNavList locale={locale} />
@@ -80,15 +80,20 @@ const SiteFooter = ({ locale = "en", twinPostURL, currentPath, expand }) => {
             <Copyright>&copy; {new Date().getFullYear()} Dani Lucaci</Copyright>
           </FooterBottom>
         </GridCol>
-      </Row>
-    </StyledFooter>
+      </FooterInnerRow>
+    </FooterRowBackground>
   );
 };
 
 SiteFooter.propTypes = {
-  locale: PropTypes.string.isRequired,
-  twinPostURL: PropTypes.string.isRequired,
-  currentPath: PropTypes.string.isRequired,
+  locale: string.isRequired,
+  twinPostURL: string.isRequired,
+  currentPath: string.isRequired,
+  expand: bool,
+};
+
+SiteFooter.defaultProps = {
+  expand: false,
 };
 
 export default SiteFooter;

@@ -1,21 +1,15 @@
 import styled from "styled-components";
 import { theme, mediaMin, mediaMax, rem } from "../theme/theme";
 import { Copy } from "../components/Copy/Copy";
-import { GridRow } from "../components/Grid/Grid";
+import { GridRow, GridRowSpacer } from "../components/Grid/Grid";
 
 export const IndexHeader = styled(GridRow)`
-  max-width: ${theme.layout.col10.wrapper};
-  margin: 0 auto;
-  padding-bottom: ${rem(56)};
-
   ${mediaMin.s`
     padding-top: ${rem(16)};
-    padding-bottom: ${theme.spacing.row.m};
   `};
 
   ${mediaMin.xl`
     padding-top: ${rem(56)};
-    padding-bottom: ${theme.spacing.row.xl};
   `};
 `;
 
@@ -74,41 +68,13 @@ export const FindOutMore = styled.p`
   color: ${theme.color.text.subdued};
 `;
 
-export const ServicesSection = styled.section`
+export const ServicesRowBackground = styled(GridRowSpacer)`
   background-color: ${theme.color.background.section.lightest};
+`;
+
+export const ServicesRow = styled(GridRow)`
   padding-top: ${rem(40)};
   padding-bottom: ${rem(40)};
-
-  ${mediaMin.m`
-    padding-top: ${theme.spacing.row.m};
-    padding-bottom: ${theme.spacing.row.m};
-  `};
-
-  ${mediaMin.xl`
-    padding-top: ${theme.spacing.row.xl};
-    padding-bottom: ${theme.spacing.row.xl};
-  `};
-
-  /* Mobile in ladscape */
-  @media screen and (min-width: 30em) and (min-height: 17em) and (max-height: 35em) and (orientation: landscape) {
-    padding-top: ${rem(32)};
-    padding-bottom: ${rem(64)};
-  }
-
-  margin-bottom: ${theme.spacing.row.s};
-
-  ${mediaMin.s`
-    margin-bottom: ${theme.spacing.row.m};
-  `};
-
-  ${mediaMin.xl`
-    margin-bottom: ${theme.spacing.row.xl};
-  `};
-
-  /* Mobile in ladscape */
-  @media screen and (min-width: 30em) and (min-height: 17em) and (max-height: 35em) and (orientation: landscape) {
-    margin-bottom: ${rem(64)};
-  }
 `;
 
 export const ServicesEntry = styled.div`
@@ -170,8 +136,4 @@ export const ServiceContent = styled.div`
   ${mediaMin.m`
     flex: 4 1 auto;
   `};
-`;
-
-export const ServicesRow = styled(GridRow)`
-  max-width: ${theme.layout.col10.wrapper};
 `;
