@@ -36,6 +36,8 @@ export const StyledLanguageDropdown = styled.ul`
 
   display: block;
 
+  z-index: 1000;
+
   opacity: 0;
   transform: scale(0);
   transition: transform, visibility, opacity 0.2s ease;
