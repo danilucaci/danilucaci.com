@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { bool, arrayOf, object } from "prop-types";
 import { FormattedMessage } from "react-intl";
 
 import CaseStudyCard from "../CaseStudyCard/CaseStudyCard";
@@ -41,7 +41,12 @@ const CaseStudies = ({ edges, spaced }) => {
 };
 
 CaseStudies.propTypes = {
-  edges: PropTypes.arrayOf(PropTypes.object).isRequired,
+  edges: arrayOf(object).isRequired,
+  spaced: bool,
+};
+
+CaseStudies.defaultProps = {
+  spaced: false,
 };
 
 export default CaseStudies;
