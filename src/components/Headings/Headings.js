@@ -19,6 +19,7 @@ export const Subhead = styled.h4`
 
   font-weight: 700;
   font-style: normal;
+  font-family: ${theme.font.family.body.fallback};
 
   .fonts-loaded & {
     font-family: ${theme.font.family.body.bold};
