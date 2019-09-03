@@ -255,34 +255,6 @@ export const GridRowSpacer = styled.div`
     `};
 `;
 
-export const GridContain12 = styled.div`
-  max-width: ${theme.layout.col12.wrapper};
-
-  margin-left: auto;
-  margin-right: auto;
-`;
-
-export const GridContain10 = styled.div`
-  max-width: ${theme.layout.col10.wrapper};
-
-  margin-left: auto;
-  margin-right: auto;
-`;
-
-export const GridContain8 = styled.div`
-  max-width: ${theme.layout.col8.wrapper};
-
-  margin-left: auto;
-  margin-right: auto;
-`;
-
-export const GridContain6 = styled.div`
-  max-width: ${theme.layout.col6.wrapper};
-
-  margin-left: auto;
-  margin-right: auto;
-`;
-
 export const GridRowNested = styled.div`
   &:after {
     content: "";
@@ -407,13 +379,4 @@ export const GridCol = styled.div`
         flex-basis: calc(${(100 / 12) * xxxl}% - ${theme.layout.gutter.m});
       }
     `};
-`;
-
-export const GridColNested = styled.div`
-  flex: 0 1 100%;
-  max-width: 100%;
-
-  ${mediaMin.s`
-    float: left;
-  `};
 `;
