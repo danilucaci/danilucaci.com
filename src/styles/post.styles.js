@@ -9,11 +9,10 @@ export const PostWrapper = styled.article`
 `;
 
 export const PostH1 = styled.h1`
-  margin-top: ${rem(24)};
+  margin-top: ${rem(16)};
   margin-bottom: ${rem(16)};
 
   ${mediaMin.s`
-    margin-top: ${rem(16)};
     margin-bottom: ${rem(24)};
   `};
 `;

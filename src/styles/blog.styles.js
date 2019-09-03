@@ -12,8 +12,8 @@ export const PostsRow = styled(Row)`
 `;
 
 export const BlogTitle = styled.h1`
-  font-size: ${theme.font.size.display.mobile.h2};
-  line-height: ${theme.font.lineHeight.display.mobile.h2};
+  font-size: ${theme.font.size.display.mobile.h3};
+  line-height: ${theme.font.lineHeight.display.mobile.h3};
 
   ${mediaMin.xs`
     font-size: ${theme.font.size.display.desktop.h2};

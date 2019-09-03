@@ -9,12 +9,28 @@ export const ThanksPageRow = styled(Row)`
     display: inline;
     white-space: nowrap;
   }
+
+  ${mediaMin.m`
+     margin-top: ${theme.spacing.row.m}; 
+  `};
+
+  ${mediaMin.xl`
+     margin-top: ${theme.spacing.row.xl}; 
+  `};
 `;
 
 export const StyledH1 = styled.h1`
   display: block;
   width: 100%;
   margin-bottom: ${rem(24)};
+
+  font-size: ${theme.font.size.display.mobile.h2};
+  line-height: ${theme.font.lineHeight.display.mobile.h2};
+
+  ${mediaMin.m`
+    font-size: ${theme.font.size.display.desktop.h1};
+    line-height: ${theme.font.lineHeight.display.desktop.h1};
+  `}
 `;
 
 export const ThanksCopy = styled(Copy)`
