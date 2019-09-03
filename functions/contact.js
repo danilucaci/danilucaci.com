@@ -1,6 +1,6 @@
 const { URL } = require("url");
 const ow = require("ow");
-const differenceInHours = require("date-fns/differenceInHours");
+// const differenceInHours = require("date-fns/differenceInHours");
 
 require("dotenv").config({
   path: ".env.development",
@@ -58,8 +58,7 @@ exports.handler = async (event) => {
   const sendFrom = locale === "en" ? EMAIL_FROM_EN : EMAIL_FROM_ES;
 
   const origin = new URL(event.headers.origin);
-  const isValidHostname =
-    origin.hostname === "localhost" || origin.hostname === "www.danilucaci.com";
+  const isValidHostname =    origin.hostname === "localhost" || origin.hostname === "www.danilucaci.com";
 
   let allowOrigin = "*";
 
@@ -140,18 +139,18 @@ exports.handler = async (event) => {
 
   // Check for an invalid date sent value
   // datesent is comming in as a ISOString also, UTC timezone 0
-  const newDateToCompare = new Date().toISOString();
+  // const newDateToCompare = new Date().toISOString();
   const newDateFromDateSent = new Date(datesent);
-  const hoursDiff = differenceInHours(newDateFromDateSent, newDateToCompare);
+  // const hoursDiff = differenceInHours(newDateFromDateSent, newDateToCompare);
 
-  if (hoursDiff > 1) {
-    console.error("Date sent hour validation error: ", hoursDiff);
-    return {
-      statusCode: 500,
-      body: STATUS_MESSAGES[locale].invalidDateSent,
-      headers,
-    };
-  }
+  // if (hoursDiff > 1) {
+  //   console.error("Date sent hour validation error: ", hoursDiff);
+  //   return {
+  //     statusCode: 500,
+  //     body: STATUS_MESSAGES[locale].invalidDateSent,
+  //     headers,
+  //   };
+  // }
 
   const dateOptions = {
     weekday: "long",
