@@ -7,7 +7,7 @@ export const StyledLanguageSelector = styled.div`
   position: absolute;
 
   top: ${rem(16)};
-  right: ${rem(16)};
+  right: 0;
 
   .fonts-loaded & {
     font-family: ${theme.font.family.display.boldRegular};
