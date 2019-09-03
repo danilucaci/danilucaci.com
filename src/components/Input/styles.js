@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { theme } from "../../theme/theme";
+import { theme, rem } from "../../theme/theme";
 import FilteredPropsInputField from "../FilteredPropsInputField/FilteredPropsInputField";
 
 export const StyledInput = styled(FilteredPropsInputField)`
@@ -14,6 +14,8 @@ export const StyledInput = styled(FilteredPropsInputField)`
   font-weight: 400;
 
   width: 100%;
+
+  margin-top: ${rem(8)};
 
   padding: ${theme.spacing.input.default.vertical}
     ${theme.spacing.input.default.horizontal};

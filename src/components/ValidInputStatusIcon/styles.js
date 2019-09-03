@@ -10,7 +10,7 @@ export const StyledValidInputStatusIcon = styled.span`
   background-position: 0px 0px;
   position: absolute;
   right: ${rem(12)};
-  bottom: ${rem(12)};
+  bottom: ${rem(13)};
   width: ${rem(24)};
   height: ${rem(24)};
 `;

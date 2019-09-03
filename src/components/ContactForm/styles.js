@@ -17,7 +17,7 @@ export const StyledForm = styled(Form)`
 
 export const StyledLabel = styled(Label)`
   display: block;
-  margin-top: ${rem(16)};
+  margin-top: ${rem(24)};
   position: relative;
 
   &:first-of-type {
@@ -32,5 +32,4 @@ export const StyledLabel = styled(Label)`
 
 export const StyledInput = styled(Input)`
   display: block;
-  margin-top: ${rem(8)};
 `;
