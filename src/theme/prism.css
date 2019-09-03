@@ -14,7 +14,7 @@ pre[class*="language-"] {
   word-break: normal;
   word-wrap: normal;
   font-size: 1rem;
-  line-height: 1.75rem;
+  line-height: 1.5rem;
   -moz-tab-size: 2;
   -o-tab-size: 2;
   tab-size: 2;
@@ -50,30 +50,13 @@ code[class*="language-"] ::selection {
 /* Code blocks */
 pre[class*="language-"] {
   overflow: auto;
-  padding: 2rem 1rem;
-}
-
-pre[class*="language-"]::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
-  border-radius: 0.5rem;
-  background-color: #ffffff;
-}
-
-pre[class*="language-"]::-webkit-scrollbar {
-  height: 0.5rem;
-  background-color: #cbced4;
-}
-
-pre[class*="language-"]::-webkit-scrollbar-thumb {
-  border-radius: 0.5rem;
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
-  background-color: #cbced4;
+  padding: 1rem;
 }
 
 .gatsby-highlight {
   margin-left: -1rem;
   margin-right: -1rem;
-  margin-bottom: 1.75rem;
+  margin-bottom: 2rem;
 }
 
 .gatsby-highlight-code-line {
@@ -86,53 +69,30 @@ pre[class*="language-"]::-webkit-scrollbar-thumb {
   border-left: 0.25em solid #00bcf5;
 }
 
-@media screen and (min-width: 40em) {
+@media screen and (min-width: 38em) {
   .gatsby-highlight {
-    margin-left: -2rem;
-    margin-right: -2rem;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
   }
 
   .gatsby-highlight-code-line {
     background-color: #003254;
     display: block;
-    margin-left: -2em;
-    margin-right: -2em;
-    padding-right: 2em;
-    padding-left: 1.7em;
+    margin-left: -1.5em;
+    margin-right: -1.5em;
+    padding-right: 1.5em;
+    padding-left: 1.25em;
     border-left: 0.25em solid #00bcf5;
   }
 
   pre[class*="language-"] {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-}
-
-@media screen and (min-width: 50em) {
-  .gatsby-highlight {
-    margin-left: -4rem;
-    margin-right: -4rem;
-  }
-
-  .gatsby-highlight-code-line {
-    background-color: #003254;
-    display: block;
-    margin-left: -4em;
-    margin-right: -4em;
-    padding-right: 2em;
-    padding-left: 3.7em;
-    border-left: 0.25em solid #00bcf5;
-  }
-
-  pre[class*="language-"] {
-    padding-left: 4rem;
-    padding-right: 4rem;
+    padding: 1.5rem;
   }
 }
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  background: #0f2030;
+  background: #1a212b;
 }
 
 /* Inline code */

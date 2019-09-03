@@ -122,9 +122,14 @@ export const PostContentRow = styled(Row)`
     font-family: ${theme.font.family.body.regular};
 
     position: absolute;
-    top: ${rem(12)};
-    right: ${rem(12)};
+    top: ${rem(8)};
+    right: ${rem(16)};
     padding: ${rem(8)} ${rem(16)};
+
+    ${mediaMin.s`
+      top: ${rem(16)};
+      right: ${rem(16)};
+    `};
   }
 
   .gatsby-highlight {
