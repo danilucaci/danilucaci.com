@@ -1,7 +1,7 @@
 import styled, { keyframes, css } from "styled-components";
 import { theme, rem, mediaMin } from "../theme/theme";
 import { Copy } from "../components/Copy/Copy";
-import { GridRow, GridRowSpacer, GridCol } from "../components/Grid/Grid";
+import { Row, RowSpacer, Col } from "../components/Grid/Grid";
 
 export const ArticleWrapper = styled.article`
   blockquote {
@@ -165,9 +165,8 @@ export const CaseStudyImgWrapper = styled.div`
     animation: ${placeholderAnimation} 3s ease infinite;
   }
 
-  ${({ didLoad }) =>
-    didLoad &&
-    css`
+  ${({ didLoad }) => didLoad
+    && css`
       .gatsby-image-wrapper {
         background: transparent;
         animation: none;
@@ -175,7 +174,7 @@ export const CaseStudyImgWrapper = styled.div`
     `}
 `;
 
-export const OverviewRow = styled(GridRow)`
+export const OverviewRow = styled(Row)`
   & h2 {
     color: ${theme.color.text.subdued};
     display: block;
@@ -202,7 +201,7 @@ export const OverviewRow = styled(GridRow)`
   }
 `;
 
-export const OverviewInfoCol = styled(GridCol)`
+export const OverviewInfoCol = styled(Col)`
   display: flex;
   flex-wrap: wrap;
 
@@ -256,13 +255,13 @@ export const OverviewInfoItem = styled.div`
   `};
 `;
 
-export const AltRowBackground = styled(GridRowSpacer)`
+export const AltRowBackground = styled(RowSpacer)`
   background-color: ${theme.color.background.section.lightest};
 `;
 
-export const ProcessRow = styled(GridRow)``;
+export const ProcessRow = styled(Row)``;
 
-export const ProcessCol = styled(GridCol)`
+export const ProcessCol = styled(Col)`
   & h4 {
     background-color: ${theme.color.background.section.light};
     display: inline-block;

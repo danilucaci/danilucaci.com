@@ -10,7 +10,7 @@ import ContactForm from "../components/ContactForm/ContactForm";
 import SocialNav from "../components/SocialNav/SocialNav";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
-import { GridCol } from "../components/Grid/Grid";
+import { Col } from "../components/Grid/Grid";
 import { localePaths } from "../i18n/i18n";
 import sendGAEvent from "../helpers/sendGAEvent";
 
@@ -54,7 +54,7 @@ const ContactPage = ({ pageContext, location }) => {
 
         <Main>
           <ContactPageRow bottomPad>
-            <GridCol xl={6}>
+            <Col xl={6}>
               <FormattedMessage id="contact.page.title">
                 {(txt) => <H1>{txt}</H1>}
               </FormattedMessage>
@@ -108,11 +108,11 @@ const ContactPage = ({ pageContext, location }) => {
                   <SocialNav />
                 </SocialNavWrapper>
               </SayHiWrapper>
-            </GridCol>
-            <GridCol xl={6}>
+            </Col>
+            <Col xl={6}>
               <FormHr />
               <ContactForm locale={locale} />
-            </GridCol>
+            </Col>
           </ContactPageRow>
         </Main>
       </Layout>

@@ -15,7 +15,7 @@ import {
   StyledCopy,
   StyledHR,
 } from "../styles/404.styles";
-import { GridCol } from "../components/Grid/Grid";
+import { Col } from "../components/Grid/Grid";
 
 const NotFoundPage = ({ pageContext, location }) => {
   let locale = pageContext.locale;
@@ -39,7 +39,7 @@ const NotFoundPage = ({ pageContext, location }) => {
 
         <Main>
           <NotFoundRow padded col8>
-            <GridCol>
+            <Col>
               <FormattedMessage id="not.found.title">
                 {(txt) => <StyledH1>{txt}</StyledH1>}
               </FormattedMessage>
@@ -71,7 +71,7 @@ const NotFoundPage = ({ pageContext, location }) => {
               <FormattedMessage id="thanks.go.home">
                 {(txt) => <LocaleLink to="/">{txt}</LocaleLink>}
               </FormattedMessage>
-            </GridCol>
+            </Col>
           </NotFoundRow>
         </Main>
       </Layout>

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { theme, rem, mediaMin } from "../theme/theme";
 import { Copy } from "../components/Copy/Copy";
 import LoadComments from "../components/LoadComments/LoadComments";
-import { GridRow } from "../components/Grid/Grid";
+import { Row } from "../components/Grid/Grid";
 
 export const PostWrapper = styled.article`
   width: 100%;
@@ -62,7 +62,7 @@ export const IntroCopy = styled(Copy)`
   }
 `;
 
-export const PostContentRow = styled(GridRow)`
+export const PostContentRow = styled(Row)`
   & h2:first-of-type {
     margin-top: ${rem(24)};
   }
@@ -215,7 +215,7 @@ export const StyledLoadComments = styled(LoadComments)`
   `};
 `;
 
-export const CommentsRow = styled(GridRow)`
+export const CommentsRow = styled(Row)`
   /* Layout breaks without setting the width to 100% */
   width: 100%;
 `;

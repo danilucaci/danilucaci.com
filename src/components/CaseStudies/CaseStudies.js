@@ -3,7 +3,7 @@ import { bool, arrayOf, object } from "prop-types";
 import { FormattedMessage } from "react-intl";
 
 import CaseStudyCard from "../CaseStudyCard/CaseStudyCard";
-import { GridCol, GridRow } from "../Grid/Grid";
+import { Col, Row } from "../Grid/Grid";
 import { Title } from "./styles";
 
 const CaseStudies = ({ edges, spaced }) => {
@@ -17,13 +17,13 @@ const CaseStudies = ({ edges, spaced }) => {
   }));
 
   return (
-    <GridRow col12 spaced={spaced}>
-      <GridCol>
+    <Row col12 spaced={spaced}>
+      <Col>
         <FormattedMessage id="case.studies.header">
           {(txt) => <Title>{txt}</Title>}
         </FormattedMessage>
-      </GridCol>
-      <GridCol>
+      </Col>
+      <Col>
         {caseStudies.map((caseStudyCard) => (
           <CaseStudyCard
             key={caseStudyCard.title}
@@ -35,8 +35,8 @@ const CaseStudies = ({ edges, spaced }) => {
             cardImage={caseStudyCard.cardImage}
           />
         ))}
-      </GridCol>
-    </GridRow>
+      </Col>
+    </Row>
   );
 };
 

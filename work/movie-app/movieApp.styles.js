@@ -2,20 +2,15 @@ import styled, { css } from "styled-components";
 import { theme, rem, mediaMin } from "../../src/theme/theme";
 import { Copy } from "../../src/components/Copy/Copy";
 import { Subhead } from "../../src/components/Headings/Headings";
-import {
-  GridRow,
-  GridRowNested,
-  GridRowSpacer,
-  GridCol,
-} from "../../src/components/Grid/Grid";
+import { Row, RowNested, RowSpacer, Col } from "../../src/components/Grid/Grid";
 
-export const AltRowBackground = styled(GridRowSpacer)`
+export const AltRowBackground = styled(RowSpacer)`
   background-color: ${theme.color.background.section.lightest};
 `;
 
-export const ProcessRow = styled(GridRow)``;
+export const ProcessRow = styled(Row)``;
 
-export const ProcessTitle = styled(GridCol)`
+export const ProcessTitle = styled(Col)`
   margin-bottom: ${rem(16)};
 
   ${mediaMin.s`
@@ -25,7 +20,7 @@ export const ProcessTitle = styled(GridCol)`
   width: 100%;
 `;
 
-export const ProcessCol = styled(GridCol)`
+export const ProcessCol = styled(Col)`
   & h3 {
     background-color: ${theme.color.background.section.light};
     display: inline-block;
@@ -64,7 +59,7 @@ export const ProcessCol = styled(GridCol)`
   `};
 `;
 
-export const ScreenshotRow = styled(GridRowNested)`
+export const ScreenshotRow = styled(RowNested)`
   ${({ center }) =>
     center &&
     css`
@@ -74,7 +69,7 @@ export const ScreenshotRow = styled(GridRowNested)`
     `};
 `;
 
-export const InfoCol = styled(GridCol)`
+export const InfoCol = styled(Col)`
   & h4 {
     margin-top: 0;
 
@@ -88,7 +83,7 @@ export const InfoCol = styled(GridCol)`
   }
 `;
 
-export const ScreenshotCol = styled(GridCol)``;
+export const ScreenshotCol = styled(Col)``;
 
 export const MobileScreenshot = styled.div`
   margin-bottom: ${rem(32)};
@@ -142,7 +137,7 @@ export const SeparatedSubhead = styled(Subhead)`
   width: 100%;
 `;
 
-export const StyledCol = styled(GridCol)`
+export const StyledCol = styled(Col)`
   h2:first-child {
     margin-top: 0;
   }

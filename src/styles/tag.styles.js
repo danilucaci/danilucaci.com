@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { theme, mediaMin, rem } from "../theme/theme";
-import { GridRow } from "../components/Grid/Grid";
+import { Row } from "../components/Grid/Grid";
 import { Subhead } from "../components/Headings/Headings";
 
 export const HeaderBackground = styled.header`
   background-color: ${theme.color.background.section.lightest};
 `;
 
-export const PostsRow = styled(GridRow)`
+export const PostsRow = styled(Row)`
   padding-top: ${rem(24)} !important;
 `;
 

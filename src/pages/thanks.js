@@ -18,7 +18,7 @@ import {
   StyledHR,
 } from "../styles/thanks.styles";
 
-import { GridCol } from "../components/Grid/Grid";
+import { Col } from "../components/Grid/Grid";
 
 const ThanksPage = ({ pageContext, location }) => {
   let locale = pageContext.locale;
@@ -42,7 +42,7 @@ const ThanksPage = ({ pageContext, location }) => {
 
         <Main>
           <ThanksPageRow padded col8>
-            <GridCol>
+            <Col>
               <FormattedMessage id="thanks.title">
                 {(txt) => <StyledH1>{txt}</StyledH1>}
               </FormattedMessage>
@@ -80,7 +80,7 @@ const ThanksPage = ({ pageContext, location }) => {
               <FormattedMessage id="thanks.go.home">
                 {(txt) => <LocaleLink to="/">{txt}</LocaleLink>}
               </FormattedMessage>
-            </GridCol>
+            </Col>
           </ThanksPageRow>
         </Main>
       </Layout>

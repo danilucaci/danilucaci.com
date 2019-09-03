@@ -11,7 +11,7 @@ import {
   StyleButton,
 } from "./styles";
 
-import { GridCol, GridRow } from "../Grid/Grid";
+import { Col, Row } from "../Grid/Grid";
 
 function ContactCard(props) {
   let locale = props.locale;
@@ -25,8 +25,8 @@ function ContactCard(props) {
 
   return (
     <ContactCardRowBackground as="aside">
-      <GridRow as="div" col8 padded>
-        <GridCol>
+      <Row as="div" col8 padded>
+        <Col>
           <FormattedMessage id="contact.card.title">
             {(txt) => <ContactCardTitle>{txt}</ContactCardTitle>}
           </FormattedMessage>
@@ -45,8 +45,8 @@ function ContactCard(props) {
               </StyleButton>
             )}
           </FormattedMessage>
-        </GridCol>
-      </GridRow>
+        </Col>
+      </Row>
     </ContactCardRowBackground>
   );
 }

@@ -10,7 +10,7 @@ import ContactCard from "../components/ContactCard/ContactCard";
 import CaseStudies from "../components/CaseStudies/CaseStudies";
 import DribbblePosts from "../components/DribbblePosts/DribbblePosts";
 import { localePaths } from "../i18n/i18n";
-import { GridCol } from "../components/Grid/Grid";
+import { Col } from "../components/Grid/Grid";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 
 import {
@@ -50,7 +50,7 @@ const Index = ({ data, pageContext, location }) => {
         />
         <Main>
           <IndexHeader as="header" col10 bottomPad>
-            <GridCol>
+            <Col>
               <FormattedMessage id="index.name">
                 {(txt) => <Name>{txt}</Name>}
               </FormattedMessage>
@@ -75,11 +75,11 @@ const Index = ({ data, pageContext, location }) => {
                 </FormattedMessage>
                 .
               </FindOutMore>
-            </GridCol>
+            </Col>
           </IndexHeader>
           <ServicesRowBackground bottomSpaced as="section">
             <ServicesRow col10 padded as="div">
-              <GridCol>
+              <Col>
                 <FormattedMessage id="index.services.heading">
                   {(txt) => <ServicesTitle>{txt}</ServicesTitle>}
                 </FormattedMessage>
@@ -172,7 +172,7 @@ const Index = ({ data, pageContext, location }) => {
                     </ul>
                   </ServiceContent>
                 </ServicesEntry>
-              </GridCol>
+              </Col>
             </ServicesRow>
           </ServicesRowBackground>
 

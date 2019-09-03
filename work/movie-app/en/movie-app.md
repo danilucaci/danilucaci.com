@@ -17,7 +17,7 @@ twinPost: "Aplicación compra entradas Cine"
 
 import Image from "components/Image/Image";
 import Video from "components/Video/Video";
-import { GridRow } from "components/Grid/Grid";
+import { Row } from "components/Grid/Grid";
 import {
   OverviewRow,
   OverviewInfoCol,
@@ -137,7 +137,7 @@ That’s why I decided to see how I could improve the experience of searching fo
 </ProcessRow>
 </AltRowBackground>
 
-<GridRow spaced col8 as="div">
+<Row spaced col8 as="div">
 <StyledCol>
 
 ## Discovery
@@ -179,9 +179,9 @@ From the user interviews I found that people:
 - Feel that information about the cinema is hard to find (the types of seats that are available, services, etc).
 
 </StyledCol>
-</GridRow>
+</Row>
 
-<GridRow col8 spaced as="div">
+<Row col8 spaced as="div">
 <StyledCol>
 
 ## Analysis
@@ -203,10 +203,10 @@ So I decided to start working on the following pain points:
 - **People feel that prices are too high**
 
 </StyledCol>
-</GridRow>
+</Row>
 
 <AltRowBackground spaced as="div">
-<GridRow padded col8 as="div">
+<Row padded col8 as="div">
 <StyledCol>
 
 ## Problem Statements
@@ -238,10 +238,10 @@ The next step was to identify the problem statements. Then I used the How Might 
 > Reduce the cost of seeing a movie in a cinema for repeat customers?
 
 </StyledCol>
-</GridRow>
+</Row>
 </AltRowBackground>
 
-<GridRow spaced col8 as="div">
+<Row spaced col8 as="div">
 <StyledCol>
 
 ## Personas
@@ -295,10 +295,10 @@ Then I used the MOSCOW method to find which are the most important features to b
 - Membership plan with offers and discounts
 
 </StyledCol>
-</GridRow>
+</Row>
 
 <AltRowBackground spaced as="div">
-<GridRow padded col8 as="div">
+<Row padded col8 as="div">
 <StyledCol>
 
 ## Feature Hypothesis Statements
@@ -318,10 +318,10 @@ Next I used the Lean UX Feature Hypothesis Statements to identify the features t
 > We will create **a membership plan** for **Ana** in order to **reduce the cost of seeing several movies a month for movie enthusiasts**.
 
 </StyledCol>
-</GridRow>
+</Row>
 </AltRowBackground>
 
-<GridRow spaced col8 as="div">
+<Row spaced col8 as="div">
 <StyledCol>
 
 ## Ideation
@@ -335,10 +335,10 @@ To help me ideate quick solutions to each of the features, I used the Crazy 8’
 />
 
 </StyledCol>
-</GridRow>
+</Row>
 
 <AltRowBackground spaced as="div">
-<GridRow padded col8 as="div">
+<Row padded col8 as="div">
 <StyledCol>
 
 ## Movie Searching and Filtering
@@ -352,9 +352,9 @@ Most users had difficulties deciding which movie they would like to see, so the 
 Before I started sketching the app’s nav bar, I decided to see which patterns were being used by other apps or websites that also needed a similar feature.
 
 </StyledCol>
-</GridRow>
+</Row>
 
-<GridRow col12 as="div">
+<Row col12 as="div">
 <StyledCol>
 <ScreenshotRow bottomPad>
 <ScreenshotCol l={6}>
@@ -434,9 +434,9 @@ A “clear all filters” button is also used to allow their users to remove all
 </InfoCol>
 </ScreenshotRow>
 </StyledCol>
-</GridRow>
+</Row>
 
-<GridRow col8 spaced as="div">
+<Row col8 spaced as="div">
 <StyledCol>
 
 ### Final Version of the Movie Searching and Filtering Feature
@@ -474,9 +474,9 @@ Another benefit is that users could also remove any of filters, either one by on
 The filtering options are also designed in a way that users can combine them to improve their search, without having mutually exclusive options, following the recommendations from the [article on E-Commerce UX](https://baymard.com/blog/allow-applying-of-multiple-filter-values) made by the Baymard Institute, where they found that up to 45% of the users tested, tried to apply several filters at some point during their search.
 
 </StyledCol>
-</GridRow>
+</Row>
 
-<GridRow col12 bottomSpaced as="div">
+<Row col12 bottomSpaced as="div">
 <StyledCol>
 
 ### Movie Searching and Filtering Wireflow Diagram
@@ -488,9 +488,9 @@ The filtering options are also designed in a way that users can combine them to 
 />
 
 </StyledCol>
-</GridRow>
+</Row>
 
-<GridRow bottomPad col12 as="div">
+<Row bottomPad col12 as="div">
 
 <StyledCol>
 
@@ -545,10 +545,10 @@ The filtering options are also designed in a way that users can combine them to 
 />
 
 </StyledCol>
-</GridRow>
+</Row>
 </AltRowBackground>
 
-<GridRow col8 bottomSpaced as="div">
+<Row col8 bottomSpaced as="div">
 <StyledCol>
 
 ## Guest Checkout Flow
@@ -562,9 +562,9 @@ Even though guest checkout flows are usually designed for users which don’t ha
 After some initial research to see which are the design patterns and best practices used for designing a checkout flow, I started working on the prototype of the feature.
 
 </StyledCol>
-</GridRow>
+</Row>
 
-<GridRow col12 as="div">
+<Row col12 as="div">
 <StyledCol>
 <ScreenshotRow center bottomPad>
 <ScreenshotCol l={6}>
@@ -687,9 +687,9 @@ Even though it’s still the same amount of input fields, users will not think i
 </ScreenshotRow>
 
 </StyledCol>
-</GridRow>
+</Row>
 
-<GridRow col12 as="div" spaced>
+<Row col12 as="div" spaced>
 <StyledCol>
 
 ### Guest Checkout Wireflow Diagram
@@ -701,9 +701,9 @@ Even though it’s still the same amount of input fields, users will not think i
 />
 
 </StyledCol>
-</GridRow>
+</Row>
 
-<GridRow col6 bottomSpaced as="div">
+<Row col6 bottomSpaced as="div">
 <StyledCol>
 
 ### Guest Checkout High-Fidelity Prototype
@@ -719,10 +719,10 @@ Even though it’s still the same amount of input fields, users will not think i
 />
 
 </StyledCol>
-</GridRow>
+</Row>
 
 <AltRowBackground padded as="div">
-<GridRow col8 as="div">
+<Row col8 as="div">
 <StyledCol>
 
 ## Membership Plan
@@ -747,9 +747,9 @@ The 4 segments were:
 - **Finished (confirmation screen)**
 
 </StyledCol>
-</GridRow>
+</Row>
 
-<GridRow col12 as="div" spaced>
+<Row col12 as="div" spaced>
 <StyledCol>
 
 ### Membership Sign Up Wireflow Diagram
@@ -761,9 +761,9 @@ The 4 segments were:
 />
 
 </StyledCol>
-</GridRow>
+</Row>
 
-<GridRow col8 bottomSpaced as="div">
+<Row col8 bottomSpaced as="div">
 <StyledCol>
 
 ### Shipping Information Optimizations
@@ -771,9 +771,9 @@ The 4 segments were:
 The shipping information step is needed so that users can receive a copy of their membership card. To design this checkout step I decided to do some previous research to see which are the UX best practices of designing a Shipping Information checkout step.
 
 </StyledCol>
-</GridRow>
+</Row>
 
-<GridRow col12 as="div" bottomPad>
+<Row col12 as="div" bottomPad>
 <StyledCol>
 
 <ScreenshotRow center bottomPad>
@@ -860,9 +860,9 @@ This is a great example of how to design the delivery methods as seen on amazon.
 </InfoCol>
 </ScreenshotRow>
 </StyledCol>
-</GridRow>
+</Row>
 
-<GridRow col6 as="div">
+<Row col6 as="div">
 <StyledCol>
 
 ### Membership Sign Up High-Hidelity Prototype
@@ -878,10 +878,10 @@ This is a great example of how to design the delivery methods as seen on amazon.
 />
 
 </StyledCol>
-</GridRow>
+</Row>
 </AltRowBackground>
 
-<GridRow spaced col8 as="div">
+<Row spaced col8 as="div">
 <StyledCol>
 
 ## Usability Testing
@@ -916,4 +916,4 @@ I had a lot of fun working on this project as I learned about the small details 
 I hope you enjoyed reading this case study, and if you have any questions about it feel free to get in touch.
 
 </StyledCol>
-</GridRow>
+</Row>

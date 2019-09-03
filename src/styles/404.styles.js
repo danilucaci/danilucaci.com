@@ -3,9 +3,9 @@ import styled from "styled-components";
 import { Copy } from "../components/Copy/Copy";
 import { theme, mediaMin, rem } from "../theme/theme";
 import { HR } from "../components/HR/HR";
-import { GridRow } from "../components/Grid/Grid";
+import { Row } from "../components/Grid/Grid";
 
-export const NotFoundRow = styled(GridRow)`
+export const NotFoundRow = styled(Row)`
   & a {
     display: inline;
     white-space: nowrap;

@@ -6,7 +6,7 @@ import { FormattedMessage } from "react-intl";
 import FooterNavList from "../FooterNavList/FooterNavList";
 import FooterSocialNav from "../FooterSocialNav/FooterSocialNav";
 import FooterLanguageSelector from "../FooterLanguageSelector/FooterLanguageSelector";
-import { GridCol } from "../Grid/Grid";
+import { Col } from "../Grid/Grid";
 
 import {
   FooterRowBackground,
@@ -65,7 +65,7 @@ const SiteFooter = ({ locale = "en", twinPostURL, currentPath, expand }) => {
           </LanguageWrapper>
         </LanguageCol>
 
-        <GridCol>
+        <Col>
           <Divider />
           <FooterBottom>
             <LegalDocsList>
@@ -79,7 +79,7 @@ const SiteFooter = ({ locale = "en", twinPostURL, currentPath, expand }) => {
             </LegalDocsList>
             <Copyright>&copy; {new Date().getFullYear()} Dani Lucaci</Copyright>
           </FooterBottom>
-        </GridCol>
+        </Col>
       </FooterInnerRow>
     </FooterRowBackground>
   );

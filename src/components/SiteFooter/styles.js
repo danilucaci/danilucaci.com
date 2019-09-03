@@ -3,10 +3,10 @@ import { theme, rem, mediaMin } from "../../theme/theme";
 import { GreyLink } from "../Link/Link";
 import { Copy } from "../Copy/Copy";
 import { Subhead } from "../Headings/Headings";
-import { GridCol, GridRow, GridRowSpacer } from "../Grid/Grid";
+import { Col, Row, RowSpacer } from "../Grid/Grid";
 import { HR } from "../HR/HR";
 
-export const FooterRowBackground = styled(GridRowSpacer)`
+export const FooterRowBackground = styled(RowSpacer)`
   display: block;
   background-color: ${theme.color.background.footer};
   width: 100%;
@@ -18,15 +18,14 @@ export const FooterRowBackground = styled(GridRowSpacer)`
   `};
 `;
 
-export const FooterInnerRow = styled(GridRow)`
-  ${(props) =>
-    props.expand &&
-    `
+export const FooterInnerRow = styled(Row)`
+  ${(props) => props.expand
+    && `
     max-width: ${theme.layout.col12.wrapper};
   `}
 `;
 
-export const NavCol = styled(GridCol)`
+export const NavCol = styled(Col)`
   margin-bottom: ${rem(16)};
 
   ${mediaMin.l`
@@ -34,7 +33,7 @@ export const NavCol = styled(GridCol)`
   `};
 `;
 
-export const SocialCol = styled(GridCol)`
+export const SocialCol = styled(Col)`
   margin-bottom: ${rem(16)};
 
   ${mediaMin.l`
@@ -100,7 +99,7 @@ export const Copyright = styled(Copy)`
   line-height: ${theme.font.lineHeight.body.s};
 `;
 
-export const LanguageCol = styled(GridCol)`
+export const LanguageCol = styled(Col)`
   margin-top: ${rem(40)};
 
   ${mediaMin.s`

@@ -8,7 +8,7 @@ import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
 import { Copy } from "../components/Copy/Copy";
 import Main from "../components/Main/Main";
-import { GridCol } from "../components/Grid/Grid";
+import { Col } from "../components/Grid/Grid";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 
 import {
@@ -45,7 +45,7 @@ function LegalDoc({ data, pageContext, location }) {
         />
         <Main>
           <LegalPageRow bottomSpaced col8>
-            <GridCol>
+            <Col>
               <PostH1>{postInfo.title}</PostH1>
               <FormattedMessage id="legal.updated">
                 {(txt) => (
@@ -69,7 +69,7 @@ function LegalDoc({ data, pageContext, location }) {
               <PostWrapper>
                 <MDXRenderer>{postNode.body}</MDXRenderer>
               </PostWrapper>
-            </GridCol>
+            </Col>
           </LegalPageRow>
         </Main>
       </Layout>

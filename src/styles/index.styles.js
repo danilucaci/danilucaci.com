@@ -1,9 +1,11 @@
 import styled from "styled-components";
-import { theme, mediaMin, mediaMax, rem } from "../theme/theme";
+import {
+ theme, mediaMin, mediaMax, rem 
+} from "../theme/theme";
 import { Copy } from "../components/Copy/Copy";
-import { GridRow, GridRowSpacer } from "../components/Grid/Grid";
+import { Row, RowSpacer } from "../components/Grid/Grid";
 
-export const IndexHeader = styled(GridRow)`
+export const IndexHeader = styled(Row)`
   ${mediaMin.s`
     padding-top: ${rem(16)};
   `};
@@ -68,11 +70,11 @@ export const FindOutMore = styled.p`
   color: ${theme.color.text.subdued};
 `;
 
-export const ServicesRowBackground = styled(GridRowSpacer)`
+export const ServicesRowBackground = styled(RowSpacer)`
   background-color: ${theme.color.background.section.lightest};
 `;
 
-export const ServicesRow = styled(GridRow)`
+export const ServicesRow = styled(Row)`
   padding-top: ${rem(40)};
   padding-bottom: ${rem(40)};
 `;

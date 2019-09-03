@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 import { theme, mediaMin, rem } from "../../theme/theme";
 import { Copy } from "../Copy/Copy";
-import { GridRowSpacer } from "../Grid/Grid";
+import { RowSpacer } from "../Grid/Grid";
 import SecondaryLinkButton from "../SecondaryLinkButton/SecondaryLinkButton";
 // import mobileBackground from "../../images/illustrations/contact_card_circles.svg";
 
-export const ContactCardRowBackground = styled(GridRowSpacer)`
+export const ContactCardRowBackground = styled(RowSpacer)`
   background-color: ${theme.color.background.section.contactCard};
   /* background-image: url(${mobileBackground});
   background-repeat: no-repeat;

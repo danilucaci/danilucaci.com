@@ -9,7 +9,7 @@ import Main from "../components/Main/Main";
 import Tags from "../components/Tags/Tags";
 import Article from "../components/Article/Article";
 import Pagination from "../components/Pagination/Pagination";
-import { GridCol, GridRow } from "../components/Grid/Grid";
+import { Col, Row } from "../components/Grid/Grid";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import { localePaths } from "../i18n/i18n";
@@ -86,8 +86,8 @@ const TagPage = ({ pageContext, location, data }) => {
 
         <Main>
           <HeaderBackground>
-            <GridRow as="div" col8 bottomPad>
-              <GridCol>
+            <Row as="div" col8 bottomPad>
+              <Col>
                 <TagFoundWrapper>
                   <h1>
                     <FormattedMessage id="tag.listing.header">
@@ -102,11 +102,11 @@ const TagPage = ({ pageContext, location, data }) => {
                   </FormattedMessage>
                   <Tags tags={allTags} />
                 </OtherTagsWrapper>
-              </GridCol>
-            </GridRow>
+              </Col>
+            </Row>
           </HeaderBackground>
           <PostsRow padded col8>
-            <GridCol>
+            <Col>
               {postsList.map((post) => (
                 <Article
                   key={post.title}
@@ -127,7 +127,7 @@ const TagPage = ({ pageContext, location, data }) => {
                   locale={locale}
                 />
               )}
-            </GridCol>
+            </Col>
           </PostsRow>
         </Main>
       </Layout>

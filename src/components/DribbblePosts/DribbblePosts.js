@@ -6,7 +6,7 @@ import DribbblePost from "../DribbblePost/DribbblePost";
 import DribbblePostPlaceholder from "../DribbblePostPlaceholder/DribbblePostPlaceholder";
 import Spinner from "../Spinner/Spinner";
 import useDribbblePosts from "./useDribbblePosts";
-import { GridCol, GridRow } from "../Grid/Grid";
+import { Col, Row } from "../Grid/Grid";
 
 import {
   Title,
@@ -41,8 +41,8 @@ function DribbblePosts() {
   }
 
   return (
-    <GridRow spaced col12>
-      <GridCol ref={ref}>
+    <Row spaced col12>
+      <Col ref={ref}>
         <FormattedMessage id="dribbble.header">
           {(txt) => <Title>{txt}</Title>}
         </FormattedMessage>
@@ -54,32 +54,32 @@ function DribbblePosts() {
             </FormattedMessage>
           </ErrorMessageWrapper>
         )}
-      </GridCol>
+      </Col>
 
       {isLoading &&
         !isError &&
         placeholderArr.map((i) => (
-          <GridCol m={6} xxl={4} key={i}>
+          <Col m={6} xxl={4} key={i}>
             <DribbblePostPlaceholder />
-          </GridCol>
+          </Col>
         ))}
 
       {!isLoading &&
         !isError &&
         dribbblePosts.map((post) => (
-          <GridCol m={6} xxl={4} key={post.id}>
+          <Col m={6} xxl={4} key={post.id}>
             <DribbblePost key={post.id} post={post} />
-          </GridCol>
+          </Col>
         ))}
 
       {isLoadingMore &&
         placeholderArr.map((i) => (
-          <GridCol m={6} xxl={4} key={i}>
+          <Col m={6} xxl={4} key={i}>
             <DribbblePostPlaceholder />
-          </GridCol>
+          </Col>
         ))}
 
-      <GridCol>
+      <Col>
         {!isError && (
           <StyledLoadMore
             ref={buttonRef}
@@ -100,8 +100,8 @@ function DribbblePosts() {
             {(isLoading || isLoadingMore) && <Spinner />}
           </StyledLoadMore>
         )}
-      </GridCol>
-    </GridRow>
+      </Col>
+    </Row>
   );
 }
 

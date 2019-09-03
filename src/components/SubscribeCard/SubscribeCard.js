@@ -8,7 +8,7 @@ import * as Sentry from "@sentry/browser";
 import { CONSENT_VALUE } from "../../i18n/i18n";
 import PrivacyCheckbox from "../PrivacyCheckbox/PrivacyCheckbox";
 import InlineErrorMessage from "../InlineErrorMessage/InlineErrorMessage";
-import { GridCol, GridRow } from "../Grid/Grid";
+import { Col, Row } from "../Grid/Grid";
 import Input from "../Input/Input";
 
 import {
@@ -114,8 +114,8 @@ function SubscribeCard({ locale }) {
 
   return (
     <SubscribeCardWrapper>
-      <GridRow padded as="div" col10>
-        <GridCol>
+      <Row padded as="div" col10>
+        <Col>
           {!isMCSent && (
             <>
               <FormattedMessage id="subscribe.card.title">
@@ -198,8 +198,8 @@ function SubscribeCard({ locale }) {
           {isError &&
             isMCSent &&
             SubscribeError(errorMessageType, APIErrorResponse)}
-        </GridCol>
-      </GridRow>
+        </Col>
+      </Row>
     </SubscribeCardWrapper>
   );
 }

@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { theme, mediaMin, rem } from "../theme/theme";
 import { Copy } from "../components/Copy/Copy";
-import { GridCol } from "../components/Grid/Grid";
+import { Col } from "../components/Grid/Grid";
 
-export const HeaderImageWrapper = styled(GridCol)`
+export const HeaderImageWrapper = styled(Col)`
   ${mediaMin.s`
       float: left;
       width: 100%;
@@ -14,7 +14,7 @@ export const ImageWrapper = styled.div`
   background: ${theme.colors.grey50};
 `;
 
-export const HeaderInfoWrapper = styled(GridCol)`
+export const HeaderInfoWrapper = styled(Col)`
   ${mediaMin.s`
       float: right;
       width: 100%;

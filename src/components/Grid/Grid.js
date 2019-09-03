@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { theme, rem, mediaMin } from "../../theme/theme";
 
-export const GridRow = styled.section`
+export const Row = styled.section`
   &:after {
     content: "";
     display: table;
@@ -161,7 +161,7 @@ export const GridRow = styled.section`
       `};
 `;
 
-export const GridRowSpacer = styled.div`
+export const RowSpacer = styled.div`
   ${({ padded }) => padded
     && css`
       padding-top: ${theme.spacing.row.s};
@@ -243,7 +243,7 @@ export const GridRowSpacer = styled.div`
     `};
 `;
 
-export const GridRowNested = styled.div`
+export const RowNested = styled.div`
   &:after {
     content: "";
     display: table;
@@ -345,7 +345,7 @@ export const GridRowNested = styled.div`
     `};
 `;
 
-export const GridCol = styled.div`
+export const Col = styled.div`
   margin-left: ${theme.layout.gridSpacing.s};
   margin-right: ${theme.layout.gridSpacing.s};
   margin-bottom: ${theme.layout.gutter.s};

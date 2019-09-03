@@ -10,7 +10,7 @@ import Layout from "../components/Layout";
 import SiblingPosts from "../components/SiblingPosts/SiblingPosts";
 import ContactCard from "../components/ContactCard/ContactCard";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
-import { GridCol, GridRow } from "../components/Grid/Grid";
+import { Col, Row } from "../components/Grid/Grid";
 
 import {
   ArticleWrapper,
@@ -60,8 +60,8 @@ function CaseStudy({ data, pageContext, location }) {
         <Main>
           <ArticleWrapper>
             <HeaderBackground>
-              <GridRow col8 as="div">
-                <GridCol>
+              <Row col8 as="div">
+                <Col>
                   <PostH1>{postInfo.title}</PostH1>
                   <CaseStudyDescription>
                     {postInfo.snippet}
@@ -75,8 +75,8 @@ function CaseStudy({ data, pageContext, location }) {
                       onLoad={() => setDidLoad(true)}
                     />
                   </CaseStudyImgWrapper>
-                </GridCol>
-              </GridRow>
+                </Col>
+              </Row>
             </HeaderBackground>
             <>
               <MDXRenderer>{postNode.body}</MDXRenderer>

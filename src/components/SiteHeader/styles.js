@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { theme, mediaMin, rem } from "../../theme/theme";
-import { GridRow, GridCol } from "../Grid/Grid";
+import { Row, Col } from "../Grid/Grid";
 
 export const SiteHeaderBackground = styled.header`
   padding-bottom: ${theme.spacing.main.top};
@@ -12,7 +12,7 @@ export const SiteHeaderBackground = styled.header`
     `}
 `;
 
-export const SiteHeaderRow = styled(GridRow)`
+export const SiteHeaderRow = styled(Row)`
   ${({ expand }) =>
     expand &&
     `
@@ -20,7 +20,7 @@ export const SiteHeaderRow = styled(GridRow)`
     `}
 `;
 
-export const StyledSiteNav = styled(GridCol)`
+export const StyledSiteNav = styled(Col)`
   position: relative;
 
   padding: ${rem(12)} 0;

@@ -11,7 +11,7 @@ import Main from "../components/Main/Main";
 import SocialShare from "../components/SocialShare/SocialShare";
 import Tags from "../components/Tags/Tags";
 import { HR } from "../components/HR/HR";
-import { GridCol, GridRow } from "../components/Grid/Grid";
+import { Col, Row } from "../components/Grid/Grid";
 import SiblingPosts from "../components/SiblingPosts/SiblingPosts";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 import ArticleInfo from "../components/ArticleInfo/ArticleInfo";
@@ -104,8 +104,8 @@ function Post({ pageContext, data, location }) {
         />
         <Main>
           <PostWrapper>
-            <GridRow as="header" col10>
-              <GridCol>
+            <Row as="header" col10>
+              <Col>
                 <Tags tags={postInfo.tags} inline />
                 <PostH1>{postInfo.title}</PostH1>
                 <HR />
@@ -131,12 +131,12 @@ function Post({ pageContext, data, location }) {
                     <IntroCopy key={paragraph}>{paragraph}</IntroCopy>
                   ))}
                 </IntroContainer>
-              </GridCol>
-            </GridRow>
+              </Col>
+            </Row>
             <PostContentRow bottomPad col6>
-              <GridCol>
+              <Col>
                 <MDXRenderer>{postNode.body}</MDXRenderer>
-              </GridCol>
+              </Col>
             </PostContentRow>
           </PostWrapper>
 
@@ -159,7 +159,7 @@ function Post({ pageContext, data, location }) {
         )}
 
         <CommentsRow as="aside" col10 bottomPad>
-          <GridCol>
+          <Col>
             {!loadComments && (
               <StyledLoadComments onClick={() => setLoadComments(true)} />
             )}
@@ -169,7 +169,7 @@ function Post({ pageContext, data, location }) {
                 config={disqusConfig}
               />
             )}
-          </GridCol>
+          </Col>
         </CommentsRow>
 
         <SubscribeCard locale={locale} />

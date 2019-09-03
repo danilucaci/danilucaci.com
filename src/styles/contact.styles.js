@@ -2,10 +2,10 @@ import styled from "styled-components";
 import { theme, mediaMin, rem } from "../theme/theme";
 import { Copy } from "../components/Copy/Copy";
 import { HR } from "../components/HR/HR";
-import { GridRow } from "../components/Grid/Grid";
+import { Row } from "../components/Grid/Grid";
 import ExternalLink from "../components/ExternalLink/ExternalLink";
 
-export const ContactPageRow = styled(GridRow)`
+export const ContactPageRow = styled(Row)`
   max-width: ${theme.layout.col6.wrapper};
   margin-left: auto;
   margin-right: auto;

@@ -17,7 +17,7 @@ twinPost: "Movie Booking App"
 
 import Image from "components/Image/Image";
 import Video from "components/Video/Video";
-import { GridRow } from "components/Grid/Grid";
+import { Row } from "components/Grid/Grid";
 import {
   OverviewRow,
   OverviewInfoCol,
@@ -137,7 +137,7 @@ Por eso decidí ver cómo podría mejorar la experiencia de buscar una película
 </ProcessRow>
 </AltRowBackground>
 
-<GridRow spaced col8 as="div">
+<Row spaced col8 as="div">
 <StyledCol>
 
 ## Descubrimiento
@@ -179,9 +179,9 @@ Una vez hice las entrevistas, encontré que las personas:
 - Piensan que la información sobre el cine es difícil de encontrar (los tipos de asientos disponibles, servicios, etc.).
 
 </StyledCol>
-</GridRow>
+</Row>
 
-<GridRow col8 spaced as="div">
+<Row col8 spaced as="div">
 <StyledCol>
 
 ## Análisis
@@ -203,10 +203,10 @@ Así que decidí empezar a trabajar en los siguientes problemas principales que 
 - **Las personas sienten que los precios son demasiado altos.**
 
 </StyledCol>
-</GridRow>
+</Row>
 
 <AltRowBackground spaced as="div">
-<GridRow padded col8 as="div">
+<Row padded col8 as="div">
 <StyledCol>
 
 ## Declaración de Problemas
@@ -238,10 +238,10 @@ El próximo paso fue usar la técnica de declaración de problemas de la metodol
 > ¿Reducir el coste de ver una película en un cine para clientes habituales?
 
 </StyledCol>
-</GridRow>
+</Row>
 </AltRowBackground>
 
-<GridRow spaced col8 as="div">
+<Row spaced col8 as="div">
 <StyledCol>
 
 ## Personas
@@ -295,10 +295,10 @@ Luego utilicé el método MOSCOW para encontrar cuáles son las características
 - Club de socios con ofertas y descuentos.
 
 </StyledCol>
-</GridRow>
+</Row>
 
 <AltRowBackground spaced as="div">
-<GridRow padded col8 as="div">
+<Row padded col8 as="div">
 <StyledCol>
 
 ## Declaración de Hipótesis de Características
@@ -320,10 +320,10 @@ Luego, utilicé las declaraciones de hipótesis de las características de Lean 
 > Crearemos un **club de socios** para **Ana** con el fin de **reducir el coste de ver varias películas al mes para los entusiastas del cine**.
 
 </StyledCol>
-</GridRow>
+</Row>
 </AltRowBackground>
 
-<GridRow spaced col8 as="div">
+<Row spaced col8 as="div">
 <StyledCol>
 
 ## Ideación
@@ -337,10 +337,10 @@ Para ayudarme a idear soluciones rápidamente para cada una de las característi
 />
 
 </StyledCol>
-</GridRow>
+</Row>
 
 <AltRowBackground spaced as="div">
-<GridRow padded col8 as="div">
+<Row padded col8 as="div">
 <StyledCol>
 
 ## Búsqueda y Filtrado de Películas
@@ -354,9 +354,9 @@ La mayoría de las personas entrevistadas tuvieron dificultades para decidir qu�
 Antes de comenzar a diseñar la barra de navegación de la aplicación, decidí ver qué patrones de diseño estaban utilizando otras aplicaciones o sitios web que también necesitaban una característica similar.
 
 </StyledCol>
-</GridRow>
+</Row>
 
-<GridRow col12 as="div">
+<Row col12 as="div">
 <StyledCol>
 <ScreenshotRow bottomPad>
 <ScreenshotCol l={6}>
@@ -436,9 +436,9 @@ También se usa un botón "Borrar todos los filtros" para permitir que sus usuar
 </InfoCol>
 </ScreenshotRow>
 </StyledCol>
-</GridRow>
+</Row>
 
-<GridRow col8 spaced as="div">
+<Row col8 spaced as="div">
 <StyledCol>
 
 ### Versión Final de la Característica de Búsqueda y Filtrado de Películas
@@ -476,9 +476,9 @@ Otro beneficio es que los usuarios pueden eliminar cualquiera de los filtros, se
 Las opciones de filtrado también están diseñadas de manera que los usuarios puedan combinarlas para mejorar su búsqueda, sin tener opciones mutuamente exclusivas, siguiendo las recomendaciones del [artículo sobre E-Commerce UX](https://baymard.com/blog/allow-applying-of-multiple-filter-values) realizado por el Instituto Baymard, donde encontraron que hasta el 45% de los usuarios que participaron en su estudio, intentaron aplicar varios filtros en algún momento durante su búsqueda.
 
 </StyledCol>
-</GridRow>
+</Row>
 
-<GridRow col12 bottomSpaced as="div">
+<Row col12 bottomSpaced as="div">
 <StyledCol>
 
 ### Diagrama de Flujo de las Opciones de Búsqueda y Filtrado de Películas
@@ -490,9 +490,9 @@ Las opciones de filtrado también están diseñadas de manera que los usuarios p
 />
 
 </StyledCol>
-</GridRow>
+</Row>
 
-<GridRow bottomPad col12 as="div">
+<Row bottomPad col12 as="div">
 
 <StyledCol>
 
@@ -547,10 +547,10 @@ Las opciones de filtrado también están diseñadas de manera que los usuarios p
 />
 
 </StyledCol>
-</GridRow>
+</Row>
 </AltRowBackground>
 
-<GridRow col8 bottomSpaced as="div">
+<Row col8 bottomSpaced as="div">
 <StyledCol>
 
 ## Proceso de Compra como Invitado
@@ -564,9 +564,9 @@ A pesar de que los procesos de compra de entradas como invitado normalmente est�
 Después de investigar un poco antes para ver cuáles son las mejores prácticas utilizadas para diseñar un proceso de pago, empecé a trabajar en el prototipo de la característica.
 
 </StyledCol>
-</GridRow>
+</Row>
 
-<GridRow col12 as="div">
+<Row col12 as="div">
 <StyledCol>
 <ScreenshotRow center bottomPad>
 <ScreenshotCol l={6}>
@@ -690,9 +690,9 @@ A pesar de que sigue siendo la misma cantidad de campos de entrada, los usuarios
 </ScreenshotRow>
 
 </StyledCol>
-</GridRow>
+</Row>
 
-<GridRow col12 as="div" spaced>
+<Row col12 as="div" spaced>
 <StyledCol>
 
 ### Diagrama de Flujo de la Experiencia de Pago como Invitados
@@ -704,9 +704,9 @@ A pesar de que sigue siendo la misma cantidad de campos de entrada, los usuarios
 />
 
 </StyledCol>
-</GridRow>
+</Row>
 
-<GridRow col6 bottomSpaced as="div">
+<Row col6 bottomSpaced as="div">
 <StyledCol>
 
 ### Prototipo de Alta Fidelidad de la Experiencia de Pago como Invitados
@@ -722,10 +722,10 @@ A pesar de que sigue siendo la misma cantidad de campos de entrada, los usuarios
 />
 
 </StyledCol>
-</GridRow>
+</Row>
 
 <AltRowBackground padded as="div">
-<GridRow col8 as="div">
+<Row col8 as="div">
 <StyledCol>
 
 ## Club de Socios
@@ -750,9 +750,9 @@ Los 4 segmentos son:
 - **Final (pantalla de confirmación)**
 
 </StyledCol>
-</GridRow>
+</Row>
 
-<GridRow col12 as="div" spaced>
+<Row col12 as="div" spaced>
 <StyledCol>
 
 ### Diagrama de Flujo del Proceso de Alta del Club de Socios
@@ -764,9 +764,9 @@ Los 4 segmentos son:
 />
 
 </StyledCol>
-</GridRow>
+</Row>
 
-<GridRow col8 bottomSpaced as="div">
+<Row col8 bottomSpaced as="div">
 <StyledCol>
 
 ### Optimizaciones de la Fase de Información del Envío
@@ -776,9 +776,9 @@ La fase de recogida de la información de envío es necesaria para que los usuar
 Pantalla de la fase de recogida de la información de envío con textos optimizados para evitar confundir a los usuarios con las diferentes opciones de envío.
 
 </StyledCol>
-</GridRow>
+</Row>
 
-<GridRow col12 as="div" bottomPad>
+<Row col12 as="div" bottomPad>
 <StyledCol>
 
 <ScreenshotRow center bottomPad>
@@ -865,9 +865,9 @@ Este es un buen ejemplo —de la página de amazon.co.uk— de como diseñar la 
 </InfoCol>
 </ScreenshotRow>
 </StyledCol>
-</GridRow>
+</Row>
 
-<GridRow col6 as="div">
+<Row col6 as="div">
 <StyledCol>
 
 ### Prototipo de Alta Fidelidad del Proceso de Alta del Club de Socios
@@ -883,10 +883,10 @@ Este es un buen ejemplo —de la página de amazon.co.uk— de como diseñar la 
 />
 
 </StyledCol>
-</GridRow>
+</Row>
 </AltRowBackground>
 
-<GridRow spaced col8 as="div">
+<Row spaced col8 as="div">
 <StyledCol>
 
 ## Pruebas de Usabilidad
@@ -921,4 +921,4 @@ Este proyecto también fue divertido para mi ya que aprendí mucho sobre los peq
 Espero que hayas disfrutado leyendo este estudio de caso, y si tienes alguna pregunta al respecto, no dudes en ponerte en contacto conmigo.
 
 </StyledCol>
-</GridRow>
+</Row>

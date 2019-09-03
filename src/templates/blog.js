@@ -11,7 +11,7 @@ import Pagination from "../components/Pagination/Pagination";
 import Article from "../components/Article/Article";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
-import { GridCol, GridRow } from "../components/Grid/Grid";
+import { Col, Row } from "../components/Grid/Grid";
 import { localePaths } from "../i18n/i18n";
 
 import {
@@ -77,8 +77,8 @@ function BlogPage({ pageContext, location, data }) {
 
         <Main>
           <HeaderBackground>
-            <GridRow as="div" col8 bottomPad>
-              <GridCol>
+            <Row as="div" col8 bottomPad>
+              <Col>
                 <FormattedMessage id="blog.title">
                   {(txt) => <BlogTitle as="h1">{txt}</BlogTitle>}
                 </FormattedMessage>
@@ -88,11 +88,11 @@ function BlogPage({ pageContext, location, data }) {
                   </FormattedMessage>
                   <Tags tags={allTags} />
                 </TagsWrapper>
-              </GridCol>
-            </GridRow>
+              </Col>
+            </Row>
           </HeaderBackground>
           <PostsRow padded col8>
-            <GridCol>
+            <Col>
               {postsList.map((post) => (
                 <Article
                   key={post.title}
@@ -113,7 +113,7 @@ function BlogPage({ pageContext, location, data }) {
                   locale={locale}
                 />
               )}
-            </GridCol>
+            </Col>
           </PostsRow>
         </Main>
 

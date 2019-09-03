@@ -9,7 +9,7 @@ import Layout from "../components/Layout";
 import Main from "../components/Main/Main";
 import SocialNav from "../components/SocialNav/SocialNav";
 import ContactCard from "../components/ContactCard/ContactCard";
-import { GridCol, GridRow } from "../components/Grid/Grid";
+import { Col, Row } from "../components/Grid/Grid";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import { localePaths } from "../i18n/i18n";
@@ -46,7 +46,7 @@ const AboutPage = ({ pageContext, location, data }) => {
         />
 
         <Main>
-          <GridRow as="header" col10>
+          <Row as="header" col10>
             <HeaderInfoWrapper s="7">
               <FormattedMessage id="about.me.title">
                 {(txt) => <AboutMeTitle>{txt}</AboutMeTitle>}
@@ -76,22 +76,22 @@ const AboutPage = ({ pageContext, location, data }) => {
                 <SocialNav />
               </ResumeWrapper>
             </HeaderImageWrapper>
-          </GridRow>
-          <GridRow spaced col10>
-            <GridCol>
+          </Row>
+          <Row spaced col10>
+            <Col>
               <FormattedMessage id="about.me.what.now.title">
                 {(txt) => <h2>{txt}</h2>}
               </FormattedMessage>
-            </GridCol>
-            <GridCol s="5">
+            </Col>
+            <Col s="5">
               <FormattedMessage id="about.me.what.now.copy.1">
                 {(txt) => <StyledCopy>{txt}</StyledCopy>}
               </FormattedMessage>
               <FormattedMessage id="about.me.what.now.copy.2">
                 {(txt) => <StyledCopy>{txt}</StyledCopy>}
               </FormattedMessage>
-            </GridCol>
-            <GridCol s="7">
+            </Col>
+            <Col s="7">
               <DoingNowItem>
                 <FormattedMessage id="about.me.what.now.skills">
                   {(txt) => <h4>{txt}</h4>}
@@ -131,8 +131,8 @@ const AboutPage = ({ pageContext, location, data }) => {
                   </FormattedMessage>
                 </ul>
               </DoingNowItem>
-            </GridCol>
-          </GridRow>
+            </Col>
+          </Row>
           <ContactCard locale={locale} />
         </Main>
       </Layout>
