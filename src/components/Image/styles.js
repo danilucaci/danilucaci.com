@@ -14,13 +14,6 @@ export const placeholderAnimation = keyframes`
  `;
 
 export const Figure = styled.figure`
-  margin-top: ${rem(32)};
-  margin-bottom: ${rem(32)};
-
-  ${mediaMin.s`
-    margin-bottom: ${rem(64)};
-  `};
-
   & img,
   & .gatsby-image-wrapper {
     box-shadow: ${theme.shadow.image} !important;
@@ -39,19 +32,31 @@ export const Figure = styled.figure`
     animation: ${placeholderAnimation} 3s ease infinite;
   }
 
-  ${(props) =>
-    props.expand &&
-    css`
-      ${mediaMin.xl`
-        max-width: ${rem(808)};
-        margin-right: -${rem(96)};
-        margin-left: -${rem(96)};
-      `};
+  ${({ noShadow }) =>
+    noShadow &&
+    `
+      & img,
+      & .gatsby-image-wrapper {
+        box-shadow: none !important;
+      }
+ `}
 
+  ${({ didLoad }) =>
+    didLoad &&
+    `
+    .gatsby-image-wrapper {
+      background: transparent;
+      animation: none;
+    }
+ `}
+ 
+  ${({ expand }) =>
+    expand &&
+    css`
       ${mediaMin.xxl`
         max-width: ${rem(936)};
-        margin-right: -${rem(192)};
-        margin-left: -${rem(192)};
+        margin-right: -${rem(96)};
+        margin-left: -${rem(96)};
       `};
     `}
 `;
