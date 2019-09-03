@@ -108,6 +108,7 @@ export const theme = {
     background: {
       page: COLORS.grey00,
       section: {
+        dark: COLORS.grey900,
         lightest: COLORS.grey50,
         lighter: COLORS.grey100,
         light: COLORS.grey200,
