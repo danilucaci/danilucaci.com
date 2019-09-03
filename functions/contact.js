@@ -137,6 +137,9 @@ exports.handler = async (event) => {
     };
   }
 
+  // This causes
+  // error: a is not a function
+  //
   // Check for an invalid date sent value
   // datesent is comming in as a ISOString also, UTC timezone 0
   // const newDateToCompare = new Date().toISOString();
