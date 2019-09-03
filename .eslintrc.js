@@ -2,17 +2,14 @@
 // "warn" or 1 - turn the rule on as a warning (doesn’t affect exit code)
 // "error" or 2 - turn the rule on as an error (exit code is 1 when triggered)
 module.exports = {
-  env: {
-    browser: 2,
-    es6: 2,
-    "jest/globals": true,
-  },
-  extends: "airbnb",
-  parser: "babel-eslint",
-  parserOptions: {
-    sourceType: "module",
-  },
+  extends: [
+    "plugin:prettier/recommended",
+    "prettier/react",
+    "prettier/standard",
+    "airbnb",
+  ],
   plugins: [
+    "prettier",
     "html",
     "import",
     "react",
@@ -21,7 +18,13 @@ module.exports = {
     "react-hooks",
     "jest",
   ],
+  env: {
+    browser: 2,
+    es6: 2,
+    "jest/globals": true,
+  },
   rules: {
+    "prettier/prettier": 2,
     "react-hooks/rules-of-hooks": 2,
     "react-hooks/exhaustive-deps": 1,
     "jest/no-disabled-tests": 1,
@@ -53,42 +56,12 @@ module.exports = {
         ObjectExpression: 1,
         ImportDeclaration: 1,
         flatTernaryExpressions: false,
-        // list derived from https://github.com/benjamn/ast-types/blob/HEAD/def/jsx.js
-        ignoredNodes: [
-          "JSXElement",
-          "JSXElement > *",
-          "JSXAttribute",
-          "JSXIdentifier",
-          "JSXNamespacedName",
-          "JSXMemberExpression",
-          "JSXSpreadAttribute",
-          "JSXExpressionContainer",
-          "JSXOpeningElement",
-          "JSXClosingElement",
-          "JSXText",
-          "JSXEmptyExpression",
-          "JSXSpreadChild",
-        ],
-        ignoreComments: false,
       },
     ],
     "react/jsx-filename-extension": [
       1,
       {
         extensions: [".js", ".jsx"],
-      },
-    ],
-    "jsx-a11y/no-noninteractive-element-interactions": [
-      "error",
-      {
-        handlers: [
-          "onClick",
-          "onMouseDown",
-          "onMouseUp",
-          "onKeyPress",
-          "onKeyDown",
-          "onKeyUp",
-        ],
       },
     ],
     "lines-around-comment": [
