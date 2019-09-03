@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
+import { shape, oneOfType, string, object } from "prop-types";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
 import { MDXRenderer } from "gatsby-plugin-mdx";
@@ -18,7 +18,6 @@ import {
   PostH1,
   CaseStudyDescription,
   CaseStudyImgWrapper,
-  PostContent,
 } from "../styles/caseStudy.styles";
 
 function CaseStudy({ data, pageContext, location }) {
@@ -26,7 +25,7 @@ function CaseStudy({ data, pageContext, location }) {
 
   const postNode = data.mdx;
   const postInfo = postNode.frontmatter;
-  const image = postInfo.images[0].childImageSharp.fluid;
+  const pageImage = postInfo.pageImage.childImageSharp.fluid;
   const locale = pageContext.locale;
   const twinPost = pageContext.twinPost;
   const nextTitle = pageContext.nextTitle;
@@ -55,13 +54,13 @@ function CaseStudy({ data, pageContext, location }) {
           twinPostURL={twinPostURL}
           postNode={postNode}
           postSEO
-          postImage={image.src}
+          postImage={pageImage.src}
           currentPath={location.pathname}
         />
         <Main>
           <ArticleWrapper>
             <HeaderBackground>
-              <GridRow>
+              <GridRow col8 as="div">
                 <GridCol>
                   <PostH1>{postInfo.title}</PostH1>
                   <CaseStudyDescription>
@@ -71,7 +70,7 @@ function CaseStudy({ data, pageContext, location }) {
                     <Img
                       title={postInfo.title}
                       alt={postInfo.snippet}
-                      fluid={image}
+                      fluid={pageImage}
                       fadeIn
                       onLoad={() => setDidLoad(true)}
                     />
@@ -79,9 +78,9 @@ function CaseStudy({ data, pageContext, location }) {
                 </GridCol>
               </GridRow>
             </HeaderBackground>
-            <PostContent>
+            <>
               <MDXRenderer>{postNode.body}</MDXRenderer>
-            </PostContent>
+            </>
           </ArticleWrapper>
         </Main>
         <ContactCard locale={locale} />
@@ -99,44 +98,32 @@ function CaseStudy({ data, pageContext, location }) {
 }
 
 CaseStudy.propTypes = {
-  pageContext: PropTypes.shape({
-    locale: PropTypes.string.isRequired,
-    slug: PropTypes.string.isRequired,
-    twinPost: PropTypes.string.isRequired,
-    nextTitle: PropTypes.oneOfType([
-      PropTypes.string.isRequired,
-      PropTypes.object.isRequired,
-    ]),
-    nextSlug: PropTypes.oneOfType([
-      PropTypes.string.isRequired,
-      PropTypes.object.isRequired,
-    ]),
-    prevSlug: PropTypes.oneOfType([
-      PropTypes.string.isRequired,
-      PropTypes.object.isRequired,
-    ]),
-    prevTitle: PropTypes.oneOfType([
-      PropTypes.string.isRequired,
-      PropTypes.object.isRequired,
-    ]),
+  pageContext: shape({
+    locale: string.isRequired,
+    slug: string.isRequired,
+    twinPost: string.isRequired,
+    nextTitle: oneOfType([string.isRequired, object.isRequired]),
+    nextSlug: oneOfType([string.isRequired, object.isRequired]),
+    prevSlug: oneOfType([string.isRequired, object.isRequired]),
+    prevTitle: oneOfType([string.isRequired, object.isRequired]),
   }).isRequired,
-  data: PropTypes.shape({
-    mdx: PropTypes.shape({
-      fields: PropTypes.shape({
-        slug: PropTypes.string.isRequired,
+  data: shape({
+    mdx: shape({
+      fields: shape({
+        slug: string.isRequired,
       }),
-      body: PropTypes.string.isRequired,
-      frontmatter: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-        images: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-        snippet: PropTypes.string.isRequired,
+      body: string.isRequired,
+      frontmatter: shape({
+        title: string.isRequired,
+        date: string.isRequired,
+        pageImage: object.isRequired,
+        snippet: string.isRequired,
       }),
     }),
   }).isRequired,
-  location: PropTypes.shape({
-    pathname: PropTypes.string.isRequired,
-    href: PropTypes.string.isRequired,
+  location: shape({
+    pathname: string.isRequired,
+    href: string.isRequired,
   }).isRequired,
 };
 
@@ -149,11 +136,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "YYYY-MM-DD")
         snippet
-        # links {
-        #   name
-        #   link
-        # }
-        images {
+        pageImage {
           childImageSharp {
             fluid(maxWidth: 744, quality: 50) {
               ...GatsbyImageSharpFluid_withWebp

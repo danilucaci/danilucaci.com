@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { object, shape, arrayOf, string } from "prop-types";
 import { graphql, Link } from "gatsby";
 import { FormattedMessage } from "react-intl";
 
@@ -187,17 +187,17 @@ const Index = ({ data, pageContext, location }) => {
 };
 
 Index.propTypes = {
-  pageContext: PropTypes.shape({
-    locale: PropTypes.string.isRequired,
+  pageContext: shape({
+    locale: string.isRequired,
   }).isRequired,
-  data: PropTypes.shape({
-    work: PropTypes.shape({
-      edges: PropTypes.arrayOf(PropTypes.object).isRequired,
+  data: shape({
+    work: shape({
+      edges: arrayOf(object).isRequired,
     }),
   }).isRequired,
-  location: PropTypes.shape({
-    pathname: PropTypes.string.isRequired,
-    href: PropTypes.string.isRequired,
+  location: shape({
+    pathname: string.isRequired,
+    href: string.isRequired,
   }).isRequired,
 };
 
@@ -229,7 +229,7 @@ export const pageQuery = graphql`
             category
             tags
             posted
-            images {
+            cardImage {
               childImageSharp {
                 fluid(maxWidth: 744) {
                   src

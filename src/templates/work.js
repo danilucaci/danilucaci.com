@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { arrayOf, number, string, object, shape } from "prop-types";
 
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
@@ -79,19 +79,19 @@ function WorkPage({ pageContext, location }) {
 }
 
 WorkPage.propTypes = {
-  pageContext: PropTypes.shape({
-    locale: PropTypes.string.isRequired,
-    nextPath: PropTypes.string,
-    prevPath: PropTypes.string,
-    currentPage: PropTypes.number.isRequired,
-    totalCountWork: PropTypes.number.isRequired,
-    totalPagesInWork: PropTypes.number.isRequired,
-    paginationPathPrefix: PropTypes.string.isRequired,
-    edgesWork: PropTypes.arrayOf(PropTypes.object).isRequired,
+  pageContext: shape({
+    locale: string.isRequired,
+    nextPath: string,
+    prevPath: string,
+    currentPage: number.isRequired,
+    totalCountWork: number.isRequired,
+    totalPagesInWork: number.isRequired,
+    paginationPathPrefix: string.isRequired,
+    edgesWork: arrayOf(object).isRequired,
   }).isRequired,
-  location: PropTypes.shape({
-    pathname: PropTypes.string.isRequired,
-    href: PropTypes.string.isRequired,
+  location: shape({
+    pathname: string.isRequired,
+    href: string.isRequired,
   }).isRequired,
 };
 

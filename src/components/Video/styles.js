@@ -2,22 +2,15 @@ import styled, { css } from "styled-components";
 import { theme, rem, mediaMin } from "../../theme/theme";
 
 export const Figure = styled.figure`
-  ${(props) =>
-    props.expand &&
+  ${({ expand }) =>
+    expand &&
     css`
       margin-top: ${rem(32)};
-      margin-bottom: ${rem(32)};
-
-      ${mediaMin.xl`
-        max-width: ${rem(808)};
-        margin-right: -${rem(96)};
-        margin-left: -${rem(96)};
-      `};
 
       ${mediaMin.xxl`
         max-width: ${rem(936)};
-        margin-right: -${rem(192)};
-        margin-left: -${rem(192)};
+        margin-right: -${rem(96)};
+        margin-left: -${rem(96)};
       `};
     `}
 `;

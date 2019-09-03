@@ -2,16 +2,6 @@
 title: "Movie Booking App"
 slug: "Movie Booking App"
 snippet: "A case study on improving the experience of searching, finding and booking movies in a cinema, using a User-Centered Design process."
-# methods:
-#     - Surveys
-#     - User Interviews
-#     - Affinity Diagram
-#     - Problem Statements
-# links:
-#     - name: "Low-Fidelity Prototype"
-#       link: "https://invis.io/N5OJ253T2PF"
-#     - name: "High-Fidelity Prototype"
-#       link: "https://invis.io/AERJX7Y8J4F"
 date: "2019-04-22"
 category: "work"
 tags:
@@ -19,20 +9,37 @@ tags:
   - IxD
   - Personal Project
 posted: true
-images: [
-   "./ux_case_study_movie_app_presentation_w_bg.png",
-   "./ux_case_study_movie_app_presentation_no_bg.png"
-]
+pageImage: "./ux_case_study_movie_app_presentation.png"
+cardImage: "./ux_case_study_movie_app_card_presentation.png"
 locale: "en"
 twinPost: "Aplicación compra entradas Cine"
 ---
 
 import Image from "components/Image/Image";
 import Video from "components/Video/Video";
+import { GridRow } from "components/Grid/Grid";
+import {
+  OverviewRow,
+  OverviewInfoCol,
+  OverviewInfoItem,
+  AltRowBackground,
+} from "styles/caseStudy.styles";
 
-<div className="overview">
-<div className="row">
-<div className="col col--5 overview__copy">
+import {
+  ProcessRow,
+  ProcessTitle,
+  ProcessCol,
+  ScreenshotRow,
+  MobileScreenshot,
+  InfoCol,
+  ScreenshotCol,
+  StyledSubhead,
+  SeparatedSubhead,
+  StyledCol,
+} from "../movieApp.styles";
+
+<OverviewRow spaced col12 as="div">
+<StyledCol xl={5}>
 
 ## Overview
 
@@ -40,61 +47,63 @@ Like most people, I love seeing movies. Especially in a cinema. However, each ti
 
 That’s why I decided to see how I could improve the experience of searching for a movie and then buying a ticket for it using an iOS App.
 
-</div>
-<div className="col col--6 overview__sideinfo">
-<div className="overview__sideinfo__item">
+</StyledCol>
+<OverviewInfoCol xl={6}>
+<OverviewInfoItem>
 
-##### My Role
+### My Role
 
 - UX Research
 - UI Design
 - Interaction Design
 
-</div>
-<div className="overview__sideinfo__item">
+</OverviewInfoItem>
+<OverviewInfoItem>
 
-##### Tools Used
+### Tools Used
 
 - Pen and paper
 - Sketch
 - InVision
 - Principle
 
-</div>
-<div className="overview__sideinfo__item">
+</OverviewInfoItem>
+<OverviewInfoItem>
 
-##### Project Type
+### Project Type
 
 - Personal Project
 
-</div>
-<div className="overview__sideinfo__item">
+</OverviewInfoItem>
+<OverviewInfoItem>
 
-##### Deliverables
+### Deliverables
 
 - [InVision Prototype](https://invis.io/AERJX7Y8J4F)
 - [Moderator Guide](https://docs.google.com/document/d/1NQyFE4AwHWetJqEYY7kWAAt2aqGuwsnxDTH2yERKo2o/edit?usp=sharing)
 
-</div>
-</div>
-</div>
-</div>
+</OverviewInfoItem>
 
-<div className="row process">
-<div className="col col--12">
+</OverviewInfoCol>
+</OverviewRow>
+
+<AltRowBackground padded spaced  as="div">
+<ProcessRow col12 as="div">
+<ProcessTitle>
 
 ## Process
 
-<div className="process__item">
+</ProcessTitle>
+<ProcessCol>
 
-#### Discovery
+### Discovery
 
 - User Interviews
 
-</div>
-<div className="process__item">
+</ProcessCol>
+<ProcessCol>
 
-#### Analysis
+### Analysis
 
 - Affinity Diagram
 - Problem Statement
@@ -102,35 +111,34 @@ That’s why I decided to see how I could improve the experience of searching fo
 - Personas
 - MOSCOW
 
-</div>
-<div className="process__item">
+</ProcessCol>
+<ProcessCol>
 
-#### Ideation
+### Ideation
 
 - Crazy 8’s
 - Paper Prototype
 
-</div>
-<div className="process__item">
+</ProcessCol>
+<ProcessCol>
 
-#### Prototype
+### Prototype
 
 - High Fidelity Prototype
 
-</div>
-<div className="process__item">
+</ProcessCol>
+<ProcessCol>
 
-#### Test
+### Test
 
 - 5 Act User Interview
 
-</div>
+</ProcessCol>
+</ProcessRow>
+</AltRowBackground>
 
-</div>
-</div>
-
-<div className="row row-contain--6">
-<div className="col">
+<GridRow spaced col8 as="div">
+<StyledCol>
 
 ## Discovery
 
@@ -170,6 +178,12 @@ From the user interviews I found that people:
 - Feel that the company just wants them to sign up so that they can send them marketing emails.
 - Feel that information about the cinema is hard to find (the types of seats that are available, services, etc).
 
+</StyledCol>
+</GridRow>
+
+<GridRow col8 spaced as="div">
+<StyledCol>
+
 ## Analysis
 
 ### Affinity Diagram
@@ -188,35 +202,49 @@ So I decided to start working on the following pain points:
 - **People are having issues with the checkout flow**
 - **People feel that prices are too high**
 
-### Problem Statements
+</StyledCol>
+</GridRow>
+
+<AltRowBackground spaced as="div">
+<GridRow padded col8 as="div">
+<StyledCol>
+
+## Problem Statements
 
 The next step was to identify the problem statements. Then I used the How Might We technique to help me find solutions for each one.
 
-##### Problem Statement
+<SeparatedSubhead>Problem Statement</SeparatedSubhead>
 
 > People are having difficulties deciding which movie they would like to see.
 
-##### How Might We:
+<StyledSubhead>How Might We:</StyledSubhead>
 
 > Improve our app so that we can help people decide which movie they would like to see faster?
 
-##### Problem Statement
+<SeparatedSubhead>Problem Statement</SeparatedSubhead>
 
 > People are frustrated when they have to create an account before they can make a purchase.
 
-##### How Might We:
+<StyledSubhead>How Might We:</StyledSubhead>
 
 > Improve the checkout process so that people can make purchases without any frustration?
 
-##### Problem Statement
+<SeparatedSubhead>Problem Statement</SeparatedSubhead>
 
 > Movie enthusiasts feel that ticket prices are too high, which is preventing them from being able to see as many movies as they would like to.
 
-##### How Might We:
+<StyledSubhead>How Might We:</StyledSubhead>
 
 > Reduce the cost of seeing a movie in a cinema for repeat customers?
 
-### Personas
+</StyledCol>
+</GridRow>
+</AltRowBackground>
+
+<GridRow spaced col8 as="div">
+<StyledCol>
+
+## Personas
 
 Based on these problem statements and the research findings, I created 2 user personas. I used them to help me design the features of the app, which were based on their pain points, and on the outcomes they were trying to achieve.
 
@@ -240,7 +268,7 @@ She is a movie enthusiast that likes to watch several movies each month, but she
   caption="The second Persona created based on the research findings, Ana."
 />
 
-### Feature Prioritization
+## Feature Prioritization
 
 To decide which features to include in the initial MVP, I decided to use a Prioritisation Matrix which is based on the value it would provide to the end-user and by how difficult it would be to create.
 
@@ -250,7 +278,7 @@ To decide which features to include in the initial MVP, I decided to use a Prior
   caption="Feature Prioritization Matrix based on the value to the user and difficulty to implement."
 />
 
-### MOSCOW Method
+## MOSCOW Method
 
 Then I used the MOSCOW method to find which are the most important features to be included in the MVP.
 
@@ -266,23 +294,37 @@ Then I used the MOSCOW method to find which are the most important features to b
 - Optimized guest checkout experience
 - Membership plan with offers and discounts
 
-### Feature Hypothesis Statements
+</StyledCol>
+</GridRow>
+
+<AltRowBackground spaced as="div">
+<GridRow padded col8 as="div">
+<StyledCol>
+
+## Feature Hypothesis Statements
 
 Next I used the Lean UX Feature Hypothesis Statements to identify the features that will serve each persona and help them achieve their individual outcome.
 
-##### Searching, filtering and sorting feature
+<SeparatedSubhead>Searching, filtering and sorting feature</SeparatedSubhead>
 
 > We will create **an advanced search, filter and sort feature** for **Alex** in order to **help him decide which movie he would like to see faster**.
 
-##### Guest checkout experience
+<SeparatedSubhead>Guest checkout experience</SeparatedSubhead>
 
 > We will create **an optimized guest checkout experience** for **Alex** in order to **help him buy his movie tickets without any frustration**.
 
-##### Membership plan with offers and discounts
+<SeparatedSubhead>Membership plan with offers and discounts</SeparatedSubhead>
 
 > We will create **a membership plan** for **Ana** in order to **reduce the cost of seeing several movies a month for movie enthusiasts**.
 
-### Ideation
+</StyledCol>
+</GridRow>
+</AltRowBackground>
+
+<GridRow spaced col8 as="div">
+<StyledCol>
+
+## Ideation
 
 To help me ideate quick solutions to each of the features, I used the Crazy 8’s method since it’s a great way to keep you in a constant creative thinking mode and generate many different ways to design a particular feature.
 
@@ -291,6 +333,13 @@ To help me ideate quick solutions to each of the features, I used the Crazy 8’
   src="movie-app/en/ux_case_study_crazy_8s.jpeg"
   caption="Crazy 8’s method used to sketch-out different solutions to the design problem."
 />
+
+</StyledCol>
+</GridRow>
+
+<AltRowBackground spaced as="div">
+<GridRow padded col8 as="div">
+<StyledCol>
 
 ## Movie Searching and Filtering
 
@@ -302,102 +351,121 @@ Most users had difficulties deciding which movie they would like to see, so the 
 
 Before I started sketching the app’s nav bar, I decided to see which patterns were being used by other apps or websites that also needed a similar feature.
 
-<div className="expand-12 spaced">
-<div className="screenshot">
+</StyledCol>
+</GridRow>
+
+<GridRow col12 as="div">
+<StyledCol>
+<ScreenshotRow bottomPad>
+<ScreenshotCol l={6}>
+
+<MobileScreenshot>
 
 <Image
   src="movie-app/en/ux_case_study_airbnb_nav_bar@2x.png"
   caption="Airbnb shows their filtering options even when search is not active."
 />
 
-</div>
-<div className="info">
-<div className="info__item">
+</MobileScreenshot>
+</ScreenshotCol>
+<InfoCol l={6}>
 
 The first product I compared was Airbnb’s iOS app. One of the reasons for which I started with their app was because the design pattern they were using, allowed them to show their buttons for “Dates” and “Guests”, always visible below the search bar. This way, their users can always see them and know where to go if they need to filter the search results they are seeing.
 
-</div>
-</div>
-</div>
+</InfoCol>
+</ScreenshotRow>
 
-<div className="expand-12 spaced">
-<div className="screenshot">
+<ScreenshotRow bottomPad>
+<ScreenshotCol l={6}>
+
+<MobileScreenshot>
 
 <Image
   src="movie-app/en/ux_case_study_asos_ios_nav_bar@2x.png"
   caption="Asos.com was using a similar aproach to Airbnb but without the search bar."
 />
 
-</div>
-<div className="info">
-<div className="info__item">
+</MobileScreenshot>
+</ScreenshotCol>
+<InfoCol l={6}>
 
 The next app I compared was Asos’s iOS app. Their sort and filter buttons have more visual weight that Airbnb’s ones, but they didn’t include a search bar since it was on a different screen.
 
 One of the benefits of the way Asos.com implements their sorting and filtering options is that it allows them to show which sorting or filtering options are applied. This way they can remind the user that the search results are being affected by the filters applied.
 
-</div>
-</div>
-</div>
+</InfoCol>
+</ScreenshotRow>
 
-<div className="expand-12 spaced">
-<div className="screenshot">
+<ScreenshotRow bottomPad center>
+<ScreenshotCol l={6}>
+<MobileScreenshot>
 
 <Image
   src="movie-app/en/ux_case_study_crutchfield_example.png"
   caption="Crutchfield.com shows the search bar and sort and filter buttons at the same time."
 />
 
-</div>
-<div className="info">
-<div className="info__item">
+</MobileScreenshot>
+</ScreenshotCol>
+<InfoCol l={6}>
 
 Crutchfield.com’s website has the search bar and sorting and filtering options at the same time. However, their sort and filter buttons are more separated from the search bar and don’t have the same visual weight as the Asos.com example. This could mean that their users might overlook the options because they don’t stand out as much.
 
-</div>
-</div>
-</div>
+</InfoCol>
+</ScreenshotRow>
 
-<div className="expand-12 spaced">
-<div className="screenshot">
+<ScreenshotRow center>
+<ScreenshotCol l={6}>
+<MobileScreenshot>
 
 <Image
   src="movie-app/en/ux_case_study_zalando_example.png"
   caption="zalando.es offered the most complete filtering and searching experience."
 />
 
-</div>
-<div className="info">
-<div className="info__item">
+</MobileScreenshot>
+</ScreenshotCol>
+<InfoCol l={6}>
 
 zalando.es had one of the most complete searching and filtering experience for their users. Besides always showing the filtering button, they also indicate which filtering options are active. Furthermore, their users can remove individual filters without having to open the filters menu.
 
 A “clear all filters” button is also used to allow their users to remove all the applied filters if they want to start over with a new search.
 
-</div>
-</div>
-</div>
+</InfoCol>
+</ScreenshotRow>
+</StyledCol>
+</GridRow>
 
-### Movie Searching and Filtering Feature
+<GridRow col8 spaced as="div">
+<StyledCol>
 
-<div className="expand-12">
-<div className="screenshot">
+### Final Version of the Movie Searching and Filtering Feature
+
+<ScreenshotRow>
+<StyledCol l={6}>
+
+<MobileScreenshot>
 
 <Image
   src="movie-app/en/ux_case_study_nav_bar_sort_applied@2x.png"
   caption="Final version of the nav bar in with sorting applied, showing both buttons and search bar."
 />
 
-</div>
-<div className="screenshot">
+</MobileScreenshot>
+</StyledCol>
+
+<StyledCol l={6}>
+
+<MobileScreenshot>
 
 <Image
   src="movie-app/en/ux_case_study_nav_bar_filter_and_sort_applied@2x.png"
   caption="Final version of the nav bar with active filter and sort buttons."
 />
 
-</div>
-</div>
+</MobileScreenshot>
+</StyledCol>
+</ScreenshotRow>
 
 For the final version of the feature, I decided to use a combination of the different design patterns mentioned above. This allowed me to include a full-width search bar without having to hide the filter and sort buttons. This way I could also show if any filters or sorting options are active.
 
@@ -405,18 +473,32 @@ Another benefit is that users could also remove any of filters, either one by on
 
 The filtering options are also designed in a way that users can combine them to improve their search, without having mutually exclusive options, following the recommendations from the [article on E-Commerce UX](https://baymard.com/blog/allow-applying-of-multiple-filter-values) made by the Baymard Institute, where they found that up to 45% of the users tested, tried to apply several filters at some point during their search.
 
+</StyledCol>
+</GridRow>
+
+<GridRow col12 bottomSpaced as="div">
+<StyledCol>
+
 ### Movie Searching and Filtering Wireflow Diagram
 
 <Image
-  expand
+  noShadow
   src="movie-app/en/ux_case_study_wire_flow_alex_search_and_filter.png"
   caption="Wireflow diagram of the movie searching and filtering features."
 />
 
-## Movie Searching and Filtering High-Fidelity Prototypes
+</StyledCol>
+</GridRow>
 
-<div className="expand-12">
-<div className="screenshot">
+<GridRow bottomPad col12 as="div">
+
+<StyledCol>
+
+### Movie Searching and Filtering High-Fidelity Prototypes
+
+</StyledCol>
+
+<StyledCol l={4}>
 
 #### Movie Searching
 
@@ -430,8 +512,9 @@ The filtering options are also designed in a way that users can combine them to 
   gifAlt="View the GIF version of the movie searching feature prototype."
 />
 
-</div>
-<div className="screenshot">
+</StyledCol>
+
+<StyledCol l={4}>
 
 #### Movie Filtering
 
@@ -445,8 +528,9 @@ The filtering options are also designed in a way that users can combine them to 
   gifAlt="View the gif version of the movie filtering interaction prototype."
 />
 
-</div>
-<div className="screenshot">
+</StyledCol>
+
+<StyledCol l={4}>
 
 #### Movie Seat Choosing
 
@@ -460,8 +544,12 @@ The filtering options are also designed in a way that users can combine them to 
   gifAlt="View the gif version of the movie filtering interaction prototype."
 />
 
-</div>
-</div>
+</StyledCol>
+</GridRow>
+</AltRowBackground>
+
+<GridRow col8 bottomSpaced as="div">
+<StyledCol>
 
 ## Guest Checkout Flow
 
@@ -473,19 +561,26 @@ Even though guest checkout flows are usually designed for users which don’t ha
 
 After some initial research to see which are the design patterns and best practices used for designing a checkout flow, I started working on the prototype of the feature.
 
-### Delayed Account Creation
+</StyledCol>
+</GridRow>
 
-<div className="expand-12">
-<div className="screenshot">
+<GridRow col12 as="div">
+<StyledCol>
+<ScreenshotRow center bottomPad>
+<ScreenshotCol l={6}>
+<MobileScreenshot>
+
+#### Delayed Account Creation
 
 <Image
   src="movie-app/en/ux_case_study_choose_guest_checkout_screen@2x.png"
   caption="Users can sign in to use their saved personal information or as a guest, when booking a movie."
 />
 
-</div>
-<div className="info">
-<div className="info__item">
+</MobileScreenshot>
+</ScreenshotCol>
+
+<InfoCol l={6}>
 
 #### Guest checkout as an option for all users
 
@@ -499,23 +594,26 @@ Since I wasn’t asking for every user to create an account first, I decided to 
 
 Furthermore —according to the same research—, if users are concerned about their privacy, the product can explain why their personal information is needed, which will help reduce their fear that it’s just for sending them marketing emails.
 
-</div>
-</div>
-</div>
+</InfoCol>
+</ScreenshotRow>
 
-### Guest Checkout Payment Methods
+<ScreenshotRow center bottomPad>
+<ScreenshotCol l={6}>
 
-<div className="expand-12">
-<div className="screenshot">
+<MobileScreenshot>
+
+#### Guest Checkout Payment Methods
 
 <Image
   src="movie-app/en/ux_case_study_guest_checkout_payment_methods@2x.png"
   caption="Guest checkout with the order summary and available payment methods."
 />
 
-</div>
-<div className="info">
-<div className="info__item">
+</MobileScreenshot>
+
+</ScreenshotCol>
+
+<InfoCol l={6}>
 
 #### Payment methods placed in close proximity
 
@@ -525,24 +623,24 @@ According to them, payment methods should be placed together in close proximity 
 
 Users should also be able to compare the different costs associated with each payment method —if they apply— such as a 2% fee when using a particular payment type.
 
-</div>
-</div>
-</div>
+</InfoCol>
+</ScreenshotRow>
 
-### Optimizing The Payment Form
+<ScreenshotRow center bottomSpaced>
+<ScreenshotCol l={6}>
 
-<div className="expand-12">
+<MobileScreenshot>
 
-<div className="screenshot">
+#### Optimizing The Payment Form
 
 <Image
   src="movie-app/en/ux_case_study_guest_checkout_optimized_credit_card_form@2x.png"
   caption="Guest checkout with credit card form interaction."
 />
 
-</div>
-<div className="info">
-<div className="info__item">
+</MobileScreenshot>
+</ScreenshotCol>
+<InfoCol l={6}>
 
 #### Insert spaces every 4 digits
 
@@ -556,23 +654,24 @@ The expiration date input field was designed to match the physical layout and fo
 
 Form fields used for credit cards should also use input masks that auto-insert a forwards slash character after the MM in the expiration date and use the appropriate keyboard type for each input field.
 
-</div>
-</div>
-</div>
+</InfoCol>
+</ScreenshotRow>
 
-### Order Confirmation With Option To Sign Up
+<ScreenshotRow center>
+<ScreenshotCol l={6}>
 
-<div className="expand-12">
-<div className="screenshot">
+<MobileScreenshot>
+
+#### Order Confirmation With Option To Sign Up
 
 <Image
   src="movie-app/en/ux_case_study_guest_checkout_delayed_account_creation@2x.png"
   caption="Users can sign in to use their saved personal information or as a guest, when booking a movie."
 />
 
-</div>
-<div className="info">
-<div className="info__item">
+</MobileScreenshot>
+</ScreenshotCol>
+<InfoCol l={6}>
 
 #### Sign up in the last step of the checkout process
 
@@ -584,17 +683,28 @@ This way users can still sign up and create an account with the app, but instead
 
 Even though it’s still the same amount of input fields, users will not think it’s just so that you can send them marketing emails.
 
-</div>
-</div>
-</div>
+</InfoCol>
+</ScreenshotRow>
+
+</StyledCol>
+</GridRow>
+
+<GridRow col12 as="div" spaced>
+<StyledCol>
 
 ### Guest Checkout Wireflow Diagram
 
 <Image
-  expand
+  noShadow
   src="movie-app/en/ux_case_study_wire_flow_alex_checkout.png"
   caption="Wireflow diagram of the guest checkout experience."
 />
+
+</StyledCol>
+</GridRow>
+
+<GridRow col6 bottomSpaced as="div">
+<StyledCol>
 
 ### Guest Checkout High-Fidelity Prototype
 
@@ -607,6 +717,13 @@ Even though it’s still the same amount of input fields, users will not think i
   gifBrowserSupport="Your browser does not support HTML5 video."
   gifAlt="View the GIF version of the guest checkout final prototype."
 />
+
+</StyledCol>
+</GridRow>
+
+<AltRowBackground padded as="div">
+<GridRow col8 as="div">
+<StyledCol>
 
 ## Membership Plan
 
@@ -629,26 +746,48 @@ The 4 segments were:
 - **Payment information**
 - **Finished (confirmation screen)**
 
+</StyledCol>
+</GridRow>
+
+<GridRow col12 as="div" spaced>
+<StyledCol>
+
 ### Membership Sign Up Wireflow Diagram
 
 <Image
-  expand
+  noShadow
   src="movie-app/en/ux_case_study_wire_flow_ana_membership_sign_up.png"
   caption="Wireflow diagram of the membership sign up process."
 />
+
+</StyledCol>
+</GridRow>
+
+<GridRow col8 bottomSpaced as="div">
+<StyledCol>
 
 ### Shipping Information Optimizations
 
 The shipping information step is needed so that users can receive a copy of their membership card. To design this checkout step I decided to do some previous research to see which are the UX best practices of designing a Shipping Information checkout step.
 
-<div className="screenshot">
+</StyledCol>
+</GridRow>
+
+<GridRow col12 as="div" bottomPad>
+<StyledCol>
+
+<ScreenshotRow center bottomPad>
+<ScreenshotCol l={6}>
+<MobileScreenshot>
 
 <Image
   src="movie-app/en/ux_case_study_shipping_methods_selection@2x.png"
   caption="Shipping information screen with optimized copy to avoid confusing users with the different shipping options."
 />
 
-</div>
+</MobileScreenshot>
+</ScreenshotCol>
+<InfoCol l={6}>
 
 #### No hidden fees
 
@@ -660,54 +799,71 @@ Hidden charges and delivery costs are one of the main reasons why customers deci
 
 The different delivery methods are also designed following the recommendations of a [study](https://baymard.com/blog/shipping-speed-vs-delivery-date) which found that when using labels such as 2 Days Express or 1 Day Premium users would be confused of the exact date they would receive the product.
 
-<div className="expand-12 spaced">
-<div className="screenshot">
+</InfoCol>
+</ScreenshotRow>
+
+<ScreenshotRow bottomPad>
+<ScreenshotCol l={6}>
+<MobileScreenshot>
 
 <Image
   src="movie-app/en/ux_case_study_confusing_shipping_example.png"
   caption="Example of how not to label delivery methods. It’s not clear to the user which is the exact day the product would arrive."
 />
 
-</div>
-<div className="info">
-<div className="info__item">
+</MobileScreenshot>
+</ScreenshotCol>
+<InfoCol l={6}>
 
 By using labels like these, users are forced to have to personally calculate the day in which the product would arrive.
 
 A label of “3-5 days” doesn’t take into consideration the processing time each order might need, the daily cut off time (orders after 4 pm will be sent the following day), or if the user chooses a 1 Day Premium shipping option on a Friday, which would mean that the order is shipped Monday, ultimately making it a 3 day shipping method with a premium cost.
 
-</div>
-</div>
-</div>
+</InfoCol>
+</ScreenshotRow>
 
-<div className="expand-12">
-<div className="screenshot">
+<ScreenshotRow bottomPad>
+<ScreenshotCol l={6}>
+<MobileScreenshot>
 
 <Image
   src="movie-app/en/ux_case_study_correct_shipping_implementation_example.png"
   caption="Example of a correct way to label delivery methods."
 />
 
-</div>
-<div className="info">
-<div className="info__item">
+</MobileScreenshot>
+</ScreenshotCol>
+<InfoCol l={6}>
 
 By using labels such as “Arrives by“ or “Get it by”, users would take the delivery date as a promise which would increase their confidence when they have to decide if the extra cost of a premium delivery is worth it.
 
 However, in order for the final date to be useful to the user, it should take into account all the necessary factors such as order cut of time, the current time and date or the delivery estimate of the shipping company.
 
-</div>
-</div>
-</div>
+</InfoCol>
+</ScreenshotRow>
 
-<div className="screenshot">
+<ScreenshotRow>
+<ScreenshotCol l={6}>
+<MobileScreenshot>
 
 <Image
   src="movie-app/en/ux_case_study_amazon_shipping_example.png"
   caption="Example of a correct implementation of delivery methods from amazon.co.uk."
 />
 
-</div>
+</MobileScreenshot>
+</ScreenshotCol>
+<InfoCol l={6}>
+
+This is a great example of how to design the delivery methods as seen on amazon.co.uk’s checkout flow.
+
+</InfoCol>
+</ScreenshotRow>
+</StyledCol>
+</GridRow>
+
+<GridRow col6 as="div">
+<StyledCol>
 
 ### Membership Sign Up High-Hidelity Prototype
 
@@ -720,6 +876,13 @@ However, in order for the final date to be useful to the user, it should take in
   gifBrowserSupport="Your browser does not support HTML5 video."
   gifAlt="View the GIF version of the seat choosing process prototype."
 />
+
+</StyledCol>
+</GridRow>
+</AltRowBackground>
+
+<GridRow spaced col8 as="div">
+<StyledCol>
 
 ## Usability Testing
 
@@ -752,5 +915,5 @@ I had a lot of fun working on this project as I learned about the small details 
 
 I hope you enjoyed reading this case study, and if you have any questions about it feel free to get in touch.
 
-</div>
-</div>
+</StyledCol>
+</GridRow>

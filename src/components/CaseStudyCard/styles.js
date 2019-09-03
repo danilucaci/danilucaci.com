@@ -61,14 +61,10 @@ export const CaseStudyImgWrapper = styled.div`
     }
  `}
 
-  ${mediaMin.m`
-    padding: ${rem(16)} ${rem(24)};
-  `};
-
   ${mediaMin.xl`
     max-width: calc(60% - ${rem(24)});
     margin-left: ${rem(24)};
-    padding: ${rem(16)} 0;
+    padding: ${rem(24)} 0;
     flex: 1 1 60%;
     float: right;
     order: 2;
@@ -129,10 +125,10 @@ export const StyledH3 = styled.h3`
 `;
 
 export const ContinueLink = styled(Link)`
-  color: ${theme.colors.primary600};
+  color: ${theme.color.text.primary};
   text-decoration: underline;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 700;
   font-family: ${theme.font.family.display.fallback};
   display: inline-block;
   margin-top: ${rem(32)};

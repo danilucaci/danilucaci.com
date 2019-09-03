@@ -2,16 +2,6 @@
 title: "Aplicación de Compra de Entradas en un Cine"
 slug: "Aplicación compra entradas Cine"
 snippet: "Estudio de caso sobre como mejorar la experiencia de búsqueda y compra de entradas en un cine, creada con un proceso de diseño User-Centered Design."
-# methods:
-#     - Surveys
-#     - User Interviews
-#     - Diagrama de Afinidad
-#     - Problem Statements
-# links:
-#     - name: "Low-Fidelity Prototype"
-#       link: "https://invis.io/N5OJ253T2PF"
-#     - name: "High-Fidelity Prototype"
-#       link: "https://invis.io/AERJX7Y8J4F"
 date: "2019-04-22"
 category: "work"
 tags:
@@ -19,20 +9,37 @@ tags:
   - IxD
   - Proyecto Personal
 posted: true
-images: [
-  "./estudio_de_caso_ux_app_compra_entradas_presentacion_fondo.png",
-  "./estudio_de_caso_ux_app_compra_entradas_presentacion_sin_fondo.png"
-]
+pageImage: "./estudio_de_caso_ux_app_compra_entradas_presentacion.png"
+cardImage: "./estudio_de_caso_ux_app_compra_entradas_presentacion_card.png"
 locale: "es"
 twinPost: "Movie Booking App"
 ---
 
 import Image from "components/Image/Image";
 import Video from "components/Video/Video";
+import { GridRow } from "components/Grid/Grid";
+import {
+  OverviewRow,
+  OverviewInfoCol,
+  OverviewInfoItem,
+  AltRowBackground,
+} from "styles/caseStudy.styles";
 
-<div className="overview">
-<div className="row">
-<div className="col col--5 overview__copy">
+import {
+  ProcessRow,
+  ProcessTitle,
+  ProcessCol,
+  ScreenshotRow,
+  MobileScreenshot,
+  InfoCol,
+  ScreenshotCol,
+  StyledSubhead,
+  SeparatedSubhead,
+  StyledCol,
+} from "../movieApp.styles";
+
+<OverviewRow spaced col12 as="div">
+<StyledCol xl={5}>
 
 ## Introducción
 
@@ -40,61 +47,63 @@ Como la mayoría de la gente, me encanta ver películas. Sobretodo en un cine. S
 
 Por eso decidí ver cómo podría mejorar la experiencia de buscar una película y luego comprar una entrada para ella usando una aplicación iOS.
 
-</div>
-<div className="col col--6 overview__sideinfo">
-<div className="overview__sideinfo__item">
+</StyledCol>
+<OverviewInfoCol xl={6}>
+<OverviewInfoItem>
 
-##### Mi Rol
+### Mi Rol
 
 - Recerca UX
 - Diseño UI
 - Diseño de Interacción
 
-</div>
-<div className="overview__sideinfo__item">
+</OverviewInfoItem>
+<OverviewInfoItem>
 
-##### Herramientas Utilizadas
+### Herramientas Utilizadas
 
-- papel y bolígrafo
+- Papel y bolígrafo
 - Sketch
 - InVision
 - Principle
 
-</div>
-<div className="overview__sideinfo__item">
+</OverviewInfoItem>
+<OverviewInfoItem>
 
-##### Tipo De Proyecto
+### Tipo De Proyecto
 
 - Proyecto Personal
 
-</div>
-<div className="overview__sideinfo__item">
+</OverviewInfoItem>
+<OverviewInfoItem>
 
-##### Entregables
+### Entregables
 
 - [Prototipo InVision](https://invis.io/AERJX7Y8J4F)
 - [Guia del Moderador](https://docs.google.com/document/d/1NQyFE4AwHWetJqEYY7kWAAt2aqGuwsnxDTH2yERKo2o/edit?usp=sharing)
 
-</div>
-</div>
-</div>
-</div>
+</OverviewInfoItem>
 
-<div className="row process">
-<div className="col col--12">
+</OverviewInfoCol>
+</OverviewRow>
+
+<AltRowBackground padded spaced  as="div">
+<ProcessRow col12 as="div">
+<ProcessTitle>
 
 ## Proceso
 
-<div className="process__item">
+</ProcessTitle>
+<ProcessCol>
 
-#### Descubrimiento
+### Descubrimiento
 
 - User Interviews
 
-</div>
-<div className="process__item">
+</ProcessCol>
+<ProcessCol>
 
-#### Análisis
+### Análisis
 
 - Diagrama de Afinidad
 - Problem Statement
@@ -102,35 +111,34 @@ Por eso decidí ver cómo podría mejorar la experiencia de buscar una película
 - Personas
 - MOSCOW
 
-</div>
-<div className="process__item">
+</ProcessCol>
+<ProcessCol>
 
-#### Ideación
+### Ideación
 
 - Crazy 8’s
 - Prototipo en papel
 
-</div>
-<div className="process__item">
+</ProcessCol>
+<ProcessCol>
 
-#### Prototipo
+### Prototipo
 
 - Prototipo de alta fidelidad
 
-</div>
-<div className="process__item">
+</ProcessCol>
+<ProcessCol>
 
-#### Test
+### Test
 
 - Entrevistas de usuarios de 5 Actos
 
-</div>
+</ProcessCol>
+</ProcessRow>
+</AltRowBackground>
 
-</div>
-</div>
-
-<div className="row row-contain--6">
-<div className="col">
+<GridRow spaced col8 as="div">
+<StyledCol>
 
 ## Descubrimiento
 
@@ -170,6 +178,12 @@ Una vez hice las entrevistas, encontré que las personas:
 - Piensan que la empresa solo quiere que se registren para que puedan enviarles correos electrónicos de marketing.
 - Piensan que la información sobre el cine es difícil de encontrar (los tipos de asientos disponibles, servicios, etc.).
 
+</StyledCol>
+</GridRow>
+
+<GridRow col8 spaced as="div">
+<StyledCol>
+
 ## Análisis
 
 ### Diagrama de Afinidad
@@ -188,35 +202,49 @@ Así que decidí empezar a trabajar en los siguientes problemas principales que 
 - **Las personas tienen problemas con el proceso de pago.**
 - **Las personas sienten que los precios son demasiado altos.**
 
-### Declaración de Problemas
+</StyledCol>
+</GridRow>
+
+<AltRowBackground spaced as="div">
+<GridRow padded col8 as="div">
+<StyledCol>
+
+## Declaración de Problemas
 
 El próximo paso fue usar la técnica de declaración de problemas de la metodología Lean UX. Después use la técnica de _Cómo Podríamos_ para ayudarme a encontrar soluciones para cada uno de ellos.
 
-##### Problema
+<SeparatedSubhead>Problema</SeparatedSubhead>
 
 > Las personas tiene dificultades para decidir qué película les gustaría ver.
 
-##### ¿Cómo Podríamos?
+<StyledSubhead>¿Cómo Podríamos?</StyledSubhead>
 
 > ¿Mejorar nuestra aplicación para que podamos ayudar a las personas a decidir qué película les gustaría ver más rápido?
 
-##### Problema
+<SeparatedSubhead>Problema</SeparatedSubhead>
 
 > Las personas se sienten frustradas cuando tienen que crear una cuenta antes de poder hacer una compra.
 
-##### ¿Cómo Podríamos?
+<StyledSubhead>¿Cómo Podríamos?</StyledSubhead>
 
 > ¿Mejorar el proceso de compra para que las personas puedan realizar compras sin frustración?
 
-##### Problema
+<SeparatedSubhead>Problema</SeparatedSubhead>
 
 > Los entusiastas del cine sienten que los precios de las entradas son demasiado altos, lo que les impide ver tantas películas como les gustaría.
 
-##### ¿Cómo Podríamos?
+<StyledSubhead>¿Cómo Podríamos?</StyledSubhead>
 
 > ¿Reducir el coste de ver una película en un cine para clientes habituales?
 
-### Personas
+</StyledCol>
+</GridRow>
+</AltRowBackground>
+
+<GridRow spaced col8 as="div">
+<StyledCol>
+
+## Personas
 
 Basándome en estas declaraciones de problemas y los resultados de la investigación, creé 2 personas. Las utilicé para ayudarme a diseñar las características de la aplicación, que estaban basadas en los problemas que las personas tenían con los productos actuales y en los resultados que querían conseguir.
 
@@ -240,7 +268,7 @@ Es una entusiasta del cine a la que le gusta ver varias películas cada mes, per
   caption="La segunda persona creada basada en los descubrimientos de la recerca, Ana."
 />
 
-### Priorización de características
+## Priorización de características
 
 Para decidir qué características incluir en el MVP inicial, decidí usar una Matriz de Priorización que se basa en el valor que proporcionaría al usuario final y por lo difícil que sería crearla.
 
@@ -250,7 +278,7 @@ Para decidir qué características incluir en el MVP inicial, decidí usar una M
   caption="Matriz de priorización de características basada en el valor para el usuario y la dificultad de implementación."
 />
 
-### Método MOSCOW
+## Método MOSCOW
 
 Luego utilicé el método MOSCOW para encontrar cuáles son las características más importantes que se incluirán en el MVP.
 
@@ -266,23 +294,39 @@ Luego utilicé el método MOSCOW para encontrar cuáles son las características
 - Experiencia de pago como invitado.
 - Club de socios con ofertas y descuentos.
 
-### Declaración de Hipótesis de Características
+</StyledCol>
+</GridRow>
+
+<AltRowBackground spaced as="div">
+<GridRow padded col8 as="div">
+<StyledCol>
+
+## Declaración de Hipótesis de Características
 
 Luego, utilicé las declaraciones de hipótesis de las características de Lean UX para identificar las características que servirán a cada persona y ayudarlas a lograr su objetivo personal.
 
-##### búsqueda de películas con filtros y clasificaciones
+<SeparatedSubhead>
+  Búsqueda de películas con filtros y clasificaciones
+</SeparatedSubhead>
 
 > Crearemos una **características de búsqueda avanzada, con filtros y clasificaciones** para **Alex** con el fin de **ayudarle a decidir más rápido qué película le gustaría ver**.
 
-##### experiencia de pago como invitado
+<SeparatedSubhead>experiencia de pago como invitado</SeparatedSubhead>
 
 > Crearemos una **experiencia de pago como invitado** para **Alex** con el fin de **ayudarle a comprar sus entradas para el cine sin ninguna frustración**.
 
-##### Club de Socios
+<SeparatedSubhead>Club de Socios</SeparatedSubhead>
 
 > Crearemos un **club de socios** para **Ana** con el fin de **reducir el coste de ver varias películas al mes para los entusiastas del cine**.
 
-### Ideación
+</StyledCol>
+</GridRow>
+</AltRowBackground>
+
+<GridRow spaced col8 as="div">
+<StyledCol>
+
+## Ideación
 
 Para ayudarme a idear soluciones rápidamente para cada una de las características, utilicé el método de Crazy 8, ya que es una manera excelente de mantenerte en un modo de pensamiento creativo constante para generar muchos diseños alternativos de una característica.
 
@@ -291,6 +335,13 @@ Para ayudarme a idear soluciones rápidamente para cada una de las característi
   src="movie-app/es/estudio_de_caso_ux_crazy_8s.jpeg"
   caption="El método de Crazy 8 utilizado para esbozar diferentes soluciones al problema de diseño."
 />
+
+</StyledCol>
+</GridRow>
+
+<AltRowBackground spaced as="div">
+<GridRow padded col8 as="div">
+<StyledCol>
 
 ## Búsqueda y Filtrado de Películas
 
@@ -302,102 +353,121 @@ La mayoría de las personas entrevistadas tuvieron dificultades para decidir qu�
 
 Antes de comenzar a diseñar la barra de navegación de la aplicación, decidí ver qué patrones de diseño estaban utilizando otras aplicaciones o sitios web que también necesitaban una característica similar.
 
-<div className="expand-12 spaced">
-<div className="screenshot">
+</StyledCol>
+</GridRow>
+
+<GridRow col12 as="div">
+<StyledCol>
+<ScreenshotRow bottomPad>
+<ScreenshotCol l={6}>
+
+<MobileScreenshot>
 
 <Image
   src="movie-app/es/estudio_de_caso_ux_airbnb_nav_bar.png"
   caption="Airbnb muestra sus opciones de filtrado incluso cuando la búsqueda no está activa."
 />
 
-</div>
-<div className="info">
-<div className="info__item">
+</MobileScreenshot>
+</ScreenshotCol>
+<InfoCol l={6}>
 
 El primer producto que comparé fue la aplicación iOS de Airbnb. Una de las razones por las que comencé con la suya fue porque el patrón de diseño que estaban usando les permitía tener siempre visibles sus botones para "Fechas" e "Invitados", debajo de la barra de búsqueda. De esta manera, sus usuarios siempre pueden verlos y saber dónde ir si necesitan filtrar sus resultados de búsqueda.
 
-</div>
-</div>
-</div>
+</InfoCol>
+</ScreenshotRow>
 
-<div className="expand-12 spaced">
-<div className="screenshot">
+<ScreenshotRow bottomPad>
+<ScreenshotCol l={6}>
+
+<MobileScreenshot>
 
 <Image
   src="movie-app/es/estudio_de_caso_ux_asos_ios_nav_bar.png"
   caption="Asos.com utilizaba un diseño similar a Airbnb pero sin la barra de búsqueda."
 />
 
-</div>
-<div className="info">
-<div className="info__item">
+</MobileScreenshot>
+</ScreenshotCol>
+<InfoCol l={6}>
 
 La siguiente aplicación que comparé fue la de Asos para iOS. Sus botones de clasificación y filtrado tienen más peso visual que la de Airbnb, pero ellos no incluyen una barra de búsqueda ya que la muestran en una pantalla diferente.
 
 Uno de los beneficios de la forma en que Asos.com implementa sus opciones de clasificación y filtrado es que les permite mostrar qué opciones están aplicadas en cada momento. De esta manera, pueden recordar al usuario que los resultados de la búsqueda están limitados por los filtros aplicados.
 
-</div>
-</div>
-</div>
+</InfoCol>
+</ScreenshotRow>
 
-<div className="expand-12 spaced">
-<div className="screenshot">
+<ScreenshotRow bottomPad center>
+<ScreenshotCol l={6}>
+<MobileScreenshot>
 
 <Image
   src="movie-app/es/estudio_de_caso_ux_ejemplo_crutchfield.png"
   caption="Crutchfield.com muestra la barra de búsqueda y los botones para clasificar y filtrar al mismo tiempo."
 />
 
-</div>
-<div className="info">
-<div className="info__item">
+</MobileScreenshot>
+</ScreenshotCol>
+<InfoCol l={6}>
 
 En el caso de la página web de Crutchfield.com, ellos tienen su barra de búsqueda y las opciones de clasificación y filtrado visibles en todo momento. Sin embargo, sus botones de clasificación y filtrado están más separados de la barra de búsqueda y no tienen el mismo peso visual que el ejemplo de Asos.com. Esto podría significar que sus usuarios podrían pasar por alto las opciones porque no destacan tanto visualmente.
 
-</div>
-</div>
-</div>
+</InfoCol>
+</ScreenshotRow>
 
-<div className="expand-12 spaced">
-<div className="screenshot">
+<ScreenshotRow center>
+<ScreenshotCol l={6}>
+<MobileScreenshot>
 
 <Image
   src="movie-app/es/estudio_de_caso_ux_ejemplo_zalando.png"
   caption="zalando.es ofrece la experiencia de filtrado y búsqueda más completa."
 />
 
-</div>
-<div className="info">
-<div className="info__item">
+</MobileScreenshot>
+</ScreenshotCol>
+<InfoCol l={6}>
 
 zalando.es tenía una de las experiencias de búsqueda y filtrado más completas para sus usuarios. Además de mostrar siempre el botón para filtrar los resultados, también indican qué opciones de los filtros están activas. Además, sus usuarios pueden eliminar los filtros individuales sin tener que abrir el menú de filtros.
 
 También se usa un botón "Borrar todos los filtros" para permitir que sus usuarios eliminen todos los que están aplicados si desean comenzar de nuevo con una nueva búsqueda.
 
-</div>
-</div>
-</div>
+</InfoCol>
+</ScreenshotRow>
+</StyledCol>
+</GridRow>
 
-### Característica de Búsqueda y Filtrado de Películas
+<GridRow col8 spaced as="div">
+<StyledCol>
 
-<div className="expand-12">
-<div className="screenshot">
+### Versión Final de la Característica de Búsqueda y Filtrado de Películas
+
+<ScreenshotRow>
+<StyledCol l={6}>
+
+<MobileScreenshot>
 
 <Image
   src="movie-app/es/estudio_de_caso_ux_nav_bar_clasificacion_aplicada.png"
   caption="Versión final de la barra de navegación con clasificación aplicada, que muestra los botones y la barra de búsqueda."
 />
 
-</div>
-<div className="screenshot">
+</MobileScreenshot>
+</StyledCol>
+
+<StyledCol l={6}>
+
+<MobileScreenshot>
 
 <Image
   src="movie-app/es/estudio_de_caso_ux_nav_bar_filtro_y_clasificación_aplicados.png"
   caption="Versión final de la barra de navegación con filtro activo y botones de clasificación."
 />
 
-</div>
-</div>
+</MobileScreenshot>
+</StyledCol>
+</ScreenshotRow>
 
 Para la versión final de la característica, decidí usar una combinación de los diferentes patrones de diseño mencionados anteriormente. Esto me permitió incluir una barra de búsqueda que ocupa todo el ancho de la pantalla sin tener que ocultar las opciones de filtrado o el botón de clasificación. De esta manera también podría mostrar si hay filtros u opciones de clasificación activos.
 
@@ -405,18 +475,32 @@ Otro beneficio es que los usuarios pueden eliminar cualquiera de los filtros, se
 
 Las opciones de filtrado también están diseñadas de manera que los usuarios puedan combinarlas para mejorar su búsqueda, sin tener opciones mutuamente exclusivas, siguiendo las recomendaciones del [artículo sobre E-Commerce UX](https://baymard.com/blog/allow-applying-of-multiple-filter-values) realizado por el Instituto Baymard, donde encontraron que hasta el 45% de los usuarios que participaron en su estudio, intentaron aplicar varios filtros en algún momento durante su búsqueda.
 
+</StyledCol>
+</GridRow>
+
+<GridRow col12 bottomSpaced as="div">
+<StyledCol>
+
 ### Diagrama de Flujo de las Opciones de Búsqueda y Filtrado de Películas
 
 <Image
-  expand
+  noShadow
   src="movie-app/es/estudio_de_caso_ux_wire_flow_alex_busqueda_y_filtrado.png"
   caption="Diagrama de Flujo de las Características de Búsqueda y Filtrado de Películas."
 />
 
+</StyledCol>
+</GridRow>
+
+<GridRow bottomPad col12 as="div">
+
+<StyledCol>
+
 ### Prototipos de Alta Fidelidad de las Opciones de Búsqueda y Filtrado de Películas
 
-<div className="expand-12">
-<div className="screenshot">
+</StyledCol>
+
+<StyledCol l={4}>
 
 #### Búsqueda de Películas
 
@@ -430,8 +514,9 @@ Las opciones de filtrado también están diseñadas de manera que los usuarios p
   gifAlt="Ver el GIF del prototipo de alta fidelidad de las opciones de búsqueda de películas."
 />
 
-</div>
-<div className="screenshot">
+</StyledCol>
+
+<StyledCol l={4}>
 
 #### Filtrado de Películas
 
@@ -445,8 +530,9 @@ Las opciones de filtrado también están diseñadas de manera que los usuarios p
   gifAlt="Ver el GIF del prototipo de las opciones de filtrado de películas."
 />
 
-</div>
-<div className="screenshot">
+</StyledCol>
+
+<StyledCol l={4}>
 
 #### Opciones de Selección de Asientos
 
@@ -460,8 +546,12 @@ Las opciones de filtrado también están diseñadas de manera que los usuarios p
   gifAlt="Ver el GIF del prototipo de las opciones de selección de asientos."
 />
 
-</div>
-</div>
+</StyledCol>
+</GridRow>
+</AltRowBackground>
+
+<GridRow col8 bottomSpaced as="div">
+<StyledCol>
 
 ## Proceso de Compra como Invitado
 
@@ -473,19 +563,26 @@ A pesar de que los procesos de compra de entradas como invitado normalmente est�
 
 Después de investigar un poco antes para ver cuáles son las mejores prácticas utilizadas para diseñar un proceso de pago, empecé a trabajar en el prototipo de la característica.
 
-### Creación de Cuenta Aplazada
+</StyledCol>
+</GridRow>
 
-<div className="expand-12">
-<div className="screenshot">
+<GridRow col12 as="div">
+<StyledCol>
+<ScreenshotRow center bottomPad>
+<ScreenshotCol l={6}>
+<MobileScreenshot>
+
+### Creación de Cuenta Aplazada
 
 <Image
   src="movie-app/es/estudio_de_caso_ux_elegir_pago_como_invitado.png"
   caption="Los usuarios pueden iniciar sesión para usar su información personal guardada o pueden continuar como invitado, en el momento de reservar una película."
 />
 
-</div>
-<div className="info">
-<div className="info__item">
+</MobileScreenshot>
+</ScreenshotCol>
+
+<InfoCol l={6}>
 
 #### Opción de pagar como invitado para todos los usuarios.
 
@@ -499,23 +596,26 @@ Como no estaba pidiendo a cada usuario que cree una cuenta primero, decidí info
 
 Además, según el mismo estudio, si los usuarios están preocupados por su privacidad, el producto puede explicar por qué se necesita su información personal, lo que ayudará a reducir su miedo de que solo sea para enviarles correos electrónicos de marketing.
 
-</div>
-</div>
-</div>
+</InfoCol>
+</ScreenshotRow>
+
+<ScreenshotRow center bottomPad>
+<ScreenshotCol l={6}>
+
+<MobileScreenshot>
 
 ### Métodos de Pago para las Compras como Invitado
-
-<div className="expand-12">
-<div className="screenshot">
 
 <Image
   src="movie-app/es/estudio_de_caso_ux_pago_como_invitado_metodos_pago.png"
   caption="Proceso de pago como invitado con el resumen del pedido y los métodos de pago disponibles."
 />
 
-</div>
-<div className="info">
-<div className="info__item">
+</MobileScreenshot>
+
+</ScreenshotCol>
+
+<InfoCol l={6}>
 
 #### Métodos de pago disponibles ubicados uno al lado del otro
 
@@ -525,24 +625,24 @@ Según ellos, los métodos de pago deben colocarse juntos muy cerca (los princip
 
 Los usuarios también deben poder comparar los diferentes costes asociados con cada método de pago, si corresponde, como una tarifa del 2% cuando se utiliza un tipo de pago en particular.
 
-</div>
-</div>
-</div>
+</InfoCol>
+</ScreenshotRow>
+
+<ScreenshotRow center bottomSpaced>
+<ScreenshotCol l={6}>
+
+<MobileScreenshot>
 
 ### Optimizando el Formulario de Pago
-
-<div className="expand-12">
-
-<div className="screenshot">
 
 <Image
   src="movie-app/es/estudio_de_caso_ux_pago_como_invitado_formulario_tarjeta_credito_optimizado.png"
   caption="La interacción con el formulario para introducir la tarjeta de crédito del proceso de pago como invitado."
 />
 
-</div>
-<div className="info">
-<div className="info__item">
+</MobileScreenshot>
+</ScreenshotCol>
+<InfoCol l={6}>
 
 #### Insertar espacios cada 4 dígitos
 
@@ -556,14 +656,15 @@ El campo de entrada de la fecha de vencimiento fue diseñado para coincidir con 
 
 Los campos de formulario utilizados para las tarjetas de crédito también deben usar máscaras de entrada que insertan automáticamente un carácter de barra diagonal después del MM en la fecha de vencimiento y usar el tipo de teclado apropiado para cada campo de entrada del formulario.
 
-</div>
-</div>
-</div>
+</InfoCol>
+</ScreenshotRow>
+
+<ScreenshotRow center>
+<ScreenshotCol l={6}>
+
+<MobileScreenshot>
 
 ### Confirmación del Pedido con Opción Para Darse de Alta
-
-<div className="expand-12">
-<div className="screenshot">
 
 <Image
   expand
@@ -571,9 +672,9 @@ Los campos de formulario utilizados para las tarjetas de crédito también deben
   caption="Los usuarios pueden iniciar sesión para usar su información personal guardada o continuar como invitados."
 />
 
-</div>
-<div className="info">
-<div className="info__item">
+</MobileScreenshot>
+</ScreenshotCol>
+<InfoCol l={6}>
 
 #### Darse de Alta en el Último Paso del Proceso de Pago
 
@@ -585,17 +686,28 @@ De esta manera, los usuarios aún pueden registrarse para guardar sus datos para
 
 A pesar de que sigue siendo la misma cantidad de campos de entrada, los usuarios no pensarán que solo se tienen que dar de alta para que la empresa les envíe correos electrónicos de marketing.
 
-</div>
-</div>
-</div>
+</InfoCol>
+</ScreenshotRow>
+
+</StyledCol>
+</GridRow>
+
+<GridRow col12 as="div" spaced>
+<StyledCol>
 
 ### Diagrama de Flujo de la Experiencia de Pago como Invitados
 
 <Image
-  expand
+  noShadow
   src="movie-app/es/estudio_de_caso_ux_wire_flow_alex_checkout.png"
   caption="Diagrama de Flujo de la Experiencia de Pago como Invitados."
 />
+
+</StyledCol>
+</GridRow>
+
+<GridRow col6 bottomSpaced as="div">
+<StyledCol>
 
 ### Prototipo de Alta Fidelidad de la Experiencia de Pago como Invitados
 
@@ -608,6 +720,13 @@ A pesar de que sigue siendo la misma cantidad de campos de entrada, los usuarios
   gifBrowserSupport="Su navegador no soporta video HTML5."
   gifAlt="Ver el GIF del prototipo de alta fidelidad de la experiencia de pago como invitados."
 />
+
+</StyledCol>
+</GridRow>
+
+<AltRowBackground padded as="div">
+<GridRow col8 as="div">
+<StyledCol>
 
 ## Club de Socios
 
@@ -630,13 +749,25 @@ Los 4 segmentos son:
 - **Datos de pago**
 - **Final (pantalla de confirmación)**
 
+</StyledCol>
+</GridRow>
+
+<GridRow col12 as="div" spaced>
+<StyledCol>
+
 ### Diagrama de Flujo del Proceso de Alta del Club de Socios
 
 <Image
-  expand
+  noShadow
   src="movie-app/es/estudio_de_caso_ux_wire_flow_ana_club_socios_alta.png"
   caption="Diagrama de flujo del proceso de alta del club de socios."
 />
+
+</StyledCol>
+</GridRow>
+
+<GridRow col8 bottomSpaced as="div">
+<StyledCol>
 
 ### Optimizaciones de la Fase de Información del Envío
 
@@ -644,14 +775,24 @@ La fase de recogida de la información de envío es necesaria para que los usuar
 
 Pantalla de la fase de recogida de la información de envío con textos optimizados para evitar confundir a los usuarios con las diferentes opciones de envío.
 
-<div className="screenshot">
+</StyledCol>
+</GridRow>
+
+<GridRow col12 as="div" bottomPad>
+<StyledCol>
+
+<ScreenshotRow center bottomPad>
+<ScreenshotCol l={6}>
+<MobileScreenshot>
 
 <Image
   src="movie-app/es/estudio_de_caso_ux_elegir_metodo_envio.png"
   caption="Pantalla de la fase de recogida de la información de envío con textos optimizados para evitar confundir a los usuarios con las diferentes opciones de envío."
 />
 
-</div>
+</MobileScreenshot>
+</ScreenshotCol>
+<InfoCol l={6}>
 
 #### Sin costes escondidos
 
@@ -663,54 +804,71 @@ Los cargos ocultos y los costes de entrega son una de las razones principales po
 
 Además, los diferentes métodos de entrega también están diseñados siguiendo las recomendaciones de un [estudio](https://baymard.com/blog/shipping-speed-vs-delivery-date) que encontró que al usar etiquetas como Envío Urgente 2 Días o Envío Premium 1 Día, los usuarios se confundirán con la fecha exacta en que recibirán el producto.
 
-<div className="expand-12 spaced">
-<div className="screenshot">
+</InfoCol>
+</ScreenshotRow>
+
+<ScreenshotRow bottomPad>
+<ScreenshotCol l={6}>
+<MobileScreenshot>
 
 <Image
   src="movie-app/es/estudio_de_caso_ux_metodos_envio_confusos.png"
   caption="Ejemplo de cómo no etiquetar los métodos de entrega. No queda claro para el usuario cuál es el día exacto en que llegará el envío."
 />
 
-</div>
-<div className="info">
-<div className="info__item">
+</MobileScreenshot>
+</ScreenshotCol>
+<InfoCol l={6}>
 
 Al usar etiquetas como estas, los usuarios se ven obligados a tener que calcular personalmente el día en que llegará el producto.
 
 Una etiqueta de "3-5 días" no tiene en cuenta el tiempo de procesamiento que cada orden podría necesitar, la hora de corte diaria (las órdenes después de las 16h se enviarán al día siguiente), o si el usuario elige un envío _Express de 1 Día_ en un viernes, lo que significa que el pedido se envía el lunes, lo que lo convierte en un método de envío de 3 días con un coste superior.
 
-</div>
-</div>
-</div>
+</InfoCol>
+</ScreenshotRow>
 
-<div className="expand-12">
-<div className="screenshot">
+<ScreenshotRow bottomPad>
+<ScreenshotCol l={6}>
+<MobileScreenshot>
 
 <Image
   src="movie-app/es/estudio_de_caso_ux_ejemplo_correcto_metodos_envio.png"
   caption="Ejemplo de una forma correcta de etiquetar los métodos de entrega."
 />
 
-</div>
-<div className="info">
-<div className="info__item">
+</MobileScreenshot>
+</ScreenshotCol>
+<InfoCol l={6}>
 
 Al usar etiquetas como "Llegará el:" o "Recíbelo el:", los usuarios tomarán la fecha de entrega como una promesa que aumentaría su confianza a la hora de decidir si el coste adicional de una opción de envio _Urgente_ vale la pena o no.
 
 Sin embargo, para que la fecha final sea correcta, se deben tener en cuenta todos los factores que le afecten, como la hora de corte de los envíos, la hora y fecha actual o el tiempo estimado de entrega de la compañía de envío.
 
-</div>
-</div>
-</div>
+</InfoCol>
+</ScreenshotRow>
 
-<div className="screenshot">
+<ScreenshotRow>
+<ScreenshotCol l={6}>
+<MobileScreenshot>
 
 <Image
   src="movie-app/es/estudio_de_caso_ux_ejemplo_metodo_envio_amazon.png"
   caption="Ejemplo de una correcta implementación de los métodos de envío de amazon.co.uk."
 />
 
-</div>
+</MobileScreenshot>
+</ScreenshotCol>
+<InfoCol l={6}>
+
+Este es un buen ejemplo —de la página de amazon.co.uk— de como diseñar la información de los metodos de envio.
+
+</InfoCol>
+</ScreenshotRow>
+</StyledCol>
+</GridRow>
+
+<GridRow col6 as="div">
+<StyledCol>
 
 ### Prototipo de Alta Fidelidad del Proceso de Alta del Club de Socios
 
@@ -723,6 +881,13 @@ Sin embargo, para que la fecha final sea correcta, se deben tener en cuenta todo
   gifBrowserSupport="Su navegador no soporta video HTML5."
   gifAlt="Ver el GIF del prototipo de alta fidelidad del proceso de alta del club de socios."
 />
+
+</StyledCol>
+</GridRow>
+</AltRowBackground>
+
+<GridRow spaced col8 as="div">
+<StyledCol>
 
 ## Pruebas de Usabilidad
 
@@ -755,5 +920,5 @@ Este proyecto también fue divertido para mi ya que aprendí mucho sobre los peq
 
 Espero que hayas disfrutado leyendo este estudio de caso, y si tienes alguna pregunta al respecto, no dudes en ponerte en contacto conmigo.
 
-</div>
-</div>
+</StyledCol>
+</GridRow>

@@ -65,15 +65,13 @@ const GlobalCSS = createGlobalStyle`
     font-style: normal;
 
     font-size: ${theme.font.size.display.mobile.h1};
+    line-height: ${theme.font.lineHeight.display.mobile.h1};
+
     ${mediaMin.xs`
       font-size: ${theme.font.size.display.desktop.h1};
-    `}
-
-    line-height: ${theme.font.lineHeight.display.mobile.h1};
-    ${mediaMin.xs`
       line-height: ${theme.font.lineHeight.display.desktop.h1};
     `}
-
+    
     font-family: ${theme.font.family.display.fallback};
 
     .fonts-loaded & {
@@ -85,14 +83,10 @@ const GlobalCSS = createGlobalStyle`
     font-weight: 700;
     font-style: normal;
     font-size: ${theme.font.size.display.mobile.h2};
-
-    ${mediaMin.xs`
-      font-size: ${theme.font.size.display.desktop.h2};
-    `}
-
     line-height: ${theme.font.lineHeight.display.mobile.h2};
 
     ${mediaMin.xs`
+      font-size: ${theme.font.size.display.desktop.h2};
       line-height: ${theme.font.lineHeight.display.desktop.h2};
     `}
 
@@ -107,14 +101,10 @@ const GlobalCSS = createGlobalStyle`
     font-weight: 700;
     font-style: normal;
     font-size: ${theme.font.size.display.mobile.h3};
-
-    ${mediaMin.xs`
-      font-size: ${theme.font.size.display.desktop.h3};
-    `}
-
     line-height: ${theme.font.lineHeight.display.mobile.h3};
 
     ${mediaMin.xs`
+      font-size: ${theme.font.size.display.desktop.h3};
       line-height: ${theme.font.lineHeight.display.desktop.h3};
     `}
 
@@ -128,8 +118,13 @@ const GlobalCSS = createGlobalStyle`
   h4 {
     font-weight: 700;
     font-style: normal;
-    font-size: ${theme.font.size.display.desktop.h4};
-    line-height: ${theme.font.lineHeight.display.desktop.h4};
+    font-size: ${theme.font.size.display.mobile.h4};
+    line-height: ${theme.font.lineHeight.display.mobile.h4};
+
+    ${mediaMin.xs`
+      font-size: ${theme.font.size.display.desktop.h4};
+      line-height: ${theme.font.lineHeight.display.desktop.h4};
+    `}
 
     font-family: ${theme.font.family.display.fallback};
 
@@ -142,14 +137,10 @@ const GlobalCSS = createGlobalStyle`
     font-weight: 700;
     font-style: normal;
     font-size: ${theme.font.size.display.mobile.h5};
-
-    ${mediaMin.xs`
-      font-size: ${theme.font.size.display.desktop.h5};
-    `}
-
     line-height: ${theme.font.lineHeight.display.mobile.h5};
 
     ${mediaMin.xs`
+      font-size: ${theme.font.size.display.desktop.h5};
       line-height: ${theme.font.lineHeight.display.desktop.h5};
     `}
 
@@ -267,40 +258,23 @@ const GlobalCSS = createGlobalStyle`
     }
   }
 
-  blockquote, 
-  blockquote * {
+  blockquote, blockquote * {
     font-family: ${theme.font.family.display.fallback};
-    color: ${theme.colors.primary600};
+    color: ${theme.color.text.primary};
 
     .fonts-loaded & {
-      font-family: ${theme.font.family.display.boldRegular};
+      font-family: ${theme.font.family.display.regular};
     }
   }
-
+  
   blockquote strong {
+    font-family: ${theme.font.family.display.fallback};
+    
     font-weight: 700;
 
     .fonts-loaded & {
       font-family: ${theme.font.family.display.bold};
     }
-  }
-
-  blockquote {
-    margin-bottom: ${rem(32)};
-
-    ${mediaMin.m`
-      margin-right: -${theme.layout.gutter.s};
-      margin-left: -${theme.layout.gutter.s};
-      padding: ${rem(16)} ${theme.layout.gutter.s};
-      border-left: 4px solid ${theme.colors.primary600};
-      margin-right: -${theme.layout.gutter.m};
-      margin-left: -${theme.layout.gutter.m};
-      padding: ${rem(16)} ${theme.layout.gutter.m};
-    `};
-  }
-
-  blockquote > p {
-    margin-bottom: 0 !important;
   }
 
   a {

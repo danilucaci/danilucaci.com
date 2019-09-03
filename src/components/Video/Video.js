@@ -4,11 +4,24 @@ import { string, bool } from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
 import { FormattedMessage } from "react-intl";
 
-import { Figure, FigCaption, StyledVideo, VideoIphoneXWrapper, VideoIphoneXInner } from "./styles";
+import {
+  Figure,
+  FigCaption,
+  StyledVideo,
+  VideoIphoneXWrapper,
+  VideoIphoneXInner,
+} from "./styles";
 
 function Video(props) {
   const {
-    caption, expand, webmSrc, mp4Src, gifSrc, gifAlt, gifBrowserSupport, posterSrc,
+    caption,
+    expand,
+    webmSrc,
+    mp4Src,
+    gifSrc,
+    gifAlt,
+    gifBrowserSupport,
+    posterSrc,
   } = props;
 
   const [ref, inView] = useInView({
@@ -27,10 +40,18 @@ function Video(props) {
   if (!videos) {
     throw new Error("Video not found");
   }
-  const foundWebMSrc = videos.edges.find((video) => video.node.relativePath === webmSrc && video.node.extension === "webm");
-  const foundMp4Src = videos.edges.find((video) => video.node.relativePath === mp4Src && video.node.extension === "mp4");
-  const foundGifSrc = videos.edges.find((video) => video.node.relativePath === gifSrc && video.node.extension === "gif");
-  const foundPosterSrc = videos.edges.find((video) => video.node.relativePath === posterSrc && video.node.extension === "png");
+  const foundWebMSrc = videos.edges.find(
+    (video) => video.node.relativePath === webmSrc && video.node.extension === "webm",
+  );
+  const foundMp4Src = videos.edges.find(
+    (video) => video.node.relativePath === mp4Src && video.node.extension === "mp4",
+  );
+  const foundGifSrc = videos.edges.find(
+    (video) => video.node.relativePath === gifSrc && video.node.extension === "gif",
+  );
+  const foundPosterSrc = videos.edges.find(
+    (video) => video.node.relativePath === posterSrc && video.node.extension === "png",
+  );
 
   // console.groupCollapsed("Video Lazy Loaded");
   // console.log("----------------------------");
@@ -56,33 +77,43 @@ function Video(props) {
             hasLoaded={hasLoaded}
           >
             {inView && (
-              <React.Fragment>
-                {foundWebMSrc && <source src={foundWebMSrc.node.publicURL} type="video/webm" />}
-                {foundMp4Src && <source src={foundMp4Src.node.publicURL} type="video/mp4" />}
+              <>
+                {foundWebMSrc && (
+                  <source src={foundWebMSrc.node.publicURL} type="video/webm" />
+                )}
+                {foundMp4Src && (
+                  <source src={foundMp4Src.node.publicURL} type="video/mp4" />
+                )}
                 {foundGifSrc && (
-                  <React.Fragment>
+                  <>
                     <p>{gifBrowserSupport}</p>
                     <a href={foundGifSrc.node.publicURL} alt={gifAlt}>
                       {gifAlt}
                     </a>
-                  </React.Fragment>
+                  </>
                 )}
-              </React.Fragment>
+              </>
             )}
             <noscript>
-              <React.Fragment>
-                {foundWebMSrc && <source src={foundWebMSrc.node.publicURL} type="video/webm" />}
-                {foundMp4Src && <source src={foundMp4Src.node.publicURL} type="video/mp4" />}
+              <>
+                {foundWebMSrc && (
+                  <source src={foundWebMSrc.node.publicURL} type="video/webm" />
+                )}
+                {foundMp4Src && (
+                  <source src={foundMp4Src.node.publicURL} type="video/mp4" />
+                )}
                 {foundGifSrc && (
-                  <React.Fragment>
+                  <>
                     <p>{gifBrowserSupport}</p>
                     <a href={foundGifSrc.node.publicURL} alt={gifAlt}>
                       {gifAlt}
                     </a>
-                  </React.Fragment>
+                  </>
                 )}
-                <FormattedMessage id="js.disabled">{(txt) => <p>{txt}</p>}</FormattedMessage>
-              </React.Fragment>
+                <FormattedMessage id="js.disabled">
+                  {(txt) => <p>{txt}</p>}
+                </FormattedMessage>
+              </>
             </noscript>
           </StyledVideo>
         </VideoIphoneXInner>
