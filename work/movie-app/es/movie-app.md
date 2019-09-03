@@ -358,7 +358,7 @@ Antes de comenzar a diseñar la barra de navegación de la aplicación, decidí 
 
 <Row col12 as="div">
 <StyledCol>
-<ScreenshotRow bottomPad>
+<ScreenshotRow pb>
 <ScreenshotCol l={6}>
 
 <MobileScreenshot>
@@ -377,7 +377,7 @@ El primer producto que comparé fue la aplicación iOS de Airbnb. Una de las raz
 </InfoCol>
 </ScreenshotRow>
 
-<ScreenshotRow bottomPad>
+<ScreenshotRow pb>
 <ScreenshotCol l={6}>
 
 <MobileScreenshot>
@@ -398,7 +398,7 @@ Uno de los beneficios de la forma en que Asos.com implementa sus opciones de cla
 </InfoCol>
 </ScreenshotRow>
 
-<ScreenshotRow bottomPad center>
+<ScreenshotRow pb center>
 <ScreenshotCol l={6}>
 <MobileScreenshot>
 
@@ -478,7 +478,7 @@ Las opciones de filtrado también están diseñadas de manera que los usuarios p
 </StyledCol>
 </Row>
 
-<Row col12 bottomSpaced as="div">
+<Row col12 mb as="div">
 <StyledCol>
 
 ### Diagrama de Flujo de las Opciones de Búsqueda y Filtrado de Películas
@@ -492,7 +492,7 @@ Las opciones de filtrado también están diseñadas de manera que los usuarios p
 </StyledCol>
 </Row>
 
-<Row bottomPad col12 as="div">
+<Row pb col12 as="div">
 
 <StyledCol>
 
@@ -550,7 +550,7 @@ Las opciones de filtrado también están diseñadas de manera que los usuarios p
 </Row>
 </AltRowBackground>
 
-<Row col8 bottomSpaced as="div">
+<Row col8 mb as="div">
 <StyledCol>
 
 ## Proceso de Compra como Invitado
@@ -568,7 +568,7 @@ Después de investigar un poco antes para ver cuáles son las mejores prácticas
 
 <Row col12 as="div">
 <StyledCol>
-<ScreenshotRow center bottomPad>
+<ScreenshotRow center pb>
 <ScreenshotCol l={6}>
 <MobileScreenshot>
 
@@ -599,7 +599,7 @@ Además, según el mismo estudio, si los usuarios están preocupados por su priv
 </InfoCol>
 </ScreenshotRow>
 
-<ScreenshotRow center bottomPad>
+<ScreenshotRow center pb>
 <ScreenshotCol l={6}>
 
 <MobileScreenshot>
@@ -628,7 +628,7 @@ Los usuarios también deben poder comparar los diferentes costes asociados con c
 </InfoCol>
 </ScreenshotRow>
 
-<ScreenshotRow center bottomSpaced>
+<ScreenshotRow center mb>
 <ScreenshotCol l={6}>
 
 <MobileScreenshot>
@@ -706,7 +706,7 @@ A pesar de que sigue siendo la misma cantidad de campos de entrada, los usuarios
 </StyledCol>
 </Row>
 
-<Row col6 bottomSpaced as="div">
+<Row col6 mb as="div">
 <StyledCol>
 
 ### Prototipo de Alta Fidelidad de la Experiencia de Pago como Invitados
@@ -766,7 +766,7 @@ Los 4 segmentos son:
 </StyledCol>
 </Row>
 
-<Row col8 bottomSpaced as="div">
+<Row col8 mb as="div">
 <StyledCol>
 
 ### Optimizaciones de la Fase de Información del Envío
@@ -778,10 +778,10 @@ Pantalla de la fase de recogida de la información de envío con textos optimiza
 </StyledCol>
 </Row>
 
-<Row col12 as="div" bottomPad>
+<Row col12 as="div" pb>
 <StyledCol>
 
-<ScreenshotRow center bottomPad>
+<ScreenshotRow center pb>
 <ScreenshotCol l={6}>
 <MobileScreenshot>
 
@@ -807,7 +807,7 @@ Además, los diferentes métodos de entrega también están diseñados siguiendo
 </InfoCol>
 </ScreenshotRow>
 
-<ScreenshotRow bottomPad>
+<ScreenshotRow pb>
 <ScreenshotCol l={6}>
 <MobileScreenshot>
 
@@ -827,7 +827,7 @@ Una etiqueta de "3-5 días" no tiene en cuenta el tiempo de procesamiento que ca
 </InfoCol>
 </ScreenshotRow>
 
-<ScreenshotRow bottomPad>
+<ScreenshotRow pb>
 <ScreenshotCol l={6}>
 <MobileScreenshot>
 

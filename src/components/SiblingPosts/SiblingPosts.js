@@ -15,7 +15,7 @@ import {
 } from "./styles";
 
 const SiblingPosts = ({ prevSlug, prevTitle, nextSlug, nextTitle }) => (
-  <Row bottomPad col10>
+  <Row pb col10>
     <Col>
       <HR />
       <SiblingPostsContents>

@@ -86,7 +86,7 @@ const TagPage = ({ pageContext, location, data }) => {
 
         <Main>
           <HeaderBackground>
-            <Row as="div" col8 bottomPad>
+            <Row as="div" col8 pb>
               <Col>
                 <TagFoundWrapper>
                   <h1>

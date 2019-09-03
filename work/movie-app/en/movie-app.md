@@ -356,7 +356,7 @@ Before I started sketching the app’s nav bar, I decided to see which patterns 
 
 <Row col12 as="div">
 <StyledCol>
-<ScreenshotRow bottomPad>
+<ScreenshotRow pb>
 <ScreenshotCol l={6}>
 
 <MobileScreenshot>
@@ -375,7 +375,7 @@ The first product I compared was Airbnb’s iOS app. One of the reasons for whic
 </InfoCol>
 </ScreenshotRow>
 
-<ScreenshotRow bottomPad>
+<ScreenshotRow pb>
 <ScreenshotCol l={6}>
 
 <MobileScreenshot>
@@ -396,7 +396,7 @@ One of the benefits of the way Asos.com implements their sorting and filtering o
 </InfoCol>
 </ScreenshotRow>
 
-<ScreenshotRow bottomPad center>
+<ScreenshotRow pb center>
 <ScreenshotCol l={6}>
 <MobileScreenshot>
 
@@ -476,7 +476,7 @@ The filtering options are also designed in a way that users can combine them to 
 </StyledCol>
 </Row>
 
-<Row col12 bottomSpaced as="div">
+<Row col12 mb as="div">
 <StyledCol>
 
 ### Movie Searching and Filtering Wireflow Diagram
@@ -490,7 +490,7 @@ The filtering options are also designed in a way that users can combine them to 
 </StyledCol>
 </Row>
 
-<Row bottomPad col12 as="div">
+<Row pb col12 as="div">
 
 <StyledCol>
 
@@ -548,7 +548,7 @@ The filtering options are also designed in a way that users can combine them to 
 </Row>
 </AltRowBackground>
 
-<Row col8 bottomSpaced as="div">
+<Row col8 mb as="div">
 <StyledCol>
 
 ## Guest Checkout Flow
@@ -566,7 +566,7 @@ After some initial research to see which are the design patterns and best practi
 
 <Row col12 as="div">
 <StyledCol>
-<ScreenshotRow center bottomPad>
+<ScreenshotRow center pb>
 <ScreenshotCol l={6}>
 <MobileScreenshot>
 
@@ -597,7 +597,7 @@ Furthermore —according to the same research—, if users are concerned about t
 </InfoCol>
 </ScreenshotRow>
 
-<ScreenshotRow center bottomPad>
+<ScreenshotRow center pb>
 <ScreenshotCol l={6}>
 
 <MobileScreenshot>
@@ -626,7 +626,7 @@ Users should also be able to compare the different costs associated with each pa
 </InfoCol>
 </ScreenshotRow>
 
-<ScreenshotRow center bottomSpaced>
+<ScreenshotRow center mb>
 <ScreenshotCol l={6}>
 
 <MobileScreenshot>
@@ -703,7 +703,7 @@ Even though it’s still the same amount of input fields, users will not think i
 </StyledCol>
 </Row>
 
-<Row col6 bottomSpaced as="div">
+<Row col6 mb as="div">
 <StyledCol>
 
 ### Guest Checkout High-Fidelity Prototype
@@ -763,7 +763,7 @@ The 4 segments were:
 </StyledCol>
 </Row>
 
-<Row col8 bottomSpaced as="div">
+<Row col8 mb as="div">
 <StyledCol>
 
 ### Shipping Information Optimizations
@@ -773,10 +773,10 @@ The shipping information step is needed so that users can receive a copy of thei
 </StyledCol>
 </Row>
 
-<Row col12 as="div" bottomPad>
+<Row col12 as="div" pb>
 <StyledCol>
 
-<ScreenshotRow center bottomPad>
+<ScreenshotRow center pb>
 <ScreenshotCol l={6}>
 <MobileScreenshot>
 
@@ -802,7 +802,7 @@ The different delivery methods are also designed following the recommendations o
 </InfoCol>
 </ScreenshotRow>
 
-<ScreenshotRow bottomPad>
+<ScreenshotRow pb>
 <ScreenshotCol l={6}>
 <MobileScreenshot>
 
@@ -822,7 +822,7 @@ A label of “3-5 days” doesn’t take into consideration the processing time 
 </InfoCol>
 </ScreenshotRow>
 
-<ScreenshotRow bottomPad>
+<ScreenshotRow pb>
 <ScreenshotCol l={6}>
 <MobileScreenshot>
 

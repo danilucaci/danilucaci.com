@@ -61,7 +61,7 @@ function Post({ pageContext, data, location }) {
     return () => {
       copyURLButton.removeEventListener("click", copyURL);
     };
-  }, []);
+  }, [pageContext.locale]);
 
   function removeHeaderTabIndex(arr) {
     arr.forEach((header) => header.removeAttribute("tabindex"));
@@ -133,7 +133,7 @@ function Post({ pageContext, data, location }) {
                 </IntroContainer>
               </Col>
             </Row>
-            <PostContentRow bottomPad col6>
+            <PostContentRow pb col6>
               <Col>
                 <MDXRenderer>{postNode.body}</MDXRenderer>
               </Col>
@@ -158,7 +158,7 @@ function Post({ pageContext, data, location }) {
           />
         )}
 
-        <CommentsRow as="aside" col10 bottomPad>
+        <CommentsRow as="aside" col10 pb>
           <Col>
             {!loadComments && (
               <StyledLoadComments onClick={() => setLoadComments(true)} />

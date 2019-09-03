@@ -53,7 +53,7 @@ const ContactPage = ({ pageContext, location }) => {
         />
 
         <Main>
-          <ContactPageRow bottomPad>
+          <ContactPageRow pb>
             <Col xl={6}>
               <FormattedMessage id="contact.page.title">
                 {(txt) => <H1>{txt}</H1>}

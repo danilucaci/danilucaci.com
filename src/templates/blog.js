@@ -77,7 +77,7 @@ function BlogPage({ pageContext, location, data }) {
 
         <Main>
           <HeaderBackground>
-            <Row as="div" col8 bottomPad>
+            <Row as="div" col8 pb>
               <Col>
                 <FormattedMessage id="blog.title">
                   {(txt) => <BlogTitle as="h1">{txt}</BlogTitle>}

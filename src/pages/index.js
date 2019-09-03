@@ -49,7 +49,7 @@ const Index = ({ data, pageContext, location }) => {
           twinPostURL={twinPostURL}
         />
         <Main>
-          <IndexHeader as="header" col10 bottomPad>
+          <IndexHeader as="header" col10 pb>
             <Col>
               <FormattedMessage id="index.name">
                 {(txt) => <Name>{txt}</Name>}
@@ -77,7 +77,7 @@ const Index = ({ data, pageContext, location }) => {
               </FindOutMore>
             </Col>
           </IndexHeader>
-          <ServicesRowBackground bottomSpaced as="section">
+          <ServicesRowBackground mb as="section">
             <ServicesRow col10 padded as="div">
               <Col>
                 <FormattedMessage id="index.services.heading">

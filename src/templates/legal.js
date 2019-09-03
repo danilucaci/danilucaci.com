@@ -44,7 +44,7 @@ function LegalDoc({ data, pageContext, location }) {
           currentPath={location.pathname}
         />
         <Main>
-          <LegalPageRow bottomSpaced col8>
+          <LegalPageRow mb col8>
             <Col>
               <PostH1>{postInfo.title}</PostH1>
               <FormattedMessage id="legal.updated">

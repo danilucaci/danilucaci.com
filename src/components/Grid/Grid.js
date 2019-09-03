@@ -102,7 +102,7 @@ export const Row = styled.section`
       }
     `};
 
-  ${({ bottomPad }) => bottomPad
+  ${({ pb }) => pb
     && css`
       padding-bottom: ${theme.spacing.row.s};
 
@@ -142,7 +142,7 @@ export const Row = styled.section`
       }
     `};
   
-    ${({ bottomSpaced }) => bottomSpaced
+    ${({ mb }) => mb
       && css`
         margin-bottom: ${theme.spacing.row.s};
 
@@ -184,7 +184,7 @@ export const RowSpacer = styled.div`
       }
     `};
 
-  ${({ bottomPad }) => bottomPad
+  ${({ pb }) => pb
     && css`
       padding-bottom: ${theme.spacing.row.s};
 
@@ -224,7 +224,7 @@ export const RowSpacer = styled.div`
       }
     `};
 
-  ${({ bottomSpaced }) => bottomSpaced
+  ${({ mb }) => mb
     && css`
       margin-bottom: ${theme.spacing.row.s};
 
@@ -286,7 +286,7 @@ export const RowNested = styled.div`
       }
     `};
 
-  ${({ bottomPad }) => bottomPad
+  ${({ pb }) => pb
     && css`
       padding-bottom: ${theme.spacing.row.s};
 
@@ -326,7 +326,7 @@ export const RowNested = styled.div`
       }
     `};
 
-  ${({ bottomSpaced }) => bottomSpaced
+  ${({ mb }) => mb
     && css`
       margin-bottom: ${theme.spacing.row.s};
 
