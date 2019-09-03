@@ -126,12 +126,15 @@ export const StyledH3 = styled.h3`
 
 export const ContinueLink = styled(Link)`
   color: ${theme.color.text.primary};
-  text-decoration: underline;
+  text-decoration: none;
   font-style: normal;
   font-weight: 700;
   font-family: ${theme.font.family.display.fallback};
   display: inline-block;
   margin-top: ${rem(32)};
+
+  font-size: ${rem(18)};
+  line-height: ${rem(32)};
 
   .fonts-loaded & {
     font-family: ${theme.font.family.display.bold};
