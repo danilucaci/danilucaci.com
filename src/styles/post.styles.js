@@ -63,8 +63,8 @@ export const IntroCopy = styled(Copy)`
 `;
 
 export const PostContentRow = styled(Row)`
-  & h2:first-of-type {
-    margin-top: ${rem(24)};
+  & figure {
+    margin-bottom: ${rem(32)};
   }
 
   flex-direction: column !important;
@@ -75,35 +75,41 @@ export const PostContentRow = styled(Row)`
     margin-top: 0 !important;
   }
 
-  h2 {
-    display: block;
-    margin-top: ${rem(64)};
-    margin-bottom: ${rem(16)};
+  figure + * {
+    margin-top: ${rem(32)};
 
-    ${mediaMin.xs`
-      margin-bottom: ${rem(32)};
+    ${mediaMin.s`
+      margin-top: ${rem(64)};
     `};
   }
 
+  h2 {
+    display: block;
+
+    margin-top: ${rem(64)};
+    margin-bottom: ${rem(32)};
+  }
+
   h3 {
+    &:first-child {
+      margin-top: 0;
+    }
+
     display: block;
     margin-top: ${rem(64)};
-    margin-bottom: ${rem(16)};
-
-    ${mediaMin.xs`
-      margin-bottom: ${rem(32)};
-    `};
+    margin-bottom: ${rem(32)};
   }
 
   h4 {
     display: block;
     margin-top: ${rem(32)};
     margin-bottom: ${rem(16)};
+  }
 
-    ${mediaMin.xs`
-      margin-top: ${rem(64)};
-      margin-bottom: ${rem(32)};
-    `};
+  h5 {
+    display: block;
+    margin-top: ${rem(32)};
+    margin-bottom: ${rem(16)};
   }
 
   p,
