@@ -47,7 +47,7 @@ export const SocialShareWrapper = styled.div`
 `;
 
 export const IntroContainer = styled.div`
-  max-width: ${theme.layout.col6.inner};
+  max-width: ${theme.layout.col8.inner};
   margin-left: auto;
   margin-right: auto;
   margin-top: ${rem(32)};

@@ -133,7 +133,7 @@ function Post({ pageContext, data, location }) {
                 </IntroContainer>
               </Col>
             </Row>
-            <PostContentRow pb col6>
+            <PostContentRow pb col8>
               <Col>
                 <MDXRenderer>{postNode.body}</MDXRenderer>
               </Col>
