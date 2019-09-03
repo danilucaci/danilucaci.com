@@ -411,7 +411,7 @@ export const theme = {
   },
   spacing: {
     main: {
-      top: "2.5em",
+      top: "1.5em",
     },
     text: {
       display: {
