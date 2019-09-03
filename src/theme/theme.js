@@ -207,45 +207,6 @@ export const theme = {
       onGrey: COLORS.grey400,
     },
   },
-  shadow: {
-    image: "0 1px 4px 0 rgba(0,0,0,0.20), 0 1px 2px 0 rgba(0,0,0,0.08)",
-    dropdown:
-      "0px 2px 4px 0px hsla(0,0%,40%,0.2), 0px 6px 12px 0px hsla(0,0%,70%,0.24)",
-    copyUrl:
-      "2px 2px 2px 0px hsla(0,0%,40%,0.2), 6px 6px 4px 0px hsla(0,0%,70%,0.24)",
-    cookieConsent:
-      "0 2px 6px 1px rgba(191,195,199,0.40), 0 2px 16px 2px rgba(210,213,217,0.20)",
-    button: {
-      primary: {
-        hover:
-          "0 1px 4px 0 rgba(17,30,82,0.40), 0 2px 12px 1px rgba(0,47,158,0.22)",
-        focus: "0 0 1px 1px #7CB1F6, 0 0 0 3px #B1D3FD",
-      },
-      secondary: {
-        hover:
-          "0 1px 4px 0 rgba(179,165,89,0.50), 0 2px 12px 0 rgba(179,162,71,0.50)",
-        focus: "0 0 1px 1px #FFE359, 0 0 0 3px #FFEA82",
-      },
-      outlined: {
-        hover: "0 1px 2px 0 rgba(0,0,0,0.16), 0 2px 8px 1px rgba(0,0,0,0.12)",
-        focus: "0 0 1px 1px #D2D5D9, 0 0 0 3px #E3E6E8",
-      },
-    },
-    input: {
-      focus: `0 0 2px 1px ${COLORS.grey300}, 0 0 0 3px ${COLORS.grey200}`,
-      error: `0 0 2px 1px ${COLORS.danger300}, 0 0 0 3px ${COLORS.danger200}`,
-      valid: `0 0 2px 1px ${COLORS.success300}, 0 0 0 3px ${COLORS.success200}`,
-    },
-    checkbox: {
-      focus: `0 0 2px 1px ${COLORS.grey300}, 0 0 0 3px ${COLORS.grey200}`,
-      activeFocus: `0 0 2px 1px ${COLORS.primary300}, 0 0 0 3px ${COLORS.primary200}`,
-      error: `0 0 2px 1px ${COLORS.danger300}, 0 0 0 3px ${COLORS.danger200}`,
-      valid: `0 0 2px 1px ${COLORS.success300}, 0 0 0 3px ${COLORS.success200}`,
-    },
-    link: {
-      link: "box-shadow: 0 0 2px 1px #A1A8B5, 0 0 0 3px #CBCED4",
-    },
-  },
   font: {
     family: {
       display: {
@@ -350,6 +311,45 @@ export const theme = {
       body: {
         subhead: "0.05rem",
       },
+    },
+  },
+  shadow: {
+    image: "0 1px 4px 0 rgba(0,0,0,0.20), 0 1px 2px 0 rgba(0,0,0,0.08)",
+    dropdown:
+      "0px 2px 4px 0px hsla(0,0%,40%,0.2), 0px 6px 12px 0px hsla(0,0%,70%,0.24)",
+    copyUrl:
+      "2px 2px 2px 0px hsla(0,0%,40%,0.2), 6px 6px 4px 0px hsla(0,0%,70%,0.24)",
+    cookieConsent:
+      "0 2px 6px 1px rgba(191,195,199,0.40), 0 2px 16px 2px rgba(210,213,217,0.20)",
+    button: {
+      primary: {
+        hover:
+          "0 1px 4px 0 rgba(17,30,82,0.40), 0 2px 12px 1px rgba(0,47,158,0.22)",
+        focus: "0 0 1px 1px #7CB1F6, 0 0 0 3px #B1D3FD",
+      },
+      secondary: {
+        hover:
+          "0 1px 4px 0 rgba(179,165,89,0.50), 0 2px 12px 0 rgba(179,162,71,0.50)",
+        focus: "0 0 1px 1px #FFE359, 0 0 0 3px #FFEA82",
+      },
+      outlined: {
+        hover: "0 1px 2px 0 rgba(0,0,0,0.16), 0 2px 8px 1px rgba(0,0,0,0.12)",
+        focus: "0 0 1px 1px #D2D5D9, 0 0 0 3px #E3E6E8",
+      },
+    },
+    input: {
+      focus: `0 0 2px 1px ${COLORS.grey300}, 0 0 0 3px ${COLORS.grey200}`,
+      error: `0 0 2px 1px ${COLORS.danger300}, 0 0 0 3px ${COLORS.danger200}`,
+      valid: `0 0 2px 1px ${COLORS.success300}, 0 0 0 3px ${COLORS.success200}`,
+    },
+    checkbox: {
+      focus: `0 0 2px 1px ${COLORS.grey300}, 0 0 0 3px ${COLORS.grey200}`,
+      activeFocus: `0 0 2px 1px ${COLORS.primary300}, 0 0 0 3px ${COLORS.primary200}`,
+      error: `0 0 2px 1px ${COLORS.danger300}, 0 0 0 3px ${COLORS.danger200}`,
+      valid: `0 0 2px 1px ${COLORS.success300}, 0 0 0 3px ${COLORS.success200}`,
+    },
+    link: {
+      link: "box-shadow: 0 0 2px 1px #A1A8B5, 0 0 0 3px #CBCED4",
     },
   },
   borderRadius: {
