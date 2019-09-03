@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { shape, object, string } from "prop-types";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
 import { FormattedMessage } from "react-intl";
@@ -15,14 +15,16 @@ import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import { localePaths } from "../i18n/i18n";
 
 import {
+  HeaderRow,
+  HeaderInfoCol,
   ResumeWrapper,
-  HeaderImageWrapper,
-  ImageWrapper,
-  HeaderInfoWrapper,
   AboutMeTitle,
   AboutCopy,
   StyledCopy,
-  DoingNowItem,
+  AltRowBackground,
+  DoingNowTitle,
+  DoingNowProjectsRow,
+  DoingNowSubTitle,
 } from "../styles/about-me.styles";
 
 const AboutPage = ({ pageContext, location, data }) => {
@@ -37,7 +39,12 @@ const AboutPage = ({ pageContext, location, data }) => {
 
   return (
     <ErrorBoundary>
-      <Layout location={location} locale={locale} twinPostURL={twinPostURL}>
+      <Layout
+        location={location}
+        locale={locale}
+        twinPostURL={twinPostURL}
+        expandHeaderAndFooter
+      >
         <SEO
           locale={locale}
           twinPostURL={twinPostURL}
@@ -46,8 +53,21 @@ const AboutPage = ({ pageContext, location, data }) => {
         />
 
         <Main>
-          <Row as="header" col10>
-            <HeaderInfoWrapper s="7">
+          <HeaderRow as="header" col12 mb>
+            <Col s={4}>
+              <FormattedMessage id="about.the.blog.image.title">
+                {(txt) => (
+                  <Img
+                    alt={txt}
+                    fluid={data.aboutImage.childImageSharp.fluid}
+                  />
+                )}
+              </FormattedMessage>
+              <ResumeWrapper>
+                <SocialNav />
+              </ResumeWrapper>
+            </Col>
+            <HeaderInfoCol s={8}>
               <FormattedMessage id="about.me.title">
                 {(txt) => <AboutMeTitle>{txt}</AboutMeTitle>}
               </FormattedMessage>
@@ -60,41 +80,26 @@ const AboutPage = ({ pageContext, location, data }) => {
               <FormattedMessage id="about.me.copy.3">
                 {(txt) => <AboutCopy>{txt}</AboutCopy>}
               </FormattedMessage>
-            </HeaderInfoWrapper>
-            <HeaderImageWrapper s="5">
-              <ImageWrapper>
-                <FormattedMessage id="about.the.blog.image.title">
-                  {(txt) => (
-                    <Img
-                      alt={txt}
-                      fluid={data.aboutImage.childImageSharp.fluid}
-                    />
-                  )}
+            </HeaderInfoCol>
+          </HeaderRow>
+          <AltRowBackground padded>
+            <Row col12 as="div">
+              <Col xxl={6}>
+                <FormattedMessage id="about.me.what.now.title">
+                  {(txt) => <DoingNowTitle>{txt}</DoingNowTitle>}
                 </FormattedMessage>
-              </ImageWrapper>
-              <ResumeWrapper>
-                <SocialNav />
-              </ResumeWrapper>
-            </HeaderImageWrapper>
-          </Row>
-          <Row spaced col10>
-            <Col>
-              <FormattedMessage id="about.me.what.now.title">
-                {(txt) => <h2>{txt}</h2>}
-              </FormattedMessage>
-            </Col>
-            <Col s="5">
-              <FormattedMessage id="about.me.what.now.copy.1">
-                {(txt) => <StyledCopy>{txt}</StyledCopy>}
-              </FormattedMessage>
-              <FormattedMessage id="about.me.what.now.copy.2">
-                {(txt) => <StyledCopy>{txt}</StyledCopy>}
-              </FormattedMessage>
-            </Col>
-            <Col s="7">
-              <DoingNowItem>
+                <FormattedMessage id="about.me.what.now.copy.1">
+                  {(txt) => <StyledCopy>{txt}</StyledCopy>}
+                </FormattedMessage>
+                <FormattedMessage id="about.me.what.now.copy.2">
+                  {(txt) => <StyledCopy>{txt}</StyledCopy>}
+                </FormattedMessage>
+              </Col>
+            </Row>
+            <DoingNowProjectsRow col12 as="div">
+              <Col l={6} xl={4}>
                 <FormattedMessage id="about.me.what.now.skills">
-                  {(txt) => <h4>{txt}</h4>}
+                  {(txt) => <DoingNowSubTitle>{txt}</DoingNowSubTitle>}
                 </FormattedMessage>
                 <ul>
                   <FormattedMessage id="about.me.what.now.skills.1">
@@ -107,20 +112,20 @@ const AboutPage = ({ pageContext, location, data }) => {
                     {(txt) => <li>{txt}</li>}
                   </FormattedMessage>
                 </ul>
-              </DoingNowItem>
-              <DoingNowItem>
+              </Col>
+              <Col l={6} xl={4}>
                 <FormattedMessage id="about.me.what.now.projects">
-                  {(txt) => <h4>{txt}</h4>}
+                  {(txt) => <DoingNowSubTitle>{txt}</DoingNowSubTitle>}
                 </FormattedMessage>
                 <ul>
                   <FormattedMessage id="about.me.what.now.projects.1">
                     {(txt) => <li>{txt}</li>}
                   </FormattedMessage>
                 </ul>
-              </DoingNowItem>
-              <DoingNowItem>
+              </Col>
+              <Col l={6} xl={4}>
                 <FormattedMessage id="about.me.what.now.books">
-                  {(txt) => <h4>{txt}</h4>}
+                  {(txt) => <DoingNowSubTitle>{txt}</DoingNowSubTitle>}
                 </FormattedMessage>
                 <ul>
                   <FormattedMessage id="about.me.what.now.books.1">
@@ -130,11 +135,11 @@ const AboutPage = ({ pageContext, location, data }) => {
                     {(txt) => <li>{txt}</li>}
                   </FormattedMessage>
                 </ul>
-              </DoingNowItem>
-            </Col>
-          </Row>
-          <ContactCard locale={locale} />
+              </Col>
+            </DoingNowProjectsRow>
+          </AltRowBackground>
         </Main>
+        <ContactCard locale={locale} />
       </Layout>
       <ScrollToTop />
     </ErrorBoundary>
@@ -142,15 +147,15 @@ const AboutPage = ({ pageContext, location, data }) => {
 };
 
 AboutPage.propTypes = {
-  pageContext: PropTypes.shape({
-    locale: PropTypes.string.isRequired,
+  pageContext: shape({
+    locale: string.isRequired,
   }).isRequired,
-  data: PropTypes.shape({
-    aboutImage: PropTypes.object.isRequired,
+  data: shape({
+    aboutImage: object.isRequired,
   }).isRequired,
-  location: PropTypes.shape({
-    pathname: PropTypes.string.isRequired,
-    href: PropTypes.string.isRequired,
+  location: shape({
+    pathname: string.isRequired,
+    href: string.isRequired,
   }).isRequired,
 };
 

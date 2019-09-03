@@ -1,46 +1,40 @@
 import styled from "styled-components";
 import { theme, mediaMin, rem } from "../theme/theme";
 import { Copy } from "../components/Copy/Copy";
-import { Col } from "../components/Grid/Grid";
+import { Row, RowSpacer, Col } from "../components/Grid/Grid";
 
-export const HeaderImageWrapper = styled(Col)`
-  ${mediaMin.s`
-      float: left;
-      width: 100%;
+export const HeaderRow = styled(Row)`
+  ${mediaMin.l`
+    margin-top: ${rem(40)};
+  `};
+
+  ${mediaMin.xxl`
+    align-items: center;
   `};
 `;
 
-export const ImageWrapper = styled.div`
-  background: ${theme.colors.grey50};
-`;
+export const HeaderInfoCol = styled(Col)`
+  margin-top: ${rem(40)};
 
-export const HeaderInfoWrapper = styled(Col)`
   ${mediaMin.s`
-      float: right;
-      width: 100%;
+    margin-top: 0;
+  `};
+
+  ${mediaMin.xxl`
+    padding-left: ${rem(40)};
+    padding-right: ${rem(40)};
   `};
 `;
 
 export const AboutMeTitle = styled.h1`
-  color: ${theme.colors.grey900};
-  font-weight: 700;
-  font-style: normal;
-  font-family: ${theme.font.family.display.bold};
-  font-size: ${theme.font.size.display.mobile.h1};
-
-  ${mediaMin.xs`
-    font-size: ${theme.font.size.display.desktop.h1};
-  `}
-
-  line-height: ${theme.font.lineHeight.display.mobile.h1};
   margin-bottom: ${rem(16)};
 
+  font-size: ${theme.font.size.display.mobile.h2};
+  line-height: ${theme.font.lineHeight.display.mobile.h2};
+
   ${mediaMin.xs`
-    line-height: ${theme.font.lineHeight.display.desktop.h1};
-  `}
-  
-  ${mediaMin.xxl`
-    margin-top: ${rem(24)};
+    font-size: ${theme.font.size.display.desktop.h2};
+    line-height: ${theme.font.lineHeight.display.desktop.h2};
   `}
 `;
 
@@ -60,45 +54,45 @@ export const ResumeWrapper = styled.div`
   display: block;
   margin-top: ${rem(16)};
   width: 100%;
-
-  &::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
-
-  @media screen and (min-width: ${theme.breakpoints.s}) and (max-width: 47em) {
-    margin-top: ${rem(8)};
-  }
-
-  @media screen and (min-width: 10em) and (max-width: 21.25em) {
-    margin-top: ${rem(8)};
-  }
 `;
 
-export const DoingNowItem = styled.div`
-  margin-bottom: ${rem(24)};
+export const AltRowBackground = styled(RowSpacer)`
+  background-color: ${theme.color.background.section.lightest};
+`;
 
-  ${mediaMin.xxl`
-    display: inline-block;
-    vertical-align: top;
+export const DoingNowTitle = styled.h2`
+  margin-bottom: ${rem(16)};
 
-    &:nth-of-type(1) {
-      width: calc(45% - ${rem(24)});
-      margin-right: ${rem(12)};
-    }
-
-    &:nth-of-type(2) {
-      width: calc(55% - ${rem(24)});
-      margin-left: ${rem(12)};
-    }
-
-    &:nth-of-type(3) {
-      width: 100%;
-    }
+  ${mediaMin.s`
+    margin-bottom: ${rem(32)};
   `};
+`;
 
-  & h4 {
-    margin-bottom: ${rem(8)};
+export const DoingNowSubTitle = styled.h3`
+  font-size: ${theme.font.size.display.mobile.h5};
+  line-height: ${theme.font.lineHeight.display.mobile.h5};
+
+  ${mediaMin.xs`
+    font-size: ${theme.font.size.display.desktop.h5};
+    line-height: ${theme.font.lineHeight.display.desktop.h5};
+  `}
+
+  margin-top: ${rem(32)};
+  margin-bottom: ${rem(16)};
+
+  &:first-child {
+    margin-top: ${rem(16)};
   }
+
+  ${mediaMin.s`
+    margin-top: 0;
+  `};
+`;
+
+export const DoingNowProjectsRow = styled(Row)`
+  margin-top: ${rem(16)};
+
+  ${mediaMin.s`
+    margin-top: ${rem(32)};
+  `};
 `;
