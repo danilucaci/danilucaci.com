@@ -15,7 +15,7 @@ import {
   ThanksCopy,
   ThanksAgainCopy,
   Subtitle,
-  StyledHR,
+  StyledHR
 } from "../styles/thanks.styles";
 
 import { Col } from "../components/Grid/Grid";
@@ -41,28 +41,28 @@ const ThanksPage = ({ pageContext, location }) => {
         />
 
         <Main>
-          <ThanksPageRow padded col8>
+          <ThanksPageRow mb col8>
             <Col>
               <FormattedMessage id="thanks.title">
-                {(txt) => <StyledH1>{txt}</StyledH1>}
+                {txt => <StyledH1>{txt}</StyledH1>}
               </FormattedMessage>
               <FormattedMessage id="thanks.subtitle">
-                {(txt) => <Subtitle>{txt}</Subtitle>}
+                {txt => <Subtitle>{txt}</Subtitle>}
               </FormattedMessage>
               <StyledHR />
               <FormattedMessage id="thanks.copy">
-                {(txt) => <ThanksCopy>{txt}</ThanksCopy>}
+                {txt => <ThanksCopy>{txt}</ThanksCopy>}
               </FormattedMessage>
 
               <FormattedMessage id="thanks.subcopy.1">
-                {(txt) => (
+                {txt => (
                   <ThanksCopy>
-                    {txt}{" "}
+                    {txt}
                     <a href={`mailto:${localePaths[locale].email}`}>
                       {localePaths[locale].email}
                     </a>
                     <FormattedMessage id="thanks.subcopy.2">
-                      {(txt2) => <> {txt2}</>}
+                      {txt2 => <>{txt2}</>}
                     </FormattedMessage>
                     <a
                       target="_blank"
@@ -74,11 +74,8 @@ const ThanksPage = ({ pageContext, location }) => {
                   </ThanksCopy>
                 )}
               </FormattedMessage>
-              <FormattedMessage id="thanks.subcopy.3">
-                {(txt) => <ThanksAgainCopy> {txt}</ThanksAgainCopy>}
-              </FormattedMessage>
               <FormattedMessage id="thanks.go.home">
-                {(txt) => <LocaleLink to="/">{txt}</LocaleLink>}
+                {txt => <LocaleLink to="/">{txt}</LocaleLink>}
               </FormattedMessage>
             </Col>
           </ThanksPageRow>
@@ -90,12 +87,12 @@ const ThanksPage = ({ pageContext, location }) => {
 
 ThanksPage.propTypes = {
   pageContext: PropTypes.shape({
-    locale: PropTypes.string.isRequired,
+    locale: PropTypes.string.isRequired
   }).isRequired,
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired,
-    href: PropTypes.string.isRequired,
-  }).isRequired,
+    href: PropTypes.string.isRequired
+  }).isRequired
 };
 
 export default ThanksPage;

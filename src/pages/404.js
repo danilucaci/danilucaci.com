@@ -38,7 +38,7 @@ const NotFoundPage = ({ pageContext, location }) => {
         />
 
         <Main>
-          <NotFoundRow padded col8>
+          <NotFoundRow mb col8>
             <Col>
               <FormattedMessage id="not.found.title">
                 {(txt) => <StyledH1>{txt}</StyledH1>}
@@ -53,10 +53,14 @@ const NotFoundPage = ({ pageContext, location }) => {
               <FormattedMessage id="not.found.copy.2">
                 {(txt) => (
                   <StyledCopy>
-                    {txt}{" "}
+                    {txt}
+{" "}
                     <a href="mailto:info@danilucaci.com">info@danilucaci.com</a>
                     <FormattedMessage id="not.found.copy.3">
-                      {(txt2) => <span> {txt2}</span>}
+                      {(txt2) => <span> 
+{' '}
+{txt2}
+</span>}
                     </FormattedMessage>
                     <a
                       target="_blank"
