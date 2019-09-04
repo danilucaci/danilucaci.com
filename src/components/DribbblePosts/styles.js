@@ -16,15 +16,15 @@ export const Title = styled.h1`
 `;
 
 export const ErrorMessageWrapper = styled.div`
-  background-color: ${theme.colors.danger100};
+  background-color: ${theme.color.background.error};
   display: block;
   padding: ${rem(16)} ${rem(16)};
-  border-left: ${rem(4)} solid ${theme.colors.danger600};
+  border-left: ${rem(4)} solid ${theme.color.border.error};
   margin-bottom: ${rem(32)};
 `;
 
 export const ErrorMessage = styled.p`
-  color: ${theme.colors.danger600};
+  color: ${theme.color.text.validation.error};
 
   .fonts-loaded & {
     font-family: ${theme.font.family.body.regular};
