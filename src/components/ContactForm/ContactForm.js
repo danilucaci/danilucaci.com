@@ -27,7 +27,7 @@ function ContactForm({ locale }) {
       "Contact Page",
       "Submitted Form",
       statusText,
-      status,
+      status
     );
     logGA();
   }
@@ -73,8 +73,8 @@ function ContactForm({ locale }) {
             setSubmitting(false);
             handleFormError(
               new Error(
-                `Contact form error: Status Code ${res.status}: ${res.statusText}`,
-              ),
+                `Contact form error: Status Code ${res.status}: ${res.statusText}`
+              )
             );
           }
 
@@ -140,7 +140,7 @@ function ContactForm({ locale }) {
 
             <StyledLabel labelType="fullname">
               <StyledInput
-                type="fullname"
+                type="text"
                 name="fullname"
                 autoCorrect="off"
                 autoComplete="name"
