@@ -55,7 +55,11 @@ const Index = ({ data, pageContext, location }) => {
                 {(txt) => <Name>{txt}</Name>}
               </FormattedMessage>
               <FormattedMessage id="index.h1">
-                {(txt) => <IndexTitle as="h1">{txt}</IndexTitle>}
+                {(txt) => (
+                  <IndexTitle as="h1" locale={locale}>
+                    {txt}
+                  </IndexTitle>
+                )}
               </FormattedMessage>
               <FormattedMessage id="index.subtitle">
                 {(txt) => <Subtitle>{txt}</Subtitle>}

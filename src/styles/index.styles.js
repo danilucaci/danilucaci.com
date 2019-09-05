@@ -34,11 +34,14 @@ export const IndexTitle = styled.h1`
   margin-top: ${rem(16)};
   margin-bottom: ${rem(16)};
 
+  /* Collapse the h1 title in two lines on the spanish version of the page */
+  ${({ locale }) => locale === "es"
+    && `
+    max-width: ${rem(600)};
+  `};
+
   font-size: ${theme.font.size.display.mobile.h2};
   line-height: ${theme.font.lineHeight.display.mobile.h2};
-
-  /* Breaks line if a \n character is inside the text */
-  white-space: pre-line;
 
   ${mediaMin.m`
     font-size: ${theme.font.size.display.desktop.h1};
