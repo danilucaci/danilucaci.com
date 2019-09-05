@@ -168,11 +168,11 @@ En este caso, tenemos un campo llamado `fullname` de tipo texto con una longitud
 
 Si quieres ver todas las opciones que el validador de esquemas Yup tiene, puedes [leer su documentación](https://github.com/jquense/yup). Finalmente, el controlador de eventos `onSubmit` se usa para controlar el envío del formulario.
 
-El componente Formik usa el método _render props_ para renderizar el formulario y los campos de este. Devuelve varias variables y controladores de eventos que podemos añadir al formulario HTML para controlarlo. Para hacerlo solo tienes que añadir los controladores de eventos `onSubmit` y `onChange` proporcionados por Formik, y usar el componente Field en vez de los campos HTML del tipo input.
+El componente Formik usa el método _render props_ para renderizar el formulario y los campos de este. Devuelve varias variables y controladores de eventos que podemos añadir al formulario HTML para controlarlo. Para hacerlo solo tienes que añadir los controladores de eventos `onSubmit` y `onChange` proporcionados por Formik, y usar el componente Field en vez de los elementos HTML del tipo input.
 
 Después, una vez el usuario comience a introducir datos, se ejecutará la validación de los datos en cada campo.
 
-## Añadiendo Estilos al Formulario y Mostrando Mensajes de Estado
+## Añadiendo Estilos al Formulario
 
 Hasta ahora podemos renderizar el formulario y sus campos, pero aun no hemos añadido los estilos. Puedes usar tus estilos CSS si lo prefieres, pero si quieres seguir con el tutorial copia estos estilos que he usado yo, en un nuevo archivo llamado `styles.js` e importalo en el fichero `App.js`
 
@@ -483,6 +483,8 @@ export default App;
 ```
 
 Los principales cambios que hemos hecho han sido usar un componente llamado `<Input />` que es el componente `<Field />` de Formik, pero con estilos aplicados con styled-components. Además, ahora lo importamos del fichero `styles.js` en vez de la librería Formik como antes.
+
+## Mostrando Mensajes de Estado
 
 Para mostrar los mensajes de error, la librería Formik nos ofrece varias maneras de hacerlo.
 

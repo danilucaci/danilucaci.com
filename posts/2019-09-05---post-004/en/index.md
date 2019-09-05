@@ -160,9 +160,9 @@ With this, we have a basic boilerplate of a contact form made with Formik and Re
 
 `initialValues` is an object that stores the values the input fields of the form will have initially. In this example, they are `fullname` and `email` (you can add as many as you’d like).
 
-Then, the `validationSchema` is an object that holds the Yup validation schema defined that represents the validation rules for each of the input fields of the form.
+`validationSchema` is an object that holds the Yup validation schema defined that represents the validation rules for each of the input fields of the form.
 
-In this case, we have a `fullname` text field with a minimum length of 2 characters that is also set to be required. We defined these requirements by using the `Yup.string()` methods. If you’d like to see all the other methods available on the Yup schema validator you can [read their docs](https://github.com/jquense/yup). Finally, the `onSubmit` event handler is used to control the submission of the form
+In this case, we have a `fullname` text field with a minimum length of 2 characters that is also required. We defined these requirements by using the `Yup.string()` methods. If you’d like to see all the other methods available on the Yup schema validator you can [read their docs](https://github.com/jquense/yup). Finally, the `onSubmit` event handler is used to control the submission of the form
 
 The Formik components use a render props approach to render the form and input fields. It returns several boolean values and event handlers which you can use to control the form.
 
@@ -170,7 +170,7 @@ You just need to connect the regular form `onSubmit` event to the `onChange` han
 
 Then, once the user starts typing, the validation be executed on each of the fields.
 
-## Styling the Form and Displaying Error Messages
+## Styling the Form
 
 So far we can render the form and its elements but we still need to style it. You can use your CSS, but if you’d like to follow along with the tutorial copy these styles in a new `styles.js` file and import in the `App.js` file.
 
@@ -482,9 +482,9 @@ export default App;
 
 The main changes are that we are now using a `<Input />` component which is just the `<Field />` component from Formik but wrapped with Styled Components so that we can add our styles to it. We are also importing it from the `styles.js` file and not from the Formik library as before.
 
-To display the error messages, Formik has several ways to do it.
+## Displaying Error Messages
 
-First, you can use the `<ErrorMessage />` component which expects a `name` prop that holds the name of the input element in the form. This name has to match the name provided to the validation schema and initial values object.
+In order to display the error messages when the validation fails, Formik gives you several ways to do it. First, you can use the `<ErrorMessage />` component which expects a `name` prop that holds the name of the input element in the form. This name has to match the name provided to the validation schema and initial values object.
 
 ```jsx
 <ErrorMessage name="email">
