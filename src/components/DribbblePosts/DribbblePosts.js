@@ -47,13 +47,13 @@ function DribbblePosts() {
           {(txt) => <Title>{txt}</Title>}
         </FormattedMessage>
 
-        {/* {isError && ( */}
-        <ErrorMessageWrapper>
-          <FormattedMessage id="dribbble.status.error">
-            {(txt) => <ErrorMessage>{txt}</ErrorMessage>}
-          </FormattedMessage>
-        </ErrorMessageWrapper>
-        {/* )} */}
+        {isError && (
+          <ErrorMessageWrapper>
+            <FormattedMessage id="dribbble.status.error">
+              {(txt) => <ErrorMessage>{txt}</ErrorMessage>}
+            </FormattedMessage>
+          </ErrorMessageWrapper>
+        )}
       </Col>
 
       {isLoading &&
