@@ -18,6 +18,10 @@ export const StyledSiteNavListItem = styled.li`
 
   margin-right: ${rem(16)};
 
+  ${mediaMin.xxxs`
+    margin-right: ${rem(24)};
+  `};
+
   ${mediaMin.s`
     margin-right: ${rem(32)};
   `};
