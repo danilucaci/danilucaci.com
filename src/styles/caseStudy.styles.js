@@ -145,9 +145,9 @@ export const CaseStudyImgWrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
 
-  margin-top: ${rem(72)};
+  margin-top: ${rem(24)};
 
-  ${mediaMin.xl`
+  ${mediaMin.m`
     margin-top: ${rem(40)};
   `};
 
