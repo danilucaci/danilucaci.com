@@ -15,8 +15,6 @@ export const StyledInput = styled(FilteredPropsInputField)`
 
   width: 100%;
 
-  margin-top: ${rem(8)};
-
   padding: ${theme.spacing.input.default.vertical}
     ${theme.spacing.input.default.horizontal};
 
@@ -60,9 +58,8 @@ export const StyledInput = styled(FilteredPropsInputField)`
     box-shadow: ${theme.shadow.input.error};
   }
 
-  ${({ valid }) =>
-    valid &&
-    css`
+  ${({ valid }) => valid
+    && css`
       border: ${theme.size.border.input} solid ${theme.color.border.input.valid};
 
       &:focus,
@@ -82,9 +79,8 @@ export const StyledInput = styled(FilteredPropsInputField)`
       }
     `}
 
-  ${({ error }) =>
-    error &&
-    css`
+  ${({ error }) => error
+    && css`
       border: ${theme.size.border.input} solid ${theme.color.border.input.error};
 
       &:focus,
