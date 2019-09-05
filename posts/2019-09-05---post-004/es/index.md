@@ -18,15 +18,7 @@ twinPost: "validate forms in react"
 
 ## La Solución Final
 
-Esta es la versión final del formulario. Si quieres aprender como funciona sigue leyendo, si no, puedes investigar por ti mismo como funciona todo en el Codesandbox de más abajo. También puedes encontrar el [repositorio en Github](https://github.com/danilucaci/react-formik-styled-components-demo).
-
-<iframe
-  src="https://codesandbox.io/embed/reverent-bush-89dci?autoresize=1&fontsize=14"
-  title="reverent-bush-89dci"
-  allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
-  style="width:100%; height:640px; border:0; border-radius: 4px; overflow:hidden;"
-  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-></iframe>
+Si quieres aprender como crear el formulario de este tutorial sigue leyendo. Si quieres ver la solución final para investigar por ti mismo como funciona todo, puedes encontrar [una demo en Codesandbox](https://codesandbox.io/embed/react-formik-styled-components-demo-89dci) o el [repositorio en Github](https://github.com/danilucaci/react-formik-styled-components-demo).
 
 ## Configuración e Instalación
 
