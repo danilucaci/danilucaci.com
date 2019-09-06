@@ -5,6 +5,7 @@ import urljoin from "url-join";
 import config from "../../../data/SiteConfig";
 
 import sendGAEvent from "../../helpers/sendGAEvent";
+import { COPY_URL_MESSAGES } from "../../i18n/i18n";
 
 import {
   SocialShareWrapper,
@@ -15,17 +16,15 @@ import {
   StyledIcon,
 } from "./styles";
 
-const SocialShare = (props) => {
-  const url = urljoin(config.siteUrl, props.slug);
+const SocialShare = ({ onClick, slug, snippet, title, locale }) => {
+  const url = urljoin(config.siteUrl, slug);
 
   return (
     <SocialShareWrapper>
       <SocialShareButton
         target="_blank"
         rel="noopener noreferrer"
-        href={`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${
-          props.title
-        }&summary=${props.snippet}`}
+        href={`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}&summary=${snippet}`}
         aria-label="Share on Linkedin"
         onClick={sendGAEvent("Shared Article", "On Linkedin")}
       >
@@ -37,7 +36,7 @@ const SocialShare = (props) => {
       <SocialShareButton
         target="_blank"
         rel="noopener noreferrer"
-        href={`https://twitter.com/intent/tweet?text=${props.title}&url=${url}`}
+        href={`https://twitter.com/intent/tweet?text=${title}&url=${url}`}
         aria-label="Share on Twitter"
         onClick={sendGAEvent("Shared Article", "On Twitter")}
       >
@@ -48,7 +47,7 @@ const SocialShare = (props) => {
 
       <StyledCopyButton
         className="js-copyURL"
-        onClick={props.onClick}
+        onClick={onClick}
         role="button"
         tabIndex="0"
         aria-label="Copy page link"
@@ -56,7 +55,9 @@ const SocialShare = (props) => {
         <CopyIcon aria-hidden="true">
           <use xlinkHref="#copy" />
         </CopyIcon>
-        <CopyTooltip aria-hidden="true">Copy page link</CopyTooltip>
+        <CopyTooltip aria-hidden="true">
+          {COPY_URL_MESSAGES[locale].default}
+        </CopyTooltip>
       </StyledCopyButton>
     </SocialShareWrapper>
   );
@@ -67,6 +68,7 @@ SocialShare.propTypes = {
   slug: PropTypes.string.isRequired,
   snippet: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  locale: PropTypes.string.isRequired,
 };
 
 export default SocialShare;

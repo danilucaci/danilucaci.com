@@ -18,7 +18,7 @@ import ArticleInfo from "../components/ArticleInfo/ArticleInfo";
 import SubscribeCard from "../components/SubscribeCard/SubscribeCard";
 import { copyURL, addCopyButtonsToCodeNodes } from "../helpers/helpers";
 
-import { localePaths, COPY_URL_MESSAGES } from "../i18n/i18n";
+import { localePaths } from "../i18n/i18n";
 import {
   PostWrapper,
   PostH1,
@@ -28,7 +28,7 @@ import {
   IntroContainer,
   IntroCopy,
   PostContentRow,
-  DummyInput,
+  TextareaClipboard,
   CommentsRow,
   StyledLoadComments,
 } from "../styles/post.styles";
@@ -37,35 +37,8 @@ function Post({ pageContext, data, location }) {
   const [loadComments, setLoadComments] = useState(false);
 
   useEffect(() => {
-    const copyURLButton = document.querySelector(".js-copyURL > span");
-    copyURLButton.addEventListener("click", copyURL);
-    copyURLButton.textContent = `${COPY_URL_MESSAGES[pageContext.locale].default}`;
-
     addCopyButtonsToCodeNodes(pageContext.locale);
-
-    removeAnchorsFromTabIndex();
-
-    function removeAnchorsFromTabIndex() {
-      const h2s = Array.from(document.querySelectorAll("h2 a"));
-      const h3s = Array.from(document.querySelectorAll("h3 a"));
-      const h4s = Array.from(document.querySelectorAll("h4 a"));
-      const h5s = Array.from(document.querySelectorAll("h5 a"));
-
-      // Remove the headers from tab index
-      removeHeaderTabIndex(h2s);
-      removeHeaderTabIndex(h3s);
-      removeHeaderTabIndex(h4s);
-      removeHeaderTabIndex(h5s);
-    }
-
-    return () => {
-      copyURLButton.removeEventListener("click", copyURL);
-    };
   }, [pageContext.locale]);
-
-  function removeHeaderTabIndex(arr) {
-    arr.forEach((header) => header.removeAttribute("tabindex"));
-  }
 
   const postNode = data.mdx;
   const postInfo = postNode.frontmatter;
@@ -120,8 +93,9 @@ function Post({ pageContext, data, location }) {
                     <SocialShare
                       slug={location.pathname}
                       title={postInfo.title}
+                      locale={pageContext.locale}
                       snippet={postInfo.snippet}
-                      onClick={copyURL}
+                      onClick={() => copyURL(pageContext.locale)}
                     />
                   </SocialShareWrapper>
                 </PostInfo>
@@ -140,8 +114,8 @@ function Post({ pageContext, data, location }) {
             </PostContentRow>
           </PostWrapper>
 
-          <DummyInput
-            className="js-dummyInput"
+          <TextareaClipboard
+            className="js-textarea-clipboard"
             contentEditable="true"
             readOnly={true}
             aria-hidden="true"

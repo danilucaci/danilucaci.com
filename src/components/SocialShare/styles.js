@@ -33,7 +33,9 @@ export const StyledCopyButton = styled.button`
   vertical-align: baseline;
   position: relative;
 
-  &:hover {
+  &:hover,
+  &:focus,
+  &:active {
     & span {
       display: block;
     }

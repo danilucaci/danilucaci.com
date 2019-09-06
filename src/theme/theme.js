@@ -361,6 +361,7 @@ export const theme = {
     button: {
       height: {
         default: "3rem",
+        s: "2.5rem",
       },
       width: {
         default: "15rem",
@@ -439,6 +440,10 @@ export const theme = {
           mobile: "0.5rem",
           desktop: "0.5rem",
         },
+      },
+      s: {
+        vertical: "0.25rem",
+        horizontal: "1rem",
       },
     },
     input: {

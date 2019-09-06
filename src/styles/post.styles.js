@@ -118,23 +118,77 @@ export const PostContentRow = styled(Row)`
   }
 
   .js-codeCopy {
-    background-color: white;
     display: none;
     white-space: nowrap;
-    font-size: ${theme.font.size.body.s};
-    line-height: ${theme.font.lineHeight.body.s};
-
-    font-family: ${theme.font.family.body.regular};
-
     position: absolute;
     top: ${rem(8)};
-    right: ${rem(16)};
-    padding: ${rem(8)} ${rem(16)};
+    right: ${rem(12)};
 
     ${mediaMin.s`
       top: ${rem(16)};
       right: ${rem(16)};
     `};
+
+    background-color: ${theme.color.background.outlined.enabled};
+    border: ${theme.size.border.button.default}
+      ${theme.color.border.outlined.enabled} solid;
+    border-radius: ${theme.borderRadius.button};
+    color: ${theme.color.text.button.outlined.enabled} !important;
+
+    text-align: center;
+    font-size: ${theme.font.size.button.default};
+    line-height: ${theme.font.lineHeight.button.default};
+    font-style: normal;
+    font-weight: 700;
+
+    .fonts-loaded & {
+      font-family: ${theme.font.family.body.bold};
+    }
+
+    padding: ${theme.spacing.button.s.vertical}
+      ${theme.spacing.button.s.horizontal};
+    height: ${theme.size.button.height.s};
+
+    &:hover {
+      cursor: pointer;
+      background-color: ${theme.color.background.outlined.hover};
+      border: ${theme.size.border.button.default}
+        ${theme.color.border.outlined.hover} solid;
+      box-shadow: ${theme.shadow.button.outlined.hover};
+    }
+
+    &:focus {
+      cursor: pointer;
+      background-color: ${theme.color.background.outlined.focus};
+      box-shadow: ${theme.shadow.button.outlined.focus};
+      border: ${theme.size.border.button.focus}
+        ${theme.color.border.outlined.focus} solid;
+      outline: none;
+    }
+
+    &:active {
+      cursor: pointer;
+      background-color: ${theme.color.background.outlined.active};
+      border: ${theme.size.border.button.default}
+        ${theme.color.border.outlined.active} solid;
+      outline: none;
+      box-shadow: none;
+    }
+
+    &:disabled {
+      color: ${theme.color.text.button.outlined.disabled} !important;
+      cursor: pointer;
+      background-color: ${theme.color.background.disabled.default};
+      border: ${theme.size.border.button.default}
+        ${theme.color.border.outlined.disabled} solid;
+      outline: none;
+      box-shadow: none;
+
+      &:hover,
+      &:focus {
+        cursor: not-allowed;
+      }
+    }
   }
 
   .gatsby-highlight {
@@ -207,7 +261,7 @@ export const PostContentRow = styled(Row)`
   }
 `;
 
-export const DummyInput = styled.textarea`
+export const TextareaClipboard = styled.textarea`
   position: absolute;
   top: -1000em;
   left: -1000em;

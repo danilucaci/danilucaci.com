@@ -103,21 +103,91 @@ export function isInViewport(element) {
   );
 }
 
-export function selectDummyNodeToCopy(dummyNode) {
+/****************************************************************
+ * Selects a dom node to copy its contents
+ */
+export function selectDomNodeToCopyContents(domNode) {
   // For iOS
   if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
     const range = document.createRange();
-    range.selectNodeContents(dummyNode);
+    range.selectNodeContents(domNode);
 
     const select = window.getSelection();
     select.removeAllRanges();
     select.addRange(range);
-    dummyNode.setSelectionRange(0, 999999);
-    dummyNode.blur();
+    domNode.setSelectionRange(0, 999999);
+    domNode.blur();
   } else {
-    dummyNode.select();
-    dummyNode.blur();
+    domNode.select();
+    domNode.blur();
   }
+}
+
+export const COPY_CODE_CLASSES = {
+  textarea: ".js-textarea-clipboard",
+  copyURLButton: ".js-copyURL",
+  copyCodeButtonClassname: "js-codeCopy",
+  copyCodeButtons: ".js-codeCopy",
+  copyURLButtonLabel: ".js-copyURL > span",
+};
+
+/****************************************************************
+ * Clears all ranges after copying the contents from the dom node selected
+ */
+export function removeAllRanges() {
+  window.getSelection().removeAllRanges();
+}
+
+/*****************************************************************
+ * Return the dom node of the textarea used to store the contents
+ * that I want to copy to the clipboard
+ */
+export function selectTextareaToCopyContents() {
+  const textareaNode = document.querySelector(`${COPY_CODE_CLASSES.textarea}`);
+
+  return textareaNode;
+}
+
+/*****************************************************************
+ * Return the dom node created in each pre/code block generated
+ * in markdown, to change the text content from "Copy" to "Copied!"
+ */
+export function selectCopyUrlButtonLabel() {
+  const copyURLButtonLabel = document.querySelector(
+    `${COPY_CODE_CLASSES.copyURLButtonLabel}`,
+  );
+  return copyURLButtonLabel;
+}
+
+/****************************************************************
+ * Copies the page URL
+ * Uses a textarea input field that stores the content
+ * that will be copied to the clipboard
+ * Expects a locale prop containing the current locale "en" or "es"
+ */
+export function copyURL(locale) {
+  const textareaNode = selectTextareaToCopyContents();
+  textareaNode.value = window.location.href;
+
+  const copyURLButtonLabel = selectCopyUrlButtonLabel();
+
+  selectDomNodeToCopyContents(textareaNode);
+
+  try {
+    document.execCommand("copy");
+    copyURLButtonLabel.textContent = `${COPY_URL_MESSAGES[locale].copied}`;
+
+    setTimeout(() => {
+      copyURLButtonLabel.textContent = `${COPY_URL_MESSAGES[locale].default}`;
+    }, 2000);
+  } catch (err) {
+    copyURLButtonLabel.textContent = `${COPY_URL_MESSAGES[locale].error}`;
+    setTimeout(() => {
+      copyURLButtonLabel.textContent = `${COPY_URL_MESSAGES[locale].default}`;
+    }, 2000);
+  }
+
+  removeAllRanges();
 }
 
 /*****************************************************************
@@ -125,91 +195,69 @@ export function selectDummyNodeToCopy(dummyNode) {
  * insert into the dummy input element to be able to use
  * execCommand("copy") as it only works on input elements
  */
-export function copyCode(e) {
-  const dummyNode = document.querySelector(".js-dummyInput");
+export function copyCode(e, locale) {
+  const textareaNode = selectTextareaToCopyContents();
   const currentCopyButton = e.target;
 
-  dummyNode.value = e.target.previousElementSibling.textContent;
+  textareaNode.value = e.target.previousElementSibling.textContent;
 
-  selectDummyNodeToCopy(dummyNode);
+  selectDomNodeToCopyContents(textareaNode);
 
   try {
     document.execCommand("copy");
-    currentCopyButton.textContent = `${COPY_CODE_MESSAGES[globalLocale].copied}`;
+    currentCopyButton.textContent = `${COPY_CODE_MESSAGES[locale].copied}`;
 
-    // If the textContent was changed, trigger a setTimeout after 2000ms
-    // and change it back to "Copy"
-    if (currentCopyButton.textContent === `${COPY_CODE_MESSAGES[globalLocale].copied}`) {
-      setTimeout(() => {
-        currentCopyButton.textContent = `${COPY_CODE_MESSAGES[globalLocale].default}`;
-      }, 2000);
-    }
+    setTimeout(() => {
+      currentCopyButton.textContent = `${COPY_CODE_MESSAGES[locale].default}`;
+    }, 2000);
   } catch (err) {
-    currentCopyButton.textContent = `${COPY_CODE_MESSAGES[globalLocale].error}`;
-    if (currentCopyButton.textContent === `${COPY_CODE_MESSAGES[globalLocale].error}`) {
-      setTimeout(() => {
-        currentCopyButton.textContent = `${COPY_CODE_MESSAGES[globalLocale].default}`;
-      }, 2000);
-    }
+    currentCopyButton.textContent = `${COPY_CODE_MESSAGES[locale].error}`;
+
+    setTimeout(() => {
+      currentCopyButton.textContent = `${COPY_CODE_MESSAGES[locale].default}`;
+    }, 2000);
   }
 
-  window.getSelection().removeAllRanges();
+  removeAllRanges();
 }
 
-/****************************************************************
- * Code to handle the url copying and code snippets
- * It's all using a dummy input element which holds the content
- * Which is supposed to be copied to the clipboard
+/*****************************************************************
+ * 1. Select each code hightlight made by gatsby
+ * 2. Insert a span tag child element
+ * 3. Add a click event listener to each copy button
  */
-export function copyURL() {
-  const dummyNode = document.querySelector(".js-dummyInput");
-  const copyURLButton = document.querySelector(".js-copyURL > span");
+export function addCopyButtonsToCodeNodes(locale) {
+  const getCodeNodes = Array.from(
+    document.querySelectorAll(".gatsby-highlight"),
+  );
 
-  dummyNode.value = window.location.href;
+  appendCopyCodeNodes(getCodeNodes, locale);
 
-  selectDummyNodeToCopy(dummyNode);
-
-  try {
-    document.execCommand("copy");
-    copyURLButton.textContent = `${COPY_URL_MESSAGES[globalLocale].copied}`;
-    setTimeout(() => {
-      copyURLButton.textContent = `${COPY_URL_MESSAGES[globalLocale].default}`;
-    }, 2000);
-  } catch (err) {
-    copyURLButton.textContent = `${COPY_URL_MESSAGES[globalLocale].error}`;
-    setTimeout(() => {
-      copyURLButton.textContent = `${COPY_URL_MESSAGES[globalLocale].default}`;
-    }, 2000);
-  }
-
-  window.getSelection().removeAllRanges();
+  addEventListenersToCopyButtons(locale);
 }
 
 /*****************************************************************
  * Get all the inserted span tags to trigger the code copying
  */
-export function addEventListenersToCopyButtons() {
-  const getCopyButtons = Array.from(document.querySelectorAll(".js-codeCopy"));
+export function addEventListenersToCopyButtons(locale = "en") {
+  const getCopyButtons = Array.from(
+    document.querySelectorAll(`${COPY_CODE_CLASSES.copyCodeButtons}`),
+  );
 
   getCopyButtons.forEach((copyButton) => {
-    copyButton.addEventListener("click", copyCode);
+    copyButton.addEventListener("click", (e) => copyCode(e, locale));
   });
 }
 
 /*****************************************************************
- * Get each code hightlight made by gatsby and insert a span tag
- * to attach a click listener to trigger the code copying logic
+ * Inserts a child node as a span element to each of the nodes received
+ * with a localized version of the text content
  */
-export function addCopyButtonsToCodeNodes(currLocale) {
-  const getCodeNodes = Array.from(document.querySelectorAll(".gatsby-highlight"));
-  globalLocale = currLocale;
-
-  getCodeNodes.forEach((codeNode) => {
-    const copyLink = document.createElement("span");
-    copyLink.textContent = `${COPY_CODE_MESSAGES[globalLocale].default}`;
-    copyLink.className = "js-codeCopy";
-    codeNode.appendChild(copyLink);
+export function appendCopyCodeNodes(nodes, locale = "en") {
+  nodes.forEach((node) => {
+    const copyButton = document.createElement("button");
+    copyButton.textContent = `${COPY_CODE_MESSAGES[locale].default}`;
+    copyButton.className = `${COPY_CODE_CLASSES.copyCodeButtonClassname}`;
+    node.appendChild(copyButton);
   });
-
-  addEventListenersToCopyButtons();
 }
