@@ -10,7 +10,8 @@ const intl = {
 
 Intl.injectIntl = (Component) => {
   const renderWrapped = (props) => <Component {...props} intl={intl} />;
-  renderWrapped.displayName = Component.displayName || Component.name || "Component";
+  renderWrapped.displayName =
+    Component.displayName || Component.name || "Component";
   return renderWrapped;
 };
 
