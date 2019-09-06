@@ -17,7 +17,7 @@ const CaseStudies = ({ edges, spaced }) => {
   }));
 
   return (
-    <Row col12 spaced={spaced}>
+    <Row col12 spaced={spaced} data-testid="Casestudies__Wrapper">
       <Col>
         <FormattedMessage id="case.studies.header">
           {(txt) => <Title>{txt}</Title>}

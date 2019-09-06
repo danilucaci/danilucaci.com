@@ -41,14 +41,14 @@ function DribbblePosts() {
   }
 
   return (
-    <Row spaced col12>
+    <Row spaced col12 data-testid="Dribbble__Posts__Wrapper">
       <Col ref={ref}>
         <FormattedMessage id="dribbble.header">
           {(txt) => <Title>{txt}</Title>}
         </FormattedMessage>
 
         {isError && (
-          <ErrorMessageWrapper>
+          <ErrorMessageWrapper data-testid="Dribbble__Posts__ErrorMessage">
             <FormattedMessage id="dribbble.status.error">
               {(txt) => <ErrorMessage>{txt}</ErrorMessage>}
             </FormattedMessage>

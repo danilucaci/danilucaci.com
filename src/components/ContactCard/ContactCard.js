@@ -24,7 +24,7 @@ function ContactCard(props) {
   }
 
   return (
-    <ContactCardRowBackground as="aside">
+    <ContactCardRowBackground as="aside" data-testid="Contact__Card">
       <Row as="div" col8 padded>
         <Col>
           <FormattedMessage id="contact.card.title">

@@ -56,13 +56,19 @@ const Index = ({ data, pageContext, location }) => {
               </FormattedMessage>
               <FormattedMessage id="index.h1">
                 {(txt) => (
-                  <IndexTitle as="h1" locale={locale}>
+                  <IndexTitle
+                    as="h1"
+                    locale={locale}
+                    data-testid="Index__Hero__Title"
+                  >
                     {txt}
                   </IndexTitle>
                 )}
               </FormattedMessage>
               <FormattedMessage id="index.subtitle">
-                {(txt) => <Subtitle>{txt}</Subtitle>}
+                {(txt) => (
+                  <Subtitle data-testid="Index__Hero__Subtitle">{txt}</Subtitle>
+                )}
               </FormattedMessage>
               <FindOutMore>
                 <FormattedMessage id="index.findOut.1">
@@ -91,7 +97,13 @@ const Index = ({ data, pageContext, location }) => {
                 <ServicesEntry>
                   <ServiceImage>
                     <FormattedMessage id="index.services.1.svg.alt">
-                      {(txt) => <img src={illustrationUX} alt={txt} />}
+                      {(txt) => (
+                        <img
+                          src={illustrationUX}
+                          alt={txt}
+                          data-testid="Homepage__SVG__01"
+                        />
+                      )}
                     </FormattedMessage>
                   </ServiceImage>
                   <ServiceContent>
@@ -114,7 +126,13 @@ const Index = ({ data, pageContext, location }) => {
                 <ServicesEntry>
                   <ServiceImage>
                     <FormattedMessage id="index.services.2.svg.alt">
-                      {(txt) => <img src={illustrationUI} alt={txt} />}
+                      {(txt) => (
+                        <img
+                          src={illustrationUI}
+                          alt={txt}
+                          data-testid="Homepage__SVG__02"
+                        />
+                      )}
                     </FormattedMessage>
                   </ServiceImage>
                   <ServiceContent>
@@ -136,7 +154,13 @@ const Index = ({ data, pageContext, location }) => {
                 <ServicesEntry>
                   <ServiceImage>
                     <FormattedMessage id="index.services.3.svg.alt">
-                      {(txt) => <img src={illustrationInteraction} alt={txt} />}
+                      {(txt) => (
+                        <img
+                          src={illustrationInteraction}
+                          alt={txt}
+                          data-testid="Homepage__SVG__03"
+                        />
+                      )}
                     </FormattedMessage>
                   </ServiceImage>
                   <ServiceContent>
@@ -157,7 +181,13 @@ const Index = ({ data, pageContext, location }) => {
                 <ServicesEntry>
                   <ServiceImage>
                     <FormattedMessage id="index.services.4.svg.alt">
-                      {(txt) => <img src={illustrationCode} alt={txt} />}
+                      {(txt) => (
+                        <img
+                          src={illustrationCode}
+                          alt={txt}
+                          data-testid="Homepage__SVG__04"
+                        />
+                      )}
                     </FormattedMessage>
                   </ServiceImage>
                   <ServiceContent>
