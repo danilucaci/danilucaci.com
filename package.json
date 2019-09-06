@@ -30,7 +30,8 @@
     "netlify": "npm-run-all --parallel build build:lambda",
     "start:lambda": "netlify-lambda serve functions -c webpack.functions.js",
     "build:lambda": "netlify-lambda build functions -c webpack.functions.js",
-    "sprite": "gulp build:svg"
+    "sprite": "gulp build:svg",
+    "eslint-check": "eslint --print-config path/to/main.js | eslint-config-prettier-check"
   },
   "browserslist": [
     ">0.20%",
