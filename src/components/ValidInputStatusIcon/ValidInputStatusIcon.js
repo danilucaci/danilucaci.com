@@ -3,7 +3,7 @@ import React from "react";
 import { StyledValidInputStatusIcon } from "./styles";
 
 const ValidInputStatusIcon = () => (
-  <StyledValidInputStatusIcon arriaHidden="true" />
+  <StyledValidInputStatusIcon aria-hidden="true" />
 );
 
 export default ValidInputStatusIcon;

@@ -6,7 +6,9 @@ import {
   StyledFooterSocialNavItem,
   FooterNavLink,
 } from "./styles";
+
 import sendGAEvent from "../../helpers/sendGAEvent";
+import AriaText from "../AriaText/AriaText";
 
 const FooterSocialNav = () => (
   <StyledFooterSocialNav>
@@ -17,7 +19,7 @@ const FooterSocialNav = () => (
       >
         Twitter
         <FormattedMessage id="social.nav.twitter">
-          {(txt) => <span className="sr-only">{txt}</span>}
+          {(txt) => <AriaText>{txt}</AriaText>}
         </FormattedMessage>
       </FooterNavLink>
     </StyledFooterSocialNavItem>
@@ -28,7 +30,7 @@ const FooterSocialNav = () => (
       >
         Linkedin
         <FormattedMessage id="social.nav.linkedin">
-          {(txt) => <span className="sr-only">{txt}</span>}
+          {(txt) => <AriaText>{txt}</AriaText>}
         </FormattedMessage>
       </FooterNavLink>
     </StyledFooterSocialNavItem>
@@ -39,7 +41,7 @@ const FooterSocialNav = () => (
       >
         Dribbble
         <FormattedMessage id="social.nav.dribbble">
-          {(txt) => <span className="sr-only">{txt}</span>}
+          {(txt) => <AriaText>{txt}</AriaText>}
         </FormattedMessage>
       </FooterNavLink>
     </StyledFooterSocialNavItem>
@@ -50,7 +52,7 @@ const FooterSocialNav = () => (
       >
         Github
         <FormattedMessage id="social.nav.github">
-          {(txt) => <span className="sr-only">{txt}</span>}
+          {(txt) => <AriaText>{txt}</AriaText>}
         </FormattedMessage>
       </FooterNavLink>
     </StyledFooterSocialNavItem>

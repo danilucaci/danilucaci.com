@@ -21,8 +21,8 @@ function Input({ intl, valid, error, placeholderType = "fullname", ...props }) {
         error={error}
         {...props}
       />
-      {valid && <ValidInputStatusIcon arriaHidden="true" />}
-      {error && <ErrorInputStatusIcon arriaHidden="true" />}
+      {valid && <ValidInputStatusIcon aria-hidden="true" />}
+      {error && <ErrorInputStatusIcon aria-hidden="true" />}
     </>
   );
 }

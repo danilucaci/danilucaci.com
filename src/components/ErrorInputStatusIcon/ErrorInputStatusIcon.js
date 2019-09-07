@@ -3,7 +3,7 @@ import React from "react";
 import { StyledErrorInputStatusIcon } from "./styles";
 
 const ErrorInputStatusIcon = () => (
-  <StyledErrorInputStatusIcon arriaHidden="true" />
+  <StyledErrorInputStatusIcon aria-hidden="true" />
 );
 
 export default ErrorInputStatusIcon;

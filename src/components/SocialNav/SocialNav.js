@@ -3,6 +3,7 @@ import { FormattedMessage } from "react-intl";
 
 import { Wrapper, StyledIcon, StyledLink } from "./styles";
 import sendGAEvent from "../../helpers/sendGAEvent";
+import AriaText from "../AriaText/AriaText";
 
 const SocialNav = (props) => (
   <Wrapper>
@@ -13,7 +14,7 @@ const SocialNav = (props) => (
       onClick={sendGAEvent("Social Nav Visit", "Github")}
     >
       <FormattedMessage id="social.nav.github">
-        {(txt) => <span className="sr-only">{txt}</span>}
+        {(txt) => <AriaText>{txt}</AriaText>}
       </FormattedMessage>
       <StyledIcon aria-hidden="true" light={props.light}>
         <use xlinkHref="#github" />
@@ -26,7 +27,7 @@ const SocialNav = (props) => (
       onClick={sendGAEvent("Social Nav Visit", "Twitter")}
     >
       <FormattedMessage id="social.nav.twitter">
-        {(txt) => <span className="sr-only">{txt}</span>}
+        {(txt) => <AriaText>{txt}</AriaText>}
       </FormattedMessage>
       <StyledIcon aria-hidden="true" light={props.light}>
         <use xlinkHref="#twitter" />
@@ -39,7 +40,7 @@ const SocialNav = (props) => (
       onClick={sendGAEvent("Social Nav Visit", "Dribbble")}
     >
       <FormattedMessage id="social.nav.dribbble">
-        {(txt) => <span className="sr-only">{txt}</span>}
+        {(txt) => <AriaText>{txt}</AriaText>}
       </FormattedMessage>
       <StyledIcon aria-hidden="true" light={props.light}>
         <use xlinkHref="#dribbble" />
@@ -52,7 +53,7 @@ const SocialNav = (props) => (
       onClick={sendGAEvent("Social Nav Visit", "Linkedin")}
     >
       <FormattedMessage id="social.nav.linkedin">
-        {(txt) => <span className="sr-only">{txt}</span>}
+        {(txt) => <AriaText>{txt}</AriaText>}
       </FormattedMessage>
       <StyledIcon aria-hidden="true" light={props.light}>
         <use xlinkHref="#linkedin" />

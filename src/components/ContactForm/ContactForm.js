@@ -129,12 +129,12 @@ function ContactForm({ locale }) {
             <input
               type="hidden"
               name="form-name"
-              arria-hidden="true"
+              aria-hidden="true"
               value="contact"
             />
             <Field
               style={{ display: "none" }}
-              arria-hidden="true"
+              aria-hidden="true"
               name="botfield"
             />
 
