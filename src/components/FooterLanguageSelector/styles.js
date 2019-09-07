@@ -82,9 +82,15 @@ export const StyledMenuList = styled(MenuList)`
 
   position: absolute;
   bottom: ${rem(40)};
-  right: 0;
+  left: 0;
 
-  width: ${rem(220)};
+  width: ${rem(240)};
+
+  ${mediaMin.s`
+    left: auto;
+    right: 1px;
+    width: ${rem(200)};
+  `};
 
   &:hover,
   &:focus,
@@ -98,7 +104,9 @@ export const StyledMenuList = styled(MenuList)`
   }
 
   & .reach__menu__link {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     position: relative;
 
     .fonts-loaded & {
@@ -139,9 +147,12 @@ export const CurrentLanguageIcon = styled(Icon)`
   display: inline-block;
   vertical-align: middle;
   fill: ${theme.color.icon.primary};
-  position: absolute;
-  left: ${rem(48)};
-  top: ${rem(8)};
+  margin-right: ${rem(6)};
+  margin-left: -${rem(30)};
+`;
+
+export const ButtonLabelWrapper = styled.span`
+  display: inline-block;
 `;
 
 export const ButtonLabel = styled.span`

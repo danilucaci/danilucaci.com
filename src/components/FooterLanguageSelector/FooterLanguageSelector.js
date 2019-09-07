@@ -14,6 +14,7 @@ import {
   StyledMenuList,
   ButtonLabel,
   CurrentLanguageIcon,
+  ButtonLabelWrapper,
 } from "./styles";
 
 const FooterLanguageSelector = ({
@@ -24,11 +25,13 @@ const FooterLanguageSelector = ({
   const englishLanguagePicker = () => (
     <StyledMenuList>
       <MenuLink as={Link} to={currentPath} className="reach__menu__link ">
-        <CurrentLanguageIcon aria-hidden="true">
-          <use xlinkHref="#check" />
-        </CurrentLanguageIcon>
-        <AriaText>Change the page language to</AriaText>
-        English
+        <ButtonLabelWrapper>
+          <CurrentLanguageIcon aria-hidden="true">
+            <use xlinkHref="#check" />
+          </CurrentLanguageIcon>
+          <AriaText>Change the page language to</AriaText>
+          English
+        </ButtonLabelWrapper>
       </MenuLink>
       <MenuLink as={Link} to={twinPostURL} className="reach__menu__link">
         <AriaText>Cambiar el idioma de la página al</AriaText>
@@ -44,11 +47,13 @@ const FooterLanguageSelector = ({
         English
       </MenuLink>
       <MenuLink as={Link} to={currentPath} className="reach__menu__link">
-        <CurrentLanguageIcon aria-hidden="true">
-          <use xlinkHref="#check" />
-        </CurrentLanguageIcon>
-        <AriaText>Cambiar el idioma de la página al</AriaText>
-        Español
+        <ButtonLabelWrapper>
+          <CurrentLanguageIcon aria-hidden="true">
+            <use xlinkHref="#check" />
+          </CurrentLanguageIcon>
+          <AriaText>Cambiar el idioma de la página al</AriaText>
+          Español
+        </ButtonLabelWrapper>
       </MenuLink>
     </StyledMenuList>
   );

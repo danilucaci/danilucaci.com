@@ -21,7 +21,6 @@ import {
   Divider,
   FooterBottom,
   StyledSubhead,
-  LanguageWrapper,
 } from "./styles";
 
 const SiteFooter = ({ locale = "en", twinPostURL, currentPath, expand }) => {
@@ -56,13 +55,11 @@ const SiteFooter = ({ locale = "en", twinPostURL, currentPath, expand }) => {
           <FormattedMessage id="footer.language.title">
             {(txt) => <StyledSubhead>{txt}</StyledSubhead>}
           </FormattedMessage>
-          <LanguageWrapper>
-            <FooterLanguageSelector
-              locale={locale}
-              twinPostURL={twinPostURL}
-              currentPath={currentPath}
-            />
-          </LanguageWrapper>
+          <FooterLanguageSelector
+            locale={locale}
+            twinPostURL={twinPostURL}
+            currentPath={currentPath}
+          />
         </LanguageCol>
 
         <Col>

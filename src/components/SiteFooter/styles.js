@@ -19,8 +19,9 @@ export const FooterRowBackground = styled(RowSpacer)`
 `;
 
 export const FooterInnerRow = styled(Row)`
-  ${(props) => props.expand
-    && `
+  ${(props) =>
+    props.expand &&
+    `
     max-width: ${theme.layout.col12.wrapper};
   `}
 `;
@@ -104,11 +105,5 @@ export const LanguageCol = styled(Col)`
 
   ${mediaMin.s`
       margin-top: 0;
-      margin-left: auto;
   `};
-`;
-
-export const LanguageWrapper = styled.div`
-  position: relative;
-  margin-left: auto;
 `;
