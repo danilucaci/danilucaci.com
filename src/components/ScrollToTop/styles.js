@@ -11,6 +11,7 @@ export const StyledScrollToTop = styled.a`
   bottom: ${rem(24)};
   right: ${rem(16)};
   display: block;
+  z-index: 1000;
 
   /* iPhone X */
   @supports (padding: max(0px)) {
