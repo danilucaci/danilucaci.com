@@ -23,10 +23,10 @@ export const SiteHeaderRow = styled(Row)`
 export const StyledSiteNav = styled(Col)`
   position: relative;
 
-  padding: ${rem(12)} 0;
+  padding: ${rem(16)} 0 ${rem(8)} 0;
 
   ${mediaMin.s`
-    padding: ${rem(16)} 0;
+    padding: ${rem(8)} 0;
     display: flex;
     justify-content: space-between;
     align-items: center;

@@ -1,162 +1,172 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Icon } from "../Icon/Icon";
 import { theme, rem, mediaMin } from "../../theme/theme";
 
-export const StyledFooterLanguageSelector = styled.div`
-  display: inline-block;
+import { MenuList, MenuButton } from "@reach/menu-button";
 
-  border: ${theme.size.border.button.default} solid
-    ${theme.color.border.outlined.enabled};
+export const StyledMenuButton = styled(MenuButton)`
+  display: flex;
+  justify-content: space-between;
+
+  background-color: ${theme.color.background.outlined.enabled};
+  border: ${theme.size.border.button.default}
+    ${theme.color.border.outlined.enabled} solid;
+  border-radius: ${theme.borderRadius.button};
+  color: ${theme.color.text.button.outlined.enabled} !important;
 
   position: relative;
-  border-radius: ${theme.borderRadius.button};
-  background-color: white;
-
   padding: ${theme.spacing.button.default.vertical};
-
   width: 100%;
 
+  font-size: ${theme.font.size.button.default};
+  line-height: ${theme.font.lineHeight.button.default};
+  font-style: normal;
+  font-weight: 700;
+
   .fonts-loaded & {
-    font-family: ${theme.font.family.display.boldRegular};
+    font-family: ${theme.font.family.body.bold};
   }
 
-  font-size: ${theme.font.size.body.s};
-  line-height: ${theme.font.lineHeight.body.s};
+  padding: ${theme.spacing.button.default.vertical} ${rem(8)};
+  height: ${theme.size.button.height.default};
 
-  &:hover > ul,
-  &:active > ul {
-    opacity: 1;
-    transform: scale(1);
+  white-space: nowrap;
+
+  &:hover {
+    cursor: pointer;
+    background-color: ${theme.color.background.outlined.hover};
+    border: ${theme.size.border.button.default}
+      ${theme.color.border.outlined.hover} solid;
+    box-shadow: ${theme.shadow.button.outlined.hover};
+  }
+
+  &:focus {
+    cursor: pointer;
+    background-color: ${theme.color.background.outlined.focus};
+    box-shadow: ${theme.shadow.button.outlined.focus};
+    border: ${theme.size.border.button.focus}
+      ${theme.color.border.outlined.focus} solid;
+    outline: none;
+  }
+
+  &:active {
+    cursor: pointer;
+    background-color: ${theme.color.background.outlined.active};
+    border: ${theme.size.border.button.default}
+      ${theme.color.border.outlined.active} solid;
+    outline: none;
+    box-shadow: none;
   }
 `;
 
-export const StyledLanguageDropdown = styled.ul`
-  background-color: ${theme.colors.grey00};
-  border: 1px solid ${theme.colors.grey400};
+export const SlideDown = keyframes`
+0% {
+  opacity: 0;
+  transform: translateY(8px);
+}
+100% {
+  opacity: 1;
+  transform: translateY(0);
+}
+`;
+
+export const StyledMenuList = styled(MenuList)`
+  background-color: white;
+  border: 1px solid ${theme.color.border.default};
   border-radius: ${theme.borderRadius.default};
   box-shadow: ${theme.shadow.dropdown};
 
   display: block;
+  animation: ${SlideDown} 200ms ease;
+  padding: ${rem(8)} 0 !important;
+
+  position: absolute;
+  bottom: ${rem(40)};
+  right: 0;
 
   width: ${rem(220)};
 
-  ${mediaMin.s`
-    width: ${rem(172)};  
-  `};
+  &:hover,
+  &:focus,
+  &:active {
+    cursor: pointer;
+    outline: none;
+  }
 
-  opacity: 0;
-  transform: scale(0);
-  transition: transform, visibility, opacity 0.2s ease;
-  will-change: transform;
+  [data-reach-menu-item][data-selected] {
+    background-color: ${theme.color.background.languageSelector.enabled};
+  }
 
-  position: absolute;
-  bottom: ${rem(32)};
-  right: -2px;
+  & .reach__menu__link {
+    display: block;
+    position: relative;
 
-  padding: ${rem(8)} 0;
-`;
+    .fonts-loaded & {
+      font-family: ${theme.font.family.display.boldRegular};
+    }
 
-export const LanguageDropdownLabel = styled.span`
-  display: inline-block;
-  vertical-align: bottom;
-  margin-left: ${rem(8)};
-  margin-right: ${rem(24)};
+    padding: ${rem(8)} ${rem(4)};
+    width: 100%;
+    color: ${theme.color.text.default};
+    text-align: center;
+    font-size: ${theme.font.size.body.s};
+    line-height: ${theme.font.lineHeight.body.s};
+
+    &:hover {
+      color: ${theme.color.text.default};
+      cursor: pointer;
+      background-color: ${theme.color.background.languageSelector.hover};
+      outline: 1px ${theme.color.border.default} solid;
+    }
+
+    &:focus {
+      color: ${theme.color.text.default};
+      cursor: pointer;
+      background-color: ${theme.color.background.languageSelector.hover};
+      outline: 2px ${theme.color.border.default} solid;
+    }
+
+    &:active {
+      color: ${theme.color.text.default};
+      cursor: pointer;
+      background-color: ${theme.color.background.languageSelector.hover};
+      outline: 2px ${theme.color.border.default} solid;
+    }
+  }
 `;
 
 export const CurrentLanguageIcon = styled(Icon)`
   display: inline-block;
   vertical-align: middle;
-  fill: ${theme.colors.primary600};
+  fill: ${theme.color.icon.primary};
   position: absolute;
-  left: ${rem(56)};
+  left: ${rem(48)};
   top: ${rem(8)};
+`;
 
-  ${mediaMin.s`
-    left: ${rem(32)};
-  `};
+export const ButtonLabel = styled.span`
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: ${rem(8)};
+  padding-right: ${rem(24)};
+  margin-right: auto;
 `;
 
 export const WorldIcon = styled(Icon)`
   display: inline-block;
-  vertical-align: bottom;
+  vertical-align: middle;
 `;
 
 export const DropdownIcon = styled(Icon)`
   display: inline-block;
-  vertical-align: bottom;
-  position: absolute;
-  right: ${rem(12)};
-  top: ${rem(8)};
-`;
+  vertical-align: middle;
+  margin-left: auto;
+  transition: transform 200ms ease;
+  transform: rotate(0deg);
 
-export const CurrentLanguageSelector = styled.li`
-  background-color: ${theme.colors.grey200};
-  display: block;
-  white-space: nowrap;
-  position: relative;
-
-  &:hover {
-    background-color: ${theme.colors.grey100};
-  }
-
-  .fonts-loaded & {
-    font-family: ${theme.font.family.display.boldRegular};
-  }
-
-  & a {
-    padding: ${rem(8)} ${rem(4)};
-    width: 100%;
-    color: ${theme.colors.primary600};
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
-    font-size: ${theme.font.size.body.s};
-    line-height: ${theme.font.lineHeight.body.s};
-
-    &:hover {
-      background-color: transparent;
-    }
-
-    &:focus,
-    &:active {
-      background-color: ${theme.colors.grey100};
-      box-shadow: none !important;
-      outline: none !important;
-    }
-  }
-`;
-
-export const LanguageSelectorItem = styled.li`
-  display: block;
-  white-space: nowrap;
-
-  &:hover {
-    background-color: ${theme.colors.grey100};
-  }
-
-  .fonts-loaded & {
-    font-family: ${theme.font.family.display.boldRegular};
-  }
-
-  & a {
-    padding: ${rem(8)} ${rem(4)};
-    width: 100%;
-    color: ${theme.colors.grey700};
-    text-decoration: none;
-    text-align: center;
-    display: inline-block;
-    font-size: ${theme.font.size.body.s};
-    line-height: ${theme.font.lineHeight.body.s};
-
-    &:hover {
-      background-color: transparent;
-    }
-
-    &:focus,
-    &:active {
-      background-color: ${theme.colors.grey100};
-      box-shadow: none !important;
-      outline: none !important;
-    }
-  }
+  ${({ isOpen }) =>
+    isOpen &&
+    `
+    transform: rotate(180deg);
+  `}
 `;

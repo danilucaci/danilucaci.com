@@ -5,12 +5,14 @@ import { theme, rem, mediaMin } from "../../../theme/theme";
 export const StyledSiteNavListItem = styled.li`
   display: inline-block;
 
+  padding: ${rem(8)} 0;
+
   text-decoration: none;
   list-style-type: none;
   text-align: center;
   font-weight: 400;
   font-size: ${theme.font.size.body.s};
-  line-height: ${theme.font.size.body.s};
+  line-height: ${theme.font.lineHeight.body.s};
 
   .fonts-loaded & {
     font-family: ${theme.font.family.body.regular};
@@ -27,11 +29,13 @@ export const StyledSiteNavListItem = styled.li`
   `};
 
   & > a {
-    color: ${theme.colors.grey900};
+    color: ${theme.color.text.default};
+
+    padding: ${rem(8)} 0;
 
     font-weight: 400;
     font-size: ${theme.font.size.body.s};
-    line-height: ${theme.font.size.body.s};
+    line-height: ${theme.font.lineHeight.body.s};
     text-decoration: none;
 
     .fonts-loaded & {
@@ -40,17 +44,17 @@ export const StyledSiteNavListItem = styled.li`
 
     &:visited,
     &:link {
-      color: ${theme.colors.grey900};
+      color: ${theme.color.text.default};
     }
 
     &:hover {
       background-color: transparent;
-      color: ${theme.colors.primary600};
+      color: ${theme.color.text.primary};
       cursor: pointer;
     }
 
     &.current-nav-item {
-      color: ${theme.colors.grey900};
+      color: ${theme.color.text.default};
       font-weight: 700;
 
       .fonts-loaded & {
@@ -59,7 +63,7 @@ export const StyledSiteNavListItem = styled.li`
 
       &:hover {
         background-color: transparent;
-        color: ${theme.colors.primary600};
+        color: ${theme.color.text.primary};
       }
     }
   }

@@ -136,6 +136,11 @@ export const theme = {
         focus: COLORS.grey50,
         disabled: COLORS.grey500,
       },
+      languageSelector: {
+        enabled: COLORS.grey00,
+        hover: COLORS.grey50,
+        active: COLORS.grey50,
+      },
       disabled: {
         default: COLORS.grey500,
       },
@@ -202,6 +207,7 @@ export const theme = {
       error: COLORS.danger800,
       success: COLORS.success600,
       light: COLORS.grey00,
+      primary: COLORS.primary600,
     },
     divider: {
       onWhite: COLORS.grey200,

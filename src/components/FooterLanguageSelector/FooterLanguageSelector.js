@@ -2,16 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
 import { Link } from "gatsby";
+import { Menu, MenuLink } from "@reach/menu-button";
+import "@reach/menu-button/styles.css";
+
+import AriaText from "../AriaText/AriaText";
 
 import {
-  StyledFooterLanguageSelector,
-  StyledLanguageDropdown,
-  LanguageDropdownLabel,
-  CurrentLanguageIcon,
+  StyledMenuButton,
   WorldIcon,
   DropdownIcon,
-  CurrentLanguageSelector,
-  LanguageSelectorItem,
+  StyledMenuList,
+  ButtonLabel,
+  CurrentLanguageIcon,
 } from "./styles";
 
 const FooterLanguageSelector = ({
@@ -20,60 +22,61 @@ const FooterLanguageSelector = ({
   currentPath,
 }) => {
   const englishLanguagePicker = () => (
-    <>
-      <CurrentLanguageSelector>
-        <CurrentLanguageIcon arriaHidden="true">
+    <StyledMenuList>
+      <MenuLink as={Link} to={currentPath} className="reach__menu__link ">
+        <CurrentLanguageIcon aria-hidden="true">
           <use xlinkHref="#check" />
         </CurrentLanguageIcon>
-        <Link to={currentPath}>
-          <span className="sr-only">change the page language to</span>
-          English
-        </Link>
-      </CurrentLanguageSelector>
-      <LanguageSelectorItem>
-        <Link to={twinPostURL}>
-          <span className="sr-only">cambiar el idioma de la página al</span>
-          Español
-        </Link>
-      </LanguageSelectorItem>
-    </>
+        <AriaText>Change the page language to</AriaText>
+        English
+      </MenuLink>
+      <MenuLink as={Link} to={twinPostURL} className="reach__menu__link">
+        <AriaText>Cambiar el idioma de la página al</AriaText>
+        Español
+      </MenuLink>
+    </StyledMenuList>
   );
 
   const spanishLanguagePicker = () => (
-    <>
-      <LanguageSelectorItem>
-        <Link to={twinPostURL}>
-          <span className="sr-only">change the page language to</span>
-          English
-        </Link>
-      </LanguageSelectorItem>
-      <CurrentLanguageSelector>
-        <CurrentLanguageIcon arriaHidden="true">
+    <StyledMenuList>
+      <MenuLink as={Link} to={twinPostURL} className="reach__menu__link">
+        <AriaText>Change the page language to</AriaText>
+        English
+      </MenuLink>
+      <MenuLink as={Link} to={currentPath} className="reach__menu__link">
+        <CurrentLanguageIcon aria-hidden="true">
           <use xlinkHref="#check" />
         </CurrentLanguageIcon>
-        <Link to={currentPath}>
-          <span className="sr-only">cambiar el idioma de la página al</span>
-          Español
-        </Link>
-      </CurrentLanguageSelector>
-    </>
+        <AriaText>Cambiar el idioma de la página al</AriaText>
+        Español
+      </MenuLink>
+    </StyledMenuList>
   );
 
   return (
-    <StyledFooterLanguageSelector>
-      <WorldIcon arriaHidden="true">
-        {locale === "en" ? <use xlinkHref="#en" /> : <use xlinkHref="#es" />}
-      </WorldIcon>
-      <FormattedMessage id="change.language.toggle.footer">
-        {(txt) => <LanguageDropdownLabel>{txt}</LanguageDropdownLabel>}
-      </FormattedMessage>
-      <DropdownIcon arriaHidden="true">
-        <use xlinkHref="#dropdown" />
-      </DropdownIcon>
-      <StyledLanguageDropdown>
-        {locale === "en" ? englishLanguagePicker() : spanishLanguagePicker()}
-      </StyledLanguageDropdown>
-    </StyledFooterLanguageSelector>
+    <Menu>
+      {({ isOpen }) => (
+        <>
+          <StyledMenuButton aria-labelledby="language-selector-button-label">
+            <WorldIcon aria-hidden="true">
+              <use xlinkHref={locale === "en" ? "#en" : "#es"} />
+            </WorldIcon>
+            <FormattedMessage id="change.language.button.aria.label">
+              {(txt) => (
+                <AriaText id="language-selector-button-label">{txt}</AriaText>
+              )}
+            </FormattedMessage>
+            <FormattedMessage id="change.language.toggle.footer">
+              {(txt) => <ButtonLabel>{txt}</ButtonLabel>}
+            </FormattedMessage>
+            <DropdownIcon aria-hidden="true" isOpen={isOpen}>
+              <use xlinkHref="#dropdown" />
+            </DropdownIcon>
+          </StyledMenuButton>
+          {locale === "en" ? englishLanguagePicker() : spanishLanguagePicker()}
+        </>
+      )}
+    </Menu>
   );
 };
 
