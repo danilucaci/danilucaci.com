@@ -4,6 +4,16 @@ import { Field } from "formik";
 
 // This will remove any non-standard html props from the field
 // valid=true or error=true will not be rendered on the final dom node
+
+/**
+ * This also works
+ * 
+    const StyledLink= styled(({ primary, ...props }) => <Link {...props} />)`
+    color: ${props => props.primary ? themeColors.primary : 'red'};
+  `
+ * 
+ */
+
 const FilteredPropsInputField = ({ className, valid, error, ...props }) => (
   <Field className={className} {...props} />
 );
