@@ -116,28 +116,12 @@ function ContactForm({ locale }) {
           isValidating,
           isValid,
         }) => (
-          <StyledForm
-            name="contact"
-            method="post"
-            action={localePaths[locale].thanks}
-            data-netlify="true"
-            data-netlify-honeypot="botfield"
-            onSubmit={handleSubmit}
-          >
-            {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
-            {/* These have to be input types, otherwise they don't show in the form atributes */}
-            <input
-              type="hidden"
-              name="form-name"
-              aria-hidden="true"
-              value="contact"
-            />
+          <StyledForm name="contact" method="post" onSubmit={handleSubmit}>
             <Field
               style={{ display: "none" }}
               aria-hidden="true"
               name="botfield"
             />
-
             <StyledLabel labelType="fullname">
               <StyledInput
                 type="text"
