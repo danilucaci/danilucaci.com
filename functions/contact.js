@@ -57,25 +57,42 @@ exports.handler = async (event) => {
 
   const sendFrom = locale === "en" ? EMAIL_FROM_EN : EMAIL_FROM_ES;
 
-  const origin = new URL(event.headers.origin);
-  const isValidHostname =    origin.hostname === "localhost" || origin.hostname === "www.danilucaci.com";
-
-  let allowOrigin = "*";
-
-  if (origin.hostname === "www.danilucaci.com") {
-    allowOrigin = "https://www.danilucaci.com";
-  }
+  let allowedOrigin = "https://www.danilucaci.com";
 
   const headers = {
-    "Access-Control-Allow-Origin": allowOrigin,
+    "Access-Control-Allow-Origin": allowedOrigin,
     "Access-Control-Allow-Methods": "GET, POST",
     "Access-Control-Allow-Headers": "Content-Type",
   };
 
-  if (!isValidHostname) {
+  try {
+    const origin = new URL(event.headers.origin);
+
+    if (origin.hostname === "localhost" || origin.hostname === "192.168.1.14") {
+      allowedOrigin = origin.hostname;
+    }
+
+    const allowedHostnames = [
+      "localhost",
+      "192.168.1.14",
+      "www.danilucaci.com",
+    ];
+
+    const isValidHostname = allowedHostnames.includes(origin.hostname);
+
+    if (isValidHostname === false) {
+      console.error(`Invalid hostname. ${origin.hostname}`);
+      return {
+        statusCode: 403,
+        body: `Invalid hostname. ${origin.hostname}`,
+        headers,
+      };
+    }
+  } catch (error) {
+    console.error("Invalid origin: ", error.message);
     return {
       statusCode: 403,
-      body: `Hostname Validation Error in Contact Function. ${origin.hostname}`,
+      body: `Invalid origin.`,
       headers,
     };
   }
@@ -108,7 +125,7 @@ exports.handler = async (event) => {
     console.error("Legal Stuff Happened: ", error.message);
     return {
       statusCode: 451,
-      body: error.message,
+      body: `Legal notice and privacy policy were not accepted`,
       headers,
     };
   }
@@ -132,7 +149,7 @@ exports.handler = async (event) => {
     console.error("Validation error: ", error.message);
     return {
       statusCode: 500,
-      body: error.message,
+      body: `Input validation failed: ${error.message}`,
       headers,
     };
   }
