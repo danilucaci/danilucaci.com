@@ -51,7 +51,7 @@ const LanguageSelector = ({ locale = "en", twinPostURL, currentPath }) => {
   );
 
   return (
-    <MenuWrapper>
+    <MenuWrapper data-testid="Sitenav__Language__Selector">
       <Menu>
         {({ isOpen }) => (
           <>

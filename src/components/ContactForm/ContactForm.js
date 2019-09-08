@@ -151,7 +151,9 @@ function ContactForm({ locale }) {
               />
             </StyledLabel>
             {errors.fullname && touched.fullname && (
-              <InlineErrorMessage>{errors.fullname}</InlineErrorMessage>
+              <InlineErrorMessage testid="Fullname__ErrorMessage">
+                {errors.fullname}
+              </InlineErrorMessage>
             )}
 
             <StyledLabel labelType="email">
@@ -168,7 +170,9 @@ function ContactForm({ locale }) {
             </StyledLabel>
             <ErrorMessage name="email">
               {(errorMessage) => (
-                <InlineErrorMessage>{errorMessage}</InlineErrorMessage>
+                <InlineErrorMessage testid="Email__ErrorMessage">
+                  {errorMessage}
+                </InlineErrorMessage>
               )}
             </ErrorMessage>
 
@@ -185,7 +189,9 @@ function ContactForm({ locale }) {
             </StyledLabel>
             <ErrorMessage name="message">
               {(errorMessage) => (
-                <InlineErrorMessage>{errorMessage}</InlineErrorMessage>
+                <InlineErrorMessage testid="Message__ErrorMessage">
+                  {errorMessage}
+                </InlineErrorMessage>
               )}
             </ErrorMessage>
 
@@ -196,7 +202,9 @@ function ContactForm({ locale }) {
             />
             <ErrorMessage name="acceptsconsentcheckbox">
               {(errorMessage) => (
-                <InlineErrorMessage>{errorMessage}</InlineErrorMessage>
+                <InlineErrorMessage testid="Checkbox__ErrorMessage">
+                  {errorMessage}
+                </InlineErrorMessage>
               )}
             </ErrorMessage>
 

@@ -1,18 +1,23 @@
 import React from "react";
-import { node } from "prop-types";
+import { node, string } from "prop-types";
 
 import { MessageWrapper, MessageCopy } from "./styles";
 
-function InlineErrorMessage({ children }) {
+function InlineErrorMessage({ children, testid }) {
   return (
     <MessageWrapper>
-      <MessageCopy>{children}</MessageCopy>
+      <MessageCopy data-testid={testid}>{children}</MessageCopy>
     </MessageWrapper>
   );
 }
 
 InlineErrorMessage.propTypes = {
   children: node.isRequired,
+  testid: string,
+};
+
+InlineErrorMessage.defaultProps = {
+  testid: null,
 };
 
 export default InlineErrorMessage;
