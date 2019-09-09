@@ -41,16 +41,20 @@ function Video(props) {
     throw new Error("Video not found");
   }
   const foundWebMSrc = videos.edges.find(
-    (video) => video.node.relativePath === webmSrc && video.node.extension === "webm",
+    (video) =>
+      video.node.relativePath === webmSrc && video.node.extension === "webm",
   );
   const foundMp4Src = videos.edges.find(
-    (video) => video.node.relativePath === mp4Src && video.node.extension === "mp4",
+    (video) =>
+      video.node.relativePath === mp4Src && video.node.extension === "mp4",
   );
   const foundGifSrc = videos.edges.find(
-    (video) => video.node.relativePath === gifSrc && video.node.extension === "gif",
+    (video) =>
+      video.node.relativePath === gifSrc && video.node.extension === "gif",
   );
   const foundPosterSrc = videos.edges.find(
-    (video) => video.node.relativePath === posterSrc && video.node.extension === "png",
+    (video) =>
+      video.node.relativePath === posterSrc && video.node.extension === "png",
   );
 
   // console.groupCollapsed("Video Lazy Loaded");
@@ -67,7 +71,6 @@ function Video(props) {
       <VideoIphoneXWrapper>
         <VideoIphoneXInner ref={ref}>
           <StyledVideo
-            autoPlay
             loop
             muted
             playsInline
