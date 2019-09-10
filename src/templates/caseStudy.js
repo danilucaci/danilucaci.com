@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { shape, oneOfType, string, object } from "prop-types";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
@@ -21,8 +21,6 @@ import {
 } from "../styles/caseStudy.styles";
 
 function CaseStudy({ data, pageContext, location }) {
-  const [didLoad, setDidLoad] = useState(false);
-
   const postNode = data.mdx;
   const postInfo = postNode.frontmatter;
   const pageImage = postInfo.pageImage.childImageSharp.fluid;
@@ -66,13 +64,12 @@ function CaseStudy({ data, pageContext, location }) {
                   <CaseStudyDescription>
                     {postInfo.snippet}
                   </CaseStudyDescription>
-                  <CaseStudyImgWrapper didLoad={didLoad}>
+                  <CaseStudyImgWrapper>
                     <Img
                       title={postInfo.title}
                       alt={postInfo.snippet}
                       fluid={pageImage}
                       fadeIn
-                      onLoad={() => setDidLoad(true)}
                     />
                   </CaseStudyImgWrapper>
                 </Col>

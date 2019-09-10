@@ -10,35 +10,32 @@ import {
   StyledH3,
   Tag,
   TagsWrapper,
-  ContinueLink
+  ContinueLink,
 } from "./styles";
 
 import { Copy } from "../Copy/Copy";
 
 function CaseStudyCard(props) {
-  const [didLoad, setDidLoad] = React.useState(false);
-
   return (
     <StyledCaseStudyCard>
-      <CaseStudyImgWrapper didLoad={didLoad}>
+      <CaseStudyImgWrapper>
         <Img
           title={props.title}
           alt={props.snippet}
           fluid={props.cardImage}
           fadeIn
-          onLoad={() => setDidLoad(true)}
         />
       </CaseStudyImgWrapper>
       <CaseStudyCardContents>
         <TagsWrapper>
-          {props.tagsInCaseStudy.map(tag => (
+          {props.tagsInCaseStudy.map((tag) => (
             <Tag key={tag}>{tag}</Tag>
           ))}
         </TagsWrapper>
         <StyledH3>{props.title}</StyledH3>
         <Copy>{props.snippet}</Copy>
         <FormattedMessage id="article.link.continue">
-          {txt => <ContinueLink to={props.slug}>{txt}</ContinueLink>}
+          {(txt) => <ContinueLink to={props.slug}>{txt}</ContinueLink>}
         </FormattedMessage>
       </CaseStudyCardContents>
     </StyledCaseStudyCard>
@@ -56,8 +53,8 @@ CaseStudyCard.propTypes = {
     src: string.isRequired,
     srcWebp: string.isRequired,
     srcSet: string.isRequired,
-    srcSetWebp: string.isRequired
-  }).isRequired
+    srcSetWebp: string.isRequired,
+  }).isRequired,
 };
 
 export default CaseStudyCard;

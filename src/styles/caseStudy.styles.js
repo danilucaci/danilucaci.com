@@ -127,18 +127,6 @@ export const CaseStudyDescription = styled(Copy)`
   `};
 `;
 
-export const placeholderAnimation = keyframes`
-0% {
-  background-position: 0% 50%;
- }
- 50% {
-  background-position: 100% 50%;
- }
- 100% {
-  background-position: 0% 50%;
- }
- `;
-
 export const CaseStudyImgWrapper = styled.div`
   display: block;
   max-width: ${theme.layout.col8.inner};
@@ -150,28 +138,6 @@ export const CaseStudyImgWrapper = styled.div`
   ${mediaMin.m`
     margin-top: ${rem(40)};
   `};
-
-  .gatsby-image-wrapper {
-    background-color: ${theme.colors.grey300};
-    background: linear-gradient(
-      90deg,
-      ${theme.colors.grey200},
-      ${theme.colors.grey500},
-      ${theme.colors.grey200}
-    );
-
-    background-size: 200% 200%;
-
-    animation: ${placeholderAnimation} 3s ease infinite;
-  }
-
-  ${({ didLoad }) => didLoad
-    && css`
-      .gatsby-image-wrapper {
-        background: transparent;
-        animation: none;
-      }
-    `}
 `;
 
 export const OverviewRow = styled(Row)`

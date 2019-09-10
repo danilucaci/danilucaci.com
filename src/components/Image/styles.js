@@ -1,35 +1,10 @@
-import styled, { css, keyframes } from "styled-components";
+import styled, { css } from "styled-components";
 import { theme, rem, mediaMin } from "../../theme/theme";
-
-export const placeholderAnimation = keyframes`
-0% {
-  background-position: 0% 50%;
- }
- 50% {
-  background-position: 100% 50%;
- }
- 100% {
-  background-position: 0% 50%;
- }
- `;
 
 export const Figure = styled.figure`
   & img,
   & .gatsby-image-wrapper {
     box-shadow: ${theme.shadow.image} !important;
-  }
-
-  .gatsby-image-wrapper {
-    background: linear-gradient(
-      90deg,
-      ${theme.colors.grey200},
-      ${theme.colors.grey500},
-      ${theme.colors.grey200}
-    );
-
-    background-size: 200% 200%;
-
-    animation: ${placeholderAnimation} 3s ease infinite;
   }
 
   ${({ noShadow }) =>
@@ -41,15 +16,6 @@ export const Figure = styled.figure`
       }
  `}
 
-  ${({ didLoad }) =>
-    didLoad &&
-    `
-    .gatsby-image-wrapper {
-      background: transparent;
-      animation: none;
-    }
- `}
- 
   ${({ expand }) =>
     expand &&
     css`
@@ -64,7 +30,7 @@ export const Figure = styled.figure`
 export const FigCaption = styled.figcaption`
   font-size: ${theme.font.size.body.s};
   line-height: ${theme.font.lineHeight.body.s};
-  color: ${theme.colors.grey700};
+  color: ${theme.color.text.subdued};
   margin-top: ${rem(16)};
 
   font-weight: 400;

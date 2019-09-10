@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { string, bool } from "prop-types";
 import Img from "gatsby-image";
 
@@ -7,20 +7,14 @@ import useImage from "../../hooks/useImage";
 
 const Image = ({ src, caption, expand, noShadow }) => {
   const foundImage = useImage(src);
-  const [didLoad, setDidLoad] = useState(false);
 
   if (!foundImage) {
     throw new Error("Image not found: ", src);
   }
 
   return (
-    <Figure expand={expand} didLoad={didLoad} noShadow={noShadow}>
-      <Img
-        fluid={foundImage.node.childImageSharp.fluid}
-        alt={caption}
-        fadeIn
-        onLoad={() => setDidLoad(true)}
-      />
+    <Figure expand={expand} noShadow={noShadow}>
+      <Img fluid={foundImage.node.childImageSharp.fluid} alt={caption} fadeIn />
       <FigCaption>{caption}</FigCaption>
     </Figure>
   );

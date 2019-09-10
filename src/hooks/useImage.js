@@ -3,7 +3,9 @@ import { string } from "prop-types";
 
 function useImage(src) {
   const { images } = useStaticQuery(SINGLE_IMAGE_QUERY);
-  const foundImage = images.edges.find((image) => image.node.relativePath === src);
+  const foundImage = images.edges.find(
+    (image) => image.node.relativePath === src,
+  );
 
   if (!foundImage) {
     throw new Error("Image not found: ", src);

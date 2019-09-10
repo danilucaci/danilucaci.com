@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { Link } from "gatsby";
 
 import { theme, mediaMin, rem } from "../../theme/theme";
@@ -25,42 +25,7 @@ export const StyledCaseStudyCard = styled.article`
   }
 `;
 
-export const placeholderAnimation = keyframes`
-0% {
-  background-position: 0% 50%;
- }
- 50% {
-  background-position: 100% 50%;
- }
- 100% {
-  background-position: 0% 50%;
- }
- `;
-
 export const CaseStudyImgWrapper = styled.div`
-  .gatsby-image-wrapper {
-    background-color: ${theme.colors.grey300};
-    background: linear-gradient(
-      90deg,
-      ${theme.colors.grey100},
-      ${theme.colors.grey400},
-      ${theme.colors.grey100}
-    );
-
-    background-size: 200% 200%;
-
-    animation: ${placeholderAnimation} 3s ease infinite;
-  }
-
-  ${({ didLoad }) =>
-    didLoad &&
-    `
-    .gatsby-image-wrapper {
-      background: transparent;
-      animation: none;
-    }
- `}
-
   ${mediaMin.xl`
     max-width: calc(60% - ${rem(24)});
     margin-left: ${rem(24)};
@@ -91,7 +56,7 @@ export const CaseStudyCardContents = styled.div`
 `;
 
 export const Tag = styled.p`
-  color: ${theme.colors.grey700};
+  color: ${theme.color.text.subdued};
   font-size: ${theme.font.size.body.s};
   line-height: ${theme.font.lineHeight.body.s};
   letter-spacing: ${theme.font.letterSpacing.body.subhead};
