@@ -212,9 +212,9 @@ const Index = ({ data, pageContext, location }) => {
 
           <CaseStudies edges={edges} header="h2" spaced />
 
-          <DribbblePosts locale={locale} />
-          <ContactCard locale={locale} />
+          <DribbblePosts />
         </Main>
+        <ContactCard locale={locale} />
       </Layout>
     </ErrorBoundary>
   );

@@ -1,12 +1,12 @@
 import React from "react";
-import { bool, arrayOf, object } from "prop-types";
+import { bool, string, arrayOf, object } from "prop-types";
 import { FormattedMessage } from "react-intl";
 
 import CaseStudyCard from "../CaseStudyCard/CaseStudyCard";
 import { Col, Row } from "../Grid/Grid";
 import { Title } from "./styles";
 
-const CaseStudies = ({ edges, spaced }) => {
+const CaseStudies = ({ edges, spaced, header }) => {
   let caseStudies = edges.map((edge) => ({
     slug: edge.node.fields.slug,
     tagsInCaseStudy: edge.node.frontmatter.tags,

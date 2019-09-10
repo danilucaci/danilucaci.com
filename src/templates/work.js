@@ -70,9 +70,8 @@ function WorkPage({ pageContext, location }) {
           )}
 
           <DribbblePosts locale={locale} />
-
-          <ContactCard locale={locale} />
         </Main>
+        <ContactCard locale={locale} />
       </Layout>
     </ErrorBoundary>
   );
