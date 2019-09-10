@@ -16,15 +16,26 @@ export const Title = styled.h1`
 `;
 
 export const ErrorMessageWrapper = styled.div`
-  background-color: ${theme.color.background.error};
+  background-color: ${({ polite }) =>
+    polite
+      ? theme.color.background.section.lightest
+      : theme.color.background.error};
+
   display: block;
   padding: ${rem(16)} ${rem(16)};
-  border-left: ${rem(4)} solid ${theme.color.border.error};
+  
+  ${({ polite }) =>
+    polite
+      ? `border-left: ${rem(4)} solid ${theme.color.border.dark};`
+      : `border-left: ${rem(4)} solid ${theme.color.border.error};`}
+
   margin-bottom: ${rem(32)};
 `;
 
 export const ErrorMessage = styled.p`
   color: ${theme.color.text.validation.error};
+  color: ${({ polite }) =>
+    polite ? theme.color.text.default : theme.color.text.validation.error};
 
   .fonts-loaded & {
     font-family: ${theme.font.family.body.regular};

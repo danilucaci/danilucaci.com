@@ -54,6 +54,14 @@ function DribbblePosts() {
             </FormattedMessage>
           </ErrorMessageWrapper>
         )}
+
+        <noscript>
+          <ErrorMessageWrapper polite>
+            <FormattedMessage id="dribbble.status.no.js">
+              {(txt) => <ErrorMessage polite>{txt}</ErrorMessage>}
+            </FormattedMessage>
+          </ErrorMessageWrapper>
+        </noscript>
       </Col>
 
       {isLoading &&
@@ -106,5 +114,3 @@ function DribbblePosts() {
 }
 
 export default DribbblePosts;
-
-DribbblePosts.propTypes = {};

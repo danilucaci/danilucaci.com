@@ -33,6 +33,7 @@
   "dribbble.load.more": "Load more",
   "dribbble.no.more": "No more posts available",
   "dribbble.status.error": "Something went wrong... The projects from Dribbble couldn‘t be loaded 😔",
+  "dribbble.status.no.js": "Sorry, these projects can’t be loaded if you have javacript disabled in your browser.",
   "case.studies.header": "Case Studies",
   "cookie.message": "danilucaci.com uses cookies to help improve the performance and experience on the website.",
   "cookie.learn.more": "Learn more.",

@@ -57,6 +57,7 @@
   "dribbble.load.more": "Cargar más",
   "dribbble.no.more": "No hay más trabajos disponibles",
   "dribbble.status.error": "Algo ha salido mal... Los proyectos de Dribbble no se han podido cargar 😔",
+  "dribbble.status.no.js": "Lo siento, estos proyectos no se pueden cargar si tienes javascript desactivado en tu navegador.",
   "external.link.sr.only": "Abre en nueva ventana",
   "form.label.email": "Dirección de email *",
   "form.label.fullname": "Nombre completo *",
