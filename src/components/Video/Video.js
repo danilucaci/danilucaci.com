@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { string, bool } from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
@@ -12,29 +12,27 @@ import {
   VideoIphoneXInner,
 } from "./styles";
 
-function Video(props) {
-  const {
-    caption,
-    expand,
-    webmSrc,
-    mp4Src,
-    gifSrc,
-    gifAlt,
-    gifBrowserSupport,
-    posterSrc,
-  } = props;
-
+function Video({
+  caption,
+  expand,
+  webmSrc,
+  mp4Src,
+  gifSrc,
+  gifAlt,
+  gifBrowserSupport,
+  posterSrc,
+}) {
   const [ref, inView] = useInView({
     threshold: 0,
     rootMargin: "64px",
     triggerOnce: true,
   });
 
-  const [hasLoaded, setHasLoaded] = React.useState(false);
+  const [jsLoaded, setJSLoaded] = useState(false);
 
-  React.useEffect(() => {
-    setHasLoaded(true);
-  }, [hasLoaded]);
+  useEffect(() => {
+    setJSLoaded(true);
+  }, [jsLoaded]);
 
   const { videos } = useStaticQuery(ALL_VIDEOS_QUERY);
   if (!videos) {
@@ -70,55 +68,69 @@ function Video(props) {
     <Figure expand={expand}>
       <VideoIphoneXWrapper>
         <VideoIphoneXInner ref={ref}>
-          <StyledVideo
-            loop
-            muted
-            playsInline
-            controls
-            poster={foundPosterSrc.node.publicURL || ""}
-            inView={inView}
-            hasLoaded={hasLoaded}
-          >
-            {inView && (
-              <>
-                {foundWebMSrc && (
-                  <source src={foundWebMSrc.node.publicURL} type="video/webm" />
-                )}
-                {foundMp4Src && (
-                  <source src={foundMp4Src.node.publicURL} type="video/mp4" />
-                )}
-                {foundGifSrc && (
-                  <>
-                    <p>{gifBrowserSupport}</p>
-                    <a href={foundGifSrc.node.publicURL} alt={gifAlt}>
-                      {gifAlt}
-                    </a>
-                  </>
-                )}
-              </>
-            )}
-            <noscript>
-              <>
-                {foundWebMSrc && (
-                  <source src={foundWebMSrc.node.publicURL} type="video/webm" />
-                )}
-                {foundMp4Src && (
-                  <source src={foundMp4Src.node.publicURL} type="video/mp4" />
-                )}
-                {foundGifSrc && (
-                  <>
-                    <p>{gifBrowserSupport}</p>
-                    <a href={foundGifSrc.node.publicURL} alt={gifAlt}>
-                      {gifAlt}
-                    </a>
-                  </>
-                )}
-                <FormattedMessage id="js.disabled">
-                  {(txt) => <p>{txt}</p>}
-                </FormattedMessage>
-              </>
-            </noscript>
-          </StyledVideo>
+          {jsLoaded && (
+            <StyledVideo
+              loop
+              muted
+              playsInline
+              controls
+              preload="none"
+              poster={foundPosterSrc.node.publicURL || ""}
+              inView={inView}
+              jsLoaded={jsLoaded}
+            >
+              {inView && (
+                <>
+                  {foundWebMSrc && (
+                    <source
+                      src={foundWebMSrc.node.publicURL}
+                      type="video/webm"
+                    />
+                  )}
+                  {foundMp4Src && (
+                    <source src={foundMp4Src.node.publicURL} type="video/mp4" />
+                  )}
+                  {foundGifSrc && (
+                    <>
+                      <p>{gifBrowserSupport}</p>
+                      <a href={foundGifSrc.node.publicURL} alt={gifAlt}>
+                        {gifAlt}
+                      </a>
+                    </>
+                  )}
+                </>
+              )}
+            </StyledVideo>
+          )}
+
+          <noscript>
+            <StyledVideo
+              loop
+              muted
+              playsInline
+              controls
+              preload="none"
+              poster={foundPosterSrc.node.publicURL || ""}
+            >
+              {foundWebMSrc && (
+                <source src={foundWebMSrc.node.publicURL} type="video/webm" />
+              )}
+              {foundMp4Src && (
+                <source src={foundMp4Src.node.publicURL} type="video/mp4" />
+              )}
+              {foundGifSrc && (
+                <>
+                  <p>{gifBrowserSupport}</p>
+                  <a href={foundGifSrc.node.publicURL} alt={gifAlt}>
+                    {gifAlt}
+                  </a>
+                </>
+              )}
+              <FormattedMessage id="js.disabled">
+                {(txt) => <p>{txt}</p>}
+              </FormattedMessage>
+            </StyledVideo>
+          </noscript>
         </VideoIphoneXInner>
       </VideoIphoneXWrapper>
       <FigCaption>{caption}</FigCaption>

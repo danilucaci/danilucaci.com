@@ -18,7 +18,7 @@ export const Figure = styled.figure`
 export const FigCaption = styled.figcaption`
   font-size: ${theme.font.size.body.s};
   line-height: ${theme.font.lineHeight.body.s};
-  color: ${theme.colors.grey700};
+  color: ${theme.color.text.subdued};
   margin-top: ${rem(16)};
 
   font-weight: 400;
@@ -36,7 +36,7 @@ export const StyledVideo = styled.video`
   left: 0px;
   opacity: 1;
 
-  ${({ hasLoaded }) => hasLoaded && "opacity: 0;"}
+  ${({ jsLoaded }) => jsLoaded && "opacity: 0;"}
 
   transition: opacity 600ms ease 0s;
 
@@ -65,6 +65,6 @@ export const VideoIphoneXInner = styled.span`
   position: relative;
   bottom: 0;
   left: 0;
-  background-color: ${theme.colors.grey50};
+  background-color: ${theme.color.background.section.lightest};
   display: block;
 `;
