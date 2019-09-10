@@ -20,7 +20,7 @@ const CaseStudies = ({ edges, spaced, header }) => {
     <Row col12 spaced={spaced} data-testid="Casestudies__Wrapper">
       <Col>
         <FormattedMessage id="case.studies.header">
-          {(txt) => <Title>{txt}</Title>}
+          {(txt) => <Title as={header ? "h2" : "h1"}>{txt}</Title>}
         </FormattedMessage>
       </Col>
       <Col>
@@ -43,10 +43,12 @@ const CaseStudies = ({ edges, spaced, header }) => {
 CaseStudies.propTypes = {
   edges: arrayOf(object).isRequired,
   spaced: bool,
+  header: string,
 };
 
 CaseStudies.defaultProps = {
   spaced: false,
+  header: null,
 };
 
 export default CaseStudies;

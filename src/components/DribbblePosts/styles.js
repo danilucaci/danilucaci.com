@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { theme, mediaMin, rem } from "../../theme/theme";
 import OutlinedButton from "../OutlinedButton/OutlinedButton";
 
-export const Title = styled.h1`
+export const Title = styled.h2`
   font-size: ${theme.font.size.display.mobile.h1};
   line-height: ${theme.font.lineHeight.display.mobile.h1};
 
