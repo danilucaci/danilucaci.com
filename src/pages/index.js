@@ -265,13 +265,8 @@ export const pageQuery = graphql`
             posted
             cardImage {
               childImageSharp {
-                fluid(maxWidth: 744) {
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
-                  aspectRatio
-                  sizes
+                fluid(maxWidth: 744, quality: 50) {
+                  ...GatsbyImageSharpFluid_withWebp
                 }
               }
             }
