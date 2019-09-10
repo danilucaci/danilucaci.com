@@ -87,6 +87,7 @@ const gatsbyNodeQuery = (locale) =>
                 srcSetWebp
                 aspectRatio
                 sizes
+                base64
               }
             }
           }
