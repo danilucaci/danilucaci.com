@@ -38,4 +38,9 @@ export const StyledPlaceholderInner = styled.span`
   background-size: 200% 200%;
 
   animation: ${placeholderAnimation} 3s ease infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    background: none !important;
+    background-color: ${theme.color.background.section.light} !important;
+  }
 `;
