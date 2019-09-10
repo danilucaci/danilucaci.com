@@ -113,6 +113,7 @@ export const theme = {
         lighter: COLORS.grey100,
         light: COLORS.grey200,
         contactCard: COLORS.primary700,
+        noscript: COLORS.primary700,
         subscribeCard: COLORS.grey100,
       },
       primary: {
