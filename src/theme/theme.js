@@ -218,31 +218,32 @@ export const theme = {
   font: {
     family: {
       display: {
-        fallback: "Georgia, 'Times New Roman', Times, serif",
+        fallback:
+          "system-ui, BlinkMacSystemFont, -apple-system, 'Segoe UI', Georgia, 'Times New Roman', Times, serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
         regular:
-          "'Merriweather Regular', system-ui, BlinkMacSystemFont, -apple-system, 'Segoe UI', Georgia, 'Times New Roman', Times, serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+          "WorkSans, system-ui, BlinkMacSystemFont, -apple-system, 'Segoe UI', Georgia, 'Times New Roman', Times, serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+        medium:
+          "WorkSansMedium, system-ui, BlinkMacSystemFont, -apple-system, 'Segoe UI', Georgia, 'Times New Roman', Times, serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
         bold:
-          "'Merriweather Bold', system-ui, BlinkMacSystemFont, -apple-system, 'Segoe UI', Georgia, 'Times New Roman', Times, serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
-        light:
-          "'Merriweather Light', system-ui, BlinkMacSystemFont, -apple-system, 'Segoe UI', Georgia, 'Times New Roman', Times, serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+          "WorkSansBold, system-ui, BlinkMacSystemFont, -apple-system, 'Segoe UI', Georgia, 'Times New Roman', Times, serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
       },
       body: {
         fallback:
           "system-ui, BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
         regular:
-          "'Lato', system-ui, BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+          "Lato, system-ui, BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
         bold:
-          "'Lato Bold', system-ui, BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+          "LatoBold, system-ui, BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
         italic:
-          "'Lato Italic', system-ui, BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+          "LatoItalic, system-ui, BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
       },
       code: {
         fallback:
           "'Ubuntu Mono', Consolas, Menlo, 'Liberation Mono', Courier, monospace",
         regular:
-          "'Roboto Mono Regular', 'Ubuntu Mono', Consolas, Menlo, 'Liberation Mono', Courier, monospace",
+          "RobotoMono, 'Ubuntu Mono', Consolas, Menlo, 'Liberation Mono', Courier, monospace",
         italic:
-          "'Roboto Mono Italic', 'Ubuntu Mono', Consolas, Menlo, 'Liberation Mono', Courier, monospace",
+          "RobotoMonoItalic, 'Ubuntu Mono', Consolas, Menlo, 'Liberation Mono', Courier, monospace",
       },
     },
     size: {

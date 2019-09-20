@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import {
   RobotoMonoRegularWoff2,
   RobotoMonoRegularWoff,
@@ -10,12 +11,12 @@ import {
   LatoItalicWoff,
   LatoBoldWoff2,
   LatoBoldWoff,
-  MerriweatherRegularWoff2,
-  MerriweatherRegularWoff,
-  MerriweatherLightWoff2,
-  MerriweatherLightWoff,
-  MerriweatherBoldWoff2,
-  MerriweatherBoldWoff,
+  WorkSansBoldWoff2,
+  WorkSansBoldWoff,
+  WorkSansMediumWoff2,
+  WorkSansMediumWoff,
+  WorkSansRegularWoff2,
+  WorkSansRegularWoff,
 } from "../fonts";
 
 export const Page = styled.div`
@@ -29,90 +30,82 @@ export const Page = styled.div`
   }
 
   @font-face {
-  font-family: 'Roboto Mono Regular';
-  font-style: normal;
-  /* displays text with fallback font and replaces when the font is ready */
-  font-display: swap;
-  font-weight: 400;
-  src: local('Roboto Mono Regular'), 
-  url('${RobotoMonoRegularWoff2}') format('woff2'),
-  url('${RobotoMonoRegularWoff}') format('woff');
-}
+    font-family: RobotoMono;
+    font-style: normal;
+    /* displays text with fallback font and replaces when the font is ready */
+    font-display: swap;
+    font-weight: 400;
+    src: url('${RobotoMonoRegularWoff2}') format('woff2'), 
+    url('${RobotoMonoRegularWoff}') format('woff');
+  }
 
-@font-face {
-  font-family: 'Roboto Mono Italic';
-  font-style: italic;
-  /* displays text with fallback font and replaces when the font is ready */
-  font-display: swap;
-  font-weight: 400;
-  src: local('Roboto Mono Italic'), 
-  url('${RobotoMonoItalicWoff2}') format('woff2'),
-  url('${RobotoMonoItalicWoff}') format('woff');
-}
+  @font-face {
+    font-family: RobotoMonoItalic;
+    font-style: italic;
+    /* displays text with fallback font and replaces when the font is ready */
+    font-display: swap;
+    font-weight: 400;
+    src: url('${RobotoMonoItalicWoff2}') format('woff2'), 
+    url('${RobotoMonoItalicWoff}') format('woff');
+  }
 
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  /* displays text with fallback font and replaces when the font is ready */
-  font-display: swap;
-  font-weight: 400;
-  src: local('Lato'), 
-  url('${LatoRegularWoff2}') format('woff2'),
-  url('${LatoRegularWoff}') format('woff');
-}
+  @font-face {
+    font-family: Lato;
+    font-style: normal;
+    /* displays text with fallback font and replaces when the font is ready */
+    font-display: swap;
+    font-weight: 400;
+    src: url('${LatoRegularWoff2}') format('woff2'), 
+    url('${LatoRegularWoff}') format('woff');
+  }
 
-@font-face {
-  font-family: 'Lato Bold';
-  font-style: normal;
-  /* displays text with fallback font and replaces when the font is ready */
-  font-display: swap;
-  font-weight: 700;
-  src: local('Lato Bold'), 
-  url('${LatoBoldWoff2}') format('woff2'),
-  url('${LatoBoldWoff}') format('woff');
-}
+  @font-face {
+    font-family: LatoBold;
+    font-style: normal;
+    /* displays text with fallback font and replaces when the font is ready */
+    font-display: swap;
+    font-weight: 700;
+    src: url('${LatoBoldWoff2}') format('woff2'), 
+    url('${LatoBoldWoff}') format('woff');
+  }
 
-@font-face {
-  font-family: 'Lato Italic';
-  font-style: italic;
-  /* displays text with fallback font and replaces when the font is ready */
-  font-display: swap;
-  font-weight: 400;
-  src: local('Lato Italic'), 
-  url('${LatoItalicWoff2}') format('woff2'),
-  url('${LatoItalicWoff}') format('woff');
-}
+  @font-face {
+    font-family: LatoItalic;
+    font-style: italic;
+    /* displays text with fallback font and replaces when the font is ready */
+    font-display: swap;
+    font-weight: 400;
+    src: url('${LatoItalicWoff2}') format('woff2'), 
+    url('${LatoItalicWoff}') format('woff');
+  }
 
-@font-face {
-  font-family: 'Merriweather Regular';
-  font-style: normal;
-  /* displays text with fallback font and replaces when the font is ready */
-  font-display: swap;
-  font-weight: 400;
-  src: local('Merriweather Regular'), 
-  url('${MerriweatherRegularWoff2}') format('woff2'),
-  url('${MerriweatherRegularWoff}') format('woff');
-}
+  @font-face {
+    font-family: WorkSans;
+    font-style: normal;
+    /* displays text with fallback font and replaces when the font is ready */
+    font-display: swap;
+    font-weight: 400;
+    src: url('${WorkSansRegularWoff2}') format('woff2'), 
+    url('${WorkSansRegularWoff}') format('woff');
+  }
 
-@font-face {
-  font-family: 'Merriweather Light';
-  font-style: normal;
-  /* displays text with fallback font and replaces when the font is ready */
-  font-display: swap;
-  font-weight: 400;
-  src: local('Merriweather Light'), 
-  url('${MerriweatherLightWoff2}') format('woff2'),
-  url('${MerriweatherLightWoff}') format('woff');
-}
+  @font-face {
+    font-family: WorkSansMedium;
+    font-style: normal;
+    /* displays text with fallback font and replaces when the font is ready */
+    font-display: swap;
+    font-weight: 500;
+    src: url('${WorkSansMediumWoff2}') format('woff2'), 
+    url('${WorkSansMediumWoff}') format('woff');
+  }
 
-@font-face {
-  font-family: 'Merriweather Bold';
-  font-style: normal;
-  /* displays text with fallback font and replaces when the font is ready */
-  font-display: swap;
-  font-weight: 700;
-  src: local('Merriweather Bold'), 
-  url('${MerriweatherBoldWoff2}') format('woff2'),
-  url('${MerriweatherBoldWoff}') format('woff');
-}
+  @font-face {
+    font-family: WorkSansBold;
+    font-style: normal;
+    /* displays text with fallback font and replaces when the font is ready */
+    font-display: swap;
+    font-weight: 700;
+    src: url('${WorkSansBoldWoff2}') format('woff2'), 
+    url('${WorkSansBoldWoff}') format('woff');
+  }
 `;

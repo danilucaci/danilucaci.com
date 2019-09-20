@@ -58,7 +58,7 @@ export const PrevArticleLink = styled(GreyLink)`
   font-weight: 400;
   font-family: ${theme.font.family.display.fallback};
   .fonts-loaded & {
-    font-family: ${theme.font.family.display.regular};
+    font-family: ${theme.font.family.body.regular};
   }
 
   font-size: ${theme.font.size.display.mobile.siblingArticleTitle};

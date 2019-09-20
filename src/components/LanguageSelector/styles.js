@@ -12,7 +12,7 @@ export const MenuWrapper = styled.div`
   right: 0;
 
   .fonts-loaded & {
-    font-family: ${theme.font.family.display.boldRegular};
+    font-family: ${theme.font.family.body.regular};
   }
 
   font-size: ${theme.font.size.body.s};
@@ -84,7 +84,7 @@ export const StyledMenuList = styled(MenuList)`
     position: relative;
 
     .fonts-loaded & {
-      font-family: ${theme.font.family.display.boldRegular};
+      font-family: ${theme.font.family.body.regular};
     }
 
     padding: ${rem(8)} ${rem(4)};

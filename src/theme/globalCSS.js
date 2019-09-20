@@ -186,7 +186,7 @@ const GlobalCSS = createGlobalStyle`
     margin-top: 0;
 
     & > svg {
-      fill: ${theme.colors.primary600};
+      fill: ${theme.color.text.primary};
     }
   }
 
@@ -259,21 +259,21 @@ const GlobalCSS = createGlobalStyle`
   }
 
   blockquote, blockquote * {
-    font-family: ${theme.font.family.display.fallback};
+    font-family: ${theme.font.family.body.fallback};
     color: ${theme.color.text.primary};
 
     .fonts-loaded & {
-      font-family: ${theme.font.family.display.regular};
+      font-family: ${theme.font.family.body.regular};
     }
   }
   
   blockquote strong {
-    font-family: ${theme.font.family.display.fallback};
+    font-family: ${theme.font.family.body.fallback};
     
     font-weight: 700;
 
     .fonts-loaded & {
-      font-family: ${theme.font.family.display.bold};
+      font-family: ${theme.font.family.body.bold};
     }
   }
 

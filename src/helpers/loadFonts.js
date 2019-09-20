@@ -6,28 +6,37 @@ const FontFaceObserver = require("fontfaceobserver");
 const NODE_ENV = process.env.NODE_ENV;
 
 export const loadFonts = () => {
-  const RobotoMonoRegular = new FontFaceObserver("Roboto Mono Regular");
-  const RobotoMonoItalic = new FontFaceObserver("Roboto Mono Italic", {
+  const RobotoMonoRegular = new FontFaceObserver("RobotoMono", {
+    weight: 400,
+    style: "normal",
+  });
+  const RobotoMonoItalic = new FontFaceObserver("RobotoMonoItalic", {
+    weight: 400,
     style: "italic",
   });
   const LatoRegular = new FontFaceObserver("Lato", {
     weight: 400,
+    style: "normal",
   });
-  const LatoBold = new FontFaceObserver("Lato Bold", {
+  const LatoBold = new FontFaceObserver("LatoBold", {
     weight: 700,
+    style: "normal",
   });
-  const LatoItalic = new FontFaceObserver("Lato Italic", {
+  const LatoItalic = new FontFaceObserver("LatoItalic", {
     weight: 400,
     style: "italic",
   });
-  const MerriweatherBold = new FontFaceObserver("Merriweather Bold", {
-    weight: 700,
-  });
-  const MerriweatherRegular = new FontFaceObserver("Merriweather Regular", {
+  const WorkSansRegular = new FontFaceObserver("WorkSans", {
     weight: 400,
+    style: "normal",
   });
-  const MerriweatherLight = new FontFaceObserver("Merriweather Light", {
-    weight: 300,
+  const WorkSansMedium = new FontFaceObserver("WorkSansMedium", {
+    weight: 500,
+    style: "normal",
+  });
+  const WorkSansBold = new FontFaceObserver("WorkSansBold", {
+    weight: 700,
+    style: "normal",
   });
 
   Promise.all([
@@ -36,9 +45,9 @@ export const loadFonts = () => {
     LatoRegular.load(),
     LatoBold.load(),
     LatoItalic.load(),
-    MerriweatherBold.load(),
-    MerriweatherRegular.load(),
-    MerriweatherLight.load(),
+    WorkSansRegular.load(),
+    WorkSansMedium.load(),
+    WorkSansBold.load(),
   ])
     .then(() => {
       document.documentElement.className += " fonts-loaded";
@@ -49,6 +58,13 @@ export const loadFonts = () => {
       }
     })
     .catch((error) => {
+      if (NODE_ENV === "development") {
+        console.log(
+          "%c Error loading the fonts: ",
+          "color: #ff2020",
+          error.message,
+        );
+      }
       Sentry.captureException(error);
     });
 };

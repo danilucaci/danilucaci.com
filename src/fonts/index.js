@@ -13,14 +13,14 @@ import RobotoMonoItalicWoff from "./RobotoMono-Italic.subset.woff";
 import RobotoMonoRegularWoff2 from "./RobotoMono-Regular.subset.woff2";
 import RobotoMonoRegularWoff from "./RobotoMono-Regular.subset.woff";
 
-import MerriweatherRegularWoff2 from "./Merriweather-Regular.subset.woff2";
-import MerriweatherRegularWoff from "./Merriweather-Regular.subset.woff";
+import WorkSansBoldWoff2 from "./WorkSans-Bold.subset.woff2";
+import WorkSansBoldWoff from "./WorkSans-Bold.subset.woff";
 
-import MerriweatherLightWoff2 from "./Merriweather-Light.subset.woff2";
-import MerriweatherLightWoff from "./Merriweather-Light.subset.woff";
+import WorkSansMediumWoff2 from "./WorkSans-Medium.subset.woff2";
+import WorkSansMediumWoff from "./WorkSans-Medium.subset.woff";
 
-import MerriweatherBoldWoff2 from "./Merriweather-Bold.subset.woff2";
-import MerriweatherBoldWoff from "./Merriweather-Bold.subset.woff";
+import WorkSansRegularWoff2 from "./WorkSans-Regular.subset.woff2";
+import WorkSansRegularWoff from "./WorkSans-Regular.subset.woff";
 
 export {
   LatoRegularWoff2,
@@ -33,10 +33,10 @@ export {
   RobotoMonoItalicWoff,
   RobotoMonoRegularWoff2,
   RobotoMonoRegularWoff,
-  MerriweatherRegularWoff2,
-  MerriweatherRegularWoff,
-  MerriweatherBoldWoff2,
-  MerriweatherBoldWoff,
-  MerriweatherLightWoff2,
-  MerriweatherLightWoff,
+  WorkSansBoldWoff2,
+  WorkSansBoldWoff,
+  WorkSansMediumWoff2,
+  WorkSansMediumWoff,
+  WorkSansRegularWoff2,
+  WorkSansRegularWoff,
 };

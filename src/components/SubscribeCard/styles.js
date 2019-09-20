@@ -93,10 +93,10 @@ export const StatusMessageSubtitle = styled.p`
   margin-top: ${rem(24)};
 
   font-family: ${theme.font.family.display.fallback};
-  font-weight: 300;
+  font-weight: 400;
 
   .fonts-loaded & {
-    font-family: ${theme.font.family.display.regular};
+    font-family: ${theme.font.family.body.regular};
   }
 
   ${mediaMin.s`

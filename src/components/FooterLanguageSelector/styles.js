@@ -7,6 +7,7 @@ import { MenuList, MenuButton } from "@reach/menu-button";
 export const StyledMenuButton = styled(MenuButton)`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   background-color: ${theme.color.background.outlined.enabled};
   border: ${theme.size.border.button.default}
@@ -110,7 +111,7 @@ export const StyledMenuList = styled(MenuList)`
     position: relative;
 
     .fonts-loaded & {
-      font-family: ${theme.font.family.display.boldRegular};
+      font-family: ${theme.font.family.body.regular};
     }
 
     padding: ${rem(8)} ${rem(4)};

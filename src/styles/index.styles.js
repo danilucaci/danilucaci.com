@@ -1,7 +1,5 @@
 import styled from "styled-components";
-import {
- theme, mediaMin, mediaMax, rem 
-} from "../theme/theme";
+import { theme, mediaMin, mediaMax, rem } from "../theme/theme";
 import { Copy } from "../components/Copy/Copy";
 import { Row, RowSpacer } from "../components/Grid/Grid";
 
@@ -35,10 +33,11 @@ export const IndexTitle = styled.h1`
   margin-bottom: ${rem(16)};
 
   /* Collapse the h1 title in two lines on the spanish version of the page */
-  ${({ locale }) => locale === "es"
-    && `
-    max-width: ${rem(600)};
-  `};
+  ${({ locale }) =>
+    locale === "es" &&
+    `
+      max-width: ${rem(600)};
+    `};
 
   font-size: ${theme.font.size.display.mobile.h2};
   line-height: ${theme.font.lineHeight.display.mobile.h2};
@@ -55,12 +54,13 @@ export const Subtitle = styled.p`
   line-height: ${theme.font.lineHeight.display.mobile.subtitle};
 
   margin-bottom: ${rem(16)};
+  max-width: ${rem(900)};
 
   font-family: ${theme.font.family.display.fallback};
-  font-weight: 300;
+  font-weight: 400;
 
   .fonts-loaded & {
-    font-family: ${theme.font.family.display.regular};
+    font-family: ${theme.font.family.body.regular};
   }
 
   ${mediaMin.s`

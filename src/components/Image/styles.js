@@ -32,7 +32,11 @@ export const FigCaption = styled.figcaption`
   line-height: ${theme.font.lineHeight.body.s};
   color: ${theme.color.text.subdued};
   margin-top: ${rem(16)};
+  font-family: ${theme.font.family.body.fallback};
 
+  .fonts-loaded & {
+    font-family: ${theme.font.family.body.regular};
+  }
   font-weight: 400;
   font-style: normal;
 `;

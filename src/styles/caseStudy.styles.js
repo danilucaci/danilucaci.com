@@ -115,10 +115,10 @@ export const CaseStudyDescription = styled(Copy)`
   line-height: ${theme.font.lineHeight.display.mobile.subtitle};
 
   font-family: ${theme.font.family.display.fallback};
-  font-weight: 300;
+  font-weight: 400;
 
   .fonts-loaded & {
-    font-family: ${theme.font.family.display.light};
+    font-family: ${theme.font.family.body.regular};
   }
 
   ${mediaMin.s`
