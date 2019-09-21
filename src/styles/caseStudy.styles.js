@@ -106,6 +106,9 @@ export const PostH1 = styled.h1`
   `}
   
   margin-bottom: ${rem(16)};
+  margin-left: auto;
+  margin-right: auto;
+  max-width: ${rem(680)};
 `;
 
 export const CaseStudyDescription = styled(Copy)`
@@ -113,6 +116,8 @@ export const CaseStudyDescription = styled(Copy)`
   color: ${theme.color.text.default};
   font-size: ${theme.font.size.display.mobile.subtitle};
   line-height: ${theme.font.lineHeight.display.mobile.subtitle};
+
+  max-width: ${rem(760)};
 
   font-family: ${theme.font.family.display.fallback};
   font-weight: 400;
