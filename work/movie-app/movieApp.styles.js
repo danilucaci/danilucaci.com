@@ -24,6 +24,7 @@ export const ProcessCol = styled(Col)`
   & h3 {
     background-color: ${theme.color.background.section.light};
     display: inline-block;
+    border-radius: ${theme.borderRadius.default};
     padding: ${rem(4)} ${rem(8)};
     margin-top: 0;
     margin-bottom: ${rem(16)};
