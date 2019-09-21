@@ -53,8 +53,10 @@ export const Subtitle = styled.p`
   font-size: ${theme.font.size.display.mobile.subtitle};
   line-height: ${theme.font.lineHeight.display.mobile.subtitle};
 
-  margin-bottom: ${rem(16)};
-  max-width: ${rem(900)};
+  ${mediaMin.s`
+    font-size: ${theme.font.size.display.desktop.subtitle};
+    line-height: ${theme.font.lineHeight.display.desktop.subtitle};
+  `};
 
   font-family: ${theme.font.family.display.fallback};
   font-weight: 400;
@@ -63,14 +65,26 @@ export const Subtitle = styled.p`
     font-family: ${theme.font.family.body.regular};
   }
 
-  ${mediaMin.s`
-    font-size: ${theme.font.size.display.desktop.subtitle};
-    line-height: ${theme.font.lineHeight.display.desktop.subtitle};
-  `};
+  margin-bottom: ${rem(16)};
+  max-width: ${rem(900)};
 `;
 
 export const FindOutMore = styled.p`
   color: ${theme.color.text.subdued};
+  font-size: ${theme.font.size.display.mobile.subtitle};
+  line-height: ${theme.font.lineHeight.display.mobile.subtitle};
+
+  ${mediaMin.s`
+    font-size: ${theme.font.size.display.desktop.subtitle};
+    line-height: ${theme.font.lineHeight.display.desktop.subtitle};
+  `};
+
+  font-family: ${theme.font.family.display.fallback};
+  font-weight: 400;
+
+  .fonts-loaded & {
+    font-family: ${theme.font.family.body.regular};
+  }
 `;
 
 export const ServicesRowBackground = styled(RowSpacer)`
