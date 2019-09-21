@@ -40,9 +40,7 @@ export const Subtitle = styled(Copy)`
   `};
 `;
 
-export const StyleButton = styled(SecondaryLinkButton)`
-  /* width: ${rem(200)}; */
-
+export const StyledButton = styled(SecondaryLinkButton)`
   ${mediaMin.xs`
     width: ${rem(240)};  
   `};

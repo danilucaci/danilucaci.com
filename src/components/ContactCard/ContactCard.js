@@ -8,7 +8,7 @@ import {
   ContactCardRowBackground,
   ContactCardTitle,
   Subtitle,
-  StyleButton,
+  StyledButton,
 } from "./styles";
 
 import { Col, Row } from "../Grid/Grid";
@@ -37,12 +37,12 @@ function ContactCard(props) {
 
           <FormattedMessage id="contact.card.cta">
             {(txt) => (
-              <StyleButton
+              <StyledButton
                 to={twinPostURL}
                 onClick={sendGAEvent("Contact Card", "Clicked CTA")}
               >
                 {txt}
-              </StyleButton>
+              </StyledButton>
             )}
           </FormattedMessage>
         </Col>
