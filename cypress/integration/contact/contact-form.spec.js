@@ -1,6 +1,6 @@
 describe("Contact From Validation - English", () => {
   beforeEach(() => {
-    cy.visit("http://192.168.1.14:8000/contact");
+    cy.visit("/contact");
   });
 
   context("fullname: validation renders all states", () => {

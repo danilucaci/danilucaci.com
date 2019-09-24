@@ -1,6 +1,6 @@
 describe("English Homepage - Site Nav Links", () => {
   beforeEach(() => {
-    cy.visit("http://192.168.1.14:8000/");
+    cy.visit("/");
   });
 
   context("site nav has english links with an href", () => {
@@ -20,7 +20,7 @@ describe("English Homepage - Site Nav Links", () => {
 
 describe("Spanish Homepage -Site Nav Links", () => {
   beforeEach(() => {
-    cy.visit("http://192.168.1.14:8000/es");
+    cy.visit("/es");
   });
 
   context("site nav has spanish links with an href", () => {

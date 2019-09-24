@@ -1,20 +1,20 @@
 describe("English Homepage", () => {
   beforeEach(() => {
-    cy.visit("http://192.168.1.14:8000/");
+    cy.visit("/");
   });
 
   context("cy.location() navigates to the english url", () => {
     it("renders '/' location", () => {
       // https://on.cypress.io/location
       cy.location().should((location) => {
-        expect(location.href).to.eq("http://192.168.1.14:8000/");
+        expect(location.href).to.eq(`${Cypress.env("devURLPath")}/`);
         expect(location.pathname).to.eq("/");
       });
     });
 
     it("renders the correct english current URL", () => {
       // https://on.cypress.io/url
-      cy.url().should("eq", "http://192.168.1.14:8000/");
+      cy.url().should("eq", `${Cypress.env("devURLPath")}/`);
     });
   });
 
@@ -96,21 +96,21 @@ describe("English Homepage", () => {
 
 describe("Spanish Homepage", () => {
   beforeEach(() => {
-    cy.visit("http://192.168.1.14:8000/es");
+    cy.visit("/es");
   });
 
   context("cy.location() navigates to the spanish url", () => {
     it("renders '/es' location", () => {
       // https://on.cypress.io/location
       cy.location().should((location) => {
-        expect(location.href).to.eq("http://192.168.1.14:8000/es");
-        expect(location.pathname).to.eq("/es");
+        expect(location.href).to.eq(`${Cypress.env("devURLPath")}/es/`);
+        expect(location.pathname).to.eq("/es/");
       });
     });
 
     it("renders the correct spanish current URL", () => {
       // https://on.cypress.io/url
-      cy.url().should("eq", "http://192.168.1.14:8000/es");
+      cy.url().should("eq", `${Cypress.env("devURLPath")}/es/`);
     });
   });
 

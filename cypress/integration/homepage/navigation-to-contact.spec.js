@@ -1,6 +1,6 @@
 describe("English Homepage - Navigates to /contact", () => {
   beforeEach(() => {
-    cy.visit("http://192.168.1.14:8000/");
+    cy.visit("/");
   });
 
   context("the cta on the contact card navigates to /contact", () => {
@@ -17,7 +17,7 @@ describe("English Homepage - Navigates to /contact", () => {
 
 describe("Spanish Homepage - Navigates to /es/contacto", () => {
   beforeEach(() => {
-    cy.visit("http://192.168.1.14:8000/es");
+    cy.visit("/es");
   });
 
   context("the cta on the contact card navigates to /es/contacto", () => {
