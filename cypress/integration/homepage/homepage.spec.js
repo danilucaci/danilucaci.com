@@ -3,7 +3,7 @@ describe("English Homepage", () => {
     cy.visit("http://192.168.1.14:8000/");
   });
 
-  context("cy.location() navigates to the spanish url", () => {
+  context("cy.location() navigates to the english url", () => {
     it("renders '/' location", () => {
       // https://on.cypress.io/location
       cy.location().should((location) => {
@@ -12,13 +12,13 @@ describe("English Homepage", () => {
       });
     });
 
-    it("renders the correct spanish current URL", () => {
+    it("renders the correct english current URL", () => {
       // https://on.cypress.io/url
       cy.url().should("eq", "http://192.168.1.14:8000/");
     });
   });
 
-  context("renders the spanish index title and subtitle", () => {
+  context("renders the english index title and subtitle", () => {
     it("renders the spanish h1 title", () => {
       cy.get("[data-testid=Index__Hero__Title]").should(
         "have.text",
@@ -26,7 +26,7 @@ describe("English Homepage", () => {
       );
     });
 
-    it("renders the spanish subtitle", () => {
+    it("renders the english subtitle", () => {
       cy.get("[data-testid=Index__Hero__Subtitle]").should(
         "contain.text",
         "I specialize in UX/UI Design and front-end",
@@ -74,8 +74,8 @@ describe("English Homepage", () => {
     });
   });
 
-  context("the contact card is rendered correctly in spanish", () => {
-    it("renders the contact card in spanish", () => {
+  context("the contact card is rendered correctly in english", () => {
+    it("renders the contact card in english", () => {
       cy.get("[data-testid=Contact__Card]").within(() => {
         cy.get("h2");
         cy.should("have.text", "Have a project in mind?");
