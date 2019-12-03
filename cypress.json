@@ -1,8 +1,8 @@
 {
   "projectId": "zuhcvt",
-  "baseUrl": "http://192.168.1.13:8000",
+  "baseUrl": "http://192.168.1.14:8000",
   "env": {
-    "devURLPath": "http://192.168.1.13:8000",
+    "devURLPath": "http://192.168.1.14:8000",
     "prodURLPath": "https://www.danilucaci.com"
   }
 }

@@ -139,10 +139,7 @@ describe("Contact From Validation - English", () => {
     it("checkbox: has the initial value set", () => {
       cy.get("input[name=acceptsconsentcheckbox]")
         .focus()
-        .should(
-          "have.value",
-          "I have not read and I do not accept the legal notice and the privacy policy.",
-        );
+        .should("have.value", "false");
       cy.get("[data-testid=Checkbox__ErrorMessage]").should("not.exist");
       cy.get("button[type=submit]").should("be.disabled");
     });
@@ -164,10 +161,7 @@ describe("Contact From Validation - English", () => {
       cy.get("input[name=acceptsconsentcheckbox]")
         .check()
         .should("be.checked")
-        .and(
-          "have.value",
-          "I have read and accept the legal notice and the privacy policy.",
-        );
+        .and("have.value", "true");
       cy.get("[data-testid=Checkbox__ErrorMessage]").should("not.exist");
       cy.get("button[type=submit]").should("be.disabled");
     });
@@ -202,10 +196,7 @@ describe("Contact From Validation - English", () => {
       cy.get("input[name=acceptsconsentcheckbox]")
         .check()
         .should("be.checked")
-        .and(
-          "have.value",
-          "I have read and accept the legal notice and the privacy policy.",
-        );
+        .and("have.value", "true");
       cy.get("[data-testid=Checkbox__ErrorMessage]").should("not.exist");
       cy.get("button[type=submit]").should("be.enabled");
       cy.get("button[type=submit]").click();
