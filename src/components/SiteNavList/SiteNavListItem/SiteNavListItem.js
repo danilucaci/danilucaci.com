@@ -11,10 +11,10 @@ import { StyledSiteNavListItem } from "./styles";
  * are current
  */
 const isPartiallyActive = ({ isPartiallyCurrent }) =>
-  (isPartiallyCurrent ? { className: "current-nav-item" } : null);
+  isPartiallyCurrent ? { className: "current-nav-item" } : null;
 
 const SiteNavListItem = (props) => (
-  <StyledSiteNavListItem role="menuitem">
+  <StyledSiteNavListItem>
     <Link to={props.to} getProps={isPartiallyActive} aria-current="page">
       {props.children}
     </Link>

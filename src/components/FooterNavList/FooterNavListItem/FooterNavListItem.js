@@ -14,7 +14,7 @@ const isPartiallyActive = ({ isPartiallyCurrent }) =>
   isPartiallyCurrent ? { className: "current-nav-item" } : null;
 
 const FooterNavListItem = (props) => (
-  <StyledFooterListItem role="menuitem">
+  <StyledFooterListItem>
     <Link to={props.to} getProps={isPartiallyActive} aria-current="page">
       {props.children}
     </Link>

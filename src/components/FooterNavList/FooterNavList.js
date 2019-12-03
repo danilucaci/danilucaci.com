@@ -8,7 +8,7 @@ import { localePaths } from "../../i18n/i18n";
 import { StyledFooterNavList } from "./styles";
 
 const FooterNavList = ({ locale }) => (
-  <StyledFooterNavList role="menu">
+  <StyledFooterNavList>
     <FormattedMessage id="site.nav.work">
       {(txt) => (
         <FooterNavListItem to={localePaths[locale].work}>
