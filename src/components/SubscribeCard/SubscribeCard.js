@@ -130,6 +130,7 @@ function SubscribeCard({ locale }) {
                     email: "",
                     acceptsconsentcheckbox: false,
                   }}
+                  validateOnMount={true}
                   validationSchema={MCSchema(locale)}
                   onSubmit={(values, { setSubmitting }) => {
                     // Don’t allow re-submitting
@@ -139,7 +140,6 @@ function SubscribeCard({ locale }) {
                   }}
                 >
                   {({
-                    values,
                     errors,
                     touched,
                     handleSubmit,
@@ -178,7 +178,6 @@ function SubscribeCard({ locale }) {
                       </ErrorMessage>
                       <PrivacyCheckbox
                         name="acceptsconsentcheckbox"
-                        accepted={values.acceptsconsentcheckbox}
                         locale={locale}
                       />
                       <ErrorMessage name="acceptsconsentcheckbox">

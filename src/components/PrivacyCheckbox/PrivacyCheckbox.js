@@ -1,5 +1,5 @@
 import React from "react";
-import { string, bool } from "prop-types";
+import { string } from "prop-types";
 import { FormattedMessage } from "react-intl";
 import { graphql, useStaticQuery } from "gatsby";
 
@@ -11,9 +11,7 @@ import {
   LearnMoreLink,
 } from "./styles";
 
-import { CONSENT_VALUE } from "../../i18n/i18n";
-
-function PrivacyCheckbox({ locale = "en", accepted, ...rest }) {
+function PrivacyCheckbox({ locale = "en", ...props }) {
   const data = useStaticQuery(PRIVACY_CHECKBOX_QUERY);
 
   let legalNoticeLink = data.allMdx.edges
@@ -34,16 +32,7 @@ function PrivacyCheckbox({ locale = "en", accepted, ...rest }) {
 
   return (
     <>
-      <StyledCheckbox
-        id="privacycheckbox"
-        type="checkbox"
-        value={
-          accepted === true
-            ? CONSENT_VALUE[locale].yes
-            : CONSENT_VALUE[locale].no
-        }
-        {...rest}
-      />
+      <StyledCheckbox id="privacycheckbox" type="checkbox" {...props} />
       <StyledCheckboxLabel htmlFor="privacycheckbox">
         <FormattedMessage id="form.privacy.more.1">
           {(txt) => <>{txt}</>}
@@ -90,7 +79,6 @@ function PrivacyCheckbox({ locale = "en", accepted, ...rest }) {
 
 PrivacyCheckbox.propTypes = {
   locale: string.isRequired,
-  accepted: bool.isRequired,
 };
 
 export default PrivacyCheckbox;

@@ -102,6 +102,7 @@ function ContactForm({ locale }) {
           botfield: "",
           acceptsconsentcheckbox: false,
         }}
+        validateOnMount={true}
         validationSchema={CONTACT_FORM_VALIDATION_SCHEMA(locale)}
         onSubmit={(values, { setSubmitting }) => {
           handleContactFormSubmit(values, setSubmitting);
@@ -179,11 +180,8 @@ function ContactForm({ locale }) {
               )}
             </ErrorMessage>
 
-            <PrivacyCheckbox
-              name="acceptsconsentcheckbox"
-              accepted={values.acceptsconsentcheckbox}
-              locale={locale}
-            />
+            <PrivacyCheckbox name="acceptsconsentcheckbox" locale={locale} />
+
             <ErrorMessage name="acceptsconsentcheckbox">
               {(errorMessage) => (
                 <InlineErrorMessage testid="Checkbox__ErrorMessage">
