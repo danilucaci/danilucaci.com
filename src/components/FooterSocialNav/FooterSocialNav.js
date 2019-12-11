@@ -15,7 +15,7 @@ const FooterSocialNav = () => (
     <StyledFooterSocialNavItem>
       <FooterNavLink
         href="https://twitter.com/danilucaci"
-        onClick={sendGAEvent("Footer Social Nav Visit", "Twitter")}
+        onClick={() => sendGAEvent("Footer Social Nav Visit", "Twitter")}
       >
         Twitter
         <FormattedMessage id="social.nav.twitter">
@@ -26,7 +26,7 @@ const FooterSocialNav = () => (
     <StyledFooterSocialNavItem>
       <FooterNavLink
         href="https://www.linkedin.com/in/danilucaci/"
-        onClick={sendGAEvent("Footer Social Nav Visit", "Linkedin")}
+        onClick={() => sendGAEvent("Footer Social Nav Visit", "Linkedin")}
       >
         Linkedin
         <FormattedMessage id="social.nav.linkedin">
@@ -37,7 +37,7 @@ const FooterSocialNav = () => (
     <StyledFooterSocialNavItem>
       <FooterNavLink
         href="https://dribbble.com/danilucaci"
-        onClick={sendGAEvent("Footer Social Nav Visit", "Dribbble")}
+        onClick={() => sendGAEvent("Footer Social Nav Visit", "Dribbble")}
       >
         Dribbble
         <FormattedMessage id="social.nav.dribbble">
@@ -48,7 +48,7 @@ const FooterSocialNav = () => (
     <StyledFooterSocialNavItem>
       <FooterNavLink
         href="https://github.com/danilucaci"
-        onClick={sendGAEvent("Footer Social Nav Visit", "Github")}
+        onClick={() => sendGAEvent("Footer Social Nav Visit", "Github")}
       >
         Github
         <FormattedMessage id="social.nav.github">

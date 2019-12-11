@@ -39,7 +39,7 @@ function ContactCard(props) {
             {(txt) => (
               <StyledButton
                 to={twinPostURL}
-                onClick={sendGAEvent("Contact Card", "Clicked CTA")}
+                onClick={() => sendGAEvent("Contact Card", "Clicked CTA")}
               >
                 {txt}
               </StyledButton>

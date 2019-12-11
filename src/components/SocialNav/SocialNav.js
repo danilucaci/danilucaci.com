@@ -11,7 +11,7 @@ const SocialNav = (props) => (
       target="_blank"
       rel="noopener noreferrer"
       href="https://github.com/danilucaci"
-      onClick={sendGAEvent("Social Nav Visit", "Github")}
+      onClick={() => sendGAEvent("Social Nav Visit", "Github")}
     >
       <FormattedMessage id="social.nav.github">
         {(txt) => <AriaText>{txt}</AriaText>}
@@ -24,7 +24,7 @@ const SocialNav = (props) => (
       target="_blank"
       rel="noopener noreferrer"
       href="https://twitter.com/danilucaci"
-      onClick={sendGAEvent("Social Nav Visit", "Twitter")}
+      onClick={() => sendGAEvent("Social Nav Visit", "Twitter")}
     >
       <FormattedMessage id="social.nav.twitter">
         {(txt) => <AriaText>{txt}</AriaText>}
@@ -37,7 +37,7 @@ const SocialNav = (props) => (
       target="_blank"
       rel="noopener noreferrer"
       href="https://dribbble.com/danilucaci"
-      onClick={sendGAEvent("Social Nav Visit", "Dribbble")}
+      onClick={() => sendGAEvent("Social Nav Visit", "Dribbble")}
     >
       <FormattedMessage id="social.nav.dribbble">
         {(txt) => <AriaText>{txt}</AriaText>}
@@ -50,7 +50,7 @@ const SocialNav = (props) => (
       target="_blank"
       rel="noopener noreferrer"
       href="https://www.linkedin.com/in/danilucaci/"
-      onClick={sendGAEvent("Social Nav Visit", "Linkedin")}
+      onClick={() => sendGAEvent("Social Nav Visit", "Linkedin")}
     >
       <FormattedMessage id="social.nav.linkedin">
         {(txt) => <AriaText>{txt}</AriaText>}

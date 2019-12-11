@@ -26,7 +26,7 @@ const SocialShare = ({ onClick, slug, snippet, title, locale }) => {
         rel="noopener noreferrer"
         href={`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}&summary=${snippet}`}
         aria-label="Share on Linkedin"
-        onClick={sendGAEvent("Shared Article", "On Linkedin")}
+        onClick={() => sendGAEvent("Shared Article", "On Linkedin")}
       >
         <StyledIcon aria-hidden="true">
           <use xlinkHref="#linkedin" />
@@ -38,7 +38,7 @@ const SocialShare = ({ onClick, slug, snippet, title, locale }) => {
         rel="noopener noreferrer"
         href={`https://twitter.com/intent/tweet?text=${title}&url=${url}`}
         aria-label="Share on Twitter"
-        onClick={sendGAEvent("Shared Article", "On Twitter")}
+        onClick={() => sendGAEvent("Shared Article", "On Twitter")}
       >
         <StyledIcon aria-hidden="true">
           <use xlinkHref="#twitter" />
