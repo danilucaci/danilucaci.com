@@ -52,7 +52,7 @@ function handleFormSent(result, responseMSG, dispatch) {
 function SubscribeSuccess() {
   return (
     <>
-      <StatusMessageWrapper>
+      <StatusMessageWrapper role="status" aria-live="polite">
         <FormattedMessage id="subscribe.card.status.success.title">
           {(txt) => <H2>{txt}</H2>}
         </FormattedMessage>
@@ -67,7 +67,7 @@ function SubscribeSuccess() {
 function SubscribeError(errorMessageType, APIErrorResponse) {
   return (
     <>
-      <StatusMessageWrapper>
+      <StatusMessageWrapper role="status" aria-live="polite">
         <FormattedMessage id="subscribe.card.status.error.title">
           {(txt) => <H2>{txt}</H2>}
         </FormattedMessage>
@@ -164,26 +164,46 @@ function SubscribeCard({ locale }) {
                             placeholderType="email"
                             valid={touched.email && !errors.email}
                             error={touched.email && errors.email}
+                            aria-describedby="email-validation"
+                            aria-required="true"
+                            aria-invalid={
+                              touched.email && errors.email ? `true` : `false`
+                            }
                           />
                         </StyledLabel>
 
                         <StyledMCSubmitButton
                           disabled={!isValid || isSubmitting || isValidating}
                           isSubmitting={isSubmitting}
+                          aria-label={
+                            isSubmitting ? `Sending message` : `Send message`
+                          }
                         />
                       </InputsWrapper>
                       <ErrorMessage name="email">
                         {(msg) => (
-                          <InlineErrorMessage>{msg}</InlineErrorMessage>
+                          <InlineErrorMessage
+                            aria-hidden="true"
+                            id="email-validation"
+                          >
+                            {msg}
+                          </InlineErrorMessage>
                         )}
                       </ErrorMessage>
                       <PrivacyCheckbox
                         name="acceptsconsentcheckbox"
                         locale={locale}
+                        aria-describedby="checkbox-validation"
+                        aria-required="true"
                       />
                       <ErrorMessage name="acceptsconsentcheckbox">
                         {(msg) => (
-                          <InlineErrorMessage>{msg}</InlineErrorMessage>
+                          <InlineErrorMessage
+                            aria-hidden="true"
+                            id="checkbox-validation"
+                          >
+                            {msg}
+                          </InlineErrorMessage>
                         )}
                       </ErrorMessage>
                     </Form>
