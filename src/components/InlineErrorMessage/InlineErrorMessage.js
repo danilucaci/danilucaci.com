@@ -3,10 +3,12 @@ import { node, string } from "prop-types";
 
 import { MessageWrapper, MessageCopy } from "./styles";
 
-function InlineErrorMessage({ children, testid }) {
+function InlineErrorMessage({ children, testid, ...props }) {
   return (
     <MessageWrapper>
-      <MessageCopy data-testid={testid}>{children}</MessageCopy>
+      <MessageCopy data-testid={testid} {...props}>
+        {children}
+      </MessageCopy>
     </MessageWrapper>
   );
 }

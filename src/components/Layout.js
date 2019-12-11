@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React, { useLayoutEffect, createContext } from "react";
 import { node, string, shape, bool } from "prop-types";
 import { ThemeProvider } from "styled-components";
 import Cookies from "js-cookie";
@@ -76,6 +76,8 @@ const reducer = (state, action) => {
       throw new Error(`Unhandled action type received: ${action.type}`);
   }
 };
+
+export const GDPRContext = createContext();
 
 const Layout = ({
   location,
@@ -259,44 +261,44 @@ const Layout = ({
           defaultLocale="en"
           messages={intlMessages[locale]}
         >
-          <Page>
-            <div
-              id="top"
-              style={{
-                backgroundColor: "transparent",
-                position: "absolute",
-                width: "1px",
-                height: "1px",
-                padding: "0",
-                margin: "-1px",
-                overflow: "hidden",
-                clip: "rect(0, 0, 0, 0)",
-                border: "0",
-              }}
-            />
-            {GTMScript}
-            <SkipToMainContent />
-            <GlobalReset />
-            <GlobalAria />
-            <GlobalCSS />
-            <GlobalGrid />
-            <SVGSprite />
-            <SiteHeader
-              twinPostURL={twinPostURL}
-              locale={locale}
-              currentPath={location.pathname}
-              expand={expandHeaderAndFooter}
-              colorHeader={colorHeader}
-            />
-            {children}
-            <ScrollToTop />
-            <SiteFooter
-              locale={locale}
-              twinPostURL={twinPostURL}
-              currentPath={location.pathname}
-              expand={expandHeaderAndFooter}
-            />
-            {NODE_ENV !== "development" && (
+          <GDPRContext.Provider value={state.hasGDPRConsent}>
+            <Page>
+              <div
+                id="top"
+                style={{
+                  backgroundColor: "transparent",
+                  position: "absolute",
+                  width: "1px",
+                  height: "1px",
+                  padding: "0",
+                  margin: "-1px",
+                  overflow: "hidden",
+                  clip: "rect(0, 0, 0, 0)",
+                  border: "0",
+                }}
+              />
+              {GTMScript}
+              <SkipToMainContent />
+              <GlobalReset />
+              <GlobalAria />
+              <GlobalCSS />
+              <GlobalGrid />
+              <SVGSprite />
+              <SiteHeader
+                twinPostURL={twinPostURL}
+                locale={locale}
+                currentPath={location.pathname}
+                expand={expandHeaderAndFooter}
+                colorHeader={colorHeader}
+              />
+              {children}
+              <ScrollToTop />
+              <SiteFooter
+                locale={locale}
+                twinPostURL={twinPostURL}
+                currentPath={location.pathname}
+                expand={expandHeaderAndFooter}
+              />
               <CookieConsent
                 openCookieConsent={state.openCookieConsent}
                 acceptedCookies={acceptedCookies}
@@ -304,8 +306,8 @@ const Layout = ({
                 pageLocale={locale}
                 isTransitioning={state.isTransitioning}
               />
-            )}
-          </Page>
+            </Page>
+          </GDPRContext.Provider>
         </IntlProvider>
       </ThemeProvider>
     </ErrorBoundary>

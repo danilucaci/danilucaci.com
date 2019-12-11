@@ -5,22 +5,20 @@ import PropTypes from "prop-types";
 function sendGAEvent(category, action, label, value) {
   const globalWindow = typeof window !== "undefined";
 
-  return function() {
-    // Only send if it’s initialized
-    if (globalWindow && window._DL_GA_INITIALIZED) {
-      try {
-        ReactGA.event({
-          category,
-          action,
-          label,
-          value,
-        });
-      } catch (error) {
-        console.error(error);
-        Sentry.captureException(error);
-      }
+  // Only send if it’s initialized
+  if (globalWindow && window._DL_GA_INITIALIZED) {
+    try {
+      ReactGA.event({
+        category,
+        action,
+        label,
+        value,
+      });
+    } catch (error) {
+      console.error(error);
+      Sentry.captureException(error);
     }
-  };
+  }
 }
 
 sendGAEvent.propTypes = {

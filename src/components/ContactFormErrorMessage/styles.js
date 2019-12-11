@@ -74,7 +74,6 @@ export const ShowErrorButton = styled.button`
   font-size: ${theme.font.size.body.s};
   line-height: ${theme.font.lineHeight.body.s};
   font-weight: 700;
-  margin-top: ${rem(16)};
 
   .fonts-loaded & {
     font-family: ${theme.font.family.body.bold};
@@ -112,4 +111,16 @@ export const ShowErrorButton = styled.button`
     &:focus {
       cursor: not-allowed;
     }
+  }
+`;
+
+export const CloseErrorButton = styled(ShowErrorButton)`
+  margin-left: auto;
+`;
+
+export const ButtonsWrapper = styled.div`
+  margin-top: ${rem(16)};
+  width: auto;
+  display: flex;
+  justify-content: space-between;
 `;

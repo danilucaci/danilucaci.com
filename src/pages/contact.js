@@ -53,7 +53,10 @@ const ContactPage = ({ pageContext, location }) => {
         />
 
         <Main>
-          <ContactPageRow pb>
+          <ContactPageRow
+            pb
+            aria-label={locale === "en" ? "contact me" : "contacto"}
+          >
             <Col xl={6}>
               <FormattedMessage id="contact.page.title">
                 {(txt) => <H1>{txt}</H1>}

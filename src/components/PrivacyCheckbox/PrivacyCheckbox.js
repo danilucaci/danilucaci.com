@@ -14,6 +14,11 @@ import {
 function PrivacyCheckbox({ locale = "en", ...props }) {
   const data = useStaticQuery(PRIVACY_CHECKBOX_QUERY);
 
+  const ariaLabel =
+    locale === "en"
+      ? "I have read and accept the legal notice and the privacy policy"
+      : "He leído y accepto el aviso legal y la política de privacidad";
+
   let legalNoticeLink = data.allMdx.edges
     .map((edge) => ({
       slug: edge.node.fields.slug,
@@ -32,7 +37,12 @@ function PrivacyCheckbox({ locale = "en", ...props }) {
 
   return (
     <>
-      <StyledCheckbox id="privacycheckbox" type="checkbox" {...props} />
+      <StyledCheckbox
+        id="privacycheckbox"
+        aria-label={ariaLabel}
+        type="checkbox"
+        {...props}
+      />
       <StyledCheckboxLabel htmlFor="privacycheckbox">
         <FormattedMessage id="form.privacy.more.1">
           {(txt) => <>{txt}</>}

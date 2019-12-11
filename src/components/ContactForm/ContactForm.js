@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { string } from "prop-types";
 import { Formik, Field, ErrorMessage } from "formik";
 
@@ -13,80 +13,111 @@ import { CONSENT_VALUE, localePaths } from "../../i18n/i18n";
 import PrivacyCheckbox from "../PrivacyCheckbox/PrivacyCheckbox";
 import ContactFormErrorMessage from "../ContactFormErrorMessage/ContactFormErrorMessage";
 import InlineErrorMessage from "../InlineErrorMessage/InlineErrorMessage";
+import useFirebaseAnonymousAuth from "../../hooks/useFirebaseAnonymousAuth";
 
 import SubmitButton from "../SubmitButton/SubmitButton";
 
 import { FormContainer, StyledForm, StyledLabel, StyledInput } from "./styles";
 
+import { GDPRContext } from "../Layout";
+
+function logGAEvent(label = "Ok") {
+  return sendGAEvent("Contact Form", "Submitted", label);
+}
+
 function ContactForm({ locale }) {
   const [showFormError, setShowFormError] = useState(false);
-  const [formErrorRes, setFormErrorRes] = useState({});
+  const [formErrorMessage, setFormErrorMessage] = useState(null);
+  const hasGDPRConsent = useContext(GDPRContext);
+  const [consentAccepted, setConsentAccepted] = useState(false);
 
-  function logGAEvent(statusText = "", status = 200) {
-    const logGA = sendGAEvent(
-      "Contact Page",
-      "Submitted Form",
-      statusText,
-      status,
-    );
-    logGA();
+  const { userToken, error: authError } = useFirebaseAnonymousAuth(
+    consentAccepted,
+  );
+
+  useEffect(() => {
+    if (authError) {
+      setShowFormError(true);
+      setFormErrorMessage("Service is currently unavailable.");
+      Sentry.captureMessage(authError);
+    }
+  }, [authError]);
+
+  useEffect(() => {
+    if (hasGDPRConsent && !consentAccepted) {
+      setConsentAccepted(true);
+    }
+  }, [hasGDPRConsent]);
+
+  function clearErrorMessage() {
+    setShowFormError(false);
+    setFormErrorMessage(null);
   }
 
   function handleFormError(error) {
+    setFormErrorMessage(error.message);
     setShowFormError(true);
-    setFormErrorRes(error);
-    console.error("Contact form failed with: ", error.name);
     console.error("Contact form failed with: ", error.message);
     Sentry.captureException(error);
   }
 
   function handleContactFormSubmit(values, setSubmitting) {
-    const consentcheckboxvalue = values.acceptsconsentcheckbox
+    const consentValue = values.consentAccepted
       ? CONSENT_VALUE[locale].yes
       : CONSENT_VALUE[locale].no;
 
+    if (!consentAccepted) {
+      setConsentAccepted(values.consentAccepted);
+    }
+
     try {
       const data = JSON.stringify({
-        formname: "contact",
         email: values.email,
         fullname: values.fullname,
         message: values.message,
         datesent: new Date().toISOString(),
-        locale,
+        locale: locale,
         botfield: values.botfield,
-        acceptsconsentcheckbox: values.acceptsconsentcheckbox,
-        consentcheckboxvalue: consentcheckboxvalue,
+        consentAccepted: values.consentAccepted,
+        consentValue: consentValue,
       });
 
-      fetch("/.netlify/functions/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: data,
-      })
-        .then((res) => {
-          // Log GA event no mather what response it gets
-          logGAEvent(res.statusText, res.status);
-
-          if (res.status === 200) {
-            setSubmitting(false);
-          } else {
-            setSubmitting(false);
-            handleFormError(
-              new Error(
-                `Contact form error: Status Code ${res.status}: ${res.statusText}`,
-              ),
-            );
-          }
-
-          return res.json();
+      if (userToken) {
+        fetch(process.env.GATSBY_FIREBASE_FUNCTIONS_CONTACT_URL, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+            "Content-Type": "application/json",
+          },
+          body: data,
         })
-        .then((res) => {
-          // If the email was sent successfully
-          if (res.mail_success) {
-            navigate(localePaths[locale].thanks);
-          }
-        });
+          .then((jsonResponse) => {
+            setSubmitting(false);
+
+            return jsonResponse.json();
+          })
+          .then((response) => {
+            if (response.error) {
+              logGAEvent("Failed");
+              handleFormError(new Error(response.error));
+            }
+
+            if (!response.error && response.data && response.data === "Ok") {
+              logGAEvent("Success");
+              navigate(localePaths[locale].thanks);
+            }
+          })
+          .catch((error) => {
+            logGAEvent("Failed");
+            setSubmitting(false);
+            handleFormError(error);
+          });
+      } else {
+        logGAEvent("Auth Failed");
+        setSubmitting(false);
+      }
     } catch (error) {
+      logGAEvent("Failed");
       setSubmitting(false);
       handleFormError(error);
     }
@@ -100,24 +131,22 @@ function ContactForm({ locale }) {
           fullname: "",
           message: "",
           botfield: "",
-          acceptsconsentcheckbox: false,
+          consentAccepted: false,
         }}
-        validateOnMount={true}
         validationSchema={CONTACT_FORM_VALIDATION_SCHEMA(locale)}
         onSubmit={(values, { setSubmitting }) => {
           handleContactFormSubmit(values, setSubmitting);
         }}
       >
-        {({
-          values,
-          errors,
-          touched,
-          handleSubmit,
-          isSubmitting,
-          isValidating,
-          isValid,
-        }) => (
-          <StyledForm name="contact" method="post" onSubmit={handleSubmit}>
+        {({ errors, touched, handleSubmit, isSubmitting, isValid }) => (
+          <StyledForm
+            name="contact"
+            method="post"
+            onSubmit={handleSubmit}
+            aria-label={
+              locale === "en" ? "contact form" : "formulario de contacto"
+            }
+          >
             <Field
               style={{ display: "none" }}
               aria-hidden="true"
@@ -133,10 +162,19 @@ function ContactForm({ locale }) {
                 minLength="2"
                 valid={touched.fullname && !errors.fullname}
                 error={touched.fullname && errors.fullname}
+                aria-describedby="fullname-validation"
+                aria-required="true"
+                aria-invalid={
+                  touched.fullname && errors.fullname ? `true` : `false`
+                }
               />
             </StyledLabel>
             {errors.fullname && touched.fullname && (
-              <InlineErrorMessage testid="Fullname__ErrorMessage">
+              <InlineErrorMessage
+                aria-hidden="true"
+                id="fullname-validation"
+                testid="Fullname__ErrorMessage"
+              >
                 {errors.fullname}
               </InlineErrorMessage>
             )}
@@ -151,11 +189,18 @@ function ContactForm({ locale }) {
                 placeholderType="email"
                 valid={touched.email && !errors.email}
                 error={touched.email && errors.email}
+                aria-describedby="email-validation"
+                aria-required="true"
+                aria-invalid={touched.email && errors.email ? `true` : `false`}
               />
             </StyledLabel>
             <ErrorMessage name="email">
               {(errorMessage) => (
-                <InlineErrorMessage testid="Email__ErrorMessage">
+                <InlineErrorMessage
+                  aria-hidden="true"
+                  id="email-validation"
+                  testid="Email__ErrorMessage"
+                >
                   {errorMessage}
                 </InlineErrorMessage>
               )}
@@ -170,35 +215,56 @@ function ContactForm({ locale }) {
                 placeholderType="message"
                 valid={touched.message && !errors.message}
                 error={touched.message && errors.message}
+                aria-describedby="message-validation"
+                aria-required="true"
+                aria-invalid={
+                  touched.message && errors.message ? `true` : `false`
+                }
               />
             </StyledLabel>
             <ErrorMessage name="message">
               {(errorMessage) => (
-                <InlineErrorMessage testid="Message__ErrorMessage">
+                <InlineErrorMessage
+                  aria-hidden="true"
+                  id="message-validation"
+                  testid="Message__ErrorMessage"
+                >
                   {errorMessage}
                 </InlineErrorMessage>
               )}
             </ErrorMessage>
 
-            <PrivacyCheckbox name="acceptsconsentcheckbox" locale={locale} />
+            <PrivacyCheckbox
+              name="consentAccepted"
+              locale={locale}
+              aria-describedby="checkbox-validation"
+              aria-required="true"
+            />
 
-            <ErrorMessage name="acceptsconsentcheckbox">
+            <ErrorMessage name="consentAccepted">
               {(errorMessage) => (
-                <InlineErrorMessage testid="Checkbox__ErrorMessage">
+                <InlineErrorMessage
+                  aria-hidden="true"
+                  id="checkbox-validation"
+                  testid="Checkbox__ErrorMessage"
+                >
                   {errorMessage}
                 </InlineErrorMessage>
               )}
             </ErrorMessage>
 
             <SubmitButton
-              disabled={!isValid || isSubmitting || isValidating}
+              disabled={!isValid || isSubmitting || authError}
               showSpinner={isSubmitting}
+              aria-label={isSubmitting ? `Sending message` : `Send message`}
             />
 
             {showFormError && (
               <ContactFormErrorMessage
+                errorMessage={formErrorMessage}
+                clearErrorMessage={clearErrorMessage}
+                shouldRenderCloseButton={!authError}
                 locale={locale}
-                formErrorRes={formErrorRes}
               />
             )}
           </StyledForm>

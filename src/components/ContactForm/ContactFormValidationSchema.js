@@ -16,7 +16,7 @@ const CONTACT_FORM_VALIDATION_SCHEMA = (locale = "en") =>
       .max(800, FORM_SUBMIT_STATUS.formValidation[locale].messageLong)
       .required(FORM_SUBMIT_STATUS.formValidation[locale].messageRequired),
     botfield: Yup.string().max(0, "Great Success"),
-    acceptsconsentcheckbox: Yup.boolean().oneOf(
+    consentAccepted: Yup.boolean().oneOf(
       [true],
       FORM_SUBMIT_STATUS.formValidation[locale].privacyRequired,
     ),

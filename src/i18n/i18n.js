@@ -81,9 +81,8 @@ export const FORM_SUBMIT_STATUS = {
   formValidation: {
     en: {
       email: "Please enter a valid email",
-      nameRequired:
-        "Please enter your name. I don’t really want to call you ‘user182’ 😄",
-      nameShort: "Your name is too short. I’m sure it’s longer than that...",
+      nameRequired: "Please enter your name so I can get back to you.",
+      nameShort: "Your name is too short. I’m sure it’s longer than that.",
       nameLong: "Your name is too long. Are you sure it’s correct?",
       emailRequired: "Please enter your email so that I can get back to you.",
       messageRequired:
@@ -98,7 +97,7 @@ export const FORM_SUBMIT_STATUS = {
     es: {
       email: "El correo electrónico que has introducido no es válido.",
       nameRequired:
-        "Por favor introduce tu nombre. No me gustaría llamarte ‘usuario371’ 😄",
+        "Por favor introduce tu nombre para que pueda enviarte una respuesta.",
       nameShort: "Tu nombre parece muy corto, ¿seguro te llamas así?",
       nameLong: "Tu nombre es un poco largo, ¿seguro te llamas así?",
       emailRequired:
