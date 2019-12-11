@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import * as Sentry from "@sentry/browser";
 
 const NODE_ENV = process.env.NODE_ENV;
@@ -12,15 +12,12 @@ if (NODE_ENV !== "development") {
   });
 }
 
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      errorInfo: null,
-      hasError: null,
-    };
-  }
+class ErrorBoundary extends Component {
+  state = {
+    error: null,
+    errorInfo: null,
+    hasError: null,
+  };
 
   static getDerivedStateFromError(error) {
     // Update state so the next render will show the fallback UI.
@@ -45,14 +42,16 @@ class ErrorBoundary extends React.Component {
   }
 
   render() {
-    if (this.state.hasError) {
+    if (this.state.errorInfo) {
       return (
         <div
           style={{
             maxWidth: "800px",
             padding: "24px",
             border: "1px solid lightgrey",
+            borderRadius: "3px",
             margin: "0 auto",
+            marginTop: "2rem",
             fontFamily: "system-ui",
           }}
         >
@@ -79,7 +78,11 @@ class ErrorBoundary extends React.Component {
             like to send me a report of the error that happened, feel free to
             send me an email or a tweet with the details.
           </p>
-          <ul>
+          <ul
+            style={{
+              marginTop: "1rem",
+            }}
+          >
             <li
               style={{
                 fontSize: "16px",
