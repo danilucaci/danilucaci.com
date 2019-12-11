@@ -43,7 +43,15 @@ export const ErrorIcon = styled(Icon)`
   fill: ${theme.color.icon.error};
 `;
 
-export const ErrorTitle = styled.h4`
+export const ErrorTitle = styled.h3`
+  font-size: ${theme.font.size.display.mobile.h4};
+  line-height: ${theme.font.lineHeight.display.mobile.h4};
+
+  ${mediaMin.xs`
+  font-size: ${theme.font.size.display.desktop.h4};
+  line-height: ${theme.font.lineHeight.display.desktop.h4};
+`}
+
   ${mediaMin.xxxs`
     margin-left: ${rem(8)};
   `};

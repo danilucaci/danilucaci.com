@@ -56,9 +56,17 @@ export const SayHiWrapper = styled.div`
   `};
 `;
 
-export const SayHiTitle = styled.h4`
+export const SayHiTitle = styled.h2`
   margin-top: ${rem(24)};
   margin-bottom: ${rem(16)};
+
+  font-size: ${theme.font.size.display.mobile.h4};
+  line-height: ${theme.font.lineHeight.display.mobile.h4};
+
+  ${mediaMin.xs`
+    font-size: ${theme.font.size.display.desktop.h4};
+    line-height: ${theme.font.lineHeight.display.desktop.h4};
+  `}
 
   ${mediaMin.l`  
     margin-top: ${rem(16)};
