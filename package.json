@@ -30,7 +30,7 @@
     "clean:cache": "rm -rf public && rm -rf .cache",
     "serve": "gatsby serve",
     "build": "gatsby build",
-    "netlify": "build",
+    "netlify": "gatsby build",
     "sprite": "gulp build:svg"
   },
   "browserslist": [
