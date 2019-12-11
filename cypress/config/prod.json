@@ -1,0 +1,8 @@
+{
+  "baseUrl": "https://www.danilucaci.com",
+  "env": {
+    "baseUrl": "https://www.danilucaci.com",
+    "jwtToken": "",
+    "apiUrl": ""
+  }
+}

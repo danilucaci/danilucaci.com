@@ -9,7 +9,7 @@ describe("Contact From Validation - English", () => {
         .focus()
         .should("have.css", "border-color", "rgb(191, 195, 199)");
       cy.get("[data-testid=Fullname__ErrorMessage]").should("not.exist");
-      cy.get("button[type=submit]").should("be.disabled");
+      cy.get("button[type=submit]").should("not.be.disabled");
     });
 
     it("fullname: returns an error when it has no value, is touched and blured", () => {
@@ -19,7 +19,10 @@ describe("Contact From Validation - English", () => {
         .should("have.css", "border-color", "rgb(191, 49, 12)");
       cy.get("[data-testid=Fullname__ErrorMessage]")
         .should("exist")
-        .and("contain.text", "Please enter your name.");
+        .and(
+          "contain.text",
+          "Please enter your name so I can get back to you.",
+        );
       cy.get("button[type=submit]").should("be.disabled");
     });
 
@@ -52,7 +55,7 @@ describe("Contact From Validation - English", () => {
         .focus()
         .should("have.css", "border-color", "rgb(191, 195, 199)");
       cy.get("[data-testid=Email__ErrorMessage]").should("not.exist");
-      cy.get("button[type=submit]").should("be.disabled");
+      cy.get("button[type=submit]").should("not.be.disabled");
     });
 
     it("email: returns an error when it has no value, is touched and blured", () => {
@@ -95,7 +98,7 @@ describe("Contact From Validation - English", () => {
         .focus()
         .should("have.css", "border-color", "rgb(191, 195, 199)");
       cy.get("[data-testid=Message__ErrorMessage]").should("not.exist");
-      cy.get("button[type=submit]").should("be.disabled");
+      cy.get("button[type=submit]").should("not.be.disabled");
     });
 
     it("message: returns an error when it has no value, is touched and blured", () => {
@@ -137,15 +140,15 @@ describe("Contact From Validation - English", () => {
 
   context("checkbox: validation renders all states", () => {
     it("checkbox: has the initial value set", () => {
-      cy.get("input[name=acceptsconsentcheckbox]")
+      cy.get("input[name=consentAccepted]")
         .focus()
         .should("have.value", "false");
       cy.get("[data-testid=Checkbox__ErrorMessage]").should("not.exist");
-      cy.get("button[type=submit]").should("be.disabled");
+      cy.get("button[type=submit]").should("not.be.disabled");
     });
 
     it("checkbox: returns an error when it is touched and blured", () => {
-      cy.get("input[name=acceptsconsentcheckbox]")
+      cy.get("input[name=consentAccepted]")
         .focus()
         .blur();
       cy.get("[data-testid=Checkbox__ErrorMessage]")
@@ -158,7 +161,7 @@ describe("Contact From Validation - English", () => {
     });
 
     it("checkbox: has the correct value after it is checked", () => {
-      cy.get("input[name=acceptsconsentcheckbox]")
+      cy.get("input[name=consentAccepted]")
         .check()
         .should("be.checked")
         .and("have.value", "true");
@@ -193,7 +196,7 @@ describe("Contact From Validation - English", () => {
       cy.get("[data-testid=Message__ErrorMessage]").should("not.exist");
       cy.get("button[type=submit]").should("be.disabled");
 
-      cy.get("input[name=acceptsconsentcheckbox]")
+      cy.get("input[name=consentAccepted]")
         .check()
         .should("be.checked")
         .and("have.value", "true");
@@ -201,157 +204,275 @@ describe("Contact From Validation - English", () => {
       cy.get("button[type=submit]").should("be.enabled");
       cy.get("button[type=submit]").click();
 
-      cy.get("h1").should("contain", "Thank you for contacting me!");
+      cy.get("[data-testid=contact-form-error-message]").should("not.exist");
 
+      cy.get("h1").should("contain", "Thank you for contacting me!");
       cy.url().should("include", "/thanks");
     });
   });
 
-  context("HTML form submission with cy.request", () => {
-    it("fails to send an email if event.headers.origin is not present", () => {
+  context("Contact form submission to firebase api", () => {
+    /**
+     * @see https://github.com/request/request#http-authentication
+     */
+    it("returns 401:Unauthorized if it doesn’t have a Bearer token.", () => {
       cy.request({
         method: "POST",
         // the test doesn't fail when it receives a status code that is not 200
         failOnStatusCode: false,
-        url: "/.netlify/functions/contact",
+        url: Cypress.env("apiUrl"),
         body: {
           email: "dani@mail.com",
           fullname: "Dani Lucaci",
           message: "Hello, how are you",
-          datesent: "2019-09-08T07:01:36.627Z",
+          datesent: new Date().toISOString(),
           locale: "en",
           botfield: "",
-          acceptsconsentcheckbox: true,
-          consentcheckboxvalue:
+          consentAccepted: true,
+          consentValue:
             "I have read and accept the legal notice and the privacy policy.",
         },
-      }).should((res) => {
-        expect(res.status).to.eq(403);
-        expect(res.body).to.have.string("Invalid origin.");
-        expect(res).to.have.property("headers");
-      });
-    });
-
-    // cypress doesn't have cors
-    it.skip("can bypass the ui and send an email with event.headers.origin check removed", () => {
-      cy.request({
-        method: "POST",
-        url: "/.netlify/functions/contact",
-        body: {
-          email: "dani@mail.com",
-          fullname: "Dani Lucaci",
-          message: "Hello, how are you",
-          datesent: "2019-09-08T07:01:36.627Z",
-          locale: "en",
-          botfield: "",
-          acceptsconsentcheckbox: true,
-          consentcheckboxvalue:
-            "I have read and accept the legal notice and the privacy policy.",
-        },
-      }).should((res) => {
-        expect(res.status).to.eq(200);
+      }).then((res) => {
+        expect(res.status).to.eq(401);
         expect(res.body).to.deep.eq({
-          mail_message: "Mail sent",
-          mail_success: true,
+          data: null,
+          error: "Unauthorized",
         });
         expect(res).to.have.property("headers");
       });
     });
 
-    it.skip("fails to send an email if the botfield has a value", () => {
+    it("fails to submit if it doesn’t have a valid email.", () => {
       cy.request({
         method: "POST",
         // the test doesn't fail when it receives a status code that is not 200
         failOnStatusCode: false,
-        url: "/.netlify/functions/contact",
+        url: Cypress.env("apiUrl"),
+        auth: {
+          bearer: Cypress.env("jwtToken"),
+        },
         body: {
-          email: "dani@mail.com",
+          email: "",
           fullname: "Dani Lucaci",
           message: "Hello, how are you",
-          datesent: "2019-09-08T07:01:36.627Z",
+          datesent: new Date().toISOString(),
           locale: "en",
-          botfield: "huehuehuehue",
-          acceptsconsentcheckbox: true,
-          consentcheckboxvalue:
+          botfield: "",
+          consentAccepted: true,
+          consentValue:
             "I have read and accept the legal notice and the privacy policy.",
         },
-      }).should((res) => {
-        expect(res.status).to.eq(403);
-        expect(res.body).to.eq("Nope.");
+      }).then((res) => {
+        expect(res.status).to.eq(400);
+        expect(res.body).to.deep.eq({
+          data: null,
+          error: `Input validation failed.`,
+        });
         expect(res).to.have.property("headers");
       });
     });
 
-    it.skip("fails to send an email if the consent checkbox was not checked", () => {
+    it("fails to submit if it doesn’t have a valid full name.", () => {
       cy.request({
         method: "POST",
         // the test doesn't fail when it receives a status code that is not 200
         failOnStatusCode: false,
-        url: "/.netlify/functions/contact",
+        url: Cypress.env("apiUrl"),
+        auth: {
+          bearer: Cypress.env("jwtToken"),
+        },
+        body: {
+          email: "dani@mail.com",
+          fullname: "",
+          message: "Hello, how are you",
+          datesent: new Date().toISOString(),
+          locale: "en",
+          botfield: "",
+          consentAccepted: true,
+          consentValue:
+            "I have read and accept the legal notice and the privacy policy.",
+        },
+      }).then((res) => {
+        expect(res.status).to.eq(400);
+        expect(res.body).to.deep.eq({
+          data: null,
+          error: `Input validation failed.`,
+        });
+        expect(res).to.have.property("headers");
+      });
+    });
+
+    it("fails to submit if it doesn’t have a valid message.", () => {
+      cy.request({
+        method: "POST",
+        // the test doesn't fail when it receives a status code that is not 200
+        failOnStatusCode: false,
+        url: Cypress.env("apiUrl"),
+        auth: {
+          bearer: Cypress.env("jwtToken"),
+        },
         body: {
           email: "dani@mail.com",
           fullname: "Dani Lucaci",
-          message: "Hello, how are you",
-          datesent: "2019-09-08T07:01:36.627Z",
+          message: "",
+          datesent: new Date().toISOString(),
           locale: "en",
           botfield: "",
-          acceptsconsentcheckbox: false,
-          consentcheckboxvalue:
+          consentAccepted: true,
+          consentValue:
             "I have read and accept the legal notice and the privacy policy.",
         },
-      }).should((res) => {
+      }).then((res) => {
+        expect(res.status).to.eq(400);
+        expect(res.body).to.deep.eq({
+          data: null,
+          error: `Input validation failed.`,
+        });
+        expect(res).to.have.property("headers");
+      });
+    });
+
+    it("fails to submit if it has a botfield message.", () => {
+      cy.request({
+        method: "POST",
+        // the test doesn't fail when it receives a status code that is not 200
+        failOnStatusCode: false,
+        url: Cypress.env("apiUrl"),
+        auth: {
+          bearer: Cypress.env("jwtToken"),
+        },
+        body: {
+          email: "dani@mail.com",
+          fullname: "Dani Lucaci",
+          message: "Hello how are you",
+          datesent: new Date().toISOString(),
+          locale: "en",
+          botfield: "hola",
+          consentAccepted: true,
+          consentValue:
+            "I have read and accept the legal notice and the privacy policy.",
+        },
+      }).then((res) => {
+        expect(res.status).to.eq(401);
+        expect(res.body).to.deep.eq({
+          data: null,
+          error: "Unauthorized",
+        });
+        expect(res).to.have.property("headers");
+      });
+    });
+
+    it("fails to submit if the consent wasn’t accepted.", () => {
+      cy.request({
+        method: "POST",
+        // the test doesn't fail when it receives a status code that is not 200
+        failOnStatusCode: false,
+        url: Cypress.env("apiUrl"),
+        auth: {
+          bearer: Cypress.env("jwtToken"),
+        },
+        body: {
+          email: "dani@mail.com",
+          fullname: "Dani Lucaci",
+          message: "Hello how are you",
+          datesent: new Date().toISOString(),
+          locale: "en",
+          botfield: "",
+          consentAccepted: false,
+          consentValue:
+            "I have read and accept the legal notice and the privacy policy.",
+        },
+      }).then((res) => {
         expect(res.status).to.eq(451);
-        expect(res.body).to.have.string(
-          "Legal notice and privacy policy were not accepted",
-        );
+        expect(res.body).to.deep.eq({
+          data: null,
+          error: "Legal notice and privacy policy were not accepted.",
+        });
         expect(res).to.have.property("headers");
       });
     });
 
-    it.skip("fails to send an email if the email validation fails", () => {
+    it("fails to submit if the consent doesn’t have a value.", () => {
       cy.request({
         method: "POST",
         // the test doesn't fail when it receives a status code that is not 200
         failOnStatusCode: false,
-        url: "/.netlify/functions/contact",
+        url: Cypress.env("apiUrl"),
+        auth: {
+          bearer: Cypress.env("jwtToken"),
+        },
         body: {
-          email: "dani@",
+          email: "dani@mail.com",
           fullname: "Dani Lucaci",
-          message: "Hello, how are you",
-          datesent: "2019-09-08T07:01:36.627Z",
+          message: "Hello how are you",
+          datesent: new Date().toISOString(),
           locale: "en",
           botfield: "",
-          acceptsconsentcheckbox: true,
-          consentcheckboxvalue:
-            "I have read and accept the legal notice and the privacy policy.",
+          consentAccepted: true,
+          consentValue: "",
         },
-      }).should((res) => {
-        expect(res.status).to.eq(500);
-        expect(res.body).to.have.string("Input validation failed: ");
+      }).then((res) => {
+        expect(res.status).to.eq(451);
+        expect(res.body).to.deep.eq({
+          data: null,
+          error: "Legal notice and privacy policy were not accepted.",
+        });
         expect(res).to.have.property("headers");
       });
     });
 
-    it.skip("fails to send an email if the date sent validation fails", () => {
+    it("returns 404 with any other method than POST.", () => {
       cy.request({
-        method: "POST",
+        method: "GET",
         // the test doesn't fail when it receives a status code that is not 200
         failOnStatusCode: false,
-        url: "/.netlify/functions/contact",
+        url: Cypress.env("apiUrl"),
+        auth: {
+          bearer: Cypress.env("jwtToken"),
+        },
         body: {
           email: "dani@mail.com",
           fullname: "Dani Lucaci",
           message: "Hello, how are you",
-          datesent: "monday",
+          datesent: new Date().toISOString(),
           locale: "en",
           botfield: "",
-          acceptsconsentcheckbox: true,
-          consentcheckboxvalue:
+          consentAccepted: true,
+          consentValue:
             "I have read and accept the legal notice and the privacy policy.",
         },
-      }).should((res) => {
-        expect(res.status).to.eq(500);
-        expect(res.body).to.have.string("Input validation failed: ");
+      }).then((res) => {
+        expect(res.status).to.eq(404);
+        expect(res.statusText).to.eq("Not Found");
+        expect(res).to.have.property("headers");
+      });
+    });
+
+    it("returns 200:Ok if all the data is correct.", () => {
+      cy.request({
+        method: "POST",
+        // the test doesn't fail when it receives a status code that is not 200
+        url: Cypress.env("apiUrl"),
+        auth: {
+          bearer: Cypress.env("jwtToken"),
+        },
+        body: {
+          email: "dani@mail.com",
+          fullname: "Dani Lucaci",
+          message: "Hello, how are you",
+          datesent: new Date().toISOString(),
+          locale: "en",
+          botfield: "",
+          consentAccepted: true,
+          consentValue:
+            "I have read and accept the legal notice and the privacy policy.",
+        },
+      }).then((res) => {
+        expect(res.status).to.eq(200);
+        expect(res.body).to.deep.eq({
+          data: "Ok",
+          error: null,
+        });
         expect(res).to.have.property("headers");
       });
     });

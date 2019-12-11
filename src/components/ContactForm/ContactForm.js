@@ -173,7 +173,7 @@ function ContactForm({ locale }) {
               <InlineErrorMessage
                 aria-hidden="true"
                 id="fullname-validation"
-                testid="Fullname__ErrorMessage"
+                data-testid="Fullname__ErrorMessage"
               >
                 {errors.fullname}
               </InlineErrorMessage>
@@ -199,7 +199,7 @@ function ContactForm({ locale }) {
                 <InlineErrorMessage
                   aria-hidden="true"
                   id="email-validation"
-                  testid="Email__ErrorMessage"
+                  data-testid="Email__ErrorMessage"
                 >
                   {errorMessage}
                 </InlineErrorMessage>
@@ -227,7 +227,7 @@ function ContactForm({ locale }) {
                 <InlineErrorMessage
                   aria-hidden="true"
                   id="message-validation"
-                  testid="Message__ErrorMessage"
+                  data-testid="Message__ErrorMessage"
                 >
                   {errorMessage}
                 </InlineErrorMessage>
@@ -246,7 +246,7 @@ function ContactForm({ locale }) {
                 <InlineErrorMessage
                   aria-hidden="true"
                   id="checkbox-validation"
-                  testid="Checkbox__ErrorMessage"
+                  data-testid="Checkbox__ErrorMessage"
                 >
                   {errorMessage}
                 </InlineErrorMessage>

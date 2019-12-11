@@ -26,7 +26,11 @@ function ContactFormErrorMessage({
   const [showError, setShowError] = useState(false);
 
   return (
-    <ErrorMessageWrapper role="status" aria-live="polite">
+    <ErrorMessageWrapper
+      role="status"
+      aria-live="polite"
+      data-testid="contact-form-error-message"
+    >
       <ErrorTitleWrapper>
         <ErrorIconWrapper>
           <ErrorIcon>

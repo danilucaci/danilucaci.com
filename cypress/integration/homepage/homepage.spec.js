@@ -7,14 +7,14 @@ describe("English Homepage", () => {
     it("renders '/' location", () => {
       // https://on.cypress.io/location
       cy.location().should((location) => {
-        expect(location.href).to.eq(`${Cypress.env("devURLPath")}/`);
+        expect(location.href).to.eq(`${Cypress.env("baseUrl")}/`);
         expect(location.pathname).to.eq("/");
       });
     });
 
     it("renders the correct english current URL", () => {
       // https://on.cypress.io/url
-      cy.url().should("eq", `${Cypress.env("devURLPath")}/`);
+      cy.url().should("eq", `${Cypress.env("baseUrl")}/`);
     });
   });
 
@@ -103,14 +103,14 @@ describe("Spanish Homepage", () => {
     it("renders '/es' location", () => {
       // https://on.cypress.io/location
       cy.location().should((location) => {
-        expect(location.href).to.eq(`${Cypress.env("devURLPath")}/es/`);
-        expect(location.pathname).to.eq("/es/");
+        expect(location.href).to.eq(`${Cypress.env("baseUrl")}/es`);
+        expect(location.pathname).to.eq("/es");
       });
     });
 
     it("renders the correct spanish current URL", () => {
       // https://on.cypress.io/url
-      cy.url().should("eq", `${Cypress.env("devURLPath")}/es/`);
+      cy.url().should("eq", `${Cypress.env("baseUrl")}/es`);
     });
   });
 
