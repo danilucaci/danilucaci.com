@@ -32,7 +32,9 @@ function CaseStudyCard(props) {
             <Tag key={tag}>{tag}</Tag>
           ))}
         </TagsWrapper>
-        <StyledH3>{props.title}</StyledH3>
+        <StyledH3 as={props.cardHeadingLevel} id="case-study-title">
+          {props.title}
+        </StyledH3>
         <Copy>{props.snippet}</Copy>
         <FormattedMessage id="article.link.continue">
           {(txt) => <ContinueLink to={props.slug}>{txt}</ContinueLink>}
@@ -55,6 +57,11 @@ CaseStudyCard.propTypes = {
     srcSet: string.isRequired,
     srcSetWebp: string.isRequired,
   }).isRequired,
+  cardHeadingLevel: string,
+};
+
+CaseStudyCard.defaultProps = {
+  cardHeadingLevel: "h3",
 };
 
 export default CaseStudyCard;

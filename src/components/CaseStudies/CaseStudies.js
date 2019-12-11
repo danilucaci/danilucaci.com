@@ -6,7 +6,7 @@ import CaseStudyCard from "../CaseStudyCard/CaseStudyCard";
 import { Col, Row } from "../Grid/Grid";
 import { Title } from "./styles";
 
-const CaseStudies = ({ edges, spaced, header }) => {
+const CaseStudies = ({ edges, spaced, header, cardHeadingLevel }) => {
   let caseStudies = edges.map((edge) => ({
     slug: edge.node.fields.slug,
     tagsInCaseStudy: edge.node.frontmatter.tags,
@@ -17,10 +17,19 @@ const CaseStudies = ({ edges, spaced, header }) => {
   }));
 
   return (
-    <Row col12 spaced={spaced} data-testid="Casestudies__Wrapper">
+    <Row
+      col12
+      spaced={spaced}
+      data-testid="Casestudies__Wrapper"
+      aria-labelledby="case-studies-title"
+    >
       <Col>
         <FormattedMessage id="case.studies.header">
-          {(txt) => <Title as={header ? "h2" : "h1"}>{txt}</Title>}
+          {(txt) => (
+            <Title id="case-studies-title" as={header}>
+              {txt}
+            </Title>
+          )}
         </FormattedMessage>
       </Col>
       <Col>
@@ -33,6 +42,7 @@ const CaseStudies = ({ edges, spaced, header }) => {
             date={caseStudyCard.date}
             snippet={caseStudyCard.snippet}
             cardImage={caseStudyCard.cardImage}
+            cardHeadingLevel={cardHeadingLevel}
           />
         ))}
       </Col>
@@ -44,11 +54,13 @@ CaseStudies.propTypes = {
   edges: arrayOf(object).isRequired,
   spaced: bool,
   header: string,
+  cardHeadingLevel: string,
 };
 
 CaseStudies.defaultProps = {
   spaced: false,
-  header: null,
+  header: "h1",
+  cardHeadingLevel: undefined,
 };
 
 export default CaseStudies;

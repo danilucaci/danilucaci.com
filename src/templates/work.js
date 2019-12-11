@@ -56,7 +56,7 @@ function WorkPage({ pageContext, location }) {
         />
 
         <Main>
-          <CaseStudies edges={edgesWork} />
+          <CaseStudies cardHeadingLevel="h2" edges={edgesWork} />
 
           {totalPagesInWork > 1 && (
             <Pagination
