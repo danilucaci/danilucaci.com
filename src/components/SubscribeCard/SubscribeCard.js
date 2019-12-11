@@ -28,21 +28,22 @@ import subscribeInitialState from "./subscribeInitialState";
 import MCSchema from "./MCSchema";
 import sendGAEvent from "../../helpers/sendGAEvent";
 
-const logGAEvent = sendGAEvent("Subscribers", "New Subscriber");
-
 function handleFormSent(result, responseMSG, dispatch) {
   if (result.includes("success")) {
-    logGAEvent();
+    sendGAEvent("Subscribers", "Success", "New Subscriber");
   } else if (
     result.includes("error") &&
     responseMSG.includes("is already subscribed to")
   ) {
+    sendGAEvent("Subscribers", "Error", "Already Subscribed");
     dispatch({ type: "FETCH_ERROR_ALREADY", payload: "already" });
     Sentry.captureException(new Error(responseMSG));
   } else if (result.includes("error") && responseMSG.includes("many")) {
+    sendGAEvent("Subscribers", "Error", "Too Many Requests");
     dispatch({ type: "FETCH_ERROR_TOO_MANY" });
     Sentry.captureException(new Error(responseMSG));
   } else if (result.includes("error")) {
+    sendGAEvent("Subscribers", "Error", "Generic");
     dispatch({ type: "FETCH_ERROR_GENERIC", payload: responseMSG });
     Sentry.captureException(new Error(responseMSG));
   }
