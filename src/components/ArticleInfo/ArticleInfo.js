@@ -5,16 +5,20 @@ import { FormattedMessage, FormattedDate } from "react-intl";
 import { ArticleDate, ArticleReadtime, Dot } from "./styles";
 
 const ArticleInfo = ({ date, timeToRead }) => {
+  const fullDate = new Date(date).toLocaleDateString();
+
   return (
     <>
-      <FormattedDate value={date} year="numeric" month="short" day="numeric">
+      <FormattedDate value={date} year="numeric" month="short" day="2-digit">
         {(txt) => (
-          <ArticleDate as="time" dateTime={txt} small>
+          <ArticleDate as="time" dateTime={fullDate} small>
             {txt}
           </ArticleDate>
         )}
       </FormattedDate>
-      <Dot small>•</Dot>
+      <Dot small aria-hidden="true">
+        •
+      </Dot>
       <FormattedMessage id="article.read.time">
         {(txt) => (
           <ArticleReadtime as="span" small>
