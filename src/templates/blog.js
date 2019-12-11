@@ -84,14 +84,18 @@ function BlogPage({ pageContext, location, data }) {
                 </FormattedMessage>
                 <TagsWrapper>
                   <FormattedMessage id="blog.explore">
-                    {(txt) => <TagsTitle>{txt}</TagsTitle>}
+                    {(txt) => <TagsTitle as="h2">{txt}</TagsTitle>}
                   </FormattedMessage>
                   <Tags tagsFor="blog" locale={locale} tags={allTags} />
                 </TagsWrapper>
               </Col>
             </Row>
           </HeaderBackground>
-          <PostsRow padded col8>
+          <PostsRow
+            padded
+            col8
+            aria-label={locale === "en" ? "Blog posts" : "Artículos del blog"}
+          >
             <Col>
               {postsList.map((post) => (
                 <Article

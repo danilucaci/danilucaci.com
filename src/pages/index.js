@@ -87,11 +87,17 @@ const Index = ({ data, pageContext, location }) => {
               </FindOutMore>
             </Col>
           </IndexHeader>
-          <ServicesRowBackground mb as="section">
+          <ServicesRowBackground
+            mb
+            as="section"
+            aria-labelledby="services-title"
+          >
             <ServicesRow col10 padded as="div">
               <Col>
                 <FormattedMessage id="index.services.heading">
-                  {(txt) => <ServicesTitle>{txt}</ServicesTitle>}
+                  {(txt) => (
+                    <ServicesTitle id="services-title">{txt}</ServicesTitle>
+                  )}
                 </FormattedMessage>
 
                 <ServicesEntry>

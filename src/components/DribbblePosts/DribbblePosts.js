@@ -41,10 +41,15 @@ function DribbblePosts() {
   }
 
   return (
-    <Row spaced col12 data-testid="Dribbble__Posts__Wrapper">
+    <Row
+      spaced
+      col12
+      data-testid="Dribbble__Posts__Wrapper"
+      aria-labelledby="dribbble-title"
+    >
       <Col ref={ref}>
         <FormattedMessage id="dribbble.header">
-          {(txt) => <Title>{txt}</Title>}
+          {(txt) => <Title id="dribbble-title">{txt}</Title>}
         </FormattedMessage>
 
         {isError && (

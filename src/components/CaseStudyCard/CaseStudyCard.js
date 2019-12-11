@@ -14,10 +14,11 @@ import {
 } from "./styles";
 
 import { Copy } from "../Copy/Copy";
+import AriaText from "../AriaText/AriaText";
 
 function CaseStudyCard(props) {
   return (
-    <StyledCaseStudyCard>
+    <StyledCaseStudyCard aria-labelledby="case-study-title">
       <CaseStudyImgWrapper>
         <Img
           title={props.title}
@@ -29,7 +30,10 @@ function CaseStudyCard(props) {
       <CaseStudyCardContents>
         <TagsWrapper>
           {props.tagsInCaseStudy.map((tag) => (
-            <Tag key={tag}>{tag}</Tag>
+            <Tag key={tag}>
+              <AriaText>tag: </AriaText>
+              {tag}
+            </Tag>
           ))}
         </TagsWrapper>
         <StyledH3 as={props.cardHeadingLevel} id="case-study-title">
