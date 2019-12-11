@@ -57,7 +57,7 @@
   "contact.page.error.button.hide": "Hide the error details",
   "contact.page.error.button.close": "Close",
   "change.language.toggle": "en",
-  "change.language.button.aria.label": "Change the page language",
+  "change.language.button.aria.label": "Change the page language. Current language is english.",
   "change.language.toggle.footer": "English",
   "external.link.sr.only": "Opens in new window",
   "form.label.email": "Email address *",

@@ -65,7 +65,7 @@ const LanguageSelector = ({ locale = "en", twinPostURL, currentPath }) => {
                 )}
               </FormattedMessage>
               <FormattedMessage id="change.language.toggle">
-                {(txt) => <ButtonLabel>{txt}</ButtonLabel>}
+                {(txt) => <ButtonLabel aria-hidden="true">{txt}</ButtonLabel>}
               </FormattedMessage>
               <DropdownIcon aria-hidden="true" isOpen={isOpen}>
                 <use xlinkHref="#dropdown" />
