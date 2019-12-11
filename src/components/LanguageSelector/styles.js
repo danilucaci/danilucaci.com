@@ -59,6 +59,8 @@ export const StyledMenuList = styled(MenuList)`
   border-radius: ${theme.borderRadius.default};
   box-shadow: ${theme.shadow.dropdown};
 
+  overflow: hidden;
+
   display: block;
   animation: ${SlideDown} 200ms ease;
   padding: ${rem(8)} 0 !important;
