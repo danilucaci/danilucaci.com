@@ -70,10 +70,9 @@ const ContactPage = ({ pageContext, location }) => {
                     {txt}{" "}
                     <StyledLink
                       href={`mailto:${localePaths[locale].email}`}
-                      onClick={sendGAEvent(
-                        "Contact Page",
-                        "Clicked Email Link",
-                      )}
+                      onClick={() =>
+                        sendGAEvent("Contact Page", "Contact Links", "Email")
+                      }
                     >
                       {localePaths[locale].email}
                     </StyledLink>
@@ -95,10 +94,13 @@ const ContactPage = ({ pageContext, location }) => {
                             target="_blank"
                             rel="noopener noreferrer"
                             href="https://twitter.com/danilucaci"
-                            onClick={sendGAEvent(
-                              "Contact Page",
-                              "Clicked Send a Tweet Link",
-                            )}
+                            onClick={() =>
+                              sendGAEvent(
+                                "Contact Page",
+                                "Contact Links",
+                                "Tweeter",
+                              )
+                            }
                           >
                             {txt2}
                           </StyledLink>
