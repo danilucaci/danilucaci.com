@@ -9,7 +9,7 @@ import { StyledArticle, ArticleTitle, ArticleLink } from "./styles";
 const Article = (props) => (
   <StyledArticle>
     <header>
-      <Tags tags={props.tags} />
+      <Tags tagsFor="post" locale={props.locale} tags={props.tags} />
       <ArticleTitle>
         <ArticleLink to={props.slug}>{props.title}</ArticleLink>
       </ArticleTitle>

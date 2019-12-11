@@ -79,7 +79,12 @@ function Post({ pageContext, data, location }) {
           <PostWrapper>
             <Row as="header" col10>
               <Col>
-                <Tags tags={postInfo.tags} inline />
+                <Tags
+                  locale={locale}
+                  tagsFor="post"
+                  tags={postInfo.tags}
+                  inline
+                />
                 <PostH1>{postInfo.title}</PostH1>
                 <HR />
                 <PostInfo>

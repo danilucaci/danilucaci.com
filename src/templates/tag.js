@@ -98,18 +98,23 @@ const TagPage = ({ pageContext, location, data }) => {
                 </TagFoundWrapper>
                 <OtherTagsWrapper>
                   <FormattedMessage id="tag.listing.other">
-                    {(txt) => <TagsSubhead>{txt}</TagsSubhead>}
+                    {(txt) => <TagsSubhead as="h2">{txt}</TagsSubhead>}
                   </FormattedMessage>
-                  <Tags tags={allTags} />
+                  <Tags tagsFor="blog" locale={locale} tags={allTags} />
                 </OtherTagsWrapper>
               </Col>
             </Row>
           </HeaderBackground>
-          <PostsRow padded col8>
+          <PostsRow
+            padded
+            col8
+            aria-label={locale === "en" ? "Blog posts" : "Artículos del blog"}
+          >
             <Col>
               {postsList.map((post) => (
                 <Article
                   key={post.title}
+                  locale={locale}
                   slug={post.slug}
                   tags={post.tags}
                   title={post.title}

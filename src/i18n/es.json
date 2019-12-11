@@ -135,6 +135,8 @@
   "thanks.subcopy.1": "Si después de eso aun no he mandado una respuesta, puede que haya habido un error cuando se envió el mensaje. En ese caso, por favor envíame un email a: ",
   "thanks.subcopy.2": "o un tweet a: ",
   "thanks.go.home": "Volver al inicio",
+  "tags.aria.label.blog": "Etiquetas del blog",
+  "tags.aria.label.post": "Etiquetas del artículo",
   "legal.updated": "Actualizado el:",
   "load.comments": "Cargar comentarios",
   "js.disabled": "Esta página web funciona mejor con JavaScript activado."

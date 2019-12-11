@@ -86,7 +86,7 @@ function BlogPage({ pageContext, location, data }) {
                   <FormattedMessage id="blog.explore">
                     {(txt) => <TagsTitle>{txt}</TagsTitle>}
                   </FormattedMessage>
-                  <Tags tags={allTags} />
+                  <Tags tagsFor="blog" locale={locale} tags={allTags} />
                 </TagsWrapper>
               </Col>
             </Row>
@@ -96,6 +96,7 @@ function BlogPage({ pageContext, location, data }) {
               {postsList.map((post) => (
                 <Article
                   key={post.title}
+                  locale={locale}
                   slug={post.slug}
                   tags={post.tags}
                   title={post.title}
