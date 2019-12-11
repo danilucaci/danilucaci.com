@@ -9,7 +9,7 @@ export const H3 = styled.h3``;
 
 export const H4 = styled.h4``;
 
-export const Subhead = styled.h4`
+export const Subhead = styled.h3`
   color: ${theme.color.text.subdued};
   display: block;
   text-transform: uppercase;
