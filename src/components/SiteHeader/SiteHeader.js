@@ -3,7 +3,7 @@ import { string, bool } from "prop-types";
 
 import SiteNavList from "../SiteNavList/SiteNavList";
 import LanguageSelector from "../LanguageSelector/LanguageSelector";
-import { Logo } from "../Logo/Logo";
+import Logo from "../Logo/Logo";
 
 import { SiteHeaderBackground, SiteHeaderRow, StyledSiteNav } from "./styles";
 
