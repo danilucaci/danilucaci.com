@@ -20,15 +20,23 @@ import {
 const LanguageSelector = ({ locale = "en", twinPostURL, currentPath }) => {
   const englishLanguagePicker = () => (
     <StyledMenuList>
-      <MenuLink as={Link} to={currentPath} className="reach__menu__link ">
+      <MenuLink
+        as={Link}
+        to={currentPath}
+        className="reach__menu__link"
+        aria-label="Change the page language to english"
+      >
         <CurrentLanguageIcon aria-hidden="true">
           <use xlinkHref="#check" />
         </CurrentLanguageIcon>
-        <AriaText>Change the page language to</AriaText>
         English
       </MenuLink>
-      <MenuLink as={Link} to={twinPostURL} className="reach__menu__link">
-        <AriaText>Cambiar el idioma de la página al</AriaText>
+      <MenuLink
+        as={Link}
+        to={twinPostURL}
+        className="reach__menu__link"
+        aria-label="Change the page language to spanish"
+      >
         Español
       </MenuLink>
     </StyledMenuList>
@@ -36,15 +44,23 @@ const LanguageSelector = ({ locale = "en", twinPostURL, currentPath }) => {
 
   const spanishLanguagePicker = () => (
     <StyledMenuList>
-      <MenuLink as={Link} to={twinPostURL} className="reach__menu__link">
-        <AriaText>Change the page language to</AriaText>
+      <MenuLink
+        as={Link}
+        to={twinPostURL}
+        className="reach__menu__link"
+        aria-label="Cambiar el idioma de la página al inglés"
+      >
         English
       </MenuLink>
-      <MenuLink as={Link} to={currentPath} className="reach__menu__link">
+      <MenuLink
+        as={Link}
+        to={currentPath}
+        className="reach__menu__link"
+        aria-label="Cambiar el idioma de la página al español"
+      >
         <CurrentLanguageIcon aria-hidden="true">
           <use xlinkHref="#check" />
         </CurrentLanguageIcon>
-        <AriaText>Cambiar el idioma de la página al</AriaText>
         Español
       </MenuLink>
     </StyledMenuList>
