@@ -152,6 +152,7 @@ function SubscribeCard({ locale }) {
                       name="subscribe-form"
                       method="post"
                       onSubmit={handleSubmit}
+                      aria-label={locale === "en" ? "subscribe" : "suscribir"}
                     >
                       <InputsWrapper>
                         <StyledLabel>
@@ -169,6 +170,7 @@ function SubscribeCard({ locale }) {
                             aria-invalid={
                               touched.email && errors.email ? `true` : `false`
                             }
+                            aria-label="email"
                           />
                         </StyledLabel>
 
