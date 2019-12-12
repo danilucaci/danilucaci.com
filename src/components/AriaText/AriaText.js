@@ -3,8 +3,8 @@ import { node } from "prop-types";
 
 import { StyledAriaText } from "./styles";
 
-function AriaText({ children }) {
-  return <StyledAriaText>{children}</StyledAriaText>;
+function AriaText({ children, ...props }) {
+  return <StyledAriaText {...props}>{children}</StyledAriaText>;
 }
 
 AriaText.propTypes = {
