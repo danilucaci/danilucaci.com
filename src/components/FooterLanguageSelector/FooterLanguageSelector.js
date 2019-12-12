@@ -78,13 +78,15 @@ const FooterLanguageSelector = ({
     <Menu>
       {({ isOpen }) => (
         <>
-          <StyledMenuButton aria-labelledby="language-selector-button-label">
+          <StyledMenuButton aria-labelledby="footer-language-selector-button-label">
             <WorldIcon aria-hidden="true">
               <use xlinkHref={locale === "en" ? "#en" : "#es"} />
             </WorldIcon>
             <FormattedMessage id="change.language.button.aria.label">
               {(txt) => (
-                <AriaText id="language-selector-button-label">{txt}</AriaText>
+                <AriaText id="footer-language-selector-button-label">
+                  {txt}
+                </AriaText>
               )}
             </FormattedMessage>
             <FormattedMessage id="change.language.toggle.footer">
