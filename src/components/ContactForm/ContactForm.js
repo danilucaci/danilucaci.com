@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { string } from "prop-types";
-import { Formik, Field, ErrorMessage } from "formik";
+import { useFormikContext, Formik, Field, ErrorMessage } from "formik";
 
 import { navigate } from "gatsby";
 import * as Sentry from "@sentry/browser";
@@ -23,6 +23,18 @@ import { GDPRContext } from "../Layout";
 
 function logGAEvent(label = "Ok") {
   return sendGAEvent("Contact Form", "Submitted", label);
+}
+
+function ToggleConsent({ setConsentAccepted, currentConsentAccepted }) {
+  const { values } = useFormikContext();
+
+  useEffect(() => {
+    if (!currentConsentAccepted && values.consentAccepted) {
+      setConsentAccepted(values.consentAccepted);
+    }
+  }, [currentConsentAccepted, values.consentAccepted]);
+
+  return null;
 }
 
 function ContactForm({ locale }) {
@@ -65,10 +77,6 @@ function ContactForm({ locale }) {
     const consentValue = values.consentAccepted
       ? CONSENT_VALUE[locale].yes
       : CONSENT_VALUE[locale].no;
-
-    if (!consentAccepted) {
-      setConsentAccepted(values.consentAccepted);
-    }
 
     try {
       const data = JSON.stringify({
@@ -147,6 +155,10 @@ function ContactForm({ locale }) {
               locale === "en" ? "contact form" : "formulario de contacto"
             }
           >
+            <ToggleConsent
+              setConsentAccepted={setConsentAccepted}
+              currentConsentAccepted={consentAccepted}
+            />
             <Field
               style={{ display: "none" }}
               aria-hidden="true"
@@ -254,7 +266,7 @@ function ContactForm({ locale }) {
             </ErrorMessage>
 
             <SubmitButton
-              disabled={!isValid || isSubmitting || authError}
+              disabled={!isValid || isSubmitting || authError || !userToken}
               showSpinner={isSubmitting}
               aria-label={isSubmitting ? `Sending message` : `Send message`}
             />

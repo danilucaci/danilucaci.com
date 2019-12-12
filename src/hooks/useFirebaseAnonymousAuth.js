@@ -36,19 +36,19 @@ function useFirebaseAnonymousAuth(predicate) {
   }, []);
 
   useEffect(() => {
-    if (auth && predicate) {
+    if (auth && predicate && !auth.currentUser) {
       auth.signInAnonymously().catch((err) => {
         if (mounted.current) {
           setError(err.message);
         }
       });
     }
+  }, [auth, predicate, userToken]);
 
-    return () => {
-      if (auth && userToken) {
-        auth.signOut();
-      }
-    };
+  useEffect(() => {
+    if (auth && auth.currentUser && !predicate) {
+      auth.signOut();
+    }
   }, [auth, predicate, userToken]);
 
   useEffect(() => {
@@ -60,7 +60,9 @@ function useFirebaseAnonymousAuth(predicate) {
               setError(err.message);
             });
 
-            setUserToken(token);
+            if (!userToken && predicate) {
+              setUserToken(token);
+            }
           } else {
             if (mounted.current && userToken) {
               /* User signed out => `user = null` */
@@ -81,7 +83,7 @@ function useFirebaseAnonymousAuth(predicate) {
         unsubscribeFromAuth.current();
       }
     };
-  }, [auth, userToken]);
+  }, [auth, predicate, userToken]);
 
   return { userToken, error };
 }
