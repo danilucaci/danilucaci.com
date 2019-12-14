@@ -7,6 +7,7 @@ import {
   StyledCookieConsent,
   LearnMoreLink,
   StyledCopy,
+  LearnMoreCopy,
   CopyContainer,
   ButtonsContainer,
   StyledPrimaryButton,
@@ -33,7 +34,7 @@ const CookieConsent = (props) => {
           {(txt) => <StyledCopy>{txt} </StyledCopy>}
         </FormattedMessage>
         {localizedDocsList.map((localizedDoc) => (
-          <FormattedMessage id="cookie.learn.more" key={localizedDoc.title}>
+          <FormattedMessage id="cookie.learn.link" key={localizedDoc.title}>
             {(txt) => (
               <LearnMoreLink
                 to={localizedDoc.slug}
@@ -48,16 +49,22 @@ const CookieConsent = (props) => {
       </CopyContainer>
 
       <ButtonsContainer>
-        <FormattedMessage id="cookie.accept">
+        <FormattedMessage id="cookie.accept.copy">
           {(txt) => (
-            <StyledPrimaryButton onClick={props.acceptedCookies}>
+            <StyledPrimaryButton
+              aria-label={`${txt} cookies`}
+              onClick={props.acceptedCookies}
+            >
               {txt}
             </StyledPrimaryButton>
           )}
         </FormattedMessage>
-        <FormattedMessage id="cookie.deny">
+        <FormattedMessage id="cookie.deny.copy">
           {(txt) => (
-            <StyledOutlinedButton onClick={props.deniedCookies}>
+            <StyledOutlinedButton
+              aria-label={`${txt} cookies`}
+              onClick={props.deniedCookies}
+            >
               {txt}
             </StyledOutlinedButton>
           )}

@@ -44,7 +44,7 @@ export const StyledCookieConsent = styled.aside`
     border-radius: 4px;
     bottom: ${rem(16)};
     left: ${rem(16)};
-    max-width: ${rem(340)};
+    max-width: ${rem(380)};
     padding: ${rem(24)};
     box-shadow: ${theme.shadow.cookieConsent};
   `};
@@ -53,8 +53,8 @@ export const StyledCookieConsent = styled.aside`
 export const LearnMoreLink = styled(DefaultLink)`
   font-size: ${theme.font.size.body.s};
   line-height: ${theme.font.lineHeight.body.s} !important;
-  display: inline;
-  white-space: nowrap;
+  margin-top: ${rem(16)};
+  display: inline-block;
 `;
 
 export const StyledCopy = styled(Copy)`
@@ -75,6 +75,10 @@ export const StyledPrimaryButton = styled(PrimaryButton)`
   display: block;
   width: 100%;
 
+  padding: ${theme.spacing.button.s.vertical}
+    ${theme.spacing.button.s.horizontal};
+  height: ${theme.size.button.height.s};
+
   margin-bottom: ${rem(8)};
 
   ${mediaMin.xxxs`
@@ -88,6 +92,10 @@ export const StyledPrimaryButton = styled(PrimaryButton)`
 export const StyledOutlinedButton = styled(OutlinedButton)`
   display: block;
   width: 100%;
+
+  padding: ${theme.spacing.button.s.vertical}
+    ${theme.spacing.button.s.horizontal};
+  height: ${theme.size.button.height.s};
 
   ${mediaMin.xxxs`    
     width: calc(50% - ${rem(8)});
