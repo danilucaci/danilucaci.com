@@ -15,7 +15,7 @@ import { Col, Row } from "../components/Grid/Grid";
 import SiblingPosts from "../components/SiblingPosts/SiblingPosts";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 import ArticleInfo from "../components/ArticleInfo/ArticleInfo";
-import SubscribeCard from "../components/SubscribeCard/SubscribeCard";
+// import SubscribeCard from "../components/SubscribeCard/SubscribeCard";
 import { copyURL, addCopyButtonsToCodeNodes } from "../helpers/helpers";
 
 import { localePaths } from "../i18n/i18n";
@@ -151,7 +151,7 @@ function Post({ pageContext, data, location }) {
           </Col>
         </CommentsRow>
 
-        <SubscribeCard locale={locale} />
+        {/* <SubscribeCard locale={locale} /> */}
       </Layout>
     </ErrorBoundary>
   );
