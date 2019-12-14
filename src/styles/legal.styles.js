@@ -57,6 +57,10 @@ export const PostWrapper = styled.div`
   ol {
     margin-bottom: ${rem(32)};
   }
+
+  a {
+    word-break: break-all;
+  }
 `;
 
 export const Time = styled(Copy)`
