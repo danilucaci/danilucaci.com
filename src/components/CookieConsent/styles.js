@@ -53,7 +53,6 @@ export const StyledCookieConsent = styled.aside`
 export const LearnMoreLink = styled(DefaultLink)`
   font-size: ${theme.font.size.body.s};
   line-height: ${theme.font.lineHeight.body.s} !important;
-  margin-top: ${rem(16)};
   display: inline-block;
 `;
 
