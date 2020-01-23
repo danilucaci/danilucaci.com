@@ -21,33 +21,44 @@ function getFirebaseInstance(firebase) {
 /**
  * Returns a lazy loaded memoized instance of firebase initialized on mount
  * to avoid errors when being called in node environments (gatsby builds in node).
+ *
+ * Imports firebase when the privacy consent is accepted.
+ * @param {boolean} predicate Consent accepted.
+ *
  * @return Instance of the firebase initialized app and any errors.
  */
-function useFirebase() {
+function useFirebase(predicate = false) {
   const [firebaseInstance, setFirebaseInstance] = useState(null);
   const [firebaseError, setFirebaseError] = useState(null);
 
   useEffect(() => {
-    async function importFirebaseModules() {
-      const firebaseAppImport = import("firebase/app");
-      const firebaseAuthImport = import("firebase/auth");
+    let mounted = true;
 
-      const [firebase, _] = await Promise.all([
-        firebaseAppImport,
-        firebaseAuthImport,
+    async function importFirebaseModules() {
+      const [firebase, auth] = await Promise.all([
+        import("firebase/app"),
+        import("firebase/auth"),
       ]).catch((error) => {
-        setFirebaseError(error.message);
+        if (mounted) {
+          setFirebaseError(error.message);
+        }
       });
 
-      setFirebaseInstance(getFirebaseInstance(firebase));
+      if (mounted) {
+        setFirebaseInstance(getFirebaseInstance(firebase));
+      }
     }
 
-    if (!firebaseInstance) {
+    if (!firebaseInstance && predicate) {
       importFirebaseModules();
     }
-  }, [firebaseInstance]);
 
-  return { firebaseInstance, firebaseError };
+    return () => {
+      mounted = false;
+    };
+  }, [firebaseInstance, predicate]);
+
+  return [firebaseInstance, firebaseError];
 }
 
 export default useFirebase;

@@ -3,59 +3,80 @@ import { bool } from "prop-types";
 import useFirebase from "./useFirebase";
 
 /**
- * Loggin a user anonymously when the privacy consent is accepted.
+ * Log in users anonymously when the privacy consent is accepted.
  * @param {boolean} predicate Consent accepted.
  */
-function useFirebaseAnonymousAuth(predicate) {
+function useFirebaseAnonymousAuth(predicate = false) {
   const [userToken, setUserToken] = useState(null);
   const [error, setError] = useState(null);
   const [auth, setAuth] = useState(null);
   const unsubscribeFromAuth = useRef(null);
-  const mounted = useRef(false);
 
-  const { firebaseInstance, firebaseError } = useFirebase();
+  const [firebaseInstance, firebaseError] = useFirebase(predicate);
 
   useEffect(() => {
-    if (firebaseInstance && !auth && mounted.current) {
+    let mounted = true;
+
+    if (predicate && mounted && firebaseInstance && !auth) {
       setAuth(firebaseInstance.auth());
     }
-  }, [firebaseInstance, auth]);
+
+    return () => {
+      mounted = false;
+    };
+  }, [firebaseInstance, auth, predicate]);
 
   useEffect(() => {
-    if (firebaseError && mounted.current) {
+    let mounted = true;
+
+    if (firebaseError && mounted) {
       setError(firebaseError);
     }
+
+    return () => {
+      mounted = false;
+    };
   }, [firebaseError]);
 
   useEffect(() => {
-    mounted.current = true;
+    let mounted = true;
 
-    return () => {
-      mounted.current = false;
-    };
-  }, []);
-
-  useEffect(() => {
     if (auth && predicate && !auth.currentUser) {
       auth.signInAnonymously().catch((err) => {
-        if (mounted.current) {
+        if (mounted) {
           setError(err.message);
         }
       });
     }
-  }, [auth, predicate, userToken]);
+
+    return () => {
+      mounted = false;
+    };
+  }, [auth, predicate]);
 
   useEffect(() => {
-    if (auth && auth.currentUser && !predicate) {
-      auth.signOut();
+    let mounted = true;
+
+    if (auth && auth.hasOwnProperty("currentUser") && !predicate) {
+      auth.signOut().then(() => {
+        if (mounted) {
+          setAuth(null);
+        }
+      });
     }
-  }, [auth, predicate, userToken]);
+
+    return () => {
+      mounted = false;
+    };
+  }, [auth, predicate]);
 
   useEffect(() => {
+    let mounted = true;
+
     if (auth) {
-      (unsubscribeFromAuth.current = auth.onAuthStateChanged(
+      unsubscribeFromAuth.current = auth.onAuthStateChanged(
         async function handleUserSnapshot(user) {
-          if (mounted.current && user) {
+          if (mounted && user) {
             const token = await user.getIdToken().catch((err) => {
               setError(err.message);
             });
@@ -64,24 +85,26 @@ function useFirebaseAnonymousAuth(predicate) {
               setUserToken(token);
             }
           } else {
-            if (mounted.current && userToken) {
+            if (mounted && userToken) {
               /* User signed out => `user = null` */
               setUserToken(null);
             }
           }
         },
-      )),
         function handleSnapshotError(err) {
-          if (mounted.current) {
+          if (mounted) {
             setError(err.message);
           }
-        };
+        },
+      );
     }
 
     return () => {
       if (unsubscribeFromAuth.current) {
         unsubscribeFromAuth.current();
       }
+
+      mounted = false;
     };
   }, [auth, predicate, userToken]);
 
