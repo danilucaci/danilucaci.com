@@ -21,14 +21,13 @@
 
 # Dani Lucaci personal website
 
-Built with [Gatsby.js](https://www.gatsbyjs.org) • Available in [english](https://www.danilucaci.com) and [spanish](https://www.danilucaci.com/es)
+Built with [Gatsby.js](https://www.gatsbyjs.org) • Available in
+[english](https://www.danilucaci.com) and
+[spanish](https://www.danilucaci.com/es)
 
 ## Features
 
-- Based on [gatsby-advanced-starter](https://github.com/Vagr9K/gatsby-advanced-starter)
 - i18n (Spanish & English)
-- Netlify Forms
-- Netlify Functions
 - Responsive & lazy-loaded videos made with ffmpeg
 - MDX
 - Sentry.io reporting
