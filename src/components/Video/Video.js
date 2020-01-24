@@ -75,6 +75,7 @@ function Video({
               playsInline
               controls
               preload="none"
+              crossOrigin="anonymous"
               poster={foundPosterSrc.node.publicURL || ""}
               inView={inView}
               jsLoaded={jsLoaded}

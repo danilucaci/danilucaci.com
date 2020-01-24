@@ -158,6 +158,13 @@ module.exports = {
         crossOrigin: "use-credentials",
       },
     },
-    "gatsby-plugin-offline",
+    {
+      resolve: "gatsby-plugin-offline",
+      options: {
+        appendScript: require.resolve(
+          `./src/helpers/workboxSafariVideoCachePlugins.js`,
+        ),
+      },
+    },
   ],
 };
