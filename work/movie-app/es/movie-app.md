@@ -461,7 +461,7 @@ También se usa un botón "Borrar todos los filtros" para permitir que sus usuar
 <MobileScreenshot>
 
 <Image
-  src="movie-app/es/estudio_de_caso_ux_nav_bar_filtro_y_clasificación_aplicados.png"
+  src="movie-app/es/estudio_de_caso_ux_nav_bar_filtro_y_clasificacion_aplicados.png"
   caption="Versión final de la barra de navegación con filtro activo y botones de clasificación."
 />
 
