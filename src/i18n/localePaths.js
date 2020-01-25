@@ -8,8 +8,10 @@ module.exports = {
     thanks: "/thanks",
     paginationName: "/page/",
     blog: "/blog",
+    tags: "/tags/",
   },
   es: {
+    default: false,
     siteLocalePrefix: "/es",
     contact: "/es/contacto",
     about: "/es/sobre-mi",
@@ -17,5 +19,6 @@ module.exports = {
     thanks: "/es/gracias",
     paginationName: "/pagina/",
     blog: "/es/blog",
+    tags: "/tags/",
   },
 };

@@ -1,20 +1,32 @@
 const path = require("path");
-const _ = require("lodash");
-const gatsbyNodeQuery = require("./src/helpers/gatsbyNodeQuery");
+const { kebabCase } = require("lodash");
 
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
+
+const GATSBY_NODE_QUERY = require("./src/helpers/gatsby-node/gatsbyNodeQueries");
+const {
+  createPagesWithTwinPost,
+  createLegalPages,
+  getBlogPaginationCurrentPath,
+  getBlogPaginationPrevPath,
+  getBlogPaginationNextPath,
+  getBlogTagsPaginationCurrentPath,
+  getBlogTagsPaginationPrevPath,
+  getBlogTagsPaginationNextPath,
+  getWorkPaginationCurrentPath,
+  getWorkPaginationPrevPath,
+  getWorkPaginationNextPath,
+} = require("./src/helpers/gatsby-node/createPages");
+const slicePosts = require("./src/helpers/gatsby-node/slicePosts");
 
 // Create pages with translated url for localePaths
 const localePaths = require("./src/i18n/localePaths");
 
 // Controls
 // Limit of posts to show per paginated page
-const postsPerPage = 5;
-
-const enLocale = "en";
-const esLocale = "es";
+const POSTS_PER_PAGE = 5;
 
 // Template Pages Path
 const blogTemplate = path.resolve("src/templates/blog.js");
@@ -23,19 +35,6 @@ const tagTemplate = path.resolve("src/templates/tag.js");
 const workTemplate = path.resolve("src/templates/work.js");
 const caseStudyTemplate = path.resolve("src/templates/caseStudy.js");
 const legalTemplate = path.resolve("src/templates/legal.js");
-
-// Replacing '/' would result in empty string which is invalid
-// function replacePath(path) {
-//   return path === "/" ? path : path.replace(/\/$/, "");
-// }
-
-/*******************************************************
- * Split into chunks of 5 posts per paginated page
- * and pass them to the blog, tag or work template pages
- */
-function slicePosts(array, currentPage) {
-  return array.slice(0).slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage);
-}
 
 // For importing jsx components in mdx
 exports.onCreateWebpackConfig = ({ actions }) => {
@@ -46,7 +45,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   });
 };
 
-exports.onCreatePage = ({ page, actions }) => {
+exports.onCreatePage = ({ page, actions, reporter }) => {
   const { createPage, deletePage } = actions;
 
   return new Promise((resolve) => {
@@ -54,9 +53,6 @@ exports.onCreatePage = ({ page, actions }) => {
     deletePage(page);
 
     Object.keys(localePaths).map((locale) => {
-      // const localizedPath = localePaths[locale].default
-      //   ? page.path
-      //   : localePaths[locale].siteLocalePrefix + page.path;
       let localizedPath = "";
 
       // Remove trailing slash from page path
@@ -65,9 +61,10 @@ exports.onCreatePage = ({ page, actions }) => {
       // Create default english urls
       if (localePaths[locale].default) {
         localizedPath = hasTrailingSlash ? page.path.slice(0, -1) : page.path;
+      }
 
-        // Translate urls to spanish
-      } else {
+      // Translate urls to spanish
+      if (!localePaths[locale].default) {
         if (page.path === "/") {
           localizedPath = localePaths[locale].siteLocalePrefix;
         } else if (page.path.includes("/about-me")) {
@@ -81,16 +78,22 @@ exports.onCreatePage = ({ page, actions }) => {
 
           // If the has a trailing slash, remove it
           if (hasTrailingSlash) {
-            localizedPath = `${localePaths[locale].siteLocalePrefix}${page.path.slice(0, -1)}`;
+            localizedPath =
+              localePaths[locale].siteLocalePrefix + page.path.slice(0, -1);
           }
         }
       }
 
-      return createPage({
+      if (!localizedPath) {
+        reporter.panic("onCreatePage: Failed to convert the localizedPath");
+        return;
+      }
+
+      createPage({
         ...page,
         path: localizedPath,
         context: {
-          locale,
+          locale: locale,
         },
       });
     });
@@ -99,40 +102,47 @@ exports.onCreatePage = ({ page, actions }) => {
   });
 };
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
+exports.onCreateNode = ({ node, actions, getNode, reporter }) => {
   const { createNodeField } = actions;
-  let slug;
 
-  // if (node.internal.type === "Mdx") {
   if (node.internal.type === "Mdx") {
     const fileNode = getNode(node.parent);
     const parsedFilePath = path.parse(fileNode.relativePath);
+    let slug = "";
 
     if (
-      Object.prototype.hasOwnProperty.call(node, "frontmatter") &&
-      Object.prototype.hasOwnProperty.call(node.frontmatter, "slug")
+      node.hasOwnProperty("frontmatter") &&
+      node.frontmatter.hasOwnProperty("slug")
     ) {
       if (node.frontmatter.category === "work") {
-        if (node.frontmatter.locale === enLocale) {
-          slug = `${localePaths[enLocale].work}/${_.kebabCase(node.frontmatter.slug)}`;
+        if (node.frontmatter.locale === "en") {
+          slug = `${localePaths["en"].work}/${kebabCase(
+            node.frontmatter.slug,
+          )}`;
         }
 
-        if (node.frontmatter.locale === esLocale) {
-          slug = `${localePaths[esLocale].work}/${_.kebabCase(node.frontmatter.slug)}`;
+        if (node.frontmatter.locale === "es") {
+          slug = `${localePaths["es"].work}/${kebabCase(
+            node.frontmatter.slug,
+          )}`;
         }
       } else if (node.frontmatter.category === "blog") {
-        if (node.frontmatter.locale === enLocale) {
-          slug = `${localePaths[enLocale].blog}/${_.kebabCase(node.frontmatter.slug)}`;
+        if (node.frontmatter.locale === "en") {
+          slug = `${localePaths["en"].blog}/${kebabCase(
+            node.frontmatter.slug,
+          )}`;
         }
 
-        if (node.frontmatter.locale === esLocale) {
-          slug = `${localePaths[esLocale].blog}/${_.kebabCase(node.frontmatter.slug)}`;
+        if (node.frontmatter.locale === "es") {
+          slug = `${localePaths["es"].blog}/${kebabCase(
+            node.frontmatter.slug,
+          )}`;
         }
       } else if (node.frontmatter.category === "legal") {
-        if (node.frontmatter.locale === enLocale) {
-          slug = `/${_.kebabCase(node.frontmatter.slug)}`;
-        } else if (node.frontmatter.locale === esLocale) {
-          slug = `/es/${_.kebabCase(node.frontmatter.slug)}`;
+        if (node.frontmatter.locale === "en") {
+          slug = `/${kebabCase(node.frontmatter.slug)}`;
+        } else if (node.frontmatter.locale === "es") {
+          slug = `/es/${kebabCase(node.frontmatter.slug)}`;
         }
       }
     } else if (parsedFilePath.name !== "index" && parsedFilePath.dir !== "") {
@@ -143,6 +153,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       slug = `${parsedFilePath.name}/`;
     }
 
+    if (!slug) {
+      reporter.panic("onCreateNode: Failed to create the slug");
+      return;
+    }
+
     createNodeField({
       node,
       name: "slug",
@@ -151,680 +166,258 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 };
 
-exports.createPages = async ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
-  // Create english pages
-  try {
-    const result = await graphql(`{ ${gatsbyNodeQuery(enLocale)} }`);
-    const paginationName = localePaths[enLocale].paginationName;
-    // Data Sources
-    // Blog
-    const totalCountBlog = result.data.blog.totalCount;
-    const edgesBlog = result.data.blog.edges;
-    const tagsBlog = result.data.blog.tags;
+  return Promise.all(
+    Object.entries(localePaths).map(async ([locale, paths]) => {
+      const {
+        work: workPath,
+        paginationName: paginationName,
+        blog: blogPath,
+        tags: tagsPath,
+      } = paths;
 
-    // Legal Docs
-    const edgesLegal = result.data.legal.edges;
-
-    // Work / case studies
-    const totalCountWork = result.data.work.totalCount;
-    const edgesWork = result.data.work.edges;
-
-    // Total amount of paginated pages with 5 posts each
-    // amount of pages in the blog / 5
-    const totalPagesInBlog = Math.ceil(totalCountBlog / postsPerPage);
-    const totalPagesInWork = Math.ceil(totalCountWork / postsPerPage);
-
-    /********************************************************
-     * Blog pagination
-     *
-     * First page in pagination is: /blog/
-     * Next pages will be: /blog/page/2...n
-     *
-     * For the first page return a prev path of null
-     * next path of /blog/page/2
-     *
-     * For the second page return a prev path of /blog,
-     * next path of /blog/page/3
-     *
-     * For the next ones return path under /blog/page/n
-     */
-
-    for (let currentPage = 1; currentPage <= totalPagesInBlog; currentPage += 1) {
-      if (currentPage === 1) {
-        createPage({
-          path: localePaths[enLocale].blog,
-          component: blogTemplate,
-          context: {
-            edges: slicePosts(edgesBlog, currentPage).map(({ node }) => node),
-            currentPage,
-            totalPagesInBlog,
-            paginationPathPrefix: localePaths[enLocale].blog,
-            prevPath: null,
-            nextPath:
-              totalPagesInBlog > 1 ? localePaths[enLocale].blog + paginationName + "2" : null,
-            totalCountBlog,
-            // necessary for react-intl
-            locale: enLocale,
-          },
+      try {
+        const { data = null, error = null } = await graphql(GATSBY_NODE_QUERY, {
+          locale: locale,
         });
-      } else {
-        createPage({
-          path: localePaths[enLocale].blog + paginationName + currentPage,
-          component: blogTemplate,
-          context: {
-            edges: slicePosts(edgesBlog, currentPage).map(({ node }) => node),
-            currentPage,
-            totalPagesInBlog,
-            paginationPathPrefix: localePaths[enLocale].blog,
-            // current index in loop minus 1
-            // for index = 2, /page/1
-            // only if its > 1 (not resulting in /page/0)
-            prevPath:
-              currentPage - 1 > 1
-                ? localePaths[enLocale].blog + paginationName + `${currentPage - 1}`
-                : localePaths[enLocale].blog,
-            // current index in loop plus 1
-            // index = 3 > /page/3
-            // nextPath = null
-            // only if its <= totalPages (not resulting in more pages than there are)
-            nextPath:
-              currentPage + 1 <= totalPagesInBlog
-                ? localePaths[enLocale].blog + paginationName + `${currentPage + 1}`
-                : null,
-            totalCountBlog,
-            // necessary for react-intl
-            locale: enLocale,
-          },
+
+        if (error) {
+          console.log(error);
+          reporter.panic("Failed to get the GATSBY_NODE_QUERY data");
+          return;
+        }
+
+        if (!data.blog.edges || !data.work.edges || !data.legal.edges) {
+          reporter.panic("createPages: Missing edges fields");
+          return;
+        }
+
+        // Blog Edges
+        const totalCountBlog = data.blog.totalCount;
+        const edgesBlog = data.blog.edges;
+        const tagsBlog = data.blog.tags;
+
+        // Legal Docs
+        const edgesLegal = data.legal.edges;
+
+        // Work / Case Studies
+        const totalCountWork = data.work.totalCount;
+        const edgesWork = data.work.edges;
+
+        // Total amount of paginated pages with 5 posts each
+        // amount of pages in the blog / 5
+        const totalPagesInBlog = Math.ceil(totalCountBlog / POSTS_PER_PAGE);
+        const totalPagesInWork = Math.ceil(totalCountWork / POSTS_PER_PAGE);
+
+        // Create blog posts pages
+        createPagesWithTwinPost({
+          createPage: createPage,
+          edges: edgesBlog,
+          template: postTemplate,
+          locale: locale,
         });
-      }
-    }
 
-    /********************************************************
-     * Tags with pagination
-     *
-     * First page in pagination is: /blog/tags/tagName
-     * Next pages will be: /blog/tags/tagName/2...n
-     *
-     * For the first page return a prev path of null
-     * next path of /blog/tags/tagName/page/2
-     *
-     * For the second page return a prev path of /blog/tags/tagName
-     * next path of /blog/tags/tagName/page/3
-     *
-     * For the next ones return path under /blog/tags/tagName/page/n
-     */
+        // Create work / case studies pages
+        createPagesWithTwinPost({
+          createPage: createPage,
+          edges: edgesWork,
+          template: caseStudyTemplate,
+          locale: locale,
+        });
 
-    tagsBlog.forEach((tag) => {
-      for (
-        let currentPage = 1;
-        currentPage <= Math.ceil(tag.totalCount / postsPerPage);
-        currentPage += 1
-      ) {
-        if (currentPage === 1) {
+        // Create legal pages
+        createLegalPages({
+          createPage: createPage,
+          edges: edgesLegal,
+          template: legalTemplate,
+          locale: locale,
+        });
+
+        /*******************************************************
+         * Blog pagination
+         *
+         * First page in pagination is: /blog/
+         * Next pages will be: /blog/page/2...n
+         *
+         * For the first page return a prev path of null
+         * next path of /blog/page/2
+         *
+         * For the second page return a prev path of /blog,
+         * next path of /blog/page/3
+         *
+         * For the next ones return path under /blog/page/n
+         */
+        for (
+          let currentPage = 1;
+          currentPage <= totalPagesInBlog;
+          currentPage += 1
+        ) {
+          const isFirstPage = currentPage === 1;
+
           createPage({
-            path: localePaths[enLocale].blog + "/tags/" + tag.fieldValue,
-            component: tagTemplate,
+            path: getBlogPaginationCurrentPath({
+              isFirstPage: isFirstPage,
+              currentPage: currentPage,
+              blogPath: blogPath,
+              paginationName: paginationName,
+            }),
+            component: blogTemplate,
             context: {
-              edges: slicePosts(tag.edges, currentPage).map(({ node }) => node),
-              currentPage,
-              totalPagesInBlog: Math.ceil(tag.totalCount / postsPerPage),
-              paginationPathPrefix: localePaths[enLocale].blog + "/tags/" + tag.fieldValue,
-              prevPath: null,
-              nextPath:
-                localePaths[enLocale].blog + "/tags/" + tag.fieldValue + paginationName + "2",
-              totalCount: tag.totalCount,
-              tag: tag.fieldValue,
-              // necessary for react-intl
-              locale: enLocale,
-            },
-          });
-        } else {
-          createPage({
-            path: `${localePaths[enLocale].blog}/tags/${tag.fieldValue}${paginationName +
-              currentPage}`,
-            component: tagTemplate,
-            context: {
-              edges: slicePosts(tag.edges, currentPage).map(({ node }) => node),
-              currentPage,
-              totalPagesInBlog: Math.ceil(tag.totalCount / postsPerPage),
-              paginationPathPrefix: localePaths[enLocale].blog + "/tags/" + tag.fieldValue,
-              // current index in loop minus 1
-              // for index = 2, /page/1
-              // only if its > 1 (not resulting in /page/0)
-              prevPath:
-                currentPage - 1 > 1
-                  ? localePaths[enLocale].blog +
-                    "/tags/" +
-                    tag.fieldValue +
-                    paginationName +
-                    `${currentPage - 1}`
-                  : localePaths[enLocale].blog + "/tags/" + tag.fieldValue,
-              // current index in loop plus 1
-              // index = 3 > /page/3
-              // nextPath = null
-              // only if its <= totalPages (not resulting in more pages than there are)
-              nextPath:
-                currentPage + 1 <= Math.ceil(tag.totalCount / postsPerPage)
-                  ? localePaths[enLocale].blog +
-                    "/tags/" +
-                    tag.fieldValue +
-                    paginationName +
-                    `${currentPage + 1}`
-                  : null,
-              totalCount: tag.totalCount,
-              tag: tag.fieldValue,
-              // necessary for react-intl
-              locale: enLocale,
+              currentPage: currentPage,
+              totalPagesInBlog: totalPagesInBlog,
+              paginationPathPrefix: blogPath,
+              totalCountBlog: totalCountBlog,
+              locale: locale,
+              edges: slicePosts({
+                array: edgesBlog,
+                currentPage: currentPage,
+                postsPerPage: POSTS_PER_PAGE,
+              }).map(({ node }) => node),
+              prevPath: getBlogPaginationPrevPath({
+                isFirstPage: isFirstPage,
+                currentPage: currentPage,
+                blogPath: blogPath,
+                paginationName: paginationName,
+              }),
+              nextPath: getBlogPaginationNextPath({
+                isFirstPage: isFirstPage,
+                currentPage: currentPage,
+                blogPath: blogPath,
+                paginationName: paginationName,
+                totalPagesInBlog: totalPagesInBlog,
+              }),
             },
           });
         }
-      }
-    });
 
-    /*******************************************************
-     * Posts Page Creation
-     */
+        /*******************************************************
+         * Tags pagination
+         *
+         * First page in pagination is: /blog/tags/tagName
+         * Next pages will be: /blog/tags/tagName/2...n
+         *
+         * For the first page return a prev path of null
+         * next path of /blog/tags/tagName/page/2
+         *
+         * For the second page return a prev path of /blog/tags/tagName
+         * next path of /blog/tags/tagName/page/3
+         *
+         * For the next ones return path under /blog/tags/tagName/page/n
+         */
+        tagsBlog.forEach((tag) => {
+          for (
+            let currentPage = 1;
+            currentPage <= Math.ceil(tag.totalCount / POSTS_PER_PAGE);
+            currentPage += 1
+          ) {
+            const isFirstPage = currentPage === 1;
 
-    edgesBlog.forEach((edge, index) => {
-      let nextTitle = null;
-      let nextSlug = null;
-      let prevTitle = null;
-      let prevSlug = null;
-
-      if (index === 0 && edgesBlog.length > 1) {
-        prevTitle = edgesBlog[index + 1].node.frontmatter.title;
-        prevSlug = edgesBlog[index + 1].node.fields.slug;
-      } else if (index > 0 && index + 1 < edgesBlog.length) {
-        prevTitle = edgesBlog[index + 1].node.frontmatter.title;
-        prevSlug = edgesBlog[index + 1].node.fields.slug;
-        nextTitle = edgesBlog[index - 1].node.frontmatter.title;
-        nextSlug = edgesBlog[index - 1].node.fields.slug;
-      } else if (index === edgesBlog.length - 1 && edgesBlog.length > 1) {
-        prevTitle = null;
-        prevSlug = null;
-        nextTitle = edgesBlog[index - 1].node.frontmatter.title;
-        nextSlug = edgesBlog[index - 1].node.fields.slug;
-      }
-
-      createPage({
-        path: edge.node.fields.slug,
-        component: postTemplate,
-        context: {
-          slug: edge.node.fields.slug,
-          twinPost: _.kebabCase(edge.node.frontmatter.twinPost),
-          // necessary for react-intl
-          locale: enLocale,
-          nextTitle,
-          nextSlug,
-          prevTitle,
-          prevSlug,
-        },
-      });
-    });
-
-    /*******************************************************
-     * Legal Pages Creation
-     */
-
-    edgesLegal.forEach((edge) => {
-      createPage({
-        path: edge.node.fields.slug,
-        component: legalTemplate,
-        context: {
-          slug: edge.node.fields.slug,
-          twinPost: _.kebabCase(edge.node.frontmatter.twinPost),
-          // necessary for react-intl
-          locale: enLocale,
-        },
-      });
-    });
-
-    /********************************************************
-     * Work pagination
-     *
-     * First page in pagination is: /work/
-     * Next pages will be: /work/page/2...n
-     *
-     * For the first page return a prev path of null
-     * next path of /work/page/2
-     *
-     * For the second page return a prev path of /work,
-     * next path of /work/page/3
-     *
-     * For the next ones return path under /work/page/n
-     */
-
-    for (let currentPage = 1; currentPage <= totalPagesInWork; currentPage += 1) {
-      if (currentPage === 1) {
-        createPage({
-          path: localePaths[enLocale].work,
-          component: workTemplate,
-          context: {
-            edgesWork: slicePosts(edgesWork, currentPage).map((edge) => edge),
-            currentPage,
-            totalPagesInWork,
-            paginationPathPrefix: localePaths[enLocale].work,
-            prevPath: null,
-            nextPath:
-              totalPagesInWork > 1 ? localePaths[enLocale].work + paginationName + "2" : null,
-            totalCountWork,
-            // necessary for react-intl
-            locale: enLocale,
-          },
+            createPage({
+              path: getBlogTagsPaginationCurrentPath({
+                isFirstPage: isFirstPage,
+                currentPage: currentPage,
+                blogPath: blogPath,
+                paginationName: paginationName,
+                tagsPath: tagsPath,
+                tagName: tag.fieldValue,
+              }),
+              component: tagTemplate,
+              context: {
+                currentPage: currentPage,
+                totalPagesInBlog: Math.ceil(tag.totalCount / POSTS_PER_PAGE),
+                paginationPathPrefix: blogPath + "/tags/" + tag.fieldValue,
+                tag: tag.fieldValue,
+                totalCount: tag.totalCount,
+                locale: locale,
+                edges: slicePosts({
+                  array: tag.edges,
+                  currentPage: currentPage,
+                  postsPerPage: POSTS_PER_PAGE,
+                }).map(({ node }) => node),
+                prevPath: getBlogTagsPaginationPrevPath({
+                  isFirstPage: isFirstPage,
+                  currentPage: currentPage,
+                  blogPath: blogPath,
+                  paginationName: paginationName,
+                  tagsPath: tagsPath,
+                  tagName: tag.fieldValue,
+                }),
+                nextPath: getBlogTagsPaginationNextPath({
+                  isFirstPage: isFirstPage,
+                  currentPage: currentPage,
+                  blogPath: blogPath,
+                  paginationName: paginationName,
+                  tagsPath: tagsPath,
+                  tagName: tag.fieldValue,
+                  totalCount: tag.totalCount,
+                  postsPerPage: POSTS_PER_PAGE,
+                }),
+              },
+            });
+          }
         });
-      } else {
-        createPage({
-          path: localePaths[enLocale].work + paginationName + currentPage,
-          component: workTemplate,
-          context: {
-            edgesWork: slicePosts(edgesWork, currentPage).map((edge) => edge),
-            currentPage,
-            totalPagesInWork,
-            paginationPathPrefix: localePaths[enLocale].work,
-            // current index in loop minus 1
-            // for index = 2, /page/1
-            // only if its > 1 (not resulting in /page/0)
-            prevPath:
-              currentPage - 1 > 1
-                ? localePaths[enLocale].work + paginationName + `${currentPage - 1}`
-                : localePaths[enLocale].work,
-            // current index in loop plus 1
-            // index = 3 > /page/3
-            // nextPath = null
-            // only if its <= totalPages (not resulting in more pages than there are)
-            nextPath:
-              currentPage + 1 <= totalPagesInWork
-                ? localePaths[enLocale].work + paginationName + `${currentPage + 1}`
-                : null,
-            totalCountWork,
-            // necessary for react-intl
-            locale: enLocale,
-          },
-        });
-      }
-    }
 
-    /*******************************************************
-     * Work Case Studies Creation
-     */
+        /********************************************************
+         * Work pagination
+         *
+         * First page in pagination is: /work/
+         * Next pages will be: /work/page/2...n
+         *
+         * For the first page return a prev path of null
+         * next path of /work/page/2
+         *
+         * For the second page return a prev path of /work,
+         * next path of /work/page/3
+         *
+         * For the next ones return path under /work/page/n
+         */
+        for (
+          let currentPage = 1;
+          currentPage <= totalPagesInWork;
+          currentPage += 1
+        ) {
+          const isFirstPage = currentPage === 1;
 
-    edgesWork.forEach((edge, index) => {
-      let nextTitle = null;
-      let nextSlug = null;
-      let prevTitle = null;
-      let prevSlug = null;
-
-      if (index === 0 && edgesWork.length > 1) {
-        prevTitle = edgesWork[index + 1].node.frontmatter.title;
-        prevSlug = edgesWork[index + 1].node.fields.slug;
-      } else if (index > 0 && index + 1 < edgesWork.length) {
-        prevTitle = edgesWork[index + 1].node.frontmatter.title;
-        prevSlug = edgesWork[index + 1].node.fields.slug;
-        nextTitle = edgesWork[index - 1].node.frontmatter.title;
-        nextSlug = edgesWork[index - 1].node.fields.slug;
-      } else if (index === edgesWork.length - 1 && edgesWork.length > 1) {
-        prevTitle = null;
-        prevSlug = null;
-        nextTitle = edgesWork[index - 1].node.frontmatter.title;
-        nextSlug = edgesWork[index - 1].node.fields.slug;
-      }
-
-      createPage({
-        path: edge.node.fields.slug,
-        component: caseStudyTemplate,
-        context: {
-          slug: edge.node.fields.slug,
-          twinPost: _.kebabCase(edge.node.frontmatter.twinPost),
-          // necessary for react-intl
-          locale: enLocale,
-          nextTitle,
-          nextSlug,
-          prevTitle,
-          prevSlug,
-        },
-      });
-    });
-  } catch (error) {
-    console.warn("Error running the english graphql query: ", error);
-  }
-
-  // Create spanish pages
-  try {
-    const result = await graphql(`{ ${gatsbyNodeQuery(esLocale)} }`);
-    const paginationName = localePaths[esLocale].paginationName;
-
-    // Data Sources
-    // Blog
-    const totalCountBlog = result.data.blog.totalCount;
-    const edgesBlog = result.data.blog.edges;
-    const tagsBlog = result.data.blog.tags;
-
-    // Legal Docs
-    const edgesLegal = result.data.legal.edges;
-
-    // Work / case studies
-    const totalCountWork = result.data.work.totalCount;
-    const edgesWork = result.data.work.edges;
-
-    // Total amount of paginated pages with 5 posts each
-    // amount of pages in the blog / 5
-    const totalPagesInBlog = Math.ceil(totalCountBlog / postsPerPage);
-    const totalPagesInWork = Math.ceil(totalCountWork / postsPerPage);
-
-    /********************************************************
-     * Blog pagination
-     *
-     * First page in pagination is: /blog/
-     * Next pages will be: /blog/page/2...n
-     *
-     * For the first page return a prev path of null
-     * next path of /blog/page/2
-     *
-     * For the second page return a prev path of /blog,
-     * next path of /blog/page/3
-     *
-     * For the next ones return path under /blog/page/n
-     */
-
-    for (let currentPage = 1; currentPage <= totalPagesInBlog; currentPage += 1) {
-      if (currentPage === 1) {
-        createPage({
-          path: localePaths[esLocale].blog,
-          component: blogTemplate,
-          context: {
-            edges: slicePosts(edgesBlog, currentPage).map(({ node }) => node),
-            currentPage,
-            totalPagesInBlog,
-            paginationPathPrefix: localePaths[esLocale].blog,
-            prevPath: null,
-            nextPath:
-              totalPagesInBlog > 1 ? localePaths[esLocale].blog + paginationName + "2" : null,
-            totalCountBlog,
-            // necessary for react-intl
-            locale: esLocale,
-          },
-        });
-      } else {
-        createPage({
-          path: localePaths[esLocale].blog + paginationName + currentPage,
-          component: blogTemplate,
-          context: {
-            edges: slicePosts(edgesBlog, currentPage).map(({ node }) => node),
-            currentPage,
-            totalPagesInBlog,
-            paginationPathPrefix: localePaths[esLocale].blog,
-            // current index in loop minus 1
-            // for index = 2, /page/1
-            // only if its > 1 (not resulting in /page/0)
-            prevPath:
-              currentPage - 1 > 1
-                ? localePaths[esLocale].blog + paginationName + `${currentPage - 1}`
-                : localePaths[esLocale].blog,
-            // current index in loop plus 1
-            // index = 3 > /page/3
-            // nextPath = null
-            // only if its <= totalPages (not resulting in more pages than there are)
-            nextPath:
-              currentPage + 1 <= totalPagesInBlog
-                ? localePaths[esLocale].blog + paginationName + `${currentPage + 1}`
-                : null,
-            totalCountBlog,
-            // necessary for react-intl
-            locale: esLocale,
-          },
-        });
-      }
-    }
-
-    /********************************************************
-     * Tags with pagination
-     *
-     * First page in pagination is: /blog/tags/tagName
-     * Next pages will be: /blog/tags/tagName/2...n
-     *
-     * For the first page return a prev path of null
-     * next path of /blog/tags/tagName/page/2
-     *
-     * For the second page return a prev path of /blog/tags/tagName
-     * next path of /blog/tags/tagName/page/3
-     *
-     * For the next ones return path under /blog/tags/tagName/page/n
-     */
-
-    tagsBlog.forEach((tag) => {
-      for (
-        let currentPage = 1;
-        currentPage <= Math.ceil(tag.totalCount / postsPerPage);
-        currentPage += 1
-      ) {
-        if (currentPage === 1) {
           createPage({
-            path: localePaths[esLocale].blog + "/tags/" + tag.fieldValue,
-            component: tagTemplate,
+            path: getWorkPaginationCurrentPath({
+              isFirstPage: isFirstPage,
+              currentPage: currentPage,
+              workPath: workPath,
+              paginationName: paginationName,
+            }),
+            component: workTemplate,
             context: {
-              edges: slicePosts(tag.edges, currentPage).map(({ node }) => node),
-              currentPage,
-              totalPagesInBlog: Math.ceil(tag.totalCount / postsPerPage),
-              paginationPathPrefix: localePaths[esLocale].blog + "/tags/" + tag.fieldValue,
-              prevPath: null,
-              nextPath:
-                localePaths[esLocale].blog + "/tags/" + tag.fieldValue + (paginationName + 2),
-              totalCount: tag.totalCount,
-              tag: tag.fieldValue,
-              // necessary for react-intl
-              locale: esLocale,
-            },
-          });
-        } else {
-          createPage({
-            path:
-              localePaths[esLocale].blog + "/tags/" + tag.fieldValue + paginationName + currentPage,
-            component: tagTemplate,
-            context: {
-              edges: slicePosts(tag.edges, currentPage).map(({ node }) => node),
-              currentPage,
-              totalPagesInBlog: Math.ceil(tag.totalCount / postsPerPage),
-              paginationPathPrefix: localePaths[esLocale].blog + "/tags/" + tag.fieldValue,
-              // current index in loop minus 1
-              // for index = 2, /page/1
-              // only if its > 1 (not resulting in /page/0)
-              prevPath:
-                currentPage - 1 > 1
-                  ? localePaths[esLocale].blog +
-                    "/tags/" +
-                    tag.fieldValue +
-                    paginationName +
-                    `${currentPage - 1}`
-                  : localePaths[esLocale].blog + "/tags/" + tag.fieldValue,
-              // current index in loop plus 1
-              // index = 3 > /page/3
-              // nextPath = null
-              // only if its <= totalPages (not resulting in more pages than there are)
-              nextPath:
-                currentPage + 1 <= Math.ceil(tag.totalCount / postsPerPage)
-                  ? localePaths[esLocale].blog +
-                    "/tags/" +
-                    tag.fieldValue +
-                    paginationName +
-                    `${currentPage + 1}`
-                  : null,
-              totalCount: tag.totalCount,
-              tag: tag.fieldValue,
-              // necessary for react-intl
-              locale: esLocale,
+              currentPage: currentPage,
+              totalPagesInWork: totalPagesInWork,
+              paginationPathPrefix: workPath,
+              totalCountWork: totalCountWork,
+              locale: locale,
+              edgesWork: slicePosts({
+                array: edgesWork,
+                currentPage: currentPage,
+                postsPerPage: POSTS_PER_PAGE,
+              }).map((edge) => edge),
+              prevPath: getWorkPaginationPrevPath({
+                isFirstPage: isFirstPage,
+                currentPage: currentPage,
+                workPath: workPath,
+                paginationName: paginationName,
+              }),
+              nextPath: getWorkPaginationNextPath({
+                isFirstPage: isFirstPage,
+                currentPage: currentPage,
+                workPath: workPath,
+                paginationName: paginationName,
+                totalPagesInWork: totalPagesInWork,
+              }),
             },
           });
         }
+      } catch (error) {
+        reporter.panic(error.message);
       }
-    });
-
-    /*******************************************************
-     * Posts Page Creation
-     */
-
-    edgesBlog.forEach((edge, index) => {
-      let nextTitle = null;
-      let nextSlug = null;
-      let prevTitle = null;
-      let prevSlug = null;
-
-      if (index === 0 && edgesBlog.length > 1) {
-        prevTitle = edgesBlog[index + 1].node.frontmatter.title;
-        prevSlug = edgesBlog[index + 1].node.fields.slug;
-      } else if (index > 0 && index + 1 < edgesBlog.length) {
-        prevTitle = edgesBlog[index + 1].node.frontmatter.title;
-        prevSlug = edgesBlog[index + 1].node.fields.slug;
-        nextTitle = edgesBlog[index - 1].node.frontmatter.title;
-        nextSlug = edgesBlog[index - 1].node.fields.slug;
-      } else if (index === edgesBlog.length - 1 && edgesBlog.length > 1) {
-        prevTitle = null;
-        prevSlug = null;
-        nextTitle = edgesBlog[index - 1].node.frontmatter.title;
-        nextSlug = edgesBlog[index - 1].node.fields.slug;
-      }
-
-      createPage({
-        path: edge.node.fields.slug,
-        component: postTemplate,
-        context: {
-          slug: edge.node.fields.slug,
-          twinPost: _.kebabCase(edge.node.frontmatter.twinPost),
-          // necessary for react-intl
-          locale: esLocale,
-          nextTitle,
-          nextSlug,
-          prevTitle,
-          prevSlug,
-        },
-      });
-    });
-
-    /*******************************************************
-     * Legal Pages Creation
-     */
-
-    edgesLegal.forEach((edge) => {
-      createPage({
-        path: edge.node.fields.slug,
-        component: legalTemplate,
-        context: {
-          slug: edge.node.fields.slug,
-          twinPost: _.kebabCase(edge.node.frontmatter.twinPost),
-          // necessary for react-intl
-          locale: esLocale,
-        },
-      });
-    });
-
-    /********************************************************
-     * Work pagination
-     *
-     * First page in pagination is: /work/
-     * Next pages will be: /work/page/2...n
-     *
-     * For the first page return a prev path of null
-     * next path of /work/page/2
-     *
-     * For the second page return a prev path of /work,
-     * next path of /work/page/3
-     *
-     * For the next ones return path under /work/page/n
-     */
-
-    for (let currentPage = 1; currentPage <= totalPagesInWork; currentPage += 1) {
-      if (currentPage === 1) {
-        createPage({
-          path: localePaths[esLocale].work,
-          component: workTemplate,
-          context: {
-            edgesWork: slicePosts(edgesWork, currentPage).map((edge) => edge),
-            currentPage,
-            totalPagesInWork,
-            paginationPathPrefix: localePaths[esLocale].work,
-            prevPath: null,
-            nextPath:
-              totalPagesInWork > 1 ? localePaths[esLocale].work + paginationName + "2" : null,
-            totalCountWork,
-            // necessary for react-intl
-            locale: esLocale,
-          },
-        });
-      } else {
-        createPage({
-          path: localePaths[esLocale].work + paginationName + currentPage,
-          component: workTemplate,
-          context: {
-            edgesWork: slicePosts(edgesWork, currentPage).map((edge) => edge),
-            currentPage,
-            totalPagesInWork,
-            paginationPathPrefix: localePaths[esLocale].work,
-            // current index in loop minus 1
-            // for index = 2, /page/1
-            // only if its > 1 (not resulting in /page/0)
-            prevPath:
-              currentPage - 1 > 1
-                ? localePaths[esLocale].work + paginationName + `${currentPage - 1}`
-                : localePaths[esLocale].work,
-            // current index in loop plus 1
-            // index = 3 > /page/3
-            // nextPath = null
-            // only if its <= totalPages (not resulting in more pages than there are)
-            nextPath:
-              currentPage + 1 <= totalPagesInWork
-                ? localePaths[esLocale].work + paginationName + `${currentPage + 1}`
-                : null,
-            totalCountWork,
-            // necessary for react-intl
-            locale: esLocale,
-          },
-        });
-      }
-    }
-
-    /*******************************************************
-     * Work Case Studies Creation
-     */
-
-    edgesWork.forEach((edge, index) => {
-      let nextTitle = null;
-      let nextSlug = null;
-      let prevTitle = null;
-      let prevSlug = null;
-
-      if (index === 0 && edgesWork.length > 1) {
-        prevTitle = edgesWork[index + 1].node.frontmatter.title;
-        prevSlug = edgesWork[index + 1].node.fields.slug;
-      } else if (index > 0 && index + 1 < edgesWork.length) {
-        prevTitle = edgesWork[index + 1].node.frontmatter.title;
-        prevSlug = edgesWork[index + 1].node.fields.slug;
-        nextTitle = edgesWork[index - 1].node.frontmatter.title;
-        nextSlug = edgesWork[index - 1].node.fields.slug;
-      } else if (index === edgesWork.length - 1 && edgesWork.length > 1) {
-        prevTitle = null;
-        prevSlug = null;
-        nextTitle = edgesWork[index - 1].node.frontmatter.title;
-        nextSlug = edgesWork[index - 1].node.fields.slug;
-      }
-
-      createPage({
-        path: edge.node.fields.slug,
-        component: caseStudyTemplate,
-        context: {
-          slug: edge.node.fields.slug,
-          twinPost: _.kebabCase(edge.node.frontmatter.twinPost),
-
-          // necessary for react-intl
-          locale: esLocale,
-          nextTitle,
-          nextSlug,
-          prevTitle,
-          prevSlug,
-        },
-      });
-    });
-  } catch (error) {
-    console.warn("Error running the spanish graphql query: ", error);
-  }
+    }),
+  );
 };
