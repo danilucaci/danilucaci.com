@@ -85,7 +85,7 @@ const Pagination = (props) => {
         </Prev>
       ) : (
         <DisabledPrev>
-          <StyledIcon disabled={!prevPath}>
+          <StyledIcon isDisabled={!prevPath}>
             <use xlinkHref="#left" />
           </StyledIcon>
           <FormattedMessage id="pagination.prev">
@@ -117,7 +117,7 @@ const Pagination = (props) => {
           <FormattedMessage id="pagination.next">
             {(txt) => <PaginationLabel>{txt}</PaginationLabel>}
           </FormattedMessage>
-          <StyledIcon disabled={!nextPath}>
+          <StyledIcon isDisabled={!nextPath}>
             <use xlinkHref="#right" />
           </StyledIcon>
         </DisabledNext>

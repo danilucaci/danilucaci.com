@@ -23,10 +23,9 @@ export const PaginationWrapper = styled.nav`
 
 export const StyledIcon = styled(Icon)`
   align-self: center;
-  margin: ${rem(8)} 0;
 
   ${(props) =>
-    props.disabled &&
+    props.isDisabled &&
     css`
       fill: ${theme.colors.grey500};
     `};
@@ -68,10 +67,10 @@ export const Prev = styled(StyledLink)`
 
   margin-left: 0;
   margin-right: auto;
-  padding: ${rem(8)} ${rem(24)} ${rem(8)} 0;
+  padding: ${rem(12)} ${rem(24)} ${rem(12)} 0;
 
   ${mediaMax.xs`
-    padding: ${rem(8)} ${rem(48)} ${rem(8)} 0;
+    padding: ${rem(12)} ${rem(48)} ${rem(12)} 0;
   `};
 `;
 
@@ -82,10 +81,10 @@ export const Next = styled(StyledLink)`
 
   margin-right: 0;
   margin-left: auto;
-  padding: ${rem(8)} 0 ${rem(8)} ${rem(24)};
+  padding: ${rem(12)} 0 ${rem(12)} ${rem(24)};
 
   ${mediaMax.xs`
-    padding: ${rem(8)} 0 ${rem(8)} ${rem(48)};
+    padding: ${rem(12)} 0 ${rem(12)} ${rem(48)};
   `};
 `;
 
@@ -145,7 +144,7 @@ export const PaginationNumber = styled(StyledLink)`
   height: ${rem(48)};
   width: ${rem(48)};
   margin: ${rem(4)};
-  padding: ${rem(8)} ${rem(12)} ${rem(16)};
+  padding: ${rem(12)} ${rem(8)};
 
   ${mediaMin.s`
     display: inline-block;
