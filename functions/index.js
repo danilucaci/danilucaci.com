@@ -13,7 +13,7 @@ const app = express();
 const rateLimiterConfiguration = {
   name: "dlRateLimiterCalls",
   periodSeconds: 60 * 5,
-  maxCalls: 10,
+  maxCalls: 15,
   debug: true,
 };
 
@@ -53,7 +53,9 @@ async function validateFirebaseIdToken(req, res, next) {
   try {
     const idToken = req.headers.authorization.split("Bearer ")[1];
 
-    await admin.auth().verifyIdToken(idToken);
+    const decodedToken = await admin.auth().verifyIdToken(idToken);
+    const uid = decodedToken.uid;
+    req.uid = uid;
 
     return next();
   } catch (error) {
@@ -67,11 +69,8 @@ async function validateFirebaseIdToken(req, res, next) {
 }
 
 async function rateLimitCalls(req, res, next) {
-  if (
-    !req.headers.authorization ||
-    !req.headers.authorization.startsWith("Bearer ")
-  ) {
-    console.error("No Bearer token found in the Authorization header.");
+  if (!req.uid) {
+    console.error("No uid found in the req.");
 
     return res.status(401).send({
       data: null,
@@ -80,16 +79,15 @@ async function rateLimitCalls(req, res, next) {
   }
 
   try {
-    const idToken = req.headers.authorization.split("Bearer ")[1];
+    const uid = req.uid;
+    const isQuotaExceeded = await rateLimiter.isQuotaExceededOrRecordUsage(uid);
 
-    const isQuotaExceeded = await rateLimiter.isQuotaExceededOrRecordUsage(
-      idToken,
-    );
-
+    console.log({ uid });
     console.log({ isQuotaExceeded });
 
     if (isQuotaExceeded) {
       console.error(`Quota was exceeded: ${isQuotaExceeded}`);
+
       return res.status(429).send({
         data: null,
         error: "Too many requests. Please try again later.",
@@ -98,7 +96,7 @@ async function rateLimitCalls(req, res, next) {
 
     return next();
   } catch (error) {
-    console.error("Failed to get the Bearer Token in rateLimitCalls: ", error);
+    console.error("Failed to check rateLimitCalls: ", error);
 
     return res.status(401).send({
       data: null,
@@ -116,12 +114,30 @@ const corsOptions = {
 
 app.use(helmet());
 app.use(cors(corsOptions));
-app.use(rateLimitCalls);
 app.use(validateFirebaseIdToken);
+app.use(rateLimitCalls);
 app.use(express.json());
-app.use(validateData);
+app.use("/message", validateData);
 
-app.post("/", async (req, res) => {
+app.post("/ping", (req, res) => {
+  const { message } = req.body || {};
+
+  console.log({ ping: message });
+
+  if (message === "ping") {
+    return res.status(200).send({
+      data: { message: "pong" },
+      error: null,
+    });
+  } else {
+    return res.status(400).send({
+      data: null,
+      error: "Bad request",
+    });
+  }
+});
+
+app.post("/message", async (req, res) => {
   try {
     const {
       fullname,

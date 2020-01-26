@@ -32,7 +32,66 @@ function ToggleConsent({ setConsentAccepted, currentConsentAccepted }) {
     if (!currentConsentAccepted && values.consentAccepted) {
       setConsentAccepted(values.consentAccepted);
     }
-  }, [currentConsentAccepted, values.consentAccepted]);
+  }, [currentConsentAccepted, setConsentAccepted, values.consentAccepted]);
+
+  return null;
+}
+
+function Ping({ userToken }) {
+  const { touched } = useFormikContext();
+  const [pingSent, setPingSent] = useState(false);
+
+  useEffect(() => {
+    let mounted = true;
+
+    if (
+      !pingSent &&
+      userToken &&
+      (touched.email ||
+        touched.fullname ||
+        touched.message ||
+        touched.consentAccepted)
+    ) {
+      const data = JSON.stringify({
+        message: "ping",
+      });
+
+      fetch(process.env.GATSBY_FIREBASE_FUNCTIONS_CONTACT_PING_URL, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+          "Content-Type": "application/json",
+        },
+        body: data,
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((res) => {
+          const { data: { message } = {}, error } = res || {};
+
+          if (mounted) {
+            setPingSent(true);
+          }
+
+          if (error) {
+            Sentry.captureMessage("Contact Form ping failed");
+          }
+        })
+        .catch((error) => {
+          Sentry.captureException(error);
+        });
+    }
+
+    return () => (mounted = false);
+  }, [
+    pingSent,
+    userToken,
+    touched.consentAccepted,
+    touched.email,
+    touched.fullname,
+    touched.message,
+  ]);
 
   return null;
 }
@@ -42,6 +101,7 @@ function ContactForm({ locale }) {
   const [formErrorMessage, setFormErrorMessage] = useState(null);
   const hasGDPRConsent = useContext(GDPRContext);
   const [consentAccepted, setConsentAccepted] = useState(false);
+  const [messageSent, setMessageSent] = useState(false);
 
   const { userToken, error: authError } = useFirebaseAnonymousAuth(
     consentAccepted,
@@ -59,7 +119,7 @@ function ContactForm({ locale }) {
     if (hasGDPRConsent && !consentAccepted) {
       setConsentAccepted(true);
     }
-  }, [hasGDPRConsent]);
+  }, [consentAccepted, hasGDPRConsent]);
 
   function clearErrorMessage() {
     setShowFormError(false);
@@ -74,6 +134,11 @@ function ContactForm({ locale }) {
   }
 
   function handleContactFormSubmit(values, setSubmitting) {
+    if (messageSent) {
+      // Reset the submit button label
+      setMessageSent(false);
+    }
+
     const consentValue = values.consentAccepted
       ? CONSENT_VALUE[locale].yes
       : CONSENT_VALUE[locale].no;
@@ -99,12 +164,10 @@ function ContactForm({ locale }) {
           },
           body: data,
         })
-          .then((jsonResponse) => {
+          .then((jsonResponse) => jsonResponse.json())
+          .then((response) => {
             setSubmitting(false);
 
-            return jsonResponse.json();
-          })
-          .then((response) => {
             if (response.error) {
               logGAEvent("Failed");
               handleFormError(new Error(response.error));
@@ -112,6 +175,7 @@ function ContactForm({ locale }) {
 
             if (!response.error && response.data && response.data === "Ok") {
               logGAEvent("Success");
+              setMessageSent(true);
               navigate(localePaths[locale].thanks);
             }
           })
@@ -159,6 +223,7 @@ function ContactForm({ locale }) {
               setConsentAccepted={setConsentAccepted}
               currentConsentAccepted={consentAccepted}
             />
+            <Ping userToken={userToken} />
             <Field
               style={{ display: "none" }}
               aria-hidden="true"
@@ -268,7 +333,14 @@ function ContactForm({ locale }) {
             <SubmitButton
               disabled={!isValid || isSubmitting || authError || !userToken}
               showSpinner={isSubmitting}
-              aria-label={isSubmitting ? `Sending message` : `Send message`}
+              submitted={messageSent}
+              aria-label={
+                messageSent
+                  ? "Message sent"
+                  : isSubmitting
+                  ? `Sending message`
+                  : `Send message`
+              }
             />
 
             {showFormError && (
