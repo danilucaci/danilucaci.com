@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { bool } from "prop-types";
-import useFirebase from "./useFirebase";
+import { useFirebase } from "./";
 
 /**
  * Log in users anonymously when the privacy consent is accepted.
