@@ -5,25 +5,22 @@ import dribbblePostsTypes from "./dribbble-posts-types";
 
 const __DEV__ = process.env.NODE_ENV;
 const GATSBY_DRIBBBLE_TOKEN = process.env.GATSBY_DRIBBBLE_TOKEN;
-const BASE_URL = `https://api.dribbble.com/v2/user/shots?access_token=`;
+const BASE_URL = `https://api.dribbble.com/v2/user/shots?`;
 
 export function fetchInitialPosts(source) {
   return async function thunk(dispatch, state) {
     const { dribbblePage, shotsPerPage, initialFetchDone } = state || {};
 
-    const URL =
-      BASE_URL +
-      GATSBY_DRIBBBLE_TOKEN +
-      "&page=" +
-      dribbblePage +
-      "&per_page=" +
-      shotsPerPage;
+    const URL = BASE_URL + "page=" + dribbblePage + "&per_page=" + shotsPerPage;
 
     try {
       const posts = await axios({
         method: "get",
         url: URL,
         cancelToken: source && source.token ? source.token : null,
+        headers: {
+          Authorization: `Bearer ${GATSBY_DRIBBBLE_TOKEN}`,
+        },
       });
 
       if (!initialFetchDone) {
@@ -60,19 +57,16 @@ export function fetchMore(source) {
       payload: newPage,
     });
 
-    const URL =
-      BASE_URL +
-      GATSBY_DRIBBBLE_TOKEN +
-      "&page=" +
-      newPage +
-      "&per_page=" +
-      shotsPerPage;
+    const URL = BASE_URL + "page=" + newPage + "&per_page=" + shotsPerPage;
 
     try {
       const posts = await axios({
         method: "get",
         url: URL,
         cancelToken: source && source.token ? source.token : null,
+        headers: {
+          Authorization: `Bearer ${GATSBY_DRIBBBLE_TOKEN}`,
+        },
       });
 
       dispatch({
