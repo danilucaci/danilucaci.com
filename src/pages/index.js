@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { object, shape, arrayOf, string } from "prop-types";
 import { graphql, Link } from "gatsby";
-import { FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
 
 import Layout from "../components/Layout";
 import Main from "../components/Main/Main";
@@ -12,12 +12,12 @@ import DribbblePosts from "../components/DribbblePosts/DribbblePosts";
 import { localePaths } from "../i18n/i18n";
 import { Col } from "../components/Grid/Grid";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
+import LocaleContext from "../i18n/LocaleContext";
 
 import {
   IndexHeader,
   IndexTitle,
   Subtitle,
-  Name,
   FindOutMore,
   ServicesRow,
   ServicesRowBackground,
@@ -34,9 +34,11 @@ import illustrationUX from "../images/illustrations/danilucaci_services_ux.svg";
 import illustrationUI from "../images/illustrations/danilucaci_services_ui.svg";
 import illustrationInteraction from "../images/illustrations/danilucaci_services_interaction.svg";
 
-const Index = ({ data, pageContext, location }) => {
+const Index = ({ data, location }) => {
   const edges = data.work.edges;
-  const locale = pageContext.locale;
+  const { locale } = useContext(LocaleContext);
+  const intl = useIntl();
+
   const twinPostURL =
     locale === "en" ? localePaths["es"].index : localePaths["en"].index;
 
@@ -56,33 +58,23 @@ const Index = ({ data, pageContext, location }) => {
         <Main>
           <IndexHeader as="header" col12>
             <Col xxl={8}>
-              <FormattedMessage id="index.h1">
-                {(txt) => (
-                  <IndexTitle as="h1" data-testid="Index__Hero__Title">
-                    {txt}
-                  </IndexTitle>
-                )}
-              </FormattedMessage>
-              <FormattedMessage id="index.subtitle">
-                {(txt) => (
-                  <Subtitle data-testid="Index__Hero__Subtitles">
-                    {txt}
-                  </Subtitle>
-                )}
-              </FormattedMessage>
+              <IndexTitle as="h1" data-testid="Index__Hero__Title">
+                {intl.formatMessage({ id: "index.h1" })}
+              </IndexTitle>
+
+              <Subtitle data-testid="Index__Hero__Subtitles">
+                {intl.formatMessage({ id: "index.subtitle" })}
+              </Subtitle>
+
               <FindOutMore>
-                <FormattedMessage id="index.findOut.1">
-                  {(txt) => <>{txt}</>}
-                </FormattedMessage>
-                <FormattedMessage id="index.findOut.2">
-                  {(txt) => <Link to={localePaths[locale].work}>{txt}</Link>}
-                </FormattedMessage>
-                <FormattedMessage id="index.findOut.3">
-                  {(txt) => <>{txt}</>}
-                </FormattedMessage>
-                <FormattedMessage id="index.findOut.4">
-                  {(txt) => <Link to={localePaths[locale].contact}>{txt}</Link>}
-                </FormattedMessage>
+                {intl.formatMessage({ id: "index.findOut.1" })}
+                <Link to={localePaths[locale].work}>
+                  {intl.formatMessage({ id: "index.findOut.2" })}
+                </Link>
+                {intl.formatMessage({ id: "index.findOut.3" })}
+                <Link to={localePaths[locale].contact}>
+                  {intl.formatMessage({ id: "index.findOut.4" })}
+                </Link>
                 .
               </FindOutMore>
             </Col>
@@ -97,31 +89,27 @@ const Index = ({ data, pageContext, location }) => {
           >
             <ServicesRow col10 padded as="div">
               <Col>
-                <FormattedMessage id="index.services.heading">
-                  {(txt) => (
-                    <ServicesTitle id="services-title">{txt}</ServicesTitle>
-                  )}
-                </FormattedMessage>
+                <ServicesTitle id="services-title">
+                  {intl.formatMessage({ id: "index.services.heading" })}
+                </ServicesTitle>
 
                 <ServicesEntry>
                   <ServiceImage>
-                    <FormattedMessage id="index.services.4.svg.alt">
-                      {(txt) => (
-                        <img
-                          src={illustrationCode}
-                          alt={txt}
-                          data-testid="Homepage__SVG__04"
-                        />
-                      )}
-                    </FormattedMessage>
+                    <img
+                      src={illustrationCode}
+                      alt={intl.formatMessage({
+                        id: "index.services.4.svg.alt",
+                      })}
+                      data-testid="Homepage__SVG__04"
+                    />
                   </ServiceImage>
                   <ServiceContent>
-                    <FormattedMessage id="index.services.4.title">
-                      {(txt) => <ServiceTitle>{txt}</ServiceTitle>}
-                    </FormattedMessage>
-                    <FormattedMessage id="index.services.4.copy">
-                      {(txt) => <ServiceCopy>{txt}</ServiceCopy>}
-                    </FormattedMessage>
+                    <ServiceTitle>
+                      {intl.formatMessage({ id: "index.services.4.title" })}
+                    </ServiceTitle>
+                    <ServiceCopy>
+                      {intl.formatMessage({ id: "index.services.4.copy" })}
+                    </ServiceCopy>
                     <ul>
                       <li>Styled-Components</li>
                       <li>Sass</li>
@@ -134,23 +122,21 @@ const Index = ({ data, pageContext, location }) => {
 
                 <ServicesEntry>
                   <ServiceImage>
-                    <FormattedMessage id="index.services.2.svg.alt">
-                      {(txt) => (
-                        <img
-                          src={illustrationUI}
-                          alt={txt}
-                          data-testid="Homepage__SVG__02"
-                        />
-                      )}
-                    </FormattedMessage>
+                    <img
+                      src={illustrationUI}
+                      alt={intl.formatMessage({
+                        id: "index.services.2.svg.alt",
+                      })}
+                      data-testid="Homepage__SVG__02"
+                    />
                   </ServiceImage>
                   <ServiceContent>
-                    <FormattedMessage id="index.services.2.title">
-                      {(txt) => <ServiceTitle>{txt}</ServiceTitle>}
-                    </FormattedMessage>
-                    <FormattedMessage id="index.services.2.copy">
-                      {(txt) => <ServiceCopy>{txt}</ServiceCopy>}
-                    </FormattedMessage>
+                    <ServiceTitle>
+                      {intl.formatMessage({ id: "index.services.2.title" })}
+                    </ServiceTitle>
+                    <ServiceCopy>
+                      {intl.formatMessage({ id: "index.services.2.copy" })}
+                    </ServiceCopy>
                     <ul>
                       <li>Design Systems</li>
                       <li>Website design</li>
@@ -162,23 +148,21 @@ const Index = ({ data, pageContext, location }) => {
 
                 <ServicesEntry>
                   <ServiceImage>
-                    <FormattedMessage id="index.services.1.svg.alt">
-                      {(txt) => (
-                        <img
-                          src={illustrationUX}
-                          alt={txt}
-                          data-testid="Homepage__SVG__01"
-                        />
-                      )}
-                    </FormattedMessage>
+                    <img
+                      src={illustrationUX}
+                      alt={intl.formatMessage({
+                        id: "index.services.1.svg.alt",
+                      })}
+                      data-testid="Homepage__SVG__01"
+                    />
                   </ServiceImage>
                   <ServiceContent>
-                    <FormattedMessage id="index.services.1.title">
-                      {(txt) => <ServiceTitle>{txt}</ServiceTitle>}
-                    </FormattedMessage>
-                    <FormattedMessage id="index.services.1.copy">
-                      {(txt) => <ServiceCopy>{txt}</ServiceCopy>}
-                    </FormattedMessage>
+                    <ServiceTitle>
+                      {intl.formatMessage({ id: "index.services.1.title" })}
+                    </ServiceTitle>
+                    <ServiceCopy>
+                      {intl.formatMessage({ id: "index.services.1.copy" })}
+                    </ServiceCopy>
                     <ul>
                       <li>User Interviews</li>
                       <li>Personas</li>
@@ -191,23 +175,21 @@ const Index = ({ data, pageContext, location }) => {
 
                 <ServicesEntry>
                   <ServiceImage>
-                    <FormattedMessage id="index.services.3.svg.alt">
-                      {(txt) => (
-                        <img
-                          src={illustrationInteraction}
-                          alt={txt}
-                          data-testid="Homepage__SVG__03"
-                        />
-                      )}
-                    </FormattedMessage>
+                    <img
+                      src={illustrationInteraction}
+                      alt={intl.formatMessage({
+                        id: "index.services.3.svg.alt",
+                      })}
+                      data-testid="Homepage__SVG__03"
+                    />
                   </ServiceImage>
                   <ServiceContent>
-                    <FormattedMessage id="index.services.3.title">
-                      {(txt) => <ServiceTitle>{txt}</ServiceTitle>}
-                    </FormattedMessage>
-                    <FormattedMessage id="index.services.3.copy">
-                      {(txt) => <ServiceCopy>{txt}</ServiceCopy>}
-                    </FormattedMessage>
+                    <ServiceTitle>
+                      {intl.formatMessage({ id: "index.services.3.title" })}
+                    </ServiceTitle>
+                    <ServiceCopy>
+                      {intl.formatMessage({ id: "index.services.3.copy" })}
+                    </ServiceCopy>
                     <ul>
                       <li>InVision</li>
                       <li>Principle</li>
@@ -228,9 +210,6 @@ const Index = ({ data, pageContext, location }) => {
 };
 
 Index.propTypes = {
-  pageContext: shape({
-    locale: string.isRequired,
-  }).isRequired,
   data: shape({
     work: shape({
       edges: arrayOf(object).isRequired,

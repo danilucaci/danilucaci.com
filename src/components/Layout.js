@@ -6,8 +6,6 @@ import ReactGA from "react-ga";
 import Helmet from "react-helmet";
 import * as Sentry from "@sentry/browser";
 
-import { IntlProvider } from "react-intl";
-
 import { Page } from "./styles";
 import { theme } from "../theme/theme";
 import GlobalReset from "../theme/globalReset";
@@ -21,7 +19,6 @@ import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 import SiteHeader from "./SiteHeader/SiteHeader";
 import SiteFooter from "./SiteFooter/SiteFooter";
 import ScrollToTop from "./ScrollToTop/ScrollToTop";
-import intlMessages from "../i18n/i18n";
 
 import { checkFontsLoaded } from "../helpers/loadFonts";
 
@@ -256,59 +253,53 @@ const Layout = ({
   return (
     <ErrorBoundary>
       <ThemeProvider theme={theme}>
-        <IntlProvider
-          locale={locale}
-          defaultLocale="en"
-          messages={intlMessages[locale]}
-        >
-          <GDPRContext.Provider value={state.hasGDPRConsent}>
-            <Page>
-              <div
-                id="top"
-                style={{
-                  backgroundColor: "transparent",
-                  position: "absolute",
-                  width: "1px",
-                  height: "1px",
-                  padding: "0",
-                  margin: "-1px",
-                  overflow: "hidden",
-                  clip: "rect(0, 0, 0, 0)",
-                  border: "0",
-                }}
-              />
-              {GTMScript}
-              <SkipToMainContent />
-              <GlobalReset />
-              <GlobalAria />
-              <GlobalCSS />
-              <GlobalGrid />
-              <SVGSprite />
-              <SiteHeader
-                twinPostURL={twinPostURL}
-                locale={locale}
-                currentPath={location.pathname}
-                expand={expandHeaderAndFooter}
-                colorHeader={colorHeader}
-              />
-              {children}
-              <ScrollToTop />
-              <SiteFooter
-                locale={locale}
-                twinPostURL={twinPostURL}
-                currentPath={location.pathname}
-                expand={expandHeaderAndFooter}
-              />
-              <CookieConsent
-                openCookieConsent={state.openCookieConsent}
-                acceptedCookies={acceptedCookies}
-                deniedCookies={deniedCookies}
-                pageLocale={locale}
-                isTransitioning={state.isTransitioning}
-              />
-            </Page>
-          </GDPRContext.Provider>
-        </IntlProvider>
+        <GDPRContext.Provider value={state.hasGDPRConsent}>
+          <Page>
+            <div
+              id="top"
+              style={{
+                backgroundColor: "transparent",
+                position: "absolute",
+                width: "1px",
+                height: "1px",
+                padding: "0",
+                margin: "-1px",
+                overflow: "hidden",
+                clip: "rect(0, 0, 0, 0)",
+                border: "0",
+              }}
+            />
+            {GTMScript}
+            <SkipToMainContent />
+            <GlobalReset />
+            <GlobalAria />
+            <GlobalCSS />
+            <GlobalGrid />
+            <SVGSprite />
+            <SiteHeader
+              twinPostURL={twinPostURL}
+              locale={locale}
+              currentPath={location.pathname}
+              expand={expandHeaderAndFooter}
+              colorHeader={colorHeader}
+            />
+            {children}
+            <ScrollToTop />
+            <SiteFooter
+              locale={locale}
+              twinPostURL={twinPostURL}
+              currentPath={location.pathname}
+              expand={expandHeaderAndFooter}
+            />
+            <CookieConsent
+              openCookieConsent={state.openCookieConsent}
+              acceptedCookies={acceptedCookies}
+              deniedCookies={deniedCookies}
+              pageLocale={locale}
+              isTransitioning={state.isTransitioning}
+            />
+          </Page>
+        </GDPRContext.Provider>
       </ThemeProvider>
     </ErrorBoundary>
   );
