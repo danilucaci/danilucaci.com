@@ -1,48 +1,37 @@
 import React from "react";
-import { string, shape, number, arrayOf } from "prop-types";
+import { string, shape, number } from "prop-types";
 import Img from "gatsby-image";
-import { FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
 
 import {
   StyledCaseStudyCard,
   CaseStudyImgWrapper,
   CaseStudyCardContents,
   StyledH3,
-  Tag,
-  TagsWrapper,
   ContinueLink,
 } from "./styles";
 
 import { Copy } from "../Copy/Copy";
-import AriaText from "../AriaText/AriaText";
 
-function CaseStudyCard(props) {
+function CaseStudyCard({ title, snippet, cardImage, slug, cardHeadingLevel }) {
+  const intl = useIntl();
+  const linkText = intl.formatMessage({ id: "article.link.continue.text" });
+  const arrowText = intl.formatMessage({ id: "article.link.continue.arrow" });
+
   return (
-    <StyledCaseStudyCard aria-labelledby="case-study-title">
+    <StyledCaseStudyCard aria-labelledby={slug}>
       <CaseStudyImgWrapper>
-        <Img
-          title={props.title}
-          alt={props.snippet}
-          fluid={props.cardImage}
-          fadeIn
-        />
+        <Img title={title} alt={snippet} fluid={cardImage} fadeIn />
       </CaseStudyImgWrapper>
       <CaseStudyCardContents>
-        <TagsWrapper>
-          {props.tagsInCaseStudy.map((tag) => (
-            <Tag key={tag}>
-              <AriaText>tag: </AriaText>
-              {tag}
-            </Tag>
-          ))}
-        </TagsWrapper>
-        <StyledH3 as={props.cardHeadingLevel} id="case-study-title">
-          {props.title}
+        <StyledH3 as={cardHeadingLevel} id={slug}>
+          {title}
         </StyledH3>
-        <Copy>{props.snippet}</Copy>
-        <FormattedMessage id="article.link.continue">
-          {(txt) => <ContinueLink to={props.slug}>{txt}</ContinueLink>}
-        </FormattedMessage>
+        <Copy>{snippet}</Copy>
+        <ContinueLink to={slug} aria-label={`${linkText} ${title}`}>
+          {linkText}
+          <span aria-hidden="true">{arrowText}</span>
+        </ContinueLink>
       </CaseStudyCardContents>
     </StyledCaseStudyCard>
   );
@@ -52,7 +41,7 @@ CaseStudyCard.propTypes = {
   title: string.isRequired,
   slug: string.isRequired,
   snippet: string.isRequired,
-  tagsInCaseStudy: arrayOf(string).isRequired,
+  cardHeadingLevel: string,
   cardImage: shape({
     aspectRatio: number.isRequired,
     sizes: string.isRequired,
@@ -61,7 +50,6 @@ CaseStudyCard.propTypes = {
     srcSet: string.isRequired,
     srcSetWebp: string.isRequired,
   }).isRequired,
-  cardHeadingLevel: string,
 };
 
 CaseStudyCard.defaultProps = {

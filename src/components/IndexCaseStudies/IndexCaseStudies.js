@@ -1,14 +1,15 @@
 import React from "react";
 import { bool, string, arrayOf, object } from "prop-types";
-import { FormattedMessage } from "react-intl";
 
 import CaseStudyCard from "../CaseStudyCard/CaseStudyCard";
 import { Col, Row } from "../Grid/Grid";
-import { Title } from "./styles";
+import { FormattedMessage } from "react-intl";
+import AriaText from "../AriaText/AriaText";
 
-const CaseStudies = ({ edges, spaced, header, cardHeadingLevel }) => {
+const IndexCaseStudies = ({ edges, spaced, cardHeadingLevel }) => {
   let caseStudies = edges.map((edge) => ({
     slug: edge.node.fields.slug,
+    tagsInCaseStudy: edge.node.frontmatter.tags,
     title: edge.node.frontmatter.title,
     date: edge.node.frontmatter.date,
     snippet: edge.node.frontmatter.snippet,
@@ -22,15 +23,13 @@ const CaseStudies = ({ edges, spaced, header, cardHeadingLevel }) => {
       data-testid="Casestudies__Wrapper"
       aria-labelledby="case-studies-title"
     >
-      <Col>
-        <FormattedMessage id="case.studies.header">
-          {(txt) => (
-            <Title id="case-studies-title" as={header}>
-              {txt}
-            </Title>
-          )}
-        </FormattedMessage>
-      </Col>
+      <FormattedMessage id="case.studies.header">
+        {(txt) => (
+          <AriaText id="case-studies-title" as="h2">
+            {txt}
+          </AriaText>
+        )}
+      </FormattedMessage>
       <Col>
         {caseStudies.map((caseStudyCard) => (
           <CaseStudyCard
@@ -40,7 +39,6 @@ const CaseStudies = ({ edges, spaced, header, cardHeadingLevel }) => {
             date={caseStudyCard.date}
             snippet={caseStudyCard.snippet}
             cardImage={caseStudyCard.cardImage}
-            cardHeadingLevel={cardHeadingLevel}
           />
         ))}
       </Col>
@@ -48,17 +46,13 @@ const CaseStudies = ({ edges, spaced, header, cardHeadingLevel }) => {
   );
 };
 
-CaseStudies.propTypes = {
+IndexCaseStudies.propTypes = {
   edges: arrayOf(object).isRequired,
   spaced: bool,
-  header: string,
-  cardHeadingLevel: string,
 };
 
-CaseStudies.defaultProps = {
+IndexCaseStudies.defaultProps = {
   spaced: false,
-  header: "h1",
-  cardHeadingLevel: undefined,
 };
 
-export default CaseStudies;
+export default IndexCaseStudies;

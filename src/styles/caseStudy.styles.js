@@ -3,7 +3,7 @@ import { theme, rem, mediaMin } from "../theme/theme";
 import { Copy } from "../components/Copy/Copy";
 import { Row, RowSpacer, Col } from "../components/Grid/Grid";
 
-export const ArticleWrapper = styled.article`
+export const ArticleWrapper = styled.section`
   blockquote {
     margin-bottom: ${rem(32)};
 
@@ -104,6 +104,10 @@ export const PostH1 = styled.h1`
     font-size: ${theme.font.size.display.desktop.h1};
     line-height: ${theme.font.lineHeight.display.desktop.h1};
   `}
+
+  ${mediaMin.xl`
+    margin-top: ${rem(48)};
+  `}
   
   margin-bottom: ${rem(16)};
   margin-left: auto;
@@ -118,6 +122,7 @@ export const CaseStudyDescription = styled(Copy)`
   line-height: ${theme.font.lineHeight.display.mobile.subtitle};
 
   max-width: ${rem(760)};
+  margin-bottom: ${rem(0)} !important;
 
   font-family: ${theme.font.family.display.fallback};
   font-weight: 400;
@@ -139,10 +144,6 @@ export const CaseStudyImgWrapper = styled.div`
   margin-right: auto;
 
   margin-top: ${rem(24)};
-
-  ${mediaMin.m`
-    margin-top: ${rem(40)};
-  `};
 `;
 
 export const OverviewRow = styled(Row)`

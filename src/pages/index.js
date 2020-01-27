@@ -7,7 +7,7 @@ import Layout from "../components/Layout";
 import Main from "../components/Main/Main";
 import SEO from "../components/SEO/SEO";
 import ContactCard from "../components/ContactCard/ContactCard";
-import CaseStudies from "../components/CaseStudies/CaseStudies";
+import IndexCaseStudies from "../components/IndexCaseStudies/IndexCaseStudies";
 import DribbblePosts from "../components/DribbblePosts/DribbblePosts";
 import { localePaths } from "../i18n/i18n";
 import { Col } from "../components/Grid/Grid";
@@ -42,32 +42,32 @@ const Index = ({ data, pageContext, location }) => {
 
   return (
     <ErrorBoundary>
-      <Layout location={location} locale={locale} twinPostURL={twinPostURL}>
+      <Layout
+        location={location}
+        locale={locale}
+        twinPostURL={twinPostURL}
+        expandHeaderAndFooter
+      >
         <SEO
           locale={locale}
           currentPath={location.pathname}
           twinPostURL={twinPostURL}
         />
         <Main>
-          <IndexHeader as="header" col10 pb>
-            <Col>
-              <FormattedMessage id="index.name">
-                {(txt) => <Name>{txt}</Name>}
-              </FormattedMessage>
+          <IndexHeader as="header" col12>
+            <Col xxl={8}>
               <FormattedMessage id="index.h1">
                 {(txt) => (
-                  <IndexTitle
-                    as="h1"
-                    locale={locale}
-                    data-testid="Index__Hero__Title"
-                  >
+                  <IndexTitle as="h1" data-testid="Index__Hero__Title">
                     {txt}
                   </IndexTitle>
                 )}
               </FormattedMessage>
               <FormattedMessage id="index.subtitle">
                 {(txt) => (
-                  <Subtitle data-testid="Index__Hero__Subtitle">{txt}</Subtitle>
+                  <Subtitle data-testid="Index__Hero__Subtitles">
+                    {txt}
+                  </Subtitle>
                 )}
               </FormattedMessage>
               <FindOutMore>
@@ -87,6 +87,9 @@ const Index = ({ data, pageContext, location }) => {
               </FindOutMore>
             </Col>
           </IndexHeader>
+
+          <IndexCaseStudies edges={edges} spaced />
+
           <ServicesRowBackground
             mb
             as="section"
@@ -102,29 +105,29 @@ const Index = ({ data, pageContext, location }) => {
 
                 <ServicesEntry>
                   <ServiceImage>
-                    <FormattedMessage id="index.services.1.svg.alt">
+                    <FormattedMessage id="index.services.4.svg.alt">
                       {(txt) => (
                         <img
-                          src={illustrationUX}
+                          src={illustrationCode}
                           alt={txt}
-                          data-testid="Homepage__SVG__01"
+                          data-testid="Homepage__SVG__04"
                         />
                       )}
                     </FormattedMessage>
                   </ServiceImage>
                   <ServiceContent>
-                    <FormattedMessage id="index.services.1.title">
+                    <FormattedMessage id="index.services.4.title">
                       {(txt) => <ServiceTitle>{txt}</ServiceTitle>}
                     </FormattedMessage>
-                    <FormattedMessage id="index.services.1.copy">
+                    <FormattedMessage id="index.services.4.copy">
                       {(txt) => <ServiceCopy>{txt}</ServiceCopy>}
                     </FormattedMessage>
                     <ul>
-                      <li>User Interviews</li>
-                      <li>Personas</li>
-                      <li>Wireframes</li>
-                      <li>User Flows</li>
-                      <li>Heuristic Evaluation</li>
+                      <li>Styled-Components</li>
+                      <li>Sass</li>
+                      <li>React.js</li>
+                      <li>Gatsby.js</li>
+                      <li>GraphQL</li>
                     </ul>
                   </ServiceContent>
                 </ServicesEntry>
@@ -159,6 +162,35 @@ const Index = ({ data, pageContext, location }) => {
 
                 <ServicesEntry>
                   <ServiceImage>
+                    <FormattedMessage id="index.services.1.svg.alt">
+                      {(txt) => (
+                        <img
+                          src={illustrationUX}
+                          alt={txt}
+                          data-testid="Homepage__SVG__01"
+                        />
+                      )}
+                    </FormattedMessage>
+                  </ServiceImage>
+                  <ServiceContent>
+                    <FormattedMessage id="index.services.1.title">
+                      {(txt) => <ServiceTitle>{txt}</ServiceTitle>}
+                    </FormattedMessage>
+                    <FormattedMessage id="index.services.1.copy">
+                      {(txt) => <ServiceCopy>{txt}</ServiceCopy>}
+                    </FormattedMessage>
+                    <ul>
+                      <li>User Interviews</li>
+                      <li>Personas</li>
+                      <li>Wireframes</li>
+                      <li>User Flows</li>
+                      <li>Heuristic Evaluation</li>
+                    </ul>
+                  </ServiceContent>
+                </ServicesEntry>
+
+                <ServicesEntry>
+                  <ServiceImage>
                     <FormattedMessage id="index.services.3.svg.alt">
                       {(txt) => (
                         <img
@@ -183,40 +215,9 @@ const Index = ({ data, pageContext, location }) => {
                     </ul>
                   </ServiceContent>
                 </ServicesEntry>
-
-                <ServicesEntry>
-                  <ServiceImage>
-                    <FormattedMessage id="index.services.4.svg.alt">
-                      {(txt) => (
-                        <img
-                          src={illustrationCode}
-                          alt={txt}
-                          data-testid="Homepage__SVG__04"
-                        />
-                      )}
-                    </FormattedMessage>
-                  </ServiceImage>
-                  <ServiceContent>
-                    <FormattedMessage id="index.services.4.title">
-                      {(txt) => <ServiceTitle>{txt}</ServiceTitle>}
-                    </FormattedMessage>
-                    <FormattedMessage id="index.services.4.copy">
-                      {(txt) => <ServiceCopy>{txt}</ServiceCopy>}
-                    </FormattedMessage>
-                    <ul>
-                      <li>Styled-Components</li>
-                      <li>Sass</li>
-                      <li>React.js</li>
-                      <li>Gatsby.js</li>
-                      <li>GraphQL</li>
-                    </ul>
-                  </ServiceContent>
-                </ServicesEntry>
               </Col>
             </ServicesRow>
           </ServicesRowBackground>
-
-          <CaseStudies edges={edges} header="h2" spaced />
 
           <DribbblePosts />
         </Main>

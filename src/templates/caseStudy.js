@@ -7,7 +7,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 import SEO from "../components/SEO/SEO";
 import Main from "../components/Main/Main";
 import Layout from "../components/Layout";
-import SiblingPosts from "../components/SiblingPosts/SiblingPosts";
+import SiblingProjects from "../components/SiblingProjects/SiblingProjects";
 import ContactCard from "../components/ContactCard/ContactCard";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 import { Col, Row } from "../components/Grid/Grid";
@@ -56,7 +56,7 @@ function CaseStudy({ data, pageContext, location }) {
           currentPath={location.pathname}
         />
         <Main>
-          <ArticleWrapper>
+          <article>
             <HeaderBackground>
               <Row col8 as="div">
                 <Col>
@@ -75,20 +75,20 @@ function CaseStudy({ data, pageContext, location }) {
                 </Col>
               </Row>
             </HeaderBackground>
-            <>
+            <ArticleWrapper>
               <MDXRenderer>{postNode.body}</MDXRenderer>
-            </>
-          </ArticleWrapper>
+            </ArticleWrapper>
+          </article>
         </Main>
-        <ContactCard locale={locale} />
         {(prevSlug || nextSlug) && (
-          <SiblingPosts
+          <SiblingProjects
             nextSlug={nextSlug}
             nextTitle={nextTitle}
             prevSlug={prevSlug}
             prevTitle={prevTitle}
           />
         )}
+        <ContactCard locale={locale} />
       </Layout>
     </ErrorBoundary>
   );

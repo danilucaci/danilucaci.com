@@ -4,7 +4,7 @@ import { Link } from "gatsby";
 import { theme, mediaMin, rem } from "../../theme/theme";
 
 export const StyledCaseStudyCard = styled.article`
-  margin-bottom: ${rem(32)};
+  margin-bottom: ${rem(40)};
 
   ${mediaMin.s`
     background-color: ${theme.color.background.caseStudyCard};
@@ -18,6 +18,8 @@ export const StyledCaseStudyCard = styled.article`
   ${mediaMin.xl`
     margin-bottom: ${rem(64)};
     display: flex;
+    justify-content: space-between;
+    align-items: center;
   `};
 
   &:last-of-type {
@@ -26,9 +28,11 @@ export const StyledCaseStudyCard = styled.article`
 `;
 
 export const CaseStudyImgWrapper = styled.div`
+  margin-bottom: ${rem(16)};
   ${mediaMin.xl`
-    max-width: calc(60% - ${rem(24)});
-    margin-left: ${rem(24)};
+    max-width: calc(60% - ${rem(32)});
+    margin-bottom: ${rem(0)};
+    margin-left: ${rem(32)};
     padding: ${rem(24)} 0;
     flex: 1 1 60%;
     float: right;
@@ -51,32 +55,7 @@ export const CaseStudyCardContents = styled.div`
   `};
 
   ${mediaMin.xxl`
-    padding: ${rem(40)} 0 ${rem(40)} ${rem(40)};
-  `};
-`;
-
-export const Tag = styled.p`
-  color: ${theme.color.text.subdued};
-  font-size: ${theme.font.size.body.s};
-  line-height: ${theme.font.lineHeight.body.s};
-  letter-spacing: ${theme.font.letterSpacing.body.subhead};
-  font-weight: 700;
-  text-transform: uppercase;
-
-  .fonts-loaded & {
-    font-family: ${theme.font.family.body.bold};
-  }
-
-  display: inline-block;
-  margin-right: ${rem(16)};
-`;
-
-export const TagsWrapper = styled.div`
-  margin-top: ${rem(16)};
-  margin-bottom: ${rem(16)};
-
-  ${mediaMin.s`  
-    margin-top: 0;
+    padding: ${rem(40)} ${rem(32)} ${rem(40)} ${rem(40)};
   `};
 `;
 
@@ -86,6 +65,7 @@ export const StyledH3 = styled.h3`
   ${mediaMin.xxl`
     font-size: ${theme.font.size.display.desktop.h2};
     line-height: ${theme.font.lineHeight.display.desktop.h2};
+    margin-bottom: ${rem(16)};
   `};
 `;
 
@@ -96,7 +76,7 @@ export const ContinueLink = styled(Link)`
   font-weight: 700;
   font-family: ${theme.font.family.display.fallback};
   display: inline-block;
-  margin-top: ${rem(32)};
+  margin-top: ${rem(16)};
 
   font-size: ${rem(18)};
   line-height: ${rem(32)};
@@ -106,7 +86,6 @@ export const ContinueLink = styled(Link)`
   }
 
   ${mediaMin.xl`
-    margin-top: auto;
     margin-bottom: 0;
   `};
 

@@ -9,6 +9,7 @@ export const Title = styled.h1`
   margin-bottom: ${rem(8)};
 
   ${mediaMin.s`
+    margin-top: ${rem(24)};
     margin-bottom: ${rem(16)};
     font-size: ${theme.font.size.display.desktop.h2};
     line-height: ${theme.font.lineHeight.display.desktop.h2};

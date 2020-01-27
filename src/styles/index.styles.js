@@ -9,35 +9,14 @@ export const IndexHeader = styled(Row)`
   `};
 
   ${mediaMin.xl`
-    padding-top: ${rem(56)};
-  `};
-`;
-
-export const Name = styled(Copy)`
-  font-size: ${rem(18)};
-  line-height: ${rem(32)};
-  font-weight: 700;
-
-  .fonts-loaded & {
-    font-family: ${theme.font.family.body.bold};
-  }
-
-  ${mediaMin.s`
-    font-size: ${rem(20)};
-    line-height: ${rem(32)};
+    padding-top: ${rem(72)};
   `};
 `;
 
 export const IndexTitle = styled.h1`
-  margin-top: ${rem(16)};
   margin-bottom: ${rem(16)};
 
-  /* Collapse the h1 title in two lines on the spanish version of the page */
-  ${({ locale }) =>
-    locale === "es" &&
-    `
-      max-width: ${rem(600)};
-    `};
+  white-space: pre-line;
 
   font-size: ${theme.font.size.display.mobile.h2};
   line-height: ${theme.font.lineHeight.display.mobile.h2};
@@ -66,7 +45,6 @@ export const Subtitle = styled.p`
   }
 
   margin-bottom: ${rem(16)};
-  max-width: ${rem(900)};
 `;
 
 export const FindOutMore = styled.p`
