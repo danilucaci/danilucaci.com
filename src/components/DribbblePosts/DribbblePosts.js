@@ -1,11 +1,12 @@
-import React, { useState, useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
+import axios from "axios";
 import { useInView } from "react-intersection-observer";
 
 import DribbblePost from "../DribbblePost/DribbblePost";
 import DribbblePostPlaceholder from "../DribbblePostPlaceholder/DribbblePostPlaceholder";
 import Spinner from "../Spinner/Spinner";
-import useDribbblePosts from "./useDribbblePosts";
+import { useDribbblePosts } from "../../hooks";
 import { Col, Row } from "../Grid/Grid";
 
 import {
@@ -17,8 +18,18 @@ import {
 
 function DribbblePosts() {
   const [
-    { dribbblePosts, shotsPerPage, isLoading, isLoadingMore, isError },
+    {
+      dribbblePosts,
+      shotsPerPage,
+      dribbblePage,
+      isLoading,
+      isLoadingMore,
+      initialFetchDone,
+      isError,
+      listEnd,
+    },
     dispatch,
+    { fetchInitialPosts, fetchMore, setListEnd },
   ] = useDribbblePosts();
 
   const [ref, inView] = useInView({
@@ -28,17 +39,44 @@ function DribbblePosts() {
   });
 
   const buttonRef = useRef();
-
-  const [waitingForInView, setWaitingForInView] = useState(true);
+  const axiosSourceRef = useRef();
 
   const placeholderArr = Array.from({ length: shotsPerPage }, (v, i) => i);
 
-  if (inView) {
-    if (waitingForInView) {
-      setWaitingForInView(false);
-      dispatch({ type: "FETCH_INIT" });
+  useEffect(() => {
+    axiosSourceRef.current = axios.CancelToken.source();
+
+    return () => {
+      // Prevent memory leak when moving to another page and cancel axios request
+      if (axiosSourceRef.current) {
+        axiosSourceRef.current.cancel();
+      }
+    };
+  }, [dispatch, fetchInitialPosts, inView, initialFetchDone]);
+
+  useEffect(() => {
+    if (inView && !initialFetchDone) {
+      dispatch(fetchInitialPosts(axiosSourceRef.current));
     }
-  }
+  }, [dispatch, fetchInitialPosts, inView, initialFetchDone]);
+
+  useEffect(() => {
+    if (
+      initialFetchDone &&
+      !isLoadingMore &&
+      dribbblePage * shotsPerPage > dribbblePosts.length
+    ) {
+      dispatch(setListEnd());
+    }
+  }, [
+    dispatch,
+    dribbblePage,
+    dribbblePosts.length,
+    initialFetchDone,
+    isLoadingMore,
+    setListEnd,
+    shotsPerPage,
+  ]);
 
   return (
     <Row
@@ -96,21 +134,32 @@ function DribbblePosts() {
         {!isError && (
           <StyledLoadMore
             ref={buttonRef}
+            disabled={listEnd}
             onClick={() => {
               // remove focus after click
               if (buttonRef.current) {
                 buttonRef.current.blur();
               }
 
-              dispatch({ type: "FETCH_MORE" });
+              if (axiosSourceRef.current) {
+                dispatch(fetchMore(axiosSourceRef.current));
+              }
             }}
           >
-            {!isLoading && !isLoadingMore && (
-              <FormattedMessage id="dribbble.load.more">
+            {listEnd ? (
+              <FormattedMessage id="dribbble.no.more">
                 {(txt) => <>{txt}</>}
               </FormattedMessage>
+            ) : (
+              <>
+                {!isLoading && !isLoadingMore && (
+                  <FormattedMessage id="dribbble.load.more">
+                    {(txt) => <>{txt}</>}
+                  </FormattedMessage>
+                )}
+                {(isLoading || isLoadingMore) && <Spinner />}
+              </>
             )}
-            {(isLoading || isLoadingMore) && <Spinner />}
           </StyledLoadMore>
         )}
       </Col>

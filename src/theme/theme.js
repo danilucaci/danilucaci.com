@@ -135,7 +135,7 @@ export const theme = {
         hover: COLORS.grey00,
         active: COLORS.grey50,
         focus: COLORS.grey50,
-        disabled: COLORS.grey500,
+        disabled: COLORS.grey00,
       },
       languageSelector: {
         enabled: COLORS.grey00,

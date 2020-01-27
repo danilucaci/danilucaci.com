@@ -1,0 +1,10 @@
+const dribbblePostsTypes = {
+  FETCH_INIT: "FETCH_INIT",
+  INITIAL_FETCH_SUCCESS: "INITIAL_FETCH_SUCCESS",
+  FETCH_MORE: "FETCH_MORE",
+  FETCH_MORE_SUCCESS: "FETCH_MORE_SUCCESS",
+  FETCH_ERROR: "FETCH_ERROR",
+  LIST_END: "LIST_END",
+};
+
+export default dribbblePostsTypes;

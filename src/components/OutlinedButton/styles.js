@@ -54,7 +54,7 @@ export const StyledOutlinedButton = styled.button`
   &:disabled {
     color: ${theme.color.text.button.outlined.disabled} !important;
     cursor: pointer;
-    background-color: ${theme.color.background.disabled.default};
+    background-color: ${theme.color.background.outlined.disabled};
     border: ${theme.size.border.button.default}
       ${theme.color.border.outlined.disabled} solid;
     outline: none;
