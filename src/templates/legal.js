@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { shape, string } from "prop-types";
 import { graphql } from "gatsby";
 import { FormattedDate, FormattedMessage } from "react-intl";
@@ -17,13 +17,15 @@ import {
   PostWrapper,
   Time,
 } from "../styles/legal.styles";
+import LocaleContext from "../i18n/LocaleContext";
 
 function LegalDoc({ data, pageContext, location }) {
   const postNode = data.mdx;
   const postInfo = postNode.frontmatter;
-  const locale = pageContext.locale;
   const twinPost = pageContext.twinPost;
   const lastUpdated = postInfo.date;
+
+  const { locale } = useContext(LocaleContext);
 
   let twinPostURL = "";
 
@@ -35,9 +37,8 @@ function LegalDoc({ data, pageContext, location }) {
 
   return (
     <ErrorBoundary>
-      <Layout location={location} locale={locale} twinPostURL={twinPostURL}>
+      <Layout location={location} twinPostURL={twinPostURL}>
         <SEO
-          locale={locale}
           twinPostURL={twinPostURL}
           postNode={postNode}
           legalDocs
@@ -79,7 +80,6 @@ function LegalDoc({ data, pageContext, location }) {
 
 LegalDoc.propTypes = {
   pageContext: shape({
-    locale: string.isRequired,
     twinPost: string.isRequired,
   }).isRequired,
   data: shape({

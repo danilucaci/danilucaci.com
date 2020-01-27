@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { arrayOf, number, string, object, shape } from "prop-types";
 
 import SEO from "../components/SEO/SEO";
@@ -10,6 +10,7 @@ import ContactCard from "../components/ContactCard/ContactCard";
 import DribbblePosts from "../components/DribbblePosts/DribbblePosts";
 import { localePaths } from "../i18n/i18n";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
+import LocaleContext from "../i18n/LocaleContext";
 
 function WorkPage({ pageContext, location }) {
   const {
@@ -19,8 +20,9 @@ function WorkPage({ pageContext, location }) {
     prevPath,
     nextPath,
     edgesWork,
-    locale,
   } = pageContext;
+
+  const { locale } = useContext(LocaleContext);
 
   let twinPostURL = "";
 
@@ -42,12 +44,10 @@ function WorkPage({ pageContext, location }) {
     <ErrorBoundary>
       <Layout
         location={location}
-        locale={locale}
         twinPostURL={twinPostURL}
         expandHeaderAndFooter
       >
         <SEO
-          locale={locale}
           twinPostURL={twinPostURL}
           currentPage="work"
           currentPath={location.pathname}
@@ -65,13 +65,12 @@ function WorkPage({ pageContext, location }) {
               paginationPathPrefix={paginationPathPrefix}
               prevPath={prevPath}
               nextPath={nextPath}
-              locale={locale}
             />
           )}
 
-          <DribbblePosts locale={locale} />
+          <DribbblePosts />
         </Main>
-        <ContactCard locale={locale} />
+        <ContactCard />
       </Layout>
     </ErrorBoundary>
   );
@@ -79,7 +78,6 @@ function WorkPage({ pageContext, location }) {
 
 WorkPage.propTypes = {
   pageContext: shape({
-    locale: string.isRequired,
     nextPath: string,
     prevPath: string,
     currentPage: number.isRequired,

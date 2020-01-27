@@ -46,15 +46,10 @@ const Index = ({ data, location }) => {
     <ErrorBoundary>
       <Layout
         location={location}
-        locale={locale}
         twinPostURL={twinPostURL}
         expandHeaderAndFooter
       >
-        <SEO
-          locale={locale}
-          currentPath={location.pathname}
-          twinPostURL={twinPostURL}
-        />
+        <SEO currentPath={location.pathname} twinPostURL={twinPostURL} />
         <Main>
           <IndexHeader as="header" col12>
             <Col xxl={8}>
@@ -203,7 +198,7 @@ const Index = ({ data, location }) => {
 
           <DribbblePosts />
         </Main>
-        <ContactCard locale={locale} />
+        <ContactCard />
       </Layout>
     </ErrorBoundary>
   );

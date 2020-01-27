@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
 
@@ -13,15 +13,16 @@ import {
   ThanksPageRow,
   StyledH1,
   ThanksCopy,
-  ThanksAgainCopy,
   Subtitle,
   StyledHR,
 } from "../styles/thanks.styles";
 
 import { Col } from "../components/Grid/Grid";
+import LocaleContext from "../i18n/LocaleContext";
 
-const ThanksPage = ({ pageContext, location }) => {
-  let locale = pageContext.locale;
+const ThanksPage = ({ location }) => {
+  const { locale } = useContext(LocaleContext);
+
   let twinPostURL = localePaths[locale].thanks;
 
   if (locale === "en") {
@@ -32,9 +33,8 @@ const ThanksPage = ({ pageContext, location }) => {
 
   return (
     <ErrorBoundary>
-      <Layout location={location} locale={locale} twinPostURL={twinPostURL}>
+      <Layout location={location} twinPostURL={twinPostURL}>
         <SEO
-          locale={locale}
           twinPostURL={twinPostURL}
           currentPage="thanks"
           currentPath={location.pathname}
@@ -86,9 +86,6 @@ const ThanksPage = ({ pageContext, location }) => {
 };
 
 ThanksPage.propTypes = {
-  pageContext: PropTypes.shape({
-    locale: PropTypes.string.isRequired,
-  }).isRequired,
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired,
     href: PropTypes.string.isRequired,

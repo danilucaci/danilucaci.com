@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from "react";
-import { string } from "prop-types";
 import { useFormikContext, Formik, Field, ErrorMessage } from "formik";
 
 import { navigate } from "gatsby";
@@ -20,6 +19,7 @@ import SubmitButton from "../SubmitButton/SubmitButton";
 import { FormContainer, StyledForm, StyledLabel, StyledInput } from "./styles";
 
 import { GDPRContext } from "../Layout";
+import LocaleContext from "../../i18n/LocaleContext";
 
 function logGAEvent(label = "Ok") {
   return sendGAEvent("Contact Form", "Submitted", label);
@@ -96,12 +96,13 @@ function Ping({ userToken }) {
   return null;
 }
 
-function ContactForm({ locale }) {
+function ContactForm() {
   const [showFormError, setShowFormError] = useState(false);
   const [formErrorMessage, setFormErrorMessage] = useState(null);
   const hasGDPRConsent = useContext(GDPRContext);
   const [consentAccepted, setConsentAccepted] = useState(false);
   const [messageSent, setMessageSent] = useState(false);
+  const { locale } = useContext(LocaleContext);
 
   const { userToken, error: authError } = useFirebaseAnonymousAuth(
     consentAccepted,
@@ -313,7 +314,6 @@ function ContactForm({ locale }) {
 
             <PrivacyCheckbox
               name="consentAccepted"
-              locale={locale}
               aria-describedby="checkbox-validation"
               aria-required="true"
             />
@@ -348,7 +348,6 @@ function ContactForm({ locale }) {
                 errorMessage={formErrorMessage}
                 clearErrorMessage={clearErrorMessage}
                 shouldRenderCloseButton={!authError}
-                locale={locale}
               />
             )}
           </StyledForm>
@@ -357,9 +356,5 @@ function ContactForm({ locale }) {
     </FormContainer>
   );
 }
-
-ContactForm.propTypes = {
-  locale: string.isRequired,
-};
 
 export default ContactForm;

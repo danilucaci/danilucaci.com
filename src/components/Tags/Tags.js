@@ -1,11 +1,13 @@
 import React from "react";
 import { arrayOf, string } from "prop-types";
-import { injectIntl } from "react-intl";
+import { useIntl } from "react-intl";
 
 import Tag from "./Tag/Tag";
 import { TagsWrapper } from "./styles";
 
-const Tags = ({ intl, tags, tagsFor = "blog" }) => {
+const Tags = ({ tags, tagsFor = "blog" }) => {
+  const intl = useIntl();
+
   let str = tagsFor.toLowerCase();
 
   const ariaLabel = intl.formatMessage({
@@ -25,7 +27,6 @@ const Tags = ({ intl, tags, tagsFor = "blog" }) => {
 Tags.propTypes = {
   tags: arrayOf(string).isRequired,
   tagsFor: string.isRequired,
-  locale: string.isRequired,
 };
 
-export default injectIntl(Tags);
+export default Tags;

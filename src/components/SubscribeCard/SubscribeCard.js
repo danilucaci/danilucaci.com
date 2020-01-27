@@ -1,5 +1,4 @@
-import React, { useReducer } from "react";
-import { string } from "prop-types";
+import React, { useReducer, useContext } from "react";
 import addToMailchimp from "gatsby-plugin-mailchimp";
 import { FormattedMessage } from "react-intl";
 import { Formik, ErrorMessage, Form } from "formik";
@@ -27,6 +26,7 @@ import subscribeReducer from "./subscribeReducer";
 import subscribeInitialState from "./subscribeInitialState";
 import MCSchema from "./MCSchema";
 import sendGAEvent from "../../helpers/sendGAEvent";
+import LocaleContext from "../../i18n/LocaleContext";
 
 function handleFormSent(result, responseMSG, dispatch) {
   if (result.includes("success")) {
@@ -107,7 +107,9 @@ async function handleMCSubmit(
   handleFormSent(response.result, response.msg, dispatch);
 }
 
-function SubscribeCard({ locale }) {
+function SubscribeCard() {
+  const { locale } = useContext(LocaleContext);
+
   const [
     { isMCSent, isError, errorMessageType, APIErrorResponse },
     dispatch,
@@ -194,7 +196,6 @@ function SubscribeCard({ locale }) {
                       </ErrorMessage>
                       <PrivacyCheckbox
                         name="acceptsconsentcheckbox"
-                        locale={locale}
                         aria-describedby="checkbox-validation"
                         aria-required="true"
                       />
@@ -225,9 +226,5 @@ function SubscribeCard({ locale }) {
     </SubscribeCardWrapper>
   );
 }
-
-SubscribeCard.propTypes = {
-  locale: string.isRequired,
-};
 
 export default SubscribeCard;

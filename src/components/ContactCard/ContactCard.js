@@ -1,5 +1,4 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useContext } from "react";
 import { FormattedMessage } from "react-intl";
 
 import sendGAEvent from "../../helpers/sendGAEvent";
@@ -12,9 +11,11 @@ import {
 } from "./styles";
 
 import { Col, Row } from "../Grid/Grid";
+import LocaleContext from "../../i18n/LocaleContext";
 
-function ContactCard(props) {
-  let locale = props.locale;
+function ContactCard() {
+  const { locale } = useContext(LocaleContext);
+
   let twinPostURL = "";
 
   if (locale === "en") {
@@ -52,7 +53,3 @@ function ContactCard(props) {
 }
 
 export default ContactCard;
-
-ContactCard.propTypes = {
-  locale: PropTypes.string.isRequired,
-};

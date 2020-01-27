@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { string, func, bool } from "prop-types";
 import { FormattedMessage } from "react-intl";
 
@@ -16,14 +16,15 @@ import {
   CloseErrorButton,
   ButtonsWrapper,
 } from "./styles";
+import LocaleContext from "../../i18n/LocaleContext";
 
 function ContactFormErrorMessage({
-  locale = "en",
   errorMessage,
   clearErrorMessage,
   shouldRenderCloseButton,
 }) {
   const [showError, setShowError] = useState(false);
+  const { locale } = useContext(LocaleContext);
 
   return (
     <ErrorMessageWrapper
@@ -85,7 +86,6 @@ function ContactFormErrorMessage({
 export default ContactFormErrorMessage;
 
 ContactFormErrorMessage.propTypes = {
-  locale: string.isRequired,
   errorMessage: string.isRequired,
   clearErrorMessage: func.isRequired,
   shouldRenderCloseButton: bool.isRequired,

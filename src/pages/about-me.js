@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { shape, object, string } from "prop-types";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
@@ -26,9 +26,11 @@ import {
   DoingNowProjectsRow,
   DoingNowSubTitle,
 } from "../styles/about-me.styles";
+import LocaleContext from "../i18n/LocaleContext";
 
-const AboutPage = ({ pageContext, location, data }) => {
-  let locale = pageContext.locale;
+const AboutPage = ({ location, data }) => {
+  const { locale } = useContext(LocaleContext);
+
   let twinPostURL = "";
 
   if (locale === "en") {
@@ -41,12 +43,10 @@ const AboutPage = ({ pageContext, location, data }) => {
     <ErrorBoundary>
       <Layout
         location={location}
-        locale={locale}
         twinPostURL={twinPostURL}
         expandHeaderAndFooter
       >
         <SEO
-          locale={locale}
           twinPostURL={twinPostURL}
           currentPage="about"
           currentPath={location.pathname}
@@ -139,7 +139,7 @@ const AboutPage = ({ pageContext, location, data }) => {
             </DoingNowProjectsRow>
           </AltRowBackground>
         </Main>
-        <ContactCard locale={locale} />
+        <ContactCard />
       </Layout>
       <ScrollToTop />
     </ErrorBoundary>
@@ -147,9 +147,6 @@ const AboutPage = ({ pageContext, location, data }) => {
 };
 
 AboutPage.propTypes = {
-  pageContext: shape({
-    locale: string.isRequired,
-  }).isRequired,
   data: shape({
     aboutImage: object.isRequired,
   }).isRequired,

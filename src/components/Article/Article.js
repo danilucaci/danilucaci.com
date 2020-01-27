@@ -1,29 +1,31 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { string, number, arrayOf } from "prop-types";
 
 import Tags from "../Tags/Tags";
 import ArticleInfo from "../ArticleInfo/ArticleInfo";
 
 import { StyledArticle, ArticleTitle, ArticleLink } from "./styles";
 
-const Article = (props) => (
-  <StyledArticle>
-    <header>
-      <Tags tagsFor="post" locale={props.locale} tags={props.tags} />
-      <ArticleTitle>
-        <ArticleLink to={props.slug}>{props.title}</ArticleLink>
-      </ArticleTitle>
-      <ArticleInfo date={props.date} timeToRead={props.timeToRead} />
-    </header>
-  </StyledArticle>
-);
+const Article = ({ title, tags, date, slug, timeToRead }) => {
+  return (
+    <StyledArticle>
+      <header>
+        <Tags tagsFor="post" tags={tags} />
+        <ArticleTitle>
+          <ArticleLink to={slug}>{title}</ArticleLink>
+        </ArticleTitle>
+        <ArticleInfo date={date} timeToRead={timeToRead} />
+      </header>
+    </StyledArticle>
+  );
+};
 
 Article.propTypes = {
-  title: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  slug: PropTypes.string.isRequired,
-  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
-  timeToRead: PropTypes.number.isRequired,
+  title: string.isRequired,
+  date: string.isRequired,
+  slug: string.isRequired,
+  tags: arrayOf(string).isRequired,
+  timeToRead: number.isRequired,
 };
 
 export default Article;

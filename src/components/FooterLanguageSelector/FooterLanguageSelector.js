@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useContext } from "react";
+import { string } from "prop-types";
 import { FormattedMessage } from "react-intl";
 import { Link } from "gatsby";
 import { Menu, MenuLink } from "@reach/menu-button";
@@ -16,12 +16,11 @@ import {
   CurrentLanguageIcon,
   ButtonLabelWrapper,
 } from "./styles";
+import LocaleContext from "../../i18n/LocaleContext";
 
-const FooterLanguageSelector = ({
-  locale = "en",
-  twinPostURL,
-  currentPath,
-}) => {
+const FooterLanguageSelector = ({ twinPostURL, currentPath }) => {
+  const { locale } = useContext(LocaleContext);
+
   const englishLanguagePicker = () => (
     <StyledMenuList>
       <MenuLink
@@ -104,9 +103,8 @@ const FooterLanguageSelector = ({
 };
 
 FooterLanguageSelector.propTypes = {
-  locale: PropTypes.string.isRequired,
-  twinPostURL: PropTypes.string.isRequired,
-  currentPath: PropTypes.string.isRequired,
+  twinPostURL: string.isRequired,
+  currentPath: string.isRequired,
 };
 
 export default FooterLanguageSelector;

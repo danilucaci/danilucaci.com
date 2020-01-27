@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { bool, func, string } from "prop-types";
 import { FormattedMessage } from "react-intl";
 import { graphql, useStaticQuery } from "gatsby";
@@ -7,14 +7,20 @@ import {
   StyledCookieConsent,
   LearnMoreLink,
   StyledCopy,
-  LearnMoreCopy,
   CopyContainer,
   ButtonsContainer,
   StyledPrimaryButton,
   StyledOutlinedButton,
 } from "./styles";
+import LocaleContext from "../../i18n/LocaleContext";
 
-const CookieConsent = (props) => {
+const CookieConsent = ({
+  isTransitioning,
+  openCookieConsent,
+  acceptedCookies,
+  deniedCookies,
+}) => {
+  const { locale } = useContext(LocaleContext);
   const data = useStaticQuery(COOKIE_CONSENT_QUERY);
   const localizedDocsList = data.allMdx.edges
     .map((edge) => ({
@@ -22,12 +28,12 @@ const CookieConsent = (props) => {
       title: edge.node.frontmatter.title,
       locale: edge.node.frontmatter.locale,
     }))
-    .filter((edge) => edge.locale === props.pageLocale);
+    .filter((edge) => edge.locale === locale);
 
   return (
     <StyledCookieConsent
-      isTransitioning={props.isTransitioning}
-      showConsent={props.openCookieConsent}
+      isTransitioning={isTransitioning}
+      showConsent={openCookieConsent}
     >
       <CopyContainer>
         <FormattedMessage id="cookie.message">
@@ -53,7 +59,7 @@ const CookieConsent = (props) => {
           {(txt) => (
             <StyledPrimaryButton
               aria-label={`${txt} cookies`}
-              onClick={props.acceptedCookies}
+              onClick={acceptedCookies}
             >
               {txt}
             </StyledPrimaryButton>
@@ -63,7 +69,7 @@ const CookieConsent = (props) => {
           {(txt) => (
             <StyledOutlinedButton
               aria-label={`${txt} cookies`}
-              onClick={props.deniedCookies}
+              onClick={deniedCookies}
             >
               {txt}
             </StyledOutlinedButton>
@@ -79,7 +85,6 @@ CookieConsent.propTypes = {
   isTransitioning: bool.isRequired,
   acceptedCookies: func.isRequired,
   deniedCookies: func.isRequired,
-  pageLocale: string.isRequired,
 };
 
 export default CookieConsent;

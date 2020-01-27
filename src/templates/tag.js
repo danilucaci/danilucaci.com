@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { string, number, arrayOf, object, shape } from "prop-types";
 import { graphql } from "gatsby";
 import { FormattedMessage } from "react-intl";
@@ -22,6 +22,7 @@ import {
   TagsSubhead,
   OtherTagsWrapper,
 } from "../styles/tag.styles";
+import LocaleContext from "../i18n/LocaleContext";
 
 const TagPage = ({ pageContext, location, data }) => {
   const {
@@ -32,8 +33,9 @@ const TagPage = ({ pageContext, location, data }) => {
     nextPath,
     edges,
     tag,
-    locale,
   } = pageContext;
+
+  const { locale } = useContext(LocaleContext);
 
   let allTags = data.allMdx.tags.map((tagItem) => tagItem.fieldValue);
 
@@ -71,14 +73,8 @@ const TagPage = ({ pageContext, location, data }) => {
 
   return (
     <ErrorBoundary>
-      <Layout
-        location={location}
-        locale={locale}
-        twinPostURL={twinPostURL}
-        colorHeader
-      >
+      <Layout location={location} twinPostURL={twinPostURL} colorHeader>
         <SEO
-          locale={locale}
           twinPostURL={twinPostURL}
           currentPage="tags"
           currentPath={location.pathname}
@@ -100,7 +96,7 @@ const TagPage = ({ pageContext, location, data }) => {
                   <FormattedMessage id="tag.listing.other">
                     {(txt) => <TagsSubhead as="h2">{txt}</TagsSubhead>}
                   </FormattedMessage>
-                  <Tags tagsFor="blog" locale={locale} tags={allTags} />
+                  <Tags tagsFor="blog" tags={allTags} />
                 </OtherTagsWrapper>
               </Col>
             </Row>
@@ -114,7 +110,6 @@ const TagPage = ({ pageContext, location, data }) => {
               {postsList.map((post) => (
                 <Article
                   key={post.title}
-                  locale={locale}
                   slug={post.slug}
                   tags={post.tags}
                   title={post.title}
@@ -129,7 +124,6 @@ const TagPage = ({ pageContext, location, data }) => {
                   paginationPathPrefix={paginationPathPrefix}
                   prevPath={prevPath}
                   nextPath={nextPath}
-                  locale={locale}
                 />
               )}
             </Col>
@@ -143,7 +137,6 @@ const TagPage = ({ pageContext, location, data }) => {
 
 TagPage.propTypes = {
   pageContext: shape({
-    locale: string.isRequired,
     nextPath: string,
     prevPath: string,
     currentPage: number.isRequired,

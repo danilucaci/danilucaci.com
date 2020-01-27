@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-boolean-value */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Disqus from "disqus-react";
@@ -32,19 +32,21 @@ import {
   CommentsRow,
   StyledLoadComments,
 } from "../styles/post.styles";
+import LocaleContext from "../i18n/LocaleContext";
 
 function Post({ pageContext, data, location }) {
   const [loadComments, setLoadComments] = useState(false);
 
+  const { locale } = useContext(LocaleContext);
+
   useEffect(() => {
-    addCopyButtonsToCodeNodes(pageContext.locale);
-  }, [pageContext.locale]);
+    addCopyButtonsToCodeNodes(locale);
+  }, [locale]);
 
   const postNode = data.mdx;
   const postInfo = postNode.frontmatter;
   const twinPost = pageContext.twinPost;
   const introCopy = postInfo.intro.split("|");
-  const locale = pageContext.locale;
   const nextTitle = pageContext.nextTitle;
   const nextSlug = pageContext.nextSlug;
   const prevSlug = pageContext.prevSlug;
@@ -67,9 +69,8 @@ function Post({ pageContext, data, location }) {
 
   return (
     <ErrorBoundary>
-      <Layout location={location} locale={locale} twinPostURL={twinPostURL}>
+      <Layout location={location} twinPostURL={twinPostURL}>
         <SEO
-          locale={locale}
           twinPostURL={twinPostURL}
           postNode={postNode}
           postSEO
@@ -79,12 +80,7 @@ function Post({ pageContext, data, location }) {
           <PostWrapper>
             <Row as="header" col10>
               <Col>
-                <Tags
-                  locale={locale}
-                  tagsFor="post"
-                  tags={postInfo.tags}
-                  inline
-                />
+                <Tags tagsFor="post" tags={postInfo.tags} inline />
                 <PostH1>{postInfo.title}</PostH1>
                 <HR />
                 <PostInfo>
@@ -98,9 +94,8 @@ function Post({ pageContext, data, location }) {
                     <SocialShare
                       slug={location.pathname}
                       title={postInfo.title}
-                      locale={pageContext.locale}
                       snippet={postInfo.snippet}
-                      onClick={() => copyURL(pageContext.locale)}
+                      onClick={() => copyURL(locale)}
                     />
                   </SocialShareWrapper>
                 </PostInfo>
@@ -151,7 +146,7 @@ function Post({ pageContext, data, location }) {
           </Col>
         </CommentsRow>
 
-        {/* <SubscribeCard locale={locale} /> */}
+        {/* <SubscribeCard /> */}
       </Layout>
     </ErrorBoundary>
   );
@@ -159,7 +154,6 @@ function Post({ pageContext, data, location }) {
 
 Post.propTypes = {
   pageContext: PropTypes.shape({
-    locale: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     twinPost: PropTypes.string.isRequired,
     nextTitle: PropTypes.oneOfType([

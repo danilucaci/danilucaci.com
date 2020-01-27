@@ -1,5 +1,4 @@
-import React from "react";
-import { string } from "prop-types";
+import React, { useContext } from "react";
 import { FormattedMessage } from "react-intl";
 import { graphql, useStaticQuery } from "gatsby";
 
@@ -10,9 +9,11 @@ import {
   AndSpan,
   LearnMoreLink,
 } from "./styles";
+import LocaleContext from "../../i18n/LocaleContext";
 
-function PrivacyCheckbox({ locale = "en", ...props }) {
+function PrivacyCheckbox({ ...props }) {
   const data = useStaticQuery(PRIVACY_CHECKBOX_QUERY);
+  const { locale } = useContext(LocaleContext);
 
   const ariaLabel =
     locale === "en"
@@ -86,10 +87,6 @@ function PrivacyCheckbox({ locale = "en", ...props }) {
     </>
   );
 }
-
-PrivacyCheckbox.propTypes = {
-  locale: string.isRequired,
-};
 
 export default PrivacyCheckbox;
 

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { string, bool, object } from "prop-types";
 import Helmet from "react-helmet";
 import urljoin from "url-join";
 import config from "../../../data/SiteConfig";
+import LocaleContext from "../../i18n/LocaleContext";
 
 const SEO = (props) => {
   let {
@@ -12,11 +13,12 @@ const SEO = (props) => {
     postImage,
     prevPath,
     nextPath,
-    locale = "en",
     twinPostURL,
     currentPage = "site",
     currentPath = "/",
   } = props;
+
+  const { locale } = useContext(LocaleContext);
 
   let title;
   let description;
@@ -34,7 +36,8 @@ const SEO = (props) => {
   let siteUrl = config.siteUrl;
 
   // for rel alternate
-  let alternateLocale = locale === "en" ? localeCountryCode["es"] : localeCountryCode["en"];
+  let alternateLocale =
+    locale === "en" ? localeCountryCode["es"] : localeCountryCode["en"];
   let pageURL = urljoin(siteUrl, twinPostURL);
   let alternateUrl = urljoin(siteUrl, twinPostURL);
 
@@ -105,7 +108,11 @@ const SEO = (props) => {
       },
       url: "www.danilucaci.com",
       // image: "",
-      sameAs: [config.socialLinks.twitter, config.socialLinks.linkedin, config.socialLinks.github],
+      sameAs: [
+        config.socialLinks.twitter,
+        config.socialLinks.linkedin,
+        config.socialLinks.github,
+      ],
       jobTitle: config[locale].websiteSchema.jobTitle,
       worksFor: {
         "@type": "Organization",
@@ -186,10 +193,18 @@ const SEO = (props) => {
       {(postSEO || legalDocs) && <link rel="canonical" href={postURL} />}
       {!postSEO && !legalDocs && <link rel="canonical" href={pageURL} />}
       {(postSEO || legalDocs) && (
-        <link rel="alternate" href={postURL} hrefLang={localeCountryCode[locale]} />
+        <link
+          rel="alternate"
+          href={postURL}
+          hrefLang={localeCountryCode[locale]}
+        />
       )}
       {!postSEO && !legalDocs && (
-        <link rel="alternate" href={pageURL} hrefLang={localeCountryCode[locale]} />
+        <link
+          rel="alternate"
+          href={pageURL}
+          hrefLang={localeCountryCode[locale]}
+        />
       )}
       <link rel="alternate" href={alternateUrl} hrefLang={alternateLocale} />
       <title>{title}</title>
@@ -201,7 +216,11 @@ const SEO = (props) => {
       {prevRelURL && <link rel="prev" href={prevRelURL} />}
       {nextRelURL && <link rel="next" href={nextRelURL} />}
 
-      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+      <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="/apple-touch-icon.png"
+      />
 
       {/* OpenGraph tags */}
       <meta property="og:title" content={title} />
@@ -229,13 +248,14 @@ const SEO = (props) => {
       {!imageUrl && <meta name="twitter:card" content="summary" />}
 
       {/* Schema.org tags */}
-      <script type="application/ld+json">{JSON.stringify(schemaOrgJSONLD)}</script>
+      <script type="application/ld+json">
+        {JSON.stringify(schemaOrgJSONLD)}
+      </script>
     </Helmet>
   );
 };
 
 SEO.propTypes = {
-  locale: string.isRequired,
   twinPostURL: string.isRequired,
   currentPath: string.isRequired,
   currentPage: string,

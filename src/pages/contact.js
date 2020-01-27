@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { shape, string } from "prop-types";
 import { FormattedMessage } from "react-intl";
 
@@ -26,9 +26,11 @@ import {
   SayHiDescription,
   SocialNavWrapper,
 } from "../styles/contact.styles";
+import LocaleContext from "../i18n/LocaleContext";
 
-const ContactPage = ({ pageContext, location }) => {
-  let locale = pageContext.locale;
+const ContactPage = ({ location }) => {
+  const { locale } = useContext(LocaleContext);
+
   let twinPostURL = "";
 
   if (locale === "en") {
@@ -41,12 +43,10 @@ const ContactPage = ({ pageContext, location }) => {
     <ErrorBoundary>
       <Layout
         location={location}
-        locale={locale}
         twinPostURL={twinPostURL}
         expandHeaderAndFooter
       >
         <SEO
-          locale={locale}
           twinPostURL={twinPostURL}
           currentPage="contact"
           currentPath={location.pathname}
@@ -116,7 +116,7 @@ const ContactPage = ({ pageContext, location }) => {
             </Col>
             <Col xl={6}>
               <FormHr />
-              <ContactForm locale={locale} />
+              <ContactForm />
             </Col>
           </ContactPageRow>
         </Main>
@@ -127,9 +127,6 @@ const ContactPage = ({ pageContext, location }) => {
 };
 
 ContactPage.propTypes = {
-  pageContext: shape({
-    locale: string.isRequired,
-  }).isRequired,
   location: shape({
     pathname: string.isRequired,
     href: string.isRequired,

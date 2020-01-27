@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { shape, oneOfType, string, object } from "prop-types";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
@@ -19,17 +19,19 @@ import {
   CaseStudyDescription,
   CaseStudyImgWrapper,
 } from "../styles/caseStudy.styles";
+import LocaleContext from "../i18n/LocaleContext";
 
 function CaseStudy({ data, pageContext, location }) {
   const postNode = data.mdx;
   const postInfo = postNode.frontmatter;
   const pageImage = postInfo.pageImage.childImageSharp.fluid;
-  const locale = pageContext.locale;
   const twinPost = pageContext.twinPost;
   const nextTitle = pageContext.nextTitle;
   const nextSlug = pageContext.nextSlug;
   const prevSlug = pageContext.prevSlug;
   const prevTitle = pageContext.prevTitle;
+
+  const { locale } = useContext(LocaleContext);
 
   let twinPostURL = "";
 
@@ -41,14 +43,8 @@ function CaseStudy({ data, pageContext, location }) {
 
   return (
     <ErrorBoundary>
-      <Layout
-        location={location}
-        locale={locale}
-        twinPostURL={twinPostURL}
-        colorHeader
-      >
+      <Layout location={location} twinPostURL={twinPostURL} colorHeader>
         <SEO
-          locale={locale}
           twinPostURL={twinPostURL}
           postNode={postNode}
           postSEO
@@ -88,7 +84,7 @@ function CaseStudy({ data, pageContext, location }) {
             prevTitle={prevTitle}
           />
         )}
-        <ContactCard locale={locale} />
+        <ContactCard />
       </Layout>
     </ErrorBoundary>
   );
@@ -96,7 +92,6 @@ function CaseStudy({ data, pageContext, location }) {
 
 CaseStudy.propTypes = {
   pageContext: shape({
-    locale: string.isRequired,
     slug: string.isRequired,
     twinPost: string.isRequired,
     nextTitle: oneOfType([string.isRequired, object.isRequired]),

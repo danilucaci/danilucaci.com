@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { string, bool } from "prop-types";
 import { graphql, useStaticQuery } from "gatsby";
 import { FormattedMessage } from "react-intl";
@@ -22,9 +22,10 @@ import {
   FooterBottom,
   StyledSubhead,
 } from "./styles";
+import LocaleContext from "../../i18n/LocaleContext";
 
-const SiteFooter = ({ locale = "en", twinPostURL, currentPath, expand }) => {
-  const pageLocale = locale;
+const SiteFooter = ({ twinPostURL, currentPath, expand }) => {
+  const { locale } = useContext(LocaleContext);
   const data = useStaticQuery(FOOTER_LEGAL_PAGES_QUERY);
 
   const localizedDocsList = data.allMdx.edges
@@ -33,14 +34,14 @@ const SiteFooter = ({ locale = "en", twinPostURL, currentPath, expand }) => {
       title: edge.node.frontmatter.title,
       locale: edge.node.frontmatter.locale,
     }))
-    .filter((edge) => edge.locale === pageLocale);
+    .filter((edge) => edge.locale === locale);
 
   return (
     <FooterRowBackground role="contentinfo" as="footer">
       <FooterInnerRow as="div" col10 expand={expand}>
         <NavCol col={6} s={4} xxl={7}>
           <StyledSubhead>danilucaci.com</StyledSubhead>
-          <FooterNavList locale={locale} />
+          <FooterNavList />
         </NavCol>
 
         <SocialCol col={6} s={4} xxl={2}>
@@ -56,7 +57,6 @@ const SiteFooter = ({ locale = "en", twinPostURL, currentPath, expand }) => {
             {(txt) => <StyledSubhead>{txt}</StyledSubhead>}
           </FormattedMessage>
           <FooterLanguageSelector
-            locale={locale}
             twinPostURL={twinPostURL}
             currentPath={currentPath}
           />
@@ -83,7 +83,6 @@ const SiteFooter = ({ locale = "en", twinPostURL, currentPath, expand }) => {
 };
 
 SiteFooter.propTypes = {
-  locale: string.isRequired,
   twinPostURL: string.isRequired,
   currentPath: string.isRequired,
   expand: bool,

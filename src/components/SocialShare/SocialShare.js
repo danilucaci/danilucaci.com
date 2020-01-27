@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useContext } from "react";
+import { string, func } from "prop-types";
 import urljoin from "url-join";
 
 import config from "../../../data/SiteConfig";
@@ -15,8 +15,10 @@ import {
   CopyTooltip,
   StyledIcon,
 } from "./styles";
+import LocaleContext from "../../i18n/LocaleContext";
 
-const SocialShare = ({ onClick, slug, snippet, title, locale }) => {
+const SocialShare = ({ onClick, slug, snippet, title }) => {
+  const { locale } = useContext(LocaleContext);
   const url = urljoin(config.siteUrl, slug);
 
   return (
@@ -64,11 +66,10 @@ const SocialShare = ({ onClick, slug, snippet, title, locale }) => {
 };
 
 SocialShare.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  slug: PropTypes.string.isRequired,
-  snippet: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  locale: PropTypes.string.isRequired,
+  onClick: func.isRequired,
+  slug: string.isRequired,
+  snippet: string.isRequired,
+  title: string.isRequired,
 };
 
 export default SocialShare;

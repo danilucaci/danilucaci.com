@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
 import { Link } from "gatsby";
@@ -16,8 +16,11 @@ import {
   ButtonLabel,
   CurrentLanguageIcon,
 } from "./styles";
+import LocaleContext from "../../i18n/LocaleContext";
 
-const LanguageSelector = ({ locale = "en", twinPostURL, currentPath }) => {
+const LanguageSelector = ({ twinPostURL, currentPath }) => {
+  const { locale } = useContext(LocaleContext);
+
   const englishLanguagePicker = () => (
     <StyledMenuList>
       <MenuLink
@@ -98,7 +101,6 @@ const LanguageSelector = ({ locale = "en", twinPostURL, currentPath }) => {
 };
 
 LanguageSelector.propTypes = {
-  locale: PropTypes.string.isRequired,
   twinPostURL: PropTypes.string.isRequired,
   currentPath: PropTypes.string.isRequired,
 };

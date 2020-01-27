@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { shape, string, number, object, arrayOf } from "prop-types";
 import { graphql } from "gatsby";
 import { FormattedMessage } from "react-intl";
@@ -21,6 +21,7 @@ import {
   TagsTitle,
   TagsWrapper,
 } from "../styles/blog.styles";
+import LocaleContext from "../i18n/LocaleContext";
 
 function BlogPage({ pageContext, location, data }) {
   const {
@@ -30,8 +31,9 @@ function BlogPage({ pageContext, location, data }) {
     prevPath,
     nextPath,
     edges,
-    locale,
   } = pageContext;
+
+  const { locale } = useContext(LocaleContext);
 
   const allTags = data.allMdx.tags.map((tag) => tag.fieldValue);
   let twinPostURL = "";
@@ -60,14 +62,8 @@ function BlogPage({ pageContext, location, data }) {
 
   return (
     <ErrorBoundary>
-      <Layout
-        location={location}
-        locale={locale}
-        twinPostURL={twinPostURL}
-        colorHeader
-      >
+      <Layout location={location} twinPostURL={twinPostURL} colorHeader>
         <SEO
-          locale={locale}
           twinPostURL={twinPostURL}
           currentPage="blog"
           currentPath={location.pathname}
@@ -86,7 +82,7 @@ function BlogPage({ pageContext, location, data }) {
                   <FormattedMessage id="blog.explore">
                     {(txt) => <TagsTitle as="h2">{txt}</TagsTitle>}
                   </FormattedMessage>
-                  <Tags tagsFor="blog" locale={locale} tags={allTags} />
+                  <Tags tagsFor="blog" tags={allTags} />
                 </TagsWrapper>
               </Col>
             </Row>
@@ -100,7 +96,6 @@ function BlogPage({ pageContext, location, data }) {
               {postsList.map((post) => (
                 <Article
                   key={post.title}
-                  locale={locale}
                   slug={post.slug}
                   tags={post.tags}
                   title={post.title}
@@ -115,7 +110,6 @@ function BlogPage({ pageContext, location, data }) {
                   paginationPathPrefix={paginationPathPrefix}
                   prevPath={prevPath}
                   nextPath={nextPath}
-                  locale={locale}
                 />
               )}
             </Col>
@@ -130,7 +124,6 @@ function BlogPage({ pageContext, location, data }) {
 
 BlogPage.propTypes = {
   pageContext: shape({
-    locale: string.isRequired,
     nextPath: string,
     prevPath: string,
     currentPage: number.isRequired,

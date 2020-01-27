@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useContext } from "react";
+import { shape, string } from "prop-types";
 import { FormattedMessage } from "react-intl";
 
 import Layout from "../components/Layout";
@@ -16,9 +16,11 @@ import {
   StyledHR,
 } from "../styles/404.styles";
 import { Col } from "../components/Grid/Grid";
+import LocaleContext from "../i18n/LocaleContext";
 
-const NotFoundPage = ({ pageContext, location }) => {
-  let locale = pageContext.locale;
+const NotFoundPage = ({ location }) => {
+  const { locale } = useContext(LocaleContext);
+
   let twinPostURL = "";
 
   if (locale === "en") {
@@ -29,9 +31,8 @@ const NotFoundPage = ({ pageContext, location }) => {
 
   return (
     <ErrorBoundary>
-      <Layout location={location} locale={locale} twinPostURL={twinPostURL}>
+      <Layout location={location} twinPostURL={twinPostURL}>
         <SEO
-          locale={locale}
           twinPostURL={twinPostURL}
           currentPage="notFound"
           currentPath={location.pathname}
@@ -53,14 +54,10 @@ const NotFoundPage = ({ pageContext, location }) => {
               <FormattedMessage id="not.found.copy.2">
                 {(txt) => (
                   <StyledCopy>
-                    {txt}
-{" "}
+                    {txt}{" "}
                     <a href="mailto:info@danilucaci.com">info@danilucaci.com</a>
                     <FormattedMessage id="not.found.copy.3">
-                      {(txt2) => <span> 
-{' '}
-{txt2}
-</span>}
+                      {(txt2) => <span> {txt2}</span>}
                     </FormattedMessage>
                     <a
                       target="_blank"
@@ -84,12 +81,9 @@ const NotFoundPage = ({ pageContext, location }) => {
 };
 
 NotFoundPage.propTypes = {
-  pageContext: PropTypes.shape({
-    locale: PropTypes.string.isRequired,
-  }).isRequired,
-  location: PropTypes.shape({
-    pathname: PropTypes.string.isRequired,
-    href: PropTypes.string.isRequired,
+  location: shape({
+    pathname: string.isRequired,
+    href: string.isRequired,
   }).isRequired,
 };
 

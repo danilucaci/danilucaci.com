@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, createContext } from "react";
+import React, { useLayoutEffect, createContext, useReducer } from "react";
 import { node, string, shape, bool } from "prop-types";
 import { ThemeProvider } from "styled-components";
 import Cookies from "js-cookie";
@@ -79,12 +79,11 @@ export const GDPRContext = createContext();
 const Layout = ({
   location,
   twinPostURL,
-  locale,
   children,
   expandHeaderAndFooter,
   colorHeader,
 }) => {
-  const [state, dispatch] = React.useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   useLayoutEffect(() => {
     checkFontsLoaded();
@@ -278,7 +277,6 @@ const Layout = ({
             <SVGSprite />
             <SiteHeader
               twinPostURL={twinPostURL}
-              locale={locale}
               currentPath={location.pathname}
               expand={expandHeaderAndFooter}
               colorHeader={colorHeader}
@@ -286,7 +284,6 @@ const Layout = ({
             {children}
             <ScrollToTop />
             <SiteFooter
-              locale={locale}
               twinPostURL={twinPostURL}
               currentPath={location.pathname}
               expand={expandHeaderAndFooter}
@@ -295,7 +292,6 @@ const Layout = ({
               openCookieConsent={state.openCookieConsent}
               acceptedCookies={acceptedCookies}
               deniedCookies={deniedCookies}
-              pageLocale={locale}
               isTransitioning={state.isTransitioning}
             />
           </Page>
@@ -306,7 +302,6 @@ const Layout = ({
 };
 
 Layout.propTypes = {
-  locale: string.isRequired,
   children: node.isRequired,
   twinPostURL: string.isRequired,
   expandHeaderAndFooter: bool,

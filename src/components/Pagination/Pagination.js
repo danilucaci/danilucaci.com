@@ -1,12 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useContext } from "react";
+import { string, number } from "prop-types";
 import { FormattedMessage } from "react-intl";
 import { localePaths } from "../../i18n/i18n";
 
 import {
   PaginationWrapper,
   StyledIcon,
-  StyledLink,
   DisabledPrev,
   Prev,
   Next,
@@ -17,16 +16,18 @@ import {
   PaginationNumber,
   CurrentPaginationNumber,
 } from "./styles";
+import LocaleContext from "../../i18n/LocaleContext";
 
 const Pagination = (props) => {
   const {
     currentPage,
     totalPages,
-    locale,
     prevPath,
     nextPath,
     paginationPathPrefix,
   } = props;
+
+  const { locale } = useContext(LocaleContext);
 
   let pagination = [];
 
@@ -127,12 +128,11 @@ const Pagination = (props) => {
 };
 
 Pagination.propTypes = {
-  currentPage: PropTypes.number.isRequired,
-  totalPages: PropTypes.number.isRequired,
-  paginationPathPrefix: PropTypes.string.isRequired,
-  prevPath: PropTypes.string,
-  nextPath: PropTypes.string,
-  locale: PropTypes.string.isRequired,
+  currentPage: number.isRequired,
+  totalPages: number.isRequired,
+  paginationPathPrefix: string.isRequired,
+  prevPath: string,
+  nextPath: string,
 };
 
 export default Pagination;
