@@ -7,7 +7,8 @@ import {
   FooterNavLink,
 } from "./styles";
 
-import sendGAEvent from "../../helpers/sendGAEvent";
+import { sendFooterSocialNavVisitEvent } from "../../helpers/ga";
+import GA_EVENTS from "../../helpers/gaEvents";
 import AriaText from "../AriaText/AriaText";
 
 const FooterSocialNav = () => (
@@ -15,7 +16,11 @@ const FooterSocialNav = () => (
     <StyledFooterSocialNavItem>
       <FooterNavLink
         href="https://twitter.com/danilucaci"
-        onClick={() => sendGAEvent("Footer Social Nav Visit", "Twitter")}
+        onClick={() =>
+          sendFooterSocialNavVisitEvent({
+            action: GA_EVENTS.footerSocialNavVisit.actions.twitter.name,
+          })
+        }
       >
         Twitter
         <FormattedMessage id="social.nav.twitter">
@@ -26,7 +31,11 @@ const FooterSocialNav = () => (
     <StyledFooterSocialNavItem>
       <FooterNavLink
         href="https://www.linkedin.com/in/danilucaci/"
-        onClick={() => sendGAEvent("Footer Social Nav Visit", "Linkedin")}
+        onClick={() =>
+          sendFooterSocialNavVisitEvent({
+            action: GA_EVENTS.footerSocialNavVisit.actions.linkedin.name,
+          })
+        }
       >
         Linkedin
         <FormattedMessage id="social.nav.linkedin">
@@ -37,7 +46,11 @@ const FooterSocialNav = () => (
     <StyledFooterSocialNavItem>
       <FooterNavLink
         href="https://dribbble.com/danilucaci"
-        onClick={() => sendGAEvent("Footer Social Nav Visit", "Dribbble")}
+        onClick={() =>
+          sendFooterSocialNavVisitEvent({
+            action: GA_EVENTS.footerSocialNavVisit.actions.dribbble.name,
+          })
+        }
       >
         Dribbble
         <FormattedMessage id="social.nav.dribbble">
@@ -48,7 +61,11 @@ const FooterSocialNav = () => (
     <StyledFooterSocialNavItem>
       <FooterNavLink
         href="https://github.com/danilucaci"
-        onClick={() => sendGAEvent("Footer Social Nav Visit", "Github")}
+        onClick={() =>
+          sendFooterSocialNavVisitEvent({
+            action: GA_EVENTS.footerSocialNavVisit.actions.github.name,
+          })
+        }
       >
         Github
         <FormattedMessage id="social.nav.github">

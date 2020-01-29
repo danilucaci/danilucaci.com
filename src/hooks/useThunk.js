@@ -27,7 +27,7 @@ function useThunk([state, dispatch]) {
    */
 
   // Keep track of the state, otherwise `action(dispatchRef.current, state)`
-  // will have a reference to the first value of `state` because of closure.
+  // will have a reference to the value of `state` on the initial render.
   const stateRef = useRef();
 
   useEffect(() => {

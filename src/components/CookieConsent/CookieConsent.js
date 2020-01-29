@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { bool, func, string } from "prop-types";
 import { FormattedMessage } from "react-intl";
 import { graphql, useStaticQuery } from "gatsby";
 
@@ -13,13 +12,15 @@ import {
   StyledOutlinedButton,
 } from "./styles";
 import LocaleContext from "../../i18n/LocaleContext";
+import { CookiesContext } from "../../context/CookiesContext";
 
-const CookieConsent = ({
-  isTransitioning,
-  openCookieConsent,
-  acceptedCookies,
-  deniedCookies,
-}) => {
+const CookieConsent = () => {
+  const [
+    { isTransitioning, openCookieConsent },
+    dispatch,
+    { setAcceptedCookies, setDeniedCookies },
+  ] = useContext(CookiesContext);
+
   const { locale } = useContext(LocaleContext);
   const data = useStaticQuery(COOKIE_CONSENT_QUERY);
   const localizedDocsList = data.allMdx.edges
@@ -59,7 +60,7 @@ const CookieConsent = ({
           {(txt) => (
             <StyledPrimaryButton
               aria-label={`${txt} cookies`}
-              onClick={acceptedCookies}
+              onClick={() => dispatch(setAcceptedCookies())}
             >
               {txt}
             </StyledPrimaryButton>
@@ -69,7 +70,7 @@ const CookieConsent = ({
           {(txt) => (
             <StyledOutlinedButton
               aria-label={`${txt} cookies`}
-              onClick={deniedCookies}
+              onClick={() => dispatch(setDeniedCookies())}
             >
               {txt}
             </StyledOutlinedButton>
@@ -78,13 +79,6 @@ const CookieConsent = ({
       </ButtonsContainer>
     </StyledCookieConsent>
   );
-};
-
-CookieConsent.propTypes = {
-  openCookieConsent: bool.isRequired,
-  isTransitioning: bool.isRequired,
-  acceptedCookies: func.isRequired,
-  deniedCookies: func.isRequired,
 };
 
 export default CookieConsent;

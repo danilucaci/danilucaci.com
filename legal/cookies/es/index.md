@@ -365,16 +365,6 @@ portal así como su tipología y función:
 - **Tipo**: Propia
 - **Finalidad**: Técnica
 
-### \_dlConsentAccepted
-
-- **Duración:** 2 años
-- **Descripción:** Cookie creada por www.danilucaci.com que se necesita para
-  poder guardar si el usuario ha cerrado, o no, el mensaje pop-up de la política
-  de cookies, para controlar si es mostrado en cada visita del usuario en la
-  página web www.danilucaci.com.
-- **Tipo:** Propia
-- **Finalidad:** Técnica
-
 ## Aceptación de la Política de Cookies
 
 www.danilucaci.com, asume que usted acepta el uso de cookies. No obstante,

@@ -4,7 +4,8 @@ import urljoin from "url-join";
 
 import config from "../../../data/SiteConfig";
 
-import sendGAEvent from "../../helpers/sendGAEvent";
+import { sendSharedArticleEvent } from "../../helpers/ga";
+import GA_EVENTS from "../../helpers/gaEvents";
 import { COPY_URL_MESSAGES } from "../../i18n/i18n";
 
 import {
@@ -28,7 +29,11 @@ const SocialShare = ({ onClick, slug, snippet, title }) => {
         rel="noopener noreferrer"
         href={`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}&summary=${snippet}`}
         aria-label="Share on Linkedin"
-        onClick={() => sendGAEvent("Shared Article", "On Linkedin")}
+        onClick={() =>
+          sendSharedArticleEvent({
+            action: GA_EVENTS.sharedArticle.actions.twitter.name,
+          })
+        }
       >
         <StyledIcon aria-hidden="true">
           <use xlinkHref="#linkedin" />
@@ -40,7 +45,11 @@ const SocialShare = ({ onClick, slug, snippet, title }) => {
         rel="noopener noreferrer"
         href={`https://twitter.com/intent/tweet?text=${title}&url=${url}`}
         aria-label="Share on Twitter"
-        onClick={() => sendGAEvent("Shared Article", "On Twitter")}
+        onClick={() =>
+          sendSharedArticleEvent({
+            action: GA_EVENTS.sharedArticle.actions.linkedin.name,
+          })
+        }
       >
         <StyledIcon aria-hidden="true">
           <use xlinkHref="#twitter" />

@@ -3,9 +3,14 @@ import { IntlProvider } from "react-intl";
 
 import intlMessages from "./src/i18n/i18n";
 import LocaleContext from "./src/i18n/LocaleContext";
+import CookiesProvider from "./src/context/CookiesContext";
+import { checkFontsLoaded } from "./src/helpers/loadFonts";
+import GTMScript from "./src/components/GTMScript/GTMScript";
 
 export function wrapPageElement({ element, props }) {
   const { pageContext: { locale = "en" } = {} } = props || {};
+  const { location } = props;
+  checkFontsLoaded();
 
   return (
     <IntlProvider
@@ -14,7 +19,10 @@ export function wrapPageElement({ element, props }) {
       messages={intlMessages[locale]}
     >
       <LocaleContext.Provider value={{ locale: locale }}>
-        {element}
+        <CookiesProvider location={location}>
+          <GTMScript />
+          {element}
+        </CookiesProvider>
       </LocaleContext.Provider>
     </IntlProvider>
   );

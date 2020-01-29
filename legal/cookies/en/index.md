@@ -338,15 +338,6 @@ You can also manage cookie storage in your browser by means of tools like these:
 - **Type:** Propietary
 - **Purpose:** Technical Cookie
 
-### \_dlConsentAccepted
-
-- **Duration:** 2 years
-- **Description:** Cookie created by www.danilucaci.com used to store wether the
-  current visiting user has closed the cookie policy pop-up so that it doesn’t
-  appear each time the user visits the website www.danilucaci.com.
-- **Type:** Propietary
-- **Purpose:** Technical Cookie
-
 ## Cookie Policy Acceptance
 
 Marian Daniel Lucaci, through www.danilucaci.com, understands that you accept

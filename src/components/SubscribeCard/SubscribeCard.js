@@ -25,25 +25,41 @@ import {
 import subscribeReducer from "./subscribeReducer";
 import subscribeInitialState from "./subscribeInitialState";
 import MCSchema from "./MCSchema";
-import sendGAEvent from "../../helpers/sendGAEvent";
+import { sendSubscribersEvent } from "../../helpers/ga";
+import GA_EVENTS from "../../helpers/gaEvents";
 import LocaleContext from "../../i18n/LocaleContext";
 
 function handleFormSent(result, responseMSG, dispatch) {
   if (result.includes("success")) {
-    sendGAEvent("Subscribers", "Success", "New Subscriber");
+    sendSubscribersEvent({
+      action: GA_EVENTS.subscribers.actions.success.name,
+      label: GA_EVENTS.subscribers.actions.success.labels.newSubscriber,
+    });
   } else if (
     result.includes("error") &&
     responseMSG.includes("is already subscribed to")
   ) {
-    sendGAEvent("Subscribers", "Error", "Already Subscribed");
+    sendSubscribersEvent({
+      action: GA_EVENTS.subscribers.actions.error.name,
+      label: GA_EVENTS.subscribers.actions.error.labels.alreadySubscribed,
+    });
+
     dispatch({ type: "FETCH_ERROR_ALREADY", payload: "already" });
     Sentry.captureException(new Error(responseMSG));
   } else if (result.includes("error") && responseMSG.includes("many")) {
-    sendGAEvent("Subscribers", "Error", "Too Many Requests");
+    sendSubscribersEvent({
+      action: GA_EVENTS.subscribers.actions.error.name,
+      label: GA_EVENTS.subscribers.actions.error.labels.tooManyRequests,
+    });
+
     dispatch({ type: "FETCH_ERROR_TOO_MANY" });
     Sentry.captureException(new Error(responseMSG));
   } else if (result.includes("error")) {
-    sendGAEvent("Subscribers", "Error", "Generic");
+    sendSubscribersEvent({
+      action: GA_EVENTS.subscribers.actions.error.name,
+      label: GA_EVENTS.subscribers.actions.error.labels.generic,
+    });
+
     dispatch({ type: "FETCH_ERROR_GENERIC", payload: responseMSG });
     Sentry.captureException(new Error(responseMSG));
   }

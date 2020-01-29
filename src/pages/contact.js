@@ -12,7 +12,8 @@ import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import { Col } from "../components/Grid/Grid";
 import { localePaths } from "../i18n/i18n";
-import sendGAEvent from "../helpers/sendGAEvent";
+import { sendContactPageEvent } from "../helpers/ga";
+import GA_EVENTS from "../helpers/gaEvents";
 
 import { Copy } from "../components/Copy/Copy";
 import {
@@ -71,7 +72,11 @@ const ContactPage = ({ location }) => {
                     <StyledLink
                       href={`mailto:${localePaths[locale].email}`}
                       onClick={() =>
-                        sendGAEvent("Contact Page", "Contact Links", "Email")
+                        sendContactPageEvent({
+                          label:
+                            GA_EVENTS.contactPage.actions.contactLinks.labels
+                              .email,
+                        })
                       }
                     >
                       {localePaths[locale].email}
@@ -95,11 +100,11 @@ const ContactPage = ({ location }) => {
                             rel="noopener noreferrer"
                             href="https://twitter.com/danilucaci"
                             onClick={() =>
-                              sendGAEvent(
-                                "Contact Page",
-                                "Contact Links",
-                                "Tweeter",
-                              )
+                              sendContactPageEvent({
+                                label:
+                                  GA_EVENTS.contactPage.actions.contactLinks
+                                    .labels.twitter,
+                              })
                             }
                           >
                             {txt2}

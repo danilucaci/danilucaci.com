@@ -4,7 +4,8 @@ import { useFormikContext, Formik, Field, ErrorMessage } from "formik";
 import { navigate } from "gatsby";
 import * as Sentry from "@sentry/browser";
 
-import sendGAEvent from "../../helpers/sendGAEvent";
+import { sendContactFormEvent } from "../../helpers/ga";
+import GA_EVENTS from "../../helpers/gaEvents";
 import CONTACT_FORM_VALIDATION_SCHEMA from "./ContactFormValidationSchema";
 
 import { CONSENT_VALUE, localePaths } from "../../i18n/i18n";
@@ -18,12 +19,8 @@ import SubmitButton from "../SubmitButton/SubmitButton";
 
 import { FormContainer, StyledForm, StyledLabel, StyledInput } from "./styles";
 
-import { GDPRContext } from "../Layout";
+import { CookiesContext } from "../../context/CookiesContext";
 import LocaleContext from "../../i18n/LocaleContext";
-
-function logGAEvent(label = "Ok") {
-  return sendGAEvent("Contact Form", "Submitted", label);
-}
 
 function ToggleConsent({ setConsentAccepted, currentConsentAccepted }) {
   const { values } = useFormikContext();
@@ -71,14 +68,26 @@ function Ping({ userToken }) {
           const { data: { message } = {}, error } = res || {};
 
           if (mounted) {
+            sendContactFormEvent({
+              action: GA_EVENTS.contactForm.actions.ping.name,
+              label: GA_EVENTS.contactForm.actions.ping.labels.success,
+            });
             setPingSent(true);
           }
 
           if (error) {
+            sendContactFormEvent({
+              action: GA_EVENTS.contactForm.actions.ping.name,
+              label: GA_EVENTS.contactForm.actions.ping.labels.failed,
+            });
             Sentry.captureMessage("Contact Form ping failed");
           }
         })
         .catch((error) => {
+          sendContactFormEvent({
+            action: GA_EVENTS.contactForm.actions.ping.name,
+            label: GA_EVENTS.contactForm.actions.ping.labels.error,
+          });
           Sentry.captureException(error);
         });
     }
@@ -99,9 +108,10 @@ function Ping({ userToken }) {
 function ContactForm() {
   const [showFormError, setShowFormError] = useState(false);
   const [formErrorMessage, setFormErrorMessage] = useState(null);
-  const hasGDPRConsent = useContext(GDPRContext);
   const [consentAccepted, setConsentAccepted] = useState(false);
   const [messageSent, setMessageSent] = useState(false);
+
+  const [{ hasGDPRConsent }] = useContext(CookiesContext);
   const { locale } = useContext(LocaleContext);
 
   const { userToken, error: authError } = useFirebaseAnonymousAuth(
@@ -170,27 +180,42 @@ function ContactForm() {
             setSubmitting(false);
 
             if (response.error) {
-              logGAEvent("Failed");
+              sendContactFormEvent({
+                action: GA_EVENTS.contactForm.actions.submit.name,
+                label: GA_EVENTS.contactForm.actions.submit.labels.failed,
+              });
               handleFormError(new Error(response.error));
             }
 
             if (!response.error && response.data && response.data === "Ok") {
-              logGAEvent("Success");
+              sendContactFormEvent({
+                action: GA_EVENTS.contactForm.actions.submit.name,
+                label: GA_EVENTS.contactForm.actions.submit.labels.success,
+              });
               setMessageSent(true);
               navigate(localePaths[locale].thanks);
             }
           })
           .catch((error) => {
-            logGAEvent("Failed");
+            sendContactFormEvent({
+              action: GA_EVENTS.contactForm.actions.submit.name,
+              label: GA_EVENTS.contactForm.actions.submit.labels.failed,
+            });
             setSubmitting(false);
             handleFormError(error);
           });
       } else {
-        logGAEvent("Auth Failed");
+        sendContactFormEvent({
+          action: GA_EVENTS.contactForm.actions.submit.name,
+          label: GA_EVENTS.contactForm.actions.submit.labels.authFailed,
+        });
         setSubmitting(false);
       }
     } catch (error) {
-      logGAEvent("Failed");
+      sendContactFormEvent({
+        action: GA_EVENTS.contactForm.actions.submit.name,
+        label: GA_EVENTS.contactForm.actions.submit.labels.error,
+      });
       setSubmitting(false);
       handleFormError(error);
     }

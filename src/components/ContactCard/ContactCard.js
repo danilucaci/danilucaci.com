@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { FormattedMessage } from "react-intl";
 
-import sendGAEvent from "../../helpers/sendGAEvent";
+import { sendContactCardEvent } from "../../helpers/ga";
 
 import {
   ContactCardRowBackground,
@@ -40,7 +40,7 @@ function ContactCard() {
             {(txt) => (
               <StyledButton
                 to={twinPostURL}
-                onClick={() => sendGAEvent("Contact Card", "Clicked CTA")}
+                onClick={() => sendContactCardEvent()}
               >
                 {txt}
               </StyledButton>
