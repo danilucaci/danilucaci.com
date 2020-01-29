@@ -81,6 +81,7 @@ function Ping({ userToken }) {
               label: GA_EVENTS.contactForm.actions.ping.labels.failed,
             });
             Sentry.captureMessage("Contact Form ping failed");
+            setPingSent(true);
           }
         })
         .catch((error) => {
@@ -89,6 +90,7 @@ function Ping({ userToken }) {
             label: GA_EVENTS.contactForm.actions.ping.labels.error,
           });
           Sentry.captureException(error);
+          setPingSent(true);
         });
     }
 
