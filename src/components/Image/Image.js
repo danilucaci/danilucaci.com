@@ -5,7 +5,7 @@ import Img from "gatsby-image";
 import { Figure, FigCaption } from "./styles";
 import useImage from "../../hooks/useImage";
 
-const Image = ({ src, caption, expand, noShadow }) => {
+const Image = ({ src, caption, expand, noShadow, ariaOnlyCaption }) => {
   const foundImage = useImage(src);
 
   if (!foundImage) {
@@ -15,7 +15,9 @@ const Image = ({ src, caption, expand, noShadow }) => {
   return (
     <Figure expand={expand} noShadow={noShadow}>
       <Img fluid={foundImage.node.childImageSharp.fluid} alt={caption} fadeIn />
-      <FigCaption>{caption}</FigCaption>
+      <FigCaption className={ariaOnlyCaption && "aria-hidden"}>
+        {caption}
+      </FigCaption>
     </Figure>
   );
 };
@@ -25,11 +27,13 @@ Image.propTypes = {
   caption: string.isRequired,
   expand: bool,
   noShadow: bool,
+  ariaOnlyCaption: bool,
 };
 
 Image.defaultProps = {
   expand: false,
   noShadow: false,
+  ariaOnlyCaption: false,
 };
 
 export default Image;
