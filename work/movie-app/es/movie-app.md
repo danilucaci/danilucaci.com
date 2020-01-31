@@ -70,17 +70,17 @@ Por eso decidí ver cómo podría mejorar la experiencia de buscar una película
 </OverviewInfoItem>
 <OverviewInfoItem>
 
-### Tipo De Proyecto
-
-- Proyecto Personal
-
-</OverviewInfoItem>
-<OverviewInfoItem>
-
 ### Entregables
 
 - [Prototipo InVision](https://invis.io/AERJX7Y8J4F)
 - [Guia del Moderador](https://docs.google.com/document/d/1NQyFE4AwHWetJqEYY7kWAAt2aqGuwsnxDTH2yERKo2o/edit?usp=sharing)
+
+</OverviewInfoItem>
+<OverviewInfoItem>
+
+### Tipo De Proyecto
+
+- Proyecto Personal
 
 </OverviewInfoItem>
 

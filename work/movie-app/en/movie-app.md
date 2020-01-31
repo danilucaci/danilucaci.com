@@ -70,17 +70,17 @@ That’s why I decided to see how I could improve the experience of searching fo
 </OverviewInfoItem>
 <OverviewInfoItem>
 
-### Project Type
-
-- Personal Project
-
-</OverviewInfoItem>
-<OverviewInfoItem>
-
 ### Deliverables
 
 - [InVision Prototype](https://invis.io/AERJX7Y8J4F)
 - [Moderator Guide](https://docs.google.com/document/d/1NQyFE4AwHWetJqEYY7kWAAt2aqGuwsnxDTH2yERKo2o/edit?usp=sharing)
+
+</OverviewInfoItem>
+<OverviewInfoItem>
+
+### Project Type
+
+- Personal Project
 
 </OverviewInfoItem>
 
