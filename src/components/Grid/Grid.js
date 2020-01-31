@@ -52,36 +52,41 @@ export const Row = styled.section`
     }
   `};
 
-  ${({ col6 }) => col6
-    && css`
+  ${({ col6 }) =>
+    col6 &&
+    css`
       margin-left: auto;
       margin-right: auto;
       max-width: ${theme.layout.col6.wrapper};
     `};
 
-  ${({ col8 }) => col8
-    && css`
+  ${({ col8 }) =>
+    col8 &&
+    css`
       margin-left: auto;
       margin-right: auto;
       max-width: ${theme.layout.col8.wrapper};
     `};
 
-  ${({ col10 }) => col10
-    && css`
+  ${({ col10 }) =>
+    col10 &&
+    css`
       margin-left: auto;
       margin-right: auto;
       max-width: ${theme.layout.col10.wrapper};
     `};
 
-  ${({ col12 }) => col12
-    && css`
+  ${({ col12 }) =>
+    col12 &&
+    css`
       margin-left: auto;
       margin-right: auto;
       max-width: ${theme.layout.col12.wrapper};
     `};
     
-  ${({ padded }) => padded
-    && css`
+  ${({ padded }) =>
+    padded &&
+    css`
       padding-top: ${theme.spacing.row.s};
       padding-bottom: ${theme.spacing.row.s};
 
@@ -102,8 +107,9 @@ export const Row = styled.section`
       }
     `};
 
-  ${({ pb }) => pb
-    && css`
+  ${({ pb }) =>
+    pb &&
+    css`
       padding-bottom: ${theme.spacing.row.s};
 
       ${mediaMin.s`
@@ -120,8 +126,9 @@ export const Row = styled.section`
       }
     `};
 
-  ${({ spaced }) => spaced
-    && css`
+  ${({ spaced }) =>
+    spaced &&
+    css`
       margin-top: ${theme.spacing.row.s};
       margin-bottom: ${theme.spacing.row.s};
 
@@ -142,8 +149,9 @@ export const Row = styled.section`
       }
     `};
   
-    ${({ mb }) => mb
-      && css`
+    ${({ mb }) =>
+      mb &&
+      css`
         margin-bottom: ${theme.spacing.row.s};
 
         ${mediaMin.s`
@@ -162,8 +170,9 @@ export const Row = styled.section`
 `;
 
 export const RowSpacer = styled.div`
-  ${({ padded }) => padded
-    && css`
+  ${({ padded }) =>
+    padded &&
+    css`
       padding-top: ${theme.spacing.row.s};
       padding-bottom: ${theme.spacing.row.s};
 
@@ -184,8 +193,9 @@ export const RowSpacer = styled.div`
       }
     `};
 
-  ${({ pb }) => pb
-    && css`
+  ${({ pb }) =>
+    pb &&
+    css`
       padding-bottom: ${theme.spacing.row.s};
 
       ${mediaMin.s`
@@ -202,8 +212,9 @@ export const RowSpacer = styled.div`
       }
     `};
 
-  ${({ spaced }) => spaced
-    && css`
+  ${({ spaced }) =>
+    spaced &&
+    css`
       margin-top: ${theme.spacing.row.s};
       margin-bottom: ${theme.spacing.row.s};
 
@@ -224,8 +235,9 @@ export const RowSpacer = styled.div`
       }
     `};
 
-  ${({ mb }) => mb
-    && css`
+  ${({ mb }) =>
+    mb &&
+    css`
       margin-bottom: ${theme.spacing.row.s};
 
       ${mediaMin.s`
@@ -264,8 +276,9 @@ export const RowNested = styled.div`
     margin-right: -${theme.layout.gridSpacing.m};
   `};
 
-  ${({ padded }) => padded
-    && css`
+  ${({ padded }) =>
+    padded &&
+    css`
       padding-top: ${theme.spacing.row.s};
       padding-bottom: ${theme.spacing.row.s};
 
@@ -286,8 +299,9 @@ export const RowNested = styled.div`
       }
     `};
 
-  ${({ pb }) => pb
-    && css`
+  ${({ pb }) =>
+    pb &&
+    css`
       padding-bottom: ${theme.spacing.row.s};
 
       ${mediaMin.s`
@@ -304,8 +318,9 @@ export const RowNested = styled.div`
       }
     `};
 
-  ${({ spaced }) => spaced
-    && css`
+  ${({ spaced }) =>
+    spaced &&
+    css`
       margin-top: ${theme.spacing.row.s};
       margin-bottom: ${theme.spacing.row.s};
 
@@ -326,8 +341,9 @@ export const RowNested = styled.div`
       }
     `};
 
-  ${({ mb }) => mb
-    && css`
+  ${({ mb }) =>
+    mb &&
+    css`
       margin-bottom: ${theme.spacing.row.s};
 
       ${mediaMin.s`
@@ -364,78 +380,88 @@ export const Col = styled.div`
     margin-bottom: 0;
   }
 
-  ${({ col }) => col
-    && css`
+  ${({ col }) =>
+    col &&
+    css`
       max-width: calc(${(100 / 12) * col}% - ${theme.layout.gutter.s});
       flex-basis: calc(${(100 / 12) * col}% - ${theme.layout.gutter.s});
     `};
 
-  ${({ xxxs }) => xxxs
-    && css`
+  ${({ xxxs }) =>
+    xxxs &&
+    css`
       @media screen and (min-width: ${theme.breakpoints.xxxs}) {
         max-width: calc(${(100 / 12) * xxxs}% - ${theme.layout.gutter.s});
         flex-basis: calc(${(100 / 12) * xxxs}% - ${theme.layout.gutter.s});
       }
     `};
 
-  ${({ xxs }) => xxs
-    && css`
+  ${({ xxs }) =>
+    xxs &&
+    css`
       @media screen and (min-width: ${theme.breakpoints.xxs}) {
         max-width: calc(${(100 / 12) * xxs}% - ${theme.layout.gutter.s});
         flex-basis: calc(${(100 / 12) * xxs}% - ${theme.layout.gutter.s});
       }
     `};
 
-  ${({ xs }) => xs
-    && css`
+  ${({ xs }) =>
+    xs &&
+    css`
       @media screen and (min-width: ${theme.breakpoints.xs}) {
         max-width: calc(${(100 / 12) * xs}% - ${theme.layout.gutter.s});
         flex-basis: calc(${(100 / 12) * xs}% - ${theme.layout.gutter.s});
       }
     `};
 
-  ${({ s }) => s
-    && css`
+  ${({ s }) =>
+    s &&
+    css`
       @media screen and (min-width: ${theme.breakpoints.s}) {
         max-width: calc(${(100 / 12) * s}% - ${theme.layout.gutter.m});
         flex-basis: calc(${(100 / 12) * s}% - ${theme.layout.gutter.m});
       }
     `};
 
-  ${({ m }) => m
-    && css`
+  ${({ m }) =>
+    m &&
+    css`
       @media screen and (min-width: ${theme.breakpoints.m}) {
         max-width: calc(${(100 / 12) * m}% - ${theme.layout.gutter.m});
         flex-basis: calc(${(100 / 12) * m}% - ${theme.layout.gutter.m});
       }
     `};
 
-  ${({ l }) => l
-    && css`
+  ${({ l }) =>
+    l &&
+    css`
       @media screen and (min-width: ${theme.breakpoints.l}) {
         max-width: calc(${(100 / 12) * l}% - ${theme.layout.gutter.m});
         flex-basis: calc(${(100 / 12) * l}% - ${theme.layout.gutter.m});
       }
     `};
 
-  ${({ xl }) => xl
-    && css`
+  ${({ xl }) =>
+    xl &&
+    css`
       @media screen and (min-width: ${theme.breakpoints.xl}) {
         max-width: calc(${(100 / 12) * xl}% - ${theme.layout.gutter.m});
         flex-basis: calc(${(100 / 12) * xl}% - ${theme.layout.gutter.m});
       }
     `};
 
-  ${({ xxl }) => xxl
-    && css`
+  ${({ xxl }) =>
+    xxl &&
+    css`
       @media screen and (min-width: ${theme.breakpoints.xxl}) {
         max-width: calc(${(100 / 12) * xxl}% - ${theme.layout.gutter.m});
         flex-basis: calc(${(100 / 12) * xxl}% - ${theme.layout.gutter.m});
       }
     `};
 
-  ${({ xxxl }) => xxxl
-    && css`
+  ${({ xxxl }) =>
+    xxxl &&
+    css`
       @media screen and (min-width: ${theme.breakpoints.xxxl}) {
         max-width: calc(${(100 / 12) * xxxl}% - ${theme.layout.gutter.m});
         flex-basis: calc(${(100 / 12) * xxxl}% - ${theme.layout.gutter.m});
