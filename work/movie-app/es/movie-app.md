@@ -1,7 +1,9 @@
 ---
 title: "Aplicación de Compra de Entradas en un Cine"
 slug: "Aplicación compra entradas Cine"
-snippet: "Estudio de caso sobre como mejorar la experiencia de búsqueda y compra de entradas en un cine, creada con un proceso de diseño User-Centered Design."
+snippet:
+  "Estudio de caso sobre como mejorar la experiencia de búsqueda y compra de
+  entradas en un cine, creada con un proceso de diseño User-Centered Design."
 date: "2019-04-22"
 category: "work"
 tags:
@@ -16,36 +18,32 @@ twinPost: "Movie Booking App"
 ---
 
 import Image from "components/Image/Image";
-import Video from "components/Video/Video";
-import { Row } from "components/Grid/Grid";
-import {
-  OverviewRow,
-  OverviewInfoCol,
-  OverviewInfoItem,
-  AltRowBackground,
-} from "styles/caseStudy.styles";
 
-import {
-  ProcessRow,
-  ProcessTitle,
-  ProcessCol,
-  ScreenshotRow,
-  MobileScreenshot,
-  InfoCol,
-  ScreenshotCol,
-  StyledSubhead,
-  SeparatedSubhead,
-  StyledCol,
-} from "../movieApp.styles";
+import Video from "components/Video/Video";
+
+import { Row } from "components/Grid/Grid";
+
+import { OverviewRow, OverviewInfoCol, OverviewInfoItem, AltRowBackground, }
+from "styles/caseStudy.styles";
+
+import { ProcessRow, ProcessTitle, ProcessCol, ScreenshotRow, MobileScreenshot,
+InfoCol, ScreenshotCol, StyledSubhead, SeparatedSubhead, StyledCol, } from
+"../movieApp.styles";
 
 <OverviewRow spaced col12 as="div">
 <StyledCol xl={5}>
 
 ## Introducción
 
-Como la mayoría de la gente, me encanta ver películas. Sobretodo en un cine. Sin embargo, cada vez que usaba una de las aplicaciones o sitios web de uno de los cines de mi ciudad para intentar comprar una entrada para una película, me encontraba con que todos tenían diseños anticuados y confusos. Además, si no sabía qué película me gustaría ver, siempre tenía que usar Google u otras páginas web para obtener más información sobre la película.
+Como la mayoría de la gente, me encanta ver películas. Sobretodo en un cine. Sin
+embargo, cada vez que usaba una de las aplicaciones o sitios web de uno de los
+cines de mi ciudad para intentar comprar una entrada para una película, me
+encontraba con que todos tenían diseños anticuados y confusos. Además, si no
+sabía qué película me gustaría ver, siempre tenía que usar Google u otras
+páginas web para obtener más información sobre la película.
 
-Por eso decidí ver cómo podría mejorar la experiencia de buscar una película y luego comprar una entrada para ella usando una aplicación iOS.
+Por eso decidí ver cómo podría mejorar la experiencia de buscar una película y
+luego comprar una entrada para ella usando una aplicación iOS.
 
 </StyledCol>
 <OverviewInfoCol xl={6}>
@@ -144,13 +142,19 @@ Por eso decidí ver cómo podría mejorar la experiencia de buscar una película
 
 Antes de empezar a trabajar en este proyecto, tenía una suposición inicial:
 
-> Las personas tienen dificultades para buscar una película que les gustaría ver cuando usan la aplicación o página web de uno de los cines de mi ciudad.
+> Las personas tienen dificultades para buscar una película que les gustaría ver
+> cuando usan la aplicación o página web de uno de los cines de mi ciudad.
 
-Para validar mi suposición y diseñar una solución, decidí seguir un proceso de diseño centrado en el usuario con una combinación de métodos de Lean UX y Google Sprint.
+Para validar mi suposición y diseñar una solución, decidí seguir un proceso de
+diseño centrado en el usuario con una combinación de métodos de Lean UX y Google
+Sprint.
 
-Para la primera parte de la fase de descubrimiento, entrevisté a 4 usuarios. Esto me ayudó a entender mejor las dificultades que tenían y cómo estaban usando los productos que estaban disponibles en el momento.
+Para la primera parte de la fase de descubrimiento, entrevisté a 4 usuarios.
+Esto me ayudó a entender mejor las dificultades que tenían y cómo estaban usando
+los productos que estaban disponibles en el momento.
 
-Pero antes de comenzar a hacer las entrevistas, hice una lista de las diferentes preguntas a las que quería que responder con la investigación inicial.
+Pero antes de comenzar a hacer las entrevistas, hice una lista de las diferentes
+preguntas a las que quería que responder con la investigación inicial.
 
 ### Preguntas Previas
 
@@ -170,13 +174,18 @@ Pero antes de comenzar a hacer las entrevistas, hice una lista de las diferentes
 
 Una vez hice las entrevistas, encontré que las personas:
 
-- Piensan que las entradas de cine y los precios del bar del cine son demasiado altos.
+- Piensan que las entradas de cine y los precios del bar del cine son demasiado
+  altos.
 - Considerarían ver más películas si el cine tuviera ofertas o descuentos.
 - Piensan que el diseño visual no es tan bueno.
-- Usan páginas web externas como Google o imdb.com, para aprender más sobre cada película.
-- Échan de menos tener una herramienta que les muestra qué películas están disponibles en un momento determinado del día o en un día específico.
-- Piensan que la empresa solo quiere que se registren para que puedan enviarles correos electrónicos de marketing.
-- Piensan que la información sobre el cine es difícil de encontrar (los tipos de asientos disponibles, servicios, etc.).
+- Usan páginas web externas como Google o imdb.com, para aprender más sobre cada
+  película.
+- Échan de menos tener una herramienta que les muestra qué películas están
+  disponibles en un momento determinado del día o en un día específico.
+- Piensan que la empresa solo quiere que se registren para que puedan enviarles
+  correos electrónicos de marketing.
+- Piensan que la información sobre el cine es difícil de encontrar (los tipos de
+  asientos disponibles, servicios, etc.).
 
 </StyledCol>
 </Row>
@@ -188,7 +197,9 @@ Una vez hice las entrevistas, encontré que las personas:
 
 ### Diagrama de Afinidad
 
-Una vez que tuve una lista de todas las conclusiones de las entrevistas, use un Diagrama de Afinidad para ayudarme a agrupar e identificar los problemas comunes.
+Una vez que tuve una lista de todas las conclusiones de las entrevistas, use un
+Diagrama de Afinidad para ayudarme a agrupar e identificar los problemas
+comunes.
 
 <Image
   expand
@@ -196,7 +207,8 @@ Una vez que tuve una lista de todas las conclusiones de las entrevistas, use un 
   caption="Diagrama de Afinidad usado para agrupar e identificar los problemas comunes."
 />
 
-Así que decidí empezar a trabajar en los siguientes problemas principales que tenían las personas:
+Así que decidí empezar a trabajar en los siguientes problemas principales que
+tenían las personas:
 
 - **Las personas necesitan una manera de ayudarles a decidir qué película ver.**
 - **Las personas tienen problemas con el proceso de pago.**
@@ -211,7 +223,9 @@ Así que decidí empezar a trabajar en los siguientes problemas principales que 
 
 ## Declaración de Problemas
 
-El próximo paso fue usar la técnica de declaración de problemas de la metodología Lean UX. Después use la técnica de _Cómo Podríamos_ para ayudarme a encontrar soluciones para cada uno de ellos.
+El próximo paso fue usar la técnica de declaración de problemas de la
+metodología Lean UX. Después use la técnica de _Cómo Podríamos_ para ayudarme a
+encontrar soluciones para cada uno de ellos.
 
 <SeparatedSubhead>Problema</SeparatedSubhead>
 
@@ -219,19 +233,23 @@ El próximo paso fue usar la técnica de declaración de problemas de la metodol
 
 <StyledSubhead>¿Cómo Podríamos?</StyledSubhead>
 
-> ¿Mejorar nuestra aplicación para que podamos ayudar a las personas a decidir qué película les gustaría ver más rápido?
+> ¿Mejorar nuestra aplicación para que podamos ayudar a las personas a decidir
+> qué película les gustaría ver más rápido?
 
 <SeparatedSubhead>Problema</SeparatedSubhead>
 
-> Las personas se sienten frustradas cuando tienen que crear una cuenta antes de poder hacer una compra.
+> Las personas se sienten frustradas cuando tienen que crear una cuenta antes de
+> poder hacer una compra.
 
 <StyledSubhead>¿Cómo Podríamos?</StyledSubhead>
 
-> ¿Mejorar el proceso de compra para que las personas puedan realizar compras sin frustración?
+> ¿Mejorar el proceso de compra para que las personas puedan realizar compras
+> sin frustración?
 
 <SeparatedSubhead>Problema</SeparatedSubhead>
 
-> Los entusiastas del cine sienten que los precios de las entradas son demasiado altos, lo que les impide ver tantas películas como les gustaría.
+> Los entusiastas del cine sienten que los precios de las entradas son demasiado
+> altos, lo que les impide ver tantas películas como les gustaría.
 
 <StyledSubhead>¿Cómo Podríamos?</StyledSubhead>
 
@@ -246,11 +264,18 @@ El próximo paso fue usar la técnica de declaración de problemas de la metodol
 
 ## Personas
 
-Basándome en estas declaraciones de problemas y los resultados de la investigación, creé 2 personas. Las utilicé para ayudarme a diseñar las características de la aplicación, que estaban basadas en los problemas que las personas tenían con los productos actuales y en los resultados que querían conseguir.
+Basándome en estas declaraciones de problemas y los resultados de la
+investigación, creé 2 personas. Las utilicé para ayudarme a diseñar las
+características de la aplicación, que estaban basadas en los problemas que las
+personas tenían con los productos actuales y en los resultados que querían
+conseguir.
 
 ### Alex
 
-Está intentando encontrar una película que les gustaría ver esta noche, tanto a él como a su pareja. No son expertos en el cine y solo quieren ver una película. Para decidir cuál ver, leen críticas, ven avances de películas y comparan varios antes de tomar una decisión.
+Está intentando encontrar una película que les gustaría ver esta noche, tanto a
+él como a su pareja. No son expertos en el cine y solo quieren ver una película.
+Para decidir cuál ver, leen críticas, ven avances de películas y comparan varios
+antes de tomar una decisión.
 
 <Image
   expand
@@ -260,7 +285,9 @@ Está intentando encontrar una película que les gustaría ver esta noche, tanto
 
 ### Ana
 
-Es una entusiasta del cine a la que le gusta ver varias películas cada mes, pero siente que los precios actuales son demasiado altos y que los cines no están valorando a sus clientes más fieles.
+Es una entusiasta del cine a la que le gusta ver varias películas cada mes, pero
+siente que los precios actuales son demasiado altos y que los cines no están
+valorando a sus clientes más fieles.
 
 <Image
   expand
@@ -270,7 +297,9 @@ Es una entusiasta del cine a la que le gusta ver varias películas cada mes, per
 
 ## Priorización de características
 
-Para decidir qué características incluir en el MVP inicial, decidí usar una Matriz de Priorización que se basa en el valor que proporcionaría al usuario final y por lo difícil que sería crearla.
+Para decidir qué características incluir en el MVP inicial, decidí usar una
+Matriz de Priorización que se basa en el valor que proporcionaría al usuario
+final y por lo difícil que sería crearla.
 
 <Image
   expand
@@ -280,7 +309,8 @@ Para decidir qué características incluir en el MVP inicial, decidí usar una M
 
 ## Método MOSCOW
 
-Luego utilicé el método MOSCOW para encontrar cuáles son las características más importantes que se incluirán en el MVP.
+Luego utilicé el método MOSCOW para encontrar cuáles son las características más
+importantes que se incluirán en el MVP.
 
 <Image
   expand
@@ -303,21 +333,27 @@ Luego utilicé el método MOSCOW para encontrar cuáles son las características
 
 ## Declaración de Hipótesis de Características
 
-Luego, utilicé las declaraciones de hipótesis de las características de Lean UX para identificar las características que servirán a cada persona y ayudarlas a lograr su objetivo personal.
+Luego, utilicé las declaraciones de hipótesis de las características de Lean UX
+para identificar las características que servirán a cada persona y ayudarlas a
+lograr su objetivo personal.
 
 <SeparatedSubhead>
   Búsqueda de películas con filtros y clasificaciones
 </SeparatedSubhead>
 
-> Crearemos una **características de búsqueda avanzada, con filtros y clasificaciones** para **Alex** con el fin de **ayudarle a decidir más rápido qué película le gustaría ver**.
+> Crearemos una **características de búsqueda avanzada, con filtros y
+> clasificaciones** para **Alex** con el fin de **ayudarle a decidir más rápido
+> qué película le gustaría ver**.
 
 <SeparatedSubhead>experiencia de pago como invitado</SeparatedSubhead>
 
-> Crearemos una **experiencia de pago como invitado** para **Alex** con el fin de **ayudarle a comprar sus entradas para el cine sin ninguna frustración**.
+> Crearemos una **experiencia de pago como invitado** para **Alex** con el fin
+> de **ayudarle a comprar sus entradas para el cine sin ninguna frustración**.
 
 <SeparatedSubhead>Club de Socios</SeparatedSubhead>
 
-> Crearemos un **club de socios** para **Ana** con el fin de **reducir el coste de ver varias películas al mes para los entusiastas del cine**.
+> Crearemos un **club de socios** para **Ana** con el fin de **reducir el coste
+> de ver varias películas al mes para los entusiastas del cine**.
 
 </StyledCol>
 </Row>
@@ -328,7 +364,10 @@ Luego, utilicé las declaraciones de hipótesis de las características de Lean 
 
 ## Ideación
 
-Para ayudarme a idear soluciones rápidamente para cada una de las características, utilicé el método de Crazy 8, ya que es una manera excelente de mantenerte en un modo de pensamiento creativo constante para generar muchos diseños alternativos de una característica.
+Para ayudarme a idear soluciones rápidamente para cada una de las
+características, utilicé el método de Crazy 8, ya que es una manera excelente de
+mantenerte en un modo de pensamiento creativo constante para generar muchos
+diseños alternativos de una característica.
 
 <Image
   expand
@@ -345,13 +384,22 @@ Para ayudarme a idear soluciones rápidamente para cada una de las característi
 
 ## Búsqueda y Filtrado de Películas
 
-La primera característica en la que empecé a trabajar fue en la de buscar, filtrar y ordenar películas.
+La primera característica en la que empecé a trabajar fue en la de buscar,
+filtrar y ordenar películas.
 
-Diseñé esta característica para ayudar a las personas a encontrar una película más rápido, usando diferentes opciones de filtrado, y a la vez poder ordenar los resultados según varios criterios específicos de cada categoría.
+Diseñé esta característica para ayudar a las personas a encontrar una película
+más rápido, usando diferentes opciones de filtrado, y a la vez poder ordenar los
+resultados según varios criterios específicos de cada categoría.
 
-La mayoría de las personas entrevistadas tuvieron dificultades para decidir qué película les gustaría ver, por lo que la función está destinada a ayudarles a encontrar una película basada en su género, programación, reseñas de usuarios o duración. De esta manera, no tenían que usar otros productos o servicios para aprender más sobre la película.
+La mayoría de las personas entrevistadas tuvieron dificultades para decidir qué
+película les gustaría ver, por lo que la función está destinada a ayudarles a
+encontrar una película basada en su género, programación, reseñas de usuarios o
+duración. De esta manera, no tenían que usar otros productos o servicios para
+aprender más sobre la película.
 
-Antes de comenzar a diseñar la barra de navegación de la aplicación, decidí ver qué patrones de diseño estaban utilizando otras aplicaciones o sitios web que también necesitaban una característica similar.
+Antes de comenzar a diseñar la barra de navegación de la aplicación, decidí ver
+qué patrones de diseño estaban utilizando otras aplicaciones o sitios web que
+también necesitaban una característica similar.
 
 </StyledCol>
 </Row>
@@ -372,7 +420,12 @@ Antes de comenzar a diseñar la barra de navegación de la aplicación, decidí 
 </ScreenshotCol>
 <InfoCol l={6}>
 
-El primer producto que comparé fue la aplicación iOS de Airbnb. Una de las razones por las que comencé con la suya fue porque el patrón de diseño que estaban usando les permitía tener siempre visibles sus botones para "Fechas" e "Invitados", debajo de la barra de búsqueda. De esta manera, sus usuarios siempre pueden verlos y saber dónde ir si necesitan filtrar sus resultados de búsqueda.
+El primer producto que comparé fue la aplicación iOS de Airbnb. Una de las
+razones por las que comencé con la suya fue porque el patrón de diseño que
+estaban usando les permitía tener siempre visibles sus botones para "Fechas" e
+"Invitados", debajo de la barra de búsqueda. De esta manera, sus usuarios
+siempre pueden verlos y saber dónde ir si necesitan filtrar sus resultados de
+búsqueda.
 
 </InfoCol>
 </ScreenshotRow>
@@ -391,9 +444,14 @@ El primer producto que comparé fue la aplicación iOS de Airbnb. Una de las raz
 </ScreenshotCol>
 <InfoCol l={6}>
 
-La siguiente aplicación que comparé fue la de Asos para iOS. Sus botones de clasificación y filtrado tienen más peso visual que la de Airbnb, pero ellos no incluyen una barra de búsqueda ya que la muestran en una pantalla diferente.
+La siguiente aplicación que comparé fue la de Asos para iOS. Sus botones de
+clasificación y filtrado tienen más peso visual que la de Airbnb, pero ellos no
+incluyen una barra de búsqueda ya que la muestran en una pantalla diferente.
 
-Uno de los beneficios de la forma en que Asos.com implementa sus opciones de clasificación y filtrado es que les permite mostrar qué opciones están aplicadas en cada momento. De esta manera, pueden recordar al usuario que los resultados de la búsqueda están limitados por los filtros aplicados.
+Uno de los beneficios de la forma en que Asos.com implementa sus opciones de
+clasificación y filtrado es que les permite mostrar qué opciones están aplicadas
+en cada momento. De esta manera, pueden recordar al usuario que los resultados
+de la búsqueda están limitados por los filtros aplicados.
 
 </InfoCol>
 </ScreenshotRow>
@@ -411,7 +469,12 @@ Uno de los beneficios de la forma en que Asos.com implementa sus opciones de cla
 </ScreenshotCol>
 <InfoCol l={6}>
 
-En el caso de la página web de Crutchfield.com, ellos tienen su barra de búsqueda y las opciones de clasificación y filtrado visibles en todo momento. Sin embargo, sus botones de clasificación y filtrado están más separados de la barra de búsqueda y no tienen el mismo peso visual que el ejemplo de Asos.com. Esto podría significar que sus usuarios podrían pasar por alto las opciones porque no destacan tanto visualmente.
+En el caso de la página web de Crutchfield.com, ellos tienen su barra de
+búsqueda y las opciones de clasificación y filtrado visibles en todo momento.
+Sin embargo, sus botones de clasificación y filtrado están más separados de la
+barra de búsqueda y no tienen el mismo peso visual que el ejemplo de Asos.com.
+Esto podría significar que sus usuarios podrían pasar por alto las opciones
+porque no destacan tanto visualmente.
 
 </InfoCol>
 </ScreenshotRow>
@@ -429,9 +492,15 @@ En el caso de la página web de Crutchfield.com, ellos tienen su barra de búsqu
 </ScreenshotCol>
 <InfoCol l={6}>
 
-zalando.es tenía una de las experiencias de búsqueda y filtrado más completas para sus usuarios. Además de mostrar siempre el botón para filtrar los resultados, también indican qué opciones de los filtros están activas. Además, sus usuarios pueden eliminar los filtros individuales sin tener que abrir el menú de filtros.
+zalando.es tenía una de las experiencias de búsqueda y filtrado más completas
+para sus usuarios. Además de mostrar siempre el botón para filtrar los
+resultados, también indican qué opciones de los filtros están activas. Además,
+sus usuarios pueden eliminar los filtros individuales sin tener que abrir el
+menú de filtros.
 
-También se usa un botón "Borrar todos los filtros" para permitir que sus usuarios eliminen todos los que están aplicados si desean comenzar de nuevo con una nueva búsqueda.
+También se usa un botón "Borrar todos los filtros" para permitir que sus
+usuarios eliminen todos los que están aplicados si desean comenzar de nuevo con
+una nueva búsqueda.
 
 </InfoCol>
 </ScreenshotRow>
@@ -469,11 +538,22 @@ También se usa un botón "Borrar todos los filtros" para permitir que sus usuar
 </StyledCol>
 </ScreenshotRow>
 
-Para la versión final de la característica, decidí usar una combinación de los diferentes patrones de diseño mencionados anteriormente. Esto me permitió incluir una barra de búsqueda que ocupa todo el ancho de la pantalla sin tener que ocultar las opciones de filtrado o el botón de clasificación. De esta manera también podría mostrar si hay filtros u opciones de clasificación activos.
+Para la versión final de la característica, decidí usar una combinación de los
+diferentes patrones de diseño mencionados anteriormente. Esto me permitió
+incluir una barra de búsqueda que ocupa todo el ancho de la pantalla sin tener
+que ocultar las opciones de filtrado o el botón de clasificación. De esta manera
+también podría mostrar si hay filtros u opciones de clasificación activos.
 
-Otro beneficio es que los usuarios pueden eliminar cualquiera de los filtros, sea uno por uno, o todos a la vez, usando el botón "Borrar filtros".
+Otro beneficio es que los usuarios pueden eliminar cualquiera de los filtros,
+sea uno por uno, o todos a la vez, usando el botón "Borrar filtros".
 
-Las opciones de filtrado también están diseñadas de manera que los usuarios puedan combinarlas para mejorar su búsqueda, sin tener opciones mutuamente exclusivas, siguiendo las recomendaciones del [artículo sobre E-Commerce UX](https://baymard.com/blog/allow-applying-of-multiple-filter-values) realizado por el Instituto Baymard, donde encontraron que hasta el 45% de los usuarios que participaron en su estudio, intentaron aplicar varios filtros en algún momento durante su búsqueda.
+Las opciones de filtrado también están diseñadas de manera que los usuarios
+puedan combinarlas para mejorar su búsqueda, sin tener opciones mutuamente
+exclusivas, siguiendo las recomendaciones del
+[artículo sobre E-Commerce UX](https://baymard.com/blog/allow-applying-of-multiple-filter-values)
+realizado por el Instituto Baymard, donde encontraron que hasta el 45% de los
+usuarios que participaron en su estudio, intentaron aplicar varios filtros en
+algún momento durante su búsqueda.
 
 </StyledCol>
 </Row>
@@ -555,13 +635,23 @@ Las opciones de filtrado también están diseñadas de manera que los usuarios p
 
 ## Proceso de Compra como Invitado
 
-La segunda característica de esta aplicación fue el proceso de compra de entradas como invitado.
+La segunda característica de esta aplicación fue el proceso de compra de
+entradas como invitado.
 
-Uno de los principales problemas que las personas tuvieron en las entrevistas fue que no les gustó el hecho de que tienen que registrarse antes de poder pagar sus entradas para ver una película. La mayoría de ellos pensaron que recibirían muchos mensajes de marketing, sobretodo si el diseño general de la página web o aplicación no eran tan actualizados.
+Uno de los principales problemas que las personas tuvieron en las entrevistas
+fue que no les gustó el hecho de que tienen que registrarse antes de poder pagar
+sus entradas para ver una película. La mayoría de ellos pensaron que recibirían
+muchos mensajes de marketing, sobretodo si el diseño general de la página web o
+aplicación no eran tan actualizados.
 
-A pesar de que los procesos de compra de entradas como invitado normalmente están diseñados para usuarios que todavía no tienen una cuenta, también son útiles para los usuarios que han olvidado su contraseña y no quieren pasar por el proceso de restablecimiento de contraseña en ese momento.
+A pesar de que los procesos de compra de entradas como invitado normalmente
+están diseñados para usuarios que todavía no tienen una cuenta, también son
+útiles para los usuarios que han olvidado su contraseña y no quieren pasar por
+el proceso de restablecimiento de contraseña en ese momento.
 
-Después de investigar un poco antes para ver cuáles son las mejores prácticas utilizadas para diseñar un proceso de pago, empecé a trabajar en el prototipo de la característica.
+Después de investigar un poco antes para ver cuáles son las mejores prácticas
+utilizadas para diseñar un proceso de pago, empecé a trabajar en el prototipo de
+la característica.
 
 </StyledCol>
 </Row>
@@ -586,15 +676,26 @@ Después de investigar un poco antes para ver cuáles son las mejores prácticas
 
 #### Opción de pagar como invitado para todos los usuarios.
 
-Según el [estudio realizado](https://baymard.com/blog/delayed-account-creation) por el Instituto Baymard, hasta el 37% de los usuarios que participaron en el, abandonarían el proceso de compra si se ven obligados a crear una cuenta. Por lo tanto, decidí permitir que los usuarios de la aplicación puedan realizar un pago sin tener que crear una cuenta primero, creando una experiencia de pago como invitado para todos, sin importar si tienen una cuenta o no.
+Según el [estudio realizado](https://baymard.com/blog/delayed-account-creation)
+por el Instituto Baymard, hasta el 37% de los usuarios que participaron en el,
+abandonarían el proceso de compra si se ven obligados a crear una cuenta. Por lo
+tanto, decidí permitir que los usuarios de la aplicación puedan realizar un pago
+sin tener que crear una cuenta primero, creando una experiencia de pago como
+invitado para todos, sin importar si tienen una cuenta o no.
 
 #### Crear una cuenta en el paso de confirmación de pago
 
-Como no estaba pidiendo a cada usuario que cree una cuenta primero, decidí informarles que pueden continuar con el pago, y si desean registrarse para guardar su información de pago o envío para compras futuras, podrán darse de alta al final del proceso de pago si lo desean.
+Como no estaba pidiendo a cada usuario que cree una cuenta primero, decidí
+informarles que pueden continuar con el pago, y si desean registrarse para
+guardar su información de pago o envío para compras futuras, podrán darse de
+alta al final del proceso de pago si lo desean.
 
 #### Explicar por qué se necesita su información
 
-Además, según el mismo estudio, si los usuarios están preocupados por su privacidad, el producto puede explicar por qué se necesita su información personal, lo que ayudará a reducir su miedo de que solo sea para enviarles correos electrónicos de marketing.
+Además, según el mismo estudio, si los usuarios están preocupados por su
+privacidad, el producto puede explicar por qué se necesita su información
+personal, lo que ayudará a reducir su miedo de que solo sea para enviarles
+correos electrónicos de marketing.
 
 </InfoCol>
 </ScreenshotRow>
@@ -619,11 +720,18 @@ Además, según el mismo estudio, si los usuarios están preocupados por su priv
 
 #### Métodos de pago disponibles ubicados uno al lado del otro
 
-Los diferentes métodos de pago que acepta la aplicación se muestran usando 3 botones ubicados uno al lado del otro, siguiendo las [recomendaciones de la investigación](https://baymard.com/blog/payment-method-selection) realizada por el Instituto Baymard.
+Los diferentes métodos de pago que acepta la aplicación se muestran usando 3
+botones ubicados uno al lado del otro, siguiendo las
+[recomendaciones de la investigación](https://baymard.com/blog/payment-method-selection)
+realizada por el Instituto Baymard.
 
-Según ellos, los métodos de pago deben colocarse juntos muy cerca (los principios de Gestalt ayudarían aquí) para que los usuarios puedan compararlos fácilmente con una sola mirada y ver cuál está activo actualmente.
+Según ellos, los métodos de pago deben colocarse juntos muy cerca (los
+principios de Gestalt ayudarían aquí) para que los usuarios puedan compararlos
+fácilmente con una sola mirada y ver cuál está activo actualmente.
 
-Los usuarios también deben poder comparar los diferentes costes asociados con cada método de pago, si corresponde, como una tarifa del 2% cuando se utiliza un tipo de pago en particular.
+Los usuarios también deben poder comparar los diferentes costes asociados con
+cada método de pago, si corresponde, como una tarifa del 2% cuando se utiliza un
+tipo de pago en particular.
 
 </InfoCol>
 </ScreenshotRow>
@@ -646,15 +754,32 @@ Los usuarios también deben poder comparar los diferentes costes asociados con c
 
 #### Insertar espacios cada 4 dígitos
 
-Diseñé el campo de entrada del número de tarjeta de crédito para que este inserte automáticamente espacios cada 4 dígitos (en el caso de las tarjetas Visa, otras pueden ser diferentes). Según un estudio, la mayoría de los usuarios [comprueban dos veces los números de tarjeta](https://baymard.com/blog/credit-card-field-auto-format-spaces) que escribieron en grupos de 4 dígitos insertando espacios manualmente, lo cuál hacen para que puedan leer y comprobar fácilmente el número que han escrito.
+Diseñé el campo de entrada del número de tarjeta de crédito para que este
+inserte automáticamente espacios cada 4 dígitos (en el caso de las tarjetas
+Visa, otras pueden ser diferentes). Según un estudio, la mayoría de los usuarios
+[comprueban dos veces los números de tarjeta](https://baymard.com/blog/credit-card-field-auto-format-spaces)
+que escribieron en grupos de 4 dígitos insertando espacios manualmente, lo cuál
+hacen para que puedan leer y comprobar fácilmente el número que han escrito.
 
-Además, se puede usar un [script de validación de Luhn](https://gist.github.com/DiegoSalazar/4075533) para comprobar si el número de tarjeta escrito es válido.
+Además, se puede usar un
+[script de validación de Luhn](https://gist.github.com/DiegoSalazar/4075533)
+para comprobar si el número de tarjeta escrito es válido.
 
 #### Hacer coincidir el formato de la fecha de vencimiento con el formato físico de la tarjeta
 
-El campo de entrada de la fecha de vencimiento fue diseñado para coincidir con el formato físico de "MM / YY" que se encuentra en la mayoría de las tarjetas de crédito. [Un estudio ha demostrado](https://baymard.com/blog/how-to-format-expiration-date-fields) que la mayoría de los usuarios intentarán seguir el mismo formato impreso en la tarjeta al escribir el número. Por tanto, los formularios deben diseñarse de manera que respeten el formato físico que se encuentra en las tarjetas de crédito.
+El campo de entrada de la fecha de vencimiento fue diseñado para coincidir con
+el formato físico de "MM / YY" que se encuentra en la mayoría de las tarjetas de
+crédito.
+[Un estudio ha demostrado](https://baymard.com/blog/how-to-format-expiration-date-fields)
+que la mayoría de los usuarios intentarán seguir el mismo formato impreso en la
+tarjeta al escribir el número. Por tanto, los formularios deben diseñarse de
+manera que respeten el formato físico que se encuentra en las tarjetas de
+crédito.
 
-Los campos de formulario utilizados para las tarjetas de crédito también deben usar máscaras de entrada que insertan automáticamente un carácter de barra diagonal después del MM en la fecha de vencimiento y usar el tipo de teclado apropiado para cada campo de entrada del formulario.
+Los campos de formulario utilizados para las tarjetas de crédito también deben
+usar máscaras de entrada que insertan automáticamente un carácter de barra
+diagonal después del MM en la fecha de vencimiento y usar el tipo de teclado
+apropiado para cada campo de entrada del formulario.
 
 </InfoCol>
 </ScreenshotRow>
@@ -678,13 +803,22 @@ Los campos de formulario utilizados para las tarjetas de crédito también deben
 
 #### Darse de Alta en el Último Paso del Proceso de Pago
 
-La pantalla de confirmación de pedido fue diseñada para permitir a los usuarios que guarden sus datos personales, como su correo electrónico o información de pago para compras futuras.
+La pantalla de confirmación de pedido fue diseñada para permitir a los usuarios
+que guarden sus datos personales, como su correo electrónico o información de
+pago para compras futuras.
 
-En lugar de ser obligados a crear una cuenta antes de poder hacer una compra, una mejor opción es permitirles crear una cuenta en el último paso del proceso de pago.
+En lugar de ser obligados a crear una cuenta antes de poder hacer una compra,
+una mejor opción es permitirles crear una cuenta en el último paso del proceso
+de pago.
 
-De esta manera, los usuarios aún pueden registrarse para guardar sus datos para pagos futuros, pero en lugar de ser algo molesto, pasa a ser una característica útil que les permite comprar más rápido si vuelven a usar la aplicación, ya que no tendrán que volver a introducir los mismos datos.
+De esta manera, los usuarios aún pueden registrarse para guardar sus datos para
+pagos futuros, pero en lugar de ser algo molesto, pasa a ser una característica
+útil que les permite comprar más rápido si vuelven a usar la aplicación, ya que
+no tendrán que volver a introducir los mismos datos.
 
-A pesar de que sigue siendo la misma cantidad de campos de entrada, los usuarios no pensarán que solo se tienen que dar de alta para que la empresa les envíe correos electrónicos de marketing.
+A pesar de que sigue siendo la misma cantidad de campos de entrada, los usuarios
+no pensarán que solo se tienen que dar de alta para que la empresa les envíe
+correos electrónicos de marketing.
 
 </InfoCol>
 </ScreenshotRow>
@@ -730,17 +864,27 @@ A pesar de que sigue siendo la misma cantidad de campos de entrada, los usuarios
 
 ## Club de Socios
 
-La tercera característica de la aplicación fue el club de socios con ofertas y descuentos.
+La tercera característica de la aplicación fue el club de socios con ofertas y
+descuentos.
 
-En las entrevistas, la mayoría de los usuarios se quejaron de que la mayoría de los clubs de socios que ofrecen los cines actualmente no valen la pena ya que no aportan suficiente valor como para darse de alta.
+En las entrevistas, la mayoría de los usuarios se quejaron de que la mayoría de
+los clubs de socios que ofrecen los cines actualmente no valen la pena ya que no
+aportan suficiente valor como para darse de alta.
 
-La mayoría de ellos dan un punto por cada euro gastado. Luego, estos puntos pueden usarse para obtener una entrada para una película o para comprar en el bar del cine. Sin embargo, para poder cambiarlos por una entrada, hacen falta unos 100 puntos, lo que significa que hay que gastar 100 euros antes de poder obtener una entrada gratis, por lo que no vale tanto la pena.
+La mayoría de ellos dan un punto por cada euro gastado. Luego, estos puntos
+pueden usarse para obtener una entrada para una película o para comprar en el
+bar del cine. Sin embargo, para poder cambiarlos por una entrada, hacen falta
+unos 100 puntos, lo que significa que hay que gastar 100 euros antes de poder
+obtener una entrada gratis, por lo que no vale tanto la pena.
 
-Esta característica de la aplicación fue mi intento de ver cómo podría mejorar la experiencia de manera que los usuarios sientan que vale la pena y consideren que les proporciona suficiente valor como para darse de alta.
+Esta característica de la aplicación fue mi intento de ver cómo podría mejorar
+la experiencia de manera que los usuarios sientan que vale la pena y consideren
+que les proporciona suficiente valor como para darse de alta.
 
 ### Diseñando el Proceso de Alta del Club de Socios
 
-El proceso de alta para el club de socios ha sido dividido en 4 segmentos para evitar sobrecargar a los usuarios con demasiados campos de formulario a la vez.
+El proceso de alta para el club de socios ha sido dividido en 4 segmentos para
+evitar sobrecargar a los usuarios con demasiados campos de formulario a la vez.
 
 Los 4 segmentos son:
 
@@ -771,9 +915,15 @@ Los 4 segmentos son:
 
 ### Optimizaciones de la Fase de Información del Envío
 
-La fase de recogida de la información de envío es necesaria para que los usuarios puedan recibir una copia de su tarjeta del club de socios. Para diseñar esta fase, decidí realizar una investigación previa para ver cuáles son las mejores prácticas de UX para diseñar la fase del proceso de pago en la que se recogen los datos de envío.
+La fase de recogida de la información de envío es necesaria para que los
+usuarios puedan recibir una copia de su tarjeta del club de socios. Para diseñar
+esta fase, decidí realizar una investigación previa para ver cuáles son las
+mejores prácticas de UX para diseñar la fase del proceso de pago en la que se
+recogen los datos de envío.
 
-Pantalla de la fase de recogida de la información de envío con textos optimizados para evitar confundir a los usuarios con las diferentes opciones de envío.
+Pantalla de la fase de recogida de la información de envío con textos
+optimizados para evitar confundir a los usuarios con las diferentes opciones de
+envío.
 
 </StyledCol>
 </Row>
@@ -796,13 +946,24 @@ Pantalla de la fase de recogida de la información de envío con textos optimiza
 
 #### Sin costes escondidos
 
-Los cargos ocultos y los costes de entrega son una de las razones principales por las que los clientes deciden abandonar un proceso de pago, por lo que decidí indicar claramente todos los costes de entrega que los usuarios tendrían que pagar.
+Los cargos ocultos y los costes de entrega son una de las razones principales
+por las que los clientes deciden abandonar un proceso de pago, por lo que decidí
+indicar claramente todos los costes de entrega que los usuarios tendrían que
+pagar.
 
 #### Opción de recoger en tienda y métodos de envío
 
-[Un estudio reciente](https://baymard.com/blog/store-pickup-as-shipping-option) ha demostrado que cuando la opción de recoger en la tienda no aparece junto a los otros métodos de entrega, los usuarios no se darán cuenta de que esta existe, y no podrán comparar si el coste adicional de pagar los 2 o 3 euros más para una opción de entrega más rápida vale la pena.
+[Un estudio reciente](https://baymard.com/blog/store-pickup-as-shipping-option)
+ha demostrado que cuando la opción de recoger en la tienda no aparece junto a
+los otros métodos de entrega, los usuarios no se darán cuenta de que esta
+existe, y no podrán comparar si el coste adicional de pagar los 2 o 3 euros más
+para una opción de entrega más rápida vale la pena.
 
-Además, los diferentes métodos de entrega también están diseñados siguiendo las recomendaciones de un [estudio](https://baymard.com/blog/shipping-speed-vs-delivery-date) que encontró que al usar etiquetas como Envío Urgente 2 Días o Envío Premium 1 Día, los usuarios se confundirán con la fecha exacta en que recibirán el producto.
+Además, los diferentes métodos de entrega también están diseñados siguiendo las
+recomendaciones de un
+[estudio](https://baymard.com/blog/shipping-speed-vs-delivery-date) que encontró
+que al usar etiquetas como Envío Urgente 2 Días o Envío Premium 1 Día, los
+usuarios se confundirán con la fecha exacta en que recibirán el producto.
 
 </InfoCol>
 </ScreenshotRow>
@@ -820,9 +981,14 @@ Además, los diferentes métodos de entrega también están diseñados siguiendo
 </ScreenshotCol>
 <InfoCol l={6}>
 
-Al usar etiquetas como estas, los usuarios se ven obligados a tener que calcular personalmente el día en que llegará el producto.
+Al usar etiquetas como estas, los usuarios se ven obligados a tener que calcular
+personalmente el día en que llegará el producto.
 
-Una etiqueta de "3-5 días" no tiene en cuenta el tiempo de procesamiento que cada orden podría necesitar, la hora de corte diaria (las órdenes después de las 16h se enviarán al día siguiente), o si el usuario elige un envío _Express de 1 Día_ en un viernes, lo que significa que el pedido se envía el lunes, lo que lo convierte en un método de envío de 3 días con un coste superior.
+Una etiqueta de "3-5 días" no tiene en cuenta el tiempo de procesamiento que
+cada orden podría necesitar, la hora de corte diaria (las órdenes después de las
+16h se enviarán al día siguiente), o si el usuario elige un envío _Express de 1
+Día_ en un viernes, lo que significa que el pedido se envía el lunes, lo que lo
+convierte en un método de envío de 3 días con un coste superior.
 
 </InfoCol>
 </ScreenshotRow>
@@ -840,9 +1006,14 @@ Una etiqueta de "3-5 días" no tiene en cuenta el tiempo de procesamiento que ca
 </ScreenshotCol>
 <InfoCol l={6}>
 
-Al usar etiquetas como "Llegará el:" o "Recíbelo el:", los usuarios tomarán la fecha de entrega como una promesa que aumentaría su confianza a la hora de decidir si el coste adicional de una opción de envio _Urgente_ vale la pena o no.
+Al usar etiquetas como "Llegará el:" o "Recíbelo el:", los usuarios tomarán la
+fecha de entrega como una promesa que aumentaría su confianza a la hora de
+decidir si el coste adicional de una opción de envio _Urgente_ vale la pena o
+no.
 
-Sin embargo, para que la fecha final sea correcta, se deben tener en cuenta todos los factores que le afecten, como la hora de corte de los envíos, la hora y fecha actual o el tiempo estimado de entrega de la compañía de envío.
+Sin embargo, para que la fecha final sea correcta, se deben tener en cuenta
+todos los factores que le afecten, como la hora de corte de los envíos, la hora
+y fecha actual o el tiempo estimado de entrega de la compañía de envío.
 
 </InfoCol>
 </ScreenshotRow>
@@ -860,7 +1031,8 @@ Sin embargo, para que la fecha final sea correcta, se deben tener en cuenta todo
 </ScreenshotCol>
 <InfoCol l={6}>
 
-Este es un buen ejemplo —de la página de amazon.co.uk— de como diseñar la información de los metodos de envio.
+Este es un buen ejemplo —de la página de amazon.co.uk— de como diseñar la
+información de los metodos de envio.
 
 </InfoCol>
 </ScreenshotRow>
@@ -891,11 +1063,16 @@ Este es un buen ejemplo —de la página de amazon.co.uk— de como diseñar la 
 
 ## Pruebas de Usabilidad
 
-El último paso de mi proceso de diseño fue hacer unas pruebas de usabilidad para comprobar la aplicación. Para hacer las pruebas utilicé el método de Entrevistas de 5 Actos de Google Ventures, en el que entrevisté a 5 personas. A cada una de ellas les di distintas tareas que tendrían que intentar completar usando la aplicación.
+El último paso de mi proceso de diseño fue hacer unas pruebas de usabilidad para
+comprobar la aplicación. Para hacer las pruebas utilicé el método de Entrevistas
+de 5 Actos de Google Ventures, en el que entrevisté a 5 personas. A cada una de
+ellas les di distintas tareas que tendrían que intentar completar usando la
+aplicación.
 
 Las preguntas que quería responder con las entrevistas fueron:
 
-- ¿Ayuda la aplicación a los usuarios a decidir qué película les gustaría ver más rápido?
+- ¿Ayuda la aplicación a los usuarios a decidir qué película les gustaría ver
+  más rápido?
 - ¿Ayuda la aplicación a los usuarios a aprender más sobre cada película?
 - ¿Se apuntarán los usuarios al club de socios?
 - ¿Pueden completar el proceso de compra sin ningún problema?
@@ -904,21 +1081,38 @@ Las preguntas que quería responder con las entrevistas fueron:
 ### Los Resultados:
 
 - 4 de cada 5 usuarios se dieron de alta en el club de socios
-- 5 de cada 5 usuarios usaron la barra de búsqueda y los filtros para ayudarles a encontrar una película
-- 5 de cada 5 usuarios dijeron que es mucho más fácil aprender todo lo que necesitan sobre una película dentro de la aplicación
-- 4 de cada 5 usuarios usaron el proceso de pago como invitados y 3 de ellos se registraron al final
+- 5 de cada 5 usuarios usaron la barra de búsqueda y los filtros para ayudarles
+  a encontrar una película
+- 5 de cada 5 usuarios dijeron que es mucho más fácil aprender todo lo que
+  necesitan sobre una película dentro de la aplicación
+- 4 de cada 5 usuarios usaron el proceso de pago como invitados y 3 de ellos se
+  registraron al final
 
 ## Conclusión
 
-En general, este fue un gran proyecto personal para mí. Aprendí lo importante que es enfocar cada decisión de diseño en el resultado que las personas intentan lograr en lugar de obligarlas a darse de alta para crear una cuenta. Al incluir a los usuarios en el proceso de diseño desde el principio, podemos crear mejores productos que las personas querrán usar más.
+En general, este fue un gran proyecto personal para mí. Aprendí lo importante
+que es enfocar cada decisión de diseño en el resultado que las personas intentan
+lograr en lugar de obligarlas a darse de alta para crear una cuenta. Al incluir
+a los usuarios en el proceso de diseño desde el principio, podemos crear mejores
+productos que las personas querrán usar más.
 
-A pesar de que este proyecto comenzó con una suposición inicial personal, al validarla con pruebas de usuarios reales, supe que podría ayudarles si creaba una mejor experiencia.
+A pesar de que este proyecto comenzó con una suposición inicial personal, al
+validarla con pruebas de usuarios reales, supe que podría ayudarles si creaba
+una mejor experiencia.
 
-Además, la investigación inicial también me ayudó a conocer los problemas tenían las personas con el diseño actual. De esta manera, pude entender mejor en qué tenía que trabajar primero y qué funcionalidades debería diseñar para tratar de resolverlas.
+Además, la investigación inicial también me ayudó a conocer los problemas tenían
+las personas con el diseño actual. De esta manera, pude entender mejor en qué
+tenía que trabajar primero y qué funcionalidades debería diseñar para tratar de
+resolverlas.
 
-Este proyecto también fue divertido para mi ya que aprendí mucho sobre los pequeños detalles involucrados en el diseño de una experiencia de búsqueda de productos y la de un proceso de pago. Pero, lamentablemente los cines de mi ciudad seguirán teniendo la misma experiencia de usuario en sus aplicaciones y sitios web.
+Este proyecto también fue divertido para mi ya que aprendí mucho sobre los
+pequeños detalles involucrados en el diseño de una experiencia de búsqueda de
+productos y la de un proceso de pago. Pero, lamentablemente los cines de mi
+ciudad seguirán teniendo la misma experiencia de usuario en sus aplicaciones y
+sitios web.
 
-Espero que hayas disfrutado leyendo este estudio de caso, y si tienes alguna pregunta al respecto, no dudes en ponerte en contacto conmigo.
+Espero que hayas disfrutado leyendo este estudio de caso, y si tienes alguna
+pregunta al respecto, no dudes en ponerte en contacto conmigo.
 
 </StyledCol>
 </Row>
