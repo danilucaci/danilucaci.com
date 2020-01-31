@@ -32,7 +32,7 @@ const SINGLE_IMAGE_QUERY = graphql`
         node {
           relativePath
           childImageSharp {
-            fluid(maxWidth: 936, quality: 50) {
+            fluid(maxWidth: 936, quality: 60) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }
