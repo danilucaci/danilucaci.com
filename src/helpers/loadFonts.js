@@ -70,22 +70,24 @@ export const loadFonts = () => {
 };
 
 export const checkFontsLoaded = () => {
-  if (sessionStorage.fontsLoadedPolyfill) {
-    const isLoaded = document.documentElement.className.includes(
-      "fonts-loaded",
-    );
-    // Only add the class when it is not already added
-    if (!isLoaded) {
-      document.documentElement.className += " fonts-loaded";
+  if (typeof window !== "undefined") {
+    if (sessionStorage.fontsLoadedPolyfill) {
+      const isLoaded = document.documentElement.className.includes(
+        "fonts-loaded",
+      );
+      // Only add the class when it is not already added
+      if (!isLoaded) {
+        document.documentElement.className += " fonts-loaded";
+      }
+      if (NODE_ENV === "development") {
+        console.log("%c Fonts already loaded.", "color: #79E36B");
+      }
+    } else {
+      // Don’t load fonts if  the user has data saver on or is on a slow connection
+      if (detectDataSaverMode() || detectSlowConnectionType()) {
+        return;
+      }
+      loadFonts();
     }
-    if (NODE_ENV === "development") {
-      console.log("%c Fonts already loaded.", "color: #79E36B");
-    }
-  } else {
-    // Don’t load fonts if  the user has data saver on or is on a slow connection
-    if (detectDataSaverMode() || detectSlowConnectionType()) {
-      return;
-    }
-    loadFonts();
   }
 };

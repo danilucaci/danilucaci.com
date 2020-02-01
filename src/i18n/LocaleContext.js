@@ -1,5 +1,7 @@
 import { createContext } from "react";
 
-const LocaleContext = createContext();
+const localeContextInitialState = { locale: "en" };
+
+const LocaleContext = createContext(localeContextInitialState);
 
 export default LocaleContext;

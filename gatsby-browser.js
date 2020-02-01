@@ -1,32 +1,6 @@
-import React from "react";
-import { IntlProvider } from "react-intl";
+import wrapPage from "./wrap-page";
 
-import intlMessages from "./src/i18n/i18n";
-import LocaleContext from "./src/i18n/LocaleContext";
-import CookiesProvider from "./src/context/CookiesContext";
-import { checkFontsLoaded } from "./src/helpers/loadFonts";
-import GTMScript from "./src/components/GTMScript/GTMScript";
-
-export function wrapPageElement({ element, props }) {
-  const { pageContext: { locale = "en" } = {} } = props || {};
-  const { location } = props;
-  checkFontsLoaded();
-
-  return (
-    <IntlProvider
-      locale={locale}
-      defaultLocale="en"
-      messages={intlMessages[locale]}
-    >
-      <LocaleContext.Provider value={{ locale: locale }}>
-        <CookiesProvider location={location}>
-          <GTMScript />
-          {element}
-        </CookiesProvider>
-      </LocaleContext.Provider>
-    </IntlProvider>
-  );
-}
+export const wrapPageElement = wrapPage;
 
 export function onClientEntry() {
   return new Promise((resolve, reject) => {
