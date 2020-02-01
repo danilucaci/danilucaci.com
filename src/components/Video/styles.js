@@ -20,13 +20,13 @@ export const FigCaption = styled.figcaption`
   line-height: ${theme.font.lineHeight.body.s};
   color: ${theme.color.text.subdued};
   margin-top: ${rem(16)};
+  font-weight: 400;
+  font-style: normal;
   font-family: ${theme.font.family.body.fallback};
 
   .fonts-loaded & {
     font-family: ${theme.font.family.body.regular};
   }
-  font-weight: 400;
-  font-style: normal;
 `;
 
 export const StyledVideo = styled.video`
@@ -39,36 +39,61 @@ export const StyledVideo = styled.video`
   bottom: 0px;
   left: 0px;
   opacity: 1;
+  transition: opacity 600ms ease 0s;
+  box-shadow: ${theme.shadow.image} !important;
 
   ${({ jsLoaded }) => jsLoaded && "opacity: 0;"}
 
-  transition: opacity 600ms ease 0s;
-
   ${({ inView }) =>
     inView &&
-    `
-    opacity: 1;
-  `}
-
-  box-shadow: ${theme.shadow.image} !important;
+    css`
+      opacity: 1;
+    `}
 `;
 
-export const VideoIphoneXWrapper = styled.span`
+export const VideoOuterWrapper = styled.span`
   position: relative;
   display: block;
   width: 100%;
-  max-width: ${rem(288)};
 
-  ${mediaMin.xxs`
-    max-width: ${rem(375)};
-  `};
+  ${handleVideoSize}
 `;
 
-export const VideoIphoneXInner = styled.span`
-  padding-bottom: 216.53333333333333%;
+export const VideoInnerWrapper = styled.span`
+  background-color: ${theme.color.background.section.lightest};
   position: relative;
   bottom: 0;
   left: 0;
-  background-color: ${theme.color.background.section.lightest};
   display: block;
+`;
+
+function handleVideoSize({ videoWidth, videoHeight }) {
+  if (videoWidth && videoHeight) {
+    if (videoWidth === 375 && videoHeight === 812) {
+      return css`
+        & .video-inner-wrapper {
+          padding-bottom: ${(videoHeight / videoWidth) * 100}%;
+        }
+
+        max-width: ${rem(288)};
+
+        ${mediaMin.xxs`
+          max-width: ${rem(375)};
+        `};
+      `;
+    } else {
+      return css`
+        & .video-inner-wrapper {
+          padding-bottom: ${(videoHeight / videoWidth) * 100}%;
+        }
+      `;
+    }
+  }
+}
+
+export const FallbackVideo = styled.video`
+  box-shadow: ${theme.shadow.image} !important;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
 `;

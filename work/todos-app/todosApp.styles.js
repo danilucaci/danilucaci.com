@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components";
 import { theme, rem, mediaMin } from "../../src/theme/theme";
-import { Copy } from "../../src/components/Copy/Copy";
 import { Subhead } from "../../src/components/Headings/Headings";
 import { Row, RowNested, RowSpacer, Col } from "../../src/components/Grid/Grid";
 
@@ -8,37 +7,21 @@ export const AltRowBackground = styled(RowSpacer)`
   background-color: ${theme.color.background.section.lightest};
 `;
 
-export const ProcessRow = styled(Row)``;
-
-export const ProcessTitle = styled(Col)`
-  margin-bottom: ${rem(16)};
-
-  ${mediaMin.s`
-    margin-bottom: ${rem(32)};
-  `};
-
-  width: 100%;
-`;
-
-export const ProcessCol = styled(Col)`
-  & h3 {
-    background-color: ${theme.color.background.section.light};
-    display: inline-block;
-    border-radius: ${theme.borderRadius.default};
-    padding: ${rem(4)} ${rem(8)};
+export const StyledCol = styled(Col)`
+  h2:first-child {
     margin-top: 0;
-    margin-bottom: ${rem(16)};
-    margin-left: -${rem(4)};
-
-    font-size: ${theme.font.size.display.mobile.h5};
-    line-height: ${theme.font.lineHeight.display.mobile.h5};
-
-    ${mediaMin.xs`
-      font-size: ${theme.font.size.display.desktop.h5};
-      line-height: ${theme.font.lineHeight.display.desktop.h5};
-    `}
   }
 
+  h3:first-child {
+    margin-top: 0;
+  }
+`;
+
+export const StyledSubhead = styled(Subhead)`
+  margin-bottom: ${rem(16)} !important;
+`;
+
+export const TechStackCol = styled(Col)`
   margin-bottom: ${rem(24)};
 
   & ul {
@@ -48,6 +31,10 @@ export const ProcessCol = styled(Col)`
 
   max-width: calc(50% - ${theme.layout.gutter.s});
   flex-basis: calc(50% - ${theme.layout.gutter.s});
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 
   ${mediaMin.s`
     max-width: calc((100% / 12 * 4) - ${theme.layout.gutter.m});
@@ -60,90 +47,55 @@ export const ProcessCol = styled(Col)`
   `};
 `;
 
-export const ScreenshotRow = styled(RowNested)`
-  ${({ center }) =>
-    center &&
-    css`
-      ${mediaMin.xxl`
-        align-items: center;
-      `};
-    `};
-`;
-
-export const InfoCol = styled(Col)`
-  & h4 {
-    margin-top: 0;
-
-    font-size: ${theme.font.size.display.mobile.h5};
-    line-height: ${theme.font.lineHeight.display.mobile.h5};
-
-    ${mediaMin.xs`
-      font-size: ${theme.font.size.display.desktop.h5};
-      line-height: ${theme.font.lineHeight.display.desktop.h5};
-    `}
-  }
-`;
-
-export const ScreenshotCol = styled(Col)``;
-
-export const MobileScreenshot = styled.div`
-  margin-bottom: ${rem(32)};
-
-  max-width: ${rem(288)};
-
-  ${mediaMin.xxs`
-    max-width: ${rem(360)};
-  `};
+export const TechStackRow = styled(RowNested)`
+  margin-top: ${rem(32)};
 
   ${mediaMin.xl`
-    margin-left: auto;
-    margin-right: auto;
+    margin-top: ${rem(64)};
   `};
-
-  & > figure {
-    margin: 0;
-  }
-
-  & > p {
-    width: 100%;
-  }
-
-  h3 {
-    margin-bottom: ${rem(32)};
-  }
-
-  h4 {
-    margin-top: 0;
-  }
 `;
 
-export const StyledSubhead = styled(Subhead)`
-  margin-bottom: ${rem(16)} !important;
+export const ImageRow = styled(Row)`
+  align-items: center;
 
-  ${mediaMin.s`
-    margin-bottom: ${rem(32)};
+  ${mediaMin.l`
+    ${({ reverse }) =>
+      reverse &&
+      css`
+        flex-direction: row-reverse;
+      `};
   `};
-
-  width: 100%;
 `;
 
-export const SeparatedSubhead = styled(Subhead)`
-  margin-top: ${rem(64)} !important;
-  margin-bottom: ${rem(16)} !important;
-
-  ${mediaMin.s`
-    margin-bottom: ${rem(32)};
-  `};
-
-  width: 100%;
+export const ImageCol = styled(Col)`
+  align-items: center;
 `;
 
-export const StyledCol = styled(Col)`
-  h2:first-child {
+export const ImageCopy = styled.div`
+  & h3 {
     margin-top: 0;
+    margin-bottom: ${rem(16)};
   }
 
-  h3:first-child {
-    margin-top: 0;
-  }
+  ${mediaMin.l`
+    padding-right: ${rem(24)};
+
+    ${({ reverse }) =>
+      reverse &&
+      css`
+        padding-right: 0;
+        padding-left: ${rem(24)};
+      `};
+  `};
+
+  ${mediaMin.xxxl`
+    padding-right: ${rem(80)};
+
+    ${({ reverse }) =>
+      reverse &&
+      css`
+        padding-right: 0;
+        padding-left: ${rem(80)};
+      `};
+  `};
 `;

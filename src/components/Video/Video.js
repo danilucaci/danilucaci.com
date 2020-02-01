@@ -1,20 +1,50 @@
 import React, { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
-import { string, bool } from "prop-types";
+import { string, number, bool } from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
-import { FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
 
 import {
   Figure,
   FigCaption,
   StyledVideo,
-  VideoIphoneXWrapper,
-  VideoIphoneXInner,
+  VideoOuterWrapper,
+  VideoInnerWrapper,
+  FallbackVideo,
 } from "./styles";
+
+function getVideoSrc({ videos = [], src = "", extension = "" }) {
+  const result = videos.edges.find(
+    (video) =>
+      video.node.relativePath === src && video.node.extension === extension,
+  );
+
+  if (result && result.node && result.node.publicURL) {
+    return result.node.publicURL;
+  } else {
+    return null;
+  }
+}
+
+function getPosterSrc({ videos = [], src = "" }) {
+  const result = videos.edges.find(
+    (video) =>
+      video.node.relativePath === src &&
+      video.node.extension.match(/png|jpeg|jpg/),
+  );
+
+  if (result && result.node && result.node.publicURL) {
+    return result.node.publicURL;
+  } else {
+    return null;
+  }
+}
 
 function Video({
   caption,
   expand,
+  videoWidth,
+  videoHeight,
   webmSrc,
   mp4Src,
   gifSrc,
@@ -29,46 +59,47 @@ function Video({
   });
 
   const [jsLoaded, setJSLoaded] = useState(false);
+  const intl = useIntl();
 
   useEffect(() => {
     setJSLoaded(true);
   }, [jsLoaded]);
 
   const { videos } = useStaticQuery(ALL_VIDEOS_QUERY);
-  if (!videos) {
-    throw new Error("Video not found");
-  }
-  const foundWebMSrc = videos.edges.find(
-    (video) =>
-      video.node.relativePath === webmSrc && video.node.extension === "webm",
-  );
-  const foundMp4Src = videos.edges.find(
-    (video) =>
-      video.node.relativePath === mp4Src && video.node.extension === "mp4",
-  );
-  const foundGifSrc = videos.edges.find(
-    (video) =>
-      video.node.relativePath === gifSrc && video.node.extension === "gif",
-  );
-  const foundPosterSrc = videos.edges.find(
-    (video) =>
-      video.node.relativePath === posterSrc && video.node.extension === "png",
-  );
 
-  // console.groupCollapsed("Video Lazy Loaded");
-  // console.log("----------------------------");
-  // console.log("got webmSrc: ", webmSrc);
-  // console.log("found relativePath: ", foundWebMSrc.node.relativePath);
-  // console.log("found publicURL: ", foundWebMSrc.node.publicURL);
-  // console.log("found format: ", foundWebMSrc.node.extension);
-  // console.log("----------------------------");
-  // console.groupEnd();
+  if (!videos) {
+    if (process.env.NODE_ENV === "development") {
+      throw new Error("Videos not found!");
+    }
+
+    return null;
+  }
+
+  const videoWebMSrc = getVideoSrc({
+    videos: videos,
+    src: webmSrc,
+    extension: "webm",
+  });
+
+  const videoMp4Src = getVideoSrc({
+    videos: videos,
+    src: mp4Src,
+    extension: "mp4",
+  });
+
+  const fallbackGifSrc = getVideoSrc({
+    videos: videos,
+    src: gifSrc,
+    extension: "gif",
+  });
+
+  const videoPosterSrc = getPosterSrc({ videos: videos, src: posterSrc });
 
   return (
     <Figure expand={expand}>
-      <VideoIphoneXWrapper>
-        <VideoIphoneXInner ref={ref}>
-          {jsLoaded && (
+      {jsLoaded && (
+        <VideoOuterWrapper videoWidth={videoWidth} videoHeight={videoHeight}>
+          <VideoInnerWrapper className="video-inner-wrapper" ref={ref}>
             <StyledVideo
               loop
               muted
@@ -76,25 +107,20 @@ function Video({
               controls
               preload="none"
               crossOrigin="anonymous"
-              poster={foundPosterSrc.node.publicURL || ""}
+              poster={videoPosterSrc || ""}
               inView={inView}
               jsLoaded={jsLoaded}
             >
               {inView && (
                 <>
-                  {foundWebMSrc && (
-                    <source
-                      src={foundWebMSrc.node.publicURL}
-                      type="video/webm"
-                    />
+                  {videoWebMSrc && (
+                    <source src={videoWebMSrc} type="video/webm" />
                   )}
-                  {foundMp4Src && (
-                    <source src={foundMp4Src.node.publicURL} type="video/mp4" />
-                  )}
-                  {foundGifSrc && (
+                  {videoMp4Src && <source src={videoMp4Src} type="video/mp4" />}
+                  {fallbackGifSrc && (
                     <>
                       <p>{gifBrowserSupport}</p>
-                      <a href={foundGifSrc.node.publicURL} alt={gifAlt}>
+                      <a href={fallbackGifSrc} alt={gifAlt}>
                         {gifAlt}
                       </a>
                     </>
@@ -102,38 +128,32 @@ function Video({
                 </>
               )}
             </StyledVideo>
-          )}
+          </VideoInnerWrapper>
+        </VideoOuterWrapper>
+      )}
 
-          <noscript>
-            <StyledVideo
-              loop
-              muted
-              playsInline
-              controls
-              preload="none"
-              poster={foundPosterSrc.node.publicURL || ""}
-            >
-              {foundWebMSrc && (
-                <source src={foundWebMSrc.node.publicURL} type="video/webm" />
-              )}
-              {foundMp4Src && (
-                <source src={foundMp4Src.node.publicURL} type="video/mp4" />
-              )}
-              {foundGifSrc && (
-                <>
-                  <p>{gifBrowserSupport}</p>
-                  <a href={foundGifSrc.node.publicURL} alt={gifAlt}>
-                    {gifAlt}
-                  </a>
-                </>
-              )}
-              <FormattedMessage id="js.disabled">
-                {(txt) => <p>{txt}</p>}
-              </FormattedMessage>
-            </StyledVideo>
-          </noscript>
-        </VideoIphoneXInner>
-      </VideoIphoneXWrapper>
+      <noscript>
+        <FallbackVideo
+          loop
+          muted
+          playsInline
+          controls
+          preload="none"
+          poster={videoPosterSrc || ""}
+        >
+          {videoWebMSrc && <source src={videoWebMSrc} type="video/webm" />}
+          {videoMp4Src && <source src={videoMp4Src} type="video/mp4" />}
+          {fallbackGifSrc && (
+            <>
+              <p>{gifBrowserSupport}</p>
+              <a href={fallbackGifSrc} alt={gifAlt}>
+                {gifAlt}
+              </a>
+            </>
+          )}
+          <p>{intl.formatMessage({ id: "js.disabled" })}</p>
+        </FallbackVideo>
+      </noscript>
       <FigCaption>{caption}</FigCaption>
     </Figure>
   );
@@ -147,6 +167,8 @@ Video.propTypes = {
   gifSrc: string.isRequired,
   gifAlt: string.isRequired,
   gifBrowserSupport: string.isRequired,
+  videoWidth: number.isRequired,
+  videoHeight: number.isRequired,
   expand: bool,
 };
 

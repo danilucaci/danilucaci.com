@@ -592,6 +592,8 @@ algún momento durante su búsqueda.
   gifSrc="movie-app/es/estudio_de_caso_ux_prototipo_busqueda_peliculas.gif"
   gifBrowserSupport="Su navegador no soporta video HTML5."
   gifAlt="Ver el GIF del prototipo de alta fidelidad de las opciones de búsqueda de películas."
+  videoWidth={375}
+  videoHeight={812}
 />
 
 </StyledCol>
@@ -608,6 +610,8 @@ algún momento durante su búsqueda.
   gifSrc="movie-app/es/estudio_de_caso_ux_prototipo_filtrado_peliculas.gif"
   gifBrowserSupport="Su navegador no soporta video HTML5."
   gifAlt="Ver el GIF del prototipo de las opciones de filtrado de películas."
+  videoWidth={375}
+  videoHeight={812}
 />
 
 </StyledCol>
@@ -624,6 +628,8 @@ algún momento durante su búsqueda.
   gifSrc="movie-app/es/estudio_de_caso_ux_prototipo_seleccion_asientos.gif"
   gifBrowserSupport="Su navegador no soporta video HTML5."
   gifAlt="Ver el GIF del prototipo de las opciones de selección de asientos."
+  videoWidth={375}
+  videoHeight={812}
 />
 
 </StyledCol>
@@ -853,6 +859,8 @@ correos electrónicos de marketing.
   gifSrc="movie-app/es/estudio_de_caso_ux_prototipo_pago_como_invitado.gif"
   gifBrowserSupport="Su navegador no soporta video HTML5."
   gifAlt="Ver el GIF del prototipo de alta fidelidad de la experiencia de pago como invitados."
+  videoWidth={375}
+  videoHeight={812}
 />
 
 </StyledCol>
@@ -1052,6 +1060,8 @@ información de los metodos de envio.
   gifSrc="movie-app/es/estudio_de_caso_ux_prototipo_pago_club_socios.gif"
   gifBrowserSupport="Su navegador no soporta video HTML5."
   gifAlt="Ver el GIF del prototipo de alta fidelidad del proceso de alta del club de socios."
+  videoWidth={375}
+  videoHeight={812}
 />
 
 </StyledCol>

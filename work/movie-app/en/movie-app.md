@@ -571,6 +571,8 @@ tested, tried to apply several filters at some point during their search.
   gifSrc="movie-app/en/ux_case_study_movie_searching_prototype.gif"
   gifBrowserSupport="Your browser does not support HTML5 video."
   gifAlt="View the GIF version of the movie searching feature prototype."
+  videoWidth={375}
+  videoHeight={812}
 />
 
 </StyledCol>
@@ -587,6 +589,8 @@ tested, tried to apply several filters at some point during their search.
   gifSrc="movie-app/en/ux_case_study_movie_filtering_prototype.gif"
   gifBrowserSupport="Your browser does not support HTML5 video."
   gifAlt="View the gif version of the movie filtering interaction prototype."
+  videoWidth={375}
+  videoHeight={812}
 />
 
 </StyledCol>
@@ -603,6 +607,8 @@ tested, tried to apply several filters at some point during their search.
   gifSrc="movie-app/en/ux_case_study_seat_choosing_prototype.gif"
   gifBrowserSupport="Your browser does not support HTML5 video."
   gifAlt="View the gif version of the movie filtering interaction prototype."
+  videoWidth={375}
+  videoHeight={812}
 />
 
 </StyledCol>
@@ -822,6 +828,8 @@ it’s just so that you can send them marketing emails.
   gifSrc="movie-app/en/ux_case_study_guest_checkout_prototype.gif"
   gifBrowserSupport="Your browser does not support HTML5 video."
   gifAlt="View the GIF version of the guest checkout final prototype."
+  videoWidth={375}
+  videoHeight={812}
 />
 
 </StyledCol>
@@ -1010,6 +1018,8 @@ amazon.co.uk’s checkout flow.
   gifSrc="movie-app/en/ux_case_study_membership_checkout_prototype.gif"
   gifBrowserSupport="Your browser does not support HTML5 video."
   gifAlt="View the GIF version of the seat choosing process prototype."
+  videoWidth={375}
+  videoHeight={812}
 />
 
 </StyledCol>
