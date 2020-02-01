@@ -8,7 +8,11 @@ function useImage(src) {
   );
 
   if (!foundImage) {
-    throw new Error("Image not found: ", src);
+    if (process.env.NODE_ENV === "development") {
+      throw new Error("useImage: Image not found: ", src);
+    }
+
+    return null;
   }
 
   return foundImage === "" ? "" : foundImage;

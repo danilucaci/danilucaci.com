@@ -9,7 +9,11 @@ const Image = ({ src, caption, expand, noShadow, ariaOnlyCaption }) => {
   const foundImage = useImage(src);
 
   if (!foundImage) {
-    throw new Error("Image not found: ", src);
+    if (process.env.NODE_ENV === "development") {
+      throw new Error("Image: Image not found: ", src);
+    }
+
+    return null;
   }
 
   return (
