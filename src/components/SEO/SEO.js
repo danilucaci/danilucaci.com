@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { string, bool, object } from "prop-types";
-import Helmet from "react-helmet";
+import { Helmet } from "react-helmet";
 import urljoin from "url-join";
 import config from "../../../data/SiteConfig";
 import LocaleContext from "../../i18n/LocaleContext";
