@@ -65,9 +65,6 @@ export const StyledMenuList = styled(MenuList)`
   animation: ${SlideDown} 200ms ease;
   padding: ${rem(8)} 0 !important;
 
-  position: absolute;
-  top: 0;
-  right: 0;
   width: ${rem(164)};
 
   &:hover,

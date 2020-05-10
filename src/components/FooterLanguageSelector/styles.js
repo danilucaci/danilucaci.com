@@ -83,15 +83,9 @@ export const StyledMenuList = styled(MenuList)`
   animation: ${SlideDown} 200ms ease;
   padding: ${rem(8)} 0 !important;
 
-  position: absolute;
-  bottom: ${rem(40)};
-  left: 0;
+  width: ${rem(180)};
 
-  width: ${rem(240)};
-
-  ${mediaMin.s`
-    left: auto;
-    right: 1px;
+  ${mediaMin.m`
     width: ${rem(200)};
   `};
 
