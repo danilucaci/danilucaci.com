@@ -74,6 +74,9 @@ module.exports = {
     {
       resolve: "gatsby-plugin-mdx",
       options: {
+        options: {
+          timeToRead: (wordCount) => wordCount / 42,
+        },
         extensions: [".mdx", ".md"],
         gatsbyRemarkPlugins: [
           {
