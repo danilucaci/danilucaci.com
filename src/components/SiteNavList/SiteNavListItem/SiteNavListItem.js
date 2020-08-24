@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { string, node } from "prop-types";
 
 import { Link } from "gatsby";
 
@@ -10,8 +10,9 @@ import { StyledSiteNavListItem } from "./styles";
  * this link will be active when itself or deeper routes
  * are current
  */
-const isPartiallyActive = ({ isPartiallyCurrent }) =>
-  isPartiallyCurrent ? { className: "current-nav-item" } : null;
+const isPartiallyActive = ({ isPartiallyCurrent }) => {
+  return isPartiallyCurrent ? { className: "current-nav-item" } : null;
+};
 
 const SiteNavListItem = (props) => (
   <StyledSiteNavListItem>
@@ -22,8 +23,8 @@ const SiteNavListItem = (props) => (
 );
 
 SiteNavListItem.propTypes = {
-  children: PropTypes.string.isRequired,
-  to: PropTypes.string.isRequired,
+  children: node.isRequired,
+  to: string.isRequired,
 };
 
 export default SiteNavListItem;
