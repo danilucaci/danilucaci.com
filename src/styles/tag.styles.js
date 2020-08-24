@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { theme, mediaMin, rem } from "../theme/theme";
+import { mediaMin, rem } from "../theme/theme";
 import { Row } from "../components/Grid/Grid";
 import { Subhead } from "../components/Headings/Headings";
 
 export const HeaderBackground = styled.header`
-  background-color: ${theme.color.background.section.lightest};
+  background-color: ${({ theme }) => theme.color.background.section.lightest};
 `;
 
 export const PostsRow = styled(Row)`
@@ -23,24 +23,24 @@ export const TagFoundWrapper = styled.div`
 `;
 
 export const TagFoundTitle = styled.span`
-  color: ${theme.colors.grey900};
+  color: ${({ theme }) => theme.colors.grey900};
   display: block;
 
   font-weight: 700;
   font-style: normal;
 
-  font-family: ${theme.font.family.display.fallback};
+  font-family: ${({ theme }) => theme.font.family.display.fallback};
 
   .fonts-loaded & {
-    font-family: ${theme.font.family.display.bold};
+    font-family: ${({ theme }) => theme.font.family.display.bold};
   }
 
-  font-size: ${theme.font.size.display.mobile.h2};
-  line-height: ${theme.font.lineHeight.display.mobile.h2};
+  font-size: ${({ theme }) => theme.font.size.display.mobile.h2};
+  line-height: ${({ theme }) => theme.font.lineHeight.display.mobile.h2};
 
   ${mediaMin.xs`
-    font-size: ${theme.font.size.display.desktop.h2};
-    line-height: ${theme.font.lineHeight.display.desktop.h2};
+    font-size: ${({ theme }) => theme.font.size.display.desktop.h2};
+    line-height: ${({ theme }) => theme.font.lineHeight.display.desktop.h2};
   `}
 `;
 

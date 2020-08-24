@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme, rem, mediaMin } from "../theme/theme";
+import { rem, mediaMin } from "../theme/theme";
 import { Copy } from "../components/Copy/Copy";
 import LoadComments from "../components/LoadComments/LoadComments";
 import { Row } from "../components/Grid/Grid";
@@ -46,7 +46,7 @@ export const SocialShareWrapper = styled.div`
 `;
 
 export const IntroContainer = styled.div`
-  max-width: ${theme.layout.col8.inner};
+  max-width: ${({ theme }) => theme.layout.col8.inner};
   margin-left: auto;
   margin-right: auto;
   margin-top: ${rem(32)};
@@ -129,58 +129,62 @@ export const PostContentRow = styled(Row)`
       right: ${rem(16)};
     `};
 
-    background-color: ${theme.color.background.outlined.enabled};
-    border: ${theme.size.border.button.default}
-      ${theme.color.border.outlined.enabled} solid;
-    border-radius: ${theme.borderRadius.button};
-    color: ${theme.color.text.button.outlined.enabled} !important;
+    background-color: ${({ theme }) => theme.color.background.outlined.enabled};
+    border: ${({ theme }) => theme.size.border.button.default}
+      ${({ theme }) => theme.color.border.outlined.enabled} solid;
+    border-radius: ${({ theme }) => theme.borderRadius.button};
+    color: ${({ theme }) =>
+      theme.color.text.button.outlined.enabled} !important;
 
     text-align: center;
-    font-size: ${theme.font.size.button.default};
-    line-height: ${theme.font.lineHeight.button.default};
+    font-size: ${({ theme }) => theme.font.size.button.default};
+    line-height: ${({ theme }) => theme.font.lineHeight.button.default};
     font-style: normal;
     font-weight: 700;
 
     .fonts-loaded & {
-      font-family: ${theme.font.family.body.bold};
+      font-family: ${({ theme }) => theme.font.family.body.bold};
     }
 
-    padding: ${theme.spacing.button.s.vertical}
-      ${theme.spacing.button.s.horizontal};
-    height: ${theme.size.button.height.s};
+    padding: ${({ theme }) => theme.spacing.button.s.vertical}
+      ${({ theme }) => theme.spacing.button.s.horizontal};
+    height: ${({ theme }) => theme.size.button.height.s};
 
     &:hover {
       cursor: pointer;
-      background-color: ${theme.color.background.outlined.hover};
-      border: ${theme.size.border.button.default}
-        ${theme.color.border.outlined.hover} solid;
-      box-shadow: ${theme.shadow.button.outlined.hover};
+      background-color: ${({ theme }) => theme.color.background.outlined.hover};
+      border: ${({ theme }) => theme.size.border.button.default}
+        ${({ theme }) => theme.color.border.outlined.hover} solid;
+      box-shadow: ${({ theme }) => theme.shadow.button.outlined.hover};
     }
 
     &:focus {
       cursor: pointer;
-      background-color: ${theme.color.background.outlined.focus};
-      box-shadow: ${theme.shadow.button.outlined.focus};
-      border: ${theme.size.border.button.focus}
-        ${theme.color.border.outlined.focus} solid;
+      background-color: ${({ theme }) => theme.color.background.outlined.focus};
+      box-shadow: ${({ theme }) => theme.shadow.button.outlined.focus};
+      border: ${({ theme }) => theme.size.border.button.focus}
+        ${({ theme }) => theme.color.border.outlined.focus} solid;
       outline: none;
     }
 
     &:active {
       cursor: pointer;
-      background-color: ${theme.color.background.outlined.active};
-      border: ${theme.size.border.button.default}
-        ${theme.color.border.outlined.active} solid;
+      background-color: ${({ theme }) =>
+        theme.color.background.outlined.active};
+      border: ${({ theme }) => theme.size.border.button.default}
+        ${({ theme }) => theme.color.border.outlined.active} solid;
       outline: none;
       box-shadow: none;
     }
 
     &:disabled {
-      color: ${theme.color.text.button.outlined.disabled} !important;
+      color: ${({ theme }) =>
+        theme.color.text.button.outlined.disabled} !important;
       cursor: pointer;
-      background-color: ${theme.color.background.disabled.default};
-      border: ${theme.size.border.button.default}
-        ${theme.color.border.outlined.disabled} solid;
+      background-color: ${({ theme }) =>
+        theme.color.background.disabled.default};
+      border: ${({ theme }) => theme.size.border.button.default}
+        ${({ theme }) => theme.color.border.outlined.disabled} solid;
       outline: none;
       box-shadow: none;
 
@@ -200,7 +204,7 @@ export const PostContentRow = styled(Row)`
   }
 
   & .toc {
-    background-color: ${theme.colors.grey50};
+    background-color: ${({ theme }) => theme.colors.grey50};
     padding: ${rem(32)} ${rem(16)};
 
     margin-bottom: ${rem(64)};
@@ -239,17 +243,17 @@ export const PostContentRow = styled(Row)`
 
     & ul a {
       display: block;
-      color: ${theme.colors.grey900};
+      color: ${({ theme }) => theme.colors.grey900};
       text-decoration: none;
       font-style: normal;
       font-weight: 400;
       padding: ${rem(8)} 0;
 
-      font-family: ${theme.font.family.body.regular};
+      font-family: ${({ theme }) => theme.font.family.body.regular};
 
       &:visited,
       &:link {
-        color: ${theme.colors.grey900};
+        color: ${({ theme }) => theme.colors.grey900};
       }
 
       &:hover {

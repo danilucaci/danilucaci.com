@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme, mediaMin, mediaMax, rem } from "../theme/theme";
+import { mediaMin, mediaMax, rem } from "../theme/theme";
 import { Copy } from "../components/Copy/Copy";
 import { Row, RowSpacer } from "../components/Grid/Grid";
 
@@ -18,55 +18,57 @@ export const IndexTitle = styled.h1`
 
   white-space: pre-line;
 
-  font-size: ${theme.font.size.display.mobile.h2};
-  line-height: ${theme.font.lineHeight.display.mobile.h2};
+  font-size: ${({ theme }) => theme.font.size.display.mobile.h2};
+  line-height: ${({ theme }) => theme.font.lineHeight.display.mobile.h2};
 
   ${mediaMin.m`
-    font-size: ${theme.font.size.display.desktop.h1};
-    line-height: ${theme.font.lineHeight.display.desktop.h1};
+    font-size: ${({ theme }) => theme.font.size.display.desktop.h1};
+    line-height: ${({ theme }) => theme.font.lineHeight.display.desktop.h1};
   `};
 `;
 
 export const Subtitle = styled.p`
-  color: ${theme.color.text.subdued};
-  font-size: ${theme.font.size.display.mobile.subtitle};
-  line-height: ${theme.font.lineHeight.display.mobile.subtitle};
+  color: ${({ theme }) => theme.color.text.subdued};
+  font-size: ${({ theme }) => theme.font.size.display.mobile.subtitle};
+  line-height: ${({ theme }) => theme.font.lineHeight.display.mobile.subtitle};
 
   ${mediaMin.s`
-    font-size: ${theme.font.size.display.desktop.subtitle};
-    line-height: ${theme.font.lineHeight.display.desktop.subtitle};
+    font-size: ${({ theme }) => theme.font.size.display.desktop.subtitle};
+    line-height: ${({ theme }) =>
+      theme.font.lineHeight.display.desktop.subtitle};
   `};
 
-  font-family: ${theme.font.family.display.fallback};
+  font-family: ${({ theme }) => theme.font.family.display.fallback};
   font-weight: 400;
 
   .fonts-loaded & {
-    font-family: ${theme.font.family.body.regular};
+    font-family: ${({ theme }) => theme.font.family.body.regular};
   }
 
   margin-bottom: ${rem(16)};
 `;
 
 export const FindOutMore = styled.p`
-  color: ${theme.color.text.subdued};
-  font-size: ${theme.font.size.display.mobile.subtitle};
-  line-height: ${theme.font.lineHeight.display.mobile.subtitle};
+  color: ${({ theme }) => theme.color.text.subdued};
+  font-size: ${({ theme }) => theme.font.size.display.mobile.subtitle};
+  line-height: ${({ theme }) => theme.font.lineHeight.display.mobile.subtitle};
 
   ${mediaMin.s`
-    font-size: ${theme.font.size.display.desktop.subtitle};
-    line-height: ${theme.font.lineHeight.display.desktop.subtitle};
+    font-size: ${({ theme }) => theme.font.size.display.desktop.subtitle};
+    line-height: ${({ theme }) =>
+      theme.font.lineHeight.display.desktop.subtitle};
   `};
 
-  font-family: ${theme.font.family.display.fallback};
+  font-family: ${({ theme }) => theme.font.family.display.fallback};
   font-weight: 400;
 
   .fonts-loaded & {
-    font-family: ${theme.font.family.body.regular};
+    font-family: ${({ theme }) => theme.font.family.body.regular};
   }
 `;
 
 export const ServicesRowBackground = styled(RowSpacer)`
-  background-color: ${theme.color.background.section.lightest};
+  background-color: ${({ theme }) => theme.color.background.section.lightest};
 `;
 
 export const ServicesRow = styled(Row)`
@@ -75,7 +77,7 @@ export const ServicesRow = styled(Row)`
 `;
 
 export const ServicesEntry = styled.div`
-  border-top: 1px solid ${theme.colors.grey300};
+  border-top: 1px solid ${({ theme }) => theme.colors.grey300};
   display: block;
 
   padding-top: ${rem(40)};
@@ -95,13 +97,13 @@ export const ServicesEntry = styled.div`
 `;
 
 export const ServicesTitle = styled.h2`
-  font-size: ${theme.font.size.display.mobile.h2};
-  line-height: ${theme.font.lineHeight.display.mobile.h2};
+  font-size: ${({ theme }) => theme.font.size.display.mobile.h2};
+  line-height: ${({ theme }) => theme.font.lineHeight.display.mobile.h2};
   margin-bottom: ${rem(32)};
 
   ${mediaMin.m`
-    font-size: ${theme.font.size.display.desktop.h2};
-    line-height: ${theme.font.lineHeight.display.desktop.h2};
+    font-size: ${({ theme }) => theme.font.size.display.desktop.h2};
+    line-height: ${({ theme }) => theme.font.lineHeight.display.desktop.h2};
   `};
 `;
 

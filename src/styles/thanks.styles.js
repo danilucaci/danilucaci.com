@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme, mediaMin, rem } from "../theme/theme";
+import { mediaMin, rem } from "../theme/theme";
 import { Copy } from "../components/Copy/Copy";
 import { HR } from "../components/HR/HR";
 import { Row } from "../components/Grid/Grid";
@@ -11,11 +11,11 @@ export const ThanksPageRow = styled(Row)`
   }
 
   ${mediaMin.m`
-     margin-top: ${theme.spacing.row.m}; 
+     margin-top: ${({ theme }) => theme.spacing.row.m}; 
   `};
 
   ${mediaMin.xl`
-     margin-top: ${theme.spacing.row.xl}; 
+     margin-top: ${({ theme }) => theme.spacing.row.xl}; 
   `};
 `;
 
@@ -24,12 +24,12 @@ export const StyledH1 = styled.h1`
   width: 100%;
   margin-bottom: ${rem(24)};
 
-  font-size: ${theme.font.size.display.mobile.h2};
-  line-height: ${theme.font.lineHeight.display.mobile.h2};
+  font-size: ${({ theme }) => theme.font.size.display.mobile.h2};
+  line-height: ${({ theme }) => theme.font.lineHeight.display.mobile.h2};
 
   ${mediaMin.m`
-    font-size: ${theme.font.size.display.desktop.h1};
-    line-height: ${theme.font.lineHeight.display.desktop.h1};
+    font-size: ${({ theme }) => theme.font.size.display.desktop.h1};
+    line-height: ${({ theme }) => theme.font.lineHeight.display.desktop.h1};
   `}
 `;
 
@@ -45,12 +45,13 @@ export const ThanksAgainCopy = styled(Copy)`
 export const Subtitle = styled.p`
   margin-bottom: ${rem(32)};
 
-  font-size: ${theme.font.size.display.mobile.subtitle};
-  line-height: ${theme.font.lineHeight.display.mobile.subtitle};
+  font-size: ${({ theme }) => theme.font.size.display.mobile.subtitle};
+  line-height: ${({ theme }) => theme.font.lineHeight.display.mobile.subtitle};
 
   ${mediaMin.s`
-    font-size: ${theme.font.size.display.desktop.subtitle};
-    line-height: ${theme.font.lineHeight.display.desktop.subtitle};
+    font-size: ${({ theme }) => theme.font.size.display.desktop.subtitle};
+    line-height: ${({ theme }) =>
+      theme.font.lineHeight.display.desktop.subtitle};
   `};
 `;
 

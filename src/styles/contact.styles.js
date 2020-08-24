@@ -1,17 +1,17 @@
 import styled from "styled-components";
-import { theme, mediaMin, rem } from "../theme/theme";
+import { mediaMin, rem } from "../theme/theme";
 import { Copy } from "../components/Copy/Copy";
 import { HR } from "../components/HR/HR";
 import { Row } from "../components/Grid/Grid";
 import ExternalLink from "../components/ExternalLink/ExternalLink";
 
 export const ContactPageRow = styled(Row)`
-  max-width: ${theme.layout.col6.wrapper};
+  max-width: ${({ theme }) => theme.layout.col6.wrapper};
   margin-left: auto;
   margin-right: auto;
 
   ${mediaMin.xl`
-    max-width: ${theme.layout.col12.wrapper};
+    max-width: ${({ theme }) => theme.layout.col12.wrapper};
   `};
 `;
 
@@ -19,15 +19,15 @@ export const H1 = styled.h1`
   display: block;
   margin-bottom: ${rem(16)};
 
-  font-size: ${theme.font.size.display.mobile.h2};
-  line-height: ${theme.font.lineHeight.display.mobile.h2};
+  font-size: ${({ theme }) => theme.font.size.display.mobile.h2};
+  line-height: ${({ theme }) => theme.font.lineHeight.display.mobile.h2};
 
   ${mediaMin.xs`
-    font-size: ${theme.font.size.display.desktop.h2};
+    font-size: ${({ theme }) => theme.font.size.display.desktop.h2};
   `}
 
   ${mediaMin.xs`
-    line-height: ${theme.font.lineHeight.display.desktop.h2};
+    line-height: ${({ theme }) => theme.font.lineHeight.display.desktop.h2};
   `}
 `;
 
@@ -60,12 +60,12 @@ export const SayHiTitle = styled.h2`
   margin-top: ${rem(24)};
   margin-bottom: ${rem(16)};
 
-  font-size: ${theme.font.size.display.mobile.h4};
-  line-height: ${theme.font.lineHeight.display.mobile.h4};
+  font-size: ${({ theme }) => theme.font.size.display.mobile.h4};
+  line-height: ${({ theme }) => theme.font.lineHeight.display.mobile.h4};
 
   ${mediaMin.xs`
-    font-size: ${theme.font.size.display.desktop.h4};
-    line-height: ${theme.font.lineHeight.display.desktop.h4};
+    font-size: ${({ theme }) => theme.font.size.display.desktop.h4};
+    line-height: ${({ theme }) => theme.font.lineHeight.display.desktop.h4};
   `}
 
   ${mediaMin.l`  

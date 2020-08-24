@@ -1,5 +1,5 @@
 import styled, { keyframes, css } from "styled-components";
-import { theme, rem, mediaMin } from "../theme/theme";
+import { rem, mediaMin } from "../theme/theme";
 import { Copy } from "../components/Copy/Copy";
 import { Row, RowSpacer, Col } from "../components/Grid/Grid";
 
@@ -8,10 +8,10 @@ export const ArticleWrapper = styled.section`
     margin-bottom: ${rem(32)};
 
     ${mediaMin.l`
-      border-left: 4px solid ${theme.colors.primary600};
-      margin-right: -${theme.layout.gutter.m};
-      margin-left: -${theme.layout.gutter.m};
-      padding: ${rem(8)} ${theme.layout.gutter.m};
+      border-left: 4px solid ${({ theme }) => theme.colors.primary600};
+      margin-right: -${({ theme }) => theme.layout.gutter.m};
+      margin-left: -${({ theme }) => theme.layout.gutter.m};
+      padding: ${rem(8)} ${({ theme }) => theme.layout.gutter.m};
     `};
   }
 
@@ -92,17 +92,17 @@ export const ArticleWrapper = styled.section`
 `;
 
 export const HeaderBackground = styled.header`
-  background-color: ${theme.color.background.section.lightest};
+  background-color: ${({ theme }) => theme.color.background.section.lightest};
 `;
 
 export const PostH1 = styled.h1`
   text-align: center;
-  font-size: ${theme.font.size.display.mobile.h2};
-  line-height: ${theme.font.lineHeight.display.mobile.h2};
+  font-size: ${({ theme }) => theme.font.size.display.mobile.h2};
+  line-height: ${({ theme }) => theme.font.lineHeight.display.mobile.h2};
 
   ${mediaMin.xs`
-    font-size: ${theme.font.size.display.desktop.h1};
-    line-height: ${theme.font.lineHeight.display.desktop.h1};
+    font-size: ${({ theme }) => theme.font.size.display.desktop.h1};
+    line-height: ${({ theme }) => theme.font.lineHeight.display.desktop.h1};
   `}
 
   ${mediaMin.xl`
@@ -117,29 +117,30 @@ export const PostH1 = styled.h1`
 
 export const CaseStudyDescription = styled(Copy)`
   text-align: center;
-  color: ${theme.color.text.default};
-  font-size: ${theme.font.size.display.mobile.subtitle};
-  line-height: ${theme.font.lineHeight.display.mobile.subtitle};
+  color: ${({ theme }) => theme.color.text.default};
+  font-size: ${({ theme }) => theme.font.size.display.mobile.subtitle};
+  line-height: ${({ theme }) => theme.font.lineHeight.display.mobile.subtitle};
 
   max-width: ${rem(760)};
   margin-bottom: ${rem(0)} !important;
 
-  font-family: ${theme.font.family.display.fallback};
+  font-family: ${({ theme }) => theme.font.family.display.fallback};
   font-weight: 400;
 
   .fonts-loaded & {
-    font-family: ${theme.font.family.body.regular};
+    font-family: ${({ theme }) => theme.font.family.body.regular};
   }
 
   ${mediaMin.s`
-    font-size: ${theme.font.size.display.desktop.subtitle};
-    line-height: ${theme.font.lineHeight.display.desktop.subtitle};
+    font-size: ${({ theme }) => theme.font.size.display.desktop.subtitle};
+    line-height: ${({ theme }) =>
+      theme.font.lineHeight.display.desktop.subtitle};
   `};
 `;
 
 export const CaseStudyImgWrapper = styled.div`
   display: block;
-  max-width: ${theme.layout.col8.inner};
+  max-width: ${({ theme }) => theme.layout.col8.inner};
   margin-left: auto;
   margin-right: auto;
 
@@ -148,23 +149,23 @@ export const CaseStudyImgWrapper = styled.div`
 
 export const OverviewRow = styled(Row)`
   & h2 {
-    color: ${theme.color.text.subdued};
+    color: ${({ theme }) => theme.color.text.subdued};
     display: block;
 
     margin-top: 0;
     margin-bottom: ${rem(16)};
 
     text-transform: uppercase;
-    font-size: ${theme.font.size.body.subhead};
-    line-height: ${theme.font.lineHeight.body.subhead};
-    letter-spacing: ${theme.font.letterSpacing.body.subhead};
+    font-size: ${({ theme }) => theme.font.size.body.subhead};
+    line-height: ${({ theme }) => theme.font.lineHeight.body.subhead};
+    letter-spacing: ${({ theme }) => theme.font.letterSpacing.body.subhead};
 
     font-weight: 700;
     font-style: normal;
-    font-family: ${theme.font.family.body.fallback};
+    font-family: ${({ theme }) => theme.font.family.body.fallback};
 
     .fonts-loaded & {
-      font-family: ${theme.font.family.body.bold};
+      font-family: ${({ theme }) => theme.font.family.body.bold};
     }
   }
 
@@ -187,22 +188,22 @@ export const OverviewInfoItem = styled.div`
   margin-bottom: ${rem(32)};
 
   & h3 {
-    color: ${theme.color.text.subdued};
+    color: ${({ theme }) => theme.color.text.subdued};
     display: block;
     margin-top: 0;
     margin-bottom: ${rem(16)};
 
     text-transform: uppercase;
-    font-size: ${theme.font.size.body.subhead};
-    line-height: ${theme.font.lineHeight.body.subhead};
-    letter-spacing: ${theme.font.letterSpacing.body.subhead};
+    font-size: ${({ theme }) => theme.font.size.body.subhead};
+    line-height: ${({ theme }) => theme.font.lineHeight.body.subhead};
+    letter-spacing: ${({ theme }) => theme.font.letterSpacing.body.subhead};
 
     font-weight: 700;
     font-style: normal;
-    font-family: ${theme.font.family.body.fallback};
+    font-family: ${({ theme }) => theme.font.family.body.fallback};
 
     .fonts-loaded & {
-      font-family: ${theme.font.family.body.bold};
+      font-family: ${({ theme }) => theme.font.family.body.bold};
     }
   }
 
@@ -228,14 +229,14 @@ export const OverviewInfoItem = styled.div`
 `;
 
 export const AltRowBackground = styled(RowSpacer)`
-  background-color: ${theme.color.background.section.lightest};
+  background-color: ${({ theme }) => theme.color.background.section.lightest};
 `;
 
 export const ProcessRow = styled(Row)``;
 
 export const ProcessCol = styled(Col)`
   & h4 {
-    background-color: ${theme.color.background.section.light};
+    background-color: ${({ theme }) => theme.color.background.section.light};
     display: inline-block;
     padding: ${rem(4)} ${rem(16)};
     margin-top: 0;
@@ -243,7 +244,7 @@ export const ProcessCol = styled(Col)`
   }
 
   ${mediaMin.s`
-    max-width: calc(20% - ${theme.layout.gutter.m});
-    flex-basis: calc(20% - ${theme.layout.gutter.m});
+    max-width: calc(20% - ${({ theme }) => theme.layout.gutter.m});
+    flex-basis: calc(20% - ${({ theme }) => theme.layout.gutter.m});
   `};
 `;

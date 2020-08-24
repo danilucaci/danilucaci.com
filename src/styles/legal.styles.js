@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme, rem, mediaMin } from "../theme/theme";
+import { rem, mediaMin } from "../theme/theme";
 import { Copy } from "../components/Copy/Copy";
 import { Row } from "../components/Grid/Grid";
 
@@ -16,15 +16,15 @@ export const PostH1 = styled.h1`
 
 export const PostWrapper = styled.div`
   margin-top: ${rem(16)};
-  margin-bottom: ${theme.spacing.row.s};
+  margin-bottom: ${({ theme }) => theme.spacing.row.s};
 
   ${mediaMin.m`
     margin-top: ${rem(32)};
-    margin-bottom: ${theme.spacing.row.m};
+    margin-bottom: ${({ theme }) => theme.spacing.row.m};
   `};
 
   ${mediaMin.xl`
-    margin-bottom: ${theme.spacing.row.xl};
+    margin-bottom: ${({ theme }) => theme.spacing.row.xl};
   `};
 
   h2 {

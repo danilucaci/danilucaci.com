@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme, mediaMin, mediaMax, rem } from "../theme/theme";
+import { mediaMin, mediaMax, rem } from "../theme/theme";
 import { Copy } from "../components/Copy/Copy";
 import { Row, RowSpacer, Col } from "../components/Grid/Grid";
 
@@ -30,12 +30,12 @@ export const HeaderInfoCol = styled(Col)`
 export const AboutMeTitle = styled.h1`
   margin-bottom: ${rem(16)};
 
-  font-size: ${theme.font.size.display.mobile.h2};
-  line-height: ${theme.font.lineHeight.display.mobile.h2};
+  font-size: ${({ theme }) => theme.font.size.display.mobile.h2};
+  line-height: ${({ theme }) => theme.font.lineHeight.display.mobile.h2};
 
   ${mediaMin.xs`
-    font-size: ${theme.font.size.display.desktop.h2};
-    line-height: ${theme.font.lineHeight.display.desktop.h2};
+    font-size: ${({ theme }) => theme.font.size.display.desktop.h2};
+    line-height: ${({ theme }) => theme.font.lineHeight.display.desktop.h2};
   `}
 `;
 
@@ -56,7 +56,7 @@ export const StyledCopy = styled(Copy)`
 `;
 
 export const AltRowBackground = styled(RowSpacer)`
-  background-color: ${theme.color.background.section.lightest};
+  background-color: ${({ theme }) => theme.color.background.section.lightest};
 `;
 
 export const MyWorkTitle = styled.h2`
@@ -76,12 +76,12 @@ export const SkillsTitle = styled.h2`
 `;
 
 export const SkillsSubtitle = styled.h3`
-  font-size: ${theme.font.size.display.mobile.h4};
-  line-height: ${theme.font.lineHeight.display.mobile.h4};
+  font-size: ${({ theme }) => theme.font.size.display.mobile.h4};
+  line-height: ${({ theme }) => theme.font.lineHeight.display.mobile.h4};
 
   ${mediaMin.xs`
-    font-size: ${theme.font.size.display.desktop.h4};
-    line-height: ${theme.font.lineHeight.display.desktop.h4};
+    font-size: ${({ theme }) => theme.font.size.display.desktop.h4};
+    line-height: ${({ theme }) => theme.font.lineHeight.display.desktop.h4};
   `}
 
   margin-bottom: ${rem(16)};
