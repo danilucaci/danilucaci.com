@@ -97,7 +97,10 @@ export const StyledMenuList = styled(MenuList)`
   }
 
   [data-reach-menu-item][data-selected] {
-    background-color: ${theme.color.background.languageSelector.enabled};
+    color: ${theme.color.text.default};
+    cursor: pointer;
+    background-color: ${theme.color.background.languageSelector.hover};
+    outline: 1px ${theme.color.border.default} solid;
   }
 
   & .reach__menu__link {
