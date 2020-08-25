@@ -1,5 +1,4 @@
 const React = require("react");
-
 const gatsby = jest.requireActual("gatsby");
 
 module.exports = {
@@ -12,15 +11,17 @@ module.exports = {
       activeStyle,
       getProps,
       innerRef,
+      partiallyActive,
       ref,
       replace,
       to,
       ...rest
-    }) => React.createElement("a", {
+    }) =>
+      React.createElement("a", {
         ...rest,
-        href: to
+        href: to,
       }),
   ),
   StaticQuery: jest.fn(),
-  useStaticQuery: jest.fn()
+  useStaticQuery: jest.fn(),
 };
