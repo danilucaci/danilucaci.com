@@ -1,31 +1,32 @@
 import React from "react";
 import { number, string } from "prop-types";
-import { FormattedMessage, FormattedDate } from "react-intl";
+import { useIntl } from "react-intl";
 
 import { ArticleDate, ArticleReadtime, Dot } from "./styles";
 
 const ArticleInfo = ({ date, timeToRead }) => {
   const fullDate = new Date(date).toLocaleDateString();
+  const intl = useIntl();
 
   return (
     <>
-      <FormattedDate value={date} year="numeric" month="short" day="2-digit">
-        {(txt) => (
-          <ArticleDate as="time" dateTime={fullDate} small>
-            {txt}
-          </ArticleDate>
-        )}
-      </FormattedDate>
+      <ArticleDate as="time" dateTime={fullDate} small>
+        {intl.formatDate(date, {
+          year: "numeric",
+          month: "short",
+          day: "2-digit",
+        })}
+      </ArticleDate>
       <Dot small aria-hidden="true">
         •
       </Dot>
-      <FormattedMessage id="article.read.time">
-        {(txt) => (
-          <ArticleReadtime as="span" small>
-            {timeToRead} {txt}
-          </ArticleReadtime>
-        )}
-      </FormattedMessage>
+      <ArticleReadtime as="span" small>
+        {timeToRead +
+          " " +
+          intl.formatMessage({
+            id: "article.read.time",
+          })}
+      </ArticleReadtime>
     </>
   );
 };
