@@ -23,7 +23,7 @@ export const ErrorMessageWrapper = styled.div`
 
   display: block;
   padding: ${rem(16)} ${rem(16)};
-  
+
   ${({ polite }) =>
     polite
       ? `border-left: ${rem(4)} solid ${theme.color.border.dark};`

@@ -14,16 +14,20 @@ export const StyledCheckboxLabel = styled.label`
 export const StyledCheckbox = styled(Checkbox)`
   display: inline-block;
   margin-right: ${rem(8)};
-/* 
+  /* 
   &:not(:checked) {
     & ~ input {
       pointer-events: none !important;
-      background-color: ${theme.colors.grey700};
-      color: ${theme.colors.grey100};
+      background-color: ${theme
+    .colors.grey700};
+      color: ${theme.colors
+    .grey100};
 
       &:hover,
       &:focus {
-        background-color: ${theme.colors.grey700};
+        background-color: ${theme
+    .colors
+    .grey700};
         box-shadow: none;
         cursor: not-allowed;
       }

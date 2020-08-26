@@ -21,7 +21,8 @@ export const Row = styled.section`
 
   /* iPhone X 
   * Add the extra layout.gridSpacing used in the Grid
-  * calc(env(safe-area-inset-left) + ${theme.layout.gridSpacing.s})
+  * calc(env(safe-area-inset-left) + ${theme
+    .layout.gridSpacing.s})
   */
   @supports (padding: max(0px)) {
     & {
@@ -83,7 +84,7 @@ export const Row = styled.section`
       margin-right: auto;
       max-width: ${theme.layout.col12.wrapper};
     `};
-    
+
   ${({ padded }) =>
     padded &&
     css`
@@ -148,25 +149,25 @@ export const Row = styled.section`
         margin-bottom: ${rem(64)};
       }
     `};
-  
-    ${({ mb }) =>
-      mb &&
-      css`
-        margin-bottom: ${theme.spacing.row.s};
 
-        ${mediaMin.s`
+  ${({ mb }) =>
+    mb &&
+    css`
+      margin-bottom: ${theme.spacing.row.s};
+
+      ${mediaMin.s`
           margin-bottom: ${theme.spacing.row.m};
         `};
 
-        ${mediaMin.xl`
+      ${mediaMin.xl`
           margin-bottom: ${theme.spacing.row.xl};
         `};
 
-        /* Mobile in ladscape */
-        @media screen and (min-width: 30em) and (min-height: 17em) and (max-height: 35em) and (orientation: landscape) {
-          margin-bottom: ${rem(64)};
-        }
-      `};
+      /* Mobile in ladscape */
+      @media screen and (min-width: 30em) and (min-height: 17em) and (max-height: 35em) and (orientation: landscape) {
+        margin-bottom: ${rem(64)};
+      }
+    `};
 `;
 
 export const RowSpacer = styled.div`

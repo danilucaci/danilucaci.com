@@ -35,8 +35,8 @@ export const Page = styled.div`
     /* displays text with fallback font and replaces when the font is ready */
     font-display: swap;
     font-weight: 400;
-    src: url('${RobotoMonoRegularWoff2}') format('woff2'), 
-    url('${RobotoMonoRegularWoff}') format('woff');
+    src: url("${RobotoMonoRegularWoff2}") format("woff2"),
+      url("${RobotoMonoRegularWoff}") format("woff");
   }
 
   @font-face {
@@ -45,8 +45,8 @@ export const Page = styled.div`
     /* displays text with fallback font and replaces when the font is ready */
     font-display: swap;
     font-weight: 400;
-    src: url('${RobotoMonoItalicWoff2}') format('woff2'), 
-    url('${RobotoMonoItalicWoff}') format('woff');
+    src: url("${RobotoMonoItalicWoff2}") format("woff2"),
+      url("${RobotoMonoItalicWoff}") format("woff");
   }
 
   @font-face {
@@ -55,8 +55,8 @@ export const Page = styled.div`
     /* displays text with fallback font and replaces when the font is ready */
     font-display: swap;
     font-weight: 400;
-    src: url('${LatoRegularWoff2}') format('woff2'), 
-    url('${LatoRegularWoff}') format('woff');
+    src: url("${LatoRegularWoff2}") format("woff2"),
+      url("${LatoRegularWoff}") format("woff");
   }
 
   @font-face {
@@ -65,8 +65,8 @@ export const Page = styled.div`
     /* displays text with fallback font and replaces when the font is ready */
     font-display: swap;
     font-weight: 700;
-    src: url('${LatoBoldWoff2}') format('woff2'), 
-    url('${LatoBoldWoff}') format('woff');
+    src: url("${LatoBoldWoff2}") format("woff2"),
+      url("${LatoBoldWoff}") format("woff");
   }
 
   @font-face {
@@ -75,8 +75,8 @@ export const Page = styled.div`
     /* displays text with fallback font and replaces when the font is ready */
     font-display: swap;
     font-weight: 400;
-    src: url('${LatoItalicWoff2}') format('woff2'), 
-    url('${LatoItalicWoff}') format('woff');
+    src: url("${LatoItalicWoff2}") format("woff2"),
+      url("${LatoItalicWoff}") format("woff");
   }
 
   @font-face {
@@ -85,8 +85,8 @@ export const Page = styled.div`
     /* displays text with fallback font and replaces when the font is ready */
     font-display: swap;
     font-weight: 400;
-    src: url('${WorkSansRegularWoff2}') format('woff2'), 
-    url('${WorkSansRegularWoff}') format('woff');
+    src: url("${WorkSansRegularWoff2}") format("woff2"),
+      url("${WorkSansRegularWoff}") format("woff");
   }
 
   @font-face {
@@ -95,8 +95,8 @@ export const Page = styled.div`
     /* displays text with fallback font and replaces when the font is ready */
     font-display: swap;
     font-weight: 500;
-    src: url('${WorkSansMediumWoff2}') format('woff2'), 
-    url('${WorkSansMediumWoff}') format('woff');
+    src: url("${WorkSansMediumWoff2}") format("woff2"),
+      url("${WorkSansMediumWoff}") format("woff");
   }
 
   @font-face {
@@ -105,7 +105,7 @@ export const Page = styled.div`
     /* displays text with fallback font and replaces when the font is ready */
     font-display: swap;
     font-weight: 700;
-    src: url('${WorkSansBoldWoff2}') format('woff2'), 
-    url('${WorkSansBoldWoff}') format('woff');
+    src: url("${WorkSansBoldWoff2}") format("woff2"),
+      url("${WorkSansBoldWoff}") format("woff");
   }
 `;
