@@ -58,8 +58,9 @@ export const StyledInput = styled(FilteredPropsInputField)`
     box-shadow: ${theme.shadow.input.error};
   }
 
-  ${({ valid }) => valid
-    && css`
+  ${({ valid }) =>
+    valid &&
+    css`
       border: ${theme.size.border.input} solid ${theme.color.border.input.valid};
 
       &:focus,
@@ -79,8 +80,9 @@ export const StyledInput = styled(FilteredPropsInputField)`
       }
     `}
 
-  ${({ error }) => error
-    && css`
+  ${({ error }) =>
+    error &&
+    css`
       border: ${theme.size.border.input} solid ${theme.color.border.input.error};
 
       &:focus,

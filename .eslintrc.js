@@ -50,5 +50,6 @@ module.exports = {
     "react/destructuring-assignment": 0,
     "react/jsx-props-no-spreading": 0,
     "react/state-in-constructor": 0,
+    "jest/no-disabled-tests": 0,
   },
 };

@@ -37,32 +37,38 @@ module.exports = {
         "My personal blog where I write about Product Design and Front-End Development | Dani Lucaci - Product Designer and Front-End Developer.",
     },
     blog: {
-      title: "Blog - danilucaci.com | Product Designer and Front-End Developer.",
+      title:
+        "Blog - danilucaci.com | Product Designer and Front-End Developer.",
       description:
         "My personal blog where I write about Product Design and Front-End Development | Dani Lucaci - Product Designer and Front-End Developer.",
     },
     tags: {
-      title: "Blog Tags - danilucaci.com | Product Designer and Front-End Developer.",
+      title:
+        "Blog Tags - danilucaci.com | Product Designer and Front-End Developer.",
       description:
         "My personal blog where I write about Product Design and Front-End Development | Dani Lucaci - Product Designer and Front-End Developer.",
     },
     work: {
-      title: "Case Studies - danilucaci.com | Product Designer and Front-End Developer.",
+      title:
+        "Case Studies - danilucaci.com | Product Designer and Front-End Developer.",
       description:
         "My personal blog where I write about Product Design and Front-End Development | Dani Lucaci - Product Designer and Front-End Developer.",
     },
     contact: {
-      title: "Contact - danilucaci.com | Product Designer and Front-End Developer.",
+      title:
+        "Contact - danilucaci.com | Product Designer and Front-End Developer.",
       description:
         "My personal blog where I write about Product Design and Front-End Development | Dani Lucaci - Product Designer and Front-End Developer.",
     },
     about: {
-      title: "About Me - danilucaci.com | Product Designer and Front-End Developer.",
+      title:
+        "About Me - danilucaci.com | Product Designer and Front-End Developer.",
       description:
         "My personal blog where I write about Product Design and Front-End Development | Dani Lucaci - Product Designer and Front-End Developer.",
     },
     thanks: {
-      title: "Thanks - danilucaci.com | Product Designer and Front-End Developer.",
+      title:
+        "Thanks - danilucaci.com | Product Designer and Front-End Developer.",
       description:
         "My personal blog where I write about Product Design and Front-End Development | Dani Lucaci - Product Designer and Front-End Developer.",
     },
@@ -93,7 +99,8 @@ module.exports = {
         "Esta es mi página web y blog personal en el que escribo sobre Diseño de Productos y desarrollo Front-End | Dani Lucaci - Diseñador de Productos y Desarrollador Front-End.",
     },
     blog: {
-      title: "Blog - danilucaci.com | Diseñador de Productos y Desarrollador Front-End.",
+      title:
+        "Blog - danilucaci.com | Diseñador de Productos y Desarrollador Front-End.",
       description:
         "Esta es mi página web y blog personal en el que escribo sobre Diseño de Productos y desarrollo Front-End | Dani Lucaci - Diseñador de Productos y Desarrollador Front-End.",
     },
@@ -104,22 +111,26 @@ module.exports = {
         "Esta es mi página web y blog personal en el que escribo sobre Diseño de Productos y desarrollo Front-End | Dani Lucaci - Diseñador de Productos y Desarrollador Front-End.",
     },
     work: {
-      title: "Trabajos - danilucaci.com | Diseñador de Productos y Desarrollador Front-End.",
+      title:
+        "Trabajos - danilucaci.com | Diseñador de Productos y Desarrollador Front-End.",
       description:
         "Esta es mi página web y blog personal en el que escribo sobre Diseño de Productos y desarrollo Front-End | Dani Lucaci - Diseñador de Productos y Desarrollador Front-End.",
     },
     contact: {
-      title: "Contacto - danilucaci.com | Diseñador de Productos y Desarrollador Front-End.",
+      title:
+        "Contacto - danilucaci.com | Diseñador de Productos y Desarrollador Front-End.",
       description:
         "Esta es mi página web y blog personal en el que escribo sobre Diseño de Productos y desarrollo Front-End | Dani Lucaci - Diseñador de Productos y Desarrollador Front-End.",
     },
     about: {
-      title: "Sobre Mi - danilucaci.com | Diseñador de Productos y Desarrollador Front-End.",
+      title:
+        "Sobre Mi - danilucaci.com | Diseñador de Productos y Desarrollador Front-End.",
       description:
         "Esta es mi página web y blog personal en el que escribo sobre Diseño de Productos y desarrollo Front-End | Dani Lucaci - Diseñador de Productos y Desarrollador Front-End.",
     },
     thanks: {
-      title: "Gracias - danilucaci.com | Diseñador de Productos y Desarrollador Front-End.",
+      title:
+        "Gracias - danilucaci.com | Diseñador de Productos y Desarrollador Front-End.",
       description:
         "Esta es mi página web y blog personal en el que escribo sobre Diseño de Productos y desarrollo Front-End | Dani Lucaci - Diseñador de Productos y Desarrollador Front-End.",
     },

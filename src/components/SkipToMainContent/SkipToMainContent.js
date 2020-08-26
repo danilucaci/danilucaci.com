@@ -5,7 +5,9 @@ import { StyledSkipToMainContent } from "./styles";
 
 const SkipToMainContent = () => (
   <FormattedMessage id="skip.to.main.content">
-    {(txt) => <StyledSkipToMainContent href="#main">{txt}</StyledSkipToMainContent>}
+    {(txt) => (
+      <StyledSkipToMainContent href="#main">{txt}</StyledSkipToMainContent>
+    )}
   </FormattedMessage>
 );
 
