@@ -1,6 +1,6 @@
 import React from "react";
-import { graphql, StaticQuery } from "gatsby";
-import { FormattedMessage } from "react-intl";
+import { useStaticQuery, graphql } from "gatsby";
+import { useIntl } from "react-intl";
 
 import SocialNav from "../SocialNav/SocialNav";
 import {
@@ -12,40 +12,37 @@ import {
   StyledHR,
 } from "./styles";
 
-const AuthorCard = () => (
-  <AuthorCardWrapper>
-    <StyledHR />
+function AuthorCard() {
+  const intl = useIntl();
+  const queryData = useStaticQuery(AUTHOR_IMAGE_QUERY);
 
-    <AuthorCardInner>
-      <StaticQuery
-        query={AUTHOR_IMAGE_QUERY}
-        render={(data) => {
-          let image = data.authorImageQuery.childImageSharp.fluid;
-
-          return (
-            <FormattedMessage id="author.card.image.alt">
-              {(msg) => <AuthorImage alt={msg} fluid={image} />}
-            </FormattedMessage>
-          );
-        }}
-      />
-
-      <AuthorInfo>
-        <FormattedMessage id="author.card.name">{(name) => <h3>{name}</h3>}</FormattedMessage>
-        <FormattedMessage id="author.card.description">
-          {(description) => <AuthorDescription>{description}</AuthorDescription>}
-        </FormattedMessage>
-        <SocialNav />
-      </AuthorInfo>
-    </AuthorCardInner>
-  </AuthorCardWrapper>
-);
+  return (
+    <AuthorCardWrapper>
+      <StyledHR />
+      <AuthorCardInner>
+        <AuthorImage
+          alt={intl.formatMessage({ id: "author.card.image.alt" })}
+          fluid={queryData.authorImageQuery.childImageSharp.fluid}
+        />
+        <AuthorInfo>
+          <h3>{intl.formatMessage({ id: "author.card.name" })}</h3>
+          <AuthorDescription>
+            {intl.formatMessage({ id: "author.card.description" })}
+          </AuthorDescription>
+          <SocialNav />
+        </AuthorInfo>
+      </AuthorCardInner>
+    </AuthorCardWrapper>
+  );
+}
 
 export default AuthorCard;
 
 const AUTHOR_IMAGE_QUERY = graphql`
   query {
-    authorImageQuery: file(relativePath: { regex: "/danilucaci_profile_image/" }) {
+    authorImageQuery: file(
+      relativePath: { regex: "/danilucaci_profile_image/" }
+    ) {
       childImageSharp {
         fluid(maxWidth: 104, maxHeight: 104, cropFocus: NORTH, quality: 70) {
           ...GatsbyImageSharpFluid
