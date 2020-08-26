@@ -56,15 +56,19 @@ export const GA_EVENTS = {
     actions: {
       twitter: {
         name: "Twitter",
+        link: "https://twitter.com/danilucaci",
       },
       linkedin: {
         name: "Linkedin",
+        link: "https://www.linkedin.com/in/danilucaci/",
       },
       dribbble: {
         name: "Dribbble",
+        link: "https://dribbble.com/danilucaci",
       },
       github: {
         name: "Github",
+        link: "https://github.com/danilucaci",
       },
     },
   },
