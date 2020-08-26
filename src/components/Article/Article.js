@@ -6,7 +6,7 @@ import ArticleInfo from "../ArticleInfo/ArticleInfo";
 
 import { StyledArticle, ArticleTitle, ArticleLink } from "./styles";
 
-const Article = ({ title, tags, date, slug, timeToRead }) => {
+function Article({ title, tags, date, slug, timeToRead }) {
   return (
     <StyledArticle>
       <header>
@@ -18,7 +18,7 @@ const Article = ({ title, tags, date, slug, timeToRead }) => {
       </header>
     </StyledArticle>
   );
-};
+}
 
 Article.propTypes = {
   title: string.isRequired,
