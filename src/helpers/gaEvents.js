@@ -29,20 +29,25 @@ export const GA_EVENTS = {
       },
     },
   },
+  socialMediaProfiles: ["twitter", "linkedin", "dribbble", "github"],
   footerSocialNavVisit: {
     category: "Footer Social Nav Visit",
     actions: {
       twitter: {
         name: "Twitter",
+        link: "https://twitter.com/danilucaci",
       },
       linkedin: {
         name: "Linkedin",
+        link: "https://www.linkedin.com/in/danilucaci/",
       },
       dribbble: {
         name: "Dribbble",
+        link: "https://dribbble.com/danilucaci",
       },
       github: {
         name: "Github",
+        link: "https://github.com/danilucaci",
       },
     },
   },
