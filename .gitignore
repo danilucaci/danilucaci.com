@@ -41,6 +41,7 @@ gcloud/
 
 # Build Files
 public/
+public
 .cache/
 
 # Gatsby context
