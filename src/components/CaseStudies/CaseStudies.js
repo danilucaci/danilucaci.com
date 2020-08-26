@@ -1,13 +1,15 @@
 import React from "react";
 import { bool, string, arrayOf, object } from "prop-types";
-import { FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
 
 import CaseStudyCard from "../CaseStudyCard/CaseStudyCard";
 import { Col, Row } from "../Grid/Grid";
 import { Title } from "./styles";
 
 const CaseStudies = ({ edges, spaced, header, cardHeadingLevel }) => {
-  let caseStudies = edges.map((edge) => ({
+  const intl = useIntl();
+
+  const caseStudies = edges.map((edge) => ({
     slug: edge.node.fields.slug,
     title: edge.node.frontmatter.title,
     date: edge.node.frontmatter.date,
@@ -23,13 +25,9 @@ const CaseStudies = ({ edges, spaced, header, cardHeadingLevel }) => {
       aria-labelledby="case-studies-title"
     >
       <Col>
-        <FormattedMessage id="case.studies.header">
-          {(txt) => (
-            <Title id="case-studies-title" as={header}>
-              {txt}
-            </Title>
-          )}
-        </FormattedMessage>
+        <Title id="case-studies-title" as={header}>
+          {intl.formatMessage({ id: "case.studies.header" })}
+        </Title>
       </Col>
       <Col>
         {caseStudies.map((caseStudyCard) => (
