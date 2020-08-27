@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
 
 import { Col, Row } from "../Grid/Grid";
 import { sendContactCardEvent } from "../../helpers/ga";
@@ -14,6 +14,7 @@ import {
 
 function ContactCard() {
   const { locale } = useContext(LocaleContext);
+  const intl = useIntl();
 
   let twinPostURL = "";
 
@@ -27,24 +28,13 @@ function ContactCard() {
     <ContactCardRowBackground as="aside" data-testid="Contact__Card">
       <Row as="div" col8 padded>
         <Col>
-          <FormattedMessage id="contact.card.title">
-            {(txt) => <ContactCardTitle>{txt}</ContactCardTitle>}
-          </FormattedMessage>
-
-          <FormattedMessage id="contact.card.info">
-            {(txt) => <Subtitle>{txt}</Subtitle>}
-          </FormattedMessage>
-
-          <FormattedMessage id="contact.card.cta">
-            {(txt) => (
-              <StyledButton
-                to={twinPostURL}
-                onClick={() => sendContactCardEvent()}
-              >
-                {txt}
-              </StyledButton>
-            )}
-          </FormattedMessage>
+          <ContactCardTitle>
+            {intl.formatMessage({ id: "contact.card.title" })}
+          </ContactCardTitle>
+          <Subtitle>{intl.formatMessage({ id: "contact.card.info" })}</Subtitle>
+          <StyledButton to={twinPostURL} onClick={() => sendContactCardEvent()}>
+            {intl.formatMessage({ id: "contact.card.cta" })}
+          </StyledButton>
         </Col>
       </Row>
     </ContactCardRowBackground>
