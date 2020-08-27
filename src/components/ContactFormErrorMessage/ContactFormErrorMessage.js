@@ -63,6 +63,7 @@ function ContactFormErrorMessage({
         {shouldRenderCloseButton && (
           <CloseErrorButton
             onClick={clearErrorMessage}
+            type="button"
             aria-label={
               locale === "en"
                 ? "Close error message"
