@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
 import { FormattedMessage } from "react-intl";
 
+import { Col, Row } from "../Grid/Grid";
 import { sendContactCardEvent } from "../../helpers/ga";
+import LocaleContext from "../../i18n/LocaleContext";
 
 import {
   ContactCardRowBackground,
@@ -9,9 +11,6 @@ import {
   Subtitle,
   StyledButton,
 } from "./styles";
-
-import { Col, Row } from "../Grid/Grid";
-import LocaleContext from "../../i18n/LocaleContext";
 
 function ContactCard() {
   const { locale } = useContext(LocaleContext);
