@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { string } from "prop-types";
-import { FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
 import { Link } from "gatsby";
 import { Menu, MenuLink } from "@reach/menu-button";
 import "@reach/menu-button/styles.css";
 
+import LocaleContext from "../../i18n/LocaleContext";
 import AriaText from "../AriaText/AriaText";
 
 import {
@@ -16,12 +17,9 @@ import {
   CurrentLanguageIcon,
   ButtonLabelWrapper,
 } from "./styles";
-import LocaleContext from "../../i18n/LocaleContext";
 
-const FooterLanguageSelector = ({ twinPostURL, currentPath }) => {
-  const { locale } = useContext(LocaleContext);
-
-  const englishLanguagePicker = () => (
+export function EnglishLanguagePicker({ twinPostURL, currentPath }) {
+  return (
     <StyledMenuList>
       <MenuLink
         as={Link}
@@ -46,8 +44,10 @@ const FooterLanguageSelector = ({ twinPostURL, currentPath }) => {
       </MenuLink>
     </StyledMenuList>
   );
+}
 
-  const spanishLanguagePicker = () => (
+export function SpanishLanguagePicker({ twinPostURL, currentPath }) {
+  return (
     <StyledMenuList>
       <MenuLink
         as={Link}
@@ -72,6 +72,11 @@ const FooterLanguageSelector = ({ twinPostURL, currentPath }) => {
       </MenuLink>
     </StyledMenuList>
   );
+}
+
+function FooterLanguageSelector({ twinPostURL, currentPath }) {
+  const { locale } = useContext(LocaleContext);
+  const intl = useIntl();
 
   return (
     <Menu>
@@ -81,26 +86,36 @@ const FooterLanguageSelector = ({ twinPostURL, currentPath }) => {
             <WorldIcon aria-hidden="true">
               <use xlinkHref={locale === "en" ? "#en" : "#es"} />
             </WorldIcon>
-            <FormattedMessage id="change.language.button.aria.label">
-              {(txt) => (
-                <AriaText id="footer-language-selector-button-label">
-                  {txt}
-                </AriaText>
-              )}
-            </FormattedMessage>
-            <FormattedMessage id="change.language.toggle.footer">
-              {(txt) => <ButtonLabel>{txt}</ButtonLabel>}
-            </FormattedMessage>
+            <AriaText id="footer-language-selector-button-label">
+              {intl.formatMessage({
+                id: "change.language.button.aria.label",
+              })}
+            </AriaText>
+            <ButtonLabel>
+              {intl.formatMessage({
+                id: "change.language.toggle.footer",
+              })}
+            </ButtonLabel>
             <DropdownIcon aria-hidden="true" isOpen={isOpen}>
               <use xlinkHref="#dropdown" />
             </DropdownIcon>
           </StyledMenuButton>
-          {locale === "en" ? englishLanguagePicker() : spanishLanguagePicker()}
+          {locale === "en" ? (
+            <EnglishLanguagePicker
+              twinPostURL={twinPostURL}
+              currentPath={currentPath}
+            />
+          ) : (
+            <SpanishLanguagePicker
+              twinPostURL={twinPostURL}
+              currentPath={currentPath}
+            />
+          )}
         </>
       )}
     </Menu>
   );
-};
+}
 
 FooterLanguageSelector.propTypes = {
   twinPostURL: string.isRequired,
