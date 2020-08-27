@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
 
 import FooterNavListItem from "./FooterNavListItem/FooterNavListItem";
 import { localePaths } from "../../i18n/i18n";
@@ -9,37 +9,22 @@ import LocaleContext from "../../i18n/LocaleContext";
 
 function FooterNavList() {
   const { locale } = useContext(LocaleContext);
+  const intl = useIntl();
 
   return (
     <StyledFooterNavList>
-      <FormattedMessage id="site.nav.work">
-        {(txt) => (
-          <FooterNavListItem to={localePaths[locale].work}>
-            {txt}
-          </FooterNavListItem>
-        )}
-      </FormattedMessage>
-      <FormattedMessage id="site.nav.blog">
-        {(txt) => (
-          <FooterNavListItem to={localePaths[locale].blog}>
-            {txt}
-          </FooterNavListItem>
-        )}
-      </FormattedMessage>
-      <FormattedMessage id="site.nav.about">
-        {(txt) => (
-          <FooterNavListItem to={localePaths[locale].about}>
-            {txt}
-          </FooterNavListItem>
-        )}
-      </FormattedMessage>
-      <FormattedMessage id="site.nav.contact">
-        {(txt) => (
-          <FooterNavListItem to={localePaths[locale].contact}>
-            {txt}
-          </FooterNavListItem>
-        )}
-      </FormattedMessage>
+      <FooterNavListItem to={localePaths[locale].work}>
+        {intl.formatMessage({ id: "site.nav.work" })}
+      </FooterNavListItem>
+      <FooterNavListItem to={localePaths[locale].blog}>
+        {intl.formatMessage({ id: "site.nav.blog" })}
+      </FooterNavListItem>
+      <FooterNavListItem to={localePaths[locale].about}>
+        {intl.formatMessage({ id: "site.nav.about" })}
+      </FooterNavListItem>
+      <FooterNavListItem to={localePaths[locale].contact}>
+        {intl.formatMessage({ id: "site.nav.contact" })}
+      </FooterNavListItem>
     </StyledFooterNavList>
   );
 }
