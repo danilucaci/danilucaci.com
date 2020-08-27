@@ -1,12 +1,12 @@
 import React from "react";
-import { bool, string, arrayOf, object } from "prop-types";
+import { bool, arrayOf, object } from "prop-types";
 
 import CaseStudyCard from "../CaseStudyCard/CaseStudyCard";
 import { Col, Row } from "../Grid/Grid";
 import { FormattedMessage } from "react-intl";
 import AriaText from "../AriaText/AriaText";
 
-const IndexCaseStudies = ({ edges, spaced, cardHeadingLevel }) => {
+const IndexCaseStudies = ({ edges, spaced }) => {
   let caseStudies = edges.map((edge) => ({
     slug: edge.node.fields.slug,
     tagsInCaseStudy: edge.node.frontmatter.tags,
