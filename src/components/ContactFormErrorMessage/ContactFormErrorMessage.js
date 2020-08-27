@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { string, func, bool } from "prop-types";
-import { FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
 
 import { HR } from "../HR/HR";
 
@@ -25,6 +25,7 @@ function ContactFormErrorMessage({
 }) {
   const [showError, setShowError] = useState(false);
   const { locale } = useContext(LocaleContext);
+  const intl = useIntl();
 
   return (
     <ErrorMessageWrapper
@@ -38,13 +39,13 @@ function ContactFormErrorMessage({
             <use xlinkHref="#info" />
           </ErrorIcon>
         </ErrorIconWrapper>
-        <FormattedMessage id="contact.page.error.title">
-          {(txt) => <ErrorTitle>{txt}</ErrorTitle>}
-        </FormattedMessage>
+        <ErrorTitle>
+          {intl.formatMessage({ id: "contact.page.error.title" })}
+        </ErrorTitle>
       </ErrorTitleWrapper>
-      <FormattedMessage id="contact.page.error.description">
-        {(txt) => <ErrorCopy>{txt}</ErrorCopy>}
-      </FormattedMessage>
+      <ErrorCopy>
+        {intl.formatMessage({ id: "contact.page.error.description" })}
+      </ErrorCopy>
       <HR />
       <ButtonsWrapper>
         <ShowErrorButton
@@ -54,13 +55,9 @@ function ContactFormErrorMessage({
           }}
         >
           {showError ? (
-            <FormattedMessage id="contact.page.error.button.hide">
-              {(txt) => <>{txt}</>}
-            </FormattedMessage>
+            <>{intl.formatMessage({ id: "contact.page.error.button.hide" })}</>
           ) : (
-            <FormattedMessage id="contact.page.error.button.show">
-              {(txt) => <>{txt}</>}
-            </FormattedMessage>
+            <>{intl.formatMessage({ id: "contact.page.error.button.show" })}</>
           )}
         </ShowErrorButton>
         {shouldRenderCloseButton && (
@@ -72,9 +69,11 @@ function ContactFormErrorMessage({
                 : "Cerrar el mensage de error"
             }
           >
-            <FormattedMessage id="contact.page.error.button.close">
-              {(txt) => <>{txt}</>}
-            </FormattedMessage>
+            <>
+              {intl.formatMessage({
+                id: "contact.page.error.button.close",
+              })}
+            </>
           </CloseErrorButton>
         )}
       </ButtonsWrapper>
