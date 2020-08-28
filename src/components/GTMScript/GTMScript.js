@@ -38,9 +38,9 @@ function GTMScript() {
         {"<!-- End Google Tag Manager -->"}
       </Helmet>
     );
-  } else {
-    return null;
   }
+
+  return null;
 }
 
 export default GTMScript;
