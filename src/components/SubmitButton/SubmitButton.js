@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { bool } from "prop-types";
 import { useIntl } from "react-intl";
 
 import Spinner from "../Spinner/Spinner";
@@ -30,11 +30,13 @@ function SubmitButton({ showSpinner = false, submitted = false, ...rest }) {
 }
 
 SubmitButton.propTypes = {
-  showSpinner: PropTypes.bool,
+  showSpinner: bool,
+  submitted: bool,
 };
 
 SubmitButton.defaultProps = {
   showSpinner: false,
+  submitted: false,
 };
 
 export default SubmitButton;
