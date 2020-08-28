@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import { useLoggingThunkReducer } from "../hooks";
+import { useLoggingThunkReducer } from ".";
 
 import cookiesInitialState from "../reducers/cookies/cookies-initial-state";
 import cookiesReducer from "../reducers/cookies/cookies-reducer";

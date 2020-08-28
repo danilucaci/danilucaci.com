@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useCookiesReducer } from "./";
+import { useCookiesReducer } from ".";
 
 function useCookies({ pathname = "" }) {
   const [state, dispatch, actions, types] = useCookiesReducer();
