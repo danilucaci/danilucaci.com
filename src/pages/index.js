@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { object, shape, arrayOf, string } from "prop-types";
+import { number, bool, shape, arrayOf, string } from "prop-types";
 import { graphql, Link } from "gatsby";
 import { useIntl } from "react-intl";
 
@@ -207,7 +207,37 @@ const Index = ({ data, location }) => {
 Index.propTypes = {
   data: shape({
     work: shape({
-      edges: arrayOf(object).isRequired,
+      edges: arrayOf(
+        shape({
+          node: shape({
+            fields: shape({
+              slug: string.isRequired,
+            }),
+            frontmatter: shape({
+              cardImage: shape({
+                childImageSharp: shape({
+                  fluid: shape({
+                    aspectRatio: number.isRequired,
+                    base64: string.isRequired,
+                    sizes: string.isRequired,
+                    src: string.isRequired,
+                    srcSet: string.isRequired,
+                    srcSetWebp: string.isRequired,
+                    srcWebp: string.isRequired,
+                  }).isRequired,
+                }).isRequired,
+              }).isRequired,
+              category: string.isRequired,
+              date: string.isRequired,
+              posted: bool.isRequired,
+              snippet: string.isRequired,
+              tags: arrayOf(string).isRequired,
+              title: string.isRequired,
+            }).isRequired,
+          }).isRequired,
+        }).isRequired,
+      ).isRequired,
+      totalCount: number.isRequired,
     }),
   }).isRequired,
   location: shape({
