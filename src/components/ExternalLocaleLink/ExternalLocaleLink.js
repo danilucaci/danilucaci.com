@@ -20,7 +20,6 @@ const ExternalLocaleLink = ({ href, ...props }) => {
 
 ExternalLocaleLink.propTypes = {
   href: PropTypes.string.isRequired,
-  locale: PropTypes.string.isRequired,
 };
 
 export default ExternalLocaleLink;
