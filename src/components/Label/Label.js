@@ -20,6 +20,7 @@ function Label({ labelType, children, ...rest }) {
 
 Label.propTypes = {
   labelType: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default Label;
