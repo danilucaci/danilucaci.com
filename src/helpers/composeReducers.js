@@ -14,10 +14,10 @@
  */
 function composeReducers(...fns) {
   return function getStateAndDispatch([state, dispatch]) {
-    return fns.reduceRight(([state, dispatch], fn) => fn([state, dispatch]), [
-      state,
-      dispatch,
-    ]);
+    return fns.reduceRight(
+      (_stateAndDispatchAccumArr, fn) => fn([state, dispatch]),
+      [state, dispatch],
+    );
   };
 }
 
