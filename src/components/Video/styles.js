@@ -67,6 +67,7 @@ export const VideoInnerWrapper = styled.span`
   display: block;
 `;
 
+// eslint-disable-next-line consistent-return
 function handleVideoSize({ videoWidth, videoHeight }) {
   if (videoWidth && videoHeight) {
     if (videoWidth === 375 && videoHeight === 812) {
