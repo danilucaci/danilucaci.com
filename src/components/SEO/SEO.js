@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { string, bool, object } from "prop-types";
+import { string, bool, shape, number } from "prop-types";
 import { Helmet } from "react-helmet";
 import urljoin from "url-join";
 import config from "../../../data/SiteConfig";
@@ -263,8 +263,41 @@ SEO.propTypes = {
   nextPath: string,
   postSEO: bool,
   postImage: string,
-  postNode: object,
+  postNode: shape({
+    fields: shape({
+      slug: string.isRequired,
+    }),
+    body: string.isRequired,
+    frontmatter: shape({
+      snippet: string.isRequired,
+      title: string.isRequired,
+      date: string.isRequired,
+      pageImage: shape({
+        childImageSharp: shape({
+          fluid: shape({
+            aspectRatio: number.isRequired,
+            base64: string.isRequired,
+            sizes: string.isRequired,
+            src: string.isRequired,
+            srcSet: string.isRequired,
+            srcSetWebp: string.isRequired,
+            srcWebp: string.isRequired,
+          }).isRequired,
+        }).isRequired,
+      }),
+    }),
+  }),
   legalDocs: bool,
+};
+
+SEO.defaultProps = {
+  currentPage: "site",
+  prevPath: null,
+  nextPath: null,
+  postSEO: false,
+  postImage: null,
+  postNode: null,
+  legalDocs: false,
 };
 
 export default SEO;
