@@ -1,9 +1,9 @@
 import React from "react";
-import { bool, arrayOf, object } from "prop-types";
+import { bool, string, arrayOf, number, shape } from "prop-types";
 
+import { FormattedMessage } from "react-intl";
 import CaseStudyCard from "../CaseStudyCard/CaseStudyCard";
 import { Col, Row } from "../Grid/Grid";
-import { FormattedMessage } from "react-intl";
 import AriaText from "../AriaText/AriaText";
 
 const IndexCaseStudies = ({ edges, spaced }) => {
@@ -47,7 +47,36 @@ const IndexCaseStudies = ({ edges, spaced }) => {
 };
 
 IndexCaseStudies.propTypes = {
-  edges: arrayOf(object).isRequired,
+  edges: arrayOf(
+    shape({
+      node: shape({
+        fields: shape({
+          slug: string.isRequired,
+        }),
+        frontmatter: shape({
+          cardImage: shape({
+            childImageSharp: shape({
+              fluid: shape({
+                aspectRatio: number.isRequired,
+                base64: string.isRequired,
+                sizes: string.isRequired,
+                src: string.isRequired,
+                srcSet: string.isRequired,
+                srcSetWebp: string.isRequired,
+                srcWebp: string.isRequired,
+              }).isRequired,
+            }).isRequired,
+          }).isRequired,
+          category: string.isRequired,
+          date: string.isRequired,
+          posted: bool.isRequired,
+          snippet: string.isRequired,
+          tags: arrayOf(string).isRequired,
+          title: string.isRequired,
+        }).isRequired,
+      }).isRequired,
+    }).isRequired,
+  ).isRequired,
   spaced: bool,
 };
 
