@@ -1,5 +1,6 @@
 import React from "react";
 import { useIntl } from "react-intl";
+import { func, string } from "prop-types";
 
 import {
   StyledFooterSocialNav,
@@ -39,6 +40,13 @@ export function FooterSocialNavProfileLink({
     </StyledFooterSocialNavItem>
   );
 }
+
+FooterSocialNavProfileLink.propTypes = {
+  socialMediaName: string.isRequired,
+  socialMediaLink: string.isRequired,
+  socialMediaID: string.isRequired,
+  handleClick: func.isRequired,
+};
 
 const FooterSocialNav = () => (
   <StyledFooterSocialNav>
