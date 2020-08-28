@@ -14,6 +14,7 @@ import {
 
 function AuthorCard() {
   const intl = useIntl();
+  // eslint-disable-next-line no-use-before-define
   const queryData = useStaticQuery(AUTHOR_IMAGE_QUERY);
 
   return (
