@@ -60,9 +60,9 @@ function getBlogPaginationCurrentPath({
 }) {
   if (isFirstPage) {
     return blogPath;
-  } else {
-    return blogPath + paginationName + currentPage;
   }
+
+  return blogPath + paginationName + currentPage;
 }
 
 function getBlogPaginationPrevPath({
@@ -73,13 +73,13 @@ function getBlogPaginationPrevPath({
 }) {
   if (isFirstPage) {
     return null;
-  } else {
-    if (currentPage - 1 > 1) {
-      return blogPath + paginationName + `${currentPage - 1}`;
-    } else {
-      return blogPath;
-    }
   }
+
+  if (currentPage - 1 > 1) {
+    return blogPath + paginationName + `${currentPage - 1}`;
+  }
+
+  return blogPath;
 }
 
 function getBlogPaginationNextPath({
@@ -92,16 +92,15 @@ function getBlogPaginationNextPath({
   if (isFirstPage) {
     if (totalPagesInBlog > 1) {
       return blogPath + paginationName + "2";
-    } else {
-      return null;
     }
-  } else {
-    if (currentPage + 1 <= totalPagesInBlog) {
-      return blogPath + paginationName + `${currentPage + 1}`;
-    } else {
-      return null;
-    }
+
+    return null;
   }
+  if (currentPage + 1 <= totalPagesInBlog) {
+    return blogPath + paginationName + `${currentPage + 1}`;
+  }
+
+  return null;
 }
 
 function getBlogTagsPaginationCurrentPath({
@@ -114,9 +113,9 @@ function getBlogTagsPaginationCurrentPath({
 }) {
   if (isFirstPage) {
     return blogPath + tagsPath + tagName;
-  } else {
-    return blogPath + tagsPath + tagName + paginationName + currentPage;
   }
+
+  return blogPath + tagsPath + tagName + paginationName + currentPage;
 }
 
 function getBlogTagsPaginationPrevPath({
@@ -129,15 +128,15 @@ function getBlogTagsPaginationPrevPath({
 }) {
   if (isFirstPage) {
     return null;
-  } else {
-    if (currentPage - 1 > 1) {
-      return (
-        blogPath + tagsPath + tagName + paginationName + `${currentPage - 1}`
-      );
-    } else {
-      return blogPath + tagsPath + tagName;
-    }
   }
+
+  if (currentPage - 1 > 1) {
+    return (
+      blogPath + tagsPath + tagName + paginationName + `${currentPage - 1}`
+    );
+  }
+
+  return blogPath + tagsPath + tagName;
 }
 
 function getBlogTagsPaginationNextPath({
@@ -152,15 +151,14 @@ function getBlogTagsPaginationNextPath({
 }) {
   if (isFirstPage) {
     return blogPath + tagsPath + tagName + paginationName + "2";
-  } else {
-    if (currentPage + 1 <= Math.ceil(totalCount / postsPerPage)) {
-      return (
-        blogPath + tagsPath + tagName + paginationName + `${currentPage + 1}`
-      );
-    } else {
-      return null;
-    }
   }
+  if (currentPage + 1 <= Math.ceil(totalCount / postsPerPage)) {
+    return (
+      blogPath + tagsPath + tagName + paginationName + `${currentPage + 1}`
+    );
+  }
+
+  return null;
 }
 
 function getWorkPaginationCurrentPath({
@@ -171,9 +169,9 @@ function getWorkPaginationCurrentPath({
 }) {
   if (isFirstPage) {
     return workPath;
-  } else {
-    return workPath + paginationName + currentPage;
   }
+
+  return workPath + paginationName + currentPage;
 }
 
 function getWorkPaginationPrevPath({
@@ -184,13 +182,12 @@ function getWorkPaginationPrevPath({
 }) {
   if (isFirstPage) {
     return null;
-  } else {
-    if (currentPage - 1 > 1) {
-      return workPath + paginationName + `${currentPage - 1}`;
-    } else {
-      return workPath;
-    }
   }
+  if (currentPage - 1 > 1) {
+    return workPath + paginationName + `${currentPage - 1}`;
+  }
+
+  return workPath;
 }
 
 function getWorkPaginationNextPath({
@@ -203,16 +200,15 @@ function getWorkPaginationNextPath({
   if (isFirstPage) {
     if (totalPagesInWork > 1) {
       return workPath + paginationName + "2";
-    } else {
-      return null;
     }
-  } else {
-    if (currentPage + 1 <= totalPagesInWork) {
-      return workPath + paginationName + `${currentPage + 1}`;
-    } else {
-      return null;
-    }
+
+    return null;
   }
+  if (currentPage + 1 <= totalPagesInWork) {
+    return workPath + paginationName + `${currentPage + 1}`;
+  }
+
+  return null;
 }
 
 module.exports = {
