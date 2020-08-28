@@ -110,10 +110,7 @@ exports.onCreateNode = ({ node, actions, getNode, reporter }) => {
     const parsedFilePath = path.parse(fileNode.relativePath);
     let slug = "";
 
-    if (
-      node.hasOwnProperty("frontmatter") &&
-      node.frontmatter.hasOwnProperty("slug")
-    ) {
+    if (node.frontmatter && node.frontmatter.slug) {
       if (node.frontmatter.category === "work") {
         if (node.frontmatter.locale === "en") {
           slug = `${localePaths["en"].work}/${kebabCase(
