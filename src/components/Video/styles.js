@@ -51,14 +51,6 @@ export const StyledVideo = styled.video`
     `}
 `;
 
-export const VideoOuterWrapper = styled.span`
-  position: relative;
-  display: block;
-  width: 100%;
-
-  ${handleVideoSize}
-`;
-
 export const VideoInnerWrapper = styled.span`
   background-color: ${theme.color.background.section.lightest};
   position: relative;
@@ -82,15 +74,23 @@ function handleVideoSize({ videoWidth, videoHeight }) {
           max-width: ${rem(375)};
         `};
       `;
-    } else {
-      return css`
-        & .video-inner-wrapper {
-          padding-bottom: ${(videoHeight / videoWidth) * 100}%;
-        }
-      `;
     }
+
+    return css`
+      & .video-inner-wrapper {
+        padding-bottom: ${(videoHeight / videoWidth) * 100}%;
+      }
+    `;
   }
 }
+
+export const VideoOuterWrapper = styled.span`
+  position: relative;
+  display: block;
+  width: 100%;
+
+  ${handleVideoSize}
+`;
 
 export const FallbackVideo = styled.video`
   box-shadow: ${theme.shadow.image} !important;
