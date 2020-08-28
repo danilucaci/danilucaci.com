@@ -32,8 +32,6 @@ const AboutPage = ({ location, data }) => {
   const { locale } = useContext(LocaleContext);
   const intl = useIntl();
 
-  console.log(data);
-
   return (
     <ErrorBoundary>
       <Layout
