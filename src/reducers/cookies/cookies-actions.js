@@ -1,6 +1,9 @@
 import Cookies from "js-cookie";
 import * as Sentry from "@sentry/browser";
 
+import cookiesTypes from "./cookies-types";
+import { removeGTMConsent } from "../../helpers/ga";
+
 const NODE_ENV = process.env.NODE_ENV;
 const GATSBY_DL_COOKIE_NAME = process.env.GATSBY_DL_COOKIE_NAME;
 const GATSBY_DL_COOKIE_EXP = process.env.GATSBY_DL_COOKIE_EXP;
@@ -9,9 +12,6 @@ const GATSBY_DL_COOKIE_SECURE = process.env.GATSBY_DL_COOKIE_SECURE;
 
 const __DEV__ = NODE_ENV === "development";
 const COOKIE_SECURE = __DEV__ ? false : GATSBY_DL_COOKIE_SECURE;
-
-import cookiesTypes from "./cookies-types";
-import { removeGTMConsent } from "../../helpers/ga";
 
 export function checkCookies() {
   return function thunk(dispatch, { openCookieConsent, hasGDPRConsent }) {
