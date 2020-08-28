@@ -1,5 +1,6 @@
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
+
 admin.initializeApp();
 const firestore = admin.firestore();
 const cors = require("cors");
@@ -7,7 +8,9 @@ const helmet = require("helmet");
 const nodemailer = require("nodemailer");
 const FirebaseFunctionsRateLimiter = require("firebase-functions-rate-limiter")
   .default;
+
 const express = require("express");
+
 const app = express();
 
 const rateLimiterConfiguration = {
@@ -129,12 +132,12 @@ app.post("/ping", (req, res) => {
       data: { message: "pong" },
       error: null,
     });
-  } else {
-    return res.status(400).send({
-      data: null,
-      error: "Bad request",
-    });
   }
+
+  return res.status(400).send({
+    data: null,
+    error: "Bad request",
+  });
 });
 
 app.post("/message", async (req, res) => {
