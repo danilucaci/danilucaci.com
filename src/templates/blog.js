@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { shape, string, number, object, arrayOf } from "prop-types";
+import { shape, string, number, arrayOf, bool } from "prop-types";
 import { graphql } from "gatsby";
 import { FormattedMessage } from "react-intl";
 
@@ -130,17 +130,47 @@ BlogPage.propTypes = {
     totalCountBlog: number.isRequired,
     totalPagesInBlog: number.isRequired,
     paginationPathPrefix: string.isRequired,
-    edges: arrayOf(object).isRequired,
-  }).isRequired,
+    locale: string.isRequired,
+    edges: arrayOf(
+      shape({
+        fields: shape({
+          slug: string.isRequired,
+        }),
+        timeToRead: number.isRequired,
+        frontmatter: shape({
+          category: string.isRequired,
+          locale: string.isRequired,
+          date: string.isRequired,
+          posted: bool.isRequired,
+          snippet: string.isRequired,
+          tags: arrayOf(string).isRequired,
+          title: string.isRequired,
+          twinPost: string.isRequired,
+        }).isRequired,
+      }).isRequired,
+    ).isRequired,
+  }),
   data: shape({
     allMdx: shape({
-      tags: arrayOf(object).isRequired,
-    }),
+      tags: arrayOf(
+        shape({
+          fieldValue: string.isRequired,
+          totalCount: number.isRequired,
+        }).isRequired,
+      ).isRequired,
+    }).isRequired,
   }).isRequired,
   location: shape({
     pathname: string.isRequired,
     href: string.isRequired,
   }).isRequired,
+};
+
+BlogPage.defaultProps = {
+  pageContext: {
+    nextPath: null,
+    prevPath: null,
+  },
 };
 
 export default BlogPage;
