@@ -1,4 +1,4 @@
-export const GA_EVENTS = {
+const GA_EVENTS = {
   contactForm: {
     category: "Contact Form",
     actions: {
