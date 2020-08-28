@@ -261,3 +261,7 @@ export function appendCopyCodeNodes(nodes, locale = "en") {
     node.appendChild(copyButton);
   });
 }
+
+export function getDisplayName(Component) {
+  return Component.displayName || Component.name || "Component";
+}
