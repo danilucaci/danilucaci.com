@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { shape, string } from "prop-types";
+import { shape, string, number } from "prop-types";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
 import { useIntl } from "react-intl";
@@ -31,6 +31,8 @@ import LocaleContext from "../i18n/LocaleContext";
 const AboutPage = ({ location, data }) => {
   const { locale } = useContext(LocaleContext);
   const intl = useIntl();
+
+  console.log(data);
 
   return (
     <ErrorBoundary>
@@ -187,7 +189,15 @@ AboutPage.propTypes = {
   data: shape({
     aboutImage: shape({
       childImageSharp: shape({
-        fluid: string,
+        fluid: shape({
+          aspectRatio: number.isRequired,
+          base64: string.isRequired,
+          sizes: string.isRequired,
+          src: string.isRequired,
+          srcSet: string.isRequired,
+          srcSetWebp: string.isRequired,
+          srcWebp: string.isRequired,
+        }).isRequired,
       }),
     }),
   }).isRequired,
