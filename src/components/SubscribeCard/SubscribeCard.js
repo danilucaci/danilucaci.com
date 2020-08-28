@@ -149,7 +149,7 @@ function SubscribeCard() {
                     email: "",
                     acceptsconsentcheckbox: false,
                   }}
-                  validateOnMount={true}
+                  validateOnMount
                   validationSchema={MCSchema(locale)}
                   onSubmit={(values, { setSubmitting }) => {
                     // Don’t allow re-submitting
