@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import PropTypes from "prop-types";
+import { string } from "prop-types";
 import { useIntl } from "react-intl";
 import { Link } from "gatsby";
 import { Menu, MenuLink } from "@reach/menu-button";
@@ -44,6 +44,11 @@ export function EnglishLanguagePicker({ twinPostURL, currentPath }) {
   );
 }
 
+EnglishLanguagePicker.propTypes = {
+  twinPostURL: string.isRequired,
+  currentPath: string.isRequired,
+};
+
 export function SpanishLanguagePicker({ twinPostURL, currentPath }) {
   return (
     <StyledMenuList>
@@ -69,6 +74,11 @@ export function SpanishLanguagePicker({ twinPostURL, currentPath }) {
     </StyledMenuList>
   );
 }
+
+SpanishLanguagePicker.propTypes = {
+  twinPostURL: string.isRequired,
+  currentPath: string.isRequired,
+};
 
 function LanguageSelector({ twinPostURL, currentPath }) {
   const { locale } = useContext(LocaleContext);
@@ -116,8 +126,8 @@ function LanguageSelector({ twinPostURL, currentPath }) {
 }
 
 LanguageSelector.propTypes = {
-  twinPostURL: PropTypes.string.isRequired,
-  currentPath: PropTypes.string.isRequired,
+  twinPostURL: string.isRequired,
+  currentPath: string.isRequired,
 };
 
 export default LanguageSelector;
