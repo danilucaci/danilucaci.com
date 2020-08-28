@@ -1,12 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { injectIntl } from "react-intl";
+import { useIntl } from "react-intl";
 
 import Spinner from "../Spinner/Spinner";
 
 import { StyledMCSubmitButton } from "./styles";
 
-function MCSubmitButton({ intl, isSubmitting = false, ...rest }) {
+function MCSubmitButton({ isSubmitting = false, ...rest }) {
+  const intl = useIntl();
+
   const subscribe = intl.formatMessage({ id: "form.submit.subscribe" });
   const sending = intl.formatMessage({ id: "form.submit.sending" });
 
@@ -32,4 +34,4 @@ MCSubmitButton.defaultProps = {
   isSubmitting: false,
 };
 
-export default injectIntl(MCSubmitButton);
+export default MCSubmitButton;

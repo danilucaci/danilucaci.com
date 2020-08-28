@@ -1,17 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { injectIntl } from "react-intl";
+import { useIntl } from "react-intl";
 
 import Spinner from "../Spinner/Spinner";
 
 import { StyledSubmitButton } from "./styles";
 
-function SubmitButton({
-  intl,
-  showSpinner = false,
-  submitted = false,
-  ...rest
-}) {
+function SubmitButton({ showSpinner = false, submitted = false, ...rest }) {
+  const intl = useIntl();
+
   const submit = intl.formatMessage({ id: "form.submit.submit" });
   const sending = intl.formatMessage({ id: "form.submit.sending" });
   const sent = intl.formatMessage({ id: "form.submit.sent" });
@@ -40,4 +37,4 @@ SubmitButton.defaultProps = {
   showSpinner: false,
 };
 
-export default injectIntl(SubmitButton);
+export default SubmitButton;

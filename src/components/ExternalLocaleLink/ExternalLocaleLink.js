@@ -1,15 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { injectIntl } from "react-intl";
+import { useIntl } from "react-intl";
 
 import locales from "../../locales/locales";
 
-const ExternalLocaleLink = ({ href, intl: { locale }, ...props }) => {
-  let path = locales[locale].default ? href : `/${locale}${href}`;
+const ExternalLocaleLink = ({ href, ...props }) => {
+  const intl = useIntl();
+
+  let path = locales[intl.locale].default ? href : `/${intl.locale}${href}`;
 
   // logo link href /es and not /es/
-  if (href === "/" && !locales[locale].default) {
-    path = `/${locale}`;
+  if (href === "/" && !locales[intl.locale].default) {
+    path = `/${intl.locale}`;
   }
 
   return <a {...props} href={path} />;
@@ -20,4 +22,4 @@ ExternalLocaleLink.propTypes = {
   locale: PropTypes.string.isRequired,
 };
 
-export default injectIntl(ExternalLocaleLink);
+export default ExternalLocaleLink;

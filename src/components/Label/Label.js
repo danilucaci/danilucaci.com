@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { injectIntl } from "react-intl";
+import { useIntl } from "react-intl";
 
 import { StyledLabel } from "./styles";
 
-function Label({ intl, labelType, children, ...rest }) {
+function Label({ labelType, children, ...rest }) {
   let str = labelType.toLowerCase();
 
+  const intl = useIntl();
   const labelValue = intl.formatMessage({ id: `form.label.${str}` });
 
   return (
@@ -21,4 +22,4 @@ Label.propTypes = {
   labelType: PropTypes.string.isRequired,
 };
 
-export default injectIntl(Label);
+export default Label;

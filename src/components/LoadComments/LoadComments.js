@@ -1,9 +1,11 @@
 import React from "react";
-import { injectIntl } from "react-intl";
+import { useIntl } from "react-intl";
 
 import { StyledLoadComments, StyledIcon } from "./styles";
 
-function LoadComments({ intl, ...rest }) {
+function LoadComments({ ...rest }) {
+  const intl = useIntl();
+
   const loadMsg = intl.formatMessage({ id: "load.comments" });
 
   return (
@@ -16,4 +18,4 @@ function LoadComments({ intl, ...rest }) {
   );
 }
 
-export default injectIntl(LoadComments);
+export default LoadComments;

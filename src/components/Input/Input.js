@@ -1,13 +1,14 @@
 import React from "react";
 import { oneOfType, string, bool } from "prop-types";
-import { injectIntl } from "react-intl";
+import { useIntl } from "react-intl";
 
 import { StyledInput } from "./styles";
 import ValidInputStatusIcon from "../ValidInputStatusIcon/ValidInputStatusIcon";
 import ErrorInputStatusIcon from "../ErrorInputStatusIcon/ErrorInputStatusIcon";
 
-function Input({ intl, valid, error, placeholderType = "fullname", ...props }) {
+function Input({ valid, error, placeholderType = "fullname", ...props }) {
   let str = placeholderType.toLowerCase();
+  const intl = useIntl();
 
   const placeholder = intl.formatMessage({
     id: `form.placeholder.${str}`,
@@ -38,4 +39,4 @@ Input.defaultProps = {
   error: undefined,
 };
 
-export default injectIntl(Input);
+export default Input;
