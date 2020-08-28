@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import * as Sentry from "@sentry/browser";
 import { detectDataSaverMode, detectSlowConnectionType } from "./helpers";
 
