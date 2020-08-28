@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { arrayOf, number, string, object, shape } from "prop-types";
+import { arrayOf, number, string, bool, shape } from "prop-types";
 
 import SEO from "../components/SEO/SEO";
 import Layout from "../components/Layout";
@@ -84,12 +84,50 @@ WorkPage.propTypes = {
     totalCountWork: number.isRequired,
     totalPagesInWork: number.isRequired,
     paginationPathPrefix: string.isRequired,
-    edgesWork: arrayOf(object).isRequired,
-  }).isRequired,
+    edgesWork: arrayOf(
+      shape({
+        node: shape({
+          fields: shape({
+            slug: string.isRequired,
+          }),
+          frontmatter: shape({
+            cardImage: shape({
+              childImageSharp: shape({
+                fluid: shape({
+                  aspectRatio: number.isRequired,
+                  base64: string.isRequired,
+                  sizes: string.isRequired,
+                  src: string.isRequired,
+                  srcSet: string.isRequired,
+                  srcSetWebp: string.isRequired,
+                  srcWebp: string.isRequired,
+                }).isRequired,
+              }).isRequired,
+            }).isRequired,
+            category: string.isRequired,
+            date: string.isRequired,
+            locale: string.isRequired,
+            posted: bool.isRequired,
+            snippet: string.isRequired,
+            tags: arrayOf(string).isRequired,
+            title: string.isRequired,
+            twinPost: string.isRequired,
+          }).isRequired,
+        }).isRequired,
+      }).isRequired,
+    ).isRequired,
+  }),
   location: shape({
     pathname: string.isRequired,
     href: string.isRequired,
   }).isRequired,
+};
+
+WorkPage.defaultProps = {
+  pageContext: {
+    nextPath: null,
+    prevPath: null,
+  },
 };
 
 export default WorkPage;
