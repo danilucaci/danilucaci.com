@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme, rem } from "../../theme/theme";
+import { rem } from "../../theme/theme";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
 
 export const StyledMCSubmitButton = styled(PrimaryButton)`
