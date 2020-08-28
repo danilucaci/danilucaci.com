@@ -14,6 +14,7 @@ const ExternalLocaleLink = ({ href, ...props }) => {
     path = `/${intl.locale}`;
   }
 
+  // eslint-disable-next-line jsx-a11y/anchor-has-content
   return <a {...props} href={path} />;
 };
 
