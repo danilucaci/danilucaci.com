@@ -170,7 +170,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     Object.entries(localePaths).map(async ([locale, paths]) => {
       const {
         work: workPath,
-        paginationName: paginationName,
+        paginationName,
         blog: blogPath,
         tags: tagsPath,
       } = paths;
