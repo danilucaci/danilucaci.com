@@ -1,5 +1,5 @@
 import * as Yup from "yup";
-import { CONSENT_VALUE, MC_ERRORS } from "../../i18n/i18n";
+import { MC_ERRORS } from "../../i18n/i18n";
 
 const MCSchema = (locale = "en") =>
   Yup.object().shape({
