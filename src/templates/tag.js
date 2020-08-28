@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { string, number, arrayOf, object, shape } from "prop-types";
+import { string, number, arrayOf, bool, shape } from "prop-types";
 import { graphql } from "gatsby";
 import { FormattedMessage } from "react-intl";
 
@@ -143,17 +143,46 @@ TagPage.propTypes = {
     totalCount: number.isRequired,
     totalPagesInBlog: number.isRequired,
     paginationPathPrefix: string.isRequired,
-    edges: arrayOf(object).isRequired,
-  }).isRequired,
+    edges: arrayOf(
+      shape({
+        fields: shape({
+          slug: string.isRequired,
+        }),
+        timeToRead: number.isRequired,
+        frontmatter: shape({
+          category: string.isRequired,
+          locale: string.isRequired,
+          date: string.isRequired,
+          posted: bool.isRequired,
+          snippet: string.isRequired,
+          tags: arrayOf(string).isRequired,
+          title: string.isRequired,
+          twinPost: string.isRequired,
+        }).isRequired,
+      }).isRequired,
+    ).isRequired,
+  }),
   data: shape({
     allMdx: shape({
-      tags: arrayOf(object).isRequired,
+      tags: arrayOf(
+        shape({
+          fieldValue: string.isRequired,
+          totalCount: number.isRequired,
+        }).isRequired,
+      ).isRequired,
     }),
   }).isRequired,
   location: shape({
     pathname: string.isRequired,
     href: string.isRequired,
   }).isRequired,
+};
+
+TagPage.defaultProps = {
+  pageContext: {
+    nextPath: null,
+    prevPath: null,
+  },
 };
 
 export default TagPage;
