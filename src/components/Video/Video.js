@@ -21,9 +21,9 @@ function getVideoSrc({ videos = [], src = "", extension = "" }) {
 
   if (result && result.node && result.node.publicURL) {
     return result.node.publicURL;
-  } else {
-    return null;
   }
+
+  return null;
 }
 
 function getPosterSrc({ videos = [], src = "" }) {
@@ -35,9 +35,9 @@ function getPosterSrc({ videos = [], src = "" }) {
 
   if (result && result.node && result.node.publicURL) {
     return result.node.publicURL;
-  } else {
-    return null;
   }
+
+  return null;
 }
 
 function Video({
