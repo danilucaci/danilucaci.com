@@ -12,6 +12,7 @@
  * but it won't populate the cache at runtime.
  * If there is a cache match, then it will properly serve partial responses.
  */
+/* eslint-disable no-undef */
 workbox.routing.registerRoute(
   /.*\.mp4/,
   workbox.strategies.cacheFirst({
