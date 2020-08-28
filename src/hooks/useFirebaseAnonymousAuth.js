@@ -57,7 +57,7 @@ function useFirebaseAnonymousAuth(predicate = false) {
   useEffect(() => {
     let mounted = true;
 
-    if (auth && auth.hasOwnProperty("currentUser") && !predicate) {
+    if (auth && auth.currentUser && !predicate) {
       auth.signOut().then(() => {
         if (mounted) {
           setAuth(null);
