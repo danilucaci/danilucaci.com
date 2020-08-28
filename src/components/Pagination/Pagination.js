@@ -135,4 +135,9 @@ Pagination.propTypes = {
   nextPath: string,
 };
 
+Pagination.defaultProps = {
+  prevPath: null,
+  nextPath: null,
+};
+
 export default Pagination;
