@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { theme, rem } from "../../theme/theme";
+import { theme } from "../../theme/theme";
 import FilteredPropsInputField from "../FilteredPropsInputField/FilteredPropsInputField";
 
 export const StyledInput = styled(FilteredPropsInputField)`
