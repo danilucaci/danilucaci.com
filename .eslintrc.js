@@ -57,6 +57,7 @@ module.exports = {
     "array-callback-return": 0,
     "prefer-template": 0,
     "dot-notation": 0,
+    "no-console": 2,
     "no-underscore-dangle": 0,
     "prefer-const": 0,
     "no-lonely-if": 0,
