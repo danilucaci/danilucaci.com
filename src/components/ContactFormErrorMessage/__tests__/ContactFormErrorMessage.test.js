@@ -21,7 +21,7 @@ describe("ContactFormErrorMessage", () => {
         <ContactFormErrorMessage
           errorMessage={ERROR_MESSAGE}
           clearErrorMessage={CLEAR_ERROR_MESSAGE}
-          shouldRenderCloseButton={true}
+          shouldRenderCloseButton
         />
         ,
       </LocaleContext.Provider>,
@@ -56,7 +56,7 @@ describe("ContactFormErrorMessage", () => {
         <ContactFormErrorMessage
           errorMessage={ERROR_MESSAGE}
           clearErrorMessage={CLEAR_ERROR_MESSAGE}
-          shouldRenderCloseButton={true}
+          shouldRenderCloseButton
         />
         ,
       </LocaleContext.Provider>,
@@ -112,7 +112,7 @@ describe("ContactFormErrorMessage", () => {
         <ContactFormErrorMessage
           errorMessage={ERROR_MESSAGE}
           clearErrorMessage={CLEAR_ERROR_MESSAGE}
-          shouldRenderCloseButton={true}
+          shouldRenderCloseButton
         />
         ,
       </LocaleContext.Provider>,
