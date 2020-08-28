@@ -4,7 +4,15 @@
 module.exports = {
   parser: "babel-eslint",
   extends: [
+    "airbnb",
+    "eslint:recommended",
+    "plugin:react/recommended",
     "plugin:prettier/recommended",
+    "plugin:jest/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:cypress/recommended",
+    "plugin:jsx-a11y/recommended",
     "prettier/react",
     "prettier/standard",
   ],
@@ -16,13 +24,22 @@ module.exports = {
     "markdown",
     "react-hooks",
     "jest",
+    "import",
+    "cypress",
   ],
+  settings: {
+    react: {
+      version: "detect",
+    },
+  },
   parserOptions: {
     sourceType: "module",
   },
   env: {
-    browser: 2,
-    es6: 2,
+    browser: true,
+    commonjs: true,
+    es6: true,
+    node: true,
     "jest/globals": true,
   },
   rules: {
@@ -34,12 +51,10 @@ module.exports = {
     "jest/no-identical-title": 2,
     "jest/prefer-to-have-length": 1,
     "jest/valid-expect": 2,
-    "no-console": 0,
     "no-inline-comments": 0,
     "spaced-comment": 0,
     "prefer-destructuring": 0,
     "array-callback-return": 0,
-    "no-unused-": 0,
     "prefer-template": 0,
     "dot-notation": 0,
     "no-underscore-dangle": 0,
@@ -50,6 +65,22 @@ module.exports = {
     "react/destructuring-assignment": 0,
     "react/jsx-props-no-spreading": 0,
     "react/state-in-constructor": 0,
-    "jest/no-disabled-tests": 0,
+    "react/jsx-filename-extension": [1, { extensions: [".js"] }],
+    "import/no-cycle": 0,
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        devDependencies: [
+          "src/helpers/gatsby-node/createPages.js",
+          "src/helpers/tests.js",
+          "gatsby-node.js",
+          "gatsby-config.js",
+          "cypress/**",
+          "jest-preprocess.js",
+          "jest.setup.js",
+          "**/__tests__/**",
+        ],
+      },
+    ],
   },
 };
