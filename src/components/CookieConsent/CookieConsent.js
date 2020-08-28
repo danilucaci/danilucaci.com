@@ -22,6 +22,7 @@ const CookieConsent = () => {
   ] = useContext(CookiesContext);
 
   const { locale } = useContext(LocaleContext);
+  // eslint-disable-next-line no-use-before-define
   const data = useStaticQuery(COOKIE_CONSENT_QUERY);
   const localizedDocsList = data.allMdx.edges
     .map((edge) => ({
