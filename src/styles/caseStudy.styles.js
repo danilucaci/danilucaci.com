@@ -1,4 +1,4 @@
-import styled, { keyframes, css } from "styled-components";
+import styled from "styled-components";
 import { rem, mediaMin } from "../theme/theme";
 import { Copy } from "../components/Copy/Copy";
 import { Row, RowSpacer, Col } from "../components/Grid/Grid";
