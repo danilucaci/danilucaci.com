@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-boolean-value */
 import React, { useState, useEffect, useContext } from "react";
-import PropTypes from "prop-types";
+import { string, shape, oneOfType, object, arrayOf, number } from "prop-types";
 import { graphql } from "gatsby";
 import Disqus from "disqus-react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
@@ -153,47 +153,34 @@ function Post({ pageContext, data, location }) {
 }
 
 Post.propTypes = {
-  pageContext: PropTypes.shape({
-    slug: PropTypes.string.isRequired,
-    twinPost: PropTypes.string.isRequired,
-    nextTitle: PropTypes.oneOfType([
-      PropTypes.string.isRequired,
-      PropTypes.object.isRequired,
-    ]),
-    nextSlug: PropTypes.oneOfType([
-      PropTypes.string.isRequired,
-      PropTypes.object.isRequired,
-    ]),
-    prevSlug: PropTypes.oneOfType([
-      PropTypes.string.isRequired,
-      PropTypes.object.isRequired,
-    ]),
-    prevTitle: PropTypes.oneOfType([
-      PropTypes.string.isRequired,
-      PropTypes.object.isRequired,
-    ]),
+  pageContext: shape({
+    slug: string.isRequired,
+    twinPost: string.isRequired,
+    nextTitle: oneOfType([string.isRequired, object.isRequired]),
+    nextSlug: oneOfType([string.isRequired, object.isRequired]),
+    prevSlug: oneOfType([string.isRequired, object.isRequired]),
+    prevTitle: oneOfType([string.isRequired, object.isRequired]),
   }).isRequired,
-  data: PropTypes.shape({
-    mdx: PropTypes.shape({
-      fields: PropTypes.shape({
-        slug: PropTypes.string.isRequired,
+  data: shape({
+    mdx: shape({
+      fields: shape({
+        slug: string.isRequired,
       }),
-      body: PropTypes.string.isRequired,
-      frontmatter: PropTypes.shape({
-        category: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-        image: PropTypes.object,
-        intro: PropTypes.string.isRequired,
-        snippet: PropTypes.string.isRequired,
-        tags: PropTypes.arrayOf(PropTypes.string).isRequired,
-        title: PropTypes.string.isRequired,
+      body: string.isRequired,
+      frontmatter: shape({
+        category: string.isRequired,
+        date: string.isRequired,
+        intro: string.isRequired,
+        snippet: string.isRequired,
+        tags: arrayOf(string).isRequired,
+        title: string.isRequired,
       }),
-      timeToRead: PropTypes.number.isRequired,
+      timeToRead: number.isRequired,
     }),
   }).isRequired,
-  location: PropTypes.shape({
-    pathname: PropTypes.string.isRequired,
-    href: PropTypes.string.isRequired,
+  location: shape({
+    pathname: string.isRequired,
+    href: string.isRequired,
   }).isRequired,
 };
 
