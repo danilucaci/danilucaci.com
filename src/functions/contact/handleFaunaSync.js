@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 // require("node-fetch").default needed to prevent `TypeError: o is not a function`
 const fetch = require("node-fetch").default;
 
