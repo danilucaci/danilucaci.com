@@ -184,6 +184,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         });
 
         if (error) {
+          // eslint-disable-next-line no-console
           console.log(error);
           reporter.panic("Failed to get the GATSBY_NODE_QUERY data");
           return;

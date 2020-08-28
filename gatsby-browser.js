@@ -15,11 +15,9 @@ export function onClientEntry() {
     const features = [];
     if (!("Intl" in window)) {
       features.push("Intl%2CIntl.~locale.en%2CIntl.~locale.es");
-      console.log("Loaded Intl Polyfill");
     }
     if (!("fetch" in window)) {
       features.push("fetch");
-      console.log("Loaded Fetch Polyfill");
     }
     if (
       !("IntersectionObserver" in window) ||
@@ -27,7 +25,6 @@ export function onClientEntry() {
       !("intersectionRatio" in window.IntersectionObserverEntry.prototype)
     ) {
       features.push("IntersectionObserver%2CIntersectionObserverEntry");
-      console.log("Loaded IntersectionObserver Polyfill");
     }
     // Use 'always' flag to download polyfills regardless of user agent.
     // Features are added to the list only if they are not supported.
