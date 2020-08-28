@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { shape, oneOfType, string, object } from "prop-types";
+import { shape, object, oneOfType, string, number } from "prop-types";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
 import { MDXRenderer } from "gatsby-plugin-mdx";
@@ -106,10 +106,22 @@ CaseStudy.propTypes = {
       }),
       body: string.isRequired,
       frontmatter: shape({
+        snippet: string.isRequired,
         title: string.isRequired,
         date: string.isRequired,
-        pageImage: object.isRequired,
-        snippet: string.isRequired,
+        pageImage: shape({
+          childImageSharp: shape({
+            fluid: shape({
+              aspectRatio: number.isRequired,
+              base64: string.isRequired,
+              sizes: string.isRequired,
+              src: string.isRequired,
+              srcSet: string.isRequired,
+              srcSetWebp: string.isRequired,
+              srcWebp: string.isRequired,
+            }).isRequired,
+          }).isRequired,
+        }),
       }),
     }),
   }).isRequired,
