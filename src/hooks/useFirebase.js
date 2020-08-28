@@ -35,6 +35,7 @@ function useFirebase(predicate = false) {
     let mounted = true;
 
     async function importFirebaseModules() {
+      // eslint-disable-next-line no-unused-vars
       const [firebase, auth] = await Promise.all([
         import("firebase/app"),
         import("firebase/auth"),
