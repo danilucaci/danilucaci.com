@@ -65,7 +65,7 @@ function Ping({ userToken }) {
           return res.json();
         })
         .then((res) => {
-          const { data: { message } = {}, error } = res || {};
+          const { error } = res || {};
 
           if (mounted) {
             sendContactFormEvent({
@@ -94,7 +94,9 @@ function Ping({ userToken }) {
         });
     }
 
-    return () => (mounted = false);
+    return () => {
+      mounted = false;
+    };
   }, [
     pingSent,
     userToken,
@@ -142,7 +144,6 @@ function ContactForm() {
   function handleFormError(error) {
     setFormErrorMessage(error.message);
     setShowFormError(true);
-    console.error("Contact form failed with: ", error.message);
     Sentry.captureException(error);
   }
 
@@ -362,6 +363,7 @@ function ContactForm() {
               showSpinner={isSubmitting}
               submitted={messageSent}
               aria-label={
+                // eslint-disable-next-line no-nested-ternary
                 messageSent
                   ? "Message sent"
                   : isSubmitting
