@@ -13,18 +13,26 @@ function SubmitButton({ showSpinner = false, submitted = false, ...rest }) {
   const sending = intl.formatMessage({ id: "form.submit.sending" });
   const sent = intl.formatMessage({ id: "form.submit.sent" });
 
+  if (submitted) {
+    return (
+      <StyledSubmitButton type="submit" showSpinner={showSpinner} {...rest}>
+        {sent}
+      </StyledSubmitButton>
+    );
+  }
+
+  if (showSpinner) {
+    return (
+      <StyledSubmitButton type="submit" showSpinner={showSpinner} {...rest}>
+        {sending}
+        <Spinner light />
+      </StyledSubmitButton>
+    );
+  }
+
   return (
     <StyledSubmitButton type="submit" showSpinner={showSpinner} {...rest}>
-      {submitted ? (
-        sent
-      ) : showSpinner ? (
-        <>
-          {sending}
-          <Spinner light />
-        </>
-      ) : (
-        submit
-      )}
+      {submit}
     </StyledSubmitButton>
   );
 }
