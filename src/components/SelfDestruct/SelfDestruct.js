@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
-function useExpiration(time = 6000, element) {
+function useExpiration(time = 6000) {
   const [shouldRender, setShouldRender] = useState(true);
 
   useEffect(() => {
