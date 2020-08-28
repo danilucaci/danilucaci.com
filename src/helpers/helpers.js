@@ -43,6 +43,7 @@ export function addSafariVideoControls() {
   ) {
     const videos = document.querySelectorAll("video");
     videos.forEach((video) => {
+      // eslint-disable-next-line no-param-reassign
       video.controls = true;
     });
   }
@@ -54,12 +55,14 @@ export function textPassiveEventSupport() {
   let supportsPassive = false;
   try {
     const opts = Object.defineProperty({}, "passive", {
+      // eslint-disable-next-line getter-return
       get() {
         supportsPassive = true;
       },
     });
     window.addEventListener("testPassive", null, opts);
     window.removeEventListener("testPassive", null, opts);
+    // eslint-disable-next-line no-empty
   } catch (e) {}
 
   return supportsPassive;
@@ -231,8 +234,10 @@ export function addCopyButtonsToCodeNodes(locale) {
     document.querySelectorAll(".gatsby-highlight"),
   );
 
+  // eslint-disable-next-line no-use-before-define
   appendCopyCodeNodes(getCodeNodes, locale);
 
+  // eslint-disable-next-line no-use-before-define
   addEventListenersToCopyButtons(locale);
 }
 
