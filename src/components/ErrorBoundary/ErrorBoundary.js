@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as Sentry from "@sentry/browser";
+import { node } from "prop-types";
 
 const NODE_ENV = process.env.NODE_ENV;
 const GATSBY_SENTRY_URL = process.env.GATSBY_SENTRY_URL;
@@ -14,22 +15,24 @@ if (NODE_ENV !== "development") {
 
 class ErrorBoundary extends Component {
   state = {
-    error: null,
+    // error: null,
     errorInfo: null,
-    hasError: null,
+    // hasError: null,
   };
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError() {
     // Update state so the next render will show the fallback UI.
     return { hasError: true };
   }
 
   componentDidCatch(error, errorInfo) {
+    // eslint-disable-next-line no-console
     console.error("CDC: ", error);
+    // eslint-disable-next-line no-console
     console.error("CDC: ", errorInfo);
 
     this.setState({
-      error,
+      // error,
       errorInfo,
     });
 
@@ -119,5 +122,9 @@ class ErrorBoundary extends Component {
     return this.props.children;
   }
 }
+
+ErrorBoundary.propTypes = {
+  children: node.isRequired,
+};
 
 export default ErrorBoundary;
