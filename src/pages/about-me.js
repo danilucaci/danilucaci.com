@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { shape, object, string } from "prop-types";
+import { shape, string } from "prop-types";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
 import { useIntl } from "react-intl";
@@ -185,7 +185,11 @@ const AboutPage = ({ location, data }) => {
 
 AboutPage.propTypes = {
   data: shape({
-    aboutImage: object.isRequired,
+    aboutImage: shape({
+      childImageSharp: shape({
+        fluid: string,
+      }),
+    }),
   }).isRequired,
   location: shape({
     pathname: string.isRequired,
