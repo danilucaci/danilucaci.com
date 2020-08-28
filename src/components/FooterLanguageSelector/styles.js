@@ -1,8 +1,7 @@
 import styled, { keyframes } from "styled-components";
+import { MenuList, MenuButton } from "@reach/menu-button";
 import { Icon } from "../Icon/Icon";
 import { theme, rem, mediaMin } from "../../theme/theme";
-
-import { MenuList, MenuButton } from "@reach/menu-button";
 
 export const StyledMenuButton = styled(MenuButton)`
   display: flex;
