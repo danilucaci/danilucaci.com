@@ -65,6 +65,7 @@ function Video({
     setJSLoaded(true);
   }, [jsLoaded]);
 
+  // eslint-disable-next-line no-use-before-define
   const { videos } = useStaticQuery(ALL_VIDEOS_QUERY);
 
   if (!videos) {

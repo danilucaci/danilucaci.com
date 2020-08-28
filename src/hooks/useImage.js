@@ -2,6 +2,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import { string } from "prop-types";
 
 function useImage(src) {
+  // eslint-disable-next-line no-use-before-define
   const { images } = useStaticQuery(SINGLE_IMAGE_QUERY);
   const foundImage = images.edges.find(
     (image) => image.node.relativePath === src,

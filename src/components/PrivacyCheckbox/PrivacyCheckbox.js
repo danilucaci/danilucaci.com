@@ -12,6 +12,7 @@ import {
 import LocaleContext from "../../i18n/LocaleContext";
 
 function PrivacyCheckbox({ ...props }) {
+  // eslint-disable-next-line no-use-before-define
   const data = useStaticQuery(PRIVACY_CHECKBOX_QUERY);
   const { locale } = useContext(LocaleContext);
 

@@ -26,6 +26,7 @@ import LocaleContext from "../../i18n/LocaleContext";
 
 const SiteFooter = ({ twinPostURL, currentPath, expand }) => {
   const { locale } = useContext(LocaleContext);
+  // eslint-disable-next-line no-use-before-define
   const data = useStaticQuery(FOOTER_LEGAL_PAGES_QUERY);
 
   const localizedDocsList = data.allMdx.edges
