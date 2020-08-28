@@ -46,6 +46,11 @@ export function EnglishLanguagePicker({ twinPostURL, currentPath }) {
   );
 }
 
+EnglishLanguagePicker.propTypes = {
+  twinPostURL: string.isRequired,
+  currentPath: string.isRequired,
+};
+
 export function SpanishLanguagePicker({ twinPostURL, currentPath }) {
   return (
     <StyledMenuList>
@@ -73,6 +78,11 @@ export function SpanishLanguagePicker({ twinPostURL, currentPath }) {
     </StyledMenuList>
   );
 }
+
+SpanishLanguagePicker.propTypes = {
+  twinPostURL: string.isRequired,
+  currentPath: string.isRequired,
+};
 
 function FooterLanguageSelector({ twinPostURL, currentPath }) {
   const { locale } = useContext(LocaleContext);
