@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components";
 import { theme, rem, mediaMin } from "../../src/theme/theme";
-import { Copy } from "../../src/components/Copy/Copy";
 import { Subhead } from "../../src/components/Headings/Headings";
 import { Row, RowNested, RowSpacer, Col } from "../../src/components/Grid/Grid";
 
