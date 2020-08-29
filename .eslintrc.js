@@ -41,7 +41,18 @@ module.exports = {
     es6: true,
     node: true,
     "jest/globals": true,
+    "cypress/globals": true,
   },
+  overrides: [
+    {
+      files: ["*.spec.js"],
+      rules: {
+        "jest/expect-expect": 0,
+        "jest/valid-expect": 0,
+        "jest/valid-expect-in-promise": 0,
+      },
+    },
+  ],
   rules: {
     "prettier/prettier": 2,
     "react-hooks/rules-of-hooks": 2,

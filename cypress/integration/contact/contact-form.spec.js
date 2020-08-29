@@ -148,9 +148,7 @@ describe("Contact From Validation - English", () => {
     });
 
     it("checkbox: returns an error when it is touched and blured", () => {
-      cy.get("input[name=consentAccepted]")
-        .focus()
-        .blur();
+      cy.get("input[name=consentAccepted]").focus().blur();
       cy.get("[data-testid=Checkbox__ErrorMessage]")
         .should("exist")
         .and(
