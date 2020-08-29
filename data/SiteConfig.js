@@ -124,7 +124,7 @@ module.exports = {
     },
     about: {
       title:
-        "Sobre Mi - danilucaci.com | Diseñador de Productos y Desarrollador Front-End.",
+        "Sobre Mí - danilucaci.com | Diseñador de Productos y Desarrollador Front-End.",
       description:
         "Esta es mi página web y blog personal en el que escribo sobre Diseño de Productos y desarrollo Front-End | Dani Lucaci - Diseñador de Productos y Desarrollador Front-End.",
     },
