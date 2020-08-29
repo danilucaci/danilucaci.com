@@ -2,22 +2,21 @@ import React, { useContext } from "react";
 import { string, bool, shape, number, arrayOf } from "prop-types";
 import { Helmet } from "react-helmet";
 import urljoin from "url-join";
+
 import config from "../../../data/SiteConfig";
 import LocaleContext from "../../i18n/LocaleContext";
 
-const SEO = (props) => {
-  let {
-    postNode,
-    postSEO,
-    legalDocs,
-    postImage,
-    prevPath,
-    nextPath,
-    twinPostURL,
-    currentPage = "site",
-    currentPath = "/",
-  } = props;
-
+function SEO({
+  postNode,
+  postSEO,
+  legalDocs,
+  postImage,
+  prevPath,
+  nextPath,
+  twinPostURL,
+  currentPage = "site",
+  currentPath = "/",
+}) {
   const { locale } = useContext(LocaleContext);
 
   let title;
@@ -253,7 +252,7 @@ const SEO = (props) => {
       </script>
     </Helmet>
   );
-};
+}
 
 SEO.propTypes = {
   twinPostURL: string.isRequired,
