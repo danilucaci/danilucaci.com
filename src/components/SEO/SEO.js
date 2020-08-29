@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { string, bool, shape, number } from "prop-types";
+import { string, bool, shape, number, arrayOf } from "prop-types";
 import { Helmet } from "react-helmet";
 import urljoin from "url-join";
 import config from "../../../data/SiteConfig";
@@ -268,8 +268,12 @@ SEO.propTypes = {
       slug: string.isRequired,
     }),
     body: string.isRequired,
+    timeToRead: number,
     frontmatter: shape({
-      snippet: string.isRequired,
+      snippet: string,
+      category: string,
+      intro: string,
+      tags: arrayOf(string),
       title: string.isRequired,
       date: string.isRequired,
       pageImage: shape({
@@ -285,7 +289,7 @@ SEO.propTypes = {
           }).isRequired,
         }).isRequired,
       }),
-    }),
+    }).isRequired,
   }),
   legalDocs: bool,
 };
