@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
 import { graphql, useStaticQuery } from "gatsby";
 
 import {
@@ -11,6 +11,7 @@ import {
   StyledPrimaryButton,
   StyledOutlinedButton,
 } from "./styles";
+
 import LocaleContext from "../../i18n/LocaleContext";
 import { CookiesContext } from "../../context/CookiesContext";
 
@@ -20,6 +21,8 @@ const CookieConsent = () => {
     dispatch,
     { setAcceptedCookies, setDeniedCookies },
   ] = useContext(CookiesContext);
+
+  const intl = useIntl();
 
   const { locale } = useContext(LocaleContext);
   // eslint-disable-next-line no-use-before-define
@@ -38,45 +41,37 @@ const CookieConsent = () => {
       showConsent={openCookieConsent}
     >
       <CopyContainer>
-        <FormattedMessage id="cookie.message">
-          {(txt) => <StyledCopy>{txt} </StyledCopy>}
-        </FormattedMessage>
+        <StyledCopy>{intl.formatMessage({ id: "cookie.message" })} </StyledCopy>
         {localizedDocsList.map((localizedDoc) => (
-          <FormattedMessage id="cookie.learn.link" key={localizedDoc.title}>
-            {(txt) => (
-              <LearnMoreLink
-                to={localizedDoc.slug}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {txt}
-              </LearnMoreLink>
-            )}
-          </FormattedMessage>
+          <LearnMoreLink
+            key={localizedDoc.title}
+            to={localizedDoc.slug}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {intl.formatMessage({ id: "cookie.learn.link" })}
+          </LearnMoreLink>
         ))}
       </CopyContainer>
 
       <ButtonsContainer>
-        <FormattedMessage id="cookie.accept.copy">
-          {(txt) => (
-            <StyledPrimaryButton
-              aria-label={`${txt} cookies`}
-              onClick={() => dispatch(setAcceptedCookies())}
-            >
-              {txt}
-            </StyledPrimaryButton>
-          )}
-        </FormattedMessage>
-        <FormattedMessage id="cookie.deny.copy">
-          {(txt) => (
-            <StyledOutlinedButton
-              aria-label={`${txt} cookies`}
-              onClick={() => dispatch(setDeniedCookies())}
-            >
-              {txt}
-            </StyledOutlinedButton>
-          )}
-        </FormattedMessage>
+        <StyledPrimaryButton
+          aria-label={`${intl.formatMessage({
+            id: "cookie.accept.copy",
+          })} cookies`}
+          onClick={() => dispatch(setAcceptedCookies())}
+        >
+          {intl.formatMessage({ id: "cookie.accept.copy" })}
+        </StyledPrimaryButton>
+
+        <StyledOutlinedButton
+          aria-label={`${intl.formatMessage({
+            id: "cookie.deny.copy",
+          })} cookies`}
+          onClick={() => dispatch(setDeniedCookies())}
+        >
+          {intl.formatMessage({ id: "cookie.deny.copy" })}
+        </StyledOutlinedButton>
       </ButtonsContainer>
     </StyledCookieConsent>
   );
