@@ -13,11 +13,11 @@
  * @returns [state, dispatch] Enhanced `[state, dispatch]` after calling the middleware functions.
  */
 function composeReducers(...fns) {
-  return function getStateAndDispatch([state, dispatch]) {
-    return fns.reduceRight(
-      (_stateAndDispatchAccumArr, fn) => fn([state, dispatch]),
-      [state, dispatch],
-    );
+  return function getStateAndDispatch([initialState, initialDispatch]) {
+    return fns.reduceRight(([state, dispatch], fn) => fn([state, dispatch]), [
+      initialState,
+      initialDispatch,
+    ]);
   };
 }
 
