@@ -57,7 +57,7 @@ module.exports = {
     "prettier/prettier": 2,
     "react-hooks/rules-of-hooks": 2,
     "react-hooks/exhaustive-deps": 1,
-    "jest/no-disabled-tests": 1,
+    "jest/no-disabled-tests": 0,
     "jest/no-focused-tests": 2,
     "jest/no-identical-title": 2,
     "jest/prefer-to-have-length": 1,
