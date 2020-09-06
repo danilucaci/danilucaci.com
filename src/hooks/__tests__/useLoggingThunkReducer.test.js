@@ -8,6 +8,11 @@ jest.mock("../useLogger");
 jest.mock("../useThunk");
 
 describe("useLoggingThunkReducer", () => {
+  afterAll(() => {
+    useLogger.mockRestore();
+    useThunk.mockRestore();
+  });
+
   test("calls the useThunk and useLogger hooks", () => {
     const state = { data: "test state" };
     const dispatch = jest.fn();
