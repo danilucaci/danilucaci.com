@@ -11,7 +11,7 @@ const GATSBY_DL_COOKIE_DOMAIN = process.env.GATSBY_DL_COOKIE_DOMAIN;
 const GATSBY_DL_COOKIE_SECURE = process.env.GATSBY_DL_COOKIE_SECURE;
 
 const __DEV__ = NODE_ENV === "development";
-const COOKIE_SECURE = __DEV__ ? false : GATSBY_DL_COOKIE_SECURE;
+const COOKIE_SECURE = __DEV__ ? false : Boolean(GATSBY_DL_COOKIE_SECURE);
 
 export function checkCookies() {
   return function thunk(dispatch, { openCookieConsent, hasGDPRConsent }) {
