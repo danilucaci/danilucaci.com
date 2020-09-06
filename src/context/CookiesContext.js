@@ -10,6 +10,7 @@ const contextInitialState = [
     checkCookies: () => {},
     setAcceptedCookies: () => {},
     setDeniedCookies: () => {},
+    removeTransition: () => {},
   },
   {},
 ];

@@ -62,12 +62,6 @@ export function setAcceptedCookies() {
       });
 
       dispatch({ type: cookiesTypes.CLOSE_COOKIE_CONSENT });
-
-      let timeOut = setTimeout(() => {
-        dispatch({ type: cookiesTypes.REMOVE_TRANSITION });
-
-        clearTimeout(timeOut);
-      }, 400);
     } catch (error) {
       Sentry.captureException(error);
     }
@@ -84,14 +78,14 @@ export function setDeniedCookies() {
       });
 
       dispatch({ type: cookiesTypes.CLOSE_COOKIE_CONSENT });
-
-      let timeOut = setTimeout(() => {
-        dispatch({ type: cookiesTypes.REMOVE_TRANSITION });
-
-        clearTimeout(timeOut);
-      }, 400);
     } catch (error) {
       Sentry.captureException(error);
     }
+  };
+}
+
+export function removeTransition() {
+  return {
+    type: cookiesTypes.REMOVE_TRANSITION,
   };
 }

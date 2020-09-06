@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { useIntl } from "react-intl";
 import { graphql, useStaticQuery } from "gatsby";
 
@@ -15,12 +15,14 @@ import {
 import LocaleContext from "../../i18n/LocaleContext";
 import { CookiesContext } from "../../context/CookiesContext";
 
-const CookieConsent = () => {
+function CookieConsent() {
   const [
     { isTransitioning, openCookieConsent },
     dispatch,
-    { setAcceptedCookies, setDeniedCookies },
+    { setAcceptedCookies, setDeniedCookies, removeTransition },
   ] = useContext(CookiesContext);
+
+  const consentRef = useRef(null);
 
   const intl = useIntl();
 
@@ -35,10 +37,43 @@ const CookieConsent = () => {
     }))
     .filter((edge) => edge.locale === locale);
 
+  useEffect(() => {
+    let mounted = true;
+    const nodeRef = consentRef.current;
+
+    function handleTransitionEnd() {
+      if (mounted) {
+        nodeRef.removeEventListener("transitionend", handleTransitionEnd);
+        dispatch(removeTransition());
+      }
+    }
+
+    if (isTransitioning) {
+      if (nodeRef) {
+        nodeRef.addEventListener("transitionend", handleTransitionEnd);
+      } else {
+        setTimeout(() => {
+          if (mounted) {
+            dispatch(removeTransition());
+          }
+        }, 400);
+      }
+    }
+
+    return () => {
+      mounted = false;
+
+      if (nodeRef) {
+        nodeRef.removeEventListener("transitionend", handleTransitionEnd);
+      }
+    };
+  }, [isTransitioning, removeTransition, dispatch]);
+
   return (
     <StyledCookieConsent
       isTransitioning={isTransitioning}
       showConsent={openCookieConsent}
+      ref={consentRef}
     >
       <CopyContainer>
         <StyledCopy>{intl.formatMessage({ id: "cookie.message" })} </StyledCopy>
@@ -75,7 +110,7 @@ const CookieConsent = () => {
       </ButtonsContainer>
     </StyledCookieConsent>
   );
-};
+}
 
 export default CookieConsent;
 

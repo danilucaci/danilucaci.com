@@ -9,12 +9,14 @@ import {
   checkCookies,
   setAcceptedCookies,
   setDeniedCookies,
+  removeTransition,
 } from "../reducers/cookies/cookies-actions";
 
 const actions = {
   checkCookies,
   setAcceptedCookies,
   setDeniedCookies,
+  removeTransition,
 };
 
 function useCookiesReducer() {
