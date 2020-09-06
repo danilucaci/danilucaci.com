@@ -68,3 +68,39 @@ export const TEST_GATSBY_NODE_EDGES = {
     },
   ],
 };
+
+export function getLocationData() {
+  return {
+    hash: "test-hash",
+    host: "test-host",
+    hostname: "test-hostname",
+    href: "test-href",
+    key: "test-key",
+    origin: "test-origin",
+    pathname: "test-pathname",
+    port: "test-port",
+    protocol: "test-protocol",
+    search: "test-search",
+    state: {},
+  };
+}
+
+export function getStaticQueryData(testSlug, testTitle, testLocale) {
+  return {
+    allMdx: {
+      edges: [
+        {
+          node: {
+            fields: {
+              slug: testSlug,
+            },
+            frontmatter: {
+              title: testTitle,
+              locale: testLocale,
+            },
+          },
+        },
+      ],
+    },
+  };
+}
