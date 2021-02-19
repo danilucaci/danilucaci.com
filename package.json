@@ -20,7 +20,8 @@
     "serve:ip": "npm run build && gatsby serve -H 192.168.0.30",
     "serve:local": "npm run build && gatsby serve",
     "test:watch": "jest --watchAll",
-    "test:related": "jest --bail --findRelatedTests",
+    "test:related": "jest --bail --findRelatedTests --env=jsdom",
+    "test:ci:all": "cross-env CI=true jest --bail --env=jsdom",
     "cy:ip:dev": "npm-run-all --parallel dev:ip cy:open:dev",
     "cy:ip:prod": "npm-run-all --parallel dev:ip cy:open:prod",
     "cy:local:dev": "npm-run-all --parallel dev:local cy:open:dev",
@@ -35,7 +36,10 @@
     "sprite": "gulp build:svg",
     "lint:js": "eslint . --ext .js",
     "lint:js:fix": "npm run lint:js -- --fix",
-    "lint:prettier:write": "prettier --write"
+    "lint:format": "prettier --write .",
+    "lint:format:check": "prettier --check .",
+    "pre:commit": "lint-staged",
+    "pre:push": "npm run lint:js && npm run lint:format:check && npm run test:ci:all"
   },
   "browserslist": [
     ">0.20%",
@@ -106,6 +110,8 @@
     "yup": "^0.29.3"
   },
   "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
     "@testing-library/cypress": "^6.0.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^10.4.9",
@@ -115,6 +121,7 @@
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.3.0",
     "babel-preset-gatsby": "^0.5.7",
+    "commitlint": "^11.0.0",
     "cypress": "^5.0.0",
     "cypress-axe": "^0.8.1",
     "dotenv": "^8.2.0",
