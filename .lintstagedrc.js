@@ -1,4 +1,5 @@
 module.exports = {
-  "src/**/*.js": ["npm run lint:js:fix", "npm run test:related"],
-  "*.{md,mdx,css}": ["npm run lint:prettier:write"],
+  "src/**/*.js": ["npm run test:related"],
+  "*.js": ["npm run lint:js"],
+  "*.{js,json,css,yml,yaml,toml,md,mdx}": ["npm run lint:format:check"],
 };
