@@ -88,7 +88,7 @@ to submit your form will see and complete. If the Netlify bots see this field
 completed, the form will just be ignored. In my case, mine is called
 `data-netlify-honeypot="botfield"`.
 
-```jsx
+```html
 data-netlify-honeypot="botfield"
 ```
 
