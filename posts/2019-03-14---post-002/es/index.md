@@ -24,9 +24,11 @@ import Image from "components/Image/Image";
 
 ## Dando de Alta una Nueva Aplicación en Dribbble
 
-Antes de que puedas empezar a enviar peticiones a la API de Dribbble, primero tienes que dar de alta tu aplicación.
+Antes de que puedas empezar a enviar peticiones a la API de Dribbble, primero
+tienes que dar de alta tu aplicación.
 
-Para ello, tendrás que seguir estos pasos —estoy asumiendo que ya tienes una cuenta en Dribbble.
+Para ello, tendrás que seguir estos pasos —estoy asumiendo que ya tienes una
+cuenta en Dribbble.
 
 1. Abre tu cuenta Dribbble
 2. Haz click en: **account settings**
@@ -43,14 +45,17 @@ Ahora deberías poder añadir tus datos, igual que lo hice yo en este ejemplo:
 
 #### Lo importante aquí es:
 
-- El **Callback URL**. Es la URL de tu página web, la cual tienes que escribir incluyendo la parte de `https://`, si no te dará un error.
-- El **Client ID** y el **Client Secret**. Necesitarás los dos para poder enviar peticiónes tipo POST y para obtener tu _access token_.
+- El **Callback URL**. Es la URL de tu página web, la cual tienes que escribir
+  incluyendo la parte de `https://`, si no te dará un error.
+- El **Client ID** y el **Client Secret**. Necesitarás los dos para poder enviar
+  peticiónes tipo POST y para obtener tu _access token_.
 
 ### Obteniendo Un Access Token
 
 Lo siguiente que vas a necesitar es un `CLIENT_ID`.
 
-Para obtener el tuyo, abre una nueva pestaña en tu navegador e introduce esta URL:
+Para obtener el tuyo, abre una nueva pestaña en tu navegador e introduce esta
+URL:
 
 ```js
 https://dribbble.com/oauth/authorize?client_id=CLIENT_ID
@@ -78,21 +83,30 @@ Una vez lo tienes, serás redirigido a una página con la URL similar a esta:
 http://callback_url?code=5asdas892aas8dh8as9d9ashd
 ```
 
-El `callback_url` es la URL que has introducido en tu panel de control de Dribbble. Lo más importante en este paso es copiar el código: `5asdas892aas8dh8as9d9ashd`, ya que lo vas a necesitar para el próximo paso.
+El `callback_url` es la URL que has introducido en tu panel de control de
+Dribbble. Lo más importante en este paso es copiar el código:
+`5asdas892aas8dh8as9d9ashd`, ya que lo vas a necesitar para el próximo paso.
 
-Para poder obtener un _access token_, yo he usado Postman —si no lo tienes instalado puedes usar este [enlace para descargarlo](https://www.getpostman.com/downloads/)— para poder hacer una petición tipo POST a la siguiente URL de Dribbble:
+Para poder obtener un _access token_, yo he usado Postman —si no lo tienes
+instalado puedes usar este
+[enlace para descargarlo](https://www.getpostman.com/downloads/)— para poder
+hacer una petición tipo POST a la siguiente URL de Dribbble:
 
 ```js
 https://dribbble.com/oauth/token?client_id=CLIENT_ID&client_secret=CLIENT_SECRET&code=CODIGO_URL
 ```
 
-Con este paso tendrás tu _access token_ que vas a necesitar para hacer peticiones a la API V2 de Dribbble.
+Con este paso tendrás tu _access token_ que vas a necesitar para hacer
+peticiones a la API V2 de Dribbble.
 
 #### Lo importante aquí es:
 
-- **CLIENT_ID**: es el _client id_ de tu panel de control de Dribbble (mira la primera captura de pantalla de este tutorial).
-- **CLIENT_SECRET**: es el _client secret_ que también tienes del panel de control.
-- **CODIGO_URL**: es el código que has obtenido depués de visitar la URL anterior que tiene el `callback_url` de tu página web.
+- **CLIENT_ID**: es el _client id_ de tu panel de control de Dribbble (mira la
+  primera captura de pantalla de este tutorial).
+- **CLIENT_SECRET**: es el _client secret_ que también tienes del panel de
+  control.
+- **CODIGO_URL**: es el código que has obtenido depués de visitar la URL
+  anterior que tiene el `callback_url` de tu página web.
 
 ### Haciendo Peticiones de Tipo Post Con Postman
 
@@ -100,7 +114,8 @@ Para poder hacerlo tendrás que seguir estos pasos:
 
 1. Abre Postman
 2. Elige el método _POST_
-3. Introduce la URL del paso anterior con tu `CLIENT_ID`, `CLIENT_SECRET` y el `CODIGO_URL`
+3. Introduce la URL del paso anterior con tu `CLIENT_ID`, `CLIENT_SECRET` y el
+   `CODIGO_URL`
 
 Ahora deberías recibir una respuesta tipo JSON similar a esta:
 
@@ -124,37 +139,59 @@ Si no funciona, y en cambio recibes este error —o cualquier error de la API:
 
 Tienes que empezar de nuevo y obtener un código nuevo.
 
-Cuando intentaba dar de alta mi aplicación, no podía obtener el _access token_ y no paraba de recibir este error. Después de buscar una solución, al final encontre esta [página de la documentación de la API](https://developer.dribbble.com/v1/oauth/) de Dribbble en la que explican como puedes solucionar los distintos errores que te puede dar la API.
+Cuando intentaba dar de alta mi aplicación, no podía obtener el _access token_ y
+no paraba de recibir este error. Después de buscar una solución, al final
+encontre esta
+[página de la documentación de la API](https://developer.dribbble.com/v1/oauth/)
+de Dribbble en la que explican como puedes solucionar los distintos errores que
+te puede dar la API.
 
-Si todo ha salido bien, ahora deberías tener tu _access token_ que puedes usar para enviar peticiones a la API V2 de Dribbble 🎉.
+Si todo ha salido bien, ahora deberías tener tu _access token_ que puedes usar
+para enviar peticiones a la API V2 de Dribbble 🎉.
 
 ## Haciendo Peticiones Asíncronas Con React Hooks
 
-Para poder enviar las peticiones a la API, yo usé React Hooks. Si no quieres usar lo mismo, puedes [leer este artículo](https://matthewelsom.com/blog/display-shots-on-webpage-with-dribbble-v2-api.html) en el que te explican como hacerlo usando ajax.
+Para poder enviar las peticiones a la API, yo usé React Hooks. Si no quieres
+usar lo mismo, puedes
+[leer este artículo](https://matthewelsom.com/blog/display-shots-on-webpage-with-dribbble-v2-api.html)
+en el que te explican como hacerlo usando ajax.
 
-Usar React Hooks para obtener datos de una API es bastante fácil. Pero tienes que saber primero como funcionan.
+Usar React Hooks para obtener datos de una API es bastante fácil. Pero tienes
+que saber primero como funcionan.
 
-Es **muy** fácil entrar en un bucle infinito que hará que llegues al límite de tu API en un segundo.
+Es **muy** fácil entrar en un bucle infinito que hará que llegues al límite de
+tu API en un segundo.
 
-Deberías tener cuidado sobretodo si tu API es un servicio de pago como Firebase o AWS.
+Deberías tener cuidado sobretodo si tu API es un servicio de pago como Firebase
+o AWS.
 
 Pero no te preocupes, más adelante explicaré como evitar que eso pase.
 
 Para empezar necesitarás lo siguiente:
 
 - **React v16.8** o más reciente instalado (para que puedas usar _hooks_).
-- **[Axios](https://github.com/axios/axios)** para poder enviar peticiones a la API de Dribbble.
-- **El access token de Dribbble** que has obtenido siguiendo los pasos anteriores de este tutorial.
+- **[Axios](https://github.com/axios/axios)** para poder enviar peticiones a la
+  API de Dribbble.
+- **El access token de Dribbble** que has obtenido siguiendo los pasos
+  anteriores de este tutorial.
 
-Antes de continuar, te recomiendo que léas la guía sobre [como usar hooks](https://overreacted.io/a-complete-guide-to-useeffect/) de Dan Abramov, y [este artículo](https://www.robinwieruch.de/react-hooks-fetch-data/) de Robin Wieruch en el que explica algúnas de las técnicas que he usado en este tutorial, entre otras.
+Antes de continuar, te recomiendo que léas la guía sobre
+[como usar hooks](https://overreacted.io/a-complete-guide-to-useeffect/) de Dan
+Abramov, y [este artículo](https://www.robinwieruch.de/react-hooks-fetch-data/)
+de Robin Wieruch en el que explica algúnas de las técnicas que he usado en este
+tutorial, entre otras.
 
-Aunqué el mio está basado en el artículo de Robin, lo he cambiado bastante para poder mostrar en pantalla elementos provisionales, además de los _spinners_ como indicadores del estado de la carga de los datos, mientras estos se están obteniendo de la API.
+Aunqué el mio está basado en el artículo de Robin, lo he cambiado bastante para
+poder mostrar en pantalla elementos provisionales, además de los _spinners_ como
+indicadores del estado de la carga de los datos, mientras estos se están
+obteniendo de la API.
 
 Pero primero, vamos a empezar con obtener los diseños de la API V2 de Dribbble.
 
 ### El Endpoint de la API V2 de Dribbble
 
-Para obtener tus diseños de Dribbble, tendrás que acceder al siguiente _endpoint_:
+Para obtener tus diseños de Dribbble, tendrás que acceder al siguiente
+_endpoint_:
 
 ```js
 https://api.dribbble.com/v2/user/shots?access_token=ACCESS_TOKEN&page=1&per_page=4
@@ -162,13 +199,16 @@ https://api.dribbble.com/v2/user/shots?access_token=ACCESS_TOKEN&page=1&per_page
 
 **Donde:**
 
-- `ACCESS_TOKEN`: es el _token_ que has obtenido siguiendo los pasos anteriores de este tutorial.
-- `&page=1`: esta parte no es necesaria, la uso para la paginación, más adelante lo explico.
+- `ACCESS_TOKEN`: es el _token_ que has obtenido siguiendo los pasos anteriores
+  de este tutorial.
+- `&page=1`: esta parte no es necesaria, la uso para la paginación, más adelante
+  lo explico.
 - `&per_page=4`: lo mismo, no es necesario. Solo lo uso para la paginación.
 
 ### Obteniendo Datos Con Axios
 
-Para este tutorial he usado axios, el cual puedes instalar ejecutando: `npm install axios`.
+Para este tutorial he usado axios, el cual puedes instalar ejecutando:
+`npm install axios`.
 
 ```jsx{9,10,13}
 const [isLoading, setIsLoading] = React.useState(true);
@@ -180,7 +220,7 @@ React.useEffect(() => {
   async function getDribbblePosts() {
     try {
       const dribbbleRes = await axios.get(
-        `https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&page=${dribbblePage}&per_page=${SHOTS_PER_PAGE}`
+        `https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&page=${dribbblePage}&per_page=${SHOTS_PER_PAGE}`,
       );
 
       setDribbblePosts([...dribbblePosts, ...dribbbleRes.data]);
@@ -199,23 +239,37 @@ React.useEffect(() => {
 
 #### Qué tenemos hasta ahora:
 
-- Primero, utilizo `async await` para conseguir los datos, que se guarda usando el _hook_ `setState` en el array `dribbblePosts`.
-- La variable de estado local `isLoading` se usa para mostrar en pantalla un indicador de carga —un _spinner_ en la mayoria de los casos—, mientras se obtienen los datos. Inicialmente tiene el valor de `true`, y después cambia el valor a `false`, una vez recibe una respuesta de `await`.
-- La petición entera se recoge en un `Try...Catch` para gestionar cualquier error que podría recibir.
+- Primero, utilizo `async await` para conseguir los datos, que se guarda usando
+  el _hook_ `setState` en el array `dribbblePosts`.
+- La variable de estado local `isLoading` se usa para mostrar en pantalla un
+  indicador de carga —un _spinner_ en la mayoria de los casos—, mientras se
+  obtienen los datos. Inicialmente tiene el valor de `true`, y después cambia el
+  valor a `false`, una vez recibe una respuesta de `await`.
+- La petición entera se recoge en un `Try...Catch` para gestionar cualquier
+  error que podría recibir.
 
-Como puedes ver, también estoy usando _array destructuring_ en el array de `dribbblePosts`, ya que `setState()` no combina los datos antiguos con los nuevos, como pasa cuando se usan clases.
+Como puedes ver, también estoy usando _array destructuring_ en el array de
+`dribbblePosts`, ya que `setState()` no combina los datos antiguos con los
+nuevos, como pasa cuando se usan clases.
 
-Hago esto para poder combinar los diseños que tenía de la petición inicial con los diseños de la nueva petición de red.
+Hago esto para poder combinar los diseños que tenía de la petición inicial con
+los diseños de la nueva petición de red.
 
-Cuando un usuario hace click en el botón de _Cargar más_, se ejecuta una nueva petición de red para obtener más diseños de la API de Dribbble.
+Cuando un usuario hace click en el botón de _Cargar más_, se ejecuta una nueva
+petición de red para obtener más diseños de la API de Dribbble.
 
 Hasta ahora, todo bien.
 
-Pero si intentas ejecutar el código, este entrará en un bucle infinito y la API de Dribbble te devolverá un error de `429 Too Many Requests`.
+Pero si intentas ejecutar el código, este entrará en un bucle infinito y la API
+de Dribbble te devolverá un error de `429 Too Many Requests`.
 
-También tendrás un error de pérdida de memoria si navegas a otra página que la que tiene el componente, antes de que se guarden los datos en el estado local.
+También tendrás un error de pérdida de memoria si navegas a otra página que la
+que tiene el componente, antes de que se guarden los datos en el estado local.
 
-Ya que estos se obtienen de forma asíncrona usando `async await`, si navegas a otra página antes de que la función sea resuelta, React intentará almacenarlos en el estado local que pertenece a un componente que ya no existe, y entonces te dará este error:
+Ya que estos se obtienen de forma asíncrona usando `async await`, si navegas a
+otra página antes de que la función sea resuelta, React intentará almacenarlos
+en el estado local que pertenece a un componente que ya no existe, y entonces te
+dará este error:
 
 ```js
 index.js:2177 Warning: Can’t perform a React state update on an unmounted component.
@@ -227,11 +281,16 @@ Vamos a ver como podemos resolver estos problemas.
 
 ### Evitando Hacer Peticiones de Red en Cada Actualización
 
-Basicamente, el bucle pasa ya que cada vez que el estado cambia en React, ejecutará un nuevo renderizado. Después, en cada renderizado, se hace una nueva petición de red, la cual hará que cambie el estado local de nuevo, y eso llevará a nuevo renderizado.
+Basicamente, el bucle pasa ya que cada vez que el estado cambia en React,
+ejecutará un nuevo renderizado. Después, en cada renderizado, se hace una nueva
+petición de red, la cual hará que cambie el estado local de nuevo, y eso llevará
+a nuevo renderizado.
 
 Y así hasta el infinito.
 
-Una solución sería añadir un array vacio como argumento del hook `useEffect()`, para que solo se ejecute en el primer renderizado. Pero en mi caso, no funcionaría, ya que estoy cambiando el estado local otra vez con:
+Una solución sería añadir un array vacio como argumento del hook `useEffect()`,
+para que solo se ejecute en el primer renderizado. Pero en mi caso, no
+funcionaría, ya que estoy cambiando el estado local otra vez con:
 
 ```jsx
 if (isLoading) setIsLoading(false);
@@ -247,7 +306,7 @@ React.useEffect(() => {
   async function getDribbblePosts() {
     try {
       const dribbbleRes = await axios.get(
-        `https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&page=${dribbblePage}&per_page=${SHOTS_PER_PAGE}`
+        `https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&page=${dribbblePage}&per_page=${SHOTS_PER_PAGE}`,
       );
 
       setDribbblePosts([...dribbblePosts, ...dribbbleRes.data]);
@@ -264,15 +323,21 @@ React.useEffect(() => {
 }, []);
 ```
 
-Esto pasa porque en el primer renderizado del componente, se hace una petición de red y la respuesta de la API se guarda en el array `dribbblePosts`, lo cual hará que se ejecute un nuevo renderizado cuando el estado local cambia.
+Esto pasa porque en el primer renderizado del componente, se hace una petición
+de red y la respuesta de la API se guarda en el array `dribbblePosts`, lo cual
+hará que se ejecute un nuevo renderizado cuando el estado local cambia.
 
-Después en el segundo renderizado, el array `dribbblePosts` tendrá la información almacenada dentro, pero la petición a la API será ejecutada de nuevo, ya que nada se lo impide.
+Después en el segundo renderizado, el array `dribbblePosts` tendrá la
+información almacenada dentro, pero la petición a la API será ejecutada de
+nuevo, ya que nada se lo impide.
 
 Y lo mismo pasará cuando se ejecuta `setIsLoading(false)`.
 
-Después de todo esto, habrás notado que tenemos una receta perfecta para un bucle infinito, el cual te dará un error de `429 Too Many Calls`.
+Después de todo esto, habrás notado que tenemos una receta perfecta para un
+bucle infinito, el cual te dará un error de `429 Too Many Calls`.
 
-En mi caso, la solución es bastante simple, solo hay que envolver la llamada `axios.get()` con un `if`.
+En mi caso, la solución es bastante simple, solo hay que envolver la llamada
+`axios.get()` con un `if`.
 
 ```jsx{3,10,15,22,29}
 const [isLoading, setIsLoading] = React.useState(true);
@@ -286,7 +351,7 @@ React.useEffect(() => {
     try {
       if (!postsFetched) {
         const dribbbleRes = await axios.get(
-          `https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&page=${dribbblePage}&per_page=${SHOTS_PER_PAGE}`
+          `https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&page=${dribbblePage}&per_page=${SHOTS_PER_PAGE}`,
         );
 
         setPostsFetched(true);
@@ -308,15 +373,24 @@ React.useEffect(() => {
 }, [dribbblePosts, dribbblePage, postsFetched, isLoading, isError]);
 ```
 
-Usando el _boolean_ `postsFetched` puedo limitar la cantidad de peticiones de red que hago en cada renderizado. La primero vez que el componente es renderizado, se ejecuta la petición de red, pero después se hará un nuevo renderizado ya que el estado local cambia otra vez.
+Usando el _boolean_ `postsFetched` puedo limitar la cantidad de peticiones de
+red que hago en cada renderizado. La primero vez que el componente es
+renderizado, se ejecuta la petición de red, pero después se hará un nuevo
+renderizado ya que el estado local cambia otra vez.
 
-Sin embargo, esta vez la petición de red no se hará ya que `postsFetched` valdrá `true`, y no entrará en el `if`.
+Sin embargo, esta vez la petición de red no se hará ya que `postsFetched` valdrá
+`true`, y no entrará en el `if`.
 
-Cuando haces peticiones de red con el hook `useEffect()`, cada vez que el estado local cambia, React hará que el componente entre en la fase de renderizado de nuevo. Si no compruebas de ningúna forma si ya has hecho una petición anteriormente, o si ya tienes los datos guardados, esto llevará a un bucle infinito de peticiones de red y renderizados.
+Cuando haces peticiones de red con el hook `useEffect()`, cada vez que el estado
+local cambia, React hará que el componente entre en la fase de renderizado de
+nuevo. Si no compruebas de ningúna forma si ya has hecho una petición
+anteriormente, o si ya tienes los datos guardados, esto llevará a un bucle
+infinito de peticiones de red y renderizados.
 
 ### Evitando Fugas de Memoria
 
-Para corregir este problema, he usado la función de saneamiento de los React _hooks_.
+Para corregir este problema, he usado la función de saneamiento de los React
+_hooks_.
 
 Estos se ejecutan cada vez que el componente entra en la fase de _unmount_.
 
@@ -335,7 +409,7 @@ React.useEffect(() => {
     try {
       if (!postsFetched) {
         dribbbleRes = await axios.get(
-          `https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&page=${dribbblePage}&per_page=${SHOTS_PER_PAGE}`
+          `https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&page=${dribbblePage}&per_page=${SHOTS_PER_PAGE}`,
         );
         setPostsFetched(true);
       }
@@ -365,9 +439,13 @@ React.useEffect(() => {
 }, [dribbblePosts, postsFetched, dribbblePage, isLoading, isError]);
 ```
 
-Usando un _boolean_ `didCancel` puedo evitar que se almacenen datos en el estado local si el componente ya no esta renderizado.
+Usando un _boolean_ `didCancel` puedo evitar que se almacenen datos en el estado
+local si el componente ya no esta renderizado.
 
-La función de saneamiento se puede usar para cambiar el valor de `didCancel` de `false` a `true`. Entonces, la próxima vez que se ejecuta, no se guarda nada en el estado local. De esta manera React no intentará guardar datos en el estado local de un componente que ya no esta renderizado.
+La función de saneamiento se puede usar para cambiar el valor de `didCancel` de
+`false` a `true`. Entonces, la próxima vez que se ejecuta, no se guarda nada en
+el estado local. De esta manera React no intentará guardar datos en el estado
+local de un componente que ya no esta renderizado.
 
 Genial, hasta ahora tenemos un hook `useEffect()` que:
 
@@ -376,37 +454,51 @@ Genial, hasta ahora tenemos un hook `useEffect()` que:
 
 Solo con estas mejoras podría haberlo dado por hecho.
 
-Pero quería mostrar unos elementos provisionales mientras se obtienen los diseños de Dribbble, para evitar tener cambios grandes en el diseño la página cuando estos se renderizan.
+Pero quería mostrar unos elementos provisionales mientras se obtienen los
+diseños de Dribbble, para evitar tener cambios grandes en el diseño la página
+cuando estos se renderizan.
 
 ## Mostrando Elementos Provisionales
 
-Para poder mostrar elementos provisionales, además del indicador del estado de carga, he usado la paginación de la API de Dribbble. Esto me ha permitido pedir una cantidad limitada de diseños en cada petición de red.
+Para poder mostrar elementos provisionales, además del indicador del estado de
+carga, he usado la paginación de la API de Dribbble. Esto me ha permitido pedir
+una cantidad limitada de diseños en cada petición de red.
 
 Habrás notado que estoy creando la URL con las _template literal_ de ES6.
 
 ```jsx
 await axios.get(
-  `https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&page=${dribbblePage}&per_page=${SHOTS_PER_PAGE}`
+  `https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&page=${dribbblePage}&per_page=${SHOTS_PER_PAGE}`,
 );
 ```
 
-La API V2 de Dribbble te permite usar la paginación con los parámetros de consulta de la URL `&page=X` y `&per_page=X`.
+La API V2 de Dribbble te permite usar la paginación con los parámetros de
+consulta de la URL `&page=X` y `&per_page=X`.
 
 ### Creando Los Elementos Provisionales
 
-En la petición de red inicial, solo quería mostrar unos 4 o 6 diseños. Para hacerlo estoy usando una constante que guarda la cantidad de diseños que quiero tener en cada petición de red.
+En la petición de red inicial, solo quería mostrar unos 4 o 6 diseños. Para
+hacerlo estoy usando una constante que guarda la cantidad de diseños que quiero
+tener en cada petición de red.
 
 ```jsx
 const SHOTS_PER_PAGE = 4;
 ```
 
-Esto se usa luego en la URL que `axios.get()` ejecuta para obtener solo 4 diseños por cada página y para crear los elementos provisionales. Estos están creados usando un array que tiene tantos valores dentro como es de grande el valor de la constante `SHOTS_PER_PAGE`.
+Esto se usa luego en la URL que `axios.get()` ejecuta para obtener solo 4
+diseños por cada página y para crear los elementos provisionales. Estos están
+creados usando un array que tiene tantos valores dentro como es de grande el
+valor de la constante `SHOTS_PER_PAGE`.
 
 ```jsx
 const placeholderArr = Array.from({ length: SHOTS_PER_PAGE }, (v, i) => i);
 ```
 
-Cuando se utiliza `Array.from()` se puede especificar una segundo argumento que es una función `map()`, que se ejecutará sobre cada elemento del array. De esta manera puedo crear un array previamente llenado sobre el cual puedo ejecutar `.map()` sobre todos sus valores y crear los elementos provisionales mientras `isLoading=true`.
+Cuando se utiliza `Array.from()` se puede especificar una segundo argumento que
+es una función `map()`, que se ejecutará sobre cada elemento del array. De esta
+manera puedo crear un array previamente llenado sobre el cual puedo ejecutar
+`.map()` sobre todos sus valores y crear los elementos provisionales mientras
+`isLoading=true`.
 
 ```jsx
 {
@@ -418,9 +510,13 @@ Para crearlos, puedes usar el código siguiente.
 
 Solo es un `div` que se usa para envolver a sus subcomponentes.
 
-Este utiliza `position: relative;` mientras que los subcomponentes tienen `padding-bottom: 75%;`. El `padding-bottom` de 75% se usa para darles la misma relación de aspecto que las imágenes obtenidas de la API de Dribbble.
+Este utiliza `position: relative;` mientras que los subcomponentes tienen
+`padding-bottom: 75%;`. El `padding-bottom` de 75% se usa para darles la misma
+relación de aspecto que las imágenes obtenidas de la API de Dribbble.
 
-También estoy usando una animación de `background-position` para animar el fondo de un gris claro a uno más oscuro, que simula un indicador de carga de la información.
+También estoy usando una animación de `background-position` para animar el fondo
+de un gris claro a uno más oscuro, que simula un indicador de carga de la
+información.
 
 Ten en cuenta que estoy usando Styled Components en este tutorial.
 
@@ -467,7 +563,8 @@ function DribbblePostPlaceholder() {
 }
 ```
 
-Una vez `isLoading` cambia a `false`, los elementos provisionales se reemplazan con los diseños de Dribbble.
+Una vez `isLoading` cambia a `false`, los elementos provisionales se reemplazan
+con los diseños de Dribbble.
 
 ```jsx
 {
@@ -478,17 +575,27 @@ Una vez `isLoading` cambia a `false`, los elementos provisionales se reemplazan 
 
 ## Cargando Más Diseños
 
-Cuando estaba diseñando la página en la que esta montado el componente, solo quería mostrar unos 4 diseños como mucho.
+Cuando estaba diseñando la página en la que esta montado el componente, solo
+quería mostrar unos 4 diseños como mucho.
 
-Pero también quería tener la opción de poder cargar más si algún usuario quería ver más diseños, sin tener que redirigirle a la página de inicio de Dribbble.
+Pero también quería tener la opción de poder cargar más si algún usuario quería
+ver más diseños, sin tener que redirigirle a la página de inicio de Dribbble.
 
-Al principio, pensé en cargar varios diseños —unos 20 más o menos— y después repartirlos en arrays de 4 o 6 diseños cada uno. Pero pronto me di cuenta de que no era muy buena idea descargar tantas imágenes de golpe. Esto era importante sobretodo para los usuarios que estaban visitando mi web con un teléfono móvil que tiene una conexión limitada.
+Al principio, pensé en cargar varios diseños —unos 20 más o menos— y después
+repartirlos en arrays de 4 o 6 diseños cada uno. Pero pronto me di cuenta de que
+no era muy buena idea descargar tantas imágenes de golpe. Esto era importante
+sobretodo para los usuarios que estaban visitando mi web con un teléfono móvil
+que tiene una conexión limitada.
 
-Entonces decidí cargar solo 4 diseños la primera vez, y si luego algún usuario quería ver más, podría usar el botón de _Cargar más_ para mostrar otros 4.
+Entonces decidí cargar solo 4 diseños la primera vez, y si luego algún usuario
+quería ver más, podría usar el botón de _Cargar más_ para mostrar otros 4.
 
-Ya que la API de Dribbble tiene paginación de serie, puedo usar esta característica para obtener una cierta cantidad de imágenes por página, así que esa fue la solución perfecta a mi problema.
+Ya que la API de Dribbble tiene paginación de serie, puedo usar esta
+característica para obtener una cierta cantidad de imágenes por página, así que
+esa fue la solución perfecta a mi problema.
 
-Para poder hacerlo, añadí un botón, el cual, cuando se hacía click, ejecutaría la función `loadMorePosts()`.
+Para poder hacerlo, añadí un botón, el cual, cuando se hacía click, ejecutaría
+la función `loadMorePosts()`.
 
 ```jsx
 <LoadMore onClick={loadMorePosts}>
@@ -497,7 +604,9 @@ Para poder hacerlo, añadí un botón, el cual, cuando se hacía click, ejecutar
 </LoadMore>
 ```
 
-Una vez se ha pulsado el botón, la función sumaría 1 a la variable de estado local y el boolean `postsFetched` que se usa para controlar si se ejecuta la función `axios.get()`.
+Una vez se ha pulsado el botón, la función sumaría 1 a la variable de estado
+local y el boolean `postsFetched` que se usa para controlar si se ejecuta la
+función `axios.get()`.
 
 ```jsx
 function loadMorePosts() {
@@ -507,11 +616,16 @@ function loadMorePosts() {
 }
 ```
 
-Además, la variable `isLoadingMore` me permite mostrar en pantalla más elementos provisionales, mientras se obtienen los nuevos diseños de la API.
+Además, la variable `isLoadingMore` me permite mostrar en pantalla más elementos
+provisionales, mientras se obtienen los nuevos diseños de la API.
 
-Ya que utilizo una nueva variable y no la original `isLoading`, puedo evitar que se cambien los diseños que ya había obtenido en el primer render y, además, poder mostrar los nuevos debajo de los antiguos.
+Ya que utilizo una nueva variable y no la original `isLoading`, puedo evitar que
+se cambien los diseños que ya había obtenido en el primer render y, además,
+poder mostrar los nuevos debajo de los antiguos.
 
-Para hacer que todo esto funcione, también he tenido que combinar los valores del estado local anterior con los valores nuevos, ya que `useState()` sobrescribe todos los valores nuevos en el estado local sin combinarlos.
+Para hacer que todo esto funcione, también he tenido que combinar los valores
+del estado local anterior con los valores nuevos, ya que `useState()`
+sobrescribe todos los valores nuevos en el estado local sin combinarlos.
 
 ```jsx
 {
@@ -543,7 +657,7 @@ function DribbblePosts() {
       try {
         if (!postsFetched) {
           dribbbleRes = await axios.get(
-            `https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&page=${dribbblePage}&per_page=${SHOTS_PER_PAGE}`
+            `https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&page=${dribbblePage}&per_page=${SHOTS_PER_PAGE}`,
           );
           setPostsFetched(true);
         }
@@ -613,7 +727,9 @@ Hasta ahora, el componente funciona perfectamente.
 
 Pero podría ser mejor.
 
-El problema principal que tengo es tener que usar múltiples `if` que evitan que se ejecute un nuevo renderizado cada vez que el estado local cambia. De momento, tengo más de 4 cambios de estado local dentro del hook `useEffect`.
+El problema principal que tengo es tener que usar múltiples `if` que evitan que
+se ejecute un nuevo renderizado cada vez que el estado local cambia. De momento,
+tengo más de 4 cambios de estado local dentro del hook `useEffect`.
 
 Además, la lista de los argumentos del _hook_ es bastante larga.
 
@@ -623,15 +739,18 @@ React.useEffect(() => {
 }, [dribbblePosts, postsFetched, dribbblePage, isLoading, isError, isLoadingMore]);
 ```
 
-Una buena solución es usar el _hook_ de tipo _reducer_, el cual me permite combinar varios cambios del estado local.
+Una buena solución es usar el _hook_ de tipo _reducer_, el cual me permite
+combinar varios cambios del estado local.
 
 De hecho, no hay que hacer demasiados cambios en el código.
 
 La función de renderizado del componente es casi la misma.
 
-Solo he tenido que extraer el código encargado de obtener los datos, en fichero separado —para poder tener un código más limpio y ordenado.
+Solo he tenido que extraer el código encargado de obtener los datos, en fichero
+separado —para poder tener un código más limpio y ordenado.
 
-También he usado array _destructuring_ para obtener las variables devueltas por el _custom hook_ `useDribbbleReducer()`.
+También he usado array _destructuring_ para obtener las variables devueltas por
+el _custom hook_ `useDribbbleReducer()`.
 
 ```jsx
 function DribbblePosts({ locale }) {
@@ -712,11 +831,16 @@ const reducer = (state, action) => {
 };
 ```
 
-El _reducer_ es bastante sencillo. Puedo tener un estado local inicial con los valores de `isLoading`, `dribbblePosts`, etc, en un solo objeto que se actualiza cuando el _reducer_ ejecuta las acciones.
+El _reducer_ es bastante sencillo. Puedo tener un estado local inicial con los
+valores de `isLoading`, `dribbblePosts`, etc, en un solo objeto que se actualiza
+cuando el _reducer_ ejecuta las acciones.
 
-Para seguir poder añadir nuevas imágenes a las que ya tenía, he tenido que combinar los valores del estado local antiguo con los nuevos.
+Para seguir poder añadir nuevas imágenes a las que ya tenía, he tenido que
+combinar los valores del estado local antiguo con los nuevos.
 
-Además, también he usado el token de cancelación de axios (en lugar de la variable `didCancel`) para poder cancelar la solicitud de red si el componente ya no está montado cuando se resuelva la función asíncrona.
+Además, también he usado el token de cancelación de axios (en lugar de la
+variable `didCancel`) para poder cancelar la solicitud de red si el componente
+ya no está montado cuando se resuelva la función asíncrona.
 
 ```jsx{15,24,30,43}
 export default function useDribbbleReducer() {
@@ -743,7 +867,7 @@ export default function useDribbbleReducer() {
           `https://api.dribbble.com/v2/user/shots?access_token=${GATSBY_DRIBBBLE_TOKEN}&page=${state.dribbblePage}&per_page=${state.shotsPerPage}`,
           {
             cancelToken: source.token,
-          }
+          },
         );
 
         dispatch({ type: "FETCH_SUCCESS", payload: dribbbleRes.data });
@@ -774,16 +898,28 @@ export default function useDribbbleReducer() {
 }
 ```
 
-Como puedes ver, la lista de los argumentos del _hook_ `useEffect` ahora es mucho más limpia. Solo necesita estar pendiente de los cambios hechos en la variable `dribbblePage` que se actualiza cuando se obtienen nuevos datos de la API, usando la paginación.
+Como puedes ver, la lista de los argumentos del _hook_ `useEffect` ahora es
+mucho más limpia. Solo necesita estar pendiente de los cambios hechos en la
+variable `dribbblePage` que se actualiza cuando se obtienen nuevos datos de la
+API, usando la paginación.
 
-La única comprobación que aún tengo que hacer es la de `didCancel`. Esta evita que se guarden datos en el estado local del componente, si la función asíncrona devuelve una respuesta despúes de que este ya no este renderizado.
+La única comprobación que aún tengo que hacer es la de `didCancel`. Esta evita
+que se guarden datos en el estado local del componente, si la función asíncrona
+devuelve una respuesta despúes de que este ya no este renderizado.
 
 ## Conclusiones
 
-De momento estoy bastante contento con los resultados. Tengo todas las características que necesitaba gracias a los React _Hooks_ y la paginación de la API V2 de Dribbble.
+De momento estoy bastante contento con los resultados. Tengo todas las
+características que necesitaba gracias a los React _Hooks_ y la paginación de la
+API V2 de Dribbble.
 
-Sin embargo, estoy considerando —como mejora— guardar en la caché los resultados de cada petición de red.
+Sin embargo, estoy considerando —como mejora— guardar en la caché los resultados
+de cada petición de red.
 
-Ahora, cada vez que el componente es renderizado, los diseños se obtienen de Dribbble. Entonces cada vez que el usuario abre la página que tiene el componente, hace que se ejecute una nueva petición de red.
+Ahora, cada vez que el componente es renderizado, los diseños se obtienen de
+Dribbble. Entonces cada vez que el usuario abre la página que tiene el
+componente, hace que se ejecute una nueva petición de red.
 
-En cambio, si guardo los datos en la caché en cada sesión de usuario—, puedo evitar que se haga una petición de red después de cada renderizado. Esto ayudará a consumir menos datos de la tarifa móvil de los usuarios que visitan mi página.
+En cambio, si guardo los datos en la caché en cada sesión de usuario—, puedo
+evitar que se haga una petición de red después de cada renderizado. Esto ayudará
+a consumir menos datos de la tarifa móvil de los usuarios que visitan mi página.

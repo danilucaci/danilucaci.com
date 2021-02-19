@@ -18,13 +18,22 @@ twinPost: "validate forms in react"
 
 ## La Solución Final
 
-Si quieres aprender como crear el formulario de este tutorial sigue leyendo. Si quieres ver la solución final para investigar por ti mismo como funciona todo, puedes encontrar [una demo en Codesandbox](https://codesandbox.io/embed/react-formik-styled-components-demo-89dci) o el [repositorio en Github](https://github.com/danilucaci/react-formik-styled-components-demo).
+Si quieres aprender como crear el formulario de este tutorial sigue leyendo. Si
+quieres ver la solución final para investigar por ti mismo como funciona todo,
+puedes encontrar
+[una demo en Codesandbox](https://codesandbox.io/embed/react-formik-styled-components-demo-89dci)
+o el
+[repositorio en Github](https://github.com/danilucaci/react-formik-styled-components-demo).
 
 ## Configuración e Instalación
 
-La manera más fácil de empezar es creando un nuevo proyecto desde 0 con create-react-app. Puedes hacerlo ejecutando en tu terminal `npx create-react-app <your-projects-name>` o solo `npx create-react-app .` para instalar todo en la carpeta actual, si esta vacia.
+La manera más fácil de empezar es creando un nuevo proyecto desde 0 con
+create-react-app. Puedes hacerlo ejecutando en tu terminal
+`npx create-react-app <your-projects-name>` o solo `npx create-react-app .` para
+instalar todo en la carpeta actual, si esta vacia.
 
-Después, tienes que instalar Formik, Yup (para la validación del formulario) y styled-components.
+Después, tienes que instalar Formik, Yup (para la validación del formulario) y
+styled-components.
 
 Para instalar todos los paquetes ejecuta el siguiente comando en tu terminal:
 
@@ -32,21 +41,31 @@ Para instalar todos los paquetes ejecuta el siguiente comando en tu terminal:
 npm install formik yup styled-components
 ```
 
-Una vez tienes todo instalado, puedes empezar ejecutando `npm start` en tu terminal.
+Una vez tienes todo instalado, puedes empezar ejecutando `npm start` en tu
+terminal.
 
 ## Creando el Formulario
 
-Formik nos ofrece muchas opciones para controlar los formularios. Puedes usar todas las herramientas de ayuda incluidas con la librería —que es lo que yo hecho en este tutorial—, o puedes escribir todo a mano desde 0 y conectar el formulario y los sus campos de entrada de datos con los controladores de eventos de Formik.
+Formik nos ofrece muchas opciones para controlar los formularios. Puedes usar
+todas las herramientas de ayuda incluidas con la librería —que es lo que yo
+hecho en este tutorial—, o puedes escribir todo a mano desde 0 y conectar el
+formulario y los sus campos de entrada de datos con los controladores de eventos
+de Formik.
 
-Creo que la manera más fácil es usar todas las opciones de ayuda que nos ofrece porque ayuda a reducir mucho la complejidad de gestionar un formulario.
+Creo que la manera más fácil es usar todas las opciones de ayuda que nos ofrece
+porque ayuda a reducir mucho la complejidad de gestionar un formulario.
 
-Para empezar, tienes que importar los componentes de Formik que necesitarás para renderizar el formulario y los campos de entrada de datos.
+Para empezar, tienes que importar los componentes de Formik que necesitarás para
+renderizar el formulario y los campos de entrada de datos.
 
 ```jsx
 import { Formik, Field, Form, ErrorMessage } from "formik";
 ```
 
-Lo más básico que necesitas para empezar es usar el componente `<Formik />` que se encarga de controlar la validación de los datos y el envío del formulario. Después, necesitarás los componentes `<Form />` y `<Field />` para renderizar el formulario y sus campos.
+Lo más básico que necesitas para empezar es usar el componente `<Formik />` que
+se encarga de controlar la validación de los datos y el envío del formulario.
+Después, necesitarás los componentes `<Form />` y `<Field />` para renderizar el
+formulario y sus campos.
 
 ```jsx
 import React from "react";
@@ -124,7 +143,8 @@ function App() {
 export default App;
 ```
 
-Con esto, tenemos lo básico para empezar a crear un formulario de contacto creado con Formik y React. Pero primero, vamos a ver que tenemos hasta ahora.
+Con esto, tenemos lo básico para empezar a crear un formulario de contacto
+creado con Formik y React. Pero primero, vamos a ver que tenemos hasta ahora.
 
 ```jsx
 <Formik
@@ -152,21 +172,36 @@ Con esto, tenemos lo básico para empezar a crear un formulario de contacto crea
 ...
 ```
 
-`initialValues` es un objeto que guarda todos los valores iniciales de los campos del formulario. En este ejemplo, estos son `fullname` y `email`, pero puedes añadir los que necesites.
+`initialValues` es un objeto que guarda todos los valores iniciales de los
+campos del formulario. En este ejemplo, estos son `fullname` y `email`, pero
+puedes añadir los que necesites.
 
-`validationSchema` es un objeto que guarda el esquema de validación de Yup que hemos definido con todas las reglas de validación de cada campo del formulario.
+`validationSchema` es un objeto que guarda el esquema de validación de Yup que
+hemos definido con todas las reglas de validación de cada campo del formulario.
 
-En este caso, tenemos un campo llamado `fullname` de tipo texto con una longitud mínima de 2 caracteres que también es un campo requerido. Hemos definido estos requisitos usando los métodos `Yup.string()`.
+En este caso, tenemos un campo llamado `fullname` de tipo texto con una longitud
+mínima de 2 caracteres que también es un campo requerido. Hemos definido estos
+requisitos usando los métodos `Yup.string()`.
 
-Si quieres ver todas las opciones que el validador de esquemas Yup tiene, puedes [leer su documentación](https://github.com/jquense/yup). Finalmente, el controlador de eventos `onSubmit` se usa para controlar el envío del formulario.
+Si quieres ver todas las opciones que el validador de esquemas Yup tiene, puedes
+[leer su documentación](https://github.com/jquense/yup). Finalmente, el
+controlador de eventos `onSubmit` se usa para controlar el envío del formulario.
 
-El componente Formik usa el método _render props_ para renderizar el formulario y los campos de este. Devuelve varias variables y controladores de eventos que podemos añadir al formulario HTML para controlarlo. Para hacerlo solo tienes que añadir los controladores de eventos `onSubmit` y `onChange` proporcionados por Formik, y usar el componente Field en vez de los elementos HTML del tipo input.
+El componente Formik usa el método _render props_ para renderizar el formulario
+y los campos de este. Devuelve varias variables y controladores de eventos que
+podemos añadir al formulario HTML para controlarlo. Para hacerlo solo tienes que
+añadir los controladores de eventos `onSubmit` y `onChange` proporcionados por
+Formik, y usar el componente Field en vez de los elementos HTML del tipo input.
 
-Después, una vez el usuario comience a introducir datos, se ejecutará la validación de los datos en cada campo.
+Después, una vez el usuario comience a introducir datos, se ejecutará la
+validación de los datos en cada campo.
 
 ## Añadiendo Estilos al Formulario
 
-Hasta ahora podemos renderizar el formulario y sus campos, pero aun no hemos añadido los estilos. Puedes usar tus estilos CSS si lo prefieres, pero si quieres seguir con el tutorial copia estos estilos que he usado yo, en un nuevo archivo llamado `styles.js` e importalo en el fichero `App.js`
+Hasta ahora podemos renderizar el formulario y sus campos, pero aun no hemos
+añadido los estilos. Puedes usar tus estilos CSS si lo prefieres, pero si
+quieres seguir con el tutorial copia estos estilos que he usado yo, en un nuevo
+archivo llamado `styles.js` e importalo en el fichero `App.js`
 
 Una vez hecho esto, tu fichero `styles.js` debería ser como el siguiente:
 
@@ -474,13 +509,20 @@ function App() {
 export default App;
 ```
 
-Los principales cambios que hemos hecho han sido usar un componente llamado `<Input />` que es el componente `<Field />` de Formik, pero con estilos aplicados con styled-components. Además, ahora lo importamos del fichero `styles.js` en vez de la librería Formik como antes.
+Los principales cambios que hemos hecho han sido usar un componente llamado
+`<Input />` que es el componente `<Field />` de Formik, pero con estilos
+aplicados con styled-components. Además, ahora lo importamos del fichero
+`styles.js` en vez de la librería Formik como antes.
 
 ## Mostrando Mensajes de Estado
 
-Para mostrar los mensajes de error, la librería Formik nos ofrece varias maneras de hacerlo.
+Para mostrar los mensajes de error, la librería Formik nos ofrece varias maneras
+de hacerlo.
 
-Primero, puedes usar el componente `<ErrorMessage />` que espera un atributo `name` con el valor de un campo existente en el formulario. Este atributo tiene que ser igual al que hemos usado en el formulario, en el objecto de valores iniciales y en el de validación proporcionado a Yup.
+Primero, puedes usar el componente `<ErrorMessage />` que espera un atributo
+`name` con el valor de un campo existente en el formulario. Este atributo tiene
+que ser igual al que hemos usado en el formulario, en el objecto de valores
+iniciales y en el de validación proporcionado a Yup.
 
 ```jsx
 <ErrorMessage name="email">
@@ -488,7 +530,8 @@ Primero, puedes usar el componente `<ErrorMessage />` que espera un atributo `na
 </ErrorMessage>
 ```
 
-La otra manera de hacerlo es usar el objeto `errors` devuelto por el componente `<Formik />` en los _render props_.
+La otra manera de hacerlo es usar el objeto `errors` devuelto por el componente
+`<Formik />` en los _render props_.
 
 ```jsx
 {
@@ -498,9 +541,12 @@ La otra manera de hacerlo es usar el objeto `errors` devuelto por el componente 
 }
 ```
 
-Con estos cambios, ahora estamos mostrando los mensajes de error si la validación no se cumple en algúno de los campos del formulario.
+Con estos cambios, ahora estamos mostrando los mensajes de error si la
+validación no se cumple en algúno de los campos del formulario.
 
-Además, para cambiar los estilos de los campos cuando son validos o no, usamos las variables tipo _prop_ enviadas a styled-components para cambiar los estilos CSS.
+Además, para cambiar los estilos de los campos cuando son validos o no, usamos
+las variables tipo _prop_ enviadas a styled-components para cambiar los estilos
+CSS.
 
 ```jsx
 <Label htmlFor="fullname">
@@ -517,7 +563,8 @@ Además, para cambiar los estilos de los campos cuando son validos o no, usamos 
 </Label>
 ```
 
-Después, dentro del componente styled-components podemos cambiar los estilos cuando los valores `valid` o `error` sean `true`.
+Después, dentro del componente styled-components podemos cambiar los estilos
+cuando los valores `valid` o `error` sean `true`.
 
 ```css
 ${({ error }) =>
@@ -543,9 +590,12 @@ ${({ error }) =>
 `}
 ```
 
-Estos estilos CSS solo cambian el color de los bordes y el valor de los `box-shadow` para que sea más obvio para el usuario cuando el campo sea valido o no.
+Estos estilos CSS solo cambian el color de los bordes y el valor de los
+`box-shadow` para que sea más obvio para el usuario cuando el campo sea valido o
+no.
 
-Pero si intentas introducir algún valor en los campos, verás el siguiente error en la consola de tu navegador:
+Pero si intentas introducir algún valor en los campos, verás el siguiente error
+en la consola de tu navegador:
 
 ```jsx
 index.js:1375 Warning: Received `true` for a non-boolean attribute `valid`.
@@ -558,9 +608,16 @@ in FormikConnect(FieldInner) (created by Context.Consumer)
 
 ## Filtrando Campos Que No Son Atributos Estándar HTML
 
-Este error ocurre porque cuando usamos la sintaxis `styled.div`, styled-components solo pasa a los componentes los atributos HTML estándar. Pero cuando se utiliza la sintaxis `styled(ComponentName)`, pasa todos los atributos, incluso si no son atributos HTML válidos. Es por eso por lo que React nos advierte que estamos pasando atributos no válidos al elemento DOM.
+Este error ocurre porque cuando usamos la sintaxis `styled.div`,
+styled-components solo pasa a los componentes los atributos HTML estándar. Pero
+cuando se utiliza la sintaxis `styled(ComponentName)`, pasa todos los atributos,
+incluso si no son atributos HTML válidos. Es por eso por lo que React nos
+advierte que estamos pasando atributos no válidos al elemento DOM.
 
-Para solucionarlo, podemos usar un componente intermedio que he llamado `<FilteredPropsInputField />`(no se me ocurrió un nombre mejor 🤷‍♂️) que captura todos los atributos pasados y solo muestra en el nodo DOM los que sean atributos HTML válidos.
+Para solucionarlo, podemos usar un componente intermedio que he llamado
+`<FilteredPropsInputField />`(no se me ocurrió un nombre mejor 🤷‍♂️) que captura
+todos los atributos pasados y solo muestra en el nodo DOM los que sean atributos
+HTML válidos.
 
 ```jsx
 import React from "react";
@@ -573,9 +630,14 @@ function FilteredPropsInputField({ className, valid, error, ...props }) {
 export default FilteredPropsInputField;
 ```
 
-En nuestro caso, dado que solo estamos pasando los atributos `valid` y`error` que no sean atributos HTML estándar, los desestructuramos junto con el `className` y los demás atributos recibidos. Luego, solo adjuntamos `className` y `props` al componente `Field` para que no reciba ningún atributo que no forme parte del estándar HTML.
+En nuestro caso, dado que solo estamos pasando los atributos `valid` y`error`
+que no sean atributos HTML estándar, los desestructuramos junto con el
+`className` y los demás atributos recibidos. Luego, solo adjuntamos `className`
+y `props` al componente `Field` para que no reciba ningún atributo que no forme
+parte del estándar HTML.
 
-Ahora, en lugar de usar un componente `styled(Field)` en el archivo `styles.js`, usamos uno llamado `styled(FilteredPropsInputField)`.
+Ahora, en lugar de usar un componente `styled(Field)` en el archivo `styles.js`,
+usamos uno llamado `styled(FilteredPropsInputField)`.
 
 ```jsx
 import FilteredPropsInputField from "./FilteredPropsInputField";
@@ -603,8 +665,16 @@ export const Input = styled(FilteredPropsInputField)`
         ...
 ```
 
-Con estos cambios, ahora tenemos un formulario creado con Formik y styled-components 🎉.
+Con estos cambios, ahora tenemos un formulario creado con Formik y
+styled-components 🎉.
 
 ## Conclusiones
 
-Ahora tu también deberías poder crear tu formulario en React fácilmente. Cuando empecé a crear el formulario de contacto de esta página no estaba seguro del todo como usar todos los componentes de la librería Formik. Lo que más me costo fue entender como puedo validar cada campo del formulario individualmente cuando tengan un error de validación o sean validos y no estaba seguro del todo como hacerlo. Pero una vez entendí como combinar los estilos de styled-components con el componente usado para eliminar los atributos no estándar HTML, fue bastante fácil crear el formulario.
+Ahora tu también deberías poder crear tu formulario en React fácilmente. Cuando
+empecé a crear el formulario de contacto de esta página no estaba seguro del
+todo como usar todos los componentes de la librería Formik. Lo que más me costo
+fue entender como puedo validar cada campo del formulario individualmente cuando
+tengan un error de validación o sean validos y no estaba seguro del todo como
+hacerlo. Pero una vez entendí como combinar los estilos de styled-components con
+el componente usado para eliminar los atributos no estándar HTML, fue bastante
+fácil crear el formulario.

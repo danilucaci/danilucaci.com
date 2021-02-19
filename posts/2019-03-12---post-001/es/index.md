@@ -93,7 +93,7 @@ que intenten rellenar el formulario verán, y si Netlify detecta ese campo como
 completado, simplemente ignorará la presentación de ese formulario. En mi
 ejemplo, el mio se llama `data-netlify-honeypot="botfield"`.
 
-```jsx
+```html
 data-netlify-honeypot="botfield"
 ```
 
