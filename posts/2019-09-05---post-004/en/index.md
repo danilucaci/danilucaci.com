@@ -3,7 +3,13 @@ title: "How to Validate Forms in React with Formik and Styled Components"
 slug: "validate forms in react"
 date: "2019-09-05"
 category: "blog"
-intro: "Creating and validating forms in React can get pretty complicated. You need to save the values in state, handle input validation and error messages, and also control the form submission. Fortunately, libraries such as Formik can help reduce the complexity so that you can set-up your form much faster. This is what you’ll learn in this tutorial: how to validate a form with Formik and style it with Styled Components."
+intro:
+  "Creating and validating forms in React can get pretty complicated. You need
+  to save the values in state, handle input validation and error messages, and
+  also control the form submission. Fortunately, libraries such as Formik can
+  help reduce the complexity so that you can set-up your form much faster. This
+  is what you’ll learn in this tutorial: how to validate a form with Formik and
+  style it with Styled Components."
 snippet: ""
 tags:
   - formik
@@ -16,13 +22,21 @@ twinPost: "validar formularios en react"
 
 ## The solution
 
-If you’d like to lean how to build the form in this tutorial keep reading, otherwise feel free to dig into the code. You can find the [live version on codesandbox](https://codesandbox.io/embed/react-formik-styled-components-demo-89dci) and the [repo on Github](https://github.com/danilucaci/react-formik-styled-components-demo).
+If you’d like to lean how to build the form in this tutorial keep reading,
+otherwise feel free to dig into the code. You can find the
+[live version on codesandbox](https://codesandbox.io/embed/react-formik-styled-components-demo-89dci)
+and the
+[repo on Github](https://github.com/danilucaci/react-formik-styled-components-demo).
 
 ## Setup and Instalation
 
-The easiest way to get started is to create a new project with create react app. You can do so by running in your terminal `npx create-react-app <your-projects-name>` or just `npx create-react-app .` to install everything in your current folder, if it is empty.
+The easiest way to get started is to create a new project with create react app.
+You can do so by running in your terminal
+`npx create-react-app <your-projects-name>` or just `npx create-react-app .` to
+install everything in your current folder, if it is empty.
 
-Then, you need to install Formik, Yup (for handling the form validation) and styled-components.
+Then, you need to install Formik, Yup (for handling the form validation) and
+styled-components.
 
 To install them simply run these commands in your terminal:
 
@@ -30,21 +44,29 @@ To install them simply run these commands in your terminal:
 npm install formik yup styled-components
 ```
 
-Once you have installed everything, you can run `npm start` to start the development server.
+Once you have installed everything, you can run `npm start` to start the
+development server.
 
 ## Creating the Form
 
-Formik gives you many options to control the forms in your app. You could either use all the helpers included with the library —which is what I will do in this tutorial—, or you can write everything yourself and connect the input fields and form to the Formik methods and event handlers.
+Formik gives you many options to control the forms in your app. You could either
+use all the helpers included with the library —which is what I will do in this
+tutorial—, or you can write everything yourself and connect the input fields and
+form to the Formik methods and event handlers.
 
-I think that the easiest way is to use the helpers it offers because that way you can abstract away much of the complexity.
+I think that the easiest way is to use the helpers it offers because that way
+you can abstract away much of the complexity.
 
-To get started, you need to import the Formik components used to render the form and inputs.
+To get started, you need to import the Formik components used to render the form
+and inputs.
 
 ```jsx
 import { Formik, Field, Form, ErrorMessage } from "formik";
 ```
 
-The basic boilerplate is that we need to use the `<Formik />` component that handles the form validation and submission. Then, we use the `<Form />` and `<Field />` components to render the form and the input elements.
+The basic boilerplate is that we need to use the `<Formik />` component that
+handles the form validation and submission. Then, we use the `<Form />` and
+`<Field />` components to render the form and the input elements.
 
 ```jsx
 import React from "react";
@@ -122,7 +144,8 @@ function App() {
 export default App;
 ```
 
-With this, we have a basic boilerplate of a contact form made with Formik and React, but first, let’s see what we have so far.
+With this, we have a basic boilerplate of a contact form made with Formik and
+React, but first, let’s see what we have so far.
 
 ```jsx
 <Formik
@@ -150,21 +173,36 @@ With this, we have a basic boilerplate of a contact form made with Formik and Re
 ...
 ```
 
-`initialValues` is an object that stores the values the input fields of the form will have initially. In this example, they are `fullname` and `email` (you can add as many as you’d like).
+`initialValues` is an object that stores the values the input fields of the form
+will have initially. In this example, they are `fullname` and `email` (you can
+add as many as you’d like).
 
-`validationSchema` is an object that holds the Yup validation schema defined that represents the validation rules for each of the input fields of the form.
+`validationSchema` is an object that holds the Yup validation schema defined
+that represents the validation rules for each of the input fields of the form.
 
-In this case, we have a `fullname` text field with a minimum length of 2 characters that is also required. We defined these requirements by using the `Yup.string()` methods. If you’d like to see all the other methods available on the Yup schema validator you can [read their docs](https://github.com/jquense/yup). Finally, the `onSubmit` event handler is used to control the submission of the form
+In this case, we have a `fullname` text field with a minimum length of 2
+characters that is also required. We defined these requirements by using the
+`Yup.string()` methods. If you’d like to see all the other methods available on
+the Yup schema validator you can
+[read their docs](https://github.com/jquense/yup). Finally, the `onSubmit` event
+handler is used to control the submission of the form
 
-The Formik components use a render props approach to render the form and input fields. It returns several boolean values and event handlers which you can use to control the form.
+The Formik components use a render props approach to render the form and input
+fields. It returns several boolean values and event handlers which you can use
+to control the form.
 
-You just need to connect the regular form `onSubmit` event to the `onChange` handler provided by Formik, and to use the Field component instead of the regular HTML input element.
+You just need to connect the regular form `onSubmit` event to the `onChange`
+handler provided by Formik, and to use the Field component instead of the
+regular HTML input element.
 
-Then, once the user starts typing, the validation be executed on each of the fields.
+Then, once the user starts typing, the validation be executed on each of the
+fields.
 
 ## Styling the Form
 
-So far we can render the form and its elements but we still need to style it. You can use your CSS, but if you’d like to follow along with the tutorial copy these styles in a new `styles.js` file and import in the `App.js` file.
+So far we can render the form and its elements but we still need to style it.
+You can use your CSS, but if you’d like to follow along with the tutorial copy
+these styles in a new `styles.js` file and import in the `App.js` file.
 
 Your `styles.js` file should look like this:
 
@@ -472,11 +510,18 @@ function App() {
 export default App;
 ```
 
-The main changes are that we are now using a `<Input />` component which is just the `<Field />` component from Formik but wrapped with Styled Components so that we can add our styles to it. We are also importing it from the `styles.js` file and not from the Formik library as before.
+The main changes are that we are now using a `<Input />` component which is just
+the `<Field />` component from Formik but wrapped with Styled Components so that
+we can add our styles to it. We are also importing it from the `styles.js` file
+and not from the Formik library as before.
 
 ## Displaying Error Messages
 
-In order to display the error messages when the validation fails, Formik gives you several ways to do it. First, you can use the `<ErrorMessage />` component which expects a `name` prop that holds the name of the input element in the form. This name has to match the name provided to the validation schema and initial values object.
+In order to display the error messages when the validation fails, Formik gives
+you several ways to do it. First, you can use the `<ErrorMessage />` component
+which expects a `name` prop that holds the name of the input element in the
+form. This name has to match the name provided to the validation schema and
+initial values object.
 
 ```jsx
 <ErrorMessage name="email">
@@ -484,7 +529,8 @@ In order to display the error messages when the validation fails, Formik gives y
 </ErrorMessage>
 ```
 
-The other way is to use the `errors` object returned by the `<Formik />` component from the render props.
+The other way is to use the `errors` object returned by the `<Formik />`
+component from the render props.
 
 ```jsx
 {
@@ -494,9 +540,11 @@ The other way is to use the `errors` object returned by the `<Formik />` compone
 }
 ```
 
-With this, we are now displaying the error messages if the validation fails for any of the input fields.
+With this, we are now displaying the error messages if the validation fails for
+any of the input fields.
 
-To also change the styling of the input field we are passing in an `valid` and an `error` prop to styled-components to change the CSS.
+To also change the styling of the input field we are passing in an `valid` and
+an `error` prop to styled-components to change the CSS.
 
 ```jsx
 <Label htmlFor="fullname">
@@ -513,7 +561,8 @@ To also change the styling of the input field we are passing in an `valid` and a
 </Label>
 ```
 
-Then, inside the styled-component component we can change the CSS when the `valid` or `error` props are set to `true`.
+Then, inside the styled-component component we can change the CSS when the
+`valid` or `error` props are set to `true`.
 
 ```css
 ${({ error }) =>
@@ -539,9 +588,11 @@ ${({ error }) =>
 `}
 ```
 
-These CSS styles just change the border color and the `box-shadow` so that it is more obvious to the user that the value entered is incorrect.
+These CSS styles just change the border color and the `box-shadow` so that it is
+more obvious to the user that the value entered is incorrect.
 
-However, if you type any value in the input fields you will receive the following error in the console:
+However, if you type any value in the input fields you will receive the
+following error in the console:
 
 ```jsx
 index.js:1375 Warning: Received `true` for a non-boolean attribute `valid`.
@@ -554,9 +605,15 @@ in FormikConnect(FieldInner) (created by Context.Consumer)
 
 ## Filtering Props That Are Not Known HTML Attributes
 
-This error happens because when using the `styled.div` syntax, styled-components only passes through known HTML attributes. However, when using the `styled(ComponentName)` syntax, it passes through all props, even if they are not valid HTML attributes. This is why React warns us that we are passing invalid attributes to the DOM element.
+This error happens because when using the `styled.div` syntax, styled-components
+only passes through known HTML attributes. However, when using the
+`styled(ComponentName)` syntax, it passes through all props, even if they are
+not valid HTML attributes. This is why React warns us that we are passing
+invalid attributes to the DOM element.
 
-To solve this we can use an intermediate component which I called `<FilteredPropsInputField />` (best name I could come up with 🤷‍♂️) which captures all the props passed and only renders on the DOM node the valid attributes.
+To solve this we can use an intermediate component which I called
+`<FilteredPropsInputField />` (best name I could come up with 🤷‍♂️) which captures
+all the props passed and only renders on the DOM node the valid attributes.
 
 ```jsx
 import React from "react";
@@ -569,9 +626,13 @@ function FilteredPropsInputField({ className, valid, error, ...props }) {
 export default FilteredPropsInputField;
 ```
 
-In our case since we are only passing in `valid` and `error` as props that are not HTML attributes, we destructure them along with the `className` and other props. Then, we only attach the `className` and `props` to the `Field` component so that it doesn’t receive any props that are not known HTML attributes.
+In our case since we are only passing in `valid` and `error` as props that are
+not HTML attributes, we destructure them along with the `className` and other
+props. Then, we only attach the `className` and `props` to the `Field` component
+so that it doesn’t receive any props that are not known HTML attributes.
 
-Now, rather than using a `styled(Field)` component in the `styles.js` file, we use a `styled(FilteredPropsInputField)`.
+Now, rather than using a `styled(Field)` component in the `styles.js` file, we
+use a `styled(FilteredPropsInputField)`.
 
 ```jsx
 import FilteredPropsInputField from "./FilteredPropsInputField";
@@ -599,8 +660,15 @@ export const Input = styled(FilteredPropsInputField)`
         ...
 ```
 
-With these changes, we now have a working form made with Formik and styled with styled-components 🎉.
+With these changes, we now have a working form made with Formik and styled with
+styled-components 🎉.
 
 ## Takeaways
 
-Now you should also be able to set-up your form in React with ease. When I started working on the contact form on this site, I wasn’t sure how to use all the components in the Formik library. The most challenging part for me was understanding how I can validate each input field individually. I wanted to style each of them according to their current state, but I wasn’t sure how to. Then, once I understood how to mix styled-components and the component that filtered the non-standard HTML attributes it was pretty easy to set-up.
+Now you should also be able to set-up your form in React with ease. When I
+started working on the contact form on this site, I wasn’t sure how to use all
+the components in the Formik library. The most challenging part for me was
+understanding how I can validate each input field individually. I wanted to
+style each of them according to their current state, but I wasn’t sure how to.
+Then, once I understood how to mix styled-components and the component that
+filtered the non-standard HTML attributes it was pretty easy to set-up.
