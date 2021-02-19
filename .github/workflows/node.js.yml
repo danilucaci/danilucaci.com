@@ -16,8 +16,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
       - name: Setup Contact Firebase Function with Node.js 10
-        uses: actions/setup-node@v2
         working-directory: /functions
         with:
           node-version: "10"
@@ -26,7 +26,6 @@ jobs:
           npm run lint:js
       - name:
           Test & Lint the Entire Project with Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
       - name: npm install, lint, and test
