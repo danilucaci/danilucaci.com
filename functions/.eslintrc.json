@@ -9,6 +9,7 @@
     "plugin:security/recommended",
     "plugin:node/recommended"
   ],
+  "root": true,
   "rules": {
     // Removed rule "disallow the use of console" from recommended eslint rules
     "no-console": "off",
