@@ -1,7 +1,7 @@
 {
   "parserOptions": {
     // Required for certain syntax usages
-    "ecmaVersion": 2017
+    "ecmaVersion": 2018
   },
   "plugins": ["promise", "security"],
   "extends": [
@@ -9,6 +9,7 @@
     "plugin:security/recommended",
     "plugin:node/recommended"
   ],
+  "root": true,
   "rules": {
     // Removed rule "disallow the use of console" from recommended eslint rules
     "no-console": "off",

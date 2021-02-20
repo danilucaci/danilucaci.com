@@ -1,27 +1,50 @@
-name: Node.js CI
+name: danilucaci.com Node.js CI
 
 on:
   push:
     branches: [main]
   pull_request:
-    branches: [main]
+    branches: [main, dev]
 
 jobs:
-  build:
+  firebase-functions:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: functions
+
+    strategy:
+      matrix:
+        node-version: [10.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: use node ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: lint:js firebase functions
+        run: |
+          npm ci
+          npm run lint:js
+
+  project:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [15.x]
+        node-version: [14.x]
 
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: use node ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - name: npm install, lint, and test
+      - name: lint | format | test project
         run: |
+          npm ci
           npm run lint:js
           npm run lint:format:check
           npm run test:ci:all
