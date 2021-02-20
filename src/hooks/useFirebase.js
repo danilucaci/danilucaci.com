@@ -46,7 +46,7 @@ function useFirebase(predicate = false) {
       });
 
       if (mounted) {
-        setFirebaseInstance(getFirebaseInstance(firebase));
+        setFirebaseInstance(getFirebaseInstance(firebase.default));
       }
     }
 
