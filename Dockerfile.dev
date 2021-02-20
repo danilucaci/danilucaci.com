@@ -1,0 +1,20 @@
+FROM node:14.15.5
+
+WORKDIR /usr/src/app
+
+# install gatsby-cli globally
+RUN npm install --global gatsby-cli && gatsby telemetry --disable
+
+# Add node_modules to the path
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
+
+# assign a specific port for the gatsby ws connection
+ENV INTERNAL_STATUS_PORT=45720
+
+COPY package*.json ./
+RUN npm install
+COPY . .
+
+EXPOSE 8000 45720
+
+CMD ["npm", "run", "dev:ip"]
