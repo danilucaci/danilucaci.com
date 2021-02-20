@@ -1,4 +1,4 @@
-name: Node.js CI
+name: danilucaci.com Node.js CI
 
 on:
   push:
@@ -9,6 +9,10 @@ on:
 jobs:
   firebase-functions:
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: functions
 
     strategy:
       matrix:
@@ -21,7 +25,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: lint:js firebase functions
-        working-directory: /functions
         run: |
           npm ci
           npm run lint:js
