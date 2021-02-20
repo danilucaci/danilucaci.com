@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  gatsby:
+    container_name: gatsby
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+      - /usr/src/app/.cache
+      - /usr/src/app/public
+    networks:
+      gatsby_net:
+        ipv4_address: 172.25.0.101
+    env_file: .env.development
+    ports:
+      - "45720:45720"
+      - "8000:8000"
+      - "9000:9000"
+
+networks:
+  gatsby_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.25.0.0/24
