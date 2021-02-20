@@ -21,8 +21,7 @@ export const Row = styled.section`
 
   /* iPhone X 
   * Add the extra layout.gridSpacing used in the Grid
-  * calc(env(safe-area-inset-left) + ${theme
-    .layout.gridSpacing.s})
+  * calc(env(safe-area-inset-left) + ${theme.layout.gridSpacing.s})
   */
   @supports (padding: max(0px)) {
     & {

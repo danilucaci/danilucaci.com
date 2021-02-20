@@ -18,16 +18,12 @@ export const StyledCheckbox = styled(Checkbox)`
   &:not(:checked) {
     & ~ input {
       pointer-events: none !important;
-      background-color: ${theme
-    .colors.grey700};
-      color: ${theme.colors
-    .grey100};
+      background-color: ${theme.colors.grey700};
+      color: ${theme.colors.grey100};
 
       &:hover,
       &:focus {
-        background-color: ${theme
-    .colors
-    .grey700};
+        background-color: ${theme.colors.grey700};
         box-shadow: none;
         cursor: not-allowed;
       }
