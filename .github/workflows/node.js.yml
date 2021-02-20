@@ -16,10 +16,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-      - name: lint | format | test project with node ${{ matrix.node-version }}
+      - name: use node ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
+      - name: lint | format | test project
         run: |
           npm ci
           npm run lint:js
