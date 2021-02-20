@@ -37,3 +37,6 @@ cypress/screenshots
 .env
 
 .netlify
+
+# /ignore the functions folder because we run a command inside it in ci
+functions

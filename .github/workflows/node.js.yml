@@ -2,9 +2,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, dev]
   pull_request:
-    branches: [main]
+    branches: [main, dev]
 
 jobs:
   build:
@@ -17,20 +17,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-      - name: Setup Contact Firebase Function with Node.js 10
+      - name: lint | format | test project with node ${{ matrix.node-version }}
+        with:
+          node-version: ${{ matrix.node-version }}
+        run: |
+          npm ci
+          npm run lint:js
+          npm run lint:format:check
+          npm run test:ci:all
+      - name: lint:js firebase functions with node.10
         working-directory: /functions
         with:
           node-version: "10"
         run: |
           npm ci
           npm run lint:js
-      - name:
-          Test & Lint the Entire Project with Node.js ${{ matrix.node-version }}
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: npm install, lint, and test
-        run: |
-          npm ci
-          npm run lint:js
-          npm run lint:format:check
-          npm run test:ci:all
