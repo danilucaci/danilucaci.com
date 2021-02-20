@@ -15,9 +15,9 @@
   },
   "main": "n/a",
   "scripts": {
-    "dev:ip": "gatsby develop -H 192.168.0.30",
+    "dev:ip": "gatsby develop -H 172.25.0.101",
     "dev:local": "gatsby develop",
-    "serve:ip": "npm run build && gatsby serve -H 192.168.0.30",
+    "serve:ip": "npm run build && gatsby serve -H 172.25.0.101",
     "serve:local": "npm run build && gatsby serve",
     "test:watch": "jest --watchAll",
     "test:related": "jest --bail --findRelatedTests --env=jsdom",
