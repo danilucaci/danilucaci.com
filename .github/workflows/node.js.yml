@@ -26,11 +26,12 @@ jobs:
           npm run lint:js
           npm run lint:format:check
           npm run test:ci:all
-      - name: lint:js firebase functions with node.10
-        working-directory: /functions
+      - name: use node.10 for firebase functions
         uses: actions/setup-node@v2
         with:
           node-version: "10"
+      - name: lint:js firebase functions with node.10
+        working-directory: /functions
         run: |
           npm ci
           npm run lint:js
