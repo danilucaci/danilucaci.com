@@ -6,6 +6,9 @@ require("dotenv").config({
 const config = require("./data/SiteConfig");
 
 module.exports = {
+  flags: {
+    DEV_SSR: false,
+  },
   siteMetadata: {
     siteUrl: `${config.siteUrl}`,
     // rssMetadata: {
