@@ -30,5 +30,6 @@
     "eslint-plugin-security": "^1.4.0",
     "firebase-functions-test": "^0.2.0"
   },
-  "private": true
+  "private": true,
+  "root": true
 }
