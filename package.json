@@ -22,10 +22,10 @@
     "test:watch": "jest --watchAll",
     "test:related": "jest --bail --findRelatedTests --env=jsdom",
     "test:ci:all": "cross-env CI=true jest --bail --env=jsdom",
-    "cy:ip:dev": "npm-run-all --parallel dev:ip cy:open:dev",
-    "cy:ip:prod": "npm-run-all --parallel dev:ip cy:open:prod",
-    "cy:local:dev": "npm-run-all --parallel dev:local cy:open:dev",
-    "cy:local:prod": "npm-run-all --parallel dev:local cy:open:prod",
+    "cy:ip:dev": "start-server-and-test dev:ip cy:open:dev",
+    "cy:ip:prod": "start-server-and-test dev:ip cy:open:prod",
+    "cy:local:dev": "start-server-and-test dev:local cy:open:dev",
+    "cy:local:prod": "start-server-and-test dev:local cy:open:prod",
     "cy:open:dev": "cypress open --env configFile=dev",
     "cy:open:prod": "cypress open --env configFile=prod",
     "clean": "rm -rf public && rm -rf .cache",
@@ -154,7 +154,8 @@
     "prettier-eslint": "^12.0.0",
     "react-test-renderer": "^17.0.1",
     "remark-cli": "^9.0.0",
-    "remark-preset-lint-recommended": "^5.0.0"
+    "remark-preset-lint-recommended": "^5.0.0",
+    "start-server-and-test": "^1.12.0"
   },
   "remarkConfig": {
     "plugins": [

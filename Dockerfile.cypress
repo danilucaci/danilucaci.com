@@ -1,0 +1,13 @@
+FROM cypress/included:6.5.0
+
+WORKDIR /usr/src/e2e
+
+COPY package*.json ./
+RUN npm install
+COPY . .
+
+# The CYPRESS_VIDEO boolean config option video controls
+# if the video of the run is recorded.
+# It is true by default, but you can disable it via
+# an environment variable
+ENV CYPRESS_VIDEO=false
