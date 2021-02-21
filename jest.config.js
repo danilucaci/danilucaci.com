@@ -16,4 +16,5 @@ module.exports = {
   testURL: "http://localhost",
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   setupFiles: ["<rootDir>/loadershim.js", "<rootDir>/jest-env-vars.js"],
+  roots: ["<rootDir>/src/", "<rootDir>/__mocks__/"],
 };
