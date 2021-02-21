@@ -39,7 +39,8 @@
     "lint:format": "prettier --write .",
     "lint:format:check": "prettier --check .",
     "pre:commit": "lint-staged",
-    "pre:push": "npm run lint:js && npm run lint:format:check && npm run test:ci:all"
+    "pre:push": "npm run lint:js && npm run lint:format:check && npm run test:ci:all",
+    "postinstall": "husky install"
   },
   "browserslist": [
     ">0.20%",
