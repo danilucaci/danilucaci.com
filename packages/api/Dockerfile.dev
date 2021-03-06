@@ -1,0 +1,12 @@
+FROM node:14.15.5
+
+WORKDIR /usr/src/api
+
+COPY package.json .
+RUN yarn install
+
+COPY . .
+
+EXPOSE 4000
+
+CMD ["yarn", "run", "dev"]
