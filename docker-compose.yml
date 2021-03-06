@@ -1,29 +1,80 @@
 version: "3.9"
 
 services:
-  gatsby:
-    container_name: gatsby
+  api:
+    container_name: api
     build:
-      context: .
+      context: ./packages/api
       dockerfile: Dockerfile.dev
+    depends_on:
+      - mongo
+    env_file:
+      - ./packages/api/.env.development
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
     volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
-      - /usr/src/app/.cache
-      - /usr/src/app/public
+      - ./packages/api:/usr/src/api
+      - api_vol:/usr/src/api/node_modules
+
+  web:
+    container_name: web
+    build:
+      context: ./packages/web
+      dockerfile: Dockerfile.dev
+    env_file:
+      - ./packages/web/.env.development
     networks:
-      gatsby_net:
+      web_net:
         ipv4_address: 172.25.0.101
-    env_file: .env.development
     ports:
       - "45720:45720"
       - "8000:8000"
       - "9000:9000"
+    volumes:
+      - ./packages/web:/usr/src/web
+      - web_node_vol:/usr/src/web/node_modules
+      - web_cache_vol:/usr/src/web/.cache
+      - web_public_vol:/usr/src/web/public
+
+  mongo:
+    container_name: mongo
+    image: mongo:4.4.3
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+      - "27018:27017"
+    volumes:
+      - mongo_data_vol:/data/mongodb
+    env_file:
+      - ./packages/api/.env.development
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
+
+  mongo-express:
+    container_name: mongo-express
+    image: mongo-express
+    restart: unless-stopped
+    ports:
+      - "8081:8081"
+    env_file:
+      - ./packages/api/.env.development
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=${MONGO_USERNAME}
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=${MONGO_PASSWORD}
 
 networks:
-  gatsby_net:
+  web_net:
     driver: bridge
     ipam:
       driver: default
       config:
         - subnet: 172.25.0.0/24
+
+volumes:
+  api_vol:
+  web_node_vol:
+  web_cache_vol:
+  web_public_vol:
+  mongo_data_vol:

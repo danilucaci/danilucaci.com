@@ -10,16 +10,19 @@ services:
     # https://on.cypress.io/command-line#cypress-open
     command: cypress open --env configFile=dev
     depends_on:
-      - gatsby
+      - web
     build:
-      context: .
+      context: .packages/web
       dockerfile: Dockerfile.cypress
     environment:
       # pass base url to test pointing at the web application
       # must be the same as the gatsby url
       - CYPRESS_baseUrl=http://172.25.0.101:8000
     volumes:
-      - .:/usr/src/e2e
-      - /usr/src/e2e/node_modules
+      - .packages/web:/usr/src/e2e
+      - e2e:/usr/src/e2e/node_modules
     networks:
-      gatsby_net:
+      web_net:
+
+volumes:
+  e2e:
