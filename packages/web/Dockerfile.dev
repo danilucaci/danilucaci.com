@@ -1,0 +1,22 @@
+FROM node:14.15.5
+
+WORKDIR /usr/src/web
+
+# install gatsby-cli globally
+RUN yarn global add gatsby-cli
+RUN gatsby telemetry --disable
+
+COPY package.json .
+RUN yarn install
+
+COPY . .
+
+# Add node_modules to the path
+ENV PATH $PATH:/usr/src/web/node_modules/.bin
+
+# assign a specific port for the gatsby ws connection
+ENV INTERNAL_STATUS_PORT=45720
+
+EXPOSE 8000 45720
+
+CMD ["yarn", "run", "dev"]
