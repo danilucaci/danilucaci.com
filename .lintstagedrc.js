@@ -27,7 +27,7 @@ function makeExecCommand({
       )
       .join(" ");
 
-    console.log({ relativePaths: relativePaths });
+    console.log({ [`${appPath}-paths`]: relativePaths });
 
     return `${dockerCmd} ${appPath} ${npmClient} run ${script} ${relativePaths}`;
   };
