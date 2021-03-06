@@ -2,8 +2,8 @@ FROM cypress/included:6.5.0
 
 WORKDIR /usr/src/e2e
 
-COPY package*.json ./
-RUN npm install
+COPY package.json .
+RUN yarn install
 COPY . .
 
 # The CYPRESS_VIDEO boolean config option video controls
