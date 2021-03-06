@@ -8,7 +8,7 @@ services:
     # also pass "--project <folder>" so that when Cypress opens
     # it can find file "cypress.json" and show integration specs
     # https://on.cypress.io/command-line#cypress-open
-    command: cypress open --env configFile=dev
+    entrypoint: cypress open --project . --env configFile=dev
     depends_on:
       - web
     build:
