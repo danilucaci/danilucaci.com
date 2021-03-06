@@ -12,14 +12,14 @@ services:
     depends_on:
       - web
     build:
-      context: .packages/web
+      context: ./packages/web
       dockerfile: Dockerfile.cypress
     environment:
       # pass base url to test pointing at the web application
       # must be the same as the gatsby url
       - CYPRESS_baseUrl=http://172.25.0.101:8000
     volumes:
-      - .packages/web:/usr/src/e2e
+      - ./packages/web:/usr/src/e2e
       - e2e:/usr/src/e2e/node_modules
     networks:
       web_net:
