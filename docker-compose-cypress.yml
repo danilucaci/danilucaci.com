@@ -3,26 +3,35 @@ version: "3.9"
 services:
   cypress:
     container_name: cypress
+    image: "cypress/included:6.5.0"
+    depends_on:
+      - web
     # pass custom command to start Cypress otherwise it will use the entrypoint
     # specified in the Cypress Docker image.
     # also pass "--project <folder>" so that when Cypress opens
     # it can find file "cypress.json" and show integration specs
     # https://on.cypress.io/command-line#cypress-open
-    entrypoint: cypress open --project . --env configFile=dev
-    depends_on:
-      - web
-    build:
-      context: ./packages/web
-      dockerfile: Dockerfile.cypress
+    command:
+      [
+        "cypress",
+        "open",
+        "--project",
+        "/usr/src/app/e2e",
+        "--env",
+        "configFile=dev",
+      ]
     environment:
       # pass base url to test pointing at the web application
       # must be the same as the gatsby url
+      # CYPRESS_baseUrl=http://host.docker.internal:8000
       - CYPRESS_baseUrl=http://172.25.0.101:8000
+      # The CYPRESS_VIDEO boolean config option video controls
+      # if the video of the run is recorded.
+      # It is true by default, but you can disable it via
+      # an environment variable
+      - CYPRESS_VIDEO=false
+    working_dir: /usr/src/app/e2e
     volumes:
-      - ./packages/web:/usr/src/e2e
-      - e2e:/usr/src/e2e/node_modules
+      - ./packages/web:/usr/src/app/e2e
     networks:
       web_net:
-
-volumes:
-  e2e:

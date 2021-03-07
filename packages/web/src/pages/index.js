@@ -57,7 +57,7 @@ const Index = ({ data, location }) => {
                 {intl.formatMessage({ id: "index.h1" })}
               </IndexTitle>
 
-              <Subtitle data-testid="Index__Hero__Subtitles">
+              <Subtitle data-testid="Index__Hero__Subtitle">
                 {intl.formatMessage({ id: "index.subtitle" })}
               </Subtitle>
 

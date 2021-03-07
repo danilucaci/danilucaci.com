@@ -1,12 +1,23 @@
 version: "3.9"
 
 services:
+  bootstrap:
+    container_name: bootstrap
+    image: danilucaci/app:latest
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+
   api:
     container_name: api
-    build:
-      context: ./packages/api
-      dockerfile: Dockerfile.dev
+    image: danilucaci/app:latest
+    entrypoint:
+      - "yarn"
+      - "workspace"
+      - "api"
+    command: ["run", "dev"]
     depends_on:
+      - bootstrap
       - mongo
     env_file:
       - ./packages/api/.env.development
@@ -14,14 +25,18 @@ services:
     ports:
       - "4000:4000"
     volumes:
-      - ./packages/api:/usr/src/api
-      - api_vol:/usr/src/api/node_modules
+      - ./packages/api:/usr/src/app/packages/api
 
   web:
     container_name: web
-    build:
-      context: ./packages/web
-      dockerfile: Dockerfile.dev
+    image: danilucaci/app:latest
+    entrypoint:
+      - "yarn"
+      - "workspace"
+      - "web"
+    command: ["run", "dev"]
+    depends_on:
+      - bootstrap
     env_file:
       - ./packages/web/.env.development
     networks:
@@ -32,10 +47,9 @@ services:
       - "8000:8000"
       - "9000:9000"
     volumes:
-      - ./packages/web:/usr/src/web
-      - web_node_vol:/usr/src/web/node_modules
-      - web_cache_vol:/usr/src/web/.cache
-      - web_public_vol:/usr/src/web/public
+      - ./packages/web:/usr/src/app/packages/web
+      - web_cache_vol:/usr/src/app/packages/web/.cache
+      - web_public_vol:/usr/src/app/packages/web/public
 
   mongo:
     container_name: mongo

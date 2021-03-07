@@ -1,29 +1,19 @@
-const verifyIdToken = require("../utils/auth/verifyIdToken");
+const { verifyAuthToken } = require("../services/auth/verify-auth-token");
+const { getAuthToken } = require("../services/auth/get-auth-token");
+const { login } = require("../services/auth/login");
+const { logout } = require("../services/auth/logout");
 
 async function authMiddleware(req, res, next) {
-  if (
-    req.headers.authorization &&
-    req.headers.authorization.startsWith("Bearer ")
-  ) {
-    // the authorization token is coming in as:
-    // Bearer eyJhb.....
-    const bearerToken = req.headers.authorization.substr(7);
+  try {
+    const bearerToken = await getAuthToken(req.headers);
+    const userClaims = await verifyAuthToken(bearerToken);
 
-    try {
-      const userClaims = await verifyIdToken(bearerToken);
+    login(req, userClaims);
 
-      const { email, uid } = userClaims;
+    next();
+  } catch (error) {
+    logout();
 
-      req.user = {
-        email: email,
-        uid: uid,
-      };
-
-      next();
-    } catch (error) {
-      next(error);
-    }
-  } else {
     return res.status(401).send({
       data: null,
       error: "Unauthorized",

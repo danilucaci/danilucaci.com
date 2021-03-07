@@ -1,0 +1,40 @@
+# Using docker multi stage builds for layer caching
+FROM node:14.15.5 AS base
+
+WORKDIR /usr/src/app
+
+# build step
+FROM base AS builder
+
+COPY package.json .
+COPY yarn.lock .
+
+COPY packages/api/package.json ./packages/api/
+COPY packages/web/package.json ./packages/web/
+
+# install gatsby-cli globally in the web folder
+WORKDIR /usr/src/app/packages/web
+
+RUN yarn global add gatsby-cli
+RUN gatsby telemetry --disable
+
+# move back to the root folder for yarn hoisting
+WORKDIR /usr/src/app
+
+# --pure-lockfile: don't recreate a lock file
+RUN yarn install --production --pure-lockfile
+
+# Install all dependencies
+RUN yarn install --pure-lockfile
+
+# Copy packages source files
+COPY packages/api/ ./packages/api/
+COPY packages/web/ ./packages/web/
+
+# web
+# assign a specific port for the gatsby ws connection
+ENV INTERNAL_STATUS_PORT=45720
+EXPOSE 8000 45720
+
+# api
+EXPOSE 4000

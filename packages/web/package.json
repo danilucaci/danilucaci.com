@@ -23,6 +23,10 @@
     "test:watch": "jest --watchAll",
     "test:related": "jest --bail --findRelatedTests --env=jsdom",
     "test:ci:all": "cross-env CI=true jest --bail --env=jsdom",
+    "cy:run:dev": "cypress run --env configFile=dev",
+    "cy:run:prod": "cypress run --env configFile=prod",
+    "cy:open:dev": "cypress open --env configFile=dev",
+    "cy:open:prod": "cypress open --env configFile=prod",
     "clean": "rm -rf public && rm -rf .cache",
     "serve": "gatsby serve",
     "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build",
@@ -104,9 +108,6 @@
     "yup": "^0.32.9"
   },
   "devDependencies": {
-    "@commitlint/cli": "^11.0.0",
-    "@commitlint/config-conventional": "^11.0.0",
-    "@testing-library/cypress": "^7.0.3",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/react-hooks": "^5.0.3",
@@ -115,7 +116,6 @@
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.6.3",
     "babel-preset-gatsby": "^0.12.1",
-    "commitlint": "^11.0.0",
     "cypress-axe": "^0.12.2",
     "dotenv": "^8.2.0",
     "dotenv-cli": "^4.0.0",
@@ -132,20 +132,17 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "fs-extra": "^9.1.0",
+    "fs-extra": "9.1.0",
     "gatsby-plugin-remove-trailing-slashes": "^2.10.0",
     "http-proxy-middleware": "^1.0.6",
-    "husky": "^5.0.9",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
-    "lint-staged": "^10.5.4",
     "lodash": "^4.17.20",
     "prettier": "^2.2.1",
     "prettier-eslint": "^12.0.0",
     "react-test-renderer": "^17.0.1",
     "remark-cli": "^9.0.0",
-    "remark-preset-lint-recommended": "^5.0.0",
-    "start-server-and-test": "^1.12.0"
+    "remark-preset-lint-recommended": "^5.0.0"
   },
   "remarkConfig": {
     "plugins": [
