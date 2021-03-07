@@ -4,10 +4,6 @@ services:
   cypress:
     container_name: cypress-xquartz
     environment:
-      # get the IP address of the host machine and allow X11 to accept
-      # incoming connections from that IP address
-      # then pass the environment variable DISPLAY to show Cypress GUI on the host system
-      - DISPLAY=192.168.0.30:0
       - XAUTHORITY=/.Xauthority
     volumes:
       # for Cypress to communicate with the X11 server pass this socket file
