@@ -19,10 +19,10 @@ describe("English Homepage", () => {
   });
 
   context("renders the english index title and subtitle", () => {
-    it("renders the spanish h1 title", () => {
+    it("renders the english h1 title", () => {
       cy.get("[data-testid=Index__Hero__Title]").should(
-        "have.text",
-        "Product Designer & Front-End Developer",
+        "contain.text",
+        "Product Designer and Front-End Developer",
       );
     });
 
@@ -117,8 +117,8 @@ describe("Spanish Homepage", () => {
   context("renders the spanish index title and subtitle", () => {
     it("renders the spanish h1 title", () => {
       cy.get("[data-testid=Index__Hero__Title]").should(
-        "have.text",
-        "Diseñador de Productos y Desarollador Front-End",
+        "contain.text",
+        "Diseñador de Productos y Desarrollador Front-End",
       );
     });
 

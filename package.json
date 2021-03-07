@@ -3,17 +3,16 @@
   "description": "danilucaci.com Personal Blog",
   "private": true,
   "version": "1.0.0",
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
   "contributors": [
     {
       "name": "Dani Lucaci",
       "email": "danilucaci@gmail.com",
       "url": "https://www.danilucaci.com/"
     }
-  ],
-  "scripts": {
-    "postinstall": "husky install"
-  }
+  ]
 }
