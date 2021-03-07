@@ -1,10 +1,11 @@
 FROM cypress/included:6.5.0
 
-WORKDIR /usr/src/e2e
+WORKDIR /usr/src/app/e2e
 
-COPY package.json .
-RUN yarn install
-COPY . .
+# pass base url to test pointing at the web application
+# must be the same as the gatsby url
+# CYPRESS_baseUrl=http://host.docker.internal:8000
+ENV CYPRESS_baseUrl=http://172.25.0.101:8000
 
 # The CYPRESS_VIDEO boolean config option video controls
 # if the video of the run is recorded.

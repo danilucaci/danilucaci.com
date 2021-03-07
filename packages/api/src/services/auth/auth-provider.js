@@ -8,7 +8,10 @@ admin.initializeApp({
 
 const auth = admin.auth();
 
+function verifyIdToken() {
+  return auth.verifyIdToken;
+}
+
 module.exports = {
-  admin: admin,
-  auth: auth,
+  verifyIdToken: verifyIdToken,
 };
