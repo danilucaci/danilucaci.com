@@ -7,3 +7,5 @@ public
 gcloud
 .DS_Store
 .env*
+cypress/screeshots
+cypress/videos
