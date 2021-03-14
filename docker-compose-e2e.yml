@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  cypress:
+    container_name: cypress
+    image: danilucaci/app:latest
+    # pass a custom command to start Cypress otherwise it will
+    # use the entrypoint specified in the Cypress Docker image.
+    # also pass "--project <folder>" so that when Cypress opens
+    # it can find file "cypress.json" and show integration specs
+    entrypoint: cypress open --project /usr/src/app/e2e --env configFile=dev
+    depends_on:
+      - web
+    environment:
+      - XAUTHORITY=/.Xauthority
+      # The CYPRESS_VIDEO boolean config option video controls
+      # if the video of the run is recorded.
+      # It is true by default, but you can disable it via
+      # an environment variable
+      - CYPRESS_VIDEO=false
+      # get the IP address of the host machine and allow X11 to accept
+      # incoming connections from that IP address
+      # then pass the environment variable DISPLAY
+      # to show Cypress GUI on the host system
+      #
+      # must be the same ip that was added to xhost in the /bin/ file
+      - DISPLAY=192.168.0.30:0
+    volumes:
+      # for Cypress to communicate with the X11 server pass this socket file
+      # in addition to any other mapped volumes
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ~/.Xauthority:/root/.Xauthority:rw
+      - ./packages/web/cypress:/usr/src/app/e2e/cypress
