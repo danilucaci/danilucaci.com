@@ -16,9 +16,6 @@
     "url": "https://github.com/danilucaci/danilucaci"
   },
   "main": "./src/index.js",
-  "engines": {
-    "node": ">=14.0.0"
-  },
   "type": "commonjs",
   "scripts": {
     "dev": "nodemon src/index.js",

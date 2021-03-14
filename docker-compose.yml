@@ -1,13 +1,6 @@
 version: "3.9"
 
 services:
-  bootstrap:
-    container_name: bootstrap
-    image: danilucaci/app:latest
-    build:
-      context: ./
-      dockerfile: Dockerfile.dev
-
   api:
     container_name: api
     image: danilucaci/app:latest
@@ -17,7 +10,6 @@ services:
       - "api"
     command: ["run", "dev"]
     depends_on:
-      - bootstrap
       - mongo
     env_file:
       - ./packages/api/.env.development
@@ -35,8 +27,6 @@ services:
       - "workspace"
       - "web"
     command: ["run", "dev"]
-    depends_on:
-      - bootstrap
     env_file:
       - ./packages/web/.env.development
     networks:
@@ -87,8 +77,6 @@ networks:
         - subnet: 172.25.0.0/24
 
 volumes:
-  api_vol:
-  web_node_vol:
   web_cache_vol:
   web_public_vol:
   mongo_data_vol:
