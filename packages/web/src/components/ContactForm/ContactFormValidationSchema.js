@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-import { FORM_SUBMIT_STATUS } from "../../i18n/i18n";
+import { FORM_SUBMIT_STATUS } from "../../i18n";
 
 const CONTACT_FORM_VALIDATION_SCHEMA = (locale = "en") =>
   Yup.object().shape({

@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { string, number } from "prop-types";
 import { FormattedMessage } from "react-intl";
-import { localePaths } from "../../i18n/i18n";
+
+import { localePaths } from "../../i18n";
 
 import {
   PaginationWrapper,

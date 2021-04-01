@@ -3,10 +3,10 @@ import { string, bool } from "prop-types";
 import { graphql, useStaticQuery } from "gatsby";
 import { FormattedMessage } from "react-intl";
 
-import FooterNavList from "../FooterNavList/FooterNavList";
-import FooterSocialNav from "../FooterSocialNav/FooterSocialNav";
-import FooterLanguageSelector from "../FooterLanguageSelector/FooterLanguageSelector";
-import { Col } from "../Grid/Grid";
+import FooterNavList from "../FooterNavList";
+import FooterSocialNav from "../FooterSocialNav";
+import FooterLanguageSelector from "../FooterLanguageSelector";
+import { Col } from "../Grid";
 
 import {
   FooterRowBackground,

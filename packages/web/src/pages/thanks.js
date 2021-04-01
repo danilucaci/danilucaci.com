@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
 
 import Layout from "../components/Layout";
-import SEO from "../components/SEO/SEO";
-import Main from "../components/Main/Main";
-import LocaleLink from "../components/LocaleLink/LocaleLink";
-import { localePaths } from "../i18n/i18n";
-import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
+import SEO from "../components/SEO";
+import Main from "../components/Main";
+import LocaleLink from "../components/LocaleLink";
+import { localePaths } from "../i18n";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 import {
   ThanksPageRow,
@@ -17,7 +17,7 @@ import {
   StyledHR,
 } from "../styles/thanks.styles";
 
-import { Col } from "../components/Grid/Grid";
+import { Col } from "../components/Grid";
 import LocaleContext from "../i18n/LocaleContext";
 
 const ThanksPage = ({ location }) => {

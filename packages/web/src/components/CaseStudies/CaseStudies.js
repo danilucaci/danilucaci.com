@@ -2,8 +2,8 @@ import React from "react";
 import { bool, string, arrayOf, number, shape } from "prop-types";
 import { useIntl } from "react-intl";
 
-import CaseStudyCard from "../CaseStudyCard/CaseStudyCard";
-import { Col, Row } from "../Grid/Grid";
+import CaseStudyCard from "../CaseStudyCard";
+import { Col, Row } from "../Grid";
 import { Title } from "./styles";
 
 const CaseStudies = ({ edges, spaced, header, cardHeadingLevel }) => {

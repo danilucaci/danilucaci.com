@@ -6,7 +6,7 @@ import { Menu, MenuLink } from "@reach/menu-button";
 import "@reach/menu-button/styles.css";
 
 import LocaleContext from "../../i18n/LocaleContext";
-import AriaText from "../AriaText/AriaText";
+import AriaText from "../AriaText";
 
 import {
   StyledMenuButton,

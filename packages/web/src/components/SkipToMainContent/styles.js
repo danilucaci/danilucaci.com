@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { theme, rem } from "../../theme/theme";
+
+import { theme, rem } from "../../theme";
 
 export const StyledSkipToMainContent = styled.a`
   left: -999px;

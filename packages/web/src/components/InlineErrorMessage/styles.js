@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { theme, rem } from "../../theme/theme";
-import { Copy } from "../Copy/Copy";
+
+import { theme, rem } from "../../theme";
+import { Copy } from "../Copy";
 
 export const MessageWrapper = styled.div`
   background-color: ${theme.color.background.error};

@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { Copy } from "../Copy/Copy";
-import { rem, theme } from "../../theme/theme";
+
+import { Copy } from "../Copy";
+import { rem, theme } from "../../theme";
 
 export const ArticleDate = styled(Copy)`
   display: inline-block;

@@ -1,4 +1,4 @@
-import { COPY_CODE_MESSAGES, COPY_URL_MESSAGES } from "../i18n/i18n";
+import { COPY_CODE_MESSAGES, COPY_URL_MESSAGES } from "../i18n";
 
 export function calculateScroll() {
   const winScroll =

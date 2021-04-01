@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { string, func, bool } from "prop-types";
 import { useIntl } from "react-intl";
 
-import { HR } from "../HR/HR";
+import HR from "../HR";
 
 import {
   ErrorTitleWrapper,

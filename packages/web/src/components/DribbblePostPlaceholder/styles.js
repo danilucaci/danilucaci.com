@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 
-import { theme } from "../../theme/theme";
+import { theme } from "../../theme";
 
 export const StyledPlaceholder = styled.div`
   display: inline-block;

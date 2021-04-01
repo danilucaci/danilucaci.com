@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "../../theme/theme";
+import { theme } from "../../theme";
 
 export const H1 = styled.h1``;
 

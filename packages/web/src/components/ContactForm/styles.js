@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { Form } from "formik";
 
-import { rem, mediaMin } from "../../theme/theme";
-import Label from "../Label/Label";
-import Input from "../Input/Input";
+import { rem, mediaMin } from "../../theme";
+import Label from "../Label";
+import Input from "../Input";
 
 export const FormContainer = styled.div`
   ${mediaMin.xl`

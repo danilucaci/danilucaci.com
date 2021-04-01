@@ -1,10 +1,10 @@
 import styled, { css } from "styled-components";
 
-import { theme, rem, mediaMin } from "../../theme/theme";
-import { Copy } from "../Copy/Copy";
-import PrimaryButton from "../PrimaryButton/PrimaryButton";
-import OutlinedButton from "../OutlinedButton/OutlinedButton";
-import { DefaultLink } from "../Link/Link";
+import { theme, rem, mediaMin } from "../../theme";
+import { Copy } from "../Copy";
+import PrimaryButton from "../PrimaryButton";
+import OutlinedButton from "../OutlinedButton";
+import { DefaultLink } from "../Link";
 
 export const StyledCookieConsent = styled.aside`
   background-color: ${theme.color.background.section.lightest};
