@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import { useLoggingThunkReducer } from ".";
+import useLoggingThunkReducer from "./useLoggingThunkReducer";
 
 import dribbblePostsReducer from "../reducers/dribbble-posts/dribbble-posts-reducer";
 import dribbblePostsTypes from "../reducers/dribbble-posts/dribbble-posts-types";

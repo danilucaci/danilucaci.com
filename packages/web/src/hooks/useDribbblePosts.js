@@ -1,4 +1,4 @@
-import { useDribbblePostsReducer } from ".";
+import useDribbblePostsReducer from "./useDribbblePostsReducer";
 
 function useDribbblePosts() {
   const [state, dispatch, actions, types] = useDribbblePostsReducer();
