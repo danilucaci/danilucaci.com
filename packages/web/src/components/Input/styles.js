@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
-import { theme } from "../../theme/theme";
-import FilteredPropsInputField from "../FilteredPropsInputField/FilteredPropsInputField";
+
+import { theme } from "../../theme";
+import FilteredPropsInputField from "../FilteredPropsInputField";
 
 export const StyledInput = styled(FilteredPropsInputField)`
   background-color: ${theme.color.background.input.enabled};

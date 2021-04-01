@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { rem, mediaMin } from "../theme/theme";
-import { Copy } from "../components/Copy/Copy";
-import { Row, RowSpacer, Col } from "../components/Grid/Grid";
+
+import { rem, mediaMin } from "../theme";
+import { Copy } from "../components/Copy";
+import { Row, RowSpacer, Col } from "../components/Grid";
 
 export const ArticleWrapper = styled.section`
   blockquote {

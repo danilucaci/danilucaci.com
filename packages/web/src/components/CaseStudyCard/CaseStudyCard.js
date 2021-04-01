@@ -11,7 +11,7 @@ import {
   ContinueLink,
 } from "./styles";
 
-import { Copy } from "../Copy/Copy";
+import { Copy } from "../Copy";
 
 function CaseStudyCard({ title, snippet, cardImage, slug, cardHeadingLevel }) {
   const intl = useIntl();

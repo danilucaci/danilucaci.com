@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { rem } from "../../theme/theme";
 
-import ExternalGreyLink from "../ExternalGreyLink/ExternalGreyLink";
+import { rem } from "../../theme";
+
+import ExternalGreyLink from "../ExternalGreyLink";
 
 export const StyledFooterSocialNav = styled.ul`
   white-space: nowrap;

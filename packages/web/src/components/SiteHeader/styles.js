@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { theme, mediaMin, rem } from "../../theme/theme";
-import { Row, Col } from "../Grid/Grid";
+
+import { theme, mediaMin, rem } from "../../theme";
+import { Row, Col } from "../Grid";
 
 export const SiteHeaderBackground = styled.header`
   padding-bottom: ${theme.spacing.main.top};

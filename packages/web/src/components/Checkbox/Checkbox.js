@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { Field } from "formik";
-import { theme, rem } from "../../theme/theme";
+import { theme, rem } from "../../theme";
 
-export const Checkbox = styled(Field)`
+const Checkbox = styled(Field)`
   will-change: transform;
 
   /* take it out of document flow */
@@ -105,3 +105,5 @@ export const Checkbox = styled(Field)`
     transform: rotate(35deg);
   }
 `;
+
+export default Checkbox;

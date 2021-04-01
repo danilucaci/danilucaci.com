@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme, rem, mediaMin } from "../../theme/theme";
+import { theme, rem, mediaMin } from "../../theme";
 import { Subhead } from "../Headings/Headings";
 import { GreyLink } from "../Link/Link";
 

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "gatsby";
-import { theme, mediaMin, rem } from "../../theme/theme";
+
+import { theme, mediaMin, rem } from "../../theme";
 
 export const StyledArticle = styled.article`
   padding-top: ${rem(24)};

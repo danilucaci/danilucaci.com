@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import LocaleLink from "../LocaleLink/LocaleLink";
-import { theme } from "../../theme/theme";
+
+import LocaleLink from "../LocaleLink";
+import { theme } from "../../theme";
 
 export const StyledLogo = styled(LocaleLink)`
   color: ${theme.color.text.default};

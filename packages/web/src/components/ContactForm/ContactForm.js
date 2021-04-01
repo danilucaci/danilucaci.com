@@ -4,23 +4,22 @@ import { useFormikContext, Formik, Field, ErrorMessage } from "formik";
 import { navigate } from "gatsby";
 import * as Sentry from "@sentry/browser";
 
+import { FormContainer, StyledForm, StyledLabel, StyledInput } from "./styles";
+
 import { sendContactFormEvent } from "../../helpers/ga";
 import GA_EVENTS from "../../helpers/gaEvents";
 import CONTACT_FORM_VALIDATION_SCHEMA from "./ContactFormValidationSchema";
 
-import { CONSENT_VALUE, localePaths } from "../../i18n/i18n";
+import { CONSENT_VALUE, localePaths } from "../../i18n";
+import LocaleContext from "../../i18n/LocaleContext";
+import { CookiesContext } from "../../context/CookiesContext";
 
-import PrivacyCheckbox from "../PrivacyCheckbox/PrivacyCheckbox";
-import ContactFormErrorMessage from "../ContactFormErrorMessage/ContactFormErrorMessage";
-import InlineErrorMessage from "../InlineErrorMessage/InlineErrorMessage";
 import useFirebaseAnonymousAuth from "../../hooks/useFirebaseAnonymousAuth";
 
-import SubmitButton from "../SubmitButton/SubmitButton";
-
-import { FormContainer, StyledForm, StyledLabel, StyledInput } from "./styles";
-
-import { CookiesContext } from "../../context/CookiesContext";
-import LocaleContext from "../../i18n/LocaleContext";
+import PrivacyCheckbox from "../PrivacyCheckbox";
+import ContactFormErrorMessage from "../ContactFormErrorMessage";
+import InlineErrorMessage from "../InlineErrorMessage";
+import SubmitButton from "../SubmitButton";
 
 function ToggleConsent({ setConsentAccepted, currentConsentAccepted }) {
   const { values } = useFormikContext();

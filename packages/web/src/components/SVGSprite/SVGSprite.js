@@ -1,6 +1,6 @@
 import React from "react";
 
-export const SVGSprite = () => (
+const SVGSprite = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -189,3 +189,5 @@ export const SVGSprite = () => (
     </symbol>
   </svg>
 );
+
+export default SVGSprite;

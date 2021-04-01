@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { theme, rem, mediaMin } from "../../theme/theme";
-import { Subhead } from "../Headings/Headings";
-import { GreyLink } from "../Link/Link";
+
+import { theme, rem, mediaMin } from "../../theme";
+import { Subhead } from "../Headings";
+import { GreyLink } from "../Link";
 
 export const SiblingProjectsContents = styled.div`
   display: flex;

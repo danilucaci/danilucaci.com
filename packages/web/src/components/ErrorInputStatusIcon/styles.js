@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { rem } from "../../theme/theme";
-import { errorSVGDataURI } from "../ValidationIcons/ValidationIcons";
+
+import { rem } from "../../theme";
+import { errorSVGDataURI } from "../ValidationIcons";
 
 export const StyledErrorInputStatusIcon = styled.span`
   display: block;

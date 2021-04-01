@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { rem, mediaMin } from "../theme/theme";
-import { Copy } from "../components/Copy/Copy";
-import { Row } from "../components/Grid/Grid";
+
+import { rem, mediaMin } from "../theme";
+import { Copy } from "../components/Copy";
+import { Row } from "../components/Grid";
 
 export const LegalPageRow = styled(Row)`
   p {

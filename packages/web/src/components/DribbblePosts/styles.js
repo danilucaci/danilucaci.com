@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import { theme, mediaMin, rem } from "../../theme/theme";
-import OutlinedButton from "../OutlinedButton/OutlinedButton";
+import { theme, mediaMin, rem } from "../../theme";
+import OutlinedButton from "../OutlinedButton";
 
 export const Title = styled.h2`
   font-size: ${theme.font.size.display.mobile.h1};

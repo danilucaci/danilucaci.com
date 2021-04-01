@@ -5,17 +5,17 @@ import { graphql } from "gatsby";
 import Disqus from "disqus-react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
-import SEO from "../components/SEO/SEO";
+import SEO from "../components/SEO";
 import Layout from "../components/Layout";
-import Main from "../components/Main/Main";
-import SocialShare from "../components/SocialShare/SocialShare";
-import Tags from "../components/Tags/Tags";
-import { HR } from "../components/HR/HR";
-import { Col, Row } from "../components/Grid/Grid";
-import SiblingPosts from "../components/SiblingPosts/SiblingPosts";
-import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
-import ArticleInfo from "../components/ArticleInfo/ArticleInfo";
-// import SubscribeCard from "../components/SubscribeCard/SubscribeCard";
+import Main from "../components/Main";
+import SocialShare from "../components/SocialShare";
+import Tags from "../components/Tags";
+import HR from "../components/HR";
+import { Col, Row } from "../components/Grid";
+import SiblingPosts from "../components/SiblingPosts";
+import ErrorBoundary from "../components/ErrorBoundary";
+import ArticleInfo from "../components/ArticleInfo";
+// import SubscribeCard from "../components/SubscribeCard";
 import { copyURL, addCopyButtonsToCodeNodes } from "../helpers/helpers";
 
 import { localePaths } from "../i18n/i18n";

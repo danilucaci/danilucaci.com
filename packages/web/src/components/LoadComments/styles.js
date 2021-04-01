@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { rem } from "../../theme/theme";
-import OutlinedButton from "../OutlinedButton/OutlinedButton";
-import { Icon } from "../Icon/Icon";
+
+import { rem } from "../../theme";
+import OutlinedButton from "../OutlinedButton";
+import Icon from "../Icon";
 
 export const StyledLoadComments = styled(OutlinedButton)`
   margin-top: ${rem(16)};

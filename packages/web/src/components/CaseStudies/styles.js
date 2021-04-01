@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { theme, mediaMin, rem } from "../../theme/theme";
+import { theme, mediaMin, rem } from "../../theme";
 
 export const Title = styled.h1`
   font-size: ${theme.font.size.display.mobile.h1};

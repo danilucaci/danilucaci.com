@@ -2,20 +2,20 @@ import React, { useContext } from "react";
 import { shape, string } from "prop-types";
 import { FormattedMessage } from "react-intl";
 
-import SEO from "../components/SEO/SEO";
+import SEO from "../components/SEO";
 import Layout from "../components/Layout";
-import Main from "../components/Main/Main";
-import { HR } from "../components/HR/HR";
-import ContactForm from "../components/ContactForm/ContactForm";
-import SocialNav from "../components/SocialNav/SocialNav";
-import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
-import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
-import { Col } from "../components/Grid/Grid";
-import { localePaths } from "../i18n/i18n";
+import Main from "../components/Main";
+import HR from "../components/HR";
+import ContactForm from "../components/ContactForm";
+import SocialNav from "../components/SocialNav";
+import ErrorBoundary from "../components/ErrorBoundary";
+import ScrollToTop from "../components/ScrollToTop";
+import { Col } from "../components/Grid";
+import { localePaths } from "../i18n";
 import { sendContactPageEvent } from "../helpers/ga";
 import GA_EVENTS from "../helpers/gaEvents";
 
-import { Copy } from "../components/Copy/Copy";
+import { Copy } from "../components/Copy";
 import {
   ContactPageRow,
   FormHr,

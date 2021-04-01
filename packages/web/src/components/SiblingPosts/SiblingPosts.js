@@ -1,8 +1,9 @@
 import React from "react";
 import { string } from "prop-types";
 import { FormattedMessage } from "react-intl";
-import { HR } from "../HR/HR";
-import { Col, Row } from "../Grid/Grid";
+
+import HR from "../HR";
+import { Col, Row } from "../Grid";
 
 import {
   SiblingPostsContents,

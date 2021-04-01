@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
-import { theme, rem, mediaMin } from "../../theme/theme";
+
+import { theme, rem, mediaMin } from "../../theme";
 
 export const Row = styled.section`
   &:after {

@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
-import { theme } from "../../theme/theme";
+
+import { theme } from "../../theme";
 
 export const Copy = styled.p`
   ${({ small }) =>

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useIntl } from "react-intl";
 
-import Spinner from "../Spinner/Spinner";
+import Spinner from "../Spinner";
 
 import { StyledMCSubmitButton } from "./styles";
 

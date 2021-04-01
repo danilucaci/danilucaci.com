@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "gatsby";
-import { theme } from "../../theme/theme";
+
+import { theme } from "../../theme";
 
 export const StyledSecondaryLinkButton = styled(Link)`
   background-color: ${theme.color.background.secondary.enabled};
