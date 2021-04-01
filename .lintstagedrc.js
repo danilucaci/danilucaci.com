@@ -1,5 +1,26 @@
 const path = require("path");
 
+function logTitle(title = "", log = console.log) {
+  if (title.length === 0) {
+    return log("Received empty title");
+  }
+
+  log("-----------------------------------");
+  log(title);
+}
+
+function logSinglePath(path = "", log = console.log) {
+  if (path.length === 0) {
+    return log("Received empty path");
+  }
+
+  log(path);
+}
+
+function logPaths(paths = "") {
+  paths.split(" ").forEach((path) => logSinglePath(path));
+}
+
 const WEB_PATH = "web";
 const API_PATH = "api";
 
@@ -27,7 +48,8 @@ function makeExecCommand({
       )
       .join(" ");
 
-    console.log({ [`${appPath}-paths`]: relativePaths });
+    logTitle(`${appPath} paths: ${script}`);
+    logPaths(relativePaths);
 
     return `${dockerCmd} ${appPath} ${npmClient} workspace ${appPath} run ${script} ${relativePaths}`;
   };
