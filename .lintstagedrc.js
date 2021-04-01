@@ -29,7 +29,7 @@ function makeExecCommand({
 
     console.log({ [`${appPath}-paths`]: relativePaths });
 
-    return `${dockerCmd} ${appPath} ${npmClient} run ${script} ${relativePaths}`;
+    return `${dockerCmd} ${appPath} ${npmClient} workspace ${appPath} run ${script} ${relativePaths}`;
   };
 }
 
