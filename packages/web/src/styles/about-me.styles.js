@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { mediaMin, mediaMax, rem } from "../theme/theme";
-import { Copy } from "../components/Copy/Copy";
-import { Row, RowSpacer, Col } from "../components/Grid/Grid";
+
+import { mediaMin, mediaMax, rem } from "../theme";
+import { Copy } from "../components/Copy";
+import { Row, RowSpacer, Col } from "../components/Grid";
 
 export const HeaderRow = styled(Row)`
   ${mediaMin.xl`

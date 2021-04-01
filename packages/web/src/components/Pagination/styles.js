@@ -1,8 +1,9 @@
 import styled, { css } from "styled-components";
-import { theme, rem, mediaMin, mediaMax } from "../../theme/theme";
-import { BoldLink } from "../Link/Link";
-import { Icon } from "../Icon/Icon";
-import { CopyBold } from "../Copy/Copy";
+
+import { theme, rem, mediaMin, mediaMax } from "../../theme";
+import { BoldLink } from "../Link";
+import Icon from "../Icon";
+import { CopyBold } from "../Copy";
 
 export const PaginationWrapper = styled.nav`
   display: flex;

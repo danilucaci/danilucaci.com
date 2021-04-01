@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { rem } from "../../theme/theme";
-import { successSVGDataURI } from "../ValidationIcons/ValidationIcons";
+
+import { rem } from "../../theme";
+import { successSVGDataURI } from "../ValidationIcons";
 
 export const StyledValidInputStatusIcon = styled.span`
   display: block;

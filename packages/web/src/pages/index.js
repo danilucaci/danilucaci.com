@@ -4,14 +4,14 @@ import { graphql, Link } from "gatsby";
 import { useIntl } from "react-intl";
 
 import Layout from "../components/Layout";
-import Main from "../components/Main/Main";
-import SEO from "../components/SEO/SEO";
-import ContactCard from "../components/ContactCard/ContactCard";
-import IndexCaseStudies from "../components/IndexCaseStudies/IndexCaseStudies";
-import DribbblePosts from "../components/DribbblePosts/DribbblePosts";
-import { localePaths } from "../i18n/i18n";
-import { Col } from "../components/Grid/Grid";
-import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
+import Main from "../components/Main";
+import SEO from "../components/SEO";
+import ContactCard from "../components/ContactCard";
+import IndexCaseStudies from "../components/IndexCaseStudies";
+import DribbblePosts from "../components/DribbblePosts";
+import { localePaths } from "../i18n";
+import { Col } from "../components/Grid";
+import ErrorBoundary from "../components/ErrorBoundary";
 import LocaleContext from "../i18n/LocaleContext";
 
 import {

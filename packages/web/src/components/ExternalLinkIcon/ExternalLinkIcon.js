@@ -2,7 +2,7 @@ import React from "react";
 import { FormattedMessage } from "react-intl";
 
 import { StyledExternalLinkIcon } from "./styles";
-import AriaText from "../AriaText/AriaText";
+import AriaText from "../AriaText";
 
 const ExternalLinkIcon = () => (
   <StyledExternalLinkIcon>

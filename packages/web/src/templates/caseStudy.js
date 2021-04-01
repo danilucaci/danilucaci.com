@@ -4,13 +4,13 @@ import { graphql } from "gatsby";
 import Img from "gatsby-image";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
-import SEO from "../components/SEO/SEO";
-import Main from "../components/Main/Main";
+import SEO from "../components/SEO";
+import Main from "../components/Main";
 import Layout from "../components/Layout";
-import SiblingProjects from "../components/SiblingProjects/SiblingProjects";
-import ContactCard from "../components/ContactCard/ContactCard";
-import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
-import { Col, Row } from "../components/Grid/Grid";
+import SiblingProjects from "../components/SiblingProjects";
+import ContactCard from "../components/ContactCard";
+import ErrorBoundary from "../components/ErrorBoundary";
+import { Col, Row } from "../components/Grid";
 
 import {
   ArticleWrapper,

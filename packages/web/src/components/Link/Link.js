@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "gatsby";
 
-import { theme } from "../../theme/theme";
+import { theme } from "../../theme";
 
 export const DefaultLink = styled(Link)`
   color: ${theme.color.text.link.primary.enabled};

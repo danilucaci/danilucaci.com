@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import { theme, rem } from "../../../theme/theme";
-import LocaleLink from "../../LocaleLink/LocaleLink";
+import { theme, rem } from "../../../theme";
+import LocaleLink from "../../LocaleLink";
 
 export const StyledTag = styled(LocaleLink)`
   display: inline-block;

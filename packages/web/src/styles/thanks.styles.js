@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import { mediaMin, rem } from "../theme/theme";
-import { Copy } from "../components/Copy/Copy";
-import { HR } from "../components/HR/HR";
-import { Row } from "../components/Grid/Grid";
+
+import { mediaMin, rem } from "../theme";
+import { Copy } from "../components/Copy";
+import HR from "../components/HR";
+import { Row } from "../components/Grid";
 
 export const ThanksPageRow = styled(Row)`
   & a {

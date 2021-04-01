@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-import { Copy } from "../components/Copy/Copy";
-import { mediaMin, rem } from "../theme/theme";
-import { HR } from "../components/HR/HR";
-import { Row } from "../components/Grid/Grid";
+import { Copy } from "../components/Copy";
+import { mediaMin, rem } from "../theme";
+import HR from "../components/HR";
+import { Row } from "../components/Grid";
 
 export const NotFoundRow = styled(Row)`
   & a {

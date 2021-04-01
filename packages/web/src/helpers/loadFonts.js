@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 import * as Sentry from "@sentry/browser";
-import { detectDataSaverMode, detectSlowConnectionType } from "./helpers";
+import FontFaceObserver from "fontfaceobserver";
 
-const FontFaceObserver = require("fontfaceobserver");
+import { detectDataSaverMode, detectSlowConnectionType } from "./helpers";
 
 const NODE_ENV = process.env.NODE_ENV;
 

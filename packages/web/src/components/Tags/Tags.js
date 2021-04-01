@@ -2,7 +2,7 @@ import React from "react";
 import { arrayOf, string } from "prop-types";
 import { useIntl } from "react-intl";
 
-import Tag from "./Tag/Tag";
+import Tag from "./Tag";
 import { TagsWrapper } from "./styles";
 
 const Tags = ({ tags, tagsFor = "blog" }) => {

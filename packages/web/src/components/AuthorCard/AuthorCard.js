@@ -2,7 +2,7 @@ import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { useIntl } from "react-intl";
 
-import SocialNav from "../SocialNav/SocialNav";
+import SocialNav from "../SocialNav";
 import {
   AuthorCardWrapper,
   AuthorCardInner,

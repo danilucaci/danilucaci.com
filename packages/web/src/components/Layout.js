@@ -4,19 +4,19 @@ import { ThemeProvider } from "styled-components";
 
 import "../theme/prism.css";
 import { Page } from "./styles";
-import { theme } from "../theme/theme";
+import { theme } from "../theme";
 import GlobalReset from "../theme/globalReset";
 import GlobalAria from "../theme/globalAria";
 import GlobalCSS from "../theme/globalCSS";
 import GlobalGrid from "../theme/globalGrid";
-import { SVGSprite } from "./SVGSprite/SVGSprite";
-import SkipToMainContent from "./SkipToMainContent/SkipToMainContent";
-import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
-import SiteHeader from "./SiteHeader/SiteHeader";
-import SiteFooter from "./SiteFooter/SiteFooter";
-import ScrollToTop from "./ScrollToTop/ScrollToTop";
-import ScrollToTopID from "./ScrollToTopID/ScrollToTopID";
-import CookieConsent from "./CookieConsent/CookieConsent";
+import SVGSprite from "./SVGSprite";
+import SkipToMainContent from "./SkipToMainContent";
+import ErrorBoundary from "./ErrorBoundary";
+import SiteHeader from "./SiteHeader";
+import SiteFooter from "./SiteFooter";
+import ScrollToTop from "./ScrollToTop";
+import ScrollToTopID from "./ScrollToTopID";
+import CookieConsent from "./CookieConsent";
 
 const Layout = ({
   location,

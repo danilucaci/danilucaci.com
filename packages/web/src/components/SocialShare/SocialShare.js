@@ -6,7 +6,7 @@ import config from "../../../data/SiteConfig";
 
 import { sendSharedArticleEvent } from "../../helpers/ga";
 import GA_EVENTS from "../../helpers/gaEvents";
-import { COPY_URL_MESSAGES } from "../../i18n/i18n";
+import { COPY_URL_MESSAGES } from "../../i18n";
 
 import {
   SocialShareWrapper,

@@ -1,8 +1,8 @@
 import React from "react";
 import { string, number, arrayOf } from "prop-types";
 
-import Tags from "../Tags/Tags";
-import ArticleInfo from "../ArticleInfo/ArticleInfo";
+import Tags from "../Tags";
+import ArticleInfo from "../ArticleInfo";
 
 import { StyledArticle, ArticleTitle, ArticleLink } from "./styles";
 

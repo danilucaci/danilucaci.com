@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { Helmet } from "react-helmet";
+
 import { CookiesContext } from "../../context/CookiesContext";
 import { sendGTMConsent } from "../../helpers/ga";
 

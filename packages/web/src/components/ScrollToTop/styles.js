@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { Icon } from "../Icon/Icon";
-import { theme, rem, mediaMin } from "../../theme/theme";
+
+import Icon from "../Icon";
+import { theme, rem, mediaMin } from "../../theme";
 
 export const StyledScrollToTop = styled.a`
   background-color: ${theme.color.background.outlined.enabled};
