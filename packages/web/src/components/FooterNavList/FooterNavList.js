@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { useIntl } from "react-intl";
 
-import FooterNavListItem from "./FooterNavListItem/FooterNavListItem";
-import { localePaths } from "../../i18n/i18n";
+import FooterNavListItem from "./FooterNavListItem";
+import { localePaths } from "../../i18n";
 
 import { StyledFooterNavList } from "./styles";
 import LocaleContext from "../../i18n/LocaleContext";

@@ -2,7 +2,7 @@ import React from "react";
 import { bool } from "prop-types";
 import { useIntl } from "react-intl";
 
-import Spinner from "../Spinner/Spinner";
+import Spinner from "../Spinner";
 
 import { StyledSubmitButton } from "./styles";
 

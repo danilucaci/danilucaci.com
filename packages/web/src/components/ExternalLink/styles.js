@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { theme } from "../../theme/theme";
+
+import { theme } from "../../theme";
 
 export const StyledExternalLink = styled.a`
   color: ${theme.color.text.link.primary.enabled};

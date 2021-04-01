@@ -1,10 +1,11 @@
 import styled from "styled-components";
-import { theme, rem, mediaMin } from "../../theme/theme";
-import { GreyLink } from "../Link/Link";
-import { Copy } from "../Copy/Copy";
-import { Subhead } from "../Headings/Headings";
-import { Col, Row, RowSpacer } from "../Grid/Grid";
-import { HR } from "../HR/HR";
+
+import { theme, rem, mediaMin } from "../../theme";
+import { GreyLink } from "../Link";
+import { Copy } from "../Copy";
+import { Subhead } from "../Headings";
+import { Col, Row, RowSpacer } from "../Grid";
+import HR from "../HR";
 
 export const FooterRowBackground = styled(RowSpacer)`
   display: block;

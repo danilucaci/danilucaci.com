@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { theme } from "../../theme/theme";
+
+import { theme } from "../../theme";
 
 export const StyledSecondaryButton = styled.button`
   background-color: ${theme.color.background.secondary.enabled};

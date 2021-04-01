@@ -1,7 +1,8 @@
 import styled, { keyframes } from "styled-components";
-import { theme, mediaMin, rem } from "../../theme/theme";
-import { Copy } from "../Copy/Copy";
-import MCSubmitButton from "../MCSubmitButton/MCSubmitButton";
+
+import { theme, mediaMin, rem } from "../../theme";
+import { Copy } from "../Copy";
+import MCSubmitButton from "../MCSubmitButton";
 
 export const SubscribeCardWrapper = styled.aside`
   width: 100%;

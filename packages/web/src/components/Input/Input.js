@@ -3,8 +3,8 @@ import { oneOfType, string, bool } from "prop-types";
 import { useIntl } from "react-intl";
 
 import { StyledInput } from "./styles";
-import ValidInputStatusIcon from "../ValidInputStatusIcon/ValidInputStatusIcon";
-import ErrorInputStatusIcon from "../ErrorInputStatusIcon/ErrorInputStatusIcon";
+import ValidInputStatusIcon from "../ValidInputStatusIcon";
+import ErrorInputStatusIcon from "../ErrorInputStatusIcon";
 
 function Input({ valid, error, placeholderType = "fullname", ...props }) {
   let str = placeholderType.toLowerCase();

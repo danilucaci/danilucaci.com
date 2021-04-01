@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { rem } from "../../theme/theme";
-import PrimaryButton from "../PrimaryButton/PrimaryButton";
+
+import { rem } from "../../theme";
+import PrimaryButton from "../PrimaryButton";
 
 export const StyledSubmitButton = styled(PrimaryButton)`
   margin-top: ${rem(16)};

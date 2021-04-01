@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
 import { arrayOf, number, string, bool, shape } from "prop-types";
 
-import SEO from "../components/SEO/SEO";
+import SEO from "../components/SEO";
 import Layout from "../components/Layout";
-import Main from "../components/Main/Main";
-import CaseStudies from "../components/CaseStudies/CaseStudies";
-import Pagination from "../components/Pagination/Pagination";
-import ContactCard from "../components/ContactCard/ContactCard";
-import DribbblePosts from "../components/DribbblePosts/DribbblePosts";
-import { localePaths } from "../i18n/i18n";
-import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
+import Main from "../components/Main";
+import CaseStudies from "../components/CaseStudies";
+import Pagination from "../components/Pagination";
+import ContactCard from "../components/ContactCard";
+import DribbblePosts from "../components/DribbblePosts";
+import { localePaths } from "../i18n";
+import ErrorBoundary from "../components/ErrorBoundary";
 import LocaleContext from "../i18n/LocaleContext";
 
 function WorkPage({ pageContext, location }) {

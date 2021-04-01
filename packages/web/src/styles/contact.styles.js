@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import { mediaMin, rem } from "../theme/theme";
-import { Copy } from "../components/Copy/Copy";
-import { HR } from "../components/HR/HR";
-import { Row } from "../components/Grid/Grid";
-import ExternalLink from "../components/ExternalLink/ExternalLink";
+
+import { mediaMin, rem } from "../theme";
+import { Copy } from "../components/Copy";
+import HR from "../components/HR";
+import { Row } from "../components/Grid";
+import ExternalLink from "../components/ExternalLink";
 
 export const ContactPageRow = styled(Row)`
   max-width: ${({ theme }) => theme.layout.col6.wrapper};

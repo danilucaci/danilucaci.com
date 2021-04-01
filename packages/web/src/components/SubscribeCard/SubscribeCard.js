@@ -4,11 +4,11 @@ import { FormattedMessage } from "react-intl";
 import { Formik, ErrorMessage, Form } from "formik";
 import * as Sentry from "@sentry/browser";
 
-import { CONSENT_VALUE } from "../../i18n/i18n";
-import PrivacyCheckbox from "../PrivacyCheckbox/PrivacyCheckbox";
-import InlineErrorMessage from "../InlineErrorMessage/InlineErrorMessage";
-import { Col, Row } from "../Grid/Grid";
-import Input from "../Input/Input";
+import { CONSENT_VALUE } from "../../i18n";
+import PrivacyCheckbox from "../PrivacyCheckbox";
+import InlineErrorMessage from "../InlineErrorMessage";
+import { Col, Row } from "../Grid";
+import Input from "../Input";
 
 import {
   SubscribeCardWrapper,

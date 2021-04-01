@@ -5,7 +5,7 @@ import { string, func, bool } from "prop-types";
 import { Wrapper, StyledIcon, StyledLink } from "./styles";
 import { sendSocialNavVisitEvent } from "../../helpers/ga";
 import GA_EVENTS from "../../helpers/gaEvents";
-import AriaText from "../AriaText/AriaText";
+import AriaText from "../AriaText";
 
 export function SocialNavProfileLink({
   socialMediaName,

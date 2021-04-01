@@ -4,12 +4,12 @@ import { graphql } from "gatsby";
 import { FormattedDate, FormattedMessage } from "react-intl";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
-import SEO from "../components/SEO/SEO";
+import SEO from "../components/SEO";
 import Layout from "../components/Layout";
-import { Copy } from "../components/Copy/Copy";
-import Main from "../components/Main/Main";
-import { Col } from "../components/Grid/Grid";
-import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
+import { Copy } from "../components/Copy";
+import Main from "../components/Main";
+import { Col } from "../components/Grid";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 import {
   LegalPageRow,

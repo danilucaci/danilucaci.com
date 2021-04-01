@@ -1,6 +1,5 @@
 import React from "react";
 import { node, string } from "prop-types";
-
 import { Link } from "gatsby";
 
 import { StyledFooterListItem } from "./styles";

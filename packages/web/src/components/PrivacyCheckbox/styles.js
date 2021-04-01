@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { theme, rem } from "../../theme/theme";
-import { Checkbox } from "../Checkbox/Checkbox";
+import { theme, rem } from "../../theme";
+
+import Checkbox from "../Checkbox";
 
 export const StyledCheckboxLabel = styled.label`
   font-size: ${theme.font.size.body.s};

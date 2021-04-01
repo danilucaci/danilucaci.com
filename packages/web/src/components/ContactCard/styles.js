@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-import { theme, mediaMin, rem } from "../../theme/theme";
-import { Copy } from "../Copy/Copy";
-import { RowSpacer } from "../Grid/Grid";
-import SecondaryLinkButton from "../SecondaryLinkButton/SecondaryLinkButton";
+import { theme, mediaMin, rem } from "../../theme";
+import { Copy } from "../Copy";
+import { RowSpacer } from "../Grid";
+import SecondaryLinkButton from "../SecondaryLinkButton";
 
 export const ContactCardRowBackground = styled(RowSpacer)`
   background-color: ${theme.color.background.section.contactCard};

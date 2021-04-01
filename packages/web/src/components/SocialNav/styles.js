@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { theme, rem, mediaMin } from "../../theme/theme";
-import { Icon } from "../Icon/Icon";
+
+import { theme, rem, mediaMin } from "../../theme";
+import Icon from "../Icon";
 
 export const Wrapper = styled.nav`
   white-space: nowrap;

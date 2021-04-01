@@ -3,16 +3,16 @@ import { shape, string, number, arrayOf, bool } from "prop-types";
 import { graphql } from "gatsby";
 import { FormattedMessage } from "react-intl";
 
-import SEO from "../components/SEO/SEO";
+import SEO from "../components/SEO";
 import Layout from "../components/Layout";
-import Main from "../components/Main/Main";
-import Tags from "../components/Tags/Tags";
-import Pagination from "../components/Pagination/Pagination";
-import Article from "../components/Article/Article";
-import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
-import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
-import { Col, Row } from "../components/Grid/Grid";
-import { localePaths } from "../i18n/i18n";
+import Main from "../components/Main";
+import Tags from "../components/Tags";
+import Pagination from "../components/Pagination";
+import Article from "../components/Article";
+import ErrorBoundary from "../components/ErrorBoundary";
+import ScrollToTop from "../components/ScrollToTop";
+import { Col, Row } from "../components/Grid";
+import { localePaths } from "../i18n";
 
 import {
   HeaderBackground,

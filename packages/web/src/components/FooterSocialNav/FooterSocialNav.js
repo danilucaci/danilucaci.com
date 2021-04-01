@@ -10,7 +10,7 @@ import {
 
 import { sendFooterSocialNavVisitEvent } from "../../helpers/ga";
 import GA_EVENTS from "../../helpers/gaEvents";
-import AriaText from "../AriaText/AriaText";
+import AriaText from "../AriaText";
 
 export function FooterSocialNavProfileLink({
   socialMediaName,

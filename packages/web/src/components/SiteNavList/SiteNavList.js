@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { FormattedMessage } from "react-intl";
 
-import SiteNavListItem from "./SiteNavListItem/SiteNavListItem";
-import { localePaths } from "../../i18n/i18n";
+import SiteNavListItem from "./SiteNavListItem";
+import { localePaths } from "../../i18n";
 
 import { StyledSiteNavList } from "./styles";
 import LocaleContext from "../../i18n/LocaleContext";

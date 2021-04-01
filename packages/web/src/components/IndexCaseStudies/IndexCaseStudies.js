@@ -2,9 +2,9 @@ import React from "react";
 import { bool, string, arrayOf, number, shape } from "prop-types";
 import { FormattedMessage } from "react-intl";
 
-import CaseStudyCard from "../CaseStudyCard/CaseStudyCard";
-import { Col, Row } from "../Grid/Grid";
-import AriaText from "../AriaText/AriaText";
+import CaseStudyCard from "../CaseStudyCard";
+import { Col, Row } from "../Grid";
+import AriaText from "../AriaText";
 
 const IndexCaseStudies = ({ edges, spaced }) => {
   let caseStudies = edges.map((edge) => ({

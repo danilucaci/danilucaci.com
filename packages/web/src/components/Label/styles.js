@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { rem } from "../../theme/theme";
+
+import { rem } from "../../theme";
 
 export const StyledLabel = styled.label`
   & > input {

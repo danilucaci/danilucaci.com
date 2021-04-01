@@ -1,9 +1,9 @@
 import React from "react";
 import { string, bool } from "prop-types";
 
-import SiteNavList from "../SiteNavList/SiteNavList";
-import LanguageSelector from "../LanguageSelector/LanguageSelector";
-import Logo from "../Logo/Logo";
+import SiteNavList from "../SiteNavList";
+import LanguageSelector from "../LanguageSelector";
+import Logo from "../Logo";
 
 import { SiteHeaderBackground, SiteHeaderRow, StyledSiteNav } from "./styles";
 

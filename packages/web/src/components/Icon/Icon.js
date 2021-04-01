@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { theme, rem } from "../../theme/theme";
+import { theme, rem } from "../../theme";
 
-export const Icon = styled.svg`
+const Icon = styled.svg`
   fill: ${theme.color.icon.default};
 
   width: ${(props) => (props.size ? rem(props.size) : rem(24))};
@@ -11,3 +11,5 @@ export const Icon = styled.svg`
   vertical-align: top;
   position: static;
 `;
+
+export default Icon;

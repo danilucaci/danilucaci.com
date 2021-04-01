@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import { rem, mediaMin } from "../theme/theme";
-import { Copy } from "../components/Copy/Copy";
-import LoadComments from "../components/LoadComments/LoadComments";
-import { Row } from "../components/Grid/Grid";
+
+import { rem, mediaMin } from "../theme";
+import { Copy } from "../components/Copy";
+import LoadComments from "../components/LoadComments";
+import { Row } from "../components/Grid";
 
 export const PostWrapper = styled.article`
   width: 100%;

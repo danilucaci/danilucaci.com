@@ -5,8 +5,8 @@ import { IntlProvider } from "react-intl";
 import IntlPolyfill from "intl";
 import "intl/locale-data/jsonp/es-ES";
 
-import intlMessages from "../i18n/i18n";
-import { theme } from "../theme/theme";
+import intlMessages from "../i18n";
+import { theme } from "../theme";
 
 export function renderWithTheme(component) {
   return render(<ThemeProvider theme={theme}>{component}</ThemeProvider>);

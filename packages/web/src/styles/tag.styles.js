@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { mediaMin, rem } from "../theme/theme";
-import { Row } from "../components/Grid/Grid";
-import { Subhead } from "../components/Headings/Headings";
+
+import { mediaMin, rem } from "../theme";
+import { Row } from "../components/Grid";
+import { Subhead } from "../components/Headings";
 
 export const HeaderBackground = styled.header`
   background-color: ${({ theme }) => theme.color.background.section.lightest};
