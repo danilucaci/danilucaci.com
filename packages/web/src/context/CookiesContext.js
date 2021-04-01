@@ -1,7 +1,7 @@
 import React, { createContext } from "react";
 import { node, shape, string, object } from "prop-types";
 
-import { useCookies } from "../hooks";
+import useCookies from "../hooks/useCookies";
 import cookiesInitialState from "../reducers/cookies/cookies-initial-state";
 
 const contextInitialState = [

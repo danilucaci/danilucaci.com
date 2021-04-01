@@ -1,4 +1,5 @@
-import { useLogger, useThunk } from ".";
+import useLogger from "./useLogger";
+import useThunk from "./useThunk";
 import composeReducers from "../helpers/composeReducers";
 
 /**

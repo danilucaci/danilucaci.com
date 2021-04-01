@@ -6,7 +6,7 @@ import { useInView } from "react-intersection-observer";
 import DribbblePost from "../DribbblePost/DribbblePost";
 import DribbblePostPlaceholder from "../DribbblePostPlaceholder/DribbblePostPlaceholder";
 import Spinner from "../Spinner/Spinner";
-import { useDribbblePosts } from "../../hooks";
+import useDribbblePosts from "../../hooks/useDribbblePosts";
 import { Col, Row } from "../Grid/Grid";
 
 import {

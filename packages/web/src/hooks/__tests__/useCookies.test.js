@@ -1,6 +1,7 @@
 import { renderHook } from "@testing-library/react-hooks";
 
-import { useCookies, useCookiesReducer } from "..";
+import useCookies from "../useCookies";
+import useCookiesReducer from "../useCookiesReducer";
 
 jest.mock("../useCookiesReducer", () => () => [
   {
