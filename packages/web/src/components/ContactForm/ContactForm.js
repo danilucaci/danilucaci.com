@@ -159,60 +159,63 @@ function ContactForm() {
     try {
       const data = JSON.stringify({
         email: values.email,
-        fullname: values.fullname,
+        fullName: values.fullname,
         message: values.message,
-        datesent: new Date().toISOString(),
+        dateSent: new Date().toISOString(),
         locale: locale,
-        botfield: values.botfield,
+        botField: values.botfield,
         consentAccepted: values.consentAccepted,
         consentValue: consentValue,
       });
 
-      if (userToken) {
-        fetch(process.env.GATSBY_FIREBASE_FUNCTIONS_CONTACT_URL, {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${userToken}`,
-            "Content-Type": "application/json",
-          },
-          body: data,
-        })
-          .then((jsonResponse) => jsonResponse.json())
-          .then((response) => {
-            setSubmitting(false);
-
-            if (response.error) {
-              sendContactFormEvent({
-                action: GA_EVENTS.contactForm.actions.submit.name,
-                label: GA_EVENTS.contactForm.actions.submit.labels.failed,
-              });
-              handleFormError(new Error(response.error));
-            }
-
-            if (!response.error && response.data && response.data === "Ok") {
-              sendContactFormEvent({
-                action: GA_EVENTS.contactForm.actions.submit.name,
-                label: GA_EVENTS.contactForm.actions.submit.labels.success,
-              });
-              setMessageSent(true);
-              navigate(localePaths[locale].thanks);
-            }
-          })
-          .catch((error) => {
-            sendContactFormEvent({
-              action: GA_EVENTS.contactForm.actions.submit.name,
-              label: GA_EVENTS.contactForm.actions.submit.labels.failed,
-            });
-            setSubmitting(false);
-            handleFormError(error);
-          });
-      } else {
+      if (!userToken) {
         sendContactFormEvent({
           action: GA_EVENTS.contactForm.actions.submit.name,
           label: GA_EVENTS.contactForm.actions.submit.labels.authFailed,
         });
+
         setSubmitting(false);
+
+        return;
       }
+
+      fetch(process.env.GATSBY_FIREBASE_FUNCTIONS_CONTACT_URL, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+          "Content-Type": "application/json",
+        },
+        body: data,
+      })
+        .then((jsonResponse) => jsonResponse.json())
+        .then((response) => {
+          setSubmitting(false);
+
+          if (response.error) {
+            sendContactFormEvent({
+              action: GA_EVENTS.contactForm.actions.submit.name,
+              label: GA_EVENTS.contactForm.actions.submit.labels.failed,
+            });
+            handleFormError(new Error(response.error));
+          }
+
+          if (!response.error && response.data && response.data === "Ok") {
+            sendContactFormEvent({
+              action: GA_EVENTS.contactForm.actions.submit.name,
+              label: GA_EVENTS.contactForm.actions.submit.labels.success,
+            });
+            setMessageSent(true);
+            navigate(localePaths[locale].thanks);
+          }
+        })
+        .catch((error) => {
+          sendContactFormEvent({
+            action: GA_EVENTS.contactForm.actions.submit.name,
+            label: GA_EVENTS.contactForm.actions.submit.labels.failed,
+          });
+          setSubmitting(false);
+          handleFormError(error);
+        });
     } catch (error) {
       sendContactFormEvent({
         action: GA_EVENTS.contactForm.actions.submit.name,

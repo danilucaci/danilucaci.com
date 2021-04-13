@@ -13,8 +13,6 @@ module.exports = {
     "plugin:import/warnings",
     "plugin:cypress/recommended",
     "plugin:jsx-a11y/recommended",
-    "prettier/react",
-    "prettier/standard",
   ],
   plugins: [
     "prettier",
@@ -30,6 +28,9 @@ module.exports = {
   settings: {
     react: {
       version: "detect",
+    },
+    jest: {
+      version: 26,
     },
   },
   parserOptions: {
