@@ -44,7 +44,7 @@ function Ping({ userToken }) {
       !pingSent &&
       userToken &&
       (touched.email ||
-        touched.fullname ||
+        touched.fullName ||
         touched.message ||
         touched.consentAccepted)
     ) {
@@ -101,7 +101,7 @@ function Ping({ userToken }) {
     userToken,
     touched.consentAccepted,
     touched.email,
-    touched.fullname,
+    touched.fullName,
     touched.message,
   ]);
 
@@ -159,11 +159,11 @@ function ContactForm() {
     try {
       const data = JSON.stringify({
         email: values.email,
-        fullName: values.fullname,
+        fullName: values.fullName,
         message: values.message,
         dateSent: new Date().toISOString(),
         locale: locale,
-        botField: values.botfield,
+        botField: values.botField,
         consentAccepted: values.consentAccepted,
         consentValue: consentValue,
       });
@@ -231,9 +231,9 @@ function ContactForm() {
       <Formik
         initialValues={{
           email: "",
-          fullname: "",
+          fullName: "",
           message: "",
-          botfield: "",
+          botField: "",
           consentAccepted: false,
         }}
         validationSchema={CONTACT_FORM_VALIDATION_SCHEMA(locale)}
@@ -258,32 +258,32 @@ function ContactForm() {
             <Field
               style={{ display: "none" }}
               aria-hidden="true"
-              name="botfield"
+              name="botField"
             />
-            <StyledLabel labelType="fullname">
+            <StyledLabel labelType="fullName">
               <StyledInput
                 type="text"
-                name="fullname"
+                name="fullName"
                 autoCorrect="off"
                 autoComplete="name"
-                placeholderType="fullname"
+                placeholderType="fullName"
                 minLength="2"
-                valid={touched.fullname && !errors.fullname}
-                error={touched.fullname && errors.fullname}
-                aria-describedby="fullname-validation"
+                valid={touched.fullName && !errors.fullName}
+                error={touched.fullName && errors.fullName}
+                aria-describedby="fullName-validation"
                 aria-required="true"
                 aria-invalid={
-                  touched.fullname && errors.fullname ? `true` : `false`
+                  touched.fullName && errors.fullName ? `true` : `false`
                 }
               />
             </StyledLabel>
-            {errors.fullname && touched.fullname && (
+            {errors.fullName && touched.fullName && (
               <InlineErrorMessage
                 aria-hidden="true"
-                id="fullname-validation"
+                id="fullName-validation"
                 data-testid="Fullname__ErrorMessage"
               >
-                {errors.fullname}
+                {errors.fullName}
               </InlineErrorMessage>
             )}
 
