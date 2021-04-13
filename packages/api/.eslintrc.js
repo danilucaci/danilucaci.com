@@ -6,15 +6,18 @@ module.exports = {
   extends: [
     "eslint:recommended",
     "plugin:jest/recommended",
-    "prettier",
-    "prettier/prettier",
-    "prettier/standard",
+    "plugin:prettier/recommended",
     "plugin:node/recommended",
   ],
-  plugins: ["jest"],
+  plugins: ["jest", "import", "prettier"],
   parserOptions: {
     sourceType: "module",
     ecmaVersion: 2020,
+  },
+  settings: {
+    jest: {
+      version: 26,
+    },
   },
   env: {
     commonjs: true,
