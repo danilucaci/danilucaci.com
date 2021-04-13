@@ -1,15 +1,16 @@
-const app = require("./server");
-// const config = require("./config");
-// const connect = require("./db/connect");
+const { app } = require("./server");
+const { config } = require("./config");
+const { logger } = require("./services");
+const { connect } = require("./db");
 
-// connect().then(async () => {
-//   config.logger.info(`DB connected`);
+if (!config.app.port) {
+  throw new Error("App config is invalid");
+}
 
-//   app.listen(config.port, () => {
-//     config.logger.info(`Server running at http://localhost:${config.app.PORT}`);
-//   });
-// });
+connect().then(async () => {
+  logger.info(`DB connected`);
 
-app.listen(4000, () => {
-  console.log(`Server running at http://localhost:${4000}`);
+  app.listen(config.app.port, () => {
+    logger.info(`Server running at http://localhost:${config.app.port}`);
+  });
 });

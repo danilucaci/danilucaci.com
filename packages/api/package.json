@@ -31,20 +31,22 @@
     "pre:push": "yarn run lint:js && yarn run lint:format:check && yarn run test:ci:all"
   },
   "dependencies": {
-    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "firebase-admin": "^9.6.0",
     "helmet": "^4.4.1",
-    "jsonwebtoken": "^8.5.1",
+    "joi": "^17.4.0",
     "loglevel": "^1.7.1",
     "mongoose": "^5.11.14",
     "morgan": "^1.10.0",
+    "ow": "^0.23.0",
     "validator": "^13.5.2"
   },
   "devDependencies": {
     "@types/jest": "^26.0.20",
+    "@types/mongoose": "^5.10.4",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.19.0",
     "eslint-config-prettier": "^7.2.0",
