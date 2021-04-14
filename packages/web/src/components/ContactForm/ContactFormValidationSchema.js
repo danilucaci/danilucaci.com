@@ -2,8 +2,8 @@ import * as Yup from "yup";
 
 import { FORM_SUBMIT_STATUS } from "../../i18n";
 
-const CONTACT_FORM_VALIDATION_SCHEMA = (locale = "en") =>
-  Yup.object().shape({
+function contactFormValidationSchema(locale = "en") {
+  return Yup.object().shape({
     fullName: Yup.string()
       .min(2, FORM_SUBMIT_STATUS.formValidation[locale].nameShort)
       .max(100, FORM_SUBMIT_STATUS.formValidation[locale].nameLong)
@@ -21,5 +21,6 @@ const CONTACT_FORM_VALIDATION_SCHEMA = (locale = "en") =>
       FORM_SUBMIT_STATUS.formValidation[locale].privacyRequired,
     ),
   });
+}
 
-export default CONTACT_FORM_VALIDATION_SCHEMA;
+export default contactFormValidationSchema;
