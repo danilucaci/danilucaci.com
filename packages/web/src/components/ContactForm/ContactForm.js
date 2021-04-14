@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useFormikContext, Formik, Field, ErrorMessage } from "formik";
+import axios from "axios";
 
 import { navigate } from "gatsby";
 import * as Sentry from "@sentry/browser";
@@ -109,84 +110,83 @@ function ContactForm() {
     Sentry.captureException(error);
   }
 
+  async function sendContactData(formData, setSubmitting) {
+    try {
+      const response = await axios.post(
+        process.env.GATSBY_FIREBASE_FUNCTIONS_CONTACT_URL,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        },
+      );
+
+      const {
+        data: { error: responseError, data: responseData } = {},
+      } = response;
+
+      setSubmitting(false);
+
+      if (responseError) {
+        sendContactFormEvent({
+          action: GA_EVENTS.contactForm.actions.submit.name,
+          label: GA_EVENTS.contactForm.actions.submit.labels.failed,
+        });
+        handleFormError(new Error(responseError));
+      }
+
+      if (!responseError && responseData && responseData === "Ok") {
+        sendContactFormEvent({
+          action: GA_EVENTS.contactForm.actions.submit.name,
+          label: GA_EVENTS.contactForm.actions.submit.labels.success,
+        });
+        setMessageSent(true);
+        navigate(localePaths[locale].thanks);
+      }
+    } catch (error) {
+      sendContactFormEvent({
+        action: GA_EVENTS.contactForm.actions.submit.name,
+        label: GA_EVENTS.contactForm.actions.submit.labels.failed,
+      });
+      setSubmitting(false);
+      handleFormError(error);
+    }
+  }
+
   function handleContactFormSubmit(values, setSubmitting) {
     if (messageSent) {
       // Reset the submit button label
       setMessageSent(false);
     }
 
+    if (!userToken) {
+      sendContactFormEvent({
+        action: GA_EVENTS.contactForm.actions.submit.name,
+        label: GA_EVENTS.contactForm.actions.submit.labels.authFailed,
+      });
+
+      setSubmitting(false);
+
+      return;
+    }
+
     const consentValue = values.consentAccepted
       ? CONSENT_VALUE[locale].yes
       : CONSENT_VALUE[locale].no;
 
-    try {
-      const data = JSON.stringify({
-        email: values.email,
-        fullName: values.fullName,
-        message: values.message,
-        dateSent: new Date().toISOString(),
-        locale: locale,
-        botField: values.botField,
-        consentAccepted: values.consentAccepted,
-        consentValue: consentValue,
-      });
+    const formData = {
+      email: values.email,
+      fullName: values.fullName,
+      message: values.message,
+      dateSent: new Date().toISOString(),
+      locale: locale,
+      botField: values.botField,
+      consentAccepted: values.consentAccepted,
+      consentValue: consentValue,
+    };
 
-      if (!userToken) {
-        sendContactFormEvent({
-          action: GA_EVENTS.contactForm.actions.submit.name,
-          label: GA_EVENTS.contactForm.actions.submit.labels.authFailed,
-        });
-
-        setSubmitting(false);
-
-        return;
-      }
-
-      fetch(process.env.GATSBY_FIREBASE_FUNCTIONS_CONTACT_URL, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${userToken}`,
-          "Content-Type": "application/json",
-        },
-        body: data,
-      })
-        .then((jsonResponse) => jsonResponse.json())
-        .then((response) => {
-          setSubmitting(false);
-
-          if (response.error) {
-            sendContactFormEvent({
-              action: GA_EVENTS.contactForm.actions.submit.name,
-              label: GA_EVENTS.contactForm.actions.submit.labels.failed,
-            });
-            handleFormError(new Error(response.error));
-          }
-
-          if (!response.error && response.data && response.data === "Ok") {
-            sendContactFormEvent({
-              action: GA_EVENTS.contactForm.actions.submit.name,
-              label: GA_EVENTS.contactForm.actions.submit.labels.success,
-            });
-            setMessageSent(true);
-            navigate(localePaths[locale].thanks);
-          }
-        })
-        .catch((error) => {
-          sendContactFormEvent({
-            action: GA_EVENTS.contactForm.actions.submit.name,
-            label: GA_EVENTS.contactForm.actions.submit.labels.failed,
-          });
-          setSubmitting(false);
-          handleFormError(error);
-        });
-    } catch (error) {
-      sendContactFormEvent({
-        action: GA_EVENTS.contactForm.actions.submit.name,
-        label: GA_EVENTS.contactForm.actions.submit.labels.error,
-      });
-      setSubmitting(false);
-      handleFormError(error);
-    }
+    sendContactData(formData, setSubmitting);
   }
 
   return (
