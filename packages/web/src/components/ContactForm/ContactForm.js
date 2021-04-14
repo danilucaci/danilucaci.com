@@ -9,6 +9,7 @@ import { FormContainer, StyledForm, StyledLabel, StyledInput } from "./styles";
 import { sendContactFormEvent } from "../../helpers/ga";
 import GA_EVENTS from "../../helpers/gaEvents";
 import contactFormValidationSchema from "./contactFormValidationSchema";
+import makePing from "./ping";
 
 import { CONSENT_VALUE, localePaths } from "../../i18n";
 import LocaleContext from "../../i18n/LocaleContext";
@@ -33,6 +34,10 @@ function ToggleConsent({ setConsentAccepted, currentConsentAccepted }) {
   return null;
 }
 
+function ping() {
+  return makePing();
+}
+
 function Ping({ userToken }) {
   const { touched } = useFormikContext();
   const [pingSent, setPingSent] = useState(false);
@@ -48,49 +53,7 @@ function Ping({ userToken }) {
         touched.message ||
         touched.consentAccepted)
     ) {
-      const data = JSON.stringify({
-        message: "ping",
-      });
-
-      fetch(process.env.GATSBY_FIREBASE_FUNCTIONS_CONTACT_PING_URL, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${userToken}`,
-          "Content-Type": "application/json",
-        },
-        body: data,
-      })
-        .then((res) => {
-          return res.json();
-        })
-        .then((res) => {
-          const { error } = res || {};
-
-          if (mounted) {
-            sendContactFormEvent({
-              action: GA_EVENTS.contactForm.actions.ping.name,
-              label: GA_EVENTS.contactForm.actions.ping.labels.success,
-            });
-            setPingSent(true);
-          }
-
-          if (error) {
-            sendContactFormEvent({
-              action: GA_EVENTS.contactForm.actions.ping.name,
-              label: GA_EVENTS.contactForm.actions.ping.labels.failed,
-            });
-            Sentry.captureMessage("Contact Form ping failed");
-            setPingSent(true);
-          }
-        })
-        .catch((error) => {
-          sendContactFormEvent({
-            action: GA_EVENTS.contactForm.actions.ping.name,
-            label: GA_EVENTS.contactForm.actions.ping.labels.error,
-          });
-          Sentry.captureException(error);
-          setPingSent(true);
-        });
+      ping(userToken, mounted, sendContactFormEvent, setPingSent);
     }
 
     return () => {
