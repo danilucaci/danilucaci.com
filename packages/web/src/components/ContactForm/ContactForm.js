@@ -8,7 +8,7 @@ import { FormContainer, StyledForm, StyledLabel, StyledInput } from "./styles";
 
 import { sendContactFormEvent } from "../../helpers/ga";
 import GA_EVENTS from "../../helpers/gaEvents";
-import CONTACT_FORM_VALIDATION_SCHEMA from "./ContactFormValidationSchema";
+import contactFormValidationSchema from "./contactFormValidationSchema";
 
 import { CONSENT_VALUE, localePaths } from "../../i18n";
 import LocaleContext from "../../i18n/LocaleContext";
@@ -236,7 +236,7 @@ function ContactForm() {
           botField: "",
           consentAccepted: false,
         }}
-        validationSchema={CONTACT_FORM_VALIDATION_SCHEMA(locale)}
+        validationSchema={contactFormValidationSchema(locale)}
         onSubmit={(values, { setSubmitting }) => {
           handleContactFormSubmit(values, setSubmitting);
         }}
