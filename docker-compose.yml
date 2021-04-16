@@ -1,46 +1,6 @@
 version: "3.9"
 
 services:
-  api:
-    container_name: api
-    image: danilucaci/app:latest
-    entrypoint:
-      - "yarn"
-      - "workspace"
-      - "api"
-    command: ["run", "dev"]
-    depends_on:
-      - mongo
-    env_file:
-      - ./packages/api/.env.development
-    restart: unless-stopped
-    ports:
-      - "4000:4000"
-    volumes:
-      - ./packages/api:/usr/src/app/packages/api
-
-  web:
-    container_name: web
-    image: danilucaci/app:latest
-    entrypoint:
-      - "yarn"
-      - "workspace"
-      - "web"
-    command: ["run", "dev"]
-    env_file:
-      - ./packages/web/.env.development
-    networks:
-      web_net:
-        ipv4_address: 172.25.0.101
-    ports:
-      - "45720:45720"
-      - "8000:8000"
-      - "9000:9000"
-    volumes:
-      - ./packages/web:/usr/src/app/packages/web
-      - web_cache_vol:/usr/src/app/packages/web/.cache
-      - web_public_vol:/usr/src/app/packages/web/public
-
   mongo:
     container_name: mongo
     image: mongo:4.4.3
@@ -68,15 +28,5 @@ services:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=${MONGO_USERNAME}
       - ME_CONFIG_MONGODB_ADMINPASSWORD=${MONGO_PASSWORD}
 
-networks:
-  web_net:
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.25.0.0/24
-
 volumes:
-  web_cache_vol:
-  web_public_vol:
   mongo_data_vol:
