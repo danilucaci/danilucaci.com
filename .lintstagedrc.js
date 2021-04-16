@@ -42,12 +42,9 @@ function makeExecCommand({
 
     const relativePaths = absolutePaths
       .map((file) =>
-        path.relative(cwd, file).replace(`${packagesPath}/${appPath}/`, ""),
+        path.relative(cwd, file).replace(`${packagesPath}/${appPath}/`, "")
       )
       .join(" ");
-
-    logTitle(`${appPath} paths: ${script}`);
-    logPaths(relativePaths);
 
     return `${npmClient} workspace ${appPath} run ${script} ${relativePaths}`;
   };
@@ -84,7 +81,7 @@ module.exports = {
       appPath: WEB_PATH,
       npmClient: NPM_CLIENT,
       script: LINT_FORMAT_CHECK_CMD,
-    },
+    }
   ),
   [`${PACKAGES_PATH}/${API_PATH}/**/*.{js,json,yml,yaml,md}`]: makeExecCommand({
     packagesPath: PACKAGES_PATH,
