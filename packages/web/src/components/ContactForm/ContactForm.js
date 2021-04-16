@@ -122,9 +122,7 @@ function ContactForm() {
         },
       );
 
-      const {
-        data: { error: responseError, data: responseData } = {},
-      } = response;
+      const { data: { error: responseError } = {} } = response;
 
       setSubmitting(false);
 
@@ -136,7 +134,7 @@ function ContactForm() {
         handleFormError(new Error(responseError));
       }
 
-      if (!responseError && responseData && responseData === "Ok") {
+      if (!responseError && response.status === 201) {
         sendContactFormEvent({
           action: GA_EVENTS.contactForm.actions.submit.name,
           label: GA_EVENTS.contactForm.actions.submit.labels.success,
