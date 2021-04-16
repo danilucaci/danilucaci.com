@@ -1,5 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-docker-compose exec -T web yarn workspace web run pre:push
-docker-compose exec -T api yarn workspace api run pre:push
+yarn workspaces run pre:push
