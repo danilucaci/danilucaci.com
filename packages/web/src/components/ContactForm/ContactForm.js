@@ -9,8 +9,8 @@ import { FormContainer, StyledForm, StyledLabel, StyledInput } from "./styles";
 
 import { sendContactFormEvent } from "../../helpers/ga";
 import GA_EVENTS from "../../helpers/gaEvents";
-import contactFormValidationSchema from "./contactFormValidationSchema";
-import makePing from "./ping";
+import contactFormValidationSchema from "../../helpers/contactFormValidationSchema";
+import makePing from "../../helpers/makePing";
 
 import { CONSENT_VALUE, localePaths } from "../../i18n";
 import LocaleContext from "../../i18n/LocaleContext";
