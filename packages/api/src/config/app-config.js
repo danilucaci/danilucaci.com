@@ -1,6 +1,6 @@
 const path = require("path");
 
-const ENV_PATH = path.resolve(process.cwd(), "./env.development");
+const ENV_PATH = path.resolve(process.cwd(), ".env.development");
 
 require("dotenv").config({
   path: ENV_PATH,
@@ -23,7 +23,7 @@ const baseConfig = {
     url: CLIENT_URL,
   },
   db: {
-    url: `mongodb://mongo:27017/danilucaci-dev`,
+    url: `mongodb://localhost:27018/danilucaci-dev`,
   },
 };
 
