@@ -8,6 +8,7 @@ module.exports = {
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
+    "prettier/react",
     "plugin:jest/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
