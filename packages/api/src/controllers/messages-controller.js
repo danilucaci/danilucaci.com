@@ -1,5 +1,9 @@
 const { UserRepo, MessageRepo } = require("../repositories");
-const { logger } = require("../services");
+const { logger, emailService } = require("../services");
+
+const {
+  getErrorMessages,
+} = require("../services/email-service/email-service-helpers");
 
 async function contact(req, res, next) {
   const { uid } = req.user;
@@ -25,7 +29,10 @@ async function contact(req, res, next) {
     if (prevUserError) {
       logger.error(prevUserError);
       return res.status(400).send({
-        data: null,
+        data: {
+          message: null,
+          email: null,
+        },
         error: `Failed to fetch the user by email.`,
       });
     }
@@ -42,7 +49,10 @@ async function contact(req, res, next) {
       if (newUserError) {
         logger.error(newUserError);
         return res.status(400).send({
-          data: null,
+          data: {
+            message: null,
+            email: null,
+          },
           error: `Failed to create a new user.`,
         });
       }
@@ -62,20 +72,60 @@ async function contact(req, res, next) {
     if (newMessageError) {
       logger.error(newMessageError);
       return res.status(400).send({
-        data: null,
+        data: {
+          message: null,
+          email: null,
+        },
         error: `Failed to create the message.`,
       });
     }
 
-    res.status(201).send({
-      data: "Message created.",
-      error: null,
-    });
+    try {
+      await emailService.sendEmail(req.body);
+
+      res.status(201).send({
+        data: {
+          message: "Ok",
+          email: "Ok",
+        },
+        error: null,
+      });
+    } catch (error) {
+      const errorMessages = getErrorMessages(locale);
+      logger.error("Failed to send the email", error);
+
+      return res.status(200).send({
+        data: {
+          message: "Ok",
+          email: null,
+        },
+        error: errorMessages.generic,
+      });
+    }
   } catch (error) {
     next(error);
   }
 }
 
+function ping(req, res) {
+  const { message } = req.body || {};
+
+  if (message === "ping") {
+    return res.status(200).send({
+      data: {
+        message: "pong",
+      },
+      error: null,
+    });
+  }
+
+  return res.status(400).send({
+    data: null,
+    error: "Bad request",
+  });
+}
+
 module.exports = {
   contact: contact,
+  ping: ping,
 };

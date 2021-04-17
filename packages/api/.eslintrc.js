@@ -29,5 +29,6 @@ module.exports = {
     "object-shorthand": "off",
     "arrow-body-style": "off",
     "no-underscore-dangle": "off",
+    "no-console": 2,
   },
 };

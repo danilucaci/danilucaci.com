@@ -1,18 +1,17 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useFormikContext, Formik, Field, ErrorMessage } from "formik";
-import axios from "axios";
 
 import { navigate } from "gatsby";
-import * as Sentry from "@sentry/browser";
 
 import { FormContainer, StyledForm, StyledLabel, StyledInput } from "./styles";
 
 import { sendContactFormEvent } from "../../helpers/ga";
 import GA_EVENTS from "../../helpers/gaEvents";
-import contactFormValidationSchema from "../../helpers/contactFormValidationSchema";
-import makePing from "../../helpers/makePing";
-
 import { CONSENT_VALUE, localePaths } from "../../i18n";
+import contactFormValidationSchema from "../../helpers/contactFormValidationSchema";
+import * as api from "../../api";
+import { errorLoggerService } from "../../services";
+
 import LocaleContext from "../../i18n/LocaleContext";
 import { CookiesContext } from "../../context/CookiesContext";
 
@@ -35,16 +34,44 @@ function ToggleConsent({ setConsentAccepted, currentConsentAccepted }) {
   return null;
 }
 
-function ping() {
-  return makePing();
-}
-
 function Ping({ userToken }) {
   const { touched } = useFormikContext();
   const [pingSent, setPingSent] = useState(false);
 
   useEffect(() => {
     let mounted = true;
+
+    async function pingApi() {
+      try {
+        const response = await api.ping(userToken);
+
+        const { error } = response;
+
+        if (mounted) {
+          sendContactFormEvent({
+            action: GA_EVENTS.contactForm.actions.ping.name,
+            label: GA_EVENTS.contactForm.actions.ping.labels.success,
+          });
+          setPingSent(true);
+        }
+
+        if (error) {
+          sendContactFormEvent({
+            action: GA_EVENTS.contactForm.actions.ping.name,
+            label: GA_EVENTS.contactForm.actions.ping.labels.failed,
+          });
+          errorLoggerService.captureMessage("Contact Form ping failed");
+          setPingSent(true);
+        }
+      } catch (error) {
+        sendContactFormEvent({
+          action: GA_EVENTS.contactForm.actions.ping.name,
+          label: GA_EVENTS.contactForm.actions.ping.labels.error,
+        });
+        errorLoggerService.captureException(error);
+        setPingSent(true);
+      }
+    }
 
     if (
       !pingSent &&
@@ -54,7 +81,7 @@ function Ping({ userToken }) {
         touched.message ||
         touched.consentAccepted)
     ) {
-      ping(userToken, mounted, sendContactFormEvent, setPingSent);
+      pingApi();
     }
 
     return () => {
@@ -89,7 +116,7 @@ function ContactForm() {
     if (authError) {
       setShowFormError(true);
       setFormErrorMessage("Service is currently unavailable.");
-      Sentry.captureMessage(authError);
+      errorLoggerService.captureMessage(authError);
     }
   }, [authError]);
 
@@ -107,22 +134,14 @@ function ContactForm() {
   function handleFormError(error) {
     setFormErrorMessage(error.message);
     setShowFormError(true);
-    Sentry.captureException(error);
+    errorLoggerService.captureException(error);
   }
 
   async function sendContactData(formData, setSubmitting) {
     try {
-      const response = await axios.post(
-        process.env.GATSBY_FIREBASE_FUNCTIONS_CONTACT_URL,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${userToken}`,
-          },
-        },
-      );
+      const response = await api.sendContactForm(formData, userToken);
 
-      const { data: { error: responseError } = {} } = response;
+      const { error: responseError } = response;
 
       setSubmitting(false);
 
