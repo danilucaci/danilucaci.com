@@ -13,6 +13,8 @@ const {
   MONGO_PROJECT_ID = MONGO_USERNAME,
   CLIENT_URL = "http://localhost:8000",
   PORT = 4000,
+  EMAIL_USERNAME = "",
+  EMAIL_PASSWORD = "",
 } = process.env;
 
 const baseConfig = {
@@ -24,6 +26,12 @@ const baseConfig = {
   },
   db: {
     url: `mongodb://localhost:27018/danilucaci-dev`,
+  },
+  email: {
+    senderEmail: EMAIL_USERNAME,
+    senderPassword: EMAIL_PASSWORD,
+    service: "gmail",
+    defaultDateLocale: "es-ES",
   },
 };
 

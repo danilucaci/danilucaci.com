@@ -5,8 +5,10 @@ const { contactValidationMiddleware } = require("../middlewares");
 
 const messageRouter = Router();
 
+messageRouter.post("/api/ping", messageController.ping);
+
 messageRouter.post(
-  "/contact",
+  "/api/contact",
   contactValidationMiddleware,
   messageController.contact,
 );
