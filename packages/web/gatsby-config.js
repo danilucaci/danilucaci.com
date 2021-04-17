@@ -20,6 +20,11 @@ module.exports = {
     //   copyright: config.copyright,
     // },
   },
+  // https://www.gatsbyjs.com/docs/api-proxy/
+  proxy: {
+    prefix: "/api",
+    url: process.env.GATSBY_CONTACT_BASE_URL,
+  },
   plugins: [
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-lodash",

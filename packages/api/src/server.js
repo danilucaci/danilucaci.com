@@ -22,22 +22,6 @@ app.use(
   }),
 );
 
-app.post("/ping", (req, res) => {
-  const { message } = req.body || {};
-
-  if (message === "ping") {
-    return res.status(200).send({
-      data: { message: "pong" },
-      error: null,
-    });
-  }
-
-  return res.status(400).send({
-    data: null,
-    error: "Bad request",
-  });
-});
-
 app.use(authMiddleware);
 app.use(messageRouter);
 app.use(errorMiddleware);
