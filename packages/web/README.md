@@ -19,7 +19,7 @@
   </a>
 </p>
 
-# Dani Lucaci personal website
+# Dani Lucaci Personal Website
 
 Built with [Gatsby.js](https://www.gatsbyjs.org) • Available in
 [english](https://www.danilucaci.com) and
