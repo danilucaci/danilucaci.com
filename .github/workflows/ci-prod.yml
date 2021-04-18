@@ -39,4 +39,4 @@ jobs:
       - name: Split the packages/api subtree
         run: git subtree split --prefix packages/api -b split
       - name: Deploy API to Heroku
-        run: git push heroku split:main
+        run: git push -f heroku split:main
