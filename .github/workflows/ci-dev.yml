@@ -1,0 +1,35 @@
+name: Dev CI Workflow
+
+on:
+  push:
+    branches: [dev]
+  pull_request:
+    branches: [dev]
+
+jobs:
+  packages:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install -g yarn
+      - name: api lint, format, test
+        run: |
+          yarn
+          yarn workspace api run lint:js
+          yarn workspace api run lint:format:check
+          yarn workspace api run test:ci:all
+      - name: web lint, format, test
+        run: |
+          yarn
+          yarn workspace web run lint:js
+          yarn workspace web run lint:format:check
+          yarn workspace web run test:ci:all

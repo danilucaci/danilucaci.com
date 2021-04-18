@@ -1,13 +1,13 @@
-name: CI Workflow
+name: Prod CI Workflow
 
 on:
   push:
     branches: [main]
   pull_request:
-    branches: [main, dev]
+    branches: [main]
 
 jobs:
-  api:
+  packages:
     runs-on: ubuntu-latest
 
     strategy:
@@ -21,22 +21,22 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install -g yarn
-      - name: lint | format | test
+      - name: api lint, format, test
         run: |
           yarn
-          yarn run lint:js
-          yarn run lint:format:check
-          yarn run test:ci:all
-      - name: Add backend remote origin
+          yarn workspace api run lint:js
+          yarn workspace api run lint:format:check
+          yarn workspace api run test:ci:all
+      - name: web lint, format, test
+        run: |
+          yarn
+          yarn workspace web run lint:js
+          yarn workspace web run lint:format:check
+          yarn workspace web run test:ci:all
+      - name: Add Heroku Remote Origin
         run:
           git remote add heroku-api https://heroku:${{ secrets.HEROKU_API_TOKEN
           }}@git.heroku.com/${{ secrets.HEROKU_BACKEND_APP_NAME }}.git
-      - name: Deploy api to Heroku
+      - name: Deploy API to Heroku
         run: git push heroku-api `git subtree split --prefix packages/api -b
           main`:refs/heads/main --force
-      # Deploy to Netlify using production secrets
-      # - name: Deploy web app to Netlify
-      #   uses: netlify/actions/cli@master
-      #   env:
-      #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-      #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
