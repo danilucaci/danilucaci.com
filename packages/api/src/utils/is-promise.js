@@ -1,5 +1,5 @@
 function isPromise(value) {
-  return value && value.then && typeof value.then === "function";
+  return Boolean(value && value.then && typeof value.then === "function");
 }
 
 module.exports = {
