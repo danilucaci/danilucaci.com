@@ -1,23 +1,29 @@
 import { api } from "./api-instance";
 
 export function ping(userToken) {
-  return api.post("ping", {
-    headers: {
-      Authorization: `Bearer ${userToken}`,
-      "content-type": "application/json",
-    },
-    body: JSON.stringify({
+  return api.post(
+    "ping",
+    {
       message: "ping",
-    }),
-  });
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+      },
+    },
+  );
 }
 
 export function sendContactForm(data, userToken) {
-  return api.post("contact", {
-    headers: {
-      Authorization: `Bearer ${userToken}`,
-      "content-type": "application/json",
+  return api.post(
+    "contact",
+    {
+      ...data,
     },
-    body: JSON.stringify(data),
-  });
+    {
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+      },
+    },
+  );
 }
