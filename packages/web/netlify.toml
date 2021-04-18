@@ -5,17 +5,6 @@
   # https://answers.netlify.com/t/difficulty-with-new-monorepo-deployment-options/4381/7
   # https://answers.netlify.com/t/improved-caching-for-yarn-workspaces/36066
   #
-  base = "packages/web/"
-  command = "yarn run netlify:build"
-  # Publish directory: Directory (relative to the root of your repo)
-  # that contains the deploy-ready HTML files and assets generated
-  # by the build. If a base directory has been specified, it should
-  # be included in the publish directory path. For example, if your
-  # base directory is set to site, the publish directory should
-  # include the site/ prefix like so: site/public. Visit the common
-  # configurations doc to learn about typical settings for popular
-  # tools and architectures.
-  publish = "packages/web/public/"
   # this is run inside the packages/web folder so we need to specify it
   # and not git diff --quiet HEAD^ HEAD packages/web because the path
   # doesn't exist when we are already in packages/web
