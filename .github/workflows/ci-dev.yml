@@ -7,7 +7,7 @@ on:
     branches: [dev]
 
 jobs:
-  packages:
+  ci-dev-job:
     runs-on: ubuntu-latest
 
     strategy:

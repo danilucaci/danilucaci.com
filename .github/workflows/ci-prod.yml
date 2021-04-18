@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  packages:
+  ci-prod-job:
     runs-on: ubuntu-latest
 
     strategy:
