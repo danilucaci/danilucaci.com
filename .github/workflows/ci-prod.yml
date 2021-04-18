@@ -34,9 +34,8 @@ jobs:
           yarn workspace web run lint:format:check
           yarn workspace web run test:ci:all
       - name: Add Heroku Remote Origin
-        run:
-          git remote add heroku-api https://heroku:${{ secrets.HEROKU_API_TOKEN
+        run: git remote add heroku https://heroku:${{ secrets.HEROKU_API_TOKEN
           }}@git.heroku.com/${{ secrets.HEROKU_BACKEND_APP_NAME }}.git
       - name: Deploy API to Heroku
-        run: git push heroku-api `git subtree split --prefix packages/api -b
+        run: git push heroku `git subtree split --prefix packages/api -b
           main`:refs/heads/main --force
