@@ -19,8 +19,8 @@
   ignore = "git diff --quiet HEAD^ HEAD packages/api/"
 
 [build.environment]
-  NETLIFY_USE_YARN = true
-  NETLIFY_YARN_WORKSPACES = true
+  NETLIFY_USE_YARN = "true"
+  NETLIFY_YARN_WORKSPACES = "true"
   YARN_VERSION = "1.22.10"
 
 [[plugins]]
