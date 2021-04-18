@@ -1,4 +1,4 @@
-# Dani Lucaci personal website API
+# danilucaci.com Personal Website API
 
 Built with [Node.js](https://www.nodejs.org) • Available in
 [english](https://www.danilucaci.com) and
