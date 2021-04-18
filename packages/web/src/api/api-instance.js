@@ -1,4 +1,4 @@
-import ky from "ky-universal";
+import axios from "axios";
 
 /**
  * Note: since Gatsby uses the webpack DefinePlugin to make
@@ -28,6 +28,6 @@ export function getCurrentEnv() {
  * and it is up to you to ensure that URLs like /api/todos point to the right
  * place in production."
  */
-export const api = ky.create({
-  prefixUrl: getCurrentEnv(),
+export const api = axios.create({
+  baseURL: getCurrentEnv(),
 });
