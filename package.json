@@ -34,6 +34,7 @@
     "lint:format:check": "yarn workspaces run lint:format:check",
     "cy:open:dev": "yarn workspace web run cy:open:dev",
     "cy:open:prod": "yarn workspace web run cy:open:prod",
+    "netlify:build": "yarn workspaces run netlify:build",
     "pre:commit": "yarn workspaces run pre:commit",
     "pre:push": "yarn workspaces run pre:push"
   }
