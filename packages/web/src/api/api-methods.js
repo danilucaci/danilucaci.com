@@ -2,7 +2,7 @@ import { api } from "./api-instance";
 
 export function ping(userToken) {
   return api.post(
-    "ping",
+    "/ping",
     {
       message: "ping",
     },
@@ -16,7 +16,7 @@ export function ping(userToken) {
 
 export function sendContactForm(data, userToken) {
   return api.post(
-    "contact",
+    "/contact",
     {
       ...data,
     },
