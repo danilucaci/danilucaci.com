@@ -31,29 +31,12 @@ jobs:
         run:
           git remote add heroku-api https://heroku:${{ secrets.HEROKU_API_TOKEN
           }}@git.heroku.com/${{ secrets.HEROKU_BACKEND_APP_NAME }}.git
-      - name: Deploy backend to Heroku
-        run:
-          git push heroku-api `git subtree split --prefix packages/api -b
+      - name: Deploy api to Heroku
+        run: git push heroku-api `git subtree split --prefix packages/api -b
           main`:refs/heads/main --force
-
-  web:
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [14.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm install -g yarn
-      - name: yarn install, lint, and test
-        run: |
-          yarn
-          yarn run lint:js
-          yarn run lint:format:check
-          yarn run test:ci:all
+      # Deploy to Netlify using production secrets
+      # - name: Deploy web app to Netlify
+      #   uses: netlify/actions/cli@master
+      #   env:
+      #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
