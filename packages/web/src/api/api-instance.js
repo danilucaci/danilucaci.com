@@ -11,7 +11,7 @@ import axios from "axios";
  * @returns {String} The prefixUrl to use in the http client
  */
 export function getCurrentEnv() {
-  if (process.env.GATSBY_ENV === "production") {
+  if (process.env.NODE_ENV === "production") {
     return `${process.env.GATSBY_CONTACT_BASE_URL}/api`;
   }
 
