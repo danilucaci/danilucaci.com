@@ -36,6 +36,7 @@ jobs:
       - name: Add Heroku Remote Origin
         run: git remote add heroku https://heroku:${{ secrets.HEROKU_API_TOKEN
           }}@git.heroku.com/${{ secrets.HEROKU_APP_NAME }}.git
+      - name: Split the packages/api subtree
+        run: git subtree split --prefix packages/api -b split
       - name: Deploy API to Heroku
-        run: git push heroku `git subtree split --prefix packages/api -b
-          main`:refs/heads/main --force
+        run: git push heroku split:main
