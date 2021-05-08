@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import { FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
 
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
@@ -20,8 +20,9 @@ import {
 import { Col } from "../components/Grid";
 import LocaleContext from "../i18n/LocaleContext";
 
-const ThanksPage = ({ location }) => {
+function ThanksPage({ location }) {
   const { locale } = useContext(LocaleContext);
+  const intl = useIntl();
 
   let twinPostURL = localePaths[locale].thanks;
 
@@ -43,47 +44,38 @@ const ThanksPage = ({ location }) => {
         <Main>
           <ThanksPageRow mb col8>
             <Col>
-              <FormattedMessage id="thanks.title">
-                {(txt) => <StyledH1>{txt}</StyledH1>}
-              </FormattedMessage>
-              <FormattedMessage id="thanks.subtitle">
-                {(txt) => <Subtitle>{txt}</Subtitle>}
-              </FormattedMessage>
+              <StyledH1>{intl.formatMessage({ id: "thanks.title" })}</StyledH1>
+              <Subtitle>
+                {intl.formatMessage({ id: "thanks.subtitle" })}
+              </Subtitle>
               <StyledHR />
-              <FormattedMessage id="thanks.copy">
-                {(txt) => <ThanksCopy>{txt}</ThanksCopy>}
-              </FormattedMessage>
-
-              <FormattedMessage id="thanks.subcopy.1">
-                {(txt) => (
-                  <ThanksCopy>
-                    {txt}
-                    <a href={`mailto:${localePaths[locale].email}`}>
-                      {localePaths[locale].email}
-                    </a>
-                    <FormattedMessage id="thanks.subcopy.2">
-                      {(txt2) => <> {txt2}</>}
-                    </FormattedMessage>
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href="https://twitter.com/danilucaci"
-                    >
-                      @danilucaci
-                    </a>
-                  </ThanksCopy>
-                )}
-              </FormattedMessage>
-              <FormattedMessage id="thanks.go.home">
-                {(txt) => <LocaleLink to="/">{txt}</LocaleLink>}
-              </FormattedMessage>
+              <ThanksCopy>
+                {intl.formatMessage({ id: "thanks.copy" })}
+              </ThanksCopy>
+              <ThanksCopy>
+                {intl.formatMessage({ id: "thanks.subcopy.1" })}
+                <a href={`mailto:${localePaths[locale].email}`}>
+                  {localePaths[locale].email}
+                </a>
+                {intl.formatMessage({ id: "thanks.subcopy.2" })}
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://twitter.com/danilucaci"
+                >
+                  @danilucaci
+                </a>
+              </ThanksCopy>
+              <LocaleLink to="/">
+                {intl.formatMessage({ id: "thanks.go.home" })}
+              </LocaleLink>
             </Col>
           </ThanksPageRow>
         </Main>
       </Layout>
     </ErrorBoundary>
   );
-};
+}
 
 ThanksPage.propTypes = {
   location: PropTypes.shape({
