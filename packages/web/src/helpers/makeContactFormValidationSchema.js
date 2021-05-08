@@ -2,7 +2,7 @@ import * as Yup from "yup";
 
 import { FORM_SUBMIT_STATUS } from "../i18n";
 
-function contactFormValidationSchema(locale = "en") {
+function makeContactFormValidationSchema(locale = "en") {
   return Yup.object().shape({
     fullName: Yup.string()
       .min(2, FORM_SUBMIT_STATUS.formValidation[locale].nameShort)
@@ -23,4 +23,4 @@ function contactFormValidationSchema(locale = "en") {
   });
 }
 
-export default contactFormValidationSchema;
+export default makeContactFormValidationSchema;

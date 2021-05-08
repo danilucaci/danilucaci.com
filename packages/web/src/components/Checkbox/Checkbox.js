@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import { Field } from "formik";
 import { theme, rem } from "../../theme";
 
-const Checkbox = styled(Field)`
+const Checkbox = styled.input`
   will-change: transform;
 
   /* take it out of document flow */

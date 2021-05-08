@@ -1,9 +1,7 @@
 import styled from "styled-components";
-import { Form } from "formik";
 
 import { rem, mediaMin } from "../../theme";
 import Label from "../Label";
-import Input from "../Input";
 
 export const FormContainer = styled.div`
   ${mediaMin.xl`
@@ -11,7 +9,7 @@ export const FormContainer = styled.div`
   `};
 `;
 
-export const StyledForm = styled(Form)`
+export const StyledForm = styled.form`
   width: 100%;
 `;
 
@@ -28,8 +26,4 @@ export const StyledLabel = styled(Label)`
     box-shadow: none;
     outline: none;
   }
-`;
-
-export const StyledInput = styled(Input)`
-  display: block;
 `;
