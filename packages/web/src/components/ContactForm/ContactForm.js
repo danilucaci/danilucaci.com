@@ -10,7 +10,7 @@ import {
   makeContactFormValidationSchema,
   getSubmitButtonAriaLabel,
 } from "./contact-form-utils";
-import { CONSENT_VALUE, localePaths } from "../../i18n";
+import { contactFormConsentValues, localePaths } from "../../i18n";
 import { errorLoggerService } from "../../services";
 import * as api from "../../api";
 
@@ -131,8 +131,8 @@ function ContactForm() {
     }
 
     const consentValue = values.consentAccepted
-      ? CONSENT_VALUE[locale].yes
-      : CONSENT_VALUE[locale].no;
+      ? contactFormConsentValues[locale].yes
+      : contactFormConsentValues[locale].no;
 
     const formData = {
       email: values.email,
