@@ -1,6 +1,6 @@
 import React, { useReducer, useContext } from "react";
 import addToMailchimp from "gatsby-plugin-mailchimp";
-import { FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
 import { Formik, ErrorMessage, Form } from "formik";
 import * as Sentry from "@sentry/browser";
 
@@ -65,33 +65,43 @@ function handleFormSent(result, responseMSG, dispatch) {
 }
 
 function SubscribeSuccess() {
+  const intl = useIntl();
+
   return (
     <>
       <StatusMessageWrapper role="status" aria-live="polite">
-        <FormattedMessage id="subscribe.card.status.success.title">
-          {(txt) => <H2>{txt}</H2>}
-        </FormattedMessage>
-        <FormattedMessage id="subscribe.card.status.success.message">
-          {(txt) => <StatusMessageSubtitle>{txt}</StatusMessageSubtitle>}
-        </FormattedMessage>
+        <H2>
+          {intl.formatMessage({
+            id: "subscribe.card.status.success.title",
+          })}
+        </H2>
+        <StatusMessageSubtitle>
+          {intl.formatMessage({
+            id: "subscribe.card.status.success.message",
+          })}
+        </StatusMessageSubtitle>
       </StatusMessageWrapper>
     </>
   );
 }
 
 function SubscribeError(errorMessageType, APIErrorResponse) {
+  const intl = useIntl();
+
   return (
     <>
       <StatusMessageWrapper role="status" aria-live="polite">
-        <FormattedMessage id="subscribe.card.status.error.title">
-          {(txt) => <H2>{txt}</H2>}
-        </FormattedMessage>
-        <FormattedMessage
-          id={`subscribe.card.status.error.${errorMessageType}`}
-          defaultMessage="Something went wrong."
-        >
-          {(txt) => <StatusMessageSubtitle>{txt}</StatusMessageSubtitle>}
-        </FormattedMessage>
+        <H2>
+          {intl.formatMessage({ id: "subscribe.card.status.error.title" })}
+        </H2>
+
+        <StatusMessageSubtitle>
+          {intl.formatMessage({
+            id: `subscribe.card.status.error.${errorMessageType}`,
+            defaultMessage: "Something went wrong.",
+          })}
+        </StatusMessageSubtitle>
+
         {APIErrorResponse && (
           <StatusMessageSubtitle>{APIErrorResponse}</StatusMessageSubtitle>
         )}
@@ -124,6 +134,7 @@ async function handleMCSubmit(
 
 function SubscribeCard() {
   const { locale } = useContext(LocaleContext);
+  const intl = useIntl();
 
   const [
     { isMCSent, isError, errorMessageType, APIErrorResponse },
@@ -136,12 +147,10 @@ function SubscribeCard() {
         <Col>
           {!isMCSent && (
             <>
-              <FormattedMessage id="subscribe.card.title">
-                {(txt) => <H2>{txt}</H2>}
-              </FormattedMessage>
-              <FormattedMessage id="subscribe.card.subtitle">
-                {(txt) => <CardCopy>{txt}</CardCopy>}
-              </FormattedMessage>
+              <H2>{intl.formatMessage({ id: "subscribe.card.title" })}</H2>
+              <CardCopy>
+                {intl.formatMessage({ id: "subscribe.card.subtitle" })}
+              </CardCopy>
               <FormContainer>
                 <Formik
                   initialValues={{
