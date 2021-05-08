@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
-import { sendContactFormEvent } from "../../helpers/ga";
-import { errorLoggerService } from "../../services";
-import GA_EVENTS from "../../helpers/gaEvents";
-import * as api from "../../api";
+import { sendContactFormEvent } from "../../../helpers/ga";
+import { errorLoggerService } from "../../../services";
+import GA_EVENTS from "../../../helpers/gaEvents";
+import * as api from "../../../api";
 
 function Ping({ touched, userToken }) {
   const [pingSent, setPingSent] = useState(false);

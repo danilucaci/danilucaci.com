@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-import { theme, rem, mediaMin } from "../../theme";
-import { Copy, AltCopy } from "../Copy";
-import Icon from "../Icon";
+import { theme, rem, mediaMin } from "../../../theme";
+import { Copy, AltCopy } from "../../Copy";
+import Icon from "../../Icon";
 
 export const ErrorMessageWrapper = styled.div`
   border: 1px solid ${theme.color.border.default};

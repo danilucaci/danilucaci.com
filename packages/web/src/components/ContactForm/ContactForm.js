@@ -6,7 +6,10 @@ import { FormContainer, StyledForm, StyledLabel } from "./styles";
 
 import { sendContactFormEvent } from "../../helpers/ga";
 import GA_EVENTS from "../../helpers/gaEvents";
-import makeContactFormValidationSchema from "../../helpers/makeContactFormValidationSchema";
+import {
+  makeContactFormValidationSchema,
+  getSubmitButtonAriaLabel,
+} from "./contact-form-utils";
 import { CONSENT_VALUE, localePaths } from "../../i18n";
 import { errorLoggerService } from "../../services";
 import * as api from "../../api";
@@ -17,24 +20,12 @@ import { CookiesContext } from "../../context/CookiesContext";
 import useFirebaseAnonymousAuth from "../../hooks/useFirebaseAnonymousAuth";
 
 import PrivacyCheckbox from "../PrivacyCheckbox";
-import ContactFormErrorMessage from "../ContactFormErrorMessage";
+import ContactFormErrorMessage from "./ContactFormErrorMessage";
 import InlineErrorMessage from "../InlineErrorMessage";
 import SubmitButton from "../SubmitButton";
 import Input from "../Input";
 import ToggleConsent from "./ToggleConsent";
 import Ping from "./Ping";
-
-function getSubmitButtonAriaLabel(messageSent = false, isSubmitting = false) {
-  if (messageSent) {
-    return "Message sent";
-  }
-
-  if (isSubmitting) {
-    return "Sending message";
-  }
-
-  return "Send message";
-}
 
 function ContactForm() {
   const [showFormError, setShowFormError] = useState(false);

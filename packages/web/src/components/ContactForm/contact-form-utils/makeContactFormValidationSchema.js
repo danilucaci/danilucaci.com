@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-import { FORM_SUBMIT_STATUS } from "../../i18n";
+import { FORM_SUBMIT_STATUS } from "../../../i18n";
 
 function makeContactFormValidationSchema(locale = "en") {
   return Yup.object().shape({
