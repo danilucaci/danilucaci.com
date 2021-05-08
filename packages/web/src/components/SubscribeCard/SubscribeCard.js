@@ -26,38 +26,38 @@ import subscribeReducer from "./subscribeReducer";
 import subscribeInitialState from "./subscribeInitialState";
 import MCSchema from "./MCSchema";
 import { sendSubscribersEvent } from "../../helpers/ga";
-import GA_EVENTS from "../../helpers/gaEvents";
+import gaEvents from "../../helpers/gaEvents";
 import LocaleContext from "../../i18n/LocaleContext";
 
 function handleFormSent(result, responseMSG, dispatch) {
   if (result.includes("success")) {
     sendSubscribersEvent({
-      action: GA_EVENTS.subscribers.actions.success.name,
-      label: GA_EVENTS.subscribers.actions.success.labels.newSubscriber,
+      action: gaEvents.subscribers.actions.success.name,
+      label: gaEvents.subscribers.actions.success.labels.newSubscriber,
     });
   } else if (
     result.includes("error") &&
     responseMSG.includes("is already subscribed to")
   ) {
     sendSubscribersEvent({
-      action: GA_EVENTS.subscribers.actions.error.name,
-      label: GA_EVENTS.subscribers.actions.error.labels.alreadySubscribed,
+      action: gaEvents.subscribers.actions.error.name,
+      label: gaEvents.subscribers.actions.error.labels.alreadySubscribed,
     });
 
     dispatch({ type: "FETCH_ERROR_ALREADY", payload: "already" });
     Sentry.captureException(new Error(responseMSG));
   } else if (result.includes("error") && responseMSG.includes("many")) {
     sendSubscribersEvent({
-      action: GA_EVENTS.subscribers.actions.error.name,
-      label: GA_EVENTS.subscribers.actions.error.labels.tooManyRequests,
+      action: gaEvents.subscribers.actions.error.name,
+      label: gaEvents.subscribers.actions.error.labels.tooManyRequests,
     });
 
     dispatch({ type: "FETCH_ERROR_TOO_MANY" });
     Sentry.captureException(new Error(responseMSG));
   } else if (result.includes("error")) {
     sendSubscribersEvent({
-      action: GA_EVENTS.subscribers.actions.error.name,
-      label: GA_EVENTS.subscribers.actions.error.labels.generic,
+      action: gaEvents.subscribers.actions.error.name,
+      label: gaEvents.subscribers.actions.error.labels.generic,
     });
 
     dispatch({ type: "FETCH_ERROR_GENERIC", payload: responseMSG });

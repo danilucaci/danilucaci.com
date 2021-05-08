@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { sendContactFormEvent } from "../../../helpers/ga";
 import { errorLoggerService } from "../../../services";
-import GA_EVENTS from "../../../helpers/gaEvents";
+import gaEvents from "../../../helpers/gaEvents";
 import * as api from "../../../api";
 
 function Ping({ touched, userToken }) {
@@ -19,24 +19,24 @@ function Ping({ touched, userToken }) {
 
         if (mounted) {
           sendContactFormEvent({
-            action: GA_EVENTS.contactForm.actions.ping.name,
-            label: GA_EVENTS.contactForm.actions.ping.labels.success,
+            action: gaEvents.contactForm.actions.ping.name,
+            label: gaEvents.contactForm.actions.ping.labels.success,
           });
           setPingSent(true);
         }
 
         if (error) {
           sendContactFormEvent({
-            action: GA_EVENTS.contactForm.actions.ping.name,
-            label: GA_EVENTS.contactForm.actions.ping.labels.failed,
+            action: gaEvents.contactForm.actions.ping.name,
+            label: gaEvents.contactForm.actions.ping.labels.failed,
           });
           errorLoggerService.captureMessage("Contact Form ping failed");
           setPingSent(true);
         }
       } catch (error) {
         sendContactFormEvent({
-          action: GA_EVENTS.contactForm.actions.ping.name,
-          label: GA_EVENTS.contactForm.actions.ping.labels.error,
+          action: gaEvents.contactForm.actions.ping.name,
+          label: gaEvents.contactForm.actions.ping.labels.error,
         });
         errorLoggerService.captureException(error);
         setPingSent(true);
