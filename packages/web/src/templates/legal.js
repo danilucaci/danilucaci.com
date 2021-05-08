@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { shape, string } from "prop-types";
 import { graphql } from "gatsby";
-import { FormattedDate, FormattedMessage } from "react-intl";
+import { FormattedDate, useIntl } from "react-intl";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
 import SEO from "../components/SEO";
@@ -24,6 +24,8 @@ function LegalDoc({ data, pageContext, location }) {
   const postInfo = postNode.frontmatter;
   const twinPost = pageContext.twinPost;
   const lastUpdated = postInfo.date;
+
+  const intl = useIntl();
 
   const { locale } = useContext(LocaleContext);
 
@@ -48,25 +50,22 @@ function LegalDoc({ data, pageContext, location }) {
           <LegalPageRow mb col8>
             <Col>
               <PostH1>{postInfo.title}</PostH1>
-              <FormattedMessage id="legal.updated">
-                {(txt) => (
-                  <Copy>
-                    {txt}&nbsp;
-                    <FormattedDate
-                      value={lastUpdated}
-                      year="numeric"
-                      month="long"
-                      day="numeric"
-                    >
-                      {(txt2) => (
-                        <Time as="time" dateTime={txt2}>
-                          {txt2}
-                        </Time>
-                      )}
-                    </FormattedDate>
-                  </Copy>
-                )}
-              </FormattedMessage>
+
+              <Copy>
+                {intl.formatMessage({ id: "legal.updated" })}&nbsp;
+                <FormattedDate
+                  value={lastUpdated}
+                  year="numeric"
+                  month="long"
+                  day="numeric"
+                >
+                  {(date) => (
+                    <Time as="time" dateTime={date}>
+                      {date}
+                    </Time>
+                  )}
+                </FormattedDate>
+              </Copy>
               <PostWrapper>
                 <MDXRenderer>{postNode.body}</MDXRenderer>
               </PostWrapper>
