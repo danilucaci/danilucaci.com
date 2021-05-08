@@ -3,8 +3,7 @@ import { useIntl } from "react-intl";
 import { string, func, bool } from "prop-types";
 
 import { Wrapper, StyledIcon, StyledLink } from "./styles";
-import { sendSocialNavVisitEvent } from "../../helpers/ga";
-import gaEvents from "../../helpers/gaEvents";
+import { sendSocialNavVisitEvent, gaEvents } from "../../helpers/ga";
 import AriaText from "../AriaText";
 
 export function SocialNavProfileLink({
