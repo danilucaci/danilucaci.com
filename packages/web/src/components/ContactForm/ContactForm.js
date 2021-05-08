@@ -1,16 +1,15 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useFormikContext, Formik, Field, ErrorMessage } from "formik";
-
+import { useFormik } from "formik";
 import { navigate } from "gatsby";
 
-import { FormContainer, StyledForm, StyledLabel, StyledInput } from "./styles";
+import { FormContainer, StyledForm, StyledLabel } from "./styles";
 
 import { sendContactFormEvent } from "../../helpers/ga";
 import GA_EVENTS from "../../helpers/gaEvents";
+import makeContactFormValidationSchema from "../../helpers/makeContactFormValidationSchema";
 import { CONSENT_VALUE, localePaths } from "../../i18n";
-import contactFormValidationSchema from "../../helpers/contactFormValidationSchema";
-import * as api from "../../api";
 import { errorLoggerService } from "../../services";
+import * as api from "../../api";
 
 import LocaleContext from "../../i18n/LocaleContext";
 import { CookiesContext } from "../../context/CookiesContext";
@@ -21,82 +20,20 @@ import PrivacyCheckbox from "../PrivacyCheckbox";
 import ContactFormErrorMessage from "../ContactFormErrorMessage";
 import InlineErrorMessage from "../InlineErrorMessage";
 import SubmitButton from "../SubmitButton";
+import Input from "../Input";
+import ToggleConsent from "./ToggleConsent";
+import Ping from "./Ping";
 
-function ToggleConsent({ setConsentAccepted, currentConsentAccepted }) {
-  const { values } = useFormikContext();
+function getSubmitButtonAriaLabel(messageSent = false, isSubmitting = false) {
+  if (messageSent) {
+    return "Message sent";
+  }
 
-  useEffect(() => {
-    if (!currentConsentAccepted && values.consentAccepted) {
-      setConsentAccepted(values.consentAccepted);
-    }
-  }, [currentConsentAccepted, setConsentAccepted, values.consentAccepted]);
+  if (isSubmitting) {
+    return "Sending message";
+  }
 
-  return null;
-}
-
-function Ping({ userToken }) {
-  const { touched } = useFormikContext();
-  const [pingSent, setPingSent] = useState(false);
-
-  useEffect(() => {
-    let mounted = true;
-
-    async function pingApi() {
-      try {
-        const response = await api.ping(userToken);
-
-        const { error } = response;
-
-        if (mounted) {
-          sendContactFormEvent({
-            action: GA_EVENTS.contactForm.actions.ping.name,
-            label: GA_EVENTS.contactForm.actions.ping.labels.success,
-          });
-          setPingSent(true);
-        }
-
-        if (error) {
-          sendContactFormEvent({
-            action: GA_EVENTS.contactForm.actions.ping.name,
-            label: GA_EVENTS.contactForm.actions.ping.labels.failed,
-          });
-          errorLoggerService.captureMessage("Contact Form ping failed");
-          setPingSent(true);
-        }
-      } catch (error) {
-        sendContactFormEvent({
-          action: GA_EVENTS.contactForm.actions.ping.name,
-          label: GA_EVENTS.contactForm.actions.ping.labels.error,
-        });
-        errorLoggerService.captureException(error);
-        setPingSent(true);
-      }
-    }
-
-    if (
-      !pingSent &&
-      userToken &&
-      (touched.email ||
-        touched.fullName ||
-        touched.message ||
-        touched.consentAccepted)
-    ) {
-      pingApi();
-    }
-
-    return () => {
-      mounted = false;
-    };
-  }, [
-    pingSent,
-    userToken,
-    touched.consentAccepted,
-    touched.email,
-    touched.fullName,
-    touched.message,
-  ]);
-
-  return null;
+  return "Send message";
 }
 
 function ContactForm() {
@@ -111,6 +48,20 @@ function ContactForm() {
   const { userToken, error: authError } = useFirebaseAnonymousAuth(
     consentAccepted,
   );
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      fullName: "",
+      message: "",
+      botField: "",
+      consentAccepted: false,
+    },
+    validationSchema: makeContactFormValidationSchema(locale),
+    onSubmit: (values, { setSubmitting }) => {
+      handleContactFormSubmit(values, setSubmitting);
+    },
+  });
 
   useEffect(() => {
     if (authError) {
@@ -208,162 +159,152 @@ function ContactForm() {
 
   return (
     <FormContainer>
-      <Formik
-        initialValues={{
-          email: "",
-          fullName: "",
-          message: "",
-          botField: "",
-          consentAccepted: false,
-        }}
-        validationSchema={contactFormValidationSchema(locale)}
-        onSubmit={(values, { setSubmitting }) => {
-          handleContactFormSubmit(values, setSubmitting);
-        }}
+      <StyledForm
+        name="contact"
+        method="post"
+        onSubmit={formik.handleSubmit}
+        aria-label={locale === "en" ? "contact form" : "formulario de contacto"}
       >
-        {({ errors, touched, handleSubmit, isSubmitting, isValid }) => (
-          <StyledForm
-            name="contact"
-            method="post"
-            onSubmit={handleSubmit}
-            aria-label={
-              locale === "en" ? "contact form" : "formulario de contacto"
+        <ToggleConsent
+          values={formik.values}
+          setConsentAccepted={setConsentAccepted}
+          currentConsentAccepted={consentAccepted}
+        />
+        <Ping touched={formik.touched} userToken={userToken} />
+        <input
+          type="text"
+          style={{ display: "none" }}
+          aria-hidden="true"
+          name="botField"
+        />
+        <StyledLabel labelType="fullName">
+          <Input
+            type="text"
+            name="fullName"
+            autoCorrect="off"
+            autoComplete="name"
+            placeholderType="fullName"
+            minLength="2"
+            valid={formik.touched.fullName && !formik.errors.fullName}
+            error={formik.touched.fullName && formik.errors.fullName}
+            value={formik.values.fullName}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            aria-describedby="fullName-validation"
+            aria-required="true"
+            aria-invalid={
+              formik.touched.fullName && formik.errors.fullName
+                ? `true`
+                : `false`
             }
+          />
+        </StyledLabel>
+        {formik.touched.fullName && formik.errors.fullName && (
+          <InlineErrorMessage
+            aria-hidden="true"
+            id="fullName-validation"
+            data-testid="Fullname__ErrorMessage"
           >
-            <ToggleConsent
-              setConsentAccepted={setConsentAccepted}
-              currentConsentAccepted={consentAccepted}
-            />
-            <Ping userToken={userToken} />
-            <Field
-              style={{ display: "none" }}
-              aria-hidden="true"
-              name="botField"
-            />
-            <StyledLabel labelType="fullName">
-              <StyledInput
-                type="text"
-                name="fullName"
-                autoCorrect="off"
-                autoComplete="name"
-                placeholderType="fullName"
-                minLength="2"
-                valid={touched.fullName && !errors.fullName}
-                error={touched.fullName && errors.fullName}
-                aria-describedby="fullName-validation"
-                aria-required="true"
-                aria-invalid={
-                  touched.fullName && errors.fullName ? `true` : `false`
-                }
-              />
-            </StyledLabel>
-            {errors.fullName && touched.fullName && (
-              <InlineErrorMessage
-                aria-hidden="true"
-                id="fullName-validation"
-                data-testid="Fullname__ErrorMessage"
-              >
-                {errors.fullName}
-              </InlineErrorMessage>
-            )}
-
-            <StyledLabel labelType="email">
-              <StyledInput
-                type="email"
-                name="email"
-                autoCapitalize="off"
-                autoCorrect="off"
-                autoComplete="email"
-                placeholderType="email"
-                valid={touched.email && !errors.email}
-                error={touched.email && errors.email}
-                aria-describedby="email-validation"
-                aria-required="true"
-                aria-invalid={touched.email && errors.email ? `true` : `false`}
-              />
-            </StyledLabel>
-            <ErrorMessage name="email">
-              {(errorMessage) => (
-                <InlineErrorMessage
-                  aria-hidden="true"
-                  id="email-validation"
-                  data-testid="Email__ErrorMessage"
-                >
-                  {errorMessage}
-                </InlineErrorMessage>
-              )}
-            </ErrorMessage>
-
-            <StyledLabel labelType="message">
-              <StyledInput
-                name="message"
-                component="textarea"
-                rows="6"
-                minLength="2"
-                placeholderType="message"
-                valid={touched.message && !errors.message}
-                error={touched.message && errors.message}
-                aria-describedby="message-validation"
-                aria-required="true"
-                aria-invalid={
-                  touched.message && errors.message ? `true` : `false`
-                }
-              />
-            </StyledLabel>
-            <ErrorMessage name="message">
-              {(errorMessage) => (
-                <InlineErrorMessage
-                  aria-hidden="true"
-                  id="message-validation"
-                  data-testid="Message__ErrorMessage"
-                >
-                  {errorMessage}
-                </InlineErrorMessage>
-              )}
-            </ErrorMessage>
-
-            <PrivacyCheckbox
-              name="consentAccepted"
-              aria-describedby="checkbox-validation"
-              aria-required="true"
-            />
-
-            <ErrorMessage name="consentAccepted">
-              {(errorMessage) => (
-                <InlineErrorMessage
-                  aria-hidden="true"
-                  id="checkbox-validation"
-                  data-testid="Checkbox__ErrorMessage"
-                >
-                  {errorMessage}
-                </InlineErrorMessage>
-              )}
-            </ErrorMessage>
-
-            <SubmitButton
-              disabled={!isValid || isSubmitting || authError || !userToken}
-              showSpinner={isSubmitting}
-              submitted={messageSent}
-              aria-label={
-                // eslint-disable-next-line no-nested-ternary
-                messageSent
-                  ? "Message sent"
-                  : isSubmitting
-                  ? `Sending message`
-                  : `Send message`
-              }
-            />
-
-            {showFormError && (
-              <ContactFormErrorMessage
-                errorMessage={formErrorMessage}
-                clearErrorMessage={clearErrorMessage}
-                shouldRenderCloseButton={!authError}
-              />
-            )}
-          </StyledForm>
+            {formik.errors.fullName}
+          </InlineErrorMessage>
         )}
-      </Formik>
+
+        <StyledLabel labelType="email">
+          <Input
+            type="email"
+            name="email"
+            autoCapitalize="off"
+            autoCorrect="off"
+            autoComplete="email"
+            placeholderType="email"
+            valid={formik.touched.email && !formik.errors.email}
+            error={formik.touched.email && formik.errors.email}
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            aria-describedby="email-validation"
+            aria-required="true"
+            aria-invalid={
+              formik.touched.email && formik.errors.email ? `true` : `false`
+            }
+          />
+        </StyledLabel>
+        {formik.touched.email && formik.errors.email && (
+          <InlineErrorMessage
+            aria-hidden="true"
+            id="email-validation"
+            data-testid="Email__ErrorMessage"
+          >
+            {formik.errors.email}
+          </InlineErrorMessage>
+        )}
+
+        <StyledLabel labelType="message">
+          <Input
+            name="message"
+            as="textarea"
+            rows="6"
+            placeholderType="message"
+            valid={formik.touched.message && !formik.errors.message}
+            error={formik.touched.message && formik.errors.message}
+            value={formik.values.message}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            aria-describedby="message-validation"
+            aria-required="true"
+            aria-invalid={
+              formik.touched.message && formik.errors.message ? `true` : `false`
+            }
+          />
+        </StyledLabel>
+        {formik.touched.message && formik.errors.message && (
+          <InlineErrorMessage
+            aria-hidden="true"
+            id="message-validation"
+            data-testid="Message__ErrorMessage"
+          >
+            {formik.errors.message}
+          </InlineErrorMessage>
+        )}
+
+        <PrivacyCheckbox
+          name="consentAccepted"
+          aria-describedby="checkbox-validation"
+          aria-required="true"
+          value={formik.values.consentAccepted}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+        />
+        {formik.touched.consentAccepted && formik.errors.consentAccepted && (
+          <InlineErrorMessage
+            aria-hidden="true"
+            id="checkbox-validation"
+            data-testid="Checkbox__ErrorMessage"
+          >
+            {formik.errors.consentAccepted}
+          </InlineErrorMessage>
+        )}
+
+        <SubmitButton
+          disabled={
+            !formik.isValid || formik.isSubmitting || authError || !userToken
+          }
+          showSpinner={formik.isSubmitting}
+          submitted={messageSent}
+          aria-label={getSubmitButtonAriaLabel(
+            messageSent,
+            formik.isSubmitting,
+          )}
+        />
+
+        {showFormError && (
+          <ContactFormErrorMessage
+            errorMessage={formErrorMessage}
+            clearErrorMessage={clearErrorMessage}
+            shouldRenderCloseButton={!authError}
+          />
+        )}
+      </StyledForm>
     </FormContainer>
   );
 }
