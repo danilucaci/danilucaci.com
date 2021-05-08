@@ -30,7 +30,7 @@ export const localePaths = {
   },
 };
 
-export const EXTERNAL_LINK = {
+export const externalLink = {
   en: {
     srOnly: "Opens in new window",
   },
@@ -39,7 +39,7 @@ export const EXTERNAL_LINK = {
   },
 };
 
-export const COPY_URL_MESSAGES = {
+export const copyUrlMessages = {
   en: {
     default: "Copy page link",
     copied: "Page link copied!",
@@ -52,7 +52,7 @@ export const COPY_URL_MESSAGES = {
   },
 };
 
-export const COPY_CODE_MESSAGES = {
+export const copyCodeMessages = {
   en: {
     default: "Copy",
     copied: "Copied! ✅",
@@ -77,7 +77,7 @@ export const contactFormConsentValues = {
   },
 };
 
-export const FORM_SUBMIT_STATUS = {
+export const formSubmitStatus = {
   formValidation: {
     en: {
       email: "Please enter a valid email",
@@ -114,7 +114,7 @@ export const FORM_SUBMIT_STATUS = {
   },
 };
 
-export const MC_ERRORS = {
+export const mcErrors = {
   formValidation: {
     en: {
       email: "Please enter a valid email",
