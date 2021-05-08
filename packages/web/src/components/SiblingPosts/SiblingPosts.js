@@ -1,6 +1,6 @@
 import React from "react";
 import { string } from "prop-types";
-import { FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
 
 import HR from "../HR";
 import { Col, Row } from "../Grid";
@@ -15,32 +15,36 @@ import {
   NextArticleLink,
 } from "./styles";
 
-const SiblingPosts = ({ prevSlug, prevTitle, nextSlug, nextTitle }) => (
-  <Row pb col10>
-    <Col>
-      <HR />
-      <SiblingPostsContents>
-        {prevSlug && (
-          <PreviousItemsContainer>
-            <FormattedMessage id="article.prev">
-              {(txt) => <PrevSectionHeader>{txt}</PrevSectionHeader>}
-            </FormattedMessage>
-            <PrevArticleLink to={prevSlug}>{prevTitle}</PrevArticleLink>
-          </PreviousItemsContainer>
-        )}
-        {nextSlug && (
-          <NextItemsContainer>
-            <FormattedMessage id="article.next">
-              {(txt) => <NextSectionHeader>{txt}</NextSectionHeader>}
-            </FormattedMessage>
-            <NextArticleLink to={nextSlug}>{nextTitle}</NextArticleLink>
-          </NextItemsContainer>
-        )}
-      </SiblingPostsContents>
-      <HR />
-    </Col>
-  </Row>
-);
+function SiblingPosts({ prevSlug, prevTitle, nextSlug, nextTitle }) {
+  const intl = useIntl();
+
+  return (
+    <Row pb col10>
+      <Col>
+        <HR />
+        <SiblingPostsContents>
+          {prevSlug && (
+            <PreviousItemsContainer>
+              <PrevSectionHeader>
+                {intl.formatMessage({ id: "article.prev" })}
+              </PrevSectionHeader>
+              <PrevArticleLink to={prevSlug}>{prevTitle}</PrevArticleLink>
+            </PreviousItemsContainer>
+          )}
+          {nextSlug && (
+            <NextItemsContainer>
+              <NextSectionHeader>
+                {intl.formatMessage({ id: "article.next" })}
+              </NextSectionHeader>
+              <NextArticleLink to={nextSlug}>{nextTitle}</NextArticleLink>
+            </NextItemsContainer>
+          )}
+        </SiblingPostsContents>
+        <HR />
+      </Col>
+    </Row>
+  );
+}
 
 SiblingPosts.propTypes = {
   nextTitle: string,
