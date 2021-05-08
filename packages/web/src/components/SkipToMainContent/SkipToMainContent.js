@@ -1,14 +1,16 @@
 import React from "react";
-import { FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
 
 import { StyledSkipToMainContent } from "./styles";
 
-const SkipToMainContent = () => (
-  <FormattedMessage id="skip.to.main.content">
-    {(txt) => (
-      <StyledSkipToMainContent href="#main">{txt}</StyledSkipToMainContent>
-    )}
-  </FormattedMessage>
-);
+function SkipToMainContent() {
+  const intl = useIntl();
+
+  return (
+    <StyledSkipToMainContent href="#main">
+      {intl.formatMessage({ id: "skip.to.main.content" })}
+    </StyledSkipToMainContent>
+  );
+}
 
 export default SkipToMainContent;
