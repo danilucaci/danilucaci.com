@@ -80,6 +80,7 @@ module.exports = {
     "react/jsx-props-no-spreading": 0,
     "react/state-in-constructor": 0,
     "react/jsx-filename-extension": [1, { extensions: [".js"] }],
+    "no-use-before-define": ["error", { functions: false }],
     "import/no-extraneous-dependencies": [
       "error",
       {
