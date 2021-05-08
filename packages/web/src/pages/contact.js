@@ -12,8 +12,7 @@ import ErrorBoundary from "../components/ErrorBoundary";
 import ScrollToTop from "../components/ScrollToTop";
 import { Col } from "../components/Grid";
 import { localePaths } from "../i18n";
-import { sendContactPageEvent } from "../helpers/ga";
-import gaEvents from "../helpers/gaEvents";
+import { sendContactPageEvent, gaEvents } from "../helpers/ga";
 
 import { Copy } from "../components/Copy";
 import {

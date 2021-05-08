@@ -4,8 +4,7 @@ import { navigate } from "gatsby";
 
 import { FormContainer, StyledForm, StyledLabel } from "./styles";
 
-import { sendContactFormEvent } from "../../helpers/ga";
-import gaEvents from "../../helpers/gaEvents";
+import { sendContactFormEvent, gaEvents } from "../../helpers/ga";
 import {
   makeContactFormValidationSchema,
   getSubmitButtonAriaLabel,

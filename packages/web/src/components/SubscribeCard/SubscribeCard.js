@@ -25,8 +25,7 @@ import {
 import subscribeReducer from "./subscribeReducer";
 import subscribeInitialState from "./subscribeInitialState";
 import MCSchema from "./MCSchema";
-import { sendSubscribersEvent } from "../../helpers/ga";
-import gaEvents from "../../helpers/gaEvents";
+import { sendSubscribersEvent, gaEvents } from "../../helpers/ga";
 import LocaleContext from "../../i18n/LocaleContext";
 
 function handleFormSent(result, responseMSG, dispatch) {
