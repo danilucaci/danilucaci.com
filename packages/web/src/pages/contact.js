@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { shape, string } from "prop-types";
-import { FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
 
 import SEO from "../components/SEO";
 import Layout from "../components/Layout";
@@ -28,8 +28,9 @@ import {
 } from "../styles/contact.styles";
 import LocaleContext from "../i18n/LocaleContext";
 
-const ContactPage = ({ location }) => {
+function ContactPage({ location }) {
   const { locale } = useContext(LocaleContext);
+  const intl = useIntl();
 
   let twinPostURL = "";
 
@@ -58,61 +59,51 @@ const ContactPage = ({ location }) => {
             aria-label={locale === "en" ? "contact me" : "contacto"}
           >
             <Col xl={6}>
-              <FormattedMessage id="contact.page.title">
-                {(txt) => <H1>{txt}</H1>}
-              </FormattedMessage>
-              <FormattedMessage id="contact.page.info">
-                {(txt) => <Info>{txt}</Info>}
-              </FormattedMessage>
-              <FormattedMessage id="contact.page.work.info">
-                {(txt) => (
-                  <Copy>
-                    {txt}{" "}
-                    <StyledLink
-                      href={`mailto:${localePaths[locale].email}`}
-                      onClick={() =>
-                        sendContactPageEvent({
-                          label:
-                            gaEvents.contactPage.actions.contactLinks.labels
-                              .email,
-                        })
-                      }
-                    >
-                      {localePaths[locale].email}
-                    </StyledLink>
-                  </Copy>
-                )}
-              </FormattedMessage>
+              <H1>{intl.formatMessage({ id: "contact.page.title" })}</H1>
+              <Info>{intl.formatMessage({ id: "contact.page.info" })}</Info>
+
+              <Copy>
+                {intl.formatMessage({ id: "contact.page.work.info" })}{" "}
+                <StyledLink
+                  href={`mailto:${localePaths[locale].email}`}
+                  onClick={() =>
+                    sendContactPageEvent({
+                      label:
+                        gaEvents.contactPage.actions.contactLinks.labels.email,
+                    })
+                  }
+                >
+                  {localePaths[locale].email}
+                </StyledLink>
+              </Copy>
+
               <SayHiWrapper>
                 <HR />
-                <FormattedMessage id="contact.page.other.title">
-                  {(txt) => <SayHiTitle>{txt}</SayHiTitle>}
-                </FormattedMessage>
-                <FormattedMessage id="contact.page.other.description">
-                  {(txt) => (
-                    <SayHiDescription>
-                      {txt}
-                      <FormattedMessage id="contact.page.other.description.link">
-                        {(txt2) => (
-                          <StyledLink
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            href="https://twitter.com/danilucaci"
-                            onClick={() =>
-                              sendContactPageEvent({
-                                label:
-                                  gaEvents.contactPage.actions.contactLinks
-                                    .labels.twitter,
-                              })
-                            }
-                          >
-                            {txt2}
-                          </StyledLink>
-                        )}
-                      </FormattedMessage>
-                    </SayHiDescription>
-                  )}
-                </FormattedMessage>
+                <SayHiTitle>
+                  {intl.formatMessage({ id: "contact.page.other.title" })}
+                </SayHiTitle>
+                <SayHiDescription>
+                  {intl.formatMessage({
+                    id: "contact.page.other.description",
+                  })}
+                  <StyledLink
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://twitter.com/danilucaci"
+                    onClick={() =>
+                      sendContactPageEvent({
+                        label:
+                          gaEvents.contactPage.actions.contactLinks.labels
+                            .twitter,
+                      })
+                    }
+                  >
+                    {intl.formatMessage({
+                      id: "contact.page.other.description.link",
+                    })}
+                  </StyledLink>
+                </SayHiDescription>
+
                 <SocialNavWrapper>
                   <SocialNav />
                 </SocialNavWrapper>
@@ -128,7 +119,7 @@ const ContactPage = ({ location }) => {
       <ScrollToTop />
     </ErrorBoundary>
   );
-};
+}
 
 ContactPage.propTypes = {
   location: shape({
