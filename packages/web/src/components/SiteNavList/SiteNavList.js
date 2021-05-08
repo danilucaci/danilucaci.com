@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
 
 import SiteNavListItem from "./SiteNavListItem";
 import { localePaths } from "../../i18n";
@@ -7,37 +7,26 @@ import { localePaths } from "../../i18n";
 import { StyledSiteNavList } from "./styles";
 import LocaleContext from "../../i18n/LocaleContext";
 
-const SiteNavList = () => {
+function SiteNavList() {
   const { locale } = useContext(LocaleContext);
+  const intl = useIntl();
 
   return (
     <StyledSiteNavList>
-      <FormattedMessage id="site.nav.work">
-        {(txt) => (
-          <SiteNavListItem to={localePaths[locale].work}>{txt}</SiteNavListItem>
-        )}
-      </FormattedMessage>
-      <FormattedMessage id="site.nav.blog">
-        {(txt) => (
-          <SiteNavListItem to={localePaths[locale].blog}>{txt}</SiteNavListItem>
-        )}
-      </FormattedMessage>
-      <FormattedMessage id="site.nav.about">
-        {(txt) => (
-          <SiteNavListItem to={localePaths[locale].about}>
-            {txt}
-          </SiteNavListItem>
-        )}
-      </FormattedMessage>
-      <FormattedMessage id="site.nav.contact">
-        {(txt) => (
-          <SiteNavListItem to={localePaths[locale].contact}>
-            {txt}
-          </SiteNavListItem>
-        )}
-      </FormattedMessage>
+      <SiteNavListItem to={localePaths[locale].work}>
+        {intl.formatMessage({ id: "site.nav.work" })}
+      </SiteNavListItem>
+      <SiteNavListItem to={localePaths[locale].blog}>
+        {intl.formatMessage({ id: "site.nav.blog" })}
+      </SiteNavListItem>
+      <SiteNavListItem to={localePaths[locale].about}>
+        {intl.formatMessage({ id: "site.nav.about" })}
+      </SiteNavListItem>
+      <SiteNavListItem to={localePaths[locale].contact}>
+        {intl.formatMessage({ id: "site.nav.contact" })}
+      </SiteNavListItem>
     </StyledSiteNavList>
   );
-};
+}
 
 export default SiteNavList;
