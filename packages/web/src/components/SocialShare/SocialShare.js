@@ -5,7 +5,7 @@ import urljoin from "url-join";
 import config from "../../../data/SiteConfig";
 
 import { sendSharedArticleEvent } from "../../helpers/ga";
-import GA_EVENTS from "../../helpers/gaEvents";
+import gaEvents from "../../helpers/gaEvents";
 import { COPY_URL_MESSAGES } from "../../i18n";
 
 import {
@@ -31,7 +31,7 @@ const SocialShare = ({ onClick, slug, snippet, title }) => {
         aria-label="Share on Linkedin"
         onClick={() =>
           sendSharedArticleEvent({
-            action: GA_EVENTS.sharedArticle.actions.twitter.name,
+            action: gaEvents.sharedArticle.actions.twitter.name,
           })
         }
       >
@@ -47,7 +47,7 @@ const SocialShare = ({ onClick, slug, snippet, title }) => {
         aria-label="Share on Twitter"
         onClick={() =>
           sendSharedArticleEvent({
-            action: GA_EVENTS.sharedArticle.actions.linkedin.name,
+            action: gaEvents.sharedArticle.actions.linkedin.name,
           })
         }
       >

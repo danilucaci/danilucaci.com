@@ -4,7 +4,7 @@ import { string, func, bool } from "prop-types";
 
 import { Wrapper, StyledIcon, StyledLink } from "./styles";
 import { sendSocialNavVisitEvent } from "../../helpers/ga";
-import GA_EVENTS from "../../helpers/gaEvents";
+import gaEvents from "../../helpers/gaEvents";
 import AriaText from "../AriaText";
 
 export function SocialNavProfileLink({
@@ -52,11 +52,11 @@ SocialNavProfileLink.defaultProps = {
 function SocialNav({ light }) {
   return (
     <Wrapper>
-      {GA_EVENTS.socialMediaProfiles.map((profileName) => (
+      {gaEvents.socialMediaProfiles.map((profileName) => (
         <SocialNavProfileLink
           handleClick={sendSocialNavVisitEvent}
-          socialMediaName={GA_EVENTS.socialNavVisit.actions[profileName].name}
-          socialMediaLink={GA_EVENTS.socialNavVisit.actions[profileName].link}
+          socialMediaName={gaEvents.socialNavVisit.actions[profileName].name}
+          socialMediaLink={gaEvents.socialNavVisit.actions[profileName].link}
           socialMediaID={profileName}
           key={profileName}
           light={light}
