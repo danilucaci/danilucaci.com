@@ -1,10 +1,10 @@
 import React from "react";
 import userEvent from "@testing-library/user-event";
 
-import { renderWithReactIntl, setupReactIntl } from "../../../helpers/tests";
+import { renderWithReactIntl, setupReactIntl } from "../../../../helpers/tests";
 import ContactFormErrorMessage from "../ContactFormErrorMessage";
-import LocaleContext from "../../../i18n/LocaleContext";
-import messages from "../../../i18n/i18n";
+import LocaleContext from "../../../../i18n/LocaleContext";
+import messages from "../../../../i18n/i18n";
 
 describe("ContactFormErrorMessage", () => {
   beforeAll(() => {
