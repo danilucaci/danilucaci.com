@@ -3,8 +3,8 @@ import { FormattedMessage } from "react-intl";
 import axios from "axios";
 import { useInView } from "react-intersection-observer";
 
-import DribbblePost from "../DribbblePost";
-import DribbblePostPlaceholder from "../DribbblePostPlaceholder";
+import DribbblePost from "./DribbblePost";
+import DribbblePostPlaceholder from "./DribbblePostPlaceholder";
 import Spinner from "../Spinner";
 import useDribbblePosts from "../../hooks/useDribbblePosts";
 import { Col, Row } from "../Grid";
