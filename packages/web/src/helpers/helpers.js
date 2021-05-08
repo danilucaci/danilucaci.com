@@ -1,4 +1,4 @@
-import { COPY_CODE_MESSAGES, COPY_URL_MESSAGES } from "../i18n";
+import { copyCodeMessages, copyUrlMessages } from "../i18n";
 
 export function calculateScroll() {
   const winScroll =
@@ -178,15 +178,15 @@ export function copyURL(locale) {
 
   try {
     document.execCommand("copy");
-    copyURLButtonLabel.textContent = `${COPY_URL_MESSAGES[locale].copied}`;
+    copyURLButtonLabel.textContent = `${copyUrlMessages[locale].copied}`;
 
     setTimeout(() => {
-      copyURLButtonLabel.textContent = `${COPY_URL_MESSAGES[locale].default}`;
+      copyURLButtonLabel.textContent = `${copyUrlMessages[locale].default}`;
     }, 2000);
   } catch (err) {
-    copyURLButtonLabel.textContent = `${COPY_URL_MESSAGES[locale].error}`;
+    copyURLButtonLabel.textContent = `${copyUrlMessages[locale].error}`;
     setTimeout(() => {
-      copyURLButtonLabel.textContent = `${COPY_URL_MESSAGES[locale].default}`;
+      copyURLButtonLabel.textContent = `${copyUrlMessages[locale].default}`;
     }, 2000);
   }
 
@@ -208,16 +208,16 @@ export function copyCode(e, locale) {
 
   try {
     document.execCommand("copy");
-    currentCopyButton.textContent = `${COPY_CODE_MESSAGES[locale].copied}`;
+    currentCopyButton.textContent = `${copyCodeMessages[locale].copied}`;
 
     setTimeout(() => {
-      currentCopyButton.textContent = `${COPY_CODE_MESSAGES[locale].default}`;
+      currentCopyButton.textContent = `${copyCodeMessages[locale].default}`;
     }, 2000);
   } catch (err) {
-    currentCopyButton.textContent = `${COPY_CODE_MESSAGES[locale].error}`;
+    currentCopyButton.textContent = `${copyCodeMessages[locale].error}`;
 
     setTimeout(() => {
-      currentCopyButton.textContent = `${COPY_CODE_MESSAGES[locale].default}`;
+      currentCopyButton.textContent = `${copyCodeMessages[locale].default}`;
     }, 2000);
   }
 
@@ -261,7 +261,7 @@ export function addEventListenersToCopyButtons(locale = "en") {
 export function appendCopyCodeNodes(nodes, locale = "en") {
   nodes.forEach((node) => {
     const copyButton = document.createElement("button");
-    copyButton.textContent = `${COPY_CODE_MESSAGES[locale].default}`;
+    copyButton.textContent = `${copyCodeMessages[locale].default}`;
     copyButton.className = `${COPY_CODE_CLASSES.copyCodeButtonClassname}`;
     node.appendChild(copyButton);
   });
