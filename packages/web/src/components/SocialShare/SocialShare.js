@@ -4,8 +4,7 @@ import urljoin from "url-join";
 
 import config from "../../../data/SiteConfig";
 
-import { sendSharedArticleEvent } from "../../helpers/ga";
-import gaEvents from "../../helpers/gaEvents";
+import { sendSharedArticleEvent, gaEvents } from "../../helpers/ga";
 import { COPY_URL_MESSAGES } from "../../i18n";
 
 import {

@@ -8,8 +8,7 @@ import {
   FooterNavLink,
 } from "./styles";
 
-import { sendFooterSocialNavVisitEvent } from "../../helpers/ga";
-import gaEvents from "../../helpers/gaEvents";
+import { sendFooterSocialNavVisitEvent, gaEvents } from "../../helpers/ga";
 import AriaText from "../AriaText";
 
 export function FooterSocialNavProfileLink({
