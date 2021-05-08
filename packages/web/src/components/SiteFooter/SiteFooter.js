@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { string, bool } from "prop-types";
 import { graphql, useStaticQuery } from "gatsby";
-import { FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
 
 import FooterNavList from "../FooterNavList";
 import FooterSocialNav from "../FooterSocialNav";
@@ -24,10 +24,11 @@ import {
 } from "./styles";
 import LocaleContext from "../../i18n/LocaleContext";
 
-const SiteFooter = ({ twinPostURL, currentPath, expand }) => {
+function SiteFooter({ twinPostURL, currentPath, expand }) {
   const { locale } = useContext(LocaleContext);
   // eslint-disable-next-line no-use-before-define
   const data = useStaticQuery(FOOTER_LEGAL_PAGES_QUERY);
+  const intl = useIntl();
 
   const localizedDocsList = data.allMdx.edges
     .map((edge) => ({
@@ -46,17 +47,18 @@ const SiteFooter = ({ twinPostURL, currentPath, expand }) => {
         </NavCol>
 
         <SocialCol col={6} s={4} xxl={2}>
-          <FormattedMessage id="footer.connect.title">
-            {(txt) => <StyledSubhead>{txt}</StyledSubhead>}
-          </FormattedMessage>
+          <StyledSubhead>
+            {intl.formatMessage({ id: "footer.connect.title" })}
+          </StyledSubhead>
 
           <FooterSocialNav />
         </SocialCol>
 
         <LanguageCol col={12} s={4} xxl={3}>
-          <FormattedMessage id="footer.language.title">
-            {(txt) => <StyledSubhead>{txt}</StyledSubhead>}
-          </FormattedMessage>
+          <StyledSubhead>
+            {intl.formatMessage({ id: "footer.language.title" })}
+          </StyledSubhead>
+
           <FooterLanguageSelector
             twinPostURL={twinPostURL}
             currentPath={currentPath}
@@ -81,7 +83,7 @@ const SiteFooter = ({ twinPostURL, currentPath, expand }) => {
       </FooterInnerRow>
     </FooterRowBackground>
   );
-};
+}
 
 SiteFooter.propTypes = {
   twinPostURL: string.isRequired,
