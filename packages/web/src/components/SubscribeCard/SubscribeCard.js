@@ -4,7 +4,7 @@ import { FormattedMessage } from "react-intl";
 import { Formik, ErrorMessage, Form } from "formik";
 import * as Sentry from "@sentry/browser";
 
-import { CONSENT_VALUE } from "../../i18n";
+import { contactFormConsentValues } from "../../i18n";
 import PrivacyCheckbox from "../PrivacyCheckbox";
 import InlineErrorMessage from "../InlineErrorMessage";
 import { Col, Row } from "../Grid";
@@ -110,8 +110,8 @@ async function handleMCSubmit(
   const response = await addToMailchimp(email, {
     DLPO:
       acceptsconsentcheckbox === true
-        ? CONSENT_VALUE[locale].yes
-        : CONSENT_VALUE[locale].no,
+        ? contactFormConsentValues[locale].yes
+        : contactFormConsentValues[locale].no,
   }).catch((error) => {
     setSubmitting(false);
     dispatch({ type: "FETCH_ERROR" });
