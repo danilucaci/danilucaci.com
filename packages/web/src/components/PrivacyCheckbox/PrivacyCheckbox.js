@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
 import { graphql, useStaticQuery } from "gatsby";
 
 import {
@@ -15,6 +15,8 @@ function PrivacyCheckbox({ ...props }) {
   // eslint-disable-next-line no-use-before-define
   const data = useStaticQuery(PRIVACY_CHECKBOX_QUERY);
   const { locale } = useContext(LocaleContext);
+
+  const intl = useIntl();
 
   const ariaLabel =
     locale === "en"
@@ -46,45 +48,27 @@ function PrivacyCheckbox({ ...props }) {
         {...props}
       />
       <StyledCheckboxLabel htmlFor="privacycheckbox">
-        <FormattedMessage id="form.privacy.more.1">
-          {(txt) => <>{txt}</>}
-        </FormattedMessage>
-        <FormattedMessage id="form.privacy.checkbox.hidden.label">
-          {(txt) => (
-            <span className="aria-hidden" aria-hidden="true">
-              {txt}
-            </span>
-          )}
-        </FormattedMessage>
+        {intl.formatMessage({ id: "form.privacy.more.1" })}
+        <span className="aria-hidden" aria-hidden="true">
+          {intl.formatMessage({ id: "form.privacy.checkbox.hidden.label" })}
+        </span>
       </StyledCheckboxLabel>
-      <FormattedMessage id="form.privacy.more.2">
-        {(txt) => (
-          <LearnMoreLink
-            href={legalNoticeLink[0].slug}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {txt}
-          </LearnMoreLink>
-        )}
-      </FormattedMessage>
-      <FormattedMessage id="form.privacy.more.3">
-        {(txt) => <AndSpan>{txt}</AndSpan>}
-      </FormattedMessage>
-      <FormattedMessage id="form.privacy.more.4">
-        {(txt) => (
-          <LearnMoreLink
-            href={privacyLink[0].slug}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {txt}
-          </LearnMoreLink>
-        )}
-      </FormattedMessage>
-      <FormattedMessage id="form.privacy.required">
-        {(txt) => <Required>{txt}</Required>}
-      </FormattedMessage>
+      <LearnMoreLink
+        href={legalNoticeLink[0].slug}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {intl.formatMessage({ id: "form.privacy.more.2" })}
+      </LearnMoreLink>
+      <AndSpan>{intl.formatMessage({ id: "form.privacy.more.3" })}</AndSpan>
+      <LearnMoreLink
+        href={privacyLink[0].slug}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {intl.formatMessage({ id: "form.privacy.more.4" })}
+      </LearnMoreLink>
+      <Required>{intl.formatMessage({ id: "form.privacy.required" })}</Required>
     </>
   );
 }
