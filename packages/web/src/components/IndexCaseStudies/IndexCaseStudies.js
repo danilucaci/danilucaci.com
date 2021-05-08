@@ -1,12 +1,14 @@
 import React from "react";
 import { bool, string, arrayOf, number, shape } from "prop-types";
-import { FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
 
 import CaseStudyCard from "../CaseStudyCard";
 import { Col, Row } from "../Grid";
 import AriaText from "../AriaText";
 
-const IndexCaseStudies = ({ edges, spaced }) => {
+function IndexCaseStudies({ edges, spaced }) {
+  const intl = useIntl();
+
   let caseStudies = edges.map((edge) => ({
     slug: edge.node.fields.slug,
     tagsInCaseStudy: edge.node.frontmatter.tags,
@@ -23,13 +25,9 @@ const IndexCaseStudies = ({ edges, spaced }) => {
       data-testid="Casestudies__Wrapper"
       aria-labelledby="case-studies-title"
     >
-      <FormattedMessage id="case.studies.header">
-        {(txt) => (
-          <AriaText id="case-studies-title" as="h2">
-            {txt}
-          </AriaText>
-        )}
-      </FormattedMessage>
+      <AriaText id="case-studies-title" as="h2">
+        {intl.formatMessage({ id: "case.studies.header" })}
+      </AriaText>
       <Col>
         {caseStudies.map((caseStudyCard) => (
           <CaseStudyCard
@@ -44,7 +42,7 @@ const IndexCaseStudies = ({ edges, spaced }) => {
       </Col>
     </Row>
   );
-};
+}
 
 IndexCaseStudies.propTypes = {
   edges: arrayOf(
