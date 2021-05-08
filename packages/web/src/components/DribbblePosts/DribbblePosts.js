@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
 import axios from "axios";
 import { useInView } from "react-intersection-observer";
 
@@ -40,6 +40,8 @@ function DribbblePosts() {
 
   const buttonRef = useRef();
   const axiosSourceRef = useRef();
+
+  const intl = useIntl();
 
   const placeholderArr = Array.from({ length: shotsPerPage }, (v, i) => i);
 
@@ -86,23 +88,23 @@ function DribbblePosts() {
       aria-labelledby="dribbble-title"
     >
       <Col ref={ref}>
-        <FormattedMessage id="dribbble.header">
-          {(txt) => <Title id="dribbble-title">{txt}</Title>}
-        </FormattedMessage>
+        <Title id="dribbble-title">
+          {intl.formatMessage({ id: "dribbble.header" })}
+        </Title>
 
         {isError && (
           <ErrorMessageWrapper data-testid="Dribbble__Posts__ErrorMessage">
-            <FormattedMessage id="dribbble.status.error">
-              {(txt) => <ErrorMessage>{txt}</ErrorMessage>}
-            </FormattedMessage>
+            <ErrorMessage>
+              {intl.formatMessage({ id: "dribbble.status.error" })}
+            </ErrorMessage>
           </ErrorMessageWrapper>
         )}
 
         <noscript>
           <ErrorMessageWrapper polite>
-            <FormattedMessage id="dribbble.status.no.js">
-              {(txt) => <ErrorMessage polite>{txt}</ErrorMessage>}
-            </FormattedMessage>
+            <ErrorMessage polite>
+              {intl.formatMessage({ id: "dribbble.status.no.js" })}
+            </ErrorMessage>
           </ErrorMessageWrapper>
         </noscript>
       </Col>
@@ -147,16 +149,12 @@ function DribbblePosts() {
             }}
           >
             {listEnd ? (
-              <FormattedMessage id="dribbble.no.more">
-                {(txt) => <>{txt}</>}
-              </FormattedMessage>
+              intl.formatMessage({ id: "dribbble.no.more" })
             ) : (
               <>
-                {!isLoading && !isLoadingMore && (
-                  <FormattedMessage id="dribbble.load.more">
-                    {(txt) => <>{txt}</>}
-                  </FormattedMessage>
-                )}
+                {!isLoading &&
+                  !isLoadingMore &&
+                  intl.formatMessage({ id: "dribbble.load.more" })}
                 {(isLoading || isLoadingMore) && <Spinner />}
               </>
             )}
