@@ -9,7 +9,7 @@ import {
 } from "./styles";
 
 import { sendFooterSocialNavVisitEvent } from "../../helpers/ga";
-import GA_EVENTS from "../../helpers/gaEvents";
+import gaEvents from "../../helpers/gaEvents";
 import AriaText from "../AriaText";
 
 export function FooterSocialNavProfileLink({
@@ -50,16 +50,16 @@ FooterSocialNavProfileLink.propTypes = {
 
 const FooterSocialNav = () => (
   <StyledFooterSocialNav>
-    {GA_EVENTS.socialMediaProfiles.map((profileName) => (
+    {gaEvents.socialMediaProfiles.map((profileName) => (
       <FooterSocialNavProfileLink
         key={profileName}
         handleClick={sendFooterSocialNavVisitEvent}
         socialMediaID={profileName}
         socialMediaName={
-          GA_EVENTS.footerSocialNavVisit.actions[profileName].name
+          gaEvents.footerSocialNavVisit.actions[profileName].name
         }
         socialMediaLink={
-          GA_EVENTS.footerSocialNavVisit.actions[profileName].link
+          gaEvents.footerSocialNavVisit.actions[profileName].link
         }
       />
     ))}

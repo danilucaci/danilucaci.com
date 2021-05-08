@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 
-import GA_EVENTS from "./gaEvents";
+import gaEvents from "./gaEvents";
 
 const __DEV__ = process.env.NODE_ENV === "development";
 
@@ -48,7 +48,7 @@ export function sendContactFormEvent({ action = "", label = "" }) {
   if (GTMActive()) {
     window.dataLayer.push({
       event: "contact_form",
-      contact_form_event_category: GA_EVENTS.contactForm.category,
+      contact_form_event_category: gaEvents.contactForm.category,
       contact_form_event_action: action,
       contact_form_event_label: label,
     });
@@ -59,8 +59,8 @@ export function sendContactCardEvent() {
   if (GTMActive()) {
     window.dataLayer.push({
       event: "contact_card",
-      contact_card_event_category: GA_EVENTS.contactCard.category,
-      contact_card_event_action: GA_EVENTS.contactCard.actions.ctaClick.name,
+      contact_card_event_category: gaEvents.contactCard.category,
+      contact_card_event_action: gaEvents.contactCard.actions.ctaClick.name,
     });
   }
 }
@@ -76,7 +76,7 @@ export function sendFooterSocialNavVisitEvent({ action = "" }) {
     window.dataLayer.push({
       event: "footer_social_nav_visit",
       footer_social_nav_visit_event_category:
-        GA_EVENTS.footerSocialNavVisit.category,
+        gaEvents.footerSocialNavVisit.category,
       footer_social_nav_visit_event_action: action,
     });
   }
@@ -92,7 +92,7 @@ export function sendSocialNavVisitEvent({ action = "" }) {
   if (GTMActive()) {
     window.dataLayer.push({
       event: "social_nav_visit",
-      social_nav_visit_event_category: GA_EVENTS.socialNavVisit.category,
+      social_nav_visit_event_category: gaEvents.socialNavVisit.category,
       social_nav_visit_event_action: action,
     });
   }
@@ -108,7 +108,7 @@ export function sendSharedArticleEvent({ action = "" }) {
   if (GTMActive()) {
     window.dataLayer.push({
       event: "shared_article",
-      shared_article_event_category: GA_EVENTS.sharedArticle.category,
+      shared_article_event_category: gaEvents.sharedArticle.category,
       shared_article_event_action: action,
     });
   }
@@ -124,9 +124,8 @@ export function sendContactPageEvent({ label = "" }) {
   if (GTMActive()) {
     window.dataLayer.push({
       event: "contact_page",
-      contact_page_event_category: GA_EVENTS.contactPage.category,
-      contact_page_event_action:
-        GA_EVENTS.contactPage.actions.contactLinks.name,
+      contact_page_event_category: gaEvents.contactPage.category,
+      contact_page_event_action: gaEvents.contactPage.actions.contactLinks.name,
       contact_page_event_label: label,
     });
   }
@@ -148,7 +147,7 @@ export function sendSubscribersEvent({ action = "", label = "" }) {
   if (GTMActive()) {
     window.dataLayer.push({
       event: "subscribers",
-      subscribers_event_category: GA_EVENTS.subscribers.category,
+      subscribers_event_category: gaEvents.subscribers.category,
       subscribers_event_action: action,
       subscribers_event_label: label,
     });

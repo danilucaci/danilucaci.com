@@ -13,7 +13,7 @@ import ScrollToTop from "../components/ScrollToTop";
 import { Col } from "../components/Grid";
 import { localePaths } from "../i18n";
 import { sendContactPageEvent } from "../helpers/ga";
-import GA_EVENTS from "../helpers/gaEvents";
+import gaEvents from "../helpers/gaEvents";
 
 import { Copy } from "../components/Copy";
 import {
@@ -74,7 +74,7 @@ const ContactPage = ({ location }) => {
                       onClick={() =>
                         sendContactPageEvent({
                           label:
-                            GA_EVENTS.contactPage.actions.contactLinks.labels
+                            gaEvents.contactPage.actions.contactLinks.labels
                               .email,
                         })
                       }
@@ -102,7 +102,7 @@ const ContactPage = ({ location }) => {
                             onClick={() =>
                               sendContactPageEvent({
                                 label:
-                                  GA_EVENTS.contactPage.actions.contactLinks
+                                  gaEvents.contactPage.actions.contactLinks
                                     .labels.twitter,
                               })
                             }

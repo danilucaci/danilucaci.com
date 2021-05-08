@@ -1,4 +1,4 @@
-const GA_EVENTS = {
+const gaEvents = {
   contactForm: {
     category: "Contact Form",
     actions: {
@@ -116,4 +116,4 @@ const GA_EVENTS = {
   },
 };
 
-export default GA_EVENTS;
+export default gaEvents;

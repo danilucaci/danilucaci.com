@@ -5,7 +5,7 @@ import { navigate } from "gatsby";
 import { FormContainer, StyledForm, StyledLabel } from "./styles";
 
 import { sendContactFormEvent } from "../../helpers/ga";
-import GA_EVENTS from "../../helpers/gaEvents";
+import gaEvents from "../../helpers/gaEvents";
 import {
   makeContactFormValidationSchema,
   getSubmitButtonAriaLabel,
@@ -89,24 +89,24 @@ function ContactForm() {
 
       if (responseError) {
         sendContactFormEvent({
-          action: GA_EVENTS.contactForm.actions.submit.name,
-          label: GA_EVENTS.contactForm.actions.submit.labels.failed,
+          action: gaEvents.contactForm.actions.submit.name,
+          label: gaEvents.contactForm.actions.submit.labels.failed,
         });
         handleFormError(new Error(responseError));
       }
 
       if (!responseError && response.status === 201) {
         sendContactFormEvent({
-          action: GA_EVENTS.contactForm.actions.submit.name,
-          label: GA_EVENTS.contactForm.actions.submit.labels.success,
+          action: gaEvents.contactForm.actions.submit.name,
+          label: gaEvents.contactForm.actions.submit.labels.success,
         });
         setMessageSent(true);
         navigate(localePaths[locale].thanks);
       }
     } catch (error) {
       sendContactFormEvent({
-        action: GA_EVENTS.contactForm.actions.submit.name,
-        label: GA_EVENTS.contactForm.actions.submit.labels.failed,
+        action: gaEvents.contactForm.actions.submit.name,
+        label: gaEvents.contactForm.actions.submit.labels.failed,
       });
       setSubmitting(false);
       handleFormError(error);
@@ -121,8 +121,8 @@ function ContactForm() {
 
     if (!userToken) {
       sendContactFormEvent({
-        action: GA_EVENTS.contactForm.actions.submit.name,
-        label: GA_EVENTS.contactForm.actions.submit.labels.authFailed,
+        action: gaEvents.contactForm.actions.submit.name,
+        label: gaEvents.contactForm.actions.submit.labels.authFailed,
       });
 
       setSubmitting(false);
