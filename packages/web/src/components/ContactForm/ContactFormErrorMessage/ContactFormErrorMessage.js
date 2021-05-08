@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { string, func, bool } from "prop-types";
 import { useIntl } from "react-intl";
 
-import HR from "../HR";
+import HR from "../../HR";
 
 import {
   ErrorTitleWrapper,
@@ -16,7 +16,7 @@ import {
   CloseErrorButton,
   ButtonsWrapper,
 } from "./styles";
-import LocaleContext from "../../i18n/LocaleContext";
+import LocaleContext from "../../../i18n/LocaleContext";
 
 function ContactFormErrorMessage({
   errorMessage,
