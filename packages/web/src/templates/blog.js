@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { shape, string, number, arrayOf, bool } from "prop-types";
 import { graphql } from "gatsby";
-import { FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
 
 import SEO from "../components/SEO";
 import Layout from "../components/Layout";
@@ -32,6 +32,8 @@ function BlogPage({ pageContext, location, data }) {
     nextPath,
     edges,
   } = pageContext;
+
+  const intl = useIntl();
 
   const { locale } = useContext(LocaleContext);
 
@@ -75,13 +77,13 @@ function BlogPage({ pageContext, location, data }) {
           <HeaderBackground>
             <Row as="div" col8 pb>
               <Col>
-                <FormattedMessage id="blog.title">
-                  {(txt) => <BlogTitle as="h1">{txt}</BlogTitle>}
-                </FormattedMessage>
+                <BlogTitle as="h1">
+                  {intl.formatMessage({ id: "blog.title" })}
+                </BlogTitle>
                 <TagsWrapper>
-                  <FormattedMessage id="blog.explore">
-                    {(txt) => <TagsTitle as="h2">{txt}</TagsTitle>}
-                  </FormattedMessage>
+                  <TagsTitle as="h2">
+                    {intl.formatMessage({ id: "blog.explore" })}
+                  </TagsTitle>
                   <Tags tagsFor="blog" tags={allTags} />
                 </TagsWrapper>
               </Col>
