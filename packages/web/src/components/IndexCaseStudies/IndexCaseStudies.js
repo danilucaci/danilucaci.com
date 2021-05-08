@@ -6,10 +6,8 @@ import CaseStudyCard from "../CaseStudyCard";
 import { Col, Row } from "../Grid";
 import AriaText from "../AriaText";
 
-function IndexCaseStudies({ edges, spaced }) {
-  const intl = useIntl();
-
-  let caseStudies = edges.map((edge) => ({
+function makeCaseStudies(edges) {
+  return edges.map((edge) => ({
     slug: edge.node.fields.slug,
     tagsInCaseStudy: edge.node.frontmatter.tags,
     title: edge.node.frontmatter.title,
@@ -17,6 +15,12 @@ function IndexCaseStudies({ edges, spaced }) {
     snippet: edge.node.frontmatter.snippet,
     cardImage: edge.node.frontmatter.cardImage.childImageSharp.fluid,
   }));
+}
+
+function IndexCaseStudies({ edges, spaced }) {
+  const intl = useIntl();
+
+  const caseStudies = makeCaseStudies(edges);
 
   return (
     <Row
