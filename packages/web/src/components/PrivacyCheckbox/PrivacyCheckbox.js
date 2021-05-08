@@ -11,6 +11,16 @@ import {
 } from "./styles";
 import LocaleContext from "../../i18n/LocaleContext";
 
+function getLinkTypeFromEdges(edges = [], linkType = "privacy", locale = "en") {
+  return edges
+    .map((edge) => ({
+      slug: edge.node.fields.slug,
+      locale: edge.node.frontmatter.locale,
+      [linkType]: edge.node.frontmatter[linkType],
+    }))
+    .filter((edge) => edge.locale === locale && edge[linkType] === true);
+}
+
 function PrivacyCheckbox({ ...props }) {
   // eslint-disable-next-line no-use-before-define
   const data = useStaticQuery(PRIVACY_CHECKBOX_QUERY);
@@ -23,21 +33,17 @@ function PrivacyCheckbox({ ...props }) {
       ? "I have read and accept the legal notice and the privacy policy"
       : "He leído y accepto el aviso legal y la política de privacidad";
 
-  let legalNoticeLink = data.allMdx.edges
-    .map((edge) => ({
-      slug: edge.node.fields.slug,
-      locale: edge.node.frontmatter.locale,
-      legalNotice: edge.node.frontmatter.legalNotice,
-    }))
-    .filter((edge) => edge.locale === locale && edge.legalNotice === true);
+  const legalNoticeLink = getLinkTypeFromEdges(
+    data.allMdx.edges,
+    "legalNotice",
+    locale,
+  );
 
-  let privacyLink = data.allMdx.edges
-    .map((edge) => ({
-      slug: edge.node.fields.slug,
-      locale: edge.node.frontmatter.locale,
-      privacy: edge.node.frontmatter.privacy,
-    }))
-    .filter((edge) => edge.locale === locale && edge.privacy === true);
+  const privacyLink = getLinkTypeFromEdges(
+    data.allMdx.edges,
+    "privacy",
+    locale,
+  );
 
   return (
     <>
