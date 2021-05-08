@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { string, number, arrayOf, bool, shape } from "prop-types";
 import { graphql } from "gatsby";
-import { FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
 
 import SEO from "../components/SEO";
 import Layout from "../components/Layout";
@@ -24,7 +24,7 @@ import {
 } from "../styles/tag.styles";
 import LocaleContext from "../i18n/LocaleContext";
 
-const TagPage = ({ pageContext, location, data }) => {
+function TagPage({ pageContext, location, data }) {
   const {
     currentPage,
     totalPagesInBlog,
@@ -36,6 +36,8 @@ const TagPage = ({ pageContext, location, data }) => {
   } = pageContext;
 
   const { locale } = useContext(LocaleContext);
+
+  const intl = useIntl();
 
   let allTags = data.allMdx.tags.map((tagItem) => tagItem.fieldValue);
 
@@ -86,16 +88,16 @@ const TagPage = ({ pageContext, location, data }) => {
               <Col>
                 <TagFoundWrapper>
                   <h1>
-                    <FormattedMessage id="tag.listing.header">
-                      {(txt) => <TagsSubhead as="span">{txt}</TagsSubhead>}
-                    </FormattedMessage>
+                    <TagsSubhead as="span">
+                      {intl.formatMessage({ id: "tag.listing.header" })}
+                    </TagsSubhead>
                     <TagFoundTitle>#{tag}</TagFoundTitle>
                   </h1>
                 </TagFoundWrapper>
                 <OtherTagsWrapper>
-                  <FormattedMessage id="tag.listing.other">
-                    {(txt) => <TagsSubhead as="h2">{txt}</TagsSubhead>}
-                  </FormattedMessage>
+                  <TagsSubhead as="h2">
+                    {intl.formatMessage({ id: "tag.listing.other" })}
+                  </TagsSubhead>
                   <Tags tagsFor="blog" tags={allTags} />
                 </OtherTagsWrapper>
               </Col>
@@ -133,7 +135,7 @@ const TagPage = ({ pageContext, location, data }) => {
       <ScrollToTop />
     </ErrorBoundary>
   );
-};
+}
 
 TagPage.propTypes = {
   pageContext: shape({
