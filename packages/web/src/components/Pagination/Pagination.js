@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { string, number } from "prop-types";
-import { FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
 
 import { localePaths } from "../../i18n";
 
@@ -19,15 +19,14 @@ import {
 } from "./styles";
 import LocaleContext from "../../i18n/LocaleContext";
 
-const Pagination = (props) => {
-  const {
-    currentPage,
-    totalPages,
-    prevPath,
-    nextPath,
-    paginationPathPrefix,
-  } = props;
-
+function Pagination({
+  currentPage,
+  totalPages,
+  prevPath,
+  nextPath,
+  paginationPathPrefix,
+}) {
+  const intl = useIntl();
   const { locale } = useContext(LocaleContext);
 
   let pagination = [];
@@ -81,18 +80,18 @@ const Pagination = (props) => {
           <StyledIcon>
             <use xlinkHref="#left" />
           </StyledIcon>
-          <FormattedMessage id="pagination.prev">
-            {(txt) => <PaginationLabel>{txt}</PaginationLabel>}
-          </FormattedMessage>
+          <PaginationLabel>
+            {intl.formatMessage({ id: "pagination.prev" })}
+          </PaginationLabel>
         </Prev>
       ) : (
         <DisabledPrev>
           <StyledIcon isDisabled={!prevPath}>
             <use xlinkHref="#left" />
           </StyledIcon>
-          <FormattedMessage id="pagination.prev">
-            {(txt) => <PaginationLabel>{txt}</PaginationLabel>}
-          </FormattedMessage>
+          <PaginationLabel>
+            {intl.formatMessage({ id: "pagination.prev" })}
+          </PaginationLabel>
         </DisabledPrev>
       )}
       <PaginationContent>
@@ -100,25 +99,25 @@ const Pagination = (props) => {
         <MobileCopy>
           {currentPage}
           &nbsp;
-          <FormattedMessage id="pagination.of" />
+          {intl.formatMessage({ id: "pagination.of" })}
           &nbsp;
           {totalPages}
         </MobileCopy>
       </PaginationContent>
       {nextPath ? (
         <Next to={nextPath}>
-          <FormattedMessage id="pagination.next">
-            {(txt) => <PaginationLabel>{txt}</PaginationLabel>}
-          </FormattedMessage>
+          <PaginationLabel>
+            {intl.formatMessage({ id: "pagination.next" })}
+          </PaginationLabel>
           <StyledIcon>
             <use xlinkHref="#right" />
           </StyledIcon>
         </Next>
       ) : (
         <DisabledNext>
-          <FormattedMessage id="pagination.next">
-            {(txt) => <PaginationLabel>{txt}</PaginationLabel>}
-          </FormattedMessage>
+          <PaginationLabel>
+            {intl.formatMessage({ id: "pagination.next" })}
+          </PaginationLabel>
           <StyledIcon isDisabled={!nextPath}>
             <use xlinkHref="#right" />
           </StyledIcon>
@@ -126,7 +125,7 @@ const Pagination = (props) => {
       )}
     </PaginationWrapper>
   );
-};
+}
 
 Pagination.propTypes = {
   currentPage: number.isRequired,
