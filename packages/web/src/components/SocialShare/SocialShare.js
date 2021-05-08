@@ -5,7 +5,7 @@ import urljoin from "url-join";
 import config from "../../../data/SiteConfig";
 
 import { sendSharedArticleEvent, gaEvents } from "../../helpers/ga";
-import { COPY_URL_MESSAGES } from "../../i18n";
+import { copyUrlMessages } from "../../i18n";
 
 import {
   SocialShareWrapper,
@@ -66,7 +66,7 @@ const SocialShare = ({ onClick, slug, snippet, title }) => {
           <use xlinkHref="#copy" />
         </CopyIcon>
         <CopyTooltip aria-hidden="true">
-          {COPY_URL_MESSAGES[locale].default}
+          {copyUrlMessages[locale].default}
         </CopyTooltip>
       </StyledCopyButton>
     </SocialShareWrapper>
