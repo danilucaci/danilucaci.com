@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { shape, string } from "prop-types";
-import { FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
 
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
@@ -18,8 +18,9 @@ import {
 import { Col } from "../components/Grid";
 import LocaleContext from "../i18n/LocaleContext";
 
-const NotFoundPage = ({ location }) => {
+function NotFoundPage({ location }) {
   const { locale } = useContext(LocaleContext);
+  const intl = useIntl();
 
   let twinPostURL = "";
 
@@ -41,44 +42,39 @@ const NotFoundPage = ({ location }) => {
         <Main>
           <NotFoundRow mb col8>
             <Col>
-              <FormattedMessage id="not.found.title">
-                {(txt) => <StyledH1>{txt}</StyledH1>}
-              </FormattedMessage>
-              <FormattedMessage id="not.found.subtitle">
-                {(txt) => <Subtitle>{txt}</Subtitle>}
-              </FormattedMessage>
+              <StyledH1>
+                {intl.formatMessage({ id: "not.found.title" })}
+              </StyledH1>
+              <Subtitle>
+                {intl.formatMessage({ id: "not.found.subtitle" })}
+              </Subtitle>
               <StyledHR />
-              <FormattedMessage id="not.found.copy.1">
-                {(txt) => <StyledCopy>{txt}</StyledCopy>}
-              </FormattedMessage>
-              <FormattedMessage id="not.found.copy.2">
-                {(txt) => (
-                  <StyledCopy>
-                    {txt}{" "}
-                    <a href="mailto:info@danilucaci.com">info@danilucaci.com</a>
-                    <FormattedMessage id="not.found.copy.3">
-                      {(txt2) => <span> {txt2}</span>}
-                    </FormattedMessage>
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href="https://twitter.com/danilucaci"
-                    >
-                      @danilucaci
-                    </a>
-                  </StyledCopy>
-                )}
-              </FormattedMessage>
-              <FormattedMessage id="thanks.go.home">
-                {(txt) => <LocaleLink to="/">{txt}</LocaleLink>}
-              </FormattedMessage>
+              <StyledCopy>
+                {intl.formatMessage({ id: "not.found.copy.1" })}
+              </StyledCopy>
+
+              <StyledCopy>
+                {intl.formatMessage({ id: "not.found.copy.2" })}{" "}
+                <a href="mailto:info@danilucaci.com">info@danilucaci.com</a>
+                <span> {intl.formatMessage({ id: "not.found.copy.3" })}</span>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://twitter.com/danilucaci"
+                >
+                  @danilucaci
+                </a>
+              </StyledCopy>
+              <LocaleLink to="/">
+                {intl.formatMessage({ id: "thanks.go.home" })}
+              </LocaleLink>
             </Col>
           </NotFoundRow>
         </Main>
       </Layout>
     </ErrorBoundary>
   );
-};
+}
 
 NotFoundPage.propTypes = {
   location: shape({
