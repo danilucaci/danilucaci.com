@@ -1,5 +1,6 @@
 const { UserRepo, MessageRepo } = require("../repositories");
-const { logger, emailService } = require("../services");
+const logger = require("../services/logger-service");
+const emailService = require("../services/email-service");
 
 const {
   getErrorMessages,

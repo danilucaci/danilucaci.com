@@ -1,5 +1,5 @@
 const db = require("../models");
-const { normalizeDBQuery } = require("../utils/normalize-db-query");
+const { normalizeDBQuery } = require("../db/normalize-db-query");
 
 class MessageRepository {
   create(options) {
