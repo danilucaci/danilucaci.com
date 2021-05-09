@@ -148,7 +148,7 @@
   "thanks.subtitle": "¡Tu mensaje ha sido enviado! 🎉",
   "thanks.copy": "Recibirás una respuesta en un plazo de 24-48 horas. Si tardo más de eso, probablemente estoy muy ocupado con otros trabajos. Por favor espera 1 o 2 días laborales más.",
   "thanks.subcopy.1": "Si después de eso aun no he mandado una respuesta, puede que haya habido un error cuando se envió el mensaje. En ese caso, por favor envíame un email a: ",
-  "thanks.subcopy.2": "o un tweet a: ",
+  "thanks.subcopy.2": " o un tweet a: ",
   "thanks.go.home": "Volver al inicio",
   "tags.aria.label.blog": "Etiquetas del blog",
   "tags.aria.label.post": "Etiquetas del artículo",
