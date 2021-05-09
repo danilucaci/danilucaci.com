@@ -1,4 +1,5 @@
-const { auth, logger } = require("../services");
+const auth = require("../services/auth-service");
+const logger = require("../services/logger-service");
 
 async function authMiddleware(req, res, next) {
   try {

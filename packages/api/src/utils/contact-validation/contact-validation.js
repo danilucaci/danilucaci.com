@@ -1,4 +1,5 @@
 const Joi = require("joi");
+const { isEmail } = require("validator");
 
 function validateBotField(botField) {
   const schema = Joi.string().required().valid("");
@@ -51,6 +52,10 @@ function validateLocale(locale) {
   return schema.validateAsync(locale);
 }
 
+function isPromise(value) {
+  return Boolean(value && value.then && typeof value.then === "function");
+}
+
 module.exports = {
   validateBotField: validateBotField,
   validateCheckboxValue: validateCheckboxValue,
@@ -61,4 +66,6 @@ module.exports = {
   validateMessageMinLength: validateMessageMinLength,
   validateMessageMaxLength: validateMessageMaxLength,
   validateLocale: validateLocale,
+  isValidEmail: isEmail,
+  isPromise: isPromise,
 };

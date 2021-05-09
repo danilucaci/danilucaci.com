@@ -1,4 +1,4 @@
-const { logger } = require("../services");
+const logger = require("../services/logger-service");
 const {
   validateBotField,
   validateCheckboxValue,

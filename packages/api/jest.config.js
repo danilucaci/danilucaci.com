@@ -5,4 +5,5 @@ module.exports = {
    * May require additional time for downloading MongoDB binaries
    */
   testTimeout: 600000,
+  globalSetup: "<rootDir>/dotenv/config.js",
 };

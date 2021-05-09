@@ -12,7 +12,7 @@ const MessageSchema = Schema(
     },
     message: {
       type: String,
-      required: true,
+      required: [true, "The message is required"],
       trim: true,
       minLength: [
         2,
@@ -38,15 +38,15 @@ const MessageSchema = Schema(
     },
     consentValue: {
       type: String,
-      required: true,
+      required: [true, "The consent value is required"],
       trim: true,
     },
     dateSent: {
       type: Date,
-      required: true,
+      required: [true, "The date is required"],
     },
   },
-  { timeStamps: true },
+  { timestamps: true },
 );
 
 const MessageModel = model("message", MessageSchema);
