@@ -1,6 +1,4 @@
-const logger = require("loglevel");
-
-logger.enableAll();
+const logger = require("./logger");
 
 module.exports = {
   warn: logger.warn,

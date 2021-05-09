@@ -1,5 +1,5 @@
 const db = require("../models");
-const { normalizeDBQuery } = require("../utils/normalize-db-query");
+const { normalizeDBQuery } = require("../db/normalize-db-query");
 
 class UserRepository {
   create(options) {
@@ -13,8 +13,14 @@ class UserRepository {
           email: email,
         },
         "-__v",
-      ),
+      )
+        .lean()
+        .exec(),
     );
+  }
+
+  findMany(options) {
+    return normalizeDBQuery(db.User.find(options).lean().exec());
   }
 }
 

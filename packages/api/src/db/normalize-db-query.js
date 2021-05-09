@@ -1,4 +1,4 @@
-const { isPromise } = require("./is-promise");
+const { isPromise } = require("../utils/contact-validation");
 
 /**
  * Normalizes the promise response and rejection

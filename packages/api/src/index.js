@@ -1,6 +1,6 @@
 const { app } = require("./server");
 const { config } = require("./config");
-const { logger } = require("./services");
+const logger = require("./services/logger-service");
 const { connect } = require("./db");
 
 if (!config.app.port) {
