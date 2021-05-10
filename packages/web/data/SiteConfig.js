@@ -18,7 +18,7 @@ module.exports = {
     github: "https://github.com/danilucaci",
   },
   // Copyright string for the footer of the website and RSS feed.
-  copyright: "&copy;2019 Copyright Dani Lucaci. All rights reserved.",
+  copyright: "&copy;2021 Copyright Dani Lucaci. All rights reserved.",
   en: {
     websiteSchema: {
       url: "https://www.danilucaci.com",
@@ -79,7 +79,7 @@ module.exports = {
         "My personal blog where I write about Product Design and Front-End Development | Dani Lucaci - Product Designer and Front-End Developer.",
     },
     // Copyright string for the footer of the website and RSS feed.
-    copyright: "&copy;2019 Copyright Dani Lucaci. All rights reserved.",
+    copyright: "&copy;2021 Copyright Dani Lucaci. All rights reserved.",
   },
   es: {
     websiteSchema: {
