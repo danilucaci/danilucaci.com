@@ -26,17 +26,23 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - name: node_modules cache
-        uses: actions/cache@v2
-        id: node-modules-cache
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v2
+        # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        id: yarn-cache
         with:
-          path: |
-            **/node_modules
-          key: npm-${{ hashFiles('**/yarn-lock.json') }}
-      - name: install yarn globally
-        run: npm install -g yarn
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
       - name: install yarn dependencies
-        run: yarn
+        run: yarn --prefer-offline
+        if: steps.yarn-cache-dir-path.outputs.dir
 
   lint:
     needs: install
@@ -49,15 +55,23 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - name: node_modules cache
-        uses: actions/cache@v2
-        id: node-modules-cache
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v2
+        # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        id: yarn-cache
         with:
-          path: |
-            **/node_modules
-          key: npm-${{ hashFiles('**/yarn-lock.json') }}
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
       - name: api lint
         run: |
+          yarn
           yarn workspace api run lint:js
           yarn workspace api run lint:format:check
         env:
@@ -79,6 +93,7 @@ jobs:
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
       - name: web lint
         run: |
+          yarn
           yarn workspace web run lint:js
           yarn workspace web run lint:format:check
 
@@ -93,15 +108,24 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - name: node_modules cache
-        uses: actions/cache@v2
-        id: node-modules-cache
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v2
+        # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        id: yarn-cache
         with:
-          path: |
-            **/node_modules
-          key: npm-${{ hashFiles('**/yarn-lock.json') }}
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
       - name: api test
-        run: yarn workspace api run test:ci:all
+        run: |
+          yarn
+          yarn workspace api run test:ci:all
         env:
           FB_CERT_TYPE: ${{ secrets.FB_CERT_TYPE }}
           FB_CERT_PROJECT_ID: ${{ secrets.FB_CERT_PROJECT_ID }}
@@ -120,7 +144,9 @@ jobs:
           EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
       - name: web test
-        run: yarn workspace web run test:ci:all
+        run: |
+          yarn
+          yarn workspace web run test:ci:all
 
   deploy-api:
     needs: [lint, test]
