@@ -1,5 +1,5 @@
 # Using docker multi stage builds for layer caching
-FROM node:12.21 AS base
+FROM node:18.6 AS base
 
 WORKDIR /usr/src/app
 
