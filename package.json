@@ -16,11 +16,11 @@
     }
   ],
   "devDependencies": {
-    "@commitlint/cli": "12.0.1",
-    "@commitlint/config-conventional": "12.0.1",
-    "commitlint": "12.0.1",
-    "husky": "6.0.0",
-    "lint-staged": "10.5.4"
+    "@commitlint/cli": "17.0.3",
+    "@commitlint/config-conventional": "17.0.3",
+    "commitlint": "17.0.3",
+    "husky": "8.0.1",
+    "lint-staged": "13.0.3"
   },
   "scripts": {
     "dev:web": "yarn workspace web run dev",
