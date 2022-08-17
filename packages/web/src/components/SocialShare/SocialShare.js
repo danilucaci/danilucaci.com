@@ -17,7 +17,7 @@ import {
 } from "./styles";
 import LocaleContext from "../../i18n/LocaleContext";
 
-const SocialShare = ({ onClick, slug, snippet, title }) => {
+function SocialShare({ onClick, slug, snippet, title }) {
   const { locale } = useContext(LocaleContext);
   const url = urljoin(config.siteUrl, slug);
 
@@ -71,7 +71,7 @@ const SocialShare = ({ onClick, slug, snippet, title }) => {
       </StyledCopyButton>
     </SocialShareWrapper>
   );
-};
+}
 
 SocialShare.propTypes = {
   onClick: func.isRequired,

@@ -4,7 +4,7 @@ import { useIntl } from "react-intl";
 
 import { ArticleDate, ArticleReadtime, Dot } from "./styles";
 
-const ArticleInfo = ({ date, timeToRead }) => {
+function ArticleInfo({ date, timeToRead }) {
   const fullDate = new Date(date).toLocaleDateString();
   const intl = useIntl();
 
@@ -29,7 +29,7 @@ const ArticleInfo = ({ date, timeToRead }) => {
       </ArticleReadtime>
     </>
   );
-};
+}
 
 ArticleInfo.propTypes = {
   date: string.isRequired,

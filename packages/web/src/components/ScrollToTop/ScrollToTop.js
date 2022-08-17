@@ -2,7 +2,7 @@ import React from "react";
 
 import { StyledScrollToTop, ScrollToTopIcon } from "./styles";
 
-const ScrollToTop = () => {
+function ScrollToTop() {
   return (
     <StyledScrollToTop href="#top" title="Scroll to top">
       <ScrollToTopIcon aria-hidden="true">
@@ -10,6 +10,6 @@ const ScrollToTop = () => {
       </ScrollToTopIcon>
     </StyledScrollToTop>
   );
-};
+}
 
 export default ScrollToTop;

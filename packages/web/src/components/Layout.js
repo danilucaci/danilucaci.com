@@ -18,13 +18,13 @@ import ScrollToTop from "./ScrollToTop";
 import ScrollToTopID from "./ScrollToTopID";
 import CookieConsent from "./CookieConsent";
 
-const Layout = ({
+function Layout({
   location,
   twinPostURL,
   children,
   expandHeaderAndFooter,
   colorHeader,
-}) => {
+}) {
   return (
     <ErrorBoundary>
       <ThemeProvider theme={theme}>
@@ -54,7 +54,7 @@ const Layout = ({
       </ThemeProvider>
     </ErrorBoundary>
   );
-};
+}
 
 Layout.propTypes = {
   children: node.isRequired,

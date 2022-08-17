@@ -14,13 +14,15 @@ const isPartiallyActive = ({ isPartiallyCurrent }) => {
   return isPartiallyCurrent ? { className: "current-nav-item" } : null;
 };
 
-const SiteNavListItem = (props) => (
-  <StyledSiteNavListItem>
-    <Link to={props.to} getProps={isPartiallyActive} aria-current="page">
-      {props.children}
-    </Link>
-  </StyledSiteNavListItem>
-);
+function SiteNavListItem(props) {
+  return (
+    <StyledSiteNavListItem>
+      <Link to={props.to} getProps={isPartiallyActive} aria-current="page">
+        {props.children}
+      </Link>
+    </StyledSiteNavListItem>
+  );
+}
 
 SiteNavListItem.propTypes = {
   children: node.isRequired,

@@ -4,7 +4,7 @@ import { useIntl } from "react-intl";
 
 import locales from "../../locales/locales";
 
-const ExternalLocaleLink = ({ href, ...props }) => {
+function ExternalLocaleLink({ href, ...props }) {
   const intl = useIntl();
 
   let path = locales[intl.locale].default ? href : `/${intl.locale}${href}`;
@@ -16,7 +16,7 @@ const ExternalLocaleLink = ({ href, ...props }) => {
 
   // eslint-disable-next-line jsx-a11y/anchor-has-content
   return <a {...props} href={path} />;
-};
+}
 
 ExternalLocaleLink.propTypes = {
   href: PropTypes.string.isRequired,

@@ -6,7 +6,7 @@ import CaseStudyCard from "../CaseStudyCard";
 import { Col, Row } from "../Grid";
 import { Title } from "./styles";
 
-const CaseStudies = ({ edges, spaced, header, cardHeadingLevel }) => {
+function CaseStudies({ edges, spaced, header, cardHeadingLevel }) {
   const intl = useIntl();
 
   const caseStudies = edges.map((edge) => ({
@@ -44,7 +44,7 @@ const CaseStudies = ({ edges, spaced, header, cardHeadingLevel }) => {
       </Col>
     </Row>
   );
-};
+}
 
 CaseStudies.propTypes = {
   edges: arrayOf(

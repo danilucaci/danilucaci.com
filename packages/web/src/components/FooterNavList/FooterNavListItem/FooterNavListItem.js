@@ -12,13 +12,15 @@ import { StyledFooterListItem } from "./styles";
 const isPartiallyActive = ({ isPartiallyCurrent }) =>
   isPartiallyCurrent ? { className: "current-nav-item" } : null;
 
-const FooterNavListItem = (props) => (
-  <StyledFooterListItem>
-    <Link to={props.to} getProps={isPartiallyActive} aria-current="page">
-      {props.children}
-    </Link>
-  </StyledFooterListItem>
-);
+function FooterNavListItem(props) {
+  return (
+    <StyledFooterListItem>
+      <Link to={props.to} getProps={isPartiallyActive} aria-current="page">
+        {props.children}
+      </Link>
+    </StyledFooterListItem>
+  );
+}
 
 FooterNavListItem.propTypes = {
   children: node.isRequired,

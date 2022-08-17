@@ -47,22 +47,24 @@ FooterSocialNavProfileLink.propTypes = {
   handleClick: func.isRequired,
 };
 
-const FooterSocialNav = () => (
-  <StyledFooterSocialNav>
-    {gaEvents.socialMediaProfiles.map((profileName) => (
-      <FooterSocialNavProfileLink
-        key={profileName}
-        handleClick={sendFooterSocialNavVisitEvent}
-        socialMediaID={profileName}
-        socialMediaName={
-          gaEvents.footerSocialNavVisit.actions[profileName].name
-        }
-        socialMediaLink={
-          gaEvents.footerSocialNavVisit.actions[profileName].link
-        }
-      />
-    ))}
-  </StyledFooterSocialNav>
-);
+function FooterSocialNav() {
+  return (
+    <StyledFooterSocialNav>
+      {gaEvents.socialMediaProfiles.map((profileName) => (
+        <FooterSocialNavProfileLink
+          key={profileName}
+          handleClick={sendFooterSocialNavVisitEvent}
+          socialMediaID={profileName}
+          socialMediaName={
+            gaEvents.footerSocialNavVisit.actions[profileName].name
+          }
+          socialMediaLink={
+            gaEvents.footerSocialNavVisit.actions[profileName].link
+          }
+        />
+      ))}
+    </StyledFooterSocialNav>
+  );
+}
 
 export default FooterSocialNav;

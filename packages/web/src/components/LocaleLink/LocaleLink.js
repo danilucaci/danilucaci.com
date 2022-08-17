@@ -5,7 +5,7 @@ import { useIntl } from "react-intl";
 
 import locales from "../../locales/locales";
 
-const LocaleLink = ({ to, ...props }) => {
+function LocaleLink({ to, ...props }) {
   const intl = useIntl();
 
   let path = locales[intl.locale].default ? to : `/${intl.locale}${to}`;
@@ -16,7 +16,7 @@ const LocaleLink = ({ to, ...props }) => {
   }
 
   return <Link {...props} to={path} />;
-};
+}
 
 LocaleLink.propTypes = {
   to: PropTypes.string.isRequired,
