@@ -68,20 +68,18 @@ function SubscribeSuccess() {
   const intl = useIntl();
 
   return (
-    <>
-      <StatusMessageWrapper role="status" aria-live="polite">
-        <H2>
-          {intl.formatMessage({
-            id: "subscribe.card.status.success.title",
-          })}
-        </H2>
-        <StatusMessageSubtitle>
-          {intl.formatMessage({
-            id: "subscribe.card.status.success.message",
-          })}
-        </StatusMessageSubtitle>
-      </StatusMessageWrapper>
-    </>
+    <StatusMessageWrapper role="status" aria-live="polite">
+      <H2>
+        {intl.formatMessage({
+          id: "subscribe.card.status.success.title",
+        })}
+      </H2>
+      <StatusMessageSubtitle>
+        {intl.formatMessage({
+          id: "subscribe.card.status.success.message",
+        })}
+      </StatusMessageSubtitle>
+    </StatusMessageWrapper>
   );
 }
 
@@ -89,24 +87,20 @@ function SubscribeError(errorMessageType, APIErrorResponse) {
   const intl = useIntl();
 
   return (
-    <>
-      <StatusMessageWrapper role="status" aria-live="polite">
-        <H2>
-          {intl.formatMessage({ id: "subscribe.card.status.error.title" })}
-        </H2>
+    <StatusMessageWrapper role="status" aria-live="polite">
+      <H2>{intl.formatMessage({ id: "subscribe.card.status.error.title" })}</H2>
 
-        <StatusMessageSubtitle>
-          {intl.formatMessage({
-            id: `subscribe.card.status.error.${errorMessageType}`,
-            defaultMessage: "Something went wrong.",
-          })}
-        </StatusMessageSubtitle>
+      <StatusMessageSubtitle>
+        {intl.formatMessage({
+          id: `subscribe.card.status.error.${errorMessageType}`,
+          defaultMessage: "Something went wrong.",
+        })}
+      </StatusMessageSubtitle>
 
-        {APIErrorResponse && (
-          <StatusMessageSubtitle>{APIErrorResponse}</StatusMessageSubtitle>
-        )}
-      </StatusMessageWrapper>
-    </>
+      {APIErrorResponse && (
+        <StatusMessageSubtitle>{APIErrorResponse}</StatusMessageSubtitle>
+      )}
+    </StatusMessageWrapper>
   );
 }
 
