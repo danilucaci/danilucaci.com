@@ -10,14 +10,8 @@ const { defaultDateLocale } = config.email;
  * @returns {Promise} The promise of the email transporter service
  */
 async function sendEmail(emailData, emailTransporterService) {
-  const {
-    fullName,
-    email,
-    message,
-    consentAccepted,
-    dateSent,
-    locale,
-  } = emailData;
+  const { fullName, email, message, consentAccepted, dateSent, locale } =
+    emailData;
 
   const formattedDate = formatDate(dateSent, defaultDateLocale);
   const emailOptions = getEmailOptions({

@@ -2,11 +2,8 @@ const { UserRepository } = require("../user-repository");
 const { makeTestServerMethods } = require("../../utils/tests/test-utils");
 
 describe("UserRepository", () => {
-  const {
-    startTestServer,
-    stopTestServer,
-    clearUsersCollection,
-  } = makeTestServerMethods();
+  const { startTestServer, stopTestServer, clearUsersCollection } =
+    makeTestServerMethods();
 
   beforeAll(async () => await startTestServer());
   afterEach(async () => await clearUsersCollection());

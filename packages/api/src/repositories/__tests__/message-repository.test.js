@@ -2,11 +2,8 @@ const { UserRepo, MessageRepo } = require("../");
 const { makeTestServerMethods } = require("../../utils/tests/test-utils");
 
 describe("MessageRepo", () => {
-  const {
-    startTestServer,
-    stopTestServer,
-    clearMessagesCollection,
-  } = makeTestServerMethods();
+  const { startTestServer, stopTestServer, clearMessagesCollection } =
+    makeTestServerMethods();
 
   beforeAll(async () => await startTestServer());
   afterEach(async () => await clearMessagesCollection());
