@@ -2,13 +2,12 @@
 // "warn" or 1 - turn the rule on as a warning (doesn’t affect exit code)
 // "error" or 2 - turn the rule on as an error (exit code is 1 when triggered)
 module.exports = {
-  parser: "babel-eslint",
+  parser: "@babel/eslint-parser",
   extends: [
     "airbnb",
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
-    "prettier/react",
     "plugin:jest/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
@@ -31,11 +30,12 @@ module.exports = {
       version: "detect",
     },
     jest: {
-      version: 26,
+      version: 28,
     },
   },
   parserOptions: {
     sourceType: "module",
+    requireConfigFile: false,
   },
   env: {
     browser: true,
@@ -52,6 +52,12 @@ module.exports = {
         "jest/expect-expect": 0,
         "jest/valid-expect": 0,
         "jest/valid-expect-in-promise": 0,
+      },
+    },
+    {
+      files: ["*.test.js"],
+      rules: {
+        "react/jsx-no-constructed-context-values": 0,
       },
     },
   ],
@@ -74,12 +80,14 @@ module.exports = {
     "no-underscore-dangle": 0,
     "prefer-const": 0,
     "no-lonely-if": 0,
+    "no-restricted-exports": ["off", { restrictedNamedExports: ["default"] }],
     "import/prefer-default-export": 0,
     "object-shorthand": 0,
     "react/destructuring-assignment": 0,
     "react/jsx-props-no-spreading": 0,
     "react/state-in-constructor": 0,
     "react/jsx-filename-extension": [1, { extensions: [".js"] }],
+    "react/prop-types": 0,
     "no-use-before-define": ["error", { functions: false }],
     "import/no-extraneous-dependencies": [
       "error",
