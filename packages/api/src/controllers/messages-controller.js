@@ -22,10 +22,8 @@ async function contact(req, res, next) {
   let userData = null;
 
   try {
-    const {
-      data: prevUserData,
-      error: prevUserError,
-    } = await UserRepo.findByEmail(email);
+    const { data: prevUserData, error: prevUserError } =
+      await UserRepo.findByEmail(email);
 
     if (prevUserError) {
       logger.error(prevUserError);

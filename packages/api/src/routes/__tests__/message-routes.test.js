@@ -36,11 +36,8 @@ jest.mock("../../services/auth-service", () => {
 const request = supertest(app);
 
 describe("/api/ping", () => {
-  const {
-    startTestServer,
-    stopTestServer,
-    clearUsersCollection,
-  } = makeTestServerMethods();
+  const { startTestServer, stopTestServer, clearUsersCollection } =
+    makeTestServerMethods();
 
   beforeAll(async () => await startTestServer());
 
