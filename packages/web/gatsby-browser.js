@@ -1,6 +1,6 @@
-import wrapPage from "./wrap-page";
+import WrapPage from "./wrap-page";
 
-export const wrapPageElement = wrapPage;
+export const wrapPageElement = WrapPage;
 
 export function onClientEntry() {
   return new Promise((resolve, reject) => {
