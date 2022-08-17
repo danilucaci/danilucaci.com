@@ -5,8 +5,7 @@ const mongoose = require("mongoose");
 const { logger } = require("../../services/logger-service");
 
 async function makeMongoTestServer(Server = MongoMemoryServer) {
-  const mongoTestServer = new Server();
-
+  const mongoTestServer = await Server.create();
   return mongoTestServer;
 }
 
@@ -18,15 +17,13 @@ function makeTestServerMethods(
   let serverURI = null;
 
   const mongoOptions = {
-    useUnifiedTopology: true,
     useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
+    useUnifiedTopology: true,
   };
 
   async function _startTestServer() {
     mongoTestServer = await makeMongoServer();
-    serverURI = await mongoTestServer.getUri();
+    serverURI = mongoTestServer.getUri();
   }
 
   async function _connectTestServer() {
