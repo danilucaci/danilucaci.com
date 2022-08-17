@@ -28,7 +28,7 @@ import {
 } from "../styles/about-me.styles";
 import LocaleContext from "../i18n/LocaleContext";
 
-const AboutPage = ({ location, data }) => {
+function AboutPage({ location, data }) {
   const { locale } = useContext(LocaleContext);
   const intl = useIntl();
 
@@ -181,7 +181,7 @@ const AboutPage = ({ location, data }) => {
       <ScrollToTop />
     </ErrorBoundary>
   );
-};
+}
 
 AboutPage.propTypes = {
   data: shape({

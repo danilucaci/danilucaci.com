@@ -5,7 +5,7 @@ import { useIntl } from "react-intl";
 import Tag from "./Tag";
 import { TagsWrapper } from "./styles";
 
-const Tags = ({ tags, tagsFor = "blog" }) => {
+function Tags({ tags, tagsFor = "blog" }) {
   const intl = useIntl();
 
   let str = tagsFor.toLowerCase();
@@ -22,7 +22,7 @@ const Tags = ({ tags, tagsFor = "blog" }) => {
         ))}
     </TagsWrapper>
   );
-};
+}
 
 Tags.propTypes = {
   tags: arrayOf(string).isRequired,

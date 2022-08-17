@@ -5,7 +5,7 @@ import Img from "gatsby-image";
 import { Figure, FigCaption } from "./styles";
 import useImage from "../../hooks/useImage";
 
-const Image = ({ src, caption, expand, noShadow, ariaOnlyCaption }) => {
+function Image({ src, caption, expand, noShadow, ariaOnlyCaption }) {
   const foundImage = useImage(src);
 
   if (!foundImage) {
@@ -24,7 +24,7 @@ const Image = ({ src, caption, expand, noShadow, ariaOnlyCaption }) => {
       </FigCaption>
     </Figure>
   );
-};
+}
 
 Image.propTypes = {
   src: string.isRequired,

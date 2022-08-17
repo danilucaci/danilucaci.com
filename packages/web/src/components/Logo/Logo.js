@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { StyledLogo } from "./styles";
 import LocaleContext from "../../i18n/LocaleContext";
 
-const Logo = () => {
+function Logo() {
   const { locale } = useContext(LocaleContext);
 
   return (
@@ -10,6 +10,6 @@ const Logo = () => {
       Dani Lucaci
     </StyledLogo>
   );
-};
+}
 
 export default Logo;

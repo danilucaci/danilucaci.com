@@ -34,7 +34,7 @@ import illustrationUX from "../images/illustrations/danilucaci_services_ux.svg";
 import illustrationUI from "../images/illustrations/danilucaci_services_ui.svg";
 import illustrationInteraction from "../images/illustrations/danilucaci_services_interaction.svg";
 
-const Index = ({ data, location }) => {
+function Index({ data, location }) {
   const edges = data.work.edges;
   const { locale } = useContext(LocaleContext);
   const intl = useIntl();
@@ -202,7 +202,7 @@ const Index = ({ data, location }) => {
       </Layout>
     </ErrorBoundary>
   );
-};
+}
 
 Index.propTypes = {
   data: shape({
