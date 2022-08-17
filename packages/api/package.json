@@ -24,7 +24,7 @@
     "dev": "nodemon src/index.js",
     "start": "node src/index.js",
     "test:watch": "jest --watchAll",
-    "test:related": "jest --bail --findRelatedTests",
+    "test:related": "jest --bail --findRelatedTests --passWithNoTests",
     "test:ci:all": "jest --bail",
     "lint:js": "eslint . --ext .js",
     "lint:js:fix": "yarn run lint:js -- --fix",
