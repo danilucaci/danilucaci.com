@@ -35,9 +35,8 @@ function ContactForm() {
   const [{ hasGDPRConsent }] = useContext(CookiesContext);
   const { locale } = useContext(LocaleContext);
 
-  const { userToken, error: authError } = useFirebaseAnonymousAuth(
-    consentAccepted,
-  );
+  const { userToken, error: authError } =
+    useFirebaseAnonymousAuth(consentAccepted);
 
   const formik = useFormik({
     initialValues: {

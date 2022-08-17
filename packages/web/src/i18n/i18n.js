@@ -67,8 +67,7 @@ export const copyCodeMessages = {
 
 export const contactFormConsentValues = {
   en: {
-    no:
-      "I have not read and I do not accept the legal notice and the privacy policy.",
+    no: "I have not read and I do not accept the legal notice and the privacy policy.",
     yes: "I have read and accept the legal notice and the privacy policy.",
   },
   es: {
