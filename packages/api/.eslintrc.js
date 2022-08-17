@@ -2,7 +2,7 @@
 // "warn" or 1 - turn the rule on as a warning (doesn’t affect exit code)
 // "error" or 2 - turn the rule on as an error (exit code is 1 when triggered)
 module.exports = {
-  parser: "babel-eslint",
+  parser: "@babel/eslint-parser",
   extends: [
     "eslint:recommended",
     "plugin:jest/recommended",
@@ -13,10 +13,11 @@ module.exports = {
   parserOptions: {
     sourceType: "module",
     ecmaVersion: 2020,
+    requireConfigFile: false,
   },
   settings: {
     jest: {
-      version: 26,
+      version: 28,
     },
   },
   env: {
@@ -30,5 +31,6 @@ module.exports = {
     "arrow-body-style": "off",
     "no-underscore-dangle": "off",
     "no-console": 2,
+    "jest/no-conditional-expect": "off",
   },
 };
