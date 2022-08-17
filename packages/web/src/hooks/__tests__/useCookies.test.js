@@ -1,7 +1,6 @@
 import { renderHook } from "@testing-library/react-hooks";
 
 import useCookies from "../useCookies";
-import useCookiesReducer from "../useCookiesReducer";
 
 jest.mock("../useCookiesReducer", () => () => [
   {
@@ -28,10 +27,6 @@ jest.mock("../useCookiesReducer", () => () => [
 ]);
 
 describe("useCookies", () => {
-  afterAll(() => {
-    useCookiesReducer.mockRestore();
-  });
-
   test("calls the checkCookies action when openCookieConsent is false", () => {
     const LOCATION = {
       pathname: "/test",

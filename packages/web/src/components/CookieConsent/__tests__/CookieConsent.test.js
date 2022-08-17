@@ -1,7 +1,7 @@
 import React from "react";
 import * as gatsby from "gatsby";
 import userEvent from "@testing-library/user-event";
-import { createEvent, fireEvent } from "@testing-library/react";
+import { createEvent, fireEvent, screen } from "@testing-library/react";
 import MockCookies from "js-cookie";
 
 import { setupReactIntl, renderWithReactIntl } from "../../../helpers/tests";
@@ -27,10 +27,6 @@ describe("CookieConsent", () => {
     MockCookies.getJSON.mockImplementation(() => null);
   });
 
-  afterAll(() => {
-    MockCookies.mockRestore();
-  });
-
   test("renders the CookieConsent in english as visible", () => {
     const LOCALE = "en";
     const TEST_SLUG = "/test-cookies-policy";
@@ -45,7 +41,7 @@ describe("CookieConsent", () => {
 
     gatsby.useStaticQuery.mockImplementation(() => USE_STATIC_QUERY_DATA);
 
-    const { getByRole, getByLabelText, getByText } = renderWithReactIntl(
+    renderWithReactIntl(
       <LocaleContext.Provider value={{ locale: LOCALE }}>
         <CookiesProvider location={getLocationData()}>
           <CookieConsent />
@@ -54,16 +50,16 @@ describe("CookieConsent", () => {
       LOCALE,
     );
 
-    const aside = getByRole("complementary");
-    const link = getByRole("link");
+    const aside = screen.getByRole("complementary");
+    const link = screen.getByRole("link");
 
     expect(aside).toBeInTheDocument();
     expect(aside).toBeVisible();
     expect(link).toHaveTextContent(/learn/i);
     expect(link).toHaveAttribute("href", TEST_SLUG);
-    expect(getByLabelText(/accept/i)).toHaveTextContent(/accept/i);
-    expect(getByLabelText(/deny/i)).toHaveTextContent(/deny/i);
-    expect(getByText(/improve their experience/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/accept/i)).toHaveTextContent(/accept/i);
+    expect(screen.getByLabelText(/deny/i)).toHaveTextContent(/deny/i);
+    expect(screen.getByText(/improve their experience/i)).toBeInTheDocument();
   });
 
   test("renders the CookieConsent in english as hidden", () => {
@@ -86,7 +82,7 @@ describe("CookieConsent", () => {
       dismissed: false,
     }));
 
-    const { getByRole, getByLabelText, getByText } = renderWithReactIntl(
+    renderWithReactIntl(
       <LocaleContext.Provider value={{ locale: LOCALE }}>
         <CookiesProvider location={getLocationData()}>
           <CookieConsent />
@@ -95,16 +91,16 @@ describe("CookieConsent", () => {
       LOCALE,
     );
 
-    const aside = getByRole("complementary", { hidden: true });
-    const link = getByRole("link", { hidden: true });
+    const aside = screen.getByRole("complementary", { hidden: true });
+    const link = screen.getByRole("link", { hidden: true });
 
     expect(aside).toBeInTheDocument();
     expect(aside).not.toBeVisible();
     expect(link).toHaveTextContent(/learn/i);
     expect(link).toHaveAttribute("href", TEST_SLUG);
-    expect(getByLabelText(/accept/i)).toHaveTextContent(/accept/i);
-    expect(getByLabelText(/deny/i)).toHaveTextContent(/deny/i);
-    expect(getByText(/improve their experience/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/accept/i)).toHaveTextContent(/accept/i);
+    expect(screen.getByLabelText(/deny/i)).toHaveTextContent(/deny/i);
+    expect(screen.getByText(/improve their experience/i)).toBeInTheDocument();
   });
 
   test("renders the CookieConsent in spanish as visible", () => {
@@ -121,7 +117,7 @@ describe("CookieConsent", () => {
 
     gatsby.useStaticQuery.mockImplementation(() => USE_STATIC_QUERY_DATA);
 
-    const { getByRole, getByLabelText, getByText } = renderWithReactIntl(
+    renderWithReactIntl(
       <LocaleContext.Provider value={{ locale: LOCALE }}>
         <CookiesProvider location={getLocationData()}>
           <CookieConsent />
@@ -130,16 +126,16 @@ describe("CookieConsent", () => {
       LOCALE,
     );
 
-    const aside = getByRole("complementary");
-    const link = getByRole("link");
+    const aside = screen.getByRole("complementary");
+    const link = screen.getByRole("link");
 
     expect(aside).toBeInTheDocument();
     expect(aside).toBeVisible();
     expect(link).toHaveTextContent(/Leer más/i);
     expect(link).toHaveAttribute("href", TEST_SLUG);
-    expect(getByLabelText(/acceptar/i)).toHaveTextContent(/acceptar/i);
-    expect(getByLabelText(/rechazar/i)).toHaveTextContent(/rechazar/i);
-    expect(getByText(/mejorar su experiencia/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/acceptar/i)).toHaveTextContent(/acceptar/i);
+    expect(screen.getByLabelText(/rechazar/i)).toHaveTextContent(/rechazar/i);
+    expect(screen.getByText(/mejorar su experiencia/i)).toBeInTheDocument();
   });
 
   test("renders the CookieConsent in spanish as hidden", () => {
@@ -162,7 +158,7 @@ describe("CookieConsent", () => {
       dismissed: false,
     }));
 
-    const { getByRole, getByLabelText, getByText } = renderWithReactIntl(
+    renderWithReactIntl(
       <LocaleContext.Provider value={{ locale: LOCALE }}>
         <CookiesProvider location={getLocationData()}>
           <CookieConsent />
@@ -171,19 +167,19 @@ describe("CookieConsent", () => {
       LOCALE,
     );
 
-    const aside = getByRole("complementary", { hidden: true });
-    const link = getByRole("link", { hidden: true });
+    const aside = screen.getByRole("complementary", { hidden: true });
+    const link = screen.getByRole("link", { hidden: true });
 
     expect(aside).toBeInTheDocument();
     expect(aside).not.toBeVisible();
     expect(link).toHaveTextContent(/Leer más/i);
     expect(link).toHaveAttribute("href", TEST_SLUG);
-    expect(getByLabelText(/acceptar/i)).toHaveTextContent(/acceptar/i);
-    expect(getByLabelText(/rechazar/i)).toHaveTextContent(/rechazar/i);
-    expect(getByText(/mejorar su experiencia/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/acceptar/i)).toHaveTextContent(/acceptar/i);
+    expect(screen.getByLabelText(/rechazar/i)).toHaveTextContent(/rechazar/i);
+    expect(screen.getByText(/mejorar su experiencia/i)).toBeInTheDocument();
   });
 
-  test("hides the cookie consent when cookies are accepted", () => {
+  test("hides the cookie consent when cookies are accepted", async () => {
     const LOCALE = "en";
     const TEST_SLUG = "/test-cookies-policy";
     const TEST_TITLE = "Test cookies policy";
@@ -197,7 +193,7 @@ describe("CookieConsent", () => {
 
     gatsby.useStaticQuery.mockImplementation(() => USE_STATIC_QUERY_DATA);
 
-    const { getByRole, getByLabelText } = renderWithReactIntl(
+    renderWithReactIntl(
       <LocaleContext.Provider value={{ locale: LOCALE }}>
         <CookiesProvider location={getLocationData()}>
           <CookieConsent />
@@ -212,19 +208,20 @@ describe("CookieConsent", () => {
       dismissed: false,
     }));
 
-    userEvent.click(getByLabelText(/accept/i));
+    await userEvent.click(screen.getByLabelText(/accept/i));
 
-    const aside = getByRole("complementary");
+    const aside = screen.getByRole("complementary");
     expect(aside).toBeInTheDocument();
 
     const transitionEndEvent = createEvent("transitionend", aside);
 
     fireEvent(aside, transitionEndEvent);
 
-    expect(getByRole("complementary", { hidden: true })).not.toBeVisible();
+    const hiddenAside = screen.getByRole("complementary", { hidden: true });
+    expect(hiddenAside).not.toBeVisible();
   });
 
-  test("hides the cookie consent when cookies are denied", () => {
+  test("hides the cookie consent when cookies are denied", async () => {
     const LOCALE = "en";
     const TEST_SLUG = "/test-cookies-policy";
     const TEST_TITLE = "Test cookies policy";
@@ -238,7 +235,7 @@ describe("CookieConsent", () => {
 
     gatsby.useStaticQuery.mockImplementation(() => USE_STATIC_QUERY_DATA);
 
-    const { getByRole, getByLabelText } = renderWithReactIntl(
+    renderWithReactIntl(
       <LocaleContext.Provider value={{ locale: LOCALE }}>
         <CookiesProvider location={getLocationData()}>
           <CookieConsent />
@@ -253,15 +250,16 @@ describe("CookieConsent", () => {
       dismissed: false,
     }));
 
-    userEvent.click(getByLabelText(/deny/i));
+    await userEvent.click(screen.getByLabelText(/deny/i));
 
-    const aside = getByRole("complementary");
+    const aside = screen.getByRole("complementary");
     expect(aside).toBeInTheDocument();
 
     const transitionEndEvent = createEvent("transitionend", aside);
 
     fireEvent(aside, transitionEndEvent);
 
-    expect(getByRole("complementary", { hidden: true })).not.toBeVisible();
+    const hiddenAside = screen.getByRole("complementary", { hidden: true });
+    expect(hiddenAside).not.toBeVisible();
   });
 });
