@@ -35,10 +35,13 @@ function useFirebase(predicate = false) {
     let mounted = true;
 
     async function importFirebaseModules() {
-      // eslint-disable-next-line no-unused-vars
-      const [firebase, auth] = await Promise.all([
-        import("firebase/app"),
-        import("firebase/auth"),
+      const [firebase] = await Promise.all([
+        /**
+         * TODO: upgrade to esm
+         * @see https://firebase.google.com/docs/web/modular-upgrade
+         */
+        import("firebase/compat/app"),
+        import("firebase/compat/auth"),
       ]).catch((error) => {
         if (mounted) {
           setFirebaseError(error.message);
