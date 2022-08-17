@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useCallback } from "react";
 import { useFormik } from "formik";
 import { navigate } from "gatsby";
 
@@ -66,10 +66,10 @@ function ContactForm() {
     }
   }, [consentAccepted, hasGDPRConsent]);
 
-  function clearErrorMessage() {
+  const clearErrorMessage = useCallback(() => {
     setShowFormError(false);
     setFormErrorMessage(null);
-  }
+  }, []);
 
   function handleFormError(error) {
     setFormErrorMessage(error.message);
