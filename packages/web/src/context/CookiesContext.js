@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React, { createContext, useMemo } from "react";
 import { node, shape, string, object } from "prop-types";
 
 import useCookies from "../hooks/useCookies";
@@ -21,8 +21,13 @@ export const CookiesContext = createContext(contextInitialState);
 function CookiesProvider({ children, location }) {
   const [state, dispatch, actions, types] = useCookies(location);
 
+  const providerValue = useMemo(
+    () => [state, dispatch, actions, types],
+    [state, dispatch, actions, types],
+  );
+
   return (
-    <CookiesContext.Provider value={[state, dispatch, actions, types]}>
+    <CookiesContext.Provider value={providerValue}>
       {children}
     </CookiesContext.Provider>
   );
