@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { IntlProvider } from "react-intl";
 
 import intlMessages from "./src/i18n/i18n";
@@ -21,10 +21,12 @@ import GTMScript from "./src/components/GTMScript/GTMScript";
  * gatsby-ssr.js and gatsby-browser.js so that pages generated through SSR
  * with Node.js are the same after being hydrated with browser JavaScript.
  */
-function wrapPage({ element, props }) {
+function WrapPage({ element, props }) {
   const { pageContext: { locale = "en" } = {} } = props || {};
   const { location } = props;
   checkFontsLoaded();
+
+  const localeContextValue = useMemo(() => ({ locale: locale }), [locale]);
 
   return (
     <IntlProvider
@@ -32,7 +34,7 @@ function wrapPage({ element, props }) {
       defaultLocale="en"
       messages={intlMessages[locale]}
     >
-      <LocaleContext.Provider value={{ locale: locale }}>
+      <LocaleContext.Provider value={localeContextValue}>
         <CookiesProvider location={location}>
           <GTMScript />
           {element}
@@ -42,4 +44,4 @@ function wrapPage({ element, props }) {
   );
 }
 
-export default wrapPage;
+export default WrapPage;
