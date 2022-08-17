@@ -16,21 +16,17 @@ describe("CaseStudyCard", () => {
     const CARD_HEADING_LEVEL = "h3";
     const DATA = TEST_GATSBY_NODE_EDGES[LOCALE][0].node;
 
-    const {
-      container,
-      getByText,
-      getByRole,
-      getByLabelText,
-    } = renderWithReactIntl(
-      <CaseStudyCard
-        title={DATA.frontmatter.title}
-        snippet={DATA.frontmatter.snippet}
-        cardImage={DATA.frontmatter.cardImage.childImageSharp.fluid}
-        slug={DATA.fields.slug}
-        cardHeadingLevel={CARD_HEADING_LEVEL}
-      />,
-      LOCALE,
-    );
+    const { container, getByText, getByRole, getByLabelText } =
+      renderWithReactIntl(
+        <CaseStudyCard
+          title={DATA.frontmatter.title}
+          snippet={DATA.frontmatter.snippet}
+          cardImage={DATA.frontmatter.cardImage.childImageSharp.fluid}
+          slug={DATA.fields.slug}
+          cardHeadingLevel={CARD_HEADING_LEVEL}
+        />,
+        LOCALE,
+      );
 
     const articleByRole = getByRole("article");
     const articleByLabel = getByLabelText(DATA.frontmatter.title);
@@ -60,21 +56,17 @@ describe("CaseStudyCard", () => {
     const CARD_HEADING_LEVEL = "h3";
     const DATA = TEST_GATSBY_NODE_EDGES[LOCALE][0].node;
 
-    const {
-      container,
-      getByText,
-      getByRole,
-      getByLabelText,
-    } = renderWithReactIntl(
-      <CaseStudyCard
-        title={DATA.frontmatter.title}
-        snippet={DATA.frontmatter.snippet}
-        cardImage={DATA.frontmatter.cardImage.childImageSharp.fluid}
-        slug={DATA.fields.slug}
-        cardHeadingLevel={CARD_HEADING_LEVEL}
-      />,
-      LOCALE,
-    );
+    const { container, getByText, getByRole, getByLabelText } =
+      renderWithReactIntl(
+        <CaseStudyCard
+          title={DATA.frontmatter.title}
+          snippet={DATA.frontmatter.snippet}
+          cardImage={DATA.frontmatter.cardImage.childImageSharp.fluid}
+          slug={DATA.fields.slug}
+          cardHeadingLevel={CARD_HEADING_LEVEL}
+        />,
+        LOCALE,
+      );
 
     const articleByRole = getByRole("article");
     const articleByLabel = getByLabelText(DATA.frontmatter.title);

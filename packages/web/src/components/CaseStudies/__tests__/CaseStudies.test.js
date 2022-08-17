@@ -16,19 +16,15 @@ describe("CaseStudies", () => {
     const CARD_HEADING_LEVEL = "h3";
     const DATA = TEST_GATSBY_NODE_EDGES[LOCALE][0].node;
 
-    const {
-      container,
-      getByText,
-      getByRole,
-      getByLabelText,
-    } = renderWithReactIntl(
-      <CaseStudies
-        edges={TEST_GATSBY_NODE_EDGES[LOCALE]}
-        header={HEADER_HEADING_LEVEL}
-        cardHeadingLevel={CARD_HEADING_LEVEL}
-      />,
-      LOCALE,
-    );
+    const { container, getByText, getByRole, getByLabelText } =
+      renderWithReactIntl(
+        <CaseStudies
+          edges={TEST_GATSBY_NODE_EDGES[LOCALE]}
+          header={HEADER_HEADING_LEVEL}
+          cardHeadingLevel={CARD_HEADING_LEVEL}
+        />,
+        LOCALE,
+      );
 
     const section = getByLabelText(/Latest/);
     const articleByRole = getByRole("article");
@@ -67,19 +63,15 @@ describe("CaseStudies", () => {
     const CARD_HEADING_LEVEL = "h3";
     const DATA = TEST_GATSBY_NODE_EDGES[LOCALE][0].node;
 
-    const {
-      container,
-      getByText,
-      getByRole,
-      getByLabelText,
-    } = renderWithReactIntl(
-      <CaseStudies
-        edges={TEST_GATSBY_NODE_EDGES[LOCALE]}
-        header={HEADER_HEADING_LEVEL}
-        cardHeadingLevel={CARD_HEADING_LEVEL}
-      />,
-      LOCALE,
-    );
+    const { container, getByText, getByRole, getByLabelText } =
+      renderWithReactIntl(
+        <CaseStudies
+          edges={TEST_GATSBY_NODE_EDGES[LOCALE]}
+          header={HEADER_HEADING_LEVEL}
+          cardHeadingLevel={CARD_HEADING_LEVEL}
+        />,
+        LOCALE,
+      );
 
     const section = getByLabelText(/Recientes/);
     const articleByRole = getByRole("article");

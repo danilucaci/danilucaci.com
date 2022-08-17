@@ -136,10 +136,8 @@ function SubscribeCard() {
   const { locale } = useContext(LocaleContext);
   const intl = useIntl();
 
-  const [
-    { isMCSent, isError, errorMessageType, APIErrorResponse },
-    dispatch,
-  ] = useReducer(subscribeReducer, subscribeInitialState);
+  const [{ isMCSent, isError, errorMessageType, APIErrorResponse }, dispatch] =
+    useReducer(subscribeReducer, subscribeInitialState);
 
   return (
     <SubscribeCardWrapper>

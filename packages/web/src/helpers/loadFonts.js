@@ -73,9 +73,8 @@ export const loadFonts = () => {
 export const checkFontsLoaded = () => {
   if (typeof window !== "undefined") {
     if (sessionStorage.fontsLoadedPolyfill) {
-      const isLoaded = document.documentElement.className.includes(
-        "fonts-loaded",
-      );
+      const isLoaded =
+        document.documentElement.className.includes("fonts-loaded");
       // Only add the class when it is not already added
       if (!isLoaded) {
         document.documentElement.className += " fonts-loaded";
