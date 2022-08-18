@@ -35,13 +35,17 @@ function useFirebase(predicate = false) {
     let mounted = true;
 
     async function importFirebaseModules() {
+      /**
+       * TODO: upgrade to esm
+       * @see https://firebase.google.com/docs/web/modular-upgrade
+       */
       const [firebase] = await Promise.all([
-        /**
-         * TODO: upgrade to esm
-         * @see https://firebase.google.com/docs/web/modular-upgrade
-         */
-        import("firebase/compat/app"),
-        import("firebase/compat/auth"),
+        import(
+          /* webpackChunkName: "module--firebase-app" */ "firebase/compat/app"
+        ),
+        import(
+          /* webpackChunkName: "module--firebase-auth" */ "firebase/compat/auth"
+        ),
       ]).catch((error) => {
         if (mounted) {
           setFirebaseError(error.message);
