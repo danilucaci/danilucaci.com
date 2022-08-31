@@ -33,7 +33,7 @@
     "cy:open:prod": "cypress open --env configFile=prod",
     "clean": "rm -rf public && rm -rf .cache",
     "serve": "gatsby serve",
-    "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build",
+    "build": "gatsby build",
     "netlify:build": "yarn run build",
     "sprite": "gulp build:svg",
     "lint:js": "eslint . --ext .js",
