@@ -31,6 +31,7 @@ module.exports = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
     "gatsby-plugin-catch-links",
+    `gatsby-plugin-image`,
     {
       resolve: "gatsby-plugin-mailchimp",
       options: {
@@ -82,9 +83,6 @@ module.exports = {
     {
       resolve: "gatsby-plugin-mdx",
       options: {
-        options: {
-          timeToRead: (wordCount) => wordCount / 42,
-        },
         extensions: [".mdx", ".md"],
         gatsbyRemarkPlugins: [
           {

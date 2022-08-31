@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import { shape, object, oneOfType, string, number } from "prop-types";
+import { shape, object, oneOfType, string } from "prop-types";
 import { graphql } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage, getImage, getSrc } from "gatsby-plugin-image";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
 import SEO from "../components/SEO";
@@ -11,6 +11,7 @@ import SiblingProjects from "../components/SiblingProjects";
 import ContactCard from "../components/ContactCard";
 import ErrorBoundary from "../components/ErrorBoundary";
 import { Col, Row } from "../components/Grid";
+import LocaleContext from "../i18n/LocaleContext";
 
 import {
   ArticleWrapper,
@@ -19,12 +20,11 @@ import {
   CaseStudyDescription,
   CaseStudyImgWrapper,
 } from "../styles/caseStudy.styles";
-import LocaleContext from "../i18n/LocaleContext";
 
 function CaseStudy({ data, pageContext, location }) {
   const postNode = data.mdx;
   const postInfo = postNode.frontmatter;
-  const pageImage = postInfo.pageImage.childImageSharp.fluid;
+  const pageImage = postInfo.pageImage;
   const twinPost = pageContext.twinPost;
   const nextTitle = pageContext.nextTitle;
   const nextSlug = pageContext.nextSlug;
@@ -48,7 +48,7 @@ function CaseStudy({ data, pageContext, location }) {
           twinPostURL={twinPostURL}
           postNode={postNode}
           postSEO
-          postImage={pageImage.src}
+          postImage={getSrc(pageImage)}
           currentPath={location.pathname}
         />
         <Main>
@@ -61,11 +61,10 @@ function CaseStudy({ data, pageContext, location }) {
                     {postInfo.snippet}
                   </CaseStudyDescription>
                   <CaseStudyImgWrapper>
-                    <Img
+                    <GatsbyImage
+                      image={getImage(pageImage)}
                       title={postInfo.title}
                       alt={postInfo.snippet}
-                      fluid={pageImage}
-                      fadeIn
                     />
                   </CaseStudyImgWrapper>
                 </Col>
@@ -110,17 +109,7 @@ CaseStudy.propTypes = {
         title: string.isRequired,
         date: string.isRequired,
         pageImage: shape({
-          childImageSharp: shape({
-            fluid: shape({
-              aspectRatio: number.isRequired,
-              base64: string.isRequired,
-              sizes: string.isRequired,
-              src: string.isRequired,
-              srcSet: string.isRequired,
-              srcSetWebp: string.isRequired,
-              srcWebp: string.isRequired,
-            }).isRequired,
-          }).isRequired,
+          childImageSharp: object.isRequired,
         }),
       }),
     }),
@@ -142,9 +131,7 @@ export const pageQuery = graphql`
         snippet
         pageImage {
           childImageSharp {
-            fluid(maxWidth: 744, quality: 60) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
+            gatsbyImageData(width: 744, quality: 60, layout: CONSTRAINED)
           }
         }
       }

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { string, bool, shape, number, arrayOf } from "prop-types";
+import { string, bool, shape, number, arrayOf, object } from "prop-types";
 import { Helmet } from "react-helmet";
 import urljoin from "url-join";
 
@@ -276,17 +276,7 @@ SEO.propTypes = {
       title: string.isRequired,
       date: string.isRequired,
       pageImage: shape({
-        childImageSharp: shape({
-          fluid: shape({
-            aspectRatio: number.isRequired,
-            base64: string.isRequired,
-            sizes: string.isRequired,
-            src: string.isRequired,
-            srcSet: string.isRequired,
-            srcSetWebp: string.isRequired,
-            srcWebp: string.isRequired,
-          }).isRequired,
-        }).isRequired,
+        childImageSharp: object.isRequired,
       }),
     }).isRequired,
   }),

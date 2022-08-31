@@ -1,5 +1,5 @@
 import React from "react";
-import { bool, string, arrayOf, number, shape } from "prop-types";
+import { bool, string, arrayOf, shape, object } from "prop-types";
 import { useIntl } from "react-intl";
 
 import CaseStudyCard from "../CaseStudyCard";
@@ -14,7 +14,7 @@ function CaseStudies({ edges, spaced, header, cardHeadingLevel }) {
     title: edge.node.frontmatter.title,
     date: edge.node.frontmatter.date,
     snippet: edge.node.frontmatter.snippet,
-    cardImage: edge.node.frontmatter.cardImage.childImageSharp.fluid,
+    cardImage: edge.node.frontmatter.cardImage.childImageSharp.gatsbyImageData,
   }));
 
   return (
@@ -55,17 +55,7 @@ CaseStudies.propTypes = {
         }),
         frontmatter: shape({
           cardImage: shape({
-            childImageSharp: shape({
-              fluid: shape({
-                aspectRatio: number.isRequired,
-                base64: string.isRequired,
-                sizes: string.isRequired,
-                src: string.isRequired,
-                srcSet: string.isRequired,
-                srcSetWebp: string.isRequired,
-                srcWebp: string.isRequired,
-              }).isRequired,
-            }).isRequired,
+            childImageSharp: object.isRequired,
           }).isRequired,
           category: string.isRequired,
           date: string.isRequired,

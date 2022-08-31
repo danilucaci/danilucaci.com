@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
-import { shape, string, number } from "prop-types";
 import { graphql } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import { useIntl } from "react-intl";
 
 import SEO from "../components/SEO";
@@ -13,6 +12,7 @@ import { Col, Row } from "../components/Grid";
 import ErrorBoundary from "../components/ErrorBoundary";
 import ScrollToTop from "../components/ScrollToTop";
 import { localePaths } from "../i18n";
+import LocaleContext from "../i18n/LocaleContext";
 
 import {
   HeaderRow,
@@ -26,7 +26,6 @@ import {
   SkillsSubtitle,
   SkilsCol,
 } from "../styles/about-me.styles";
-import LocaleContext from "../i18n/LocaleContext";
 
 function AboutPage({ location, data }) {
   const { locale } = useContext(LocaleContext);
@@ -51,9 +50,9 @@ function AboutPage({ location, data }) {
         <Main>
           <HeaderRow as="header" col12 mb>
             <Col xl={5}>
-              <Img
+              <GatsbyImage
+                image={data.aboutImage.childImageSharp.gatsbyImageData}
                 alt={intl.formatMessage({ id: "about.me.image.alt" })}
-                fluid={data.aboutImage.childImageSharp.fluid}
               />
             </Col>
             <HeaderInfoCol xl={7}>
@@ -183,37 +182,19 @@ function AboutPage({ location, data }) {
   );
 }
 
-AboutPage.propTypes = {
-  data: shape({
-    aboutImage: shape({
-      childImageSharp: shape({
-        fluid: shape({
-          aspectRatio: number.isRequired,
-          base64: string.isRequired,
-          sizes: string.isRequired,
-          src: string.isRequired,
-          srcSet: string.isRequired,
-          srcSetWebp: string.isRequired,
-          srcWebp: string.isRequired,
-        }).isRequired,
-      }),
-    }),
-  }).isRequired,
-  location: shape({
-    pathname: string.isRequired,
-    href: string.isRequired,
-  }).isRequired,
-};
-
 export default AboutPage;
 
 export const query = graphql`
   query ABOUT_ME_IMAGE_QUERY {
     aboutImage: file(relativePath: { regex: "/danilucaci_profile_image/" }) {
       childImageSharp {
-        fluid(maxWidth: 720, maxHeight: 540, cropFocus: NORTH, quality: 70) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(
+          width: 720
+          height: 540
+          quality: 70
+          transformOptions: { cropFocus: NORTH }
+          layout: CONSTRAINED
+        )
       }
     }
   }

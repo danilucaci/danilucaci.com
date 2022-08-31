@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { number, bool, shape, arrayOf, string } from "prop-types";
 import { graphql, Link } from "gatsby";
 import { useIntl } from "react-intl";
 
@@ -204,48 +203,6 @@ function Index({ data, location }) {
   );
 }
 
-Index.propTypes = {
-  data: shape({
-    work: shape({
-      edges: arrayOf(
-        shape({
-          node: shape({
-            fields: shape({
-              slug: string.isRequired,
-            }),
-            frontmatter: shape({
-              cardImage: shape({
-                childImageSharp: shape({
-                  fluid: shape({
-                    aspectRatio: number.isRequired,
-                    base64: string.isRequired,
-                    sizes: string.isRequired,
-                    src: string.isRequired,
-                    srcSet: string.isRequired,
-                    srcSetWebp: string.isRequired,
-                    srcWebp: string.isRequired,
-                  }).isRequired,
-                }).isRequired,
-              }).isRequired,
-              category: string.isRequired,
-              date: string.isRequired,
-              posted: bool.isRequired,
-              snippet: string.isRequired,
-              tags: arrayOf(string).isRequired,
-              title: string.isRequired,
-            }).isRequired,
-          }).isRequired,
-        }).isRequired,
-      ).isRequired,
-      totalCount: number.isRequired,
-    }),
-  }).isRequired,
-  location: shape({
-    pathname: string.isRequired,
-    href: string.isRequired,
-  }).isRequired,
-};
-
 export default Index;
 
 export const pageQuery = graphql`
@@ -276,9 +233,7 @@ export const pageQuery = graphql`
             posted
             cardImage {
               childImageSharp {
-                fluid(maxWidth: 744, quality: 50) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
+                gatsbyImageData(width: 744, quality: 50, layout: CONSTRAINED)
               }
             }
           }
