@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import { theme, rem, mediaMin } from "../../theme";
 import { Copy } from "../Copy";
@@ -69,7 +69,7 @@ export const AuthorCardInner = styled.div`
   `};
 `;
 
-export const AuthorImage = styled(Img)`
+export const AuthorImage = styled(GatsbyImage)`
   display: block;
   border-radius: 50%;
   width: ${rem(128)};

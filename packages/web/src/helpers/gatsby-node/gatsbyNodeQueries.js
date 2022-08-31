@@ -81,15 +81,11 @@ const GATSBY_NODE_QUERY = `
             locale
             cardImage {
               childImageSharp {
-                fluid(maxWidth: 744) {
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
-                  aspectRatio
-                  sizes
-                  base64
-                }
+                gatsbyImageData(
+                  width: 744
+                  placeholder: BLURRED
+                  layout: CONSTRAINED
+                )
               }
             }
           }

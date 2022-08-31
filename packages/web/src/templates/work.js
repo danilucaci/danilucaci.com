@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { arrayOf, number, string, bool, shape } from "prop-types";
+import { arrayOf, number, string, bool, shape, object } from "prop-types";
 
 import SEO from "../components/SEO";
 import Layout from "../components/Layout";
@@ -92,17 +92,7 @@ WorkPage.propTypes = {
           }),
           frontmatter: shape({
             cardImage: shape({
-              childImageSharp: shape({
-                fluid: shape({
-                  aspectRatio: number.isRequired,
-                  base64: string.isRequired,
-                  sizes: string.isRequired,
-                  src: string.isRequired,
-                  srcSet: string.isRequired,
-                  srcSetWebp: string.isRequired,
-                  srcWebp: string.isRequired,
-                }).isRequired,
-              }).isRequired,
+              childImageSharp: object.isRequired,
             }).isRequired,
             category: string.isRequired,
             date: string.isRequired,

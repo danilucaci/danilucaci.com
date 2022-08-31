@@ -23,7 +23,7 @@ function AuthorCard() {
       <AuthorCardInner>
         <AuthorImage
           alt={intl.formatMessage({ id: "author.card.image.alt" })}
-          fluid={queryData.authorImageQuery.childImageSharp.fluid}
+          image={queryData.authorImageQuery.childImageSharp.gatsbyImageData}
         />
         <AuthorInfo>
           <h3>{intl.formatMessage({ id: "author.card.name" })}</h3>
@@ -40,14 +40,18 @@ function AuthorCard() {
 export default AuthorCard;
 
 const AUTHOR_IMAGE_QUERY = graphql`
-  query {
+  {
     authorImageQuery: file(
       relativePath: { regex: "/danilucaci_profile_image/" }
     ) {
       childImageSharp {
-        fluid(maxWidth: 104, maxHeight: 104, cropFocus: NORTH, quality: 70) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(
+          width: 104
+          height: 104
+          quality: 70
+          transformOptions: { cropFocus: NORTH }
+          layout: CONSTRAINED
+        )
       }
     }
   }

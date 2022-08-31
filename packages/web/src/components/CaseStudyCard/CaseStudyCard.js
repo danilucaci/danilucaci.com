@@ -1,6 +1,6 @@
 import React from "react";
-import { string, shape, number } from "prop-types";
-import Img from "gatsby-image";
+import { string, object } from "prop-types";
+import { GatsbyImage } from "gatsby-plugin-image";
 import { useIntl } from "react-intl";
 
 import {
@@ -21,7 +21,7 @@ function CaseStudyCard({ title, snippet, cardImage, slug, cardHeadingLevel }) {
   return (
     <StyledCaseStudyCard aria-labelledby={slug}>
       <CaseStudyImgWrapper>
-        <Img title={title} alt={snippet} fluid={cardImage} fadeIn />
+        <GatsbyImage image={cardImage} title={title} alt={snippet} />
       </CaseStudyImgWrapper>
       <CaseStudyCardContents>
         <StyledH3 as={cardHeadingLevel} id={slug}>
@@ -42,14 +42,7 @@ CaseStudyCard.propTypes = {
   slug: string.isRequired,
   snippet: string.isRequired,
   cardHeadingLevel: string,
-  cardImage: shape({
-    aspectRatio: number.isRequired,
-    sizes: string.isRequired,
-    src: string.isRequired,
-    srcWebp: string.isRequired,
-    srcSet: string.isRequired,
-    srcSetWebp: string.isRequired,
-  }).isRequired,
+  cardImage: object.isRequired,
 };
 
 CaseStudyCard.defaultProps = {

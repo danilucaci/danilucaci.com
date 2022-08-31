@@ -21,7 +21,7 @@ describe("CaseStudyCard", () => {
         <CaseStudyCard
           title={DATA.frontmatter.title}
           snippet={DATA.frontmatter.snippet}
-          cardImage={DATA.frontmatter.cardImage.childImageSharp.fluid}
+          cardImage={DATA.frontmatter.cardImage.childImageSharp.gatsbyImageData}
           slug={DATA.fields.slug}
           cardHeadingLevel={CARD_HEADING_LEVEL}
         />,
@@ -61,7 +61,7 @@ describe("CaseStudyCard", () => {
         <CaseStudyCard
           title={DATA.frontmatter.title}
           snippet={DATA.frontmatter.snippet}
-          cardImage={DATA.frontmatter.cardImage.childImageSharp.fluid}
+          cardImage={DATA.frontmatter.cardImage.childImageSharp.gatsbyImageData}
           slug={DATA.fields.slug}
           cardHeadingLevel={CARD_HEADING_LEVEL}
         />,
@@ -100,7 +100,7 @@ describe("CaseStudyCard", () => {
       <CaseStudyCard
         title={DATA.frontmatter.title}
         snippet={DATA.frontmatter.snippet}
-        cardImage={DATA.frontmatter.cardImage.childImageSharp.fluid}
+        cardImage={DATA.frontmatter.cardImage.childImageSharp.gatsbyImageData}
         slug={DATA.fields.slug}
         cardHeadingLevel={CARD_HEADING_LEVEL}
       />,
@@ -123,7 +123,7 @@ describe("CaseStudyCard", () => {
       <CaseStudyCard
         title={DATA.frontmatter.title}
         snippet={DATA.frontmatter.snippet}
-        cardImage={DATA.frontmatter.cardImage.childImageSharp.fluid}
+        cardImage={DATA.frontmatter.cardImage.childImageSharp.gatsbyImageData}
         slug={DATA.fields.slug}
         cardHeadingLevel={CARD_HEADING_LEVEL}
       />,

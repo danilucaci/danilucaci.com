@@ -1,24 +1,16 @@
 import React from "react";
 import { string, bool } from "prop-types";
-import Img from "gatsby-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import { Figure, FigCaption } from "./styles";
 import useImage from "../../hooks/useImage";
 
 function Image({ src, caption, expand, noShadow, ariaOnlyCaption }) {
-  const foundImage = useImage(src);
-
-  if (!foundImage) {
-    if (process.env.NODE_ENV === "development") {
-      throw new Error("Image: Image not found: ", src);
-    }
-
-    return null;
-  }
+  const image = useImage(src);
 
   return (
     <Figure expand={expand} noShadow={noShadow}>
-      <Img fluid={foundImage.node.childImageSharp.fluid} alt={caption} fadeIn />
+      <GatsbyImage image={getImage(image.node)} alt={caption} />
       <FigCaption className={ariaOnlyCaption && "aria-hidden"}>
         {caption}
       </FigCaption>
