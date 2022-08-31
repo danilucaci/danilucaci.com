@@ -88,6 +88,7 @@ module.exports = {
     "react/state-in-constructor": 0,
     "react/jsx-filename-extension": [1, { extensions: [".js"] }],
     "react/prop-types": 0,
+    "react/forbid-prop-types": [0, { forbid: ["object"] }],
     "no-use-before-define": ["error", { functions: false }],
     "import/no-extraneous-dependencies": [
       "error",
