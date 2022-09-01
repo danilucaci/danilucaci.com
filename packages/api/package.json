@@ -48,9 +48,9 @@
     "validator": "^13.7.0"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.18.9",
     "@types/jest": "^28.1.6",
     "@types/mongoose": "^5.11.97",
-    "@babel/eslint-parser": "^7.18.9",
     "eslint": "^8.21.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-jest": "^26.8.2",
