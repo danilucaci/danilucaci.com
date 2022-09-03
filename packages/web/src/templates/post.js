@@ -1,8 +1,7 @@
-/* eslint-disable react/jsx-boolean-value */
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { string, shape, oneOfType, object, arrayOf, number } from "prop-types";
 import { graphql } from "gatsby";
-import Disqus from "disqus-react";
+
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
 import SEO from "../components/SEO";
@@ -15,7 +14,6 @@ import { Col, Row } from "../components/Grid";
 import SiblingPosts from "../components/SiblingPosts";
 import ErrorBoundary from "../components/ErrorBoundary";
 import ArticleInfo from "../components/ArticleInfo";
-// import SubscribeCard from "../components/SubscribeCard";
 import { copyURL, addCopyButtonsToCodeNodes } from "../helpers/helpers";
 
 import { localePaths } from "../i18n/i18n";
@@ -29,14 +27,10 @@ import {
   IntroCopy,
   PostContentRow,
   TextareaClipboard,
-  CommentsRow,
-  StyledLoadComments,
 } from "../styles/post.styles";
 import LocaleContext from "../i18n/LocaleContext";
 
 function Post({ pageContext, data, location }) {
-  const [loadComments, setLoadComments] = useState(false);
-
   const { locale } = useContext(LocaleContext);
 
   useEffect(() => {
@@ -59,13 +53,6 @@ function Post({ pageContext, data, location }) {
   } else if (locale === "es") {
     twinPostURL = localePaths["en"].blog + "/" + twinPost;
   }
-
-  const disqusShortname = process.env.GATSBY_DISQUS_SHORTNAME;
-  const disqusConfig = {
-    url: location.href,
-    identifier: postInfo.title,
-    title: postInfo.title,
-  };
 
   return (
     <ErrorBoundary>
@@ -117,7 +104,7 @@ function Post({ pageContext, data, location }) {
           <TextareaClipboard
             className="js-textarea-clipboard"
             contentEditable="true"
-            readOnly={true}
+            readOnly
             aria-hidden="true"
             suppressContentEditableWarning="true"
           />
@@ -131,22 +118,6 @@ function Post({ pageContext, data, location }) {
             prevTitle={prevTitle}
           />
         )}
-
-        <CommentsRow as="aside" col10 pb>
-          <Col>
-            {!loadComments && (
-              <StyledLoadComments onClick={() => setLoadComments(true)} />
-            )}
-            {loadComments && (
-              <Disqus.DiscussionEmbed
-                shortname={disqusShortname}
-                config={disqusConfig}
-              />
-            )}
-          </Col>
-        </CommentsRow>
-
-        {/* <SubscribeCard /> */}
       </Layout>
     </ErrorBoundary>
   );

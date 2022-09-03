@@ -7,11 +7,11 @@ export const SiblingPostsContents = styled.div`
   display: flex;
 
   padding-top: ${rem(16)};
-  padding-bottom: ${rem(48)};
+  padding-bottom: ${rem(32)};
 
   ${mediaMin.s`
     padding-top: ${rem(32)};
-    padding-bottom: ${rem(64)};
+    padding-bottom: ${rem(40)};
   `};
 `;
 

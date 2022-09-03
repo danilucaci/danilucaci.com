@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 import { rem, mediaMin } from "../theme";
 import { Copy } from "../components/Copy";
-import LoadComments from "../components/LoadComments";
 import { Row } from "../components/Grid";
 
 export const PostWrapper = styled.article`
@@ -272,19 +271,4 @@ export const TextareaClipboard = styled.textarea`
   left: -1000em;
   background-color: transparent;
   color: transparent;
-`;
-
-export const StyledLoadComments = styled(LoadComments)`
-  width: 100%;
-
-  ${mediaMin.s`
-    width: ${rem(280)};
-    margin-left: auto;
-    margin-right: auto;
-  `};
-`;
-
-export const CommentsRow = styled(Row)`
-  /* Layout breaks without setting the width to 100% */
-  width: 100%;
 `;
