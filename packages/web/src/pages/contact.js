@@ -5,8 +5,7 @@ import { useIntl } from "react-intl";
 import SEO from "../components/SEO";
 import Layout from "../components/Layout";
 import Main from "../components/Main";
-import HR from "../components/HR";
-import ContactForm from "../components/ContactForm";
+
 import SocialNav from "../components/SocialNav";
 import ErrorBoundary from "../components/ErrorBoundary";
 import ScrollToTop from "../components/ScrollToTop";
@@ -14,15 +13,12 @@ import { Col } from "../components/Grid";
 import { localePaths } from "../i18n";
 import { sendContactPageEvent, gaEvents } from "../helpers/ga";
 
-import { Copy } from "../components/Copy";
 import {
   ContactPageRow,
-  FormHr,
   H1,
   Info,
   StyledLink,
   SayHiWrapper,
-  SayHiTitle,
   SayHiDescription,
   SocialNavWrapper,
 } from "../styles/contact.styles";
@@ -58,30 +54,11 @@ function ContactPage({ location }) {
             pb
             aria-label={locale === "en" ? "contact me" : "contacto"}
           >
-            <Col xl={6}>
+            <Col xl={8}>
               <H1>{intl.formatMessage({ id: "contact.page.title" })}</H1>
               <Info>{intl.formatMessage({ id: "contact.page.info" })}</Info>
 
-              <Copy>
-                {intl.formatMessage({ id: "contact.page.work.info" })}{" "}
-                <StyledLink
-                  href={`mailto:${localePaths[locale].email}`}
-                  onClick={() =>
-                    sendContactPageEvent({
-                      label:
-                        gaEvents.contactPage.actions.contactLinks.labels.email,
-                    })
-                  }
-                >
-                  {localePaths[locale].email}
-                </StyledLink>
-              </Copy>
-
               <SayHiWrapper>
-                <HR />
-                <SayHiTitle>
-                  {intl.formatMessage({ id: "contact.page.other.title" })}
-                </SayHiTitle>
                 <SayHiDescription>
                   {intl.formatMessage({
                     id: "contact.page.other.description",
@@ -108,10 +85,6 @@ function ContactPage({ location }) {
                   <SocialNav />
                 </SocialNavWrapper>
               </SayHiWrapper>
-            </Col>
-            <Col xl={6}>
-              <FormHr />
-              <ContactForm />
             </Col>
           </ContactPageRow>
         </Main>
