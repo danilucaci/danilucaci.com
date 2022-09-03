@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 import { mediaMin, rem } from "../theme";
 import { Copy } from "../components/Copy";
-import HR from "../components/HR";
 import { Row } from "../components/Grid";
 import ExternalLink from "../components/ExternalLink";
 
@@ -11,8 +10,14 @@ export const ContactPageRow = styled(Row)`
   margin-left: auto;
   margin-right: auto;
 
+  ${mediaMin.m`
+     margin-top: ${({ theme }) => theme.spacing.row.m}; 
+  `};
+
   ${mediaMin.xl`
     max-width: ${({ theme }) => theme.layout.col12.wrapper};
+    justify-content: center;
+    margin-top: ${({ theme }) => theme.spacing.row.xl}; 
   `};
 `;
 
@@ -40,38 +45,8 @@ export const Info = styled(Copy)`
   `};
 `;
 
-export const FormHr = styled(HR)`
-  margin-top: ${rem(16)};
-  margin-bottom: ${rem(24)};
-
-  ${mediaMin.xl`
-      display: none;
-  `};
-`;
-
 export const SayHiWrapper = styled.div`
-  margin-top: ${rem(24)};
-
-  ${mediaMin.xl`  
-    margin-top: ${rem(40)};
-  `};
-`;
-
-export const SayHiTitle = styled.h2`
-  margin-top: ${rem(24)};
-  margin-bottom: ${rem(16)};
-
-  font-size: ${({ theme }) => theme.font.size.display.mobile.h4};
-  line-height: ${({ theme }) => theme.font.lineHeight.display.mobile.h4};
-
-  ${mediaMin.xs`
-    font-size: ${({ theme }) => theme.font.size.display.desktop.h4};
-    line-height: ${({ theme }) => theme.font.lineHeight.display.desktop.h4};
-  `}
-
-  ${mediaMin.l`  
-    margin-top: ${rem(16)};
-  `};
+  margin-top: ${rem(16)};
 `;
 
 export const SayHiDescription = styled(Copy)`
