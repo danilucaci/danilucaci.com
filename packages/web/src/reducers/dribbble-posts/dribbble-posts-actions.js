@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import * as Sentry from "@sentry/browser";
+import * as Sentry from "@sentry/react";
 import axios from "axios";
 
 import dribbblePostsTypes from "./dribbble-posts-types";
