@@ -127,6 +127,6 @@ describe("ContactFormErrorMessage", () => {
     expect(errorMessageEl).toHaveTextContent(ERROR_MESSAGE);
 
     await userEvent.click(closeButton);
-    expect(CLEAR_ERROR_MESSAGE).toBeCalledTimes(1);
+    expect(CLEAR_ERROR_MESSAGE).toHaveBeenCalledTimes(1);
   });
 });
