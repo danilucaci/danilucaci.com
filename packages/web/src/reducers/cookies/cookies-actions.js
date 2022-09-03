@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import * as Sentry from "@sentry/browser";
+import * as Sentry from "@sentry/react";
 
 import cookiesTypes from "./cookies-types";
 import { removeGTMConsent } from "../../helpers/ga";

@@ -2,8 +2,7 @@ import React, { useReducer, useContext } from "react";
 import addToMailchimp from "gatsby-plugin-mailchimp";
 import { useIntl } from "react-intl";
 import { Formik, ErrorMessage, Form } from "formik";
-import * as Sentry from "@sentry/browser";
-
+import * as Sentry from "@sentry/react";
 import { contactFormConsentValues } from "../../i18n";
 import PrivacyCheckbox from "../PrivacyCheckbox";
 import InlineErrorMessage from "../InlineErrorMessage";

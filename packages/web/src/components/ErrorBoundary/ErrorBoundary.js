@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import * as Sentry from "@sentry/browser";
+import * as Sentry from "@sentry/react";
 import { node } from "prop-types";
 
 const NODE_ENV = process.env.NODE_ENV;
