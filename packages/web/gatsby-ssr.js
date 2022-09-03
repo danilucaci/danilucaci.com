@@ -1,3 +1,7 @@
+import React from "react";
+
 import WrapPage from "./wrap-page";
 
-export const wrapPageElement = WrapPage;
+export function wrapPageElement(props) {
+  return <WrapPage {...props} />;
+}
