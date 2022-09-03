@@ -19,7 +19,7 @@ function SiblingPosts({ prevSlug, prevTitle, nextSlug, nextTitle }) {
   const intl = useIntl();
 
   return (
-    <Row pb col10>
+    <Row col10>
       <Col>
         <HR />
         <SiblingPostsContents>
@@ -40,7 +40,6 @@ function SiblingPosts({ prevSlug, prevTitle, nextSlug, nextTitle }) {
             </NextItemsContainer>
           )}
         </SiblingPostsContents>
-        <HR />
       </Col>
     </Row>
   );
