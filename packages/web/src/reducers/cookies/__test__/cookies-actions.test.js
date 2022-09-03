@@ -1,5 +1,5 @@
 import MockCookies from "js-cookie";
-import * as MockSentry from "@sentry/browser";
+import * as MockSentry from "@sentry/react";
 
 import cookiesTypes from "../cookies-types";
 import { removeGTMConsent } from "../../../helpers/ga";
@@ -19,7 +19,7 @@ jest.mock("js-cookie", () => ({
   get: jest.fn().mockImplementation(() => {}),
 }));
 
-jest.mock("@sentry/browser", () => ({
+jest.mock("@sentry/react", () => ({
   captureMessage: jest.fn(),
   captureException: jest.fn(),
 }));
