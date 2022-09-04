@@ -147,20 +147,3 @@ jobs:
         run: |
           yarn
           yarn workspace web run test:ci:all
-
-  deploy-api:
-    needs: [lint, test]
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x]
-    steps:
-      - uses: actions/checkout@v2
-      - name: Add Heroku Remote Origin
-        run: git remote add heroku https://heroku:${{ secrets.HEROKU_API_TOKEN
-          }}@git.heroku.com/${{ secrets.HEROKU_APP_NAME }}.git
-      - name: Split the packages/api subtree
-        run: git subtree split --prefix packages/api -b split
-      - name: Deploy API to Heroku
-        run: git push -f heroku split:main
