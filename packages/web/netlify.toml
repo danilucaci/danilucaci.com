@@ -26,6 +26,6 @@
 
 [[redirects]]
   from = "/es/gracias"
-  to = "/"
+  to = "/es"
   status = 410
   force = true
