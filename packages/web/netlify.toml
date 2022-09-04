@@ -17,3 +17,15 @@
 
 [[plugins]]
   package = "netlify-plugin-gatsby-cache"
+
+[[redirects]]
+  from = "/thanks"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/es/gracias"
+  to = "/"
+  status = 410
+  force = true
