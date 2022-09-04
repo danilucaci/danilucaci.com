@@ -11,7 +11,6 @@ module.exports = {
     "plugin:jest/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
-    "plugin:cypress/recommended",
     "plugin:jsx-a11y/recommended",
   ],
   plugins: [
@@ -23,7 +22,6 @@ module.exports = {
     "react-hooks",
     "jest",
     "import",
-    "cypress",
   ],
   settings: {
     react: {
@@ -46,7 +44,6 @@ module.exports = {
     es6: true,
     node: true,
     "jest/globals": true,
-    "cypress/globals": true,
   },
   overrides: [
     {
@@ -101,7 +98,6 @@ module.exports = {
           "src/helpers/tests.js",
           "gatsby-node.js",
           "gatsby-config.js",
-          "cypress/**",
           "jest-preprocess.js",
           "jest.setup.js",
           "**/__tests__/**",
