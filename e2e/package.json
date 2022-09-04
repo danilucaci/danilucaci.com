@@ -1,0 +1,32 @@
+{
+  "name": "e2e",
+  "description": "danilucaci.com Personal Blog",
+  "private": true,
+  "version": "1.0.0",
+  "author": "Dani Lucaci <hello@danilucaci.com>",
+  "license": "MIT",
+  "keywords": [
+    "gatsby",
+    "portfolio",
+    "personal blog",
+    "e2e-tests"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danilucaci/danilucaci"
+  },
+  "main": "n/a",
+  "scripts": {
+    "cy:run:dev": "cypress run --config-file env-config/dev.js",
+    "cy:run:prod": "cypress run --config-file env-config/prod.js",
+    "cy:open:dev": "cypress open --config-file env-config/dev.js",
+    "cy:open:prod": "cypress open --config-file env-config/prod.js"
+  },
+  "dependencies": {
+    "cypress": "^10.7.0"
+  },
+  "devDependencies": {
+    "@testing-library/cypress": "^8.0.3",
+    "cypress-axe": "^1.0.0"
+  }
+}
