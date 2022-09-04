@@ -21,6 +21,7 @@ import {
   SayHiWrapper,
   SayHiDescription,
   SocialNavWrapper,
+  StyledHR,
 } from "../styles/contact.styles";
 import LocaleContext from "../i18n/LocaleContext";
 
@@ -80,7 +81,7 @@ function ContactPage({ location }) {
                     })}
                   </StyledLink>
                 </SayHiDescription>
-
+                <StyledHR />
                 <SocialNavWrapper>
                   <SocialNav />
                 </SocialNavWrapper>

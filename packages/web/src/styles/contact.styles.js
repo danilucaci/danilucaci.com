@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { mediaMin, rem } from "../theme";
 import { Copy } from "../components/Copy";
 import { Row } from "../components/Grid";
+import HR from "../components/HR";
 import ExternalLink from "../components/ExternalLink";
 
 export const ContactPageRow = styled(Row)`
@@ -23,17 +24,15 @@ export const ContactPageRow = styled(Row)`
 
 export const H1 = styled.h1`
   display: block;
-  margin-bottom: ${rem(16)};
+  width: 100%;
+  margin-bottom: ${rem(24)};
 
   font-size: ${({ theme }) => theme.font.size.display.mobile.h2};
   line-height: ${({ theme }) => theme.font.lineHeight.display.mobile.h2};
 
-  ${mediaMin.xs`
-    font-size: ${({ theme }) => theme.font.size.display.desktop.h2};
-  `}
-
-  ${mediaMin.xs`
-    line-height: ${({ theme }) => theme.font.lineHeight.display.desktop.h2};
+  ${mediaMin.m`
+    font-size: ${({ theme }) => theme.font.size.display.desktop.h1};
+    line-height: ${({ theme }) => theme.font.lineHeight.display.desktop.h1};
   `}
 `;
 
@@ -60,4 +59,16 @@ export const StyledLink = styled(ExternalLink)`
 
 export const SocialNavWrapper = styled.div`
   margin-top: ${rem(16)};
+`;
+
+export const StyledHR = styled(HR)`
+  display: block;
+  width: 100%;
+  margin-top: ${rem(16)};
+  margin-bottom: ${rem(16)};
+
+  ${mediaMin.xl`
+    margin-top: ${rem(24)};
+    margin-bottom: ${rem(24)};
+  `};
 `;
