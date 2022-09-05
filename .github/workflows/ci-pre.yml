@@ -1,0 +1,176 @@
+name: CI PRE
+
+on:
+  pull_request:
+    branches: [main, dev]
+
+jobs:
+  check-skip-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.0
+        with:
+          access_token: ${{ github.token }}
+
+  install:
+    needs: check-skip-run
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v2
+        # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: install yarn dependencies
+        run: yarn --prefer-offline
+        if: steps.yarn-cache-dir-path.outputs.dir
+
+  lint:
+    needs: install
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v2
+        # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: api lint
+        run: |
+          yarn
+          yarn workspace api run lint:js
+          yarn workspace api run lint:format:check
+        env:
+          FB_CERT_TYPE: ${{ secrets.FB_CERT_TYPE }}
+          FB_CERT_PROJECT_ID: ${{ secrets.FB_CERT_PROJECT_ID }}
+          FB_CERT_PRIVATE_KEY_ID: ${{ secrets.FB_CERT_PRIVATE_KEY_ID }}
+          FB_CERT_PRIVATE_KEY: ${{ secrets.FB_CERT_PRIVATE_KEY }}
+          FB_CERT_CLIENT_EMAIL: ${{ secrets.FB_CERT_CLIENT_EMAIL }}
+          FB_CERT_CLIENT_ID: ${{ secrets.FB_CERT_CLIENT_ID }}
+          FB_CERT_AUTH_URI: ${{ secrets.FB_CERT_AUTH_URI }}
+          FB_CERT_TOKEN_URI: ${{ secrets.FB_CERT_TOKEN_URI }}
+          FB_CERT_AUTH_PROVIDER_X_509_CERT_URL: ${{ secrets.FB_CERT_AUTH_PROVIDER_X_509_CERT_URL }}
+          FB_CERT_CLIENT_X_509_CERT_URL: ${{ secrets.FB_CERT_CLIENT_X_509_CERT_URL }}
+          MONGO_PROJECT_ID: ${{ secrets.MONGO_PROJECT_ID }}
+          MONGO_USERNAME: ${{ secrets.MONGO_USERNAME }}
+          MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
+          CLIENT_URL: ${{ secrets.CLIENT_URL }}
+          EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+
+      - name: web lint
+        run: |
+          yarn
+          yarn workspace web run lint:js
+          yarn workspace web run lint:format:check
+
+  test:
+    needs: install
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v2
+        # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: api test
+        run: |
+          yarn
+          yarn workspace api run test:ci:all
+        env:
+          FB_CERT_TYPE: ${{ secrets.FB_CERT_TYPE }}
+          FB_CERT_PROJECT_ID: ${{ secrets.FB_CERT_PROJECT_ID }}
+          FB_CERT_PRIVATE_KEY_ID: ${{ secrets.FB_CERT_PRIVATE_KEY_ID }}
+          FB_CERT_PRIVATE_KEY: ${{ secrets.FB_CERT_PRIVATE_KEY }}
+          FB_CERT_CLIENT_EMAIL: ${{ secrets.FB_CERT_CLIENT_EMAIL }}
+          FB_CERT_CLIENT_ID: ${{ secrets.FB_CERT_CLIENT_ID }}
+          FB_CERT_AUTH_URI: ${{ secrets.FB_CERT_AUTH_URI }}
+          FB_CERT_TOKEN_URI: ${{ secrets.FB_CERT_TOKEN_URI }}
+          FB_CERT_AUTH_PROVIDER_X_509_CERT_URL: ${{ secrets.FB_CERT_AUTH_PROVIDER_X_509_CERT_URL }}
+          FB_CERT_CLIENT_X_509_CERT_URL: ${{ secrets.FB_CERT_CLIENT_X_509_CERT_URL }}
+          MONGO_PROJECT_ID: ${{ secrets.MONGO_PROJECT_ID }}
+          MONGO_USERNAME: ${{ secrets.MONGO_USERNAME }}
+          MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
+          CLIENT_URL: ${{ secrets.CLIENT_URL }}
+          EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+
+      - name: web test
+        run: |
+          yarn
+          yarn workspace web run test:ci:all
+
+  publish:
+    needs: [lint, test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build Web
+        run: |
+          yarn
+          yarn workspace web run netlify:build
+
+      - name: Deploy to Netlify
+        uses: netlify/actions/cli@master
+        id: deploy-netlify
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        with:
+          args: deploy --dir=packages/web/public
+
+      - name: Netlify Preview URL
+        uses: unsplash/comment-on-pr@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OUTPUT: "This pull request is being automatically deployed to Netlify.\n\n🔍 Inspect: ${{ steps.deploy-netlify.outputs.NETLIFY_LOGS_URL }}\n✅ Preview: ${{ steps.deploy-netlify.outputs.NETLIFY_URL }}"
+        with:
+          msg: ${{ env.OUTPUT }}
+          check_for_duplicate_msg: false

@@ -1,10 +1,8 @@
-name: CI
+name: CI PRO
 
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main, dev]
 
 jobs:
   check-skip-run:
@@ -91,6 +89,7 @@ jobs:
           CLIENT_URL: ${{ secrets.CLIENT_URL }}
           EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+
       - name: web lint
         run: |
           yarn
@@ -143,7 +142,22 @@ jobs:
           CLIENT_URL: ${{ secrets.CLIENT_URL }}
           EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+
       - name: web test
         run: |
           yarn
           yarn workspace web run test:ci:all
+
+  publish:
+    needs: [lint, test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Publish
+        uses: netlify/actions/build@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_BASE: packages/web
+          NETLIFY_CMD: yarn workspace web run netlify:build
+          NETLIFY_DIR: packages/web/public
