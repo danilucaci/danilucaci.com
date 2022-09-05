@@ -158,7 +158,6 @@ jobs:
           yarn workspace web run netlify:build
 
       - name: Deploy to Netlify
-        uses: netlify/actions/cli@master
         id: deploy-netlify
         run: npx netlify-cli deploy --build --prod --dir=packages/web/public
         env:
