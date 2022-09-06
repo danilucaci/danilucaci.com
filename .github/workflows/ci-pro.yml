@@ -179,7 +179,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_BASE: packages/web
-          NETLIFY_CMD: yarn workspace web run netlify
+          NETLIFY_CMD: yarn workspace web run netlify:build
           NETLIFY_DIR: packages/web/public
           GATSBY_CONTACT_BASE_URL: ${{ secrets.GATSBY_CONTACT_BASE_URL }}
           GATSBY_DISQUS_SHORTNAME: ${{ secrets.GATSBY_DISQUS_SHORTNAME }}

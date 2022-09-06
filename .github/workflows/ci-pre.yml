@@ -176,7 +176,7 @@ jobs:
       - name: Build Web
         run: |
           yarn
-          yarn workspace web run netlify
+          yarn workspace web run netlify:build
         env:
           GATSBY_CONTACT_BASE_URL: ${{ secrets.GATSBY_CONTACT_BASE_URL }}
           GATSBY_DISQUS_SHORTNAME: ${{ secrets.GATSBY_DISQUS_SHORTNAME }}
@@ -199,7 +199,7 @@ jobs:
 
       - name: Deploy to Netlify
         id: deploy-netlify
-        run: npx netlify-cli deploy --build --dir=packages/web/public
+        run: npx netlify-cli deploy --dir=packages/web/public
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
