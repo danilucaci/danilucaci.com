@@ -26,7 +26,7 @@
     "clean": "rm -rf public && rm -rf .cache",
     "serve": "gatsby serve",
     "build": "gatsby build",
-    "netlify:build": "yarn run build",
+    "netlify": "yarn run build",
     "sprite": "gulp build:svg",
     "lint:js": "eslint . --ext .js",
     "lint:js:fix": "yarn run lint:js -- --fix",
