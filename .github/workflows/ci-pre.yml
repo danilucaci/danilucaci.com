@@ -195,6 +195,7 @@ jobs:
           GATSBY_FIREBASE_PROJECT_ID: ${{ secrets.GATSBY_FIREBASE_PROJECT_ID }}
           GATSBY_GA_ID: ${{ secrets.GATSBY_GA_ID }}
           GATSBY_SENTRY_URL: ${{ secrets.GATSBY_SENTRY_URL }}
+          MAILCHIMP_ENDPOINT: ${{ secrets.MAILCHIMP_ENDPOINT }}
 
       - name: Deploy to Netlify
         id: deploy-netlify
