@@ -199,7 +199,7 @@ jobs:
 
       - name: Deploy to Netlify
         id: deploy-netlify
-        run: npx netlify-cli deploy --dir=packages/web/public --site=danilucaci-com
+        run: npx netlify-cli deploy --dir=packages/web/public --site=danilucaci-com --json
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
