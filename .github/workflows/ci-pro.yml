@@ -173,52 +173,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: Build Web
-        run: |
-          yarn
-          yarn workspace web run netlify:build
-        env:
-          GATSBY_CONTACT_BASE_URL: ${{ secrets.GATSBY_CONTACT_BASE_URL }}
-          GATSBY_DISQUS_SHORTNAME: ${{ secrets.GATSBY_DISQUS_SHORTNAME }}
-          GATSBY_DL_CONSENT_COOKIE_NAME: ${{ secrets.GATSBY_DL_CONSENT_COOKIE_NAME }}
-          GATSBY_DL_COOKIE_DOMAIN: ${{ secrets.GATSBY_DL_COOKIE_DOMAIN }}
-          GATSBY_DL_COOKIE_EXP: ${{ secrets.GATSBY_DL_COOKIE_EXP }}
-          GATSBY_DL_COOKIE_NAME: ${{ secrets.GATSBY_DL_COOKIE_NAME }}
-          GATSBY_DL_COOKIE_SECURE: ${{ secrets.GATSBY_DL_COOKIE_SECURE }}
-          GATSBY_DRIBBBLE_TOKEN: ${{ secrets.GATSBY_DRIBBBLE_TOKEN }}
-          GATSBY_FIREBASE_API_KEY: ${{ secrets.GATSBY_FIREBASE_API_KEY }}
-          GATSBY_FIREBASE_APP_ID: ${{ secrets.GATSBY_FIREBASE_APP_ID }}
-          GATSBY_FIREBASE_AUTH_DOMAIN: ${{ secrets.GATSBY_FIREBASE_AUTH_DOMAIN }}
-          GATSBY_FIREBASE_DATABASE_URL: ${{ secrets.GATSBY_FIREBASE_DATABASE_URL }}
-          GATSBY_FIREBASE_FUNCTIONS_CONTACT_PING_URL: ${{ secrets.GATSBY_FIREBASE_FUNCTIONS_CONTACT_PING_URL }}
-          GATSBY_FIREBASE_FUNCTIONS_CONTACT_URL: ${{ secrets.GATSBY_FIREBASE_FUNCTIONS_CONTACT_URL }}
-          GATSBY_FIREBASE_PROJECT_ID: ${{ secrets.GATSBY_FIREBASE_PROJECT_ID }}
-          GATSBY_GA_ID: ${{ secrets.GATSBY_GA_ID }}
-          GATSBY_SENTRY_URL: ${{ secrets.GATSBY_SENTRY_URL }}
-          MAILCHIMP_ENDPOINT: ${{ secrets.MAILCHIMP_ENDPOINT }}
-
-      - name: Deploy Production Build to Netlify
-        run: |
-          cp packages/web/netlify.toml .
-          npx netlify-cli deploy --dir=packages/web/public --prod --site=danilucaci-com --json --debug --message="Deploy preview for PR: #${{ github.event.pull_request.number }}" > netlify-deploy-info.json
-          cat netlify-deploy-info.json
+      - name: Deploy Netlify Production Build
+        run: npx netlify-cli deploy --trigger --site=danilucaci-com
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-
-      - name: Generate Deployment Info
-        id: netlify-deployment-info
-        run: |
-          jq -r '.logs' netlify-deploy-info.json
-          jq -r '.deploy_url' netlify-deploy-info.json
-          echo "::set-output name=deploy-logs-url::$(jq -r '.logs' netlify-deploy-info.json)"
-          echo "::set-output name=deploy-preview-url::$(jq -r '.deploy_url' netlify-deploy-info.json)"
-
-      - name: Netlify Preview URL
-        uses: unsplash/comment-on-pr@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OUTPUT: "🔍 Netlify Build Logs URL: ${{ steps.netlify-deployment-info.outputs.deploy-logs-url }}\n🚀 Netlify Build Preview URL: ${{ steps.netlify-deployment-info.outputs.deploy-preview-url }}"
-        with:
-          msg: ${{ env.OUTPUT }}
-          check_for_duplicate_msg: false
