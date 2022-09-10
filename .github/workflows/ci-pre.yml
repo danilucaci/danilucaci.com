@@ -197,7 +197,7 @@ jobs:
           GATSBY_SENTRY_URL: ${{ secrets.GATSBY_SENTRY_URL }}
           MAILCHIMP_ENDPOINT: ${{ secrets.MAILCHIMP_ENDPOINT }}
 
-      - name: Deploy to Netlify
+      - name: Deploy Staging Build to Netlify
         run: |
           cp packages/web/netlify.toml .
           npx netlify-cli deploy --dir=packages/web/public --site=danilucaci-com --json --message="Deploy preview for PR: #${{ github.event.pull_request.number }}" > netlify-deploy-info.json
@@ -206,7 +206,7 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
-      - name: Generate deployment info
+      - name: Generate Deployment Info
         id: netlify-deployment-info
         run: |
           jq -r '.logs' netlify-deploy-info.json
