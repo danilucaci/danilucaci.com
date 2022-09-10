@@ -199,6 +199,7 @@ jobs:
 
       - name: Deploy to Netlify
         run: |
+          cp packages/web/netlify.toml .
           npx netlify-cli deploy --dir=packages/web/public --site=danilucaci-com --json --message="Deploy preview for PR: #${{ github.event.pull_request.number }}" > netlify-deploy-info.json
           cat netlify-deploy-info.json
         env:
