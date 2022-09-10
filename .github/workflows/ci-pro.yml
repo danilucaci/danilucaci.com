@@ -174,7 +174,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Deploy Netlify Production Build
-        run: npx netlify-cli deploy --trigger --prod --site=danilucaci-com
+        run: npx netlify-cli deploy --trigger --site=danilucaci-com
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
