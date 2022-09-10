@@ -200,25 +200,7 @@ jobs:
       - name: Deploy Production Build to Netlify
         run: |
           cp packages/web/netlify.toml .
-          npx netlify-cli deploy --dir=packages/web/public --prod --site=danilucaci-com --json --debug --message="Deploy preview for PR: #${{ github.event.pull_request.number }}" > netlify-deploy-info.json
-          cat netlify-deploy-info.json
+          npx netlify-cli deploy --dir=packages/web/public --prodIfUnlocked --site=danilucaci-com
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-
-      - name: Generate Deployment Info
-        id: netlify-deployment-info
-        run: |
-          jq -r '.logs' netlify-deploy-info.json
-          jq -r '.deploy_url' netlify-deploy-info.json
-          echo "::set-output name=deploy-logs-url::$(jq -r '.logs' netlify-deploy-info.json)"
-          echo "::set-output name=deploy-preview-url::$(jq -r '.deploy_url' netlify-deploy-info.json)"
-
-      - name: Netlify Preview URL
-        uses: unsplash/comment-on-pr@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OUTPUT: "🔍 Netlify Build Logs URL: ${{ steps.netlify-deployment-info.outputs.deploy-logs-url }}\n🚀 Netlify Build Preview URL: ${{ steps.netlify-deployment-info.outputs.deploy-preview-url }}"
-        with:
-          msg: ${{ env.OUTPUT }}
-          check_for_duplicate_msg: false
