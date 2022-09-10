@@ -200,7 +200,7 @@ jobs:
       - name: Deploy Production Build to Netlify
         run: |
           cp packages/web/netlify.toml .
-          npx netlify-cli deploy --dir=packages/web/public --prod --site=danilucaci-com --json --message="Deploy preview for PR: #${{ github.event.pull_request.number }}" > netlify-deploy-info.json
+          npx netlify-cli deploy --dir=packages/web/public --prod --site=danilucaci-com --json --debug --message="Deploy preview for PR: #${{ github.event.pull_request.number }}" > netlify-deploy-info.json
           cat netlify-deploy-info.json
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
