@@ -198,17 +198,22 @@ jobs:
           MAILCHIMP_ENDPOINT: ${{ secrets.MAILCHIMP_ENDPOINT }}
 
       - name: Deploy to Netlify
-        id: deploy-netlify
-        run: npx netlify-cli deploy --dir=packages/web/public --site=danilucaci-com --json --message=${{ github.event.pull_request.number }}
+        run: npx netlify-cli deploy --dir=packages/web/public --site=danilucaci-com --json --message=${{ github.event.pull_request.title }} > netlify-deploy-info.json
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+      - name: Generate deployment info
+        id: netlify-deployment-info
+        run:
+          echo "::set-output name=deploy-logs-url::$(jq -r '.logs' netlify-deploy-info.json)"
+          echo "::set-output name=deploy-preview-url::$(jq -r '.deploy_url' netlify-deploy-info.json)"
 
       - name: Netlify Preview URL
         uses: unsplash/comment-on-pr@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OUTPUT: "This pull request is being automatically deployed to Netlify.\n\n🔍 Inspect: ${{ steps.deploy-netlify.outputs.NETLIFY_LOGS_URL }}\n✅ Preview: ${{ steps.deploy-netlify.outputs.NETLIFY_URL }}"
+          OUTPUT: "🔍 Netlify Build Logs URL: ${{ steps.netlify-deployment-info.outputs.deploy-logs-url }}\n✅ Netlify Build Preview URL: ${{ steps.netlify-deployment-info.outputs.deploy-preview-url }}"
         with:
           msg: ${{ env.OUTPUT }}
           check_for_duplicate_msg: false
